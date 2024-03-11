@@ -5,145 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type DeleteAppExpMetricRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s DeleteAppExpMetricRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppExpMetricRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppExpMetricRuleRequest) SetAppId(v string) *DeleteAppExpMetricRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-type DeleteAppExpMetricRuleResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAppExpMetricRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppExpMetricRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppExpMetricRuleResponseBody) SetRequestId(v string) *DeleteAppExpMetricRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAppExpMetricRuleResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAppExpMetricRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppExpMetricRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *DeleteAppExpMetricRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAppExpMetricRuleResponse) SetStatusCode(v int32) *DeleteAppExpMetricRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteAppExpMetricRuleResponse) SetBody(v *DeleteAppExpMetricRuleResponseBody) *DeleteAppExpMetricRuleResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteAppFollowCallRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s DeleteAppFollowCallRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppFollowCallRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppFollowCallRuleRequest) SetAppId(v string) *DeleteAppFollowCallRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-type DeleteAppFollowCallRuleResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteAppFollowCallRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppFollowCallRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppFollowCallRuleResponseBody) SetRequestId(v string) *DeleteAppFollowCallRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteAppFollowCallRuleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAppFollowCallRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAppFollowCallRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *DeleteAppFollowCallRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAppFollowCallRuleResponse) SetStatusCode(v int32) *DeleteAppFollowCallRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteAppFollowCallRuleResponse) SetBody(v *DeleteAppFollowCallRuleResponseBody) *DeleteAppFollowCallRuleResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAppConfigRequest struct {
-	// APP ID
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 
@@ -161,9 +30,7 @@ func (s *DescribeAppConfigRequest) SetAppId(v string) *DescribeAppConfigRequest 
 }
 
 type DescribeAppConfigResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 阈值配置对象
+	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ThresholdConfig *DescribeAppConfigResponseBodyThresholdConfig `json:"ThresholdConfig,omitempty" xml:"ThresholdConfig,omitempty" type:"Struct"`
 }
 
@@ -186,7 +53,6 @@ func (s *DescribeAppConfigResponseBody) SetThresholdConfig(v *DescribeAppConfigR
 }
 
 type DescribeAppConfigResponseBodyThresholdConfig struct {
-	// 入会慢时间阈值，单位毫秒
 	JoinSlowTime *int64 `json:"JoinSlowTime,omitempty" xml:"JoinSlowTime,omitempty"`
 }
 
@@ -204,9 +70,9 @@ func (s *DescribeAppConfigResponseBodyThresholdConfig) SetJoinSlowTime(v int64) 
 }
 
 type DescribeAppConfigResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAppConfigResponse) String() string {
@@ -232,477 +98,13 @@ func (s *DescribeAppConfigResponse) SetBody(v *DescribeAppConfigResponseBody) *D
 	return s
 }
 
-type DescribeAppExpMetricRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s DescribeAppExpMetricRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleRequest) SetAppId(v string) *DescribeAppExpMetricRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-type DescribeAppExpMetricRuleResponseBody struct {
-	// 获取用户体验阈值规则相关数据
-	AppExpMetricRule *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule `json:"AppExpMetricRule,omitempty" xml:"AppExpMetricRule,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeAppExpMetricRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleResponseBody) SetAppExpMetricRule(v *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) *DescribeAppExpMetricRuleResponseBody {
-	s.AppExpMetricRule = v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBody) SetRequestId(v string) *DescribeAppExpMetricRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeAppExpMetricRuleResponseBodyAppExpMetricRule struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建时间，秒级时间戳，如1614912647
-	CreatedTs     *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	GmtCreateTs   *int64 `json:"GmtCreateTs,omitempty" xml:"GmtCreateTs,omitempty"`
-	GmtModifiedTs *int64 `json:"GmtModifiedTs,omitempty" xml:"GmtModifiedTs,omitempty"`
-	// 修改时间，秒级时间戳，如1615272998
-	ModifiedTs *int64 `json:"ModifiedTs,omitempty" xml:"ModifiedTs,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetAppId(v string) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetCreatedTs(v int64) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.CreatedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetGmtCreateTs(v int64) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.GmtCreateTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetGmtModifiedTs(v int64) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.GmtModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetModifiedTs(v int64) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.ModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetRule(v string) *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule {
-	s.Rule = &v
-	return s
-}
-
-type DescribeAppExpMetricRuleResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAppExpMetricRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *DescribeAppExpMetricRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponse) SetStatusCode(v int32) *DescribeAppExpMetricRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleResponse) SetBody(v *DescribeAppExpMetricRuleResponseBody) *DescribeAppExpMetricRuleResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAppExpMetricRuleListResponseBody struct {
-	// 用户体验阈值规则相关数据列表
-	AppExpMetricRuleList []*DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList `json:"AppExpMetricRuleList,omitempty" xml:"AppExpMetricRuleList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeAppExpMetricRuleListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBody) SetAppExpMetricRuleList(v []*DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) *DescribeAppExpMetricRuleListResponseBody {
-	s.AppExpMetricRuleList = v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBody) SetRequestId(v string) *DescribeAppExpMetricRuleListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建时间，秒级时间戳，如1614912647
-	CreatedTs     *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	GmtCreateTs   *int64 `json:"GmtCreateTs,omitempty" xml:"GmtCreateTs,omitempty"`
-	GmtModifiedTs *int64 `json:"GmtModifiedTs,omitempty" xml:"GmtModifiedTs,omitempty"`
-	// 修改时间，秒级时间戳，如1615272998
-	ModifiedTs *int64 `json:"ModifiedTs,omitempty" xml:"ModifiedTs,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetAppId(v string) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetCreatedTs(v int64) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.CreatedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetGmtCreateTs(v int64) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.GmtCreateTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetGmtModifiedTs(v int64) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.GmtModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetModifiedTs(v int64) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.ModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetRule(v string) *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList {
-	s.Rule = &v
-	return s
-}
-
-type DescribeAppExpMetricRuleListResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppExpMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAppExpMetricRuleListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppExpMetricRuleListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppExpMetricRuleListResponse) SetHeaders(v map[string]*string) *DescribeAppExpMetricRuleListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponse) SetStatusCode(v int32) *DescribeAppExpMetricRuleListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAppExpMetricRuleListResponse) SetBody(v *DescribeAppExpMetricRuleListResponseBody) *DescribeAppExpMetricRuleListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAppFollowCallRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-}
-
-func (s DescribeAppFollowCallRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleRequest) SetAppId(v string) *DescribeAppFollowCallRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-type DescribeAppFollowCallRuleResponseBody struct {
-	// 获取用户体验阈值规则相关数据
-	AppFollowCallRule *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule `json:"AppFollowCallRule,omitempty" xml:"AppFollowCallRule,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeAppFollowCallRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleResponseBody) SetAppFollowCallRule(v *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) *DescribeAppFollowCallRuleResponseBody {
-	s.AppFollowCallRule = v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBody) SetRequestId(v string) *DescribeAppFollowCallRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeAppFollowCallRuleResponseBodyAppFollowCallRule struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建时间，秒级时间戳，如1614936817
-	CreatedTs     *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	GmtCreateTs   *int64 `json:"GmtCreateTs,omitempty" xml:"GmtCreateTs,omitempty"`
-	GmtModifiedTs *int64 `json:"GmtModifiedTs,omitempty" xml:"GmtModifiedTs,omitempty"`
-	// 修改时间，秒级时间戳，如1614936817
-	ModifiedTs *int64 `json:"ModifiedTs,omitempty" xml:"ModifiedTs,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetAppId(v string) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetCreatedTs(v int64) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.CreatedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetGmtCreateTs(v int64) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.GmtCreateTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetGmtModifiedTs(v int64) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.GmtModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetModifiedTs(v int64) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.ModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetRule(v string) *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule {
-	s.Rule = &v
-	return s
-}
-
-type DescribeAppFollowCallRuleResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAppFollowCallRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *DescribeAppFollowCallRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponse) SetStatusCode(v int32) *DescribeAppFollowCallRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleResponse) SetBody(v *DescribeAppFollowCallRuleResponseBody) *DescribeAppFollowCallRuleResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAppFollowCallRuleListResponseBody struct {
-	// 通信监测关注规则相关数据列表
-	AppFollowCallRuleList []*DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList `json:"AppFollowCallRuleList,omitempty" xml:"AppFollowCallRuleList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeAppFollowCallRuleListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBody) SetAppFollowCallRuleList(v []*DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) *DescribeAppFollowCallRuleListResponseBody {
-	s.AppFollowCallRuleList = v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBody) SetRequestId(v string) *DescribeAppFollowCallRuleListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建时间，秒级时间戳，如1614836732
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 创建时间，待删除
-	GmtCreateTs *int64 `json:"GmtCreateTs,omitempty" xml:"GmtCreateTs,omitempty"`
-	// 修改时间，待删除
-	GmtModifiedTs *int64 `json:"GmtModifiedTs,omitempty" xml:"GmtModifiedTs,omitempty"`
-	// 修改时间，秒级时间戳，如1614836732
-	ModifiedTs *int64 `json:"ModifiedTs,omitempty" xml:"ModifiedTs,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetAppId(v string) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetCreatedTs(v int64) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.CreatedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetGmtCreateTs(v int64) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.GmtCreateTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetGmtModifiedTs(v int64) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.GmtModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetModifiedTs(v int64) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.ModifiedTs = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetRule(v string) *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList {
-	s.Rule = &v
-	return s
-}
-
-type DescribeAppFollowCallRuleListResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAppFollowCallRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAppFollowCallRuleListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAppFollowCallRuleListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAppFollowCallRuleListResponse) SetHeaders(v map[string]*string) *DescribeAppFollowCallRuleListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponse) SetStatusCode(v int32) *DescribeAppFollowCallRuleListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAppFollowCallRuleListResponse) SetBody(v *DescribeAppFollowCallRuleListResponseBody) *DescribeAppFollowCallRuleListResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeCallRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 查询的扩展。取值：USER_DURATION_STAT：用户时长统计数据类型。
-	ExtDataType *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
-	// 是否查询通信体验信息，不传默认是true
-	QueryExpInfo *bool `json:"QueryExpInfo,omitempty" xml:"QueryExpInfo,omitempty"`
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs    *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs  *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	ExtDataType  *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
+	QueryExpInfo *bool   `json:"QueryExpInfo,omitempty" xml:"QueryExpInfo,omitempty"`
 }
 
 func (s DescribeCallRequest) String() string {
@@ -744,11 +146,8 @@ func (s *DescribeCallRequest) SetQueryExpInfo(v bool) *DescribeCallRequest {
 }
 
 type DescribeCallResponseBody struct {
-	// 通信基本信息。
-	CallInfo *DescribeCallResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用户详情列表。
+	CallInfo       *DescribeCallResponseBodyCallInfo         `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserDetailList []*DescribeCallResponseBodyUserDetailList `json:"UserDetailList,omitempty" xml:"UserDetailList,omitempty" type:"Repeated"`
 }
 
@@ -777,17 +176,12 @@ func (s *DescribeCallResponseBody) SetUserDetailList(v []*DescribeCallResponseBo
 
 type DescribeCallResponseBodyCallInfo struct {
 	// App ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 通信状态。取值：IN：进行中。OUT：已结束。
-	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建通信时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放通信时间，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通信持续时长，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeCallResponseBodyCallInfo) String() string {
@@ -829,42 +223,23 @@ func (s *DescribeCallResponseBodyCallInfo) SetDuration(v int64) *DescribeCallRes
 }
 
 type DescribeCallResponseBodyUserDetailList struct {
-	// 通话体验，取值：GOOD:优良，BAD:欠佳。
-	CallExp *string `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
-	// 创建通话时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放通话时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 时长统计数据
+	CallExp           *string                                                  `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
+	CreatedTs         *int64                                                   `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs       *int64                                                   `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 	DurMetricStatData *DescribeCallResponseBodyUserDetailListDurMetricStatData `json:"DurMetricStatData,omitempty" xml:"DurMetricStatData,omitempty" type:"Struct"`
-	// 通话时长，首次进入到最后离开，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 地理位置信息，例如：北京市-北京市
-	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	LocationCn *string `json:"LocationCn,omitempty" xml:"LocationCn,omitempty"`
-	LocationEn *string `json:"LocationEn,omitempty" xml:"LocationEn,omitempty"`
-	// 网络类型，如WiFi，4G等
-	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// 网络类型，如WiFi，4G等
-	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
-	// 在线时长，单位：秒。
-	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	// 在线时段信息。
-	OnlinePeriods []*DescribeCallResponseBodyUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	// 用户角色，取值：SENDER：发布端。RECEIVER：订阅端。
-	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// SDK版本，如1.0.0、1.1.1等
-	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	// SDK版本列表，如1.0.0、1.1.1等
-	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户ID 别称
-	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+	Duration          *int64                                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location          *string                                                  `json:"Location,omitempty" xml:"Location,omitempty"`
+	Network           *string                                                  `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList       []*string                                                `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	OnlineDuration    *int64                                                   `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods     []*DescribeCallResponseBodyUserDetailListOnlinePeriods   `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	Os                *string                                                  `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList            []*string                                                `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles             []*string                                                `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	SdkVersion        *string                                                  `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList    []*string                                                `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	UserId            *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserIdAlias       *string                                                  `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
 func (s DescribeCallResponseBodyUserDetailList) String() string {
@@ -902,16 +277,6 @@ func (s *DescribeCallResponseBodyUserDetailList) SetDuration(v int64) *DescribeC
 
 func (s *DescribeCallResponseBodyUserDetailList) SetLocation(v string) *DescribeCallResponseBodyUserDetailList {
 	s.Location = &v
-	return s
-}
-
-func (s *DescribeCallResponseBodyUserDetailList) SetLocationCn(v string) *DescribeCallResponseBodyUserDetailList {
-	s.LocationCn = &v
-	return s
-}
-
-func (s *DescribeCallResponseBodyUserDetailList) SetLocationEn(v string) *DescribeCallResponseBodyUserDetailList {
-	s.LocationEn = &v
 	return s
 }
 
@@ -971,25 +336,15 @@ func (s *DescribeCallResponseBodyUserDetailList) SetUserIdAlias(v string) *Descr
 }
 
 type DescribeCallResponseBodyUserDetailListDurMetricStatData struct {
-	// 发布音频时长，单位秒
-	PubAudio *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
-	// 发布1080P视频时长，单位：秒
-	PubVideo1080 *int64 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
-	// 发布360P视频时长，单位秒
-	PubVideo360 *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
-	// 发布720P视频时长，单位：秒
-	PubVideo720 *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
-	// 发布屏幕共享时长，单位：秒
+	PubAudio            *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
+	PubVideo1080        *int64 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
+	PubVideo360         *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
+	PubVideo720         *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
 	PubVideoScreenShare *int64 `json:"PubVideoScreenShare,omitempty" xml:"PubVideoScreenShare,omitempty"`
-	// 订阅音频时长，单位秒
-	SubAudio *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
-	// 订阅1080P视频时长，单位：秒
-	SubVideo1080 *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
-	// 订阅360P视频时长，单位：秒
-	SubVideo360 *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
-	// 订阅720P视频时长，单位：秒
-	SubVideo720 *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
-	// 订阅屏幕共享时长，单位：秒
+	SubAudio            *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
+	SubVideo1080        *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
+	SubVideo360         *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
+	SubVideo720         *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
 	SubVideoScreenShare *int64 `json:"SubVideoScreenShare,omitempty" xml:"SubVideoScreenShare,omitempty"`
 }
 
@@ -1052,9 +407,7 @@ func (s *DescribeCallResponseBodyUserDetailListDurMetricStatData) SetSubVideoScr
 }
 
 type DescribeCallResponseBodyUserDetailListOnlinePeriods struct {
-	// 加入通话时间，使用UNIX时间戳表示，单位：秒。
-	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
-	// 离开通话时间，使用UNIX时间戳表示，单位：秒。
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -1077,9 +430,9 @@ func (s *DescribeCallResponseBodyUserDetailListOnlinePeriods) SetLeaveTs(v int64
 }
 
 type DescribeCallResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCallResponse) String() string {
@@ -1211,9 +564,9 @@ func (s *DescribeCallInfoResponseBodyCallInfo) SetDuration(v int64) *DescribeCal
 }
 
 type DescribeCallInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCallInfoResponse) String() string {
@@ -1240,26 +593,16 @@ func (s *DescribeCallInfoResponse) SetBody(v *DescribeCallInfoResponseBody) *Des
 }
 
 type DescribeCallListRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 通信状态。取值：IN：进行中。OUT：已结束。
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 查询的结束时间，使用UNIX时间戳表示，单位：秒。
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// 排序字段。取值：BAD_EXP_USER_COUNT_DESC：按体验欠佳人数降序。BAD_EXP_USER_COUNT_ASC：按体验欠佳人数升序
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 页码
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 查询模式。取值：ALL：全部通话。FOLLOW：关注通话。
-	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// 查询的开始时间，使用UNIX时间戳表示，单位：秒。
-	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	EndTs      *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryMode  *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	StartTs    *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeCallListRequest) String() string {
@@ -1321,16 +664,11 @@ func (s *DescribeCallListRequest) SetUserId(v string) *DescribeCallListRequest {
 }
 
 type DescribeCallListResponseBody struct {
-	// 通信列表。
-	CallList []*DescribeCallListResponseBodyCallList `json:"CallList,omitempty" xml:"CallList,omitempty" type:"Repeated"`
-	// 页码。
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数量。
-	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	CallList  []*DescribeCallListResponseBodyCallList `json:"CallList,omitempty" xml:"CallList,omitempty" type:"Repeated"`
+	PageNo    *int32                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCnt  *int32                                  `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
 }
 
 func (s DescribeCallListResponseBody) String() string {
@@ -1368,21 +706,14 @@ func (s *DescribeCallListResponseBody) SetTotalCnt(v int32) *DescribeCallListRes
 
 type DescribeCallListResponseBodyCallList struct {
 	// App ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 通信体验差的用户数。
-	BadExpUserCnt *int32 `json:"BadExpUserCnt,omitempty" xml:"BadExpUserCnt,omitempty"`
-	// 通信状态，IN：进行中，OUT：已结束
-	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 通信的创建时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 通信的释放时间戳，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通信持续时长，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 通信用户数。
-	UserCnt *int32 `json:"UserCnt,omitempty" xml:"UserCnt,omitempty"`
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BadExpUserCnt *int32  `json:"BadExpUserCnt,omitempty" xml:"BadExpUserCnt,omitempty"`
+	CallStatus    *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	ChannelId     *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs     *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs   *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	UserCnt       *int32  `json:"UserCnt,omitempty" xml:"UserCnt,omitempty"`
 }
 
 func (s DescribeCallListResponseBodyCallList) String() string {
@@ -1434,9 +765,9 @@ func (s *DescribeCallListResponseBodyCallList) SetUserCnt(v int32) *DescribeCall
 }
 
 type DescribeCallListResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCallListResponse) String() string {
@@ -1462,91 +793,11 @@ func (s *DescribeCallListResponse) SetBody(v *DescribeCallListResponseBody) *Des
 	return s
 }
 
-type DescribeCallListTestRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeCallListTestRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCallListTestRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCallListTestRequest) SetAppId(v string) *DescribeCallListTestRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeCallListTestRequest) SetEndTs(v int64) *DescribeCallListTestRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeCallListTestRequest) SetStartTs(v int64) *DescribeCallListTestRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeCallListTestResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeCallListTestResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCallListTestResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCallListTestResponseBody) SetRequestId(v string) *DescribeCallListTestResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeCallListTestResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallListTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeCallListTestResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCallListTestResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCallListTestResponse) SetHeaders(v map[string]*string) *DescribeCallListTestResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeCallListTestResponse) SetStatusCode(v int32) *DescribeCallListTestResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeCallListTestResponse) SetBody(v *DescribeCallListTestResponseBody) *DescribeCallListTestResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeCallUserExpRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeCallUserExpRequest) String() string {
@@ -1578,10 +829,8 @@ func (s *DescribeCallUserExpRequest) SetDestroyedTs(v int64) *DescribeCallUserEx
 }
 
 type DescribeCallUserExpResponseBody struct {
-	// 通信体验信息。
 	ExpInfoList []*DescribeCallUserExpResponseBodyExpInfoList `json:"ExpInfoList,omitempty" xml:"ExpInfoList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCallUserExpResponseBody) String() string {
@@ -1603,10 +852,8 @@ func (s *DescribeCallUserExpResponseBody) SetRequestId(v string) *DescribeCallUs
 }
 
 type DescribeCallUserExpResponseBodyExpInfoList struct {
-	// 用户体验：GOOD:优良, BAD:欠佳
 	CallExp *string `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeCallUserExpResponseBodyExpInfoList) String() string {
@@ -1628,9 +875,9 @@ func (s *DescribeCallUserExpResponseBodyExpInfoList) SetUserId(v string) *Descri
 }
 
 type DescribeCallUserExpResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallUserExpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallUserExpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCallUserExpResponse) String() string {
@@ -1657,7 +904,6 @@ func (s *DescribeCallUserExpResponse) SetBody(v *DescribeCallUserExpResponseBody
 }
 
 type DescribeCallUserListRequest struct {
-	// A short description of struct
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	CreatedTs    *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
@@ -1983,9 +1229,9 @@ func (s *DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) SetLeaveTs
 }
 
 type DescribeCallUserListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCallUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallUserListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCallUserListResponse) String() string {
@@ -2012,16 +1258,11 @@ func (s *DescribeCallUserListResponse) SetBody(v *DescribeCallUserListResponseBo
 }
 
 type DescribeChannelAreaDistributionStatDataRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道创建时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 父级地区名称，例如：深圳市的父级为广东省。参数为空表示世界范围（国家维度）的统计，例如：中国、英国。
-	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	ParentArea  *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataRequest) String() string {
@@ -2058,10 +1299,8 @@ func (s *DescribeChannelAreaDistributionStatDataRequest) SetParentArea(v string)
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBody struct {
-	// 地域统计列表。
 	AreaStatList []*DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList `json:"AreaStatList,omitempty" xml:"AreaStatList,omitempty" type:"Repeated"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponseBody) String() string {
@@ -2083,16 +1322,11 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList struct {
-	// 地域名称，例如：中国_浙江省_杭州市。
-	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// 通信人数。
-	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
-	// 优质传输率，用小数表示，例如0.9999表示优质传输率为99.99%。
+	AreaName                    *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	CallUserCount               *int32  `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
 	HighQualityTransmissionRate *string `json:"HighQualityTransmissionRate,omitempty" xml:"HighQualityTransmissionRate,omitempty"`
-	// 发布端人数。
-	PubUserCount *int32 `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
-	// 订阅端人数。
-	SubUserCount *int32 `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
+	PubUserCount                *int32  `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	SubUserCount                *int32  `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList) String() string {
@@ -2129,9 +1363,9 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList) SetSub
 }
 
 type DescribeChannelAreaDistributionStatDataResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponse) String() string {
@@ -2158,16 +1392,11 @@ func (s *DescribeChannelAreaDistributionStatDataResponse) SetBody(v *DescribeCha
 }
 
 type DescribeChannelDistributionStatDataRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 统计维度，取值：OS：按照系统统计。SDK_VERSION：按照SDK版本统计。
-	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	StatDim     *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeChannelDistributionStatDataRequest) String() string {
@@ -2204,10 +1433,8 @@ func (s *DescribeChannelDistributionStatDataRequest) SetStatDim(v string) *Descr
 }
 
 type DescribeChannelDistributionStatDataResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 频道分布统计列表。
-	StatList []*DescribeChannelDistributionStatDataResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatList  []*DescribeChannelDistributionStatDataResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelDistributionStatDataResponseBody) String() string {
@@ -2229,12 +1456,9 @@ func (s *DescribeChannelDistributionStatDataResponseBody) SetStatList(v []*Descr
 }
 
 type DescribeChannelDistributionStatDataResponseBodyStatList struct {
-	// 通信人数。
-	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
-	// 通信人数占比，用小数表示，例如1.0000表示通信人数占比为100%。
+	CallUserCount *int32  `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
 	CallUserRatio *string `json:"CallUserRatio,omitempty" xml:"CallUserRatio,omitempty"`
-	// 统计维度。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeChannelDistributionStatDataResponseBodyStatList) String() string {
@@ -2261,9 +1485,9 @@ func (s *DescribeChannelDistributionStatDataResponseBodyStatList) SetName(v stri
 }
 
 type DescribeChannelDistributionStatDataResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelDistributionStatDataResponse) String() string {
@@ -2290,14 +1514,10 @@ func (s *DescribeChannelDistributionStatDataResponse) SetBody(v *DescribeChannel
 }
 
 type DescribeChannelJoinInfoRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道创建时间
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelJoinInfoRequest) String() string {
@@ -2329,12 +1549,9 @@ func (s *DescribeChannelJoinInfoRequest) SetDestroyedTs(v int64) *DescribeChanne
 }
 
 type DescribeChannelJoinInfoResponseBody struct {
-	// 在入会慢时间阈值内的入会成功率
 	JoinFastSuccessRate *string `json:"JoinFastSuccessRate,omitempty" xml:"JoinFastSuccessRate,omitempty"`
-	// 入会慢时间阈值
-	JoinSlowThreshold *int64 `json:"JoinSlowThreshold,omitempty" xml:"JoinSlowThreshold,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	JoinSlowThreshold   *int64  `json:"JoinSlowThreshold,omitempty" xml:"JoinSlowThreshold,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelJoinInfoResponseBody) String() string {
@@ -2361,9 +1578,9 @@ func (s *DescribeChannelJoinInfoResponseBody) SetRequestId(v string) *DescribeCh
 }
 
 type DescribeChannelJoinInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelJoinInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelJoinInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelJoinInfoResponse) String() string {
@@ -2390,14 +1607,10 @@ func (s *DescribeChannelJoinInfoResponse) SetBody(v *DescribeChannelJoinInfoResp
 }
 
 type DescribeChannelOverallDataRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelOverallDataRequest) String() string {
@@ -2429,14 +1642,10 @@ func (s *DescribeChannelOverallDataRequest) SetDestroyedTs(v int64) *DescribeCha
 }
 
 type DescribeChannelOverallDataResponseBody struct {
-	// 通信基本信息。
-	CallInfo *DescribeChannelOverallDataResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
-	// 指标数据列表。
+	CallInfo    *DescribeChannelOverallDataResponseBodyCallInfo      `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
 	MetricDatas []*DescribeChannelOverallDataResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
-	// 概览数据。
-	OverallData *DescribeChannelOverallDataResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OverallData *DescribeChannelOverallDataResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBody) String() string {
@@ -2468,18 +1677,12 @@ func (s *DescribeChannelOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeChannelOverallDataResponseBodyCallInfo struct {
-	// 应用ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 通信状态，取值：IN：进行中。OUT：已结束
-	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建通信的时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放通信的时间戳，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通信时长，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyCallInfo) String() string {
@@ -2521,10 +1724,8 @@ func (s *DescribeChannelOverallDataResponseBodyCallInfo) SetDuration(v int64) *D
 }
 
 type DescribeChannelOverallDataResponseBodyMetricDatas struct {
-	// 指标趋势图坐标点列表。
 	Nodes []*DescribeChannelOverallDataResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 指标类型，取值：CALL_QUALITY：通信质量。CONN_NUM：通信次数。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyMetricDatas) String() string {
@@ -2546,12 +1747,9 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatas) SetType(v string) *D
 }
 
 type DescribeChannelOverallDataResponseBodyMetricDatasNodes struct {
-	// 扩展数据
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// 指标趋势图中x轴横坐标。
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 指标趋势图中y轴纵坐标。
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponseBodyMetricDatasNodes) String() string {
@@ -2578,15 +1776,10 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatasNodes) SetY(v string) 
 }
 
 type DescribeChannelOverallDataResponseBodyOverallData struct {
-	// 平均通信连接的用时，单位：秒。
-	ConnAvgTime *float32 `json:"ConnAvgTime,omitempty" xml:"ConnAvgTime,omitempty"`
-	// 5秒内连通成功率，用小数表示，例如1.0表示连通成功率为100%。
-	FiveSecJoinRate *float32 `json:"FiveSecJoinRate,omitempty" xml:"FiveSecJoinRate,omitempty"`
-	// 整体音频卡顿率，用小数表示，例如0.02表示音频卡顿率为2%。
+	ConnAvgTime         *float32 `json:"ConnAvgTime,omitempty" xml:"ConnAvgTime,omitempty"`
+	FiveSecJoinRate     *float32 `json:"FiveSecJoinRate,omitempty" xml:"FiveSecJoinRate,omitempty"`
 	TotalAudioStuckRate *float32 `json:"TotalAudioStuckRate,omitempty" xml:"TotalAudioStuckRate,omitempty"`
-	// 整体视频卡顿率，用小数表示，例如0.02表示视频卡顿率为2%。
 	TotalVideoStuckRate *float32 `json:"TotalVideoStuckRate,omitempty" xml:"TotalVideoStuckRate,omitempty"`
-	// 整体视频模糊率，用小数表示，例如0.02表示视频模糊率为2%。
 	TotalVideoVagueRate *float32 `json:"TotalVideoVagueRate,omitempty" xml:"TotalVideoVagueRate,omitempty"`
 }
 
@@ -2624,9 +1817,9 @@ func (s *DescribeChannelOverallDataResponseBodyOverallData) SetTotalVideoVagueRa
 }
 
 type DescribeChannelOverallDataResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelOverallDataResponse) String() string {
@@ -2653,14 +1846,10 @@ func (s *DescribeChannelOverallDataResponse) SetBody(v *DescribeChannelOverallDa
 }
 
 type DescribeChannelTopPubUserListRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道的时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelTopPubUserListRequest) String() string {
@@ -2692,9 +1881,7 @@ func (s *DescribeChannelTopPubUserListRequest) SetDestroyedTs(v int64) *Describe
 }
 
 type DescribeChannelTopPubUserListResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Top发布用户详情列表
+	RequestId            *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TopPubUserDetailList []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList `json:"TopPubUserDetailList,omitempty" xml:"TopPubUserDetailList,omitempty" type:"Repeated"`
 }
 
@@ -2717,20 +1904,13 @@ func (s *DescribeChannelTopPubUserListResponseBody) SetTopPubUserDetailList(v []
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList struct {
-	// 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 总时长，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 地域位置，例如：北京市-北京市
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 通信时长，单位：秒。
-	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	// 在线期间用户列表。
-	OnlinePeriods []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreatedTs      *int64                                                                        `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs    *int64                                                                        `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration       *int64                                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location       *string                                                                       `json:"Location,omitempty" xml:"Location,omitempty"`
+	OnlineDuration *int64                                                                        `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods  []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	UserId         *string                                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) String() string {
@@ -2777,9 +1957,7 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) SetUserI
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods struct {
-	// 加入通话时间，使用UNIX时间戳表示，单位：秒。
-	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
-	// 离开通话时间，使用UNIX时间戳表示，单位：秒。
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -2802,9 +1980,9 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeri
 }
 
 type DescribeChannelTopPubUserListResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelTopPubUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelTopPubUserListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelTopPubUserListResponse) String() string {
@@ -2831,14 +2009,10 @@ func (s *DescribeChannelTopPubUserListResponse) SetBody(v *DescribeChannelTopPub
 }
 
 type DescribeChannelUserMetricsRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道的创建时间戳，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsRequest) String() string {
@@ -2870,12 +2044,9 @@ func (s *DescribeChannelUserMetricsRequest) SetDestroyedTs(v int64) *DescribeCha
 }
 
 type DescribeChannelUserMetricsResponseBody struct {
-	// 指标数据列表。
 	MetricDatas []*DescribeChannelUserMetricsResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
-	// 总览数据
-	OverallData *DescribeChannelUserMetricsResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OverallData *DescribeChannelUserMetricsResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBody) String() string {
@@ -2902,10 +2073,8 @@ func (s *DescribeChannelUserMetricsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeChannelUserMetricsResponseBodyMetricDatas struct {
-	// 指标趋势图坐标点列表。
 	Nodes []*DescribeChannelUserMetricsResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 指标类型，取值：ALL_NUM：累计用户数量。PUB_NUM：累计发布用户数量。SUB_NUM：累计订阅用户数量。JOIN_FAIL_NUM：累计加入频道异常用户数量。BAD_EXP_NUM：累计通信体验异常用户。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyMetricDatas) String() string {
@@ -2927,12 +2096,9 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatas) SetType(v string) *D
 }
 
 type DescribeChannelUserMetricsResponseBodyMetricDatasNodes struct {
-	// 拓展属性
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// 指标趋势图中x轴横坐标。
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 指标趋势图中y轴纵坐标。
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyMetricDatasNodes) String() string {
@@ -2959,16 +2125,11 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatasNodes) SetY(v string) 
 }
 
 type DescribeChannelUserMetricsResponseBodyOverallData struct {
-	// 累计通信体验异常用户数量。
-	TotalBadExpNum *int64 `json:"TotalBadExpNum,omitempty" xml:"TotalBadExpNum,omitempty"`
-	// 累计加入频道异常用户数量。
+	TotalBadExpNum   *int64 `json:"TotalBadExpNum,omitempty" xml:"TotalBadExpNum,omitempty"`
 	TotalJoinFailNum *int64 `json:"TotalJoinFailNum,omitempty" xml:"TotalJoinFailNum,omitempty"`
-	// 累计发布端用户数量。
-	TotalPubUserNum *int64 `json:"TotalPubUserNum,omitempty" xml:"TotalPubUserNum,omitempty"`
-	// 累计订阅端用户数量。
-	TotalSubUserNum *int64 `json:"TotalSubUserNum,omitempty" xml:"TotalSubUserNum,omitempty"`
-	// 累计用户数量。
-	TotalUserNum *int64 `json:"TotalUserNum,omitempty" xml:"TotalUserNum,omitempty"`
+	TotalPubUserNum  *int64 `json:"TotalPubUserNum,omitempty" xml:"TotalPubUserNum,omitempty"`
+	TotalSubUserNum  *int64 `json:"TotalSubUserNum,omitempty" xml:"TotalSubUserNum,omitempty"`
+	TotalUserNum     *int64 `json:"TotalUserNum,omitempty" xml:"TotalUserNum,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponseBodyOverallData) String() string {
@@ -3005,9 +2166,9 @@ func (s *DescribeChannelUserMetricsResponseBodyOverallData) SetTotalUserNum(v in
 }
 
 type DescribeChannelUserMetricsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeChannelUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeChannelUserMetricsResponse) String() string {
@@ -3034,16 +2195,11 @@ func (s *DescribeChannelUserMetricsResponse) SetBody(v *DescribeChannelUserMetri
 }
 
 type DescribeEndPointEventListRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放频道时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 用户ID列表，多个用英文逗号（,）分隔。
-	UserIdList *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	UserIdList  *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
 func (s DescribeEndPointEventListRequest) String() string {
@@ -3080,10 +2236,8 @@ func (s *DescribeEndPointEventListRequest) SetUserIdList(v string) *DescribeEndP
 }
 
 type DescribeEndPointEventListResponseBody struct {
-	// 用户基本信息列表。
-	Nodes []*DescribeEndPointEventListResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Nodes     []*DescribeEndPointEventListResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBody) String() string {
@@ -3105,10 +2259,8 @@ func (s *DescribeEndPointEventListResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeEndPointEventListResponseBodyNodes struct {
-	// 事件数据列表
 	EventDataItems []*DescribeEndPointEventListResponseBodyNodesEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId         *string                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodes) String() string {
@@ -3130,10 +2282,8 @@ func (s *DescribeEndPointEventListResponseBodyNodes) SetUserId(v string) *Descri
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItems struct {
-	// 事件列表。
 	EventList []*DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// 第一个事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Ts        *int64                                                               `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItems) String() string {
@@ -3155,11 +2305,9 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) SetTs(v int64
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {
-	Acs       *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
-	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// 事件名称。
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
+	Acs        *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
+	EventCode  *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	Os         *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	Sdk        *string `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
@@ -3167,9 +2315,9 @@ type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	TrackCode  *string `json:"TrackCode,omitempty" xml:"TrackCode,omitempty"`
 	TrackName  *string `json:"TrackName,omitempty" xml:"TrackName,omitempty"`
-	// 事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts     *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Ts         *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	TsInMs     *string `json:"TsInMs,omitempty" xml:"TsInMs,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) String() string {
@@ -3235,15 +2383,20 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetT
 	return s
 }
 
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetTsInMs(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.TsInMs = &v
+	return s
+}
+
 func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetUserId(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
 	s.UserId = &v
 	return s
 }
 
 type DescribeEndPointEventListResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEndPointEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEndPointEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponse) String() string {
@@ -3270,22 +2423,14 @@ func (s *DescribeEndPointEventListResponse) SetBody(v *DescribeEndPointEventList
 }
 
 type DescribeEndPointMetricDataRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放频道时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 指标枚举列表，以半角逗号分隔，包括以下类型APP_CPU APPCPU SYSTEM_CPU 系统CPU APP_MEMORY APP内存 SYSTEM_MEMORY 系统占用内存 SYSTEM_TOTAL_MEMORY 系统总内存 AUDIO_LOST_RATE 音频丢包率 VIDEO_LOST_RATE 视频丢包率 AUDIO_RTT 音频延时 VIDEO_RTT 视频延时 AUDIO_END_TO_END_RTT 音频端到端延时 VIDEO_END_TO_END_RTT 视频端到端延时 AUDIO_BIT_RATE 音频码率 AUDIO_STUCK 音频卡顿 AUDIO_LEVEL 音量 VIDEO_BIT_RATE_CAMERA 视频码率 VIDEO_BIT_RATE_LARGE 视频码率（大画面） VIDEO_BIT_RATE_SMALL 视频码率（小画面） VIDEO_BIT_RATE_SUPER 视频码率（超大屏幕） VIDEO_BIT_RATE_SHARE 视频码率（屏幕分享） VIDEO_STUCK_CAMERA 视频卡顿 VIDEO_STUCK_LARGE 视频卡顿（大画面） VIDEO_STUCK_SMALL 视频卡顿（小画面） VIDEO_STUCK_SUPER 视频卡顿（超大屏幕） VIDEO_STUCK_SHARE 视频卡顿（屏幕分享） VIDEO_RESOLUTION_CAMERA 视频分辨率 VIDEO_RESOLUTION_LARGE 视频分辨率（大画面） VIDEO_RESOLUTION_SMALL 视频分辨率（小画面） VIDEO_RESOLUTION_SUPER 视频分辨率（超大屏幕） VIDEO_RESOLUTION_SHARE 视频分辨率（屏幕分享） VIDEO_FPS_CAMERA 视频帧率 VIDEO_FPS_LARGE 视频帧率（大画面） VIDEO_FPS_SMALL 视频帧率（小画面） VIDEO_FPS_SUPER 视频帧率（超大屏幕） VIDEO_FPS_SHARE 视频帧率（屏幕分享）
-	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// 发布端用户通信流的Call ID，多个用英文逗号（,）分隔。
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId     *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs     *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs   *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Metrics       *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	PubCallIdList *string `json:"PubCallIdList,omitempty" xml:"PubCallIdList,omitempty"`
-	// 发布端用户ID。
-	PubUserId *string `json:"PubUserId,omitempty" xml:"PubUserId,omitempty"`
-	// 订阅端用户ID。
-	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	PubUserId     *string `json:"PubUserId,omitempty" xml:"PubUserId,omitempty"`
+	SubUserId     *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataRequest) String() string {
@@ -3337,11 +2482,8 @@ func (s *DescribeEndPointMetricDataRequest) SetSubUserId(v string) *DescribeEndP
 }
 
 type DescribeEndPointMetricDataResponseBody struct {
-	// 发布端用户指标数据。
 	PubMetrics []*DescribeEndPointMetricDataResponseBodyPubMetrics `json:"PubMetrics,omitempty" xml:"PubMetrics,omitempty" type:"Repeated"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 订阅端用户指标数据。
+	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubMetrics []*DescribeEndPointMetricDataResponseBodySubMetrics `json:"SubMetrics,omitempty" xml:"SubMetrics,omitempty" type:"Repeated"`
 }
 
@@ -3369,12 +2511,9 @@ func (s *DescribeEndPointMetricDataResponseBody) SetSubMetrics(v []*DescribeEndP
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetrics struct {
-	// 坐标点列表
-	Nodes []*DescribeEndPointMetricDataResponseBodyPubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 对应入参Metrics中的类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes  []*DescribeEndPointMetricDataResponseBodyPubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Type   *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodyPubMetrics) String() string {
@@ -3401,12 +2540,9 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetrics) SetUserId(v string) *
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetricsNodes struct {
-	// 拓展属性
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// 发布端指标趋势图中x轴横坐标。
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 发布端指标趋势图中y轴纵坐标。
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodyPubMetricsNodes) String() string {
@@ -3433,12 +2569,9 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetricsNodes) SetY(v string) *
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetrics struct {
-	// 订阅端指标趋势图坐标点列表。
-	Nodes []*DescribeEndPointMetricDataResponseBodySubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 对应入参Metrics中的类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes  []*DescribeEndPointMetricDataResponseBodySubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Type   *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId *string                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodySubMetrics) String() string {
@@ -3465,12 +2598,9 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetrics) SetUserId(v string) *
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetricsNodes struct {
-	// 拓展属性
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// 订阅端指标趋势图中x轴横坐标。
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 订阅端指标趋势图y轴纵坐标。
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponseBodySubMetricsNodes) String() string {
@@ -3497,9 +2627,9 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetricsNodes) SetY(v string) *
 }
 
 type DescribeEndPointMetricDataResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEndPointMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEndPointMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEndPointMetricDataResponse) String() string {
@@ -3526,12 +2656,9 @@ func (s *DescribeEndPointMetricDataResponse) SetBody(v *DescribeEndPointMetricDa
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 查询的结束时间，使用UNIX时间戳表示，单位：秒。
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// 查询的开始时间，使用UNIX时间戳表示，单位：秒。
-	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatRequest) String() string {
@@ -3558,10 +2685,8 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatRequest) SetStartTs(v int64
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBody struct {
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 影响因素分布统计数据
-	StatList []*DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	RequestId *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatList  []*DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatResponseBody) String() string {
@@ -3583,11 +2708,8 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponseBody) SetStatList(v
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList struct {
-	// 影响因素ID： 1：发布端网络差 2：订阅端网络差 3：发布端设备性能差 4：发布端关闭摄像头 5：发布端切到后台运行，UNKNOWN：未知
-	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
-	// 影响用户数
-	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	// 影响用户占比
+	FactorId  *string  `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	UserCount *int32   `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 	UserRatio *float32 `json:"UserRatio,omitempty" xml:"UserRatio,omitempty"`
 }
 
@@ -3615,9 +2737,9 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList) SetUs
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFaultDiagnosisFactorDistributionStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaultDiagnosisFactorDistributionStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatResponse) String() string {
@@ -3644,13 +2766,9 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponse) SetBody(v *Descri
 }
 
 type DescribeFaultDiagnosisOverallDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳：1609344000
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// 开始时间，秒级时间戳：1609344000
-	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// 获取数据统计维度： JOIN_SLOW_USER：进频道慢用户数 AUDIO_STUCK_USER：音频卡顿用户数 VIDEO_STUCK_USER：视频卡顿用户数 VIDEO_VAGUE_USER：视频模糊用户数 HIGH_DELAY_USER：通话延迟高用户数 FIRST_SCREEN_SLOW_USER：接收首屏慢用户数
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
@@ -3683,12 +2801,9 @@ func (s *DescribeFaultDiagnosisOverallDataRequest) SetStatDim(v string) *Describ
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBody struct {
-	// 异常指标数据
-	MetricData *DescribeFaultDiagnosisOverallDataResponseBodyMetricData `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
-	// 总览数据
+	MetricData  *DescribeFaultDiagnosisOverallDataResponseBodyMetricData  `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
 	OverallData *DescribeFaultDiagnosisOverallDataResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBody) String() string {
@@ -3715,7 +2830,6 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBody) SetRequestId(v string) *
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricData struct {
-	// 指标坐标点列表，单位时间为1分钟的异常用户数据
 	Nodes []*DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -3733,12 +2847,9 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricData) SetNodes(v []*
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes struct {
-	// 拓展属性，ratio：单位时间内异常用户占比，totalCount：单位时间内用户总数
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// x轴横坐标，秒级时间戳
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// y轴横坐标，单位数据异常用户数
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes) String() string {
@@ -3765,12 +2876,9 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes) SetY(v st
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyOverallData struct {
-	// 异常用户数/人次
-	FaultUserCount *int32 `json:"FaultUserCount,omitempty" xml:"FaultUserCount,omitempty"`
-	// 异常用户总占比
+	FaultUserCount *int32   `json:"FaultUserCount,omitempty" xml:"FaultUserCount,omitempty"`
 	FaultUserRatio *float32 `json:"FaultUserRatio,omitempty" xml:"FaultUserRatio,omitempty"`
-	// 用户总数/人次
-	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
+	TotalUserCount *int32   `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponseBodyOverallData) String() string {
@@ -3797,9 +2905,9 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyOverallData) SetTotalUserC
 }
 
 type DescribeFaultDiagnosisOverallDataResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFaultDiagnosisOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaultDiagnosisOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponse) String() string {
@@ -3826,18 +2934,12 @@ func (s *DescribeFaultDiagnosisOverallDataResponse) SetBody(v *DescribeFaultDiag
 }
 
 type DescribeFaultDiagnosisUserDetailRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道创建时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 异常类型 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
-	FaultType *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
-	// 是否查询通话用户信息，为空默认是false
-	QueryCallUserInfo *bool `json:"QueryCallUserInfo,omitempty" xml:"QueryCallUserInfo,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId         *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs         *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	FaultType         *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
+	QueryCallUserInfo *bool   `json:"QueryCallUserInfo,omitempty" xml:"QueryCallUserInfo,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailRequest) String() string {
@@ -3879,18 +2981,12 @@ func (s *DescribeFaultDiagnosisUserDetailRequest) SetUserId(v string) *DescribeF
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBody struct {
-	// 通信基本信息，QueryCallUserInfo=false是返回。
-	CallInfo *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
-	// 影响因素列表，空表示影响因素未知
-	FactorList []*DescribeFaultDiagnosisUserDetailResponseBodyFactorList `json:"FactorList,omitempty" xml:"FactorList,omitempty" type:"Repeated"`
-	// 异常指标
-	FaultMetricData *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData `json:"FaultMetricData,omitempty" xml:"FaultMetricData,omitempty" type:"Struct"`
-	// 网络运营商列表
-	NetworkOperators []*string `json:"NetworkOperators,omitempty" xml:"NetworkOperators,omitempty" type:"Repeated"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 诊断用户详细信，QueryCallUserInfo=false是返回息
-	UserDetail *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail `json:"UserDetail,omitempty" xml:"UserDetail,omitempty" type:"Struct"`
+	CallInfo         *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo        `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	FactorList       []*DescribeFaultDiagnosisUserDetailResponseBodyFactorList    `json:"FactorList,omitempty" xml:"FactorList,omitempty" type:"Repeated"`
+	FaultMetricData  *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData `json:"FaultMetricData,omitempty" xml:"FaultMetricData,omitempty" type:"Struct"`
+	NetworkOperators []*string                                                    `json:"NetworkOperators,omitempty" xml:"NetworkOperators,omitempty" type:"Repeated"`
+	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserDetail       *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail      `json:"UserDetail,omitempty" xml:"UserDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBody) String() string {
@@ -3933,17 +3029,12 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBody) SetUserDetail(v *Describe
 
 type DescribeFaultDiagnosisUserDetailResponseBodyCallInfo struct {
 	// App ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 通信状态。取值：IN：进行中。OUT：已结束。
-	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建通信时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放通信时间，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通信持续时长，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyCallInfo) String() string {
@@ -3985,13 +3076,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo) SetDuration(v int
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorList struct {
-	// 影响因素ID： 1：发布端网络差 2：订阅端网络差 3：发布端设备性能差 4：发布端关闭摄像头 5：发布端切到后台运行
-	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
-	// 异常来源 LOCAL：本端 REMOTE：远端
-	FaultSource *string `json:"FaultSource,omitempty" xml:"FaultSource,omitempty"`
-	// 关联的事件，按时间分组，当FaultType为AUDIO_STUCK、VIDEO_STUCK、VIDEO_VAGUE、HIGH_DELAY时返回
-	RelatedEventDatas []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas `json:"RelatedEventDatas,omitempty" xml:"RelatedEventDatas,omitempty" type:"Repeated"`
-	// 关联的指标，坐标数据，当FaultType为AUDIO_STUCK、VIDEO_STUCK、VIDEO_VAGUE、HIGH_DELAY时返回
+	FactorId           *string                                                                     `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	FaultSource        *string                                                                     `json:"FaultSource,omitempty" xml:"FaultSource,omitempty"`
+	RelatedEventDatas  []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas  `json:"RelatedEventDatas,omitempty" xml:"RelatedEventDatas,omitempty" type:"Repeated"`
 	RelatedMetricDatas []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas `json:"RelatedMetricDatas,omitempty" xml:"RelatedMetricDatas,omitempty" type:"Repeated"`
 }
 
@@ -4024,12 +3111,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorList) SetRelatedMetri
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas struct {
-	// 事件数据列表
 	EventDataItems []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
-	// 来源角色： SENDER：发布端，即上行 RECEIVER：订阅端，即下行
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Role           *string                                                                                  `json:"Role,omitempty" xml:"Role,omitempty"`
+	UserId         *string                                                                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas) String() string {
@@ -4056,10 +3140,8 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems struct {
-	// 事件列表。
 	EventList []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// 第一个事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Ts        *int64                                                                                            `json:"Ts,omitempty" xml:"Ts,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems) String() string {
@@ -4081,11 +3163,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList struct {
-	Acs       *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
-	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// 事件名称。
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
+	Acs        *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
+	EventCode  *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	Os         *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	Sdk        *string `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
@@ -4093,9 +3173,8 @@ type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEven
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	TrackCode  *string `json:"TrackCode,omitempty" xml:"TrackCode,omitempty"`
 	TrackName  *string `json:"TrackName,omitempty" xml:"TrackName,omitempty"`
-	// 事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts     *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Ts         *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) String() string {
@@ -4167,14 +3246,10 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas struct {
-	// 坐标数据列表
-	Nodes []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 来源角色： SENDER：发布端，即上行 RECEIVER：订阅端，即下行
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 指标类型，参照端到端指标接口的指标类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 数据来自对应发布端的用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes  []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Role   *string                                                                          `json:"Role,omitempty" xml:"Role,omitempty"`
+	Type   *string                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId *string                                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas) String() string {
@@ -4206,12 +3281,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes struct {
-	// 扩展数据
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// X坐标值，秒级时间戳
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// Y坐标值，指标值
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X   *string                `json:"X,omitempty" xml:"X,omitempty"`
+	Y   *string                `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes) String() string {
@@ -4238,7 +3310,6 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData struct {
-	// 指标坐标点列表
 	Nodes []*DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -4256,9 +3327,7 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData) SetNodes(v
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes struct {
-	// x轴坐标值，秒级时间戳，单位时间为分钟
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// y轴坐标值，异常指标的值
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -4281,26 +3350,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes) SetY(
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetail struct {
-	// 创建通话时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 释放通话时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通话时长，首次进入到最后离开，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 地理位置信息，例如：北京市-北京市
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 网络类型，如WiFi，4G等
-	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// 在线时长，单位：秒。
-	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	// 在线时段信息。
-	OnlinePeriods []*DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// SDK版本，如1.0.0、1.1.1等
-	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreatedTs      *int64                                                                 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs    *int64                                                                 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration       *int64                                                                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location       *string                                                                `json:"Location,omitempty" xml:"Location,omitempty"`
+	Network        *string                                                                `json:"Network,omitempty" xml:"Network,omitempty"`
+	OnlineDuration *int64                                                                 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods  []*DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	Os             *string                                                                `json:"Os,omitempty" xml:"Os,omitempty"`
+	SdkVersion     *string                                                                `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	UserId         *string                                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) String() string {
@@ -4362,9 +3421,7 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) SetUserId(v str
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods struct {
-	// 加入通话时间，使用UNIX时间戳表示，单位：秒。
-	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
-	// 离开通话时间，使用UNIX时间戳表示，单位：秒。
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -4387,9 +3444,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods) Se
 }
 
 type DescribeFaultDiagnosisUserDetailResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFaultDiagnosisUserDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaultDiagnosisUserDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponse) String() string {
@@ -4416,22 +3473,14 @@ func (s *DescribeFaultDiagnosisUserDetailResponse) SetBody(v *DescribeFaultDiagn
 }
 
 type DescribeFaultDiagnosisUserListRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 搜索的频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 查询的结束时间，使用UNIX时间戳表示，单位：秒。
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// 过滤的异常类型，多个使用半角逗号分隔 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	EndTs      *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
 	FaultTypes *string `json:"FaultTypes,omitempty" xml:"FaultTypes,omitempty"`
-	// 页码
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 查询的开始时间，使用UNIX时间戳表示，单位：秒。
-	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// 搜索的用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTs    *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserListRequest) String() string {
@@ -4483,16 +3532,11 @@ func (s *DescribeFaultDiagnosisUserListRequest) SetUserId(v string) *DescribeFau
 }
 
 type DescribeFaultDiagnosisUserListResponseBody struct {
-	// 页码。
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 每页数量。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数量。
-	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
-	// 异常用户明细列表。
-	UserList []*DescribeFaultDiagnosisUserListResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	PageNo    *int32                                                `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCnt  *int32                                                `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	UserList  []*DescribeFaultDiagnosisUserListResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponseBody) String() string {
@@ -4529,18 +3573,12 @@ func (s *DescribeFaultDiagnosisUserListResponseBody) SetUserList(v []*DescribeFa
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserList struct {
-	// 通信的创建时间戳，使用UNIX时间戳表示，单位：秒。
-	ChannelCreatedTs *int64 `json:"ChannelCreatedTs,omitempty" xml:"ChannelCreatedTs,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 用户首次进入通话时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 用户最后一次离开通话时间，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 异常列表。
-	FaultList []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ChannelCreatedTs *int64                                                         `json:"ChannelCreatedTs,omitempty" xml:"ChannelCreatedTs,omitempty"`
+	ChannelId        *string                                                        `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs        *int64                                                         `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs      *int64                                                         `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	FaultList        []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
+	UserId           *string                                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponseBodyUserList) String() string {
@@ -4582,7 +3620,6 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserList) SetUserId(v string)
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserListFaultList struct {
-	// 异常类型 JOIN_SLOW：进频道慢 AUDIO_STUCK：音频卡顿 VIDEO_STUCK：视频卡顿 VIDEO_VAGUE：视频模糊 HIGH_DELAY：通话延迟高 FIRST_FRAME_SLOW：接收首屏慢
 	FaultType *string `json:"FaultType,omitempty" xml:"FaultType,omitempty"`
 }
 
@@ -4600,9 +3637,9 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserListFaultList) SetFaultTy
 }
 
 type DescribeFaultDiagnosisUserListResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFaultDiagnosisUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFaultDiagnosisUserListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponse) String() string {
@@ -4629,13 +3666,9 @@ func (s *DescribeFaultDiagnosisUserListResponse) SetBody(v *DescribeFaultDiagnos
 }
 
 type DescribeIceDurPeriodByDaySubTypeRequest struct {
-	// 结束是时间戳
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// 任务类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 起始时间戳
-	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// 时区
+	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	JobType  *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -4668,10 +3701,8 @@ func (s *DescribeIceDurPeriodByDaySubTypeRequest) SetTimeZone(v string) *Describ
 }
 
 type DescribeIceDurPeriodByDaySubTypeResponseBody struct {
-	// 任务信息列表
 	JobInfoList []*DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIceDurPeriodByDaySubTypeResponseBody) String() string {
@@ -4693,11 +3724,8 @@ func (s *DescribeIceDurPeriodByDaySubTypeResponseBody) SetRequestId(v string) *D
 }
 
 type DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoList struct {
-	// 日期时间戳
-	DateTs *int64 `json:"DateTs,omitempty" xml:"DateTs,omitempty"`
-	// 任务总时长,单位分钟
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 子任务信息列表
+	DateTs         *int64                                                                   `json:"DateTs,omitempty" xml:"DateTs,omitempty"`
+	Duration       *int64                                                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	SubJobInfoList []*DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList `json:"SubJobInfoList,omitempty" xml:"SubJobInfoList,omitempty" type:"Repeated"`
 }
 
@@ -4725,10 +3753,8 @@ func (s *DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoList) SetSubJobInfoL
 }
 
 type DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList struct {
-	// 子任务时长
-	SubJobDuration *int64 `json:"SubJobDuration,omitempty" xml:"SubJobDuration,omitempty"`
-	// 子任务类型
-	SubJobType *string `json:"SubJobType,omitempty" xml:"SubJobType,omitempty"`
+	SubJobDuration *int64  `json:"SubJobDuration,omitempty" xml:"SubJobDuration,omitempty"`
+	SubJobType     *string `json:"SubJobType,omitempty" xml:"SubJobType,omitempty"`
 }
 
 func (s DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList) String() string {
@@ -4750,9 +3776,9 @@ func (s *DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList) 
 }
 
 type DescribeIceDurPeriodByDaySubTypeResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIceDurPeriodByDaySubTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIceDurPeriodByDaySubTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIceDurPeriodByDaySubTypeResponse) String() string {
@@ -4779,9 +3805,7 @@ func (s *DescribeIceDurPeriodByDaySubTypeResponse) SetBody(v *DescribeIceDurPeri
 }
 
 type DescribeIceDurSummaryOverviewRequest struct {
-	// 当前时间戳
-	CurTs *int64 `json:"CurTs,omitempty" xml:"CurTs,omitempty"`
-	// 时区
+	CurTs    *int64  `json:"CurTs,omitempty" xml:"CurTs,omitempty"`
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -4804,10 +3828,8 @@ func (s *DescribeIceDurSummaryOverviewRequest) SetTimeZone(v string) *DescribeIc
 }
 
 type DescribeIceDurSummaryOverviewResponseBody struct {
-	// 任务信息
 	JobInfoList []*DescribeIceDurSummaryOverviewResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIceDurSummaryOverviewResponseBody) String() string {
@@ -4829,11 +3851,8 @@ func (s *DescribeIceDurSummaryOverviewResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeIceDurSummaryOverviewResponseBodyJobInfoList struct {
-	// 任务时长
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 作业类型
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// 时间维度
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	JobType   *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
 }
 
@@ -4861,9 +3880,9 @@ func (s *DescribeIceDurSummaryOverviewResponseBodyJobInfoList) SetTimeRange(v st
 }
 
 type DescribeIceDurSummaryOverviewResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIceDurSummaryOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIceDurSummaryOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIceDurSummaryOverviewResponse) String() string {
@@ -4890,16 +3909,11 @@ func (s *DescribeIceDurSummaryOverviewResponse) SetBody(v *DescribeIceDurSummary
 }
 
 type DescribePubUserListBySubUserRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道创建时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 订阅端用户ID。
-	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	SubUserId   *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserRequest) String() string {
@@ -4936,14 +3950,10 @@ func (s *DescribePubUserListBySubUserRequest) SetSubUserId(v string) *DescribePu
 }
 
 type DescribePubUserListBySubUserResponseBody struct {
-	// 通信状态。取值：IN：进行中。OUT：已结束。
-	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 发布端用户详情信息。
+	CallStatus        *string                                                      `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
 	PubUserDetailList []*DescribePubUserListBySubUserResponseBodyPubUserDetailList `json:"PubUserDetailList,omitempty" xml:"PubUserDetailList,omitempty" type:"Repeated"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 订阅端用户详细信息。
-	SubUserDetail *DescribePubUserListBySubUserResponseBodySubUserDetail `json:"SubUserDetail,omitempty" xml:"SubUserDetail,omitempty" type:"Struct"`
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubUserDetail     *DescribePubUserListBySubUserResponseBodySubUserDetail       `json:"SubUserDetail,omitempty" xml:"SubUserDetail,omitempty" type:"Struct"`
 }
 
 func (s DescribePubUserListBySubUserResponseBody) String() string {
@@ -4975,40 +3985,23 @@ func (s *DescribePubUserListBySubUserResponseBody) SetSubUserDetail(v *DescribeP
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailList struct {
-	// 用户通信流的Call ID。
-	CallIdList []*string `json:"CallIdList,omitempty" xml:"CallIdList,omitempty" type:"Repeated"`
-	// 端类型，取值：WEB：Web端。NATIVE：本地端。
-	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通话时长，首次进入到最后离开，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 地理位置信息，例如：浙江省-杭州市。
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 网络类型，如WiFi，4G等
-	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// 网络类型，如WiFi，4G等
-	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
-	// 在线时长，单位：秒。
-	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	// 在线时段信息。
-	OnlinePeriods []*DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	// 用户角色，取值：SENDER：发起者。RECEIVER：接收者。
-	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// SDK版本。
-	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	// SDK版本列表，如1.0.0、1.1.1等
-	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户ID别称
-	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+	CallIdList     []*string                                                                 `json:"CallIdList,omitempty" xml:"CallIdList,omitempty" type:"Repeated"`
+	ClientType     *string                                                                   `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CreatedTs      *int64                                                                    `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs    *int64                                                                    `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration       *int64                                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location       *string                                                                   `json:"Location,omitempty" xml:"Location,omitempty"`
+	Network        *string                                                                   `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList    []*string                                                                 `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	OnlineDuration *int64                                                                    `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	Os             *string                                                                   `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList         []*string                                                                 `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles          []*string                                                                 `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	SdkVersion     *string                                                                   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList []*string                                                                 `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	UserId         *string                                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserIdAlias    *string                                                                   `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserResponseBodyPubUserDetailList) String() string {
@@ -5105,9 +4098,7 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailList) SetUserIdAli
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods struct {
-	// 加入通话时间，使用UNIX时间戳表示，单位：秒。
-	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
-	// 离开通话时间，使用UNIX时间戳表示，单位：秒。
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -5130,38 +4121,22 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods)
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetail struct {
-	// 端类型，取值：WEB：Web端。NATIVE：本地端。
-	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// 第一次加入通话的时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 最后一次离开通话的时间，使用UNIX时间戳表示，单位：秒。通话未结束时值为0。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 通话时长，首次进入到最后离开，单位：秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 地理位置信息，例如：浙江省-杭州市。
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 网络类型，如WiFi，4G等
-	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// 网络类型，如WiFi，4G等
-	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
-	// 在线时长，单位：秒。
-	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	// 在线时段信息。
-	OnlinePeriods []*DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 平台类型：若用户客户端为WEB则是浏览器类型，若客户端为NATIVE则是操作系统类型
-	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	// 用户角色，取值：SENDER：发布端。RECEIVER：订阅端。
-	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// SDK版本。
-	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	// SDK版本列表，如1.0.0、1.1.1等
-	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户ID别称
-	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+	ClientType     *string                                                               `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CreatedTs      *int64                                                                `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs    *int64                                                                `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration       *int64                                                                `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location       *string                                                               `json:"Location,omitempty" xml:"Location,omitempty"`
+	Network        *string                                                               `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList    []*string                                                             `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	OnlineDuration *int64                                                                `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	Os             *string                                                               `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList         []*string                                                             `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles          []*string                                                             `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	SdkVersion     *string                                                               `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList []*string                                                             `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	UserId         *string                                                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserIdAlias    *string                                                               `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserResponseBodySubUserDetail) String() string {
@@ -5253,9 +4228,7 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetail) SetUserIdAlias(v
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods struct {
-	// 加入通话时间，使用UNIX时间戳表示，单位：秒。
-	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
-	// 离开通话时间，使用UNIX时间戳表示，单位：秒。
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
 	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
 }
 
@@ -5278,9 +4251,9 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods) Set
 }
 
 type DescribePubUserListBySubUserResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePubUserListBySubUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePubUserListBySubUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePubUserListBySubUserResponse) String() string {
@@ -5307,16 +4280,11 @@ func (s *DescribePubUserListBySubUserResponse) SetBody(v *DescribePubUserListByS
 }
 
 type DescribeQoeMetricDataRequest struct {
-	// APP ID。
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID。
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 创建频道时间，使用UNIX时间戳表示，单位：秒。
-	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
-	// 频道释放时间，使用UNIX时间戳表示，单位：秒。参数为空表示获取当前时间。
-	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataRequest) String() string {
@@ -5353,11 +4321,8 @@ func (s *DescribeQoeMetricDataRequest) SetUserId(v string) *DescribeQoeMetricDat
 }
 
 type DescribeQoeMetricDataResponseBody struct {
-	// 音频数据。
 	AudioData []*DescribeQoeMetricDataResponseBodyAudioData `json:"AudioData,omitempty" xml:"AudioData,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 视频数据。
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VideoData []*DescribeQoeMetricDataResponseBodyVideoData `json:"VideoData,omitempty" xml:"VideoData,omitempty" type:"Repeated"`
 }
 
@@ -5385,12 +4350,9 @@ func (s *DescribeQoeMetricDataResponseBody) SetVideoData(v []*DescribeQoeMetricD
 }
 
 type DescribeQoeMetricDataResponseBodyAudioData struct {
-	// 音频指标趋势图坐标点列表。
-	Nodes []*DescribeQoeMetricDataResponseBodyAudioDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 通信体验，取值：AUDIO：音频码率。AUDIO_STUCK：音频下行卡顿。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes  []*DescribeQoeMetricDataResponseBodyAudioDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Type   *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataResponseBodyAudioData) String() string {
@@ -5417,9 +4379,7 @@ func (s *DescribeQoeMetricDataResponseBodyAudioData) SetUserId(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyAudioDataNodes struct {
-	// 音频指标趋势图中x轴横坐标。
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 音频指标趋势图中y轴纵坐标。
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -5442,12 +4402,9 @@ func (s *DescribeQoeMetricDataResponseBodyAudioDataNodes) SetY(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyVideoData struct {
-	// 视频指标趋势图坐标点列表。
-	Nodes []*DescribeQoeMetricDataResponseBodyVideoDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 通信体验，取值：VIDEO_CAMERA：摄像头码率。VIDEO_CAMERA_LARGE：摄像头大流码率。VIDEO_CAMERA_SMALL：摄像头小流码率。VIDEO_CAMERA_SUPER：摄像头超大流码率。VIDEO_SCREEN_SHARE：共享屏幕流码率。VIDEO_STUCK_CAMERA：摄像头卡顿。VIDEO_STUCK_CAMERA_LARGE：摄像头大流卡顿。VIDEO_STUCK_CAMERA_SMALL：摄像头小流卡顿。VIDEO_STUCK_CAMERA_SUPER：摄像头超大流卡顿。VIDEO_STUCK_SCREEN_SHARE：屏幕共享卡顿。VIDEO_VAGUE_CAMERA：摄像头模糊。VIDEO_VAGUE_CAMERA_LARGE：摄像头大流模糊。VIDEO_VAGUE_CAMERA_SMALL：摄像头小流模糊。VIDEO_VAGUE_CAMERA_SUPER：摄像头超大流模糊。VIDEO_VAGUE_SCREEN_SHARE：屏幕共享模糊。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Nodes  []*DescribeQoeMetricDataResponseBodyVideoDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Type   *string                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeQoeMetricDataResponseBodyVideoData) String() string {
@@ -5474,9 +4431,7 @@ func (s *DescribeQoeMetricDataResponseBodyVideoData) SetUserId(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponseBodyVideoDataNodes struct {
-	// 视频指标趋势图中x轴横坐标。
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// 视频指标趋势图中y轴纵坐标。
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -5499,9 +4454,9 @@ func (s *DescribeQoeMetricDataResponseBodyVideoDataNodes) SetY(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQoeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQoeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQoeMetricDataResponse) String() string {
@@ -5528,14 +4483,10 @@ func (s *DescribeQoeMetricDataResponse) SetBody(v *DescribeQoeMetricDataResponse
 }
 
 type DescribeQualityAreaDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳，如1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 父级地区名称，为空取世界范围（国家维度）的统计，如： ""->中国、英国 "中国"->北京市、广东省 "广东省"->广州市、深圳市、佛山市 "北京市"->北京市
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate    *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
-	// 开始时间，秒级时间戳，如1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate  *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataRequest) String() string {
@@ -5567,10 +4518,8 @@ func (s *DescribeQualityAreaDistributionStatDataRequest) SetStartDate(v int64) *
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBody struct {
-	// 质量分布数据列表
 	QualityStatDataList []*DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponseBody) String() string {
@@ -5592,30 +4541,18 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBody) SetRequestId(v str
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList struct {
-	// 音频延时，单位毫秒
-	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
-	// 音频优质传输率， 四位小数表示，如0.9927
+	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	// 音频首次出声时间，单位毫秒
-	AudioSpeakOutDuration *int64 `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
-	// 音频卡顿率， 四位小数表示，如0.0034
-	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	// 通话时长用量占比，四位小数表示，如1.0000
-	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	// 5秒加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	// 加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	// 区域名称，如广东省
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视频延时，单位毫秒
-	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	// 视频首次出图时间，单位毫秒
-	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
-	// 视频优质传输率，四位小数表示，如0.9965
+	AudioSpeakOutDuration            *int64  `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
+	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	// 视频卡顿率， 四位小数表示，如0.0038
-	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList) String() string {
@@ -5687,9 +4624,9 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList)
 }
 
 type DescribeQualityAreaDistributionStatDataResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQualityAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQualityAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponse) String() string {
@@ -5716,14 +4653,10 @@ func (s *DescribeQualityAreaDistributionStatDataResponse) SetBody(v *DescribeQua
 }
 
 type DescribeQualityDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳，如1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳，如1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 统计维度，支持最多填入一个 CHANNEL_ONLINE, NETWORK, OS
-	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StatDim   *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataRequest) String() string {
@@ -5755,10 +4688,8 @@ func (s *DescribeQualityDistributionStatDataRequest) SetStatDim(v string) *Descr
 }
 
 type DescribeQualityDistributionStatDataResponseBody struct {
-	// 分布数据列表
 	QualityStatDataList []*DescribeQualityDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataResponseBody) String() string {
@@ -5780,30 +4711,18 @@ func (s *DescribeQualityDistributionStatDataResponseBody) SetRequestId(v string)
 }
 
 type DescribeQualityDistributionStatDataResponseBodyQualityStatDataList struct {
-	// 音频延时，单位毫秒
-	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
-	// 音频优质传输率， 四位小数表示，如0.9927
+	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	// 音频首次出声时间，单位毫秒
-	AudioSpeakOutDuration *int64 `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
-	// 音频卡顿率， 四位小数表示，如0.0034
-	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	// 通话时长用量占比，四位小数表示，如1.0000
-	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	// 5秒加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	// 加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	// 统计名称， 当StatDim=CHANNEL_ONLINE： ONE_TO_FIVE：1-5人 SIX_TO_TEN：6-10人 ELEVEN_TO_TWENTY：11-20人 TWENTY_ONE_TO_FIFTY: 21-50人 ABOVE_FIFTY：50人以上  当StatDim=NETWORK： WiFi，4G等  当StatDim=OS： iOS、android等
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视频延时，单位毫秒
-	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	// 视频首次出图时间，单位毫秒
-	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
-	// 视频优质传输率，四位小数表示，如0.9965
+	AudioSpeakOutDuration            *int64  `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
+	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	// 视频卡顿率， 四位小数表示，如0.0038
-	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataResponseBodyQualityStatDataList) String() string {
@@ -5875,9 +4794,9 @@ func (s *DescribeQualityDistributionStatDataResponseBodyQualityStatDataList) Set
 }
 
 type DescribeQualityDistributionStatDataResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQualityDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQualityDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQualityDistributionStatDataResponse) String() string {
@@ -5904,12 +4823,9 @@ func (s *DescribeQualityDistributionStatDataResponse) SetBody(v *DescribeQuality
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳，如1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳，如1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataRequest) String() string {
@@ -5936,10 +4852,8 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataRequest) SetStartDate(v 
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBody struct {
-	// 分布数据列表
 	QualityOsSdkVersionStatDataList []*DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList `json:"QualityOsSdkVersionStatDataList,omitempty" xml:"QualityOsSdkVersionStatDataList,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                       *string                                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponseBody) String() string {
@@ -5961,32 +4875,19 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBody) SetRequest
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList struct {
-	// 音频延时，单位毫秒
-	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
-	// 音频优质传输率， 四位小数表示，如0.9927
+	AudioDelay                       *int64  `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
-	// 音频首次出声时间，单位毫秒
-	AudioSpeakOutDuration *int64 `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
-	// 音频卡顿率， 四位小数表示，如0.0034
-	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
-	// 通话时长用量占比，四位小数表示，如1.0000
-	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	// 5秒加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
-	// 加入频道成功率， 四位小数表示，如1.0000
-	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
-	// SDK版本名称，1.0.0、1.1.1等
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 操作系统名称，iOS、android等
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 视频延时，单位毫秒
-	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
-	// 视频首次出图时间，单位毫秒
-	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
-	// 视频优质传输率，四位小数表示，如0.9965
+	AudioSpeakOutDuration            *int64  `json:"AudioSpeakOutDuration,omitempty" xml:"AudioSpeakOutDuration,omitempty"`
+	AudioStuckRate                   *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	CallDurationRatio                *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	JoinChannelSucFiveSecRate        *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	JoinChannelSucRate               *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Os                               *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	VideoDelay                       *int64  `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	VideoFirstPicDuration            *int64  `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
-	// 视频卡顿率， 四位小数表示，如0.0038
-	VideoStuckRate *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
+	VideoStuckRate                   *string `json:"VideoStuckRate,omitempty" xml:"VideoStuckRate,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList) String() string {
@@ -6063,9 +4964,9 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdk
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponse struct {
-	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQualityOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQualityOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponse) String() string {
@@ -6092,14 +4993,10 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponse) SetBody(v *Des
 }
 
 type DescribeQualityOverallDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳，如1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳，如1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 类型，以半角逗号分隔 加入频道成功率： JOIN_CHANNEL_SUC_RATE 五秒加入频道成功率： JOIN_CHANNEL_SUC_FIVE_SEC_RATE  首次出声时间： AUDIO_SPEAK_OUT_DUR 首次出图时间： VIDEO_FIRST_PIC_DUR 音频卡顿率： AUDIO_STUCK_RATE 视频卡顿率： VIDEO_STUCK_RATE 音频延时： AUDIO_DELAY 视频延时： AUDIO_DELAY 音频优质传输率： AUDIO_HIGH_QUALITY_TRANSMISSION_RATE 视频优质传输率： VIDEO_HIGH_QUALITY_TRANSMISSION_RATE
-	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Types     *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s DescribeQualityOverallDataRequest) String() string {
@@ -6131,10 +5028,8 @@ func (s *DescribeQualityOverallDataRequest) SetTypes(v string) *DescribeQualityO
 }
 
 type DescribeQualityOverallDataResponseBody struct {
-	// 概览数据列表
 	QualityOverallData []*DescribeQualityOverallDataResponseBodyQualityOverallData `json:"QualityOverallData,omitempty" xml:"QualityOverallData,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeQualityOverallDataResponseBody) String() string {
@@ -6156,12 +5051,9 @@ func (s *DescribeQualityOverallDataResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallData struct {
-	// 平均值
-	Average *string `json:"Average,omitempty" xml:"Average,omitempty"`
-	// 坐标点列表
-	Nodes []*DescribeQualityOverallDataResponseBodyQualityOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 概览数据类型，加入频道成功率： JOIN_CHANNEL_SUC_RATE 五秒加入频道成功率： JOIN_CHANNEL_SUC_FIVE_SEC_RATE  首次出声时间： AUDIO_SPEAK_OUT_DUR 首次出图时间： VIDEO_FIRST_PIC_DUR 音频卡顿率： AUDIO_STUCK_RATE 视频卡顿率： VIDEO_STUCK_RATE 音频延时： AUDIO_DELAY 视频延时： AUDIO_DELAY 音频优质传输率： AUDIO_HIGH_QUALITY_TRANSMISSION_RATE 视频优质传输率： VIDEO_HIGH_QUALITY_TRANSMISSION_RATE
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Average *string                                                          `json:"Average,omitempty" xml:"Average,omitempty"`
+	Nodes   []*DescribeQualityOverallDataResponseBodyQualityOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Type    *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeQualityOverallDataResponseBodyQualityOverallData) String() string {
@@ -6188,9 +5080,7 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallData) SetType(v str
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallDataNodes struct {
-	// x轴横坐标
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// y轴纵坐标
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -6213,9 +5103,9 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallDataNodes) SetY(v s
 }
 
 type DescribeQualityOverallDataResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQualityOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeQualityOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeQualityOverallDataResponse) String() string {
@@ -6241,1062 +5131,11 @@ func (s *DescribeQualityOverallDataResponse) SetBody(v *DescribeQualityOverallDa
 	return s
 }
 
-type DescribeRtcChannelDetailsRequest struct {
-	// 应用 ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 结束时间，UTC时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 起始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeRtcChannelDetailsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelDetailsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetAppId(v string) *DescribeRtcChannelDetailsRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetChannelId(v string) *DescribeRtcChannelDetailsRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetEndTime(v string) *DescribeRtcChannelDetailsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetPageNo(v int32) *DescribeRtcChannelDetailsRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetPageSize(v int32) *DescribeRtcChannelDetailsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsRequest) SetStartTime(v string) *DescribeRtcChannelDetailsRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeRtcChannelDetailsResponseBody struct {
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道信息
-	ChannelInfo []*DescribeRtcChannelDetailsResponseBodyChannelInfo `json:"ChannelInfo,omitempty" xml:"ChannelInfo,omitempty" type:"Repeated"`
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数量
-	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s DescribeRtcChannelDetailsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelDetailsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetChannelId(v string) *DescribeRtcChannelDetailsResponseBody {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetChannelInfo(v []*DescribeRtcChannelDetailsResponseBodyChannelInfo) *DescribeRtcChannelDetailsResponseBody {
-	s.ChannelInfo = v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetPageNo(v int32) *DescribeRtcChannelDetailsResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetPageSize(v int32) *DescribeRtcChannelDetailsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetRequestId(v string) *DescribeRtcChannelDetailsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBody) SetTotalSize(v int32) *DescribeRtcChannelDetailsResponseBody {
-	s.TotalSize = &v
-	return s
-}
-
-type DescribeRtcChannelDetailsResponseBodyChannelInfo struct {
-	// 设备类型
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// 用户入会时间，UTC格式
-	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// 用户离会时间，UTC格式
-	LeaveTime *string `json:"LeaveTime,omitempty" xml:"LeaveTime,omitempty"`
-	// 操作系统
-	OS *string `json:"OS,omitempty" xml:"OS,omitempty"`
-	// 平台信息
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// SDK版本
-	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	// SessionID
-	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// 参会者ID
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s DescribeRtcChannelDetailsResponseBodyChannelInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelDetailsResponseBodyChannelInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetDeviceType(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.DeviceType = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetJoinTime(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.JoinTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetLeaveTime(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.LeaveTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetOS(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.OS = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetPlatform(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.Platform = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetSdkVersion(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.SdkVersion = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetSid(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.Sid = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetUid(v string) *DescribeRtcChannelDetailsResponseBodyChannelInfo {
-	s.Uid = &v
-	return s
-}
-
-type DescribeRtcChannelDetailsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcChannelDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcChannelDetailsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelDetailsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelDetailsResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelDetailsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponse) SetStatusCode(v int32) *DescribeRtcChannelDetailsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcChannelDetailsResponse) SetBody(v *DescribeRtcChannelDetailsResponseBody) *DescribeRtcChannelDetailsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRtcChannelListRequest struct {
-	// 应用Id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// ChannelId
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 结束时间，UTC格式
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 起始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeRtcChannelListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelListRequest) SetAppId(v string) *DescribeRtcChannelListRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListRequest) SetChannelId(v string) *DescribeRtcChannelListRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListRequest) SetEndTime(v string) *DescribeRtcChannelListRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListRequest) SetPageNo(v int32) *DescribeRtcChannelListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListRequest) SetPageSize(v int32) *DescribeRtcChannelListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListRequest) SetStartTime(v string) *DescribeRtcChannelListRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeRtcChannelListResponseBody struct {
-	// 频道列表
-	Channels []*DescribeRtcChannelListResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总条数
-	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
-}
-
-func (s DescribeRtcChannelListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelListResponseBody) SetChannels(v []*DescribeRtcChannelListResponseBodyChannels) *DescribeRtcChannelListResponseBody {
-	s.Channels = v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBody) SetPageNo(v int32) *DescribeRtcChannelListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBody) SetPageSize(v int32) *DescribeRtcChannelListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBody) SetRequestId(v string) *DescribeRtcChannelListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBody) SetTotalCnt(v int32) *DescribeRtcChannelListResponseBody {
-	s.TotalCnt = &v
-	return s
-}
-
-type DescribeRtcChannelListResponseBodyChannels struct {
-	// 频道ID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 频道结束时间，UTC时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 是否已经结束
-	Finished *bool `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	// 频道开始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeRtcChannelListResponseBodyChannels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelListResponseBodyChannels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelListResponseBodyChannels) SetChannelId(v string) *DescribeRtcChannelListResponseBodyChannels {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBodyChannels) SetEndTime(v string) *DescribeRtcChannelListResponseBodyChannels {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBodyChannels) SetFinished(v bool) *DescribeRtcChannelListResponseBodyChannels {
-	s.Finished = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponseBodyChannels) SetStartTime(v string) *DescribeRtcChannelListResponseBodyChannels {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeRtcChannelListResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcChannelListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcChannelListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelListResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponse) SetStatusCode(v int32) *DescribeRtcChannelListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcChannelListResponse) SetBody(v *DescribeRtcChannelListResponseBody) *DescribeRtcChannelListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRtcChannelMetricListRequest struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// ChannelId
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 结束时间，UTC格式
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 发布端用户ID
-	PubUid *string `json:"PubUid,omitempty" xml:"PubUid,omitempty"`
-	// 起始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 接收端用户ID
-	SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
-}
-
-func (s DescribeRtcChannelMetricListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelMetricListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetAppId(v string) *DescribeRtcChannelMetricListRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetChannelId(v string) *DescribeRtcChannelMetricListRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetEndTime(v string) *DescribeRtcChannelMetricListRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetPubUid(v string) *DescribeRtcChannelMetricListRequest {
-	s.PubUid = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetStartTime(v string) *DescribeRtcChannelMetricListRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListRequest) SetSubUid(v string) *DescribeRtcChannelMetricListRequest {
-	s.SubUid = &v
-	return s
-}
-
-type DescribeRtcChannelMetricListResponseBody struct {
-	// 指标列表
-	Metrics []*DescribeRtcChannelMetricListResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRtcChannelMetricListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelMetricListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelMetricListResponseBody) SetMetrics(v []*DescribeRtcChannelMetricListResponseBodyMetrics) *DescribeRtcChannelMetricListResponseBody {
-	s.Metrics = v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListResponseBody) SetRequestId(v string) *DescribeRtcChannelMetricListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRtcChannelMetricListResponseBodyMetrics struct {
-	// 指标键值对,指标发生时间:指标值
-	KVs map[string]interface{} `json:"KVs,omitempty" xml:"KVs,omitempty"`
-	// 指标ID
-	Mid *int32 `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// 用户ID
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s DescribeRtcChannelMetricListResponseBodyMetrics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelMetricListResponseBodyMetrics) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelMetricListResponseBodyMetrics) SetKVs(v map[string]interface{}) *DescribeRtcChannelMetricListResponseBodyMetrics {
-	s.KVs = v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListResponseBodyMetrics) SetMid(v int32) *DescribeRtcChannelMetricListResponseBodyMetrics {
-	s.Mid = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListResponseBodyMetrics) SetUid(v string) *DescribeRtcChannelMetricListResponseBodyMetrics {
-	s.Uid = &v
-	return s
-}
-
-type DescribeRtcChannelMetricListResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcChannelMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcChannelMetricListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelMetricListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelMetricListResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelMetricListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListResponse) SetStatusCode(v int32) *DescribeRtcChannelMetricListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcChannelMetricListResponse) SetBody(v *DescribeRtcChannelMetricListResponseBody) *DescribeRtcChannelMetricListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRtcChannelUsersRequest struct {
-	// 应用ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// ChannelId
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 查询时间点日期，天粒度，UTC格式
-	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-}
-
-func (s DescribeRtcChannelUsersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelUsersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelUsersRequest) SetAppId(v string) *DescribeRtcChannelUsersRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersRequest) SetChannelId(v string) *DescribeRtcChannelUsersRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersRequest) SetPageNo(v int32) *DescribeRtcChannelUsersRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersRequest) SetPageSize(v int32) *DescribeRtcChannelUsersRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersRequest) SetTimePoint(v string) *DescribeRtcChannelUsersRequest {
-	s.TimePoint = &v
-	return s
-}
-
-type DescribeRtcChannelUsersResponseBody struct {
-	// 页号
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 显示数量
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总数
-	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
-	// 用户列表
-	UserList *DescribeRtcChannelUsersResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Struct"`
-}
-
-func (s DescribeRtcChannelUsersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelUsersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelUsersResponseBody) SetPageNo(v int32) *DescribeRtcChannelUsersResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBody) SetPageSize(v int32) *DescribeRtcChannelUsersResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBody) SetRequestId(v string) *DescribeRtcChannelUsersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBody) SetTotalCnt(v int32) *DescribeRtcChannelUsersResponseBody {
-	s.TotalCnt = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBody) SetUserList(v *DescribeRtcChannelUsersResponseBodyUserList) *DescribeRtcChannelUsersResponseBody {
-	s.UserList = v
-	return s
-}
-
-type DescribeRtcChannelUsersResponseBodyUserList struct {
-	UserList []*DescribeRtcChannelUsersResponseBodyUserListUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRtcChannelUsersResponseBodyUserList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelUsersResponseBodyUserList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserList) SetUserList(v []*DescribeRtcChannelUsersResponseBodyUserListUserList) *DescribeRtcChannelUsersResponseBodyUserList {
-	s.UserList = v
-	return s
-}
-
-type DescribeRtcChannelUsersResponseBodyUserListUserList struct {
-	// ChannelID
-	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// 用户离开频道时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 用户地理位置
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 发布音频时长(单位分钟)
-	PubAudio *int32 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
-	// 发布屏幕共享时长(单位分钟)
-	PubContent *int32 `json:"PubContent,omitempty" xml:"PubContent,omitempty"`
-	// 发布1080视频时长(单位分钟)
-	PubVideo1080 *int32 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
-	// 发布360视频时长(单位分钟)
-	PubVideo360 *int32 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
-	// 发布720视频时长(单位分钟)
-	PubVideo720 *int32 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
-	// 服务大区
-	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	// 用户加入频道时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 订阅音频时长(单位分钟)
-	SubAudio *int32 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
-	// 订阅屏幕共享时长(单位分钟)
-	SubContent *int32 `json:"SubContent,omitempty" xml:"SubContent,omitempty"`
-	// 订阅1080视频时长(单位分钟)
-	SubVideo1080 *int32 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
-	// 订阅时360视频长(单位分钟)
-	SubVideo360 *int32 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
-	// 订阅720视频时长(单位分钟)
-	SubVideo720 *int32 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
-	// 用户ID
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s DescribeRtcChannelUsersResponseBodyUserListUserList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelUsersResponseBodyUserListUserList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetChannel(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.Channel = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetEndTime(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetLocation(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.Location = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetPubAudio(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.PubAudio = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetPubContent(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.PubContent = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetPubVideo1080(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.PubVideo1080 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetPubVideo360(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.PubVideo360 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetPubVideo720(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.PubVideo720 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetServiceArea(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.ServiceArea = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetStartTime(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetSubAudio(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.SubAudio = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetSubContent(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.SubContent = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetSubVideo1080(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.SubVideo1080 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetSubVideo360(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.SubVideo360 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetSubVideo720(v int32) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.SubVideo720 = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetUserId(v string) *DescribeRtcChannelUsersResponseBodyUserListUserList {
-	s.UserId = &v
-	return s
-}
-
-type DescribeRtcChannelUsersResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcChannelUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcChannelUsersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcChannelUsersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcChannelUsersResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelUsersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponse) SetStatusCode(v int32) *DescribeRtcChannelUsersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcChannelUsersResponse) SetBody(v *DescribeRtcChannelUsersResponseBody) *DescribeRtcChannelUsersResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRtcRecordMetricDataRequest struct {
-	// appId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，UTC格式
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 服务区域
-	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	// 起始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeRtcRecordMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcRecordMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcRecordMetricDataRequest) SetAppId(v string) *DescribeRtcRecordMetricDataRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataRequest) SetEndTime(v string) *DescribeRtcRecordMetricDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataRequest) SetServiceArea(v string) *DescribeRtcRecordMetricDataRequest {
-	s.ServiceArea = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataRequest) SetStartTime(v string) *DescribeRtcRecordMetricDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeRtcRecordMetricDataResponseBody struct {
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 录制用量查询数据
-	RtcRecordMetricData []*DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData `json:"RtcRecordMetricData,omitempty" xml:"RtcRecordMetricData,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRtcRecordMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcRecordMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBody) SetRequestId(v string) *DescribeRtcRecordMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBody) SetRtcRecordMetricData(v []*DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) *DescribeRtcRecordMetricDataResponseBody {
-	s.RtcRecordMetricData = v
-	return s
-}
-
-type DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData struct {
-	// 时长分钟
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 分辨率
-	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	// 服务区域
-	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
-	// 规格
-	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	// 日期，UTC格式
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// 输入路数
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetDuration(v int64) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetRatio(v string) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.Ratio = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetServiceArea(v string) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.ServiceArea = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetTaskProfile(v string) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.TaskProfile = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetTimeStamp(v string) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetType(v string) *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData {
-	s.Type = &v
-	return s
-}
-
-type DescribeRtcRecordMetricDataResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcRecordMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcRecordMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcRecordMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcRecordMetricDataResponse) SetHeaders(v map[string]*string) *DescribeRtcRecordMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponse) SetStatusCode(v int32) *DescribeRtcRecordMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcRecordMetricDataResponse) SetBody(v *DescribeRtcRecordMetricDataResponseBody) *DescribeRtcRecordMetricDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRtcUserEventListRequest struct {
-	// 应用id
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// ChannelID
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// 结束时间，UTC格式
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 起始时间，UTC格式
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 用户ID
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s DescribeRtcUserEventListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcUserEventListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcUserEventListRequest) SetAppId(v string) *DescribeRtcUserEventListRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListRequest) SetChannelId(v string) *DescribeRtcUserEventListRequest {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListRequest) SetEndTime(v string) *DescribeRtcUserEventListRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListRequest) SetStartTime(v string) *DescribeRtcUserEventListRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListRequest) SetUid(v string) *DescribeRtcUserEventListRequest {
-	s.Uid = &v
-	return s
-}
-
-type DescribeRtcUserEventListResponseBody struct {
-	// 指标列表
-	Events []*DescribeRtcUserEventListResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRtcUserEventListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcUserEventListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcUserEventListResponseBody) SetEvents(v []*DescribeRtcUserEventListResponseBodyEvents) *DescribeRtcUserEventListResponseBody {
-	s.Events = v
-	return s
-}
-
-func (s *DescribeRtcUserEventListResponseBody) SetRequestId(v string) *DescribeRtcUserEventListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRtcUserEventListResponseBodyEvents struct {
-	// 事件类型
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 事件Id
-	EventId *int32 `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// 时间发生unix timestamp
-	EventTime *int64 `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-}
-
-func (s DescribeRtcUserEventListResponseBodyEvents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcUserEventListResponseBodyEvents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcUserEventListResponseBodyEvents) SetCategory(v string) *DescribeRtcUserEventListResponseBodyEvents {
-	s.Category = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListResponseBodyEvents) SetEventId(v int32) *DescribeRtcUserEventListResponseBodyEvents {
-	s.EventId = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListResponseBodyEvents) SetEventTime(v int64) *DescribeRtcUserEventListResponseBodyEvents {
-	s.EventTime = &v
-	return s
-}
-
-type DescribeRtcUserEventListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRtcUserEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRtcUserEventListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRtcUserEventListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRtcUserEventListResponse) SetHeaders(v map[string]*string) *DescribeRtcUserEventListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRtcUserEventListResponse) SetStatusCode(v int32) *DescribeRtcUserEventListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRtcUserEventListResponse) SetBody(v *DescribeRtcUserEventListResponseBody) *DescribeRtcUserEventListResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeUsageAreaDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳，如1609344000
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 父级地区名称，为空取世界范围（国家维度）的统计，如： ""->中国、英国 "中国"->北京市、广东省 "广东省"->广州市、深圳市、佛山市 "北京市"->北京市
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
-	// 开始时间，秒级时间戳，如1609344000
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataRequest) String() string {
@@ -7328,9 +5167,7 @@ func (s *DescribeUsageAreaDistributionStatDataRequest) SetStartDate(v string) *D
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用量统计地域分布数据
+	RequestId         *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageAreaStatList []*DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList `json:"UsageAreaStatList,omitempty" xml:"UsageAreaStatList,omitempty" type:"Repeated"`
 }
 
@@ -7353,14 +5190,10 @@ func (s *DescribeUsageAreaDistributionStatDataResponseBody) SetUsageAreaStatList
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList struct {
-	// 音频通话时长，单位分钟
-	AudioCallDuration *int32 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
-	// 地域名称，如中国
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 总通话时长，单位分钟
-	TotalCallDuration *int32 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	// 视频通话时长，单位分钟
-	VideoCallDuration *int32 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	AudioCallDuration *int32  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TotalCallDuration *int32  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	VideoCallDuration *int32  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList) String() string {
@@ -7392,9 +5225,9 @@ func (s *DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList) Set
 }
 
 type DescribeUsageAreaDistributionStatDataResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUsageAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUsageAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataResponse) String() string {
@@ -7421,14 +5254,10 @@ func (s *DescribeUsageAreaDistributionStatDataResponse) SetBody(v *DescribeUsage
 }
 
 type DescribeUsageDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳：如1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳：如1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 统计维度，支持最多填入一个 CHANNEL_ONLINE, NETWORK, OS
-	StatDim *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StatDim   *string `json:"StatDim,omitempty" xml:"StatDim,omitempty"`
 }
 
 func (s DescribeUsageDistributionStatDataRequest) String() string {
@@ -7460,9 +5289,7 @@ func (s *DescribeUsageDistributionStatDataRequest) SetStatDim(v string) *Describ
 }
 
 type DescribeUsageDistributionStatDataResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用量统计数据列表
+	RequestId     *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageStatList []*DescribeUsageDistributionStatDataResponseBodyUsageStatList `json:"UsageStatList,omitempty" xml:"UsageStatList,omitempty" type:"Repeated"`
 }
 
@@ -7485,16 +5312,11 @@ func (s *DescribeUsageDistributionStatDataResponseBody) SetUsageStatList(v []*De
 }
 
 type DescribeUsageDistributionStatDataResponseBodyUsageStatList struct {
-	// 音频通话时长，单位分钟
-	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
-	// 通话时长占比，四位小数表示，如1.0000
+	AudioCallDuration *int64  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	// 统计名称， 当StatDim=CHANNEL_ONLINE： ONE_TO_FIVE：1-5人 SIX_TO_TEN：6-10人 ELEVEN_TO_TWENTY：11-20人 TWENTY_ONE_TO_FIFTY: 21-50人 ABOVE_FIFTY：50人以上  当StatDim=NETWORK： WiFi，4G等  当StatDim=OS： iOS、android等
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 总通话时长，单位分钟
-	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	// 视频通话时长，单位分钟
-	VideoCallDuration *int64 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TotalCallDuration *int64  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	VideoCallDuration *int64  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageDistributionStatDataResponseBodyUsageStatList) String() string {
@@ -7531,9 +5353,9 @@ func (s *DescribeUsageDistributionStatDataResponseBodyUsageStatList) SetVideoCal
 }
 
 type DescribeUsageDistributionStatDataResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUsageDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUsageDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUsageDistributionStatDataResponse) String() string {
@@ -7560,12 +5382,9 @@ func (s *DescribeUsageDistributionStatDataResponse) SetBody(v *DescribeUsageDist
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳：1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳：1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataRequest) String() string {
@@ -7592,9 +5411,7 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataRequest) SetStartDate(v in
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用量统计SDK版本数据列表
+	RequestId                 *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageOsSdkVersionStatList []*DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList `json:"UsageOsSdkVersionStatList,omitempty" xml:"UsageOsSdkVersionStatList,omitempty" type:"Repeated"`
 }
 
@@ -7617,18 +5434,12 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBody) SetUsageOsSd
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList struct {
-	// 音频通话时长，单位分钟
-	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
-	// 通话时长占比，四位小数表示，如1.0000
+	AudioCallDuration *int64  `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
-	// SDK版本名称，1.0.0、1.1.1等
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 操作系统，如iOS、android等
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// 总通话时长，单位分钟
-	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
-	// 视频通话时长，单位分钟
-	VideoCallDuration *int64 `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	TotalCallDuration *int64  `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	VideoCallDuration *int64  `json:"VideoCallDuration,omitempty" xml:"VideoCallDuration,omitempty"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList) String() string {
@@ -7670,9 +5481,9 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVers
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUsageOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUsageOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataResponse) String() string {
@@ -7699,14 +5510,10 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponse) SetBody(v *Descr
 }
 
 type DescribeUsageOverallDataRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 结束时间，秒级时间戳：1609344000
-	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 开始时间，秒级时间戳：1609344000
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 类型，半角逗号分隔    总时长：TOTAL_CALL_DURATION  视频通信时长：VIDEO_CALL_DURATION  音频通信时长：AUDIO_CALL_DURATION    通信频道数：CALL_CHANNEL_COUNT  高并发通信频道数：  HIGHLY_CONCURRENT_CHANNEL_COUNT  并发频道数峰值：  CHANNEL_CONCURRENT_PEAK    在线人数峰值：ONLINE_USER_PEAK  累计通话人数：  TOTAL_CALL_USER  累计进出人次：  TOTAL_INOUT_NUM
-	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Types     *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s DescribeUsageOverallDataRequest) String() string {
@@ -7738,9 +5545,7 @@ func (s *DescribeUsageOverallDataRequest) SetTypes(v string) *DescribeUsageOvera
 }
 
 type DescribeUsageOverallDataResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用量概览数据列表
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsageOverallData []*DescribeUsageOverallDataResponseBodyUsageOverallData `json:"UsageOverallData,omitempty" xml:"UsageOverallData,omitempty" type:"Repeated"`
 }
 
@@ -7763,10 +5568,8 @@ func (s *DescribeUsageOverallDataResponseBody) SetUsageOverallData(v []*Describe
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallData struct {
-	// 坐标点列表
 	Nodes []*DescribeUsageOverallDataResponseBodyUsageOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// 类型，半角逗号分隔    总时长：TOTAL_CALL_DURATION  视频通信时长：VIDEO_CALL_DURATION  音频通信时长：AUDIO_CALL_DURATION    通信频道数：CALL_CHANNEL_COUNT  高并发通信频道数：  HIGHLY_CONCURRENT_CHANNEL_COUNT  并发频道数峰值：  CHANNEL_CONCURRENT_PEAK    在线人数峰值：ONLINE_USER_PEAK  累计通话人数：  TOTAL_CALL_USER  累计进出人次：  TOTAL_INOUT_NUM
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeUsageOverallDataResponseBodyUsageOverallData) String() string {
@@ -7788,9 +5591,7 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallData) SetType(v string)
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallDataNodes struct {
-	// x轴横坐标
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// y轴横坐标
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -7813,9 +5614,9 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallDataNodes) SetY(v strin
 }
 
 type DescribeUsageOverallDataResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUsageOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUsageOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUsageOverallDataResponse) String() string {
@@ -7837,150 +5638,6 @@ func (s *DescribeUsageOverallDataResponse) SetStatusCode(v int32) *DescribeUsage
 }
 
 func (s *DescribeUsageOverallDataResponse) SetBody(v *DescribeUsageOverallDataResponseBody) *DescribeUsageOverallDataResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAppExpMetricRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s UpdateAppExpMetricRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppExpMetricRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppExpMetricRuleRequest) SetAppId(v string) *UpdateAppExpMetricRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *UpdateAppExpMetricRuleRequest) SetRule(v string) *UpdateAppExpMetricRuleRequest {
-	s.Rule = &v
-	return s
-}
-
-type UpdateAppExpMetricRuleResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppExpMetricRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppExpMetricRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppExpMetricRuleResponseBody) SetRequestId(v string) *UpdateAppExpMetricRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAppExpMetricRuleResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppExpMetricRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppExpMetricRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *UpdateAppExpMetricRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAppExpMetricRuleResponse) SetStatusCode(v int32) *UpdateAppExpMetricRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateAppExpMetricRuleResponse) SetBody(v *UpdateAppExpMetricRuleResponseBody) *UpdateAppExpMetricRuleResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateAppFollowCallRuleRequest struct {
-	// APP ID
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 具体规则，JSON格式
-	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-}
-
-func (s UpdateAppFollowCallRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppFollowCallRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppFollowCallRuleRequest) SetAppId(v string) *UpdateAppFollowCallRuleRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *UpdateAppFollowCallRuleRequest) SetRule(v string) *UpdateAppFollowCallRuleRequest {
-	s.Rule = &v
-	return s
-}
-
-type UpdateAppFollowCallRuleResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateAppFollowCallRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppFollowCallRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppFollowCallRuleResponseBody) SetRequestId(v string) *UpdateAppFollowCallRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateAppFollowCallRuleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAppFollowCallRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAppFollowCallRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *UpdateAppFollowCallRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAppFollowCallRuleResponse) SetStatusCode(v int32) *UpdateAppFollowCallRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateAppFollowCallRuleResponse) SetBody(v *UpdateAppFollowCallRuleResponseBody) *UpdateAppFollowCallRuleResponse {
 	s.Body = v
 	return s
 }
@@ -8032,110 +5689,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) DeleteAppExpMetricRule(request *DeleteAppExpMetricRuleRequest) (_result *DeleteAppExpMetricRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAppExpMetricRuleResponse{}
-	_body, _err := client.DeleteAppExpMetricRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAppExpMetricRuleWithOptions(request *DeleteAppExpMetricRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppExpMetricRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAppExpMetricRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/deleteAppExpMetricRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteAppExpMetricRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAppFollowCallRule(request *DeleteAppFollowCallRuleRequest) (_result *DeleteAppFollowCallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAppFollowCallRuleResponse{}
-	_body, _err := client.DeleteAppFollowCallRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAppFollowCallRuleWithOptions(request *DeleteAppFollowCallRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAppFollowCallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAppFollowCallRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/deleteAppFollowCallRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteAppFollowCallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAppConfig(request *DescribeAppConfigRequest) (_result *DescribeAppConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeAppConfigResponse{}
-	_body, _err := client.DescribeAppConfigWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeAppConfigWithOptions(request *DescribeAppConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8170,175 +5723,11 @@ func (client *Client) DescribeAppConfigWithOptions(request *DescribeAppConfigReq
 	return _result, _err
 }
 
-func (client *Client) DescribeAppExpMetricRule(request *DescribeAppExpMetricRuleRequest) (_result *DescribeAppExpMetricRuleResponse, _err error) {
+func (client *Client) DescribeAppConfig(request *DescribeAppConfigRequest) (_result *DescribeAppConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeAppExpMetricRuleResponse{}
-	_body, _err := client.DescribeAppExpMetricRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAppExpMetricRuleWithOptions(request *DescribeAppExpMetricRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppExpMetricRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAppExpMetricRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/describeAppExpMetricRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAppExpMetricRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAppExpMetricRuleList() (_result *DescribeAppExpMetricRuleListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeAppExpMetricRuleListResponse{}
-	_body, _err := client.DescribeAppExpMetricRuleListWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAppExpMetricRuleListWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppExpMetricRuleListResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAppExpMetricRuleList"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/describeAppExpMetricRuleList"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAppExpMetricRuleListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAppFollowCallRule(request *DescribeAppFollowCallRuleRequest) (_result *DescribeAppFollowCallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeAppFollowCallRuleResponse{}
-	_body, _err := client.DescribeAppFollowCallRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAppFollowCallRuleWithOptions(request *DescribeAppFollowCallRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppFollowCallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAppFollowCallRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/describeAppFollowCallRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAppFollowCallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAppFollowCallRuleList() (_result *DescribeAppFollowCallRuleListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeAppFollowCallRuleListResponse{}
-	_body, _err := client.DescribeAppFollowCallRuleListWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeAppFollowCallRuleListWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppFollowCallRuleListResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAppFollowCallRuleList"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/describeAppFollowCallRuleList"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAppFollowCallRuleListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeCall(request *DescribeCallRequest) (_result *DescribeCallResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeCallResponse{}
-	_body, _err := client.DescribeCallWithOptions(request, headers, runtime)
+	_result = &DescribeAppConfigResponse{}
+	_body, _err := client.DescribeAppConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8400,11 +5789,11 @@ func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, head
 	return _result, _err
 }
 
-func (client *Client) DescribeCallInfo(request *DescribeCallInfoRequest) (_result *DescribeCallInfoResponse, _err error) {
+func (client *Client) DescribeCall(request *DescribeCallRequest) (_result *DescribeCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeCallInfoResponse{}
-	_body, _err := client.DescribeCallInfoWithOptions(request, headers, runtime)
+	_result = &DescribeCallResponse{}
+	_body, _err := client.DescribeCallWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8458,11 +5847,11 @@ func (client *Client) DescribeCallInfoWithOptions(request *DescribeCallInfoReque
 	return _result, _err
 }
 
-func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_result *DescribeCallListResponse, _err error) {
+func (client *Client) DescribeCallInfo(request *DescribeCallInfoRequest) (_result *DescribeCallInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeCallListResponse{}
-	_body, _err := client.DescribeCallListWithOptions(request, headers, runtime)
+	_result = &DescribeCallInfoResponse{}
+	_body, _err := client.DescribeCallInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8540,65 +5929,11 @@ func (client *Client) DescribeCallListWithOptions(request *DescribeCallListReque
 	return _result, _err
 }
 
-func (client *Client) DescribeCallListTest(request *DescribeCallListTestRequest) (_result *DescribeCallListTestResponse, _err error) {
+func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_result *DescribeCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeCallListTestResponse{}
-	_body, _err := client.DescribeCallListTestWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeCallListTestWithOptions(request *DescribeCallListTestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeCallListTestResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCallListTest"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/call/describeCallListTest"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeCallListTestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeCallUserExp(request *DescribeCallUserExpRequest) (_result *DescribeCallUserExpResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeCallUserExpResponse{}
-	_body, _err := client.DescribeCallUserExpWithOptions(request, headers, runtime)
+	_result = &DescribeCallListResponse{}
+	_body, _err := client.DescribeCallListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8652,11 +5987,11 @@ func (client *Client) DescribeCallUserExpWithOptions(request *DescribeCallUserEx
 	return _result, _err
 }
 
-func (client *Client) DescribeCallUserList(request *DescribeCallUserListRequest) (_result *DescribeCallUserListResponse, _err error) {
+func (client *Client) DescribeCallUserExp(request *DescribeCallUserExpRequest) (_result *DescribeCallUserExpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeCallUserListResponse{}
-	_body, _err := client.DescribeCallUserListWithOptions(request, headers, runtime)
+	_result = &DescribeCallUserExpResponse{}
+	_body, _err := client.DescribeCallUserExpWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8734,11 +6069,11 @@ func (client *Client) DescribeCallUserListWithOptions(request *DescribeCallUserL
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelAreaDistributionStatData(request *DescribeChannelAreaDistributionStatDataRequest) (_result *DescribeChannelAreaDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeCallUserList(request *DescribeCallUserListRequest) (_result *DescribeCallUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelAreaDistributionStatDataResponse{}
-	_body, _err := client.DescribeChannelAreaDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeCallUserListResponse{}
+	_body, _err := client.DescribeCallUserListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8796,11 +6131,11 @@ func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelDistributionStatData(request *DescribeChannelDistributionStatDataRequest) (_result *DescribeChannelDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeChannelAreaDistributionStatData(request *DescribeChannelAreaDistributionStatDataRequest) (_result *DescribeChannelAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelDistributionStatDataResponse{}
-	_body, _err := client.DescribeChannelDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeChannelAreaDistributionStatDataResponse{}
+	_body, _err := client.DescribeChannelAreaDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8858,11 +6193,11 @@ func (client *Client) DescribeChannelDistributionStatDataWithOptions(request *De
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelJoinInfo(request *DescribeChannelJoinInfoRequest) (_result *DescribeChannelJoinInfoResponse, _err error) {
+func (client *Client) DescribeChannelDistributionStatData(request *DescribeChannelDistributionStatDataRequest) (_result *DescribeChannelDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelJoinInfoResponse{}
-	_body, _err := client.DescribeChannelJoinInfoWithOptions(request, headers, runtime)
+	_result = &DescribeChannelDistributionStatDataResponse{}
+	_body, _err := client.DescribeChannelDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8916,11 +6251,11 @@ func (client *Client) DescribeChannelJoinInfoWithOptions(request *DescribeChanne
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelOverallData(request *DescribeChannelOverallDataRequest) (_result *DescribeChannelOverallDataResponse, _err error) {
+func (client *Client) DescribeChannelJoinInfo(request *DescribeChannelJoinInfoRequest) (_result *DescribeChannelJoinInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelOverallDataResponse{}
-	_body, _err := client.DescribeChannelOverallDataWithOptions(request, headers, runtime)
+	_result = &DescribeChannelJoinInfoResponse{}
+	_body, _err := client.DescribeChannelJoinInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8974,11 +6309,11 @@ func (client *Client) DescribeChannelOverallDataWithOptions(request *DescribeCha
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopPubUserListRequest) (_result *DescribeChannelTopPubUserListResponse, _err error) {
+func (client *Client) DescribeChannelOverallData(request *DescribeChannelOverallDataRequest) (_result *DescribeChannelOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelTopPubUserListResponse{}
-	_body, _err := client.DescribeChannelTopPubUserListWithOptions(request, headers, runtime)
+	_result = &DescribeChannelOverallDataResponse{}
+	_body, _err := client.DescribeChannelOverallDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9032,11 +6367,11 @@ func (client *Client) DescribeChannelTopPubUserListWithOptions(request *Describe
 	return _result, _err
 }
 
-func (client *Client) DescribeChannelUserMetrics(request *DescribeChannelUserMetricsRequest) (_result *DescribeChannelUserMetricsResponse, _err error) {
+func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopPubUserListRequest) (_result *DescribeChannelTopPubUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeChannelUserMetricsResponse{}
-	_body, _err := client.DescribeChannelUserMetricsWithOptions(request, headers, runtime)
+	_result = &DescribeChannelTopPubUserListResponse{}
+	_body, _err := client.DescribeChannelTopPubUserListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9090,11 +6425,11 @@ func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeCha
 	return _result, _err
 }
 
-func (client *Client) DescribeEndPointEventList(request *DescribeEndPointEventListRequest) (_result *DescribeEndPointEventListResponse, _err error) {
+func (client *Client) DescribeChannelUserMetrics(request *DescribeChannelUserMetricsRequest) (_result *DescribeChannelUserMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEndPointEventListResponse{}
-	_body, _err := client.DescribeEndPointEventListWithOptions(request, headers, runtime)
+	_result = &DescribeChannelUserMetricsResponse{}
+	_body, _err := client.DescribeChannelUserMetricsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9152,11 +6487,11 @@ func (client *Client) DescribeEndPointEventListWithOptions(request *DescribeEndP
 	return _result, _err
 }
 
-func (client *Client) DescribeEndPointMetricData(request *DescribeEndPointMetricDataRequest) (_result *DescribeEndPointMetricDataResponse, _err error) {
+func (client *Client) DescribeEndPointEventList(request *DescribeEndPointEventListRequest) (_result *DescribeEndPointEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeEndPointMetricDataResponse{}
-	_body, _err := client.DescribeEndPointMetricDataWithOptions(request, headers, runtime)
+	_result = &DescribeEndPointEventListResponse{}
+	_body, _err := client.DescribeEndPointEventListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9226,11 +6561,11 @@ func (client *Client) DescribeEndPointMetricDataWithOptions(request *DescribeEnd
 	return _result, _err
 }
 
-func (client *Client) DescribeFaultDiagnosisFactorDistributionStat(request *DescribeFaultDiagnosisFactorDistributionStatRequest) (_result *DescribeFaultDiagnosisFactorDistributionStatResponse, _err error) {
+func (client *Client) DescribeEndPointMetricData(request *DescribeEndPointMetricDataRequest) (_result *DescribeEndPointMetricDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
-	_body, _err := client.DescribeFaultDiagnosisFactorDistributionStatWithOptions(request, headers, runtime)
+	_result = &DescribeEndPointMetricDataResponse{}
+	_body, _err := client.DescribeEndPointMetricDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9280,11 +6615,11 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStatWithOptions(re
 	return _result, _err
 }
 
-func (client *Client) DescribeFaultDiagnosisOverallData(request *DescribeFaultDiagnosisOverallDataRequest) (_result *DescribeFaultDiagnosisOverallDataResponse, _err error) {
+func (client *Client) DescribeFaultDiagnosisFactorDistributionStat(request *DescribeFaultDiagnosisFactorDistributionStatRequest) (_result *DescribeFaultDiagnosisFactorDistributionStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeFaultDiagnosisOverallDataResponse{}
-	_body, _err := client.DescribeFaultDiagnosisOverallDataWithOptions(request, headers, runtime)
+	_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
+	_body, _err := client.DescribeFaultDiagnosisFactorDistributionStatWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9338,11 +6673,11 @@ func (client *Client) DescribeFaultDiagnosisOverallDataWithOptions(request *Desc
 	return _result, _err
 }
 
-func (client *Client) DescribeFaultDiagnosisUserDetail(request *DescribeFaultDiagnosisUserDetailRequest) (_result *DescribeFaultDiagnosisUserDetailResponse, _err error) {
+func (client *Client) DescribeFaultDiagnosisOverallData(request *DescribeFaultDiagnosisOverallDataRequest) (_result *DescribeFaultDiagnosisOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeFaultDiagnosisUserDetailResponse{}
-	_body, _err := client.DescribeFaultDiagnosisUserDetailWithOptions(request, headers, runtime)
+	_result = &DescribeFaultDiagnosisOverallDataResponse{}
+	_body, _err := client.DescribeFaultDiagnosisOverallDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9404,11 +6739,11 @@ func (client *Client) DescribeFaultDiagnosisUserDetailWithOptions(request *Descr
 	return _result, _err
 }
 
-func (client *Client) DescribeFaultDiagnosisUserList(request *DescribeFaultDiagnosisUserListRequest) (_result *DescribeFaultDiagnosisUserListResponse, _err error) {
+func (client *Client) DescribeFaultDiagnosisUserDetail(request *DescribeFaultDiagnosisUserDetailRequest) (_result *DescribeFaultDiagnosisUserDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeFaultDiagnosisUserListResponse{}
-	_body, _err := client.DescribeFaultDiagnosisUserListWithOptions(request, headers, runtime)
+	_result = &DescribeFaultDiagnosisUserDetailResponse{}
+	_body, _err := client.DescribeFaultDiagnosisUserDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9478,11 +6813,11 @@ func (client *Client) DescribeFaultDiagnosisUserListWithOptions(request *Describ
 	return _result, _err
 }
 
-func (client *Client) DescribeIceDurPeriodByDaySubType(request *DescribeIceDurPeriodByDaySubTypeRequest) (_result *DescribeIceDurPeriodByDaySubTypeResponse, _err error) {
+func (client *Client) DescribeFaultDiagnosisUserList(request *DescribeFaultDiagnosisUserListRequest) (_result *DescribeFaultDiagnosisUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeIceDurPeriodByDaySubTypeResponse{}
-	_body, _err := client.DescribeIceDurPeriodByDaySubTypeWithOptions(request, headers, runtime)
+	_result = &DescribeFaultDiagnosisUserListResponse{}
+	_body, _err := client.DescribeFaultDiagnosisUserListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9536,11 +6871,11 @@ func (client *Client) DescribeIceDurPeriodByDaySubTypeWithOptions(request *Descr
 	return _result, _err
 }
 
-func (client *Client) DescribeIceDurSummaryOverview(request *DescribeIceDurSummaryOverviewRequest) (_result *DescribeIceDurSummaryOverviewResponse, _err error) {
+func (client *Client) DescribeIceDurPeriodByDaySubType(request *DescribeIceDurPeriodByDaySubTypeRequest) (_result *DescribeIceDurPeriodByDaySubTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeIceDurSummaryOverviewResponse{}
-	_body, _err := client.DescribeIceDurSummaryOverviewWithOptions(request, headers, runtime)
+	_result = &DescribeIceDurPeriodByDaySubTypeResponse{}
+	_body, _err := client.DescribeIceDurPeriodByDaySubTypeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9586,11 +6921,11 @@ func (client *Client) DescribeIceDurSummaryOverviewWithOptions(request *Describe
 	return _result, _err
 }
 
-func (client *Client) DescribePubUserListBySubUser(request *DescribePubUserListBySubUserRequest) (_result *DescribePubUserListBySubUserResponse, _err error) {
+func (client *Client) DescribeIceDurSummaryOverview(request *DescribeIceDurSummaryOverviewRequest) (_result *DescribeIceDurSummaryOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribePubUserListBySubUserResponse{}
-	_body, _err := client.DescribePubUserListBySubUserWithOptions(request, headers, runtime)
+	_result = &DescribeIceDurSummaryOverviewResponse{}
+	_body, _err := client.DescribeIceDurSummaryOverviewWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9648,11 +6983,11 @@ func (client *Client) DescribePubUserListBySubUserWithOptions(request *DescribeP
 	return _result, _err
 }
 
-func (client *Client) DescribeQoeMetricData(request *DescribeQoeMetricDataRequest) (_result *DescribeQoeMetricDataResponse, _err error) {
+func (client *Client) DescribePubUserListBySubUser(request *DescribePubUserListBySubUserRequest) (_result *DescribePubUserListBySubUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeQoeMetricDataResponse{}
-	_body, _err := client.DescribeQoeMetricDataWithOptions(request, headers, runtime)
+	_result = &DescribePubUserListBySubUserResponse{}
+	_body, _err := client.DescribePubUserListBySubUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9710,11 +7045,11 @@ func (client *Client) DescribeQoeMetricDataWithOptions(request *DescribeQoeMetri
 	return _result, _err
 }
 
-func (client *Client) DescribeQualityAreaDistributionStatData(request *DescribeQualityAreaDistributionStatDataRequest) (_result *DescribeQualityAreaDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeQoeMetricData(request *DescribeQoeMetricDataRequest) (_result *DescribeQoeMetricDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeQualityAreaDistributionStatDataResponse{}
-	_body, _err := client.DescribeQualityAreaDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeQoeMetricDataResponse{}
+	_body, _err := client.DescribeQoeMetricDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9768,11 +7103,11 @@ func (client *Client) DescribeQualityAreaDistributionStatDataWithOptions(request
 	return _result, _err
 }
 
-func (client *Client) DescribeQualityDistributionStatData(request *DescribeQualityDistributionStatDataRequest) (_result *DescribeQualityDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeQualityAreaDistributionStatData(request *DescribeQualityAreaDistributionStatDataRequest) (_result *DescribeQualityAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeQualityDistributionStatDataResponse{}
-	_body, _err := client.DescribeQualityDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeQualityAreaDistributionStatDataResponse{}
+	_body, _err := client.DescribeQualityAreaDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9826,11 +7161,11 @@ func (client *Client) DescribeQualityDistributionStatDataWithOptions(request *De
 	return _result, _err
 }
 
-func (client *Client) DescribeQualityOsSdkVersionDistributionStatData(request *DescribeQualityOsSdkVersionDistributionStatDataRequest) (_result *DescribeQualityOsSdkVersionDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeQualityDistributionStatData(request *DescribeQualityDistributionStatDataRequest) (_result *DescribeQualityDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
-	_body, _err := client.DescribeQualityOsSdkVersionDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeQualityDistributionStatDataResponse{}
+	_body, _err := client.DescribeQualityDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9880,11 +7215,11 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatDataWithOptions
 	return _result, _err
 }
 
-func (client *Client) DescribeQualityOverallData(request *DescribeQualityOverallDataRequest) (_result *DescribeQualityOverallDataResponse, _err error) {
+func (client *Client) DescribeQualityOsSdkVersionDistributionStatData(request *DescribeQualityOsSdkVersionDistributionStatDataRequest) (_result *DescribeQualityOsSdkVersionDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeQualityOverallDataResponse{}
-	_body, _err := client.DescribeQualityOverallDataWithOptions(request, headers, runtime)
+	_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
+	_body, _err := client.DescribeQualityOsSdkVersionDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9938,391 +7273,11 @@ func (client *Client) DescribeQualityOverallDataWithOptions(request *DescribeQua
 	return _result, _err
 }
 
-func (client *Client) DescribeRtcChannelDetails(request *DescribeRtcChannelDetailsRequest) (_result *DescribeRtcChannelDetailsResponse, _err error) {
+func (client *Client) DescribeQualityOverallData(request *DescribeQualityOverallDataRequest) (_result *DescribeQualityOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeRtcChannelDetailsResponse{}
-	_body, _err := client.DescribeRtcChannelDetailsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelDetailsWithOptions(request *DescribeRtcChannelDetailsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelDetailsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
-		query["ChannelId"] = request.ChannelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcChannelDetails"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/channel/describeRtcChannelDetails"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcChannelDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelList(request *DescribeRtcChannelListRequest) (_result *DescribeRtcChannelListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRtcChannelListResponse{}
-	_body, _err := client.DescribeRtcChannelListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChannelListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
-		query["ChannelId"] = request.ChannelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcChannelList"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/channel/describeRtcChannelList"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcChannelListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelMetricList(request *DescribeRtcChannelMetricListRequest) (_result *DescribeRtcChannelMetricListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRtcChannelMetricListResponse{}
-	_body, _err := client.DescribeRtcChannelMetricListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelMetricListWithOptions(request *DescribeRtcChannelMetricListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelMetricListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
-		query["ChannelId"] = request.ChannelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PubUid)) {
-		query["PubUid"] = request.PubUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubUid)) {
-		query["SubUid"] = request.SubUid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcChannelMetricList"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/call/describeRtcChannelMetricList"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcChannelMetricListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelUsers(request *DescribeRtcChannelUsersRequest) (_result *DescribeRtcChannelUsersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRtcChannelUsersResponse{}
-	_body, _err := client.DescribeRtcChannelUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcChannelUsersWithOptions(request *DescribeRtcChannelUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelUsersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
-		query["ChannelId"] = request.ChannelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
-		query["TimePoint"] = request.TimePoint
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcChannelUsers"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/channel/describeRtcChannelUsers"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcChannelUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcRecordMetricData(request *DescribeRtcRecordMetricDataRequest) (_result *DescribeRtcRecordMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRtcRecordMetricDataResponse{}
-	_body, _err := client.DescribeRtcRecordMetricDataWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcRecordMetricDataWithOptions(request *DescribeRtcRecordMetricDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcRecordMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceArea)) {
-		query["ServiceArea"] = request.ServiceArea
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcRecordMetricData"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/record/describeRtcRecordMetricData"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcRecordMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcUserEventList(request *DescribeRtcUserEventListRequest) (_result *DescribeRtcUserEventListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRtcUserEventListResponse{}
-	_body, _err := client.DescribeRtcUserEventListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRtcUserEventListWithOptions(request *DescribeRtcUserEventListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRtcUserEventListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
-		query["ChannelId"] = request.ChannelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uid)) {
-		query["Uid"] = request.Uid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRtcUserEventList"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/call/describeRtcUserEventList"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRtcUserEventListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeUsageAreaDistributionStatData(request *DescribeUsageAreaDistributionStatDataRequest) (_result *DescribeUsageAreaDistributionStatDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeUsageAreaDistributionStatDataResponse{}
-	_body, _err := client.DescribeUsageAreaDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeQualityOverallDataResponse{}
+	_body, _err := client.DescribeQualityOverallDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10376,11 +7331,11 @@ func (client *Client) DescribeUsageAreaDistributionStatDataWithOptions(request *
 	return _result, _err
 }
 
-func (client *Client) DescribeUsageDistributionStatData(request *DescribeUsageDistributionStatDataRequest) (_result *DescribeUsageDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeUsageAreaDistributionStatData(request *DescribeUsageAreaDistributionStatDataRequest) (_result *DescribeUsageAreaDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeUsageDistributionStatDataResponse{}
-	_body, _err := client.DescribeUsageDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeUsageAreaDistributionStatDataResponse{}
+	_body, _err := client.DescribeUsageAreaDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10434,11 +7389,11 @@ func (client *Client) DescribeUsageDistributionStatDataWithOptions(request *Desc
 	return _result, _err
 }
 
-func (client *Client) DescribeUsageOsSdkVersionDistributionStatData(request *DescribeUsageOsSdkVersionDistributionStatDataRequest) (_result *DescribeUsageOsSdkVersionDistributionStatDataResponse, _err error) {
+func (client *Client) DescribeUsageDistributionStatData(request *DescribeUsageDistributionStatDataRequest) (_result *DescribeUsageDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
-	_body, _err := client.DescribeUsageOsSdkVersionDistributionStatDataWithOptions(request, headers, runtime)
+	_result = &DescribeUsageDistributionStatDataResponse{}
+	_body, _err := client.DescribeUsageDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10488,11 +7443,11 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatDataWithOptions(r
 	return _result, _err
 }
 
-func (client *Client) DescribeUsageOverallData(request *DescribeUsageOverallDataRequest) (_result *DescribeUsageOverallDataResponse, _err error) {
+func (client *Client) DescribeUsageOsSdkVersionDistributionStatData(request *DescribeUsageOsSdkVersionDistributionStatDataRequest) (_result *DescribeUsageOsSdkVersionDistributionStatDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeUsageOverallDataResponse{}
-	_body, _err := client.DescribeUsageOverallDataWithOptions(request, headers, runtime)
+	_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
+	_body, _err := client.DescribeUsageOsSdkVersionDistributionStatDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10546,102 +7501,14 @@ func (client *Client) DescribeUsageOverallDataWithOptions(request *DescribeUsage
 	return _result, _err
 }
 
-func (client *Client) UpdateAppExpMetricRule(request *UpdateAppExpMetricRuleRequest) (_result *UpdateAppExpMetricRuleResponse, _err error) {
+func (client *Client) DescribeUsageOverallData(request *DescribeUsageOverallDataRequest) (_result *DescribeUsageOverallDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateAppExpMetricRuleResponse{}
-	_body, _err := client.UpdateAppExpMetricRuleWithOptions(request, headers, runtime)
+	_result = &DescribeUsageOverallDataResponse{}
+	_body, _err := client.DescribeUsageOverallDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAppExpMetricRuleWithOptions(request *UpdateAppExpMetricRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppExpMetricRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Rule)) {
-		query["Rule"] = request.Rule
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateAppExpMetricRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/updateAppExpMetricRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateAppExpMetricRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateAppFollowCallRule(request *UpdateAppFollowCallRuleRequest) (_result *UpdateAppFollowCallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateAppFollowCallRuleResponse{}
-	_body, _err := client.UpdateAppFollowCallRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAppFollowCallRuleWithOptions(request *UpdateAppFollowCallRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppFollowCallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Rule)) {
-		query["Rule"] = request.Rule
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateAppFollowCallRule"),
-		Version:     tea.String("2020-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/config/updateAppFollowCallRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateAppFollowCallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
