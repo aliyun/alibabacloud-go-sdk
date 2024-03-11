@@ -6248,7 +6248,7 @@ func (s *CreatePersonalTodoTaskHeaders) SetAccountContext(v *CreatePersonalTodoT
 }
 
 type CreatePersonalTodoTaskHeadersAccountContext struct {
-	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 
 func (s CreatePersonalTodoTaskHeadersAccountContext) String() string {
@@ -6259,8 +6259,8 @@ func (s CreatePersonalTodoTaskHeadersAccountContext) GoString() string {
 	return s.String()
 }
 
-func (s *CreatePersonalTodoTaskHeadersAccountContext) SetUserToken(v string) *CreatePersonalTodoTaskHeadersAccountContext {
-	s.UserToken = &v
+func (s *CreatePersonalTodoTaskHeadersAccountContext) SetAccountId(v string) *CreatePersonalTodoTaskHeadersAccountContext {
+	s.AccountId = &v
 	return s
 }
 
