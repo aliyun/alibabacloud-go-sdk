@@ -27,8 +27,9 @@ type BatchSendMessageToGlobeRequest struct {
 	//
 	// *   **NOTIFY**: notification
 	// *   **MKT**: promotional message
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validity period of the message. Unit: seconds.
+	ValidityPeriod *int64 `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s BatchSendMessageToGlobeRequest) String() string {
@@ -130,9 +131,9 @@ func (s *BatchSendMessageToGlobeResponseBody) SetSuccessCount(v string) *BatchSe
 }
 
 type BatchSendMessageToGlobeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchSendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchSendMessageToGlobeResponse) String() string {
@@ -163,7 +164,7 @@ type ConversionDataRequest struct {
 	//
 	// >  The value of this parameter is of type double, and the value is between \[0,1].
 	ConversionRate *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
-	// Timestamp of the conversion rate observation should be a Unix timestamp, millisecond-level long integer.
+	// Timestamp of the conversion rate observation should be a Unix timestamp, a millisecond-level long integer.
 	//
 	// >  If this field is not specified: the current timestamp is the default.
 	ReportTime *int64 `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
@@ -220,9 +221,9 @@ func (s *ConversionDataResponseBody) SetResponseDescription(v string) *Conversio
 }
 
 type ConversionDataResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConversionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConversionDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConversionDataResponse) String() string {
@@ -398,9 +399,9 @@ func (s *QueryMessageResponseBodyNumberDetail) SetRegion(v string) *QueryMessage
 }
 
 type QueryMessageResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMessageResponse) String() string {
@@ -436,8 +437,11 @@ type SendMessageToGlobeRequest struct {
 	// The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
 	//
 	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
-	To             *string `json:"To,omitempty" xml:"To,omitempty"`
-	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
+	//
+	// >  You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The validity period of the message. Unit: seconds.
+	ValidityPeriod *int64 `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s SendMessageToGlobeRequest) String() string {
@@ -573,9 +577,9 @@ func (s *SendMessageToGlobeResponseBodyNumberDetail) SetRegion(v string) *SendMe
 }
 
 type SendMessageToGlobeResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendMessageToGlobeResponse) String() string {
@@ -613,8 +617,9 @@ type SendMessageWithTemplateRequest struct {
 	// The mobile phone number to which the message is sent. You must add the country code to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
 	//
 	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
-	To             *string `json:"To,omitempty" xml:"To,omitempty"`
-	ValidityPeriod *int64  `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The validity period of the message.
+	ValidityPeriod *int64 `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty"`
 }
 
 func (s SendMessageWithTemplateRequest) String() string {
@@ -748,9 +753,9 @@ func (s *SendMessageWithTemplateResponseBodyNumberDetail) SetRegion(v string) *S
 }
 
 type SendMessageWithTemplateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendMessageWithTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendMessageWithTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendMessageWithTemplateResponse) String() string {
@@ -844,9 +849,9 @@ func (s *SmsConversionResponseBody) SetResponseDescription(v string) *SmsConvers
 }
 
 type SmsConversionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmsConversionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmsConversionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmsConversionResponse) String() string {
@@ -929,11 +934,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 /**
  * *   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
- * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages exceeding more than 1,000 mobile number per request, you can choose to use the broadcast messaging feature available in the Alibaba Cloud SMS console.
- * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](~~SendMessageToGlobe~~) operation to ensure that messages are delivered on time.
+ * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+ * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/zh/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
  * *   In each request, you can send messages to up to 1,000 mobile phone numbers.
- * ### QPS limit
- * You may call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ * ### [](#qps)QPS limits
+ * You can call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
  *
  * @param request BatchSendMessageToGlobeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -994,11 +999,11 @@ func (client *Client) BatchSendMessageToGlobeWithOptions(request *BatchSendMessa
 
 /**
  * *   You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
- * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages exceeding more than 1,000 mobile number per request, you can choose to use the broadcast messaging feature available in the Alibaba Cloud SMS console.
- * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](~~SendMessageToGlobe~~) operation to ensure that messages are delivered on time.
+ * *   You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+ * *   For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/zh/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
  * *   In each request, you can send messages to up to 1,000 mobile phone numbers.
- * ### QPS limit
- * You may call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
+ * ### [](#qps)QPS limits
+ * You can call this operation only once per second. If the number of calls per second exceeds this limit, throttling will be triggered. This can potentially impact your business operations. Therefore, we recommend that you take note of this limit when making calls to this operation.
  *
  * @param request BatchSendMessageToGlobeRequest
  * @return BatchSendMessageToGlobeResponse
