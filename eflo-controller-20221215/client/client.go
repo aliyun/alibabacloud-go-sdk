@@ -59,9 +59,9 @@ func (s *ApproveOperationResponseBody) SetRequestId(v string) *ApproveOperationR
 }
 
 type ApproveOperationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApproveOperationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApproveOperationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApproveOperationResponse) String() string {
@@ -135,9 +135,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -861,9 +861,9 @@ func (s *CreateClusterResponseBody) SetTaskId(v string) *CreateClusterResponseBo
 }
 
 type CreateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -924,9 +924,9 @@ func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterRespons
 }
 
 type DeleteClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -1117,9 +1117,9 @@ func (s *DescribeClusterResponseBodyNetworks) SetVpdId(v string) *DescribeCluste
 }
 
 type DescribeClusterResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeClusterResponse) String() string {
@@ -1141,6 +1141,323 @@ func (s *DescribeClusterResponse) SetStatusCode(v int32) *DescribeClusterRespons
 }
 
 func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *DescribeClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInvocationsRequest struct {
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	IncludeOutput   *bool   `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
+	InvokeId        *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s DescribeInvocationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsRequest) SetContentEncoding(v string) *DescribeInvocationsRequest {
+	s.ContentEncoding = &v
+	return s
+}
+
+func (s *DescribeInvocationsRequest) SetIncludeOutput(v bool) *DescribeInvocationsRequest {
+	s.IncludeOutput = &v
+	return s
+}
+
+func (s *DescribeInvocationsRequest) SetInvokeId(v string) *DescribeInvocationsRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeInvocationsRequest) SetNodeId(v string) *DescribeInvocationsRequest {
+	s.NodeId = &v
+	return s
+}
+
+type DescribeInvocationsResponseBody struct {
+	Invocations *DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInvocationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBody) SetInvocations(v *DescribeInvocationsResponseBodyInvocations) *DescribeInvocationsResponseBody {
+	s.Invocations = v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBody) SetRequestId(v string) *DescribeInvocationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocations struct {
+	Invocation []*DescribeInvocationsResponseBodyInvocationsInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) SetInvocation(v []*DescribeInvocationsResponseBodyInvocationsInvocation) *DescribeInvocationsResponseBodyInvocations {
+	s.Invocation = v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocationsInvocation struct {
+	CommandContent     *string                                                          `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	CommandDescription *string                                                          `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	CommandName        *string                                                          `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	CreationTime       *string                                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Frequency          *string                                                          `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InvocationStatus   *string                                                          `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeId           *string                                                          `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeNodes        *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	InvokeStatus       *string                                                          `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	Parameters         *string                                                          `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RepeatMode         *string                                                          `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	Timeout            *int32                                                           `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Username           *string                                                          `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkingDir         *string                                                          `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCommandContent(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.CommandContent = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCommandDescription(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.CommandDescription = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCommandName(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.CommandName = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCreationTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetFrequency(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.Frequency = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetInvocationStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetInvokeId(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetInvokeNodes(v *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.InvokeNodes = v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetInvokeStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.InvokeStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetParameters(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.Parameters = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetRepeatMode(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.RepeatMode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetTimeout(v int32) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.Timeout = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetUsername(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.Username = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetWorkingDir(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.WorkingDir = &v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes struct {
+	InvokeNode []*DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode `json:"InvokeNode,omitempty" xml:"InvokeNode,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes) SetInvokeNode(v []*DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes {
+	s.InvokeNode = v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Dropped          *int32  `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	ErrorCode        *bool   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	ExitCode         *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	NodeId           *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeInvokeStatus *string `json:"NodeInvokeStatus,omitempty" xml:"NodeInvokeStatus,omitempty"`
+	Output           *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Repeats          *int32  `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StopTime         *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	Timed            *string `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetCreationTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetDropped(v int32) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.Dropped = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorCode(v bool) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorInfo(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetExitCode(v int32) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetFinishTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetInvocationStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetNodeId(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetNodeInvokeStatus(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.NodeInvokeStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetOutput(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.Output = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetRepeats(v int32) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.Repeats = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetStartTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetStopTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.StopTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetTimed(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.Timed = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetUpdateTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeInvocationsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInvocationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInvocationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponse) SetHeaders(v map[string]*string) *DescribeInvocationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInvocationsResponse) SetStatusCode(v int32) *DescribeInvocationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody) *DescribeInvocationsResponse {
 	s.Body = v
 	return s
 }
@@ -1318,9 +1635,9 @@ func (s *DescribeNodeResponseBodyNetworks) SetVpdId(v string) *DescribeNodeRespo
 }
 
 type DescribeNodeResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNodeResponse) String() string {
@@ -1410,9 +1727,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1434,6 +1751,270 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSendFileResultsRequest struct {
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s DescribeSendFileResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsRequest) SetInvokeId(v string) *DescribeSendFileResultsRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsRequest) SetNodeId(v string) *DescribeSendFileResultsRequest {
+	s.NodeId = &v
+	return s
+}
+
+type DescribeSendFileResultsResponseBody struct {
+	Invocations *DescribeSendFileResultsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSendFileResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseBody) SetInvocations(v *DescribeSendFileResultsResponseBodyInvocations) *DescribeSendFileResultsResponseBody {
+	s.Invocations = v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBody) SetRequestId(v string) *DescribeSendFileResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBody) SetTotalCount(v string) *DescribeSendFileResultsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSendFileResultsResponseBodyInvocations struct {
+	Invocation []*DescribeSendFileResultsResponseBodyInvocationsInvocation `json:"Invocation,omitempty" xml:"Invocation,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocations) SetInvocation(v []*DescribeSendFileResultsResponseBodyInvocationsInvocation) *DescribeSendFileResultsResponseBodyInvocations {
+	s.Invocation = v
+	return s
+}
+
+type DescribeSendFileResultsResponseBodyInvocationsInvocation struct {
+	Content          *string                                                              `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *string                                                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CreationTime     *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileGroup        *string                                                              `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	FileMode         *string                                                              `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	FileOwner        *string                                                              `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	InvocationStatus *string                                                              `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeNodes      *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes `json:"InvokeNodes,omitempty" xml:"InvokeNodes,omitempty" type:"Struct"`
+	Name             *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeCount        *int32                                                               `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	Overwrite        *bool                                                                `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	TargetDir        *string                                                              `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetContent(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetContentType(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.ContentType = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetCreationTime(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetDescription(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetFileGroup(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.FileGroup = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetFileMode(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.FileMode = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetFileOwner(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.FileOwner = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetInvocationStatus(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetInvokeNodes(v *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.InvokeNodes = v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetName(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetNodeCount(v int32) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetOverwrite(v bool) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocation) SetTargetDir(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocation {
+	s.TargetDir = &v
+	return s
+}
+
+type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes struct {
+	InvokeNode []*DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode `json:"InvokeNode,omitempty" xml:"InvokeNode,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes) SetInvokeNode(v []*DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes {
+	s.InvokeNode = v
+	return s
+}
+
+type DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode struct {
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	NodeId           *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetCreationTime(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorCode(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetErrorInfo(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetFinishTime(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetInvocationStatus(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetNodeId(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetStartTime(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode) SetUpdateTime(v string) *DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeSendFileResultsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSendFileResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSendFileResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSendFileResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSendFileResultsResponse) SetHeaders(v map[string]*string) *DescribeSendFileResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetStatusCode(v int32) *DescribeSendFileResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSendFileResultsResponse) SetBody(v *DescribeSendFileResultsResponseBody) *DescribeSendFileResultsResponse {
 	s.Body = v
 	return s
 }
@@ -1633,9 +2214,9 @@ func (s *DescribeTaskResponseBodyStepsSubTasks) SetUpdateTime(v string) *Describ
 }
 
 type DescribeTaskResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTaskResponse) String() string {
@@ -1725,9 +2306,9 @@ func (s *DescribeZonesResponseBodyZones) SetZoneId(v string) *DescribeZonesRespo
 }
 
 type DescribeZonesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeZonesResponse) String() string {
@@ -2114,9 +2695,9 @@ func (s *ExtendClusterResponseBody) SetTaskId(v string) *ExtendClusterResponseBo
 }
 
 type ExtendClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ExtendClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExtendClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ExtendClusterResponse) String() string {
@@ -2331,9 +2912,9 @@ func (s *ListClusterNodesResponseBodyNodesNetworks) SetVpdId(v string) *ListClus
 }
 
 type ListClusterNodesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClusterNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClusterNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClusterNodesResponse) String() string {
@@ -2513,9 +3094,9 @@ func (s *ListClustersResponseBodyClusters) SetVpcId(v string) *ListClustersRespo
 }
 
 type ListClustersResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -2671,9 +3252,9 @@ func (s *ListFreeNodesResponseBodyNodes) SetZoneId(v string) *ListFreeNodesRespo
 }
 
 type ListFreeNodesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFreeNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFreeNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFreeNodesResponse) String() string {
@@ -2845,9 +3426,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -2955,9 +3536,9 @@ func (s *RebootNodesResponseBody) SetTaskId(v string) *RebootNodesResponseBody {
 }
 
 type RebootNodesResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RebootNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebootNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RebootNodesResponse) String() string {
@@ -3112,9 +3693,9 @@ func (s *ReimageNodesResponseBody) SetTaskId(v string) *ReimageNodesResponseBody
 }
 
 type ReimageNodesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReimageNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReimageNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReimageNodesResponse) String() string {
@@ -3136,6 +3717,444 @@ func (s *ReimageNodesResponse) SetStatusCode(v int32) *ReimageNodesResponse {
 }
 
 func (s *ReimageNodesResponse) SetBody(v *ReimageNodesResponseBody) *ReimageNodesResponse {
+	s.Body = v
+	return s
+}
+
+type RunCommandRequest struct {
+	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CommandContent  *string                `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	ContentEncoding *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableParameter *bool                  `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency       *string                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeIdList      []*string              `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RepeatMode      *string                `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	Timeout         *int32                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Username        *string                `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkingDir      *string                `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s RunCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandRequest) SetClientToken(v string) *RunCommandRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
+	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetContentEncoding(v string) *RunCommandRequest {
+	s.ContentEncoding = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetDescription(v string) *RunCommandRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetEnableParameter(v bool) *RunCommandRequest {
+	s.EnableParameter = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetFrequency(v string) *RunCommandRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetName(v string) *RunCommandRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetNodeIdList(v []*string) *RunCommandRequest {
+	s.NodeIdList = v
+	return s
+}
+
+func (s *RunCommandRequest) SetParameters(v map[string]interface{}) *RunCommandRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *RunCommandRequest) SetRepeatMode(v string) *RunCommandRequest {
+	s.RepeatMode = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetTimeout(v int32) *RunCommandRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetUsername(v string) *RunCommandRequest {
+	s.Username = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetWorkingDir(v string) *RunCommandRequest {
+	s.WorkingDir = &v
+	return s
+}
+
+type RunCommandShrinkRequest struct {
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CommandContent   *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	ContentEncoding  *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableParameter  *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency        *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RepeatMode       *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	Timeout          *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Username         *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkingDir       *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s RunCommandShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandShrinkRequest) SetClientToken(v string) *RunCommandShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetCommandContent(v string) *RunCommandShrinkRequest {
+	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetContentEncoding(v string) *RunCommandShrinkRequest {
+	s.ContentEncoding = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetDescription(v string) *RunCommandShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetEnableParameter(v bool) *RunCommandShrinkRequest {
+	s.EnableParameter = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetFrequency(v string) *RunCommandShrinkRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetName(v string) *RunCommandShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetNodeIdListShrink(v string) *RunCommandShrinkRequest {
+	s.NodeIdListShrink = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetParametersShrink(v string) *RunCommandShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetRepeatMode(v string) *RunCommandShrinkRequest {
+	s.RepeatMode = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetTimeout(v int32) *RunCommandShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetUsername(v string) *RunCommandShrinkRequest {
+	s.Username = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetWorkingDir(v string) *RunCommandShrinkRequest {
+	s.WorkingDir = &v
+	return s
+}
+
+type RunCommandResponseBody struct {
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandResponseBody) SetInvokeId(v string) *RunCommandResponseBody {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *RunCommandResponseBody) SetRequestId(v string) *RunCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunCommandResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunCommandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandResponse) SetHeaders(v map[string]*string) *RunCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunCommandResponse) SetStatusCode(v int32) *RunCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandResponse {
+	s.Body = v
+	return s
+}
+
+type SendFileRequest struct {
+	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType *string   `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileGroup   *string   `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	FileMode    *string   `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	FileOwner   *string   `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeIdList  []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+	Overwrite   *bool     `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	TargetDir   *string   `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	Timeout     *int32    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s SendFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileRequest) SetContent(v string) *SendFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendFileRequest) SetContentType(v string) *SendFileRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *SendFileRequest) SetDescription(v string) *SendFileRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileGroup(v string) *SendFileRequest {
+	s.FileGroup = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileMode(v string) *SendFileRequest {
+	s.FileMode = &v
+	return s
+}
+
+func (s *SendFileRequest) SetFileOwner(v string) *SendFileRequest {
+	s.FileOwner = &v
+	return s
+}
+
+func (s *SendFileRequest) SetName(v string) *SendFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SendFileRequest) SetNodeIdList(v []*string) *SendFileRequest {
+	s.NodeIdList = v
+	return s
+}
+
+func (s *SendFileRequest) SetOverwrite(v bool) *SendFileRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *SendFileRequest) SetTargetDir(v string) *SendFileRequest {
+	s.TargetDir = &v
+	return s
+}
+
+func (s *SendFileRequest) SetTimeout(v int32) *SendFileRequest {
+	s.Timeout = &v
+	return s
+}
+
+type SendFileShrinkRequest struct {
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileGroup        *string `json:"FileGroup,omitempty" xml:"FileGroup,omitempty"`
+	FileMode         *string `json:"FileMode,omitempty" xml:"FileMode,omitempty"`
+	FileOwner        *string `json:"FileOwner,omitempty" xml:"FileOwner,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+	Overwrite        *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	TargetDir        *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
+	Timeout          *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s SendFileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileShrinkRequest) SetContent(v string) *SendFileShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetContentType(v string) *SendFileShrinkRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetDescription(v string) *SendFileShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetFileGroup(v string) *SendFileShrinkRequest {
+	s.FileGroup = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetFileMode(v string) *SendFileShrinkRequest {
+	s.FileMode = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetFileOwner(v string) *SendFileShrinkRequest {
+	s.FileOwner = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetName(v string) *SendFileShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetNodeIdListShrink(v string) *SendFileShrinkRequest {
+	s.NodeIdListShrink = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetOverwrite(v bool) *SendFileShrinkRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetTargetDir(v string) *SendFileShrinkRequest {
+	s.TargetDir = &v
+	return s
+}
+
+func (s *SendFileShrinkRequest) SetTimeout(v int32) *SendFileShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type SendFileResponseBody struct {
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileResponseBody) SetInvokeId(v string) *SendFileResponseBody {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *SendFileResponseBody) SetRequestId(v string) *SendFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendFileResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendFileResponse) SetHeaders(v map[string]*string) *SendFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendFileResponse) SetStatusCode(v int32) *SendFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendFileResponse) SetBody(v *SendFileResponseBody) *SendFileResponse {
 	s.Body = v
 	return s
 }
@@ -3262,9 +4281,9 @@ func (s *ShrinkClusterResponseBody) SetTaskId(v string) *ShrinkClusterResponseBo
 }
 
 type ShrinkClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ShrinkClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ShrinkClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ShrinkClusterResponse) String() string {
@@ -3286,6 +4305,99 @@ func (s *ShrinkClusterResponse) SetStatusCode(v int32) *ShrinkClusterResponse {
 }
 
 func (s *ShrinkClusterResponse) SetBody(v *ShrinkClusterResponseBody) *ShrinkClusterResponse {
+	s.Body = v
+	return s
+}
+
+type StopInvocationRequest struct {
+	InvokeId   *string   `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	NodeIdList []*string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
+}
+
+func (s StopInvocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInvocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInvocationRequest) SetInvokeId(v string) *StopInvocationRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *StopInvocationRequest) SetNodeIdList(v []*string) *StopInvocationRequest {
+	s.NodeIdList = v
+	return s
+}
+
+type StopInvocationShrinkRequest struct {
+	InvokeId         *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	NodeIdListShrink *string `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty"`
+}
+
+func (s StopInvocationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInvocationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInvocationShrinkRequest) SetInvokeId(v string) *StopInvocationShrinkRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *StopInvocationShrinkRequest) SetNodeIdListShrink(v string) *StopInvocationShrinkRequest {
+	s.NodeIdListShrink = &v
+	return s
+}
+
+type StopInvocationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopInvocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInvocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopInvocationResponseBody) SetRequestId(v string) *StopInvocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopInvocationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopInvocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopInvocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInvocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopInvocationResponse) SetHeaders(v map[string]*string) *StopInvocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopInvocationResponse) SetStatusCode(v int32) *StopInvocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInvocationResponse {
 	s.Body = v
 	return s
 }
@@ -3367,9 +4479,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -3454,9 +4566,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -3821,6 +4933,62 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
+		body["ContentEncoding"] = request.ContentEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeOutput)) {
+		body["IncludeOutput"] = request.IncludeOutput
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+		body["InvokeId"] = request.InvokeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInvocations"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInvocationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInvocationsResponse{}
+	_body, _err := client.DescribeInvocationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runtime *util.RuntimeOptions) (_result *DescribeNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3902,6 +5070,54 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFileResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+		body["InvokeId"] = request.InvokeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSendFileResults"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSendFileResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRequest) (_result *DescribeSendFileResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSendFileResultsResponse{}
+	_body, _err := client.DescribeSendFileResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4423,6 +5639,198 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 	return _result, _err
 }
 
+func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *util.RuntimeOptions) (_result *RunCommandResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunCommandShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeIdList)) {
+		request.NodeIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIdList, tea.String("NodeIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommandContent)) {
+		body["CommandContent"] = request.CommandContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
+		body["ContentEncoding"] = request.ContentEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableParameter)) {
+		body["EnableParameter"] = request.EnableParameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		body["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIdListShrink)) {
+		body["NodeIdList"] = request.NodeIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepeatMode)) {
+		body["RepeatMode"] = request.RepeatMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkingDir)) {
+		body["WorkingDir"] = request.WorkingDir
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunCommand"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunCommandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunCommandResponse{}
+	_body, _err := client.RunCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *util.RuntimeOptions) (_result *SendFileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SendFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeIdList)) {
+		request.NodeIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIdList, tea.String("NodeIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileGroup)) {
+		body["FileGroup"] = request.FileGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileMode)) {
+		body["FileMode"] = request.FileMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileOwner)) {
+		body["FileOwner"] = request.FileOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIdListShrink)) {
+		body["NodeIdList"] = request.NodeIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Overwrite)) {
+		body["Overwrite"] = request.Overwrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetDir)) {
+		body["TargetDir"] = request.TargetDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendFile"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendFileResponse{}
+	_body, _err := client.SendFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, runtime *util.RuntimeOptions) (_result *ShrinkClusterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4474,6 +5882,60 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 	runtime := &util.RuntimeOptions{}
 	_result = &ShrinkClusterResponse{}
 	_body, _err := client.ShrinkClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, runtime *util.RuntimeOptions) (_result *StopInvocationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopInvocationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeIdList)) {
+		request.NodeIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIdList, tea.String("NodeIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+		body["InvokeId"] = request.InvokeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIdListShrink)) {
+		body["NodeIdList"] = request.NodeIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInvocation"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopInvocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *StopInvocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopInvocationResponse{}
+	_body, _err := client.StopInvocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
