@@ -85,9 +85,9 @@ func (s *AcceptVpcPeerConnectionResponseBody) SetRequestId(v string) *AcceptVpcP
 }
 
 type AcceptVpcPeerConnectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptVpcPeerConnectionResponse) String() string {
@@ -250,9 +250,9 @@ func (s *CreateVpcPeerConnectionResponseBody) SetRequestId(v string) *CreateVpcP
 }
 
 type CreateVpcPeerConnectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVpcPeerConnectionResponse) String() string {
@@ -346,9 +346,9 @@ func (s *DeleteVpcPeerConnectionResponseBody) SetRequestId(v string) *DeleteVpcP
 }
 
 type DeleteVpcPeerConnectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVpcPeerConnectionResponse) String() string {
@@ -648,9 +648,9 @@ func (s *GetVpcPeerConnectionAttributeResponseBodyVpc) SetVpcId(v string) *GetVp
 }
 
 type GetVpcPeerConnectionAttributeResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVpcPeerConnectionAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVpcPeerConnectionAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVpcPeerConnectionAttributeResponse) String() string {
@@ -858,9 +858,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1384,9 +1384,9 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc) SetVpcId(v string
 }
 
 type ListVpcPeerConnectionsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVpcPeerConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVpcPeerConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVpcPeerConnectionsResponse) String() string {
@@ -1495,9 +1495,9 @@ func (s *ModifyVpcPeerConnectionResponseBody) SetRequestId(v string) *ModifyVpcP
 }
 
 type ModifyVpcPeerConnectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyVpcPeerConnectionResponse) String() string {
@@ -1595,9 +1595,9 @@ func (s *MoveResourceGroupResponseBody) SetSuccess(v bool) *MoveResourceGroupRes
 }
 
 type MoveResourceGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveResourceGroupResponse) String() string {
@@ -1687,9 +1687,9 @@ func (s *RejectVpcPeerConnectionResponseBody) SetRequestId(v string) *RejectVpcP
 }
 
 type RejectVpcPeerConnectionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RejectVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectVpcPeerConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RejectVpcPeerConnectionResponse) String() string {
@@ -1825,9 +1825,9 @@ func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody 
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -1944,9 +1944,9 @@ func (s *UnTagResourcesResponseBody) SetSuccess(v bool) *UnTagResourcesResponseB
 }
 
 type UnTagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnTagResourcesResponse) String() string {
