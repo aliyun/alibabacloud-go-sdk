@@ -16521,9 +16521,27 @@ func (s *DescribeEnvironmentResponse) SetBody(v *DescribeEnvironmentResponseBody
 }
 
 type DescribeEnvironmentFeatureRequest struct {
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Name of Feature.
+	// The name of the feature.
+	//
+	// Valid values:
+	//
+	// *   app-agent-pilot
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   metric-agent
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -16553,18 +16571,15 @@ func (s *DescribeEnvironmentFeatureRequest) SetRegionId(v string) *DescribeEnvir
 }
 
 type DescribeEnvironmentFeatureResponseBody struct {
-	// Status code: 200 indicates success.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return data.
+	// The returned struct.
 	Data *DescribeEnvironmentFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	//
-	// *   `true`: successful
-	// *   `false`: failed
+	// Indicates whether the request was successful. Valid values: true and false.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16602,9 +16617,9 @@ func (s *DescribeEnvironmentFeatureResponseBody) SetSuccess(v bool) *DescribeEnv
 }
 
 type DescribeEnvironmentFeatureResponseBodyData struct {
-	// Feature Installation information.
+	// The installation information of the feature.
 	Feature *DescribeEnvironmentFeatureResponseBodyDataFeature `json:"Feature,omitempty" xml:"Feature,omitempty" type:"Struct"`
-	// Running status of the Feature.
+	// The status of the feature.
 	FeatureStatus *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus `json:"FeatureStatus,omitempty" xml:"FeatureStatus,omitempty" type:"Struct"`
 }
 
@@ -16627,26 +16642,26 @@ func (s *DescribeEnvironmentFeatureResponseBodyData) SetFeatureStatus(v *Describ
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
-	// Alias of Feature.
+	// The alias of the feature.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Config of Feature.
+	// The configuration of the feature.
 	Config map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Description of Feature.
+	// The description of the feature.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Icon address.
+	// The URL of the icon.
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// Lanuage.
+	// The language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// This is the latest version of Feature.
+	// The latest version number.
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	Managed       *bool   `json:"Managed,omitempty" xml:"Managed,omitempty"`
-	// Name of Feature.
+	// The name of the feature.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Installation status of Feature.
+	// The status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Version of Feature.
+	// The version number.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -16714,16 +16729,17 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetVersion(v string)
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
-	// Feature container list.
+	// The containers of the feature.
 	FeatureContainers []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers `json:"FeatureContainers,omitempty" xml:"FeatureContainers,omitempty" type:"Repeated"`
-	// K8s resource name of the Feature.
+	// The Kubernetes resource name of the feature.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Namespace.
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Running status.
-	// - Success: Running normal
-	// - Failed: Running exception
-	// - Not Found: Not installed
+	// The status of the agent. Valid values:
+	//
+	// *   Success: The agent is running.
+	// *   Failed: The agent failed to run.
+	// *   Not Found: The agent is not installed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16756,11 +16772,11 @@ func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetStatus(v st
 }
 
 type DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers struct {
-	// Container parameters.
+	// The container parameters.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// Container image.
+	// The image of the container.
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Name of the container.
+	// The name of the container.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -30921,16 +30937,55 @@ func (s *ListEnvironmentFeaturesResponse) SetBody(v *ListEnvironmentFeaturesResp
 }
 
 type ListEnvironmentsRequest struct {
-	// Name of Addon.
-	AddonName      *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// The add-on name. You must specify at least one of the AddonName and EnvironmentType parameters.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// 绑定的资源ID。
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
-	// Environment type, AddonName or EnvironmentType must be at least one.
+	// The environment type. You must specify at least one of the AddonName and EnvironmentType parameters.
+	//
+	// Valid values:
+	//
+	// *   CS
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Container Service for Kubernetes (ACK)
+	//
+	//     <!-- -->
+	//
+	// *   ECS
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Elastic Compute Service (ECS)
+	//
+	//     <!-- -->
+	//
+	// *   Cloud
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     cloud service
+	//
+	//     <!-- -->
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Resource tag list.
+	// The tags.
 	Tag []*ListEnvironmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -30973,9 +31028,9 @@ func (s *ListEnvironmentsRequest) SetTag(v []*ListEnvironmentsRequestTag) *ListE
 }
 
 type ListEnvironmentsRequestTag struct {
-	// Tag key.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -30998,16 +31053,55 @@ func (s *ListEnvironmentsRequestTag) SetValue(v string) *ListEnvironmentsRequest
 }
 
 type ListEnvironmentsShrinkRequest struct {
-	// Name of Addon.
-	AddonName      *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// The add-on name. You must specify at least one of the AddonName and EnvironmentType parameters.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// 绑定的资源ID。
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
-	// Environment type, AddonName or EnvironmentType must be at least one.
+	// The environment type. You must specify at least one of the AddonName and EnvironmentType parameters.
+	//
+	// Valid values:
+	//
+	// *   CS
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Container Service for Kubernetes (ACK)
+	//
+	//     <!-- -->
+	//
+	// *   ECS
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Elastic Compute Service (ECS)
+	//
+	//     <!-- -->
+	//
+	// *   Cloud
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     cloud service
+	//
+	//     <!-- -->
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Resource tag list.
+	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -31050,18 +31144,15 @@ func (s *ListEnvironmentsShrinkRequest) SetTagShrink(v string) *ListEnvironments
 }
 
 type ListEnvironmentsResponseBody struct {
-	// Status code: 200 indicates success.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The returned struct.
 	Data *ListEnvironmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   `true`
-	// *   `false`
+	// Indicates whether the request was successful. Valid values: true and false.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -31099,9 +31190,9 @@ func (s *ListEnvironmentsResponseBody) SetSuccess(v bool) *ListEnvironmentsRespo
 }
 
 type ListEnvironmentsResponseBodyData struct {
-	// Environment list.
+	// The queried environments.
 	Environments []*ListEnvironmentsResponseBodyDataEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -31124,50 +31215,58 @@ func (s *ListEnvironmentsResponseBodyData) SetTotal(v int64) *ListEnvironmentsRe
 }
 
 type ListEnvironmentsResponseBodyDataEnvironments struct {
-	// Addon list.
+	// The queried add-ons.
 	Addons []*ListEnvironmentsResponseBodyDataEnvironmentsAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// Id of the resource to be bound.
+	// The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
-	// Profile of the resource to be bound.
+	// The profile of the resource.
 	BindResourceProfile *string `json:"BindResourceProfile,omitempty" xml:"BindResourceProfile,omitempty"`
-	// Type of the resource to be bound.
+	// The resource type.
 	BindResourceType *string `json:"BindResourceType,omitempty" xml:"BindResourceType,omitempty"`
-	// Bound Vpc IP Cidr.
+	// The CIDR block that is bound to the VPC.
 	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
-	// Create time.
+	// The time when the VPC was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Created User ID.
+	// The ID of the user that created the VPC.
 	CreatedUserId *string `json:"CreatedUserId,omitempty" xml:"CreatedUserId,omitempty"`
-	// Environment ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Environment name.
+	// The name of the environment.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
-	// Environment type.
+	// The type of the environment. Valid values:
+	//
+	// *   CS: Container Service for Kubernetes (ACK)
+	// *   ECS: Elastic Compute Service (ECS)
+	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	// Featyre list.
+	// The features.
 	Features []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// Grafana datasource UID.
+	// The unique ID of the Grafana data source.
 	GrafanaDatasourceUid *string `json:"GrafanaDatasourceUid,omitempty" xml:"GrafanaDatasourceUid,omitempty"`
-	// Grafana folder title.
+	// The name of the Grafana directory.
 	GrafanaFolderTitle *string `json:"GrafanaFolderTitle,omitempty" xml:"GrafanaFolderTitle,omitempty"`
-	// Grafana folder UID.
+	// The unique ID of the Grafana directory.
 	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
-	// Latest Release create time.
+	// The time when the add-on was last created.
 	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
-	ManagedType             *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
-	// Prometheus ID.
+	// type of managed:
+	// - none: not managed. default value of prometheus for ACK.
+	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
+	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
+	// The ID of the Prometheus service.
 	PrometheusId *int64 `json:"PrometheusId,omitempty" xml:"PrometheusId,omitempty"`
-	// Prometheus instance ID.
+	// The ID of the Prometheus instance.
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Number of Release.
+	// The number of installed add-ons.
 	ReleaseCount *int32 `json:"ReleaseCount,omitempty" xml:"ReleaseCount,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag value.
+	// The tags of the environment resource.
 	Tags []*ListEnvironmentsResponseBodyDataEnvironmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// User ID.
+	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -31295,13 +31394,13 @@ func (s *ListEnvironmentsResponseBodyDataEnvironments) SetUserId(v string) *List
 }
 
 type ListEnvironmentsResponseBodyDataEnvironmentsAddons struct {
-	// Alias of Addon.
+	// The alias of the add-on.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Description of Addon.
+	// The description of the add-on.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Icon of Addon.
+	// The URL of the icon.
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// Name of Addon.
+	// The name of the add-on.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -31334,13 +31433,13 @@ func (s *ListEnvironmentsResponseBodyDataEnvironmentsAddons) SetName(v string) *
 }
 
 type ListEnvironmentsResponseBodyDataEnvironmentsFeatures struct {
-	// Alias of Feature.
+	// The alias of the feature.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// Description of Feature.
+	// The description of the feature.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Icon address.
+	// The URL of the feature icon.
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// Name of Feature.
+	// The name of the feature.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -31373,9 +31472,9 @@ func (s *ListEnvironmentsResponseBodyDataEnvironmentsFeatures) SetName(v string)
 }
 
 type ListEnvironmentsResponseBodyDataEnvironmentsTags struct {
-	// Tag key.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -35135,6 +35234,348 @@ func (s *ListSilencePoliciesResponse) SetStatusCode(v int32) *ListSilencePolicie
 }
 
 func (s *ListSilencePoliciesResponse) SetBody(v *ListSilencePoliciesResponseBody) *ListSilencePoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSyntheticDetailRequest struct {
+	AdvancedFilters []*ListSyntheticDetailRequestAdvancedFilters `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty" type:"Repeated"`
+	Category        *string                                      `json:"Category,omitempty" xml:"Category,omitempty"`
+	Detail          *string                                      `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime         *int64                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExactFilters    []*ListSyntheticDetailRequestExactFilters    `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty" type:"Repeated"`
+	Filters         map[string]*string                           `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	Order           *string                                      `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderBy         *string                                      `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Page            *int32                                       `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize        *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime       *int64                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SyntheticType   *int32                                       `json:"SyntheticType,omitempty" xml:"SyntheticType,omitempty"`
+}
+
+func (s ListSyntheticDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailRequest) SetAdvancedFilters(v []*ListSyntheticDetailRequestAdvancedFilters) *ListSyntheticDetailRequest {
+	s.AdvancedFilters = v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetCategory(v string) *ListSyntheticDetailRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetDetail(v string) *ListSyntheticDetailRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetEndTime(v int64) *ListSyntheticDetailRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetExactFilters(v []*ListSyntheticDetailRequestExactFilters) *ListSyntheticDetailRequest {
+	s.ExactFilters = v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetFilters(v map[string]*string) *ListSyntheticDetailRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetOrder(v string) *ListSyntheticDetailRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetOrderBy(v string) *ListSyntheticDetailRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetPage(v int32) *ListSyntheticDetailRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetPageSize(v int32) *ListSyntheticDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetRegionId(v string) *ListSyntheticDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetStartTime(v int64) *ListSyntheticDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequest) SetSyntheticType(v int32) *ListSyntheticDetailRequest {
+	s.SyntheticType = &v
+	return s
+}
+
+type ListSyntheticDetailRequestAdvancedFilters struct {
+	Key    *string     `json:"Key,omitempty" xml:"Key,omitempty"`
+	OpType *string     `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Value  interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListSyntheticDetailRequestAdvancedFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailRequestAdvancedFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailRequestAdvancedFilters) SetKey(v string) *ListSyntheticDetailRequestAdvancedFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequestAdvancedFilters) SetOpType(v string) *ListSyntheticDetailRequestAdvancedFilters {
+	s.OpType = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequestAdvancedFilters) SetValue(v interface{}) *ListSyntheticDetailRequestAdvancedFilters {
+	s.Value = v
+	return s
+}
+
+type ListSyntheticDetailRequestExactFilters struct {
+	Key    *string     `json:"Key,omitempty" xml:"Key,omitempty"`
+	OpType *string     `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Value  interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListSyntheticDetailRequestExactFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailRequestExactFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailRequestExactFilters) SetKey(v string) *ListSyntheticDetailRequestExactFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequestExactFilters) SetOpType(v string) *ListSyntheticDetailRequestExactFilters {
+	s.OpType = &v
+	return s
+}
+
+func (s *ListSyntheticDetailRequestExactFilters) SetValue(v interface{}) *ListSyntheticDetailRequestExactFilters {
+	s.Value = v
+	return s
+}
+
+type ListSyntheticDetailShrinkRequest struct {
+	AdvancedFiltersShrink *string `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty"`
+	Category              *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Detail                *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime               *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExactFiltersShrink    *string `json:"ExactFilters,omitempty" xml:"ExactFilters,omitempty"`
+	FiltersShrink         *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	Order                 *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderBy               *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Page                  *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime             *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SyntheticType         *int32  `json:"SyntheticType,omitempty" xml:"SyntheticType,omitempty"`
+}
+
+func (s ListSyntheticDetailShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetAdvancedFiltersShrink(v string) *ListSyntheticDetailShrinkRequest {
+	s.AdvancedFiltersShrink = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetCategory(v string) *ListSyntheticDetailShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetDetail(v string) *ListSyntheticDetailShrinkRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetEndTime(v int64) *ListSyntheticDetailShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetExactFiltersShrink(v string) *ListSyntheticDetailShrinkRequest {
+	s.ExactFiltersShrink = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetFiltersShrink(v string) *ListSyntheticDetailShrinkRequest {
+	s.FiltersShrink = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetOrder(v string) *ListSyntheticDetailShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetOrderBy(v string) *ListSyntheticDetailShrinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetPage(v int32) *ListSyntheticDetailShrinkRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetPageSize(v int32) *ListSyntheticDetailShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetRegionId(v string) *ListSyntheticDetailShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetStartTime(v int64) *ListSyntheticDetailShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSyntheticDetailShrinkRequest) SetSyntheticType(v int32) *ListSyntheticDetailShrinkRequest {
+	s.SyntheticType = &v
+	return s
+}
+
+type ListSyntheticDetailResponseBody struct {
+	Code    *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *ListSyntheticDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSyntheticDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailResponseBody) SetCode(v int64) *ListSyntheticDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBody) SetData(v *ListSyntheticDetailResponseBodyData) *ListSyntheticDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBody) SetMessage(v string) *ListSyntheticDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBody) SetRequestId(v string) *ListSyntheticDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSyntheticDetailResponseBodyData struct {
+	Items          []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Page           *int32                   `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize       *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskCreateTime *int64                   `json:"TaskCreateTime,omitempty" xml:"TaskCreateTime,omitempty"`
+	Total          *int32                   `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSyntheticDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailResponseBodyData) SetItems(v []map[string]interface{}) *ListSyntheticDetailResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBodyData) SetPage(v int32) *ListSyntheticDetailResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBodyData) SetPageSize(v int32) *ListSyntheticDetailResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBodyData) SetTaskCreateTime(v int64) *ListSyntheticDetailResponseBodyData {
+	s.TaskCreateTime = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponseBodyData) SetTotal(v int32) *ListSyntheticDetailResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListSyntheticDetailResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSyntheticDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSyntheticDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSyntheticDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSyntheticDetailResponse) SetHeaders(v map[string]*string) *ListSyntheticDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSyntheticDetailResponse) SetStatusCode(v int32) *ListSyntheticDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSyntheticDetailResponse) SetBody(v *ListSyntheticDetailResponseBody) *ListSyntheticDetailResponse {
 	s.Body = v
 	return s
 }
@@ -56647,6 +57088,60 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSilencePoliciesResponse{}
 	_body, _err := client.ListSilencePoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetailRequest, runtime *util.RuntimeOptions) (_result *ListSyntheticDetailResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSyntheticDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AdvancedFilters)) {
+		request.AdvancedFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdvancedFilters, tea.String("AdvancedFilters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExactFilters)) {
+		request.ExactFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExactFilters, tea.String("ExactFilters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filters)) {
+		request.FiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filters, tea.String("Filters"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSyntheticDetail"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSyntheticDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (_result *ListSyntheticDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSyntheticDetailResponse{}
+	_body, _err := client.ListSyntheticDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
