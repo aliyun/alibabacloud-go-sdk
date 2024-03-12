@@ -111,6 +111,122 @@ func (s *CancelAsyncTaskResponse) SetBody(v *CancelAsyncTaskResponseBody) *Cance
 	return s
 }
 
+type ClearIntervenesRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s ClearIntervenesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearIntervenesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClearIntervenesRequest) SetAgentKey(v string) *ClearIntervenesRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type ClearIntervenesResponseBody struct {
+	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ClearIntervenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ClearIntervenesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearIntervenesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClearIntervenesResponseBody) SetCode(v string) *ClearIntervenesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClearIntervenesResponseBody) SetData(v *ClearIntervenesResponseBodyData) *ClearIntervenesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ClearIntervenesResponseBody) SetHttpStatusCode(v int32) *ClearIntervenesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ClearIntervenesResponseBody) SetMessage(v string) *ClearIntervenesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClearIntervenesResponseBody) SetRequestId(v string) *ClearIntervenesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ClearIntervenesResponseBody) SetSuccess(v bool) *ClearIntervenesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ClearIntervenesResponseBodyData struct {
+	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	TaskId     *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ClearIntervenesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearIntervenesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ClearIntervenesResponseBodyData) SetFailIdList(v []*string) *ClearIntervenesResponseBodyData {
+	s.FailIdList = v
+	return s
+}
+
+func (s *ClearIntervenesResponseBodyData) SetTaskId(v string) *ClearIntervenesResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ClearIntervenesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearIntervenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ClearIntervenesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClearIntervenesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClearIntervenesResponse) SetHeaders(v map[string]*string) *ClearIntervenesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClearIntervenesResponse) SetStatusCode(v int32) *ClearIntervenesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClearIntervenesResponse) SetBody(v *ClearIntervenesResponseBody) *ClearIntervenesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateGeneratedContentRequest struct {
 	AgentKey      *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Content       *string   `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -532,6 +648,128 @@ func (s *DeleteGeneratedContentResponse) SetBody(v *DeleteGeneratedContentRespon
 	return s
 }
 
+type DeleteInterveneRuleRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteInterveneRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInterveneRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInterveneRuleRequest) SetAgentKey(v string) *DeleteInterveneRuleRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleRequest) SetRuleId(v int64) *DeleteInterveneRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteInterveneRuleResponseBody struct {
+	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DeleteInterveneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteInterveneRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInterveneRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetCode(v string) *DeleteInterveneRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetData(v *DeleteInterveneRuleResponseBodyData) *DeleteInterveneRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetHttpStatusCode(v int32) *DeleteInterveneRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetMessage(v string) *DeleteInterveneRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetRequestId(v string) *DeleteInterveneRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBody) SetSuccess(v bool) *DeleteInterveneRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteInterveneRuleResponseBodyData struct {
+	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	TaskId     *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteInterveneRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInterveneRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInterveneRuleResponseBodyData) SetFailIdList(v []*string) *DeleteInterveneRuleResponseBodyData {
+	s.FailIdList = v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponseBodyData) SetTaskId(v string) *DeleteInterveneRuleResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteInterveneRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInterveneRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInterveneRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInterveneRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInterveneRuleResponse) SetHeaders(v map[string]*string) *DeleteInterveneRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponse) SetStatusCode(v int32) *DeleteInterveneRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInterveneRuleResponse) SetBody(v *DeleteInterveneRuleResponseBody) *DeleteInterveneRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMaterialByIdRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -726,6 +964,116 @@ func (s *ExportGeneratedContentResponse) SetStatusCode(v int32) *ExportGenerated
 }
 
 func (s *ExportGeneratedContentResponse) SetBody(v *ExportGeneratedContentResponseBody) *ExportGeneratedContentResponse {
+	s.Body = v
+	return s
+}
+
+type ExportIntervenesRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s ExportIntervenesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportIntervenesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportIntervenesRequest) SetAgentKey(v string) *ExportIntervenesRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type ExportIntervenesResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ExportIntervenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExportIntervenesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportIntervenesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportIntervenesResponseBody) SetCode(v string) *ExportIntervenesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportIntervenesResponseBody) SetData(v *ExportIntervenesResponseBodyData) *ExportIntervenesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExportIntervenesResponseBody) SetHttpStatusCode(v int32) *ExportIntervenesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportIntervenesResponseBody) SetMessage(v string) *ExportIntervenesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportIntervenesResponseBody) SetRequestId(v string) *ExportIntervenesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportIntervenesResponseBody) SetSuccess(v bool) *ExportIntervenesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExportIntervenesResponseBodyData struct {
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s ExportIntervenesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportIntervenesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportIntervenesResponseBodyData) SetFileUrl(v string) *ExportIntervenesResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+type ExportIntervenesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportIntervenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportIntervenesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportIntervenesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportIntervenesResponse) SetHeaders(v map[string]*string) *ExportIntervenesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportIntervenesResponse) SetStatusCode(v int32) *ExportIntervenesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportIntervenesResponse) SetBody(v *ExportIntervenesResponseBody) *ExportIntervenesResponse {
 	s.Body = v
 	return s
 }
@@ -2124,6 +2472,627 @@ func (s *GetGeneratedContentResponse) SetBody(v *GetGeneratedContentResponseBody
 	return s
 }
 
+type GetInterveneGlobalReplyRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s GetInterveneGlobalReplyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneGlobalReplyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyRequest) SetAgentKey(v string) *GetInterveneGlobalReplyRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type GetInterveneGlobalReplyResponseBody struct {
+	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetInterveneGlobalReplyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInterveneGlobalReplyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneGlobalReplyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetCode(v string) *GetInterveneGlobalReplyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetData(v *GetInterveneGlobalReplyResponseBodyData) *GetInterveneGlobalReplyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetHttpStatusCode(v int32) *GetInterveneGlobalReplyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetMessage(v string) *GetInterveneGlobalReplyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetRequestId(v string) *GetInterveneGlobalReplyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBody) SetSuccess(v bool) *GetInterveneGlobalReplyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInterveneGlobalReplyResponseBodyData struct {
+	ReplyMessagList []*GetInterveneGlobalReplyResponseBodyDataReplyMessagList `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty" type:"Repeated"`
+}
+
+func (s GetInterveneGlobalReplyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneGlobalReplyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyResponseBodyData) SetReplyMessagList(v []*GetInterveneGlobalReplyResponseBodyDataReplyMessagList) *GetInterveneGlobalReplyResponseBodyData {
+	s.ReplyMessagList = v
+	return s
+}
+
+type GetInterveneGlobalReplyResponseBodyDataReplyMessagList struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ReplyType *string `json:"ReplyType,omitempty" xml:"ReplyType,omitempty"`
+}
+
+func (s GetInterveneGlobalReplyResponseBodyDataReplyMessagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneGlobalReplyResponseBodyDataReplyMessagList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyResponseBodyDataReplyMessagList) SetMessage(v string) *GetInterveneGlobalReplyResponseBodyDataReplyMessagList {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponseBodyDataReplyMessagList) SetReplyType(v string) *GetInterveneGlobalReplyResponseBodyDataReplyMessagList {
+	s.ReplyType = &v
+	return s
+}
+
+type GetInterveneGlobalReplyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInterveneGlobalReplyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInterveneGlobalReplyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneGlobalReplyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyResponse) SetHeaders(v map[string]*string) *GetInterveneGlobalReplyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponse) SetStatusCode(v int32) *GetInterveneGlobalReplyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInterveneGlobalReplyResponse) SetBody(v *GetInterveneGlobalReplyResponseBody) *GetInterveneGlobalReplyResponse {
+	s.Body = v
+	return s
+}
+
+type GetInterveneImportTaskInfoRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetInterveneImportTaskInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneImportTaskInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoRequest) SetAgentKey(v string) *GetInterveneImportTaskInfoRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoRequest) SetTaskId(v string) *GetInterveneImportTaskInfoRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetInterveneImportTaskInfoResponseBody struct {
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetInterveneImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInterveneImportTaskInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneImportTaskInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetCode(v string) *GetInterveneImportTaskInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetData(v *GetInterveneImportTaskInfoResponseBodyData) *GetInterveneImportTaskInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetHttpStatusCode(v int32) *GetInterveneImportTaskInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetMessage(v string) *GetInterveneImportTaskInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetRequestId(v string) *GetInterveneImportTaskInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBody) SetSuccess(v bool) *GetInterveneImportTaskInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInterveneImportTaskInfoResponseBodyData struct {
+	Status *GetInterveneImportTaskInfoResponseBodyDataStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+}
+
+func (s GetInterveneImportTaskInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneImportTaskInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyData) SetStatus(v *GetInterveneImportTaskInfoResponseBodyDataStatus) *GetInterveneImportTaskInfoResponseBodyData {
+	s.Status = v
+	return s
+}
+
+type GetInterveneImportTaskInfoResponseBodyDataStatus struct {
+	Msg        *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s GetInterveneImportTaskInfoResponseBodyDataStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneImportTaskInfoResponseBodyDataStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyDataStatus) SetMsg(v string) *GetInterveneImportTaskInfoResponseBodyDataStatus {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyDataStatus) SetPercentage(v int32) *GetInterveneImportTaskInfoResponseBodyDataStatus {
+	s.Percentage = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyDataStatus) SetStatus(v int32) *GetInterveneImportTaskInfoResponseBodyDataStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyDataStatus) SetTaskId(v string) *GetInterveneImportTaskInfoResponseBodyDataStatus {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyDataStatus) SetTaskName(v string) *GetInterveneImportTaskInfoResponseBodyDataStatus {
+	s.TaskName = &v
+	return s
+}
+
+type GetInterveneImportTaskInfoResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInterveneImportTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInterveneImportTaskInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneImportTaskInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoResponse) SetHeaders(v map[string]*string) *GetInterveneImportTaskInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponse) SetStatusCode(v int32) *GetInterveneImportTaskInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInterveneImportTaskInfoResponse) SetBody(v *GetInterveneImportTaskInfoResponseBody) *GetInterveneImportTaskInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetInterveneRuleDetailRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetInterveneRuleDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailRequest) SetAgentKey(v string) *GetInterveneRuleDetailRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailRequest) SetRuleId(v int64) *GetInterveneRuleDetailRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetInterveneRuleDetailResponseBody struct {
+	Code           *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetInterveneRuleDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInterveneRuleDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetCode(v string) *GetInterveneRuleDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetData(v *GetInterveneRuleDetailResponseBodyData) *GetInterveneRuleDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetHttpStatusCode(v int32) *GetInterveneRuleDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetMessage(v string) *GetInterveneRuleDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetRequestId(v string) *GetInterveneRuleDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBody) SetSuccess(v bool) *GetInterveneRuleDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInterveneRuleDetailResponseBodyData struct {
+	InterveneRuleDetail *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail `json:"InterveneRuleDetail,omitempty" xml:"InterveneRuleDetail,omitempty" type:"Struct"`
+}
+
+func (s GetInterveneRuleDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBodyData) SetInterveneRuleDetail(v *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) *GetInterveneRuleDetailResponseBodyData {
+	s.InterveneRuleDetail = v
+	return s
+}
+
+type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail struct {
+	AnswerConfig  []*GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
+	EffectConfig  *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig   `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	InterveneType *int32                                                                   `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	NamespaceList []*string                                                                `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	RuleId        *int64                                                                   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string                                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetAnswerConfig(v []*GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.AnswerConfig = v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetEffectConfig(v *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.EffectConfig = v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetInterveneType(v int32) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.InterveneType = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetNamespaceList(v []*string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetRuleId(v int64) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) SetRuleName(v string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail {
+	s.RuleName = &v
+	return s
+}
+
+type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig struct {
+	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) SetAnswerType(v int32) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig {
+	s.AnswerType = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) SetMessage(v string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) SetNamespace(v string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig {
+	s.Namespace = &v
+	return s
+}
+
+type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig struct {
+	EffectType *int32  `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) SetEffectType(v int32) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig {
+	s.EffectType = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) SetEndTime(v string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig) SetStartTime(v string) *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig {
+	s.StartTime = &v
+	return s
+}
+
+type GetInterveneRuleDetailResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInterveneRuleDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInterveneRuleDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneRuleDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponse) SetHeaders(v map[string]*string) *GetInterveneRuleDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponse) SetStatusCode(v int32) *GetInterveneRuleDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInterveneRuleDetailResponse) SetBody(v *GetInterveneRuleDetailResponseBody) *GetInterveneRuleDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetInterveneTemplateFileUrlRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s GetInterveneTemplateFileUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneTemplateFileUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneTemplateFileUrlRequest) SetAgentKey(v string) *GetInterveneTemplateFileUrlRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type GetInterveneTemplateFileUrlResponseBody struct {
+	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetInterveneTemplateFileUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInterveneTemplateFileUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneTemplateFileUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetCode(v string) *GetInterveneTemplateFileUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetData(v *GetInterveneTemplateFileUrlResponseBodyData) *GetInterveneTemplateFileUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetHttpStatusCode(v int32) *GetInterveneTemplateFileUrlResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetMessage(v string) *GetInterveneTemplateFileUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetRequestId(v string) *GetInterveneTemplateFileUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBody) SetSuccess(v bool) *GetInterveneTemplateFileUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInterveneTemplateFileUrlResponseBodyData struct {
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s GetInterveneTemplateFileUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneTemplateFileUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBodyData) SetFileUrl(v string) *GetInterveneTemplateFileUrlResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+type GetInterveneTemplateFileUrlResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInterveneTemplateFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInterveneTemplateFileUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterveneTemplateFileUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterveneTemplateFileUrlResponse) SetHeaders(v map[string]*string) *GetInterveneTemplateFileUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponse) SetStatusCode(v int32) *GetInterveneTemplateFileUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInterveneTemplateFileUrlResponse) SetBody(v *GetInterveneTemplateFileUrlResponseBody) *GetInterveneTemplateFileUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetMaterialByIdRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -2757,6 +3726,722 @@ func (s *GetPropertiesResponse) SetStatusCode(v int32) *GetPropertiesResponse {
 }
 
 func (s *GetPropertiesResponse) SetBody(v *GetPropertiesResponseBody) *GetPropertiesResponse {
+	s.Body = v
+	return s
+}
+
+type ImportInterveneFileRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocName  *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	FileKey  *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s ImportInterveneFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileRequest) SetAgentKey(v string) *ImportInterveneFileRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ImportInterveneFileRequest) SetDocName(v string) *ImportInterveneFileRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *ImportInterveneFileRequest) SetFileKey(v string) *ImportInterveneFileRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *ImportInterveneFileRequest) SetFileUrl(v string) *ImportInterveneFileRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type ImportInterveneFileResponseBody struct {
+	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ImportInterveneFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportInterveneFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileResponseBody) SetCode(v string) *ImportInterveneFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBody) SetData(v *ImportInterveneFileResponseBodyData) *ImportInterveneFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBody) SetHttpStatusCode(v int32) *ImportInterveneFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBody) SetMessage(v string) *ImportInterveneFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBody) SetRequestId(v string) *ImportInterveneFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBody) SetSuccess(v bool) *ImportInterveneFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportInterveneFileResponseBodyData struct {
+	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	TaskId     *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ImportInterveneFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileResponseBodyData) SetFailIdList(v []*string) *ImportInterveneFileResponseBodyData {
+	s.FailIdList = v
+	return s
+}
+
+func (s *ImportInterveneFileResponseBodyData) SetTaskId(v string) *ImportInterveneFileResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ImportInterveneFileResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportInterveneFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportInterveneFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileResponse) SetHeaders(v map[string]*string) *ImportInterveneFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportInterveneFileResponse) SetStatusCode(v int32) *ImportInterveneFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportInterveneFileResponse) SetBody(v *ImportInterveneFileResponseBody) *ImportInterveneFileResponse {
+	s.Body = v
+	return s
+}
+
+type ImportInterveneFileAsyncRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocName  *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	FileKey  *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s ImportInterveneFileAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileAsyncRequest) SetAgentKey(v string) *ImportInterveneFileAsyncRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncRequest) SetDocName(v string) *ImportInterveneFileAsyncRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncRequest) SetFileKey(v string) *ImportInterveneFileAsyncRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncRequest) SetFileUrl(v string) *ImportInterveneFileAsyncRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type ImportInterveneFileAsyncResponseBody struct {
+	Code           *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ImportInterveneFileAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportInterveneFileAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetCode(v string) *ImportInterveneFileAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetData(v *ImportInterveneFileAsyncResponseBodyData) *ImportInterveneFileAsyncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetHttpStatusCode(v int32) *ImportInterveneFileAsyncResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetMessage(v string) *ImportInterveneFileAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetRequestId(v string) *ImportInterveneFileAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBody) SetSuccess(v bool) *ImportInterveneFileAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportInterveneFileAsyncResponseBodyData struct {
+	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	TaskId     *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ImportInterveneFileAsyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileAsyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileAsyncResponseBodyData) SetFailIdList(v []*string) *ImportInterveneFileAsyncResponseBodyData {
+	s.FailIdList = v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponseBodyData) SetTaskId(v string) *ImportInterveneFileAsyncResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ImportInterveneFileAsyncResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportInterveneFileAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportInterveneFileAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportInterveneFileAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportInterveneFileAsyncResponse) SetHeaders(v map[string]*string) *ImportInterveneFileAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponse) SetStatusCode(v int32) *ImportInterveneFileAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportInterveneFileAsyncResponse) SetBody(v *ImportInterveneFileAsyncResponseBody) *ImportInterveneFileAsyncResponse {
+	s.Body = v
+	return s
+}
+
+type InsertInterveneGlobalReplyRequest struct {
+	AgentKey        *string                                             `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	ReplyMessagList []*InsertInterveneGlobalReplyRequestReplyMessagList `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty" type:"Repeated"`
+}
+
+func (s InsertInterveneGlobalReplyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyRequest) SetAgentKey(v string) *InsertInterveneGlobalReplyRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyRequest) SetReplyMessagList(v []*InsertInterveneGlobalReplyRequestReplyMessagList) *InsertInterveneGlobalReplyRequest {
+	s.ReplyMessagList = v
+	return s
+}
+
+type InsertInterveneGlobalReplyRequestReplyMessagList struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ReplyType *string `json:"ReplyType,omitempty" xml:"ReplyType,omitempty"`
+}
+
+func (s InsertInterveneGlobalReplyRequestReplyMessagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyRequestReplyMessagList) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyRequestReplyMessagList) SetMessage(v string) *InsertInterveneGlobalReplyRequestReplyMessagList {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyRequestReplyMessagList) SetReplyType(v string) *InsertInterveneGlobalReplyRequestReplyMessagList {
+	s.ReplyType = &v
+	return s
+}
+
+type InsertInterveneGlobalReplyShrinkRequest struct {
+	AgentKey              *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	ReplyMessagListShrink *string `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty"`
+}
+
+func (s InsertInterveneGlobalReplyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyShrinkRequest) SetAgentKey(v string) *InsertInterveneGlobalReplyShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyShrinkRequest) SetReplyMessagListShrink(v string) *InsertInterveneGlobalReplyShrinkRequest {
+	s.ReplyMessagListShrink = &v
+	return s
+}
+
+type InsertInterveneGlobalReplyResponseBody struct {
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *InsertInterveneGlobalReplyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InsertInterveneGlobalReplyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetCode(v string) *InsertInterveneGlobalReplyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetData(v *InsertInterveneGlobalReplyResponseBodyData) *InsertInterveneGlobalReplyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetHttpStatusCode(v int32) *InsertInterveneGlobalReplyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetMessage(v string) *InsertInterveneGlobalReplyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetRequestId(v string) *InsertInterveneGlobalReplyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBody) SetSuccess(v bool) *InsertInterveneGlobalReplyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InsertInterveneGlobalReplyResponseBodyData struct {
+	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	TaskId     *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s InsertInterveneGlobalReplyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyResponseBodyData) SetFailIdList(v []*string) *InsertInterveneGlobalReplyResponseBodyData {
+	s.FailIdList = v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponseBodyData) SetTaskId(v string) *InsertInterveneGlobalReplyResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type InsertInterveneGlobalReplyResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertInterveneGlobalReplyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertInterveneGlobalReplyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneGlobalReplyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyResponse) SetHeaders(v map[string]*string) *InsertInterveneGlobalReplyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponse) SetStatusCode(v int32) *InsertInterveneGlobalReplyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertInterveneGlobalReplyResponse) SetBody(v *InsertInterveneGlobalReplyResponseBody) *InsertInterveneGlobalReplyResponse {
+	s.Body = v
+	return s
+}
+
+type InsertInterveneRuleRequest struct {
+	AgentKey            *string                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InterveneRuleConfig *InsertInterveneRuleRequestInterveneRuleConfig `json:"InterveneRuleConfig,omitempty" xml:"InterveneRuleConfig,omitempty" type:"Struct"`
+}
+
+func (s InsertInterveneRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleRequest) SetAgentKey(v string) *InsertInterveneRuleRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequest) SetInterveneRuleConfig(v *InsertInterveneRuleRequestInterveneRuleConfig) *InsertInterveneRuleRequest {
+	s.InterveneRuleConfig = v
+	return s
+}
+
+type InsertInterveneRuleRequestInterveneRuleConfig struct {
+	AnswerConfig        []*InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig        `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
+	EffectConfig        *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig          `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	InterveneConfigList []*InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList `json:"InterveneConfigList,omitempty" xml:"InterveneConfigList,omitempty" type:"Repeated"`
+	InterveneType       *int32                                                              `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	NamespaceList       []*string                                                           `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	RuleId              *int64                                                              `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName            *string                                                             `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetAnswerConfig(v []*InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.AnswerConfig = v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetEffectConfig(v *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.EffectConfig = v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetInterveneConfigList(v []*InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.InterveneConfigList = v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetInterveneType(v int32) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.InterveneType = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetNamespaceList(v []*string) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetRuleId(v int64) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.RuleId = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfig) SetRuleName(v string) *InsertInterveneRuleRequestInterveneRuleConfig {
+	s.RuleName = &v
+	return s
+}
+
+type InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig struct {
+	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) SetAnswerType(v int32) *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig {
+	s.AnswerType = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) SetMessage(v string) *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) SetNamespace(v string) *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig {
+	s.Namespace = &v
+	return s
+}
+
+type InsertInterveneRuleRequestInterveneRuleConfigEffectConfig struct {
+	EffectType *int32  `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) SetEffectType(v int32) *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig {
+	s.EffectType = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) SetEndTime(v string) *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig {
+	s.EndTime = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) SetStartTime(v string) *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig {
+	s.StartTime = &v
+	return s
+}
+
+type InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList struct {
+	// id
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OperationType *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) SetId(v string) *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList {
+	s.Id = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) SetOperationType(v int32) *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList {
+	s.OperationType = &v
+	return s
+}
+
+func (s *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) SetQuery(v string) *InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList {
+	s.Query = &v
+	return s
+}
+
+type InsertInterveneRuleShrinkRequest struct {
+	AgentKey                  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InterveneRuleConfigShrink *string `json:"InterveneRuleConfig,omitempty" xml:"InterveneRuleConfig,omitempty"`
+}
+
+func (s InsertInterveneRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleShrinkRequest) SetAgentKey(v string) *InsertInterveneRuleShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *InsertInterveneRuleShrinkRequest) SetInterveneRuleConfigShrink(v string) *InsertInterveneRuleShrinkRequest {
+	s.InterveneRuleConfigShrink = &v
+	return s
+}
+
+type InsertInterveneRuleResponseBody struct {
+	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *InsertInterveneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InsertInterveneRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleResponseBody) SetCode(v string) *InsertInterveneRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertInterveneRuleResponseBody) SetData(v *InsertInterveneRuleResponseBodyData) *InsertInterveneRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InsertInterveneRuleResponseBody) SetHttpStatusCode(v int32) *InsertInterveneRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *InsertInterveneRuleResponseBody) SetMessage(v string) *InsertInterveneRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertInterveneRuleResponseBody) SetRequestId(v string) *InsertInterveneRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertInterveneRuleResponseBody) SetSuccess(v bool) *InsertInterveneRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InsertInterveneRuleResponseBodyData struct {
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s InsertInterveneRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleResponseBodyData) SetRuleId(v int64) *InsertInterveneRuleResponseBodyData {
+	s.RuleId = &v
+	return s
+}
+
+type InsertInterveneRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertInterveneRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertInterveneRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertInterveneRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertInterveneRuleResponse) SetHeaders(v map[string]*string) *InsertInterveneRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertInterveneRuleResponse) SetStatusCode(v int32) *InsertInterveneRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertInterveneRuleResponse) SetBody(v *InsertInterveneRuleResponseBody) *InsertInterveneRuleResponse {
 	s.Body = v
 	return s
 }
@@ -4059,6 +5744,731 @@ func (s *ListHotNewsWithTypeResponse) SetStatusCode(v int32) *ListHotNewsWithTyp
 }
 
 func (s *ListHotNewsWithTypeResponse) SetBody(v *ListHotNewsWithTypeResponseBody) *ListHotNewsWithTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ListInterveneCntRequest struct {
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	PageIndex *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInterveneCntRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneCntRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneCntRequest) SetAgentKey(v string) *ListInterveneCntRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListInterveneCntRequest) SetPageIndex(v int32) *ListInterveneCntRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneCntRequest) SetPageSize(v int32) *ListInterveneCntRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInterveneCntResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListInterveneCntResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInterveneCntResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneCntResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneCntResponseBody) SetCode(v string) *ListInterveneCntResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBody) SetData(v *ListInterveneCntResponseBodyData) *ListInterveneCntResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInterveneCntResponseBody) SetHttpStatusCode(v int32) *ListInterveneCntResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBody) SetMessage(v string) *ListInterveneCntResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBody) SetRequestId(v string) *ListInterveneCntResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBody) SetSuccess(v bool) *ListInterveneCntResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInterveneCntResponseBodyData struct {
+	CntList   []interface{} `json:"CntList,omitempty" xml:"CntList,omitempty" type:"Repeated"`
+	PageCnt   *int32        `json:"PageCnt,omitempty" xml:"PageCnt,omitempty"`
+	PageIndex *int32        `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInterveneCntResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneCntResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneCntResponseBodyData) SetCntList(v []interface{}) *ListInterveneCntResponseBodyData {
+	s.CntList = v
+	return s
+}
+
+func (s *ListInterveneCntResponseBodyData) SetPageCnt(v int32) *ListInterveneCntResponseBodyData {
+	s.PageCnt = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBodyData) SetPageIndex(v int32) *ListInterveneCntResponseBodyData {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneCntResponseBodyData) SetPageSize(v int32) *ListInterveneCntResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+type ListInterveneCntResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterveneCntResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInterveneCntResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneCntResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneCntResponse) SetHeaders(v map[string]*string) *ListInterveneCntResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInterveneCntResponse) SetStatusCode(v int32) *ListInterveneCntResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInterveneCntResponse) SetBody(v *ListInterveneCntResponseBody) *ListInterveneCntResponse {
+	s.Body = v
+	return s
+}
+
+type ListInterveneImportTasksRequest struct {
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	PageIndex *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInterveneImportTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneImportTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneImportTasksRequest) SetAgentKey(v string) *ListInterveneImportTasksRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksRequest) SetPageIndex(v int32) *ListInterveneImportTasksRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksRequest) SetPageSize(v int32) *ListInterveneImportTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInterveneImportTasksResponseBody struct {
+	Code           *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListInterveneImportTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInterveneImportTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneImportTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetCode(v string) *ListInterveneImportTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetData(v *ListInterveneImportTasksResponseBodyData) *ListInterveneImportTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetHttpStatusCode(v int32) *ListInterveneImportTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetMessage(v string) *ListInterveneImportTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetRequestId(v string) *ListInterveneImportTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBody) SetSuccess(v bool) *ListInterveneImportTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInterveneImportTasksResponseBodyData struct {
+	PageIndex  *int32                                                `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StatusList []*ListInterveneImportTasksResponseBodyDataStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	TotalSize  *int32                                                `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListInterveneImportTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneImportTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneImportTasksResponseBodyData) SetPageIndex(v int32) *ListInterveneImportTasksResponseBodyData {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyData) SetPageSize(v int32) *ListInterveneImportTasksResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyData) SetStatusList(v []*ListInterveneImportTasksResponseBodyDataStatusList) *ListInterveneImportTasksResponseBodyData {
+	s.StatusList = v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyData) SetTotalSize(v int32) *ListInterveneImportTasksResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListInterveneImportTasksResponseBodyDataStatusList struct {
+	Msg        *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s ListInterveneImportTasksResponseBodyDataStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneImportTasksResponseBodyDataStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneImportTasksResponseBodyDataStatusList) SetMsg(v string) *ListInterveneImportTasksResponseBodyDataStatusList {
+	s.Msg = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyDataStatusList) SetPercentage(v int32) *ListInterveneImportTasksResponseBodyDataStatusList {
+	s.Percentage = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyDataStatusList) SetStatus(v int32) *ListInterveneImportTasksResponseBodyDataStatusList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyDataStatusList) SetTaskId(v string) *ListInterveneImportTasksResponseBodyDataStatusList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponseBodyDataStatusList) SetTaskName(v string) *ListInterveneImportTasksResponseBodyDataStatusList {
+	s.TaskName = &v
+	return s
+}
+
+type ListInterveneImportTasksResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterveneImportTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInterveneImportTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneImportTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneImportTasksResponse) SetHeaders(v map[string]*string) *ListInterveneImportTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponse) SetStatusCode(v int32) *ListInterveneImportTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInterveneImportTasksResponse) SetBody(v *ListInterveneImportTasksResponseBody) *ListInterveneImportTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListInterveneRulesRequest struct {
+	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	PageIndex *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInterveneRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesRequest) SetAgentKey(v string) *ListInterveneRulesRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListInterveneRulesRequest) SetPageIndex(v int32) *ListInterveneRulesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneRulesRequest) SetPageSize(v int32) *ListInterveneRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListInterveneRulesResponseBody struct {
+	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListInterveneRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListInterveneRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesResponseBody) SetCode(v string) *ListInterveneRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBody) SetData(v *ListInterveneRulesResponseBodyData) *ListInterveneRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBody) SetHttpStatusCode(v int32) *ListInterveneRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBody) SetMessage(v string) *ListInterveneRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBody) SetRequestId(v string) *ListInterveneRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBody) SetSuccess(v bool) *ListInterveneRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListInterveneRulesResponseBodyData struct {
+	Count             *int64                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	InterveneRuleList []*ListInterveneRulesResponseBodyDataInterveneRuleList `json:"InterveneRuleList,omitempty" xml:"InterveneRuleList,omitempty" type:"Repeated"`
+	PageIndex         *int32                                                 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize          *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListInterveneRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesResponseBodyData) SetCount(v int64) *ListInterveneRulesResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyData) SetInterveneRuleList(v []*ListInterveneRulesResponseBodyDataInterveneRuleList) *ListInterveneRulesResponseBodyData {
+	s.InterveneRuleList = v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyData) SetPageIndex(v int32) *ListInterveneRulesResponseBodyData {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyData) SetPageSize(v int32) *ListInterveneRulesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+type ListInterveneRulesResponseBodyDataInterveneRuleList struct {
+	AnswerConfig  []*ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
+	CreateTime    *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EffectTime    *string                                                            `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	InterveneType *int32                                                             `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	NamespaceList []*string                                                          `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	RuleId        *int64                                                             `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName      *string                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ListInterveneRulesResponseBodyDataInterveneRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesResponseBodyDataInterveneRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetAnswerConfig(v []*ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.AnswerConfig = v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetCreateTime(v string) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetEffectTime(v string) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.EffectTime = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetInterveneType(v int32) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.InterveneType = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetNamespaceList(v []*string) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetRuleId(v int64) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) SetRuleName(v string) *ListInterveneRulesResponseBodyDataInterveneRuleList {
+	s.RuleName = &v
+	return s
+}
+
+type ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig struct {
+	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) SetAnswerType(v int32) *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig {
+	s.AnswerType = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) SetMessage(v string) *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig) SetNamespace(v string) *ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig {
+	s.Namespace = &v
+	return s
+}
+
+type ListInterveneRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInterveneRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInterveneRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInterveneRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInterveneRulesResponse) SetHeaders(v map[string]*string) *ListInterveneRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInterveneRulesResponse) SetStatusCode(v int32) *ListInterveneRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInterveneRulesResponse) SetBody(v *ListInterveneRulesResponseBody) *ListInterveneRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListIntervenesRequest struct {
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InterveneType *int32  `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	PageIndex     *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s ListIntervenesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervenesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervenesRequest) SetAgentKey(v string) *ListIntervenesRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ListIntervenesRequest) SetInterveneType(v int32) *ListIntervenesRequest {
+	s.InterveneType = &v
+	return s
+}
+
+func (s *ListIntervenesRequest) SetPageIndex(v int32) *ListIntervenesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIntervenesRequest) SetPageSize(v int32) *ListIntervenesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIntervenesRequest) SetQuery(v string) *ListIntervenesRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListIntervenesRequest) SetRuleId(v int64) *ListIntervenesRequest {
+	s.RuleId = &v
+	return s
+}
+
+type ListIntervenesResponseBody struct {
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListIntervenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIntervenesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervenesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervenesResponseBody) SetCode(v string) *ListIntervenesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBody) SetData(v *ListIntervenesResponseBodyData) *ListIntervenesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIntervenesResponseBody) SetHttpStatusCode(v int32) *ListIntervenesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBody) SetMessage(v string) *ListIntervenesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBody) SetRequestId(v string) *ListIntervenesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBody) SetSuccess(v bool) *ListIntervenesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListIntervenesResponseBodyData struct {
+	InterveneList []*ListIntervenesResponseBodyDataInterveneList `json:"InterveneList,omitempty" xml:"InterveneList,omitempty" type:"Repeated"`
+	PageIndex     *int32                                         `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalSize     *int64                                         `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListIntervenesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervenesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervenesResponseBodyData) SetInterveneList(v []*ListIntervenesResponseBodyDataInterveneList) *ListIntervenesResponseBodyData {
+	s.InterveneList = v
+	return s
+}
+
+func (s *ListIntervenesResponseBodyData) SetPageIndex(v int32) *ListIntervenesResponseBodyData {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBodyData) SetPageSize(v int32) *ListIntervenesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBodyData) SetTotalSize(v int64) *ListIntervenesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListIntervenesResponseBodyDataInterveneList struct {
+	// id
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+}
+
+func (s ListIntervenesResponseBodyDataInterveneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervenesResponseBodyDataInterveneList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervenesResponseBodyDataInterveneList) SetId(v string) *ListIntervenesResponseBodyDataInterveneList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIntervenesResponseBodyDataInterveneList) SetQuery(v string) *ListIntervenesResponseBodyDataInterveneList {
+	s.Query = &v
+	return s
+}
+
+type ListIntervenesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIntervenesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIntervenesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervenesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervenesResponse) SetHeaders(v map[string]*string) *ListIntervenesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIntervenesResponse) SetStatusCode(v int32) *ListIntervenesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIntervenesResponse) SetBody(v *ListIntervenesResponseBody) *ListIntervenesResponse {
 	s.Body = v
 	return s
 }
@@ -6293,6 +8703,50 @@ func (client *Client) CancelAsyncTask(request *CancelAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ClearIntervenesWithOptions(request *ClearIntervenesRequest, runtime *util.RuntimeOptions) (_result *ClearIntervenesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClearIntervenes"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClearIntervenesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ClearIntervenes(request *ClearIntervenesRequest) (_result *ClearIntervenesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClearIntervenesResponse{}
+	_body, _err := client.ClearIntervenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateGeneratedContentWithOptions(tmpReq *CreateGeneratedContentRequest, runtime *util.RuntimeOptions) (_result *CreateGeneratedContentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6471,6 +8925,56 @@ func (client *Client) DeleteGeneratedContent(request *DeleteGeneratedContentRequ
 	return _result, _err
 }
 
+func (client *Client) DeleteInterveneRuleWithOptions(request *DeleteInterveneRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteInterveneRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInterveneRule"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInterveneRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInterveneRule(request *DeleteInterveneRuleRequest) (_result *DeleteInterveneRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInterveneRuleResponse{}
+	_body, _err := client.DeleteInterveneRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMaterialByIdWithOptions(request *DeleteMaterialByIdRequest, runtime *util.RuntimeOptions) (_result *DeleteMaterialByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6564,6 +9068,50 @@ func (client *Client) ExportGeneratedContent(request *ExportGeneratedContentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportGeneratedContentResponse{}
 	_body, _err := client.ExportGeneratedContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportIntervenesWithOptions(request *ExportIntervenesRequest, runtime *util.RuntimeOptions) (_result *ExportIntervenesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportIntervenes"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportIntervenesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportIntervenes(request *ExportIntervenesRequest) (_result *ExportIntervenesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportIntervenesResponse{}
+	_body, _err := client.ExportIntervenesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7043,6 +9591,194 @@ func (client *Client) GetGeneratedContent(request *GetGeneratedContentRequest) (
 	return _result, _err
 }
 
+func (client *Client) GetInterveneGlobalReplyWithOptions(request *GetInterveneGlobalReplyRequest, runtime *util.RuntimeOptions) (_result *GetInterveneGlobalReplyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInterveneGlobalReply"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInterveneGlobalReplyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInterveneGlobalReply(request *GetInterveneGlobalReplyRequest) (_result *GetInterveneGlobalReplyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInterveneGlobalReplyResponse{}
+	_body, _err := client.GetInterveneGlobalReplyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInterveneImportTaskInfoWithOptions(request *GetInterveneImportTaskInfoRequest, runtime *util.RuntimeOptions) (_result *GetInterveneImportTaskInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInterveneImportTaskInfo"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInterveneImportTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInterveneImportTaskInfo(request *GetInterveneImportTaskInfoRequest) (_result *GetInterveneImportTaskInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInterveneImportTaskInfoResponse{}
+	_body, _err := client.GetInterveneImportTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInterveneRuleDetailWithOptions(request *GetInterveneRuleDetailRequest, runtime *util.RuntimeOptions) (_result *GetInterveneRuleDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInterveneRuleDetail"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInterveneRuleDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInterveneRuleDetail(request *GetInterveneRuleDetailRequest) (_result *GetInterveneRuleDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInterveneRuleDetailResponse{}
+	_body, _err := client.GetInterveneRuleDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInterveneTemplateFileUrlWithOptions(request *GetInterveneTemplateFileUrlRequest, runtime *util.RuntimeOptions) (_result *GetInterveneTemplateFileUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInterveneTemplateFileUrl"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInterveneTemplateFileUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInterveneTemplateFileUrl(request *GetInterveneTemplateFileUrlRequest) (_result *GetInterveneTemplateFileUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInterveneTemplateFileUrlResponse{}
+	_body, _err := client.GetInterveneTemplateFileUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetMaterialByIdWithOptions(request *GetMaterialByIdRequest, runtime *util.RuntimeOptions) (_result *GetMaterialByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7130,6 +9866,234 @@ func (client *Client) GetProperties(request *GetPropertiesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPropertiesResponse{}
 	_body, _err := client.GetPropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportInterveneFileWithOptions(request *ImportInterveneFileRequest, runtime *util.RuntimeOptions) (_result *ImportInterveneFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		body["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportInterveneFile"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportInterveneFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportInterveneFile(request *ImportInterveneFileRequest) (_result *ImportInterveneFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportInterveneFileResponse{}
+	_body, _err := client.ImportInterveneFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportInterveneFileAsyncWithOptions(request *ImportInterveneFileAsyncRequest, runtime *util.RuntimeOptions) (_result *ImportInterveneFileAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		body["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportInterveneFileAsync"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportInterveneFileAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportInterveneFileAsync(request *ImportInterveneFileAsyncRequest) (_result *ImportInterveneFileAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportInterveneFileAsyncResponse{}
+	_body, _err := client.ImportInterveneFileAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertInterveneGlobalReplyWithOptions(tmpReq *InsertInterveneGlobalReplyRequest, runtime *util.RuntimeOptions) (_result *InsertInterveneGlobalReplyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertInterveneGlobalReplyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReplyMessagList)) {
+		request.ReplyMessagListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReplyMessagList, tea.String("ReplyMessagList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReplyMessagListShrink)) {
+		body["ReplyMessagList"] = request.ReplyMessagListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertInterveneGlobalReply"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertInterveneGlobalReplyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertInterveneGlobalReply(request *InsertInterveneGlobalReplyRequest) (_result *InsertInterveneGlobalReplyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertInterveneGlobalReplyResponse{}
+	_body, _err := client.InsertInterveneGlobalReplyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertInterveneRuleWithOptions(tmpReq *InsertInterveneRuleRequest, runtime *util.RuntimeOptions) (_result *InsertInterveneRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertInterveneRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InterveneRuleConfig)) {
+		request.InterveneRuleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InterveneRuleConfig, tea.String("InterveneRuleConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InterveneRuleConfigShrink)) {
+		body["InterveneRuleConfig"] = request.InterveneRuleConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertInterveneRule"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertInterveneRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertInterveneRule(request *InsertInterveneRuleRequest) (_result *InsertInterveneRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertInterveneRuleResponse{}
+	_body, _err := client.InsertInterveneRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7484,6 +10448,234 @@ func (client *Client) ListHotNewsWithType(request *ListHotNewsWithTypeRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotNewsWithTypeResponse{}
 	_body, _err := client.ListHotNewsWithTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInterveneCntWithOptions(request *ListInterveneCntRequest, runtime *util.RuntimeOptions) (_result *ListInterveneCntResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInterveneCnt"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInterveneCntResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInterveneCnt(request *ListInterveneCntRequest) (_result *ListInterveneCntResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInterveneCntResponse{}
+	_body, _err := client.ListInterveneCntWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInterveneImportTasksWithOptions(request *ListInterveneImportTasksRequest, runtime *util.RuntimeOptions) (_result *ListInterveneImportTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInterveneImportTasks"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInterveneImportTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInterveneImportTasks(request *ListInterveneImportTasksRequest) (_result *ListInterveneImportTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInterveneImportTasksResponse{}
+	_body, _err := client.ListInterveneImportTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInterveneRulesWithOptions(request *ListInterveneRulesRequest, runtime *util.RuntimeOptions) (_result *ListInterveneRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInterveneRules"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInterveneRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInterveneRules(request *ListInterveneRulesRequest) (_result *ListInterveneRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInterveneRulesResponse{}
+	_body, _err := client.ListInterveneRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIntervenesWithOptions(request *ListIntervenesRequest, runtime *util.RuntimeOptions) (_result *ListIntervenesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InterveneType)) {
+		body["InterveneType"] = request.InterveneType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntervenes"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIntervenesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIntervenes(request *ListIntervenesRequest) (_result *ListIntervenesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIntervenesResponse{}
+	_body, _err := client.ListIntervenesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
