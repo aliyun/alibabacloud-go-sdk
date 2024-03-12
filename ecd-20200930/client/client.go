@@ -2104,10 +2104,26 @@ func (s *CancelCdsFileShareLinkResponse) SetBody(v *CancelCdsFileShareLinkRespon
 }
 
 type CancelCoordinationForMonitoringRequest struct {
-	CoIds     []*string `json:"CoIds,omitempty" xml:"CoIds,omitempty" type:"Repeated"`
-	EndUserId *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserType  *string   `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The IDs of stream collaboration tasks.
+	CoIds []*string `json:"CoIds,omitempty" xml:"CoIds,omitempty" type:"Repeated"`
+	// The ID of the end user that initiates stream collaboration. If the initiator is the administrator, skip this parameter.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the user.
+	//
+	// Valid value:
+	//
+	// *   <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     TENANT_ADMIN
+	//
+	//     <!-- -->
+	//
+	//     : administrator.
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s CancelCoordinationForMonitoringRequest) String() string {
@@ -2139,6 +2155,7 @@ func (s *CancelCoordinationForMonitoringRequest) SetUserType(v string) *CancelCo
 }
 
 type CancelCoordinationForMonitoringResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2864,11 +2881,16 @@ func (s *CopyCdsFileResponse) SetBody(v *CopyCdsFileResponseBody) *CopyCdsFileRe
 }
 
 type CopyImageRequest struct {
+	// The description of the image copy. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DestinationDescription *string `json:"DestinationDescription,omitempty" xml:"DestinationDescription,omitempty"`
-	DestinationImageName   *string `json:"DestinationImageName,omitempty" xml:"DestinationImageName,omitempty"`
-	DestinationRegionId    *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	ImageId                *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the image copy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `acs:` or `aliyun`. The name cannot contain `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-).
+	DestinationImageName *string `json:"DestinationImageName,omitempty" xml:"DestinationImageName,omitempty"`
+	// The destination region to which you want to copy the image.
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// The ID of the image that is copied to the destination region.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CopyImageRequest) String() string {
@@ -2905,7 +2927,9 @@ func (s *CopyImageRequest) SetRegionId(v string) *CopyImageRequest {
 }
 
 type CopyImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image that is being copied.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4275,18 +4299,26 @@ func (s *CreateCdsFileShareLinkResponse) SetBody(v *CreateCdsFileShareLinkRespon
 }
 
 type CreateCloudDriveServiceRequest struct {
-	BizType    *int32    `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CenId      *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndUserId  []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	MaxSize    *int64    `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The business type.
+	BizType       *int32    `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CdsChargeType *string   `json:"CdsChargeType,omitempty" xml:"CdsChargeType,omitempty"`
+	CenId         *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	DomainName    *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndUserId     []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	MaxSize       *int64    `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
 	// The name of the cloud disk that you want to create in Cloud Drive Service.
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	Period         *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit     *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The region ID.
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The solution ID.
 	SolutionId  *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	UserCount   *int64  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 	UserMaxSize *int64  `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
 }
 
@@ -4298,8 +4330,23 @@ func (s CreateCloudDriveServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCloudDriveServiceRequest) SetAutoPay(v bool) *CreateCloudDriveServiceRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceRequest) SetAutoRenew(v bool) *CreateCloudDriveServiceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
 func (s *CreateCloudDriveServiceRequest) SetBizType(v int32) *CreateCloudDriveServiceRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceRequest) SetCdsChargeType(v string) *CreateCloudDriveServiceRequest {
+	s.CdsChargeType = &v
 	return s
 }
 
@@ -4338,6 +4385,16 @@ func (s *CreateCloudDriveServiceRequest) SetOfficeSiteType(v string) *CreateClou
 	return s
 }
 
+func (s *CreateCloudDriveServiceRequest) SetPeriod(v int64) *CreateCloudDriveServiceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceRequest) SetPeriodUnit(v string) *CreateCloudDriveServiceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *CreateCloudDriveServiceRequest) SetRegionId(v string) *CreateCloudDriveServiceRequest {
 	s.RegionId = &v
 	return s
@@ -4345,6 +4402,11 @@ func (s *CreateCloudDriveServiceRequest) SetRegionId(v string) *CreateCloudDrive
 
 func (s *CreateCloudDriveServiceRequest) SetSolutionId(v string) *CreateCloudDriveServiceRequest {
 	s.SolutionId = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceRequest) SetUserCount(v int64) *CreateCloudDriveServiceRequest {
+	s.UserCount = &v
 	return s
 }
 
@@ -4360,9 +4422,11 @@ type CreateCloudDriveServiceResponseBody struct {
 	CdsName    *string `json:"CdsName,omitempty" xml:"CdsName,omitempty"`
 	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The maximum capacity of each instance in Cloud Drive Service. Unit: GiB
 	MaxSize        *string `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -4395,6 +4459,11 @@ func (s *CreateCloudDriveServiceResponseBody) SetDomainName(v string) *CreateClo
 	return s
 }
 
+func (s *CreateCloudDriveServiceResponseBody) SetErrorCode(v string) *CreateCloudDriveServiceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
 func (s *CreateCloudDriveServiceResponseBody) SetMaxSize(v string) *CreateCloudDriveServiceResponseBody {
 	s.MaxSize = &v
 	return s
@@ -4402,6 +4471,11 @@ func (s *CreateCloudDriveServiceResponseBody) SetMaxSize(v string) *CreateCloudD
 
 func (s *CreateCloudDriveServiceResponseBody) SetOfficeSiteType(v string) *CreateCloudDriveServiceResponseBody {
 	s.OfficeSiteType = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceResponseBody) SetOrderId(v string) *CreateCloudDriveServiceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -5073,7 +5147,7 @@ type CreateDesktopsRequest struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to enable automatic payment.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.````
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the desktop template.
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
@@ -10047,13 +10121,13 @@ func (s *DescribeCdsFileShareLinksResponse) SetBody(v *DescribeCdsFileShareLinks
 }
 
 type DescribeCensRequest struct {
-	// Details about CEN instances.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the page to return.
-	//
+	// The page number.\
 	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.\
+	// Default value: 50.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the bandwidth plan that is associated with the CEN instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10081,19 +10155,15 @@ func (s *DescribeCensRequest) SetRegionId(v string) *DescribeCensRequest {
 }
 
 type DescribeCensResponseBody struct {
-	// The level of CIDR block overlapping. Valid value: REDUCED. This value indicates that the CIDR blocks can overlap with each other but must not be the same.
+	// Details of the CEN instances.
 	Cens []*DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Repeated"`
-	// The status of the CEN instance. Valid values:
-	//
-	// *   Creating: The CEN instance is being created.
-	// *   Active: The CEN instance is running.
-	// *   Deleting: The CEN instance is being deleted.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The description of the CEN instance.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation that you want to perform. Set the value to DescribeCens.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the bandwidth plans that are associated with the CEN instance.
+	// The total number of CEN instances returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10131,24 +10201,31 @@ func (s *DescribeCensResponseBody) SetTotalCount(v int32) *DescribeCensResponseB
 }
 
 type DescribeCensResponseBodyCens struct {
-	// The number of entries returned per page.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The tag value of the CEN instance.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The tag key of the CEN instance.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPv6 is supported. Valid value: DISABLED. This value indicates that IPv6 is not supported.
-	//
-	// >  IPv6 is not supported.
-	Ipv6Level *string `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
-	// The ID of the request.
-	Name       *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PackageIds []*DescribeCensResponseBodyCensPackageIds `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
-	// The name of the CEN instance.
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The ID of the region.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The time when the CEN instance was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the CEN instance.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether IPv6 is supported. A value of DISABLED indicates that IPv6 is not supported.
+	//
+	// **
+	//
+	// **Description** IPv6 is not supported.
+	Ipv6Level *string `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
+	// The name of the CEN instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the bandwidth plans that are associated with the CEN instance.
+	PackageIds []*DescribeCensResponseBodyCensPackageIds `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
+	// The level of CIDR block overlapping. If REDUCED returns, the CIDR blocks can overlap with each other but must not be the same.
+	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The status of the CEN instance. Valid values:
+	//
+	// *   Creating
+	// *   Active
+	// *   Deleting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the CEN instance.
 	Tags []*DescribeCensResponseBodyCensTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -10206,6 +10283,7 @@ func (s *DescribeCensResponseBodyCens) SetTags(v []*DescribeCensResponseBodyCens
 }
 
 type DescribeCensResponseBodyCensPackageIds struct {
+	// The ID of the bandwidth plan that is associated with the CEN instance.
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
 }
 
@@ -10223,8 +10301,9 @@ func (s *DescribeCensResponseBodyCensPackageIds) SetPackageId(v string) *Describ
 }
 
 type DescribeCensResponseBodyCensTags struct {
-	// DescribeCens
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10276,39 +10355,49 @@ func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCen
 }
 
 type DescribeClientEventsRequest struct {
-	// The ID of the Alibaba Cloud account with which the event is associated.
+	// The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The account type of the workspace. Valid values:
-	//
-	// *   SIMPLE: convenience account
-	// *   AD_CONNECTOR: enterprise AD account
+	// The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
 	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	// The types of event.
+	// The name of the cloud desktop.
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The ID of the desktop group.
-	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the region where the cloud desktop resides.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the directory to which the cloud desktop belongs.
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Details about the events.
-	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
-	// *   200\. The value indicates that the request is successful.
-	// *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+	// If you do not specify a value for this parameter, the current time is used.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The type of event that you want to query. Valid values:
+	//
+	// *   DESKTOP_CONNECT: The desktop session is established.
+	// *   DESKTOP_DISCONNECT: The desktop session is disconnected.
+	// *   DESKTOP_REBOOT: The cloud desktop is restarted.
+	// *   CLIENT_AD_LOGIN: The AD user logs on to the client.
+	// *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
+	// *   DESKTOP_START: The cloud desktop is started.
+	// *   DESKTOP_STOP: The cloud desktop is stopped.
+	//
+	// If you do not specify a value for this parameter, events of all types are queried.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The types of event.
+	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 100.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The IP address of the client.
+	// The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the workspace to which the cloud desktop belongs.
+	// The ID of the workspace to which the cloud desktop belongs. If you do not specify a value for this parameter, events of all workspaces in the specified region are queried.
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The OS that the client runs.
+	// The name of the workspace.
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The number of bytes that are received.
+	// The ID of the region where the cloud desktop resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address of the cloud desktop.
+	// The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	//
+	// If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10391,11 +10480,11 @@ func (s *DescribeClientEventsRequest) SetStartTime(v string) *DescribeClientEven
 }
 
 type DescribeClientEventsResponseBody struct {
-	// The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
+	// Details about the events.
 	Events []*DescribeClientEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The ID of the region.
+	// The query token that is returned in this call.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of the directory.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10423,59 +10512,55 @@ func (s *DescribeClientEventsResponseBody) SetRequestId(v string) *DescribeClien
 }
 
 type DescribeClientEventsResponseBodyEvents struct {
-	// The name of the cloud desktop.
+	// The ID of the Alibaba Cloud account with which the event is associated.
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The name of the cloud desktop.
+	// The number of bytes that are received.
 	BytesReceived *string `json:"BytesReceived,omitempty" xml:"BytesReceived,omitempty"`
-	// The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or Active Directory (AD) username. If you do not specify a value for this parameter, events of all regular users in the specified region are queried.
-	BytesSend *string `json:"BytesSend,omitempty" xml:"BytesSend,omitempty"`
-	// The IP address of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The ID of the cloud desktop.
-	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// DescribeClientEvents
-	ClientVersion    *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	DesktopGroupId   *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The name of the desktop group.
-	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the workspace.
-	DesktopIp   *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The type of the event.
-	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The type of event.
-	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-	//
-	// If you do not specify a value for this parameter, the current time is used.
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The type of event that you want to query. Valid values:
-	//
-	// *   DESKTOP_CONNECT: The desktop session is established.
-	// *   DESKTOP_DISCONNECT: The desktop session is disconnected.
-	// *   DESKTOP_REBOOT: The cloud desktop is restarted.
-	// *   CLIENT_AD_LOGIN: The AD user logs on to the client.
-	// *   GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
-	// *   DESKTOP_START: The cloud desktop is started.
-	// *   DESKTOP_STOP: The cloud desktop is stopped.
-	//
-	// If you do not specify a value for this parameter, events of all types are queried.
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-	//
-	// If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
-	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// The query token. Set the value to the NextToken value that is returned from the last call to the DescribeClientEvents operation.
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the event.
-	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The ID of the request.
-	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The ID of the cloud desktop. If you do not specify a value for this parameter, events of all cloud desktops in the specified region are queried.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of bytes that are sent.
+	BytesSend *string `json:"BytesSend,omitempty" xml:"BytesSend,omitempty"`
+	// The IP address of the client.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The OS that the client runs.
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The version of the client.
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The ID of the desktop group.
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The name of the desktop group.
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	// The ID of the cloud desktop.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The IP address of the cloud desktop.
+	DesktopIp *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
+	// The name of the cloud desktop.
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The ID of the directory to which the cloud desktop belongs.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The type of the directory.
+	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	// The information about the regular user that connects to the cloud desktop from the EDS client. The information can be the RAM user ID or AD username.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The time when the event occurred.
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// The type of the event.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The ID of the workspace to which the cloud desktop belongs.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The name of the workspace.
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The account type of the workspace. Valid values:
+	//
+	// *   SIMPLE: convenience account
+	// *   AD_CONNECTOR: enterprise AD account
+	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the event. This parameter is returned if you set the EventType parameter to DESKTOP_DISCONNECT or GET_CONNECTION_TICKET. Valid values:
+	//
+	// *   200\. The value indicates that the request is successful.
+	// *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -12256,7 +12341,7 @@ func (s *DescribeDesktopInfoRequest) SetRegionId(v string) *DescribeDesktopInfoR
 }
 
 type DescribeDesktopInfoResponseBody struct {
-	// The details about the cloud desktops.
+	// Details of the cloud desktops.
 	Desktops []*DescribeDesktopInfoResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -12281,27 +12366,27 @@ func (s *DescribeDesktopInfoResponseBody) SetRequestId(v string) *DescribeDeskto
 }
 
 type DescribeDesktopInfoResponseBodyDesktops struct {
-	// The connection status of the end user. Valid values:
+	// The connection status of the user. Valid values:
 	//
 	// *   Connected
 	// *   Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The current version of the cloud desktop.
+	// The current image version of the cloud desktop.
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// The cloud desktop ID.
+	// The ID of the cloud desktop.
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The status of the cloud desktop. Valid values:
+	// The state of the cloud desktop. Valid values:
 	//
-	// *   Pending
-	// *   Starting
-	// *   Running
-	// *   Stopping
-	// *   Stopped
-	// *   Expired
-	// *   Deleted
-	// *   Failed
+	// *   Pending: The cloud desktop is being created.
+	// *   Starting: The cloud desktop is being started.
+	// *   Running: The cloud desktop is running.
+	// *   Stopping: The cloud desktop is being stopped.
+	// *   Stopped: The cloud desktop is stopped.
+	// *   Expired: The cloud desktop is expired.
+	// *   Deleted: The cloud desktop is deleted.
+	// *   Failed: Failed to create the cloud desktop.
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The flag that is used to manage the cloud desktop.
+	// The information about flags that are used to manage cloud desktops.
 	ManagementFlag []*string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty" type:"Repeated"`
 	NewAppSize     *int64    `json:"NewAppSize,omitempty" xml:"NewAppSize,omitempty"`
 	NewAppVersion  *string   `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
@@ -17357,9 +17442,10 @@ type DescribeInvocationsRequest struct {
 	//
 	// Default value: Running.
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Default value: 100.
+	// *   Valid values: 1 to 50.
+	// *   Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The query token. Set the value to the NextToken value that is returned from the last call to the previous DescribeInvocations operation.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -29668,25 +29754,25 @@ func (s *ModifyCustomizedListHeadersResponse) SetBody(v *ModifyCustomizedListHea
 }
 
 type ModifyDesktopChargeTypeRequest struct {
-	// The IDs of the cloud desktops. You can specify 1 to 20 IDs.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the sales promotion.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
-	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// Specifies whether to enable automatic payment if you specify subscription as the new billing method for the cloud desktop.
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
-	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The new billing method that you want to use for the desktop group.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The IDs of the cloud desktops. You can specify 1 to 20 IDs.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The subscription duration if you specify subscription as the new billing method for the cloud desktop. The unit of the value is specified by the `PeriodUnit` parameter. This parameter takes effect only when the `ChargeType` parameter is set to `PrePaid`.
 	//
 	// *   If the `PeriodUnit` parameter is set to `Week`, the valid value of the Period parameter is 1.
 	// *   If the `PeriodUnit` parameter is set to `Month`, the valid values of the Period parameter are 1, 2, 3, and 6.
 	// *   If the `PeriodUnit` parameter is set to `Year`, the valid values of the Period parameter are 1, 2, 3, 4, and 5.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration if you specify subscription as the new billing method for the cloud desktop.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the sales promotion.
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// >  This parameter is in invitational preview and not available to the public.
+	// > 处于定向邀测中，暂不对外开放。
 	UseDuration *int32 `json:"UseDuration,omitempty" xml:"UseDuration,omitempty"`
 }
 
@@ -29739,10 +29825,11 @@ func (s *ModifyDesktopChargeTypeRequest) SetUseDuration(v int32) *ModifyDesktopC
 }
 
 type ModifyDesktopChargeTypeResponseBody struct {
+	// The IDs of the desktop groups. If multiple cloud desktops are created at a time, multiple cloud desktop IDs are returned.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of the cloud desktop.
+	// The ID of the order.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Change the billing method of a cloud desktop
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -36113,11 +36200,11 @@ func (s *StopDesktopsResponse) SetBody(v *StopDesktopsResponseBody) *StopDesktop
 }
 
 type StopInvocationRequest struct {
-	// StopInvocation
+	// The ID of cloud desktop N. Valid values of N: 1 to 50.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The operation that you want to perform. Set the value to StopInvocation.
+	// The ID of the execution.
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The ID of the request.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -36145,6 +36232,7 @@ func (s *StopInvocationRequest) SetRegionId(v string) *StopInvocationRequest {
 }
 
 type StopInvocationResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -38582,7 +38670,7 @@ func (client *Client) CreateADConnectorDirectory(request *CreateADConnectorDirec
  * *   When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
  * *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
  *     **
- *     **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+ *     **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
  * For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
  *
  * @param request CreateADConnectorOfficeSiteRequest
@@ -38702,7 +38790,7 @@ func (client *Client) CreateADConnectorOfficeSiteWithOptions(request *CreateADCo
  * *   When you create a workspace of the enterprise AD account type, AD connectors are automatically created to allow you to connect to enterprise AD systems. You are charged for the AD connectors. For more information, see [Billing overview](~~188395~~).
  * *   After you call this operation to create a workspace of the enterprise AD account type, perform the following steps to configure the AD domain: 1. Configure the conditional forwarder in the Domain Name System (DNS) server. 2. Configure the trust relationship in the AD domain server, and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship for the workspace of the enterprise AD account type. 3. Call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain the organizational unit (OU) details of the AD domain. Then, call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and an administrator for the workspace of the enterprise AD account type.
  *     **
- *     **Note**If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
+ *     **Note** If you specify DomainUserName and DomainPassword when you create a workspace of the enterprise AD account type, you must configure only the conditional forwarder. If you do not specify DomainUserName or DomainPassword, you must configure the conditional forwarder, trust relationship, and OU.
  * For more information, see [Create a workspace of the enterprise AD account type](~~214469~~).
  *
  * @param request CreateADConnectorOfficeSiteRequest
@@ -39148,8 +39236,20 @@ func (client *Client) CreateCloudDriveServiceWithOptions(request *CreateCloudDri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BizType)) {
 		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdsChargeType)) {
+		query["CdsChargeType"] = request.CdsChargeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CenId)) {
@@ -39180,12 +39280,24 @@ func (client *Client) CreateCloudDriveServiceWithOptions(request *CreateCloudDri
 		query["OfficeSiteType"] = request.OfficeSiteType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
 		query["SolutionId"] = request.SolutionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCount)) {
+		query["UserCount"] = request.UserCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserMaxSize)) {
@@ -41866,7 +41978,7 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 }
 
 /**
- * The version of the client.
+ * You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
  *
  * @param request DescribeClientEventsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41958,7 +42070,7 @@ func (client *Client) DescribeClientEventsWithOptions(request *DescribeClientEve
 }
 
 /**
- * The version of the client.
+ * You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
  *
  * @param request DescribeClientEventsRequest
  * @return DescribeClientEventsResponse
@@ -47421,9 +47533,10 @@ func (client *Client) ModifyCustomizedListHeaders(request *ModifyCustomizedListH
 }
 
 /**
- * *   Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+ * *   Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
  * *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
  * *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+ * *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
  *
  * @param request ModifyDesktopChargeTypeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -47491,9 +47604,10 @@ func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopC
 }
 
 /**
- * *   Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops. For more information, see [Billing overview](~~188395~~).
+ * *   Before you call this operation, make sure that you are familiar with the billing methods of cloud desktops in Elastic Desktop Service (EDS). For more information, see [Billing overview](~~188395~~).
  * *   Before you call this operation, make sure that the cloud desktop that you want to manage is in the Running or Stopped state and no overdue payments of the cloud desktop are generated.
  * *   After the order payment is completed, the system starts to change the billing method of the cloud desktop. During the change, you cannot perform operations, such as starting or stopping the cloud desktop, and changing configurations of the cloud desktop.
+ * *   After you change the billing method of the cloud desktop from subscription to pay-as-you-go, you may get a refund. For more information, see [Change a subscription cloud desktop to a pay-as-you-go one](https://help.aliyun.com/document_detail/439964.html).
  *
  * @param request ModifyDesktopChargeTypeRequest
  * @return ModifyDesktopChargeTypeResponse
@@ -49955,7 +50069,7 @@ func (client *Client) ResetNASDefaultMountTarget(request *ResetNASDefaultMountTa
  * Before you call this operation, make sure that the following operations are performed:
  * *   The data that you want to retain in the disk is backed up.
  *     **
- *     **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+ *     **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
  * *   The cloud desktop whose disk you want to restore is stopped.
  *
  * @param request ResetSnapshotRequest
@@ -50003,7 +50117,7 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
  * Before you call this operation, make sure that the following operations are performed:
  * *   The data that you want to retain in the disk is backed up.
  *     **
- *     **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+ *     **Note** The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
  * *   The cloud desktop whose disk you want to restore is stopped.
  *
  * @param request ResetSnapshotRequest
@@ -50775,7 +50889,7 @@ func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopD
 }
 
 /**
- * The ID of the execution.
+ * When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
  *
  * @param request StopInvocationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -50823,7 +50937,7 @@ func (client *Client) StopInvocationWithOptions(request *StopInvocationRequest, 
 }
 
 /**
- * The ID of the execution.
+ * When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
  *
  * @param request StopInvocationRequest
  * @return StopInvocationResponse
