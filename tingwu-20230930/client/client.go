@@ -369,8 +369,9 @@ func (s *CreateTaskResponseBody) SetRequestId(v string) *CreateTaskResponseBody 
 }
 
 type CreateTaskResponseBodyData struct {
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	MeetingJoinUrl *string `json:"MeetingJoinUrl,omitempty" xml:"MeetingJoinUrl,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskKey        *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
 }
 
 func (s CreateTaskResponseBodyData) String() string {
@@ -379,6 +380,11 @@ func (s CreateTaskResponseBodyData) String() string {
 
 func (s CreateTaskResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskResponseBodyData) SetMeetingJoinUrl(v string) *CreateTaskResponseBodyData {
+	s.MeetingJoinUrl = &v
+	return s
 }
 
 func (s *CreateTaskResponseBodyData) SetTaskId(v string) *CreateTaskResponseBodyData {
