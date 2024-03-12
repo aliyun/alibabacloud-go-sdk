@@ -13,14 +13,19 @@ import (
 )
 
 type GetPhoneNumberIdentificationResultRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The authorization code.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The external ID.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the subscriber. The phone number to be verified must be in the Mobile Station International Subscriber Directory Number (MSISDN) format.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SessionPayload       *string `json:"SessionPayload,omitempty" xml:"SessionPayload,omitempty"`
+	// The session ID.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The session payload.
+	SessionPayload *string `json:"SessionPayload,omitempty" xml:"SessionPayload,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationResultRequest) String() string {
@@ -72,10 +77,19 @@ func (s *GetPhoneNumberIdentificationResultRequest) SetSessionPayload(v string) 
 }
 
 type GetPhoneNumberIdentificationResultResponseBody struct {
-	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetPhoneNumberIdentificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return code. Valid values:
+	//
+	// *   OK: The request is successful.
+	// *   NoIdentificationResult: No verification result is available or the verification failed.
+	// *   SessionNotValid: The session is invalid or expired.
+	// *   MobileNumberIllegal: The format of the phone number is invalid.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetPhoneNumberIdentificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the return code.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationResultResponseBody) String() string {
@@ -107,6 +121,7 @@ func (s *GetPhoneNumberIdentificationResultResponseBody) SetRequestId(v string) 
 }
 
 type GetPhoneNumberIdentificationResultResponseBodyData struct {
+	// Indicates whether the phone number passed the verification.
 	IsIdentified *string `json:"IsIdentified,omitempty" xml:"IsIdentified,omitempty"`
 }
 
@@ -124,9 +139,9 @@ func (s *GetPhoneNumberIdentificationResultResponseBodyData) SetIsIdentified(v s
 }
 
 type GetPhoneNumberIdentificationResultResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPhoneNumberIdentificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPhoneNumberIdentificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationResultResponse) String() string {
@@ -153,11 +168,16 @@ func (s *GetPhoneNumberIdentificationResultResponse) SetBody(v *GetPhoneNumberId
 }
 
 type GetPhoneNumberIdentificationUrlRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	Ip                   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The authorization code.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The IP address of the subscriber\"s phone.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The external ID.
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number of the subscriber. The phone number is in the Mobile Station International Subscriber Directory Number (MSISDN) format.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Specifies whether to remember the phone number.
 	RememberPhoneNumber  *bool   `json:"RememberPhoneNumber,omitempty" xml:"RememberPhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -212,10 +232,18 @@ func (s *GetPhoneNumberIdentificationUrlRequest) SetResourceOwnerId(v int64) *Ge
 }
 
 type GetPhoneNumberIdentificationUrlResponseBody struct {
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetPhoneNumberIdentificationUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **IdentificationNotAvailable**: The verification system does not support the phone number that corresponds to the IP address.
+	// *   **MobileNumberIllegal**: The format of the phone number is invalid.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetPhoneNumberIdentificationUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the return code.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationUrlResponseBody) String() string {
@@ -247,8 +275,10 @@ func (s *GetPhoneNumberIdentificationUrlResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetPhoneNumberIdentificationUrlResponseBodyData struct {
+	// The verification URL.
 	IdentificationUrl *string `json:"IdentificationUrl,omitempty" xml:"IdentificationUrl,omitempty"`
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The session ID.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationUrlResponseBodyData) String() string {
@@ -270,9 +300,9 @@ func (s *GetPhoneNumberIdentificationUrlResponseBodyData) SetSessionId(v string)
 }
 
 type GetPhoneNumberIdentificationUrlResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPhoneNumberIdentificationUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPhoneNumberIdentificationUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPhoneNumberIdentificationUrlResponse) String() string {
