@@ -53783,6 +53783,7 @@ type IntlFlightListingSearchRequest struct {
 	CabinType           *int32                                               `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	DirectOnly          *bool                                                `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	IsvName             *string                                              `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language            *string                                              `json:"language,omitempty" xml:"language,omitempty"`
 	NeedShareFlight     *bool                                                `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	OutWheelSearch      *bool                                                `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
 	QueryRecordId       *string                                              `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
@@ -53824,6 +53825,11 @@ func (s *IntlFlightListingSearchRequest) SetDirectOnly(v bool) *IntlFlightListin
 
 func (s *IntlFlightListingSearchRequest) SetIsvName(v string) *IntlFlightListingSearchRequest {
 	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightListingSearchRequest) SetLanguage(v string) *IntlFlightListingSearchRequest {
+	s.Language = &v
 	return s
 }
 
@@ -54007,6 +54013,7 @@ type IntlFlightListingSearchShrinkRequest struct {
 	CabinType                 *int32  `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	DirectOnly                *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	IsvName                   *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
 	NeedShareFlight           *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	OutWheelSearch            *bool   `json:"out_wheel_search,omitempty" xml:"out_wheel_search,omitempty"`
 	QueryRecordId             *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
@@ -54048,6 +54055,11 @@ func (s *IntlFlightListingSearchShrinkRequest) SetDirectOnly(v bool) *IntlFlight
 
 func (s *IntlFlightListingSearchShrinkRequest) SetIsvName(v string) *IntlFlightListingSearchShrinkRequest {
 	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightListingSearchShrinkRequest) SetLanguage(v string) *IntlFlightListingSearchShrinkRequest {
+	s.Language = &v
 	return s
 }
 
@@ -54795,6 +54807,7 @@ type IntlFlightOtaItemDetailRequest struct {
 	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language     *string `json:"language,omitempty" xml:"language,omitempty"`
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
@@ -54818,6 +54831,11 @@ func (s *IntlFlightOtaItemDetailRequest) SetBuyerName(v string) *IntlFlightOtaIt
 
 func (s *IntlFlightOtaItemDetailRequest) SetIsvName(v string) *IntlFlightOtaItemDetailRequest {
 	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOtaItemDetailRequest) SetLanguage(v string) *IntlFlightOtaItemDetailRequest {
+	s.Language = &v
 	return s
 }
 
@@ -55800,6 +55818,7 @@ type IntlFlightOtaSearchRequest struct {
 	CabinType           *int32                                           `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	DirectOnly          *bool                                            `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	IsvName             *string                                          `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language            *string                                          `json:"language,omitempty" xml:"language,omitempty"`
 	NeedShareFlight     *bool                                            `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	SearchJourneys      []*IntlFlightOtaSearchRequestSearchJourneys      `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
 	SearchPassengerList []*IntlFlightOtaSearchRequestSearchPassengerList `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty" type:"Repeated"`
@@ -55837,6 +55856,11 @@ func (s *IntlFlightOtaSearchRequest) SetDirectOnly(v bool) *IntlFlightOtaSearchR
 
 func (s *IntlFlightOtaSearchRequest) SetIsvName(v string) *IntlFlightOtaSearchRequest {
 	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOtaSearchRequest) SetLanguage(v string) *IntlFlightOtaSearchRequest {
+	s.Language = &v
 	return s
 }
 
@@ -56000,6 +56024,7 @@ type IntlFlightOtaSearchShrinkRequest struct {
 	CabinType                 *int32  `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
 	DirectOnly                *bool   `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	IsvName                   *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language                  *string `json:"language,omitempty" xml:"language,omitempty"`
 	NeedShareFlight           *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	SearchJourneysShrink      *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	SearchPassengerListShrink *string `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty"`
@@ -56037,6 +56062,11 @@ func (s *IntlFlightOtaSearchShrinkRequest) SetDirectOnly(v bool) *IntlFlightOtaS
 
 func (s *IntlFlightOtaSearchShrinkRequest) SetIsvName(v string) *IntlFlightOtaSearchShrinkRequest {
 	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOtaSearchShrinkRequest) SetLanguage(v string) *IntlFlightOtaSearchShrinkRequest {
+	s.Language = &v
 	return s
 }
 
@@ -76589,6 +76619,10 @@ func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListi
 		query["isv_name"] = request.IsvName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NeedShareFlight)) {
 		query["need_share_flight"] = request.NeedShareFlight
 	}
@@ -76688,6 +76722,10 @@ func (client *Client) IntlFlightOtaItemDetailWithOptions(otaItemId *string, requ
 		query["isv_name"] = request.IsvName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SupplierCode)) {
 		query["supplier_code"] = request.SupplierCode
 	}
@@ -76771,6 +76809,10 @@ func (client *Client) IntlFlightOtaSearchWithOptions(tmpReq *IntlFlightOtaSearch
 
 	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
 		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NeedShareFlight)) {
