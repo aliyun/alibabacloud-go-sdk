@@ -12210,6 +12210,7 @@ func (s *DescribeScalingActivitiesResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivities struct {
+	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
 	// The total number of instances that were manually added to the scaling group after the scaling activity was complete.
 	AttachedCapacity *string `json:"AttachedCapacity,omitempty" xml:"AttachedCapacity,omitempty"`
 	// The total number of instances that were created by Auto Scaling after the scaling activity was complete.
@@ -12233,7 +12234,8 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	// The error code that is returned when the scaling activity failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message that is returned when the scaling activity failed.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage         *string                                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LifecycleHookContext *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
 	// The execution progress of the scaling activity.
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the scaling activity.
@@ -12265,7 +12267,9 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	// The instances that were stopped in Economical Mode during the scaling activity.
 	StoppedInstances []*string `json:"StoppedInstances,omitempty" xml:"StoppedInstances,omitempty" type:"Repeated"`
 	// The total number of instances in the scaling group after the scaling activity was complete.
-	TotalCapacity *string `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	TotalCapacity     *string `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	TriggerSourceId   *string `json:"TriggerSourceId,omitempty" xml:"TriggerSourceId,omitempty"`
+	TriggerSourceType *string `json:"TriggerSourceType,omitempty" xml:"TriggerSourceType,omitempty"`
 }
 
 func (s DescribeScalingActivitiesResponseBodyScalingActivities) String() string {
@@ -12274,6 +12278,11 @@ func (s DescribeScalingActivitiesResponseBodyScalingActivities) String() string 
 
 func (s DescribeScalingActivitiesResponseBodyScalingActivities) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetActivityMetadata(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
+	s.ActivityMetadata = &v
+	return s
 }
 
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetAttachedCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
@@ -12336,6 +12345,11 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetErrorMessage
 	return s
 }
 
+func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetLifecycleHookContext(v *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext) *DescribeScalingActivitiesResponseBodyScalingActivities {
+	s.LifecycleHookContext = v
+	return s
+}
+
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetProgress(v int32) *DescribeScalingActivitiesResponseBodyScalingActivities {
 	s.Progress = &v
 	return s
@@ -12393,6 +12407,39 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetStoppedInsta
 
 func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTotalCapacity(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
 	s.TotalCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourceId(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
+	s.TriggerSourceId = &v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivities) SetTriggerSourceType(v string) *DescribeScalingActivitiesResponseBodyScalingActivities {
+	s.TriggerSourceType = &v
+	return s
+}
+
+type DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext struct {
+	DisableLifecycleHook    *bool     `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
+	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext) SetDisableLifecycleHook(v bool) *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext {
+	s.DisableLifecycleHook = &v
+	return s
+}
+
+func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext) SetIgnoredLifecycleHookIds(v []*string) *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext {
+	s.IgnoredLifecycleHookIds = v
 	return s
 }
 
@@ -23937,6 +23984,7 @@ func (s *ResumeProcessesResponse) SetBody(v *ResumeProcessesResponseBody) *Resum
 }
 
 type ScaleWithAdjustmentRequest struct {
+	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
 	// The type of the scaling policy. Valid values:
 	//
 	// *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
@@ -23950,7 +23998,8 @@ type ScaleWithAdjustmentRequest struct {
 	// *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken          *string                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LifecycleHookContext *ScaleWithAdjustmentRequestLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
 	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
 	MinAdjustmentMagnitude *int32                               `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
 	Overrides              *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
@@ -23977,6 +24026,11 @@ func (s ScaleWithAdjustmentRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ScaleWithAdjustmentRequest) SetActivityMetadata(v string) *ScaleWithAdjustmentRequest {
+	s.ActivityMetadata = &v
+	return s
+}
+
 func (s *ScaleWithAdjustmentRequest) SetAdjustmentType(v string) *ScaleWithAdjustmentRequest {
 	s.AdjustmentType = &v
 	return s
@@ -23989,6 +24043,11 @@ func (s *ScaleWithAdjustmentRequest) SetAdjustmentValue(v int32) *ScaleWithAdjus
 
 func (s *ScaleWithAdjustmentRequest) SetClientToken(v string) *ScaleWithAdjustmentRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetLifecycleHookContext(v *ScaleWithAdjustmentRequestLifecycleHookContext) *ScaleWithAdjustmentRequest {
+	s.LifecycleHookContext = v
 	return s
 }
 
@@ -24019,6 +24078,29 @@ func (s *ScaleWithAdjustmentRequest) SetScalingGroupId(v string) *ScaleWithAdjus
 
 func (s *ScaleWithAdjustmentRequest) SetSyncActivity(v bool) *ScaleWithAdjustmentRequest {
 	s.SyncActivity = &v
+	return s
+}
+
+type ScaleWithAdjustmentRequestLifecycleHookContext struct {
+	DisableLifecycleHook    *bool     `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
+	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
+}
+
+func (s ScaleWithAdjustmentRequestLifecycleHookContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentRequestLifecycleHookContext) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetDisableLifecycleHook(v bool) *ScaleWithAdjustmentRequestLifecycleHookContext {
+	s.DisableLifecycleHook = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestLifecycleHookContext) SetIgnoredLifecycleHookIds(v []*string) *ScaleWithAdjustmentRequestLifecycleHookContext {
+	s.IgnoredLifecycleHookIds = v
 	return s
 }
 
@@ -24122,6 +24204,7 @@ func (s *ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) S
 }
 
 type ScaleWithAdjustmentShrinkRequest struct {
+	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
 	// The type of the scaling policy. Valid values:
 	//
 	// *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
@@ -24135,7 +24218,8 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	// *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LifecycleHookContextShrink *string `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty"`
 	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
 	MinAdjustmentMagnitude *int32  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
 	OverridesShrink        *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
@@ -24162,6 +24246,11 @@ func (s ScaleWithAdjustmentShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ScaleWithAdjustmentShrinkRequest) SetActivityMetadata(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.ActivityMetadata = &v
+	return s
+}
+
 func (s *ScaleWithAdjustmentShrinkRequest) SetAdjustmentType(v string) *ScaleWithAdjustmentShrinkRequest {
 	s.AdjustmentType = &v
 	return s
@@ -24174,6 +24263,11 @@ func (s *ScaleWithAdjustmentShrinkRequest) SetAdjustmentValue(v int32) *ScaleWit
 
 func (s *ScaleWithAdjustmentShrinkRequest) SetClientToken(v string) *ScaleWithAdjustmentShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetLifecycleHookContextShrink(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.LifecycleHookContextShrink = &v
 	return s
 }
 
@@ -32109,11 +32203,19 @@ func (client *Client) ScaleWithAdjustmentWithOptions(tmpReq *ScaleWithAdjustment
 	}
 	request := &ScaleWithAdjustmentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LifecycleHookContext)) {
+		request.LifecycleHookContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LifecycleHookContext, tea.String("LifecycleHookContext"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Overrides)) {
 		request.OverridesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Overrides, tea.String("Overrides"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActivityMetadata)) {
+		query["ActivityMetadata"] = request.ActivityMetadata
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AdjustmentType)) {
 		query["AdjustmentType"] = request.AdjustmentType
 	}
@@ -32124,6 +32226,10 @@ func (client *Client) ScaleWithAdjustmentWithOptions(tmpReq *ScaleWithAdjustment
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LifecycleHookContextShrink)) {
+		query["LifecycleHookContext"] = request.LifecycleHookContextShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinAdjustmentMagnitude)) {
