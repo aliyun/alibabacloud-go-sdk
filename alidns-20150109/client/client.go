@@ -17600,6 +17600,7 @@ func (s *DescribePdnsAccountSummaryResponse) SetBody(v *DescribePdnsAccountSumma
 
 type DescribePdnsAppKeyRequest struct {
 	AppKeyId *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -17613,6 +17614,11 @@ func (s DescribePdnsAppKeyRequest) GoString() string {
 
 func (s *DescribePdnsAppKeyRequest) SetAppKeyId(v string) *DescribePdnsAppKeyRequest {
 	s.AppKeyId = &v
+	return s
+}
+
+func (s *DescribePdnsAppKeyRequest) SetAuthCode(v string) *DescribePdnsAppKeyRequest {
+	s.AuthCode = &v
 	return s
 }
 
@@ -17645,10 +17651,11 @@ func (s *DescribePdnsAppKeyResponseBody) SetRequestId(v string) *DescribePdnsApp
 }
 
 type DescribePdnsAppKeyResponseBodyAppKey struct {
-	AppKeyId     *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
-	AppKeySecret *string `json:"AppKeySecret,omitempty" xml:"AppKeySecret,omitempty"`
-	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	AppKeyId        *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
+	AppKeySecret    *string `json:"AppKeySecret,omitempty" xml:"AppKeySecret,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribePdnsAppKeyResponseBodyAppKey) String() string {
@@ -17671,6 +17678,11 @@ func (s *DescribePdnsAppKeyResponseBodyAppKey) SetAppKeySecret(v string) *Descri
 
 func (s *DescribePdnsAppKeyResponseBodyAppKey) SetCreateDate(v string) *DescribePdnsAppKeyResponseBodyAppKey {
 	s.CreateDate = &v
+	return s
+}
+
+func (s *DescribePdnsAppKeyResponseBodyAppKey) SetCreateTimestamp(v int64) *DescribePdnsAppKeyResponseBodyAppKey {
+	s.CreateTimestamp = &v
 	return s
 }
 
@@ -17749,9 +17761,10 @@ func (s *DescribePdnsAppKeysResponseBody) SetRequestId(v string) *DescribePdnsAp
 }
 
 type DescribePdnsAppKeysResponseBodyAppKeys struct {
-	AppKeyId   *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	State      *string `json:"State,omitempty" xml:"State,omitempty"`
+	AppKeyId        *string `json:"AppKeyId,omitempty" xml:"AppKeyId,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribePdnsAppKeysResponseBodyAppKeys) String() string {
@@ -17769,6 +17782,11 @@ func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetAppKeyId(v string) *Describe
 
 func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetCreateDate(v string) *DescribePdnsAppKeysResponseBodyAppKeys {
 	s.CreateDate = &v
+	return s
+}
+
+func (s *DescribePdnsAppKeysResponseBodyAppKeys) SetCreateTimestamp(v int64) *DescribePdnsAppKeysResponseBodyAppKeys {
+	s.CreateTimestamp = &v
 	return s
 }
 
@@ -31653,6 +31671,10 @@ func (client *Client) DescribePdnsAppKeyWithOptions(request *DescribePdnsAppKeyR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppKeyId)) {
 		query["AppKeyId"] = request.AppKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
