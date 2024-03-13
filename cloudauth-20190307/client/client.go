@@ -106,8 +106,9 @@ func (s *AIGCFaceVerifyResponseBody) SetResultObject(v *AIGCFaceVerifyResponseBo
 }
 
 type AIGCFaceVerifyResponseBodyResultObject struct {
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Score  *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s AIGCFaceVerifyResponseBodyResultObject) String() string {
@@ -116,6 +117,11 @@ func (s AIGCFaceVerifyResponseBodyResultObject) String() string {
 
 func (s AIGCFaceVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
+}
+
+func (s *AIGCFaceVerifyResponseBodyResultObject) SetCertifyId(v string) *AIGCFaceVerifyResponseBodyResultObject {
+	s.CertifyId = &v
+	return s
 }
 
 func (s *AIGCFaceVerifyResponseBodyResultObject) SetResult(v string) *AIGCFaceVerifyResponseBodyResultObject {
