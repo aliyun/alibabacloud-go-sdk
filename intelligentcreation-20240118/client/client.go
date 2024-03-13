@@ -290,6 +290,7 @@ func (s *DirectDeductResourceResult) SetSuccess(v bool) *DirectDeductResourceRes
 type ExpectDeductResourceCmd struct {
 	AccountId    *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	Cost         *int64  `json:"cost,omitempty" xml:"cost,omitempty"`
+	DeductScene  *string `json:"deductScene,omitempty" xml:"deductScene,omitempty"`
 	ExtraInfo    *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
 	IdempotentId *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
 	ResourceType *int64  `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
@@ -312,6 +313,11 @@ func (s *ExpectDeductResourceCmd) SetAccountId(v string) *ExpectDeductResourceCm
 
 func (s *ExpectDeductResourceCmd) SetCost(v int64) *ExpectDeductResourceCmd {
 	s.Cost = &v
+	return s
+}
+
+func (s *ExpectDeductResourceCmd) SetDeductScene(v string) *ExpectDeductResourceCmd {
+	s.DeductScene = &v
 	return s
 }
 
@@ -838,6 +844,94 @@ func (s *CopywritingQAV1Response) SetStatusCode(v int32) *CopywritingQAV1Respons
 }
 
 func (s *CopywritingQAV1Response) SetBody(v *DigitalHumanLiveBroadcastQAResult) *CopywritingQAV1Response {
+	s.Body = v
+	return s
+}
+
+type DeleteDigitalVideoRequest struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	VideoId   *string `json:"videoId,omitempty" xml:"videoId,omitempty"`
+}
+
+func (s DeleteDigitalVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDigitalVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDigitalVideoRequest) SetAccountId(v string) *DeleteDigitalVideoRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeleteDigitalVideoRequest) SetVideoId(v string) *DeleteDigitalVideoRequest {
+	s.VideoId = &v
+	return s
+}
+
+type DeleteDigitalVideoResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteDigitalVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDigitalVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDigitalVideoResponseBody) SetErrorCode(v string) *DeleteDigitalVideoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteDigitalVideoResponseBody) SetErrorMessage(v string) *DeleteDigitalVideoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDigitalVideoResponseBody) SetRequestId(v string) *DeleteDigitalVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDigitalVideoResponseBody) SetSuccess(v bool) *DeleteDigitalVideoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDigitalVideoResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDigitalVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDigitalVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDigitalVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDigitalVideoResponse) SetHeaders(v map[string]*string) *DeleteDigitalVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDigitalVideoResponse) SetStatusCode(v int32) *DeleteDigitalVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDigitalVideoResponse) SetBody(v *DeleteDigitalVideoResponseBody) *DeleteDigitalVideoResponse {
 	s.Body = v
 	return s
 }
@@ -1580,6 +1674,56 @@ func (client *Client) CopywritingQAV1(request *CopywritingQAV1Request) (_result 
 	headers := make(map[string]*string)
 	_result = &CopywritingQAV1Response{}
 	_body, _err := client.CopywritingQAV1WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDigitalVideoWithOptions(request *DeleteDigitalVideoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDigitalVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["accountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		body["videoId"] = request.VideoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDigitalVideo"),
+		Version:     tea.String("2024-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/videos"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDigitalVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDigitalVideo(request *DeleteDigitalVideoRequest) (_result *DeleteDigitalVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDigitalVideoResponse{}
+	_body, _err := client.DeleteDigitalVideoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
