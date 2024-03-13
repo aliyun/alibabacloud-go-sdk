@@ -78,7 +78,7 @@ func (s *CancelCertificateForPackageRequestResponse) SetBody(v *CancelCertificat
 type CancelOrderRequestRequest struct {
 	// The ID of the certificate application order that you want to cancel.
 	//
-	// >  After you call the [CreateCertificateForPackageRequest](~~204087~~), [CreateCertificateRequest](~~164105~~), or [CreateCertificateWithCsrRequest](~~178732~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+	// >  After you call the [CreateCertificateForPackageRequest](~~CreateCertificateForPackageRequest~~), [CreateCertificateRequest](~~CreateCertificateRequest~~), or [CreateCertificateWithCsrRequest](~~CreateCertificateWithCsrRequest~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -690,6 +690,105 @@ func (s *CreateCsrResponse) SetBody(v *CreateCsrResponseBody) *CreateCsrResponse
 	return s
 }
 
+type CreateDeploymentJobRequest struct {
+	CertIds      *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	ContactIds   *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	JobType      *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ScheduleTime *int64  `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+}
+
+func (s CreateDeploymentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentJobRequest) SetCertIds(v string) *CreateDeploymentJobRequest {
+	s.CertIds = &v
+	return s
+}
+
+func (s *CreateDeploymentJobRequest) SetContactIds(v string) *CreateDeploymentJobRequest {
+	s.ContactIds = &v
+	return s
+}
+
+func (s *CreateDeploymentJobRequest) SetJobType(v string) *CreateDeploymentJobRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *CreateDeploymentJobRequest) SetName(v string) *CreateDeploymentJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDeploymentJobRequest) SetResourceIds(v string) *CreateDeploymentJobRequest {
+	s.ResourceIds = &v
+	return s
+}
+
+func (s *CreateDeploymentJobRequest) SetScheduleTime(v int64) *CreateDeploymentJobRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
+type CreateDeploymentJobResponseBody struct {
+	JobId     *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDeploymentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentJobResponseBody) SetJobId(v int64) *CreateDeploymentJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateDeploymentJobResponseBody) SetRequestId(v string) *CreateDeploymentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDeploymentJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeploymentJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDeploymentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeploymentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeploymentJobResponse) SetHeaders(v map[string]*string) *CreateDeploymentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeploymentJobResponse) SetStatusCode(v int32) *CreateDeploymentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeploymentJobResponse) SetBody(v *CreateDeploymentJobResponseBody) *CreateDeploymentJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWHClientCertificateRequest struct {
 	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
 	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
@@ -1103,6 +1202,69 @@ func (s *DeleteCsrResponse) SetBody(v *DeleteCsrResponseBody) *DeleteCsrResponse
 	return s
 }
 
+type DeleteDeploymentJobRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteDeploymentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentJobRequest) SetJobId(v int64) *DeleteDeploymentJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteDeploymentJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDeploymentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentJobResponseBody) SetRequestId(v string) *DeleteDeploymentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDeploymentJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeploymentJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDeploymentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeploymentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeploymentJobResponse) SetHeaders(v map[string]*string) *DeleteDeploymentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeploymentJobResponse) SetStatusCode(v int32) *DeleteDeploymentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDeploymentJobResponse) SetBody(v *DeleteDeploymentJobResponseBody) *DeleteDeploymentJobResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePCACertRequest struct {
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
@@ -1227,6 +1389,75 @@ func (s *DeleteUserCertificateResponse) SetStatusCode(v int32) *DeleteUserCertif
 }
 
 func (s *DeleteUserCertificateResponse) SetBody(v *DeleteUserCertificateResponseBody) *DeleteUserCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWorkerResourceRequest struct {
+	JobId    *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	WorkerId *int64 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+}
+
+func (s DeleteWorkerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkerResourceRequest) SetJobId(v int64) *DeleteWorkerResourceRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DeleteWorkerResourceRequest) SetWorkerId(v int64) *DeleteWorkerResourceRequest {
+	s.WorkerId = &v
+	return s
+}
+
+type DeleteWorkerResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWorkerResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkerResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkerResourceResponseBody) SetRequestId(v string) *DeleteWorkerResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWorkerResourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWorkerResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWorkerResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkerResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkerResourceResponse) SetHeaders(v map[string]*string) *DeleteWorkerResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWorkerResourceResponse) SetStatusCode(v int32) *DeleteWorkerResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWorkerResourceResponse) SetBody(v *DeleteWorkerResourceResponseBody) *DeleteWorkerResourceResponse {
 	s.Body = v
 	return s
 }
@@ -1402,6 +1633,170 @@ func (s *DescribeCertificateStateResponse) SetStatusCode(v int32) *DescribeCerti
 }
 
 func (s *DescribeCertificateStateResponse) SetBody(v *DescribeCertificateStateResponseBody) *DescribeCertificateStateResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDeploymentJobStatusRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DescribeDeploymentJobStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobStatusRequest) SetJobId(v int64) *DescribeDeploymentJobStatusRequest {
+	s.JobId = &v
+	return s
+}
+
+type DescribeDeploymentJobStatusResponseBody struct {
+	BuyCount             *int32                                                       `json:"BuyCount,omitempty" xml:"BuyCount,omitempty"`
+	CertCount            *int32                                                       `json:"CertCount,omitempty" xml:"CertCount,omitempty"`
+	CostCount            *int32                                                       `json:"CostCount,omitempty" xml:"CostCount,omitempty"`
+	FailedCount          *int32                                                       `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	MatchWorkerCount     *int32                                                       `json:"MatchWorkerCount,omitempty" xml:"MatchWorkerCount,omitempty"`
+	ProductWorkerCount   []*DescribeDeploymentJobStatusResponseBodyProductWorkerCount `json:"ProductWorkerCount,omitempty" xml:"ProductWorkerCount,omitempty" type:"Repeated"`
+	RequestId            *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceCount        *int32                                                       `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	RollbackCount        *int32                                                       `json:"RollbackCount,omitempty" xml:"RollbackCount,omitempty"`
+	RollbackFailedCount  *int32                                                       `json:"RollbackFailedCount,omitempty" xml:"RollbackFailedCount,omitempty"`
+	RollbackSuccessCount *int32                                                       `json:"RollbackSuccessCount,omitempty" xml:"RollbackSuccessCount,omitempty"`
+	SuccessCount         *int32                                                       `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	UseCount             *int32                                                       `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
+	WorkerCount          *int32                                                       `json:"WorkerCount,omitempty" xml:"WorkerCount,omitempty"`
+}
+
+func (s DescribeDeploymentJobStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetBuyCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.BuyCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetCertCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.CertCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetCostCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.CostCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetFailedCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetMatchWorkerCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.MatchWorkerCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetProductWorkerCount(v []*DescribeDeploymentJobStatusResponseBodyProductWorkerCount) *DescribeDeploymentJobStatusResponseBody {
+	s.ProductWorkerCount = v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetRequestId(v string) *DescribeDeploymentJobStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetResourceCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.ResourceCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetRollbackCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.RollbackCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetRollbackFailedCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.RollbackFailedCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetRollbackSuccessCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.RollbackSuccessCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetSuccessCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetUseCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.UseCount = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBody) SetWorkerCount(v int32) *DescribeDeploymentJobStatusResponseBody {
+	s.WorkerCount = &v
+	return s
+}
+
+type DescribeDeploymentJobStatusResponseBodyProductWorkerCount struct {
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+}
+
+func (s DescribeDeploymentJobStatusResponseBodyProductWorkerCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobStatusResponseBodyProductWorkerCount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobStatusResponseBodyProductWorkerCount) SetCount(v int32) *DescribeDeploymentJobStatusResponseBodyProductWorkerCount {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponseBodyProductWorkerCount) SetProductName(v string) *DescribeDeploymentJobStatusResponseBodyProductWorkerCount {
+	s.ProductName = &v
+	return s
+}
+
+type DescribeDeploymentJobStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDeploymentJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDeploymentJobStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobStatusResponse) SetHeaders(v map[string]*string) *DescribeDeploymentJobStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponse) SetStatusCode(v int32) *DescribeDeploymentJobStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobStatusResponse) SetBody(v *DescribeDeploymentJobStatusResponseBody) *DescribeDeploymentJobStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2414,6 +2809,260 @@ func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *L
 	return s
 }
 
+type ListCloudResourcesRequest struct {
+	CloudName    *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	SecretId     *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	ShowSize     *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+}
+
+func (s ListCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudResourcesRequest) SetCloudName(v string) *ListCloudResourcesRequest {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListCloudResourcesRequest) SetCloudProduct(v string) *ListCloudResourcesRequest {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *ListCloudResourcesRequest) SetCurrentPage(v int32) *ListCloudResourcesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCloudResourcesRequest) SetKeyword(v string) *ListCloudResourcesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListCloudResourcesRequest) SetSecretId(v string) *ListCloudResourcesRequest {
+	s.SecretId = &v
+	return s
+}
+
+func (s *ListCloudResourcesRequest) SetShowSize(v int32) *ListCloudResourcesRequest {
+	s.ShowSize = &v
+	return s
+}
+
+type ListCloudResourcesResponseBody struct {
+	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListCloudResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int32                                `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Total       *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudResourcesResponseBody) SetCurrentPage(v int32) *ListCloudResourcesResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBody) SetData(v []*ListCloudResourcesResponseBodyData) *ListCloudResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBody) SetRequestId(v string) *ListCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBody) SetShowSize(v int32) *ListCloudResourcesResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBody) SetTotal(v int64) *ListCloudResourcesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListCloudResourcesResponseBodyData struct {
+	CertEndTime     *string `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
+	CertId          *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertStartTime   *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	CloudAccessId   *string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty"`
+	CloudName       *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CloudProduct    *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	CloudRegion     *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
+	DefaultResource *int32  `json:"DefaultResource,omitempty" xml:"DefaultResource,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EnableHttps     *int32  `json:"EnableHttps,omitempty" xml:"EnableHttps,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort    *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseSsl          *int32  `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListCloudResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCertEndTime(v string) *ListCloudResourcesResponseBodyData {
+	s.CertEndTime = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCertId(v int64) *ListCloudResourcesResponseBodyData {
+	s.CertId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCertName(v string) *ListCloudResourcesResponseBodyData {
+	s.CertName = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCertStartTime(v string) *ListCloudResourcesResponseBodyData {
+	s.CertStartTime = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCloudAccessId(v string) *ListCloudResourcesResponseBodyData {
+	s.CloudAccessId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCloudName(v string) *ListCloudResourcesResponseBodyData {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCloudProduct(v string) *ListCloudResourcesResponseBodyData {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetCloudRegion(v string) *ListCloudResourcesResponseBodyData {
+	s.CloudRegion = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetDefaultResource(v int32) *ListCloudResourcesResponseBodyData {
+	s.DefaultResource = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetDomain(v string) *ListCloudResourcesResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetEnableHttps(v int32) *ListCloudResourcesResponseBodyData {
+	s.EnableHttps = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetGmtCreate(v string) *ListCloudResourcesResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetGmtModified(v string) *ListCloudResourcesResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetId(v int64) *ListCloudResourcesResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetInstanceId(v string) *ListCloudResourcesResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetListenerId(v string) *ListCloudResourcesResponseBodyData {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetListenerPort(v string) *ListCloudResourcesResponseBodyData {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetRegionId(v string) *ListCloudResourcesResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetStatus(v string) *ListCloudResourcesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetUseSsl(v int32) *ListCloudResourcesResponseBodyData {
+	s.UseSsl = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponseBodyData) SetUserId(v int64) *ListCloudResourcesResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListCloudResourcesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudResourcesResponse) SetHeaders(v map[string]*string) *ListCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudResourcesResponse) SetStatusCode(v int32) *ListCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudResourcesResponse) SetBody(v *ListCloudResourcesResponseBody) *ListCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCsrRequest struct {
 	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -2605,6 +3254,594 @@ func (s *ListCsrResponse) SetStatusCode(v int32) *ListCsrResponse {
 }
 
 func (s *ListCsrResponse) SetBody(v *ListCsrResponseBody) *ListCsrResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeploymentJobRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	JobType     *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ShowSize    *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDeploymentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobRequest) SetCurrentPage(v int32) *ListDeploymentJobRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDeploymentJobRequest) SetJobType(v string) *ListDeploymentJobRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListDeploymentJobRequest) SetShowSize(v int32) *ListDeploymentJobRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListDeploymentJobRequest) SetStatus(v string) *ListDeploymentJobRequest {
+	s.Status = &v
+	return s
+}
+
+type ListDeploymentJobResponseBody struct {
+	CurrentPage *int32                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListDeploymentJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int32                               `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Total       *int64                               `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDeploymentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResponseBody) SetCurrentPage(v int32) *ListDeploymentJobResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBody) SetData(v []*ListDeploymentJobResponseBodyData) *ListDeploymentJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBody) SetRequestId(v string) *ListDeploymentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBody) SetShowSize(v int32) *ListDeploymentJobResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBody) SetTotal(v int64) *ListDeploymentJobResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDeploymentJobResponseBodyData struct {
+	CertDomain   *string `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
+	CertType     *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	Del          *int32  `json:"Del,omitempty" xml:"Del,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobType      *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Rollback     *int32  `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListDeploymentJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetCertDomain(v string) *ListDeploymentJobResponseBodyData {
+	s.CertDomain = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetCertType(v string) *ListDeploymentJobResponseBodyData {
+	s.CertType = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetDel(v int32) *ListDeploymentJobResponseBodyData {
+	s.Del = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetEndTime(v string) *ListDeploymentJobResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetGmtCreate(v string) *ListDeploymentJobResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetGmtModified(v string) *ListDeploymentJobResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetId(v int64) *ListDeploymentJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetInstanceId(v string) *ListDeploymentJobResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetJobType(v string) *ListDeploymentJobResponseBodyData {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetName(v string) *ListDeploymentJobResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetProductName(v string) *ListDeploymentJobResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetRollback(v int32) *ListDeploymentJobResponseBodyData {
+	s.Rollback = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetScheduleTime(v string) *ListDeploymentJobResponseBodyData {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetStartTime(v string) *ListDeploymentJobResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetStatus(v string) *ListDeploymentJobResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponseBodyData) SetUserId(v int64) *ListDeploymentJobResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListDeploymentJobResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResponse) SetHeaders(v map[string]*string) *ListDeploymentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentJobResponse) SetStatusCode(v int32) *ListDeploymentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentJobResponse) SetBody(v *ListDeploymentJobResponseBody) *ListDeploymentJobResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeploymentJobCertRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s ListDeploymentJobCertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobCertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobCertRequest) SetJobId(v int64) *ListDeploymentJobCertRequest {
+	s.JobId = &v
+	return s
+}
+
+type ListDeploymentJobCertResponseBody struct {
+	Data      []*ListDeploymentJobCertResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeploymentJobCertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobCertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobCertResponseBody) SetData(v []*ListDeploymentJobCertResponseBodyData) *ListDeploymentJobCertResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBody) SetRequestId(v string) *ListDeploymentJobCertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeploymentJobCertResponseBodyData struct {
+	Algorithm      *string   `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertId         *int64    `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertInstanceId *string   `json:"CertInstanceId,omitempty" xml:"CertInstanceId,omitempty"`
+	CertName       *string   `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertOrderType  *string   `json:"CertOrderType,omitempty" xml:"CertOrderType,omitempty"`
+	CertType       *string   `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CommonName     *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	IsTrustee      *bool     `json:"IsTrustee,omitempty" xml:"IsTrustee,omitempty"`
+	Month          *int32    `json:"Month,omitempty" xml:"Month,omitempty"`
+	NotAfterTime   *int64    `json:"NotAfterTime,omitempty" xml:"NotAfterTime,omitempty"`
+	NotBeforeTime  *int64    `json:"NotBeforeTime,omitempty" xml:"NotBeforeTime,omitempty"`
+	OrderId        *int64    `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Sans           []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+	StatusCode     *string   `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListDeploymentJobCertResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobCertResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetAlgorithm(v string) *ListDeploymentJobCertResponseBodyData {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCertId(v int64) *ListDeploymentJobCertResponseBodyData {
+	s.CertId = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCertInstanceId(v string) *ListDeploymentJobCertResponseBodyData {
+	s.CertInstanceId = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCertName(v string) *ListDeploymentJobCertResponseBodyData {
+	s.CertName = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCertOrderType(v string) *ListDeploymentJobCertResponseBodyData {
+	s.CertOrderType = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCertType(v string) *ListDeploymentJobCertResponseBodyData {
+	s.CertType = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetCommonName(v string) *ListDeploymentJobCertResponseBodyData {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetIsTrustee(v bool) *ListDeploymentJobCertResponseBodyData {
+	s.IsTrustee = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetMonth(v int32) *ListDeploymentJobCertResponseBodyData {
+	s.Month = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetNotAfterTime(v int64) *ListDeploymentJobCertResponseBodyData {
+	s.NotAfterTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetNotBeforeTime(v int64) *ListDeploymentJobCertResponseBodyData {
+	s.NotBeforeTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetOrderId(v int64) *ListDeploymentJobCertResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetSans(v []*string) *ListDeploymentJobCertResponseBodyData {
+	s.Sans = v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponseBodyData) SetStatusCode(v string) *ListDeploymentJobCertResponseBodyData {
+	s.StatusCode = &v
+	return s
+}
+
+type ListDeploymentJobCertResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentJobCertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentJobCertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobCertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobCertResponse) SetHeaders(v map[string]*string) *ListDeploymentJobCertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponse) SetStatusCode(v int32) *ListDeploymentJobCertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentJobCertResponse) SetBody(v *ListDeploymentJobCertResponseBody) *ListDeploymentJobCertResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeploymentJobResourceRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s ListDeploymentJobResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResourceRequest) SetJobId(v int64) *ListDeploymentJobResourceRequest {
+	s.JobId = &v
+	return s
+}
+
+type ListDeploymentJobResourceResponseBody struct {
+	Data      []*ListDeploymentJobResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeploymentJobResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResourceResponseBody) SetData(v []*ListDeploymentJobResourceResponseBodyData) *ListDeploymentJobResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBody) SetRequestId(v string) *ListDeploymentJobResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeploymentJobResourceResponseBodyData struct {
+	CertEndTime     *string `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
+	CertId          *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertStartTime   *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	CloudAccessId   *string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty"`
+	CloudName       *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CloudProduct    *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	CloudRegion     *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
+	DefaultResource *int32  `json:"DefaultResource,omitempty" xml:"DefaultResource,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EnableHttps     *int32  `json:"EnableHttps,omitempty" xml:"EnableHttps,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerPort    *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseSsl          *int32  `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListDeploymentJobResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCertEndTime(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CertEndTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCertId(v int64) *ListDeploymentJobResourceResponseBodyData {
+	s.CertId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCertName(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CertName = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCertStartTime(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CertStartTime = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCloudAccessId(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CloudAccessId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCloudName(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCloudProduct(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetCloudRegion(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.CloudRegion = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetDefaultResource(v int32) *ListDeploymentJobResourceResponseBodyData {
+	s.DefaultResource = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetDomain(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetEnableHttps(v int32) *ListDeploymentJobResourceResponseBodyData {
+	s.EnableHttps = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetGmtCreate(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetGmtModified(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetId(v int64) *ListDeploymentJobResourceResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetInstanceId(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetListenerId(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetListenerPort(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.ListenerPort = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetRegionId(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetRemark(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetStatus(v string) *ListDeploymentJobResourceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetUseSsl(v int32) *ListDeploymentJobResourceResponseBodyData {
+	s.UseSsl = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponseBodyData) SetUserId(v int64) *ListDeploymentJobResourceResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListDeploymentJobResourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentJobResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentJobResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentJobResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentJobResourceResponse) SetHeaders(v map[string]*string) *ListDeploymentJobResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponse) SetStatusCode(v int32) *ListDeploymentJobResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentJobResourceResponse) SetBody(v *ListDeploymentJobResourceResponseBody) *ListDeploymentJobResourceResponse {
 	s.Body = v
 	return s
 }
@@ -3345,6 +4582,255 @@ func (s *UpdateCsrResponse) SetStatusCode(v int32) *UpdateCsrResponse {
 }
 
 func (s *UpdateCsrResponse) SetBody(v *UpdateCsrResponseBody) *UpdateCsrResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDeploymentJobRequest struct {
+	CertIds      *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	ContactIds   *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ScheduleTime *int64  `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+}
+
+func (s UpdateDeploymentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobRequest) SetCertIds(v string) *UpdateDeploymentJobRequest {
+	s.CertIds = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobRequest) SetContactIds(v string) *UpdateDeploymentJobRequest {
+	s.ContactIds = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobRequest) SetJobId(v int64) *UpdateDeploymentJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobRequest) SetName(v string) *UpdateDeploymentJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobRequest) SetResourceIds(v string) *UpdateDeploymentJobRequest {
+	s.ResourceIds = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobRequest) SetScheduleTime(v int64) *UpdateDeploymentJobRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
+type UpdateDeploymentJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDeploymentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobResponseBody) SetRequestId(v string) *UpdateDeploymentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDeploymentJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeploymentJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobResponse) SetHeaders(v map[string]*string) *UpdateDeploymentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeploymentJobResponse) SetStatusCode(v int32) *UpdateDeploymentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobResponse) SetBody(v *UpdateDeploymentJobResponseBody) *UpdateDeploymentJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDeploymentJobStatusRequest struct {
+	JobId  *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateDeploymentJobStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobStatusRequest) SetJobId(v int64) *UpdateDeploymentJobStatusRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobStatusRequest) SetStatus(v string) *UpdateDeploymentJobStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateDeploymentJobStatusResponseBody struct {
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDeploymentJobStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobStatusResponseBody) SetData(v interface{}) *UpdateDeploymentJobStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDeploymentJobStatusResponseBody) SetRequestId(v string) *UpdateDeploymentJobStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDeploymentJobStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeploymentJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeploymentJobStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeploymentJobStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeploymentJobStatusResponse) SetHeaders(v map[string]*string) *UpdateDeploymentJobStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeploymentJobStatusResponse) SetStatusCode(v int32) *UpdateDeploymentJobStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeploymentJobStatusResponse) SetBody(v *UpdateDeploymentJobStatusResponseBody) *UpdateDeploymentJobStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWorkerResourceStatusRequest struct {
+	JobId    *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkerId *int64  `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+}
+
+func (s UpdateWorkerResourceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkerResourceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkerResourceStatusRequest) SetJobId(v int64) *UpdateWorkerResourceStatusRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateWorkerResourceStatusRequest) SetStatus(v string) *UpdateWorkerResourceStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateWorkerResourceStatusRequest) SetWorkerId(v int64) *UpdateWorkerResourceStatusRequest {
+	s.WorkerId = &v
+	return s
+}
+
+type UpdateWorkerResourceStatusResponseBody struct {
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateWorkerResourceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkerResourceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkerResourceStatusResponseBody) SetData(v interface{}) *UpdateWorkerResourceStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateWorkerResourceStatusResponseBody) SetRequestId(v string) *UpdateWorkerResourceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateWorkerResourceStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWorkerResourceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWorkerResourceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkerResourceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkerResourceStatusResponse) SetHeaders(v map[string]*string) *UpdateWorkerResourceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkerResourceStatusResponse) SetStatusCode(v int32) *UpdateWorkerResourceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWorkerResourceStatusResponse) SetBody(v *UpdateWorkerResourceStatusResponseBody) *UpdateWorkerResourceStatusResponse {
 	s.Body = v
 	return s
 }
@@ -4297,6 +5783,70 @@ func (client *Client) CreateCsr(request *CreateCsrRequest) (_result *CreateCsrRe
 	return _result, _err
 }
 
+func (client *Client) CreateDeploymentJobWithOptions(request *CreateDeploymentJobRequest, runtime *util.RuntimeOptions) (_result *CreateDeploymentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertIds)) {
+		query["CertIds"] = request.CertIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactIds)) {
+		query["ContactIds"] = request.ContactIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleTime)) {
+		query["ScheduleTime"] = request.ScheduleTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeploymentJob"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeploymentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeploymentJob(request *CreateDeploymentJobRequest) (_result *CreateDeploymentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeploymentJobResponse{}
+	_body, _err := client.CreateDeploymentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4566,6 +6116,50 @@ func (client *Client) DeleteCsr(request *DeleteCsrRequest) (_result *DeleteCsrRe
 	return _result, _err
 }
 
+func (client *Client) DeleteDeploymentJobWithOptions(request *DeleteDeploymentJobRequest, runtime *util.RuntimeOptions) (_result *DeleteDeploymentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeploymentJob"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeploymentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (_result *DeleteDeploymentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeploymentJobResponse{}
+	_body, _err := client.DeleteDeploymentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeletePCACertWithOptions(request *DeletePCACertRequest, runtime *util.RuntimeOptions) (_result *DeletePCACertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4667,6 +6261,54 @@ func (client *Client) DeleteUserCertificate(request *DeleteUserCertificateReques
 	return _result, _err
 }
 
+func (client *Client) DeleteWorkerResourceWithOptions(request *DeleteWorkerResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteWorkerResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWorkerResource"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWorkerResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteWorkerResource(request *DeleteWorkerResourceRequest) (_result *DeleteWorkerResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWorkerResourceResponse{}
+	_body, _err := client.DeleteWorkerResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
  * The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
@@ -4719,6 +6361,50 @@ func (client *Client) DescribeCertificateState(request *DescribeCertificateState
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertificateStateResponse{}
 	_body, _err := client.DescribeCertificateStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDeploymentJobStatusWithOptions(request *DescribeDeploymentJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDeploymentJobStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeploymentJobStatus"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDeploymentJobStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeploymentJobStatus(request *DescribeDeploymentJobStatusRequest) (_result *DescribeDeploymentJobStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDeploymentJobStatusResponse{}
+	_body, _err := client.DescribeDeploymentJobStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5105,6 +6791,70 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListCloudResourcesWithOptions(request *ListCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *ListCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudName)) {
+		query["CloudName"] = request.CloudName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudProduct)) {
+		query["CloudProduct"] = request.CloudProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudResources"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCloudResources(request *ListCloudResourcesRequest) (_result *ListCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudResourcesResponse{}
+	_body, _err := client.ListCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCsrWithOptions(request *ListCsrRequest, runtime *util.RuntimeOptions) (_result *ListCsrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5154,6 +6904,150 @@ func (client *Client) ListCsr(request *ListCsrRequest) (_result *ListCsrResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCsrResponse{}
 	_body, _err := client.ListCsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJobWithOptions(request *ListDeploymentJobRequest, runtime *util.RuntimeOptions) (_result *ListDeploymentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentJob"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJob(request *ListDeploymentJobRequest) (_result *ListDeploymentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeploymentJobResponse{}
+	_body, _err := client.ListDeploymentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJobCertWithOptions(request *ListDeploymentJobCertRequest, runtime *util.RuntimeOptions) (_result *ListDeploymentJobCertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentJobCert"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentJobCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJobCert(request *ListDeploymentJobCertRequest) (_result *ListDeploymentJobCertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeploymentJobCertResponse{}
+	_body, _err := client.ListDeploymentJobCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJobResourceWithOptions(request *ListDeploymentJobResourceRequest, runtime *util.RuntimeOptions) (_result *ListDeploymentJobResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentJobResource"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentJobResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeploymentJobResource(request *ListDeploymentJobResourceRequest) (_result *ListDeploymentJobResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeploymentJobResourceResponse{}
+	_body, _err := client.ListDeploymentJobResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5446,6 +7340,170 @@ func (client *Client) UpdateCsr(request *UpdateCsrRequest) (_result *UpdateCsrRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCsrResponse{}
 	_body, _err := client.UpdateCsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDeploymentJobWithOptions(request *UpdateDeploymentJobRequest, runtime *util.RuntimeOptions) (_result *UpdateDeploymentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertIds)) {
+		query["CertIds"] = request.CertIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactIds)) {
+		query["ContactIds"] = request.ContactIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleTime)) {
+		query["ScheduleTime"] = request.ScheduleTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeploymentJob"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeploymentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDeploymentJob(request *UpdateDeploymentJobRequest) (_result *UpdateDeploymentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDeploymentJobResponse{}
+	_body, _err := client.UpdateDeploymentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDeploymentJobStatusWithOptions(request *UpdateDeploymentJobStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateDeploymentJobStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeploymentJobStatus"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeploymentJobStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDeploymentJobStatus(request *UpdateDeploymentJobStatusRequest) (_result *UpdateDeploymentJobStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDeploymentJobStatusResponse{}
+	_body, _err := client.UpdateDeploymentJobStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkerResourceStatusWithOptions(request *UpdateWorkerResourceStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkerResourceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerId)) {
+		query["WorkerId"] = request.WorkerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkerResourceStatus"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkerResourceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkerResourceStatus(request *UpdateWorkerResourceStatusRequest) (_result *UpdateWorkerResourceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWorkerResourceStatusResponse{}
+	_body, _err := client.UpdateWorkerResourceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
