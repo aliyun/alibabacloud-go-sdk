@@ -235,12 +235,12 @@ func (s *ConvertPostPayOrderResponse) SetBody(v *ConvertPostPayOrderResponseBody
 }
 
 type CreateAclRequest struct {
-	// The type of operation allowed by the ACL. Valid values:
+	// The operation type. Valid values:
 	//
-	// *   **Write**: data writes.
-	// *   **Read**: data reads.
-	// *   **Describe**: reads of **transaction IDs**.
-	// *   **IdempotentWrite**: idempotent data writes to **clusters**.
+	// *   **Write**: data writes
+	// *   **Read**: data reads
+	// *   **Describe**: reads of transaction IDs****
+	// *   **IdempotentWrite**: idempotent data writes to clusters****
 	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
 	// The name or ID of the resource.
 	//
@@ -254,9 +254,9 @@ type CreateAclRequest struct {
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
 	// The resource type. Valid values:
 	//
-	// *   **Topic**: topic
-	// *   **Group**: consumer group
-	// *   **Cluster**: cluster
+	// *   **Topic**
+	// *   **Group**
+	// *   **Cluster**
 	// *   **TransactionalId**: transaction
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
 	// The instance ID.
@@ -1634,7 +1634,7 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteAclRequest struct {
-	// The type of operation allowed by the ACL. Valid values:
+	// The operation type. Valid values:
 	//
 	// *   **Write**
 	// *   **Read**
@@ -2111,11 +2111,11 @@ func (s *DeleteTopicRequest) SetTopic(v string) *DeleteTopicRequest {
 }
 
 type DeleteTopicResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The HTTP status code. The status code 200 indicates that the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -3701,7 +3701,9 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// *   **1**: the pay-as-you-go billing method
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The ID of the region where the instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedPublishCapacity   *int32  `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	ReservedSubscribeCapacity *int32  `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
 	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
@@ -3862,6 +3864,16 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetPaidType(v int32)
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetRegionId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetReservedPublishCapacity(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ReservedPublishCapacity = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetReservedSubscribeCapacity(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ReservedSubscribeCapacity = &v
 	return s
 }
 
@@ -5527,13 +5539,23 @@ func (s *ModifyTopicRemarkResponse) SetBody(v *ModifyTopicRemarkResponseBody) *M
 }
 
 type QueryMessageRequest struct {
-	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset     *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Partition  *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The consumer offset of the partition.
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The partition ID.
+	Partition *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The query type. Valid values:
+	//
+	// *   byOffset: queries messages by offset. If you select this value, you must configure Partition and Offset.
+	// *   byTimestamp: queries messages by time. If you select this value, you must configure BeginTime.
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The ID of the region where the resource resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The topic name.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s QueryMessageRequest) String() string {
@@ -5580,11 +5602,19 @@ func (s *QueryMessageRequest) SetTopic(v string) *QueryMessageRequest {
 }
 
 type QueryMessageResponseBody struct {
-	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned HTTP status code. If the request is successful, 200 is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The messages.
 	MessageList []*QueryMessageResponseBodyMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMessageResponseBody) String() string {
@@ -5621,20 +5651,38 @@ func (s *QueryMessageResponseBody) SetSuccess(v bool) *QueryMessageResponseBody 
 }
 
 type QueryMessageResponseBodyMessageList struct {
-	Checksum            *int64  `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	Key                 *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	KeyTruncated        *bool   `json:"KeyTruncated,omitempty" xml:"KeyTruncated,omitempty"`
-	Offset              *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Partition           *int64  `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	SerializedKeySize   *int32  `json:"SerializedKeySize,omitempty" xml:"SerializedKeySize,omitempty"`
-	SerializedValueSize *int32  `json:"SerializedValueSize,omitempty" xml:"SerializedValueSize,omitempty"`
-	Timestamp           *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TimestampType       *string `json:"TimestampType,omitempty" xml:"TimestampType,omitempty"`
-	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TruncatedKeySize    *int32  `json:"TruncatedKeySize,omitempty" xml:"TruncatedKeySize,omitempty"`
-	TruncatedValueSize  *int32  `json:"TruncatedValueSize,omitempty" xml:"TruncatedValueSize,omitempty"`
-	Value               *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueTruncated      *bool   `json:"ValueTruncated,omitempty" xml:"ValueTruncated,omitempty"`
+	// The check value of the chaincode.
+	Checksum *int64 `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// The message key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Indicates whether the key is truncated.
+	KeyTruncated *bool `json:"KeyTruncated,omitempty" xml:"KeyTruncated,omitempty"`
+	// The consumer offset of the partition.
+	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The partition ID.
+	Partition *int64 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// The size of the key after serialization. Unit: bytes.
+	SerializedKeySize *int32 `json:"SerializedKeySize,omitempty" xml:"SerializedKeySize,omitempty"`
+	// The size of the value after serialization. Unit: bytes.
+	SerializedValueSize *int32 `json:"SerializedValueSize,omitempty" xml:"SerializedValueSize,omitempty"`
+	// The time when the message was created. The value of this parameter is a UNIX timestamp in milliseconds.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The time type.
+	TimestampType *string `json:"TimestampType,omitempty" xml:"TimestampType,omitempty"`
+	// The topic name.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The truncated size of the message key. Unit: bytes.
+	//
+	// *   A message is truncated only if the message exceeds 10 MB in size.
+	TruncatedKeySize *int32 `json:"TruncatedKeySize,omitempty" xml:"TruncatedKeySize,omitempty"`
+	// The truncated size of the message value. Unit: bytes.
+	//
+	// *   A message is truncated only if the message exceeds 10 MB in size.
+	TruncatedValueSize *int32 `json:"TruncatedValueSize,omitempty" xml:"TruncatedValueSize,omitempty"`
+	// The message value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Indicates whether the value is truncated.
+	ValueTruncated *bool `json:"ValueTruncated,omitempty" xml:"ValueTruncated,omitempty"`
 }
 
 func (s QueryMessageResponseBodyMessageList) String() string {
@@ -6378,10 +6426,12 @@ type UpdateAllowedIpRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The port range. Valid values:
 	//
-	// *   **9092/9092**: the port range for access from a virtual private cloud (VPC).
+	// *   **9092/9092**: the port range for access from virtual private clouds (VPCs) by using the default endpoint.
 	// *   **9093/9093**: the port range for access from the Internet.
+	// *   **9094/9094**: the port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+	// *   **9095/9095**: the port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
 	//
-	// The value of this parameter must match the value of the **AllowdedListType** parameter.
+	// This parameter must correspond to **AllowdedListType**.
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	// The ID of the region where the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -6521,9 +6571,10 @@ type UpdateConsumerOffsetRequest struct {
 	// *   **timestamp** (default)
 	// *   **offset**
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The point in time when message consumption starts. The value of this parameter is a UNIX timestamp. Unit: milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
+	// The point in time when message consumption starts. The value of this parameter is a UNIX timestamp in milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
 	//
-	// **If you want to reset the consumer offset to the latest offset, specify a value that is less than 0. Recommended value: -1.
+	// *   If you want to reset the consumer offset to the latest offset, set this parameter to -1.
+	// *   If you want to reset the consumer offset to the earliest offset, set this parameter to -2.
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The topic name.
 	//
@@ -6621,9 +6672,10 @@ type UpdateConsumerOffsetShrinkRequest struct {
 	// *   **timestamp** (default)
 	// *   **offset**
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The point in time when message consumption starts. The value of this parameter is a UNIX timestamp. Unit: milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
+	// The point in time when message consumption starts. The value of this parameter is a UNIX timestamp in milliseconds. The value of this parameter must be **less than 0** or **within the retention period of the consumer offset**. This parameter takes effect only if you set resetType to timestamp.
 	//
-	// **If you want to reset the consumer offset to the latest offset, specify a value that is less than 0. Recommended value: -1.
+	// *   If you want to reset the consumer offset to the latest offset, set this parameter to -1.
+	// *   If you want to reset the consumer offset to the earliest offset, set this parameter to -2.
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The topic name.
 	//
@@ -6847,11 +6899,25 @@ func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBo
 }
 
 type UpdateTopicConfigRequest struct {
-	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The key of the topic configuration.
+	//
+	// *   Valid values: retention.hours, max.message.bytes, and replications.
+	// *   retention.hours specifies the message retention period.
+	// *   max.message.bytes specifies the maximum size of a sent message.
+	// *   replications specifies the number of topic replicas.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The topic name.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The value of the topic configuration.
+	//
+	// *   retention.hours specifies the message retention period. The value is a string. Valid values: 24 to 8760.
+	// *   max.message.bytes specifies the maximum size of a sent message. The value is a string. Valid values: 1048576 to 10485760.
+	// *   replications specifies the number of topic replicas. The value is a string. Valid values: 1 to 3.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateTopicConfigRequest) String() string {
@@ -6888,12 +6954,16 @@ func (s *UpdateTopicConfigRequest) SetValue(v string) *UpdateTopicConfigRequest 
 }
 
 type UpdateTopicConfigResponseBody struct {
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. If the request is successful, 200 is returned.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTopicConfigResponseBody) String() string {
@@ -10108,7 +10178,7 @@ func (client *Client) UpdateAllowedIp(request *UpdateAllowedIpRequest) (_result 
 }
 
 /**
- * You can call this operation to reset the consumer offsets of the subscribed topics of a consumer group. You can specify a timestamp or an offset to reset a consumer offset. You can implement the following features by configuring a combination of different parameters:
+ * You can call this operation to reset the consumer offset of a specific consumer group. You can use the timestamp or offset parameter to reset the consumer offset of a consumer group. You can implement the following features by configuring a combination of different parameters:
  * *   Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
  * *   Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
  * *   Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
@@ -10181,7 +10251,7 @@ func (client *Client) UpdateConsumerOffsetWithOptions(tmpReq *UpdateConsumerOffs
 }
 
 /**
- * You can call this operation to reset the consumer offsets of the subscribed topics of a consumer group. You can specify a timestamp or an offset to reset a consumer offset. You can implement the following features by configuring a combination of different parameters:
+ * You can call this operation to reset the consumer offset of a specific consumer group. You can use the timestamp or offset parameter to reset the consumer offset of a consumer group. You can implement the following features by configuring a combination of different parameters:
  * *   Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
  * *   Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
  * *   Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
