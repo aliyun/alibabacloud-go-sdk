@@ -34601,7 +34601,8 @@ func (s *RenewNetworkPackagesResponse) SetBody(v *RenewNetworkPackagesResponseBo
 
 type ResetDesktopsRequest struct {
 	// The ID of the desktop group. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud desktops in the specified desktop group.``
-	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupId  *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the cloud desktops. You can specify 1 to 100 cloud desktop IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The ID of the image.
@@ -34611,7 +34612,8 @@ type ResetDesktopsRequest struct {
 	// > This parameter is available only when you reset desktop groups. If you leave this parameter empty, all cloud desktops in the specified desktop group are reset, regardless of how the cloud desktops are billed.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetScope *string `json:"ResetScope,omitempty" xml:"ResetScope,omitempty"`
 	// The type of the disk that you want to reset.
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 }
@@ -34626,6 +34628,11 @@ func (s ResetDesktopsRequest) GoString() string {
 
 func (s *ResetDesktopsRequest) SetDesktopGroupId(v string) *ResetDesktopsRequest {
 	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *ResetDesktopsRequest) SetDesktopGroupIds(v []*string) *ResetDesktopsRequest {
+	s.DesktopGroupIds = v
 	return s
 }
 
@@ -34646,6 +34653,11 @@ func (s *ResetDesktopsRequest) SetPayType(v string) *ResetDesktopsRequest {
 
 func (s *ResetDesktopsRequest) SetRegionId(v string) *ResetDesktopsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ResetDesktopsRequest) SetResetScope(v string) *ResetDesktopsRequest {
+	s.ResetScope = &v
 	return s
 }
 
@@ -49944,6 +49956,10 @@ func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, ru
 		query["DesktopGroupId"] = request.DesktopGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupIds)) {
+		query["DesktopGroupIds"] = request.DesktopGroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
 		query["DesktopId"] = request.DesktopId
 	}
@@ -49958,6 +49974,10 @@ func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetScope)) {
+		query["ResetScope"] = request.ResetScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
