@@ -141,9 +141,9 @@ func (s *AbstractEcommerceVideoResponseBodyData) SetVideoUrl(v string) *Abstract
 }
 
 type AbstractEcommerceVideoResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AbstractEcommerceVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AbstractEcommerceVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AbstractEcommerceVideoResponse) String() string {
@@ -262,9 +262,9 @@ func (s *AbstractFilmVideoResponseBodyData) SetVideoUrl(v string) *AbstractFilmV
 }
 
 type AbstractFilmVideoResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AbstractFilmVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AbstractFilmVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AbstractFilmVideoResponse) String() string {
@@ -412,9 +412,9 @@ func (s *AddFaceVideoTemplateResponseBodyDateFaceInfos) SetTemplateFaceURL(v str
 }
 
 type AddFaceVideoTemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddFaceVideoTemplateResponse) String() string {
@@ -569,9 +569,9 @@ func (s *AdjustVideoColorResponseBodyData) SetVideoUrl(v string) *AdjustVideoCol
 }
 
 type AdjustVideoColorResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AdjustVideoColorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AdjustVideoColorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AdjustVideoColorResponse) String() string {
@@ -780,9 +780,9 @@ func (s *ChangeVideoSizeResponseBodyData) SetVideoUrl(v string) *ChangeVideoSize
 }
 
 type ChangeVideoSizeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeVideoSizeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeVideoSizeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeVideoSizeResponse) String() string {
@@ -925,9 +925,9 @@ func (s *ConvertHdrVideoResponseBodyData) SetVideoURL(v string) *ConvertHdrVideo
 }
 
 type ConvertHdrVideoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConvertHdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertHdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConvertHdrVideoResponse) String() string {
@@ -988,9 +988,9 @@ func (s *DeleteFaceVideoTemplateResponseBody) SetRequestId(v string) *DeleteFace
 }
 
 type DeleteFaceVideoTemplateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFaceVideoTemplateResponse) String() string {
@@ -1097,9 +1097,9 @@ func (s *EnhancePortraitVideoResponseBodyData) SetVideoUrl(v string) *EnhancePor
 }
 
 type EnhancePortraitVideoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnhancePortraitVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnhancePortraitVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnhancePortraitVideoResponse) String() string {
@@ -1278,9 +1278,9 @@ func (s *EnhanceVideoQualityResponseBodyData) SetVideoURL(v string) *EnhanceVide
 }
 
 type EnhanceVideoQualityResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnhanceVideoQualityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnhanceVideoQualityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnhanceVideoQualityResponse) String() string {
@@ -1469,9 +1469,9 @@ func (s *EraseVideoLogoResponseBodyData) SetVideoUrl(v string) *EraseVideoLogoRe
 }
 
 type EraseVideoLogoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EraseVideoLogoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EraseVideoLogoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EraseVideoLogoResponse) String() string {
@@ -1626,9 +1626,9 @@ func (s *EraseVideoSubtitlesResponseBodyData) SetVideoUrl(v string) *EraseVideoS
 }
 
 type EraseVideoSubtitlesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EraseVideoSubtitlesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EraseVideoSubtitlesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EraseVideoSubtitlesResponse) String() string {
@@ -1747,9 +1747,9 @@ func (s *GenerateHumanAnimeStyleVideoResponseBodyData) SetVideoUrl(v string) *Ge
 }
 
 type GenerateHumanAnimeStyleVideoResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateHumanAnimeStyleVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateHumanAnimeStyleVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateHumanAnimeStyleVideoResponse) String() string {
@@ -2042,9 +2042,9 @@ func (s *GenerateVideoResponseBodyData) SetVideoUrl(v string) *GenerateVideoResp
 }
 
 type GenerateVideoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateVideoResponse) String() string {
@@ -2152,9 +2152,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -2285,9 +2285,9 @@ func (s *InterpolateVideoFrameResponseBodyData) SetVideoURL(v string) *Interpola
 }
 
 type InterpolateVideoFrameResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InterpolateVideoFrameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InterpolateVideoFrameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InterpolateVideoFrameResponse) String() string {
@@ -2442,9 +2442,9 @@ func (s *MergeVideoFaceResponseBodyData) SetVideoURL(v string) *MergeVideoFaceRe
 }
 
 type MergeVideoFaceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MergeVideoFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MergeVideoFaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MergeVideoFaceResponse) String() string {
@@ -2669,9 +2669,9 @@ func (s *MergeVideoModelFaceResponseBodyData) SetVideoURL(v string) *MergeVideoM
 }
 
 type MergeVideoModelFaceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MergeVideoModelFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MergeVideoModelFaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MergeVideoModelFaceResponse) String() string {
@@ -2698,6 +2698,8 @@ func (s *MergeVideoModelFaceResponse) SetBody(v *MergeVideoModelFaceResponseBody
 }
 
 type QueryFaceVideoTemplateRequest struct {
+	PageNo     *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2707,6 +2709,16 @@ func (s QueryFaceVideoTemplateRequest) String() string {
 
 func (s QueryFaceVideoTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryFaceVideoTemplateRequest) SetPageNo(v int64) *QueryFaceVideoTemplateRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryFaceVideoTemplateRequest) SetPageSize(v int64) *QueryFaceVideoTemplateRequest {
+	s.PageSize = &v
+	return s
 }
 
 func (s *QueryFaceVideoTemplateRequest) SetTemplateId(v string) *QueryFaceVideoTemplateRequest {
@@ -2739,6 +2751,7 @@ func (s *QueryFaceVideoTemplateResponseBody) SetRequestId(v string) *QueryFaceVi
 
 type QueryFaceVideoTemplateResponseBodyData struct {
 	Elements []*QueryFaceVideoTemplateResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	Total    *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateResponseBodyData) String() string {
@@ -2751,6 +2764,11 @@ func (s QueryFaceVideoTemplateResponseBodyData) GoString() string {
 
 func (s *QueryFaceVideoTemplateResponseBodyData) SetElements(v []*QueryFaceVideoTemplateResponseBodyDataElements) *QueryFaceVideoTemplateResponseBodyData {
 	s.Elements = v
+	return s
+}
+
+func (s *QueryFaceVideoTemplateResponseBodyData) SetTotal(v int64) *QueryFaceVideoTemplateResponseBodyData {
+	s.Total = &v
 	return s
 }
 
@@ -2825,9 +2843,9 @@ func (s *QueryFaceVideoTemplateResponseBodyDataElementsFaceInfos) SetTemplateFac
 }
 
 type QueryFaceVideoTemplateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryFaceVideoTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryFaceVideoTemplateResponse) String() string {
@@ -2934,9 +2952,9 @@ func (s *ReduceVideoNoiseResponseBodyData) SetVideoUrl(v string) *ReduceVideoNoi
 }
 
 type ReduceVideoNoiseResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReduceVideoNoiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReduceVideoNoiseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReduceVideoNoiseResponse) String() string {
@@ -3055,9 +3073,9 @@ func (s *SuperResolveVideoResponseBodyData) SetVideoUrl(v string) *SuperResolveV
 }
 
 type SuperResolveVideoResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuperResolveVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuperResolveVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuperResolveVideoResponse) String() string {
@@ -3188,9 +3206,9 @@ func (s *ToneSdrVideoResponseBodyData) SetVideoURL(v string) *ToneSdrVideoRespon
 }
 
 type ToneSdrVideoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ToneSdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ToneSdrVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ToneSdrVideoResponse) String() string {
@@ -5864,6 +5882,14 @@ func (client *Client) QueryFaceVideoTemplateWithOptions(request *QueryFaceVideoT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
