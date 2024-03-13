@@ -11765,7 +11765,8 @@ type DescribeDBNodePerformanceRequest struct {
 	// The ID of the cluster node.
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
 	//
 	// >  You can specify a maximum of five performance metrics.
@@ -11794,6 +11795,11 @@ func (s *DescribeDBNodePerformanceRequest) SetDBNodeId(v string) *DescribeDBNode
 
 func (s *DescribeDBNodePerformanceRequest) SetEndTime(v string) *DescribeDBNodePerformanceRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBNodePerformanceRequest) SetInterval(v string) *DescribeDBNodePerformanceRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -12257,7 +12263,8 @@ type DescribeDBProxyPerformanceRequest struct {
 	// The ID of the endpoint.
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](~~141787~~).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
@@ -12284,6 +12291,11 @@ func (s *DescribeDBProxyPerformanceRequest) SetDBEndpointId(v string) *DescribeD
 
 func (s *DescribeDBProxyPerformanceRequest) SetEndTime(v string) *DescribeDBProxyPerformanceRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBProxyPerformanceRequest) SetInterval(v string) *DescribeDBProxyPerformanceRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -19080,6 +19092,7 @@ type ModifyAccountPasswordRequest struct {
 	NewAccountPassword   *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PasswordType         *string `json:"PasswordType,omitempty" xml:"PasswordType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -19114,6 +19127,11 @@ func (s *ModifyAccountPasswordRequest) SetOwnerAccount(v string) *ModifyAccountP
 
 func (s *ModifyAccountPasswordRequest) SetOwnerId(v int64) *ModifyAccountPasswordRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAccountPasswordRequest) SetPasswordType(v string) *ModifyAccountPasswordRequest {
+	s.PasswordType = &v
 	return s
 }
 
@@ -30370,6 +30388,10 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
 		query["Key"] = request.Key
 	}
@@ -30516,6 +30538,10 @@ func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBP
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
@@ -33053,6 +33079,10 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordType)) {
+		query["PasswordType"] = request.PasswordType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
