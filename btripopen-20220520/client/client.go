@@ -47230,6 +47230,7 @@ type HotelOrderQueryResponseBodyModulePassengerList struct {
 	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
 	CostCenterNumber      *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OccupantType          *int32  `json:"occupant_type,omitempty" xml:"occupant_type,omitempty"`
 	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectId             *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
 	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
@@ -47271,6 +47272,11 @@ func (s *HotelOrderQueryResponseBodyModulePassengerList) SetCostCenterNumber(v s
 
 func (s *HotelOrderQueryResponseBodyModulePassengerList) SetItineraryId(v string) *HotelOrderQueryResponseBodyModulePassengerList {
 	s.ItineraryId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModulePassengerList) SetOccupantType(v int32) *HotelOrderQueryResponseBodyModulePassengerList {
+	s.OccupantType = &v
 	return s
 }
 
