@@ -4845,6 +4845,7 @@ type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
 	LastUpdateTime    *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
 	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subject           *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	ToAddress         *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 	UtcLastUpdateTime *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
 }
@@ -4874,6 +4875,11 @@ func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetMessage(v s
 
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetStatus(v int32) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
 	s.Status = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetSubject(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.Subject = &v
 	return s
 }
 
