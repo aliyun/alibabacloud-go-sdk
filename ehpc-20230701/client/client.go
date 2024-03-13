@@ -962,6 +962,7 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetVM(v *CreateJobRequestTas
 type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
 	Image        *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	Script       *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutorVM) String() string {
@@ -979,6 +980,11 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetImage(v string) *Create
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetPrologScript(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
 	s.PrologScript = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetScript(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
+	s.Script = &v
 	return s
 }
 
@@ -1484,10 +1490,14 @@ func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyJobInfo struct {
+	CreateTime       *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeploymentPolicy *GetJobResponseBodyJobInfoDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
+	EndTime          *string                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	JobDescription   *string                                    `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
 	JobId            *string                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobName          *string                                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	StartTime        *string                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tasks            []*GetJobResponseBodyJobInfoTasks          `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
@@ -1499,8 +1509,18 @@ func (s GetJobResponseBodyJobInfo) GoString() string {
 	return s.String()
 }
 
+func (s *GetJobResponseBodyJobInfo) SetCreateTime(v string) *GetJobResponseBodyJobInfo {
+	s.CreateTime = &v
+	return s
+}
+
 func (s *GetJobResponseBodyJobInfo) SetDeploymentPolicy(v *GetJobResponseBodyJobInfoDeploymentPolicy) *GetJobResponseBodyJobInfo {
 	s.DeploymentPolicy = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetEndTime(v string) *GetJobResponseBodyJobInfo {
+	s.EndTime = &v
 	return s
 }
 
@@ -1516,6 +1536,16 @@ func (s *GetJobResponseBodyJobInfo) SetJobId(v string) *GetJobResponseBodyJobInf
 
 func (s *GetJobResponseBodyJobInfo) SetJobName(v string) *GetJobResponseBodyJobInfo {
 	s.JobName = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetStartTime(v string) *GetJobResponseBodyJobInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetStatus(v string) *GetJobResponseBodyJobInfo {
+	s.Status = &v
 	return s
 }
 
@@ -1799,6 +1829,7 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor) SetVM(v *GetJobResp
 type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	Image        *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	PrologScript *string `json:"PrologScript,omitempty" xml:"PrologScript,omitempty"`
+	Script       *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) String() string {
@@ -1816,6 +1847,11 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetImage(v string
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetPrologScript(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
 	s.PrologScript = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetScript(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
+	s.Script = &v
 	return s
 }
 
@@ -2041,6 +2077,178 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 	return s
 }
 
+type ListJobExecutorsRequest struct {
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Task ID
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s ListJobExecutorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobExecutorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobExecutorsRequest) SetJobId(v string) *ListJobExecutorsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListJobExecutorsRequest) SetPageNumber(v string) *ListJobExecutorsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobExecutorsRequest) SetPageSize(v string) *ListJobExecutorsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobExecutorsRequest) SetTaskName(v string) *ListJobExecutorsRequest {
+	s.TaskName = &v
+	return s
+}
+
+type ListJobExecutorsResponseBody struct {
+	Executors  []*ListJobExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	JobId      *string                                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *string                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListJobExecutorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobExecutorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobExecutorsResponseBody) SetExecutors(v []*ListJobExecutorsResponseBodyExecutors) *ListJobExecutorsResponseBody {
+	s.Executors = v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetJobId(v string) *ListJobExecutorsResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetPageNumber(v string) *ListJobExecutorsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetPageSize(v string) *ListJobExecutorsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetRequestId(v string) *ListJobExecutorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetTaskName(v string) *ListJobExecutorsResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBody) SetTotalCount(v string) *ListJobExecutorsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListJobExecutorsResponseBodyExecutors struct {
+	ArrayIndex   *int32    `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	CreateTime   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime      *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HostName     []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress    []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason *string   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+}
+
+func (s ListJobExecutorsResponseBodyExecutors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobExecutorsResponseBodyExecutors) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetArrayIndex(v int32) *ListJobExecutorsResponseBodyExecutors {
+	s.ArrayIndex = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetCreateTime(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetEndTime(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetHostName(v []*string) *ListJobExecutorsResponseBodyExecutors {
+	s.HostName = v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetIpAddress(v []*string) *ListJobExecutorsResponseBodyExecutors {
+	s.IpAddress = v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetStatus(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.Status = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetStatusReason(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.StatusReason = &v
+	return s
+}
+
+type ListJobExecutorsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobExecutorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobExecutorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobExecutorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobExecutorsResponse) SetHeaders(v map[string]*string) *ListJobExecutorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobExecutorsResponse) SetStatusCode(v int32) *ListJobExecutorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponse) SetBody(v *ListJobExecutorsResponseBody) *ListJobExecutorsResponse {
+	s.Body = v
+	return s
+}
+
 type ListJobsRequest struct {
 	Filter     *ListJobsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
 	PageNumber *string                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -2077,6 +2285,7 @@ func (s *ListJobsRequest) SetSortBy(v *ListJobsRequestSortBy) *ListJobsRequest {
 }
 
 type ListJobsRequestFilter struct {
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobName           *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TimeCreatedAfter  *int32  `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
@@ -2089,6 +2298,11 @@ func (s ListJobsRequestFilter) String() string {
 
 func (s ListJobsRequestFilter) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobsRequestFilter) SetJobId(v string) *ListJobsRequestFilter {
+	s.JobId = &v
+	return s
 }
 
 func (s *ListJobsRequestFilter) SetJobName(v string) *ListJobsRequestFilter {
@@ -2212,14 +2426,17 @@ func (s *ListJobsResponseBody) SetTotalCount(v int32) *ListJobsResponseBody {
 }
 
 type ListJobsResponseBodyJobList struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExecutorCount  *int32  `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
-	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName        *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	OwnerUid       *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskCount      *int32  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutorCount   *int32  `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
+	JobDescription  *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	OwnerUid        *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskCount       *int32  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	TaskSustainable *bool   `json:"TaskSustainable,omitempty" xml:"TaskSustainable,omitempty"`
 }
 
 func (s ListJobsResponseBodyJobList) String() string {
@@ -2232,6 +2449,11 @@ func (s ListJobsResponseBodyJobList) GoString() string {
 
 func (s *ListJobsResponseBodyJobList) SetCreateTime(v string) *ListJobsResponseBodyJobList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobList) SetEndTime(v string) *ListJobsResponseBodyJobList {
+	s.EndTime = &v
 	return s
 }
 
@@ -2260,6 +2482,11 @@ func (s *ListJobsResponseBodyJobList) SetOwnerUid(v string) *ListJobsResponseBod
 	return s
 }
 
+func (s *ListJobsResponseBodyJobList) SetStartTime(v string) *ListJobsResponseBodyJobList {
+	s.StartTime = &v
+	return s
+}
+
 func (s *ListJobsResponseBodyJobList) SetStatus(v string) *ListJobsResponseBodyJobList {
 	s.Status = &v
 	return s
@@ -2267,6 +2494,11 @@ func (s *ListJobsResponseBodyJobList) SetStatus(v string) *ListJobsResponseBodyJ
 
 func (s *ListJobsResponseBodyJobList) SetTaskCount(v int32) *ListJobsResponseBodyJobList {
 	s.TaskCount = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobList) SetTaskSustainable(v bool) *ListJobsResponseBodyJobList {
+	s.TaskSustainable = &v
 	return s
 }
 
@@ -2748,6 +2980,62 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 	runtime := &util.RuntimeOptions{}
 	_result = &ListImagesResponse{}
 	_body, _err := client.ListImagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobExecutorsWithOptions(request *ListJobExecutorsRequest, runtime *util.RuntimeOptions) (_result *ListJobExecutorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobExecutors"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobExecutorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobExecutors(request *ListJobExecutorsRequest) (_result *ListJobExecutorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobExecutorsResponse{}
+	_body, _err := client.ListJobExecutorsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
