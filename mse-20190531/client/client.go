@@ -8936,12 +8936,14 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetValue(v string
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
 	// The matching conditions.
 	Conditions []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The ID of the gateway.
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Percentage      *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The route IDs.
 	RouteIdList []*int64 `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
 }
@@ -8952,6 +8954,11 @@ func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) String() 
 
 func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.CanaryModel = &v
+	return s
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetConditions(v []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
@@ -8966,6 +8973,11 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetGatew
 
 func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetGatewayUniqueId(v string) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) SetPercentage(v int32) *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson {
+	s.Percentage = &v
 	return s
 }
 
@@ -9519,7 +9531,8 @@ type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The IDs of applications. Separate application IDs with commas (,).
-	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
 	// Specifies whether to enable database canary release.
 	DbGrayEnable *bool `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
 	// The ingress application.
@@ -9533,11 +9546,13 @@ type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the Microservices Engine (MSE) namespace.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Paths     []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// Specifies whether to record request details.
 	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
 	// The region ID.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region   *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	RouteIds []*int64 `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
 	// The status of the lane group. The value 0 specifies that the lane group is disabled. The value 1 specifies that the lane group is enabled.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -9557,6 +9572,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *Cr
 
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
 	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.CanaryModel = &v
 	return s
 }
 
@@ -9595,6 +9615,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetNamespace(v string) *CreateO
 	return s
 }
 
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetPaths(v []*string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Paths = v
+	return s
+}
+
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRecordCanaryDetail(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
 	s.RecordCanaryDetail = &v
 	return s
@@ -9605,7 +9630,128 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRegion(v string) *CreateOrUp
 	return s
 }
 
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRouteIds(v []*int64) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.RouteIds = v
+	return s
+}
+
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Status = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// *   zh: Chinese
+	// *   en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The IDs of applications. Separate application IDs with commas (,).
+	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// Specifies whether to enable database canary release.
+	DbGrayEnable *bool `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
+	// The ingress application.
+	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	// The ID of the lane group. A value of -1 is used to create a lane group. A value greater than 0 is used to modify the specified lane group.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The side for message filtering when the canary release for messaging feature is enabled.
+	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
+	// Specifies whether to enable canary release for messaging.
+	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PathsShrink *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// Specifies whether to record request details.
+	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	// The region ID.
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RouteIdsShrink *string `json:"RouteIds,omitempty" xml:"RouteIds,omitempty"`
+	// The status of the lane group. The value 0 specifies that the lane group is disabled. The value 1 specifies that the lane group is enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetDbGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.DbGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetEntryApp(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetMessageQueueFilterSide(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.MessageQueueFilterSide = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetMessageQueueGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.MessageQueueGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetName(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetNamespace(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetPathsShrink(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.PathsShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetRecordCanaryDetail(v bool) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.RecordCanaryDetail = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetRegion(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetRouteIdsShrink(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.RouteIdsShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
 	s.Status = &v
 	return s
 }
@@ -9660,6 +9806,7 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetSuccess(v bool) *Create
 
 type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
 	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	CanaryModel            *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
 	DbGrayEnable           *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
 	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
 	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -9667,6 +9814,7 @@ type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
 	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
 	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Paths                  *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
 	RecordCanaryDetail     *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
 	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -9682,6 +9830,11 @@ func (s CreateOrUpdateSwimmingLaneGroupResponseBodyData) GoString() string {
 
 func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
 	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.CanaryModel = &v
 	return s
 }
 
@@ -9717,6 +9870,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetName(v string) *Cre
 
 func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetNamespace(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
 	s.Namespace = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetPaths(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Paths = &v
 	return s
 }
 
@@ -37470,20 +37628,21 @@ func (s *QueryAllSwimmingLaneResponseBody) SetSuccess(v bool) *QueryAllSwimmingL
 }
 
 type QueryAllSwimmingLaneResponseBodyData struct {
-	EntryRules             []*QueryAllSwimmingLaneResponseBodyDataEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	GroupId                *string                                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                     *int64                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	MessageQueueFilterSide *string                                           `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	MessageQueueGrayEnable *bool                                             `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
-	Name                   *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace              *string                                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	RecordCanaryDetail     *bool                                             `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
-	RegionId               *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag                    *string                                           `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	UserId                 *string                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	EnableRules            *bool                                             `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
-	GmtCreate              *string                                           `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified            *string                                           `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	EntryRules               []*QueryAllSwimmingLaneResponseBodyDataEntryRules             `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	GatewaySwimmingLaneRoute *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
+	GroupId                  *string                                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id                       *int64                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	MessageQueueFilterSide   *string                                                       `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
+	MessageQueueGrayEnable   *bool                                                         `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	Name                     *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace                *string                                                       `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RecordCanaryDetail       *bool                                                         `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	RegionId                 *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                      *string                                                       `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	UserId                   *string                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	EnableRules              *bool                                                         `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
+	GmtCreate                *string                                                       `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified              *string                                                       `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneResponseBodyData) String() string {
@@ -37496,6 +37655,11 @@ func (s QueryAllSwimmingLaneResponseBodyData) GoString() string {
 
 func (s *QueryAllSwimmingLaneResponseBodyData) SetEntryRules(v []*QueryAllSwimmingLaneResponseBodyDataEntryRules) *QueryAllSwimmingLaneResponseBodyData {
 	s.EntryRules = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyData) SetGatewaySwimmingLaneRoute(v *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) *QueryAllSwimmingLaneResponseBodyData {
+	s.GatewaySwimmingLaneRoute = v
 	return s
 }
 
@@ -37670,6 +37834,88 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems) SetValue(v str
 	return s
 }
 
+type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute struct {
+	CanaryModel     *int32                                                                    `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	Conditions      []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	GatewayId       *int64                                                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                                                   `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Percentage      *int32                                                                    `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	RouteIdList     []*int64                                                                  `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+}
+
+func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetCanaryModel(v int32) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetConditions(v []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.Conditions = v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetGatewayId(v int64) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetGatewayUniqueId(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetPercentage(v int32) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.Percentage = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) SetRouteIdList(v []*int64) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute {
+	s.RouteIdList = v
+	return s
+}
+
+type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions struct {
+	Cond  *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetCond(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
+	s.Cond = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetName(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetType(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions) SetValue(v string) *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions {
+	s.Value = &v
+	return s
+}
+
 type QueryAllSwimmingLaneResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -37802,12 +38048,14 @@ func (s *QueryAllSwimmingLaneGroupResponseBody) SetSuccess(v bool) *QueryAllSwim
 
 type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	CanaryModel            *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
 	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
 	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
 	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
 	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Paths                  *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
 	RecordCanaryDetail     *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
 	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -37823,6 +38071,11 @@ func (s QueryAllSwimmingLaneGroupResponseBodyData) GoString() string {
 
 func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetAppIds(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
 	s.AppIds = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetCanaryModel(v int32) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.CanaryModel = &v
 	return s
 }
 
@@ -37853,6 +38106,11 @@ func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetName(v string) *QueryAllS
 
 func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetNamespace(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
 	s.Namespace = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetPaths(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Paths = &v
 	return s
 }
 
@@ -54058,11 +54316,21 @@ func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimming
 	return _result, _err
 }
 
-func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *CreateOrUpdateSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateOrUpdateSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateOrUpdateSwimmingLaneGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Paths)) {
+		request.PathsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Paths, tea.String("Paths"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RouteIds)) {
+		request.RouteIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RouteIds, tea.String("RouteIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -54070,6 +54338,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
 		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CanaryModel)) {
+		query["CanaryModel"] = request.CanaryModel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DbGrayEnable)) {
@@ -54100,12 +54372,20 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *Create
 		query["Namespace"] = request.Namespace
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PathsShrink)) {
+		query["Paths"] = request.PathsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RecordCanaryDetail)) {
 		query["RecordCanaryDetail"] = request.RecordCanaryDetail
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteIdsShrink)) {
+		query["RouteIds"] = request.RouteIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
