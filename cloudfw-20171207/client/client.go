@@ -731,6 +731,75 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirew
 	return s
 }
 
+type BatchDeleteVpcFirewallControlPolicyRequest struct {
+	AclUuidList   []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
+	VpcFirewallId *string   `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyRequest) SetAclUuidList(v []*string) *BatchDeleteVpcFirewallControlPolicyRequest {
+	s.AclUuidList = v
+	return s
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyRequest) SetVpcFirewallId(v string) *BatchDeleteVpcFirewallControlPolicyRequest {
+	s.VpcFirewallId = &v
+	return s
+}
+
+type BatchDeleteVpcFirewallControlPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *BatchDeleteVpcFirewallControlPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchDeleteVpcFirewallControlPolicyResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteVpcFirewallControlPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *BatchDeleteVpcFirewallControlPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *BatchDeleteVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteVpcFirewallControlPolicyResponse) SetBody(v *BatchDeleteVpcFirewallControlPolicyResponseBody) *BatchDeleteVpcFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDownloadTaskRequest struct {
 	// The language of the content within the response.
 	//
@@ -903,7 +972,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The domain name resolution method of the access control policy. By default, the access control policy is enabled after the policy is created. Valid values:
+	// The domain name resolution method of the access control policy. Valid values:
 	//
 	// *   **0**: fully qualified domain name (FQDN)-based resolution
 	// *   **1**: Domain Name System (DNS)-based dynamic resolution
@@ -1207,9 +1276,11 @@ type CreateTrFirewallV2Request struct {
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
+	// The primary zone for the vSwitch.
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
 	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	// The secondary zone for the vSwitch.
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
 	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -2362,8 +2433,14 @@ func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody
 }
 
 type DeleteControlPolicyTemplateRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The ID of the access control policy template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2391,6 +2468,7 @@ func (s *DeleteControlPolicyTemplateRequest) SetTemplateId(v string) *DeleteCont
 }
 
 type DeleteControlPolicyTemplateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2437,7 +2515,12 @@ func (s *DeleteControlPolicyTemplateResponse) SetBody(v *DeleteControlPolicyTemp
 }
 
 type DeleteDownloadTaskRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the file download task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2460,6 +2543,7 @@ func (s *DeleteDownloadTaskRequest) SetTaskId(v string) *DeleteDownloadTaskReque
 }
 
 type DeleteDownloadTaskResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2741,10 +2825,19 @@ func (s *DeleteNatFirewallControlPolicyResponse) SetBody(v *DeleteNatFirewallCon
 }
 
 type DeleteNatFirewallControlPolicyBatchRequest struct {
-	AclUuidList  []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
-	Direction    *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NatGatewayId *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The UUIDs of access control policies.
+	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
+	// The direction of the traffic to which the access control policy applies. Valid values:
+	//
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
 func (s DeleteNatFirewallControlPolicyBatchRequest) String() string {
@@ -2776,6 +2869,7 @@ func (s *DeleteNatFirewallControlPolicyBatchRequest) SetNatGatewayId(v string) *
 }
 
 type DeleteNatFirewallControlPolicyBatchResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3981,10 +4075,28 @@ func (s *DescribeAssetListResponse) SetBody(v *DescribeAssetListResponseBody) *D
 }
 
 type DescribeAssetRiskListRequest struct {
+	// The IP addresses to query. Separate the IP addresses with commas (,). You can specify up to 20 IP addresses at a time.
+	//
+	// >
+	//
+	// *   Example of an IPv4 address: 47.97.221.164
+	//
+	// *   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\*\*\*\*:ffff
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
-	IpVersion  *int32    `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp   *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The IP version of the asset that is protected by Cloud Firewall.
+	//
+	// Valid values:
+	//
+	// *   **4** (default): IPv4
+	// *   **6**: IPv6
+	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeAssetRiskListRequest) String() string {
@@ -4016,9 +4128,12 @@ func (s *DescribeAssetRiskListRequest) SetSourceIp(v string) *DescribeAssetRiskL
 }
 
 type DescribeAssetRiskListResponseBody struct {
-	AssetList  []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details of the asset.
+	AssetList []*DescribeAssetRiskListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAssetRiskListResponseBody) String() string {
@@ -4045,9 +4160,22 @@ func (s *DescribeAssetRiskListResponseBody) SetTotalCount(v int64) *DescribeAsse
 }
 
 type DescribeAssetRiskListResponseBodyAssetList struct {
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	IpVersion *int64  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The IP address of the server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP version of the asset that is protected by Cloud Firewall.
+	//
+	// Valid values:
+	//
+	// *   **4**: IPv4
+	// *   **6**: IPv6
+	IpVersion *int64 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The reason for the risk.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   **low**
+	// *   **middle**
+	// *   **high**
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -4109,9 +4237,19 @@ func (s *DescribeAssetRiskListResponse) SetBody(v *DescribeAssetRiskListResponse
 }
 
 type DescribeCfwRiskLevelSummaryRequest struct {
+	// The instance type.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The language of the content within the response.
+	//
+	// Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID of your Cloud Firewall.
+	//
+	// >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCfwRiskLevelSummaryRequest) String() string {
@@ -4138,8 +4276,10 @@ func (s *DescribeCfwRiskLevelSummaryRequest) SetRegionId(v string) *DescribeCfwR
 }
 
 type DescribeCfwRiskLevelSummaryResponseBody struct {
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RiskList  []*DescribeCfwRiskLevelSummaryResponseBodyRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of risks.
+	RiskList []*DescribeCfwRiskLevelSummaryResponseBodyRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCfwRiskLevelSummaryResponseBody) String() string {
@@ -4161,9 +4301,14 @@ func (s *DescribeCfwRiskLevelSummaryResponseBody) SetRiskList(v []*DescribeCfwRi
 }
 
 type DescribeCfwRiskLevelSummaryResponseBodyRiskList struct {
+	// The risk levels. Valid values:
+	//
+	// *   **medium**
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Num   *string `json:"Num,omitempty" xml:"Num,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of at-risk Elastic Compute Service (ECS) instances.
+	Num *string `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCfwRiskLevelSummaryResponseBodyRiskList) String() string {
@@ -5043,10 +5188,17 @@ func (s *DescribeDomainResolveResponse) SetBody(v *DescribeDomainResolveResponse
 }
 
 type DescribeDownloadTaskRequest struct {
+	// The page number.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the task. For more information about task types, see the descriptions in the "DescribeDownloadTaskType" topic. If you do not specify this parameter, all files are queried by default.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDownloadTaskRequest) String() string {
@@ -5078,9 +5230,12 @@ func (s *DescribeDownloadTaskRequest) SetTaskType(v string) *DescribeDownloadTas
 }
 
 type DescribeDownloadTaskResponseBody struct {
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      []*DescribeDownloadTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*DescribeDownloadTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of tasks.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDownloadTaskResponseBody) String() string {
@@ -5107,14 +5262,27 @@ func (s *DescribeDownloadTaskResponseBody) SetTotalCount(v int32) *DescribeDownl
 }
 
 type DescribeDownloadTaskResponseBodyTasks struct {
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FileSize   *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileURL    *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the task was created. The value is a UNIX timestamp. Unit: seconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time of the task. The value is a UNIX timestamp. Unit: seconds.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The size of the file.
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The URL of the OSS object.
+	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **finish**
+	// *   **start**
+	// *   **error**
+	// *   **expire**: The task file is invalid and cannot be downloaded.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDownloadTaskResponseBodyTasks) String() string {
@@ -5195,10 +5363,17 @@ func (s *DescribeDownloadTaskResponse) SetBody(v *DescribeDownloadTaskResponseBo
 }
 
 type DescribeDownloadTaskTypeRequest struct {
+	// The page number. Pages start from page 1. Default value: **1**.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the task.
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeDownloadTaskTypeRequest) String() string {
@@ -5230,9 +5405,12 @@ func (s *DescribeDownloadTaskTypeRequest) SetTaskType(v string) *DescribeDownloa
 }
 
 type DescribeDownloadTaskTypeResponseBody struct {
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task types.
 	TaskTypeArray []*DescribeDownloadTaskTypeResponseBodyTaskTypeArray `json:"TaskTypeArray,omitempty" xml:"TaskTypeArray,omitempty" type:"Repeated"`
-	TotalCount    *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDownloadTaskTypeResponseBody) String() string {
@@ -5259,7 +5437,9 @@ func (s *DescribeDownloadTaskTypeResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDownloadTaskTypeResponseBodyTaskTypeArray struct {
+	// The name of the task type.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -6728,6 +6908,10 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeNatAclPageStatusRequest struct {
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -6745,8 +6929,10 @@ func (s *DescribeNatAclPageStatusRequest) SetLang(v string) *DescribeNatAclPageS
 }
 
 type DescribeNatAclPageStatusResponseBody struct {
-	NatAclPageEnable *bool   `json:"NatAclPageEnable,omitempty" xml:"NatAclPageEnable,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether pagination for access control policies for NAT firewalls is supported.
+	NatAclPageEnable *bool `json:"NatAclPageEnable,omitempty" xml:"NatAclPageEnable,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNatAclPageStatusResponseBody) String() string {
@@ -8923,7 +9109,9 @@ func (s *DescribePostpayTrafficTotalResponse) SetBody(v *DescribePostpayTrafficT
 }
 
 type DescribePrefixListsRequest struct {
+	// The region ID of the instance.
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -8946,8 +9134,10 @@ func (s *DescribePrefixListsRequest) SetSourceIp(v string) *DescribePrefixListsR
 }
 
 type DescribePrefixListsResponseBody struct {
+	// Details about the prefix lists.
 	PrefixList []*DescribePrefixListsResponseBodyPrefixList `json:"PrefixList,omitempty" xml:"PrefixList,omitempty" type:"Repeated"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePrefixListsResponseBody) String() string {
@@ -8969,13 +9159,23 @@ func (s *DescribePrefixListsResponseBody) SetRequestId(v string) *DescribePrefix
 }
 
 type DescribePrefixListsResponseBodyPrefixList struct {
-	AddressFamily    *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	AssociationCount *int32  `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxEntries       *int32  `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	PrefixListId     *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
-	PrefixListName   *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
+	// The IP address family of the prefix list. Valid values:
+	//
+	// *   IPv4
+	// *   IPv6
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
+	// The number of associated resources.
+	AssociationCount *int32 `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
+	// The creation time.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of entries in the prefix list.
+	MaxEntries *int32 `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
+	// The ID of the prefix list.
+	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	// The name of the prefix list.
+	PrefixListName *string `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
 }
 
 func (s DescribePrefixListsResponseBodyPrefixList) String() string {
@@ -9926,9 +10126,12 @@ func (s *DescribeRiskEventPayloadResponse) SetBody(v *DescribeRiskEventPayloadRe
 }
 
 type DescribeSignatureLibVersionResponseBody struct {
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Version    []*DescribeSignatureLibVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information about the versions.
+	Version []*DescribeSignatureLibVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSignatureLibVersionResponseBody) String() string {
@@ -9955,7 +10158,37 @@ func (s *DescribeSignatureLibVersionResponseBody) SetVersion(v []*DescribeSignat
 }
 
 type DescribeSignatureLibVersionResponseBodyVersion struct {
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type.
+	//
+	// Valid values:
+	//
+	// *   ips
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Basic Rules and Virtual Patching
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// *   intelligence
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Threat Intelligence
+	//
+	//     <!-- -->
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version number.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -13592,8 +13825,16 @@ func (s *DescribeVpcFirewallDetailResponse) SetBody(v *DescribeVpcFirewallDetail
 }
 
 type DescribeVpcFirewallIPSWhitelistRequest struct {
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MemberUid     *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The language of the content within the request and response.
+	//
+	// Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member in Cloud Firewall.
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -13621,7 +13862,9 @@ func (s *DescribeVpcFirewallIPSWhitelistRequest) SetVpcFirewallId(v string) *Des
 }
 
 type DescribeVpcFirewallIPSWhitelistResponseBody struct {
-	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the IPS whitelist of the VPC firewall.
 	Whitelists []*DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists `json:"Whitelists,omitempty" xml:"Whitelists,omitempty" type:"Repeated"`
 }
 
@@ -13644,11 +13887,22 @@ func (s *DescribeVpcFirewallIPSWhitelistResponseBody) SetWhitelists(v []*Describ
 }
 
 type DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists struct {
-	ListType       *int64    `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	ListValue      *string   `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
-	VpcFirewallId  *string   `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+	// The type of the list. Valid values:
+	//
+	// *   **1**: user-defined
+	// *   **2**: address book
+	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The entries in the list.
+	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	// The instance ID of the VPC firewall.
+	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+	// An array of entries in the list.
 	WhiteListValue []*string `json:"WhiteListValue,omitempty" xml:"WhiteListValue,omitempty" type:"Repeated"`
-	WhiteType      *int64    `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+	// The type of the whitelist. Valid values:
+	//
+	// *   **1**: destination
+	// *   **2**: source
+	WhiteType *int64 `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
 }
 
 func (s DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists) String() string {
@@ -14338,11 +14592,21 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetBody(v *DescribeVpcFirew
 }
 
 type DescribeVpcListLiteRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID of the VPC.
+	//
+	// >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeVpcListLiteRequest) String() string {
@@ -14379,8 +14643,10 @@ func (s *DescribeVpcListLiteRequest) SetVpcName(v string) *DescribeVpcListLiteRe
 }
 
 type DescribeVpcListLiteResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VpcList   []*DescribeVpcListLiteResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the VPCs.
+	VpcList []*DescribeVpcListLiteResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcListLiteResponseBody) String() string {
@@ -14402,9 +14668,12 @@ func (s *DescribeVpcListLiteResponseBody) SetVpcList(v []*DescribeVpcListLiteRes
 }
 
 type DescribeVpcListLiteResponseBodyVpcList struct {
+	// The region ID of the VPC.
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeVpcListLiteResponseBodyVpcList) String() string {
@@ -14460,10 +14729,20 @@ func (s *DescribeVpcListLiteResponse) SetBody(v *DescribeVpcListLiteResponseBody
 }
 
 type DescribeVpcZoneRequest struct {
+	// The environment. Valid values:
+	//
+	// *   **VPC**
+	// *   **TransitRouter**
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MemberUid   *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UID of the member in Cloud Firewall.
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The region ID.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 }
 
 func (s DescribeVpcZoneRequest) String() string {
@@ -14495,8 +14774,10 @@ func (s *DescribeVpcZoneRequest) SetRegionNo(v string) *DescribeVpcZoneRequest {
 }
 
 type DescribeVpcZoneResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneList  []*DescribeVpcZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The zones.
+	ZoneList []*DescribeVpcZoneResponseBodyZoneList `json:"ZoneList,omitempty" xml:"ZoneList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcZoneResponseBody) String() string {
@@ -14518,9 +14799,12 @@ func (s *DescribeVpcZoneResponseBody) SetZoneList(v []*DescribeVpcZoneResponseBo
 }
 
 type DescribeVpcZoneResponseBodyZoneList struct {
+	// The name of the zone.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneType  *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone type. Default value: AvailabilityZone. This value indicates Alibaba Cloud zones.
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeVpcZoneResponseBodyZoneList) String() string {
@@ -17664,12 +17948,27 @@ func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetBody(v *ModifyVpcFirewall
 }
 
 type ModifyVpcFirewallIPSWhitelistRequest struct {
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ListType      *int64  `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	ListValue     *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
-	MemberUid     *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the list. Valid values:
+	//
+	// *   **1**: user-defined
+	// *   **2**: address book
+	ListType *int64 `json:"ListType,omitempty" xml:"ListType,omitempty"`
+	// The entry in the list.
+	ListValue *string `json:"ListValue,omitempty" xml:"ListValue,omitempty"`
+	// The UID of the member that is managed by your Alibaba Cloud account.
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-	WhiteType     *int64  `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
+	// The type of the whitelist. Valid values:
+	//
+	// *   **1**: destination
+	// *   **2**: source
+	WhiteType *int64 `json:"WhiteType,omitempty" xml:"WhiteType,omitempty"`
 }
 
 func (s ModifyVpcFirewallIPSWhitelistRequest) String() string {
@@ -17711,6 +18010,7 @@ func (s *ModifyVpcFirewallIPSWhitelistRequest) SetWhiteType(v int64) *ModifyVpcF
 }
 
 type ModifyVpcFirewallIPSWhitelistResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18361,8 +18661,14 @@ func (s *ReleasePostInstanceResponse) SetBody(v *ReleasePostInstanceResponseBody
 }
 
 type ResetNatFirewallRuleHitCountRequest struct {
-	AclUuid      *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The UUID of the access control policy.
+	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
@@ -18390,6 +18696,7 @@ func (s *ResetNatFirewallRuleHitCountRequest) SetNatGatewayId(v string) *ResetNa
 }
 
 type ResetNatFirewallRuleHitCountResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18942,6 +19249,54 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCopyVpcFirewallControlPolicyResponse{}
 	_body, _err := client.BatchCopyVpcFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteVpcFirewallControlPolicyWithOptions(request *BatchDeleteVpcFirewallControlPolicyRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteVpcFirewallControlPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclUuidList)) {
+		query["AclUuidList"] = request.AclUuidList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcFirewallId)) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteVpcFirewallControlPolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteVpcFirewallControlPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteVpcFirewallControlPolicy(request *BatchDeleteVpcFirewallControlPolicyRequest) (_result *BatchDeleteVpcFirewallControlPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchDeleteVpcFirewallControlPolicyResponse{}
+	_body, _err := client.BatchDeleteVpcFirewallControlPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19869,6 +20224,15 @@ func (client *Client) DeleteControlPolicyTemplate(request *DeleteControlPolicyTe
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete file download tasks and delete the files.
+ * **
+ * **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+ *
+ * @param request DeleteDownloadTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDownloadTaskResponse
+ */
 func (client *Client) DeleteDownloadTaskWithOptions(request *DeleteDownloadTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDownloadTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19906,6 +20270,14 @@ func (client *Client) DeleteDownloadTaskWithOptions(request *DeleteDownloadTaskR
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete file download tasks and delete the files.
+ * **
+ * **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+ *
+ * @param request DeleteDownloadTaskRequest
+ * @return DeleteDownloadTaskResponse
+ */
 func (client *Client) DeleteDownloadTask(request *DeleteDownloadTaskRequest) (_result *DeleteDownloadTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDownloadTaskResponse{}
