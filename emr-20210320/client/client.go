@@ -5764,107 +5764,6 @@ func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *Creat
 	return s
 }
 
-type CreateReportRequest struct {
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 地域ID。
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SelectTimestamp *int64  `json:"SelectTimestamp,omitempty" xml:"SelectTimestamp,omitempty"`
-}
-
-func (s CreateReportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateReportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateReportRequest) SetClusterId(v string) *CreateReportRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateReportRequest) SetRegionId(v string) *CreateReportRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateReportRequest) SetSelectTimestamp(v int64) *CreateReportRequest {
-	s.SelectTimestamp = &v
-	return s
-}
-
-type CreateReportResponseBody struct {
-	Data *CreateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateReportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateReportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateReportResponseBody) SetData(v *CreateReportResponseBodyData) *CreateReportResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateReportResponseBody) SetRequestId(v string) *CreateReportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateReportResponseBodyData struct {
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-}
-
-func (s CreateReportResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateReportResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateReportResponseBodyData) SetReportId(v string) *CreateReportResponseBodyData {
-	s.ReportId = &v
-	return s
-}
-
-type CreateReportResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateReportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateReportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateReportResponse) SetHeaders(v map[string]*string) *CreateReportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateReportResponse) SetStatusCode(v int32) *CreateReportResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateReportResponse) SetBody(v *CreateReportResponseBody) *CreateReportResponse {
-	s.Body = v
-	return s
-}
-
 type DecreaseNodesRequest struct {
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -6040,133 +5939,6 @@ func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
 }
 
 func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
-	s.Body = v
-	return s
-}
-
-type GetApmDataRequest struct {
-	// 集群ID。非必传参数。
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Provider      *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s GetApmDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApmDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetApmDataRequest) SetClusterId(v string) *GetApmDataRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetApmDataRequest) SetComponentName(v string) *GetApmDataRequest {
-	s.ComponentName = &v
-	return s
-}
-
-func (s *GetApmDataRequest) SetLanguage(v string) *GetApmDataRequest {
-	s.Language = &v
-	return s
-}
-
-func (s *GetApmDataRequest) SetProvider(v string) *GetApmDataRequest {
-	s.Provider = &v
-	return s
-}
-
-func (s *GetApmDataRequest) SetRegionId(v string) *GetApmDataRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetApmDataRequest) SetResourceGroupId(v string) *GetApmDataRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type GetApmDataResponseBody struct {
-	// Created on 2022/7/11 3:16 PM
-	Data *GetApmDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetApmDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApmDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetApmDataResponseBody) SetData(v *GetApmDataResponseBodyData) *GetApmDataResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetApmDataResponseBody) SetRequestId(v string) *GetApmDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetApmDataResponseBodyData struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetApmDataResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApmDataResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetApmDataResponseBodyData) SetData(v string) *GetApmDataResponseBodyData {
-	s.Data = &v
-	return s
-}
-
-func (s *GetApmDataResponseBodyData) SetType(v string) *GetApmDataResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-type GetApmDataResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetApmDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetApmDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApmDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetApmDataResponse) SetHeaders(v map[string]*string) *GetApmDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetApmDataResponse) SetStatusCode(v int32) *GetApmDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetApmDataResponse) SetBody(v *GetApmDataResponseBody) *GetApmDataResponse {
 	s.Body = v
 	return s
 }
@@ -6941,372 +6713,6 @@ func (s *GetClusterResponse) SetStatusCode(v int32) *GetClusterResponse {
 }
 
 func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterResponse {
-	s.Body = v
-	return s
-}
-
-type GetClusterCloneMetaRequest struct {
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetClusterCloneMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaRequest) SetClusterId(v string) *GetClusterCloneMetaRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaRequest) SetRegionId(v string) *GetClusterCloneMetaRequest {
-	s.RegionId = &v
-	return s
-}
-
-type GetClusterCloneMetaResponseBody struct {
-	ClusterCloneMeta *GetClusterCloneMetaResponseBodyClusterCloneMeta `json:"ClusterCloneMeta,omitempty" xml:"ClusterCloneMeta,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetClusterCloneMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponseBody) SetClusterCloneMeta(v *GetClusterCloneMetaResponseBodyClusterCloneMeta) *GetClusterCloneMetaResponseBody {
-	s.ClusterCloneMeta = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBody) SetRequestId(v string) *GetClusterCloneMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
-	// 创建集群时的服务配置项。创建集群时需要记录用户传入的配置项参数key，返回集群最新的配置项值。
-	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// 集群应用。
-	Applications     []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	BootstrapScripts []*Script      `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 集群名称。
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 集群状态。
-	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// 集群类型。
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 部署模式。
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// EMR服务角色。
-	EmrDefaultRole   *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
-	ExistCloneConfig *bool   `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
-	// 元数据类型。
-	MetaStoreType *string `json:"MetaStoreType,omitempty" xml:"MetaStoreType,omitempty"`
-	// 网络类型。
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// 节点属性。
-	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	NodeGroups     []*NodeGroup    `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// 付费类型。
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR发行版。
-	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 资源组ID。
-	ResourceGroupId   *string                                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ScalingPolicyDTOS []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS `json:"ScalingPolicyDTOS,omitempty" xml:"ScalingPolicyDTOS,omitempty" type:"Repeated"`
-	// Kerberos安全模式。
-	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// 预付费配置。
-	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	Tags               []*Tag              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMeta) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplicationConfigs(v []*ApplicationConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ApplicationConfigs = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetApplications(v []*Application) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.Applications = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetBootstrapScripts(v []*Script) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.BootstrapScripts = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterState(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ClusterState = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeployMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.DeployMode = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetEmrDefaultRole(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.EmrDefaultRole = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetExistCloneConfig(v bool) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ExistCloneConfig = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetMetaStoreType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.MetaStoreType = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNetworkType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeAttributes(v *NodeAttributes) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.NodeAttributes = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetNodeGroups(v []*NodeGroup) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.NodeGroups = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetPaymentType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.PaymentType = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetRegionId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetReleaseVersion(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ReleaseVersion = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetResourceGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetScalingPolicyDTOS(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.ScalingPolicyDTOS = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSecurityMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.SecurityMode = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetSubscriptionConfig(v *SubscriptionConfig) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.SubscriptionConfig = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetTags(v []*Tag) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
-	s.Tags = v
-	return s
-}
-
-type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS struct {
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 最大最小值约束
-	Constraints *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
-	// 节点组ID。
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 伸缩策略ID。
-	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
-	// 伸缩规则列表
-	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetClusterId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetConstraints(v *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
-	s.Constraints = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetNodeGroupId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
-	s.NodeGroupId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetScalingPolicyId(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
-	s.ScalingPolicyId = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS) SetScalingRules(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOS {
-	s.ScalingRules = v
-	return s
-}
-
-type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints struct {
-	// 最大值
-	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// 最小值
-	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) SetMaxCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints {
-	s.MaxCapacity = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints) SetMinCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSConstraints {
-	s.MinCapacity = &v
-	return s
-}
-
-type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules struct {
-	// 伸缩类型。取值范围：
-	// - SCALE_OUT：扩容
-	// - SCALE_IN：缩容
-	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
-	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// 按照负载伸缩描述。
-	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
-	// 弹性伸缩规则名称。
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 按照时间伸缩描述。
-	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// 伸缩规则类型。取值范围：
-	// - TIME_TRIGGER: 按时间伸缩。
-	// - METRICS_TRIGGER: 按负载伸缩。
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetActivityType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.ActivityType = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetAdjustmentValue(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.AdjustmentValue = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.MetricsTrigger = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetRuleName(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.RuleName = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetTimeTrigger(v *TimeTrigger) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.TimeTrigger = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules) SetTriggerType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicyDTOSScalingRules {
-	s.TriggerType = &v
-	return s
-}
-
-type GetClusterCloneMetaResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetClusterCloneMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetClusterCloneMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetClusterCloneMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetClusterCloneMetaResponse) SetHeaders(v map[string]*string) *GetClusterCloneMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponse) SetStatusCode(v int32) *GetClusterCloneMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetClusterCloneMetaResponse) SetBody(v *GetClusterCloneMetaResponseBody) *GetClusterCloneMetaResponse {
 	s.Body = v
 	return s
 }
@@ -22715,137 +22121,6 @@ func (s *JoinResourceGroupResponse) SetBody(v *JoinResourceGroupResponseBody) *J
 	return s
 }
 
-type ListApmMetadataRequest struct {
-	// 集群ID。非必传参数。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 元数据类型。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListApmMetadataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApmMetadataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListApmMetadataRequest) SetClusterId(v string) *ListApmMetadataRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListApmMetadataRequest) SetRegionId(v string) *ListApmMetadataRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListApmMetadataRequest) SetResourceGroupId(v string) *ListApmMetadataRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *ListApmMetadataRequest) SetType(v string) *ListApmMetadataRequest {
-	s.Type = &v
-	return s
-}
-
-type ListApmMetadataResponseBody struct {
-	// 本次请求所返回的最大记录条数。
-	MaxResults *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Metadata   []*ListApmMetadataResponseBodyMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Repeated"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListApmMetadataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApmMetadataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListApmMetadataResponseBody) SetMaxResults(v int32) *ListApmMetadataResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListApmMetadataResponseBody) SetMetadata(v []*ListApmMetadataResponseBodyMetadata) *ListApmMetadataResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *ListApmMetadataResponseBody) SetNextToken(v string) *ListApmMetadataResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListApmMetadataResponseBody) SetRequestId(v string) *ListApmMetadataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListApmMetadataResponseBody) SetTotalCount(v int32) *ListApmMetadataResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListApmMetadataResponseBodyMetadata struct {
-	// 元数据值。
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListApmMetadataResponseBodyMetadata) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApmMetadataResponseBodyMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *ListApmMetadataResponseBodyMetadata) SetValue(v string) *ListApmMetadataResponseBodyMetadata {
-	s.Value = &v
-	return s
-}
-
-type ListApmMetadataResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListApmMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListApmMetadataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListApmMetadataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListApmMetadataResponse) SetHeaders(v map[string]*string) *ListApmMetadataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListApmMetadataResponse) SetStatusCode(v int32) *ListApmMetadataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListApmMetadataResponse) SetBody(v *ListApmMetadataResponseBody) *ListApmMetadataResponse {
-	s.Body = v
-	return s
-}
-
 type ListApplicationConfigsRequest struct {
 	// The name of the application.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
@@ -23543,6 +22818,34 @@ type ListClustersRequest struct {
 	// The billing methods. You can specify a maximum of 2 items.
 	PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
 	// The region ID.
+	//
+	// Valid values:
+	//
+	// *   cn-qingdao
+	// *   cn-beijing
+	// *   cn-zhangjiakou
+	// *   cn-huhehaote
+	// *   cn-hangzhou
+	// *   cn-shanghai
+	// *   cn-shenzhen
+	// *   cn-chengdu
+	// *   cn-hongkong
+	// *   cn-wulanchabu
+	// *   cn-heyuan-acdr-1
+	// *   cn-qingdao-acdr-ut-1
+	// *   ap-northeast-1
+	// *   ap-southeast-1
+	// *   ap-southeast-2
+	// *   ap-southeast-3
+	// *   ap-southeast-5
+	// *   ap-south-1
+	// *   us-east-1
+	// *   us-west-1
+	// *   me-east-1
+	// *   me-central-1
+	// *   eu-central-1
+	// *   eu-west-1
+	// *   cn-north-2-gov-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -35390,6 +34693,227 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 	return s
 }
 
+type ListScriptsRequest struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 一次获取的最大记录数。取值范围：1~100。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 区域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 集群脚本类型。
+	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+}
+
+func (s ListScriptsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScriptsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScriptsRequest) SetClusterId(v string) *ListScriptsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetMaxResults(v int32) *ListScriptsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetNextToken(v string) *ListScriptsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetRegionId(v string) *ListScriptsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListScriptsRequest) SetScriptType(v string) *ListScriptsRequest {
+	s.ScriptType = &v
+	return s
+}
+
+type ListScriptsResponseBody struct {
+	// 本次请求所返回的最大记录条数。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scripts   []*ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	// 本次请求条件下的数据总量。
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListScriptsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScriptsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScriptsResponseBody) SetMaxResults(v int32) *ListScriptsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListScriptsResponseBody) SetNextToken(v string) *ListScriptsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListScriptsResponseBody) SetRequestId(v string) *ListScriptsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScriptsResponseBody) SetScripts(v []*ListScriptsResponseBodyScripts) *ListScriptsResponseBody {
+	s.Scripts = v
+	return s
+}
+
+func (s *ListScriptsResponseBody) SetTotalCount(v int32) *ListScriptsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListScriptsResponseBodyScripts struct {
+	// API名称。
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// 结束执行时间。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行失败策略。
+	ExecutionFailStrategy *string `json:"ExecutionFailStrategy,omitempty" xml:"ExecutionFailStrategy,omitempty"`
+	// 执行时机。
+	ExecutionMoment *string `json:"ExecutionMoment,omitempty" xml:"ExecutionMoment,omitempty"`
+	ExecutionState  *string `json:"ExecutionState,omitempty" xml:"ExecutionState,omitempty"`
+	// 最近一次编辑时间。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// 节点选择器。
+	NodeSelector *NodeSelector `json:"NodeSelector,omitempty" xml:"NodeSelector,omitempty"`
+	// 区域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 集群脚本执行参数。
+	ScriptArgs *string `json:"ScriptArgs,omitempty" xml:"ScriptArgs,omitempty"`
+	// 脚本ID。
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// 集群脚本名称。
+	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	// 集群脚本路径。
+	ScriptPath *string `json:"ScriptPath,omitempty" xml:"ScriptPath,omitempty"`
+	// 开始执行时间。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListScriptsResponseBodyScripts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScriptsResponseBodyScripts) GoString() string {
+	return s.String()
+}
+
+func (s *ListScriptsResponseBodyScripts) SetAction(v string) *ListScriptsResponseBodyScripts {
+	s.Action = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetEndTime(v int64) *ListScriptsResponseBodyScripts {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetExecutionFailStrategy(v string) *ListScriptsResponseBodyScripts {
+	s.ExecutionFailStrategy = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetExecutionMoment(v string) *ListScriptsResponseBodyScripts {
+	s.ExecutionMoment = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetExecutionState(v string) *ListScriptsResponseBodyScripts {
+	s.ExecutionState = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetLastUpdateTime(v int64) *ListScriptsResponseBodyScripts {
+	s.LastUpdateTime = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetNodeSelector(v *NodeSelector) *ListScriptsResponseBodyScripts {
+	s.NodeSelector = v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetRegionId(v string) *ListScriptsResponseBodyScripts {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetScriptArgs(v string) *ListScriptsResponseBodyScripts {
+	s.ScriptArgs = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetScriptId(v string) *ListScriptsResponseBodyScripts {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetScriptName(v string) *ListScriptsResponseBodyScripts {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetScriptPath(v string) *ListScriptsResponseBodyScripts {
+	s.ScriptPath = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScripts) SetStartTime(v int64) *ListScriptsResponseBodyScripts {
+	s.StartTime = &v
+	return s
+}
+
+type ListScriptsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScriptsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScriptsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScriptsResponse) SetHeaders(v map[string]*string) *ListScriptsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScriptsResponse) SetStatusCode(v int32) *ListScriptsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScriptsResponse) SetBody(v *ListScriptsResponseBody) *ListScriptsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The number of maximum number of records to obtain at a time.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -35647,427 +35171,6 @@ func (s *PutAutoScalingPolicyResponse) SetStatusCode(v int32) *PutAutoScalingPol
 }
 
 func (s *PutAutoScalingPolicyResponse) SetBody(v *PutAutoScalingPolicyResponseBody) *PutAutoScalingPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type QueryApmComponentsRequest struct {
-	// 集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Provider  *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-}
-
-func (s QueryApmComponentsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmComponentsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmComponentsRequest) SetClusterId(v string) *QueryApmComponentsRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *QueryApmComponentsRequest) SetProvider(v string) *QueryApmComponentsRequest {
-	s.Provider = &v
-	return s
-}
-
-func (s *QueryApmComponentsRequest) SetRegionId(v string) *QueryApmComponentsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *QueryApmComponentsRequest) SetResourceGroupId(v string) *QueryApmComponentsRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-type QueryApmComponentsResponseBody struct {
-	// Created on 2022/7/11 5:27 PM
-	Data *QueryApmComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryApmComponentsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmComponentsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmComponentsResponseBody) SetData(v *QueryApmComponentsResponseBodyData) *QueryApmComponentsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryApmComponentsResponseBody) SetRequestId(v string) *QueryApmComponentsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryApmComponentsResponseBodyData struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s QueryApmComponentsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmComponentsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmComponentsResponseBodyData) SetData(v string) *QueryApmComponentsResponseBodyData {
-	s.Data = &v
-	return s
-}
-
-type QueryApmComponentsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *QueryApmComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryApmComponentsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmComponentsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmComponentsResponse) SetHeaders(v map[string]*string) *QueryApmComponentsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryApmComponentsResponse) SetStatusCode(v int32) *QueryApmComponentsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryApmComponentsResponse) SetBody(v *QueryApmComponentsResponseBody) *QueryApmComponentsResponse {
-	s.Body = v
-	return s
-}
-
-type QueryApmGrafanaDataRequest struct {
-	// 集群ID。
-	ClusterId   *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DashboardId *string                                `json:"DashboardId,omitempty" xml:"DashboardId,omitempty"`
-	End         *string                                `json:"End,omitempty" xml:"End,omitempty"`
-	Provider    *string                                `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Query       *string                                `json:"Query,omitempty" xml:"Query,omitempty"`
-	QueryParams *QueryApmGrafanaDataRequestQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
-	QueryUrl    *string                                `json:"QueryUrl,omitempty" xml:"QueryUrl,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
-	ResourceGroupId *string            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Start           *string            `json:"Start,omitempty" xml:"Start,omitempty"`
-	Step            *string            `json:"Step,omitempty" xml:"Step,omitempty"`
-	Time            *string            `json:"Time,omitempty" xml:"Time,omitempty"`
-	Variables       map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
-}
-
-func (s QueryApmGrafanaDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataRequest) SetClusterId(v string) *QueryApmGrafanaDataRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetDashboardId(v string) *QueryApmGrafanaDataRequest {
-	s.DashboardId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetEnd(v string) *QueryApmGrafanaDataRequest {
-	s.End = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetProvider(v string) *QueryApmGrafanaDataRequest {
-	s.Provider = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetQuery(v string) *QueryApmGrafanaDataRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetQueryParams(v *QueryApmGrafanaDataRequestQueryParams) *QueryApmGrafanaDataRequest {
-	s.QueryParams = v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetQueryUrl(v string) *QueryApmGrafanaDataRequest {
-	s.QueryUrl = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetRegionId(v string) *QueryApmGrafanaDataRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetResourceGroupId(v string) *QueryApmGrafanaDataRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetStart(v string) *QueryApmGrafanaDataRequest {
-	s.Start = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetStep(v string) *QueryApmGrafanaDataRequest {
-	s.Step = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetTime(v string) *QueryApmGrafanaDataRequest {
-	s.Time = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequest) SetVariables(v map[string]*string) *QueryApmGrafanaDataRequest {
-	s.Variables = v
-	return s
-}
-
-type QueryApmGrafanaDataRequestQueryParams struct {
-	PanelId      *int64  `json:"PanelId,omitempty" xml:"PanelId,omitempty"`
-	RefId        *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-}
-
-func (s QueryApmGrafanaDataRequestQueryParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataRequestQueryParams) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataRequestQueryParams) SetPanelId(v int64) *QueryApmGrafanaDataRequestQueryParams {
-	s.PanelId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequestQueryParams) SetRefId(v string) *QueryApmGrafanaDataRequestQueryParams {
-	s.RefId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataRequestQueryParams) SetVariableName(v string) *QueryApmGrafanaDataRequestQueryParams {
-	s.VariableName = &v
-	return s
-}
-
-type QueryApmGrafanaDataShrinkRequest struct {
-	// 集群ID。
-	ClusterId   *string                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DashboardId *string                                      `json:"DashboardId,omitempty" xml:"DashboardId,omitempty"`
-	End         *string                                      `json:"End,omitempty" xml:"End,omitempty"`
-	Provider    *string                                      `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Query       *string                                      `json:"Query,omitempty" xml:"Query,omitempty"`
-	QueryParams *QueryApmGrafanaDataShrinkRequestQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Struct"`
-	QueryUrl    *string                                      `json:"QueryUrl,omitempty" xml:"QueryUrl,omitempty"`
-	// 地域ID。
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 如果存在clusterId，从Cluster中获取该值，如果clusterId为空，用户显式指定
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Start           *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	Step            *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
-}
-
-func (s QueryApmGrafanaDataShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetClusterId(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetDashboardId(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.DashboardId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetEnd(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.End = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetProvider(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.Provider = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetQuery(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetQueryParams(v *QueryApmGrafanaDataShrinkRequestQueryParams) *QueryApmGrafanaDataShrinkRequest {
-	s.QueryParams = v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetQueryUrl(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.QueryUrl = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetRegionId(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetResourceGroupId(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetStart(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.Start = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetStep(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.Step = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetTime(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.Time = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequest) SetVariablesShrink(v string) *QueryApmGrafanaDataShrinkRequest {
-	s.VariablesShrink = &v
-	return s
-}
-
-type QueryApmGrafanaDataShrinkRequestQueryParams struct {
-	PanelId      *int64  `json:"PanelId,omitempty" xml:"PanelId,omitempty"`
-	RefId        *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-}
-
-func (s QueryApmGrafanaDataShrinkRequestQueryParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataShrinkRequestQueryParams) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetPanelId(v int64) *QueryApmGrafanaDataShrinkRequestQueryParams {
-	s.PanelId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetRefId(v string) *QueryApmGrafanaDataShrinkRequestQueryParams {
-	s.RefId = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataShrinkRequestQueryParams) SetVariableName(v string) *QueryApmGrafanaDataShrinkRequestQueryParams {
-	s.VariableName = &v
-	return s
-}
-
-type QueryApmGrafanaDataResponseBody struct {
-	Data *QueryApmGrafanaDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryApmGrafanaDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataResponseBody) SetData(v *QueryApmGrafanaDataResponseBodyData) *QueryApmGrafanaDataResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryApmGrafanaDataResponseBody) SetRequestId(v string) *QueryApmGrafanaDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryApmGrafanaDataResponseBodyData struct {
-	QueryGrafanaData *string `json:"QueryGrafanaData,omitempty" xml:"QueryGrafanaData,omitempty"`
-}
-
-func (s QueryApmGrafanaDataResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataResponseBodyData) SetQueryGrafanaData(v string) *QueryApmGrafanaDataResponseBodyData {
-	s.QueryGrafanaData = &v
-	return s
-}
-
-type QueryApmGrafanaDataResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *QueryApmGrafanaDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryApmGrafanaDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryApmGrafanaDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryApmGrafanaDataResponse) SetHeaders(v map[string]*string) *QueryApmGrafanaDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryApmGrafanaDataResponse) SetStatusCode(v int32) *QueryApmGrafanaDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryApmGrafanaDataResponse) SetBody(v *QueryApmGrafanaDataResponseBody) *QueryApmGrafanaDataResponse {
 	s.Body = v
 	return s
 }
@@ -36867,71 +35970,6 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 }
 
 /**
- * Currently we only support taihao platform
- *
- * @param request CreateReportRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateReportResponse
- */
-func (client *Client) CreateReportWithOptions(request *CreateReportRequest, runtime *util.RuntimeOptions) (_result *CreateReportResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SelectTimestamp)) {
-		query["SelectTimestamp"] = request.SelectTimestamp
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateReport"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * Currently we only support taihao platform
- *
- * @param request CreateReportRequest
- * @return CreateReportResponse
- */
-func (client *Client) CreateReport(request *CreateReportRequest) (_result *CreateReportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateReportResponse{}
-	_body, _err := client.CreateReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
  * 缩容节点。
  *
  * @param request DecreaseNodesRequest
@@ -37045,70 +36083,6 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
 	_body, _err := client.DeleteClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetApmDataWithOptions(request *GetApmDataRequest, runtime *util.RuntimeOptions) (_result *GetApmDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
-		query["ComponentName"] = request.ComponentName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Language)) {
-		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
-		query["Provider"] = request.Provider
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetApmData"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetApmDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetApmData(request *GetApmDataRequest) (_result *GetApmDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetApmDataResponse{}
-	_body, _err := client.GetApmDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37352,67 +36326,6 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterResponse{}
 	_body, _err := client.GetClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * 获取集群克隆详情。
- *
- * @param request GetClusterCloneMetaRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetClusterCloneMetaResponse
- */
-func (client *Client) GetClusterCloneMetaWithOptions(request *GetClusterCloneMetaRequest, runtime *util.RuntimeOptions) (_result *GetClusterCloneMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetClusterCloneMeta"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetClusterCloneMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * 获取集群克隆详情。
- *
- * @param request GetClusterCloneMetaRequest
- * @return GetClusterCloneMetaResponse
- */
-func (client *Client) GetClusterCloneMeta(request *GetClusterCloneMetaRequest) (_result *GetClusterCloneMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetClusterCloneMetaResponse{}
-	_body, _err := client.GetClusterCloneMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38629,62 +37542,6 @@ func (client *Client) JoinResourceGroup(request *JoinResourceGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &JoinResourceGroupResponse{}
 	_body, _err := client.JoinResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListApmMetadataWithOptions(request *ListApmMetadataRequest, runtime *util.RuntimeOptions) (_result *ListApmMetadataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListApmMetadata"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListApmMetadataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListApmMetadata(request *ListApmMetadataRequest) (_result *ListApmMetadataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListApmMetadataResponse{}
-	_body, _err := client.ListApmMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40461,6 +39318,79 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 	return _result, _err
 }
 
+/**
+ * 查询集群脚本。
+ *
+ * @param request ListScriptsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListScriptsResponse
+ */
+func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtime *util.RuntimeOptions) (_result *ListScriptsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptType)) {
+		query["ScriptType"] = request.ScriptType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScripts"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 查询集群脚本。
+ *
+ * @param request ListScriptsRequest
+ * @return ListScriptsResponse
+ */
+func (client *Client) ListScripts(request *ListScriptsRequest) (_result *ListScriptsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListScriptsResponse{}
+	_body, _err := client.ListScriptsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40591,160 +39521,6 @@ func (client *Client) PutAutoScalingPolicy(request *PutAutoScalingPolicyRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &PutAutoScalingPolicyResponse{}
 	_body, _err := client.PutAutoScalingPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryApmComponentsWithOptions(request *QueryApmComponentsRequest, runtime *util.RuntimeOptions) (_result *QueryApmComponentsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
-		query["Provider"] = request.Provider
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryApmComponents"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryApmComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryApmComponents(request *QueryApmComponentsRequest) (_result *QueryApmComponentsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryApmComponentsResponse{}
-	_body, _err := client.QueryApmComponentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryApmGrafanaDataWithOptions(tmpReq *QueryApmGrafanaDataRequest, runtime *util.RuntimeOptions) (_result *QueryApmGrafanaDataResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &QueryApmGrafanaDataShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Variables)) {
-		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, tea.String("Variables"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DashboardId)) {
-		query["DashboardId"] = request.DashboardId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.End)) {
-		query["End"] = request.End
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
-		query["Provider"] = request.Provider
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		query["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryParams)) {
-		query["QueryParams"] = request.QueryParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryUrl)) {
-		query["QueryUrl"] = request.QueryUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Start)) {
-		query["Start"] = request.Start
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Step)) {
-		query["Step"] = request.Step
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Time)) {
-		query["Time"] = request.Time
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VariablesShrink)) {
-		query["Variables"] = request.VariablesShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryApmGrafanaData"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryApmGrafanaDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryApmGrafanaData(request *QueryApmGrafanaDataRequest) (_result *QueryApmGrafanaDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryApmGrafanaDataResponse{}
-	_body, _err := client.QueryApmGrafanaDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
