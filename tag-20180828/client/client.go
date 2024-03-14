@@ -97,9 +97,9 @@ func (s *AttachPolicyResponseBody) SetRequestId(v string) *AttachPolicyResponseB
 }
 
 type AttachPolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachPolicyResponse) String() string {
@@ -190,9 +190,9 @@ func (s *CheckCreatedByEnabledResponseBody) SetRequestId(v string) *CheckCreated
 }
 
 type CheckCreatedByEnabledResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckCreatedByEnabledResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckCreatedByEnabledResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckCreatedByEnabledResponse) String() string {
@@ -277,9 +277,9 @@ func (s *CloseCreatedByResponseBody) SetRequestId(v string) *CloseCreatedByRespo
 }
 
 type CloseCreatedByResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloseCreatedByResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseCreatedByResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CloseCreatedByResponse) String() string {
@@ -306,10 +306,10 @@ func (s *CloseCreatedByResponse) SetBody(v *CloseCreatedByResponseBody) *CloseCr
 }
 
 type CreatePolicyRequest struct {
-	// Specifies whether to perform a dry run for the request. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   false: The system performs the related operation based on the parameter settings in the request. This is the default value.
-	// *   true: The system does not perform the related operation based on the parameter settings in the request but only verifies the parameter settings.
+	// *   false (default): performs a dry run and performs the actual request.
+	// *   true: performs only a dry run.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -392,9 +392,10 @@ func (s *CreatePolicyRequest) SetUserType(v string) *CreatePolicyRequest {
 
 type CreatePolicyResponseBody struct {
 	// The ID of the tag policy.
-	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the tag policy.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -422,9 +423,9 @@ func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyResponse) String() string {
@@ -455,10 +456,10 @@ type CreateTagsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  Only `cn-hangzhou` is supported.
+	// > Only `cn-hangzhou` is supported.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The tag keys and values list.
+	// The information about the tags.
 	TagKeyValueParamList []*CreateTagsRequestTagKeyValueParamList `json:"TagKeyValueParamList,omitempty" xml:"TagKeyValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -496,17 +497,17 @@ func (s *CreateTagsRequest) SetTagKeyValueParamList(v []*CreateTagsRequestTagKey
 }
 
 type CreateTagsRequestTagKeyValueParamList struct {
-	// The description of the tag key.
+	// The description of the key for tag N.
 	//
 	// Valid values of N: 1 to 10.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tag key.
+	// The key of tag N.
 	//
-	// The tag key can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
 	//
 	// Valid values of N: 1 to 10.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values list.
+	// The information about the tag value.
 	TagValueParamList []*CreateTagsRequestTagKeyValueParamListTagValueParamList `json:"TagValueParamList,omitempty" xml:"TagValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -534,13 +535,13 @@ func (s *CreateTagsRequestTagKeyValueParamList) SetTagValueParamList(v []*Create
 }
 
 type CreateTagsRequestTagKeyValueParamListTagValueParamList struct {
-	// The description of the tag value.
+	// The description of the value for tag N.
 	//
 	// Valid values of N: 1 to 10.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	//
-	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// Valid values of N: 1 to 10.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -565,7 +566,7 @@ func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetValue(v stri
 }
 
 type CreateTagsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -583,9 +584,9 @@ func (s *CreateTagsResponseBody) SetRequestId(v string) *CreateTagsResponseBody 
 }
 
 type CreateTagsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTagsResponse) String() string {
@@ -673,9 +674,9 @@ func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseB
 }
 
 type DeletePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyResponse) String() string {
@@ -774,9 +775,9 @@ func (s *DeleteTagResponseBody) SetRequestId(v string) *DeleteTagResponseBody {
 }
 
 type DeleteTagResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTagResponse) String() string {
@@ -930,9 +931,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1043,9 +1044,9 @@ func (s *DetachPolicyResponseBody) SetRequestId(v string) *DetachPolicyResponseB
 }
 
 type DetachPolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachPolicyResponse) String() string {
@@ -1072,6 +1073,7 @@ func (s *DetachPolicyResponse) SetBody(v *DetachPolicyResponseBody) *DetachPolic
 }
 
 type DisablePolicyTypeRequest struct {
+	OpenType             *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1086,6 +1088,11 @@ func (s DisablePolicyTypeRequest) String() string {
 
 func (s DisablePolicyTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DisablePolicyTypeRequest) SetOpenType(v string) *DisablePolicyTypeRequest {
+	s.OpenType = &v
+	return s
 }
 
 func (s *DisablePolicyTypeRequest) SetOwnerAccount(v string) *DisablePolicyTypeRequest {
@@ -1137,9 +1144,9 @@ func (s *DisablePolicyTypeResponseBody) SetRequestId(v string) *DisablePolicyTyp
 }
 
 type DisablePolicyTypeResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisablePolicyTypeResponse) String() string {
@@ -1166,6 +1173,7 @@ func (s *DisablePolicyTypeResponse) SetBody(v *DisablePolicyTypeResponseBody) *D
 }
 
 type EnablePolicyTypeRequest struct {
+	OpenType             *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1180,6 +1188,11 @@ func (s EnablePolicyTypeRequest) String() string {
 
 func (s EnablePolicyTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EnablePolicyTypeRequest) SetOpenType(v string) *EnablePolicyTypeRequest {
+	s.OpenType = &v
+	return s
 }
 
 func (s *EnablePolicyTypeRequest) SetOwnerAccount(v string) *EnablePolicyTypeRequest {
@@ -1230,9 +1243,9 @@ func (s *EnablePolicyTypeResponseBody) SetRequestId(v string) *EnablePolicyTypeR
 }
 
 type EnablePolicyTypeResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnablePolicyTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnablePolicyTypeResponse) String() string {
@@ -1355,9 +1368,9 @@ func (s *GenerateConfigRuleReportResponseBody) SetRequestId(v string) *GenerateC
 }
 
 type GenerateConfigRuleReportResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateConfigRuleReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateConfigRuleReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateConfigRuleReportResponse) String() string {
@@ -1545,9 +1558,9 @@ func (s *GetConfigRuleReportResponseBodyData) SetTargetType(v string) *GetConfig
 }
 
 type GetConfigRuleReportResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigRuleReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigRuleReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigRuleReportResponse) String() string {
@@ -1658,9 +1671,9 @@ func (s *GetEffectivePolicyResponseBody) SetRequestId(v string) *GetEffectivePol
 }
 
 type GetEffectivePolicyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEffectivePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEffectivePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEffectivePolicyResponse) String() string {
@@ -1799,9 +1812,9 @@ func (s *GetPolicyResponseBodyPolicy) SetUserType(v string) *GetPolicyResponseBo
 }
 
 type GetPolicyResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPolicyResponse) String() string {
@@ -1828,6 +1841,7 @@ func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse
 }
 
 type GetPolicyEnableStatusRequest struct {
+	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. Set the value to cn-shanghai.
@@ -1851,6 +1865,11 @@ func (s GetPolicyEnableStatusRequest) String() string {
 
 func (s GetPolicyEnableStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyEnableStatusRequest) SetOpenType(v string) *GetPolicyEnableStatusRequest {
+	s.OpenType = &v
+	return s
 }
 
 func (s *GetPolicyEnableStatusRequest) SetOwnerAccount(v string) *GetPolicyEnableStatusRequest {
@@ -1944,9 +1963,9 @@ func (s *GetPolicyEnableStatusResponseBodyStatusModels) SetUserType(v string) *G
 }
 
 type GetPolicyEnableStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPolicyEnableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyEnableStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPolicyEnableStatusResponse) String() string {
@@ -2194,9 +2213,9 @@ func (s *ListConfigRulesForTargetResponseBodyData) SetTargetType(v string) *List
 }
 
 type ListConfigRulesForTargetResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListConfigRulesForTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigRulesForTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListConfigRulesForTargetResponse) String() string {
@@ -2389,9 +2408,9 @@ func (s *ListPoliciesResponseBodyPolicyList) SetUserType(v string) *ListPolicies
 }
 
 type ListPoliciesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesResponse) String() string {
@@ -2577,9 +2596,9 @@ func (s *ListPoliciesForTargetResponseBodyData) SetUserType(v string) *ListPolic
 }
 
 type ListPoliciesForTargetResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesForTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesForTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesForTargetResponse) String() string {
@@ -2702,7 +2721,7 @@ type ListResourcesByTagRequestTagFilter struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. This parameter specifies a filter condition for the query.
 	//
-	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2822,9 +2841,9 @@ func (s *ListResourcesByTagResponseBodyResourcesTags) SetValue(v string) *ListRe
 }
 
 type ListResourcesByTagResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListResourcesByTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourcesByTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListResourcesByTagResponse) String() string {
@@ -2861,16 +2880,16 @@ type ListSupportResourceTypesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service code. This parameter specifies a filter condition for the query.
 	//
-	// For more information about service codes, see [Services that work with Tag](~~171455~~).
+	// This parameter is obtained from the response.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The region ID.
 	//
-	// For more information about the region ID, see [Endpoints](~~170112~~).
+	// For more information about region IDs, see [Endpoints](~~2330902~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
-	// For more information about resource types, see [Services that work with Tag](~~171455~~).
+	// This parameter is obtained from the response.
 	ResourceTye *string `json:"ResourceTye,omitempty" xml:"ResourceTye,omitempty"`
 	// Specifies whether to return tag-related capability items. Valid values:
 	//
@@ -2878,6 +2897,8 @@ type ListSupportResourceTypesRequest struct {
 	// *   false (default value): The system does not return tag-related capability items.
 	ShowItems *bool `json:"ShowItems,omitempty" xml:"ShowItems,omitempty"`
 	// The code of the tag-related capability item. This parameter specifies a filter condition for the query.
+	//
+	// For more information, see **Tag-related capability items**.
 	SupportCode *string `json:"SupportCode,omitempty" xml:"SupportCode,omitempty"`
 }
 
@@ -3044,9 +3065,9 @@ func (s *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems) S
 }
 
 type ListSupportResourceTypesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSupportResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSupportResourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSupportResourceTypesResponse) String() string {
@@ -3291,9 +3312,9 @@ func (s *ListTagKeysResponseBodyKeysKey) SetKey(v string) *ListTagKeysResponseBo
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -3336,7 +3357,10 @@ type ListTagResourcesRequest struct {
 	//
 	// Maximum value: 1000. Default value: 50.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the resources.
+	// The region ID.
+	//
+	// *   If the resources belong to a service that is centrally deployed, set the value to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
@@ -3503,9 +3527,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTags) SetValue(v string) *ListT
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -3709,9 +3733,9 @@ func (s *ListTagValuesResponseBodyValues) SetValue(v []*string) *ListTagValuesRe
 }
 
 type ListTagValuesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagValuesResponse) String() string {
@@ -3881,9 +3905,9 @@ func (s *ListTargetsForPolicyResponseBodyTargets) SetTargetType(v int32) *ListTa
 }
 
 type ListTargetsForPolicyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTargetsForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTargetsForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTargetsForPolicyResponse) String() string {
@@ -4008,9 +4032,9 @@ func (s *ModifyPolicyResponseBody) SetRequestId(v string) *ModifyPolicyResponseB
 }
 
 type ModifyPolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPolicyResponse) String() string {
@@ -4097,9 +4121,9 @@ func (s *OpenCreatedByResponseBody) SetRequestId(v string) *OpenCreatedByRespons
 }
 
 type OpenCreatedByResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenCreatedByResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenCreatedByResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenCreatedByResponse) String() string {
@@ -4128,7 +4152,10 @@ func (s *OpenCreatedByResponse) SetBody(v *OpenCreatedByResponseBody) *OpenCreat
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resources.
+	// The region ID.
+	//
+	// *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
@@ -4283,9 +4310,9 @@ func (s *TagResourcesResponseBodyFailedResourcesFailedResourceResult) SetMessage
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -4314,7 +4341,10 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resources.
+	// The region ID.
+	//
+	// *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+	// *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
@@ -4460,9 +4490,9 @@ func (s *UntagResourcesResponseBodyFailedResourcesFailedResourceResult) SetMessa
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -4782,6 +4812,7 @@ func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *C
 }
 
 /**
+ * ###
  * This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
  *
  * @param request CreatePolicyRequest
@@ -4854,6 +4885,7 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 }
 
 /**
+ * ###
  * This topic provides an example on how to call the API operation to create a tag policy named `test`. In this example, the Tag Policy feature in multi-account mode is used. The tag policy defines that resources to which the `CostCenter:Beijing` or `CostCenter:Shanghai` tag is added are compliant and other resources are not compliant.
  *
  * @param request CreatePolicyRequest
@@ -4871,6 +4903,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 }
 
 /**
+ * ###
  * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
  * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
  *
@@ -4928,6 +4961,7 @@ func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime 
 }
 
 /**
+ * ###
  * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
  * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
  *
@@ -5250,6 +5284,10 @@ func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenType)) {
+		query["OpenType"] = request.OpenType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -5314,6 +5352,10 @@ func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenType)) {
+		query["OpenType"] = request.OpenType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -5705,6 +5747,10 @@ func (client *Client) GetPolicyEnableStatusWithOptions(request *GetPolicyEnableS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenType)) {
+		query["OpenType"] = request.OpenType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -6144,7 +6190,10 @@ func (client *Client) ListResourcesByTag(request *ListResourcesByTagRequest) (_r
 }
 
 /**
- * This topic provides an example on how to call the API operation to query the resource types supported by tags.
+ * ### [](#)Call examples
+ * *   Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
+ * *   Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
+ * *   Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
  *
  * @param request ListSupportResourceTypesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6220,7 +6269,10 @@ func (client *Client) ListSupportResourceTypesWithOptions(request *ListSupportRe
 }
 
 /**
- * This topic provides an example on how to call the API operation to query the resource types supported by tags.
+ * ### [](#)Call examples
+ * *   Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
+ * *   Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
+ * *   Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
  *
  * @param request ListSupportResourceTypesRequest
  * @return ListSupportResourceTypesResponse

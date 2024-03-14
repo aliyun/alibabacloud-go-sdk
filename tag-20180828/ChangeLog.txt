@@ -1,3 +1,11 @@
+2024-03-14 Version: v2.0.3
+- Update API DisablePolicyType: add param OpenType.
+- Update API EnablePolicyType: add param OpenType.
+- Update API GetPolicyEnableStatus: add param OpenType.
+- Update API ListTargetsForPolicy: update response param.
+- Update API UntagResources: update param TagKey.
+
+
 2023-12-08 Version: v2.0.2
 - Generated golang 2018-08-28 for Tag.
 
