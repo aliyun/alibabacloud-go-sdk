@@ -1138,6 +1138,170 @@ func (s *CreateAccessGroupResponse) SetBody(v *CreateAccessGroupResponseBody) *C
 	return s
 }
 
+type CreateAccessPointRequest struct {
+	AccessGroup            *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	AccessPointName        *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	EnabledRam             *bool   `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	FileSystemId           *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	OwnerGroupId           *int32  `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	OwnerUserId            *int32  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Permission             *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PosixGroupId           *int32  `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixSecondaryGroupIds *string `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty"`
+	PosixUserId            *int32  `json:"PosixUserId,omitempty" xml:"PosixUserId,omitempty"`
+	RootDirectory          *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
+	VpcId                  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswId                  *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+}
+
+func (s CreateAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointRequest) SetAccessGroup(v string) *CreateAccessPointRequest {
+	s.AccessGroup = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetAccessPointName(v string) *CreateAccessPointRequest {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetEnabledRam(v bool) *CreateAccessPointRequest {
+	s.EnabledRam = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetFileSystemId(v string) *CreateAccessPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetOwnerGroupId(v int32) *CreateAccessPointRequest {
+	s.OwnerGroupId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetOwnerUserId(v int32) *CreateAccessPointRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetPermission(v string) *CreateAccessPointRequest {
+	s.Permission = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetPosixGroupId(v int32) *CreateAccessPointRequest {
+	s.PosixGroupId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetPosixSecondaryGroupIds(v string) *CreateAccessPointRequest {
+	s.PosixSecondaryGroupIds = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetPosixUserId(v int32) *CreateAccessPointRequest {
+	s.PosixUserId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetRootDirectory(v string) *CreateAccessPointRequest {
+	s.RootDirectory = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetVpcId(v string) *CreateAccessPointRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateAccessPointRequest) SetVswId(v string) *CreateAccessPointRequest {
+	s.VswId = &v
+	return s
+}
+
+type CreateAccessPointResponseBody struct {
+	AccessPoint *CreateAccessPointResponseBodyAccessPoint `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty" type:"Struct"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointResponseBody) SetAccessPoint(v *CreateAccessPointResponseBodyAccessPoint) *CreateAccessPointResponseBody {
+	s.AccessPoint = v
+	return s
+}
+
+func (s *CreateAccessPointResponseBody) SetRequestId(v string) *CreateAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAccessPointResponseBodyAccessPoint struct {
+	AccessPointDomain *string `json:"AccessPointDomain,omitempty" xml:"AccessPointDomain,omitempty"`
+	AccessPointId     *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+}
+
+func (s CreateAccessPointResponseBodyAccessPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointResponseBodyAccessPoint) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointResponseBodyAccessPoint) SetAccessPointDomain(v string) *CreateAccessPointResponseBodyAccessPoint {
+	s.AccessPointDomain = &v
+	return s
+}
+
+func (s *CreateAccessPointResponseBodyAccessPoint) SetAccessPointId(v string) *CreateAccessPointResponseBodyAccessPoint {
+	s.AccessPointId = &v
+	return s
+}
+
+type CreateAccessPointResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessPointResponse) SetHeaders(v map[string]*string) *CreateAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessPointResponse) SetStatusCode(v int32) *CreateAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccessPointResponse) SetBody(v *CreateAccessPointResponseBody) *CreateAccessPointResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAccessRuleRequest struct {
 	// The name of the permission group.
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
@@ -1805,6 +1969,99 @@ func (s *CreateDataFlowTaskResponse) SetStatusCode(v int32) *CreateDataFlowTaskR
 }
 
 func (s *CreateDataFlowTaskResponse) SetBody(v *CreateDataFlowTaskResponseBody) *CreateDataFlowTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDirRequest struct {
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	OwnerGroupId  *int32  `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	OwnerUserId   *int32  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Permission    *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	Recursion     *bool   `json:"Recursion,omitempty" xml:"Recursion,omitempty"`
+	RootDirectory *string `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty"`
+}
+
+func (s CreateDirRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDirRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDirRequest) SetFileSystemId(v string) *CreateDirRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateDirRequest) SetOwnerGroupId(v int32) *CreateDirRequest {
+	s.OwnerGroupId = &v
+	return s
+}
+
+func (s *CreateDirRequest) SetOwnerUserId(v int32) *CreateDirRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateDirRequest) SetPermission(v string) *CreateDirRequest {
+	s.Permission = &v
+	return s
+}
+
+func (s *CreateDirRequest) SetRecursion(v bool) *CreateDirRequest {
+	s.Recursion = &v
+	return s
+}
+
+func (s *CreateDirRequest) SetRootDirectory(v string) *CreateDirRequest {
+	s.RootDirectory = &v
+	return s
+}
+
+type CreateDirResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDirResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDirResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDirResponseBody) SetRequestId(v string) *CreateDirResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDirResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDirResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDirResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDirResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDirResponse) SetHeaders(v map[string]*string) *CreateDirResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDirResponse) SetStatusCode(v int32) *CreateDirResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDirResponse) SetBody(v *CreateDirResponseBody) *CreateDirResponse {
 	s.Body = v
 	return s
 }
@@ -3533,6 +3790,75 @@ func (s *DeleteAccessGroupResponse) SetBody(v *DeleteAccessGroupResponseBody) *D
 	return s
 }
 
+type DeleteAccessPointRequest struct {
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s DeleteAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPointRequest) SetAccessPointId(v string) *DeleteAccessPointRequest {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *DeleteAccessPointRequest) SetFileSystemId(v string) *DeleteAccessPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type DeleteAccessPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPointResponseBody) SetRequestId(v string) *DeleteAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccessPointResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessPointResponse) SetHeaders(v map[string]*string) *DeleteAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessPointResponse) SetStatusCode(v int32) *DeleteAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccessPointResponse) SetBody(v *DeleteAccessPointResponseBody) *DeleteAccessPointResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAccessRuleRequest struct {
 	// The name of the permission group.
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
@@ -4737,6 +5063,516 @@ func (s *DescribeAccessGroupsResponse) SetStatusCode(v int32) *DescribeAccessGro
 }
 
 func (s *DescribeAccessGroupsResponse) SetBody(v *DescribeAccessGroupsResponseBody) *DescribeAccessGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessPointRequest struct {
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s DescribeAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointRequest) SetAccessPointId(v string) *DescribeAccessPointRequest {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *DescribeAccessPointRequest) SetFileSystemId(v string) *DescribeAccessPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type DescribeAccessPointResponseBody struct {
+	AccessPoint *DescribeAccessPointResponseBodyAccessPoint `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointResponseBody) SetAccessPoint(v *DescribeAccessPointResponseBodyAccessPoint) *DescribeAccessPointResponseBody {
+	s.AccessPoint = v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBody) SetRequestId(v string) *DescribeAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAccessPointResponseBodyAccessPoint struct {
+	ARN                *string                                                       `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	AccessGroup        *string                                                       `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	AccessPointId      *string                                                       `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointName    *string                                                       `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	CreateTime         *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName         *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EnabledRam         *bool                                                         `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	FileSystemId       *string                                                       `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	ModifyTime         *string                                                       `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	PosixUser          *DescribeAccessPointResponseBodyAccessPointPosixUser          `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	RegionId           *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RootPath           *string                                                       `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	RootPathPermission *DescribeAccessPointResponseBodyAccessPointRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
+	RootPathStatus     *string                                                       `json:"RootPathStatus,omitempty" xml:"RootPathStatus,omitempty"`
+	Status             *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId          *string                                                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId              *string                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeAccessPointResponseBodyAccessPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointResponseBodyAccessPoint) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetARN(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.ARN = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetAccessGroup(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.AccessGroup = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetAccessPointId(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetAccessPointName(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetCreateTime(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetDomainName(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetEnabledRam(v bool) *DescribeAccessPointResponseBodyAccessPoint {
+	s.EnabledRam = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetFileSystemId(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetModifyTime(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetPosixUser(v *DescribeAccessPointResponseBodyAccessPointPosixUser) *DescribeAccessPointResponseBodyAccessPoint {
+	s.PosixUser = v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetRegionId(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetRootPath(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.RootPath = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetRootPathPermission(v *DescribeAccessPointResponseBodyAccessPointRootPathPermission) *DescribeAccessPointResponseBodyAccessPoint {
+	s.RootPathPermission = v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetRootPathStatus(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.RootPathStatus = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetStatus(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetVSwitchId(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPoint) SetVpcId(v string) *DescribeAccessPointResponseBodyAccessPoint {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeAccessPointResponseBodyAccessPointPosixUser struct {
+	PosixGroupId           *int32   `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
+	PosixUserId            *int32   `json:"PosixUserId,omitempty" xml:"PosixUserId,omitempty"`
+}
+
+func (s DescribeAccessPointResponseBodyAccessPointPosixUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointResponseBodyAccessPointPosixUser) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) SetPosixGroupId(v int32) *DescribeAccessPointResponseBodyAccessPointPosixUser {
+	s.PosixGroupId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) SetPosixSecondaryGroupIds(v []*int32) *DescribeAccessPointResponseBodyAccessPointPosixUser {
+	s.PosixSecondaryGroupIds = v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointPosixUser) SetPosixUserId(v int32) *DescribeAccessPointResponseBodyAccessPointPosixUser {
+	s.PosixUserId = &v
+	return s
+}
+
+type DescribeAccessPointResponseBodyAccessPointRootPathPermission struct {
+	OwnerGroupId *int32  `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	OwnerUserId  *int32  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Permission   *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+}
+
+func (s DescribeAccessPointResponseBodyAccessPointRootPathPermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointResponseBodyAccessPointRootPathPermission) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointRootPathPermission) SetOwnerGroupId(v int32) *DescribeAccessPointResponseBodyAccessPointRootPathPermission {
+	s.OwnerGroupId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointRootPathPermission) SetOwnerUserId(v int32) *DescribeAccessPointResponseBodyAccessPointRootPathPermission {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponseBodyAccessPointRootPathPermission) SetPermission(v string) *DescribeAccessPointResponseBodyAccessPointRootPathPermission {
+	s.Permission = &v
+	return s
+}
+
+type DescribeAccessPointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointResponse) SetHeaders(v map[string]*string) *DescribeAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessPointResponse) SetStatusCode(v int32) *DescribeAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessPointResponse) SetBody(v *DescribeAccessPointResponseBody) *DescribeAccessPointResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessPointsRequest struct {
+	AccessGroup  *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s DescribeAccessPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsRequest) SetAccessGroup(v string) *DescribeAccessPointsRequest {
+	s.AccessGroup = &v
+	return s
+}
+
+func (s *DescribeAccessPointsRequest) SetFileSystemId(v string) *DescribeAccessPointsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsRequest) SetMaxResults(v int32) *DescribeAccessPointsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeAccessPointsRequest) SetNextToken(v string) *DescribeAccessPointsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type DescribeAccessPointsResponseBody struct {
+	AccessPoints []*DescribeAccessPointsResponseBodyAccessPoints `json:"AccessPoints,omitempty" xml:"AccessPoints,omitempty" type:"Repeated"`
+	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAccessPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsResponseBody) SetAccessPoints(v []*DescribeAccessPointsResponseBodyAccessPoints) *DescribeAccessPointsResponseBody {
+	s.AccessPoints = v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBody) SetNextToken(v string) *DescribeAccessPointsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBody) SetRequestId(v string) *DescribeAccessPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBody) SetTotalCount(v int32) *DescribeAccessPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAccessPointsResponseBodyAccessPoints struct {
+	ARN                *string                                                         `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	AccessGroup        *string                                                         `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	AccessPointId      *string                                                         `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointName    *string                                                         `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	CreateTime         *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName         *string                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EnabledRam         *bool                                                           `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	FileSystemId       *string                                                         `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	ModifyTime         *string                                                         `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	PosixUser          *DescribeAccessPointsResponseBodyAccessPointsPosixUser          `json:"PosixUser,omitempty" xml:"PosixUser,omitempty" type:"Struct"`
+	RootPath           *string                                                         `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	RootPathPermission *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission `json:"RootPathPermission,omitempty" xml:"RootPathPermission,omitempty" type:"Struct"`
+	RootPathStatus     *string                                                         `json:"RootPathStatus,omitempty" xml:"RootPathStatus,omitempty"`
+	Status             *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId          *string                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId              *string                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetARN(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.ARN = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetAccessGroup(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.AccessGroup = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetAccessPointId(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetAccessPointName(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetCreateTime(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetDomainName(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetEnabledRam(v bool) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.EnabledRam = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetFileSystemId(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetModifyTime(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetPosixUser(v *DescribeAccessPointsResponseBodyAccessPointsPosixUser) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.PosixUser = v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetRootPath(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.RootPath = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetRootPathPermission(v *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.RootPathPermission = v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetRootPathStatus(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.RootPathStatus = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetStatus(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetVSwitchId(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPoints) SetVpcId(v string) *DescribeAccessPointsResponseBodyAccessPoints {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeAccessPointsResponseBodyAccessPointsPosixUser struct {
+	PosixGroupId           *int32   `json:"PosixGroupId,omitempty" xml:"PosixGroupId,omitempty"`
+	PosixSecondaryGroupIds []*int32 `json:"PosixSecondaryGroupIds,omitempty" xml:"PosixSecondaryGroupIds,omitempty" type:"Repeated"`
+	PosixUserId            *int32   `json:"PosixUserId,omitempty" xml:"PosixUserId,omitempty"`
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPointsPosixUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPointsPosixUser) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsPosixUser) SetPosixGroupId(v int32) *DescribeAccessPointsResponseBodyAccessPointsPosixUser {
+	s.PosixGroupId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsPosixUser) SetPosixSecondaryGroupIds(v []*int32) *DescribeAccessPointsResponseBodyAccessPointsPosixUser {
+	s.PosixSecondaryGroupIds = v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsPosixUser) SetPosixUserId(v int32) *DescribeAccessPointsResponseBodyAccessPointsPosixUser {
+	s.PosixUserId = &v
+	return s
+}
+
+type DescribeAccessPointsResponseBodyAccessPointsRootPathPermission struct {
+	OwnerGroupId *int64  `json:"OwnerGroupId,omitempty" xml:"OwnerGroupId,omitempty"`
+	OwnerUserId  *int64  `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Permission   *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) SetOwnerGroupId(v int64) *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission {
+	s.OwnerGroupId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) SetOwnerUserId(v int64) *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission) SetPermission(v string) *DescribeAccessPointsResponseBodyAccessPointsRootPathPermission {
+	s.Permission = &v
+	return s
+}
+
+type DescribeAccessPointsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAccessPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAccessPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessPointsResponse) SetHeaders(v map[string]*string) *DescribeAccessPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessPointsResponse) SetStatusCode(v int32) *DescribeAccessPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessPointsResponse) SetBody(v *DescribeAccessPointsResponseBody) *DescribeAccessPointsResponse {
 	s.Body = v
 	return s
 }
@@ -12419,6 +13255,93 @@ func (s *ModifyAccessGroupResponse) SetBody(v *ModifyAccessGroupResponseBody) *M
 	return s
 }
 
+type ModifyAccessPointRequest struct {
+	AccessGroup     *string `json:"AccessGroup,omitempty" xml:"AccessGroup,omitempty"`
+	AccessPointId   *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
+	EnabledRam      *bool   `json:"EnabledRam,omitempty" xml:"EnabledRam,omitempty"`
+	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+}
+
+func (s ModifyAccessPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccessPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccessPointRequest) SetAccessGroup(v string) *ModifyAccessPointRequest {
+	s.AccessGroup = &v
+	return s
+}
+
+func (s *ModifyAccessPointRequest) SetAccessPointId(v string) *ModifyAccessPointRequest {
+	s.AccessPointId = &v
+	return s
+}
+
+func (s *ModifyAccessPointRequest) SetAccessPointName(v string) *ModifyAccessPointRequest {
+	s.AccessPointName = &v
+	return s
+}
+
+func (s *ModifyAccessPointRequest) SetEnabledRam(v bool) *ModifyAccessPointRequest {
+	s.EnabledRam = &v
+	return s
+}
+
+func (s *ModifyAccessPointRequest) SetFileSystemId(v string) *ModifyAccessPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+type ModifyAccessPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAccessPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccessPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccessPointResponseBody) SetRequestId(v string) *ModifyAccessPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAccessPointResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccessPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAccessPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccessPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccessPointResponse) SetHeaders(v map[string]*string) *ModifyAccessPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccessPointResponse) SetStatusCode(v int32) *ModifyAccessPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAccessPointResponse) SetBody(v *ModifyAccessPointResponseBody) *ModifyAccessPointResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAccessRuleRequest struct {
 	// The name of the permission group.
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
@@ -15728,6 +16651,98 @@ func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateAccessPointWithOptions(request *CreateAccessPointRequest, runtime *util.RuntimeOptions) (_result *CreateAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessGroup)) {
+		query["AccessGroup"] = request.AccessGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPointName)) {
+		query["AccessPointName"] = request.AccessPointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnabledRam)) {
+		query["EnabledRam"] = request.EnabledRam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerGroupId)) {
+		query["OwnerGroupId"] = request.OwnerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permission)) {
+		query["Permission"] = request.Permission
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PosixGroupId)) {
+		query["PosixGroupId"] = request.PosixGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PosixSecondaryGroupIds)) {
+		query["PosixSecondaryGroupIds"] = request.PosixSecondaryGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PosixUserId)) {
+		query["PosixUserId"] = request.PosixUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDirectory)) {
+		query["RootDirectory"] = request.RootDirectory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswId)) {
+		query["VswId"] = request.VswId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessPoint"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAccessPoint(request *CreateAccessPointRequest) (_result *CreateAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccessPointResponse{}
+	_body, _err := client.CreateAccessPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAccessRuleWithOptions(request *CreateAccessRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAccessRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16154,6 +17169,70 @@ func (client *Client) CreateDataFlowTask(request *CreateDataFlowTaskRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataFlowTaskResponse{}
 	_body, _err := client.CreateDataFlowTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDirWithOptions(request *CreateDirRequest, runtime *util.RuntimeOptions) (_result *CreateDirResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerGroupId)) {
+		query["OwnerGroupId"] = request.OwnerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permission)) {
+		query["Permission"] = request.Permission
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recursion)) {
+		query["Recursion"] = request.Recursion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDirectory)) {
+		query["RootDirectory"] = request.RootDirectory
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDir"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDirResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDir(request *CreateDirRequest) (_result *CreateDirResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDirResponse{}
+	_body, _err := client.CreateDirWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17259,6 +18338,54 @@ func (client *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteAccessPointWithOptions(request *DeleteAccessPointRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPointId)) {
+		query["AccessPointId"] = request.AccessPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessPoint"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessPoint(request *DeleteAccessPointRequest) (_result *DeleteAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccessPointResponse{}
+	_body, _err := client.DeleteAccessPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
  *
@@ -18062,6 +19189,110 @@ func (client *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccessGroupsResponse{}
 	_body, _err := client.DescribeAccessGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessPointWithOptions(request *DescribeAccessPointRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessPointId)) {
+		query["AccessPointId"] = request.AccessPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessPoint"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessPoint(request *DescribeAccessPointRequest) (_result *DescribeAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessPointResponse{}
+	_body, _err := client.DescribeAccessPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPointsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessGroup)) {
+		query["AccessGroup"] = request.AccessGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessPoints"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (_result *DescribeAccessPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessPointsResponse{}
+	_body, _err := client.DescribeAccessPointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20301,6 +21532,66 @@ func (client *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccessGroupResponse{}
 	_body, _err := client.ModifyAccessGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAccessPointWithOptions(request *ModifyAccessPointRequest, runtime *util.RuntimeOptions) (_result *ModifyAccessPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessGroup)) {
+		query["AccessGroup"] = request.AccessGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPointId)) {
+		query["AccessPointId"] = request.AccessPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessPointName)) {
+		query["AccessPointName"] = request.AccessPointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnabledRam)) {
+		query["EnabledRam"] = request.EnabledRam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccessPoint"),
+		Version:     tea.String("2017-06-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAccessPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAccessPoint(request *ModifyAccessPointRequest) (_result *ModifyAccessPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccessPointResponse{}
+	_body, _err := client.ModifyAccessPointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
