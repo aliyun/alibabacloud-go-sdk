@@ -919,6 +919,7 @@ type GetInstanceResponseBodyInstance struct {
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
 	// Indicates whether data lake acceleration is enabled.
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
+	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The list of endpoints.
 	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time. This parameter is invalid for pay-as-you-go instances.
@@ -1143,6 +1144,11 @@ func (s *GetInstanceResponseBodyInstance) SetDisk(v string) *GetInstanceResponse
 
 func (s *GetInstanceResponseBodyInstance) SetEnableHiveAccess(v string) *GetInstanceResponseBodyInstance {
 	s.EnableHiveAccess = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetEnableServerless(v bool) *GetInstanceResponseBodyInstance {
+	s.EnableServerless = &v
 	return s
 }
 
