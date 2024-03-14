@@ -11773,6 +11773,7 @@ type DescribeDBNodePerformanceRequest struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceRequest) String() string {
@@ -11810,6 +11811,11 @@ func (s *DescribeDBNodePerformanceRequest) SetKey(v string) *DescribeDBNodePerfo
 
 func (s *DescribeDBNodePerformanceRequest) SetStartTime(v string) *DescribeDBNodePerformanceRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBNodePerformanceRequest) SetType(v string) *DescribeDBNodePerformanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -12269,6 +12275,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBProxyPerformanceRequest) String() string {
@@ -12306,6 +12313,11 @@ func (s *DescribeDBProxyPerformanceRequest) SetKey(v string) *DescribeDBProxyPer
 
 func (s *DescribeDBProxyPerformanceRequest) SetStartTime(v string) *DescribeDBProxyPerformanceRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBProxyPerformanceRequest) SetType(v string) *DescribeDBProxyPerformanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -30400,6 +30412,10 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 		query["StartTime"] = request.StartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30550,6 +30566,10 @@ func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBP
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
