@@ -10605,7 +10605,8 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	// The time when the order was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The currency.
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency    *string            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	ExtendInfos map[string]*string `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
 	// The instance IDs.
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	// The ID of the Resource Access Management (RAM) user who performs operations on the order. If no RAM user is involved, leave this parameter blank.
@@ -10700,6 +10701,11 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCreateTime(v string) *
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCurrency(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.Currency = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetExtendInfos(v map[string]*string) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.ExtendInfos = v
 	return s
 }
 
