@@ -4879,6 +4879,7 @@ type GetTrainingJobResponseBody struct {
 	AlgorithmSpec          *AlgorithmSpec                                 `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 	AlgorithmVersion       *string                                        `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	ComputeResource        *GetTrainingJobResponseBodyComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	Duration               *int64                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	ExperimentConfig       *GetTrainingJobResponseBodyExperimentConfig    `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	GmtCreateTime          *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime        *string                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
@@ -4943,6 +4944,11 @@ func (s *GetTrainingJobResponseBody) SetAlgorithmVersion(v string) *GetTrainingJ
 
 func (s *GetTrainingJobResponseBody) SetComputeResource(v *GetTrainingJobResponseBodyComputeResource) *GetTrainingJobResponseBody {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetDuration(v int64) *GetTrainingJobResponseBody {
+	s.Duration = &v
 	return s
 }
 
