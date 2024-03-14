@@ -1,3 +1,9 @@
+2024-03-14 Version: v3.0.2
+- Update API DeleteRetcodeApp: update param AppId.
+- Update API SaveTraceAppConfig: update param Settings.
+- Update API SaveTraceAppConfig: update response param.
+
+
 2022-12-01 Version: v3.0.1
 - Update Go SDK.
 
