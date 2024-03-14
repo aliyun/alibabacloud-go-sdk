@@ -11374,6 +11374,376 @@ func (s *DescribeCustomizedListHeadersResponse) SetBody(v *DescribeCustomizedLis
 	return s
 }
 
+type DescribeDesktopGroupSessionsRequest struct {
+	// The end of the time range to query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the end user.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The number of entries per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The type of the session.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     single-session
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     multi-session
+	//
+	//     <!-- -->
+	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the session.
+	//
+	// Valid values:
+	//
+	// *   Connected
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Disconnected
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// The beginning of the time range to query.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDesktopGroupSessionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopGroupSessionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetEndTime(v string) *DescribeDesktopGroupSessionsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetEndUserId(v string) *DescribeDesktopGroupSessionsRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetMaxResults(v int32) *DescribeDesktopGroupSessionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetNextToken(v string) *DescribeDesktopGroupSessionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetOwnType(v int32) *DescribeDesktopGroupSessionsRequest {
+	s.OwnType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetRegionId(v string) *DescribeDesktopGroupSessionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetSessionStatus(v string) *DescribeDesktopGroupSessionsRequest {
+	s.SessionStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetStartTime(v string) *DescribeDesktopGroupSessionsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDesktopGroupSessionsResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sessions.
+	Sessions []*DescribeDesktopGroupSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	// The total number of sessions.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDesktopGroupSessionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopGroupSessionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBody) SetNextToken(v string) *DescribeDesktopGroupSessionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBody) SetRequestId(v string) *DescribeDesktopGroupSessionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBody) SetSessions(v []*DescribeDesktopGroupSessionsResponseBodySessions) *DescribeDesktopGroupSessionsResponseBody {
+	s.Sessions = v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBody) SetTotalCount(v int32) *DescribeDesktopGroupSessionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDesktopGroupSessionsResponseBodySessions struct {
+	// The IP address of the client.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The OS that the client runs.
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The version of the client.
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The ID of the desktop group.
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The name of the desktop group.
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	// If the session is being established, the value of this parameter indicates the ID of the current cloud desktop. If the session is disconnected, the value of this parameter indicates the ID of the cloud desktop that was most recently connected.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The point in time when the end user applies for administrator assistance.
+	EndUserApplyCoordinateTime *int64 `json:"EndUserApplyCoordinateTime,omitempty" xml:"EndUserApplyCoordinateTime,omitempty"`
+	// The ID of the end user.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The end time of the most recent connection.
+	LastSessionEndTime *string `json:"LastSessionEndTime,omitempty" xml:"LastSessionEndTime,omitempty"`
+	// The start time of the most recent connection.
+	LastSessionStartTime *string `json:"LastSessionStartTime,omitempty" xml:"LastSessionStartTime,omitempty"`
+	// The duration of the most recent session.
+	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
+	// The ID of the workspace.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The name of the workspace.
+	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	// The OS. Valid values:
+	//
+	// *   Windows
+	// *   Linux
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The type of the session.
+	//
+	// Valid values:
+	//
+	// *   0
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     single-session
+	//
+	//     <!-- -->
+	//
+	// *   1
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     multi-session
+	//
+	//     <!-- -->
+	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	// The type of the protocol.
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The duration during which the cloud desktop stays in the Idle state.
+	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
+	// The state of the session.
+	//
+	// Valid values:
+	//
+	// *   Connected
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Disconnected
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// The total duration of the sessions.
+	TotalConnectionDuration *int64 `json:"TotalConnectionDuration,omitempty" xml:"TotalConnectionDuration,omitempty"`
+}
+
+func (s DescribeDesktopGroupSessionsResponseBodySessions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopGroupSessionsResponseBodySessions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetClientIp(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetClientOS(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetClientVersion(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDesktopGroupId(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDesktopGroupName(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.DesktopGroupName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetDesktopId(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetEndUserApplyCoordinateTime(v int64) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.EndUserApplyCoordinateTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetEndUserId(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetLastSessionEndTime(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.LastSessionEndTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetLastSessionStartTime(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.LastSessionStartTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetLatestConnectionTime(v int64) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.LatestConnectionTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetOfficeSiteId(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetOfficeSiteName(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.OfficeSiteName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetOsType(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetOwnType(v int32) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.OwnType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetProtocolType(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetSessionIdleTime(v int64) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.SessionIdleTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetSessionStatus(v string) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.SessionStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetTotalConnectionDuration(v int64) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.TotalConnectionDuration = &v
+	return s
+}
+
+type DescribeDesktopGroupSessionsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDesktopGroupSessionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDesktopGroupSessionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopGroupSessionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupSessionsResponse) SetHeaders(v map[string]*string) *DescribeDesktopGroupSessionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponse) SetStatusCode(v int32) *DescribeDesktopGroupSessionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponse) SetBody(v *DescribeDesktopGroupSessionsResponseBody) *DescribeDesktopGroupSessionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDesktopGroupsRequest struct {
 	// The IDs of the desktop templates.
 	BundleId []*string `json:"BundleId,omitempty" xml:"BundleId,omitempty" type:"Repeated"`
@@ -42339,6 +42709,78 @@ func (client *Client) DescribeCustomizedListHeaders(request *DescribeCustomizedL
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomizedListHeadersResponse{}
 	_body, _err := client.DescribeCustomizedListHeadersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDesktopGroupSessionsWithOptions(request *DescribeDesktopGroupSessionsRequest, runtime *util.RuntimeOptions) (_result *DescribeDesktopGroupSessionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnType)) {
+		query["OwnType"] = request.OwnType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionStatus)) {
+		query["SessionStatus"] = request.SessionStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDesktopGroupSessions"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDesktopGroupSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDesktopGroupSessions(request *DescribeDesktopGroupSessionsRequest) (_result *DescribeDesktopGroupSessionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDesktopGroupSessionsResponse{}
+	_body, _err := client.DescribeDesktopGroupSessionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
