@@ -5724,7 +5724,7 @@ func (s *DeleteEventStreamingRequest) SetEventStreamingName(v string) *DeleteEve
 
 type DeleteEventStreamingResponseBody struct {
 	// The returned response code. The value Success indicates that the request is successful.
-	Code *bool `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
@@ -5741,7 +5741,7 @@ func (s DeleteEventStreamingResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteEventStreamingResponseBody) SetCode(v bool) *DeleteEventStreamingResponseBody {
+func (s *DeleteEventStreamingResponseBody) SetCode(v string) *DeleteEventStreamingResponseBody {
 	s.Code = &v
 	return s
 }
@@ -9495,7 +9495,7 @@ func (s *GetRuleRequest) SetRuleName(v string) *GetRuleRequest {
 }
 
 type GetRuleResponseBody struct {
-	// The returned response code. The value Success indicates that the request is successful.
+	// The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For a list of error codes, see Error codes.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -9503,7 +9503,7 @@ type GetRuleResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. If the operation is successful, the value true is returned.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9610,22 +9610,23 @@ func (s *GetRuleResponseBodyData) SetTargets(v []*GetRuleResponseBodyDataTargets
 }
 
 type GetRuleResponseBodyDataTargets struct {
-	// The ID of the custom event target.
+	// The dead-letter queue.
 	DeadLetterQueue *GetRuleResponseBodyDataTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	// The information about the event target.
 	DetailMap map[string]interface{} `json:"DetailMap,omitempty" xml:"DetailMap,omitempty"`
 	// The endpoint of the event target.
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The fault tolerance policy. Valid values: ALL: Fault tolerance is allowed. If an error occurs in an event, event processing is not blocked. If the event fails to be sent after the maximum number of retries specified by the retry policy is reached, the event is delivered to the dead-letter queue or discarded based on your configurations. NONE: Fault tolerance is not allowed. If an error occurs in an event and the event fails to be sent after the maximum number of retries specified by the retry policy is reached, event processing is blocked.
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The ID of the custom event target.
+	// The ID of the event target.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The parameters that are configured for the event target.
 	ParamList []*GetRuleResponseBodyDataTargetsParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The retry policy that is used to push events. Valid values: BACKOFF_RETRY: backoff retry. If an event failed to be pushed, it can be retried up to three times. The interval between two consecutive retries is a random value from 10 to 20. Unit: seconds. EXPONENTIAL_DECAY_RETRY: exponential decay retry. If an event failed to be pushed, it can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds. The interval of 512 seconds is used for 167 retries.
+	// The retry policy that is used to push failed events. Valid values: BACKOFF_RETRY: backoff retry. A failed event can be retried up to three times. The interval between two consecutive retries is a random value between 10 seconds and 20 seconds. EXPONENTIAL_DECAY_RETRY: exponential decay retry. A failed event can be retried up to 176 times. The interval between two consecutive retries exponentially increases to a maximum of 512 seconds. The total retry time is 1 day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, and 512 seconds. The interval of 512 seconds is used for 167 retries.
 	PushRetryStrategy *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
 	// The transformer that is used to push events.
 	PushSelector *string `json:"PushSelector,omitempty" xml:"PushSelector,omitempty"`
-	// The type of the event target. For more information, see [Event target parameters.](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+	// The type of the event target. For more information, see [Event target parameters](~~185887~~).
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9683,7 +9684,7 @@ func (s *GetRuleResponseBodyDataTargets) SetType(v string) *GetRuleResponseBodyD
 }
 
 type GetRuleResponseBodyDataTargetsDeadLetterQueue struct {
-	// The Alibaba Cloud Resource Name (ARN) of the event source.
+	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 }
 
@@ -9701,13 +9702,13 @@ func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetArn(v string) *GetRul
 }
 
 type GetRuleResponseBodyDataTargetsParamList struct {
-	// The format that is used by the event target parameter. For more information, see [Limits.](https://www.alibabacloud.com/help/en/eventbridge/latest/limits)
+	// The method that is used to deliver events to the event target. For more information, see [Limits](~~163289~~).
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The resource parameter of the event target. For more information, see [Limits.](https://www.alibabacloud.com/help/en/eventbridge/latest/limits)
+	// The resource key of the event target. For more information, see [Limits](~~163289~~).
 	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
-	// The template that is used by the event target parameter.
+	// The template based on which events are delivered to the event target.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value of the event target parameter.
+	// The event target.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14607,7 +14608,7 @@ func (s *PauseEventStreamingRequest) SetEventStreamingName(v string) *PauseEvent
 
 type PauseEventStreamingResponseBody struct {
 	// The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
-	Code *bool `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message that is returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
@@ -14624,7 +14625,7 @@ func (s PauseEventStreamingResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *PauseEventStreamingResponseBody) SetCode(v bool) *PauseEventStreamingResponseBody {
+func (s *PauseEventStreamingResponseBody) SetCode(v string) *PauseEventStreamingResponseBody {
 	s.Code = &v
 	return s
 }
