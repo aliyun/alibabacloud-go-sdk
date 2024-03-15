@@ -353,9 +353,9 @@ func (s *RecognizeAdvancedResponseBody) SetRequestId(v string) *RecognizeAdvance
 }
 
 type RecognizeAdvancedResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeAdvancedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeAdvancedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAdvancedResponse) String() string {
@@ -440,9 +440,9 @@ func (s *RecognizeAirItineraryResponseBody) SetRequestId(v string) *RecognizeAir
 }
 
 type RecognizeAirItineraryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeAirItineraryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeAirItineraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAirItineraryResponse) String() string {
@@ -2281,9 +2281,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect
 }
 
 type RecognizeAllTextResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeAllTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeAllTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAllTextResponse) String() string {
@@ -2368,9 +2368,9 @@ func (s *RecognizeBankAcceptanceResponseBody) SetRequestId(v string) *RecognizeB
 }
 
 type RecognizeBankAcceptanceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBankAcceptanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBankAcceptanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBankAcceptanceResponse) String() string {
@@ -2455,9 +2455,9 @@ func (s *RecognizeBankAccountLicenseResponseBody) SetRequestId(v string) *Recogn
 }
 
 type RecognizeBankAccountLicenseResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBankAccountLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBankAccountLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBankAccountLicenseResponse) String() string {
@@ -2542,9 +2542,9 @@ func (s *RecognizeBankCardResponseBody) SetRequestId(v string) *RecognizeBankCar
 }
 
 type RecognizeBankCardResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBankCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBankCardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBankCardResponse) String() string {
@@ -2629,9 +2629,9 @@ func (s *RecognizeBasicResponseBody) SetRequestId(v string) *RecognizeBasicRespo
 }
 
 type RecognizeBasicResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBasicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBasicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBasicResponse) String() string {
@@ -2716,9 +2716,9 @@ func (s *RecognizeBirthCertificationResponseBody) SetRequestId(v string) *Recogn
 }
 
 type RecognizeBirthCertificationResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBirthCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBirthCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBirthCertificationResponse) String() string {
@@ -2803,9 +2803,9 @@ func (s *RecognizeBusShipTicketResponseBody) SetRequestId(v string) *RecognizeBu
 }
 
 type RecognizeBusShipTicketResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBusShipTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBusShipTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBusShipTicketResponse) String() string {
@@ -2890,9 +2890,9 @@ func (s *RecognizeBusinessLicenseResponseBody) SetRequestId(v string) *Recognize
 }
 
 type RecognizeBusinessLicenseResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBusinessLicenseResponse) String() string {
@@ -2977,9 +2977,9 @@ func (s *RecognizeCarInvoiceResponseBody) SetRequestId(v string) *RecognizeCarIn
 }
 
 type RecognizeCarInvoiceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCarInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCarInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarInvoiceResponse) String() string {
@@ -3064,9 +3064,9 @@ func (s *RecognizeCarNumberResponseBody) SetRequestId(v string) *RecognizeCarNum
 }
 
 type RecognizeCarNumberResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCarNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCarNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarNumberResponse) String() string {
@@ -3151,9 +3151,9 @@ func (s *RecognizeCarVinCodeResponseBody) SetRequestId(v string) *RecognizeCarVi
 }
 
 type RecognizeCarVinCodeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCarVinCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCarVinCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCarVinCodeResponse) String() string {
@@ -3244,9 +3244,9 @@ func (s *RecognizeChinesePassportResponseBody) SetRequestId(v string) *Recognize
 }
 
 type RecognizeChinesePassportResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeChinesePassportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeChinesePassportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeChinesePassportResponse) String() string {
@@ -3331,9 +3331,9 @@ func (s *RecognizeCommonPrintedInvoiceResponseBody) SetRequestId(v string) *Reco
 }
 
 type RecognizeCommonPrintedInvoiceResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCommonPrintedInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCommonPrintedInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCommonPrintedInvoiceResponse) String() string {
@@ -3418,9 +3418,9 @@ func (s *RecognizeCosmeticProduceLicenseResponseBody) SetRequestId(v string) *Re
 }
 
 type RecognizeCosmeticProduceLicenseResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCosmeticProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCosmeticProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCosmeticProduceLicenseResponse) String() string {
@@ -3511,9 +3511,9 @@ func (s *RecognizeCovidTestReportResponseBody) SetRequestId(v string) *Recognize
 }
 
 type RecognizeCovidTestReportResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCovidTestReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCovidTestReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCovidTestReportResponse) String() string {
@@ -3598,9 +3598,9 @@ func (s *RecognizeCtwoMedicalDeviceManageLicenseResponseBody) SetRequestId(v str
 }
 
 type RecognizeCtwoMedicalDeviceManageLicenseResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeCtwoMedicalDeviceManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeCtwoMedicalDeviceManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCtwoMedicalDeviceManageLicenseResponse) String() string {
@@ -3739,9 +3739,9 @@ func (s *RecognizeDocumentStructureResponseBody) SetRequestId(v string) *Recogni
 }
 
 type RecognizeDocumentStructureResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeDocumentStructureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeDocumentStructureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeDocumentStructureResponse) String() string {
@@ -3826,9 +3826,9 @@ func (s *RecognizeDrivingLicenseResponseBody) SetRequestId(v string) *RecognizeD
 }
 
 type RecognizeDrivingLicenseResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeDrivingLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeDrivingLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeDrivingLicenseResponse) String() string {
@@ -3913,9 +3913,9 @@ func (s *RecognizeEduFormulaResponseBody) SetRequestId(v string) *RecognizeEduFo
 }
 
 type RecognizeEduFormulaResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduFormulaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduFormulaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduFormulaResponse) String() string {
@@ -4000,9 +4000,9 @@ func (s *RecognizeEduOralCalculationResponseBody) SetRequestId(v string) *Recogn
 }
 
 type RecognizeEduOralCalculationResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduOralCalculationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduOralCalculationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduOralCalculationResponse) String() string {
@@ -4105,9 +4105,9 @@ func (s *RecognizeEduPaperCutResponseBody) SetRequestId(v string) *RecognizeEduP
 }
 
 type RecognizeEduPaperCutResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduPaperCutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduPaperCutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperCutResponse) String() string {
@@ -4210,9 +4210,9 @@ func (s *RecognizeEduPaperOcrResponseBody) SetRequestId(v string) *RecognizeEduP
 }
 
 type RecognizeEduPaperOcrResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduPaperOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduPaperOcrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperOcrResponse) String() string {
@@ -4309,9 +4309,9 @@ func (s *RecognizeEduPaperStructedResponseBody) SetRequestId(v string) *Recogniz
 }
 
 type RecognizeEduPaperStructedResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduPaperStructedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduPaperStructedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperStructedResponse) String() string {
@@ -4402,9 +4402,9 @@ func (s *RecognizeEduQuestionOcrResponseBody) SetRequestId(v string) *RecognizeE
 }
 
 type RecognizeEduQuestionOcrResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEduQuestionOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEduQuestionOcrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduQuestionOcrResponse) String() string {
@@ -4501,9 +4501,9 @@ func (s *RecognizeEnglishResponseBody) SetRequestId(v string) *RecognizeEnglishR
 }
 
 type RecognizeEnglishResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEnglishResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEnglishResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEnglishResponse) String() string {
@@ -4588,9 +4588,9 @@ func (s *RecognizeEstateCertificationResponseBody) SetRequestId(v string) *Recog
 }
 
 type RecognizeEstateCertificationResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeEstateCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeEstateCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEstateCertificationResponse) String() string {
@@ -4681,9 +4681,9 @@ func (s *RecognizeExitEntryPermitToHKResponseBody) SetRequestId(v string) *Recog
 }
 
 type RecognizeExitEntryPermitToHKResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeExitEntryPermitToHKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeExitEntryPermitToHKResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToHKResponse) String() string {
@@ -4774,9 +4774,9 @@ func (s *RecognizeExitEntryPermitToMainlandResponseBody) SetRequestId(v string) 
 }
 
 type RecognizeExitEntryPermitToMainlandResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeExitEntryPermitToMainlandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeExitEntryPermitToMainlandResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToMainlandResponse) String() string {
@@ -4861,9 +4861,9 @@ func (s *RecognizeFoodManageLicenseResponseBody) SetRequestId(v string) *Recogni
 }
 
 type RecognizeFoodManageLicenseResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeFoodManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeFoodManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeFoodManageLicenseResponse) String() string {
@@ -4948,9 +4948,9 @@ func (s *RecognizeFoodProduceLicenseResponseBody) SetRequestId(v string) *Recogn
 }
 
 type RecognizeFoodProduceLicenseResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeFoodProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeFoodProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeFoodProduceLicenseResponse) String() string {
@@ -5035,9 +5035,9 @@ func (s *RecognizeGeneralResponseBody) SetRequestId(v string) *RecognizeGeneralR
 }
 
 type RecognizeGeneralResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeGeneralResponse) String() string {
@@ -5122,9 +5122,9 @@ func (s *RecognizeHKIdcardResponseBody) SetRequestId(v string) *RecognizeHKIdcar
 }
 
 type RecognizeHKIdcardResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeHKIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeHKIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHKIdcardResponse) String() string {
@@ -5239,9 +5239,9 @@ func (s *RecognizeHandwritingResponseBody) SetRequestId(v string) *RecognizeHand
 }
 
 type RecognizeHandwritingResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeHandwritingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeHandwritingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHandwritingResponse) String() string {
@@ -5326,9 +5326,9 @@ func (s *RecognizeHealthCodeResponseBody) SetRequestId(v string) *RecognizeHealt
 }
 
 type RecognizeHealthCodeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeHealthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeHealthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHealthCodeResponse) String() string {
@@ -5413,9 +5413,9 @@ func (s *RecognizeHotelConsumeResponseBody) SetRequestId(v string) *RecognizeHot
 }
 
 type RecognizeHotelConsumeResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeHotelConsumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeHotelConsumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHotelConsumeResponse) String() string {
@@ -5506,9 +5506,9 @@ func (s *RecognizeHouseholdResponseBody) SetRequestId(v string) *RecognizeHouseh
 }
 
 type RecognizeHouseholdResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeHouseholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeHouseholdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHouseholdResponse) String() string {
@@ -5605,9 +5605,9 @@ func (s *RecognizeIdcardResponseBody) SetRequestId(v string) *RecognizeIdcardRes
 }
 
 type RecognizeIdcardResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeIdcardResponse) String() string {
@@ -5698,9 +5698,9 @@ func (s *RecognizeInternationalBusinessLicenseResponseBody) SetRequestId(v strin
 }
 
 type RecognizeInternationalBusinessLicenseResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeInternationalBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeInternationalBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInternationalBusinessLicenseResponse) String() string {
@@ -5791,9 +5791,9 @@ func (s *RecognizeInternationalIdcardResponseBody) SetRequestId(v string) *Recog
 }
 
 type RecognizeInternationalIdcardResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeInternationalIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeInternationalIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInternationalIdcardResponse) String() string {
@@ -5884,9 +5884,9 @@ func (s *RecognizeInvoiceResponseBody) SetRequestId(v string) *RecognizeInvoiceR
 }
 
 type RecognizeInvoiceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInvoiceResponse) String() string {
@@ -5989,9 +5989,9 @@ func (s *RecognizeJanpaneseResponseBody) SetRequestId(v string) *RecognizeJanpan
 }
 
 type RecognizeJanpaneseResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeJanpaneseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeJanpaneseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeJanpaneseResponse) String() string {
@@ -6094,9 +6094,9 @@ func (s *RecognizeKoreanResponseBody) SetRequestId(v string) *RecognizeKoreanRes
 }
 
 type RecognizeKoreanResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeKoreanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeKoreanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeKoreanResponse) String() string {
@@ -6199,9 +6199,9 @@ func (s *RecognizeLatinResponseBody) SetRequestId(v string) *RecognizeLatinRespo
 }
 
 type RecognizeLatinResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeLatinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeLatinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeLatinResponse) String() string {
@@ -6286,9 +6286,9 @@ func (s *RecognizeMedicalDeviceManageLicenseResponseBody) SetRequestId(v string)
 }
 
 type RecognizeMedicalDeviceManageLicenseResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeMedicalDeviceManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeMedicalDeviceManageLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMedicalDeviceManageLicenseResponse) String() string {
@@ -6373,9 +6373,9 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponseBody) SetRequestId(v string
 }
 
 type RecognizeMedicalDeviceProduceLicenseResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeMedicalDeviceProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeMedicalDeviceProduceLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMedicalDeviceProduceLicenseResponse) String() string {
@@ -6466,9 +6466,9 @@ func (s *RecognizeMixedInvoicesResponseBody) SetRequestId(v string) *RecognizeMi
 }
 
 type RecognizeMixedInvoicesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeMixedInvoicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeMixedInvoicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMixedInvoicesResponse) String() string {
@@ -6636,9 +6636,9 @@ func (s *RecognizeMultiLanguageResponseBody) SetRequestId(v string) *RecognizeMu
 }
 
 type RecognizeMultiLanguageResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeMultiLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeMultiLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageResponse) String() string {
@@ -6723,9 +6723,9 @@ func (s *RecognizeNonTaxInvoiceResponseBody) SetRequestId(v string) *RecognizeNo
 }
 
 type RecognizeNonTaxInvoiceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeNonTaxInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeNonTaxInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeNonTaxInvoiceResponse) String() string {
@@ -6810,9 +6810,9 @@ func (s *RecognizePassportResponseBody) SetRequestId(v string) *RecognizePasspor
 }
 
 type RecognizePassportResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizePassportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizePassportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePassportResponse) String() string {
@@ -6897,9 +6897,9 @@ func (s *RecognizePaymentRecordResponseBody) SetRequestId(v string) *RecognizePa
 }
 
 type RecognizePaymentRecordResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizePaymentRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizePaymentRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePaymentRecordResponse) String() string {
@@ -6990,9 +6990,9 @@ func (s *RecognizePurchaseRecordResponseBody) SetRequestId(v string) *RecognizeP
 }
 
 type RecognizePurchaseRecordResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizePurchaseRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizePurchaseRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePurchaseRecordResponse) String() string {
@@ -7077,9 +7077,9 @@ func (s *RecognizeQuotaInvoiceResponseBody) SetRequestId(v string) *RecognizeQuo
 }
 
 type RecognizeQuotaInvoiceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeQuotaInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeQuotaInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeQuotaInvoiceResponse) String() string {
@@ -7164,9 +7164,9 @@ func (s *RecognizeRideHailingItineraryResponseBody) SetRequestId(v string) *Reco
 }
 
 type RecognizeRideHailingItineraryResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeRideHailingItineraryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeRideHailingItineraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRideHailingItineraryResponse) String() string {
@@ -7251,9 +7251,9 @@ func (s *RecognizeRollTicketResponseBody) SetRequestId(v string) *RecognizeRollT
 }
 
 type RecognizeRollTicketResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeRollTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeRollTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRollTicketResponse) String() string {
@@ -7356,9 +7356,9 @@ func (s *RecognizeRussianResponseBody) SetRequestId(v string) *RecognizeRussianR
 }
 
 type RecognizeRussianResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeRussianResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeRussianResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRussianResponse) String() string {
@@ -7443,9 +7443,9 @@ func (s *RecognizeShoppingReceiptResponseBody) SetRequestId(v string) *Recognize
 }
 
 type RecognizeShoppingReceiptResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeShoppingReceiptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeShoppingReceiptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeShoppingReceiptResponse) String() string {
@@ -7530,9 +7530,9 @@ func (s *RecognizeSocialSecurityCardResponseBody) SetRequestId(v string) *Recogn
 }
 
 type RecognizeSocialSecurityCardResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeSocialSecurityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeSocialSecurityCardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeSocialSecurityCardResponse) String() string {
@@ -7617,9 +7617,9 @@ func (s *RecognizeSocialSecurityCardVersionIIResponseBody) SetRequestId(v string
 }
 
 type RecognizeSocialSecurityCardVersionIIResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeSocialSecurityCardVersionIIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeSocialSecurityCardVersionIIResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeSocialSecurityCardVersionIIResponse) String() string {
@@ -7728,9 +7728,9 @@ func (s *RecognizeTableOcrResponseBody) SetRequestId(v string) *RecognizeTableOc
 }
 
 type RecognizeTableOcrResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTableOcrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTableOcrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTableOcrResponse) String() string {
@@ -7815,9 +7815,9 @@ func (s *RecognizeTaxClearanceCertificateResponseBody) SetRequestId(v string) *R
 }
 
 type RecognizeTaxClearanceCertificateResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTaxClearanceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTaxClearanceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTaxClearanceCertificateResponse) String() string {
@@ -7902,9 +7902,9 @@ func (s *RecognizeTaxiInvoiceResponseBody) SetRequestId(v string) *RecognizeTaxi
 }
 
 type RecognizeTaxiInvoiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTaxiInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTaxiInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTaxiInvoiceResponse) String() string {
@@ -8007,9 +8007,9 @@ func (s *RecognizeThaiResponseBody) SetRequestId(v string) *RecognizeThaiRespons
 }
 
 type RecognizeThaiResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeThaiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeThaiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeThaiResponse) String() string {
@@ -8094,9 +8094,9 @@ func (s *RecognizeTollInvoiceResponseBody) SetRequestId(v string) *RecognizeToll
 }
 
 type RecognizeTollInvoiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTollInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTollInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTollInvoiceResponse) String() string {
@@ -8181,9 +8181,9 @@ func (s *RecognizeTradeMarkCertificationResponseBody) SetRequestId(v string) *Re
 }
 
 type RecognizeTradeMarkCertificationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTradeMarkCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTradeMarkCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTradeMarkCertificationResponse) String() string {
@@ -8268,9 +8268,9 @@ func (s *RecognizeTrainInvoiceResponseBody) SetRequestId(v string) *RecognizeTra
 }
 
 type RecognizeTrainInvoiceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTrainInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeTrainInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTrainInvoiceResponse) String() string {
@@ -8355,9 +8355,9 @@ func (s *RecognizeUsedCarInvoiceResponseBody) SetRequestId(v string) *RecognizeU
 }
 
 type RecognizeUsedCarInvoiceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeUsedCarInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeUsedCarInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeUsedCarInvoiceResponse) String() string {
@@ -8442,9 +8442,9 @@ func (s *RecognizeVehicleCertificationResponseBody) SetRequestId(v string) *Reco
 }
 
 type RecognizeVehicleCertificationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeVehicleCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeVehicleCertificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeVehicleCertificationResponse) String() string {
@@ -8529,9 +8529,9 @@ func (s *RecognizeVehicleLicenseResponseBody) SetRequestId(v string) *RecognizeV
 }
 
 type RecognizeVehicleLicenseResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeVehicleLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeVehicleLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeVehicleLicenseResponse) String() string {
@@ -8616,9 +8616,9 @@ func (s *RecognizeVehicleRegistrationResponseBody) SetRequestId(v string) *Recog
 }
 
 type RecognizeVehicleRegistrationResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeVehicleRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeVehicleRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeVehicleRegistrationResponse) String() string {
@@ -8703,9 +8703,9 @@ func (s *RecognizeWaybillResponseBody) SetRequestId(v string) *RecognizeWaybillR
 }
 
 type RecognizeWaybillResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeWaybillResponse) String() string {
@@ -8784,9 +8784,9 @@ func (s *VerifyBusinessLicenseResponseBody) SetRequestId(v string) *VerifyBusine
 }
 
 type VerifyBusinessLicenseResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyBusinessLicenseResponse) String() string {
@@ -8815,6 +8815,7 @@ func (s *VerifyBusinessLicenseResponse) SetBody(v *VerifyBusinessLicenseResponse
 type VerifyVATInvoiceRequest struct {
 	InvoiceCode *string `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
 	InvoiceDate *string `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
+	InvoiceKind *int32  `json:"InvoiceKind,omitempty" xml:"InvoiceKind,omitempty"`
 	InvoiceNo   *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
 	InvoiceSum  *string `json:"InvoiceSum,omitempty" xml:"InvoiceSum,omitempty"`
 	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
@@ -8835,6 +8836,11 @@ func (s *VerifyVATInvoiceRequest) SetInvoiceCode(v string) *VerifyVATInvoiceRequ
 
 func (s *VerifyVATInvoiceRequest) SetInvoiceDate(v string) *VerifyVATInvoiceRequest {
 	s.InvoiceDate = &v
+	return s
+}
+
+func (s *VerifyVATInvoiceRequest) SetInvoiceKind(v int32) *VerifyVATInvoiceRequest {
+	s.InvoiceKind = &v
 	return s
 }
 
@@ -8877,9 +8883,9 @@ func (s *VerifyVATInvoiceResponseBody) SetRequestId(v string) *VerifyVATInvoiceR
 }
 
 type VerifyVATInvoiceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyVATInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyVATInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyVATInvoiceResponse) String() string {
@@ -12696,6 +12702,10 @@ func (client *Client) VerifyVATInvoiceWithOptions(request *VerifyVATInvoiceReque
 
 	if !tea.BoolValue(util.IsUnset(request.InvoiceDate)) {
 		query["InvoiceDate"] = request.InvoiceDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceKind)) {
+		query["InvoiceKind"] = request.InvoiceKind
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InvoiceNo)) {
