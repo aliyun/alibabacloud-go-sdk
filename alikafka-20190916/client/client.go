@@ -5895,6 +5895,93 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 	return s
 }
 
+type ReopenInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ReopenInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenInstanceRequest) SetInstanceId(v string) *ReopenInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReopenInstanceRequest) SetRegionId(v string) *ReopenInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ReopenInstanceResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReopenInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenInstanceResponseBody) SetCode(v int32) *ReopenInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReopenInstanceResponseBody) SetMessage(v string) *ReopenInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReopenInstanceResponseBody) SetRequestId(v string) *ReopenInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReopenInstanceResponseBody) SetSuccess(v bool) *ReopenInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReopenInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReopenInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReopenInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReopenInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReopenInstanceResponse) SetHeaders(v map[string]*string) *ReopenInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReopenInstanceResponse) SetStatusCode(v int32) *ReopenInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReopenInstanceResponse) SetBody(v *ReopenInstanceResponseBody) *ReopenInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StartInstanceRequest struct {
 	// The initial configurations of ApsaraMQ for Kafka. The value must be a valid JSON string.
 	//
@@ -6175,6 +6262,93 @@ func (s *StartInstanceResponse) SetStatusCode(v int32) *StartInstanceResponse {
 }
 
 func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StopInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceRequest) SetInstanceId(v string) *StopInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopInstanceResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceResponseBody) SetCode(v int32) *StopInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopInstanceResponseBody) SetMessage(v string) *StopInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopInstanceResponseBody) SetRequestId(v string) *StopInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopInstanceResponseBody) SetSuccess(v bool) *StopInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopInstanceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceResponse) SetHeaders(v map[string]*string) *StopInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopInstanceResponse) SetStatusCode(v int32) *StopInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -9852,6 +10026,54 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ReopenInstanceWithOptions(request *ReopenInstanceRequest, runtime *util.RuntimeOptions) (_result *ReopenInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReopenInstance"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReopenInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReopenInstance(request *ReopenInstanceRequest) (_result *ReopenInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReopenInstanceResponse{}
+	_body, _err := client.ReopenInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * >  You can call this operation up to twice per second.
  *
@@ -9982,6 +10204,54 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 	runtime := &util.RuntimeOptions{}
 	_result = &StartInstanceResponse{}
 	_body, _err := client.StartInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstance"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopInstanceResponse{}
+	_body, _err := client.StopInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
