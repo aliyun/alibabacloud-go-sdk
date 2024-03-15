@@ -56,6 +56,7 @@ func (s *CreateTaskRequest) SetType(v string) *CreateTaskRequest {
 type CreateTaskRequestInput struct {
 	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Format                      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	MultipleStreamsEnabled      *bool   `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
 	ProgressiveCallbacksEnabled *bool   `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
 	SampleRate                  *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	SourceLanguage              *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
@@ -78,6 +79,11 @@ func (s *CreateTaskRequestInput) SetFileUrl(v string) *CreateTaskRequestInput {
 
 func (s *CreateTaskRequestInput) SetFormat(v string) *CreateTaskRequestInput {
 	s.Format = &v
+	return s
+}
+
+func (s *CreateTaskRequestInput) SetMultipleStreamsEnabled(v bool) *CreateTaskRequestInput {
+	s.MultipleStreamsEnabled = &v
 	return s
 }
 
@@ -253,11 +259,12 @@ func (s *CreateTaskRequestParametersTranscoding) SetVideoThumbnailEnabled(v bool
 }
 
 type CreateTaskRequestParametersTranscription struct {
-	AudioEventDetectionEnabled *bool                                                `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
-	Diarization                *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
-	DiarizationEnabled         *bool                                                `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
-	OutputLevel                *int32                                               `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	PhraseId                   *string                                              `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	AdditionalStreamOutputLevel *int32                                               `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
+	AudioEventDetectionEnabled  *bool                                                `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
+	Diarization                 *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
+	DiarizationEnabled          *bool                                                `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	OutputLevel                 *int32                                               `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	PhraseId                    *string                                              `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscription) String() string {
@@ -266,6 +273,11 @@ func (s CreateTaskRequestParametersTranscription) String() string {
 
 func (s CreateTaskRequestParametersTranscription) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequestParametersTranscription) SetAdditionalStreamOutputLevel(v int32) *CreateTaskRequestParametersTranscription {
+	s.AdditionalStreamOutputLevel = &v
+	return s
 }
 
 func (s *CreateTaskRequestParametersTranscription) SetAudioEventDetectionEnabled(v bool) *CreateTaskRequestParametersTranscription {
@@ -311,8 +323,9 @@ func (s *CreateTaskRequestParametersTranscriptionDiarization) SetSpeakerCount(v 
 }
 
 type CreateTaskRequestParametersTranslation struct {
-	OutputLevel     *int32    `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	TargetLanguages []*string `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty" type:"Repeated"`
+	AdditionalStreamOutputLevel *int32    `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
+	OutputLevel                 *int32    `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	TargetLanguages             []*string `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty" type:"Repeated"`
 }
 
 func (s CreateTaskRequestParametersTranslation) String() string {
@@ -321,6 +334,11 @@ func (s CreateTaskRequestParametersTranslation) String() string {
 
 func (s CreateTaskRequestParametersTranslation) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequestParametersTranslation) SetAdditionalStreamOutputLevel(v int32) *CreateTaskRequestParametersTranslation {
+	s.AdditionalStreamOutputLevel = &v
+	return s
 }
 
 func (s *CreateTaskRequestParametersTranslation) SetOutputLevel(v int32) *CreateTaskRequestParametersTranslation {
