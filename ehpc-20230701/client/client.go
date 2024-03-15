@@ -1077,7 +1077,8 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type DeleteJobsRequest struct {
-	JobSpec []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
+	ExecutorIds []*string                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	JobSpec     []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
 }
 
 func (s DeleteJobsRequest) String() string {
@@ -1086,6 +1087,11 @@ func (s DeleteJobsRequest) String() string {
 
 func (s DeleteJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteJobsRequest) SetExecutorIds(v []*string) *DeleteJobsRequest {
+	s.ExecutorIds = v
+	return s
 }
 
 func (s *DeleteJobsRequest) SetJobSpec(v []*DeleteJobsRequestJobSpec) *DeleteJobsRequest {
@@ -1140,7 +1146,8 @@ func (s *DeleteJobsRequestJobSpecTaskSpec) SetTaskName(v string) *DeleteJobsRequ
 }
 
 type DeleteJobsShrinkRequest struct {
-	JobSpecShrink *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+	ExecutorIdsShrink *string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty"`
+	JobSpecShrink     *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
 }
 
 func (s DeleteJobsShrinkRequest) String() string {
@@ -1149,6 +1156,11 @@ func (s DeleteJobsShrinkRequest) String() string {
 
 func (s DeleteJobsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteJobsShrinkRequest) SetExecutorIdsShrink(v string) *DeleteJobsShrinkRequest {
+	s.ExecutorIdsShrink = &v
+	return s
 }
 
 func (s *DeleteJobsShrinkRequest) SetJobSpecShrink(v string) *DeleteJobsShrinkRequest {
@@ -1880,6 +1892,264 @@ func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
 }
 
 func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
+	s.Body = v
+	return s
+}
+
+type ListExecutorsRequest struct {
+	Filter     *ListExecutorsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	PageNumber *string                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListExecutorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsRequest) SetFilter(v *ListExecutorsRequestFilter) *ListExecutorsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListExecutorsRequest) SetPageNumber(v string) *ListExecutorsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExecutorsRequest) SetPageSize(v string) *ListExecutorsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListExecutorsRequestFilter struct {
+	ExecutorIds       []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	IpAddresses       []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	JobName           *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	TimeCreatedAfter  *int32    `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	TimeCreatedBefore *int32    `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+}
+
+func (s ListExecutorsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsRequestFilter) SetExecutorIds(v []*string) *ListExecutorsRequestFilter {
+	s.ExecutorIds = v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetIpAddresses(v []*string) *ListExecutorsRequestFilter {
+	s.IpAddresses = v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetJobName(v string) *ListExecutorsRequestFilter {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetTimeCreatedAfter(v int32) *ListExecutorsRequestFilter {
+	s.TimeCreatedAfter = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetTimeCreatedBefore(v int32) *ListExecutorsRequestFilter {
+	s.TimeCreatedBefore = &v
+	return s
+}
+
+type ListExecutorsShrinkRequest struct {
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListExecutorsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsShrinkRequest) SetFilterShrink(v string) *ListExecutorsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *ListExecutorsShrinkRequest) SetPageNumber(v string) *ListExecutorsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExecutorsShrinkRequest) SetPageSize(v string) *ListExecutorsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListExecutorsResponseBody struct {
+	Executors  []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
+	JobId      *string                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskName   *string                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TotalCount *string                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListExecutorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsResponseBody) SetExecutors(v []*ListExecutorsResponseBodyExecutors) *ListExecutorsResponseBody {
+	s.Executors = v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetJobId(v string) *ListExecutorsResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetPageNumber(v string) *ListExecutorsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetPageSize(v string) *ListExecutorsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetRequestId(v string) *ListExecutorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetTaskName(v string) *ListExecutorsResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBody) SetTotalCount(v string) *ListExecutorsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListExecutorsResponseBodyExecutors struct {
+	ArrayIndex   *int32    `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	CreateTime   *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime      *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutorId   *string   `json:"ExecutorId,omitempty" xml:"ExecutorId,omitempty"`
+	HostName     []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	IpAddress    []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	JobId        *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason *string   `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	TaskName     *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s ListExecutorsResponseBodyExecutors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsResponseBodyExecutors) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetArrayIndex(v int32) *ListExecutorsResponseBodyExecutors {
+	s.ArrayIndex = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetCreateTime(v string) *ListExecutorsResponseBodyExecutors {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetEndTime(v string) *ListExecutorsResponseBodyExecutors {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetExecutorId(v string) *ListExecutorsResponseBodyExecutors {
+	s.ExecutorId = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetHostName(v []*string) *ListExecutorsResponseBodyExecutors {
+	s.HostName = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetIpAddress(v []*string) *ListExecutorsResponseBodyExecutors {
+	s.IpAddress = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetJobId(v string) *ListExecutorsResponseBodyExecutors {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetJobName(v string) *ListExecutorsResponseBodyExecutors {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetStatus(v string) *ListExecutorsResponseBodyExecutors {
+	s.Status = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetStatusReason(v string) *ListExecutorsResponseBodyExecutors {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetTaskName(v string) *ListExecutorsResponseBodyExecutors {
+	s.TaskName = &v
+	return s
+}
+
+type ListExecutorsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExecutorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListExecutorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExecutorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExecutorsResponse) SetHeaders(v map[string]*string) *ListExecutorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExecutorsResponse) SetStatusCode(v int32) *ListExecutorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExecutorsResponse) SetBody(v *ListExecutorsResponseBody) *ListExecutorsResponse {
 	s.Body = v
 	return s
 }
@@ -2790,11 +3060,19 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 	}
 	request := &DeleteJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExecutorIds)) {
+		request.ExecutorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecutorIds, tea.String("ExecutorIds"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.JobSpec)) {
 		request.JobSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobSpec, tea.String("JobSpec"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
+		query["ExecutorIds"] = request.ExecutorIdsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.JobSpecShrink)) {
 		query["JobSpec"] = request.JobSpecShrink
 	}
@@ -2914,6 +3192,64 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &GetJobResponse{}
 	_body, _err := client.GetJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListExecutorsWithOptions(tmpReq *ListExecutorsRequest, runtime *util.RuntimeOptions) (_result *ListExecutorsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListExecutorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExecutors"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExecutorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *ListExecutorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExecutorsResponse{}
+	_body, _err := client.ListExecutorsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
