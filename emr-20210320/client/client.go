@@ -6554,7 +6554,8 @@ type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
 	// The adjustment value. The value must be a positive number, which indicates the number of instances to be scaled out or in.
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The description of scaling by load.
-	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	MetricsTrigger     *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	MinAdjustmentValue *int32          `json:"MinAdjustmentValue,omitempty" xml:"MinAdjustmentValue,omitempty"`
 	// The name of the auto scaling rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The description of scaling by time.
@@ -6591,6 +6592,11 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetAdjustmen
 
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
 	s.MetricsTrigger = v
+	return s
+}
+
+func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetMinAdjustmentValue(v int32) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
+	s.MinAdjustmentValue = &v
 	return s
 }
 
@@ -36220,13 +36226,6 @@ func (client *Client) GetAutoScalingActivity(request *GetAutoScalingActivityRequ
 	return _result, _err
 }
 
-/**
- * 获取弹性伸缩策略信息。
- *
- * @param request GetAutoScalingPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAutoScalingPolicyResponse
- */
 func (client *Client) GetAutoScalingPolicyWithOptions(request *GetAutoScalingPolicyRequest, runtime *util.RuntimeOptions) (_result *GetAutoScalingPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36268,12 +36267,6 @@ func (client *Client) GetAutoScalingPolicyWithOptions(request *GetAutoScalingPol
 	return _result, _err
 }
 
-/**
- * 获取弹性伸缩策略信息。
- *
- * @param request GetAutoScalingPolicyRequest
- * @return GetAutoScalingPolicyResponse
- */
 func (client *Client) GetAutoScalingPolicy(request *GetAutoScalingPolicyRequest) (_result *GetAutoScalingPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAutoScalingPolicyResponse{}
