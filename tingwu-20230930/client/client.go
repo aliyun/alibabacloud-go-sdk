@@ -114,6 +114,7 @@ func (s *CreateTaskRequestInput) SetTaskKey(v string) *CreateTaskRequestInput {
 
 type CreateTaskRequestParameters struct {
 	AutoChaptersEnabled      *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
+	ExtraParams              *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
 	MeetingAssistance        *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
 	MeetingAssistanceEnabled *bool                                         `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
 	PptExtractionEnabled     *bool                                         `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
@@ -136,6 +137,11 @@ func (s CreateTaskRequestParameters) GoString() string {
 
 func (s *CreateTaskRequestParameters) SetAutoChaptersEnabled(v bool) *CreateTaskRequestParameters {
 	s.AutoChaptersEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetExtraParams(v *CreateTaskRequestParametersExtraParams) *CreateTaskRequestParameters {
+	s.ExtraParams = v
 	return s
 }
 
@@ -186,6 +192,23 @@ func (s *CreateTaskRequestParameters) SetTranslation(v *CreateTaskRequestParamet
 
 func (s *CreateTaskRequestParameters) SetTranslationEnabled(v bool) *CreateTaskRequestParameters {
 	s.TranslationEnabled = &v
+	return s
+}
+
+type CreateTaskRequestParametersExtraParams struct {
+	NfixEnabled *bool `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+}
+
+func (s CreateTaskRequestParametersExtraParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersExtraParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersExtraParams) SetNfixEnabled(v bool) *CreateTaskRequestParametersExtraParams {
+	s.NfixEnabled = &v
 	return s
 }
 
@@ -390,6 +413,7 @@ type CreateTaskResponseBodyData struct {
 	MeetingJoinUrl *string `json:"MeetingJoinUrl,omitempty" xml:"MeetingJoinUrl,omitempty"`
 	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskKey        *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskStatus     *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s CreateTaskResponseBodyData) String() string {
@@ -412,6 +436,11 @@ func (s *CreateTaskResponseBodyData) SetTaskId(v string) *CreateTaskResponseBody
 
 func (s *CreateTaskResponseBodyData) SetTaskKey(v string) *CreateTaskResponseBodyData {
 	s.TaskKey = &v
+	return s
+}
+
+func (s *CreateTaskResponseBodyData) SetTaskStatus(v string) *CreateTaskResponseBodyData {
+	s.TaskStatus = &v
 	return s
 }
 
