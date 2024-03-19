@@ -1841,6 +1841,214 @@ func (s *ModuleItemListSubItemsShoppingItemMapValueSearchPricePriceShowInfo) Set
 	return s
 }
 
+type ModuleOrderItemListBaggageRuleBaggageInfoMapValue struct {
+	CarryFreepc         *int32  `json:"carry_freepc,omitempty" xml:"carry_freepc,omitempty"`
+	CarryBagWeight      *int32  `json:"carry_bag_weight,omitempty" xml:"carry_bag_weight,omitempty"`
+	CarryBagSize        *string `json:"carry_bag_size,omitempty" xml:"carry_bag_size,omitempty"`
+	IsAllCarryBagWeight *bool   `json:"is_all_carry_bag_weight,omitempty" xml:"is_all_carry_bag_weight,omitempty"`
+	Airline             *string `json:"airline,omitempty" xml:"airline,omitempty"`
+	StartAirport        *string `json:"start_airport,omitempty" xml:"start_airport,omitempty"`
+	EndAirport          *string `json:"end_airport,omitempty" xml:"end_airport,omitempty"`
+	StartCityCode       *string `json:"start_city_code,omitempty" xml:"start_city_code,omitempty"`
+	EndCityCode         *string `json:"end_city_code,omitempty" xml:"end_city_code,omitempty"`
+	FreePcs             *int64  `json:"free_pcs,omitempty" xml:"free_pcs,omitempty"`
+	BaggageWeight       *int64  `json:"baggage_weight,omitempty" xml:"baggage_weight,omitempty"`
+	BaggageUnit         *string `json:"baggage_unit,omitempty" xml:"baggage_unit,omitempty"`
+	BaggageSize         *string `json:"baggage_size,omitempty" xml:"baggage_size,omitempty"`
+	AllWeight           *bool   `json:"all_weight,omitempty" xml:"all_weight,omitempty"`
+	TotalPcs            *int64  `json:"total_pcs,omitempty" xml:"total_pcs,omitempty"`
+	TotalWeight         *int64  `json:"total_weight,omitempty" xml:"total_weight,omitempty"`
+}
+
+func (s ModuleOrderItemListBaggageRuleBaggageInfoMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleOrderItemListBaggageRuleBaggageInfoMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetCarryFreepc(v int32) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.CarryFreepc = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetCarryBagWeight(v int32) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.CarryBagWeight = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetCarryBagSize(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.CarryBagSize = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetIsAllCarryBagWeight(v bool) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.IsAllCarryBagWeight = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetAirline(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.Airline = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetStartAirport(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.StartAirport = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetEndAirport(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.EndAirport = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetStartCityCode(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.StartCityCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetEndCityCode(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.EndCityCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetFreePcs(v int64) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.FreePcs = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetBaggageWeight(v int64) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.BaggageWeight = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetBaggageUnit(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.BaggageUnit = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetBaggageSize(v string) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.BaggageSize = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetAllWeight(v bool) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.AllWeight = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetTotalPcs(v int64) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.TotalPcs = &v
+	return s
+}
+
+func (s *ModuleOrderItemListBaggageRuleBaggageInfoMapValue) SetTotalWeight(v int64) *ModuleOrderItemListBaggageRuleBaggageInfoMapValue {
+	s.TotalWeight = &v
+	return s
+}
+
+type ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue struct {
+	Struct                *bool    `json:"struct,omitempty" xml:"struct,omitempty"`
+	CancelFeeInd          *bool    `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
+	ChangeFeeInd          *bool    `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
+	UpgradeFeeInd         *bool    `json:"upgrade_fee_ind,omitempty" xml:"upgrade_fee_ind,omitempty"`
+	ReissueInd            *bool    `json:"reissue_ind,omitempty" xml:"reissue_ind,omitempty"`
+	PenaltyTypeCode       *int32   `json:"penalty_type_code,omitempty" xml:"penalty_type_code,omitempty"`
+	PenaltyApplyRangeCode *int32   `json:"penalty_apply_range_code,omitempty" xml:"penalty_apply_range_code,omitempty"`
+	PenaltyChargeTypeCode *int32   `json:"penalty_charge_type_code,omitempty" xml:"penalty_charge_type_code,omitempty"`
+	Fee                   *float64 `json:"fee,omitempty" xml:"fee,omitempty"`
+	Currency              *string  `json:"currency,omitempty" xml:"currency,omitempty"`
+	PenaltyPercent        *float64 `json:"penalty_percent,omitempty" xml:"penalty_percent,omitempty"`
+	StartTime             *int32   `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	EndTime               *int32   `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	TimeUnitCode          *int32   `json:"time_unit_code,omitempty" xml:"time_unit_code,omitempty"`
+	Title                 *string  `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetStruct(v bool) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.Struct = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetCancelFeeInd(v bool) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.CancelFeeInd = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetChangeFeeInd(v bool) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.ChangeFeeInd = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetUpgradeFeeInd(v bool) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.UpgradeFeeInd = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetReissueInd(v bool) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.ReissueInd = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetPenaltyTypeCode(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.PenaltyTypeCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetPenaltyApplyRangeCode(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.PenaltyApplyRangeCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetPenaltyChargeTypeCode(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.PenaltyChargeTypeCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetFee(v float64) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.Fee = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetCurrency(v string) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.Currency = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetPenaltyPercent(v float64) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.PenaltyPercent = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetStartTime(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetEndTime(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetTimeUnitCode(v int32) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.TimeUnitCode = &v
+	return s
+}
+
+func (s *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) SetTitle(v string) *ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue {
+	s.Title = &v
+	return s
+}
+
 type ModuleGroupItemShoppingItemMapValue struct {
 	CabinQuantityList []*ModuleGroupItemShoppingItemMapValueCabinQuantityList `json:"cabin_quantity_list,omitempty" xml:"cabin_quantity_list,omitempty" type:"Repeated"`
 	SearchPrice       *ModuleGroupItemShoppingItemMapValueSearchPrice         `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
@@ -53754,6 +53962,1207 @@ func (s *InsureRefundDetailResponse) SetBody(v *InsureRefundDetailResponseBody) 
 	return s
 }
 
+type IntlFlightCreateOrderHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightCreateOrderHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightCreateOrderHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightCreateOrderHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequest struct {
+	AsyncCreateOrderKey  *string                                      `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	AsyncCreateOrderMode *bool                                        `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	ContactInfo          *IntlFlightCreateOrderRequestContactInfo     `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	CostCenter           *IntlFlightCreateOrderRequestCostCenter      `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
+	ExtraInfo            map[string]*string                           `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
+	IsvName              *string                                      `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language             *string                                      `json:"language,omitempty" xml:"language,omitempty"`
+	OtaItemId            *string                                      `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	OutOrderId           *string                                      `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PassengerList        []*IntlFlightCreateOrderRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
+	RenderKey            *string                                      `json:"render_key,omitempty" xml:"render_key,omitempty"`
+	TotalPriceCent       *int64                                       `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	UserId               *string                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string                                      `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequest) SetAsyncCreateOrderKey(v string) *IntlFlightCreateOrderRequest {
+	s.AsyncCreateOrderKey = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetAsyncCreateOrderMode(v bool) *IntlFlightCreateOrderRequest {
+	s.AsyncCreateOrderMode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetContactInfo(v *IntlFlightCreateOrderRequestContactInfo) *IntlFlightCreateOrderRequest {
+	s.ContactInfo = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetCostCenter(v *IntlFlightCreateOrderRequestCostCenter) *IntlFlightCreateOrderRequest {
+	s.CostCenter = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetExtraInfo(v map[string]*string) *IntlFlightCreateOrderRequest {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetIsvName(v string) *IntlFlightCreateOrderRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetLanguage(v string) *IntlFlightCreateOrderRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetOtaItemId(v string) *IntlFlightCreateOrderRequest {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetOutOrderId(v string) *IntlFlightCreateOrderRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetPassengerList(v []*IntlFlightCreateOrderRequestPassengerList) *IntlFlightCreateOrderRequest {
+	s.PassengerList = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetRenderKey(v string) *IntlFlightCreateOrderRequest {
+	s.RenderKey = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetTotalPriceCent(v int64) *IntlFlightCreateOrderRequest {
+	s.TotalPriceCent = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetUserId(v string) *IntlFlightCreateOrderRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequest) SetUserName(v string) *IntlFlightCreateOrderRequest {
+	s.UserName = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequestContactInfo struct {
+	ContactEmail       *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
+	ContactName        *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	ContactPhone       *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	SendMsgToPassenger *bool   `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequestContactInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequestContactInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequestContactInfo) SetContactEmail(v string) *IntlFlightCreateOrderRequestContactInfo {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestContactInfo) SetContactName(v string) *IntlFlightCreateOrderRequestContactInfo {
+	s.ContactName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestContactInfo) SetContactPhone(v string) *IntlFlightCreateOrderRequestContactInfo {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestContactInfo) SetSendMsgToPassenger(v bool) *IntlFlightCreateOrderRequestContactInfo {
+	s.SendMsgToPassenger = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequestCostCenter struct {
+	CostCenterName   *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequestCostCenter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequestCostCenter) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequestCostCenter) SetCostCenterName(v string) *IntlFlightCreateOrderRequestCostCenter {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestCostCenter) SetCostCenterNumber(v string) *IntlFlightCreateOrderRequestCostCenter {
+	s.CostCenterNumber = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequestPassengerList struct {
+	Birthday               *string                                                            `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CascadeDeptMask        *string                                                            `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName        *string                                                            `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	CertInfo               *IntlFlightCreateOrderRequestPassengerListCertInfo                 `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
+	CostCenterName         *string                                                            `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber       *string                                                            `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	DeptId                 *string                                                            `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
+	DeptName               *string                                                            `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	Gender                 *int32                                                             `json:"gender,omitempty" xml:"gender,omitempty"`
+	InvoiceId              *string                                                            `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle           *string                                                            `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	JobNo                  *string                                                            `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	MobileCountryCode      *string                                                            `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
+	Nationality            *string                                                            `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	NationalityCode        *string                                                            `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	PassengerType          *int32                                                             `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone                  *string                                                            `json:"phone,omitempty" xml:"phone,omitempty"`
+	ProjectCode            *string                                                            `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle           *string                                                            `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	SubsidiaryCertInfoList []*IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList `json:"subsidiary_cert_info_list,omitempty" xml:"subsidiary_cert_info_list,omitempty" type:"Repeated"`
+	UserId                 *string                                                            `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserType               *int32                                                             `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequestPassengerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequestPassengerList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetBirthday(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetCascadeDeptMask(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.CascadeDeptMask = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetCascadeDeptName(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetCertInfo(v *IntlFlightCreateOrderRequestPassengerListCertInfo) *IntlFlightCreateOrderRequestPassengerList {
+	s.CertInfo = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetCostCenterName(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetCostCenterNumber(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetDeptId(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.DeptId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetDeptName(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.DeptName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetGender(v int32) *IntlFlightCreateOrderRequestPassengerList {
+	s.Gender = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetInvoiceId(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetInvoiceTitle(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetJobNo(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.JobNo = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetMobileCountryCode(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.MobileCountryCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetNationality(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.Nationality = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetNationalityCode(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.NationalityCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetPassengerType(v int32) *IntlFlightCreateOrderRequestPassengerList {
+	s.PassengerType = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetPhone(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.Phone = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetProjectCode(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetProjectTitle(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetSubsidiaryCertInfoList(v []*IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) *IntlFlightCreateOrderRequestPassengerList {
+	s.SubsidiaryCertInfoList = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetUserId(v string) *IntlFlightCreateOrderRequestPassengerList {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerList) SetUserType(v int32) *IntlFlightCreateOrderRequestPassengerList {
+	s.UserType = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequestPassengerListCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequestPassengerListCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListCertInfo) SetCertNation(v string) *IntlFlightCreateOrderRequestPassengerListCertInfo {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListCertInfo) SetCertNo(v string) *IntlFlightCreateOrderRequestPassengerListCertInfo {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListCertInfo) SetCertType(v int32) *IntlFlightCreateOrderRequestPassengerListCertInfo {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListCertInfo) SetCertValidDate(v string) *IntlFlightCreateOrderRequestPassengerListCertInfo {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListCertInfo) SetName(v string) *IntlFlightCreateOrderRequestPassengerListCertInfo {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) SetCertNation(v string) *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) SetCertNo(v string) *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) SetCertType(v int32) *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) SetCertValidDate(v string) *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList) SetName(v string) *IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightCreateOrderShrinkRequest struct {
+	AsyncCreateOrderKey  *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	ContactInfoShrink    *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
+	CostCenterShrink     *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	ExtraInfoShrink      *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
+	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language             *string `json:"language,omitempty" xml:"language,omitempty"`
+	OtaItemId            *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	OutOrderId           *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PassengerListShrink  *string `json:"passenger_list,omitempty" xml:"passenger_list,omitempty"`
+	RenderKey            *string `json:"render_key,omitempty" xml:"render_key,omitempty"`
+	TotalPriceCent       *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s IntlFlightCreateOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetAsyncCreateOrderKey(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.AsyncCreateOrderKey = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetAsyncCreateOrderMode(v bool) *IntlFlightCreateOrderShrinkRequest {
+	s.AsyncCreateOrderMode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetContactInfoShrink(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.ContactInfoShrink = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetCostCenterShrink(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.CostCenterShrink = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetExtraInfoShrink(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.ExtraInfoShrink = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetIsvName(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetLanguage(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetOtaItemId(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetOutOrderId(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetPassengerListShrink(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.PassengerListShrink = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetRenderKey(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.RenderKey = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetTotalPriceCent(v int64) *IntlFlightCreateOrderShrinkRequest {
+	s.TotalPriceCent = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetUserId(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderShrinkRequest) SetUserName(v string) *IntlFlightCreateOrderShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+type IntlFlightCreateOrderResponseBody struct {
+	HttpStatusCode *int32                                   `json:"http_status_code,omitempty" xml:"http_status_code,omitempty"`
+	Module         *IntlFlightCreateOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId      *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode     *string                                  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg      *string                                  `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success        *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId        *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IntlFlightCreateOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetHttpStatusCode(v int32) *IntlFlightCreateOrderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetModule(v *IntlFlightCreateOrderResponseBodyModule) *IntlFlightCreateOrderResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetRequestId(v string) *IntlFlightCreateOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetResultCode(v string) *IntlFlightCreateOrderResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetResultMsg(v string) *IntlFlightCreateOrderResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetSuccess(v bool) *IntlFlightCreateOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBody) SetTraceId(v string) *IntlFlightCreateOrderResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightCreateOrderResponseBodyModule struct {
+	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	LatestPayTime       *string `json:"latest_pay_time,omitempty" xml:"latest_pay_time,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId          *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PayStatus           *int32  `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	TotalPrice          *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
+}
+
+func (s IntlFlightCreateOrderResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetAsyncCreateOrderKey(v string) *IntlFlightCreateOrderResponseBodyModule {
+	s.AsyncCreateOrderKey = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetLatestPayTime(v string) *IntlFlightCreateOrderResponseBodyModule {
+	s.LatestPayTime = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetOrderId(v int64) *IntlFlightCreateOrderResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetOutOrderId(v string) *IntlFlightCreateOrderResponseBodyModule {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetPayStatus(v int32) *IntlFlightCreateOrderResponseBodyModule {
+	s.PayStatus = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetStatus(v int32) *IntlFlightCreateOrderResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponseBodyModule) SetTotalPrice(v int64) *IntlFlightCreateOrderResponseBodyModule {
+	s.TotalPrice = &v
+	return s
+}
+
+type IntlFlightCreateOrderResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightCreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightCreateOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightCreateOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightCreateOrderResponse) SetHeaders(v map[string]*string) *IntlFlightCreateOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponse) SetStatusCode(v int32) *IntlFlightCreateOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightCreateOrderResponse) SetBody(v *IntlFlightCreateOrderResponseBody) *IntlFlightCreateOrderResponse {
+	s.Body = v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightInventoryPriceCheckHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightInventoryPriceCheckHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckRequest struct {
+	IsvName       *string                                              `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language      *string                                              `json:"language,omitempty" xml:"language,omitempty"`
+	OrderPrice    *int64                                               `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OtaItemId     *string                                              `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	PassengerList []*IntlFlightInventoryPriceCheckRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
+	UserId        *string                                              `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName      *string                                              `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetIsvName(v string) *IntlFlightInventoryPriceCheckRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetLanguage(v string) *IntlFlightInventoryPriceCheckRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetOrderPrice(v int64) *IntlFlightInventoryPriceCheckRequest {
+	s.OrderPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetOtaItemId(v string) *IntlFlightInventoryPriceCheckRequest {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetPassengerList(v []*IntlFlightInventoryPriceCheckRequestPassengerList) *IntlFlightInventoryPriceCheckRequest {
+	s.PassengerList = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetUserId(v string) *IntlFlightInventoryPriceCheckRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequest) SetUserName(v string) *IntlFlightInventoryPriceCheckRequest {
+	s.UserName = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckRequestPassengerList struct {
+	Birthday               *string                                                                    `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CascadeDeptMask        *string                                                                    `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName        *string                                                                    `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	CertInfo               *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo                 `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
+	CostCenterName         *string                                                                    `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber       *string                                                                    `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	DeptId                 *string                                                                    `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
+	DeptName               *string                                                                    `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	Gender                 *int32                                                                     `json:"gender,omitempty" xml:"gender,omitempty"`
+	InvoiceId              *string                                                                    `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle           *string                                                                    `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	JobNo                  *string                                                                    `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	MobileCountryCode      *string                                                                    `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
+	Nationality            *string                                                                    `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	NationalityCode        *string                                                                    `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	PassengerType          *int32                                                                     `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone                  *string                                                                    `json:"phone,omitempty" xml:"phone,omitempty"`
+	ProjectCode            *string                                                                    `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle           *string                                                                    `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	SubsidiaryCertInfoList []*IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList `json:"subsidiary_cert_info_list,omitempty" xml:"subsidiary_cert_info_list,omitempty" type:"Repeated"`
+	UserId                 *string                                                                    `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserType               *int32                                                                     `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetBirthday(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetCascadeDeptMask(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.CascadeDeptMask = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetCascadeDeptName(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetCertInfo(v *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.CertInfo = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetCostCenterName(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetCostCenterNumber(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetDeptId(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.DeptId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetDeptName(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.DeptName = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetGender(v int32) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.Gender = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetInvoiceId(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetInvoiceTitle(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetJobNo(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.JobNo = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetMobileCountryCode(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.MobileCountryCode = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetNationality(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.Nationality = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetNationalityCode(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.NationalityCode = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetPassengerType(v int32) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.PassengerType = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetPhone(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.Phone = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetProjectCode(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetProjectTitle(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetSubsidiaryCertInfoList(v []*IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.SubsidiaryCertInfoList = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetUserId(v string) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerList) SetUserType(v int32) *IntlFlightInventoryPriceCheckRequestPassengerList {
+	s.UserType = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckRequestPassengerListCertInfo struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) SetCertNation(v string) *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) SetCertNo(v string) *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) SetCertType(v int32) *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) SetCertValidDate(v string) *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo) SetName(v string) *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) SetCertNation(v string) *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) SetCertNo(v string) *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) SetCertType(v int32) *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) SetCertValidDate(v string) *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList) SetName(v string) *IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckShrinkRequest struct {
+	IsvName             *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language            *string `json:"language,omitempty" xml:"language,omitempty"`
+	OrderPrice          *int64  `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OtaItemId           *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	PassengerListShrink *string `json:"passenger_list,omitempty" xml:"passenger_list,omitempty"`
+	UserId              *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName            *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetIsvName(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetLanguage(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetOrderPrice(v int64) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.OrderPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetOtaItemId(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetPassengerListShrink(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.PassengerListShrink = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetUserId(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckShrinkRequest) SetUserName(v string) *IntlFlightInventoryPriceCheckShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponseBody struct {
+	Module     *IntlFlightInventoryPriceCheckResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *string                                          `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                                          `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetModule(v *IntlFlightInventoryPriceCheckResponseBodyModule) *IntlFlightInventoryPriceCheckResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetRequestId(v string) *IntlFlightInventoryPriceCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetResultCode(v string) *IntlFlightInventoryPriceCheckResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetResultMsg(v string) *IntlFlightInventoryPriceCheckResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetSuccess(v bool) *IntlFlightInventoryPriceCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBody) SetTraceId(v string) *IntlFlightInventoryPriceCheckResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponseBodyModule struct {
+	CheckSuccess                  *bool                                                                           `json:"check_success,omitempty" xml:"check_success,omitempty"`
+	FailType                      *int32                                                                          `json:"fail_type,omitempty" xml:"fail_type,omitempty"`
+	PassengerChangedPriceInfoList []*IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList `json:"passenger_changed_price_info_list,omitempty" xml:"passenger_changed_price_info_list,omitempty" type:"Repeated"`
+	RenderKey                     *string                                                                         `json:"render_key,omitempty" xml:"render_key,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModule) SetCheckSuccess(v bool) *IntlFlightInventoryPriceCheckResponseBodyModule {
+	s.CheckSuccess = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModule) SetFailType(v int32) *IntlFlightInventoryPriceCheckResponseBodyModule {
+	s.FailType = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModule) SetPassengerChangedPriceInfoList(v []*IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) *IntlFlightInventoryPriceCheckResponseBodyModule {
+	s.PassengerChangedPriceInfoList = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModule) SetRenderKey(v string) *IntlFlightInventoryPriceCheckResponseBodyModule {
+	s.RenderKey = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList struct {
+	Changed       *bool                                                                                      `json:"changed,omitempty" xml:"changed,omitempty"`
+	ChangedPrice  *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice  `json:"changed_price,omitempty" xml:"changed_price,omitempty" type:"Struct"`
+	OriginalPrice *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice `json:"original_price,omitempty" xml:"original_price,omitempty" type:"Struct"`
+	PassengerType *int32                                                                                     `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) SetChanged(v bool) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList {
+	s.Changed = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) SetChangedPrice(v *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList {
+	s.ChangedPrice = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) SetOriginalPrice(v *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList {
+	s.OriginalPrice = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList) SetPassengerType(v int32) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoList {
+	s.PassengerType = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice struct {
+	BuildPrice  *int64 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice    *int64 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	TaxPrice    *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) SetBuildPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) SetOilPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) SetTaxPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice {
+	s.TaxPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice) SetTicketPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListChangedPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice struct {
+	BuildPrice  *int64 `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice    *int64 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	TaxPrice    *int64 `json:"tax_price,omitempty" xml:"tax_price,omitempty"`
+	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) SetBuildPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) SetOilPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) SetTaxPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice {
+	s.TaxPrice = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice) SetTicketPrice(v int64) *IntlFlightInventoryPriceCheckResponseBodyModulePassengerChangedPriceInfoListOriginalPrice {
+	s.TicketPrice = &v
+	return s
+}
+
+type IntlFlightInventoryPriceCheckResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightInventoryPriceCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightInventoryPriceCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightInventoryPriceCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightInventoryPriceCheckResponse) SetHeaders(v map[string]*string) *IntlFlightInventoryPriceCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponse) SetStatusCode(v int32) *IntlFlightInventoryPriceCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightInventoryPriceCheckResponse) SetBody(v *IntlFlightInventoryPriceCheckResponseBody) *IntlFlightInventoryPriceCheckResponse {
+	s.Body = v
+	return s
+}
+
 type IntlFlightListingSearchHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -54776,6 +56185,1910 @@ func (s *IntlFlightListingSearchResponse) SetStatusCode(v int32) *IntlFlightList
 }
 
 func (s *IntlFlightListingSearchResponse) SetBody(v *IntlFlightListingSearchResponseBody) *IntlFlightListingSearchResponse {
+	s.Body = v
+	return s
+}
+
+type IntlFlightOrderCancelHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightOrderCancelHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderCancelHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderCancelHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightOrderCancelHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightOrderCancelHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightOrderCancelHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightOrderCancelRequest struct {
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Memo       *string `json:"memo,omitempty" xml:"memo,omitempty"`
+	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+}
+
+func (s IntlFlightOrderCancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderCancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderCancelRequest) SetIsvName(v string) *IntlFlightOrderCancelRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelRequest) SetMemo(v string) *IntlFlightOrderCancelRequest {
+	s.Memo = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelRequest) SetOrderId(v string) *IntlFlightOrderCancelRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelRequest) SetOutOrderId(v string) *IntlFlightOrderCancelRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+type IntlFlightOrderCancelResponseBody struct {
+	Module     *IntlFlightOrderCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                                  `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	ResultCode *string                                  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                                  `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                  `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s IntlFlightOrderCancelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderCancelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetModule(v *IntlFlightOrderCancelResponseBodyModule) *IntlFlightOrderCancelResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetRequestId(v string) *IntlFlightOrderCancelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetResultCode(v string) *IntlFlightOrderCancelResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetResultMsg(v string) *IntlFlightOrderCancelResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetSuccess(v bool) *IntlFlightOrderCancelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponseBody) SetTraceId(v string) *IntlFlightOrderCancelResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightOrderCancelResponseBodyModule struct {
+	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
+}
+
+func (s IntlFlightOrderCancelResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderCancelResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderCancelResponseBodyModule) SetCancelTime(v string) *IntlFlightOrderCancelResponseBodyModule {
+	s.CancelTime = &v
+	return s
+}
+
+type IntlFlightOrderCancelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightOrderCancelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightOrderCancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderCancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderCancelResponse) SetHeaders(v map[string]*string) *IntlFlightOrderCancelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponse) SetStatusCode(v int32) *IntlFlightOrderCancelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderCancelResponse) SetBody(v *IntlFlightOrderCancelResponseBody) *IntlFlightOrderCancelResponse {
+	s.Body = v
+	return s
+}
+
+type IntlFlightOrderDetailHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightOrderDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightOrderDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightOrderDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightOrderDetailRequest struct {
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+}
+
+func (s IntlFlightOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailRequest) SetIsvName(v string) *IntlFlightOrderDetailRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailRequest) SetOrderId(v string) *IntlFlightOrderDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailRequest) SetOutOrderId(v string) *IntlFlightOrderDetailRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBody struct {
+	Module     *IntlFlightOrderDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                                  `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	ResultCode *string                                  `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                                  `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                  `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetModule(v *IntlFlightOrderDetailResponseBodyModule) *IntlFlightOrderDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetRequestId(v string) *IntlFlightOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetResultCode(v string) *IntlFlightOrderDetailResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetResultMsg(v string) *IntlFlightOrderDetailResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetSuccess(v bool) *IntlFlightOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBody) SetTraceId(v string) *IntlFlightOrderDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModule struct {
+	BookUserId              *string                                                           `json:"book_user_id,omitempty" xml:"book_user_id,omitempty"`
+	BookUserName            *string                                                           `json:"book_user_name,omitempty" xml:"book_user_name,omitempty"`
+	CloseReason             *string                                                           `json:"close_reason,omitempty" xml:"close_reason,omitempty"`
+	CloseTime               *int64                                                            `json:"close_time,omitempty" xml:"close_time,omitempty"`
+	CloseTimeStr            *string                                                           `json:"close_time_str,omitempty" xml:"close_time_str,omitempty"`
+	ContactInfo             *IntlFlightOrderDetailResponseBodyModuleContactInfo               `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	CreateTime              *int64                                                            `json:"create_time,omitempty" xml:"create_time,omitempty"`
+	CreateTimeStr           *string                                                           `json:"create_time_str,omitempty" xml:"create_time_str,omitempty"`
+	ExtInfoMap              map[string]*string                                                `json:"ext_info_map,omitempty" xml:"ext_info_map,omitempty"`
+	JourneyList             []*IntlFlightOrderDetailResponseBodyModuleJourneyList             `json:"journey_list,omitempty" xml:"journey_list,omitempty" type:"Repeated"`
+	OrderId                 *int64                                                            `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderItemList           []*IntlFlightOrderDetailResponseBodyModuleOrderItemList           `json:"order_item_list,omitempty" xml:"order_item_list,omitempty" type:"Repeated"`
+	OutOrderId              *string                                                           `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PassengerItemDetailList []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList `json:"passenger_item_detail_list,omitempty" xml:"passenger_item_detail_list,omitempty" type:"Repeated"`
+	PassengerList           []*IntlFlightOrderDetailResponseBodyModulePassengerList           `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
+	PayExpireTime           *int64                                                            `json:"pay_expire_time,omitempty" xml:"pay_expire_time,omitempty"`
+	PayExpireTimeStr        *string                                                           `json:"pay_expire_time_str,omitempty" xml:"pay_expire_time_str,omitempty"`
+	PayStatus               *int32                                                            `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	PayTime                 *int64                                                            `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	PayTimeStr              *string                                                           `json:"pay_time_str,omitempty" xml:"pay_time_str,omitempty"`
+	PayType                 *int32                                                            `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	Status                  *int32                                                            `json:"status,omitempty" xml:"status,omitempty"`
+	SucceedTime             *int64                                                            `json:"succeed_time,omitempty" xml:"succeed_time,omitempty"`
+	SucceedTimeStr          *string                                                           `json:"succeed_time_str,omitempty" xml:"succeed_time_str,omitempty"`
+	TotalPrice              *int64                                                            `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TripType                *int32                                                            `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetBookUserId(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.BookUserId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetBookUserName(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.BookUserName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetCloseReason(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.CloseReason = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetCloseTime(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.CloseTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetCloseTimeStr(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.CloseTimeStr = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetContactInfo(v *IntlFlightOrderDetailResponseBodyModuleContactInfo) *IntlFlightOrderDetailResponseBodyModule {
+	s.ContactInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetCreateTime(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetCreateTimeStr(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.CreateTimeStr = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetExtInfoMap(v map[string]*string) *IntlFlightOrderDetailResponseBodyModule {
+	s.ExtInfoMap = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetJourneyList(v []*IntlFlightOrderDetailResponseBodyModuleJourneyList) *IntlFlightOrderDetailResponseBodyModule {
+	s.JourneyList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetOrderId(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetOrderItemList(v []*IntlFlightOrderDetailResponseBodyModuleOrderItemList) *IntlFlightOrderDetailResponseBodyModule {
+	s.OrderItemList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetOutOrderId(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPassengerItemDetailList(v []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList) *IntlFlightOrderDetailResponseBodyModule {
+	s.PassengerItemDetailList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPassengerList(v []*IntlFlightOrderDetailResponseBodyModulePassengerList) *IntlFlightOrderDetailResponseBodyModule {
+	s.PassengerList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayExpireTime(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayExpireTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayExpireTimeStr(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayExpireTimeStr = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayStatus(v int32) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayStatus = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayTime(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayTimeStr(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayTimeStr = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetPayType(v int32) *IntlFlightOrderDetailResponseBodyModule {
+	s.PayType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetStatus(v int32) *IntlFlightOrderDetailResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetSucceedTime(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.SucceedTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetSucceedTimeStr(v string) *IntlFlightOrderDetailResponseBodyModule {
+	s.SucceedTimeStr = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetTotalPrice(v int64) *IntlFlightOrderDetailResponseBodyModule {
+	s.TotalPrice = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModule) SetTripType(v int32) *IntlFlightOrderDetailResponseBodyModule {
+	s.TripType = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleContactInfo struct {
+	ContactEmail       *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
+	ContactName        *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	ContactPhone       *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	SendMsgToPassenger *bool   `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleContactInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleContactInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleContactInfo) SetContactEmail(v string) *IntlFlightOrderDetailResponseBodyModuleContactInfo {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleContactInfo) SetContactName(v string) *IntlFlightOrderDetailResponseBodyModuleContactInfo {
+	s.ContactName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleContactInfo) SetContactPhone(v string) *IntlFlightOrderDetailResponseBodyModuleContactInfo {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleContactInfo) SetSendMsgToPassenger(v bool) *IntlFlightOrderDetailResponseBodyModuleContactInfo {
+	s.SendMsgToPassenger = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyList struct {
+	ArrCityCode   *string                                                          `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName   *string                                                          `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	DepCityCode   *string                                                          `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName   *string                                                          `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepDate       *string                                                          `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	JourneyIndex  *int32                                                           `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	SegmentList   []*IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList `json:"segment_list,omitempty" xml:"segment_list,omitempty" type:"Repeated"`
+	TransferCount *int32                                                           `json:"transfer_count,omitempty" xml:"transfer_count,omitempty"`
+	TransferTime  *int32                                                           `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetArrCityCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetArrCityName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetDepCityCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetDepCityName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetDepDate(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetJourneyIndex(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetSegmentList(v []*IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.SegmentList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetTransferCount(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.TransferCount = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyList) SetTransferTime(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyList {
+	s.TransferTime = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList struct {
+	ArrAirportCode       *string                                                                            `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrAirportName       *string                                                                            `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCityCode          *string                                                                            `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName          *string                                                                            `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTerminal          *string                                                                            `json:"arr_terminal,omitempty" xml:"arr_terminal,omitempty"`
+	ArrTime              *string                                                                            `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	CodeShare            *bool                                                                              `json:"code_share,omitempty" xml:"code_share,omitempty"`
+	DepAirportCode       *string                                                                            `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepAirportName       *string                                                                            `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCityCode          *string                                                                            `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName          *string                                                                            `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTerminal          *string                                                                            `json:"dep_terminal,omitempty" xml:"dep_terminal,omitempty"`
+	DepTime              *string                                                                            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightOtherInfo      *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo      `json:"flight_other_info,omitempty" xml:"flight_other_info,omitempty" type:"Struct"`
+	JourneyIndex         *int32                                                                             `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	LuggageDirectInfo    *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo    `json:"luggage_direct_info,omitempty" xml:"luggage_direct_info,omitempty" type:"Struct"`
+	MarketingAirline     *string                                                                            `json:"marketing_airline,omitempty" xml:"marketing_airline,omitempty"`
+	MarketingAirlineInfo *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo `json:"marketing_airline_info,omitempty" xml:"marketing_airline_info,omitempty" type:"Struct"`
+	MarketingFlightNo    *string                                                                            `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
+	OperatingAirline     *string                                                                            `json:"operating_airline,omitempty" xml:"operating_airline,omitempty"`
+	OperatingAirlineInfo *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
+	OperatingFlightNo    *string                                                                            `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	SegmentIndex         *int32                                                                             `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	SegmentKey           *string                                                                            `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	SegmentVisaRemark    *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark    `json:"segment_visa_remark,omitempty" xml:"segment_visa_remark,omitempty" type:"Struct"`
+	StopCityList         []*IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList       `json:"stop_city_list,omitempty" xml:"stop_city_list,omitempty" type:"Repeated"`
+	StopQuantity         *int32                                                                             `json:"stop_quantity,omitempty" xml:"stop_quantity,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrAirportCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrAirportCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrAirportName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrAirportName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrCityCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrCityName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrCityName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrTerminal(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrTerminal = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetArrTime(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.ArrTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetCodeShare(v bool) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.CodeShare = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepAirportCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepAirportCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepAirportName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepAirportName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepCityCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepCityName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepCityName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepTerminal(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepTerminal = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetDepTime(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.DepTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetFlightOtherInfo(v *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.FlightOtherInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetJourneyIndex(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetLuggageDirectInfo(v *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.LuggageDirectInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetMarketingAirline(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.MarketingAirline = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetMarketingAirlineInfo(v *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.MarketingAirlineInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetMarketingFlightNo(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.MarketingFlightNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetOperatingAirline(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.OperatingAirline = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetOperatingAirlineInfo(v *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.OperatingAirlineInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetOperatingFlightNo(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.OperatingFlightNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetSegmentIndex(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.SegmentIndex = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetSegmentKey(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.SegmentKey = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetSegmentVisaRemark(v *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.SegmentVisaRemark = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetStopCityList(v []*IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.StopCityList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList) SetStopQuantity(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentList {
+	s.StopQuantity = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo struct {
+	AircraftAge      *string `json:"aircraft_age,omitempty" xml:"aircraft_age,omitempty"`
+	AvgDelayTime     *string `json:"avg_delay_time,omitempty" xml:"avg_delay_time,omitempty"`
+	EquipType        *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+	FlightCancelRate *string `json:"flight_cancel_rate,omitempty" xml:"flight_cancel_rate,omitempty"`
+	FlightDistance   *int32  `json:"flight_distance,omitempty" xml:"flight_distance,omitempty"`
+	FlightDuration   *int32  `json:"flight_duration,omitempty" xml:"flight_duration,omitempty"`
+	FlightSize       *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	JetBridgeRate    *string `json:"jet_bridge_rate,omitempty" xml:"jet_bridge_rate,omitempty"`
+	Manufacturer     *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	Meal             *int32  `json:"meal,omitempty" xml:"meal,omitempty"`
+	MealDesc         *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	OnTimeRate       *string `json:"on_time_rate,omitempty" xml:"on_time_rate,omitempty"`
+	Wifi             *bool   `json:"wifi,omitempty" xml:"wifi,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetAircraftAge(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.AircraftAge = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetAvgDelayTime(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.AvgDelayTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetEquipType(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.EquipType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetFlightCancelRate(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.FlightCancelRate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetFlightDistance(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.FlightDistance = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetFlightDuration(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.FlightDuration = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetFlightSize(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.FlightSize = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetJetBridgeRate(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.JetBridgeRate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetManufacturer(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.Manufacturer = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetMeal(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.Meal = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetMealDesc(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.MealDesc = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetOnTimeRate(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.OnTimeRate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo) SetWifi(v bool) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListFlightOtherInfo {
+	s.Wifi = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo struct {
+	DepCityLuggageDirect  *int32 `json:"dep_city_luggage_direct,omitempty" xml:"dep_city_luggage_direct,omitempty"`
+	StopCityLuggageDirect *int32 `json:"stop_city_luggage_direct,omitempty" xml:"stop_city_luggage_direct,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo) SetDepCityLuggageDirect(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo {
+	s.DepCityLuggageDirect = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo) SetStopCityLuggageDirect(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListLuggageDirectInfo {
+	s.StopCityLuggageDirect = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo struct {
+	AirlineCode  *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineName  *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	AllianceName *string `json:"alliance_name,omitempty" xml:"alliance_name,omitempty"`
+	CheapAirline *bool   `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	IconUrl      *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	LogoUrl      *string `json:"logo_url,omitempty" xml:"logo_url,omitempty"`
+	ShortName    *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetAirlineCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetAirlineName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.AirlineName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetAllianceName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.AllianceName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetCheapAirline(v bool) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.CheapAirline = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetIconUrl(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetLogoUrl(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo) SetShortName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListMarketingAirlineInfo {
+	s.ShortName = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo struct {
+	AirlineCode  *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineName  *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	AllianceName *string `json:"alliance_name,omitempty" xml:"alliance_name,omitempty"`
+	CheapAirline *bool   `json:"cheap_airline,omitempty" xml:"cheap_airline,omitempty"`
+	IconUrl      *string `json:"icon_url,omitempty" xml:"icon_url,omitempty"`
+	LogoUrl      *string `json:"logo_url,omitempty" xml:"logo_url,omitempty"`
+	ShortName    *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetAirlineCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetAirlineName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.AirlineName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetAllianceName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.AllianceName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetCheapAirline(v bool) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.CheapAirline = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetIconUrl(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetLogoUrl(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.LogoUrl = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo) SetShortName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListOperatingAirlineInfo {
+	s.ShortName = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark struct {
+	DepCityVisaRemark   *string   `json:"dep_city_visa_remark,omitempty" xml:"dep_city_visa_remark,omitempty"`
+	DepCityVisaType     *int32    `json:"dep_city_visa_type,omitempty" xml:"dep_city_visa_type,omitempty"`
+	StopCityVisaRemarks []*string `json:"stop_city_visa_remarks,omitempty" xml:"stop_city_visa_remarks,omitempty" type:"Repeated"`
+	StopCityVisaTypes   []*int32  `json:"stop_city_visa_types,omitempty" xml:"stop_city_visa_types,omitempty" type:"Repeated"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) SetDepCityVisaRemark(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark {
+	s.DepCityVisaRemark = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) SetDepCityVisaType(v int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark {
+	s.DepCityVisaType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) SetStopCityVisaRemarks(v []*string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark {
+	s.StopCityVisaRemarks = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark) SetStopCityVisaTypes(v []*int32) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListSegmentVisaRemark {
+	s.StopCityVisaTypes = v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList struct {
+	StopAirport     *string `json:"stop_airport,omitempty" xml:"stop_airport,omitempty"`
+	StopAirportName *string `json:"stop_airport_name,omitempty" xml:"stop_airport_name,omitempty"`
+	StopArrTerminal *string `json:"stop_arr_terminal,omitempty" xml:"stop_arr_terminal,omitempty"`
+	StopArrTime     *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCityCode    *string `json:"stop_city_code,omitempty" xml:"stop_city_code,omitempty"`
+	StopCityName    *string `json:"stop_city_name,omitempty" xml:"stop_city_name,omitempty"`
+	StopDepTerminal *string `json:"stop_dep_terminal,omitempty" xml:"stop_dep_terminal,omitempty"`
+	StopDepTime     *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopAirport(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopAirport = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopAirportName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopAirportName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopArrTerminal(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopArrTerminal = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopArrTime(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopArrTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopCityCode(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopCityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopCityName(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopCityName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopDepTerminal(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopDepTerminal = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList) SetStopDepTime(v string) *IntlFlightOrderDetailResponseBodyModuleJourneyListSegmentListStopCityList {
+	s.StopDepTime = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleOrderItemList struct {
+	BaggageRule        *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule          `json:"baggage_rule,omitempty" xml:"baggage_rule,omitempty" type:"Struct"`
+	PassengerPriceList []*IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList `json:"passenger_price_list,omitempty" xml:"passenger_price_list,omitempty" type:"Repeated"`
+	RefundChangeRule   *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule     `json:"refund_change_rule,omitempty" xml:"refund_change_rule,omitempty" type:"Struct"`
+	SegmentKeyList     []*string                                                                 `json:"segment_key_list,omitempty" xml:"segment_key_list,omitempty" type:"Repeated"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemList) SetBaggageRule(v *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) *IntlFlightOrderDetailResponseBodyModuleOrderItemList {
+	s.BaggageRule = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemList) SetPassengerPriceList(v []*IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) *IntlFlightOrderDetailResponseBodyModuleOrderItemList {
+	s.PassengerPriceList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemList) SetRefundChangeRule(v *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) *IntlFlightOrderDetailResponseBodyModuleOrderItemList {
+	s.RefundChangeRule = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemList) SetSegmentKeyList(v []*string) *IntlFlightOrderDetailResponseBodyModuleOrderItemList {
+	s.SegmentKeyList = v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule struct {
+	BaggageDigest     *string                                                         `json:"baggage_digest,omitempty" xml:"baggage_digest,omitempty"`
+	BaggageInfoMap    map[string][]*ModuleOrderItemListBaggageRuleBaggageInfoMapValue `json:"baggage_info_map,omitempty" xml:"baggage_info_map,omitempty"`
+	StructuredBaggage *bool                                                           `json:"structured_baggage,omitempty" xml:"structured_baggage,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) SetBaggageDigest(v string) *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule {
+	s.BaggageDigest = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) SetBaggageInfoMap(v map[string][]*ModuleOrderItemListBaggageRuleBaggageInfoMapValue) *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule {
+	s.BaggageInfoMap = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule) SetStructuredBaggage(v bool) *IntlFlightOrderDetailResponseBodyModuleOrderItemListBaggageRule {
+	s.StructuredBaggage = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList struct {
+	Discount        *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	ModifyFee       *int64   `json:"modify_fee,omitempty" xml:"modify_fee,omitempty"`
+	ModifyTaxSpread *int64   `json:"modify_tax_spread,omitempty" xml:"modify_tax_spread,omitempty"`
+	PassengerType   *int32   `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	SellPrice       *int64   `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	Tax             *int64   `json:"tax,omitempty" xml:"tax,omitempty"`
+	TicketPrice     *int64   `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	UpgradeFee      *int64   `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetDiscount(v float64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.Discount = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetDiscountInfo(v string) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.DiscountInfo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetModifyFee(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.ModifyFee = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetModifyTaxSpread(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.ModifyTaxSpread = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetPassengerType(v int32) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.PassengerType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetSellPrice(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetTax(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.Tax = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetTicketPrice(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList) SetUpgradeFee(v int64) *IntlFlightOrderDetailResponseBodyModuleOrderItemListPassengerPriceList {
+	s.UpgradeFee = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule struct {
+	CancelFeeInd        *bool                                                                     `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
+	ChangeFeeInd        *bool                                                                     `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
+	OfferPenaltyInfoMap map[string][]*ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue `json:"offer_penalty_info_map,omitempty" xml:"offer_penalty_info_map,omitempty"`
+	RefundChangeDigest  *string                                                                   `json:"refund_change_digest,omitempty" xml:"refund_change_digest,omitempty"`
+	StructuredRefund    *bool                                                                     `json:"structured_refund,omitempty" xml:"structured_refund,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) SetCancelFeeInd(v bool) *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule {
+	s.CancelFeeInd = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) SetChangeFeeInd(v bool) *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule {
+	s.ChangeFeeInd = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) SetOfferPenaltyInfoMap(v map[string][]*ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule {
+	s.OfferPenaltyInfoMap = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) SetRefundChangeDigest(v string) *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule {
+	s.RefundChangeDigest = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule) SetStructuredRefund(v bool) *IntlFlightOrderDetailResponseBodyModuleOrderItemListRefundChangeRule {
+	s.StructuredRefund = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList struct {
+	PassengerId *int64                                                                      `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	TicketList  []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList `json:"ticket_list,omitempty" xml:"ticket_list,omitempty" type:"Repeated"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList) SetPassengerId(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList {
+	s.PassengerId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList) SetTicketList(v []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailList {
+	s.TicketList = v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList struct {
+	IssueTime         *string                                                                                      `json:"issue_time,omitempty" xml:"issue_time,omitempty"`
+	PriceInfo         *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo           `json:"price_info,omitempty" xml:"price_info,omitempty" type:"Struct"`
+	TicketNo          *string                                                                                      `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketSegmentList []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList `json:"ticket_segment_list,omitempty" xml:"ticket_segment_list,omitempty" type:"Repeated"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) SetIssueTime(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList {
+	s.IssueTime = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) SetPriceInfo(v *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) SetTicketNo(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList) SetTicketSegmentList(v []*IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketList {
+	s.TicketSegmentList = v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo struct {
+	ModifyFee       *int64 `json:"modify_fee,omitempty" xml:"modify_fee,omitempty"`
+	ModifyTaxSpread *int64 `json:"modify_tax_spread,omitempty" xml:"modify_tax_spread,omitempty"`
+	SellPrice       *int64 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	Tax             *int64 `json:"tax,omitempty" xml:"tax,omitempty"`
+	TicketPrice     *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	UpgradeFee      *int64 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetModifyFee(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.ModifyFee = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetModifyTaxSpread(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.ModifyTaxSpread = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetSellPrice(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.SellPrice = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetTax(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.Tax = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetTicketPrice(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo) SetUpgradeFee(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListPriceInfo {
+	s.UpgradeFee = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList struct {
+	Cabin            *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass       *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	Modified         *bool   `json:"modified,omitempty" xml:"modified,omitempty"`
+	OpenTicketStatus *string `json:"open_ticket_status,omitempty" xml:"open_ticket_status,omitempty"`
+	Refunded         *bool   `json:"refunded,omitempty" xml:"refunded,omitempty"`
+	SegmentKey       *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetCabin(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetCabinClass(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetModified(v bool) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.Modified = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetOpenTicketStatus(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.OpenTicketStatus = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetRefunded(v bool) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.Refunded = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList) SetSegmentKey(v string) *IntlFlightOrderDetailResponseBodyModulePassengerItemDetailListTicketListTicketSegmentList {
+	s.SegmentKey = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerList struct {
+	Birthday               *string                                                                       `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CascadeDeptMask        *string                                                                       `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName        *string                                                                       `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	CertInfo               *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo                 `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
+	CostCenterName         *string                                                                       `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNumber       *string                                                                       `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	DeptId                 *string                                                                       `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
+	DeptName               *string                                                                       `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	Gender                 *int32                                                                        `json:"gender,omitempty" xml:"gender,omitempty"`
+	InvoiceId              *string                                                                       `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle           *string                                                                       `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	JobNo                  *string                                                                       `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	MobileCountryCode      *string                                                                       `json:"mobile_country_code,omitempty" xml:"mobile_country_code,omitempty"`
+	Nationality            *string                                                                       `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	NationalityCode        *string                                                                       `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	PassengerId            *int64                                                                        `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	PassengerType          *int32                                                                        `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone                  *string                                                                       `json:"phone,omitempty" xml:"phone,omitempty"`
+	ProjectCode            *string                                                                       `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle           *string                                                                       `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	SubsidiaryCertInfoList []*IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList `json:"subsidiary_cert_info_list,omitempty" xml:"subsidiary_cert_info_list,omitempty" type:"Repeated"`
+	UserId                 *string                                                                       `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserType               *int32                                                                        `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetBirthday(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetCascadeDeptMask(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.CascadeDeptMask = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetCascadeDeptName(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetCertInfo(v *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.CertInfo = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetCostCenterName(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetCostCenterNumber(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetDeptId(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.DeptId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetDeptName(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.DeptName = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetGender(v int32) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.Gender = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetInvoiceId(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetInvoiceTitle(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetJobNo(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.JobNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetMobileCountryCode(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.MobileCountryCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetNationality(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.Nationality = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetNationalityCode(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.NationalityCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetPassengerId(v int64) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.PassengerId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetPassengerType(v int32) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.PassengerType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetPhone(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.Phone = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetProjectCode(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetProjectTitle(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.ProjectTitle = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetSubsidiaryCertInfoList(v []*IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.SubsidiaryCertInfoList = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetUserId(v string) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerList) SetUserType(v int32) *IntlFlightOrderDetailResponseBodyModulePassengerList {
+	s.UserType = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) SetCertNation(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) SetCertNo(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) SetCertType(v int32) *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) SetCertValidDate(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo) SetName(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListCertInfo {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList struct {
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) SetCertNation(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) SetCertNo(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) SetCertType(v int32) *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList {
+	s.CertType = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) SetCertValidDate(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList {
+	s.CertValidDate = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList) SetName(v string) *IntlFlightOrderDetailResponseBodyModulePassengerListSubsidiaryCertInfoList {
+	s.Name = &v
+	return s
+}
+
+type IntlFlightOrderDetailResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderDetailResponse) SetHeaders(v map[string]*string) *IntlFlightOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponse) SetStatusCode(v int32) *IntlFlightOrderDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderDetailResponse) SetBody(v *IntlFlightOrderDetailResponseBody) *IntlFlightOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
+type IntlFlightOrderPayHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightOrderPayHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightOrderPayHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightOrderPayHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightOrderPayHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightOrderPayRequest struct {
+	ExtParams  map[string]interface{} `json:"ext_params,omitempty" xml:"ext_params,omitempty"`
+	IsvName    *string                `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId    *string                `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId *string                `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	TotalPrice *int64                 `json:"total_price,omitempty" xml:"total_price,omitempty"`
+}
+
+func (s IntlFlightOrderPayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayRequest) SetExtParams(v map[string]interface{}) *IntlFlightOrderPayRequest {
+	s.ExtParams = v
+	return s
+}
+
+func (s *IntlFlightOrderPayRequest) SetIsvName(v string) *IntlFlightOrderPayRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayRequest) SetOrderId(v string) *IntlFlightOrderPayRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayRequest) SetOutOrderId(v string) *IntlFlightOrderPayRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayRequest) SetTotalPrice(v int64) *IntlFlightOrderPayRequest {
+	s.TotalPrice = &v
+	return s
+}
+
+type IntlFlightOrderPayShrinkRequest struct {
+	ExtParamsShrink *string `json:"ext_params,omitempty" xml:"ext_params,omitempty"`
+	IsvName         *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId         *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId      *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	TotalPrice      *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
+}
+
+func (s IntlFlightOrderPayShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayShrinkRequest) SetExtParamsShrink(v string) *IntlFlightOrderPayShrinkRequest {
+	s.ExtParamsShrink = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayShrinkRequest) SetIsvName(v string) *IntlFlightOrderPayShrinkRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayShrinkRequest) SetOrderId(v string) *IntlFlightOrderPayShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayShrinkRequest) SetOutOrderId(v string) *IntlFlightOrderPayShrinkRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayShrinkRequest) SetTotalPrice(v int64) *IntlFlightOrderPayShrinkRequest {
+	s.TotalPrice = &v
+	return s
+}
+
+type IntlFlightOrderPayResponseBody struct {
+	Module     *IntlFlightOrderPayResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                               `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	ResultCode *string                               `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                               `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                               `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s IntlFlightOrderPayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetModule(v *IntlFlightOrderPayResponseBodyModule) *IntlFlightOrderPayResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetRequestId(v string) *IntlFlightOrderPayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetResultCode(v string) *IntlFlightOrderPayResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetResultMsg(v string) *IntlFlightOrderPayResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetSuccess(v bool) *IntlFlightOrderPayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponseBody) SetTraceId(v string) *IntlFlightOrderPayResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightOrderPayResponseBodyModule struct {
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+}
+
+func (s IntlFlightOrderPayResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayResponseBodyModule) SetPrice(v int64) *IntlFlightOrderPayResponseBodyModule {
+	s.Price = &v
+	return s
+}
+
+type IntlFlightOrderPayResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightOrderPayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightOrderPayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayResponse) SetHeaders(v map[string]*string) *IntlFlightOrderPayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponse) SetStatusCode(v int32) *IntlFlightOrderPayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayResponse) SetBody(v *IntlFlightOrderPayResponseBody) *IntlFlightOrderPayResponse {
+	s.Body = v
+	return s
+}
+
+type IntlFlightOrderPayCheckHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightOrderPayCheckHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayCheckHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayCheckHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightOrderPayCheckHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightOrderPayCheckHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightOrderPayCheckRequest struct {
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+}
+
+func (s IntlFlightOrderPayCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayCheckRequest) SetIsvName(v string) *IntlFlightOrderPayCheckRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckRequest) SetOrderId(v string) *IntlFlightOrderPayCheckRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckRequest) SetOutOrderId(v string) *IntlFlightOrderPayCheckRequest {
+	s.OutOrderId = &v
+	return s
+}
+
+type IntlFlightOrderPayCheckResponseBody struct {
+	RequestId  *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+}
+
+func (s IntlFlightOrderPayCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayCheckResponseBody) SetRequestId(v string) *IntlFlightOrderPayCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponseBody) SetResultCode(v string) *IntlFlightOrderPayCheckResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponseBody) SetResultMsg(v string) *IntlFlightOrderPayCheckResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponseBody) SetSuccess(v bool) *IntlFlightOrderPayCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponseBody) SetTraceId(v string) *IntlFlightOrderPayCheckResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightOrderPayCheckResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightOrderPayCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightOrderPayCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightOrderPayCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightOrderPayCheckResponse) SetHeaders(v map[string]*string) *IntlFlightOrderPayCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponse) SetStatusCode(v int32) *IntlFlightOrderPayCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightOrderPayCheckResponse) SetBody(v *IntlFlightOrderPayCheckResponseBody) *IntlFlightOrderPayCheckResponse {
 	s.Body = v
 	return s
 }
@@ -57006,6 +60319,203 @@ func (s *IntlFlightOtaSearchResponse) SetBody(v *IntlFlightOtaSearchResponseBody
 	return s
 }
 
+type IntlFlightSegmentAvailableCertHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s IntlFlightSegmentAvailableCertHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertHeaders) SetCommonHeaders(v map[string]*string) *IntlFlightSegmentAvailableCertHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertHeaders) SetXAcsBtripCorpToken(v string) *IntlFlightSegmentAvailableCertHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertRequest struct {
+	IsvName  *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s IntlFlightSegmentAvailableCertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertRequest) SetIsvName(v string) *IntlFlightSegmentAvailableCertRequest {
+	s.IsvName = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertRequest) SetLanguage(v string) *IntlFlightSegmentAvailableCertRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertRequest) SetUserId(v string) *IntlFlightSegmentAvailableCertRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertRequest) SetUserName(v string) *IntlFlightSegmentAvailableCertRequest {
+	s.UserName = &v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertResponseBody struct {
+	Module     *IntlFlightSegmentAvailableCertResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *string                                           `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	ResultMsg  *string                                           `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Success    *bool                                             `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetModule(v *IntlFlightSegmentAvailableCertResponseBodyModule) *IntlFlightSegmentAvailableCertResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetRequestId(v string) *IntlFlightSegmentAvailableCertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetResultCode(v string) *IntlFlightSegmentAvailableCertResponseBody {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetResultMsg(v string) *IntlFlightSegmentAvailableCertResponseBody {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetSuccess(v bool) *IntlFlightSegmentAvailableCertResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBody) SetTraceId(v string) *IntlFlightSegmentAvailableCertResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertResponseBodyModule struct {
+	SegmentAvailableCertList []*IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList `json:"segment_available_cert_list,omitempty" xml:"segment_available_cert_list,omitempty" type:"Repeated"`
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBodyModule) SetSegmentAvailableCertList(v []*IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) *IntlFlightSegmentAvailableCertResponseBodyModule {
+	s.SegmentAvailableCertList = v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList struct {
+	CertTypes       []*int32                                                                                 `json:"cert_types,omitempty" xml:"cert_types,omitempty" type:"Repeated"`
+	SegmentPosition *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition `json:"segment_position,omitempty" xml:"segment_position,omitempty" type:"Struct"`
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) SetCertTypes(v []*int32) *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList {
+	s.CertTypes = v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList) SetSegmentPosition(v *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition) *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertList {
+	s.SegmentPosition = v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition struct {
+	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition) SetJourneyIndex(v int32) *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition {
+	s.JourneyIndex = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition) SetSegmentIndex(v int32) *IntlFlightSegmentAvailableCertResponseBodyModuleSegmentAvailableCertListSegmentPosition {
+	s.SegmentIndex = &v
+	return s
+}
+
+type IntlFlightSegmentAvailableCertResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IntlFlightSegmentAvailableCertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IntlFlightSegmentAvailableCertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntlFlightSegmentAvailableCertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IntlFlightSegmentAvailableCertResponse) SetHeaders(v map[string]*string) *IntlFlightSegmentAvailableCertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponse) SetStatusCode(v int32) *IntlFlightSegmentAvailableCertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IntlFlightSegmentAvailableCertResponse) SetBody(v *IntlFlightSegmentAvailableCertResponseBody) *IntlFlightSegmentAvailableCertResponse {
+	s.Body = v
+	return s
+}
+
 type InvoiceAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -58725,6 +62235,510 @@ func (s *IsvUserSaveResponse) SetStatusCode(v int32) *IsvUserSaveResponse {
 }
 
 func (s *IsvUserSaveResponse) SetBody(v *IsvUserSaveResponseBody) *IsvUserSaveResponse {
+	s.Body = v
+	return s
+}
+
+type MealBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s MealBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *MealBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *MealBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *MealBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type MealBillSettlementQueryRequest struct {
+	PageNo      *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PeriodEnd   *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
+}
+
+func (s MealBillSettlementQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryRequest) SetPageNo(v int32) *MealBillSettlementQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryRequest) SetPageSize(v int32) *MealBillSettlementQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryRequest) SetPeriodEnd(v string) *MealBillSettlementQueryRequest {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryRequest) SetPeriodStart(v string) *MealBillSettlementQueryRequest {
+	s.PeriodStart = &v
+	return s
+}
+
+type MealBillSettlementQueryResponseBody struct {
+	Code      *int32                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s MealBillSettlementQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetCode(v int32) *MealBillSettlementQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetMessage(v string) *MealBillSettlementQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetModule(v *MealBillSettlementQueryResponseBodyModule) *MealBillSettlementQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetRequestId(v string) *MealBillSettlementQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetSuccess(v bool) *MealBillSettlementQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBody) SetTraceId(v string) *MealBillSettlementQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type MealBillSettlementQueryResponseBodyModule struct {
+	Category    *int32                                            `json:"category,omitempty" xml:"category,omitempty"`
+	CorpId      *string                                           `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Items       []*MealBillSettlementQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	OrderId     *string                                           `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	PeriodEnd   *string                                           `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string                                           `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	TotalNum    *int64                                            `json:"total_num,omitempty" xml:"total_num,omitempty"`
+	TotalSize   *int64                                            `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s MealBillSettlementQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetCategory(v int32) *MealBillSettlementQueryResponseBodyModule {
+	s.Category = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetCorpId(v string) *MealBillSettlementQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetItems(v []*MealBillSettlementQueryResponseBodyModuleItems) *MealBillSettlementQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetOrderId(v string) *MealBillSettlementQueryResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetPeriodEnd(v string) *MealBillSettlementQueryResponseBodyModule {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetPeriodStart(v string) *MealBillSettlementQueryResponseBodyModule {
+	s.PeriodStart = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *MealBillSettlementQueryResponseBodyModule {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *MealBillSettlementQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type MealBillSettlementQueryResponseBodyModuleItems struct {
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ConsumerScene          *string  `json:"consumer_scene,omitempty" xml:"consumer_scene,omitempty"`
+	CorpSettleFee          *float64 `json:"corp_settle_fee,omitempty" xml:"corp_settle_fee,omitempty"`
+	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	MainApplyId            *string  `json:"main_apply_id,omitempty" xml:"main_apply_id,omitempty"`
+	MealAddress            *string  `json:"meal_address,omitempty" xml:"meal_address,omitempty"`
+	MealCity               *string  `json:"meal_city,omitempty" xml:"meal_city,omitempty"`
+	MealCityCode           *string  `json:"meal_city_code,omitempty" xml:"meal_city_code,omitempty"`
+	MealRule               *string  `json:"meal_rule,omitempty" xml:"meal_rule,omitempty"`
+	MealScene              *string  `json:"meal_scene,omitempty" xml:"meal_scene,omitempty"`
+	MerchantCategory       *string  `json:"merchant_category,omitempty" xml:"merchant_category,omitempty"`
+	MerchantName           *string  `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
+	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderPrice             *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	PersonSettlePrice      *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
+	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	ShareDinner            *string  `json:"share_dinner,omitempty" xml:"share_dinner,omitempty"`
+	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	StoreAddress           *string  `json:"store_address,omitempty" xml:"store_address,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdInvoiceId         *string  `json:"third_invoice_id,omitempty" xml:"third_invoice_id,omitempty"`
+	ThirdPartBusinessId    *string  `json:"third_part_business_id,omitempty" xml:"third_part_business_id,omitempty"`
+	ThirdpartApplyId       *string  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+}
+
+func (s MealBillSettlementQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetApplyExtendField(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyExtendField = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetApplyId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetBillRecordTime(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.BillRecordTime = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetBookTime(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.BookTime = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetBookerId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.BookerId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetBookerJobNo(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.BookerJobNo = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetBookerName(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.BookerName = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCapitalDirection(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.CapitalDirection = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCascadeDepartment(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.CascadeDepartment = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetConsumerScene(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ConsumerScene = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCorpSettleFee(v float64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.CorpSettleFee = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCostCenter(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCostCenterNumber(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetDepartment(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.Department = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetDepartmentId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetFeeType(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.FeeType = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetIndex(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.Index = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMainApplyId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MainApplyId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMealAddress(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MealAddress = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMealCity(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MealCity = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMealCityCode(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MealCityCode = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMealRule(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MealRule = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMealScene(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MealScene = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMerchantCategory(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MerchantCategory = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetMerchantName(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.MerchantName = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetOrderId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.OrderId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetOrderPrice(v float64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.OrderPrice = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetOrderStatusDesc(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetPersonSettlePrice(v float64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.PersonSettlePrice = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetPrimaryId(v int64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.PrimaryId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetProjectCode(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetProjectName(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetRemark(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.Remark = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetServiceFee(v float64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetSettlementFee(v float64) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementFee = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetSettlementTime(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementTime = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetSettlementType(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.SettlementType = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetShareDinner(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ShareDinner = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetStatus(v int32) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.Status = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetStoreAddress(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.StoreAddress = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetTaxRate(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetThirdInvoiceId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ThirdInvoiceId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetThirdPartBusinessId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ThirdPartBusinessId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetThirdpartApplyId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetTravelerId(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerId = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetTravelerJobNo(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetTravelerMemberTypeName(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerMemberTypeName = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetTravelerName(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerName = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetVoucherType(v int32) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.VoucherType = &v
+	return s
+}
+
+type MealBillSettlementQueryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MealBillSettlementQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MealBillSettlementQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealBillSettlementQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MealBillSettlementQueryResponse) SetHeaders(v map[string]*string) *MealBillSettlementQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponse) SetStatusCode(v int32) *MealBillSettlementQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponse) SetBody(v *MealBillSettlementQueryResponseBody) *MealBillSettlementQueryResponse {
 	s.Body = v
 	return s
 }
@@ -76583,6 +80597,216 @@ func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) IntlFlightCreateOrderWithOptions(tmpReq *IntlFlightCreateOrderRequest, headers *IntlFlightCreateOrderHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightCreateOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &IntlFlightCreateOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContactInfo)) {
+		request.ContactInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactInfo, tea.String("contact_info"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CostCenter)) {
+		request.CostCenterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CostCenter, tea.String("cost_center"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtraInfo)) {
+		request.ExtraInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtraInfo, tea.String("extra_info"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PassengerList)) {
+		request.PassengerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PassengerList, tea.String("passenger_list"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncCreateOrderKey)) {
+		query["async_create_order_key"] = request.AsyncCreateOrderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsyncCreateOrderMode)) {
+		query["async_create_order_mode"] = request.AsyncCreateOrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactInfoShrink)) {
+		query["contact_info"] = request.ContactInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CostCenterShrink)) {
+		query["cost_center"] = request.CostCenterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfoShrink)) {
+		query["extra_info"] = request.ExtraInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtaItemId)) {
+		query["ota_item_id"] = request.OtaItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PassengerListShrink)) {
+		query["passenger_list"] = request.PassengerListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderKey)) {
+		query["render_key"] = request.RenderKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalPriceCent)) {
+		query["total_price_cent"] = request.TotalPriceCent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightCreateOrder"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/order/action/create"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightCreateOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightCreateOrder(request *IntlFlightCreateOrderRequest) (_result *IntlFlightCreateOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightCreateOrderHeaders{}
+	_result = &IntlFlightCreateOrderResponse{}
+	_body, _err := client.IntlFlightCreateOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightInventoryPriceCheckWithOptions(tmpReq *IntlFlightInventoryPriceCheckRequest, headers *IntlFlightInventoryPriceCheckHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &IntlFlightInventoryPriceCheckShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PassengerList)) {
+		request.PassengerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PassengerList, tea.String("passenger_list"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderPrice)) {
+		query["order_price"] = request.OrderPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtaItemId)) {
+		query["ota_item_id"] = request.OtaItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PassengerListShrink)) {
+		query["passenger_list"] = request.PassengerListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightInventoryPriceCheck"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/flights/action/inventory-price-check"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightInventoryPriceCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightInventoryPriceCheck(request *IntlFlightInventoryPriceCheckRequest) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightInventoryPriceCheckHeaders{}
+	_result = &IntlFlightInventoryPriceCheckResponse{}
+	_body, _err := client.IntlFlightInventoryPriceCheckWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListingSearchRequest, headers *IntlFlightListingSearchHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightListingSearchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -76697,6 +80921,276 @@ func (client *Client) IntlFlightListingSearch(request *IntlFlightListingSearchRe
 	headers := &IntlFlightListingSearchHeaders{}
 	_result = &IntlFlightListingSearchResponse{}
 	_body, _err := client.IntlFlightListingSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderCancelWithOptions(request *IntlFlightOrderCancelRequest, headers *IntlFlightOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderCancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memo)) {
+		query["memo"] = request.Memo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightOrderCancel"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/order/action/cancel"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightOrderCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderCancel(request *IntlFlightOrderCancelRequest) (_result *IntlFlightOrderCancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightOrderCancelHeaders{}
+	_result = &IntlFlightOrderCancelResponse{}
+	_body, _err := client.IntlFlightOrderCancelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderDetailWithOptions(request *IntlFlightOrderDetailRequest, headers *IntlFlightOrderDetailHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightOrderDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/order/action/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightOrderDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderDetail(request *IntlFlightOrderDetailRequest) (_result *IntlFlightOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightOrderDetailHeaders{}
+	_result = &IntlFlightOrderDetailResponse{}
+	_body, _err := client.IntlFlightOrderDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderPayWithOptions(tmpReq *IntlFlightOrderPayRequest, headers *IntlFlightOrderPayHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderPayResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &IntlFlightOrderPayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtParams)) {
+		request.ExtParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtParams, tea.String("ext_params"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtParamsShrink)) {
+		query["ext_params"] = request.ExtParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalPrice)) {
+		query["total_price"] = request.TotalPrice
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightOrderPay"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/order/action/pay"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightOrderPayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderPay(request *IntlFlightOrderPayRequest) (_result *IntlFlightOrderPayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightOrderPayHeaders{}
+	_result = &IntlFlightOrderPayResponse{}
+	_body, _err := client.IntlFlightOrderPayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderPayCheckWithOptions(request *IntlFlightOrderPayCheckRequest, headers *IntlFlightOrderPayCheckHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderPayCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["order_id"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightOrderPayCheck"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/order/action/pay-check"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightOrderPayCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightOrderPayCheck(request *IntlFlightOrderPayCheckRequest) (_result *IntlFlightOrderPayCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightOrderPayCheckHeaders{}
+	_result = &IntlFlightOrderPayCheckResponse{}
+	_body, _err := client.IntlFlightOrderPayCheckWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -76873,6 +81367,73 @@ func (client *Client) IntlFlightOtaSearch(request *IntlFlightOtaSearchRequest) (
 	headers := &IntlFlightOtaSearchHeaders{}
 	_result = &IntlFlightOtaSearchResponse{}
 	_body, _err := client.IntlFlightOtaSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IntlFlightSegmentAvailableCertWithOptions(otaItemId *string, request *IntlFlightSegmentAvailableCertRequest, headers *IntlFlightSegmentAvailableCertHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsvName)) {
+		query["isv_name"] = request.IsvName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IntlFlightSegmentAvailableCert"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/intl-flight/v1/items/" + tea.StringValue(openapiutil.GetEncodeParam(otaItemId)) + "/action/segment-available-cert"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IntlFlightSegmentAvailableCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IntlFlightSegmentAvailableCert(otaItemId *string, request *IntlFlightSegmentAvailableCertRequest) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IntlFlightSegmentAvailableCertHeaders{}
+	_result = &IntlFlightSegmentAvailableCertResponse{}
+	_body, _err := client.IntlFlightSegmentAvailableCertWithOptions(otaItemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77510,6 +82071,73 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 	headers := &IsvUserSaveHeaders{}
 	_result = &IsvUserSaveResponse{}
 	_body, _err := client.IsvUserSaveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettlementQueryRequest, headers *MealBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *MealBillSettlementQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodEnd)) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodStart)) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MealBillSettlementQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/meal/v1/bill-settlement"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MealBillSettlementQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRequest) (_result *MealBillSettlementQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &MealBillSettlementQueryHeaders{}
+	_result = &MealBillSettlementQueryResponse{}
+	_body, _err := client.MealBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
