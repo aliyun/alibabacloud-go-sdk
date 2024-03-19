@@ -806,6 +806,7 @@ type DataIngestion struct {
 	Marker       *string                    `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	Notification *DataIngestionNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
 	Phase        *string                    `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	ServiceRole  *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	State        *string                    `json:"State,omitempty" xml:"State,omitempty"`
 	Statistic    *DataIngestionStatistic    `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
 	Tags         map[string]interface{}     `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -857,6 +858,11 @@ func (s *DataIngestion) SetNotification(v *DataIngestionNotification) *DataInges
 
 func (s *DataIngestion) SetPhase(v string) *DataIngestion {
 	s.Phase = &v
+	return s
+}
+
+func (s *DataIngestion) SetServiceRole(v string) *DataIngestion {
+	s.ServiceRole = &v
 	return s
 }
 
@@ -945,6 +951,7 @@ func (s *DataIngestionNotification) SetTopic(v string) *DataIngestionNotificatio
 }
 
 type DataIngestionStatistic struct {
+	SkipFiles     *int64 `json:"SkipFiles,omitempty" xml:"SkipFiles,omitempty"`
 	SubmitFailure *int64 `json:"SubmitFailure,omitempty" xml:"SubmitFailure,omitempty"`
 	SubmitSuccess *int64 `json:"SubmitSuccess,omitempty" xml:"SubmitSuccess,omitempty"`
 }
@@ -955,6 +962,11 @@ func (s DataIngestionStatistic) String() string {
 
 func (s DataIngestionStatistic) GoString() string {
 	return s.String()
+}
+
+func (s *DataIngestionStatistic) SetSkipFiles(v int64) *DataIngestionStatistic {
+	s.SkipFiles = &v
+	return s
 }
 
 func (s *DataIngestionStatistic) SetSubmitFailure(v int64) *DataIngestionStatistic {
