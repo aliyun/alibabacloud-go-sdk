@@ -4562,9 +4562,44 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 	return s
 }
 
+type DeleteAlertContactRequest struct {
+	ContactIds []*int64 `json:"contact_ids,omitempty" xml:"contact_ids,omitempty" type:"Repeated"`
+}
+
+func (s DeleteAlertContactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactRequest) SetContactIds(v []*int64) *DeleteAlertContactRequest {
+	s.ContactIds = v
+	return s
+}
+
+type DeleteAlertContactShrinkRequest struct {
+	ContactIdsShrink *string `json:"contact_ids,omitempty" xml:"contact_ids,omitempty"`
+}
+
+func (s DeleteAlertContactShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactShrinkRequest) SetContactIdsShrink(v string) *DeleteAlertContactShrinkRequest {
+	s.ContactIdsShrink = &v
+	return s
+}
+
 type DeleteAlertContactResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAlertContactResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
 func (s DeleteAlertContactResponse) String() string {
@@ -4585,9 +4620,95 @@ func (s *DeleteAlertContactResponse) SetStatusCode(v int32) *DeleteAlertContactR
 	return s
 }
 
+func (s *DeleteAlertContactResponse) SetBody(v *DeleteAlertContactResponseBody) *DeleteAlertContactResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAlertContactResponseBody struct {
+	Body []*DeleteAlertContactResponseBodyBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s DeleteAlertContactResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactResponseBody) SetBody(v []*DeleteAlertContactResponseBodyBody) *DeleteAlertContactResponseBody {
+	s.Body = v
+	return s
+}
+
+type DeleteAlertContactResponseBodyBody struct {
+	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
+}
+
+func (s DeleteAlertContactResponseBodyBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactResponseBodyBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactResponseBodyBody) SetStatus(v bool) *DeleteAlertContactResponseBodyBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteAlertContactResponseBodyBody) SetMsg(v string) *DeleteAlertContactResponseBodyBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteAlertContactResponseBodyBody) SetContactId(v string) *DeleteAlertContactResponseBodyBody {
+	s.ContactId = &v
+	return s
+}
+
+type DeleteAlertContactGroupRequest struct {
+	ContactGroupIds []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`
+}
+
+func (s DeleteAlertContactGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactGroupRequest) SetContactGroupIds(v []*int64) *DeleteAlertContactGroupRequest {
+	s.ContactGroupIds = v
+	return s
+}
+
+type DeleteAlertContactGroupShrinkRequest struct {
+	ContactGroupIdsShrink *string `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty"`
+}
+
+func (s DeleteAlertContactGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactGroupShrinkRequest) SetContactGroupIdsShrink(v string) *DeleteAlertContactGroupShrinkRequest {
+	s.ContactGroupIdsShrink = &v
+	return s
+}
+
 type DeleteAlertContactGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*DeleteAlertContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAlertContactGroupResponse) String() string {
@@ -4605,6 +4726,40 @@ func (s *DeleteAlertContactGroupResponse) SetHeaders(v map[string]*string) *Dele
 
 func (s *DeleteAlertContactGroupResponse) SetStatusCode(v int32) *DeleteAlertContactGroupResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAlertContactGroupResponse) SetBody(v []*DeleteAlertContactGroupResponseBody) *DeleteAlertContactGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAlertContactGroupResponseBody struct {
+	Status         *bool   `json:"status,omitempty" xml:"status,omitempty"`
+	Msg            *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	ContactGroupId *string `json:"contact_group_id,omitempty" xml:"contact_group_id,omitempty"`
+}
+
+func (s DeleteAlertContactGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactGroupResponseBody) SetStatus(v bool) *DeleteAlertContactGroupResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteAlertContactGroupResponseBody) SetMsg(v string) *DeleteAlertContactGroupResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteAlertContactGroupResponseBody) SetContactGroupId(v string) *DeleteAlertContactGroupResponseBody {
+	s.ContactGroupId = &v
 	return s
 }
 
@@ -9186,6 +9341,23 @@ func (s *DescribeClusterNodesResponse) SetBody(v *DescribeClusterNodesResponseBo
 	return s
 }
 
+type DescribeClusterResourcesRequest struct {
+	WithAddonResources *bool `json:"with_addon_resources,omitempty" xml:"with_addon_resources,omitempty"`
+}
+
+func (s DescribeClusterResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResourcesRequest) SetWithAddonResources(v bool) *DescribeClusterResourcesRequest {
+	s.WithAddonResources = &v
+	return s
+}
+
 type DescribeClusterResourcesResponse struct {
 	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9241,8 +9413,12 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// *   1: The resource is created by ACK.
 	// *   0: The resource is an existing resource.
-	AutoCreate   *int64                                              `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
-	Dependencies []*DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	AutoCreate       *int64                                                `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
+	Dependencies     []*DescribeClusterResourcesResponseBodyDependencies   `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
+	DeleteBehavior   *DescribeClusterResourcesResponseBodyDeleteBehavior   `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
+	CreatorType      *string                                               `json:"creator_type,omitempty" xml:"creator_type,omitempty"`
+	ExtraInfo        map[string]interface{}                                `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
 func (s DescribeClusterResourcesResponseBody) String() string {
@@ -9293,6 +9469,26 @@ func (s *DescribeClusterResourcesResponseBody) SetDependencies(v []*DescribeClus
 	return s
 }
 
+func (s *DescribeClusterResourcesResponseBody) SetAssociatedObject(v *DescribeClusterResourcesResponseBodyAssociatedObject) *DescribeClusterResourcesResponseBody {
+	s.AssociatedObject = v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBody) SetDeleteBehavior(v *DescribeClusterResourcesResponseBodyDeleteBehavior) *DescribeClusterResourcesResponseBody {
+	s.DeleteBehavior = v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBody) SetCreatorType(v string) *DescribeClusterResourcesResponseBody {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBody) SetExtraInfo(v map[string]interface{}) *DescribeClusterResourcesResponseBody {
+	s.ExtraInfo = v
+	return s
+}
+
 type DescribeClusterResourcesResponseBodyDependencies struct {
 	ClusterId    *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
@@ -9319,6 +9515,58 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) SetResourceType(v str
 
 func (s *DescribeClusterResourcesResponseBodyDependencies) SetInstanceId(v string) *DescribeClusterResourcesResponseBodyDependencies {
 	s.InstanceId = &v
+	return s
+}
+
+type DescribeClusterResourcesResponseBodyAssociatedObject struct {
+	Kind      *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeClusterResourcesResponseBodyAssociatedObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResourcesResponseBodyAssociatedObject) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResourcesResponseBodyAssociatedObject) SetKind(v string) *DescribeClusterResourcesResponseBodyAssociatedObject {
+	s.Kind = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBodyAssociatedObject) SetNamespace(v string) *DescribeClusterResourcesResponseBodyAssociatedObject {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBodyAssociatedObject) SetName(v string) *DescribeClusterResourcesResponseBodyAssociatedObject {
+	s.Name = &v
+	return s
+}
+
+type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
+	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
+	Changeable      *bool `json:"changeable,omitempty" xml:"changeable,omitempty"`
+}
+
+func (s DescribeClusterResourcesResponseBodyDeleteBehavior) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterResourcesResponseBodyDeleteBehavior) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterResourcesResponseBodyDeleteBehavior) SetDeleteByDefault(v bool) *DescribeClusterResourcesResponseBodyDeleteBehavior {
+	s.DeleteByDefault = &v
+	return s
+}
+
+func (s *DescribeClusterResourcesResponseBodyDeleteBehavior) SetChangeable(v bool) *DescribeClusterResourcesResponseBodyDeleteBehavior {
+	s.Changeable = &v
 	return s
 }
 
@@ -14919,6 +15167,7 @@ func (s *ListClusterAddonInstancesResponse) SetBody(v *ListClusterAddonInstances
 }
 
 type ListClusterChecksRequest struct {
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
 	// The check method.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -14929,6 +15178,11 @@ func (s ListClusterChecksRequest) String() string {
 
 func (s ListClusterChecksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListClusterChecksRequest) SetTarget(v string) *ListClusterChecksRequest {
+	s.Target = &v
+	return s
 }
 
 func (s *ListClusterChecksRequest) SetType(v string) *ListClusterChecksRequest {
@@ -17548,6 +17802,7 @@ func (s *ResumeUpgradeClusterResponse) SetStatusCode(v int32) *ResumeUpgradeClus
 type RunClusterCheckRequest struct {
 	// The cluster check items.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Target  *string            `json:"target,omitempty" xml:"target,omitempty"`
 	// The check method.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -17562,6 +17817,11 @@ func (s RunClusterCheckRequest) GoString() string {
 
 func (s *RunClusterCheckRequest) SetOptions(v map[string]*string) *RunClusterCheckRequest {
 	s.Options = v
+	return s
+}
+
+func (s *RunClusterCheckRequest) SetTarget(v string) *RunClusterCheckRequest {
+	s.Target = &v
 	return s
 }
 
@@ -18309,6 +18569,29 @@ func (s *ScanClusterVulsResponse) SetBody(v *ScanClusterVulsResponseBody) *ScanC
 	return s
 }
 
+type StartAlertRequest struct {
+	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
+	AlertRuleName      *string `json:"alert_rule_name,omitempty" xml:"alert_rule_name,omitempty"`
+}
+
+func (s StartAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAlertRequest) SetAlertRuleGroupName(v string) *StartAlertRequest {
+	s.AlertRuleGroupName = &v
+	return s
+}
+
+func (s *StartAlertRequest) SetAlertRuleName(v string) *StartAlertRequest {
+	s.AlertRuleName = &v
+	return s
+}
+
 type StartAlertResponseBody struct {
 	// The message returned.
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
@@ -18555,6 +18838,29 @@ func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
 
 func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
 	s.Body = v
+	return s
+}
+
+type StopAlertRequest struct {
+	AlertRuleGroupName *string `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
+	AlertRuleName      *string `json:"alert_rule_name,omitempty" xml:"alert_rule_name,omitempty"`
+}
+
+func (s StopAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAlertRequest) SetAlertRuleGroupName(v string) *StopAlertRequest {
+	s.AlertRuleGroupName = &v
+	return s
+}
+
+func (s *StopAlertRequest) SetAlertRuleName(v string) *StopAlertRequest {
+	s.AlertRuleName = &v
 	return s
 }
 
@@ -19209,6 +19515,99 @@ func (s *UpdateTemplateResponse) SetStatusCode(v int32) *UpdateTemplateResponse 
 	return s
 }
 
+type UpdateUserPermissionsRequest struct {
+	Body []*UpdateUserPermissionsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Mode *string                             `json:"mode,omitempty" xml:"mode,omitempty"`
+}
+
+func (s UpdateUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionsRequest) SetBody(v []*UpdateUserPermissionsRequestBody) *UpdateUserPermissionsRequest {
+	s.Body = v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequest) SetMode(v string) *UpdateUserPermissionsRequest {
+	s.Mode = &v
+	return s
+}
+
+type UpdateUserPermissionsRequestBody struct {
+	Cluster   *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	IsCustom  *bool   `json:"is_custom,omitempty" xml:"is_custom,omitempty"`
+	IsRamRole *bool   `json:"is_ram_role,omitempty" xml:"is_ram_role,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	RoleName  *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
+	RoleType  *string `json:"role_type,omitempty" xml:"role_type,omitempty"`
+}
+
+func (s UpdateUserPermissionsRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionsRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetCluster(v string) *UpdateUserPermissionsRequestBody {
+	s.Cluster = &v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetIsCustom(v bool) *UpdateUserPermissionsRequestBody {
+	s.IsCustom = &v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetIsRamRole(v bool) *UpdateUserPermissionsRequestBody {
+	s.IsRamRole = &v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetNamespace(v string) *UpdateUserPermissionsRequestBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetRoleName(v string) *UpdateUserPermissionsRequestBody {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateUserPermissionsRequestBody) SetRoleType(v string) *UpdateUserPermissionsRequestBody {
+	s.RoleType = &v
+	return s
+}
+
+type UpdateUserPermissionsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionsResponse) SetHeaders(v map[string]*string) *UpdateUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserPermissionsResponse) SetStatusCode(v int32) *UpdateUserPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpgradeClusterRequest struct {
 	// Deprecated
 	// The name of the component. Set the value to `k8s`.
@@ -19405,7 +19804,9 @@ type UpgradeClusterNodepoolRequest struct {
 	// The ID of the OS image that is used by the nodes.
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	// The Kubernetes version that is used by the nodes.
-	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	KubernetesVersion *string                                     `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	NodeNames         []*string                                   `json:"node_names,omitempty" xml:"node_names,omitempty" type:"Repeated"`
+	RollingPolicy     *UpgradeClusterNodepoolRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 	// The runtime type. Valid values: containerd and docker.
 	RuntimeType *string `json:"runtime_type,omitempty" xml:"runtime_type,omitempty"`
 	// The version of the container runtime that is used by the nodes.
@@ -19431,6 +19832,16 @@ func (s *UpgradeClusterNodepoolRequest) SetKubernetesVersion(v string) *UpgradeC
 	return s
 }
 
+func (s *UpgradeClusterNodepoolRequest) SetNodeNames(v []*string) *UpgradeClusterNodepoolRequest {
+	s.NodeNames = v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetRollingPolicy(v *UpgradeClusterNodepoolRequestRollingPolicy) *UpgradeClusterNodepoolRequest {
+	s.RollingPolicy = v
+	return s
+}
+
 func (s *UpgradeClusterNodepoolRequest) SetRuntimeType(v string) *UpgradeClusterNodepoolRequest {
 	s.RuntimeType = &v
 	return s
@@ -19443,6 +19854,35 @@ func (s *UpgradeClusterNodepoolRequest) SetRuntimeVersion(v string) *UpgradeClus
 
 func (s *UpgradeClusterNodepoolRequest) SetUseReplace(v bool) *UpgradeClusterNodepoolRequest {
 	s.UseReplace = &v
+	return s
+}
+
+type UpgradeClusterNodepoolRequestRollingPolicy struct {
+	BatchInterval  *int32  `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
+	MaxParallelism *int32  `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
+	PausePolicy    *string `json:"pause_policy,omitempty" xml:"pause_policy,omitempty"`
+}
+
+func (s UpgradeClusterNodepoolRequestRollingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterNodepoolRequestRollingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterNodepoolRequestRollingPolicy) SetBatchInterval(v int32) *UpgradeClusterNodepoolRequestRollingPolicy {
+	s.BatchInterval = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequestRollingPolicy) SetMaxParallelism(v int32) *UpgradeClusterNodepoolRequestRollingPolicy {
+	s.MaxParallelism = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequestRollingPolicy) SetPausePolicy(v string) *UpgradeClusterNodepoolRequestRollingPolicy {
+	s.PausePolicy = &v
 	return s
 }
 
@@ -20816,9 +21256,25 @@ func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerReq
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+func (client *Client) DeleteAlertContactWithOptions(tmpReq *DeleteAlertContactRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAlertContactShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContactIds)) {
+		request.ContactIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactIds, tea.String("contact_ids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactIdsShrink)) {
+		query["contact_ids"] = request.ContactIdsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAlertContact"),
@@ -20829,7 +21285,7 @@ func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("array"),
 	}
 	_result = &DeleteAlertContactResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -20840,11 +21296,11 @@ func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, 
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
+func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_result *DeleteAlertContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
+	_body, _err := client.DeleteAlertContactWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20852,9 +21308,25 @@ func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse,
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+func (client *Client) DeleteAlertContactGroupWithOptions(tmpReq *DeleteAlertContactGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAlertContactGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContactGroupIds)) {
+		request.ContactGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactGroupIds, tea.String("contact_group_ids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactGroupIdsShrink)) {
+		query["contact_group_ids"] = request.ContactGroupIdsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteAlertContactGroup"),
@@ -20865,7 +21337,7 @@ func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*str
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("array"),
 	}
 	_result = &DeleteAlertContactGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -20876,11 +21348,11 @@ func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*str
 	return _result, _err
 }
 
-func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
+func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRequest) (_result *DeleteAlertContactGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
+	_body, _err := client.DeleteAlertContactGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22096,9 +22568,19 @@ func (client *Client) DescribeClusterNodes(ClusterId *string, request *DescribeC
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterResourcesResponse, _err error) {
+func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, request *DescribeClusterResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WithAddonResources)) {
+		query["with_addon_resources"] = request.WithAddonResources
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterResources"),
@@ -22120,11 +22602,11 @@ func (client *Client) DescribeClusterResourcesWithOptions(ClusterId *string, hea
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterResources(ClusterId *string) (_result *DescribeClusterResourcesResponse, _err error) {
+func (client *Client) DescribeClusterResources(ClusterId *string, request *DescribeClusterResourcesRequest) (_result *DescribeClusterResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeClusterResourcesResponse{}
-	_body, _err := client.DescribeClusterResourcesWithOptions(ClusterId, headers, runtime)
+	_body, _err := client.DescribeClusterResourcesWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24000,6 +24482,10 @@ func (client *Client) ListClusterChecksWithOptions(clusterId *string, request *L
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["target"] = request.Target
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["type"] = request.Type
 	}
@@ -25227,6 +25713,10 @@ func (client *Client) RunClusterCheckWithOptions(clusterId *string, request *Run
 		body["options"] = request.Options
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		body["target"] = request.Target
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
 	}
@@ -25625,9 +26115,23 @@ func (client *Client) ScanClusterVuls(clusterId *string) (_result *ScanClusterVu
 	return _result, _err
 }
 
-func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+func (client *Client) StartAlertWithOptions(ClusterId *string, request *StartAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleGroupName)) {
+		body["alert_rule_group_name"] = request.AlertRuleGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleName)) {
+		body["alert_rule_name"] = request.AlertRuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartAlert"),
@@ -25649,11 +26153,11 @@ func (client *Client) StartAlertWithOptions(ClusterId *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) StartAlert(ClusterId *string) (_result *StartAlertResponse, _err error) {
+func (client *Client) StartAlert(ClusterId *string, request *StartAlertRequest) (_result *StartAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StartAlertResponse{}
-	_body, _err := client.StartAlertWithOptions(ClusterId, headers, runtime)
+	_body, _err := client.StartAlertWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25779,9 +26283,23 @@ func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *Sta
 	return _result, _err
 }
 
-func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+func (client *Client) StopAlertWithOptions(ClusterId *string, request *StopAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleGroupName)) {
+		body["alert_rule_group_name"] = request.AlertRuleGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleName)) {
+		body["alert_rule_name"] = request.AlertRuleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopAlert"),
@@ -25803,11 +26321,11 @@ func (client *Client) StopAlertWithOptions(ClusterId *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) StopAlert(ClusterId *string) (_result *StopAlertResponse, _err error) {
+func (client *Client) StopAlert(ClusterId *string, request *StopAlertRequest) (_result *StopAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopAlertResponse{}
-	_body, _err := client.StopAlertWithOptions(ClusterId, headers, runtime)
+	_body, _err := client.StopAlertWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26246,6 +26764,53 @@ func (client *Client) UpdateTemplate(TemplateId *string, request *UpdateTemplate
 	return _result, _err
 }
 
+func (client *Client) UpdateUserPermissionsWithOptions(uid *string, request *UpdateUserPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["mode"] = request.Mode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserPermissions"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/permissions/users/" + tea.StringValue(openapiutil.GetEncodeParam(uid)) + "/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserPermissions(uid *string, request *UpdateUserPermissionsRequest) (_result *UpdateUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateUserPermissionsResponse{}
+	_body, _err := client.UpdateUserPermissionsWithOptions(uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpgradeClusterWithOptions(ClusterId *string, request *UpgradeClusterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpgradeClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26365,6 +26930,14 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
 		body["kubernetes_version"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNames)) {
+		body["node_names"] = request.NodeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RollingPolicy)) {
+		body["rolling_policy"] = request.RollingPolicy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuntimeType)) {
