@@ -1357,15 +1357,24 @@ func (s *Permission) SetResourceType(v string) *Permission {
 }
 
 type QueueInfo struct {
-	GmtEnqueuedTime         *string `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
-	GmtPositionModifiedTime *string `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
-	Position                *int64  `json:"Position,omitempty" xml:"Position,omitempty"`
-	Priority                *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	QueueStrategy           *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	QuotaId                 *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	WorkloadId              *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
-	WorkloadType            *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
-	WorkspaceId             *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Code                    *string         `json:"Code,omitempty" xml:"Code,omitempty"`
+	CodeType                *string         `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	GmtDequeuedTime         *string         `json:"GmtDequeuedTime,omitempty" xml:"GmtDequeuedTime,omitempty"`
+	GmtEnqueuedTime         *string         `json:"GmtEnqueuedTime,omitempty" xml:"GmtEnqueuedTime,omitempty"`
+	GmtPositionModifiedTime *string         `json:"GmtPositionModifiedTime,omitempty" xml:"GmtPositionModifiedTime,omitempty"`
+	Name                    *string         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Position                *int64          `json:"Position,omitempty" xml:"Position,omitempty"`
+	Priority                *int64          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	QueueStrategy           *string         `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaId                 *string         `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	Reason                  *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Resource                *ResourceAmount `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Status                  *string         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus               *string         `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	UserId                  *string         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkloadId              *string         `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	WorkloadType            *string         `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+	WorkspaceId             *string         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueueInfo) String() string {
@@ -1376,6 +1385,21 @@ func (s QueueInfo) GoString() string {
 	return s.String()
 }
 
+func (s *QueueInfo) SetCode(v string) *QueueInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueueInfo) SetCodeType(v string) *QueueInfo {
+	s.CodeType = &v
+	return s
+}
+
+func (s *QueueInfo) SetGmtDequeuedTime(v string) *QueueInfo {
+	s.GmtDequeuedTime = &v
+	return s
+}
+
 func (s *QueueInfo) SetGmtEnqueuedTime(v string) *QueueInfo {
 	s.GmtEnqueuedTime = &v
 	return s
@@ -1383,6 +1407,11 @@ func (s *QueueInfo) SetGmtEnqueuedTime(v string) *QueueInfo {
 
 func (s *QueueInfo) SetGmtPositionModifiedTime(v string) *QueueInfo {
 	s.GmtPositionModifiedTime = &v
+	return s
+}
+
+func (s *QueueInfo) SetName(v string) *QueueInfo {
+	s.Name = &v
 	return s
 }
 
@@ -1403,6 +1432,31 @@ func (s *QueueInfo) SetQueueStrategy(v string) *QueueInfo {
 
 func (s *QueueInfo) SetQuotaId(v string) *QueueInfo {
 	s.QuotaId = &v
+	return s
+}
+
+func (s *QueueInfo) SetReason(v string) *QueueInfo {
+	s.Reason = &v
+	return s
+}
+
+func (s *QueueInfo) SetResource(v *ResourceAmount) *QueueInfo {
+	s.Resource = v
+	return s
+}
+
+func (s *QueueInfo) SetStatus(v string) *QueueInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *QueueInfo) SetSubStatus(v string) *QueueInfo {
+	s.SubStatus = &v
+	return s
+}
+
+func (s *QueueInfo) SetUserId(v string) *QueueInfo {
+	s.UserId = &v
 	return s
 }
 
@@ -1559,12 +1613,13 @@ func (s *Quota) SetWorkspaces(v []*WorkspaceIdName) *Quota {
 }
 
 type QuotaConfig struct {
-	ACS               *ACS      `json:"ACS,omitempty" xml:"ACS,omitempty"`
-	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DefaultGPUDriver  *string   `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
-	SupportGPUDrivers []*string `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
-	SupportRDMA       *bool     `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	UserVpc           *UserVpc  `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	ACS               *ACS              `json:"ACS,omitempty" xml:"ACS,omitempty"`
+	ClusterId         *string           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DefaultGPUDriver  *string           `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	ResourceSpecs     []*WorkspaceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
+	SupportGPUDrivers []*string         `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
+	SupportRDMA       *bool             `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	UserVpc           *UserVpc          `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s QuotaConfig) String() string {
@@ -1587,6 +1642,11 @@ func (s *QuotaConfig) SetClusterId(v string) *QuotaConfig {
 
 func (s *QuotaConfig) SetDefaultGPUDriver(v string) *QuotaConfig {
 	s.DefaultGPUDriver = &v
+	return s
+}
+
+func (s *QuotaConfig) SetResourceSpecs(v []*WorkspaceSpecs) *QuotaConfig {
+	s.ResourceSpecs = v
 	return s
 }
 
@@ -2529,6 +2589,88 @@ func (s WorkspaceIdName) GoString() string {
 }
 
 func (s *WorkspaceIdName) SetWorkspaceId(v string) *WorkspaceIdName {
+	s.WorkspaceId = &v
+	return s
+}
+
+type WorkspaceSpec struct {
+	Code              *string         `json:"Code,omitempty" xml:"Code,omitempty"`
+	CodeType          *string         `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	IsGuaranteedValid *bool           `json:"IsGuaranteedValid,omitempty" xml:"IsGuaranteedValid,omitempty"`
+	IsOverSoldValid   *bool           `json:"IsOverSoldValid,omitempty" xml:"IsOverSoldValid,omitempty"`
+	Reason            *string         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Spec              *ResourceAmount `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SpecName          *string         `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+}
+
+func (s WorkspaceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkspaceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *WorkspaceSpec) SetCode(v string) *WorkspaceSpec {
+	s.Code = &v
+	return s
+}
+
+func (s *WorkspaceSpec) SetCodeType(v string) *WorkspaceSpec {
+	s.CodeType = &v
+	return s
+}
+
+func (s *WorkspaceSpec) SetIsGuaranteedValid(v bool) *WorkspaceSpec {
+	s.IsGuaranteedValid = &v
+	return s
+}
+
+func (s *WorkspaceSpec) SetIsOverSoldValid(v bool) *WorkspaceSpec {
+	s.IsOverSoldValid = &v
+	return s
+}
+
+func (s *WorkspaceSpec) SetReason(v string) *WorkspaceSpec {
+	s.Reason = &v
+	return s
+}
+
+func (s *WorkspaceSpec) SetSpec(v *ResourceAmount) *WorkspaceSpec {
+	s.Spec = v
+	return s
+}
+
+func (s *WorkspaceSpec) SetSpecName(v string) *WorkspaceSpec {
+	s.SpecName = &v
+	return s
+}
+
+type WorkspaceSpecs struct {
+	Product     *string          `json:"Product,omitempty" xml:"Product,omitempty"`
+	Specs       []*WorkspaceSpec `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	WorkspaceId *string          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s WorkspaceSpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkspaceSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *WorkspaceSpecs) SetProduct(v string) *WorkspaceSpecs {
+	s.Product = &v
+	return s
+}
+
+func (s *WorkspaceSpecs) SetSpecs(v []*WorkspaceSpec) *WorkspaceSpecs {
+	s.Specs = v
+	return s
+}
+
+func (s *WorkspaceSpecs) SetWorkspaceId(v string) *WorkspaceSpecs {
 	s.WorkspaceId = &v
 	return s
 }
@@ -6114,8 +6256,9 @@ func (s *ListQuotasRequest) SetWorkspaceIds(v string) *ListQuotasRequest {
 }
 
 type ListQuotasResponseBody struct {
-	Quotas    []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Quotas     []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListQuotasResponseBody) String() string {
@@ -6133,6 +6276,11 @@ func (s *ListQuotasResponseBody) SetQuotas(v []*Quota) *ListQuotasResponseBody {
 
 func (s *ListQuotasResponseBody) SetRequestId(v string) *ListQuotasResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListQuotasResponseBody) SetTotalCount(v int32) *ListQuotasResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
