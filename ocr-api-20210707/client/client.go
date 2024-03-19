@@ -2571,8 +2571,9 @@ func (s *RecognizeBankCardResponse) SetBody(v *RecognizeBankCardResponseBody) *R
 }
 
 type RecognizeBasicRequest struct {
-	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBasicRequest) String() string {
@@ -2581,6 +2582,11 @@ func (s RecognizeBasicRequest) String() string {
 
 func (s RecognizeBasicRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeBasicRequest) SetNeedRotate(v bool) *RecognizeBasicRequest {
+	s.NeedRotate = &v
+	return s
 }
 
 func (s *RecognizeBasicRequest) SetUrl(v string) *RecognizeBasicRequest {
@@ -9358,6 +9364,10 @@ func (client *Client) RecognizeBasicWithOptions(request *RecognizeBasicRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NeedRotate)) {
+		query["NeedRotate"] = request.NeedRotate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
