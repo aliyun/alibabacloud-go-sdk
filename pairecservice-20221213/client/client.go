@@ -10721,6 +10721,110 @@ func (s *UpdateTableMetaResponse) SetBody(v *UpdateTableMetaResponseBody) *Updat
 	return s
 }
 
+type UploadRecommendationDataRequest struct {
+	RegionId *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Content  []*UploadRecommendationDataRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	DataType *string                                   `json:"DataType,omitempty" xml:"DataType,omitempty"`
+}
+
+func (s UploadRecommendationDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadRecommendationDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadRecommendationDataRequest) SetRegionId(v string) *UploadRecommendationDataRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UploadRecommendationDataRequest) SetContent(v []*UploadRecommendationDataRequestContent) *UploadRecommendationDataRequest {
+	s.Content = v
+	return s
+}
+
+func (s *UploadRecommendationDataRequest) SetDataType(v string) *UploadRecommendationDataRequest {
+	s.DataType = &v
+	return s
+}
+
+type UploadRecommendationDataRequestContent struct {
+	Fields        *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+}
+
+func (s UploadRecommendationDataRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadRecommendationDataRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *UploadRecommendationDataRequestContent) SetFields(v string) *UploadRecommendationDataRequestContent {
+	s.Fields = &v
+	return s
+}
+
+func (s *UploadRecommendationDataRequestContent) SetOperationType(v string) *UploadRecommendationDataRequestContent {
+	s.OperationType = &v
+	return s
+}
+
+type UploadRecommendationDataResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadRecommendationDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadRecommendationDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadRecommendationDataResponseBody) SetMessage(v string) *UploadRecommendationDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UploadRecommendationDataResponseBody) SetRequestId(v string) *UploadRecommendationDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadRecommendationDataResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadRecommendationDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadRecommendationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadRecommendationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadRecommendationDataResponse) SetHeaders(v map[string]*string) *UploadRecommendationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadRecommendationDataResponse) SetStatusCode(v int32) *UploadRecommendationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadRecommendationDataResponse) SetBody(v *UploadRecommendationDataResponseBody) *UploadRecommendationDataResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -15989,6 +16093,62 @@ func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableM
 	headers := make(map[string]*string)
 	_result = &UpdateTableMetaResponse{}
 	_body, _err := client.UpdateTableMetaWithOptions(TableMetaId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadRecommendationDataWithOptions(request *UploadRecommendationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadRecommendationDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		body["DataType"] = request.DataType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadRecommendationData"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/recommendationdata/action/upload"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadRecommendationDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadRecommendationData(request *UploadRecommendationDataRequest) (_result *UploadRecommendationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UploadRecommendationDataResponse{}
+	_body, _err := client.UploadRecommendationDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
