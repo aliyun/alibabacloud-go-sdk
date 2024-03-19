@@ -1,3 +1,7 @@
+2024-03-19 Version: v2.0.0
+- Delete API GetExpressConnectRouter.
+
+
 2024-03-12 Version: v1.0.0
 - Generated golang 2023-09-01 for ExpressConnectRouter.
 
