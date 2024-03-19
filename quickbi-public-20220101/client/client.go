@@ -3963,6 +3963,273 @@ func (s *ListFavoriteReportsResponse) SetBody(v *ListFavoriteReportsResponseBody
 	return s
 }
 
+type ListOrganizationRoleUsersRequest struct {
+	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+}
+
+func (s ListOrganizationRoleUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRoleUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRoleUsersRequest) SetKeyword(v string) *ListOrganizationRoleUsersRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersRequest) SetPageNum(v int32) *ListOrganizationRoleUsersRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersRequest) SetPageSize(v int32) *ListOrganizationRoleUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersRequest) SetRoleId(v int64) *ListOrganizationRoleUsersRequest {
+	s.RoleId = &v
+	return s
+}
+
+type ListOrganizationRoleUsersResponseBody struct {
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListOrganizationRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListOrganizationRoleUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRoleUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRoleUsersResponseBody) SetRequestId(v string) *ListOrganizationRoleUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBody) SetResult(v *ListOrganizationRoleUsersResponseBodyResult) *ListOrganizationRoleUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBody) SetSuccess(v bool) *ListOrganizationRoleUsersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListOrganizationRoleUsersResponseBodyResult struct {
+	Data       []*ListOrganizationRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNum    *int32                                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalNum   *int32                                             `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPages *int32                                             `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListOrganizationRoleUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRoleUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResult) SetData(v []*ListOrganizationRoleUsersResponseBodyResultData) *ListOrganizationRoleUsersResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResult) SetPageNum(v int32) *ListOrganizationRoleUsersResponseBodyResult {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResult) SetPageSize(v int32) *ListOrganizationRoleUsersResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResult) SetTotalNum(v int32) *ListOrganizationRoleUsersResponseBodyResult {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResult) SetTotalPages(v int32) *ListOrganizationRoleUsersResponseBodyResult {
+	s.TotalPages = &v
+	return s
+}
+
+type ListOrganizationRoleUsersResponseBodyResultData struct {
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListOrganizationRoleUsersResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRoleUsersResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResultData) SetNickName(v string) *ListOrganizationRoleUsersResponseBodyResultData {
+	s.NickName = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponseBodyResultData) SetUserId(v string) *ListOrganizationRoleUsersResponseBodyResultData {
+	s.UserId = &v
+	return s
+}
+
+type ListOrganizationRoleUsersResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOrganizationRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOrganizationRoleUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRoleUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRoleUsersResponse) SetHeaders(v map[string]*string) *ListOrganizationRoleUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponse) SetStatusCode(v int32) *ListOrganizationRoleUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOrganizationRoleUsersResponse) SetBody(v *ListOrganizationRoleUsersResponseBody) *ListOrganizationRoleUsersResponse {
+	s.Body = v
+	return s
+}
+
+type ListOrganizationRolesResponseBody struct {
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListOrganizationRolesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListOrganizationRolesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRolesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRolesResponseBody) SetRequestId(v string) *ListOrganizationRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOrganizationRolesResponseBody) SetResult(v []*ListOrganizationRolesResponseBodyResult) *ListOrganizationRolesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListOrganizationRolesResponseBody) SetSuccess(v bool) *ListOrganizationRolesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListOrganizationRolesResponseBodyResult struct {
+	AuthConfigList []*ListOrganizationRolesResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
+	IsSystemRole   *bool                                                    `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	RoleId         *int64                                                   `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName       *string                                                  `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s ListOrganizationRolesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRolesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRolesResponseBodyResult) SetAuthConfigList(v []*ListOrganizationRolesResponseBodyResultAuthConfigList) *ListOrganizationRolesResponseBodyResult {
+	s.AuthConfigList = v
+	return s
+}
+
+func (s *ListOrganizationRolesResponseBodyResult) SetIsSystemRole(v bool) *ListOrganizationRolesResponseBodyResult {
+	s.IsSystemRole = &v
+	return s
+}
+
+func (s *ListOrganizationRolesResponseBodyResult) SetRoleId(v int64) *ListOrganizationRolesResponseBodyResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListOrganizationRolesResponseBodyResult) SetRoleName(v string) *ListOrganizationRolesResponseBodyResult {
+	s.RoleName = &v
+	return s
+}
+
+type ListOrganizationRolesResponseBodyResultAuthConfigList struct {
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+}
+
+func (s ListOrganizationRolesResponseBodyResultAuthConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRolesResponseBodyResultAuthConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRolesResponseBodyResultAuthConfigList) SetAuthKey(v string) *ListOrganizationRolesResponseBodyResultAuthConfigList {
+	s.AuthKey = &v
+	return s
+}
+
+type ListOrganizationRolesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOrganizationRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOrganizationRolesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrganizationRolesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationRolesResponse) SetHeaders(v map[string]*string) *ListOrganizationRolesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOrganizationRolesResponse) SetStatusCode(v int32) *ListOrganizationRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOrganizationRolesResponse) SetBody(v *ListOrganizationRolesResponseBody) *ListOrganizationRolesResponse {
+	s.Body = v
+	return s
+}
+
 type ListPortalMenuAuthorizationRequest struct {
 	// The ID of the BI portal.
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
@@ -4832,6 +5099,314 @@ func (s *ListUserGroupsByUserIdResponse) SetStatusCode(v int32) *ListUserGroupsB
 }
 
 func (s *ListUserGroupsByUserIdResponse) SetBody(v *ListUserGroupsByUserIdResponseBody) *ListUserGroupsByUserIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspaceRoleUsersRequest struct {
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RoleId      *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListWorkspaceRoleUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRoleUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRoleUsersRequest) SetKeyword(v string) *ListWorkspaceRoleUsersRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersRequest) SetPageNum(v int32) *ListWorkspaceRoleUsersRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersRequest) SetPageSize(v int32) *ListWorkspaceRoleUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersRequest) SetRoleId(v int64) *ListWorkspaceRoleUsersRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersRequest) SetWorkspaceId(v string) *ListWorkspaceRoleUsersRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListWorkspaceRoleUsersResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListWorkspaceRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWorkspaceRoleUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRoleUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRoleUsersResponseBody) SetRequestId(v string) *ListWorkspaceRoleUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBody) SetResult(v *ListWorkspaceRoleUsersResponseBodyResult) *ListWorkspaceRoleUsersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBody) SetSuccess(v bool) *ListWorkspaceRoleUsersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkspaceRoleUsersResponseBodyResult struct {
+	Data       []*ListWorkspaceRoleUsersResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNum    *int32                                          `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalNum   *int32                                          `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	TotalPages *int32                                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListWorkspaceRoleUsersResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRoleUsersResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResult) SetData(v []*ListWorkspaceRoleUsersResponseBodyResultData) *ListWorkspaceRoleUsersResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResult) SetPageNum(v int32) *ListWorkspaceRoleUsersResponseBodyResult {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResult) SetPageSize(v int32) *ListWorkspaceRoleUsersResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResult) SetTotalNum(v int32) *ListWorkspaceRoleUsersResponseBodyResult {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResult) SetTotalPages(v int32) *ListWorkspaceRoleUsersResponseBodyResult {
+	s.TotalPages = &v
+	return s
+}
+
+type ListWorkspaceRoleUsersResponseBodyResultData struct {
+	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s ListWorkspaceRoleUsersResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRoleUsersResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResultData) SetNickName(v string) *ListWorkspaceRoleUsersResponseBodyResultData {
+	s.NickName = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResultData) SetUserId(v string) *ListWorkspaceRoleUsersResponseBodyResultData {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResultData) SetWorkspaceId(v string) *ListWorkspaceRoleUsersResponseBodyResultData {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponseBodyResultData) SetWorkspaceName(v string) *ListWorkspaceRoleUsersResponseBodyResultData {
+	s.WorkspaceName = &v
+	return s
+}
+
+type ListWorkspaceRoleUsersResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkspaceRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkspaceRoleUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRoleUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRoleUsersResponse) SetHeaders(v map[string]*string) *ListWorkspaceRoleUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponse) SetStatusCode(v int32) *ListWorkspaceRoleUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkspaceRoleUsersResponse) SetBody(v *ListWorkspaceRoleUsersResponseBody) *ListWorkspaceRoleUsersResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkspaceRolesRequest struct {
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListWorkspaceRolesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRolesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRolesRequest) SetWorkspaceId(v string) *ListWorkspaceRolesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListWorkspaceRolesResponseBody struct {
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListWorkspaceRolesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWorkspaceRolesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRolesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRolesResponseBody) SetRequestId(v string) *ListWorkspaceRolesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBody) SetResult(v []*ListWorkspaceRolesResponseBodyResult) *ListWorkspaceRolesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBody) SetSuccess(v bool) *ListWorkspaceRolesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkspaceRolesResponseBodyResult struct {
+	AuthConfigList []*ListWorkspaceRolesResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
+	IsSystemRole   *bool                                                 `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	RoleId         *int64                                                `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName       *string                                               `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s ListWorkspaceRolesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRolesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRolesResponseBodyResult) SetAuthConfigList(v []*ListWorkspaceRolesResponseBodyResultAuthConfigList) *ListWorkspaceRolesResponseBodyResult {
+	s.AuthConfigList = v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBodyResult) SetIsSystemRole(v bool) *ListWorkspaceRolesResponseBodyResult {
+	s.IsSystemRole = &v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBodyResult) SetRoleId(v int64) *ListWorkspaceRolesResponseBodyResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBodyResult) SetRoleName(v string) *ListWorkspaceRolesResponseBodyResult {
+	s.RoleName = &v
+	return s
+}
+
+type ListWorkspaceRolesResponseBodyResultAuthConfigList struct {
+	ActionAuthKeys []*string `json:"ActionAuthKeys,omitempty" xml:"ActionAuthKeys,omitempty" type:"Repeated"`
+	AuthKey        *string   `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+}
+
+func (s ListWorkspaceRolesResponseBodyResultAuthConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRolesResponseBodyResultAuthConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRolesResponseBodyResultAuthConfigList) SetActionAuthKeys(v []*string) *ListWorkspaceRolesResponseBodyResultAuthConfigList {
+	s.ActionAuthKeys = v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponseBodyResultAuthConfigList) SetAuthKey(v string) *ListWorkspaceRolesResponseBodyResultAuthConfigList {
+	s.AuthKey = &v
+	return s
+}
+
+type ListWorkspaceRolesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkspaceRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkspaceRolesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkspaceRolesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkspaceRolesResponse) SetHeaders(v map[string]*string) *ListWorkspaceRolesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponse) SetStatusCode(v int32) *ListWorkspaceRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkspaceRolesResponse) SetBody(v *ListWorkspaceRolesResponseBody) *ListWorkspaceRolesResponse {
 	s.Body = v
 	return s
 }
@@ -7092,6 +7667,133 @@ func (s *QueryEmbeddedStatusResponse) SetStatusCode(v int32) *QueryEmbeddedStatu
 }
 
 func (s *QueryEmbeddedStatusResponse) SetBody(v *QueryEmbeddedStatusResponseBody) *QueryEmbeddedStatusResponse {
+	s.Body = v
+	return s
+}
+
+type QueryOrganizationRoleConfigRequest struct {
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+}
+
+func (s QueryOrganizationRoleConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrganizationRoleConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationRoleConfigRequest) SetRoleId(v int64) *QueryOrganizationRoleConfigRequest {
+	s.RoleId = &v
+	return s
+}
+
+type QueryOrganizationRoleConfigResponseBody struct {
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryOrganizationRoleConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryOrganizationRoleConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrganizationRoleConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationRoleConfigResponseBody) SetRequestId(v string) *QueryOrganizationRoleConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponseBody) SetResult(v *QueryOrganizationRoleConfigResponseBodyResult) *QueryOrganizationRoleConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponseBody) SetSuccess(v bool) *QueryOrganizationRoleConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryOrganizationRoleConfigResponseBodyResult struct {
+	AuthConfigList []*QueryOrganizationRoleConfigResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
+	IsSystemRole   *bool                                                          `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	RoleId         *int64                                                         `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName       *string                                                        `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s QueryOrganizationRoleConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrganizationRoleConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationRoleConfigResponseBodyResult) SetAuthConfigList(v []*QueryOrganizationRoleConfigResponseBodyResultAuthConfigList) *QueryOrganizationRoleConfigResponseBodyResult {
+	s.AuthConfigList = v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponseBodyResult) SetIsSystemRole(v bool) *QueryOrganizationRoleConfigResponseBodyResult {
+	s.IsSystemRole = &v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponseBodyResult) SetRoleId(v int64) *QueryOrganizationRoleConfigResponseBodyResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponseBodyResult) SetRoleName(v string) *QueryOrganizationRoleConfigResponseBodyResult {
+	s.RoleName = &v
+	return s
+}
+
+type QueryOrganizationRoleConfigResponseBodyResultAuthConfigList struct {
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+}
+
+func (s QueryOrganizationRoleConfigResponseBodyResultAuthConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrganizationRoleConfigResponseBodyResultAuthConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationRoleConfigResponseBodyResultAuthConfigList) SetAuthKey(v string) *QueryOrganizationRoleConfigResponseBodyResultAuthConfigList {
+	s.AuthKey = &v
+	return s
+}
+
+type QueryOrganizationRoleConfigResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrganizationRoleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryOrganizationRoleConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrganizationRoleConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationRoleConfigResponse) SetHeaders(v map[string]*string) *QueryOrganizationRoleConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponse) SetStatusCode(v int32) *QueryOrganizationRoleConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrganizationRoleConfigResponse) SetBody(v *QueryOrganizationRoleConfigResponseBody) *QueryOrganizationRoleConfigResponse {
 	s.Body = v
 	return s
 }
@@ -10636,6 +11338,139 @@ func (s *QueryWorksByWorkspaceResponse) SetBody(v *QueryWorksByWorkspaceResponse
 	return s
 }
 
+type QueryWorkspaceRoleConfigRequest struct {
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+}
+
+func (s QueryWorkspaceRoleConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWorkspaceRoleConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorkspaceRoleConfigRequest) SetRoleId(v int64) *QueryWorkspaceRoleConfigRequest {
+	s.RoleId = &v
+	return s
+}
+
+type QueryWorkspaceRoleConfigResponseBody struct {
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryWorkspaceRoleConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryWorkspaceRoleConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWorkspaceRoleConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBody) SetRequestId(v string) *QueryWorkspaceRoleConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBody) SetResult(v *QueryWorkspaceRoleConfigResponseBodyResult) *QueryWorkspaceRoleConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBody) SetSuccess(v bool) *QueryWorkspaceRoleConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryWorkspaceRoleConfigResponseBodyResult struct {
+	AuthConfigList []*QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList `json:"AuthConfigList,omitempty" xml:"AuthConfigList,omitempty" type:"Repeated"`
+	IsSystemRole   *bool                                                       `json:"IsSystemRole,omitempty" xml:"IsSystemRole,omitempty"`
+	RoleId         *int64                                                      `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleName       *string                                                     `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s QueryWorkspaceRoleConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWorkspaceRoleConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResult) SetAuthConfigList(v []*QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) *QueryWorkspaceRoleConfigResponseBodyResult {
+	s.AuthConfigList = v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResult) SetIsSystemRole(v bool) *QueryWorkspaceRoleConfigResponseBodyResult {
+	s.IsSystemRole = &v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResult) SetRoleId(v int64) *QueryWorkspaceRoleConfigResponseBodyResult {
+	s.RoleId = &v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResult) SetRoleName(v string) *QueryWorkspaceRoleConfigResponseBodyResult {
+	s.RoleName = &v
+	return s
+}
+
+type QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList struct {
+	ActionAuthKeys []*string `json:"ActionAuthKeys,omitempty" xml:"ActionAuthKeys,omitempty" type:"Repeated"`
+	AuthKey        *string   `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+}
+
+func (s QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) SetActionAuthKeys(v []*string) *QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList {
+	s.ActionAuthKeys = v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList) SetAuthKey(v string) *QueryWorkspaceRoleConfigResponseBodyResultAuthConfigList {
+	s.AuthKey = &v
+	return s
+}
+
+type QueryWorkspaceRoleConfigResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryWorkspaceRoleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryWorkspaceRoleConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryWorkspaceRoleConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorkspaceRoleConfigResponse) SetHeaders(v map[string]*string) *QueryWorkspaceRoleConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponse) SetStatusCode(v int32) *QueryWorkspaceRoleConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryWorkspaceRoleConfigResponse) SetBody(v *QueryWorkspaceRoleConfigResponseBody) *QueryWorkspaceRoleConfigResponse {
+	s.Body = v
+	return s
+}
+
 type QueryWorkspaceUserListRequest struct {
 	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
@@ -14167,6 +15002,95 @@ func (client *Client) ListFavoriteReports(request *ListFavoriteReportsRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListOrganizationRoleUsersWithOptions(request *ListOrganizationRoleUsersRequest, runtime *util.RuntimeOptions) (_result *ListOrganizationRoleUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOrganizationRoleUsers"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOrganizationRoleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationRoleUsers(request *ListOrganizationRoleUsersRequest) (_result *ListOrganizationRoleUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOrganizationRoleUsersResponse{}
+	_body, _err := client.ListOrganizationRoleUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationRolesWithOptions(runtime *util.RuntimeOptions) (_result *ListOrganizationRolesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListOrganizationRoles"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOrganizationRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOrganizationRoles() (_result *ListOrganizationRolesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOrganizationRolesResponse{}
+	_body, _err := client.ListOrganizationRolesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListPortalMenuAuthorizationWithOptions(request *ListPortalMenuAuthorizationRequest, runtime *util.RuntimeOptions) (_result *ListPortalMenuAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14416,6 +15340,110 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserGroupsByUserIdResponse{}
 	_body, _err := client.ListUserGroupsByUserIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkspaceRoleUsersWithOptions(request *ListWorkspaceRoleUsersRequest, runtime *util.RuntimeOptions) (_result *ListWorkspaceRoleUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkspaceRoleUsers"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkspaceRoleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkspaceRoleUsers(request *ListWorkspaceRoleUsersRequest) (_result *ListWorkspaceRoleUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkspaceRoleUsersResponse{}
+	_body, _err := client.ListWorkspaceRoleUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkspaceRolesWithOptions(request *ListWorkspaceRolesRequest, runtime *util.RuntimeOptions) (_result *ListWorkspaceRolesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkspaceRoles"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_result *ListWorkspaceRolesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.ListWorkspaceRolesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14995,6 +16023,50 @@ func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmbeddedStatusResponse{}
 	_body, _err := client.QueryEmbeddedStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryOrganizationRoleConfigWithOptions(request *QueryOrganizationRoleConfigRequest, runtime *util.RuntimeOptions) (_result *QueryOrganizationRoleConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrganizationRoleConfig"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrganizationRoleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRoleConfigRequest) (_result *QueryOrganizationRoleConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrganizationRoleConfigResponse{}
+	_body, _err := client.QueryOrganizationRoleConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15852,6 +16924,50 @@ func (client *Client) QueryWorksByWorkspace(request *QueryWorksByWorkspaceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorksByWorkspaceResponse{}
 	_body, _err := client.QueryWorksByWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryWorkspaceRoleConfigWithOptions(request *QueryWorkspaceRoleConfigRequest, runtime *util.RuntimeOptions) (_result *QueryWorkspaceRoleConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryWorkspaceRoleConfig"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryWorkspaceRoleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryWorkspaceRoleConfig(request *QueryWorkspaceRoleConfigRequest) (_result *QueryWorkspaceRoleConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryWorkspaceRoleConfigResponse{}
+	_body, _err := client.QueryWorkspaceRoleConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
