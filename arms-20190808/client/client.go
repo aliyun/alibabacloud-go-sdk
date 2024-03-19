@@ -4945,6 +4945,7 @@ type CreateEnvironmentRequest struct {
 	// *   ECS: Elastic Compute Service
 	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// type of managed:
 	// - none: not managed. default value of prometheus for ACK.
 	// - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
@@ -4990,6 +4991,11 @@ func (s *CreateEnvironmentRequest) SetEnvironmentSubType(v string) *CreateEnviro
 
 func (s *CreateEnvironmentRequest) SetEnvironmentType(v string) *CreateEnvironmentRequest {
 	s.EnvironmentType = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetFeePackage(v string) *CreateEnvironmentRequest {
+	s.FeePackage = &v
 	return s
 }
 
@@ -10328,13 +10334,14 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConf) SetWebsite(v *CreateTiming
 }
 
 type CreateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
-	CheckCert      *bool                                                          `json:"CheckCert,omitempty" xml:"CheckCert,omitempty"`
-	ConnectTimeout *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	Method         *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
-	RequestBody    *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
-	RequestHeaders map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	TargetUrl      *string                                                        `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Timeout        *int64                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	CheckCert            *bool                                                          `json:"CheckCert,omitempty" xml:"CheckCert,omitempty"`
+	ConnectTimeout       *int64                                                         `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Method               *string                                                        `json:"Method,omitempty" xml:"Method,omitempty"`
+	ProtocolAlpnProtocol *int32                                                         `json:"ProtocolAlpnProtocol,omitempty" xml:"ProtocolAlpnProtocol,omitempty"`
+	RequestBody          *CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
+	RequestHeaders       map[string]*string                                             `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	TargetUrl            *string                                                        `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Timeout              *int64                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) String() string {
@@ -10357,6 +10364,11 @@ func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v
 
 func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetMethod(v string) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
 	s.Method = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetProtocolAlpnProtocol(v int32) *CreateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.ProtocolAlpnProtocol = &v
 	return s
 }
 
@@ -16307,6 +16319,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	// *   ECS: Elastic Compute Service
 	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The name of the Grafana data source.
 	GrafaDataSourceName *string `json:"GrafaDataSourceName,omitempty" xml:"GrafaDataSourceName,omitempty"`
 	// The unique ID of the Grafana data source.
@@ -16398,6 +16411,11 @@ func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentSubType(v string) *D
 
 func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentType(v string) *DescribeEnvironmentResponseBodyData {
 	s.EnvironmentType = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetFeePackage(v string) *DescribeEnvironmentResponseBodyData {
+	s.FeePackage = &v
 	return s
 }
 
@@ -19851,10 +19869,14 @@ func (s *GetManagedPrometheusStatusResponse) SetBody(v *GetManagedPrometheusStat
 }
 
 type GetMultipleTraceRequest struct {
-	EndTime   *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TraceIDs  []*string `json:"TraceIDs,omitempty" xml:"TraceIDs,omitempty" type:"Repeated"`
+	// The time when the trace ends. The value is a timestamp. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the trace. The value is a timestamp. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The trace IDs.
+	TraceIDs []*string `json:"TraceIDs,omitempty" xml:"TraceIDs,omitempty" type:"Repeated"`
 }
 
 func (s GetMultipleTraceRequest) String() string {
@@ -19886,8 +19908,10 @@ func (s *GetMultipleTraceRequest) SetTraceIDs(v []*string) *GetMultipleTraceRequ
 }
 
 type GetMultipleTraceResponseBody struct {
+	// The details of traces.
 	MultiCallChainInfos []*GetMultipleTraceResponseBodyMultiCallChainInfos `json:"MultiCallChainInfos,omitempty" xml:"MultiCallChainInfos,omitempty" type:"Repeated"`
-	RequestId           *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMultipleTraceResponseBody) String() string {
@@ -19909,8 +19933,10 @@ func (s *GetMultipleTraceResponseBody) SetRequestId(v string) *GetMultipleTraceR
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfos struct {
-	Spans   []*GetMultipleTraceResponseBodyMultiCallChainInfosSpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Repeated"`
-	TraceID *string                                                 `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	// The details of the trace.
+	Spans []*GetMultipleTraceResponseBodyMultiCallChainInfosSpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Repeated"`
+	// The trace ID.
+	TraceID *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetMultipleTraceResponseBodyMultiCallChainInfos) String() string {
@@ -19932,20 +19958,60 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfos) SetTraceID(v string) *
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpans struct {
-	Duration      *int64                                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	HaveStack     *bool                                                               `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
-	LogEventList  []*GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Repeated"`
-	OperationName *string                                                             `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	ParentSpanId  *string                                                             `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
-	ResultCode    *string                                                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	RpcId         *string                                                             `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
-	RpcType       *int32                                                              `json:"RpcType,omitempty" xml:"RpcType,omitempty"`
-	ServiceIp     *string                                                             `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceName   *string                                                             `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SpanId        *string                                                             `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
-	TagEntryList  []*GetMultipleTraceResponseBodyMultiCallChainInfosSpansTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Repeated"`
-	Timestamp     *int64                                                              `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TraceID       *string                                                             `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	// The amount of time consumed by the trace. Unit: milliseconds.
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether a method stack was provided.
+	//
+	// *   `true`: A method stack was provided.
+	// *   `false`: No method stack was provided.
+	HaveStack *bool `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
+	// The log events in the trace.
+	LogEventList []*GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Repeated"`
+	// The name of the traced span.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The ID of the parent span.
+	ParentSpanId *string `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
+	// The status code returned.
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// RPC ID
+	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
+	// The type of the remote procedure call (RPC) mode.
+	//
+	// *   0: HTTP entry
+	// *   25: HTTP call
+	// *   1: High-speed Service Framework (HSF) call
+	// *   2: HSF provision
+	// *   40: on-premises API call
+	// *   60: MySQL call
+	// *   62: Oracle call
+	// *   63: PostgreSQL call
+	// *   70: Redis call
+	// *   4: Taobao Distributed Data Layer (TDDL) call
+	// *   5: Tair call
+	// *   13: MetaQ message sending
+	// *   252: MetaQ message receiving
+	// *   3: notification sending
+	// *   254: notification receiving
+	// *   7: Apache Dubbo call
+	// *   8: Apache Dubbo provision
+	// *   19: SOFARPC call
+	// *   18: SOFARPC provision
+	// *   11: Distributed Service Framework (DSF) call
+	// *   12: DSF provision
+	// *   \-1: unknown call
+	RpcType *int32 `json:"RpcType,omitempty" xml:"RpcType,omitempty"`
+	// The IP address of the host where the application resides.
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The name of the application.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The span ID.
+	SpanId *string `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
+	// The tags of the trace.
+	TagEntryList []*GetMultipleTraceResponseBodyMultiCallChainInfosSpansTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Repeated"`
+	// The timestamp.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The trace ID.
+	TraceID *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetMultipleTraceResponseBodyMultiCallChainInfosSpans) String() string {
@@ -20027,8 +20093,10 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpans) SetTraceID(v stri
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList struct {
+	// The tags of the trace.
 	TagEntryList []*GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Repeated"`
-	Timestamp    *int64                                                                          `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The time when the log was generated. The value is a timestamp.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList) String() string {
@@ -20050,7 +20118,9 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList) SetTi
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntryList struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20073,7 +20143,9 @@ func (s *GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntr
 }
 
 type GetMultipleTraceResponseBodyMultiCallChainInfosSpansTagEntryList struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24552,7 +24624,8 @@ type GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP struct {
 	//
 	// *   POST
 	// *   GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method               *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	ProtocolAlpnProtocol *int32  `json:"ProtocolAlpnProtocol,omitempty" xml:"ProtocolAlpnProtocol,omitempty"`
 	// The HTTP request body.
 	RequestBody *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
 	// The HTTP request header.
@@ -24583,6 +24656,11 @@ func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetConnectTim
 
 func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetMethod(v string) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
 	s.Method = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP) SetProtocolAlpnProtocol(v int32) *GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP {
+	s.ProtocolAlpnProtocol = &v
 	return s
 }
 
@@ -43643,6 +43721,7 @@ type UpdateEnvironmentRequest struct {
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// Environment name.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -43667,6 +43746,11 @@ func (s *UpdateEnvironmentRequest) SetEnvironmentId(v string) *UpdateEnvironment
 
 func (s *UpdateEnvironmentRequest) SetEnvironmentName(v string) *UpdateEnvironmentRequest {
 	s.EnvironmentName = &v
+	return s
+}
+
+func (s *UpdateEnvironmentRequest) SetFeePackage(v string) *UpdateEnvironmentRequest {
+	s.FeePackage = &v
 	return s
 }
 
@@ -45768,7 +45852,8 @@ type UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP struct {
 	//
 	// *   POST
 	// *   GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method               *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	ProtocolAlpnProtocol *int32  `json:"ProtocolAlpnProtocol,omitempty" xml:"ProtocolAlpnProtocol,omitempty"`
 	// The HTTP request body.
 	RequestBody *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody `json:"RequestBody,omitempty" xml:"RequestBody,omitempty" type:"Struct"`
 	// The custom header field.
@@ -45799,6 +45884,11 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetConnectTimeout(v
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetMethod(v string) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
 	s.Method = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP) SetProtocolAlpnProtocol(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP {
+	s.ProtocolAlpnProtocol = &v
 	return s
 }
 
@@ -48850,6 +48940,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentType)) {
 		query["EnvironmentType"] = request.EnvironmentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeePackage)) {
+		query["FeePackage"] = request.FeePackage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
@@ -60137,6 +60231,10 @@ func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentReq
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentName)) {
 		query["EnvironmentName"] = request.EnvironmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeePackage)) {
+		query["FeePackage"] = request.FeePackage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
