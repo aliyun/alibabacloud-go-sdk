@@ -130,19 +130,19 @@ func (s *VariablesValueFuncValue) SetTemplate(v string) *VariablesValueFuncValue
 }
 
 type BuildIndexRequest struct {
-	// The mode in which reindexing is performed.
+	// The reindexing mode.
 	BuildMode *string `json:"buildMode,omitempty" xml:"buildMode,omitempty"`
 	// The name of the data source.
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	// The type of the data source.
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The timestamp in seconds. This parameter is required if you import data from the data source by calling API operations.
+	// The timestamp in seconds. It is of the INT type. This parameter is required for the API-pushed data source.
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The data center in which the data source resides.
+	// The data center where the data source is deployed.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The ID of the generation.
+	// The data restoration version.
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The data partition. This parameter is required if the dataSourceType parameter is set to odps.
+	// This parameter is required for the odps data source.
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
@@ -190,9 +190,9 @@ func (s *BuildIndexRequest) SetPartition(v string) *BuildIndexRequest {
 }
 
 type BuildIndexResponseBody struct {
-	// The ID of the request.
+	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The list of clusters
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -215,9 +215,9 @@ func (s *BuildIndexResponseBody) SetResult(v map[string]interface{}) *BuildIndex
 }
 
 type BuildIndexResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BuildIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BuildIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BuildIndexResponse) String() string {
@@ -244,15 +244,15 @@ func (s *BuildIndexResponse) SetBody(v *BuildIndexResponseBody) *BuildIndexRespo
 }
 
 type CreateClusterRequest struct {
-	// Specifies whether to automatically balance the load between QRS workers.
+	// The remarks of the query node
 	AutoLoad *bool `json:"autoLoad,omitempty" xml:"autoLoad,omitempty"`
-	// The information about Searcher workers.
+	// The description of the data node
 	DataNode *CreateClusterRequestDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
-	// The description of the cluster.
+	// The description of the cluster
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the cluster.
+	// The name of the node
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The information about Query Result Searcher (QRS) workers.
+	// The description of the query node
 	QueryNode *CreateClusterRequestQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
 }
 
@@ -290,7 +290,7 @@ func (s *CreateClusterRequest) SetQueryNode(v *CreateClusterRequestQueryNode) *C
 }
 
 type CreateClusterRequestDataNode struct {
-	// The number of Searcher workers.
+	// The number of data nodes
 	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
 }
 
@@ -308,7 +308,7 @@ func (s *CreateClusterRequestDataNode) SetNumber(v int32) *CreateClusterRequestD
 }
 
 type CreateClusterRequestQueryNode struct {
-	// The number of QRS workers.
+	// The number of nodes to query
 	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
 }
 
@@ -326,9 +326,9 @@ func (s *CreateClusterRequestQueryNode) SetNumber(v int32) *CreateClusterRequest
 }
 
 type CreateClusterResponseBody struct {
-	// The ID of the request.
+	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The result returned
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -351,9 +351,9 @@ func (s *CreateClusterResponseBody) SetResult(v map[string]interface{}) *CreateC
 }
 
 type CreateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -528,6 +528,7 @@ func (s *CreateDataSourceRequestSaroConfig) SetTableName(v string) *CreateDataSo
 }
 
 type CreateDataSourceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The returned results.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
@@ -552,9 +553,9 @@ func (s *CreateDataSourceResponseBody) SetResult(v map[string]interface{}) *Crea
 }
 
 type CreateDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDataSourceResponse) String() string {
@@ -583,17 +584,22 @@ func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *Cre
 type CreateIndexRequest struct {
 	// The content of the index.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
-	DataSource     *string                           `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// The data source type. Valid values: odps, mns, flink, and streaming. This parameter can be ignored.
+	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// 数据源相关信息 （向量检索版新版本必填）
 	DataSourceInfo *CreateIndexRequestDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// The data center in which the data source resides.
-	Domain *string                `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The data center where the data source is deployed.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// 字段配置的扩展的内容
+	// key: 向量字段(vector)、
+	// 需embeding字段(embeding)
 	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The name of the index.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The data partition.
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	DryRun    *bool  `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// 是否dryRun创建（仅校验数据源是否合法）。取值：-true 是 -false 否
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -645,10 +651,22 @@ func (s *CreateIndexRequest) SetDryRun(v bool) *CreateIndexRequest {
 }
 
 type CreateIndexRequestDataSourceInfo struct {
-	AutoBuildIndex        *bool                                   `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Config                *CreateIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	ProcessPartitionCount *int32                                  `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	Type                  *string                                 `json:"type,omitempty" xml:"type,omitempty"`
+	// 是否开启自动全量
+	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// odps相关
+	Config      *CreateIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	DataTimeSec *int32                                  `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
+	Domain      *string                                 `json:"domain,omitempty" xml:"domain,omitempty"`
+	Name        *string                                 `json:"name,omitempty" xml:"name,omitempty"`
+	// 数据更新资源数
+	ProcessPartitionCount *int32                                      `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
+	SaroConfig            *CreateIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	// 数据源类型
+	// odps
+	// swift
+	// saro
+	// oss
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateIndexRequestDataSourceInfo) String() string {
@@ -669,8 +687,28 @@ func (s *CreateIndexRequestDataSourceInfo) SetConfig(v *CreateIndexRequestDataSo
 	return s
 }
 
+func (s *CreateIndexRequestDataSourceInfo) SetDataTimeSec(v int32) *CreateIndexRequestDataSourceInfo {
+	s.DataTimeSec = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfo) SetDomain(v string) *CreateIndexRequestDataSourceInfo {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfo) SetName(v string) *CreateIndexRequestDataSourceInfo {
+	s.Name = &v
+	return s
+}
+
 func (s *CreateIndexRequestDataSourceInfo) SetProcessPartitionCount(v int32) *CreateIndexRequestDataSourceInfo {
 	s.ProcessPartitionCount = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfo) SetSaroConfig(v *CreateIndexRequestDataSourceInfoSaroConfig) *CreateIndexRequestDataSourceInfo {
+	s.SaroConfig = v
 	return s
 }
 
@@ -680,12 +718,22 @@ func (s *CreateIndexRequestDataSourceInfo) SetType(v string) *CreateIndexRequest
 }
 
 type CreateIndexRequestDataSourceInfoConfig struct {
-	AccessKey    *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// odps数据源ak
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// odps数据源ak secret
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Partition    *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
-	Table        *string `json:"table,omitempty" xml:"table,omitempty"`
+	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// odps数据源的endpoint, oss数据源的endpoint
+	Endpoint  *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OssPath   *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// 数据源为odps时必填
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	Path      *string `json:"path,omitempty" xml:"path,omitempty"`
+	// odps数据源项目名称
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// 表名称
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s CreateIndexRequestDataSourceInfoConfig) String() string {
@@ -706,13 +754,33 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetAccessSecret(v string) *Crea
 	return s
 }
 
+func (s *CreateIndexRequestDataSourceInfoConfig) SetBucket(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Bucket = &v
+	return s
+}
+
 func (s *CreateIndexRequestDataSourceInfoConfig) SetEndpoint(v string) *CreateIndexRequestDataSourceInfoConfig {
 	s.Endpoint = &v
 	return s
 }
 
+func (s *CreateIndexRequestDataSourceInfoConfig) SetNamespace(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetOssPath(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.OssPath = &v
+	return s
+}
+
 func (s *CreateIndexRequestDataSourceInfoConfig) SetPartition(v string) *CreateIndexRequestDataSourceInfoConfig {
 	s.Partition = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetPath(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Path = &v
 	return s
 }
 
@@ -726,10 +794,33 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetTable(v string) *CreateIndex
 	return s
 }
 
+type CreateIndexRequestDataSourceInfoSaroConfig struct {
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+}
+
+func (s CreateIndexRequestDataSourceInfoSaroConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndexRequestDataSourceInfoSaroConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndexRequestDataSourceInfoSaroConfig) SetNamespace(v string) *CreateIndexRequestDataSourceInfoSaroConfig {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoSaroConfig) SetTableName(v string) *CreateIndexRequestDataSourceInfoSaroConfig {
+	s.TableName = &v
+	return s
+}
+
 type CreateIndexResponseBody struct {
-	// The ID of the request.
+	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index.
+	// The information about the index
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -752,9 +843,9 @@ func (s *CreateIndexResponseBody) SetResult(v map[string]interface{}) *CreateInd
 }
 
 type CreateIndexResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateIndexResponse) String() string {
@@ -781,11 +872,11 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 }
 
 type CreateInstanceRequest struct {
-	// The billing method of the instance. Valid values: PREPAY and POSTPAY. PREPAY: subscription. If you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit payment. Otherwise, the system returns the InvalidPayMethod error message. In addition, you must specify the paymentInfo parameter. POSTPAY: pay-as-you-go. This billing method is not supported.
+	// The billing method of the instance. Valid values: PREPAY and POSTPAY. PREPAY indicates the instance is a subscription instance. When you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit card payment. Otherwise, the system returns the InvalidPayMethod error message. If you set this parameter to PREPAY, you must also specify the paymentInfo parameter. POSTPAY indicates that the instance is a pay-as-you-go instance. This billing method is not supported.
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The specifications of the instance.
+	// A list of instance-related specifications.
 	Components []*CreateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The information about billing.
+	// The billing information.
 	Order *CreateInstanceRequestOrder `json:"order,omitempty" xml:"order,omitempty" type:"Struct"`
 }
 
@@ -813,9 +904,9 @@ func (s *CreateInstanceRequest) SetOrder(v *CreateInstanceRequestOrder) *CreateI
 }
 
 type CreateInstanceRequestComponents struct {
-	// The name of the specification. The value must be the same as the name of a parameter on the buy page.
+	// The specification code, which must be consistent with values of the corresponding module parameters.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The value of the specification.
+	// Values that you specify for the corresponding module components on the buy page.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -840,9 +931,9 @@ func (s *CreateInstanceRequestComponents) SetValue(v string) *CreateInstanceRequ
 type CreateInstanceRequestOrder struct {
 	// Specifies whether to enable auto-renewal. Valid values: true and false.
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// The billing cycle. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 12.
+	// The billing duration. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 12.
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The unit of the billing cycle. Valid values: Month and Year.
+	// The unit of the billing duration. Valid values: Month and Year.
 	PricingCycle *string `json:"pricingCycle,omitempty" xml:"pricingCycle,omitempty"`
 }
 
@@ -870,9 +961,9 @@ func (s *CreateInstanceRequestOrder) SetPricingCycle(v string) *CreateInstanceRe
 }
 
 type CreateInstanceResponseBody struct {
-	// The ID of the request.
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The result returned
 	Result *CreateInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -895,7 +986,7 @@ func (s *CreateInstanceResponseBody) SetResult(v *CreateInstanceResponseBodyResu
 }
 
 type CreateInstanceResponseBodyResult struct {
-	// The ID of the instance.
+	// The ID of the instance
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
@@ -913,9 +1004,9 @@ func (s *CreateInstanceResponseBodyResult) SetInstanceId(v string) *CreateInstan
 }
 
 type CreateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -967,9 +1058,9 @@ func (s *DeleteAdvanceConfigResponseBody) SetResult(v map[string]interface{}) *D
 }
 
 type DeleteAdvanceConfigResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAdvanceConfigResponse) String() string {
@@ -1021,9 +1112,9 @@ func (s *DeleteDataSourceResponseBody) SetResult(v map[string]interface{}) *Dele
 }
 
 type DeleteDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDataSourceResponse) String() string {
@@ -1050,6 +1141,7 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 }
 
 type DeleteIndexRequest struct {
+	// The data source
 	DataSource       *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
 	DeleteDataSource *bool   `json:"deleteDataSource,omitempty" xml:"deleteDataSource,omitempty"`
 }
@@ -1074,8 +1166,9 @@ func (s *DeleteIndexRequest) SetDeleteDataSource(v bool) *DeleteIndexRequest {
 
 type DeleteIndexResponseBody struct {
 	// id of request
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the index
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteIndexResponseBody) String() string {
@@ -1097,9 +1190,9 @@ func (s *DeleteIndexResponseBody) SetResult(v map[string]interface{}) *DeleteInd
 }
 
 type DeleteIndexResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIndexResponse) String() string {
@@ -1127,8 +1220,9 @@ func (s *DeleteIndexResponse) SetBody(v *DeleteIndexResponseBody) *DeleteIndexRe
 
 type DeleteIndexVersionResponseBody struct {
 	// id of request
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteIndexVersionResponseBody) String() string {
@@ -1150,9 +1244,9 @@ func (s *DeleteIndexVersionResponseBody) SetResult(v map[string]interface{}) *De
 }
 
 type DeleteIndexVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteIndexVersionResponse) String() string {
@@ -1179,8 +1273,10 @@ func (s *DeleteIndexVersionResponse) SetBody(v *DeleteIndexVersionResponseBody) 
 }
 
 type DeleteInstanceResponseBody struct {
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result returned
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -1202,9 +1298,9 @@ func (s *DeleteInstanceResponseBody) SetResult(v map[string]interface{}) *Delete
 }
 
 type DeleteInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -1231,9 +1327,9 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type ForceSwitchResponseBody struct {
-	// The ID of the request.
+	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The index information.
+	// The information about the index
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -1256,9 +1352,9 @@ func (s *ForceSwitchResponseBody) SetResult(v map[string]interface{}) *ForceSwit
 }
 
 type ForceSwitchResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ForceSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ForceSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ForceSwitchResponse) String() string {
@@ -1426,9 +1522,9 @@ func (s *GetAdvanceConfigResponseBodyResultFiles) SetName(v string) *GetAdvanceC
 }
 
 type GetAdvanceConfigResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAdvanceConfigResponse) String() string {
@@ -1455,6 +1551,7 @@ func (s *GetAdvanceConfigResponse) SetBody(v *GetAdvanceConfigResponseBody) *Get
 }
 
 type GetAdvanceConfigFileRequest struct {
+	// The name of the file
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -1473,8 +1570,9 @@ func (s *GetAdvanceConfigFileRequest) SetFileName(v string) *GetAdvanceConfigFil
 
 type GetAdvanceConfigFileResponseBody struct {
 	// id of request
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetAdvanceConfigFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result
+	Result *GetAdvanceConfigFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetAdvanceConfigFileResponseBody) String() string {
@@ -1496,6 +1594,7 @@ func (s *GetAdvanceConfigFileResponseBody) SetResult(v *GetAdvanceConfigFileResp
 }
 
 type GetAdvanceConfigFileResponseBodyResult struct {
+	// The content of the file
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 }
 
@@ -1513,9 +1612,9 @@ func (s *GetAdvanceConfigFileResponseBodyResult) SetContent(v string) *GetAdvanc
 }
 
 type GetAdvanceConfigFileResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAdvanceConfigFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAdvanceConfigFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAdvanceConfigFileResponse) String() string {
@@ -1712,9 +1811,9 @@ func (s *GetClusterResponseBodyResultQueryNode) SetPartition(v int32) *GetCluste
 }
 
 type GetClusterResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetClusterResponse) String() string {
@@ -1743,7 +1842,7 @@ func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterRespo
 type GetClusterRunTimeInfoResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The configuration progress. Unit: percentage.
+	// The result set.
 	Result []*GetClusterRunTimeInfoResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -1766,11 +1865,11 @@ func (s *GetClusterRunTimeInfoResponseBody) SetResult(v []*GetClusterRunTimeInfo
 }
 
 type GetClusterRunTimeInfoResponseBodyResult struct {
-	// The name of the cluster
+	// The name of the cluster.
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// dataNodes
+	// The information about the data node.
 	DataNodes []*GetClusterRunTimeInfoResponseBodyResultDataNodes `json:"dataNodes,omitempty" xml:"dataNodes,omitempty" type:"Repeated"`
-	// The specifications of the query node.
+	// The information about the query node.
 	QueryNode *GetClusterRunTimeInfoResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
 }
 
@@ -1798,9 +1897,12 @@ func (s *GetClusterRunTimeInfoResponseBodyResult) SetQueryNode(v *GetClusterRunT
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodes struct {
+	// The configuration status list.
 	ConfigStatusList []*GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList `json:"configStatusList,omitempty" xml:"configStatusList,omitempty" type:"Repeated"`
-	DataStatusList   []*GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList   `json:"dataStatusList,omitempty" xml:"dataStatusList,omitempty" type:"Repeated"`
-	ServiceStatus    *GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus      `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty" type:"Struct"`
+	// The dataStatusList.
+	DataStatusList []*GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList `json:"dataStatusList,omitempty" xml:"dataStatusList,omitempty" type:"Repeated"`
+	// The service status.
+	ServiceStatus *GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty" type:"Struct"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodes) String() string {
@@ -1827,11 +1929,16 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodes) SetServiceStatus(v *G
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList struct {
+	// The time when the cluster was updated.
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	DonePercent      *int32  `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	DoneSize         *int32  `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	TotalSize        *int32  `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// The overall progress.
+	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
+	// The number of nodes that are configured.
+	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total number of nodes that you specify when you create the cluster.
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList) String() string {
@@ -1868,22 +1975,38 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList) SetTo
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList struct {
-	AdvanceConfigInfo  *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfigInfo `json:"advanceConfigInfo,omitempty" xml:"advanceConfigInfo,omitempty" type:"Struct"`
-	DeployFailedWorker []*string                                                                        `json:"deployFailedWorker,omitempty" xml:"deployFailedWorker,omitempty" type:"Repeated"`
-	DocSize            *int32                                                                           `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	DonePercent        *int32                                                                           `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	DoneSize           *int32                                                                           `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	ErrorMsg           *string                                                                          `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	FullUpdateTime     *string                                                                          `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
-	FullVersion        *int64                                                                           `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
-	IncUpdateTime      *string                                                                          `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
-	IncVersion         *int64                                                                           `json:"incVersion,omitempty" xml:"incVersion,omitempty"`
-	IndexConfigInfo    *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigInfo   `json:"indexConfigInfo,omitempty" xml:"indexConfigInfo,omitempty" type:"Struct"`
-	IndexSize          *int64                                                                           `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
-	LackDiskWorker     []*string                                                                        `json:"lackDiskWorker,omitempty" xml:"lackDiskWorker,omitempty" type:"Repeated"`
-	LackMemWorker      []*string                                                                        `json:"lackMemWorker,omitempty" xml:"lackMemWorker,omitempty" type:"Repeated"`
-	Name               *string                                                                          `json:"name,omitempty" xml:"name,omitempty"`
-	TotalSize          *int32                                                                           `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// The information about advanced configurations.
+	AdvanceConfigInfo *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfigInfo `json:"advanceConfigInfo,omitempty" xml:"advanceConfigInfo,omitempty" type:"Struct"`
+	// The name of the worker that failed because of a deployment failure.
+	DeployFailedWorker []*string `json:"deployFailedWorker,omitempty" xml:"deployFailedWorker,omitempty" type:"Repeated"`
+	// The storage capacity. Unit: GB.
+	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
+	// The overall progress.
+	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
+	// The number of nodes that are configured.
+	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The time when the full data was updated.
+	FullUpdateTime *string `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
+	// The full version.
+	FullVersion *int64 `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
+	// The time when the incremental data was updated.
+	IncUpdateTime *string `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
+	// The incremental version.
+	IncVersion *int64 `json:"incVersion,omitempty" xml:"incVersion,omitempty"`
+	// The configuration information of the index.
+	IndexConfigInfo *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigInfo `json:"indexConfigInfo,omitempty" xml:"indexConfigInfo,omitempty" type:"Struct"`
+	// The size of the index.
+	IndexSize *int64 `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
+	// The name of the worker that failed because of insufficient disk space.
+	LackDiskWorker []*string `json:"lackDiskWorker,omitempty" xml:"lackDiskWorker,omitempty" type:"Repeated"`
+	// The name of the worker that failed because of insufficient memory.
+	LackMemWorker []*string `json:"lackMemWorker,omitempty" xml:"lackMemWorker,omitempty" type:"Repeated"`
+	// The name of the node.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total number of nodes that you specify when you create the cluster.
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList) String() string {
@@ -1975,8 +2098,10 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList) SetTota
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfigInfo struct {
+	// The name of the index configuration.
 	ConfigMetaName *string `json:"configMetaName,omitempty" xml:"configMetaName,omitempty"`
-	Version        *int64  `json:"version,omitempty" xml:"version,omitempty"`
+	// The version number.
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfigInfo) String() string {
@@ -1998,8 +2123,10 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceCo
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigInfo struct {
+	// The name of the index configuration.
 	ConfigMetaName *string `json:"configMetaName,omitempty" xml:"configMetaName,omitempty"`
-	Version        *int64  `json:"version,omitempty" xml:"version,omitempty"`
+	// The version of the index template.
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigInfo) String() string {
@@ -2021,10 +2148,14 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConf
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus struct {
-	DonePercent *int32  `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	DoneSize    *int32  `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	TotalSize   *int32  `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// The overall progress.
+	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
+	// The number of nodes being processed in the cluster.
+	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The total number of nodes in the cluster.
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus) String() string {
@@ -2056,9 +2187,9 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus) SetTotal
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNode struct {
-	// configStatusList
+	// The dataStatusList.
 	ConfigStatusList []*GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList `json:"configStatusList,omitempty" xml:"configStatusList,omitempty" type:"Repeated"`
-	// serviceStatus
+	// The service status.
 	ServiceStatus *GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty" type:"Struct"`
 }
 
@@ -2081,15 +2212,15 @@ func (s *GetClusterRunTimeInfoResponseBodyResultQueryNode) SetServiceStatus(v *G
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList struct {
-	// configUpdateTime
+	// The time when the cluster was updated.
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	// donePercent
+	// The progress.
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// doneSize
+	// The number of nodes that are configured.
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	// name
+	// The name of the cluster.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// totalSize
+	// The total number of nodes that you specify when you create the cluster.
 	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
@@ -2127,13 +2258,13 @@ func (s *GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList) SetTo
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus struct {
-	// donePercent
+	// The progress.
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// doneSize
+	// The number of nodes that are configured.
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
 	// The name of the cluster.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// totalSize
+	// The total number of nodes that you specify when you create the cluster.
 	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
@@ -2166,9 +2297,9 @@ func (s *GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus) SetTotal
 }
 
 type GetClusterRunTimeInfoResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetClusterRunTimeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterRunTimeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetClusterRunTimeInfoResponse) String() string {
@@ -2197,7 +2328,7 @@ func (s *GetClusterRunTimeInfoResponse) SetBody(v *GetClusterRunTimeInfoResponse
 type GetDataSourceResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the data source.
+	// The list of information about the data source
 	Result *GetDataSourceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -2220,12 +2351,17 @@ func (s *GetDataSourceResponseBody) SetResult(v *GetDataSourceResponseBodyResult
 }
 
 type GetDataSourceResponseBodyResult struct {
-	Domain      *string   `json:"domain,omitempty" xml:"domain,omitempty"`
-	Indexes     []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	LastFulTime *int64    `json:"lastFulTime,omitempty" xml:"lastFulTime,omitempty"`
-	Name        *string   `json:"name,omitempty" xml:"name,omitempty"`
-	Status      *string   `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the data source.
+	// The data center where the data source is deployed in offline mode
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The list of index information
+	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
+	// The time when an index for full data was last built
+	LastFulTime *int64 `json:"lastFulTime,omitempty" xml:"lastFulTime,omitempty"`
+	// The name of the data source
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The state of the data source
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The type of the data source
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -2268,9 +2404,9 @@ func (s *GetDataSourceResponseBodyResult) SetType(v string) *GetDataSourceRespon
 }
 
 type GetDataSourceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDataSourceResponse) String() string {
@@ -2587,9 +2723,9 @@ func (s *GetDataSourceDeployResponseBodyResultSwift) SetZk(v string) *GetDataSou
 }
 
 type GetDataSourceDeployResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDataSourceDeployResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataSourceDeployResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDataSourceDeployResponse) String() string {
@@ -2617,8 +2753,9 @@ func (s *GetDataSourceDeployResponse) SetBody(v *GetDataSourceDeployResponseBody
 
 type GetDeployGraphResponseBody struct {
 	// Id of the request
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetDeployGraphResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result returned
+	Result *GetDeployGraphResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetDeployGraphResponseBody) String() string {
@@ -2657,12 +2794,18 @@ func (s *GetDeployGraphResponseBodyResult) SetGraph(v *GetDeployGraphResponseBod
 }
 
 type GetDeployGraphResponseBodyResultGraph struct {
-	IndexMetas         []*GetDeployGraphResponseBodyResultGraphIndexMetas   `json:"indexMetas,omitempty" xml:"indexMetas,omitempty" type:"Repeated"`
-	OnlineMaster       []*GetDeployGraphResponseBodyResultGraphOnlineMaster `json:"onlineMaster,omitempty" xml:"onlineMaster,omitempty" type:"Repeated"`
-	TableIndexRelation map[string][]*string                                 `json:"tableIndexRelation,omitempty" xml:"tableIndexRelation,omitempty"`
-	TableMetas         []*GetDeployGraphResponseBodyResultGraphTableMetas   `json:"tableMetas,omitempty" xml:"tableMetas,omitempty" type:"Repeated"`
-	ZoneIndexRelation  map[string][]*string                                 `json:"zoneIndexRelation,omitempty" xml:"zoneIndexRelation,omitempty"`
-	ZoneMetas          []*GetDeployGraphResponseBodyResultGraphZoneMetas    `json:"zoneMetas,omitempty" xml:"zoneMetas,omitempty" type:"Repeated"`
+	// 索引元信息
+	IndexMetas []*GetDeployGraphResponseBodyResultGraphIndexMetas `json:"indexMetas,omitempty" xml:"indexMetas,omitempty" type:"Repeated"`
+	// 在线集群元信息
+	OnlineMaster []*GetDeployGraphResponseBodyResultGraphOnlineMaster `json:"onlineMaster,omitempty" xml:"onlineMaster,omitempty" type:"Repeated"`
+	// 数据源和索引关联关系
+	TableIndexRelation map[string][]*string `json:"tableIndexRelation,omitempty" xml:"tableIndexRelation,omitempty"`
+	// 数据源元信息
+	TableMetas []*GetDeployGraphResponseBodyResultGraphTableMetas `json:"tableMetas,omitempty" xml:"tableMetas,omitempty" type:"Repeated"`
+	// zone和索引关联关系
+	ZoneIndexRelation map[string][]*string `json:"zoneIndexRelation,omitempty" xml:"zoneIndexRelation,omitempty"`
+	// zone元信息
+	ZoneMetas []*GetDeployGraphResponseBodyResultGraphZoneMetas `json:"zoneMetas,omitempty" xml:"zoneMetas,omitempty" type:"Repeated"`
 }
 
 func (s GetDeployGraphResponseBodyResultGraph) String() string {
@@ -2874,9 +3017,9 @@ func (s *GetDeployGraphResponseBodyResultGraphZoneMetas) SetType(v string) *GetD
 }
 
 type GetDeployGraphResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeployGraphResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeployGraphResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeployGraphResponse) String() string {
@@ -2903,6 +3046,7 @@ func (s *GetDeployGraphResponse) SetBody(v *GetDeployGraphResponseBody) *GetDepl
 }
 
 type GetFileRequest struct {
+	// The name of the file in full path
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -2921,8 +3065,9 @@ func (s *GetFileRequest) SetFileName(v string) *GetFileRequest {
 
 type GetFileResponseBody struct {
 	// id of request
-	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the index.
+	Result *GetFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetFileResponseBody) String() string {
@@ -2944,12 +3089,18 @@ func (s *GetFileResponseBody) SetResult(v *GetFileResponseBodyResult) *GetFileRe
 }
 
 type GetFileResponseBodyResult struct {
-	Content      *string `json:"content,omitempty" xml:"content,omitempty"`
-	DataSource   *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// The content of the file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The data source.
+	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// The name of the full path.
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	IsDir        *bool   `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-	Partition    *int64  `json:"partition,omitempty" xml:"partition,omitempty"`
+	// Indicates whether it is a directory.
+	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// The name of the file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of shards.
+	Partition *int64 `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
 func (s GetFileResponseBodyResult) String() string {
@@ -2991,9 +3142,9 @@ func (s *GetFileResponseBodyResult) SetPartition(v int64) *GetFileResponseBodyRe
 }
 
 type GetFileResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFileResponse) String() string {
@@ -3394,9 +3545,9 @@ func (s *GetIndexResponseBodyResultVersionsFiles) SetName(v string) *GetIndexRes
 }
 
 type GetIndexResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIndexResponse) String() string {
@@ -3424,8 +3575,9 @@ func (s *GetIndexResponse) SetBody(v *GetIndexResponseBody) *GetIndexResponse {
 
 type GetIndexVersionResponseBody struct {
 	// id of request
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetIndexVersionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of cluster details
+	Result *GetIndexVersionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetIndexVersionResponseBody) String() string {
@@ -3447,7 +3599,9 @@ func (s *GetIndexVersionResponseBody) SetResult(v *GetIndexVersionResponseBodyRe
 }
 
 type GetIndexVersionResponseBodyResult struct {
-	Cluster       *string                                           `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The name of the cluster
+	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the cluster was updated
 	IndexVersions []*GetIndexVersionResponseBodyResultIndexVersions `json:"indexVersions,omitempty" xml:"indexVersions,omitempty" type:"Repeated"`
 }
 
@@ -3470,10 +3624,13 @@ func (s *GetIndexVersionResponseBodyResult) SetIndexVersions(v []*GetIndexVersio
 }
 
 type GetIndexVersionResponseBodyResultIndexVersions struct {
-	BuildDeployId  *string  `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	CurrentVersion *int64   `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	IndexName      *string  `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	Versions       []*int64 `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	// The ID of the index deployed in offline mode
+	BuildDeployId  *string `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
+	CurrentVersion *int64  `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
+	// The name of the index table
+	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// The version of the index
+	Versions []*int64 `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
 func (s GetIndexVersionResponseBodyResultIndexVersions) String() string {
@@ -3505,9 +3662,9 @@ func (s *GetIndexVersionResponseBodyResultIndexVersions) SetVersions(v []*int64)
 }
 
 type GetIndexVersionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIndexVersionResponse) String() string {
@@ -3534,8 +3691,9 @@ func (s *GetIndexVersionResponse) SetBody(v *GetIndexVersionResponseBody) *GetIn
 }
 
 type GetInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The description of the instance.
+	// The result returned.
 	Result *GetInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -3558,76 +3716,34 @@ func (s *GetInstanceResponseBody) SetResult(v *GetInstanceResponseBodyResult) *G
 }
 
 type GetInstanceResponseBodyResult struct {
-	// 付费类型
+	// The billing method.
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// 商品code
+	// The product code.
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the instance was created.
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the request.
+	// The description of the instance.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// WB01240825
+	// The expiration time.
 	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
-	// 是否欠费
+	// Indicates whether an overdue payment is involved.
 	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The ID of the resource.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 锁定状态
+	// The lock status.
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// ### Sample responses
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The status of the instance. Valid values:
 	//
-	// **Sample success responses**
-	//
-	//     {
-	//       "requestId": "90D6B8F5-FE97-4509-9AAB-367836C51818",
-	//       "result":
-	//       {
-	//         "instanceId":"fadsfsafs",
-	//         "inDebt":true,
-	//         "lockMode":"Unlock",
-	//         "expiredTime":"asdfas",
-	//         "updateTime":"dfasf",
-	//         "createTime":"dfasf",
-	//         "resourceGroupId":"resourceGroupID",
-	//         "commodityCode":"commodityCode",
-	//         "chargeType":"POSYPAY",
-	//         "description":"this is description",
-	//         "apiVersion": "tisplus/v1",
-	//         "network": {
-	//           "vSwitchId": "vswitch_id_xxx",
-	//           "vpcId": "vpc_id_xxx",
-	//         },
-	//         "userName": "user",
-	//         "spec": {
-	//           "searchResource": {
-	//             "disk": 50,
-	//             "mem": 8,
-	//             "cpu": 2,
-	//             "nodeCount": 2
-	//           },
-	//           "qrsResource": {
-	//             "disk": 50,
-	//             "mem": 8,
-	//             "cpu": 2,
-	//             "nodeCount": 2
-	//           }
-	//         },
-	//        "status": "INIT",
-	//       }
-	//     }
-	//
-	// **Sample error responses**
-	//
-	//     {
-	//       "requestId": "BD1EA715-DF6F-06C2-004C-C1FA0D3A9820",
-	//       "httpCode": 404,
-	//       "code": "App.NotFound",
-	//       "message": "App not found"
-	//     }
-	ResourceGroupId *string                              `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Status          *string                              `json:"status,omitempty" xml:"status,omitempty"`
-	Tags            []*GetInstanceResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 更新时间
+	// *   INIT: being initialized
+	// *   WAIT_CONFIG: to be configured
+	// *   CONFIG_UPDATING: configuration taking effect
+	// *   READY: normal
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 标签。
+	Tags []*GetInstanceResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The time when the instance was last updated.
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
@@ -3700,7 +3816,9 @@ func (s *GetInstanceResponseBodyResult) SetUpdateTime(v string) *GetInstanceResp
 }
 
 type GetInstanceResponseBodyResultTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 标签键
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 标签值
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -3723,9 +3841,9 @@ func (s *GetInstanceResponseBodyResultTags) SetValue(v string) *GetInstanceRespo
 }
 
 type GetInstanceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -3752,9 +3870,12 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetNodeConfigRequest struct {
+	// The name of the cluster
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the node. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster node.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetNodeConfigRequest) String() string {
@@ -3782,8 +3903,9 @@ func (s *GetNodeConfigRequest) SetType(v string) *GetNodeConfigRequest {
 
 type GetNodeConfigResponseBody struct {
 	// Id of the request
-	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetNodeConfigResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result set.
+	Result *GetNodeConfigResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetNodeConfigResponseBody) String() string {
@@ -3805,11 +3927,17 @@ func (s *GetNodeConfigResponseBody) SetResult(v *GetNodeConfigResponseBodyResult
 }
 
 type GetNodeConfigResponseBodyResult struct {
-	Active              *bool  `json:"active,omitempty" xml:"active,omitempty"`
+	// Indicates whether the expression is the default one.
+	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
+	// The number of data replicas.
 	DataDuplicateNumber *int32 `json:"dataDuplicateNumber,omitempty" xml:"dataDuplicateNumber,omitempty"`
-	DataFragmentNumber  *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
-	MinServicePercent   *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
-	Published           *bool  `json:"published,omitempty" xml:"published,omitempty"`
+	// The number of data shards.
+	DataFragmentNumber *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
+	FlowRatio          *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
+	// The minimum service ratio.
+	MinServicePercent *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
+	// Indicates whether the node is associated with the cluster.
+	Published *bool `json:"published,omitempty" xml:"published,omitempty"`
 }
 
 func (s GetNodeConfigResponseBodyResult) String() string {
@@ -3835,6 +3963,11 @@ func (s *GetNodeConfigResponseBodyResult) SetDataFragmentNumber(v int32) *GetNod
 	return s
 }
 
+func (s *GetNodeConfigResponseBodyResult) SetFlowRatio(v int32) *GetNodeConfigResponseBodyResult {
+	s.FlowRatio = &v
+	return s
+}
+
 func (s *GetNodeConfigResponseBodyResult) SetMinServicePercent(v int32) *GetNodeConfigResponseBodyResult {
 	s.MinServicePercent = &v
 	return s
@@ -3846,9 +3979,9 @@ func (s *GetNodeConfigResponseBodyResult) SetPublished(v bool) *GetNodeConfigRes
 }
 
 type GetNodeConfigResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNodeConfigResponse) String() string {
@@ -3875,6 +4008,7 @@ func (s *GetNodeConfigResponse) SetBody(v *GetNodeConfigResponseBody) *GetNodeCo
 }
 
 type ListAdvanceConfigDirRequest struct {
+	// The name of the directory
 	DirName *string `json:"dirName,omitempty" xml:"dirName,omitempty"`
 }
 
@@ -3892,8 +4026,10 @@ func (s *ListAdvanceConfigDirRequest) SetDirName(v string) *ListAdvanceConfigDir
 }
 
 type ListAdvanceConfigDirResponseBody struct {
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ListAdvanceConfigDirResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The file list in the advanced configuration directory.
+	Result []*ListAdvanceConfigDirResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ListAdvanceConfigDirResponseBody) String() string {
@@ -3915,10 +4051,14 @@ func (s *ListAdvanceConfigDirResponseBody) SetResult(v []*ListAdvanceConfigDirRe
 }
 
 type ListAdvanceConfigDirResponseBodyResult struct {
+	// The name of the absolute path.
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	IsDir        *bool   `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	IsTemplate   *bool   `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// Indicates whether it is a template. Valid values: **true** and **false**. true indicates that it is a template, and false indicates that it is not a template.
+	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListAdvanceConfigDirResponseBodyResult) String() string {
@@ -3950,9 +4090,9 @@ func (s *ListAdvanceConfigDirResponseBodyResult) SetName(v string) *ListAdvanceC
 }
 
 type ListAdvanceConfigDirResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAdvanceConfigDirResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAdvanceConfigDirResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAdvanceConfigDirResponse) String() string {
@@ -3981,7 +4121,8 @@ func (s *ListAdvanceConfigDirResponse) SetBody(v *ListAdvanceConfigDirResponseBo
 type ListAdvanceConfigsRequest struct {
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	IndexName      *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of the advanced configurations. Valid values: online and offline. - online The default value is offline.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAdvanceConfigsRequest) String() string {
@@ -4008,8 +4149,10 @@ func (s *ListAdvanceConfigsRequest) SetType(v string) *ListAdvanceConfigsRequest
 }
 
 type ListAdvanceConfigsResponseBody struct {
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ListAdvanceConfigsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of advanced configurations.
+	Result []*ListAdvanceConfigsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ListAdvanceConfigsResponseBody) String() string {
@@ -4031,15 +4174,18 @@ func (s *ListAdvanceConfigsResponseBody) SetResult(v []*ListAdvanceConfigsRespon
 }
 
 type ListAdvanceConfigsResponseBodyResult struct {
-	// 配置内容 http，git 请求时不为空
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 配置内容的类型 (FILE, GIT, HTTP, ODPS)
-	ContentType *string                                      `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Desc        *string                                      `json:"desc,omitempty" xml:"desc,omitempty"`
-	Files       []*ListAdvanceConfigsResponseBodyResultFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	Name        *string                                      `json:"name,omitempty" xml:"name,omitempty"`
-	Status      *string                                      `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime  *int64                                       `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The description.
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The list of file names.
+	Files []*ListAdvanceConfigsResponseBodyResultFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// The name of the advanced configuration.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The state of the advanced configuration. Valid values: drafting, used, unused, and trash. drafting indicates that the advanced configuration is a draft. used indicates that the advanced configuration is in use. unused indicates that the advanced configuration is unused. trash indicates that the advanced configuration is being deleted.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The update time.
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListAdvanceConfigsResponseBodyResult) String() string {
@@ -4086,10 +4232,14 @@ func (s *ListAdvanceConfigsResponseBodyResult) SetUpdateTime(v int64) *ListAdvan
 }
 
 type ListAdvanceConfigsResponseBodyResultFiles struct {
+	// The name of the absolute path.
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	IsDir        *bool   `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	IsTemplate   *bool   `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// Indicates whether it is a template. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
+	// The name of the file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListAdvanceConfigsResponseBodyResultFiles) String() string {
@@ -4121,9 +4271,9 @@ func (s *ListAdvanceConfigsResponseBodyResultFiles) SetName(v string) *ListAdvan
 }
 
 type ListAdvanceConfigsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAdvanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAdvanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAdvanceConfigsResponse) String() string {
@@ -4151,8 +4301,9 @@ func (s *ListAdvanceConfigsResponse) SetBody(v *ListAdvanceConfigsResponseBody) 
 
 type ListClusterNamesResponseBody struct {
 	// id of request
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *ListClusterNamesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result set
+	Result *ListClusterNamesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s ListClusterNamesResponseBody) String() string {
@@ -4174,9 +4325,12 @@ func (s *ListClusterNamesResponseBody) SetResult(v *ListClusterNamesResponseBody
 }
 
 type ListClusterNamesResponseBodyResult struct {
+	// The description of the cluster
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the cluster
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the cluster
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListClusterNamesResponseBodyResult) String() string {
@@ -4203,9 +4357,9 @@ func (s *ListClusterNamesResponseBodyResult) SetName(v string) *ListClusterNames
 }
 
 type ListClusterNamesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClusterNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClusterNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClusterNamesResponse) String() string {
@@ -4234,7 +4388,7 @@ func (s *ListClusterNamesResponse) SetBody(v *ListClusterNamesResponseBody) *Lis
 type ListClusterTasksResponseBody struct {
 	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The date when the task was completed.
+	// The information about the index.
 	Result []*ListClusterTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -4257,30 +4411,28 @@ func (s *ListClusterTasksResponseBody) SetResult(v []*ListClusterTasksResponseBo
 }
 
 type ListClusterTasksResponseBodyResult struct {
+	// The additional attributes of the card.
 	ExtraAttribute *string `json:"extraAttribute,omitempty" xml:"extraAttribute,omitempty"`
-	Field3         *string `json:"field3,omitempty" xml:"field3,omitempty"`
+	// The field3 field that is passed through when you create a state machine.
+	Field3 *string `json:"field3,omitempty" xml:"field3,omitempty"`
 	// fsmId
 	FsmId *string `json:"fsmId,omitempty" xml:"fsmId,omitempty"`
-	// ### Method
-	//
-	// ```java
-	// GET
-	// ```
-	//
-	// ### URI
-	//
-	// ```java
-	// /openapi/ha3/instances/{instanceId}/cluster-tasks
-	// ```
+	// Indicates whether the change is a data source task change or a cluster task change.
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// Displays cluster tasks .
-	Name      *string                                        `json:"name,omitempty" xml:"name,omitempty"`
-	Status    *string                                        `json:"status,omitempty" xml:"status,omitempty"`
-	Tags      []*ListClusterTasksResponseBodyResultTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The task name on the card.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The overall status of FSM.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The status tag of the progress bar chart.
+	Tags []*ListClusterTasksResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The information about the task.
 	TaskNodes []*ListClusterTasksResponseBodyResultTaskNodes `json:"taskNodes,omitempty" xml:"taskNodes,omitempty" type:"Repeated"`
-	Time      *string                                        `json:"time,omitempty" xml:"time,omitempty"`
-	Type      *string                                        `json:"type,omitempty" xml:"type,omitempty"`
-	User      *string                                        `json:"user,omitempty" xml:"user,omitempty"`
+	// The timestamp of the task on the card.
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// The type of the task on the card.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The user who triggered the FSM process.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
 }
 
 func (s ListClusterTasksResponseBodyResult) String() string {
@@ -4347,7 +4499,9 @@ func (s *ListClusterTasksResponseBodyResult) SetUser(v string) *ListClusterTasks
 }
 
 type ListClusterTasksResponseBodyResultTags struct {
-	Msg      *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The content of the tag.
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The level of the tag.
 	TagLevel *string `json:"tagLevel,omitempty" xml:"tagLevel,omitempty"`
 }
 
@@ -4370,10 +4524,14 @@ func (s *ListClusterTasksResponseBodyResultTags) SetTagLevel(v string) *ListClus
 }
 
 type ListClusterTasksResponseBodyResultTaskNodes struct {
+	// The date when the task was completed.
 	FinishDate *string `json:"finishDate,omitempty" xml:"finishDate,omitempty"`
-	Index      *int64  `json:"index,omitempty" xml:"index,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The sequence number of the task.
+	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
+	// The name of the task.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the task.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListClusterTasksResponseBodyResultTaskNodes) String() string {
@@ -4405,9 +4563,9 @@ func (s *ListClusterTasksResponseBodyResultTaskNodes) SetStatus(v string) *ListC
 }
 
 type ListClusterTasksResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClusterTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClusterTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClusterTasksResponse) String() string {
@@ -4435,8 +4593,9 @@ func (s *ListClusterTasksResponse) SetBody(v *ListClusterTasksResponseBody) *Lis
 
 type ListClustersResponseBody struct {
 	// id of request
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ListClustersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of clusters.
+	Result []*ListClustersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ListClustersResponseBody) String() string {
@@ -4458,24 +4617,34 @@ func (s *ListClustersResponseBody) SetResult(v []*ListClustersResponseBodyResult
 }
 
 type ListClustersResponseBodyResult struct {
-	ConfigUpdateTime            *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
+	// The time when the configuration was updated.
+	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
+	// The effective advanced version.
 	CurrentAdvanceConfigVersion *string `json:"currentAdvanceConfigVersion,omitempty" xml:"currentAdvanceConfigVersion,omitempty"`
 	// 词典配置生效版本
 	CurrentOfflineDictConfigVersion *string `json:"currentOfflineDictConfigVersion,omitempty" xml:"currentOfflineDictConfigVersion,omitempty"`
-	CurrentOnlineConfigVersion      *string `json:"currentOnlineConfigVersion,omitempty" xml:"currentOnlineConfigVersion,omitempty"`
+	// The effective online configuration version.
+	CurrentOnlineConfigVersion *string `json:"currentOnlineConfigVersion,omitempty" xml:"currentOnlineConfigVersion,omitempty"`
 	// 查询配置生效版本
-	CurrentOnlineQueryConfigVersion *string                                 `json:"currentOnlineQueryConfigVersion,omitempty" xml:"currentOnlineQueryConfigVersion,omitempty"`
-	DataNode                        *ListClustersResponseBodyResultDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
-	Description                     *string                                 `json:"description,omitempty" xml:"description,omitempty"`
-	LatestAdvanceConfigVersion      *string                                 `json:"latestAdvanceConfigVersion,omitempty" xml:"latestAdvanceConfigVersion,omitempty"`
+	CurrentOnlineQueryConfigVersion *string `json:"currentOnlineQueryConfigVersion,omitempty" xml:"currentOnlineQueryConfigVersion,omitempty"`
+	// The information about the node in the cluster.
+	DataNode *ListClustersResponseBodyResultDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
+	// The description of the cluster.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The latest advanced configuration version.
+	LatestAdvanceConfigVersion *string `json:"latestAdvanceConfigVersion,omitempty" xml:"latestAdvanceConfigVersion,omitempty"`
 	// 词典配置最新版本
 	LatestOfflineDictConfigVersion *string `json:"latestOfflineDictConfigVersion,omitempty" xml:"latestOfflineDictConfigVersion,omitempty"`
-	LatestOnlineConfigVersion      *string `json:"latestOnlineConfigVersion,omitempty" xml:"latestOnlineConfigVersion,omitempty"`
+	// The latest online configuration version.
+	LatestOnlineConfigVersion *string `json:"latestOnlineConfigVersion,omitempty" xml:"latestOnlineConfigVersion,omitempty"`
 	// 查询配置最新版本
-	LatestOnlineQueryConfigVersion *string                                  `json:"latestOnlineQueryConfigVersion,omitempty" xml:"latestOnlineQueryConfigVersion,omitempty"`
-	Name                           *string                                  `json:"name,omitempty" xml:"name,omitempty"`
-	QueryNode                      *ListClustersResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
-	Status                         *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	LatestOnlineQueryConfigVersion *string `json:"latestOnlineQueryConfigVersion,omitempty" xml:"latestOnlineQueryConfigVersion,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The query node of the cluster.
+	QueryNode *ListClustersResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
+	// The status of the cluster. Valid values: running, starting, stopping, and stopped. running indicates the cluster is running, starting indicates the cluster is starting, stopping indicates the cluster is stopping, and stopped indicates the cluster has stopped.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListClustersResponseBodyResult) String() string {
@@ -4557,9 +4726,12 @@ func (s *ListClustersResponseBodyResult) SetStatus(v string) *ListClustersRespon
 }
 
 type ListClustersResponseBodyResultDataNode struct {
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Number    *int32  `json:"number,omitempty" xml:"number,omitempty"`
-	Partition *int32  `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the node.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of nodes.
+	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
+	// The partition ID of the node.
+	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
 func (s ListClustersResponseBodyResultDataNode) String() string {
@@ -4586,9 +4758,12 @@ func (s *ListClustersResponseBodyResultDataNode) SetPartition(v int32) *ListClus
 }
 
 type ListClustersResponseBodyResultQueryNode struct {
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Number    *int32  `json:"number,omitempty" xml:"number,omitempty"`
-	Partition *int32  `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the node.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of nodes.
+	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
+	// The number o replicas.
+	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
 func (s ListClustersResponseBodyResultQueryNode) String() string {
@@ -4615,9 +4790,9 @@ func (s *ListClustersResponseBodyResultQueryNode) SetPartition(v int32) *ListClu
 }
 
 type ListClustersResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListClustersResponse) String() string {
@@ -4644,8 +4819,10 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListDataSourceSchemasResponseBody struct {
-	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*ListDataSourceSchemasResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result returned.
+	Result []*ListDataSourceSchemasResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s ListDataSourceSchemasResponseBody) String() string {
@@ -4667,13 +4844,20 @@ func (s *ListDataSourceSchemasResponseBody) SetResult(v []*ListDataSourceSchemas
 }
 
 type ListDataSourceSchemasResponseBodyResult struct {
-	AddIndex   *bool                                              `json:"addIndex,omitempty" xml:"addIndex,omitempty"`
-	Attribute  *bool                                              `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	Custom     *bool                                              `json:"custom,omitempty" xml:"custom,omitempty"`
-	Name       *string                                            `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the index properties are added. Valid values: true and false. **true** indicates that the index properties are added, and **false** indicates that the index properties are not added.
+	AddIndex *bool `json:"addIndex,omitempty" xml:"addIndex,omitempty"`
+	// Indicates whether it is an attribute field. Valid values: true and false. **true** indicates that it is an attribute field, and **false** indicates that it is not an attribute field.
+	Attribute *bool `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// Indicates whether it is a custom field. Valid values: true and false. **true** indicates that it is a custom field, and **false** indicates that it is not a custom field.
+	Custom *bool `json:"custom,omitempty" xml:"custom,omitempty"`
+	// The name of the field.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The primary key.
 	PrimaryKey *ListDataSourceSchemasResponseBodyResultPrimaryKey `json:"primaryKey,omitempty" xml:"primaryKey,omitempty" type:"Struct"`
-	Summary    *bool                                              `json:"summary,omitempty" xml:"summary,omitempty"`
-	Type       *string                                            `json:"type,omitempty" xml:"type,omitempty"`
+	// Indicates whether the information can be displayed. Valid values: true and false. **true** indicates that the information can be displayed, and **false** indicates that the information cannot be displayed.
+	Summary *bool `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The type of the field.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListDataSourceSchemasResponseBodyResult) String() string {
@@ -4720,9 +4904,12 @@ func (s *ListDataSourceSchemasResponseBodyResult) SetType(v string) *ListDataSou
 }
 
 type ListDataSourceSchemasResponseBodyResultPrimaryKey struct {
+	// Indicates whether it has the primary key property. **true** indicates that it has the primary key property, and **false** indicates that it does not have the primary key property.
 	HasPrimaryKeyAttribute *bool `json:"hasPrimaryKeyAttribute,omitempty" xml:"hasPrimaryKeyAttribute,omitempty"`
-	IsPrimaryKey           *bool `json:"isPrimaryKey,omitempty" xml:"isPrimaryKey,omitempty"`
-	IsPrimaryKeySorted     *bool `json:"isPrimaryKeySorted,omitempty" xml:"isPrimaryKeySorted,omitempty"`
+	// Indicates whether it is the primary key. Valid values: true and false. **true** indicates that it is the primary key, and **false** indicates that it is not the primary key.
+	IsPrimaryKey *bool `json:"isPrimaryKey,omitempty" xml:"isPrimaryKey,omitempty"`
+	// Indicates whether data is sorted based on the primary key. Valid values: true and false. **true** indicates that data is sorted based on the primary key, and **false** indicates that data is not sorted based on the primary key.
+	IsPrimaryKeySorted *bool `json:"isPrimaryKeySorted,omitempty" xml:"isPrimaryKeySorted,omitempty"`
 }
 
 func (s ListDataSourceSchemasResponseBodyResultPrimaryKey) String() string {
@@ -4749,9 +4936,9 @@ func (s *ListDataSourceSchemasResponseBodyResultPrimaryKey) SetIsPrimaryKeySorte
 }
 
 type ListDataSourceSchemasResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourceSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourceSchemasResponse) String() string {
@@ -4780,7 +4967,7 @@ func (s *ListDataSourceSchemasResponse) SetBody(v *ListDataSourceSchemasResponse
 type ListDataSourceTasksResponseBody struct {
 	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The date when the task was completed.
+	// The information about the index.
 	Result []*ListDataSourceTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -4803,30 +4990,28 @@ func (s *ListDataSourceTasksResponseBody) SetResult(v []*ListDataSourceTasksResp
 }
 
 type ListDataSourceTasksResponseBodyResult struct {
+	// The additional attributes of the card.
 	ExtraAttribute *string `json:"extraAttribute,omitempty" xml:"extraAttribute,omitempty"`
-	Field3         *string `json:"field3,omitempty" xml:"field3,omitempty"`
+	// The field3 field that is passed through when you create a state machine.
+	Field3 *string `json:"field3,omitempty" xml:"field3,omitempty"`
 	// fsmId
 	FsmId *string `json:"fsmId,omitempty" xml:"fsmId,omitempty"`
-	// ### Method
-	//
-	// ```java
-	// GET
-	// ```
-	//
-	// ### URI
-	//
-	// ```java
-	// /openapi/ha3/instances/{instanceId}/data-source-tasks
-	// ```
+	// Indicates whether the change is a data source task change or a cluster task change.
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// Displays data source tasks.
-	Name      *string                                           `json:"name,omitempty" xml:"name,omitempty"`
-	Status    *string                                           `json:"status,omitempty" xml:"status,omitempty"`
-	Tags      []*ListDataSourceTasksResponseBodyResultTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The task name on the card.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The overall status of FSM.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The status tag of the progress bar chart.
+	Tags []*ListDataSourceTasksResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The information about the task.
 	TaskNodes []*ListDataSourceTasksResponseBodyResultTaskNodes `json:"taskNodes,omitempty" xml:"taskNodes,omitempty" type:"Repeated"`
-	Time      *string                                           `json:"time,omitempty" xml:"time,omitempty"`
-	Type      *string                                           `json:"type,omitempty" xml:"type,omitempty"`
-	User      *string                                           `json:"user,omitempty" xml:"user,omitempty"`
+	// The timestamp of the task on the card.
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// The type of the task on the card.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The user who triggered the finite-state machine (FSM) process.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
 }
 
 func (s ListDataSourceTasksResponseBodyResult) String() string {
@@ -4893,7 +5078,9 @@ func (s *ListDataSourceTasksResponseBodyResult) SetUser(v string) *ListDataSourc
 }
 
 type ListDataSourceTasksResponseBodyResultTags struct {
-	Msg      *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The content of the tag.
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The level of the tag.
 	TagLevel *string `json:"tagLevel,omitempty" xml:"tagLevel,omitempty"`
 }
 
@@ -4916,10 +5103,14 @@ func (s *ListDataSourceTasksResponseBodyResultTags) SetTagLevel(v string) *ListD
 }
 
 type ListDataSourceTasksResponseBodyResultTaskNodes struct {
+	// The date when the task was completed.
 	FinishDate *string `json:"finishDate,omitempty" xml:"finishDate,omitempty"`
-	Index      *int64  `json:"index,omitempty" xml:"index,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The sequence number of the task.
+	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
+	// The name of the task.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the task.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDataSourceTasksResponseBodyResultTaskNodes) String() string {
@@ -4951,9 +5142,9 @@ func (s *ListDataSourceTasksResponseBodyResultTaskNodes) SetStatus(v string) *Li
 }
 
 type ListDataSourceTasksResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourceTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourceTasksResponse) String() string {
@@ -4980,15 +5171,9 @@ func (s *ListDataSourceTasksResponse) SetBody(v *ListDataSourceTasksResponseBody
 }
 
 type ListDataSourcesResponseBody struct {
-	// ## Method
-	//
-	// `GET`
-	//
-	// ## URI
-	//
-	// `/openapi/ha3/instances/{instanceId}/data-sources`
+	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned results.
+	// The result returned.
 	Result []*ListDataSourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -5011,15 +5196,15 @@ func (s *ListDataSourcesResponseBody) SetResult(v []*ListDataSourcesResponseBody
 }
 
 type ListDataSourcesResponseBodyResult struct {
-	// The data sources deployed in offline mode.
+	// The data center where the data source is deployed in offline mode.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The indexes.
+	// The information about indexes.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The time when the full data of the data source was last queried.
+	// The time when an index for full data was last built.
 	LastFulTime *int64 `json:"lastFulTime,omitempty" xml:"lastFulTime,omitempty"`
 	// The name of the data source.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the data source.
+	// The state of the data source.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The type of the data source.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -5064,9 +5249,9 @@ func (s *ListDataSourcesResponseBodyResult) SetType(v string) *ListDataSourcesRe
 }
 
 type ListDataSourcesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDataSourcesResponse) String() string {
@@ -5206,9 +5391,9 @@ func (s *ListDateSourceGenerationsResponseBodyResult) SetTimestamp(v int64) *Lis
 }
 
 type ListDateSourceGenerationsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDateSourceGenerationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDateSourceGenerationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDateSourceGenerationsResponse) String() string {
@@ -5235,6 +5420,7 @@ func (s *ListDateSourceGenerationsResponse) SetBody(v *ListDateSourceGenerations
 }
 
 type ListIndexesRequest struct {
+	// 是否为新版本控制台页面
 	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
 }
 
@@ -5254,7 +5440,7 @@ func (s *ListIndexesRequest) SetNewMode(v bool) *ListIndexesRequest {
 type ListIndexesResponseBody struct {
 	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the indexes.
+	// The index list.
 	Result []*ListIndexesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -5277,31 +5463,31 @@ func (s *ListIndexesResponseBody) SetResult(v []*ListIndexesResponseBodyResult) 
 }
 
 type ListIndexesResponseBodyResult struct {
-	// The content of the index.
+	// schema JSON
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The data source.
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	// The information about the data source.
+	// 数据源相关信息
 	DataSourceInfo *ListIndexesResponseBodyResultDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// The remarks.
+	// 备注
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The deployment name of the index.
+	// The name of the data center where the data source is deployed.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The last time when full data in the index was updated.
+	// 全量切换时间
 	FullUpdateTime *string `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
-	// The version of the data.
+	// 全量版本  即：索引版本
 	FullVersion *int64 `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
-	// The last time when incremental data in the index was updated.
+	// 增量更新时间
 	IncUpdateTime *string `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
-	// The index size.
+	// 索引大小
 	IndexSize *int64 `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
-	// The status of the index. Valid values: NEW and PUBLISH.
+	// NEW, PUBLISH
 	IndexStatus *string `json:"indexStatus,omitempty" xml:"indexStatus,omitempty"`
 	// The name of the index.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of shards.
+	// 数据分片
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	// The information about the versions.
+	// The list of version information.
 	Versions []*ListIndexesResponseBodyResultVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -5379,19 +5565,19 @@ func (s *ListIndexesResponseBodyResult) SetVersions(v []*ListIndexesResponseBody
 }
 
 type ListIndexesResponseBodyResultDataSourceInfo struct {
-	// Indicates whether the automatic full indexing feature is enabled.
+	// 是否开启自动全量
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	// The configuration of MaxCompute data sources.
+	// odps 数据源配置
 	Config *ListIndexesResponseBodyResultDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The offline deployment name of the data source.
+	// 离线部署
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The name of the data source.
+	// 数据源名
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of resources used for data update.
+	// 数据更新资源数
 	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	// The configuration of SARO data sources.
+	// saro数据源配置
 	SaroConfig *ListIndexesResponseBodyResultDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
-	// The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
+	// 数据源类型 (odps, swift, saro, oss, unKnow)
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -5439,20 +5625,25 @@ func (s *ListIndexesResponseBodyResultDataSourceInfo) SetType(v string) *ListInd
 }
 
 type ListIndexesResponseBodyResultDataSourceInfoConfig struct {
-	AccessKey    *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// odps数据源ak
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// odps数据源ak secret
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// A parameter related to MaxCompute.
+	// oss命名空间
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// odps相关
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// A parameter related to SARO.
+	// saro相关
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// A parameter related to OSS.
-	OssPath   *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// oss数据源相关
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// 数据分片
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	// A parameter related to Apsara File Storage for HDFS.
-	Path    *string `json:"path,omitempty" xml:"path,omitempty"`
+	// hdfs相关
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// odps数据源项目名称
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// A parameter related to SARO and MaxCompute.
+	// saro、odps相关
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
@@ -5515,7 +5706,9 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetTable(v string) *
 }
 
 type ListIndexesResponseBodyResultDataSourceInfoSaroConfig struct {
+	// saro数据源的namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// saro数据表名称
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
@@ -5538,17 +5731,17 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoSaroConfig) SetTableName(v s
 }
 
 type ListIndexesResponseBodyResultVersions struct {
-	// The description of the version.
+	// The description.
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The information about the files.
+	// The list of file names.
 	Files []*ListIndexesResponseBodyResultVersionsFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The name of the version.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the version. Valid values: drafting, used, unused, and trash.
+	// The state of the version. Valid values: drafting, used, unused and trash. drafting indicates that the version is a draft, used indicates that the version is used online, unused indicates that the version is not used, and trash indicates that the version is being deleted.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last time when the version was updated.
+	// The time when the version was updated.
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the version. The value is null for an edit version.
+	// The ID of the version. The value of this parameter is null for the edit version.
 	VersionId *int32 `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
@@ -5591,11 +5784,11 @@ func (s *ListIndexesResponseBodyResultVersions) SetVersionId(v int32) *ListIndex
 }
 
 type ListIndexesResponseBodyResultVersionsFiles struct {
-	// The full path of the file.
+	// The name of the directory for the index.
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether the file is a directory.
+	// Indicates whether a directory exists.
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// Indicates whether the file is a template.
+	// Indicates whether it is a template.
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
 	// The name of the file.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -5630,9 +5823,9 @@ func (s *ListIndexesResponseBodyResultVersionsFiles) SetName(v string) *ListInde
 }
 
 type ListIndexesResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIndexesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIndexesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIndexesResponse) String() string {
@@ -5659,7 +5852,7 @@ func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesRe
 }
 
 type ListInstanceSpecsRequest struct {
-	// The node type. Valid values: qrs, search, index, and cluster. qrs specifies an Query Result Searcher (QRS) worker, search specifies a searcher worker, index specifies an index node, and cluster specifies a cluster.
+	// The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -5677,9 +5870,9 @@ func (s *ListInstanceSpecsRequest) SetType(v string) *ListInstanceSpecsRequest {
 }
 
 type ListInstanceSpecsResponseBody struct {
-	// The ID of the request.
+	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The specifications of the instances.
+	// List
 	Result []*ListInstanceSpecsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -5702,13 +5895,13 @@ func (s *ListInstanceSpecsResponseBody) SetResult(v []*ListInstanceSpecsResponse
 }
 
 type ListInstanceSpecsResponseBodyResult struct {
-	// The number of CPU cores.
+	// None
 	Cpu *int32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The maximum storage space of a searcher worker.
+	// 单数据节点存储空间最大值
 	MaxDisk *int32 `json:"maxDisk,omitempty" xml:"maxDisk,omitempty"`
-	// The memory size. Unit: GB.
+	// Unit: GB
 	Mem *int32 `json:"mem,omitempty" xml:"mem,omitempty"`
-	// The minimum storage space of a searcher worker.
+	// 单数据节点存储空间最小值
 	MinDisk *int32 `json:"minDisk,omitempty" xml:"minDisk,omitempty"`
 }
 
@@ -5741,9 +5934,9 @@ func (s *ListInstanceSpecsResponseBodyResult) SetMinDisk(v int32) *ListInstanceS
 }
 
 type ListInstanceSpecsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceSpecsResponse) String() string {
@@ -5770,19 +5963,20 @@ func (s *ListInstanceSpecsResponse) SetBody(v *ListInstanceSpecsResponseBody) *L
 }
 
 type ListInstancesRequest struct {
-	// The description of the instance
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 实例类型，vector(向量索引版)，engine(召回引擎版)
-	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// The time when the instance was created
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The status of the instance
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The Instance type, vector (vector index version),engine (recall engine version)
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The number of the page to return. Default value: 1.
-	ResourceGroupId *string                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Tags            []*ListInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The tag dictionary.
+	Tags []*ListInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -5829,7 +6023,9 @@ func (s *ListInstancesRequest) SetTags(v []*ListInstancesRequestTags) *ListInsta
 }
 
 type ListInstancesRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -5852,19 +6048,20 @@ func (s *ListInstancesRequestTags) SetValue(v string) *ListInstancesRequestTags 
 }
 
 type ListInstancesShrinkRequest struct {
-	// The description of the instance
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 实例类型，vector(向量索引版)，engine(召回引擎版)
-	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// The time when the instance was created
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The status of the instance
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The Instance type, vector (vector index version),engine (recall engine version)
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The tag dictionary.
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListInstancesShrinkRequest) String() string {
@@ -5911,10 +6108,12 @@ func (s *ListInstancesShrinkRequest) SetTagsShrink(v string) *ListInstancesShrin
 }
 
 type ListInstancesResponseBody struct {
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The result returned
-	Result     []*ListInstancesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	TotalCount *int32                             `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Result []*ListInstancesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The total number of entries returned
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -5941,29 +6140,30 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyResult struct {
-	// The ID of the resource group to which the instance belongs.
+	// The billing method
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The total number of entries returned
+	// The product code
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// Havenask instance
+	// The time when the instance was created
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the virtual switch
+	// The description of the instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the Virtual Private Cloud (VPC) network
-	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
-	// The ID of the request
-	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// The access point of the gateway
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Emergency test
-	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// The lock status
-	Network *ListInstancesResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The expiration time
-	Status *string                                `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*ListInstancesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
+	// Indicates whether an overdue payment is involved
+	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
+	// The ID of the resource
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The lock status
+	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	// Information about the instance of the network search engine
+	Network *ListInstancesResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// The ID of the resource group
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The status of the instance
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The result returned.
+	Tags []*ListInstancesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The time when the instance was last updated
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
@@ -6042,85 +6242,11 @@ func (s *ListInstancesResponseBodyResult) SetUpdateTime(v string) *ListInstances
 }
 
 type ListInstancesResponseBodyResultNetwork struct {
-	// 353490
+	// The access point of the gateway
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// ### Sample responses
-	//
-	// **Sample success responses**
-	//
-	//     {
-	//         "requestId": "90D6B8F5-FE97-4509-9AAB-367836C51818",
-	//         "result": [
-	//             {
-	//                 "instanceId": "igraph-cn-xxxxxx1",
-	//                 "spec": {
-	//                     "password": "passwd",
-	//                     "searchResource": {
-	//                         "disk": 50,
-	//                         "mem": 8,
-	//                         "cpu": 2,
-	//                         "nodeCount": 2
-	//                     },
-	//                     "instanceName": "testInstance",
-	//                     "vSwitchId": "vswitch_id_xxx",
-	//                     "vpcId": "vpc_id_xxx",
-	//                     "qrsResource": {
-	//                         "disk": 50,
-	//                         "mem": 8,
-	//                         "cpu": 2,
-	//                         "nodeCount": 2
-	//                     },
-	//                     "region": "cn-hangzhou",
-	//                     "userName": "user"
-	//                 },
-	//                 "status": {
-	//                     "phase": "PENDING",
-	//                     "instancePhase": "INIT",
-	//                     "createSuccess": false
-	//                 }
-	//             },
-	//             {
-	//                 "instanceId": "igraph-cn-xxxxxx2",
-	//                 "spec": {
-	//                     "password": "passwd",
-	//                     "searchResource": {
-	//                         "disk": 50,
-	//                         "mem": 8,
-	//                         "cpu": 2,
-	//                         "nodeCount": 2
-	//                     },
-	//                     "instanceName": "testInstance",
-	//                     "vSwitchId": "vswitch_id_xxx",
-	//                     "vpcId": "vpc_id_xxx",
-	//                     "qrsResource": {
-	//                         "disk": 50,
-	//                         "mem": 8,
-	//                         "cpu": 2,
-	//                         "nodeCount": 2
-	//                     },
-	//                     "region": "cn-hangzhou",
-	//                     "userName": "user"
-	//                 },
-	//                 "status": {
-	//                     "phase": "PENDING",
-	//                     "instancePhase": "INIT",
-	//                     "createSuccess": false
-	//                 }
-	//             }
-	//         ],
-	//         "totalCount": 20
-	//     }
-	//
-	// **Sample error responses**
-	//
-	//     {
-	//       "requestId": "BD1EA715-DF6F-06C2-004C-C1FA0D3A9820",
-	//       "httpCode": 404,
-	//       "code": "App.NotFound",
-	//       "message": "App not found"
-	//     }
+	// The ID of the virtual switch
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// Queries instances.
+	// The ID of the Virtual Private Cloud (VPC) network
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -6148,7 +6274,9 @@ func (s *ListInstancesResponseBodyResultNetwork) SetVpcId(v string) *ListInstanc
 }
 
 type ListInstancesResponseBodyResultTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -6171,9 +6299,9 @@ func (s *ListInstancesResponseBodyResultTags) SetValue(v string) *ListInstancesR
 }
 
 type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstancesResponse) String() string {
@@ -6200,6 +6328,7 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListOnlineConfigsRequest struct {
+	// The name of the domain
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 }
 
@@ -6242,7 +6371,9 @@ func (s *ListOnlineConfigsResponseBody) SetResult(v []*ListOnlineConfigsResponse
 }
 
 type ListOnlineConfigsResponseBodyResult struct {
-	Config    *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The configuration information
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The name of the index
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
 }
 
@@ -6265,9 +6396,9 @@ func (s *ListOnlineConfigsResponseBodyResult) SetIndexName(v string) *ListOnline
 }
 
 type ListOnlineConfigsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOnlineConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOnlineConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOnlineConfigsResponse) String() string {
@@ -6294,9 +6425,10 @@ func (s *ListOnlineConfigsResponse) SetBody(v *ListOnlineConfigsResponseBody) *L
 }
 
 type ListQueryResultRequest struct {
-	// 353490
+	// The query statement
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	Sql   *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// The SQL statement that is executed in the query
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
 }
 
 func (s ListQueryResultRequest) String() string {
@@ -6318,6 +6450,7 @@ func (s *ListQueryResultRequest) SetSql(v string) *ListQueryResultRequest {
 }
 
 type ListQueryResultResponseBody struct {
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6335,9 +6468,9 @@ func (s *ListQueryResultResponseBody) SetRequestId(v string) *ListQueryResultRes
 }
 
 type ListQueryResultResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListQueryResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQueryResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListQueryResultResponse) String() string {
@@ -6421,9 +6554,9 @@ func (s *ModifyAdvanceConfigFileResponseBody) SetResult(v map[string]interface{}
 }
 
 type ModifyAdvanceConfigFileResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAdvanceConfigFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAdvanceConfigFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAdvanceConfigFileResponse) String() string {
@@ -6493,9 +6626,9 @@ func (s *ModifyClusterDescResponseBody) SetResult(v map[string]interface{}) *Mod
 }
 
 type ModifyClusterDescResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyClusterDescResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyClusterDescResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyClusterDescResponse) String() string {
@@ -6522,20 +6655,21 @@ func (s *ModifyClusterDescResponse) SetBody(v *ModifyClusterDescResponseBody) *M
 }
 
 type ModifyClusterOfflineConfigRequest struct {
-	// The reindexing method. Valid values: api: API data source. indexRecover: data recovery through indexing.
+	// The mode of reindexing. Valid values: api and indexRecover. api indicates to push incremental data to a data source by calling the API operations. indexRecover indicates that the data source is restored from the index.
 	BuildMode *string `json:"buildMode,omitempty" xml:"buildMode,omitempty"`
 	// The configuration name, which is stored as a key.
-	Config         map[string]*int32 `json:"config,omitempty" xml:"config,omitempty"`
-	DataSourceName *string           `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The type of the data source. Valid values: odps: MaxCompute. swift: Swift. unKnow: unknown type.
+	Config map[string]*int32 `json:"config,omitempty" xml:"config,omitempty"`
+	// The name of the data source.
+	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
+	// The type of the data source. Valid values: odps, swift, saro, and unKnow.
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// This parameter is required if the API data source experiences full indexing.
+	// This parameter is required when index building by using API data sources is triggered.
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The domain in which the data source is deployed.
+	// The domain where the data source is deployed.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The ID of the backward data delivery.
+	// The data restoration version.
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// This parameter is required if the MaxCompute data source experiences full indexing.
+	// This parameter is required when index building for full data in a MaxCompute data source is triggered.
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 	PushMode  *string `json:"pushMode,omitempty" xml:"pushMode,omitempty"`
 }
@@ -6594,9 +6728,9 @@ func (s *ModifyClusterOfflineConfigRequest) SetPushMode(v string) *ModifyCluster
 }
 
 type ModifyClusterOfflineConfigResponseBody struct {
-	// The ID of the request.
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result of the request.
+	// The result
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -6619,9 +6753,9 @@ func (s *ModifyClusterOfflineConfigResponseBody) SetResult(v map[string]interfac
 }
 
 type ModifyClusterOfflineConfigResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyClusterOfflineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyClusterOfflineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyClusterOfflineConfigResponse) String() string {
@@ -6698,9 +6832,9 @@ func (s *ModifyClusterOnlineConfigResponseBody) SetResult(v map[string]interface
 }
 
 type ModifyClusterOnlineConfigResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyClusterOnlineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyClusterOnlineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyClusterOnlineConfigResponse) String() string {
@@ -6727,9 +6861,9 @@ func (s *ModifyClusterOnlineConfigResponse) SetBody(v *ModifyClusterOnlineConfig
 }
 
 type ModifyDataSourceRequest struct {
-	// The information about the index
+	// The request body.
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	// The ID of the request
+	// Specifies whether the data source is created by using the dryRun feature. This parameter only checks whether the data source is valid. Valid values: true and false. true indicates that the data source is created by using the dryRun feature, and false indicates that the data source is not created by using the dryRun feature.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -6752,9 +6886,9 @@ func (s *ModifyDataSourceRequest) SetDryRun(v bool) *ModifyDataSourceRequest {
 }
 
 type ModifyDataSourceResponseBody struct {
-	// id of request
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The schema information.
+	// The result returned
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -6777,9 +6911,9 @@ func (s *ModifyDataSourceResponseBody) SetResult(v map[string]interface{}) *Modi
 }
 
 type ModifyDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDataSourceResponse) String() string {
@@ -6806,11 +6940,11 @@ func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *Mod
 }
 
 type ModifyFileRequest struct {
-	// The parameters in the request body
+	// The content of the file.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// auditing
+	// The data partition. This parameter is required if the dataSourceType parameter is set to odps.
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	// ha-cn-tl32m2c4u01@ha-cn-tl32m2c4u01_00@bj_vpc_domain_1@automobile_vector@index_config_edit
+	// The name of the file in the full path
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -6863,9 +6997,9 @@ func (s *ModifyFileResponseBody) SetResult(v map[string]interface{}) *ModifyFile
 }
 
 type ModifyFileResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFileResponse) String() string {
@@ -6894,11 +7028,11 @@ func (s *ModifyFileResponse) SetBody(v *ModifyFileResponseBody) *ModifyFileRespo
 type ModifyIndexPartitionRequest struct {
 	// The name of the data source.
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The information about each index.
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The name of the data center.
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The primary key of generation.
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The number of shards of the index.
+	// The information about shards of the index.
 	IndexInfos []*ModifyIndexPartitionRequestIndexInfos `json:"indexInfos,omitempty" xml:"indexInfos,omitempty" type:"Repeated"`
 }
 
@@ -6931,9 +7065,9 @@ func (s *ModifyIndexPartitionRequest) SetIndexInfos(v []*ModifyIndexPartitionReq
 }
 
 type ModifyIndexPartitionRequestIndexInfos struct {
-	// auditing
+	// The name of the index.
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	// The parameters in the request body.
+	// The number of concurrency. The default value is 1.
 	ParallelNum *int32 `json:"parallelNum,omitempty" xml:"parallelNum,omitempty"`
 	// The number of shards of the index.
 	PartitionCount *int32 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
@@ -6988,9 +7122,9 @@ func (s *ModifyIndexPartitionResponseBody) SetResult(v map[string]interface{}) *
 }
 
 type ModifyIndexPartitionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyIndexPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyIndexPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyIndexPartitionResponse) String() string {
@@ -7092,9 +7226,9 @@ func (s *ModifyIndexVersionResponseBody) SetResult(v map[string]interface{}) *Mo
 }
 
 type ModifyIndexVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyIndexVersionResponse) String() string {
@@ -7124,15 +7258,22 @@ type ModifyNodeConfigRequest struct {
 	Active              *bool  `json:"active,omitempty" xml:"active,omitempty"`
 	DataDuplicateNumber *int32 `json:"dataDuplicateNumber,omitempty" xml:"dataDuplicateNumber,omitempty"`
 	DataFragmentNumber  *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
+	FlowRatio           *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
 	MinServicePercent   *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
 	Published           *bool  `json:"published,omitempty" xml:"published,omitempty"`
-	// The ID of the cluster.
-	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The parameters in the request body.
-	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	// The name of the cluster.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
+	// The name of the data source. Valid values: search and not_search. search indicates to search data. not_search indicates not to search data.
+	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	// The original name of the node.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the algorithm. Valid values: pop, cp, hot, hint, and suggest.
+	//
+	// *   pop indicates the popularity model.
+	// *   cp indicates the category prediction model.
+	// *   hot indicates the top search model.
+	// *   hint indicates the hint model.
+	// *   suggest indicates the drop-down suggestion model.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -7156,6 +7297,11 @@ func (s *ModifyNodeConfigRequest) SetDataDuplicateNumber(v int32) *ModifyNodeCon
 
 func (s *ModifyNodeConfigRequest) SetDataFragmentNumber(v int32) *ModifyNodeConfigRequest {
 	s.DataFragmentNumber = &v
+	return s
+}
+
+func (s *ModifyNodeConfigRequest) SetFlowRatio(v int32) *ModifyNodeConfigRequest {
+	s.FlowRatio = &v
 	return s
 }
 
@@ -7192,7 +7338,7 @@ func (s *ModifyNodeConfigRequest) SetType(v string) *ModifyNodeConfigRequest {
 type ModifyNodeConfigResponseBody struct {
 	// id of request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// auditing
+	// The information about the index
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -7215,9 +7361,9 @@ func (s *ModifyNodeConfigResponseBody) SetResult(v map[string]interface{}) *Modi
 }
 
 type ModifyNodeConfigResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNodeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyNodeConfigResponse) String() string {
@@ -7287,9 +7433,9 @@ func (s *ModifyOnlineConfigResponseBody) SetResult(v map[string]interface{}) *Mo
 }
 
 type ModifyOnlineConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyOnlineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyOnlineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyOnlineConfigResponse) String() string {
@@ -7366,9 +7512,9 @@ func (s *ModifyPasswordResponseBody) SetResult(v map[string]interface{}) *Modify
 }
 
 type ModifyPasswordResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPasswordResponse) String() string {
@@ -7438,9 +7584,9 @@ func (s *PublishAdvanceConfigResponseBody) SetResult(v map[string]interface{}) *
 }
 
 type PublishAdvanceConfigResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PublishAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishAdvanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishAdvanceConfigResponse) String() string {
@@ -7467,6 +7613,7 @@ func (s *PublishAdvanceConfigResponse) SetBody(v *PublishAdvanceConfigResponseBo
 }
 
 type PublishIndexVersionRequest struct {
+	// The query result
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -7485,8 +7632,9 @@ func (s *PublishIndexVersionRequest) SetBody(v map[string]interface{}) *PublishI
 
 type PublishIndexVersionResponseBody struct {
 	// id of request
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The information about the index
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s PublishIndexVersionResponseBody) String() string {
@@ -7508,9 +7656,9 @@ func (s *PublishIndexVersionResponseBody) SetResult(v map[string]interface{}) *P
 }
 
 type PublishIndexVersionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PublishIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishIndexVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishIndexVersionResponse) String() string {
@@ -7537,11 +7685,11 @@ func (s *PublishIndexVersionResponse) SetBody(v *PublishIndexVersionResponseBody
 }
 
 type RecoverIndexRequest struct {
-	// buildDeployId
+	// The ID of the index deployed in offline mode.
 	BuildDeployId *int32 `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
 	// The name of the data source
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// generation
+	// The primary key of generation.
 	Generation *string `json:"generation,omitempty" xml:"generation,omitempty"`
 	// The name of the index
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
@@ -7576,9 +7724,9 @@ func (s *RecoverIndexRequest) SetIndexName(v string) *RecoverIndexRequest {
 }
 
 type RecoverIndexResponseBody struct {
-	// id of request
+	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result returned by data search.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -7601,9 +7749,9 @@ func (s *RecoverIndexResponseBody) SetResult(v map[string]interface{}) *RecoverI
 }
 
 type RecoverIndexResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecoverIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecoverIndexResponse) String() string {
@@ -7631,8 +7779,9 @@ func (s *RecoverIndexResponse) SetBody(v *RecoverIndexResponseBody) *RecoverInde
 
 type RemoveClusterResponseBody struct {
 	// id of request
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s RemoveClusterResponseBody) String() string {
@@ -7654,9 +7803,9 @@ func (s *RemoveClusterResponseBody) SetResult(v map[string]interface{}) *RemoveC
 }
 
 type RemoveClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveClusterResponse) String() string {
@@ -7708,9 +7857,9 @@ func (s *StopTaskResponseBody) SetResult(v map[string]interface{}) *StopTaskResp
 }
 
 type StopTaskResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopTaskResponse) String() string {
@@ -7737,11 +7886,11 @@ func (s *StopTaskResponse) SetBody(v *StopTaskResponseBody) *StopTaskResponse {
 }
 
 type UpdateInstanceRequest struct {
-	// The information about the instance type.
+	// A list of instance-related specifications.
 	Components []*UpdateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	// The description of the instance.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the order. Valid values: UPGRADE and DOWNGRADE. UPGRADE indicates the instance type is to be upgraded. DOWNGRADE indicates the instance type is to be downgraded.
+	// Valid values: UPGRADE and DOWNGRADE. UPGRADE indicates to upgrade the instance specifications. DOWNGRADE indicates to downgrade the instance specifications.
 	OrderType *string `json:"orderType,omitempty" xml:"orderType,omitempty"`
 }
 
@@ -7769,7 +7918,7 @@ func (s *UpdateInstanceRequest) SetOrderType(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceRequestComponents struct {
-	// The name of the specification. The value must be the same as the name of a parameter on the buy page.
+	// The specification code, which must be consistent with the values of the corresponding module parameters.
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The value of the specification.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
@@ -7794,9 +7943,9 @@ func (s *UpdateInstanceRequestComponents) SetValue(v string) *UpdateInstanceRequ
 }
 
 type UpdateInstanceResponseBody struct {
-	// The ID of the request.
+	// The ID of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The result returned
 	Result *UpdateInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7819,27 +7968,27 @@ func (s *UpdateInstanceResponseBody) SetResult(v *UpdateInstanceResponseBodyResu
 }
 
 type UpdateInstanceResponseBodyResult struct {
-	// The billing method of the instance.
+	// The billing method
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The service code.
+	// The product code
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The time when the instance was created.
+	// The time when the instance was created
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the instance.
+	// The description of the instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time when the instance expires.
+	// The time when the instance expires
 	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
-	// Indicates whether an overdue payment is involved.
+	// Indicates whether an overdue payment is involved
 	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// The ID of the instance.
+	// The ID of the resource
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock mode of the instance.
+	// The lock status
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The state of the instance.
+	// The status of the instance
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the instance was last updated.
+	// The time when the instance was last updated
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
@@ -7907,9 +8056,9 @@ func (s *UpdateInstanceResponseBodyResult) SetUpdateTime(v string) *UpdateInstan
 }
 
 type UpdateInstanceResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceResponse) String() string {
@@ -8154,14 +8303,6 @@ func (client *Client) CreateCluster(instanceId *string, request *CreateClusterRe
 	return _result, _err
 }
 
-/**
- * The result returned
- *
- * @param request CreateDataSourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDataSourceResponse
- */
 func (client *Client) CreateDataSourceWithOptions(instanceId *string, request *CreateDataSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8222,12 +8363,6 @@ func (client *Client) CreateDataSourceWithOptions(instanceId *string, request *C
 	return _result, _err
 }
 
-/**
- * The result returned
- *
- * @param request CreateDataSourceRequest
- * @return CreateDataSourceResponse
- */
 func (client *Client) CreateDataSource(instanceId *string, request *CreateDataSourceRequest) (_result *CreateDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8527,7 +8662,10 @@ func (client *Client) DeleteDataSource(instanceId *string, dataSourceName *strin
 }
 
 /**
- * The information about the index
+ * ## Method
+ *     DELETE
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
  *
  * @param request DeleteIndexRequest
  * @param headers map
@@ -8573,7 +8711,10 @@ func (client *Client) DeleteIndexWithOptions(instanceId *string, indexName *stri
 }
 
 /**
- * The information about the index
+ * ## Method
+ *     DELETE
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
  *
  * @param request DeleteIndexRequest
  * @return DeleteIndexResponse
@@ -8591,7 +8732,10 @@ func (client *Client) DeleteIndex(instanceId *string, indexName *string, request
 }
 
 /**
- * The result
+ * ## Method
+ *     DELETE
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -8622,7 +8766,10 @@ func (client *Client) DeleteIndexVersionWithOptions(instanceId *string, indexNam
 }
 
 /**
- * The result
+ * ## Method
+ *     DELETE
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
  *
  * @return DeleteIndexVersionResponse
  */
@@ -8639,7 +8786,10 @@ func (client *Client) DeleteIndexVersion(instanceId *string, indexName *string, 
 }
 
 /**
- * The result returned
+ * ### Method
+ * `DELETE`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}`
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -8670,7 +8820,10 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 }
 
 /**
- * The result returned
+ * ### Method
+ * `DELETE`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}`
  *
  * @return DeleteInstanceResponse
  */
@@ -8814,6 +8967,17 @@ func (client *Client) GetAdvanceConfig(instanceId *string, configName *string, r
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+ *
+ * @param request GetAdvanceConfigFileRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAdvanceConfigFileResponse
+ */
 func (client *Client) GetAdvanceConfigFileWithOptions(instanceId *string, configName *string, request *GetAdvanceConfigFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAdvanceConfigFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8848,6 +9012,15 @@ func (client *Client) GetAdvanceConfigFileWithOptions(instanceId *string, config
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+ *
+ * @param request GetAdvanceConfigFileRequest
+ * @return GetAdvanceConfigFileResponse
+ */
 func (client *Client) GetAdvanceConfigFile(instanceId *string, configName *string, request *GetAdvanceConfigFileRequest) (_result *GetAdvanceConfigFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8914,6 +9087,16 @@ func (client *Client) GetCluster(instanceId *string, clusterName *string) (_resu
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * GET
+ * ### URI
+ * /openapi/ha3/instances/{instanceId}/cluster-run-time-info
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetClusterRunTimeInfoResponse
+ */
 func (client *Client) GetClusterRunTimeInfoWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetClusterRunTimeInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8938,6 +9121,14 @@ func (client *Client) GetClusterRunTimeInfoWithOptions(instanceId *string, heade
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * GET
+ * ### URI
+ * /openapi/ha3/instances/{instanceId}/cluster-run-time-info
+ *
+ * @return GetClusterRunTimeInfoResponse
+ */
 func (client *Client) GetClusterRunTimeInfo(instanceId *string) (_result *GetClusterRunTimeInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8950,6 +9141,16 @@ func (client *Client) GetClusterRunTimeInfo(instanceId *string) (_result *GetClu
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDataSourceResponse
+ */
 func (client *Client) GetDataSourceWithOptions(instanceId *string, dataSourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataSourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8974,6 +9175,14 @@ func (client *Client) GetDataSourceWithOptions(instanceId *string, dataSourceNam
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
+ *
+ * @return GetDataSourceResponse
+ */
 func (client *Client) GetDataSource(instanceId *string, dataSourceName *string) (_result *GetDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9023,9 +9232,11 @@ func (client *Client) GetDataSourceDeploy(instanceId *string, deployName *string
 }
 
 /**
- * ### Sample requests
+ * ## Method
+ * GET
+ * ## URI
  * ```java
- * GET /openapi/ha3/instances/{instanceId}/deploy-graph
+ * /openapi/ha3/instances/{instanceId}/deploy-graph
  * ```
  *
  * @param headers map
@@ -9057,9 +9268,11 @@ func (client *Client) GetDeployGraphWithOptions(instanceId *string, headers map[
 }
 
 /**
- * ### Sample requests
+ * ## Method
+ * GET
+ * ## URI
  * ```java
- * GET /openapi/ha3/instances/{instanceId}/deploy-graph
+ * /openapi/ha3/instances/{instanceId}/deploy-graph
  * ```
  *
  * @return GetDeployGraphResponse
@@ -9076,6 +9289,17 @@ func (client *Client) GetDeployGraph(instanceId *string) (_result *GetDeployGrap
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+ *
+ * @param request GetFileRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetFileResponse
+ */
 func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, versionName *string, request *GetFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9110,6 +9334,15 @@ func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, 
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+ *
+ * @param request GetFileRequest
+ * @return GetFileResponse
+ */
 func (client *Client) GetFile(instanceId *string, indexName *string, versionName *string, request *GetFileRequest) (_result *GetFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9159,9 +9392,10 @@ func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *
 }
 
 /**
- * ## Examples
- * Sample requests
- *     GET  /openapi/ha3/instances/ha3_instance_id_1/clusters/cluster1/index-version
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -9192,9 +9426,10 @@ func (client *Client) GetIndexVersionWithOptions(instanceId *string, clusterName
 }
 
 /**
- * ## Examples
- * Sample requests
- *     GET  /openapi/ha3/instances/ha3_instance_id_1/clusters/cluster1/index-version
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
  *
  * @return GetIndexVersionResponse
  */
@@ -9211,7 +9446,10 @@ func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (
 }
 
 /**
- * The billing method.
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}`
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -9242,7 +9480,10 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 }
 
 /**
- * The billing method.
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}`
  *
  * @return GetInstanceResponse
  */
@@ -9313,8 +9554,10 @@ func (client *Client) GetNodeConfig(instanceId *string, request *GetNodeConfigRe
 }
 
 /**
- * ## Sample requests
- * `GET /openapi/ha3/instances/ose-test1/advanced-configs`
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
  *
  * @param request ListAdvanceConfigDirRequest
  * @param headers map
@@ -9356,8 +9599,10 @@ func (client *Client) ListAdvanceConfigDirWithOptions(instanceId *string, config
 }
 
 /**
- * ## Sample requests
- * `GET /openapi/ha3/instances/ose-test1/advanced-configs`
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
  *
  * @param request ListAdvanceConfigDirRequest
  * @return ListAdvanceConfigDirResponse
@@ -9375,7 +9620,8 @@ func (client *Client) ListAdvanceConfigDir(instanceId *string, configName *strin
 }
 
 /**
- * http
+ * ## Sample requests
+ * `GET /openapi/ha3/instances/ose-test1/advanced-configs`
  *
  * @param request ListAdvanceConfigsRequest
  * @param headers map
@@ -9425,7 +9671,8 @@ func (client *Client) ListAdvanceConfigsWithOptions(instanceId *string, request 
 }
 
 /**
- * http
+ * ## Sample requests
+ * `GET /openapi/ha3/instances/ose-test1/advanced-configs`
  *
  * @param request ListAdvanceConfigsRequest
  * @return ListAdvanceConfigsResponse
@@ -9443,10 +9690,10 @@ func (client *Client) ListAdvanceConfigs(instanceId *string, request *ListAdvanc
 }
 
 /**
- * ### Sample requests
- * ```java
- * GET /openapi/ha3/instances/ha3_instance_name/cluster-names
- * ```
+ * ### Method
+ * GET
+ * ### URI
+ * /openapi/ha3/instances/{instanceId}/cluster-names
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -9477,10 +9724,10 @@ func (client *Client) ListClusterNamesWithOptions(headers map[string]*string, ru
 }
 
 /**
- * ### Sample requests
- * ```java
- * GET /openapi/ha3/instances/ha3_instance_name/cluster-names
- * ```
+ * ### Method
+ * GET
+ * ### URI
+ * /openapi/ha3/instances/{instanceId}/cluster-names
  *
  * @return ListClusterNamesResponse
  */
@@ -9496,6 +9743,20 @@ func (client *Client) ListClusterNames() (_result *ListClusterNamesResponse, _er
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/cluster-tasks
+ * ```
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListClusterTasksResponse
+ */
 func (client *Client) ListClusterTasksWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListClusterTasksResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9520,6 +9781,18 @@ func (client *Client) ListClusterTasksWithOptions(instanceId *string, headers ma
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/cluster-tasks
+ * ```
+ *
+ * @return ListClusterTasksResponse
+ */
 func (client *Client) ListClusterTasks(instanceId *string) (_result *ListClusterTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9533,7 +9806,14 @@ func (client *Client) ListClusterTasks(instanceId *string) (_result *ListCluster
 }
 
 /**
- * http
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/clusters
+ * ```
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -9564,7 +9844,14 @@ func (client *Client) ListClustersWithOptions(instanceId *string, headers map[st
 }
 
 /**
- * http
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/clusters
+ * ```
  *
  * @return ListClustersResponse
  */
@@ -9581,7 +9868,10 @@ func (client *Client) ListClusters(instanceId *string) (_result *ListClustersRes
 }
 
 /**
- * Obtains the schema information of a specified data source.
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -9612,7 +9902,10 @@ func (client *Client) ListDataSourceSchemasWithOptions(instanceId *string, dataS
 }
 
 /**
- * Obtains the schema information of a specified data source.
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
  *
  * @return ListDataSourceSchemasResponse
  */
@@ -9628,6 +9921,20 @@ func (client *Client) ListDataSourceSchemas(instanceId *string, dataSourceName *
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/data-source-tasks
+ * ```
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDataSourceTasksResponse
+ */
 func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourceTasksResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9652,6 +9959,18 @@ func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers
 	return _result, _err
 }
 
+/**
+ * ### Method
+ * ```java
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/data-source-tasks
+ * ```
+ *
+ * @return ListDataSourceTasksResponse
+ */
 func (client *Client) ListDataSourceTasks(instanceId *string) (_result *ListDataSourceTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9664,6 +9983,16 @@ func (client *Client) ListDataSourceTasks(instanceId *string) (_result *ListData
 	return _result, _err
 }
 
+/**
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources`
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDataSourcesResponse
+ */
 func (client *Client) ListDataSourcesWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9688,6 +10017,14 @@ func (client *Client) ListDataSourcesWithOptions(instanceId *string, headers map
 	return _result, _err
 }
 
+/**
+ * ## Method
+ * `GET`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources`
+ *
+ * @return ListDataSourcesResponse
+ */
 func (client *Client) ListDataSources(instanceId *string) (_result *ListDataSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9770,6 +10107,17 @@ func (client *Client) ListDateSourceGenerations(instanceId *string, dataSourceNa
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes
+ *
+ * @param request ListIndexesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListIndexesResponse
+ */
 func (client *Client) ListIndexesWithOptions(instanceId *string, request *ListIndexesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIndexesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9804,6 +10152,15 @@ func (client *Client) ListIndexesWithOptions(instanceId *string, request *ListIn
 	return _result, _err
 }
 
+/**
+ * ## Method
+ *     GET
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes
+ *
+ * @param request ListIndexesRequest
+ * @return ListIndexesResponse
+ */
 func (client *Client) ListIndexes(instanceId *string, request *ListIndexesRequest) (_result *ListIndexesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9883,7 +10240,10 @@ func (client *Client) ListInstanceSpecs(instanceId *string, request *ListInstanc
 }
 
 /**
- * Indicates whether an overdue payment is involved
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/[code]/instances`
  *
  * @param tmpReq ListInstancesRequest
  * @param headers map
@@ -9955,7 +10315,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 }
 
 /**
- * Indicates whether an overdue payment is involved
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/[code]/instances`
  *
  * @param request ListInstancesRequest
  * @return ListInstancesResponse
@@ -9973,9 +10336,13 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 }
 
 /**
- * \\### Sample requests
+ * ### Method
  * ```java
- * GET  /openapi/ha3/instances/ha-test1/node/ihome_searcher/online-configs?domain=pre_ea120
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/node/{nodeName}/online-configs?domain={domain}
  * ```
  *
  * @param request ListOnlineConfigsRequest
@@ -10018,9 +10385,13 @@ func (client *Client) ListOnlineConfigsWithOptions(instanceId *string, nodeName 
 }
 
 /**
- * \\### Sample requests
+ * ### Method
  * ```java
- * GET  /openapi/ha3/instances/ha-test1/node/ihome_searcher/online-configs?domain=pre_ea120
+ * GET
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/node/{nodeName}/online-configs?domain={domain}
  * ```
  *
  * @param request ListOnlineConfigsRequest
@@ -10039,7 +10410,10 @@ func (client *Client) ListOnlineConfigs(instanceId *string, nodeName *string, re
 }
 
 /**
- * The ID of the instance
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
  *
  * @param request ListQueryResultRequest
  * @param headers map
@@ -10085,7 +10459,10 @@ func (client *Client) ListQueryResultWithOptions(instanceId *string, request *Li
 }
 
 /**
- * The ID of the instance
+ * ### Method
+ * `GET`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
  *
  * @param request ListQueryResultRequest
  * @return ListQueryResultResponse
@@ -10247,7 +10624,6 @@ func (client *Client) ModifyClusterDesc(instanceId *string, clusterName *string,
 /**
  * ## Request syntax
  *     PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
- *     ...
  *
  * @param request ModifyClusterOfflineConfigRequest
  * @param headers map
@@ -10323,7 +10699,6 @@ func (client *Client) ModifyClusterOfflineConfigWithOptions(instanceId *string, 
 /**
  * ## Request syntax
  *     PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
- *     ...
  *
  * @param request ModifyClusterOfflineConfigRequest
  * @return ModifyClusterOfflineConfigResponse
@@ -10411,7 +10786,10 @@ func (client *Client) ModifyClusterOnlineConfig(instanceId *string, request *Mod
 }
 
 /**
- * The result returned
+ * ## Method
+ * `PUT`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
  *
  * @param request ModifyDataSourceRequest
  * @param headers map
@@ -10459,7 +10837,10 @@ func (client *Client) ModifyDataSourceWithOptions(instanceId *string, dataSource
 }
 
 /**
- * The result returned
+ * ## Method
+ * `PUT`
+ * ## URI
+ * `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
  *
  * @param request ModifyDataSourceRequest
  * @return ModifyDataSourceResponse
@@ -10477,14 +10858,10 @@ func (client *Client) ModifyDataSource(instanceId *string, dataSourceName *strin
 }
 
 /**
- * ### Method
- * ~~~
- * PUT
- * ~~~
- * ### URI
- * ~~~
- * /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
- * ~~~
+ * ## Method
+ *     PUT
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
  *
  * @param request ModifyFileRequest
  * @param headers map
@@ -10536,14 +10913,10 @@ func (client *Client) ModifyFileWithOptions(instanceId *string, indexName *strin
 }
 
 /**
- * ### Method
- * ~~~
- * PUT
- * ~~~
- * ### URI
- * ~~~
- * /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
- * ~~~
+ * ## Method
+ *     PUT
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
  *
  * @param request ModifyFileRequest
  * @return ModifyFileResponse
@@ -10561,7 +10934,10 @@ func (client *Client) ModifyFile(instanceId *string, indexName *string, versionN
 }
 
 /**
- * The information about each index.
+ * ### Method
+ * `PUT`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/index-partition`
  *
  * @param request ModifyIndexPartitionRequest
  * @param headers map
@@ -10615,7 +10991,10 @@ func (client *Client) ModifyIndexPartitionWithOptions(instanceId *string, reques
 }
 
 /**
- * The information about each index.
+ * ### Method
+ * `PUT`
+ * ### URI
+ * `/openapi/ha3/instances/{instanceId}/index-partition`
  *
  * @param request ModifyIndexPartitionRequest
  * @return ModifyIndexPartitionResponse
@@ -10695,13 +11074,13 @@ func (client *Client) ModifyIndexVersion(instanceId *string, clusterName *string
 
 /**
  * ### Method
- *  ~~~
+ * ```java
  * PUT
- * ~~~
+ * ```
  * ### URI
- * ~~~
+ * ```java
  * /openapi/ha3/instances/{instanceId}/node-config?type=qrs&name=test
- * ~~~
+ * ```
  *
  * @param request ModifyNodeConfigRequest
  * @param headers map
@@ -10743,6 +11122,10 @@ func (client *Client) ModifyNodeConfigWithOptions(instanceId *string, request *M
 		body["dataFragmentNumber"] = request.DataFragmentNumber
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FlowRatio)) {
+		body["flowRatio"] = request.FlowRatio
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MinServicePercent)) {
 		body["minServicePercent"] = request.MinServicePercent
 	}
@@ -10778,13 +11161,13 @@ func (client *Client) ModifyNodeConfigWithOptions(instanceId *string, request *M
 
 /**
  * ### Method
- *  ~~~
+ * ```java
  * PUT
- * ~~~
+ * ```
  * ### URI
- * ~~~
+ * ```java
  * /openapi/ha3/instances/{instanceId}/node-config?type=qrs&name=test
- * ~~~
+ * ```
  *
  * @param request ModifyNodeConfigRequest
  * @return ModifyNodeConfigResponse
@@ -11020,7 +11403,10 @@ func (client *Client) PublishAdvanceConfig(instanceId *string, configName *strin
 }
 
 /**
- * The information about the index
+ * ## Method
+ *     POST
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
  *
  * @param request PublishIndexVersionRequest
  * @param headers map
@@ -11062,7 +11448,10 @@ func (client *Client) PublishIndexVersionWithOptions(instanceId *string, indexNa
 }
 
 /**
- * The information about the index
+ * ## Method
+ *     POST
+ * ## URI
+ *     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
  *
  * @param request PublishIndexVersionRequest
  * @return PublishIndexVersionResponse
@@ -11158,7 +11547,14 @@ func (client *Client) RecoverIndex(instanceId *string, request *RecoverIndexRequ
 }
 
 /**
- * The result
+ * ### Method
+ * ```java
+ * DELETE
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/clusters/{clusterName}
+ * ```
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -11189,7 +11585,14 @@ func (client *Client) RemoveClusterWithOptions(instanceId *string, clusterName *
 }
 
 /**
- * The result
+ * ### Method
+ * ```java
+ * DELETE
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/clusters/{clusterName}
+ * ```
  *
  * @return RemoveClusterResponse
  */
@@ -11206,7 +11609,14 @@ func (client *Client) RemoveCluster(instanceId *string, clusterName *string) (_r
 }
 
 /**
- * The information about the index
+ * ### Method
+ * ```java
+ * PUT
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/stop-task/{fsmId}
+ * ```
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -11237,7 +11647,14 @@ func (client *Client) StopTaskWithOptions(instanceId *string, fsmId *string, hea
 }
 
 /**
- * The information about the index
+ * ### Method
+ * ```java
+ * PUT
+ * ```
+ * ### URI
+ * ```java
+ * /openapi/ha3/instances/{instanceId}/stop-task/{fsmId}
+ * ```
  *
  * @return StopTaskResponse
  */
