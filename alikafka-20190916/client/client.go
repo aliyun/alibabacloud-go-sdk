@@ -782,6 +782,7 @@ type CreatePrePayOrderRequest struct {
 	// *   **0**: ultra disk
 	// *   **1**: standard SSD
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The Internet traffic for the instance.
 	//
 	// *   This parameter is required if the **DeployType** parameter is set to **4**.
@@ -797,6 +798,7 @@ type CreatePrePayOrderRequest struct {
 	// *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
 	// *   For more information about the valid values, see [Billing](~~84737~~).
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
 	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
@@ -856,6 +858,11 @@ func (s *CreatePrePayOrderRequest) SetDiskType(v string) *CreatePrePayOrderReque
 	return s
 }
 
+func (s *CreatePrePayOrderRequest) SetDuration(v int32) *CreatePrePayOrderRequest {
+	s.Duration = &v
+	return s
+}
+
 func (s *CreatePrePayOrderRequest) SetEipMax(v int32) *CreatePrePayOrderRequest {
 	s.EipMax = &v
 	return s
@@ -868,6 +875,11 @@ func (s *CreatePrePayOrderRequest) SetIoMax(v int32) *CreatePrePayOrderRequest {
 
 func (s *CreatePrePayOrderRequest) SetIoMaxSpec(v string) *CreatePrePayOrderRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequest) SetPaidType(v int32) *CreatePrePayOrderRequest {
+	s.PaidType = &v
 	return s
 }
 
@@ -1069,6 +1081,7 @@ type CreatePrePayOrderShrinkRequest struct {
 	// *   **0**: ultra disk
 	// *   **1**: standard SSD
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The Internet traffic for the instance.
 	//
 	// *   This parameter is required if the **DeployType** parameter is set to **4**.
@@ -1084,6 +1097,7 @@ type CreatePrePayOrderShrinkRequest struct {
 	// *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
 	// *   For more information about the valid values, see [Billing](~~84737~~).
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
 	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
@@ -1143,6 +1157,11 @@ func (s *CreatePrePayOrderShrinkRequest) SetDiskType(v string) *CreatePrePayOrde
 	return s
 }
 
+func (s *CreatePrePayOrderShrinkRequest) SetDuration(v int32) *CreatePrePayOrderShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
 func (s *CreatePrePayOrderShrinkRequest) SetEipMax(v int32) *CreatePrePayOrderShrinkRequest {
 	s.EipMax = &v
 	return s
@@ -1155,6 +1174,11 @@ func (s *CreatePrePayOrderShrinkRequest) SetIoMax(v int32) *CreatePrePayOrderShr
 
 func (s *CreatePrePayOrderShrinkRequest) SetIoMaxSpec(v string) *CreatePrePayOrderShrinkRequest {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePrePayOrderShrinkRequest) SetPaidType(v int32) *CreatePrePayOrderShrinkRequest {
+	s.PaidType = &v
 	return s
 }
 
@@ -2552,9 +2576,17 @@ func (s *DescribeSaslUsersResponse) SetBody(v *DescribeSaslUsersResponseBody) *D
 }
 
 type EnableAutoGroupCreationRequest struct {
-	Enable     *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specify whether to enable the flexible group creation feature. Valid values:
+	//
+	// *   **true**: enables the flexible group creation feature.
+	// *   **false**: disabled the flexible group creation feature.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The instance ID.
+	//
+	// You can call the [GetInstanceList](~~437663~~) operation to query instances.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s EnableAutoGroupCreationRequest) String() string {
@@ -2581,10 +2613,16 @@ func (s *EnableAutoGroupCreationRequest) SetRegionId(v string) *EnableAutoGroupC
 }
 
 type EnableAutoGroupCreationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned HTTP status code.
+	//
+	// If the value **200** is returned, the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableAutoGroupCreationResponseBody) String() string {
@@ -2645,10 +2683,20 @@ func (s *EnableAutoGroupCreationResponse) SetBody(v *EnableAutoGroupCreationResp
 }
 
 type EnableAutoTopicCreationRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Operate      *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
-	PartitionNum *int64  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation that you want to perform. Valid values:
+	//
+	// *   enable: enables the automatic topic creation feature.
+	// *   disable: disables the automatic topic creation feature.
+	// *   updatePartition: changes the number of partitions in topics that are automatically created.
+	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	// The changed number of partitions in topics that are automatically created.
+	//
+	// This parameter takes effect only if you set Operate to updatePartition.
+	PartitionNum *int64 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s EnableAutoTopicCreationRequest) String() string {
@@ -2680,10 +2728,14 @@ func (s *EnableAutoTopicCreationRequest) SetRegionId(v string) *EnableAutoTopicC
 }
 
 type EnableAutoTopicCreationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned status code. If the request is successful, 200 is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableAutoTopicCreationResponseBody) String() string {
@@ -3043,9 +3095,11 @@ func (s *GetAllowedIpListResponse) SetBody(v *GetAllowedIpListResponseBody) *Get
 
 type GetConsumerListRequest struct {
 	// The name of the consumer group. If you do not configure this parameter, all consumer groups are queried.
-	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	ConsumerId  *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the instance to which the consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance to which the consumer group belongs.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -3063,8 +3117,18 @@ func (s *GetConsumerListRequest) SetConsumerId(v string) *GetConsumerListRequest
 	return s
 }
 
+func (s *GetConsumerListRequest) SetCurrentPage(v int32) *GetConsumerListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
 func (s *GetConsumerListRequest) SetInstanceId(v string) *GetConsumerListRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetConsumerListRequest) SetPageSize(v int32) *GetConsumerListRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -3078,12 +3142,15 @@ type GetConsumerListResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The consumer groups.
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
+	CurrentPage  *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total   *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetConsumerListResponseBody) String() string {
@@ -3104,8 +3171,18 @@ func (s *GetConsumerListResponseBody) SetConsumerList(v *GetConsumerListResponse
 	return s
 }
 
+func (s *GetConsumerListResponseBody) SetCurrentPage(v int32) *GetConsumerListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
 func (s *GetConsumerListResponseBody) SetMessage(v string) *GetConsumerListResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetConsumerListResponseBody) SetPageSize(v int32) *GetConsumerListResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -3116,6 +3193,11 @@ func (s *GetConsumerListResponseBody) SetRequestId(v string) *GetConsumerListRes
 
 func (s *GetConsumerListResponseBody) SetSuccess(v bool) *GetConsumerListResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetConsumerListResponseBody) SetTotal(v int64) *GetConsumerListResponseBody {
+	s.Total = &v
 	return s
 }
 
@@ -3558,15 +3640,15 @@ func (s *GetInstanceListRequest) SetTag(v []*GetInstanceListRequestTag) *GetInst
 }
 
 type GetInstanceListRequestTag struct {
-	// The key of the resource tag.
+	// The tag key.
 	//
-	// *   If this parameter is left empty, all tag keys are matched.
-	// *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
+	// *   If you leave this parameter empty, the keys of all tags are matched.
+	// *   The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the resource tag.
+	// The tag value.
 	//
-	// *   This parameter must be left empty if the Key parameter is left empty. If this parameter is left empty, the values of all tags are matched.
-	// *   The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
+	// *   If you leave Key empty, you must also leave this parameter empty. If you leave this parameter empty, the values of all tags are matched.
+	// *   The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3591,7 +3673,7 @@ func (s *GetInstanceListRequestTag) SetValue(v string) *GetInstanceListRequestTa
 type GetInstanceListResponseBody struct {
 	// The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the instance.
+	// The instances.
 	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -3659,10 +3741,10 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The type of the network in which the instance is deployed. Valid values:
 	//
-	// *   **4**: the Internet and VPCs
-	// *   **5**: VPCs
+	// *   **4**: Internet and VPC
+	// *   **5**: VPC
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The disk size of the instance. Unit: GB
+	// The disk size. Unit: GB.
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The disk type. Valid values:
 	//
@@ -3689,16 +3771,16 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	// The traffic specification.
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	// The ID of the key that is used for disk encryption in the region where the instance resides.
+	// The ID of the key that is used for disk encryption in the region where the instance is deployed.
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The retention period of messages on the instance. Unit: hours.
+	// The retention period of messages in the instance. Unit: hours.
 	MsgRetain *int32 `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
 	// The instance name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **0**: the subscription billing method
-	// *   **1**: the pay-as-you-go billing method
+	// *   **0**: subscription
+	// *   **1**: pay-as-you-go
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The ID of the region where the instance resides.
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3711,12 +3793,12 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
 	// *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
 	SaslDomainEndpoint *string `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
-	// The security group to which the instance belongs.
+	// The security group of the instance.
 	//
 	// *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, no value is returned.
-	// *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the return value is the configured security group.
+	// *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the returned value is the configured security group.
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
 	// *   **0**: pending
 	// *   **1**: preparing hardware resources
@@ -3751,11 +3833,11 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	StandardZoneId *string `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
 	// The tags.
 	Tags *GetInstanceListResponseBodyInstanceListInstanceVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The maximum number of topics that can be created on the instance.
+	// The maximum number of topics on the instance.
 	TopicNumLimit *int32 `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
 	// The upgrade information of the instance.
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
-	// The number of used consumer groups.
+	// The number of used groups.
 	UsedGroupCount *int32 `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
 	// The number of used partitions.
 	UsedPartitionCount *int32 `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
@@ -3763,7 +3845,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	UsedTopicCount *int32 `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
 	// The vSwitch ID of the instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the instance is deployed.
+	// The virtual private cloud (VPC) ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -4879,9 +4961,16 @@ func (s *GetTopicStatusResponse) SetBody(v *GetTopicStatusResponseBody) *GetTopi
 }
 
 type GetTopicSubscribeStatusRequest struct {
+	// The instance ID.
+	//
+	// You can call the [GetInstanceList](~~437663~~) operation to query instances.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The topic name.
+	//
+	// You can call the [GetTopicList](~~437677~~) operation to query topics.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicSubscribeStatusRequest) String() string {
@@ -4908,11 +4997,15 @@ func (s *GetTopicSubscribeStatusRequest) SetTopic(v string) *GetTopicSubscribeSt
 }
 
 type GetTopicSubscribeStatusResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The subscription details.
 	TopicSubscribeStatus *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus `json:"TopicSubscribeStatus,omitempty" xml:"TopicSubscribeStatus,omitempty" type:"Struct"`
 }
 
@@ -4950,8 +5043,10 @@ func (s *GetTopicSubscribeStatusResponseBody) SetTopicSubscribeStatus(v *GetTopi
 }
 
 type GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus struct {
+	// The groups that subscribe to the topic.
 	ConsumerGroups []*string `json:"ConsumerGroups,omitempty" xml:"ConsumerGroups,omitempty" type:"Repeated"`
-	Topic          *string   `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The topic name.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus) String() string {
@@ -8497,6 +8592,10 @@ func (client *Client) CreatePrePayOrderWithOptions(tmpReq *CreatePrePayOrderRequ
 		query["DiskType"] = request.DiskType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EipMax)) {
 		query["EipMax"] = request.EipMax
 	}
@@ -8507,6 +8606,10 @@ func (client *Client) CreatePrePayOrderWithOptions(tmpReq *CreatePrePayOrderRequ
 
 	if !tea.BoolValue(util.IsUnset(request.IoMaxSpec)) {
 		query["IoMaxSpec"] = request.IoMaxSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
@@ -9331,8 +9434,16 @@ func (client *Client) GetConsumerListWithOptions(request *GetConsumerListRequest
 		query["ConsumerId"] = request.ConsumerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
