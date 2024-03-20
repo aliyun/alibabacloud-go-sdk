@@ -556,14 +556,19 @@ func (s *DebuggerResult) SetJobUserId(v string) *DebuggerResult {
 }
 
 type EcsSpec struct {
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Gpu             *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuType         *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	InstanceType    *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsAvailable     *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	Memory          *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	AcceleratorType        *string   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	Cpu                    *int32    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DefaultGPUDriver       *string   `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	Gpu                    *int32    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuType                *string   `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	InstanceType           *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsAvailable            *bool     `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	Memory                 *int32    `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NonProtectSpotDiscount *float32  `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
+	PaymentTypes           []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
+	ResourceType           *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SpotStockStatus        *string   `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
+	SupportedGPUDrivers    []*string `json:"SupportedGPUDrivers,omitempty" xml:"SupportedGPUDrivers,omitempty" type:"Repeated"`
 }
 
 func (s EcsSpec) String() string {
@@ -581,6 +586,11 @@ func (s *EcsSpec) SetAcceleratorType(v string) *EcsSpec {
 
 func (s *EcsSpec) SetCpu(v int32) *EcsSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *EcsSpec) SetDefaultGPUDriver(v string) *EcsSpec {
+	s.DefaultGPUDriver = &v
 	return s
 }
 
@@ -609,8 +619,28 @@ func (s *EcsSpec) SetMemory(v int32) *EcsSpec {
 	return s
 }
 
+func (s *EcsSpec) SetNonProtectSpotDiscount(v float32) *EcsSpec {
+	s.NonProtectSpotDiscount = &v
+	return s
+}
+
+func (s *EcsSpec) SetPaymentTypes(v []*string) *EcsSpec {
+	s.PaymentTypes = v
+	return s
+}
+
 func (s *EcsSpec) SetResourceType(v string) *EcsSpec {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *EcsSpec) SetSpotStockStatus(v string) *EcsSpec {
+	s.SpotStockStatus = &v
+	return s
+}
+
+func (s *EcsSpec) SetSupportedGPUDrivers(v []*string) *EcsSpec {
+	s.SupportedGPUDrivers = v
 	return s
 }
 
@@ -1500,6 +1530,7 @@ type JobSpec struct {
 	ImageConfig     *ImageConfig    `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	PodCount        *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	ResourceConfig  *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	SpotSpec        *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
 	Type            *string         `json:"Type,omitempty" xml:"Type,omitempty"`
 	UseSpotInstance *bool           `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
 }
@@ -1539,6 +1570,11 @@ func (s *JobSpec) SetPodCount(v int64) *JobSpec {
 
 func (s *JobSpec) SetResourceConfig(v *ResourceConfig) *JobSpec {
 	s.ResourceConfig = v
+	return s
+}
+
+func (s *JobSpec) SetSpotSpec(v *SpotSpec) *JobSpec {
+	s.SpotSpec = v
 	return s
 }
 
@@ -2159,6 +2195,29 @@ func (s *SmartCache) SetType(v string) *SmartCache {
 
 func (s *SmartCache) SetUserId(v string) *SmartCache {
 	s.UserId = &v
+	return s
+}
+
+type SpotSpec struct {
+	SpotDiscountLimit *float32 `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
+	SpotStrategy      *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+}
+
+func (s SpotSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SpotSpec) GoString() string {
+	return s.String()
+}
+
+func (s *SpotSpec) SetSpotDiscountLimit(v float32) *SpotSpec {
+	s.SpotDiscountLimit = &v
+	return s
+}
+
+func (s *SpotSpec) SetSpotStrategy(v string) *SpotSpec {
+	s.SpotStrategy = &v
 	return s
 }
 
