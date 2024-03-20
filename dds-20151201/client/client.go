@@ -16678,6 +16678,7 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MigrateAvailableZoneRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The ID of the instance.
 	//
 	// > If the instance is deployed in a VPC, you must specify the **Vswitch** parameter.
@@ -16713,6 +16714,11 @@ func (s MigrateAvailableZoneRequest) String() string {
 
 func (s MigrateAvailableZoneRequest) GoString() string {
 	return s.String()
+}
+
+func (s *MigrateAvailableZoneRequest) SetCategory(v string) *MigrateAvailableZoneRequest {
+	s.Category = &v
+	return s
 }
 
 func (s *MigrateAvailableZoneRequest) SetDBInstanceId(v string) *MigrateAvailableZoneRequest {
@@ -17026,6 +17032,111 @@ func (s *ModifyAccountDescriptionResponse) SetStatusCode(v int32) *ModifyAccount
 }
 
 func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionResponseBody) *ModifyAccountDescriptionResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyActiveOperationTasksRequest struct {
+	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetIds(v string) *ModifyActiveOperationTasksRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetImmediateStart(v int32) *ModifyActiveOperationTasksRequest {
+	s.ImmediateStart = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiveOperationTasksRequest {
+	s.SwitchTime = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponseBody struct {
+	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetIds(v string) *ModifyActiveOperationTasksResponseBody {
+	s.Ids = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetRequestId(v string) *ModifyActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetStatusCode(v int32) *ModifyActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTasksResponseBody) *ModifyActiveOperationTasksResponse {
 	s.Body = v
 	return s
 }
@@ -20128,6 +20239,7 @@ func (s *ModifyTaskInfoResponse) SetBody(v *ModifyTaskInfoResponseBody) *ModifyT
 }
 
 type ReleaseNodePrivateNetworkAddressRequest struct {
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// The ID of the sharded cluster instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The network type of the internal endpoint. Valid values:
@@ -20153,6 +20265,11 @@ func (s ReleaseNodePrivateNetworkAddressRequest) String() string {
 
 func (s ReleaseNodePrivateNetworkAddressRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReleaseNodePrivateNetworkAddressRequest) SetConnectionType(v string) *ReleaseNodePrivateNetworkAddressRequest {
+	s.ConnectionType = &v
+	return s
 }
 
 func (s *ReleaseNodePrivateNetworkAddressRequest) SetDBInstanceId(v string) *ReleaseNodePrivateNetworkAddressRequest {
@@ -20238,6 +20355,7 @@ func (s *ReleaseNodePrivateNetworkAddressResponse) SetBody(v *ReleaseNodePrivate
 }
 
 type ReleasePublicNetworkAddressRequest struct {
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// The instance ID.
 	//
 	// >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
@@ -20259,6 +20377,11 @@ func (s ReleasePublicNetworkAddressRequest) String() string {
 
 func (s ReleasePublicNetworkAddressRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReleasePublicNetworkAddressRequest) SetConnectionType(v string) *ReleasePublicNetworkAddressRequest {
+	s.ConnectionType = &v
+	return s
 }
 
 func (s *ReleasePublicNetworkAddressRequest) SetDBInstanceId(v string) *ReleasePublicNetworkAddressRequest {
@@ -20339,25 +20462,34 @@ func (s *ReleasePublicNetworkAddressResponse) SetBody(v *ReleasePublicNetworkAdd
 }
 
 type RenewDBInstanceRequest struct {
-	// Specifies whether to enable automatic payment for the instance. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
 	// *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-	// *   **false**: disables automatic payment. You must perform the following operations to pay for the instance: Payment instructions: Log on to the console. In the upper-right corner, click **Billing Management** and select **Billing Management** from the drop-down list. The Billing Management page appears. In the left-side navigation pane, click **Bills**. On the Unpaid tab, click Make a Payment in the Actions column corresponding to the bill you want to pay.
+	// *   **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses** and select **User Center** from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management** > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
 	//
 	// Default value: **true**.
-	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// Default value: **false**.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The business information.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
+	// Specifies whether to use coupons. Default value: null. Valid values:
+	//
+	// *   **default** or **null**: uses coupons.
+	// *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The period you set for the instance to implement payment renewal. Unit: months. Valid values: **1-9, 12, 24, and 36**.
+	// The subscription period of the instance. Unit: month. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, and 36**.
 	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -20429,7 +20561,7 @@ func (s *RenewDBInstanceRequest) SetResourceOwnerId(v int64) *RenewDBInstanceReq
 type RenewDBInstanceResponseBody struct {
 	// The ID of the order.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27432,8 +27564,11 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 
 /**
  * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
  * *   The billing method of the instance is subscription.
  * *   The instance has expired and is in the **Locking** state.
+ * **
+ * **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
  *
  * @param request DestroyInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27502,8 +27637,11 @@ func (client *Client) DestroyInstanceWithOptions(request *DestroyInstanceRequest
 
 /**
  * Before you call this operation, make sure that the instance meets the following requirements:
+ * *   The instance is a replica set instance or a sharded cluster instance that uses local disks.
  * *   The billing method of the instance is subscription.
  * *   The instance has expired and is in the **Locking** state.
+ * **
+ * **Warning** Data cannot be restored after the instance is destroyed. Proceed with caution.
  *
  * @param request DestroyInstanceRequest
  * @return DestroyInstanceResponse
@@ -27723,6 +27861,10 @@ func (client *Client) MigrateAvailableZoneWithOptions(request *MigrateAvailableZ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -27947,6 +28089,74 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
 	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImmediateStart)) {
+		query["ImmediateStart"] = request.ImmediateStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTime)) {
+		query["SwitchTime"] = request.SwitchTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyActiveOperationTasks"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30042,6 +30252,10 @@ func (client *Client) ReleaseNodePrivateNetworkAddressWithOptions(request *Relea
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
+		query["ConnectionType"] = request.ConnectionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -30117,6 +30331,10 @@ func (client *Client) ReleasePublicNetworkAddressWithOptions(request *ReleasePub
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
+		query["ConnectionType"] = request.ConnectionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -30176,8 +30394,8 @@ func (client *Client) ReleasePublicNetworkAddress(request *ReleasePublicNetworkA
 }
 
 /**
- * Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
- * This parameter is only applicable to Subscription instances.
+ * Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+ * This operation is only applicable to instances that use the subscription billing method.
  *
  * @param request RenewDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30257,8 +30475,8 @@ func (client *Client) RenewDBInstanceWithOptions(request *RenewDBInstanceRequest
 }
 
 /**
- * Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
- * This parameter is only applicable to Subscription instances.
+ * Make sure that you fully understand the billing methods and pricing of ApsaraDB for MongoDB before you call this operation. For more information about the pricing of ApsaraDB for MongoDB, visit the [pricing tab of the product buy page](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+ * This operation is only applicable to instances that use the subscription billing method.
  *
  * @param request RenewDBInstanceRequest
  * @return RenewDBInstanceResponse
