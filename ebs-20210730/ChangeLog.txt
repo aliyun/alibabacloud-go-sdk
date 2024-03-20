@@ -1,3 +1,16 @@
+2024-03-20 Version: v2.6.0
+- Support API DeleteDisk.
+- Support API DescribeDisks.
+- Support API DescribeSolutionInstanceConfiguration.
+- Support API GetDisk.
+- Support API QueryDedicatedBlockStorageClusterDiskThroughputStatus.
+- Support API QueryDedicatedBlockStorageClusterInventoryData.
+- Support API SetDedicatedBlockStorageClusterDiskThroughput.
+- Delete API StartDiskMonitor.
+- Delete API StopDiskMonitor.
+- Update API DescribeDiskMonitorData: update response param.
+
+
 2024-02-28 Version: v2.5.0
 - Support API DeleteDisk.
 - Support API DescribeDisks.

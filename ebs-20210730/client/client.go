@@ -4623,7 +4623,7 @@ type DescribeDisksResponseBodyData struct {
 	//
 	// Default value: false.
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// IOPS。
+	// IOPS.
 	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The maximum number of read operations per second. Unit: operations/s.
 	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
@@ -6684,7 +6684,7 @@ type GetDiskResponseBodyDisk struct {
 	//
 	// Default value: false.
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// IOPS。
+	// IOPS.
 	Iops *int64 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The maximum number of read operations per second. Unit: operations/s.
 	IopsRead *int64 `json:"IopsRead,omitempty" xml:"IopsRead,omitempty"`
@@ -7538,6 +7538,87 @@ func (s *ModifyDiskReplicaPairResponse) SetBody(v *ModifyDiskReplicaPairResponse
 	return s
 }
 
+type QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	QosRequestId *string `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) SetClientToken(v string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) SetQosRequestId(v string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest {
+	s.QosRequestId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) SetRegionId(v string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) SetRequestId(v string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) SetStatus(v string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse struct {
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse) SetHeaders(v map[string]*string) *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse) SetStatusCode(v int32) *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse) SetBody(v *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDedicatedBlockStorageClusterInventoryDataRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
 	//
@@ -7992,6 +8073,87 @@ func (s *ReprotectDiskReplicaPairResponse) SetStatusCode(v int32) *ReprotectDisk
 }
 
 func (s *ReprotectDiskReplicaPairResponse) SetBody(v *ReprotectDiskReplicaPairResponseBody) *ReprotectDiskReplicaPairResponse {
+	s.Body = v
+	return s
+}
+
+type SetDedicatedBlockStorageClusterDiskThroughputRequest struct {
+	Bps         *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputRequest) SetBps(v int32) *SetDedicatedBlockStorageClusterDiskThroughputRequest {
+	s.Bps = &v
+	return s
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputRequest) SetClientToken(v string) *SetDedicatedBlockStorageClusterDiskThroughputRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputRequest) SetDiskId(v string) *SetDedicatedBlockStorageClusterDiskThroughputRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputRequest) SetRegionId(v string) *SetDedicatedBlockStorageClusterDiskThroughputRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetDedicatedBlockStorageClusterDiskThroughputResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputResponseBody) SetRequestId(v string) *SetDedicatedBlockStorageClusterDiskThroughputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDedicatedBlockStorageClusterDiskThroughputResponse struct {
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDedicatedBlockStorageClusterDiskThroughputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDedicatedBlockStorageClusterDiskThroughputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputResponse) SetHeaders(v map[string]*string) *SetDedicatedBlockStorageClusterDiskThroughputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputResponse) SetStatusCode(v int32) *SetDedicatedBlockStorageClusterDiskThroughputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDedicatedBlockStorageClusterDiskThroughputResponse) SetBody(v *SetDedicatedBlockStorageClusterDiskThroughputResponseBody) *SetDedicatedBlockStorageClusterDiskThroughputResponse {
 	s.Body = v
 	return s
 }
@@ -12213,6 +12375,60 @@ func (client *Client) ModifyDiskReplicaPair(request *ModifyDiskReplicaPairReques
 	return _result, _err
 }
 
+func (client *Client) QueryDedicatedBlockStorageClusterDiskThroughputStatusWithOptions(request *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QosRequestId)) {
+		body["QosRequestId"] = request.QosRequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDedicatedBlockStorageClusterDiskThroughputStatus"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDedicatedBlockStorageClusterDiskThroughputStatus(request *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) (_result *QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse{}
+	_body, _err := client.QueryDedicatedBlockStorageClusterDiskThroughputStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Period is the time interval between data retrieval points. When set to 60 (minute interval), a maximum of 1440 data points can be returned; when set to 3600 (hour interval), a maximum of 744 data points can be returned; and when set to 86400 (day interval), a maximum of 366 data points can be returned.
  *
@@ -12516,6 +12732,64 @@ func (client *Client) ReprotectDiskReplicaPair(request *ReprotectDiskReplicaPair
 	runtime := &util.RuntimeOptions{}
 	_result = &ReprotectDiskReplicaPairResponse{}
 	_body, _err := client.ReprotectDiskReplicaPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDedicatedBlockStorageClusterDiskThroughputWithOptions(request *SetDedicatedBlockStorageClusterDiskThroughputRequest, runtime *util.RuntimeOptions) (_result *SetDedicatedBlockStorageClusterDiskThroughputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bps)) {
+		body["Bps"] = request.Bps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		body["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDedicatedBlockStorageClusterDiskThroughput"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDedicatedBlockStorageClusterDiskThroughputResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDedicatedBlockStorageClusterDiskThroughput(request *SetDedicatedBlockStorageClusterDiskThroughputRequest) (_result *SetDedicatedBlockStorageClusterDiskThroughputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDedicatedBlockStorageClusterDiskThroughputResponse{}
+	_body, _err := client.SetDedicatedBlockStorageClusterDiskThroughputWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
