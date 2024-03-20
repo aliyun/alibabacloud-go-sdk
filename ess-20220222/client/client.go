@@ -3692,9 +3692,10 @@ type CreateScalingConfigurationRequest struct {
 	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
 	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
-	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Memory            *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkInterfaces []*CreateScalingConfigurationRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
+	OwnerAccount      *string                                               `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId           *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password that you want to use to log on to an ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	// `` `() ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ ``
@@ -3940,6 +3941,11 @@ func (s *CreateScalingConfigurationRequest) SetLoadBalancerWeight(v int32) *Crea
 
 func (s *CreateScalingConfigurationRequest) SetMemory(v int32) *CreateScalingConfigurationRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetNetworkInterfaces(v []*CreateScalingConfigurationRequestNetworkInterfaces) *CreateScalingConfigurationRequest {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -4565,6 +4571,41 @@ func (s *CreateScalingConfigurationRequestInstanceTypeOverrides) SetWeightedCapa
 	return s
 }
 
+type CreateScalingConfigurationRequestNetworkInterfaces struct {
+	InstanceType                *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ipv6AddressCount            *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	NetworkInterfaceTrafficMode *string   `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecurityGroupIds            []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateScalingConfigurationRequestNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationRequestNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetInstanceType(v string) *CreateScalingConfigurationRequestNetworkInterfaces {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetIpv6AddressCount(v int32) *CreateScalingConfigurationRequestNetworkInterfaces {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *CreateScalingConfigurationRequestNetworkInterfaces {
+	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *CreateScalingConfigurationRequestNetworkInterfaces {
+	s.SecurityGroupIds = v
+	return s
+}
+
 type CreateScalingConfigurationRequestSpotPriceLimits struct {
 	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -4693,9 +4734,10 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
 	// > You can specify Cpu and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify instance types in the scaling configuration.
-	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Memory            *int32                                                      `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkInterfaces []*CreateScalingConfigurationShrinkRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
+	OwnerAccount      *string                                                     `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId           *int64                                                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password that you want to use to log on to an ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	// `` `() ~!@#$%^&*-_+=\|{}[]:;\"<>,.?/ ``
@@ -4941,6 +4983,11 @@ func (s *CreateScalingConfigurationShrinkRequest) SetLoadBalancerWeight(v int32)
 
 func (s *CreateScalingConfigurationShrinkRequest) SetMemory(v int32) *CreateScalingConfigurationShrinkRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetNetworkInterfaces(v []*CreateScalingConfigurationShrinkRequestNetworkInterfaces) *CreateScalingConfigurationShrinkRequest {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -5563,6 +5610,41 @@ func (s *CreateScalingConfigurationShrinkRequestInstanceTypeOverrides) SetInstan
 
 func (s *CreateScalingConfigurationShrinkRequestInstanceTypeOverrides) SetWeightedCapacity(v int32) *CreateScalingConfigurationShrinkRequestInstanceTypeOverrides {
 	s.WeightedCapacity = &v
+	return s
+}
+
+type CreateScalingConfigurationShrinkRequestNetworkInterfaces struct {
+	InstanceType                *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ipv6AddressCount            *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	NetworkInterfaceTrafficMode *string   `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecurityGroupIds            []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateScalingConfigurationShrinkRequestNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingConfigurationShrinkRequestNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetInstanceType(v string) *CreateScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetIpv6AddressCount(v int32) *CreateScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *CreateScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *CreateScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -12796,7 +12878,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set the Cpu parameter to 2 and the Memory parameter to 16 to specify the instance types that have 2 vCPUs and 16 GiB of memory. If you specify the Cpu and Memory parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances of the instance type that is provided at the lowest price.
 	//
 	// > You can specify CPU and memory specifications to determine the range of instance types only if the Scaling Policy parameter is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory            *int32                                                                             `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkInterfaces []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
 	// Indicates whether the password preconfigured in the image is used.
 	PasswordInherit                  *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	PrivatePoolOptions_id            *string `json:"PrivatePoolOptions.Id,omitempty" xml:"PrivatePoolOptions.Id,omitempty"`
@@ -13062,6 +13145,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetLoad
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetMemory(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetNetworkInterfaces(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -13481,6 +13569,41 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstanceP
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos) SetMemory(v float32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos {
 	s.Memory = &v
+	return s
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces struct {
+	InstanceType                *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ipv6AddressCount            *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	NetworkInterfaceTrafficMode *string   `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecurityGroupIds            []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetInstanceType(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetIpv6AddressCount(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
+	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces) SetSecurityGroupIds(v []*string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -20799,7 +20922,8 @@ type ModifyScalingConfigurationRequest struct {
 	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
 	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory            *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkInterfaces []*ModifyScalingConfigurationRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
 	// Specifies whether to overwrite existing data. Valid values:
 	//
 	// *   true
@@ -21013,6 +21137,11 @@ func (s *ModifyScalingConfigurationRequest) SetLoadBalancerWeight(v int32) *Modi
 
 func (s *ModifyScalingConfigurationRequest) SetMemory(v int32) *ModifyScalingConfigurationRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetNetworkInterfaces(v []*ModifyScalingConfigurationRequestNetworkInterfaces) *ModifyScalingConfigurationRequest {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -21623,6 +21752,41 @@ func (s *ModifyScalingConfigurationRequestInstanceTypeOverrides) SetWeightedCapa
 	return s
 }
 
+type ModifyScalingConfigurationRequestNetworkInterfaces struct {
+	InstanceType                *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ipv6AddressCount            *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	NetworkInterfaceTrafficMode *string   `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecurityGroupIds            []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s ModifyScalingConfigurationRequestNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationRequestNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetInstanceType(v string) *ModifyScalingConfigurationRequestNetworkInterfaces {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetIpv6AddressCount(v int32) *ModifyScalingConfigurationRequestNetworkInterfaces {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *ModifyScalingConfigurationRequestNetworkInterfaces {
+	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *ModifyScalingConfigurationRequestNetworkInterfaces {
+	s.SecurityGroupIds = v
+	return s
+}
+
 type ModifyScalingConfigurationRequestSpotPriceLimits struct {
 	// The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -21736,7 +21900,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// You can specify the number of vCPUs and the memory size to determine the range of instance types. For example, you can set Cpu to 2 and Memory to 16 to specify instance types that have 2 vCPUs and 16 GiB of memory. If you specify Cpu and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Then, Auto Scaling preferentially creates instances by using the lowest-priced instance type.
 	//
 	// > You can specify CPU and Memory to determine the range of instance types only if you set Scaling Policy to Cost Optimization Policy and you do not specify an instance type in the scaling configuration.
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory            *int32                                                      `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkInterfaces []*ModifyScalingConfigurationShrinkRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
 	// Specifies whether to overwrite existing data. Valid values:
 	//
 	// *   true
@@ -21950,6 +22115,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetLoadBalancerWeight(v int32)
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetMemory(v int32) *ModifyScalingConfigurationShrinkRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetNetworkInterfaces(v []*ModifyScalingConfigurationShrinkRequestNetworkInterfaces) *ModifyScalingConfigurationShrinkRequest {
+	s.NetworkInterfaces = v
 	return s
 }
 
@@ -22557,6 +22727,41 @@ func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides) SetInstan
 
 func (s *ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides) SetWeightedCapacity(v int32) *ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides {
 	s.WeightedCapacity = &v
+	return s
+}
+
+type ModifyScalingConfigurationShrinkRequestNetworkInterfaces struct {
+	InstanceType                *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Ipv6AddressCount            *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	NetworkInterfaceTrafficMode *string   `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
+	SecurityGroupIds            []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s ModifyScalingConfigurationShrinkRequestNetworkInterfaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingConfigurationShrinkRequestNetworkInterfaces) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetInstanceType(v string) *ModifyScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetIpv6AddressCount(v int32) *ModifyScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.Ipv6AddressCount = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetNetworkInterfaceTrafficMode(v string) *ModifyScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.NetworkInterfaceTrafficMode = &v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGroupIds(v []*string) *ModifyScalingConfigurationShrinkRequestNetworkInterfaces {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -26777,6 +26982,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaces)) {
+		query["NetworkInterfaces"] = request.NetworkInterfaces
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -31281,6 +31490,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaces)) {
+		query["NetworkInterfaces"] = request.NetworkInterfaces
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Override)) {
