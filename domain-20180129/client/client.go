@@ -255,9 +255,21 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponse) SetBody(v *BatchFuzzyMatchD
 }
 
 type CancelDomainVerificationRequest struct {
-	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The action type. Valid values:
+	//
+	// *   **DOMAINAUDIT**: review a domain name review.
+	// *   **AUDITCONTACT**: review a contact.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// Thee instance ID of the domain name. You can call the [QueryDomainList](~~67712~~) operation to query the instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client. Set the value to **127.0.0.1**.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -290,6 +302,7 @@ func (s *CancelDomainVerificationRequest) SetUserClientIp(v string) *CancelDomai
 }
 
 type CancelDomainVerificationResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1634,7 +1647,9 @@ func (s *DeleteRegistrantProfileResponse) SetBody(v *DeleteRegistrantProfileResp
 }
 
 type DomainSpecialBizCancelRequest struct {
-	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1657,18 +1672,30 @@ func (s *DomainSpecialBizCancelRequest) SetUserClientIp(v string) *DomainSpecial
 }
 
 type DomainSpecialBizCancelResponseBody struct {
-	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Module         interface{}   `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Synchro        *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// Indicates whether retries are allowed.
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The name of the application for which the error code is returned.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The array of error parameters that are returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code that is directly returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned data.
+	Module interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values: true and false.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether to perform synchronous processing.
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s DomainSpecialBizCancelResponseBody) String() string {
@@ -4826,8 +4853,16 @@ func (s *QueryDomainAdminDivisionResponse) SetBody(v *QueryDomainAdminDivisionRe
 }
 
 type QueryDomainByDomainNameRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4855,40 +4890,115 @@ func (s *QueryDomainByDomainNameRequest) SetUserClientIp(v string) *QueryDomainB
 }
 
 type QueryDomainByDomainNameResponseBody struct {
-	DnsList                      *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	DomainGroupId                *int64                                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName              *string                                     `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName                   *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameProxyService       *bool                                       `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
-	DomainNameVerificationStatus *string                                     `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
-	DomainStatus                 *string                                     `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType                   *string                                     `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Email                        *string                                     `json:"Email,omitempty" xml:"Email,omitempty"`
-	EmailVerificationClientHold  *bool                                       `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
-	EmailVerificationStatus      *int32                                      `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
-	ExpirationCurrDateDiff       *int32                                      `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate               *string                                     `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong           *int64                                      `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus         *string                                     `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId                   *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                      *bool                                       `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	RealNameStatus               *string                                     `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	RegistrantName               *string                                     `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization       *string                                     `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType               *string                                     `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrantUpdatingStatus     *string                                     `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
-	RegistrationDate             *string                                     `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong         *int64                                      `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                       *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId                    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId              *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                          *QueryDomainByDomainNameResponseBodyTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	TransferOutStatus            *string                                     `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
-	TransferProhibitionLock      *string                                     `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
-	UpdateProhibitionLock        *string                                     `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
-	UserId                       *string                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	ZhRegistrantName             *string                                     `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization     *string                                     `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	// The Domain Name System (DNS) servers of the domain name.
+	DnsList *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// The ID of the domain name group. You can call the [QueryDomainGroupList](~~69362~~) operation to query the ID of the domain name group.
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// The name of the domain name group.
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether privacy protection is enabled for the domain name.
+	DomainNameProxyService *bool `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
+	// The status of name auditing for the domain name. Valid values:
+	//
+	// *   **NONAUDIT**: The name auditing for the domain name is not performed.
+	// *   **SUCCEED**: The name auditing for the domain name is successful.
+	// *   **FAILED**: The name auditing for the domain name fails.
+	// *   **AUDITING**: The name auditing for the domain name is in progress.
+	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
+	// The status of the domain name. Valid values:
+	//
+	// *   1: The domain name needs to be renewed.
+	// *   2: The domain name needs to be redeemed.
+	// *   3: The domain name is normal.
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   New gTLD
+	// *   gTLD
+	// *   ccTLD
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The email address of the domain name registrant.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Indicates whether the domain name is in the ClientHold state.
+	EmailVerificationClientHold *bool `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
+	// Indicates whether the email address passes verification. Valid values:
+	//
+	// *   **0**: The email address fails the verification.
+	// *   **1**: The email address passes the verification.
+	EmailVerificationStatus *int32 `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
+	// The number of days from the expiration date of the domain name to the current date.
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// The expiration date.
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The timestamp generated when the domain name expired.
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// Indicates whether the domain name expires. Valid values:
+	//
+	// *   **1**: The domain name does not expire.
+	// *   **2**: The domain name expires.
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// The instance ID of the domain name.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the domain name is a premium domain name.
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// The status of real-name verification for the domain name. Valid values:
+	//
+	// *   **NONAUDIT**: The real-name verification is not performed.
+	// *   **SUCCEED**: The real-name verification is successful.
+	// *   **FAILED**: The real-name verification fails.
+	// *   **AUDITING**: The real-name verification is in progress.
+	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+	// The name of the contact.
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// The registrant of the domain name.
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// The type of contact who registers the domain name. Valid values:
+	//
+	// *   **1**: individual.
+	// *   **2**: enterprise.
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// The status of the information about the domain name registrant. Valid values:
+	//
+	// *   **PENDING**: The information about the domain name registrant is being modified.
+	// *   **NORMAL**: normal.
+	RegistrantUpdatingStatus *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
+	// The time when the domain name was registered.
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// The timestamp generated when the domain name was registered.
+	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	// The remarks on the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tag *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// The transfer status of the domain name. Valid values:
+	//
+	// *   **NORMAL**: The domain name is normal.
+	// *   **PENDING**: The domain name is being transferred out from Alibaba Cloud.
+	TransferOutStatus *string `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
+	// The status of the transfer lock for the domain name. Valid values:
+	//
+	// *   **NONE_SETTING**: No transfer lock is configured.
+	// *   **OPEN**: The transfer lock is enabled.
+	// *   **CLOSE**: The transfer lock is disabled.
+	TransferProhibitionLock *string `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
+	// The status of the security lock for the domain name. Valid values:
+	//
+	// *   **NONE_SETTING**: No security lock is configured.
+	// *   **OPEN**: The security lock is enabled.
+	// *   **CLOSE**: The security lock is disabled.
+	UpdateProhibitionLock *string `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Chinese name of the domain name contact.
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// The Chinese name of the domain name registrant.
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s QueryDomainByDomainNameResponseBody) String() string {
@@ -5104,7 +5214,9 @@ func (s *QueryDomainByDomainNameResponseBodyTag) SetTag(v []*QueryDomainByDomain
 }
 
 type QueryDomainByDomainNameResponseBodyTagTag struct {
-	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Vaue *string `json:"Vaue,omitempty" xml:"Vaue,omitempty"`
 }
 
@@ -5643,6 +5755,7 @@ func (s *QueryDomainGroupListResponse) SetBody(v *QueryDomainGroupListResponseBo
 }
 
 type QueryDomainListRequest struct {
+	Ccompany              *string                      `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
 	DomainGroupId         *string                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	DomainName            *string                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndExpirationDate     *int64                       `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
@@ -5667,6 +5780,11 @@ func (s QueryDomainListRequest) String() string {
 
 func (s QueryDomainListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDomainListRequest) SetCcompany(v string) *QueryDomainListRequest {
+	s.Ccompany = &v
+	return s
 }
 
 func (s *QueryDomainListRequest) SetDomainGroupId(v string) *QueryDomainListRequest {
@@ -5849,6 +5967,7 @@ func (s *QueryDomainListResponseBodyData) SetDomain(v []*QueryDomainListResponse
 }
 
 type QueryDomainListResponseBodyDataDomain struct {
+	Ccompany               *string                                   `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
 	DomainAuditStatus      *string                                   `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
 	DomainGroupId          *string                                   `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
 	DomainGroupName        *string                                   `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
@@ -5876,6 +5995,11 @@ func (s QueryDomainListResponseBodyDataDomain) String() string {
 
 func (s QueryDomainListResponseBodyDataDomain) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetCcompany(v string) *QueryDomainListResponseBodyDataDomain {
+	s.Ccompany = &v
+	return s
 }
 
 func (s *QueryDomainListResponseBodyDataDomain) SetDomainAuditStatus(v string) *QueryDomainListResponseBodyDataDomain {
@@ -6166,7 +6290,9 @@ func (s *QueryDomainRealNameVerificationInfoResponse) SetBody(v *QueryDomainReal
 }
 
 type QueryDomainSpecialBizDetailRequest struct {
-	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business ID.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -6189,18 +6315,33 @@ func (s *QueryDomainSpecialBizDetailRequest) SetUserClientIp(v string) *QueryDom
 }
 
 type QueryDomainSpecialBizDetailResponseBody struct {
-	AllowRetry     *bool                                          `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName        *string                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode    *string                                        `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                        `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                  `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	ErrorCode      *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Module         *QueryDomainSpecialBizDetailResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Synchro        *bool                                          `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// Indicates whether retries are allowed.
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The name of the application for which the error code is returned.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The array of error parameters that are returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code that is directly returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned data.
+	Module *QueryDomainSpecialBizDetailResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether to perform synchronous processing.
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s QueryDomainSpecialBizDetailResponseBody) String() string {
@@ -6272,26 +6413,46 @@ func (s *QueryDomainSpecialBizDetailResponseBody) SetSynchro(v bool) *QueryDomai
 }
 
 type QueryDomainSpecialBizDetailResponseBodyModule struct {
-	AuditMsg                    *string                                                                     `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
-	BizName                     *string                                                                     `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizNo                       *string                                                                     `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
-	BizStatus                   *string                                                                     `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	BizType                     *string                                                                     `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CreateTime                  *int64                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName                  *string                                                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainSpecialBizContact     *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact       `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	// The review information.
+	AuditMsg *string `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
+	// The business name.
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The business ID.
+	BizNo *string `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
+	// The business status.
+	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// The business type.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The time when the business was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The contact information.
+	DomainSpecialBizContact *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	// The certificate information.
 	DomainSpecialBizCredentials []*QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials `json:"DomainSpecialBizCredentials,omitempty" xml:"DomainSpecialBizCredentials,omitempty" type:"Repeated"`
-	DomainSpecialOrderResult    *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult      `json:"DomainSpecialOrderResult,omitempty" xml:"DomainSpecialOrderResult,omitempty" type:"Struct"`
-	GmtCreate                   *string                                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified                 *string                                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                          *int64                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	OrderId                     *string                                                                     `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ProductId                   *string                                                                     `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	SaleId                      *string                                                                     `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	Status                      *int32                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc                  *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	UpdateTime                  *int64                                                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId                      *string                                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The information about the order.
+	DomainSpecialOrderResult *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult `json:"DomainSpecialOrderResult,omitempty" xml:"DomainSpecialOrderResult,omitempty" type:"Struct"`
+	// The time when the business was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the business was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary key.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The service ID.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The instance ID.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The business status.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of business status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The time when the business was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryDomainSpecialBizDetailResponseBodyModule) String() string {
@@ -6403,30 +6564,55 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetUserId(v string) *Que
 }
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact struct {
-	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CCity        *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
-	CCompany     *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
-	CCountry     *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
-	CName        *string `json:"CName,omitempty" xml:"CName,omitempty"`
-	CProvince    *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
-	CVenu        *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
-	ECity        *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
-	ECompany     *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
-	EName        *string `json:"EName,omitempty" xml:"EName,omitempty"`
-	EProvince    *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
-	EVenu        *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	FaxArea      *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
-	FaxExt       *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
-	FaxMain      *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
-	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Postalcode   *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
-	RegType      *int32  `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	// The business ID.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The city.
+	CCity *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
+	// The organization name.
+	CCompany *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
+	// The country code.
+	CCountry *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
+	// The contact name.
+	CName *string `json:"CName,omitempty" xml:"CName,omitempty"`
+	// The province.
+	CProvince *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
+	// The address.
+	CVenu *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
+	// The city in English.
+	ECity *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
+	// The organization name in English.
+	ECompany *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
+	// The contact name in English.
+	EName *string `json:"EName,omitempty" xml:"EName,omitempty"`
+	// The province in English.
+	EProvince *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
+	// The address in English.
+	EVenu *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
+	// The email address.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The extended information.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The fax country code.
+	FaxArea *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
+	// The fax extension number.
+	FaxExt *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
+	// The fax number with an area code or mobile number.
+	FaxMain *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
+	// The mobile number.
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The zip code.
+	Postalcode *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
+	// The contact type. Valid values: 1: individual. 2: enterprise.
+	RegType *int32 `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	// The registrant ID.
 	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
-	TelArea      *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt       *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	TelMain      *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	// The calling code of the country or region where the domain name contact is located.
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// The telephone extension number.
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// The landline number with an area code or mobile number.
+	TelMain *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	// The VSP contact ID.
 	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
 }
 
@@ -6564,13 +6750,20 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) S
 }
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials struct {
-	BizId          *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// The ID of the associated workflow.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The certificate number.
+	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// The certificate type.
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	HolderCert     *int32  `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
-	SaleId         *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The certificate URL.
+	CredentialUrl *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the certificate belongs to the registrant.
+	HolderCert *int32 `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
+	// The instance ID.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
 func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) String() string {
@@ -6617,15 +6810,24 @@ func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredential
 }
 
 type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult struct {
-	ActionType    *string  `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	OrderAmount   *float64 `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
-	OrderCurrency *string  `json:"OrderCurrency,omitempty" xml:"OrderCurrency,omitempty"`
-	OrderId       *string  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderStatus   *string  `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	OrderTime     *string  `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
-	OrderYear     *int32   `json:"OrderYear,omitempty" xml:"OrderYear,omitempty"`
-	SaleId        *string  `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	SubOrderId    *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	// The cost type.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The amount of the order.
+	OrderAmount *float64 `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
+	// The currency.
+	OrderCurrency *string `json:"OrderCurrency,omitempty" xml:"OrderCurrency,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order status.
+	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// The time when the order was placed.
+	OrderTime *string `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
+	// The validity period.
+	OrderYear *int32 `json:"OrderYear,omitempty" xml:"OrderYear,omitempty"`
+	// The instance ID.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The suborder ID.
+	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
 }
 
 func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) String() string {
@@ -6711,8 +6913,11 @@ func (s *QueryDomainSpecialBizDetailResponse) SetBody(v *QueryDomainSpecialBizDe
 }
 
 type QueryDomainSpecialBizInfoByDomainRequest struct {
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The business type.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -6740,18 +6945,30 @@ func (s *QueryDomainSpecialBizInfoByDomainRequest) SetUserClientIp(v string) *Qu
 }
 
 type QueryDomainSpecialBizInfoByDomainResponseBody struct {
-	AllowRetry     *bool                                                `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName        *string                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode    *string                                              `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                              `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                                        `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	ErrorCode      *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string                                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Module         *QueryDomainSpecialBizInfoByDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Synchro        *bool                                                `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// Indicates whether retries are allowed.
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The name of the application for which the error code is returned.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The array of error parameters that are returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code that is directly returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned data.
+	Module *QueryDomainSpecialBizInfoByDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values: true and false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether to perform synchronous processing.
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s QueryDomainSpecialBizInfoByDomainResponseBody) String() string {
@@ -6823,25 +7040,44 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetSynchro(v bool) *Quer
 }
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModule struct {
-	AuditMsg                    *string                                                                           `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
-	BizName                     *string                                                                           `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	BizNo                       *string                                                                           `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
-	BizStatus                   *string                                                                           `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	BizType                     *string                                                                           `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CreateTime                  *int64                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DomainName                  *string                                                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainSpecialBizContact     *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact       `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	// The review information.
+	AuditMsg *string `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
+	// The business name.
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The business ID.
+	BizNo *string `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
+	// The business status.
+	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// The business type.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The time when the business was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The contact information.
+	DomainSpecialBizContact *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	// The certificate information.
 	DomainSpecialBizCredentials []*QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials `json:"DomainSpecialBizCredentials,omitempty" xml:"DomainSpecialBizCredentials,omitempty" type:"Repeated"`
-	GmtCreate                   *string                                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified                 *string                                                                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                          *int64                                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	OrderId                     *string                                                                           `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ProductId                   *string                                                                           `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	SaleId                      *string                                                                           `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	Status                      *int32                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc                  *string                                                                           `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	UpdateTime                  *int64                                                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId                      *string                                                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The time when the business was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the business was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The primary key.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The service ID.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The instance ID.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The business status.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of business status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The time when the business was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryDomainSpecialBizInfoByDomainResponseBodyModule) String() string {
@@ -6948,30 +7184,55 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetUserId(v string
 }
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact struct {
-	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CCity        *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
-	CCompany     *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
-	CCountry     *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
-	CName        *string `json:"CName,omitempty" xml:"CName,omitempty"`
-	CProvince    *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
-	CVenu        *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
-	ECity        *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
-	ECompany     *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
-	EName        *string `json:"EName,omitempty" xml:"EName,omitempty"`
-	EProvince    *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
-	EVenu        *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	FaxArea      *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
-	FaxExt       *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
-	FaxMain      *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
-	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Postalcode   *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
-	RegType      *int32  `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	// The business ID.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The city.
+	CCity *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
+	// The organization name.
+	CCompany *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
+	// The country code.
+	CCountry *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
+	// The contact name.
+	CName *string `json:"CName,omitempty" xml:"CName,omitempty"`
+	// The province.
+	CProvince *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
+	// The address.
+	CVenu *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
+	// The city in English.
+	ECity *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
+	// The organization name in English.
+	ECompany *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
+	// The contact name in English.
+	EName *string `json:"EName,omitempty" xml:"EName,omitempty"`
+	// The province in English.
+	EProvince *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
+	// The address in English.
+	EVenu *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
+	// The email address.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The extended information.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The fax country code.
+	FaxArea *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
+	// The fax extension number.
+	FaxExt *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
+	// The fax number with an area code or mobile number.
+	FaxMain *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
+	// The mobile number.
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The zip code.
+	Postalcode *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
+	// The contact type. Valid values: 1: individual. 2: enterprise.
+	RegType *int32 `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	// The registrant ID.
 	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
-	TelArea      *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt       *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	TelMain      *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	// The calling code of the country or region where the domain name contact is located.
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// The telephone extension number.
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// The landline number with an area code or mobile number.
+	TelMain *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	// The VSP contact ID.
 	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
 }
 
@@ -7109,13 +7370,20 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCont
 }
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials struct {
-	BizId          *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// The ID of the associated workflow.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The certificate number.
+	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	// The certificate type.
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	HolderCert     *int32  `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
-	SaleId         *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The certificate URL.
+	CredentialUrl *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether the certificate belongs to the registrant.
+	HolderCert *int32 `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
+	// The instance ID.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
 func (s QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) String() string {
@@ -16550,29 +16818,78 @@ func (s *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse) SetBody
 }
 
 type ScrollDomainListRequest struct {
-	DomainGroupId         *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainStatus          *int32  `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	EndExpirationDate     *int64  `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndLength             *int32  `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
-	EndRegistrationDate   *int64  `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Excluded              *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
-	ExcludedPrefix        *bool   `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
-	ExcludedSuffix        *bool   `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
-	Form                  *int32  `json:"Form,omitempty" xml:"Form,omitempty"`
-	KeyWord               *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	KeyWordPrefix         *bool   `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
-	KeyWordSuffix         *bool   `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ScrollId              *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
-	StartExpirationDate   *int64  `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartLength           *int32  `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
-	StartRegistrationDate *int64  `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	Suffixs               *string `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
-	TradeType             *int32  `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to obtain the ID of the domain name group.
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// The status of the domain name. Valid values:
+	//
+	// *   **0**: All.
+	// *   **1**: The domain name needs to be renewed.
+	// *   **2**: The domain name needs to be redeemed.
+	// *   **3**: The domain name is normal.
+	// *   **4**: The domain name is being transferred from Alibaba Cloud.
+	// *   **5**: The information about the domain name registrant is being modified.
+	// *   **6**: Real-name verification is not performed on the domain name.
+	// *   **7**: Real-name verification for the domain name fails. Real-name reverification is required.
+	// *   **8**: The domain name is being reviewed.
+	DomainStatus *int32 `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The end of the time range to query domain names based on expiration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	// The end of domain name length to query.
+	EndLength *int32 `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
+	// The end of the time range to query domain names based on registration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	// The keyword that is used to exclude domain names.
+	Excluded *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
+	// Specifies whether to exclude the prefix keyword.
+	ExcludedPrefix *bool `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
+	// Specifies whether to exclude the suffix keyword.
+	ExcludedSuffix *bool `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
+	// The composition of the domain name.
+	Form *int32 `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The keyword.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// Specifies whether the keyword is the prefix.
+	KeyWordPrefix *bool `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
+	// Specifies whether the keyword is the suffix.
+	KeyWordSuffix *bool `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   **New gTLD**
+	// *   **gTLD**
+	// *   **ccTLD**
+	// *   **other**
+	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scroll ID. This parameter is a technical parameter.
+	ScrollId *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
+	// The beginning of the time range to query domain names based on expiration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	// The start of the domain name length to query.
+	StartLength *int32 `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
+	// The beginning of the time range to query domain names based on registration dates. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	// The suffixes of domain names to be queried. Separate multiple suffixes with commas (,).
+	Suffixs *string `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
+	// The publishing status of the domain name. Valid values:
+	//
+	// *   **2**: The domain name is published at a fixed price.
+	// *   **3**: The domain name is published with the price negotiable.
+	// *   **4**: The domain name is published for bidding.
+	// *   **6**: The domain name is published with price push.
+	// *   **-1**: The domain name is not published.
+	TradeType *int32 `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
+	// The IP address of the client. Set the value to **127.0.0.1**.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s ScrollDomainListRequest) String() string {
@@ -16699,11 +17016,16 @@ func (s *ScrollDomainListRequest) SetUserClientIp(v string) *ScrollDomainListReq
 }
 
 type ScrollDomainListResponseBody struct {
-	Data         *ScrollDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	PageSize     *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScrollId     *string                           `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
-	TotalItemNum *int32                            `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The domain names.
+	Data *ScrollDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scroll ID.
+	ScrollId *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
+	// The number of remaining domain names to be queried.
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
 }
 
 func (s ScrollDomainListResponseBody) String() string {
@@ -16757,29 +17079,76 @@ func (s *ScrollDomainListResponseBodyData) SetDomain(v []*ScrollDomainListRespon
 }
 
 type ScrollDomainListResponseBodyDataDomain struct {
-	DnsList                  *ScrollDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	DomainAuditStatus        *string                                        `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	DomainGroupId            *string                                        `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName          *string                                        `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName               *string                                        `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainStatus             *string                                        `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType               *string                                        `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Email                    *string                                        `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpirationCurrDateDiff   *int32                                         `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate           *string                                        `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong       *int64                                         `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus     *string                                        `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId               *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                  *bool                                          `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	ProductId                *string                                        `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegistrantOrganization   *string                                        `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType           *string                                        `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrationDate         *string                                        `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong     *int64                                         `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                   *string                                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId          *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                      *ScrollDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	ZhRegistrantOrganization *string                                        `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	// The Domain Name System (DNS) servers of the domain name.
+	DnsList *ScrollDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	// The status of real-name verification for the domain name. Valid values:
+	//
+	// *   **FAILED**: Real-name verification for the domain name fails.
+	// *   **SUCCEED**: Real-name verification for the domain name is successful.
+	// *   **NONAUDIT**: Real-name verification for the domain name is not performed.
+	// *   **AUDITING**: Real-name verification for the domain name is in progress.
+	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	// The ID of the domain name group.
+	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// The name of the domain name group.
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The status of the domain name. Valid values:
+	//
+	// *   **1**: The domain name needs to be renewed.
+	// *   **2**: The domain name needs to be redeemed.
+	// *   **3**: The domain name is normal.
+	// *   **4**: The domain name is being transferred out.
+	// *   **5**: The information about the domain name registrant is being modified.
+	// *   **6**: Real-name verification is not performed on the domain name.
+	// *   **7**: Real-name verification for the domain name fails.
+	// *   **8**: The real-name verification is being reviewed.
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   **New gTLD**
+	// *   **gTLD**
+	// *   **ccTLD**
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The email address.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The number of days from the expiration date of the domain name to the current date.
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// The time when the domain name expires.
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The time when the domain name expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// Indicates whether the domain name expires. Valid values:
+	//
+	// *   **1**: The domain name does not expire.
+	// *   **2**: The domain name expires.
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// The instance ID of the domain name.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the domain name is a premium domain name.
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// The service ID.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The registrant of the domain name.
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// The registration type of the domain name. Valid values:
+	//
+	// *   **1**: individual.
+	// *   **2**: enterprise.
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// The time when the domain name was registered.
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// The time when the domain name was registered. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	// The remarks on the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource tag.
+	Tag *ScrollDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// The Chinese name of the domain name registrant.
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s ScrollDomainListResponseBodyDataDomain) String() string {
@@ -16940,7 +17309,9 @@ func (s *ScrollDomainListResponseBodyDataDomainTag) SetTag(v []*ScrollDomainList
 }
 
 type ScrollDomainListResponseBodyDataDomainTagTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17136,9 +17507,13 @@ func (s *SetupDomainAutoRenewResponse) SetBody(v *SetupDomainAutoRenewResponseBo
 }
 
 type SubmitDomainSpecialBizCredentialsRequest struct {
-	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Credentials  *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
-	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The business ID.
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The certificate information.
+	Credentials *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
+	// The extended information.
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17171,18 +17546,33 @@ func (s *SubmitDomainSpecialBizCredentialsRequest) SetUserClientIp(v string) *Su
 }
 
 type SubmitDomainSpecialBizCredentialsResponseBody struct {
-	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Module         interface{}   `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Synchro        *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+	// Indicates whether retries are allowed.
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The name of the application for which the error code is returned.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The array of error parameters that are returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code that is directly returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned data.
+	Module interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether to perform synchronous processing.
+	Synchro *bool `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
 }
 
 func (s SubmitDomainSpecialBizCredentialsResponseBody) String() string {
@@ -20498,6 +20888,10 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ccompany)) {
+		query["Ccompany"] = request.Ccompany
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainGroupId)) {
 		query["DomainGroupId"] = request.DomainGroupId
 	}
@@ -25332,6 +25726,13 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(req
 	return _result, _err
 }
 
+/**
+ * If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+ *
+ * @param request ScrollDomainListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ScrollDomainListResponse
+ */
 func (client *Client) ScrollDomainListWithOptions(request *ScrollDomainListRequest, runtime *util.RuntimeOptions) (_result *ScrollDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25453,6 +25854,12 @@ func (client *Client) ScrollDomainListWithOptions(request *ScrollDomainListReque
 	return _result, _err
 }
 
+/**
+ * If you have a large number of domain names, a slow response may occur when you call an API operation to query domain names. In this case, you can call this operation to query domain names more quickly. When you call this operation for the first time, specify the request parameters except ScrollId. A scroll ID is returned without other data. In the second request, use the scroll ID obtained from the previous response. In subsequent requests, the newly specified request parameters do not take effect, and the request parameters that are specified in the first request prevail.
+ *
+ * @param request ScrollDomainListRequest
+ * @return ScrollDomainListResponse
+ */
 func (client *Client) ScrollDomainList(request *ScrollDomainListRequest) (_result *ScrollDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ScrollDomainListResponse{}
