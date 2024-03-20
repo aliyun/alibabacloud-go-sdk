@@ -1107,6 +1107,7 @@ func (s *CreateExperimentResponse) SetBody(v *CreateExperimentResponseBody) *Cre
 type CreateExperimentGroupRequest struct {
 	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
 	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
 	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1117,6 +1118,7 @@ type CreateExperimentGroupRequest struct {
 	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
 	ReservedBuckets          *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
 }
 
@@ -1135,6 +1137,11 @@ func (s *CreateExperimentGroupRequest) SetConfig(v string) *CreateExperimentGrou
 
 func (s *CreateExperimentGroupRequest) SetCrowdId(v string) *CreateExperimentGroupRequest {
 	s.CrowdId = &v
+	return s
+}
+
+func (s *CreateExperimentGroupRequest) SetCrowdTargetType(v string) *CreateExperimentGroupRequest {
+	s.CrowdTargetType = &v
 	return s
 }
 
@@ -1185,6 +1192,11 @@ func (s *CreateExperimentGroupRequest) SetName(v string) *CreateExperimentGroupR
 
 func (s *CreateExperimentGroupRequest) SetNeedAA(v bool) *CreateExperimentGroupRequest {
 	s.NeedAA = &v
+	return s
+}
+
+func (s *CreateExperimentGroupRequest) SetRandomFlow(v int64) *CreateExperimentGroupRequest {
+	s.RandomFlow = &v
 	return s
 }
 
@@ -3628,17 +3640,20 @@ func (s *GetExperimentGroupRequest) SetInstanceId(v string) *GetExperimentGroupR
 type GetExperimentGroupResponseBody struct {
 	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
 	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
 	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DistributionTimeDuration *int32  `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
 	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
 	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HoldingBuckets           *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
 	LaboratoryId             *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
 	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
 	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
 	// Id of the request
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
@@ -3661,6 +3676,11 @@ func (s *GetExperimentGroupResponseBody) SetConfig(v string) *GetExperimentGroup
 
 func (s *GetExperimentGroupResponseBody) SetCrowdId(v string) *GetExperimentGroupResponseBody {
 	s.CrowdId = &v
+	return s
+}
+
+func (s *GetExperimentGroupResponseBody) SetCrowdTargetType(v string) *GetExperimentGroupResponseBody {
+	s.CrowdTargetType = &v
 	return s
 }
 
@@ -3694,6 +3714,11 @@ func (s *GetExperimentGroupResponseBody) SetFilter(v string) *GetExperimentGroup
 	return s
 }
 
+func (s *GetExperimentGroupResponseBody) SetHoldingBuckets(v string) *GetExperimentGroupResponseBody {
+	s.HoldingBuckets = &v
+	return s
+}
+
 func (s *GetExperimentGroupResponseBody) SetLaboratoryId(v string) *GetExperimentGroupResponseBody {
 	s.LaboratoryId = &v
 	return s
@@ -3716,6 +3741,11 @@ func (s *GetExperimentGroupResponseBody) SetNeedAA(v bool) *GetExperimentGroupRe
 
 func (s *GetExperimentGroupResponseBody) SetOwner(v string) *GetExperimentGroupResponseBody {
 	s.Owner = &v
+	return s
+}
+
+func (s *GetExperimentGroupResponseBody) SetRandomFlow(v int64) *GetExperimentGroupResponseBody {
+	s.RandomFlow = &v
 	return s
 }
 
@@ -4757,12 +4787,14 @@ func (s *GetLayerRequest) SetInstanceId(v string) *GetLayerRequest {
 }
 
 type GetLayerResponseBody struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	LaboratoryId  *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResidualFlow *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s GetLayerResponseBody) String() string {
@@ -4778,6 +4810,11 @@ func (s *GetLayerResponseBody) SetDescription(v string) *GetLayerResponseBody {
 	return s
 }
 
+func (s *GetLayerResponseBody) SetGmtCreateTime(v string) *GetLayerResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
 func (s *GetLayerResponseBody) SetLaboratoryId(v string) *GetLayerResponseBody {
 	s.LaboratoryId = &v
 	return s
@@ -4790,6 +4827,11 @@ func (s *GetLayerResponseBody) SetName(v string) *GetLayerResponseBody {
 
 func (s *GetLayerResponseBody) SetRequestId(v string) *GetLayerResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetLayerResponseBody) SetResidualFlow(v int64) *GetLayerResponseBody {
+	s.ResidualFlow = &v
 	return s
 }
 
@@ -5962,6 +6004,7 @@ func (s *ListCrowdsResponse) SetBody(v *ListCrowdsResponseBody) *ListCrowdsRespo
 type ListExperimentGroupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LayerId    *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5980,6 +6023,11 @@ func (s *ListExperimentGroupsRequest) SetInstanceId(v string) *ListExperimentGro
 
 func (s *ListExperimentGroupsRequest) SetLayerId(v string) *ListExperimentGroupsRequest {
 	s.LayerId = &v
+	return s
+}
+
+func (s *ListExperimentGroupsRequest) SetRegionId(v string) *ListExperimentGroupsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -6021,6 +6069,7 @@ func (s *ListExperimentGroupsResponseBody) SetTotalCount(v int64) *ListExperimen
 type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
 	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
 	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6028,11 +6077,13 @@ type ListExperimentGroupsResponseBodyExperimentGroups struct {
 	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
 	ExperimentGroupId        *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
 	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HoldingBuckets           *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
 	LaboratoryId             *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
 	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
 	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
 	ReservedBuckets          *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
 	SceneId                  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -6053,6 +6104,11 @@ func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetConfig(v string) *
 
 func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetCrowdId(v string) *ListExperimentGroupsResponseBodyExperimentGroups {
 	s.CrowdId = &v
+	return s
+}
+
+func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetCrowdTargetType(v string) *ListExperimentGroupsResponseBodyExperimentGroups {
+	s.CrowdTargetType = &v
 	return s
 }
 
@@ -6091,6 +6147,11 @@ func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetFilter(v string) *
 	return s
 }
 
+func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetHoldingBuckets(v string) *ListExperimentGroupsResponseBodyExperimentGroups {
+	s.HoldingBuckets = &v
+	return s
+}
+
 func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetLaboratoryId(v string) *ListExperimentGroupsResponseBodyExperimentGroups {
 	s.LaboratoryId = &v
 	return s
@@ -6113,6 +6174,11 @@ func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetNeedAA(v bool) *Li
 
 func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetOwner(v string) *ListExperimentGroupsResponseBodyExperimentGroups {
 	s.Owner = &v
+	return s
+}
+
+func (s *ListExperimentGroupsResponseBodyExperimentGroups) SetRandomFlow(v int64) *ListExperimentGroupsResponseBodyExperimentGroups {
+	s.RandomFlow = &v
 	return s
 }
 
@@ -7871,11 +7937,13 @@ func (s *ListLayersResponseBody) SetTotalCount(v int64) *ListLayersResponseBody 
 }
 
 type ListLayersResponseBodyLayers struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId      *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	LaboratoryId  *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	LayerId       *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResidualFlow  *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListLayersResponseBodyLayers) String() string {
@@ -7891,6 +7959,11 @@ func (s *ListLayersResponseBodyLayers) SetDescription(v string) *ListLayersRespo
 	return s
 }
 
+func (s *ListLayersResponseBodyLayers) SetGmtCreateTime(v string) *ListLayersResponseBodyLayers {
+	s.GmtCreateTime = &v
+	return s
+}
+
 func (s *ListLayersResponseBodyLayers) SetLaboratoryId(v string) *ListLayersResponseBodyLayers {
 	s.LaboratoryId = &v
 	return s
@@ -7903,6 +7976,11 @@ func (s *ListLayersResponseBodyLayers) SetLayerId(v string) *ListLayersResponseB
 
 func (s *ListLayersResponseBodyLayers) SetName(v string) *ListLayersResponseBodyLayers {
 	s.Name = &v
+	return s
+}
+
+func (s *ListLayersResponseBodyLayers) SetResidualFlow(v int64) *ListLayersResponseBodyLayers {
+	s.ResidualFlow = &v
 	return s
 }
 
@@ -9749,6 +9827,7 @@ func (s *UpdateExperimentResponse) SetBody(v *UpdateExperimentResponseBody) *Upd
 type UpdateExperimentGroupRequest struct {
 	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
 	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
 	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -9759,6 +9838,7 @@ type UpdateExperimentGroupRequest struct {
 	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
 	ReservcedBuckets         *string `json:"ReservcedBuckets,omitempty" xml:"ReservcedBuckets,omitempty"`
 }
 
@@ -9777,6 +9857,11 @@ func (s *UpdateExperimentGroupRequest) SetConfig(v string) *UpdateExperimentGrou
 
 func (s *UpdateExperimentGroupRequest) SetCrowdId(v string) *UpdateExperimentGroupRequest {
 	s.CrowdId = &v
+	return s
+}
+
+func (s *UpdateExperimentGroupRequest) SetCrowdTargetType(v string) *UpdateExperimentGroupRequest {
+	s.CrowdTargetType = &v
 	return s
 }
 
@@ -9827,6 +9912,11 @@ func (s *UpdateExperimentGroupRequest) SetName(v string) *UpdateExperimentGroupR
 
 func (s *UpdateExperimentGroupRequest) SetNeedAA(v bool) *UpdateExperimentGroupRequest {
 	s.NeedAA = &v
+	return s
+}
+
+func (s *UpdateExperimentGroupRequest) SetRandomFlow(v int64) *UpdateExperimentGroupRequest {
+	s.RandomFlow = &v
 	return s
 }
 
@@ -11580,6 +11670,10 @@ func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperiment
 		body["CrowdId"] = request.CrowdId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CrowdTargetType)) {
+		body["CrowdTargetType"] = request.CrowdTargetType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DebugCrowdId)) {
 		body["DebugCrowdId"] = request.DebugCrowdId
 	}
@@ -11618,6 +11712,10 @@ func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperiment
 
 	if !tea.BoolValue(util.IsUnset(request.NeedAA)) {
 		body["NeedAA"] = request.NeedAA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RandomFlow)) {
+		body["RandomFlow"] = request.RandomFlow
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReservedBuckets)) {
@@ -13852,6 +13950,10 @@ func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGro
 		query["LayerId"] = request.LayerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -15482,6 +15584,10 @@ func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string
 		body["CrowdId"] = request.CrowdId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CrowdTargetType)) {
+		body["CrowdTargetType"] = request.CrowdTargetType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DebugCrowdId)) {
 		body["DebugCrowdId"] = request.DebugCrowdId
 	}
@@ -15520,6 +15626,10 @@ func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string
 
 	if !tea.BoolValue(util.IsUnset(request.NeedAA)) {
 		body["NeedAA"] = request.NeedAA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RandomFlow)) {
+		body["RandomFlow"] = request.RandomFlow
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReservcedBuckets)) {
