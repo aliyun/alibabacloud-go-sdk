@@ -59,9 +59,9 @@ func (s *ActiveCaCertificateResponseBody) SetSn(v string) *ActiveCaCertificateRe
 }
 
 type ActiveCaCertificateResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActiveCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActiveCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActiveCaCertificateResponse) String() string {
@@ -140,9 +140,9 @@ func (s *ActiveDeviceCertificateResponseBody) SetRequestId(v string) *ActiveDevi
 }
 
 type ActiveDeviceCertificateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActiveDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActiveDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActiveDeviceCertificateResponse) String() string {
@@ -169,10 +169,24 @@ func (s *ActiveDeviceCertificateResponse) SetBody(v *ActiveDeviceCertificateResp
 }
 
 type ApplyTokenRequest struct {
-	Actions    *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The permission type of the token. Valid values:
+	//
+	// *   **R**: read-only. You can only subscribe to the specified topics.
+	// *   **W**: write-only. You can only send messages to the specified topics.
+	// *   **R,W**: read and write. You can send messages to and subscribe to the specified topics. Separate **R** and **W** with a comma (,).
+	Actions *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// The timestamp that indicates the point in time when the token expires. Unit: milliseconds. The minimum validity period of a token is 60 seconds, and the maximum validity period of a token is 30 days. If you specify a validity period of more than 30 days for a token, no errors are returned. However, the token is valid only for 30 days.
+	//
+	// For example, you want to specify a validity period of 60 seconds for a token. If the current system timestamp is 1609434061000, you must set this parameter to **1609434121000**. The value is calculated by using the following formula: 1609434061000 + 60 x 1000 = 1609434121000.
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resources  *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The topics on the ApsaraMQ for MQTT instance. Separate multiple topics with commas (,). Each token can be used to access up to 100 topics. Multiple topics are sorted in alphabetic order. MQTT wildcards, including single-level wildcards represented by plus signs (+) and multi-level wildcards represented by number signs (#), can be used for the Resources parameter that you register to apply for a token.
+	//
+	// For example, if you set the **Resources** parameter to Topic1/+ when you apply for a token, the ApsaraMQ for MQTT client can manage the topics in Topic1/xxx. If you set the **Resources** parameter to Topic1/# when you apply for a token, the ApsaraMQ for MQTT client can manage topics of any level in Topic1/xxx/xxx/xxx.
+	//
+	// >  ApsaraMQ for MQTT supports subtopics. You can specify subtopics in the code for messaging instead of configuring them in the ApsaraMQ for MQTT console. Forward slashes (/) are used to separate topics of different levels. For more information, see [Terms](~~42420~~).
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
 func (s ApplyTokenRequest) String() string {
@@ -204,8 +218,12 @@ func (s *ApplyTokenRequest) SetResources(v string) *ApplyTokenRequest {
 }
 
 type ApplyTokenResponseBody struct {
+	// The request ID. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token that is returned by the ApsaraMQ for MQTT broker.
+	//
+	// >  Do not assume the length, format, or rule of the token to return. The actual returned token shall prevail.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s ApplyTokenResponseBody) String() string {
@@ -227,9 +245,9 @@ func (s *ApplyTokenResponseBody) SetToken(v string) *ApplyTokenResponseBody {
 }
 
 type ApplyTokenResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyTokenResponse) String() string {
@@ -256,8 +274,10 @@ func (s *ApplyTokenResponse) SetBody(v *ApplyTokenResponseBody) *ApplyTokenRespo
 }
 
 type BatchQuerySessionByClientIdsRequest struct {
+	// The ApsaraMQ for MQTT clients.
 	ClientIdList []*string `json:"ClientIdList,omitempty" xml:"ClientIdList,omitempty" type:"Repeated"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s BatchQuerySessionByClientIdsRequest) String() string {
@@ -279,8 +299,10 @@ func (s *BatchQuerySessionByClientIdsRequest) SetInstanceId(v string) *BatchQuer
 }
 
 type BatchQuerySessionByClientIdsResponseBody struct {
+	// The status list of all queried ApsaraMQ for MQTT clients.
 	OnlineStatusList []*BatchQuerySessionByClientIdsResponseBodyOnlineStatusList `json:"OnlineStatusList,omitempty" xml:"OnlineStatusList,omitempty" type:"Repeated"`
-	RequestId        *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchQuerySessionByClientIdsResponseBody) String() string {
@@ -302,8 +324,13 @@ func (s *BatchQuerySessionByClientIdsResponseBody) SetRequestId(v string) *Batch
 }
 
 type BatchQuerySessionByClientIdsResponseBodyOnlineStatusList struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	OnlineStatus *bool   `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The ID of the ApsaraMQ for MQTT client. For more information about client IDs, see [Terms](~~42420~~).
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// Indicates whether the ApsaraMQ for MQTT client is online. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	OnlineStatus *bool `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
 }
 
 func (s BatchQuerySessionByClientIdsResponseBodyOnlineStatusList) String() string {
@@ -325,9 +352,9 @@ func (s *BatchQuerySessionByClientIdsResponseBodyOnlineStatusList) SetOnlineStat
 }
 
 type BatchQuerySessionByClientIdsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchQuerySessionByClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchQuerySessionByClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchQuerySessionByClientIdsResponse) String() string {
@@ -354,7 +381,12 @@ func (s *BatchQuerySessionByClientIdsResponse) SetBody(v *BatchQuerySessionByCli
 }
 
 type CreateGroupIdRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the group that you want to create. The group ID must meet the following conventions:
+	//
+	// *   The ID must be 7 to 64 characters in length. It must start with GID\_ or GID- and can contain only letters, digits, hyphens (-), and underscores (\_).
+	// *   The ID cannot be changed after the group is created. For more information, see [Terms](~~42420~~).
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance to which the group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -377,6 +409,7 @@ func (s *CreateGroupIdRequest) SetInstanceId(v string) *CreateGroupIdRequest {
 }
 
 type CreateGroupIdResponseBody struct {
+	// The request ID. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -394,9 +427,9 @@ func (s *CreateGroupIdResponseBody) SetRequestId(v string) *CreateGroupIdRespons
 }
 
 type CreateGroupIdResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGroupIdResponse) String() string {
@@ -469,9 +502,9 @@ func (s *DeleteCaCertificateResponseBody) SetSn(v string) *DeleteCaCertificateRe
 }
 
 type DeleteCaCertificateResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCaCertificateResponse) String() string {
@@ -550,9 +583,9 @@ func (s *DeleteDeviceCertificateResponseBody) SetRequestId(v string) *DeleteDevi
 }
 
 type DeleteDeviceCertificateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDeviceCertificateResponse) String() string {
@@ -579,7 +612,9 @@ func (s *DeleteDeviceCertificateResponse) SetBody(v *DeleteDeviceCertificateResp
 }
 
 type DeleteGroupIdRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the group that you want to delete.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance from which you want to delete a group.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -602,6 +637,7 @@ func (s *DeleteGroupIdRequest) SetInstanceId(v string) *DeleteGroupIdRequest {
 }
 
 type DeleteGroupIdResponseBody struct {
+	// The request ID. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -619,9 +655,9 @@ func (s *DeleteGroupIdResponseBody) SetRequestId(v string) *DeleteGroupIdRespons
 }
 
 type DeleteGroupIdResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGroupIdResponse) String() string {
@@ -753,9 +789,9 @@ func (s *GetCaCertificateResponseBodyData) SetVerificationContent(v string) *Get
 }
 
 type GetCaCertificateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCaCertificateResponse) String() string {
@@ -887,9 +923,9 @@ func (s *GetDeviceCertificateResponseBodyData) SetValidEnd(v string) *GetDeviceC
 }
 
 type GetDeviceCertificateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeviceCertificateResponse) String() string {
@@ -916,7 +952,9 @@ func (s *GetDeviceCertificateResponse) SetBody(v *GetDeviceCertificateResponseBo
 }
 
 type GetDeviceCredentialRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID of the device whose access credential you want to query.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -939,8 +977,10 @@ func (s *GetDeviceCredentialRequest) SetInstanceId(v string) *GetDeviceCredentia
 }
 
 type GetDeviceCredentialResponseBody struct {
+	// The information about the access credential of the device.
 	DeviceCredential *GetDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceCredentialResponseBody) String() string {
@@ -962,12 +1002,18 @@ func (s *GetDeviceCredentialResponseBody) SetRequestId(v string) *GetDeviceCrede
 }
 
 type GetDeviceCredentialResponseBodyDeviceCredential struct {
-	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The client ID of the device.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was created. Unit: milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The AccessKey ID of the device.
+	DeviceAccessKeyId *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The AccessKey secret of the device.
 	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was last updated. The value of this parameter is a UNIX timestamp in milliseconds.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetDeviceCredentialResponseBodyDeviceCredential) String() string {
@@ -1009,9 +1055,9 @@ func (s *GetDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v int64)
 }
 
 type GetDeviceCredentialResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeviceCredentialResponse) String() string {
@@ -1078,9 +1124,9 @@ func (s *GetRegisterCodeResponseBody) SetRequestId(v string) *GetRegisterCodeRes
 }
 
 type GetRegisterCodeResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRegisterCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRegisterCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRegisterCodeResponse) String() string {
@@ -1153,9 +1199,9 @@ func (s *InactivateCaCertificateResponseBody) SetSn(v string) *InactivateCaCerti
 }
 
 type InactivateCaCertificateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InactivateCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InactivateCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InactivateCaCertificateResponse) String() string {
@@ -1234,9 +1280,9 @@ func (s *InactivateDeviceCertificateResponseBody) SetRequestId(v string) *Inacti
 }
 
 type InactivateDeviceCertificateResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InactivateDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InactivateDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InactivateDeviceCertificateResponse) String() string {
@@ -1409,9 +1455,9 @@ func (s *ListCaCertificateResponseBodyDataCaCertificateVOS) SetVerificationConte
 }
 
 type ListCaCertificateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCaCertificateResponse) String() string {
@@ -1578,9 +1624,9 @@ func (s *ListDeviceCertificateResponseBodyDataDeviceCertificateVOS) SetValidEnd(
 }
 
 type ListDeviceCertificateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeviceCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDeviceCertificateResponse) String() string {
@@ -1753,9 +1799,9 @@ func (s *ListDeviceCertificateByCaSnResponseBodyDataDeviceCertificateVOS) SetVal
 }
 
 type ListDeviceCertificateByCaSnResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDeviceCertificateByCaSnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeviceCertificateByCaSnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDeviceCertificateByCaSnResponse) String() string {
@@ -1781,7 +1827,142 @@ func (s *ListDeviceCertificateByCaSnResponse) SetBody(v *ListDeviceCertificateBy
 	return s
 }
 
+type ListDeviceCredentialClientIdRequest struct {
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDeviceCredentialClientIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceCredentialClientIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceCredentialClientIdRequest) SetGroupId(v string) *ListDeviceCredentialClientIdRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdRequest) SetInstanceId(v string) *ListDeviceCredentialClientIdRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdRequest) SetNextToken(v string) *ListDeviceCredentialClientIdRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdRequest) SetPageNo(v string) *ListDeviceCredentialClientIdRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdRequest) SetPageSize(v string) *ListDeviceCredentialClientIdRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDeviceCredentialClientIdResponseBody struct {
+	DeviceCredentialClientIdList *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList `json:"DeviceCredentialClientIdList,omitempty" xml:"DeviceCredentialClientIdList,omitempty" type:"Struct"`
+	RequestId                    *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeviceCredentialClientIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceCredentialClientIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceCredentialClientIdResponseBody) SetDeviceCredentialClientIdList(v *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) *ListDeviceCredentialClientIdResponseBody {
+	s.DeviceCredentialClientIdList = v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponseBody) SetRequestId(v string) *ListDeviceCredentialClientIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList struct {
+	ClientIdList []*string `json:"ClientIdList,omitempty" xml:"ClientIdList,omitempty" type:"Repeated"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNo       *string   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total        *string   `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) SetClientIdList(v []*string) *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList {
+	s.ClientIdList = v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) SetNextToken(v string) *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) SetPageNo(v string) *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) SetPageSize(v string) *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList) SetTotal(v string) *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList {
+	s.Total = &v
+	return s
+}
+
+type ListDeviceCredentialClientIdResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeviceCredentialClientIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeviceCredentialClientIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeviceCredentialClientIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeviceCredentialClientIdResponse) SetHeaders(v map[string]*string) *ListDeviceCredentialClientIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponse) SetStatusCode(v int32) *ListDeviceCredentialClientIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeviceCredentialClientIdResponse) SetBody(v *ListDeviceCredentialClientIdResponseBody) *ListDeviceCredentialClientIdResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupIdRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance whose groups you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1799,8 +1980,10 @@ func (s *ListGroupIdRequest) SetInstanceId(v string) *ListGroupIdRequest {
 }
 
 type ListGroupIdResponseBody struct {
-	Data      []*ListGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of a queried group.
+	Data []*ListGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupIdResponseBody) String() string {
@@ -1822,11 +2005,19 @@ func (s *ListGroupIdResponseBody) SetRequestId(v string) *ListGroupIdResponseBod
 }
 
 type ListGroupIdResponseBodyData struct {
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IndependentNaming *bool   `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UpdateTime        *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the group was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The queried group that belongs to the ApsaraMQ for MQTT instance.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Indicates whether a separate namespace is configured for the ApsaraMQ for MQTT instance. Valid values:
+	//
+	// *   **true**: A separate namespace is configured for the ApsaraMQ for MQTT instance. Resource names must be unique within an ApsaraMQ for MQTT instance but can be the same across ApsaraMQ for MQTT instances.
+	// *   **false**: No separate namespace is configured for the ApsaraMQ for MQTT instance. Resource names must be globally unique within an ApsaraMQ for MQTT instance and across ApsaraMQ for MQTT instances.
+	IndependentNaming *bool `json:"IndependentNaming,omitempty" xml:"IndependentNaming,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance to which the group belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the group was last updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListGroupIdResponseBodyData) String() string {
@@ -1863,9 +2054,9 @@ func (s *ListGroupIdResponseBodyData) SetUpdateTime(v int64) *ListGroupIdRespons
 }
 
 type ListGroupIdResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupIdResponse) String() string {
@@ -1892,14 +2083,27 @@ func (s *ListGroupIdResponse) SetBody(v *ListGroupIdResponseBody) *ListGroupIdRe
 }
 
 type QueryMqttTraceDeviceRequest struct {
-	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The client ID of the device whose trace you want to query.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
 	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the returned results are displayed in reverse chronological order. Valid values:
+	//
+	// *   **true**: The returned results are displayed in reverse time order of actions on the device. This means that the information about the latest action on the device is displayed as the first entry and the information about the earliest action on the device is displayed as the last entry.
+	// *   **false**: The returned results are displayed in time order of actions on the device. This means that the information about the earliest action on the device is displayed as the first entry and the information about the latest action on the device is displayed as the last entry.
+	//
+	// If you do not specify this parameter, the returned results are displayed in time order of actions on the device by default.
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 }
 
 func (s QueryMqttTraceDeviceRequest) String() string {
@@ -1951,11 +2155,16 @@ func (s *QueryMqttTraceDeviceRequest) SetReverse(v bool) *QueryMqttTraceDeviceRe
 }
 
 type QueryMqttTraceDeviceResponseBody struct {
-	CurrentPage    *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The details of the action on the device.
 	DeviceInfoList []*QueryMqttTraceDeviceResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Repeated"`
-	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total          *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned actions on the device.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryMqttTraceDeviceResponseBody) String() string {
@@ -1992,11 +2201,34 @@ func (s *QueryMqttTraceDeviceResponseBody) SetTotal(v int64) *QueryMqttTraceDevi
 }
 
 type QueryMqttTraceDeviceResponseBodyDeviceInfoList struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action on the device. Valid values:
+	//
+	// *   **connect**: The ApsaraMQ for MQTT client requests a connection to the ApsaraMQ for MQTT broker.
+	// *   **close**: The TCP connection is closed.
+	// *   **disconnect**: The ApsaraMQ for MQTT client requests a disconnection from the ApsaraMQ for MQTT broker.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The returned code for the action on the device. Valid values:
+	//
+	// *   **mqtt.trace.action.connect**: This value is returned if the value of Action is **connect**.
+	// *   **mqtt.trace.action.close**: This value is returned if the value of Action is **close**.
+	// *   **mqtt.trace.action.disconnect**: This value is returned if the value of Action is **disconnect**.
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The returned information for the action on the device. Valid values:
+	//
+	// *   **accepted**: The ApsaraMQ for MQTT broker accepts the connection request from the ApsaraMQ for MQTT client.
+	// *   **not authorized**: The TCP connection is closed because the permission verification of the client to access the instance fails.
+	// *   **clientId conflict**: The TCP connection is closed due to a conflict in the ID of the ApsaraMQ for MQTT client.
+	// *   **resource auth failed**: The TCP connection is closed because the permission verification for the ApsaraMQ for MQTT client to access the topic or group fails.
+	// *   **no heart**: The TCP connection is closed because no heartbeat is detected on the client.
+	// *   **closed by client**: The TCP connection is closed because an exception occurs on the client.
+	// *   **disconnected by client**: The client requests a disconnection.
+	// *   **invalid param**: The TCP connection is closed due to invalid request parameters.
+	// *   **Socket IOException**: The TCP connection is closed due to network jitter or packet loss.
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The connection ID.
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the action occurred on the device.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryMqttTraceDeviceResponseBodyDeviceInfoList) String() string {
@@ -2033,9 +2265,9 @@ func (s *QueryMqttTraceDeviceResponseBodyDeviceInfoList) SetTime(v string) *Quer
 }
 
 type QueryMqttTraceDeviceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMqttTraceDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMqttTraceDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMqttTraceDeviceResponse) String() string {
@@ -2062,14 +2294,27 @@ func (s *QueryMqttTraceDeviceResponse) SetBody(v *QueryMqttTraceDeviceResponseBo
 }
 
 type QueryMqttTraceMessageOfClientRequest struct {
-	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The client ID of the device whose messages you want to query.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section of the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
 	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the returned results are displayed in reverse chronological order. Valid values:
+	//
+	// *   **true**: The returned results are displayed in reverse order of the time when messages are sent or received. This means that the latest sent or received message is displayed as the first entry and the earliest sent or received message is displayed as the last entry.
+	// *   **false**: The returned results are displayed in order of the time when messages are sent or received. This means that the earliest sent or received message is displayed as the first entry and the latest sent or received message is displayed as the last entry.
+	//
+	// If this parameter is not specified, the returned results are displayed in order of the time when messages are sent or received.
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 }
 
 func (s QueryMqttTraceMessageOfClientRequest) String() string {
@@ -2121,11 +2366,16 @@ func (s *QueryMqttTraceMessageOfClientRequest) SetReverse(v bool) *QueryMqttTrac
 }
 
 type QueryMqttTraceMessageOfClientResponseBody struct {
-	CurrentPage         *int32                                                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The returned messages.
 	MessageOfClientList []*QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList `json:"MessageOfClientList,omitempty" xml:"MessageOfClientList,omitempty" type:"Repeated"`
-	PageSize            *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId           *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total               *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of messages returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryMqttTraceMessageOfClientResponseBody) String() string {
@@ -2162,12 +2412,30 @@ func (s *QueryMqttTraceMessageOfClientResponseBody) SetTotal(v int64) *QueryMqtt
 }
 
 type QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action on the message. Valid values:
+	//
+	// *   **pub_mqtt**: The ApsaraMQ for MQTT client sends the message.
+	// *   **sub**: The ApsaraMQ for MQTT client subscribes to the message.
+	// *   **push_offline**: The ApsaraMQ for MQTT broker pushes the offline message to the ApsaraMQ for MQTT client.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The returned code for the action on the message. Valid values:
+	//
+	// *   **mqtt.trace.action.msg.pub.mqtt**: This value is returned if the value of Action is **pub_mqtt**.
+	// *   **mqtt.trace.action.msg.sub**: This value is returned if the value of Action is **sub**.
+	// *   **mqtt.trace.action.msg.push.offline**: This value is returned if the value of Action is **push_offline**.
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The information returned for the action on the message. Valid values:
+	//
+	// *   **Pub From Mqtt Client**: This value is returned if the value of Action is **pub_mqtt**.
+	// *   **Push To Mqtt Client**: This value is returned if the value of Action is **sub**.
+	// *   **Push Offline Msg To Mqtt Client**: This value is returned if the value of Action is **push_offline**.
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The client ID of the device.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The message ID.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The time when the message was sent or received.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) String() string {
@@ -2209,9 +2477,9 @@ func (s *QueryMqttTraceMessageOfClientResponseBodyMessageOfClientList) SetTime(v
 }
 
 type QueryMqttTraceMessageOfClientResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMqttTraceMessageOfClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMqttTraceMessageOfClientResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMqttTraceMessageOfClientResponse) String() string {
@@ -2238,11 +2506,16 @@ func (s *QueryMqttTraceMessageOfClientResponse) SetBody(v *QueryMqttTraceMessage
 }
 
 type QueryMqttTraceMessagePublishRequest struct {
-	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
 	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
-	MsgId        *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The message ID.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 
 func (s QueryMqttTraceMessagePublishRequest) String() string {
@@ -2279,8 +2552,10 @@ func (s *QueryMqttTraceMessagePublishRequest) SetMsgId(v string) *QueryMqttTrace
 }
 
 type QueryMqttTraceMessagePublishResponseBody struct {
+	// The message traces.
 	MessageTraceLists []*QueryMqttTraceMessagePublishResponseBodyMessageTraceLists `json:"MessageTraceLists,omitempty" xml:"MessageTraceLists,omitempty" type:"Repeated"`
-	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryMqttTraceMessagePublishResponseBody) String() string {
@@ -2302,12 +2577,27 @@ func (s *QueryMqttTraceMessagePublishResponseBody) SetRequestId(v string) *Query
 }
 
 type QueryMqttTraceMessagePublishResponseBodyMessageTraceLists struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action on the message. Valid values:
+	//
+	// *   **pub_mqtt**: indicates that the message was sent by an ApsaraMQ for MQTT client.
+	// *   **pub_mq**: indicates that the message was sent by an ApsaraMQ for RocketMQ client.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The returned code for the action on the message. Valid values:
+	//
+	// *   **mqtt.trace.action.msg.pub.mqtt**: This value is returned if the value of Action is **pub_mqtt**.
+	// *   **mqtt.trace.action.msg.pub.mq**: This value is returned if the value of Action is **pub_mq**.
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The returned information for the action on the message. Valid values:
+	//
+	// *   **Pub From Mqtt Client**: This value is returned if the value of Action is **pub_mqtt**.
+	// *   **Pub From MQ**: This value is returned if the value of Action is **pub_mq**.
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The ID of the client that sends the message.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The message ID.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The time when the message was sent.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) String() string {
@@ -2349,9 +2639,9 @@ func (s *QueryMqttTraceMessagePublishResponseBodyMessageTraceLists) SetTime(v st
 }
 
 type QueryMqttTraceMessagePublishResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMqttTraceMessagePublishResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMqttTraceMessagePublishResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMqttTraceMessagePublishResponse) String() string {
@@ -2378,15 +2668,29 @@ func (s *QueryMqttTraceMessagePublishResponse) SetBody(v *QueryMqttTraceMessageP
 }
 
 type QueryMqttTraceMessageSubscribeRequest struct {
-	BeginTime    *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The ID of the client that subscribes to the message. If you do not specify this parameter, the IDs of all clients that subscribe to the message are returned.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section of the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
 	MqttRegionId *string `json:"MqttRegionId,omitempty" xml:"MqttRegionId,omitempty"`
-	MsgId        *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The message ID.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the returned results are displayed in reverse chronological order. Valid values:
+	//
+	// *   **true**: The returned results are displayed in reverse order of the time when messages are delivered. This means that the latest consumed message is displayed as the first entry and the earliest consumed message is displayed as the last entry.
+	// *   **false**: The returned results are displayed in order of the time when messages are delivered. This means that the earliest consumed message is displayed as the first entry and the latest consumed message is displayed as the last entry.
+	//
+	// If you do not specify this parameter, the returned results are displayed in order of time when messages are delivered.
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 }
 
 func (s QueryMqttTraceMessageSubscribeRequest) String() string {
@@ -2443,11 +2747,16 @@ func (s *QueryMqttTraceMessageSubscribeRequest) SetReverse(v bool) *QueryMqttTra
 }
 
 type QueryMqttTraceMessageSubscribeResponseBody struct {
-	CurrentPage       *int32                                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The delivery trace of the queried message.
 	MessageTraceLists []*QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists `json:"MessageTraceLists,omitempty" xml:"MessageTraceLists,omitempty" type:"Repeated"`
-	PageSize          *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total             *int64                                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID that the system generates for the request. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned delivery traces.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryMqttTraceMessageSubscribeResponseBody) String() string {
@@ -2484,12 +2793,27 @@ func (s *QueryMqttTraceMessageSubscribeResponseBody) SetTotal(v int64) *QueryMqt
 }
 
 type QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists struct {
-	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The action on the message. Valid values:
+	//
+	// *   **sub**: The ApsaraMQ for MQTT client subscribes to the message.
+	// *   **push_offline**: The ApsaraMQ for MQTT broker pushes the offline message to the ApsaraMQ for MQTT client.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The code returned for the action on the message. Valid values:
+	//
+	// *   **mqtt.trace.action.msg.sub**: The value that is returned if the value of Action is **sub**.
+	// *   **mqtt.trace.action.msg.push.offline**: The value that is returned if the value of Action is **push_offline**.
 	ActionCode *string `json:"ActionCode,omitempty" xml:"ActionCode,omitempty"`
+	// The returned information for the action on the message. Valid values:
+	//
+	// *   **Push To Mqtt Client**: The value that is returned if the value of Action is **sub**.
+	// *   **Push Offline Msg To Mqtt Client**: The value that is returned if the value of Action is **push_offline**.
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	MsgId      *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The ID of the client that subscribes to the message.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The message ID.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The time when the message was delivered.
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) String() string {
@@ -2531,9 +2855,9 @@ func (s *QueryMqttTraceMessageSubscribeResponseBodyMessageTraceLists) SetTime(v 
 }
 
 type QueryMqttTraceMessageSubscribeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMqttTraceMessageSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMqttTraceMessageSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMqttTraceMessageSubscribeResponse) String() string {
@@ -2560,7 +2884,9 @@ func (s *QueryMqttTraceMessageSubscribeResponse) SetBody(v *QueryMqttTraceMessag
 }
 
 type QuerySessionByClientIdRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT client that you want to query.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2583,8 +2909,13 @@ func (s *QuerySessionByClientIdRequest) SetInstanceId(v string) *QuerySessionByC
 }
 
 type QuerySessionByClientIdResponseBody struct {
-	OnlineStatus *bool   `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the ApsaraMQ for MQTT client is connected to the ApsaraMQ for MQTT broker. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	OnlineStatus *bool `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QuerySessionByClientIdResponseBody) String() string {
@@ -2606,9 +2937,9 @@ func (s *QuerySessionByClientIdResponseBody) SetRequestId(v string) *QuerySessio
 }
 
 type QuerySessionByClientIdResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySessionByClientIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySessionByClientIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySessionByClientIdResponse) String() string {
@@ -2635,8 +2966,10 @@ func (s *QuerySessionByClientIdResponse) SetBody(v *QuerySessionByClientIdRespon
 }
 
 type QueryTokenRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token that you want to query.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s QueryTokenRequest) String() string {
@@ -2658,8 +2991,13 @@ func (s *QueryTokenRequest) SetToken(v string) *QueryTokenRequest {
 }
 
 type QueryTokenResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TokenStatus *bool   `json:"TokenStatus,omitempty" xml:"TokenStatus,omitempty"`
+	// The unique ID that the system generates for the request. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the queried token. Valid values:
+	//
+	// *   **true**: indicates the token is valid.
+	// *   **false**: indicates the token is invalid.
+	TokenStatus *bool `json:"TokenStatus,omitempty" xml:"TokenStatus,omitempty"`
 }
 
 func (s QueryTokenResponseBody) String() string {
@@ -2681,9 +3019,9 @@ func (s *QueryTokenResponseBody) SetTokenStatus(v bool) *QueryTokenResponseBody 
 }
 
 type QueryTokenResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTokenResponse) String() string {
@@ -2710,7 +3048,9 @@ func (s *QueryTokenResponse) SetBody(v *QueryTokenResponseBody) *QueryTokenRespo
 }
 
 type RefreshDeviceCredentialRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID of the device whose access credential you want to update.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2733,8 +3073,10 @@ func (s *RefreshDeviceCredentialRequest) SetInstanceId(v string) *RefreshDeviceC
 }
 
 type RefreshDeviceCredentialResponseBody struct {
+	// The access credential of the device.
 	DeviceCredential *RefreshDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
-	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshDeviceCredentialResponseBody) String() string {
@@ -2756,12 +3098,18 @@ func (s *RefreshDeviceCredentialResponseBody) SetRequestId(v string) *RefreshDev
 }
 
 type RefreshDeviceCredentialResponseBodyDeviceCredential struct {
-	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The client ID of the device.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was created. The value of this parameter is a UNIX timestamp in milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The AccessKey ID of the device.
+	DeviceAccessKeyId *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The AccessKey secret of the device.
 	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was last updated. The value of this parameter is a UNIX timestamp in milliseconds.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s RefreshDeviceCredentialResponseBodyDeviceCredential) String() string {
@@ -2803,9 +3151,9 @@ func (s *RefreshDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v in
 }
 
 type RefreshDeviceCredentialResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshDeviceCredentialResponse) String() string {
@@ -2890,9 +3238,9 @@ func (s *RegisterCaCertificateResponseBody) SetSn(v string) *RegisterCaCertifica
 }
 
 type RegisterCaCertificateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterCaCertificateResponse) String() string {
@@ -2919,7 +3267,9 @@ func (s *RegisterCaCertificateResponse) SetBody(v *RegisterCaCertificateResponse
 }
 
 type RegisterDeviceCredentialRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID of the device for which you want to create an access credential.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2942,8 +3292,10 @@ func (s *RegisterDeviceCredentialRequest) SetInstanceId(v string) *RegisterDevic
 }
 
 type RegisterDeviceCredentialResponseBody struct {
+	// The access credential of the device.
 	DeviceCredential *RegisterDeviceCredentialResponseBodyDeviceCredential `json:"DeviceCredential,omitempty" xml:"DeviceCredential,omitempty" type:"Struct"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID. This parameter is a common parameter.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RegisterDeviceCredentialResponseBody) String() string {
@@ -2965,12 +3317,18 @@ func (s *RegisterDeviceCredentialResponseBody) SetRequestId(v string) *RegisterD
 }
 
 type RegisterDeviceCredentialResponseBodyDeviceCredential struct {
-	ClientId              *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeviceAccessKeyId     *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The client ID of the device.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was created. Unit: milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The AccessKey ID of the device.
+	DeviceAccessKeyId *string `json:"DeviceAccessKeyId,omitempty" xml:"DeviceAccessKeyId,omitempty"`
+	// The AccessKey secret of the device.
 	DeviceAccessKeySecret *string `json:"DeviceAccessKeySecret,omitempty" xml:"DeviceAccessKeySecret,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The timestamp that indicates when the access credential of the device was last updated. Unit: milliseconds.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s RegisterDeviceCredentialResponseBodyDeviceCredential) String() string {
@@ -3012,9 +3370,9 @@ func (s *RegisterDeviceCredentialResponseBodyDeviceCredential) SetUpdateTime(v i
 }
 
 type RegisterDeviceCredentialResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterDeviceCredentialResponse) String() string {
@@ -3041,8 +3399,10 @@ func (s *RegisterDeviceCredentialResponse) SetBody(v *RegisterDeviceCredentialRe
 }
 
 type RevokeTokenRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token that you want to revoke.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s RevokeTokenRequest) String() string {
@@ -3064,6 +3424,7 @@ func (s *RevokeTokenRequest) SetToken(v string) *RevokeTokenRequest {
 }
 
 type RevokeTokenResponseBody struct {
+	// The request ID. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3081,9 +3442,9 @@ func (s *RevokeTokenResponseBody) SetRequestId(v string) *RevokeTokenResponseBod
 }
 
 type RevokeTokenResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeTokenResponse) String() string {
@@ -3110,9 +3471,12 @@ func (s *RevokeTokenResponse) SetBody(v *RevokeTokenResponseBody) *RevokeTokenRe
 }
 
 type SendMessageRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MqttTopic  *string `json:"MqttTopic,omitempty" xml:"MqttTopic,omitempty"`
-	Payload    *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// The topic to which you want to send a message on the ApsaraMQ for MQTT instance.
+	MqttTopic *string `json:"MqttTopic,omitempty" xml:"MqttTopic,omitempty"`
+	// The message content, which is the payload of the message. We recommend that you encode the content in Base64 to prevent non-printable characters from being transmitted.
+	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 }
 
 func (s SendMessageRequest) String() string {
@@ -3139,7 +3503,9 @@ func (s *SendMessageRequest) SetPayload(v string) *SendMessageRequest {
 }
 
 type SendMessageResponseBody struct {
-	MsgId     *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The unique message ID that is returned by the ApsaraMQ for MQTT broker after the message is sent.
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The unique ID that the system generates for the request. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3162,9 +3528,9 @@ func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBod
 }
 
 type SendMessageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendMessageResponse) String() string {
@@ -3191,7 +3557,9 @@ func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageRe
 }
 
 type UnRegisterDeviceCredentialRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID of the device whose access credential you want to deregister.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3214,6 +3582,7 @@ func (s *UnRegisterDeviceCredentialRequest) SetInstanceId(v string) *UnRegisterD
 }
 
 type UnRegisterDeviceCredentialResponseBody struct {
+	// The unique ID that the system generates for the request. This parameter is a common parameter.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3231,9 +3600,9 @@ func (s *UnRegisterDeviceCredentialResponseBody) SetRequestId(v string) *UnRegis
 }
 
 type UnRegisterDeviceCredentialResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnRegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnRegisterDeviceCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnRegisterDeviceCredentialResponse) String() string {
@@ -3406,6 +3775,14 @@ func (client *Client) ActiveDeviceCertificate(request *ActiveDeviceCertificateRe
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **ApplyToken** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request ApplyTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ApplyTokenResponse
+ */
 func (client *Client) ApplyTokenWithOptions(request *ApplyTokenRequest, runtime *util.RuntimeOptions) (_result *ApplyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3451,6 +3828,13 @@ func (client *Client) ApplyTokenWithOptions(request *ApplyTokenRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **ApplyToken** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request ApplyTokenRequest
+ * @return ApplyTokenResponse
+ */
 func (client *Client) ApplyToken(request *ApplyTokenRequest) (_result *ApplyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyTokenResponse{}
@@ -3462,6 +3846,15 @@ func (client *Client) ApplyToken(request *ApplyTokenRequest) (_result *ApplyToke
 	return _result, _err
 }
 
+/**
+ * *   You can call the **BatchQuerySessionByClientIds** operation up to 100 times per second. For more information, see [Limits on QPS](~~163047~~).
+ * *   You can call the **BatchQuerySessionByClientIds** operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
+ * *   Each successful call to the **BatchQuerySessionByClientIds** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request BatchQuerySessionByClientIdsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return BatchQuerySessionByClientIdsResponse
+ */
 func (client *Client) BatchQuerySessionByClientIdsWithOptions(request *BatchQuerySessionByClientIdsRequest, runtime *util.RuntimeOptions) (_result *BatchQuerySessionByClientIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3499,6 +3892,14 @@ func (client *Client) BatchQuerySessionByClientIdsWithOptions(request *BatchQuer
 	return _result, _err
 }
 
+/**
+ * *   You can call the **BatchQuerySessionByClientIds** operation up to 100 times per second. For more information, see [Limits on QPS](~~163047~~).
+ * *   You can call the **BatchQuerySessionByClientIds** operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
+ * *   Each successful call to the **BatchQuerySessionByClientIds** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request BatchQuerySessionByClientIdsRequest
+ * @return BatchQuerySessionByClientIdsResponse
+ */
 func (client *Client) BatchQuerySessionByClientIds(request *BatchQuerySessionByClientIdsRequest) (_result *BatchQuerySessionByClientIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchQuerySessionByClientIdsResponse{}
@@ -3510,6 +3911,13 @@ func (client *Client) BatchQuerySessionByClientIds(request *BatchQuerySessionByC
 	return _result, _err
 }
 
+/**
+ * Each successful call to the **CreateGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request CreateGroupIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateGroupIdResponse
+ */
 func (client *Client) CreateGroupIdWithOptions(request *CreateGroupIdRequest, runtime *util.RuntimeOptions) (_result *CreateGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3547,6 +3955,12 @@ func (client *Client) CreateGroupIdWithOptions(request *CreateGroupIdRequest, ru
 	return _result, _err
 }
 
+/**
+ * Each successful call to the **CreateGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request CreateGroupIdRequest
+ * @return CreateGroupIdResponse
+ */
 func (client *Client) CreateGroupId(request *CreateGroupIdRequest) (_result *CreateGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupIdResponse{}
@@ -3658,6 +4072,13 @@ func (client *Client) DeleteDeviceCertificate(request *DeleteDeviceCertificateRe
 	return _result, _err
 }
 
+/**
+ * Each successful call to the **DeleteGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request DeleteGroupIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteGroupIdResponse
+ */
 func (client *Client) DeleteGroupIdWithOptions(request *DeleteGroupIdRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3695,6 +4116,12 @@ func (client *Client) DeleteGroupIdWithOptions(request *DeleteGroupIdRequest, ru
 	return _result, _err
 }
 
+/**
+ * Each successful call to the **DeleteGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request DeleteGroupIdRequest
+ * @return DeleteGroupIdResponse
+ */
 func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *DeleteGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupIdResponse{}
@@ -3786,6 +4213,14 @@ func (client *Client) GetDeviceCertificate(request *GetDeviceCertificateRequest)
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **GetDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request GetDeviceCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDeviceCredentialResponse
+ */
 func (client *Client) GetDeviceCredentialWithOptions(request *GetDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *GetDeviceCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3823,6 +4258,13 @@ func (client *Client) GetDeviceCredentialWithOptions(request *GetDeviceCredentia
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **GetDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request GetDeviceCredentialRequest
+ * @return GetDeviceCredentialResponse
+ */
 func (client *Client) GetDeviceCredential(request *GetDeviceCredentialRequest) (_result *GetDeviceCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDeviceCredentialResponse{}
@@ -4094,6 +4536,73 @@ func (client *Client) ListDeviceCertificateByCaSn(request *ListDeviceCertificate
 	return _result, _err
 }
 
+func (client *Client) ListDeviceCredentialClientIdWithOptions(request *ListDeviceCredentialClientIdRequest, runtime *util.RuntimeOptions) (_result *ListDeviceCredentialClientIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeviceCredentialClientId"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeviceCredentialClientIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDeviceCredentialClientId(request *ListDeviceCredentialClientIdRequest) (_result *ListDeviceCredentialClientIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeviceCredentialClientIdResponse{}
+	_body, _err := client.ListDeviceCredentialClientIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Each successful call to the **ListGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request ListGroupIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListGroupIdResponse
+ */
 func (client *Client) ListGroupIdWithOptions(request *ListGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4127,6 +4636,12 @@ func (client *Client) ListGroupIdWithOptions(request *ListGroupIdRequest, runtim
 	return _result, _err
 }
 
+/**
+ * Each successful call to the **ListGroupId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request ListGroupIdRequest
+ * @return ListGroupIdResponse
+ */
 func (client *Client) ListGroupId(request *ListGroupIdRequest) (_result *ListGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupIdResponse{}
@@ -4138,6 +4653,14 @@ func (client *Client) ListGroupId(request *ListGroupIdRequest) (_result *ListGro
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceDevice** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMqttTraceDeviceResponse
+ */
 func (client *Client) QueryMqttTraceDeviceWithOptions(request *QueryMqttTraceDeviceRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4199,6 +4722,13 @@ func (client *Client) QueryMqttTraceDeviceWithOptions(request *QueryMqttTraceDev
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceDevice** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceDeviceRequest
+ * @return QueryMqttTraceDeviceResponse
+ */
 func (client *Client) QueryMqttTraceDevice(request *QueryMqttTraceDeviceRequest) (_result *QueryMqttTraceDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMqttTraceDeviceResponse{}
@@ -4210,6 +4740,14 @@ func (client *Client) QueryMqttTraceDevice(request *QueryMqttTraceDeviceRequest)
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessageOfClient** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessageOfClientRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMqttTraceMessageOfClientResponse
+ */
 func (client *Client) QueryMqttTraceMessageOfClientWithOptions(request *QueryMqttTraceMessageOfClientRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessageOfClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4271,6 +4809,13 @@ func (client *Client) QueryMqttTraceMessageOfClientWithOptions(request *QueryMqt
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessageOfClient** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessageOfClientRequest
+ * @return QueryMqttTraceMessageOfClientResponse
+ */
 func (client *Client) QueryMqttTraceMessageOfClient(request *QueryMqttTraceMessageOfClientRequest) (_result *QueryMqttTraceMessageOfClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMqttTraceMessageOfClientResponse{}
@@ -4282,6 +4827,14 @@ func (client *Client) QueryMqttTraceMessageOfClient(request *QueryMqttTraceMessa
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessagePublish** operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessagePublishRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMqttTraceMessagePublishResponse
+ */
 func (client *Client) QueryMqttTraceMessagePublishWithOptions(request *QueryMqttTraceMessagePublishRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessagePublishResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4331,6 +4884,13 @@ func (client *Client) QueryMqttTraceMessagePublishWithOptions(request *QueryMqtt
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessagePublish** operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessagePublishRequest
+ * @return QueryMqttTraceMessagePublishResponse
+ */
 func (client *Client) QueryMqttTraceMessagePublish(request *QueryMqttTraceMessagePublishRequest) (_result *QueryMqttTraceMessagePublishResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMqttTraceMessagePublishResponse{}
@@ -4342,6 +4902,14 @@ func (client *Client) QueryMqttTraceMessagePublish(request *QueryMqttTraceMessag
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessageSubscribe** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessageSubscribeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMqttTraceMessageSubscribeResponse
+ */
 func (client *Client) QueryMqttTraceMessageSubscribeWithOptions(request *QueryMqttTraceMessageSubscribeRequest, runtime *util.RuntimeOptions) (_result *QueryMqttTraceMessageSubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4407,6 +4975,13 @@ func (client *Client) QueryMqttTraceMessageSubscribeWithOptions(request *QueryMq
 	return _result, _err
 }
 
+/**
+ * *   Each successful call to the **QueryMqttTraceMessageSubscribe** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ *
+ * @param request QueryMqttTraceMessageSubscribeRequest
+ * @return QueryMqttTraceMessageSubscribeResponse
+ */
 func (client *Client) QueryMqttTraceMessageSubscribe(request *QueryMqttTraceMessageSubscribeRequest) (_result *QueryMqttTraceMessageSubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMqttTraceMessageSubscribeResponse{}
@@ -4418,6 +4993,14 @@ func (client *Client) QueryMqttTraceMessageSubscribe(request *QueryMqttTraceMess
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second.**** For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **QuerySessionByClientId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request QuerySessionByClientIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QuerySessionByClientIdResponse
+ */
 func (client *Client) QuerySessionByClientIdWithOptions(request *QuerySessionByClientIdRequest, runtime *util.RuntimeOptions) (_result *QuerySessionByClientIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4455,6 +5038,13 @@ func (client *Client) QuerySessionByClientIdWithOptions(request *QuerySessionByC
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second.**** For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **QuerySessionByClientId** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request QuerySessionByClientIdRequest
+ * @return QuerySessionByClientIdResponse
+ */
 func (client *Client) QuerySessionByClientId(request *QuerySessionByClientIdRequest) (_result *QuerySessionByClientIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySessionByClientIdResponse{}
@@ -4466,6 +5056,14 @@ func (client *Client) QuerySessionByClientId(request *QuerySessionByClientIdRequ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **QueryToken** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request QueryTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryTokenResponse
+ */
 func (client *Client) QueryTokenWithOptions(request *QueryTokenRequest, runtime *util.RuntimeOptions) (_result *QueryTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4503,6 +5101,13 @@ func (client *Client) QueryTokenWithOptions(request *QueryTokenRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **QueryToken** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request QueryTokenRequest
+ * @return QueryTokenResponse
+ */
 func (client *Client) QueryToken(request *QueryTokenRequest) (_result *QueryTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTokenResponse{}
@@ -4514,6 +5119,15 @@ func (client *Client) QueryToken(request *QueryTokenRequest) (_result *QueryToke
 	return _result, _err
 }
 
+/**
+ * ## [](#)Limits
+ * You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * >  Each successful call to the **RefreshDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RefreshDeviceCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RefreshDeviceCredentialResponse
+ */
 func (client *Client) RefreshDeviceCredentialWithOptions(request *RefreshDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *RefreshDeviceCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4551,6 +5165,14 @@ func (client *Client) RefreshDeviceCredentialWithOptions(request *RefreshDeviceC
 	return _result, _err
 }
 
+/**
+ * ## [](#)Limits
+ * You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * >  Each successful call to the **RefreshDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RefreshDeviceCredentialRequest
+ * @return RefreshDeviceCredentialResponse
+ */
 func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRequest) (_result *RefreshDeviceCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshDeviceCredentialResponse{}
@@ -4618,6 +5240,14 @@ func (client *Client) RegisterCaCertificate(request *RegisterCaCertificateReques
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **RegisterDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RegisterDeviceCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RegisterDeviceCredentialResponse
+ */
 func (client *Client) RegisterDeviceCredentialWithOptions(request *RegisterDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *RegisterDeviceCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4655,6 +5285,13 @@ func (client *Client) RegisterDeviceCredentialWithOptions(request *RegisterDevic
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **RegisterDeviceCredential** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RegisterDeviceCredentialRequest
+ * @return RegisterDeviceCredentialResponse
+ */
 func (client *Client) RegisterDeviceCredential(request *RegisterDeviceCredentialRequest) (_result *RegisterDeviceCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterDeviceCredentialResponse{}
@@ -4666,6 +5303,14 @@ func (client *Client) RegisterDeviceCredential(request *RegisterDeviceCredential
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **RevokeToken** operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RevokeTokenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevokeTokenResponse
+ */
 func (client *Client) RevokeTokenWithOptions(request *RevokeTokenRequest, runtime *util.RuntimeOptions) (_result *RevokeTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4703,6 +5348,13 @@ func (client *Client) RevokeTokenWithOptions(request *RevokeTokenRequest, runtim
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+ * *   Each successful call to the **RevokeToken** operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request RevokeTokenRequest
+ * @return RevokeTokenResponse
+ */
 func (client *Client) RevokeToken(request *RevokeTokenRequest) (_result *RevokeTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeTokenResponse{}
@@ -4714,6 +5366,16 @@ func (client *Client) RevokeToken(request *RevokeTokenRequest) (_result *RevokeT
 	return _result, _err
 }
 
+/**
+ * *   The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](~~179160~~).
+ * *   Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
+ * *   Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](~~174527~~). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](~~52819~~).
+ *
+ * @param request SendMessageRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SendMessageResponse
+ */
 func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtime *util.RuntimeOptions) (_result *SendMessageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4755,6 +5417,15 @@ func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtim
 	return _result, _err
 }
 
+/**
+ * *   The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](~~179160~~).
+ * *   Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
+ * *   Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](~~174527~~). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](~~52819~~).
+ *
+ * @param request SendMessageRequest
+ * @return SendMessageResponse
+ */
 func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendMessageResponse{}
@@ -4766,6 +5437,14 @@ func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMes
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **UnRegisterDeviceCredential** operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request UnRegisterDeviceCredentialRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UnRegisterDeviceCredentialResponse
+ */
 func (client *Client) UnRegisterDeviceCredentialWithOptions(request *UnRegisterDeviceCredentialRequest, runtime *util.RuntimeOptions) (_result *UnRegisterDeviceCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4803,6 +5482,13 @@ func (client *Client) UnRegisterDeviceCredentialWithOptions(request *UnRegisterD
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](~~163047~~).
+ * *   Each successful call to the **UnRegisterDeviceCredential** operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](~~52819~~).
+ *
+ * @param request UnRegisterDeviceCredentialRequest
+ * @return UnRegisterDeviceCredentialResponse
+ */
 func (client *Client) UnRegisterDeviceCredential(request *UnRegisterDeviceCredentialRequest) (_result *UnRegisterDeviceCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnRegisterDeviceCredentialResponse{}
