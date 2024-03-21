@@ -10937,7 +10937,6 @@ func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
 
 type StartStreamingOutRequestPanes struct {
 	PaneId     *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -10951,11 +10950,6 @@ func (s StartStreamingOutRequestPanes) GoString() string {
 
 func (s *StartStreamingOutRequestPanes) SetPaneId(v string) *StartStreamingOutRequestPanes {
 	s.PaneId = &v
-	return s
-}
-
-func (s *StartStreamingOutRequestPanes) SetSource(v string) *StartStreamingOutRequestPanes {
-	s.Source = &v
 	return s
 }
 

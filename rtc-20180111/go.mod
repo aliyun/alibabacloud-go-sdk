@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/rtc-20180111/v3
+module github.com/alibabacloud-go/rtc-20180111/v4
 
 go 1.15
 
