@@ -888,6 +888,7 @@ type CreateDiagnosticRequest struct {
 	DiagnosticKey *string `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
 	// The type of the item that is diagnosed. Set the value to Stack, which specifies that the stack is diagnosed.
 	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The name of the product that is diagonosed.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
@@ -907,6 +908,11 @@ func (s *CreateDiagnosticRequest) SetDiagnosticKey(v string) *CreateDiagnosticRe
 
 func (s *CreateDiagnosticRequest) SetDiagnosticType(v string) *CreateDiagnosticRequest {
 	s.DiagnosticType = &v
+	return s
+}
+
+func (s *CreateDiagnosticRequest) SetLang(v string) *CreateDiagnosticRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -6519,38 +6525,38 @@ func (s *GetServiceProvisionsResponse) SetBody(v *GetServiceProvisionsResponseBo
 }
 
 type GetStackRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
-	//
-	// The token can be up to 64 characters in length,
-	//
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
+	// The token can be up to 64 characters in length.\
 	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The option for returning logs. Valid values:
 	//
 	// *   None: does not return logs.
-	// *   Stack: returns the logs of the stack. This is the default value.
+	// *   Stack (default): returns the logs of the stack.
 	// *   Resource: returns the logs of resources in the stack.
-	// *   All: returns the logs of all resources.
+	// *   All: returns all logs.
 	LogOption *string `json:"LogOption,omitempty" xml:"LogOption,omitempty"`
-	// Specifies whether to return the output parameters of the stack. Valid values:
+	// Specifies whether to return Outputs. Valid values:
 	//
-	// *   Enabled: returns the output parameters. This is the default value.
+	// *   Enabled (default)
+	// *   Disabled
 	//
-	// *   Disabled: does not return the output parameters.
-	//
-	// > The system takes a long period of time to calculate output parameters. If you do not want to query the output parameters, we recommend that you set the OutputOption parameter to Disabled to improve the response speed of the GetStack operation.
+	// >  The Outputs parameter requires a long period of time to calculate. If you do not require Outputs of the stack, we recommend that you set OutputOption to Disabled to improve the response speed of the GetStack operation.
 	OutputOption *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
-	// The ID of the region in which the stack resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to return the ResourceProgress parameter. Valid values:
+	// Specifies whether to return information about ResourceProgress. Valid values:
 	//
-	// *   Disabled: does not return the ResourceProgress parameter. This is the default value.
+	// *   Disabled (default): does not return information about ResourceProgress.
+	// *   PercentageOnly: returns StackOperationProgress and StackActionProgress of ResourceProgress.
 	//
-	// *   EnabledIfCreateStack: returns the ResourceProgress parameter only if a stack is created.
+	// >  ROS and Terraform stacks are supported. Creation, resumed creation, update, deletion, import, and rollback operations on stacks are supported.
 	//
-	// > A stack is in one of the following states when it is created: CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, CREATE_ROLLBACK_IN_PROGRESS, CREATE_ROLLBACK_COMPLETE, or CREATE_ROLLBACK_FAILED.
+	// *   EnabledIfCreateStack (not recommend): returns \*Count and InProgressResourceDetails of ResourceProgress only during a stack creation operation.
+	//
+	// >  During a creation operation, a stack is in one of the following states: CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, CREATE_ROLLBACK_IN_PROGRESS, CREATE_ROLLBACK_COMPLETE, and CREATE_ROLLBACK_FAILED.
 	ShowResourceProgress *string `json:"ShowResourceProgress,omitempty" xml:"ShowResourceProgress,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
@@ -6593,127 +6599,122 @@ func (s *GetStackRequest) SetStackId(v string) *GetStackRequest {
 }
 
 type GetStackResponseBody struct {
-	// The number of resources on which drift detection is performed.
+	// The number of resources on which drift detection was performed.
 	//
-	// >  This parameter is returned only if the drift detection on the stack is successful.
+	// >  This parameter is returned only if the most recent drift detection on the stack was successful.
 	CheckedStackResourceCount *int32 `json:"CheckedStackResourceCount,omitempty" xml:"CheckedStackResourceCount,omitempty"`
 	// The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether deletion protection is enabled for the stack. Valid values:
 	//
 	// *   Enabled: Deletion protection is enabled for the stack.
-	// *   Disabled: Deletion protection is disabled for the stack. You can delete the stack in the Resource Orchestration Service (ROS) console or by calling the DeleteStack operation.
+	// *   Disabled: Deletion protection is disabled for the stack. You can delete the stack by using the ROS console or by calling the DeleteStack operation.
 	//
-	// >  Deletion protection of a nested stack works in the same way as that of the root stack.
+	// >  Deletion protection of a nested stack is the same as deletion protection of its root stack.
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The description of the stack.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether rollback is disabled when the stack fails to be created. Valid values:
 	//
-	// *   true: Rollback is disabled when the stack fails to be created.
-	// *   false: Rollback is enabled when the stack fails to be created. This is the default value.
+	// *   true
+	// *   false (default)
 	DisableRollback *bool `json:"DisableRollback,omitempty" xml:"DisableRollback,omitempty"`
-	// The time when the last successful drift detection operation was performed.
+	// The time when the most recent successful drift detection was performed on the stack.
 	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	// The description of the web UI in the ROS console.
+	// The description of the console user interface (UI).
 	Interface *string `json:"Interface,omitempty" xml:"Interface,omitempty"`
-	// The logs of the stack.
+	// The log of the stack.
 	Log *GetStackResponseBodyLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
-	// The number of resources on which drift detection is not performed.
+	// The number of resources on which drift detection was not performed.
 	//
-	// >  This parameter is returned only if the drift detection on the stack is successful.
+	// >  This parameter is returned only if the most recent drift detection on the stack was successful.
 	NotCheckedStackResourceCount *int32 `json:"NotCheckedStackResourceCount,omitempty" xml:"NotCheckedStackResourceCount,omitempty"`
-	// The callback URLs that are used to receive stack events.
+	// The callback URLs for receiving stack events.
 	NotificationURLs []*string `json:"NotificationURLs,omitempty" xml:"NotificationURLs,omitempty" type:"Repeated"`
-	// The additional information that is displayed when an error occurs on a stack operation.
+	// The supplementary information that is returned if an error occurs on a stack operation.
 	//
-	// >  This property is returned in specific conditions. At least one sub-property is returned. For example, an error is reported when you call the API of another cloud service.
+	// >  This parameter is returned together with at least one sub-parameter and only under specific conditions. For example, the supplementary information is returned when an API operation of another Alibaba Cloud service fails to be called.
 	OperationInfo *GetStackResponseBodyOperationInfo `json:"OperationInfo,omitempty" xml:"OperationInfo,omitempty" type:"Struct"`
-	// The ID of the order. This parameter is returned only if you set the ChargeType parameter to PrePaid.
+	// The order IDs. This parameter is returned only if you configured manual payment when you created a subscription stack.
 	OrderIds []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	// The output parameters of the stack.
-	//
-	// >  This parameter is returned if the OutputOption parameter is set to Enabled.
+	// The outputs of the stack.
 	Outputs []map[string]interface{} `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	// The parameters of the stack.
 	Parameters []*GetStackResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the parent stack.
 	ParentStackId *string `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
-	// The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
-	//
-	// ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
-	//
-	// If you do not specify this parameter, ROS assumes an existing role that is associated with the stack. If no roles are available for ROS to assume, ROS uses a temporary credential that is generated from the credentials of your account.
-	//
-	// The name of the RAM role can be up to 64 bytes in length.
+	// The name of the Resource Access Management (RAM) role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
+	// ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack, ROS assumes the RAM role even if you do not have permissions to use the RAM role. You must make sure that permissions are granted to the RAM role based on the principle of least privilege.\
+	// If this parameter is not specified, ROS uses the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
+	// The RAM role name can be up to 64 characters in length.
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The ID of the region in which the stack is deployed. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
+	// The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the instances belong.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The creation progress of resources.
-	ResourceProgress         *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
-	RollbackFailedRootReason *string                               `json:"RollbackFailedRootReason,omitempty" xml:"RollbackFailedRootReason,omitempty"`
+	// The resource creation progress.
+	ResourceProgress *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
+	// 当资源栈状态为回滚失败时，该字段展示导致回滚的前一阶段执行失败的原因。
+	RollbackFailedRootReason *string `json:"RollbackFailedRootReason,omitempty" xml:"RollbackFailedRootReason,omitempty"`
 	// The ID of the root stack. This parameter is returned if the specified stack is a nested stack.
 	RootStackId *string `json:"RootStackId,omitempty" xml:"RootStackId,omitempty"`
 	// Indicates whether the stack is a managed stack. Valid values:
 	//
-	// - true
-	// - false
+	// *   true
+	// *   false
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The name of the service to which the managed stack belongs.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The status of the stack in the last successful drift detection. Valid values:
+	// The state of the stack on which the most recent successful drift detection was performed. Valid values:
 	//
 	// *   DRIFTED: The stack has drifted.
 	// *   NOT_CHECKED: No successful drift detection is performed on the stack.
 	// *   IN_SYNC: The stack is being synchronized.
 	StackDriftStatus *string `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
-	// The ID of the stack.
+	// The stack ID.
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
-	// The name of the stack.
-	//
-	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+	// The stack name.\
+	// The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
 	StackName *string `json:"StackName,omitempty" xml:"StackName,omitempty"`
-	// The type of the stack. Valid values:
+	// The stack type. Valid values:
 	//
-	// *   ROS: The ROS stack, which is created by using an ROS template.
-	// *   Terraform: The Terraform stack, which is created by using a Terraform template.
+	// *   ROS: ROS stack. The stack is created by using a ROS template.
+	// *   Terraform: Terraform stack. The stack is created by using a Terraform template.
 	StackType *string `json:"StackType,omitempty" xml:"StackType,omitempty"`
 	// The state of the stack. Valid values:
 	//
 	// *   CREATE_IN_PROGRESS: The stack is being created.
-	// *   CREATE_FAILED: The stack fails to be created.
+	// *   CREATE_FAILED: The stack failed to be created.
 	// *   CREATE_COMPLETE: The stack is created.
 	// *   UPDATE_IN_PROGRESS: The stack is being updated.
-	// *   UPDATE_FAILED: The stack fails to be updated.
+	// *   UPDATE_FAILED: The stack failed to be updated.
 	// *   UPDATE_COMPLETE: The stack is updated.
 	// *   DELETE_IN_PROGRESS: The stack is being deleted.
-	// *   DELETE_FAILED: The stack fails to be deleted.
-	// *   CREATE_ROLLBACK_IN_PROGRESS: The stack is being rolled back after the stack fails to be created.
-	// *   CREATE_ROLLBACK_FAILED: The stack fails to be rolled back after the stack fails to be created.
-	// *   CREATE_ROLLBACK_COMPLETE: The stack is rolled back after the stack fails to be created.
-	// *   ROLLBACK_IN_PROGRESS: The resources in the stack are being rolled back.
-	// *   ROLLBACK_FAILED: The resources in the stack fail to be rolled back.
-	// *   ROLLBACK_COMPLETE: The resources in the stack are rolled back.
+	// *   DELETE_FAILED: The stack failed to be deleted.
+	// *   CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack failed to be created.
+	// *   CREATE_ROLLBACK_FAILED: The resources failed to be rolled back after the stack failed to be created.
+	// *   CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack failed to be created.
+	// *   ROLLBACK_IN_PROGRESS: The resources of the stack are being rolled back.
+	// *   ROLLBACK_FAILED: The resources of the stack failed to be rolled back.
+	// *   ROLLBACK_COMPLETE: The resources of the stack are rolled back.
 	// *   CHECK_IN_PROGRESS: The stack is being validated.
-	// *   CHECK_FAILED: The stack fails to be validated.
+	// *   CHECK_FAILED: The stack failed to be validated.
 	// *   CHECK_COMPLETE: The stack is validated.
 	// *   REVIEW_IN_PROGRESS: The stack is being reviewed.
 	// *   IMPORT_CREATE_IN_PROGRESS: The stack is being created by using imported resources.
-	// *   IMPORT_CREATE_FAILED: The stack fails to be created by using imported resources.
+	// *   IMPORT_CREATE_FAILED: The stack failed to be created by using imported resources.
 	// *   IMPORT_CREATE_COMPLETE: The stack is created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created by using imported resources.
-	// *   IMPORT_CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created by using imported resources.
+	// *   IMPORT_CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack failed to be created by using imported resources.
+	// *   IMPORT_CREATE_ROLLBACK_FAILED: The resources failed to be rolled back after the stack failed to be created by using imported resources.
+	// *   IMPORT_CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack failed to be created by using imported resources.
 	// *   IMPORT_UPDATE_IN_PROGRESS: The stack is being updated by using imported resources.
-	// *   IMPORT_UPDATE_FAILED: The stack fails to be updated by using imported resources.
+	// *   IMPORT_UPDATE_FAILED: The stack failed to be updated by using imported resources.
 	// *   IMPORT_UPDATE_COMPLETE: The stack is updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be updated by using imported resources.
-	// *   IMPORT_UPDATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be updated by using imported resources.
+	// *   IMPORT_UPDATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack failed to be updated by using imported resources.
+	// *   IMPORT_UPDATE_ROLLBACK_FAILED: The resources failed to be rolled back after the stack failed to be updated by using imported resources.
+	// *   IMPORT_UPDATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack failed to be updated by using imported resources.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The reason why the stack is in its current state.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
@@ -6721,21 +6722,21 @@ type GetStackResponseBody struct {
 	Tags []*GetStackResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the template.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
-	// The ID of the template. This parameter is returned only if the current template of the stack is a custom template or a shared template.
+	// The template ID. This parameter is returned only if the current stack template is a custom template or shared template.
 	//
-	// If the template is a shared template, the value of this parameter is the same as the value of the TemplateARN parameter.
+	// If the template is a shared template, the value of this parameter is the same as the value of TemplateARN.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the scenario. This parameter is returned only if the current template of the stack is generated from a scenario.
+	// The ID of the resource scenario. This parameter is returned only if the current template of the stack is generated from a resource scenario.
 	TemplateScratchId *string `json:"TemplateScratchId,omitempty" xml:"TemplateScratchId,omitempty"`
-	// The URL of the file that contains the template body. This parameter is returned only if the current template of the stack is from a URL. The URL can point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket.
+	// The URL of the file that contains the template body. This parameter is returned only if the current template of the stack is from a URL. The URL can point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket.
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	// The version of the template. This parameter is returned only if the current template of the stack is a custom template or a shared template.
+	// The version of the template. This parameter is returned only if the current stack template is a custom template or shared template.
 	//
-	// If the template is a shared template, this parameter is returned only when the VersionOption parameter is set to AllVersions.
+	// If the template is a shared template, this parameter is returned only if VersionOption is set to AllVersions.
 	//
 	// Valid values: v1 to v100.
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The timeout period within which the stack can be created. Unit: minutes.
+	// The timeout period for creating the stack. Unit: minutes.
 	TimeoutInMinutes *int32 `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 	// The time when the stack was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -6940,15 +6941,13 @@ func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
 }
 
 type GetStackResponseBodyLog struct {
-	// The logs of resources in the stack. This parameter is returned if the LogOption parameter is set to Resource or All.
+	// The logs of resources in the stack. This parameter is returned if LogOption is set to Resource or All.
 	//
-	// >  The logs are returned for resources of specific types, such as `ALIYUN::ROS::ResourceCleaner`.
+	// >  The logs are returned only for resources of specific types, such as the `ALIYUN::ROS::ResourceCleaner` type.
 	ResourceLogs []*GetStackResponseBodyLogResourceLogs `json:"ResourceLogs,omitempty" xml:"ResourceLogs,omitempty" type:"Repeated"`
-	// The logs of the Terraform stack. This parameter is returned only for a Terraform stack.
+	// The logs generated when the Terraform stack is run. This parameter is returned only for a Terraform stack. This parameter is returned if LogOption is left empty or set to Stack or All.
 	//
-	// This parameter is returned if the LogOption parameter is left empty or set to Stack or All.
-	//
-	// >  This parameter is not returned for a running stack. The logs are generated from the last creation, re-creation, update, or deletion operation on the stack.
+	// >  This parameter is not returned for a running stack. The logs are generated from the most recent operation on the stack, such as the creation, resumed creation, update, or deletion operation.
 	TerraformLogs []*GetStackResponseBodyLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
 }
 
@@ -6971,7 +6970,7 @@ func (s *GetStackResponseBodyLog) SetTerraformLogs(v []*GetStackResponseBodyLogT
 }
 
 type GetStackResponseBodyLogResourceLogs struct {
-	// The logs of all resources.
+	// All the logs that are associated with the resources.
 	Logs []*GetStackResponseBodyLogResourceLogsLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The name of the resource that is defined in the template.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
@@ -7063,17 +7062,17 @@ func (s *GetStackResponseBodyLogTerraformLogs) SetStream(v string) *GetStackResp
 }
 
 type GetStackResponseBodyOperationInfo struct {
-	// The name of the API of another cloud service.
+	// The name of the API operation that belongs to another Alibaba Cloud service.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The error code returned.
+	// The error code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The logical ID of the resource on which the operation error occurred.
+	// The logical ID of the resource on which the operation error occurs.
 	LogicalResourceId *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	// The error message returned.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request to call the API of another cloud service.
+	// The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the resource on which the operation error occurred.
+	// The type of the resource on which the operation error occurs.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -7116,9 +7115,9 @@ func (s *GetStackResponseBodyOperationInfo) SetResourceType(v string) *GetStackR
 }
 
 type GetStackResponseBodyParameters struct {
-	// The name of the parameter.
+	// The parameter name.
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -7141,19 +7140,41 @@ func (s *GetStackResponseBodyParameters) SetParameterValue(v string) *GetStackRe
 }
 
 type GetStackResponseBodyResourceProgress struct {
-	// The number of resources that fail to be created.
+	// The number of resources that failed to be created.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
 	FailedResourceCount *int32 `json:"FailedResourceCount,omitempty" xml:"FailedResourceCount,omitempty"`
 	// The number of resources that are being created.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
 	InProgressResourceCount *int32 `json:"InProgressResourceCount,omitempty" xml:"InProgressResourceCount,omitempty"`
 	// The progress details of resources that are being created.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
 	InProgressResourceDetails []*GetStackResponseBodyResourceProgressInProgressResourceDetails `json:"InProgressResourceDetails,omitempty" xml:"InProgressResourceDetails,omitempty" type:"Repeated"`
 	// The number of resources to be created.
-	PendingResourceCount   *int32   `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
-	StackActionProgress    *float32 `json:"StackActionProgress,omitempty" xml:"StackActionProgress,omitempty"`
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
+	PendingResourceCount *int32 `json:"PendingResourceCount,omitempty" xml:"PendingResourceCount,omitempty"`
+	// The creation or rollback progress of the stack, in percentage. Valid values: 0 to 100.
+	//
+	// The value progressively increases from 0 to 100 during a stack creation operation. If the stack is created, the value reaches 100. If the stack fails to be created, a rollback is started for the stack resources, and the value progressively increases from the percentage of the remaining progress (100 - Progress value generated when the stack fails to be created). The value increases to 100 when the stack resources are rolled back. This parameter indicates the creation progress during a stack creation operation and indicates the rollback progress during a stack rollback operation.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `PercentageOnly`.
+	StackActionProgress *float32 `json:"StackActionProgress,omitempty" xml:"StackActionProgress,omitempty"`
+	// The overall creation progress of the stack, in percentage. Valid values: 0 to 100.
+	//
+	// The value progressively increases from 0 to 100 during a stack creation operation. If the stack is created, the value reaches 100. If the stack fails to be created, a rollback is started for the stack resources, and the value progressively decreases. The value decreases to 0 when the stack resources are rolled back. This parameter indicates only the overall creation progress, regardless of whether during a stack creation or rollback operation.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `PercentageOnly`.
 	StackOperationProgress *float32 `json:"StackOperationProgress,omitempty" xml:"StackOperationProgress,omitempty"`
 	// The number of resources that are created.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
 	SuccessResourceCount *int32 `json:"SuccessResourceCount,omitempty" xml:"SuccessResourceCount,omitempty"`
 	// The total number of resources.
+	//
+	// >  This parameter is returned only if `ShowResourceProgress` is set to `EnabledIfCreateStack`.
 	TotalResourceCount *int32 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
 }
 
@@ -19681,6 +19702,10 @@ func (client *Client) CreateDiagnosticWithOptions(request *CreateDiagnosticReque
 		query["DiagnosticType"] = request.DiagnosticType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
 	}
@@ -21660,7 +21685,7 @@ func (client *Client) GetServiceProvisions(request *GetServiceProvisionsRequest)
 }
 
 /**
- * In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a****` is queried. The stack is deployed in the China (Hangzhou) region.
+ * In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a****` in the China (Hangzhou) region is queried.
  *
  * @param request GetStackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -21720,7 +21745,7 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 }
 
 /**
- * In this topic, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a****` is queried. The stack is deployed in the China (Hangzhou) region.
+ * In this example, the information about a stack whose ID is `c754d2a4-28f1-46df-b557-9586173a****` in the China (Hangzhou) region is queried.
  *
  * @param request GetStackRequest
  * @return GetStackResponse
