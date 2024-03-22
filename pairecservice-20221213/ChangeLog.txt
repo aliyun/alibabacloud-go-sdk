@@ -1,3 +1,6 @@
+2024-03-22 Version: v1.3.2
+- Generated golang 2022-12-13 for PaiRecService.
+
 2024-03-20 Version: v1.3.1
 - Update API CreateExperimentGroup: add param RegionId.
 - Update API CreateExperimentGroup: update param body.
