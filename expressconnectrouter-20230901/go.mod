@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/expressconnectrouter-20230901/v2
+module github.com/alibabacloud-go/expressconnectrouter-20230901/v3
 
 go 1.15
 

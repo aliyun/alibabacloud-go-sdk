@@ -1395,12 +1395,12 @@ func (s *DescribeExpressConnectRouterResponse) SetBody(v *DescribeExpressConnect
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
-	AssociatonId *string `json:"AssociatonId,omitempty" xml:"AssociatonId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId        *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EcrId         *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAllowedPrefixHistoryRequest) String() string {
@@ -1411,8 +1411,8 @@ func (s DescribeExpressConnectRouterAllowedPrefixHistoryRequest) GoString() stri
 	return s.String()
 }
 
-func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetAssociatonId(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest {
-	s.AssociatonId = &v
+func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetAssociationId(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest {
+	s.AssociationId = &v
 	return s
 }
 
@@ -4853,8 +4853,8 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOption
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AssociatonId)) {
-		body["AssociatonId"] = request.AssociatonId
+	if !tea.BoolValue(util.IsUnset(request.AssociationId)) {
+		body["AssociationId"] = request.AssociationId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
