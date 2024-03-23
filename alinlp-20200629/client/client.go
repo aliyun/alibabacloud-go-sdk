@@ -4934,6 +4934,310 @@ func (s *OpenAlinlpServiceResponse) SetBody(v *OpenAlinlpServiceResponseBody) *O
 	return s
 }
 
+type PostISConvRewriterRequest struct {
+	Algorithm  *string                `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Debug      *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Input      map[string]interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Version    *string                `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s PostISConvRewriterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISConvRewriterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISConvRewriterRequest) SetAlgorithm(v string) *PostISConvRewriterRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISConvRewriterRequest) SetDebug(v bool) *PostISConvRewriterRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISConvRewriterRequest) SetInput(v map[string]interface{}) *PostISConvRewriterRequest {
+	s.Input = v
+	return s
+}
+
+func (s *PostISConvRewriterRequest) SetParameters(v map[string]interface{}) *PostISConvRewriterRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *PostISConvRewriterRequest) SetVersion(v string) *PostISConvRewriterRequest {
+	s.Version = &v
+	return s
+}
+
+type PostISConvRewriterShrinkRequest struct {
+	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Debug            *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	InputShrink      *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s PostISConvRewriterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISConvRewriterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISConvRewriterShrinkRequest) SetAlgorithm(v string) *PostISConvRewriterShrinkRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISConvRewriterShrinkRequest) SetDebug(v bool) *PostISConvRewriterShrinkRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISConvRewriterShrinkRequest) SetInputShrink(v string) *PostISConvRewriterShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *PostISConvRewriterShrinkRequest) SetParametersShrink(v string) *PostISConvRewriterShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *PostISConvRewriterShrinkRequest) SetVersion(v string) *PostISConvRewriterShrinkRequest {
+	s.Version = &v
+	return s
+}
+
+type PostISConvRewriterResponseBody struct {
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DebugInfo map[string]interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PostISConvRewriterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISConvRewriterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostISConvRewriterResponseBody) SetData(v map[string]interface{}) *PostISConvRewriterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PostISConvRewriterResponseBody) SetDebugInfo(v map[string]interface{}) *PostISConvRewriterResponseBody {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *PostISConvRewriterResponseBody) SetMessage(v string) *PostISConvRewriterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PostISConvRewriterResponseBody) SetRequestId(v string) *PostISConvRewriterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostISConvRewriterResponseBody) SetStatus(v int32) *PostISConvRewriterResponseBody {
+	s.Status = &v
+	return s
+}
+
+type PostISConvRewriterResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PostISConvRewriterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PostISConvRewriterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISConvRewriterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostISConvRewriterResponse) SetHeaders(v map[string]*string) *PostISConvRewriterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostISConvRewriterResponse) SetStatusCode(v int32) *PostISConvRewriterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostISConvRewriterResponse) SetBody(v *PostISConvRewriterResponseBody) *PostISConvRewriterResponse {
+	s.Body = v
+	return s
+}
+
+type PostISRetrieveRouterRequest struct {
+	Algorithm  *string                `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Debug      *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Input      map[string]interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Version    *string                `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s PostISRetrieveRouterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRetrieveRouterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRetrieveRouterRequest) SetAlgorithm(v string) *PostISRetrieveRouterRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterRequest) SetDebug(v bool) *PostISRetrieveRouterRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterRequest) SetInput(v map[string]interface{}) *PostISRetrieveRouterRequest {
+	s.Input = v
+	return s
+}
+
+func (s *PostISRetrieveRouterRequest) SetParameters(v map[string]interface{}) *PostISRetrieveRouterRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *PostISRetrieveRouterRequest) SetVersion(v string) *PostISRetrieveRouterRequest {
+	s.Version = &v
+	return s
+}
+
+type PostISRetrieveRouterShrinkRequest struct {
+	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Debug            *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	InputShrink      *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Version          *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s PostISRetrieveRouterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRetrieveRouterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRetrieveRouterShrinkRequest) SetAlgorithm(v string) *PostISRetrieveRouterShrinkRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterShrinkRequest) SetDebug(v bool) *PostISRetrieveRouterShrinkRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterShrinkRequest) SetInputShrink(v string) *PostISRetrieveRouterShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterShrinkRequest) SetParametersShrink(v string) *PostISRetrieveRouterShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterShrinkRequest) SetVersion(v string) *PostISRetrieveRouterShrinkRequest {
+	s.Version = &v
+	return s
+}
+
+type PostISRetrieveRouterResponseBody struct {
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DebugInfo map[string]interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PostISRetrieveRouterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRetrieveRouterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRetrieveRouterResponseBody) SetData(v map[string]interface{}) *PostISRetrieveRouterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponseBody) SetDebugInfo(v map[string]interface{}) *PostISRetrieveRouterResponseBody {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponseBody) SetMessage(v string) *PostISRetrieveRouterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponseBody) SetRequestId(v string) *PostISRetrieveRouterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponseBody) SetStatus(v int32) *PostISRetrieveRouterResponseBody {
+	s.Status = &v
+	return s
+}
+
+type PostISRetrieveRouterResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PostISRetrieveRouterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PostISRetrieveRouterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRetrieveRouterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRetrieveRouterResponse) SetHeaders(v map[string]*string) *PostISRetrieveRouterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponse) SetStatusCode(v int32) *PostISRetrieveRouterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostISRetrieveRouterResponse) SetBody(v *PostISRetrieveRouterResponseBody) *PostISRetrieveRouterResponse {
+	s.Body = v
+	return s
+}
+
 type PostMSConvSearchTokenGeneratedResponseBody struct {
 	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -8869,6 +9173,148 @@ func (client *Client) OpenAlinlpService() (_result *OpenAlinlpServiceResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAlinlpServiceResponse{}
 	_body, _err := client.OpenAlinlpServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostISConvRewriterWithOptions(tmpReq *PostISConvRewriterRequest, runtime *util.RuntimeOptions) (_result *PostISConvRewriterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostISConvRewriterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Debug)) {
+		body["Debug"] = request.Debug
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["Version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostISConvRewriter"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostISConvRewriterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostISConvRewriter(request *PostISConvRewriterRequest) (_result *PostISConvRewriterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostISConvRewriterResponse{}
+	_body, _err := client.PostISConvRewriterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostISRetrieveRouterWithOptions(tmpReq *PostISRetrieveRouterRequest, runtime *util.RuntimeOptions) (_result *PostISRetrieveRouterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostISRetrieveRouterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Debug)) {
+		query["Debug"] = request.Debug
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		body["Version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostISRetrieveRouter"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostISRetrieveRouterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostISRetrieveRouter(request *PostISRetrieveRouterRequest) (_result *PostISRetrieveRouterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostISRetrieveRouterResponse{}
+	_body, _err := client.PostISRetrieveRouterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
