@@ -3491,10 +3491,13 @@ func (s *DeleteProcessInstanceResponse) SetBody(v *DeleteProcessInstanceResponse
 type DeleteSparkTemplateRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the directory or application to which the template belongs.
+	// The directory ID of the template files that you want to delete.
 	//
-	// > *   You can call the [GetSparkTemplateFullTree](~~456205~~) operation to query the directory ID or application ID.
-	// > *   If you specify a directory ID, the entire directory is deleted.
+	// >
+	//
+	// *   You can call the [GetSparkTemplateFullTree](~~456205~~) operation to query the directory ID of template files.
+	//
+	// *   When you specify a directory ID, the directory and all template files that are included in the directory are deleted.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -3517,9 +3520,9 @@ func (s *DeleteSparkTemplateRequest) SetId(v int64) *DeleteSparkTemplateRequest 
 }
 
 type DeleteSparkTemplateResponseBody struct {
-	// The result returned.
+	// The returned result.
 	Data *DeleteSparkTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3542,10 +3545,10 @@ func (s *DeleteSparkTemplateResponseBody) SetRequestId(v string) *DeleteSparkTem
 }
 
 type DeleteSparkTemplateResponseBodyData struct {
-	// Indicates whether the template is deleted. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: The template is deleted.
-	// *   **false**: The template fails to be deleted.
+	// *   **True**
+	// *   **False**
 	Succeeded *bool `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
@@ -8279,6 +8282,245 @@ func (s *DescribeDBClusterPerformanceResponse) SetStatusCode(v int32) *DescribeD
 }
 
 func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerformanceResponseBody) *DescribeDBClusterPerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetDBClusterId(v string) *DescribeDBClusterSpaceSummaryRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetOwnerAccount(v string) *DescribeDBClusterSpaceSummaryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetOwnerId(v int64) *DescribeDBClusterSpaceSummaryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetRegionId(v string) *DescribeDBClusterSpaceSummaryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetResourceOwnerAccount(v string) *DescribeDBClusterSpaceSummaryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryRequest) SetResourceOwnerId(v int64) *DescribeDBClusterSpaceSummaryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponseBody struct {
+	Data      *DescribeDBClusterSpaceSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBody) SetData(v *DescribeDBClusterSpaceSummaryResponseBodyData) *DescribeDBClusterSpaceSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBody) SetRequestId(v string) *DescribeDBClusterSpaceSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponseBodyData struct {
+	ColdData   *DescribeDBClusterSpaceSummaryResponseBodyDataColdData   `json:"ColdData,omitempty" xml:"ColdData,omitempty" type:"Struct"`
+	DataGrowth *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth `json:"DataGrowth,omitempty" xml:"DataGrowth,omitempty" type:"Struct"`
+	HotData    *DescribeDBClusterSpaceSummaryResponseBodyDataHotData    `json:"HotData,omitempty" xml:"HotData,omitempty" type:"Struct"`
+	TotalSize  *string                                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyData) SetColdData(v *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) *DescribeDBClusterSpaceSummaryResponseBodyData {
+	s.ColdData = v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyData) SetDataGrowth(v *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth) *DescribeDBClusterSpaceSummaryResponseBodyData {
+	s.DataGrowth = v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyData) SetHotData(v *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) *DescribeDBClusterSpaceSummaryResponseBodyData {
+	s.HotData = v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyData) SetTotalSize(v string) *DescribeDBClusterSpaceSummaryResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponseBodyDataColdData struct {
+	DataSize            *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	IndexSize           *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	OtherSize           *int64 `json:"OtherSize,omitempty" xml:"OtherSize,omitempty"`
+	PrimaryKeyIndexSize *int64 `json:"PrimaryKeyIndexSize,omitempty" xml:"PrimaryKeyIndexSize,omitempty"`
+	TotalSize           *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataColdData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataColdData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) SetDataSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataColdData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) SetIndexSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataColdData {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) SetOtherSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataColdData {
+	s.OtherSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) SetPrimaryKeyIndexSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataColdData {
+	s.PrimaryKeyIndexSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataColdData) SetTotalSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataColdData {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth struct {
+	DayGrowth  *int64 `json:"DayGrowth,omitempty" xml:"DayGrowth,omitempty"`
+	WeekGrowth *int64 `json:"WeekGrowth,omitempty" xml:"WeekGrowth,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth) SetDayGrowth(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth {
+	s.DayGrowth = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth) SetWeekGrowth(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth {
+	s.WeekGrowth = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponseBodyDataHotData struct {
+	DataSize            *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	IndexSize           *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	OtherSize           *int64 `json:"OtherSize,omitempty" xml:"OtherSize,omitempty"`
+	PrimaryKeyIndexSize *int64 `json:"PrimaryKeyIndexSize,omitempty" xml:"PrimaryKeyIndexSize,omitempty"`
+	TotalSize           *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataHotData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponseBodyDataHotData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) SetDataSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataHotData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) SetIndexSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataHotData {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) SetOtherSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataHotData {
+	s.OtherSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) SetPrimaryKeyIndexSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataHotData {
+	s.PrimaryKeyIndexSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponseBodyDataHotData) SetTotalSize(v int64) *DescribeDBClusterSpaceSummaryResponseBodyDataHotData {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeDBClusterSpaceSummaryResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBClusterSpaceSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBClusterSpaceSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterSpaceSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponse) SetHeaders(v map[string]*string) *DescribeDBClusterSpaceSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponse) SetStatusCode(v int32) *DescribeDBClusterSpaceSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterSpaceSummaryResponse) SetBody(v *DescribeDBClusterSpaceSummaryResponseBody) *DescribeDBClusterSpaceSummaryResponse {
 	s.Body = v
 	return s
 }
@@ -14228,9 +14470,11 @@ type GetSparkAppLogRequest struct {
 	// >  You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
-	LogLength  *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetSparkAppLogRequest) String() string {
@@ -14296,7 +14540,8 @@ type GetSparkAppLogResponseBodyData struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	LogSize    *int32  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// The number of log entries. A value of 0 indicates that no valid logs are returned.
+	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
@@ -18409,7 +18654,11 @@ type ModifyDBResourceGroupRequest struct {
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EnableSpot  *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// Specifies whether to enable the preemptible instance feature for the resource group. This feature can be enabled only for job resource groups. Valid values:
+	//
+	// *   **True**
+	// *   **False**
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
 	// The name of the resource group.
 	//
 	// > You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the name of a resource group in a cluster.
@@ -22399,6 +22648,70 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterPerformanceResponse{}
 	_body, _err := client.DescribeDBClusterPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBClusterSpaceSummaryWithOptions(request *DescribeDBClusterSpaceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterSpaceSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBClusterSpaceSummary"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBClusterSpaceSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBClusterSpaceSummary(request *DescribeDBClusterSpaceSummaryRequest) (_result *DescribeDBClusterSpaceSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBClusterSpaceSummaryResponse{}
+	_body, _err := client.DescribeDBClusterSpaceSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
