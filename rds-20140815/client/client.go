@@ -5788,6 +5788,7 @@ func (s *CreateDBNodesRequest) SetResourceOwnerId(v int64) *CreateDBNodesRequest
 type CreateDBNodesRequestDBNode struct {
 	// The specification information of the node.
 	ClassCode *string `json:"classCode,omitempty" xml:"classCode,omitempty"`
+	VswId     *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
 	// The zone ID of the node.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
@@ -5802,6 +5803,11 @@ func (s CreateDBNodesRequestDBNode) GoString() string {
 
 func (s *CreateDBNodesRequestDBNode) SetClassCode(v string) *CreateDBNodesRequestDBNode {
 	s.ClassCode = &v
+	return s
+}
+
+func (s *CreateDBNodesRequestDBNode) SetVswId(v string) *CreateDBNodesRequestDBNode {
+	s.VswId = &v
 	return s
 }
 
@@ -7848,6 +7854,7 @@ func (s *CreateOrderForCreateDBNodesRequest) SetZoneId(v string) *CreateOrderFor
 type CreateOrderForCreateDBNodesRequestDBNode struct {
 	// The specification information of the node.
 	ClassCode *string `json:"classCode,omitempty" xml:"classCode,omitempty"`
+	VswId     *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
 	// The zone ID of the node.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
@@ -7862,6 +7869,11 @@ func (s CreateOrderForCreateDBNodesRequestDBNode) GoString() string {
 
 func (s *CreateOrderForCreateDBNodesRequestDBNode) SetClassCode(v string) *CreateOrderForCreateDBNodesRequestDBNode {
 	s.ClassCode = &v
+	return s
+}
+
+func (s *CreateOrderForCreateDBNodesRequestDBNode) SetVswId(v string) *CreateOrderForCreateDBNodesRequestDBNode {
+	s.VswId = &v
 	return s
 }
 
@@ -53337,6 +53349,7 @@ func (s *PreCheckCreateOrderForCreateDBNodesRequest) SetZoneId(v string) *PreChe
 type PreCheckCreateOrderForCreateDBNodesRequestDBNode struct {
 	// The instance type of the node.
 	ClassCode *string `json:"classCode,omitempty" xml:"classCode,omitempty"`
+	VswId     *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
 	// The zone ID of the node.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
@@ -53351,6 +53364,11 @@ func (s PreCheckCreateOrderForCreateDBNodesRequestDBNode) GoString() string {
 
 func (s *PreCheckCreateOrderForCreateDBNodesRequestDBNode) SetClassCode(v string) *PreCheckCreateOrderForCreateDBNodesRequestDBNode {
 	s.ClassCode = &v
+	return s
+}
+
+func (s *PreCheckCreateOrderForCreateDBNodesRequestDBNode) SetVswId(v string) *PreCheckCreateOrderForCreateDBNodesRequestDBNode {
+	s.VswId = &v
 	return s
 }
 
