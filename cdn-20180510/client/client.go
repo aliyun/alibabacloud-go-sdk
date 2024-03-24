@@ -23058,6 +23058,87 @@ func (s *PushObjectCacheResponse) SetBody(v *PushObjectCacheResponseBody) *PushO
 	return s
 }
 
+type RefreshObjectCacheByCacheTagRequest struct {
+	CacheTag   *string `json:"CacheTag,omitempty" xml:"CacheTag,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s RefreshObjectCacheByCacheTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshObjectCacheByCacheTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshObjectCacheByCacheTagRequest) SetCacheTag(v string) *RefreshObjectCacheByCacheTagRequest {
+	s.CacheTag = &v
+	return s
+}
+
+func (s *RefreshObjectCacheByCacheTagRequest) SetDomainName(v string) *RefreshObjectCacheByCacheTagRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *RefreshObjectCacheByCacheTagRequest) SetForce(v bool) *RefreshObjectCacheByCacheTagRequest {
+	s.Force = &v
+	return s
+}
+
+type RefreshObjectCacheByCacheTagResponseBody struct {
+	RefreshTaskId *string `json:"RefreshTaskId,omitempty" xml:"RefreshTaskId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshObjectCacheByCacheTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshObjectCacheByCacheTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshObjectCacheByCacheTagResponseBody) SetRefreshTaskId(v string) *RefreshObjectCacheByCacheTagResponseBody {
+	s.RefreshTaskId = &v
+	return s
+}
+
+func (s *RefreshObjectCacheByCacheTagResponseBody) SetRequestId(v string) *RefreshObjectCacheByCacheTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshObjectCacheByCacheTagResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshObjectCacheByCacheTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshObjectCacheByCacheTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshObjectCacheByCacheTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshObjectCacheByCacheTagResponse) SetHeaders(v map[string]*string) *RefreshObjectCacheByCacheTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshObjectCacheByCacheTagResponse) SetStatusCode(v int32) *RefreshObjectCacheByCacheTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshObjectCacheByCacheTagResponse) SetBody(v *RefreshObjectCacheByCacheTagResponseBody) *RefreshObjectCacheByCacheTagResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshObjectCachesRequest struct {
 	// Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
 	//
@@ -34926,6 +35007,58 @@ func (client *Client) PushObjectCache(request *PushObjectCacheRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &PushObjectCacheResponse{}
 	_body, _err := client.PushObjectCacheWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshObjectCacheByCacheTagWithOptions(request *RefreshObjectCacheByCacheTagRequest, runtime *util.RuntimeOptions) (_result *RefreshObjectCacheByCacheTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheTag)) {
+		query["CacheTag"] = request.CacheTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshObjectCacheByCacheTag"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshObjectCacheByCacheTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshObjectCacheByCacheTag(request *RefreshObjectCacheByCacheTagRequest) (_result *RefreshObjectCacheByCacheTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshObjectCacheByCacheTagResponse{}
+	_body, _err := client.RefreshObjectCacheByCacheTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
