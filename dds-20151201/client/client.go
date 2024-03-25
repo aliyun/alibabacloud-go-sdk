@@ -5594,7 +5594,7 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	// The end of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The ID of the backup set.
-	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup set.
 	//
 	// > You can use this URL to download the backup set from on the Elastic Compute Service (ECS) instance which is on the same network as the ApsaraDB for MongoDB instance.
@@ -5650,7 +5650,7 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTime(v string) *D
 	return s
 }
 
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int32) *DescribeBackupsResponseBodyBackupsBackup {
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int64) *DescribeBackupsResponseBodyBackupsBackup {
 	s.BackupId = &v
 	return s
 }
