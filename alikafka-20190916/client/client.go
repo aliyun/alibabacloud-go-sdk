@@ -3844,7 +3844,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// The number of used topics.
 	UsedTopicCount *int32 `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
 	// The vSwitch ID of the instance.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ViewInstanceStatusCode *int32  `json:"ViewInstanceStatusCode,omitempty" xml:"ViewInstanceStatusCode,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
@@ -4031,6 +4032,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetUsedTopicCount(v 
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetVSwitchId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetViewInstanceStatusCode(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ViewInstanceStatusCode = &v
 	return s
 }
 
