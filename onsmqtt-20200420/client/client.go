@@ -168,6 +168,318 @@ func (s *ActiveDeviceCertificateResponse) SetBody(v *ActiveDeviceCertificateResp
 	return s
 }
 
+type AddCustomAuthConnectBlackRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s AddCustomAuthConnectBlackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthConnectBlackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthConnectBlackRequest) SetClientId(v string) *AddCustomAuthConnectBlackRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackRequest) SetInstanceId(v string) *AddCustomAuthConnectBlackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type AddCustomAuthConnectBlackResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddCustomAuthConnectBlackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthConnectBlackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthConnectBlackResponseBody) SetCode(v int32) *AddCustomAuthConnectBlackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackResponseBody) SetMessage(v string) *AddCustomAuthConnectBlackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackResponseBody) SetRequestId(v string) *AddCustomAuthConnectBlackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackResponseBody) SetSuccess(v bool) *AddCustomAuthConnectBlackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddCustomAuthConnectBlackResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCustomAuthConnectBlackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCustomAuthConnectBlackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthConnectBlackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthConnectBlackResponse) SetHeaders(v map[string]*string) *AddCustomAuthConnectBlackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackResponse) SetStatusCode(v int32) *AddCustomAuthConnectBlackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCustomAuthConnectBlackResponse) SetBody(v *AddCustomAuthConnectBlackResponseBody) *AddCustomAuthConnectBlackResponse {
+	s.Body = v
+	return s
+}
+
+type AddCustomAuthIdentityRequest struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Secret       *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	SignMode     *string `json:"SignMode,omitempty" xml:"SignMode,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s AddCustomAuthIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthIdentityRequest) SetClientId(v string) *AddCustomAuthIdentityRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityRequest) SetIdentityType(v string) *AddCustomAuthIdentityRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityRequest) SetInstanceId(v string) *AddCustomAuthIdentityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityRequest) SetSecret(v string) *AddCustomAuthIdentityRequest {
+	s.Secret = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityRequest) SetSignMode(v string) *AddCustomAuthIdentityRequest {
+	s.SignMode = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityRequest) SetUsername(v string) *AddCustomAuthIdentityRequest {
+	s.Username = &v
+	return s
+}
+
+type AddCustomAuthIdentityResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddCustomAuthIdentityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthIdentityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthIdentityResponseBody) SetCode(v int32) *AddCustomAuthIdentityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityResponseBody) SetMessage(v string) *AddCustomAuthIdentityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityResponseBody) SetRequestId(v string) *AddCustomAuthIdentityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityResponseBody) SetSuccess(v bool) *AddCustomAuthIdentityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddCustomAuthIdentityResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCustomAuthIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCustomAuthIdentityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthIdentityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthIdentityResponse) SetHeaders(v map[string]*string) *AddCustomAuthIdentityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCustomAuthIdentityResponse) SetStatusCode(v int32) *AddCustomAuthIdentityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCustomAuthIdentityResponse) SetBody(v *AddCustomAuthIdentityResponseBody) *AddCustomAuthIdentityResponse {
+	s.Body = v
+	return s
+}
+
+type AddCustomAuthPermissionRequest struct {
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s AddCustomAuthPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthPermissionRequest) SetEffect(v string) *AddCustomAuthPermissionRequest {
+	s.Effect = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionRequest) SetIdentity(v string) *AddCustomAuthPermissionRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionRequest) SetIdentityType(v string) *AddCustomAuthPermissionRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionRequest) SetInstanceId(v string) *AddCustomAuthPermissionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionRequest) SetPermitAction(v string) *AddCustomAuthPermissionRequest {
+	s.PermitAction = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionRequest) SetTopic(v string) *AddCustomAuthPermissionRequest {
+	s.Topic = &v
+	return s
+}
+
+type AddCustomAuthPermissionResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddCustomAuthPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthPermissionResponseBody) SetCode(v int32) *AddCustomAuthPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionResponseBody) SetMessage(v string) *AddCustomAuthPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionResponseBody) SetRequestId(v string) *AddCustomAuthPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionResponseBody) SetSuccess(v bool) *AddCustomAuthPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddCustomAuthPermissionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCustomAuthPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCustomAuthPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomAuthPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomAuthPermissionResponse) SetHeaders(v map[string]*string) *AddCustomAuthPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCustomAuthPermissionResponse) SetStatusCode(v int32) *AddCustomAuthPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCustomAuthPermissionResponse) SetBody(v *AddCustomAuthPermissionResponseBody) *AddCustomAuthPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type ApplyTokenRequest struct {
 	// The permission type of the token. Valid values:
 	//
@@ -526,6 +838,294 @@ func (s *DeleteCaCertificateResponse) SetStatusCode(v int32) *DeleteCaCertificat
 }
 
 func (s *DeleteCaCertificateResponse) SetBody(v *DeleteCaCertificateResponseBody) *DeleteCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomAuthConnectBlackRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteCustomAuthConnectBlackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthConnectBlackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthConnectBlackRequest) SetClientId(v string) *DeleteCustomAuthConnectBlackRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackRequest) SetInstanceId(v string) *DeleteCustomAuthConnectBlackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteCustomAuthConnectBlackResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomAuthConnectBlackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthConnectBlackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthConnectBlackResponseBody) SetCode(v int32) *DeleteCustomAuthConnectBlackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackResponseBody) SetMessage(v string) *DeleteCustomAuthConnectBlackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackResponseBody) SetRequestId(v string) *DeleteCustomAuthConnectBlackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackResponseBody) SetSuccess(v bool) *DeleteCustomAuthConnectBlackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomAuthConnectBlackResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomAuthConnectBlackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomAuthConnectBlackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthConnectBlackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthConnectBlackResponse) SetHeaders(v map[string]*string) *DeleteCustomAuthConnectBlackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackResponse) SetStatusCode(v int32) *DeleteCustomAuthConnectBlackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomAuthConnectBlackResponse) SetBody(v *DeleteCustomAuthConnectBlackResponseBody) *DeleteCustomAuthConnectBlackResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomAuthIdentityRequest struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s DeleteCustomAuthIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthIdentityRequest) SetClientId(v string) *DeleteCustomAuthIdentityRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityRequest) SetIdentityType(v string) *DeleteCustomAuthIdentityRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityRequest) SetInstanceId(v string) *DeleteCustomAuthIdentityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityRequest) SetUsername(v string) *DeleteCustomAuthIdentityRequest {
+	s.Username = &v
+	return s
+}
+
+type DeleteCustomAuthIdentityResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomAuthIdentityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthIdentityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthIdentityResponseBody) SetCode(v int32) *DeleteCustomAuthIdentityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityResponseBody) SetMessage(v string) *DeleteCustomAuthIdentityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityResponseBody) SetRequestId(v string) *DeleteCustomAuthIdentityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityResponseBody) SetSuccess(v bool) *DeleteCustomAuthIdentityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomAuthIdentityResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomAuthIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomAuthIdentityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthIdentityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthIdentityResponse) SetHeaders(v map[string]*string) *DeleteCustomAuthIdentityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityResponse) SetStatusCode(v int32) *DeleteCustomAuthIdentityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomAuthIdentityResponse) SetBody(v *DeleteCustomAuthIdentityResponseBody) *DeleteCustomAuthIdentityResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomAuthPermissionRequest struct {
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s DeleteCustomAuthPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthPermissionRequest) SetIdentity(v string) *DeleteCustomAuthPermissionRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionRequest) SetIdentityType(v string) *DeleteCustomAuthPermissionRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionRequest) SetInstanceId(v string) *DeleteCustomAuthPermissionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionRequest) SetTopic(v string) *DeleteCustomAuthPermissionRequest {
+	s.Topic = &v
+	return s
+}
+
+type DeleteCustomAuthPermissionResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCustomAuthPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthPermissionResponseBody) SetCode(v int32) *DeleteCustomAuthPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionResponseBody) SetMessage(v string) *DeleteCustomAuthPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionResponseBody) SetRequestId(v string) *DeleteCustomAuthPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionResponseBody) SetSuccess(v bool) *DeleteCustomAuthPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCustomAuthPermissionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomAuthPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomAuthPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomAuthPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomAuthPermissionResponse) SetHeaders(v map[string]*string) *DeleteCustomAuthPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionResponse) SetStatusCode(v int32) *DeleteCustomAuthPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomAuthPermissionResponse) SetBody(v *DeleteCustomAuthPermissionResponseBody) *DeleteCustomAuthPermissionResponse {
 	s.Body = v
 	return s
 }
@@ -2082,6 +2682,528 @@ func (s *ListGroupIdResponse) SetBody(v *ListGroupIdResponseBody) *ListGroupIdRe
 	return s
 }
 
+type QueryCustomAuthConnectBlackRequest struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s QueryCustomAuthConnectBlackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthConnectBlackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthConnectBlackRequest) SetClientId(v string) *QueryCustomAuthConnectBlackRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackRequest) SetInstanceId(v string) *QueryCustomAuthConnectBlackRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackRequest) SetNextToken(v string) *QueryCustomAuthConnectBlackRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackRequest) SetSize(v int32) *QueryCustomAuthConnectBlackRequest {
+	s.Size = &v
+	return s
+}
+
+type QueryCustomAuthConnectBlackResponseBody struct {
+	Code    *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *QueryCustomAuthConnectBlackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCustomAuthConnectBlackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthConnectBlackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBody) SetCode(v int32) *QueryCustomAuthConnectBlackResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBody) SetData(v *QueryCustomAuthConnectBlackResponseBodyData) *QueryCustomAuthConnectBlackResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBody) SetMessage(v string) *QueryCustomAuthConnectBlackResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBody) SetRequestId(v string) *QueryCustomAuthConnectBlackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBody) SetSuccess(v bool) *QueryCustomAuthConnectBlackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCustomAuthConnectBlackResponseBodyData struct {
+	NextToken *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Results   []*QueryCustomAuthConnectBlackResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s QueryCustomAuthConnectBlackResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthConnectBlackResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBodyData) SetNextToken(v string) *QueryCustomAuthConnectBlackResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBodyData) SetResults(v []*QueryCustomAuthConnectBlackResponseBodyDataResults) *QueryCustomAuthConnectBlackResponseBodyData {
+	s.Results = v
+	return s
+}
+
+type QueryCustomAuthConnectBlackResponseBodyDataResults struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
+}
+
+func (s QueryCustomAuthConnectBlackResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthConnectBlackResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBodyDataResults) SetClientId(v string) *QueryCustomAuthConnectBlackResponseBodyDataResults {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBodyDataResults) SetEffect(v string) *QueryCustomAuthConnectBlackResponseBodyDataResults {
+	s.Effect = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponseBodyDataResults) SetPermitAction(v string) *QueryCustomAuthConnectBlackResponseBodyDataResults {
+	s.PermitAction = &v
+	return s
+}
+
+type QueryCustomAuthConnectBlackResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCustomAuthConnectBlackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCustomAuthConnectBlackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthConnectBlackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthConnectBlackResponse) SetHeaders(v map[string]*string) *QueryCustomAuthConnectBlackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponse) SetStatusCode(v int32) *QueryCustomAuthConnectBlackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCustomAuthConnectBlackResponse) SetBody(v *QueryCustomAuthConnectBlackResponseBody) *QueryCustomAuthConnectBlackResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCustomAuthIdentityRequest struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s QueryCustomAuthIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetClientId(v string) *QueryCustomAuthIdentityRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetIdentityType(v string) *QueryCustomAuthIdentityRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetInstanceId(v string) *QueryCustomAuthIdentityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetNextToken(v string) *QueryCustomAuthIdentityRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetSize(v int32) *QueryCustomAuthIdentityRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityRequest) SetUsername(v string) *QueryCustomAuthIdentityRequest {
+	s.Username = &v
+	return s
+}
+
+type QueryCustomAuthIdentityResponseBody struct {
+	Code    *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *QueryCustomAuthIdentityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCustomAuthIdentityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthIdentityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthIdentityResponseBody) SetCode(v int32) *QueryCustomAuthIdentityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBody) SetData(v *QueryCustomAuthIdentityResponseBodyData) *QueryCustomAuthIdentityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBody) SetMessage(v string) *QueryCustomAuthIdentityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBody) SetRequestId(v string) *QueryCustomAuthIdentityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBody) SetSuccess(v bool) *QueryCustomAuthIdentityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCustomAuthIdentityResponseBodyData struct {
+	NextToken *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Results   []*QueryCustomAuthIdentityResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s QueryCustomAuthIdentityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthIdentityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyData) SetNextToken(v string) *QueryCustomAuthIdentityResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyData) SetResults(v []*QueryCustomAuthIdentityResponseBodyDataResults) *QueryCustomAuthIdentityResponseBodyData {
+	s.Results = v
+	return s
+}
+
+type QueryCustomAuthIdentityResponseBodyDataResults struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	Secret       *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	SignMode     *string `json:"SignMode,omitempty" xml:"SignMode,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s QueryCustomAuthIdentityResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthIdentityResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyDataResults) SetClientId(v string) *QueryCustomAuthIdentityResponseBodyDataResults {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyDataResults) SetIdentityType(v string) *QueryCustomAuthIdentityResponseBodyDataResults {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyDataResults) SetSecret(v string) *QueryCustomAuthIdentityResponseBodyDataResults {
+	s.Secret = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyDataResults) SetSignMode(v string) *QueryCustomAuthIdentityResponseBodyDataResults {
+	s.SignMode = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponseBodyDataResults) SetUsername(v string) *QueryCustomAuthIdentityResponseBodyDataResults {
+	s.Username = &v
+	return s
+}
+
+type QueryCustomAuthIdentityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCustomAuthIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCustomAuthIdentityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthIdentityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthIdentityResponse) SetHeaders(v map[string]*string) *QueryCustomAuthIdentityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponse) SetStatusCode(v int32) *QueryCustomAuthIdentityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCustomAuthIdentityResponse) SetBody(v *QueryCustomAuthIdentityResponseBody) *QueryCustomAuthIdentityResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCustomAuthPermissionRequest struct {
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s QueryCustomAuthPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetIdentity(v string) *QueryCustomAuthPermissionRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetIdentityType(v string) *QueryCustomAuthPermissionRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetInstanceId(v string) *QueryCustomAuthPermissionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetNextToken(v string) *QueryCustomAuthPermissionRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetSize(v int32) *QueryCustomAuthPermissionRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionRequest) SetTopic(v string) *QueryCustomAuthPermissionRequest {
+	s.Topic = &v
+	return s
+}
+
+type QueryCustomAuthPermissionResponseBody struct {
+	Code    *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *QueryCustomAuthPermissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCustomAuthPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthPermissionResponseBody) SetCode(v int32) *QueryCustomAuthPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBody) SetData(v *QueryCustomAuthPermissionResponseBodyData) *QueryCustomAuthPermissionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBody) SetMessage(v string) *QueryCustomAuthPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBody) SetRequestId(v string) *QueryCustomAuthPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBody) SetSuccess(v bool) *QueryCustomAuthPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCustomAuthPermissionResponseBodyData struct {
+	NextToken *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Results   []*QueryCustomAuthPermissionResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s QueryCustomAuthPermissionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthPermissionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyData) SetNextToken(v string) *QueryCustomAuthPermissionResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyData) SetResults(v []*QueryCustomAuthPermissionResponseBodyDataResults) *QueryCustomAuthPermissionResponseBodyData {
+	s.Results = v
+	return s
+}
+
+type QueryCustomAuthPermissionResponseBodyDataResults struct {
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s QueryCustomAuthPermissionResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthPermissionResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyDataResults) SetEffect(v string) *QueryCustomAuthPermissionResponseBodyDataResults {
+	s.Effect = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyDataResults) SetIdentity(v string) *QueryCustomAuthPermissionResponseBodyDataResults {
+	s.Identity = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyDataResults) SetIdentityType(v string) *QueryCustomAuthPermissionResponseBodyDataResults {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyDataResults) SetPermitAction(v string) *QueryCustomAuthPermissionResponseBodyDataResults {
+	s.PermitAction = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponseBodyDataResults) SetTopic(v string) *QueryCustomAuthPermissionResponseBodyDataResults {
+	s.Topic = &v
+	return s
+}
+
+type QueryCustomAuthPermissionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCustomAuthPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCustomAuthPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCustomAuthPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCustomAuthPermissionResponse) SetHeaders(v map[string]*string) *QueryCustomAuthPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponse) SetStatusCode(v int32) *QueryCustomAuthPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCustomAuthPermissionResponse) SetBody(v *QueryCustomAuthPermissionResponseBody) *QueryCustomAuthPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMqttTraceDeviceRequest struct {
 	// The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
@@ -3628,6 +4750,230 @@ func (s *UnRegisterDeviceCredentialResponse) SetBody(v *UnRegisterDeviceCredenti
 	return s
 }
 
+type UpdateCustomAuthIdentityRequest struct {
+	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Secret       *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	SignMode     *string `json:"SignMode,omitempty" xml:"SignMode,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s UpdateCustomAuthIdentityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthIdentityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetClientId(v string) *UpdateCustomAuthIdentityRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetIdentityType(v string) *UpdateCustomAuthIdentityRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetInstanceId(v string) *UpdateCustomAuthIdentityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetSecret(v string) *UpdateCustomAuthIdentityRequest {
+	s.Secret = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetSignMode(v string) *UpdateCustomAuthIdentityRequest {
+	s.SignMode = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityRequest) SetUsername(v string) *UpdateCustomAuthIdentityRequest {
+	s.Username = &v
+	return s
+}
+
+type UpdateCustomAuthIdentityResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCustomAuthIdentityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthIdentityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthIdentityResponseBody) SetCode(v int32) *UpdateCustomAuthIdentityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityResponseBody) SetMessage(v string) *UpdateCustomAuthIdentityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityResponseBody) SetRequestId(v string) *UpdateCustomAuthIdentityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityResponseBody) SetSuccess(v bool) *UpdateCustomAuthIdentityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCustomAuthIdentityResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCustomAuthIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCustomAuthIdentityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthIdentityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthIdentityResponse) SetHeaders(v map[string]*string) *UpdateCustomAuthIdentityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityResponse) SetStatusCode(v int32) *UpdateCustomAuthIdentityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomAuthIdentityResponse) SetBody(v *UpdateCustomAuthIdentityResponseBody) *UpdateCustomAuthIdentityResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomAuthPermissionRequest struct {
+	Effect       *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	Identity     *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateCustomAuthPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetEffect(v string) *UpdateCustomAuthPermissionRequest {
+	s.Effect = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetIdentity(v string) *UpdateCustomAuthPermissionRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetIdentityType(v string) *UpdateCustomAuthPermissionRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetInstanceId(v string) *UpdateCustomAuthPermissionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetPermitAction(v string) *UpdateCustomAuthPermissionRequest {
+	s.PermitAction = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionRequest) SetTopic(v string) *UpdateCustomAuthPermissionRequest {
+	s.Topic = &v
+	return s
+}
+
+type UpdateCustomAuthPermissionResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateCustomAuthPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthPermissionResponseBody) SetCode(v int32) *UpdateCustomAuthPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionResponseBody) SetMessage(v string) *UpdateCustomAuthPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionResponseBody) SetRequestId(v string) *UpdateCustomAuthPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionResponseBody) SetSuccess(v bool) *UpdateCustomAuthPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateCustomAuthPermissionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCustomAuthPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCustomAuthPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomAuthPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomAuthPermissionResponse) SetHeaders(v map[string]*string) *UpdateCustomAuthPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionResponse) SetStatusCode(v int32) *UpdateCustomAuthPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomAuthPermissionResponse) SetBody(v *UpdateCustomAuthPermissionResponseBody) *UpdateCustomAuthPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3768,6 +5114,182 @@ func (client *Client) ActiveDeviceCertificate(request *ActiveDeviceCertificateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ActiveDeviceCertificateResponse{}
 	_body, _err := client.ActiveDeviceCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthConnectBlackWithOptions(request *AddCustomAuthConnectBlackRequest, runtime *util.RuntimeOptions) (_result *AddCustomAuthConnectBlackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCustomAuthConnectBlack"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCustomAuthConnectBlackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthConnectBlack(request *AddCustomAuthConnectBlackRequest) (_result *AddCustomAuthConnectBlackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCustomAuthConnectBlackResponse{}
+	_body, _err := client.AddCustomAuthConnectBlackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthIdentityWithOptions(request *AddCustomAuthIdentityRequest, runtime *util.RuntimeOptions) (_result *AddCustomAuthIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Secret)) {
+		body["Secret"] = request.Secret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignMode)) {
+		body["SignMode"] = request.SignMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCustomAuthIdentity"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCustomAuthIdentityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthIdentity(request *AddCustomAuthIdentityRequest) (_result *AddCustomAuthIdentityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCustomAuthIdentityResponse{}
+	_body, _err := client.AddCustomAuthIdentityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthPermissionWithOptions(request *AddCustomAuthPermissionRequest, runtime *util.RuntimeOptions) (_result *AddCustomAuthPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Effect)) {
+		body["Effect"] = request.Effect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["Identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermitAction)) {
+		body["PermitAction"] = request.PermitAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCustomAuthPermission"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCustomAuthPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddCustomAuthPermission(request *AddCustomAuthPermissionRequest) (_result *AddCustomAuthPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCustomAuthPermissionResponse{}
+	_body, _err := client.AddCustomAuthPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4013,6 +5535,166 @@ func (client *Client) DeleteCaCertificate(request *DeleteCaCertificateRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCaCertificateResponse{}
 	_body, _err := client.DeleteCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthConnectBlackWithOptions(request *DeleteCustomAuthConnectBlackRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomAuthConnectBlackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomAuthConnectBlack"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomAuthConnectBlackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthConnectBlack(request *DeleteCustomAuthConnectBlackRequest) (_result *DeleteCustomAuthConnectBlackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomAuthConnectBlackResponse{}
+	_body, _err := client.DeleteCustomAuthConnectBlackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthIdentityWithOptions(request *DeleteCustomAuthIdentityRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomAuthIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomAuthIdentity"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomAuthIdentityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthIdentity(request *DeleteCustomAuthIdentityRequest) (_result *DeleteCustomAuthIdentityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomAuthIdentityResponse{}
+	_body, _err := client.DeleteCustomAuthIdentityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthPermissionWithOptions(request *DeleteCustomAuthPermissionRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomAuthPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["Identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomAuthPermission"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomAuthPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomAuthPermission(request *DeleteCustomAuthPermissionRequest) (_result *DeleteCustomAuthPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomAuthPermissionResponse{}
+	_body, _err := client.DeleteCustomAuthPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4646,6 +6328,126 @@ func (client *Client) ListGroupId(request *ListGroupIdRequest) (_result *ListGro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupIdResponse{}
 	_body, _err := client.ListGroupIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthConnectBlackWithOptions(request *QueryCustomAuthConnectBlackRequest, runtime *util.RuntimeOptions) (_result *QueryCustomAuthConnectBlackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCustomAuthConnectBlack"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCustomAuthConnectBlackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthConnectBlack(request *QueryCustomAuthConnectBlackRequest) (_result *QueryCustomAuthConnectBlackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCustomAuthConnectBlackResponse{}
+	_body, _err := client.QueryCustomAuthConnectBlackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthIdentityWithOptions(request *QueryCustomAuthIdentityRequest, runtime *util.RuntimeOptions) (_result *QueryCustomAuthIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCustomAuthIdentity"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCustomAuthIdentityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthIdentity(request *QueryCustomAuthIdentityRequest) (_result *QueryCustomAuthIdentityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCustomAuthIdentityResponse{}
+	_body, _err := client.QueryCustomAuthIdentityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthPermissionWithOptions(request *QueryCustomAuthPermissionRequest, runtime *util.RuntimeOptions) (_result *QueryCustomAuthPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCustomAuthPermission"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCustomAuthPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCustomAuthPermission(request *QueryCustomAuthPermissionRequest) (_result *QueryCustomAuthPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCustomAuthPermissionResponse{}
+	_body, _err := client.QueryCustomAuthPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5493,6 +7295,134 @@ func (client *Client) UnRegisterDeviceCredential(request *UnRegisterDeviceCreden
 	runtime := &util.RuntimeOptions{}
 	_result = &UnRegisterDeviceCredentialResponse{}
 	_body, _err := client.UnRegisterDeviceCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomAuthIdentityWithOptions(request *UpdateCustomAuthIdentityRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomAuthIdentityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Secret)) {
+		body["Secret"] = request.Secret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignMode)) {
+		body["SignMode"] = request.SignMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomAuthIdentity"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomAuthIdentityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomAuthIdentity(request *UpdateCustomAuthIdentityRequest) (_result *UpdateCustomAuthIdentityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomAuthIdentityResponse{}
+	_body, _err := client.UpdateCustomAuthIdentityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomAuthPermissionWithOptions(request *UpdateCustomAuthPermissionRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomAuthPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Effect)) {
+		body["Effect"] = request.Effect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		body["Identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermitAction)) {
+		body["PermitAction"] = request.PermitAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomAuthPermission"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomAuthPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomAuthPermission(request *UpdateCustomAuthPermissionRequest) (_result *UpdateCustomAuthPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomAuthPermissionResponse{}
+	_body, _err := client.UpdateCustomAuthPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
