@@ -158,7 +158,7 @@ type AddTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
 	// The traffic classification rules.
 	//
-	// You can specify up to 50 traffic classification rules at a time.
+	// You can add at most 50 traffic classification rules in each call.
 	TrafficMatchRules []*AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
 }
 
@@ -213,49 +213,64 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	// The destination CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose destination IP addresses fall within the specified destination CIDR block. If you do not specify this parameter, packets are considered a match regardless of the destination IP address.
+	// Packets whose destination IP addresses fall into the specified destination CIDR block are considered a match. If you do not specify a destination CIDR block, packets are considered a match regardless of the destination IP address.
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
 	// The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose destination ports fall within the destination port range. If you do not specify this parameter, packets are considered a match regardless of the destination port.
+	// Packets whose destination ports fall into the specified destination port range are considered a match. If you do not specify destination port range, packets are considered a match regardless of the destination port.
 	//
-	// You can specify up to two ports. Take note of the following rules:
+	// You can specify at most two port numbers for this parameter. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose destination port is port 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose destination ports fall between 1 and 200.
-	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the destination port.
+	// *   If you enter only one port number, such as 1, packets whose destination port is 1 are considered a match.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 are considered a match.
+	// *   If you enter two port numbers and one of them is -1, the other port must also be -1. In this case, packets are considered a match regardless of the destination port.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The differentiated services code point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
+	// The Differentiated Services Code Point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
 	//
-	// The traffic classification rule matches the packets that contain the specified DSCP value. If you do not specify this parameter, packets are considered a match regardless of the DSCP value.
+	// Packets that carry the specified DSCP value are considered a match. If you do not specify a DSCP value, packets are considered a match regardless of the DSCP value.
 	//
 	// >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	// The protocol that is used to match packets.
 	//
-	// Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+	// Traffic classification rules support the following protocols: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+	//
+	// **Some protocols use a specific port. Click to view protocols and ports.**
+	//
+	// *   If the protocol is **ICMP**, set the destination port to **-1**.
+	// *   If the protocol is **GRE**, set the destination port to **-1**.
+	// *   If the protocol is **SSH**, set the destination port to **22**.
+	// *   If the protocol is **Telnet**, set the destination port to **23**.
+	// *   If the protocol is **HTTP**, set the destination port to **80**.
+	// *   If the protocol is **HTTPS**, set the destination port to **443**.
+	// *   If the protocol is **MS SQL**, set the destination port to **1443**.
+	// *   If the protocol is **Oracle**, set the destination port to **1521**.
+	// *   If the protocol is **Mysql**, set the destination port to **3306**.
+	// *   If the protocol is **RDP**, set the destination port to **3389**.
+	// *   If the protocol is **Postgre SQL**, set the destination port to **5432**.
+	// *   If the protocol is **Redis**, set the destination port to **6379**.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose source IP addresses fall within the specified source CIDR block. If you do not specify this parameter, packets are considered a match regardless of the source IP address.
+	// Packets whose source IP addresses fall into the specified source CIDR block are considered a match. If you do not specify a source CIDR block, packets are considered a match regardless of the source IP address.
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
 	// The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose source ports fall within the source port range. If you do not specify this parameter, packets are considered a match regardless of the source port.
+	// Packets whose source ports fall into the specified source port range are considered a match. If you do not specify a source port range, packets are considered a match regardless of the source port.
 	//
-	// You can enter up to two port numbers. Take note of the following rules:
+	// You can enter at most two port numbers. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose source port is 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose source ports fall within 1 to 200.
+	// *   If you enter only one port number, such as 1, packets whose source port is 1 are considered a match.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 are considered a match.
 	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
 	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
 	// The description of the traffic classification rule.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
 	//
-	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
@@ -1071,17 +1086,17 @@ func (s *CheckTransitRouterServiceResponse) SetBody(v *CheckTransitRouterService
 type CreateCenRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the CEN instance.
 	//
-	// The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the CEN instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1092,6 +1107,8 @@ type CreateCenRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
+	//
+	// You can specify up to 20 tags in each call.
 	Tag []*CreateCenRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1149,17 +1166,17 @@ func (s *CreateCenRequest) SetTag(v []*CreateCenRequestTag) *CreateCenRequest {
 }
 
 type CreateCenRequestTag struct {
-	// The tag keys of the resources.
+	// The tag key.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
+	// The tag value.
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify up to 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1182,9 +1199,9 @@ func (s *CreateCenRequestTag) SetValue(v string) *CreateCenRequestTag {
 }
 
 type CreateCenResponseBody struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2788,17 +2805,17 @@ type CreateTrafficMarkingPolicyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the traffic marking policy.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TrafficMarkingPolicyDescription *string `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
 	// The name of the traffic marking policy.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
 	// The traffic classification rules in the traffic marking policy.
 	//
-	// Packets that match the traffic classification rules are assigned the DSCP value of the traffic marking policy.
+	// Data packets that meet the traffic classification rule is assigned the DSCP value of quality of service (QoS) policy.
 	//
-	// You can specify at most 50 traffic classification rules.
+	// You can create up to 50 traffic classification rules.
 	TrafficMatchRules []*CreateTrafficMarkingPolicyRequestTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
 	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -2875,25 +2892,25 @@ func (s *CreateTrafficMarkingPolicyRequest) SetTransitRouterId(v string) *Create
 type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	// The destination CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose destination IP addresses fall within the specified destination CIDR block. If you do not set this parameter, packets with all destination IP addresses are matched.
+	// Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
 	//
-	// You can create up to 50 traffic classification rules in each call. You can specify a destination CIDR block for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call You can specify a destination CIDR block for each traffic classification rule.
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
 	// The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose destination ports fall within the destination port range. If you do not set this parameter, packets with all destination ports are matched.
+	// Packets whose destination ports fall within the destination port range meet the traffic classification rule. If you do not specify destination port range, all packets meet the traffic classification rule.
 	//
-	// You can specify at most two ports. Take note of the following rules:
+	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose destination port is port 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose destination ports fall between 1 and 200.
-	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets with all destination ports are matched.
+	// *   If you enter only one port number, such as 1, packets whose destination port is 1 meet the traffic classification rule.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 meet the traffic classification rule.
+	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, all packets meet the traffic classification rule.
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a destination port range for each traffic classification rule.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
 	// The DSCP value that is used to match packets. Valid values: **0** to **63**.
 	//
-	// The traffic classification rule matches the packets that contain the specified DSCP value. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
+	// Packets that carry the specified DSCP value meet the traffic classification rule. If you do not specify a DSCP value, all packets meet the traffic classification rule.
 	//
 	// >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
 	//
@@ -2901,25 +2918,40 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	// The protocol that is used to match packets.
 	//
-	// Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+	// Traffic classification rules support the following protocols: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [CEN console](https://cen.console.aliyun.com/cen/list).
+	//
+	// **Some protocols use a fixed port. Click to view protocols and ports.**
+	//
+	// *   If the protocol is **ICMP**, the destination port must be **-1**.
+	// *   If the protocol is **GRE**, the destination port must be **1**.
+	// *   If the protocol is **SSH**, the destination port must be **22**.
+	// *   If the protocol is **Telnet**, the destination port must be **23**.
+	// *   If the protocol is **HTTP**, the destination port must be **80**.
+	// *   If the protocol is **HTTPS**, the destination port must be **443**.
+	// *   If the protocol is **MS SQL**, the destination port must be **1443**.
+	// *   If the protocol is **Oracle**, the destination port must be **1521**.
+	// *   If the protocol is **Mysql**, the destination port must be **3306**.
+	// *   If the protocol is **RDP**, the destination port must be **3389**.
+	// *   If the protocol is **Postgre SQL**, the destination port must be **5432**.
+	// *   If the protocol is **Redis**, the destination port must be **6379**.
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a protocol for each traffic classification rule.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose source IP addresses fall within the specified source CIDR block. If you do not set this parameter, packets with all source IP addresses are matched.
+	// Packets whose source IP addresses fall into the specified source CIDR block meet the traffic classification rule. If you do not specify a source CIDR block, all packets meet the traffic classification rule.
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a source CIDR block for each traffic classification rule.
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
 	// The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose source ports fall within the source port range. If you do not set this parameter, packets with all source ports are matched.
+	// Packets whose source ports fall into the source port range meet the traffic classification rule. If you do not specify a source port range, all packets meet the traffic classification rule.
 	//
-	// You can specify at most two ports. Take note of the following rules:
+	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose source port is 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose source ports fall between 1 and 200.
-	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets with all source ports are matched.
+	// *   If you enter only one port number, such as 1, packets whose source port is 1 meet the traffic classification rule.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 meet the traffic classification rule.
+	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, all packets meet the traffic classification rule.
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a source port range for each traffic classification rule.
 	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
@@ -2927,13 +2959,13 @@ type CreateTrafficMarkingPolicyRequestTrafficMatchRules struct {
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a description for each traffic classification rule.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
 	//
 	// You can create up to 50 traffic classification rules in each call. You can specify a name for each traffic classification rule.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
@@ -3766,6 +3798,176 @@ func (s *CreateTransitRouterCidrResponse) SetBody(v *CreateTransitRouterCidrResp
 	return s
 }
 
+type CreateTransitRouterEcrAttachmentRequest struct {
+	CenId                              *string                                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken                        *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool                                         `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EcrId                              *string                                       `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrOwnerId                         *int64                                        `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
+	OwnerAccount                       *string                                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                           *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount               *string                                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64                                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                                []*CreateTransitRouterEcrAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterAttachmentDescription *string                                       `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentName        *string                                       `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterId                    *string                                       `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s CreateTransitRouterEcrAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterEcrAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetCenId(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetClientToken(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetDryRun(v bool) *CreateTransitRouterEcrAttachmentRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetEcrId(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.EcrId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetEcrOwnerId(v int64) *CreateTransitRouterEcrAttachmentRequest {
+	s.EcrOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetOwnerAccount(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetOwnerId(v int64) *CreateTransitRouterEcrAttachmentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetRegionId(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetResourceOwnerAccount(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetResourceOwnerId(v int64) *CreateTransitRouterEcrAttachmentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetTag(v []*CreateTransitRouterEcrAttachmentRequestTag) *CreateTransitRouterEcrAttachmentRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetTransitRouterAttachmentDescription(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetTransitRouterAttachmentName(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequest) SetTransitRouterId(v string) *CreateTransitRouterEcrAttachmentRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+type CreateTransitRouterEcrAttachmentRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTransitRouterEcrAttachmentRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterEcrAttachmentRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequestTag) SetKey(v string) *CreateTransitRouterEcrAttachmentRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentRequestTag) SetValue(v string) *CreateTransitRouterEcrAttachmentRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateTransitRouterEcrAttachmentResponseBody struct {
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+}
+
+func (s CreateTransitRouterEcrAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterEcrAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterEcrAttachmentResponseBody) SetRequestId(v string) *CreateTransitRouterEcrAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentResponseBody) SetTransitRouterAttachmentId(v string) *CreateTransitRouterEcrAttachmentResponseBody {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+type CreateTransitRouterEcrAttachmentResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTransitRouterEcrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTransitRouterEcrAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterEcrAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterEcrAttachmentResponse) SetHeaders(v map[string]*string) *CreateTransitRouterEcrAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentResponse) SetStatusCode(v int32) *CreateTransitRouterEcrAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTransitRouterEcrAttachmentResponse) SetBody(v *CreateTransitRouterEcrAttachmentResponseBody) *CreateTransitRouterEcrAttachmentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTransitRouterMulticastDomainRequest struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
@@ -4014,11 +4216,11 @@ type CreateTransitRouterPeerAttachmentRequest struct {
 	Tag []*CreateTransitRouterPeerAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the inter-region connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the inter-region connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -7096,6 +7298,111 @@ func (s *DeleteTransitRouterCidrResponse) SetBody(v *DeleteTransitRouterCidrResp
 	return s
 }
 
+type DeleteTransitRouterEcrAttachmentRequest struct {
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force                     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+}
+
+func (s DeleteTransitRouterEcrAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterEcrAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetClientToken(v string) *DeleteTransitRouterEcrAttachmentRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetDryRun(v bool) *DeleteTransitRouterEcrAttachmentRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetForce(v bool) *DeleteTransitRouterEcrAttachmentRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetOwnerAccount(v string) *DeleteTransitRouterEcrAttachmentRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetOwnerId(v int64) *DeleteTransitRouterEcrAttachmentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetResourceOwnerAccount(v string) *DeleteTransitRouterEcrAttachmentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetResourceOwnerId(v int64) *DeleteTransitRouterEcrAttachmentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentRequest) SetTransitRouterAttachmentId(v string) *DeleteTransitRouterEcrAttachmentRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+type DeleteTransitRouterEcrAttachmentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTransitRouterEcrAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterEcrAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterEcrAttachmentResponseBody) SetRequestId(v string) *DeleteTransitRouterEcrAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTransitRouterEcrAttachmentResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTransitRouterEcrAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTransitRouterEcrAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterEcrAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterEcrAttachmentResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterEcrAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentResponse) SetStatusCode(v int32) *DeleteTransitRouterEcrAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTransitRouterEcrAttachmentResponse) SetBody(v *DeleteTransitRouterEcrAttachmentResponseBody) *DeleteTransitRouterEcrAttachmentResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTransitRouterMulticastDomainRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -7743,8 +8050,8 @@ type DeleteTransitRouterVbrAttachmentRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to forcibly delete the VBR connection. Valid values:
 	//
-	// *   **false** (default): checks for resources related to the VBR connection, such as associated forwarding and route learning policies. If such resources exist, the VBR connection is not deleted and an error message is returned.
-	// *   **true**: deletes the VBR connection and related resources.
+	// *   **false** (default): checks for dependency resources, such as associated forwarding correlations and route learning policies before the VBR connection is deleted. If such resources exist, the VBR connection is not deleted and an error message is returned.
+	// *   **true**: deletes all dependency resources along with the VBR connection.
 	Force                *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8223,14 +8530,14 @@ type DeregisterTransitRouterMulticastGroupSourcesRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The IP address of the multicast group to which the multicast source belongs.
 	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of the multicast sources that you want to delete.
+	// A list of multicast source IDs.
 	NetworkInterfaceIds  []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11035,34 +11342,33 @@ func (s *DescribeCenRegionDomainRouteEntriesResponse) SetBody(v *DescribeCenRegi
 }
 
 type DescribeCenRouteMapsRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The match method that is used to match routes based on the AS path.
+	// The region ID of the routing policy.
 	//
-	// *   **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path specified in the match condition.
-	// *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as the AS path specified in the match condition.
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The route table ID of the transit router with which the routing policy is associated.
+	// The number of the page to return. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The IDs of the destination network instances to which the routes belong.
-	//
-	// >  The destination network instance IDs are valid only when the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
+	// The number of entries to return on each page. Default value: **10**.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Indicates whether the destination network instance IDs are excluded.
-	//
-	// *   **false** (default): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
-	// *   **true**: A route is a match if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
+	// The routing policy ID.
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	// The priority of the routing policy that you want to associate with the current one.
+	// The route table ID of the transit router with which the routing policy is associated.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
-	// The match method that is used to match routes based on the community.
+	// The direction in which the routing policy is applied. Valid values:
 	//
-	// *   **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community specified in the match condition.
-	// *   **Complete**: exact match. A route is a match only if the community of the route is the same as the community specified in the match condition.
+	// *   **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
+	//
+	// For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
+	//
+	// *   **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
+	//
+	// For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the current region, or to gateways deployed in other regions.
 	TransmitDirection *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -11130,20 +11436,15 @@ func (s *DescribeCenRouteMapsRequest) SetTransmitDirection(v string) *DescribeCe
 }
 
 type DescribeCenRouteMapsResponseBody struct {
-	// The community set on which actions are performed.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
-	//
-	// >  The destination route table IDs are valid only when the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to route tables in the current region.
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the CEN instance.
+	// The information about the routing policy.
 	RouteMaps *DescribeCenRouteMapsResponseBodyRouteMaps `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty" type:"Struct"`
-	// Indicates whether the source network instance IDs are excluded.
-	//
-	// *   **false** (default): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
-	// *   **true**: A route is match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11198,103 +11499,129 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMaps) SetRouteMap(v []*DescribeCen
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
-	// The IDs of the source route tables to which the routes belong.
+	// The match method that is used to match routes based on the AS path.
+	//
+	// *   **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path specified in the match condition.
+	// *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
 	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
-	// The number of entries returned.
+	// The CEN instance ID.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries returned per page.
+	// The region ID of the routing policy.
 	CenRegionId *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	// The action performed on a route that meets the match conditions.
-	//
-	// *   **Permit**: the route is permitted.
-	// *   **Deny**: the route is denied.
-	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The direction in which the routing policy is applied. Valid values:
-	//
-	// *   **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
-	//
-	//     For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
-	//
-	// *   **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
-	//
-	//     For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the current region, or to gateways deployed in other regions.
-	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
-	// The information about the routing policy.
-	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
-	// The AS paths based on which the routes are compared.
-	Description                   *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
-	// The number of the returned page.
-	DestinationCidrBlocks  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks  `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
-	DestinationInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Struct"`
-	// The description of the routing policy.
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	// The types of source network instance to which the routes belong.
-	//
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **VBR**: virtual border router (VBR)
-	// *   **CCN**: Cloud Connect Network (CCN) instance
-	// *   **VPN**: IPsec-VPN connection
-	DestinationRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
-	// The ID of the region where the routing policy is applied.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
-	// The IDs of the source network instances to which the routes belong.
-	MatchAddressType  *string                                                             `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
-	MatchAsns         *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns         `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
-	MatchCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
-	// The match method that is used to match routes based on the prefix. Valid values:
+	// The match method that is used to evaluate routes based on the prefix. Valid values:
 	//
 	// *   **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is enabled, the route whose prefix is 10.10.1.0/24 is a match.
+	// For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
 	//
 	// *   **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
 	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
-	NextPriority        *int32                                                                `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
-	OperateCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Struct"`
-	// The prefixes of the routes.
-	Preference    *int32                                                          `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	PrependAsPath *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Struct"`
-	// The ID of the region where the routing policy is applied.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of IP address to be matched against the match condition. Valid values:
+	// For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
+	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
+	// The match method that is used to match routes against the community.
 	//
-	// *   **IPv4**: IPv4 addresses
-	// *   **IPv6**: IPv6 addresses
-	// *   If no value is returned, both IPv4 and IPv6 addresses are matched against the match condition.
-	RouteMapId *string                                                      `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	RouteTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Struct"`
-	// The community set based on which the routes are compared.
-	SourceChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Struct"`
-	// The direction in which the routing policy is applied.
-	SourceInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Struct"`
-	// The ID of the routing policy.
-	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	// The status of the routing policy. Valid values:
-	//
-	// *   **Creating**: The routing policy is being created.
-	// *   **Active**: The routing policy is available.
-	// *   **Deleting**: The routing policy is being deleted.
-	SourceRegionIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
-	// Queries the routing policies of a Cloud Enterprise Network (CEN) instance.
-	SourceRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
-	// The new priority of the route.
-	//
-	// A smaller value indicates a higher priority.
-	//
-	// This parameter indicates the action to be performed when a route meets the match condition.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// *   **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community specified in the match condition.
+	// *   **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
+	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
 	// The action that is performed on the community of the route.
 	//
 	// *   **Additive**: adds the community to the route.
 	// *   **Replace**: replaces the original community of the route.
 	//
+	// This parameter specifies the action to be performed when a route meets the match condition.
+	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
+	// The description of the routing policy.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The types of destination network instances to which the routes belong.
+	//
+	// *   **VPC**
+	// *   **VBR**
+	// *   **CCN**
+	// *   **VPN**
+	//
+	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the type of the destination route tables is the same as that of the network instance in the current region.
+	DestinationChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
+	// The prefixes of the routes.
+	DestinationCidrBlocks *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
+	// The IDs of the destination network instances to which the routes point.
+	//
+	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the ID the destination instance is the same as that of the network instance in the current region.
+	DestinationInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Struct"`
+	// Indicates whether the destination network instance IDs are excluded.
+	//
+	// *   **false** (default): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
+	// *   **true**: A route is a match if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
+	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
+	//
+	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
+	DestinationRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
+	// The action performed on a route that meets the match conditions.
+	//
+	// *   **Permit**: the route is permitted.
+	// *   **Deny**: the route is denied.
+	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	// The type of IP address to be matched against the match condition. Valid values:
+	//
+	// *   **IPv4**: IPv4 addresses
+	// *   **IPv6**: IPv6 addresses
+	// *   If no value is returned, both IPv4 and IPv6 addresses are matched against the match condition.
+	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
+	// The AS paths against which routes are matched.
+	MatchAsns *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
+	// The community set against which routes are matched.
+	MatchCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
+	// The priority of the routing policy that you want to associate with the current one.
+	NextPriority *int32 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
+	// The community set on which actions are performed.
+	OperateCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Struct"`
+	// The new priority of the route.
+	//
+	// A smaller value indicates a higher priority.
+	//
 	// This parameter indicates the action to be performed when a route meets the match condition.
+	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	// The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
+	//
+	// This parameter indicates the action to be performed when a route meets the match condition.
+	PrependAsPath *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Struct"`
+	// The priority of the routing policy. A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The routing policy ID.
+	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	// The type of route that is compared. Valid values:
+	//
+	// *   **System**: system routes that are automatically generated by the system.
+	// *   **Custom**: custom routes that are manually added.
+	// *   **BGP**: routes that are advertised over BGP.
+	RouteTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Struct"`
+	// The types of source network instances to which the routes belong.
+	//
+	// *   **VPC**
+	// *   **VBR**
+	// *   **CCN**
+	// *   **VPN**
+	SourceChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Struct"`
+	// The IDs of the source network instances to which the routes belong.
+	SourceInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Struct"`
+	// Indicates whether the source network instance IDs are excluded.
+	//
+	// *   **false** (default): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
+	// *   **true**: A route is match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
+	// The IDs of the source regions to which the routes belong.
+	SourceRegionIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
+	// The IDs of the source route tables to which the routes belong.
+	SourceRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
+	// The status of the routing policy. Valid values:
+	//
+	// *   **Creating**
+	// *   **Active**
+	// *   **Deleting**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The route table ID of the transit router with which the routing policy is associated.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
-	// The ID of the routing policy.
+	// The direction in which the routing policy is applied.
 	TransmitDirection *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -13241,11 +13568,11 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetGrantRule(v []*Descri
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The network instance ID.
+	// The ID of the network instance.
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the network instance belongs.
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
@@ -13253,12 +13580,15 @@ type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// *   **VPC**
-	// *   **VBR**
-	// *   **CCN**
-	// *   **VPN**
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
+	// *   **VPN**: IPsec-VPN connection
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the permissions were granted to the CEN instance.
+	//
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// *   **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
@@ -13474,10 +13804,11 @@ func (s *DescribeGrantRulesToResourceResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeGrantRulesToResourceResponseBodyGrantRules struct {
-	// The CEN instance ID.
+	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The timestamp when the permissions were granted. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values: Valid values:
 	//
@@ -13716,8 +14047,8 @@ type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRout
 	// *   **VPC**: VPC
 	// *   **local**: system route. No next hop is specified.
 	// *   **TR**: transit router
-	// *   \*\*BlackHole\*\*: blackhole route. No next hop is specified.
-	// *   \*\*EcRouterInterface\*\*: router interface for Express Connect
+	// *   **BlackHole**: blackhole route. No next hop is specified.
+	// *   **EcRouterInterface**: router interface for Express Connect
 	// *   **HealthCheck**: health check
 	// *   **AS**: access gateway for CCN
 	// *   **classicLink**: classic network-type instance
@@ -15374,7 +15705,10 @@ func (s *DissociateTransitRouterAttachmentFromRouteTableResponse) SetBody(v *Dis
 
 type EnableCenVbrHealthCheckRequest struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
-	CenId       *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The description of the health check.
+	//
+	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time interval at which probe packets are sent during a health check. Unit: seconds. Default value: **2**. Valid values: **2 to 3**.
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
@@ -15797,7 +16131,7 @@ type ListCenChildInstanceRouteEntriesToAttachmentRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The ID of the route table configured on the network instance.
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
+	// The number of entries to return on each page. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that determines the start point of the query. Valid values:
 	//
@@ -17230,16 +17564,29 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTrafficMarkingPoliciesRequest struct {
-	MaxResults                      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount                    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount            *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                 *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the query. Valid values:
+	//
+	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The description of the traffic marking policy.
+	//
+	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
 	TrafficMarkingPolicyDescription *string `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
-	TrafficMarkingPolicyId          *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	TrafficMarkingPolicyName        *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	TransitRouterId                 *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The ID of the traffic marking policy.
+	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	// The name of the traffic marking policy.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesRequest) String() string {
@@ -17301,10 +17648,18 @@ func (s *ListTrafficMarkingPoliciesRequest) SetTransitRouterId(v string) *ListTr
 }
 
 type ListTrafficMarkingPoliciesResponseBody struct {
-	MaxResults             *int32                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken              *string                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount             *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the query.
+	//
+	// *   If **NextToken** was not returned in the previous query, it indicates that no additional results exist.
+	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of traffic marking policies.
 	TrafficMarkingPolicies []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies `json:"TrafficMarkingPolicies,omitempty" xml:"TrafficMarkingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -17342,14 +17697,30 @@ func (s *ListTrafficMarkingPoliciesResponseBody) SetTrafficMarkingPolicies(v []*
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
-	MarkingDscp                     *int32                                                                           `json:"MarkingDscp,omitempty" xml:"MarkingDscp,omitempty"`
-	Priority                        *int32                                                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	TrafficMarkingPolicyDescription *string                                                                          `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
-	TrafficMarkingPolicyId          *string                                                                          `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	TrafficMarkingPolicyName        *string                                                                          `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	TrafficMarkingPolicyStatus      *string                                                                          `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
-	TrafficMatchRules               []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
-	TransitRouterId                 *string                                                                          `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The differentiated services code point (DSCP) value of the traffic marking policy.
+	MarkingDscp *int32 `json:"MarkingDscp,omitempty" xml:"MarkingDscp,omitempty"`
+	// The priority of the traffic marking policy.
+	//
+	// A smaller value indicates a higher priority.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The description of the traffic marking policy.
+	TrafficMarkingPolicyDescription *string `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
+	// The ID of the traffic marking policy.
+	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	// The name of the traffic marking policy.
+	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
+	// The status of the traffic marking policy. Valid values:
+	//
+	// *   **Creating**: The policy is being created.
+	// *   **Active**: The policy is available.
+	// *   **Modifying**: The policy is being modified
+	// *   **Deleting**: The policy is being deleted.
+	// *   **Deleted**: The policy is deleted.
+	TrafficMarkingPolicyStatus *string `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
+	// The list of traffic classification rules.
+	TrafficMatchRules []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
+	// The ID of the transit router.
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) String() string {
@@ -17401,16 +17772,33 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransi
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {
-	DstCidr                     *string  `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	DstPortRange                []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	MatchDscp                   *int32   `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	Protocol                    *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	SrcCidr                     *string  `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	SrcPortRange                []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
-	TrafficMatchRuleDescription *string  `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
-	TrafficMatchRuleId          *string  `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
-	TrafficMatchRuleName        *string  `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
-	TrafficMatchRuleStatus      *string  `json:"TrafficMatchRuleStatus,omitempty" xml:"TrafficMatchRuleStatus,omitempty"`
+	// The destination CIDR block used to match data packets.
+	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
+	// The destination port range used to match data packets.
+	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
+	// The DSCP value used to match data packets.
+	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
+	// The protocol used to match data packets.
+	//
+	// > Traffic marking policies support multiple protocols. For more information, see the documentation of CEN.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The source CIDR block used to match data packets.
+	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
+	// The source port range used to match data packets.
+	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
+	// The description of the traffic classification rule.
+	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	// The ID of the traffic classification rule.
+	TrafficMatchRuleId *string `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
+	// The name of the traffic classification rule.
+	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
+	// The status of the traffic classification rule. Valid values:
+	//
+	// *   **Creating**: The rule is being created.
+	// *   **Active**: The rule is available.
+	// *   **Deleting**: The rule is being deleted.
+	// *   **Deleted**: The rule is deleted.
+	TrafficMatchRuleStatus *string `json:"TrafficMatchRuleStatus,omitempty" xml:"TrafficMatchRuleStatus,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) String() string {
@@ -18105,6 +18493,294 @@ func (s *ListTransitRouterCidrAllocationResponse) SetBody(v *ListTransitRouterCi
 	return s
 }
 
+type ListTransitRouterEcrAttachmentsRequest struct {
+	CenId                     *string                                      `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults                *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount              *string                                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                  *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                       []*ListTransitRouterEcrAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterAttachmentId *string                                      `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string                                      `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s ListTransitRouterEcrAttachmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetCenId(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetMaxResults(v int32) *ListTransitRouterEcrAttachmentsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetNextToken(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetOwnerAccount(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetOwnerId(v int64) *ListTransitRouterEcrAttachmentsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetRegionId(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetResourceOwnerAccount(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetResourceOwnerId(v int64) *ListTransitRouterEcrAttachmentsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetTag(v []*ListTransitRouterEcrAttachmentsRequestTag) *ListTransitRouterEcrAttachmentsRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetTransitRouterAttachmentId(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequest) SetTransitRouterId(v string) *ListTransitRouterEcrAttachmentsRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+type ListTransitRouterEcrAttachmentsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTransitRouterEcrAttachmentsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequestTag) SetKey(v string) *ListTransitRouterEcrAttachmentsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsRequestTag) SetValue(v string) *ListTransitRouterEcrAttachmentsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTransitRouterEcrAttachmentsResponseBody struct {
+	MaxResults               *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount               *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TransitRouterAttachments []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBody) SetMaxResults(v int32) *ListTransitRouterEcrAttachmentsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBody) SetNextToken(v string) *ListTransitRouterEcrAttachmentsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBody) SetRequestId(v string) *ListTransitRouterEcrAttachmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBody) SetTotalCount(v int32) *ListTransitRouterEcrAttachmentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBody) SetTransitRouterAttachments(v []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) *ListTransitRouterEcrAttachmentsResponseBody {
+	s.TransitRouterAttachments = v
+	return s
+}
+
+type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct {
+	AutoPublishRouteEnabled            *bool                                                                      `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	CenId                              *string                                                                    `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreationTime                       *string                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EcrId                              *string                                                                    `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrOwnerId                         *int64                                                                     `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
+	OrderType                          *string                                                                    `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ResourceType                       *string                                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                             *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                               []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TransitRouterAttachmentDescription *string                                                                    `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentId          *string                                                                    `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string                                                                    `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterId                    *string                                                                    `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterRegionId              *string                                                                    `json:"TransitRouterRegionId,omitempty" xml:"TransitRouterRegionId,omitempty"`
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetAutoPublishRouteEnabled(v bool) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.AutoPublishRouteEnabled = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetCenId(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetCreationTime(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetEcrId(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.EcrId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetEcrOwnerId(v int64) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.EcrOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetOrderType(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetResourceType(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetStatus(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTags(v []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.Tags = v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentDescription(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentId(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterAttachmentName(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterId(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments) SetTransitRouterRegionId(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments {
+	s.TransitRouterRegionId = &v
+	return s
+}
+
+type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags) SetKey(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags) SetValue(v string) *ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags {
+	s.Value = &v
+	return s
+}
+
+type ListTransitRouterEcrAttachmentsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransitRouterEcrAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTransitRouterEcrAttachmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterEcrAttachmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponse) SetHeaders(v map[string]*string) *ListTransitRouterEcrAttachmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponse) SetStatusCode(v int32) *ListTransitRouterEcrAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTransitRouterEcrAttachmentsResponse) SetBody(v *ListTransitRouterEcrAttachmentsResponseBody) *ListTransitRouterEcrAttachmentsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -18131,9 +18807,7 @@ type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The ID of the multicast domain.
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The vSwitch IDs.
-	//
-	// You can specify at most 20 IDs.
+	// The IDs of vSwitches.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
@@ -19839,11 +20513,11 @@ type ListTransitRouterRouteEntriesRequest struct {
 	//
 	// >  You can use this parameter to query only static routes in the specified route table. This parameter is incompatible with query conditions other than TransitRouterRouteEntryNames.
 	TransitRouterRouteEntryIds []*string `json:"TransitRouterRouteEntryIds,omitempty" xml:"TransitRouterRouteEntryIds,omitempty" type:"Repeated"`
-	// The route name.
+	// The name of the route.
 	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
-	// >  You can use this parameter to query only static routes in the specified route table. This parameter is incompatible with query conditions other than TransitRouterRouteEntryIds.
+	// >  You can use this parameter to query only static routes in the specified route table. This parameter conflicts with other query conditions except for TransitRouterRouteEntryIds.
 	TransitRouterRouteEntryNames []*string `json:"TransitRouterRouteEntryNames,omitempty" xml:"TransitRouterRouteEntryNames,omitempty" type:"Repeated"`
 	// The ID of the network instance connection that you want to specify as the next hop.
 	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
@@ -21313,7 +21987,7 @@ type ListTransitRouterVbrAttachmentsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The queried VBR connections.
+	// A list of VBR connections.
 	TransitRouterAttachments []*ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -21351,33 +22025,37 @@ func (s *ListTransitRouterVbrAttachmentsResponseBody) SetTransitRouterAttachment
 }
 
 type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router automatically advertises routes to the VBR. Valid values:
+	// Indicates whether the Enterprise Edition transit router is allowed to automatically advertise routes to the VBR. Valid values:
 	//
-	// *   **false** (default): no
-	// *   **true**: yes
+	// *   **false** (default)
+	// *   **true**
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the VBR connection was established.
+	// The time when the VBR connection was created.
 	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The entity that pays the fees of the network instance. Valid values:
+	//
+	// *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
+	// *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The type of resource to which the transit router is connected. Valid values:
 	//
-	// *   **VPC**: VPC
-	// *   **CCN**: Cloud Connect Network (CCN) instance
-	// *   **VBR**: VBR
-	// *   **TR**: transit router
+	// *   **VPC**
+	// *   **CCN**
+	// *   **VBR**
+	// *   **TR**
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the VBR connection. Valid values:
 	//
-	// *   **Attached**: The VBR connection is created on the transit router.
-	// *   **Attaching**: The VBR connection is being created on the transit router.
-	// *   **Detaching**: The VBR connection is being deleted from the transit router.
-	// *   **Detached**: The VBR connection is deleted from the transit router.
+	// *   **Attached**
+	// *   **Attaching**
+	// *   **Detaching**
+	// *   **Detached**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VBR connection.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
@@ -21385,11 +22063,11 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The name of the VBR connection.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// The description of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The VBR ID.
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	// The ID of the account to which the VBR belongs.
+	// The ID of the Alibaba Cloud account to which the VBR belongs.
 	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
 	// The region ID of the VBR.
 	VbrRegionId *string `json:"VbrRegionId,omitempty" xml:"VbrRegionId,omitempty"`
@@ -21760,7 +22438,7 @@ type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct 
 	// *   **Detaching**
 	// *   **Detached**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key.
+	// The information about the tags.
 	Tags []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VPC connection.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
@@ -23945,7 +24623,7 @@ type MoveResourceGroupRequest struct {
 	// Specifies whether to perform a dry run. Valid values:
 	//
 	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false:**: performs a dry run and sends the request.
+	// *   **false:** performs a dry run and sends the request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the resource group to which you want to move the CEN instance or bandwidth plan.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
@@ -24377,17 +25055,36 @@ func (s *RefreshTransitRouteTableAggregationResponse) SetBody(v *RefreshTransitR
 }
 
 type RegisterTransitRouterMulticastGroupMembersRequest struct {
-	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	NetworkInterfaceIds               []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
-	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The IP address of the multicast group to which the multicast members belong. Valid values: **224.0.0.1** to **239.255.255.254**.
+	//
+	// If the multicast group does not exist in the specified multicast domain, the system automatically creates the multicast group in the multicast domain.
+	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	// The IDs of ENIs.
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The IDs of the multicast domains that are in different regions.
 	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
 	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	VpcId                             *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the multicast domain to which the multicast members belong.
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	// The ID of the VPC to which the ENI belongs.
+	//
+	// *   If the ENI belongs to the current Alibaba Cloud account, ignore this parameter.
+	// *   If the ENI belongs to a different Alibaba Cloud account, you must set this parameter.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupMembersRequest) String() string {
@@ -24454,6 +25151,7 @@ func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetVpcId(v string) *
 }
 
 type RegisterTransitRouterMulticastGroupMembersResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24515,9 +25213,7 @@ type RegisterTransitRouterMulticastGroupSourcesRequest struct {
 	//
 	// If the multicast group does not exist in the multicast domain, the system automatically creates the multicast group in the multicast domain.
 	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of ENIs.
-	//
-	// >  This parameter is required.
+	// The IDs of the ENIs.
 	NetworkInterfaceIds  []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24773,8 +25469,6 @@ type RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the traffic classification rule.
-	//
-	// You can specify at most 20 traffic classification rules.
 	TrafficMarkRuleIds []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
 	// The ID of the traffic marking policy.
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
@@ -24876,13 +25570,24 @@ func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) SetBody(v *Remov
 }
 
 type ReplaceTransitRouterRouteTableAssociationRequest struct {
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether only to precheck the API request. Valid values:
+	//
+	// *   **true**: prechecks the request but does not associate the network instance connection with another route table. The system checks whether the required parameters are set, whether the formats of the values are valid, and the service limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. After the request passes the authentication, the network instance connection is associated with the specified route table. This is the default value.
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	// The ID of the route table with which you want to associate the network instance connection.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
@@ -24935,6 +25640,7 @@ func (s *ReplaceTransitRouterRouteTableAssociationRequest) SetTransitRouterRoute
 }
 
 type ReplaceTransitRouterRouteTableAssociationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26279,6 +26985,8 @@ type UpdateTrafficMarkingPolicyAttributeRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The traffic classification rules to be deleted from the traffic marking policy.
+	//
+	// >  Specify detailed information about the traffic classification rule, such as the source CIDR block, destination CIDR block, source port, destination port, and DSCP value. If you do not specify sufficient information, the system may fail to match the traffic classification rule that you want to delete.
 	DeleteTrafficMatchRules []*UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules `json:"DeleteTrafficMatchRules,omitempty" xml:"DeleteTrafficMatchRules,omitempty" type:"Repeated"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
@@ -26367,65 +27075,80 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequest) SetTrafficMarkingPolicyName
 type UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules struct {
 	// The destination CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose destination IP addresses fall within the specified destination CIDR block. If you do not set this parameter, packets are considered a match regardless of the destination IP address.
+	// Packets whose destination IP addresses fall into the specified destination CIDR block are considered a match. If you do not specify a destination CIDR block, packets are considered a match regardless of the destination IP address.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a destination CIDR block for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a destination CIDR block for each traffic classification rule.
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
 	// The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose destination ports fall within the destination port range. If you do not set this parameter, packets are considered a match regardless of the destination port.
+	// Packets whose destination ports fall into the specified destination port range are considered a match. If you do not specify a destination port range, packets are considered a match regardless of the destination port.
 	//
-	// You can specify at most two ports. Take note of the following rules:
+	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose destination port is port 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose destination ports fall between 1 and 200.
+	// *   If you enter only one port number, such as 1, packets whose destination port is 1 match the traffic classification rule.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 are considered a match.
 	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the destination port.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a destination port range for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a destination port range for each traffic classification rule.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The differentiated services code point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
+	// The Differentiated Service Code Point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
 	//
-	// The traffic classification rule matches the packets that contain the specified DSCP value. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
+	// Requests that carry the specified DSCP value are considered a match. If you do not specify a DSCP value, packets are considered a match regardless of the DSCP value.
 	//
 	// >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a DSCP value for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a DSCP value for each traffic classification rule.
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	// The protocol that is used to match packets.
 	//
-	// Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+	// Traffic classification rules support the following protocols: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [CEN console](https://cen.console.aliyun.com/cen/list).
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a protocol for each traffic classification rule.
+	// **Some protocols use a fixed port. Click to view the protocols and ports.**
+	//
+	// *   If the protocol is **ICMP**, set the destination port to **-1**.
+	// *   If the protocol is **GRE**, set the destination port to **-1**.
+	// *   If the protocol is **SSH**, set the destination port to **22**.
+	// *   If the protocol is **Telnet**, set the destination port to **23**.
+	// *   If the protocol is **HTTP**, set the destination port to **80**.
+	// *   If the protocol is **HTTPS**, set the destination port to **443**.
+	// *   If the protocol is **MS SQL**, set the destination port to **1443**.
+	// *   If the protocol is **Oracle**, set the destination port to **1521**.
+	// *   If the protocol is **Mysql**, set the destination port to **3306**.
+	// *   If the protocol is **RDP**, set the destination port to **3389**.
+	// *   If the protocol is **Postgre SQL**, set the destination port to **5432**.
+	// *   If the protocol is **Redis**, set the destination port to **6379**.
+	//
+	// You can create up to 50 traffic classification rules in each call. You can specify a protocol for each traffic classification rule.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block that is used to match packets.
 	//
-	// The traffic classification rule matches the packets whose source IP addresses fall within the specified source CIDR block. If you do not set this parameter, packets are considered a match regardless of the source IP address.
+	// Packets whose source IP addresses fall into the specified source CIDR block are considered a match. If you do not specify a source CIDR block, packets are considered a match regardless of the source IP address.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a source CIDR block for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a source CIDR block for each traffic classification rule.
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
 	// The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
 	//
-	// The traffic classification rule matches the packets whose source ports fall within the source port range. If you do not set this parameter, packets are considered a match regardless of the source port.
+	// Packets whose source ports fall into the specified source port range are considered a match. If you do not specify a source port range, packets are considered a match regardless of the source port.
 	//
-	// You can specify at most two ports. Take note of the following rules:
+	// You can enter up to two port numbers. Take note of the following rules:
 	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose source port is 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose source ports fall between 1 and 200.
+	// *   If you enter only one port number, such as 1, packets whose source port is 1 are considered a match.
+	// *   If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 are considered a match.
 	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a source port range for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a source port range for each traffic classification rule.
 	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
 	// The description of the traffic classification rule.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a description for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a description for each traffic classification rule.
 	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
 	//
-	// You can create up to 50 traffic classification rules at a time. You can specify a name for each traffic classification rule.
+	// You can create up to 50 traffic classification rules in each call. You can specify a name for each traffic classification rule.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
@@ -26478,23 +27201,27 @@ func (s *UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules) SetTraf
 }
 
 type UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules struct {
-	// The destination CIDR block that is used to match data packets.
+	// The destination CIDR block that is used to match packets.
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
+	// The destination port range that is used to match packets.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
 	// The DSCP value that is used to match packets.
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
 	// The protocol that is used to match packets.
 	//
-	// Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+	// You can call the [ListTrafficMarkingPolicies](~~468322~~) operation to query the details about a traffic classification rule.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The source CIDR block that is used to match packets.
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
+	// The source port range that is used to match packets.
 	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
 	// The description of the traffic classification rule.
+	//
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
 	// The name of the traffic classification rule.
+	//
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
@@ -26730,6 +27457,117 @@ func (s *UpdateTransitRouterResponse) SetBody(v *UpdateTransitRouterResponseBody
 	return s
 }
 
+type UpdateTransitRouterEcrAttachmentAttributeRequest struct {
+	ClientToken                        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount               *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentId          *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetClientToken(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetDryRun(v bool) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetOwnerAccount(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetOwnerId(v int64) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetResourceOwnerAccount(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetResourceOwnerId(v int64) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetTransitRouterAttachmentDescription(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.TransitRouterAttachmentDescription = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetTransitRouterAttachmentId(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetTransitRouterAttachmentName(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.TransitRouterAttachmentName = &v
+	return s
+}
+
+type UpdateTransitRouterEcrAttachmentAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeResponseBody) SetRequestId(v string) *UpdateTransitRouterEcrAttachmentAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTransitRouterEcrAttachmentAttributeResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTransitRouterEcrAttachmentAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTransitRouterEcrAttachmentAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeResponse) SetHeaders(v map[string]*string) *UpdateTransitRouterEcrAttachmentAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeResponse) SetStatusCode(v int32) *UpdateTransitRouterEcrAttachmentAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeResponse) SetBody(v *UpdateTransitRouterEcrAttachmentAttributeResponseBody) *UpdateTransitRouterEcrAttachmentAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	//
@@ -26773,13 +27611,13 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the inter-region connection.
 	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The new name of the inter-region connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 }
 
@@ -27583,8 +28421,6 @@ type UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings struct {
 	// You can remove at most 10 vSwitches from a VPC in each call.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone where the vSwitch that you want to remove from the VPC connection is deployed.
-	//
-	// You can remove at most 10 vSwitches from a VPC in each call.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -27945,7 +28781,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 /**
  * *   After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
- * *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+ * *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
  *     *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
  *     *   If a flow log is in the **Active** state, the flow log is enabled.
  *
@@ -28016,7 +28852,7 @@ func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, ru
 
 /**
  * *   After you create a flow log, it is enabled by default. You can call this operation to enable a disabled flow log.
- * *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a**request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+ * *   `ActiveFlowLog` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
  *     *   If a flow log is in the **Modifying** state, the flow log is being enabled. In this case, you can query the flow log but cannot perform other operations.
  *     *   If a flow log is in the **Active** state, the flow log is enabled.
  *
@@ -28293,8 +29129,8 @@ func (client *Client) AssociateCenBandwidthPackage(request *AssociateCenBandwidt
 
 /**
  * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
- * *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+ * *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+ * *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
  * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
  *     *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
  *     *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -28366,8 +29202,8 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTableWithOptions(
 
 /**
  * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with the route table of an Enterprise Edition transit router. The Enterprise Edition transit router forwards traffic for the network instance based on the routes in the route table. Before you begin, we recommend that you take note of the following rules:
- * *   Only route tables of an Enterprise Edition transit router support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   Each network instance connection can have an associated forwarding correlation with one route tables of Enterprise Edition transit router.
+ * *   Only route tables of Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
+ * *   Each network instance connection can have an associated forwarding correlation with only one route table of only one Enterprise Edition transit router.
  * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
  *     *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
  *     *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
@@ -28618,9 +29454,9 @@ func (client *Client) CheckTransitRouterService(request *CheckTransitRouterServi
 }
 
 /**
- * **CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
- * * If a CEN instance is in the **Active** state, the CEN instance is created.
+ * **CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+ * *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+ * *   If a CEN instance is in the **Active** state, the CEN instance is created.
  *
  * @param request CreateCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28692,9 +29528,9 @@ func (client *Client) CreateCenWithOptions(request *CreateCenRequest, runtime *u
 }
 
 /**
- * **CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
- * * If a CEN instance is in the **Active** state, the CEN instance is created.
+ * **CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
+ * *   If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+ * *   If a CEN instance is in the **Active** state, the CEN instance is created.
  *
  * @param request CreateCenRequest
  * @return CreateCenResponse
@@ -30019,6 +30855,102 @@ func (client *Client) CreateTransitRouterCidr(request *CreateTransitRouterCidrRe
 	return _result, _err
 }
 
+func (client *Client) CreateTransitRouterEcrAttachmentWithOptions(request *CreateTransitRouterEcrAttachmentRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterEcrAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrId)) {
+		query["EcrId"] = request.EcrId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcrOwnerId)) {
+		query["EcrOwnerId"] = request.EcrOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTransitRouterEcrAttachment"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTransitRouterEcrAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterEcrAttachment(request *CreateTransitRouterEcrAttachmentRequest) (_result *CreateTransitRouterEcrAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTransitRouterEcrAttachmentResponse{}
+	_body, _err := client.CreateTransitRouterEcrAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you call this operation, read the following rules:
  * *   Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](~~261169~~).
@@ -30276,7 +31208,7 @@ func (client *Client) CreateTransitRouterPeerAttachment(request *CreateTransitRo
  * *   A prefix list can be associated only with one route table of an Enterprise Edition.
  * *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
  * *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
- * # Prerequisites
+ * ### Prerequisites
  * *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
  * *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
  *
@@ -30370,7 +31302,7 @@ func (client *Client) CreateTransitRouterPrefixListAssociationWithOptions(reques
  * *   A prefix list can be associated only with one route table of an Enterprise Edition.
  * *   The CIDR blocks in the prefix list cannot overlap with those in the route table of the Enterprise Edition transit router. Otherwise, the prefix list fails to be associated with the route table.
  * *   If the route table of an Enterprise Edition transit router needs to be associated with multiple prefix lists, make sure that the CIDR blocks in the prefix lists do not overlap. Otherwise, the route table fails to be associated with the prefix lists.
- * # Prerequisites
+ * ### Prerequisites
  * *   A prefix list is created. For more information, see [CreateVpcPrefixList](~~437367~~).
  * *   The prefix list is shared with the Alibaba Cloud account that owns the Enterprise Edition transit router if the prefix list and the Enterprise Edition transit router belong to different Alibaba Cloud accounts. For more information about how to share a prefix list with another Alibaba Cloud account, see [Resource sharing overview](~~160622~~) and [API reference for resource sharing](~~193445~~).
  *
@@ -31877,10 +32809,10 @@ func (client *Client) DeleteRouteServiceInCen(request *DeleteRouteServiceInCenRe
 }
 
 /**
- * *   The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
- *     *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+ * *   **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+ *     *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
  *     *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
- * *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+ * *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
  *
  * @param request DeleteTrafficMarkingPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31944,10 +32876,10 @@ func (client *Client) DeleteTrafficMarkingPolicyWithOptions(request *DeleteTraff
 }
 
 /**
- * *   The **DeleteTrafficMarkingPolicy** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTrafficMarkingPolicies** to query the status of a traffic marking policy.
- *     *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy, but cannot perform other operations.
+ * *   **DeleteTrafficMarkingPolicy** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic marking policy.
+ *     *   If a traffic marking policy is in the **Deleting** state, the traffic marking policy is being deleted. You can query the traffic marking policy but cannot perform other operations.
  *     *   If a traffic marking policy cannot be found, the traffic marking policy is deleted.
- * *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTraficMatchRuleFromTrafficMarkingPolicy](~~419012~~).
+ * *   Before you delete a traffic marking policy, you must delete all traffic classification rules from the policy. For more information, see [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](~~468330~~).
  *
  * @param request DeleteTrafficMarkingPolicyRequest
  * @return DeleteTrafficMarkingPolicyResponse
@@ -32244,11 +33176,84 @@ func (client *Client) DeleteTransitRouterCidr(request *DeleteTransitRouterCidrRe
 	return _result, _err
 }
 
+func (client *Client) DeleteTransitRouterEcrAttachmentWithOptions(request *DeleteTransitRouterEcrAttachmentRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterEcrAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTransitRouterEcrAttachment"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTransitRouterEcrAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouterEcrAttachment(request *DeleteTransitRouterEcrAttachmentRequest) (_result *DeleteTransitRouterEcrAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTransitRouterEcrAttachmentResponse{}
+	_body, _err := client.DeleteTransitRouterEcrAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you delete a multicast domain, make sure that the following requirements are met:
  * *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
  * *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
  * *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+ * *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
  *
  * @param request DeleteTransitRouterMulticastDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32316,6 +33321,7 @@ func (client *Client) DeleteTransitRouterMulticastDomainWithOptions(request *Del
  * *   The multicast domain is disassociated from all vSwitches. For more information, see [DisassociateTransitRouterMulticastDomain](~~429774~~).
  * *   All multicast sources and members are removed from the multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupSources](~~429776~~) and [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
  * *   The multicast domain is not added to other multicast domains as a multicast member. If the multicast domain is added to another multicast domain as a multicast member, you must remove the multicast domain from the other multicast domain. For more information, see [DeregisterTransitRouterMulticastGroupMembers](~~429779~~).
+ * *   Make sure all the request parameters are valid. If a request parameter is invalid, a request ID is returned after you call the operation, but the multicast domain is not deleted.
  *
  * @param request DeleteTransitRouterMulticastDomainRequest
  * @return DeleteTransitRouterMulticastDomainResponse
@@ -32435,7 +33441,6 @@ func (client *Client) DeleteTransitRouterPeerAttachment(request *DeleteTransitRo
 }
 
 /**
- * # Usage notes
  * After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
  *
  * @param request DeleteTransitRouterPrefixListAssociationRequest
@@ -32520,7 +33525,6 @@ func (client *Client) DeleteTransitRouterPrefixListAssociationWithOptions(reques
 }
 
 /**
- * # Usage notes
  * After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
  *
  * @param request DeleteTransitRouterPrefixListAssociationRequest
@@ -33035,7 +34039,7 @@ func (client *Client) DeleteTransitRouterVpnAttachment(request *DeleteTransitRou
 }
 
 /**
- * `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+ * `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
  * *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
  * *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
  *
@@ -33113,7 +34117,7 @@ func (client *Client) DeregisterTransitRouterMulticastGroupMembersWithOptions(re
 }
 
 /**
- * `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+ * `DeregisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
  * *   If a multicast member is in the **Deregistering** state, the multicast member is being removed. In this case, you can query the multicast member but cannot perform other operations.
  * *   If a multicast member cannot be found, the multicast member is removed from the multicast group.``
  *
@@ -33132,9 +34136,10 @@ func (client *Client) DeregisterTransitRouterMulticastGroupMembers(request *Dere
 }
 
 /**
- * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+ * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
  * *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
  * *   If a multicast source cannot be found, the multicast source is deleted.
+ * Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
  *
  * @param request DeregisterTransitRouterMulticastGroupSourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33206,9 +34211,10 @@ func (client *Client) DeregisterTransitRouterMulticastGroupSourcesWithOptions(re
 }
 
 /**
- * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+ * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request a sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
  * *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
  * *   If a multicast source cannot be found, the multicast source is deleted.
+ * Before you call DeregisterTransitRouterMulticastGroupSources, make sure that all the request parameters are valid. If a request parameter is invalid, a request ID is returned but the multicast source is not deleted.
  *
  * @param request DeregisterTransitRouterMulticastGroupSourcesRequest
  * @return DeregisterTransitRouterMulticastGroupSourcesResponse
@@ -34412,6 +35418,13 @@ func (client *Client) DescribeGeographicRegionMembership(request *DescribeGeogra
 	return _result, _err
 }
 
+/**
+ * Before you call the **DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+ *
+ * @param request DescribeGrantRulesToCenRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeGrantRulesToCenResponse
+ */
 func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantRulesToCenRequest, runtime *util.RuntimeOptions) (_result *DescribeGrantRulesToCenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34485,6 +35498,12 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 	return _result, _err
 }
 
+/**
+ * Before you call the **DescribeGrantRulesToCen** operation, make sure that all request parameters are valid. If a request parameter is invalid, a **request ID** is returned, but the network instances are not returned.
+ *
+ * @param request DescribeGrantRulesToCenRequest
+ * @return DescribeGrantRulesToCenResponse
+ */
 func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRequest) (_result *DescribeGrantRulesToCenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGrantRulesToCenResponse{}
@@ -36283,6 +37302,16 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Take note of the following rules when you call the **ListTrafficMarkingPolicies** operation:
+ * *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+ * *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+ *     If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+ *
+ * @param request ListTrafficMarkingPoliciesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTrafficMarkingPoliciesResponse
+ */
 func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTrafficMarkingPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListTrafficMarkingPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36352,6 +37381,15 @@ func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTraffic
 	return _result, _err
 }
 
+/**
+ * Take note of the following rules when you call the **ListTrafficMarkingPolicies** operation:
+ * *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
+ * *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
+ *     If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
+ *
+ * @param request ListTrafficMarkingPoliciesRequest
+ * @return ListTrafficMarkingPoliciesResponse
+ */
 func (client *Client) ListTrafficMarkingPolicies(request *ListTrafficMarkingPoliciesRequest) (_result *ListTrafficMarkingPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTrafficMarkingPoliciesResponse{}
@@ -36632,9 +37670,93 @@ func (client *Client) ListTransitRouterCidrAllocation(request *ListTransitRouter
 	return _result, _err
 }
 
+func (client *Client) ListTransitRouterEcrAttachmentsWithOptions(request *ListTransitRouterEcrAttachmentsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterEcrAttachmentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterEcrAttachments"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterEcrAttachmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterEcrAttachments(request *ListTransitRouterEcrAttachmentsRequest) (_result *ListTransitRouterEcrAttachmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterEcrAttachmentsResponse{}
+	_body, _err := client.ListTransitRouterEcrAttachmentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * ## Usage notes
- * Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+ * *   You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+ * *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
  *
  * @param request ListTransitRouterMulticastDomainAssociationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36718,8 +37840,8 @@ func (client *Client) ListTransitRouterMulticastDomainAssociationsWithOptions(re
 }
 
 /**
- * ## Usage notes
- * Multicast domains can be associated only with vSwitches that are in VPCs. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query whether vSwitches in VPCs are associated with a specified multicast domain.
+ * *   You must set at least **TransitRouterMulticastDomainId** and **TransitRouterAttachmentId**. If you set **TransitRouterAttachmentId**, the information about the vSwitches in a virtual private cloud (VPC) that are associated with a multicast domain is returned. If you set **TransitRouterMulticastDomainId**, the information about the vSwitches that are associated with a multicast domain is returned.
+ * *   Before you call **ListTransitRouterMulticastDomainAssociations**, make sure that all the request parameters are valid. If a request parameter is invalid, the system returns a **request ID** but does not return the vSwitches that are associated with the multicast domain.
  *
  * @param request ListTransitRouterMulticastDomainAssociationsRequest
  * @return ListTransitRouterMulticastDomainAssociationsResponse
@@ -39106,7 +40228,13 @@ func (client *Client) RefreshTransitRouteTableAggregation(request *RefreshTransi
 }
 
 /**
- * The ID of the request.
+ * Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+ * *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+ * *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+ *       For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+ * *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+ *     *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+ *     *   If a multicast member is in the **Registered** state, the multicast member is added.
  *
  * @param request RegisterTransitRouterMulticastGroupMembersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39186,7 +40314,13 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembersWithOptions(requ
 }
 
 /**
- * The ID of the request.
+ * Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
+ * *   If you specify a value for **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
+ * *   If you specify a value for **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
+ *       For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
+ * *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
+ *     *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
+ *     *   If a multicast member is in the **Registered** state, the multicast member is added.
  *
  * @param request RegisterTransitRouterMulticastGroupMembersRequest
  * @return RegisterTransitRouterMulticastGroupMembersResponse
@@ -39204,10 +40338,10 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembers(request *Regist
 
 /**
  * *   You can specify only elastic network interfaces (ENIs) as multicast sources.
- * *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
- *     *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+ * *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+ *     *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
  *     *   If a multicast source is in the **Registered** state, the multicast source is created.
- * ### Prerequisites
+ * ### Prerequisite
  * Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
  *
  * @param request RegisterTransitRouterMulticastGroupSourcesRequest
@@ -39285,10 +40419,10 @@ func (client *Client) RegisterTransitRouterMulticastGroupSourcesWithOptions(requ
 
 /**
  * *   You can specify only elastic network interfaces (ENIs) as multicast sources.
- * *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
- *     *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
+ * *   `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast source.
+ *     *   If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations on the multicast source.
  *     *   If a multicast source is in the **Registered** state, the multicast source is created.
- * ### Prerequisites
+ * ### Prerequisite
  * Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
  *
  * @param request RegisterTransitRouterMulticastGroupSourcesRequest
@@ -40672,6 +41806,82 @@ func (client *Client) UpdateTransitRouter(request *UpdateTransitRouterRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTransitRouterResponse{}
 	_body, _err := client.UpdateTransitRouterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterEcrAttachmentAttributeWithOptions(request *UpdateTransitRouterEcrAttachmentAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterEcrAttachmentAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentDescription)) {
+		query["TransitRouterAttachmentDescription"] = request.TransitRouterAttachmentDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentName)) {
+		query["TransitRouterAttachmentName"] = request.TransitRouterAttachmentName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTransitRouterEcrAttachmentAttribute"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTransitRouterEcrAttachmentAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTransitRouterEcrAttachmentAttribute(request *UpdateTransitRouterEcrAttachmentAttributeRequest) (_result *UpdateTransitRouterEcrAttachmentAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTransitRouterEcrAttachmentAttributeResponse{}
+	_body, _err := client.UpdateTransitRouterEcrAttachmentAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
