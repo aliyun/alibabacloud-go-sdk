@@ -443,6 +443,8 @@ func (s *AddDevicesRequest) SetRegionId(v string) *AddDevicesRequest {
 }
 
 type AddDevicesResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -453,6 +455,16 @@ func (s AddDevicesResponseBody) String() string {
 
 func (s AddDevicesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AddDevicesResponseBody) SetCode(v string) *AddDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDevicesResponseBody) SetMessage(v string) *AddDevicesResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *AddDevicesResponseBody) SetRequestId(v string) *AddDevicesResponseBody {
@@ -3412,14 +3424,33 @@ func (s *CreateADConnectorOfficeSiteResponse) SetBody(v *CreateADConnectorOffice
 }
 
 type CreateAndBindNasFileSystemRequest struct {
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	EncryptType    *int32    `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	EndUserIds     []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	FileSystemName *string   `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	OfficeSiteId   *string   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StorageType    *string   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The description of the NAS file system.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the desktop group.
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// Specifies whether to encrypt data in the NAS file system. You can use keys that are hosted by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted. Valid values:
+	//
+	// *   0: does not encrypt data in the NAS file system.
+	// *   1: encrypts data in the NAS file system by using a NAS-managed key. ` If you set  `FileSystemType`  to  `standard`  or  `extreme`, you can use a NAS-managed key to encrypt data in a NAS file system.`
+	// *   2: encrypts data in the NAS file system by using a KMS-managed key. `If` you set FileSystemType`  to  `extreme`, you can use a KMS-managed key to encrypt data in a NAS file system.`
+	//
+	// Default value: 0.
+	EncryptType *int32 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The list of users.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The name of the NAS file system.
+	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	// The ID of the workspace.
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The storage type of the NAS file system. Valid values:
+	//
+	// *   Capacity
+	// *   Performance
+	//
+	// Default value: Capacity.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s CreateAndBindNasFileSystemRequest) String() string {
@@ -3471,6 +3502,7 @@ func (s *CreateAndBindNasFileSystemRequest) SetStorageType(v string) *CreateAndB
 }
 
 type CreateAndBindNasFileSystemResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24320,8 +24352,11 @@ func (s *DisableDesktopsInGroupResponse) SetBody(v *DisableDesktopsInGroupRespon
 }
 
 type DisconnectDesktopSessionsRequest struct {
-	PreCheck *bool                                       `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
-	RegionId *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to perform precheck. If you perform precheck, the system does not disconnect from desktop sessions. Only the sessions that do not meet specific conditions are returned.
+	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session details.
 	Sessions []*DisconnectDesktopSessionsRequestSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 }
 
@@ -24349,7 +24384,9 @@ func (s *DisconnectDesktopSessionsRequest) SetSessions(v []*DisconnectDesktopSes
 }
 
 type DisconnectDesktopSessionsRequestSessions struct {
+	// The cloud desktop ID.
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The end user ID.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 
@@ -24372,8 +24409,10 @@ func (s *DisconnectDesktopSessionsRequestSessions) SetEndUserId(v string) *Disco
 }
 
 type DisconnectDesktopSessionsResponseBody struct {
+	// The list of invalid sessions.
 	InvalidSessions []*DisconnectDesktopSessionsResponseBodyInvalidSessions `json:"InvalidSessions,omitempty" xml:"InvalidSessions,omitempty" type:"Repeated"`
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisconnectDesktopSessionsResponseBody) String() string {
@@ -24395,7 +24434,9 @@ func (s *DisconnectDesktopSessionsResponseBody) SetRequestId(v string) *Disconne
 }
 
 type DisconnectDesktopSessionsResponseBodyInvalidSessions struct {
+	// The cloud desktop ID.
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The end user ID.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 
@@ -28503,9 +28544,12 @@ func (s *MigrateDesktopsResponse) SetBody(v *MigrateDesktopsResponseBody) *Migra
 }
 
 type MigrateImageProtocolRequest struct {
-	ImageId            []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TargetProtocolType *string   `json:"TargetProtocolType,omitempty" xml:"TargetProtocolType,omitempty"`
+	// The image IDs.
+	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protocol of the image. Valid value: ASP.
+	TargetProtocolType *string `json:"TargetProtocolType,omitempty" xml:"TargetProtocolType,omitempty"`
 }
 
 func (s MigrateImageProtocolRequest) String() string {
@@ -28532,8 +28576,10 @@ func (s *MigrateImageProtocolRequest) SetTargetProtocolType(v string) *MigrateIm
 }
 
 type MigrateImageProtocolResponseBody struct {
+	// The IDs of images whose protocols fail to be migrated.
 	FailedIds []*string `json:"FailedIds,omitempty" xml:"FailedIds,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MigrateImageProtocolResponseBody) String() string {
