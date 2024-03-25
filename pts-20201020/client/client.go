@@ -6364,6 +6364,7 @@ type ListPtsSceneResponseBodySceneViewList struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName  *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPtsSceneResponseBodySceneViewList) String() string {
@@ -6386,6 +6387,11 @@ func (s *ListPtsSceneResponseBodySceneViewList) SetSceneId(v string) *ListPtsSce
 
 func (s *ListPtsSceneResponseBodySceneViewList) SetSceneName(v string) *ListPtsSceneResponseBodySceneViewList {
 	s.SceneName = &v
+	return s
+}
+
+func (s *ListPtsSceneResponseBodySceneViewList) SetStatus(v string) *ListPtsSceneResponseBodySceneViewList {
+	s.Status = &v
 	return s
 }
 
