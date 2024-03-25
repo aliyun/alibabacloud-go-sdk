@@ -407,6 +407,7 @@ type CreateFeatureViewRequest struct {
 	Tags                 []*string                         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Type                 *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
 	WriteMethod          *string                           `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	WriteToFeatureDB     *bool                             `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s CreateFeatureViewRequest) String() string {
@@ -474,6 +475,11 @@ func (s *CreateFeatureViewRequest) SetType(v string) *CreateFeatureViewRequest {
 
 func (s *CreateFeatureViewRequest) SetWriteMethod(v string) *CreateFeatureViewRequest {
 	s.WriteMethod = &v
+	return s
+}
+
+func (s *CreateFeatureViewRequest) SetWriteToFeatureDB(v bool) *CreateFeatureViewRequest {
+	s.WriteToFeatureDB = &v
 	return s
 }
 
@@ -1885,6 +1891,7 @@ type GetFeatureViewResponseBody struct {
 	Tags                   []*string                           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Type                   *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
 	WriteMethod            *string                             `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	WriteToFeatureDB       *bool                               `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s GetFeatureViewResponseBody) String() string {
@@ -2007,6 +2014,11 @@ func (s *GetFeatureViewResponseBody) SetType(v string) *GetFeatureViewResponseBo
 
 func (s *GetFeatureViewResponseBody) SetWriteMethod(v string) *GetFeatureViewResponseBody {
 	s.WriteMethod = &v
+	return s
+}
+
+func (s *GetFeatureViewResponseBody) SetWriteToFeatureDB(v bool) *GetFeatureViewResponseBody {
+	s.WriteToFeatureDB = &v
 	return s
 }
 
@@ -4545,6 +4557,7 @@ type ListFeatureViewsResponseBodyFeatureViews struct {
 	RegisterTable          *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
 	TTL                    *int32  `json:"TTL,omitempty" xml:"TTL,omitempty"`
 	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WriteToFeatureDB       *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s ListFeatureViewsResponseBodyFeatureViews) String() string {
@@ -4617,6 +4630,11 @@ func (s *ListFeatureViewsResponseBodyFeatureViews) SetTTL(v int32) *ListFeatureV
 
 func (s *ListFeatureViewsResponseBodyFeatureViews) SetType(v string) *ListFeatureViewsResponseBodyFeatureViews {
 	s.Type = &v
+	return s
+}
+
+func (s *ListFeatureViewsResponseBodyFeatureViews) SetWriteToFeatureDB(v bool) *ListFeatureViewsResponseBodyFeatureViews {
+	s.WriteToFeatureDB = &v
 	return s
 }
 
@@ -7495,6 +7513,10 @@ func (client *Client) CreateFeatureViewWithOptions(InstanceId *string, request *
 
 	if !tea.BoolValue(util.IsUnset(request.WriteMethod)) {
 		body["WriteMethod"] = request.WriteMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WriteToFeatureDB)) {
+		body["WriteToFeatureDB"] = request.WriteToFeatureDB
 	}
 
 	req := &openapi.OpenApiRequest{
