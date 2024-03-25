@@ -2764,7 +2764,8 @@ type CreateLifecycleRetrieveJobRequest struct {
 	// The ID of the file system.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The directories or files that you want to retrieve. You can specify a maximum of 10 paths.
-	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Paths       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	StorageType *string   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s CreateLifecycleRetrieveJobRequest) String() string {
@@ -2782,6 +2783,11 @@ func (s *CreateLifecycleRetrieveJobRequest) SetFileSystemId(v string) *CreateLif
 
 func (s *CreateLifecycleRetrieveJobRequest) SetPaths(v []*string) *CreateLifecycleRetrieveJobRequest {
 	s.Paths = v
+	return s
+}
+
+func (s *CreateLifecycleRetrieveJobRequest) SetStorageType(v string) *CreateLifecycleRetrieveJobRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -7892,7 +7898,8 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// The Lightweight Directory Access Protocol (LDAP) configurations.
 	//
 	// This parameter is available only for CPFS file systems.
-	Ldap *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
+	Ldap               *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
+	MeteredArchiveSize *int64                                                    `json:"MeteredArchiveSize,omitempty" xml:"MeteredArchiveSize,omitempty"`
 	// The storage usage of the Infrequent Access (IA) storage medium.
 	//
 	// Unit: bytes.
@@ -8014,6 +8021,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetKMSKeyId(v str
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetLdap(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.Ldap = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredArchiveSize(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.MeteredArchiveSize = &v
 	return s
 }
 
@@ -8702,7 +8714,8 @@ type DescribeLifecyclePoliciesRequest struct {
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeLifecyclePoliciesRequest) String() string {
@@ -8730,6 +8743,11 @@ func (s *DescribeLifecyclePoliciesRequest) SetPageNumber(v int32) *DescribeLifec
 
 func (s *DescribeLifecyclePoliciesRequest) SetPageSize(v int32) *DescribeLifecyclePoliciesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesRequest) SetStorageType(v string) *DescribeLifecyclePoliciesRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -11688,7 +11706,8 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// This parameter is returned only if the value of the Type parameter is File.
-	CTime *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
+	CTime          *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
+	HasArchiveFile *bool   `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
 	// Indicates whether the directory contains files stored in the IA storage medium.
 	//
 	// This parameter is returned only if the value of the Type parameter is Directory.
@@ -11753,6 +11772,11 @@ func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetATime(v string) *GetD
 
 func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetCTime(v string) *GetDirectoryOrFilePropertiesResponseBodyEntry {
 	s.CTime = &v
+	return s
+}
+
+func (s *GetDirectoryOrFilePropertiesResponseBodyEntry) SetHasArchiveFile(v bool) *GetDirectoryOrFilePropertiesResponseBodyEntry {
+	s.HasArchiveFile = &v
 	return s
 }
 
@@ -12062,7 +12086,8 @@ type ListDirectoriesAndFilesResponseBodyEntries struct {
 	// This parameter is returned and valid only if the value of the Type parameter is File.
 	Ctime *string `json:"Ctime,omitempty" xml:"Ctime,omitempty"`
 	// The ID of the directory or file.
-	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	HasArchiveFile *string `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
 	// Indicates whether the directory contains files stored in the IA storage medium.
 	//
 	// This parameter is returned and valid only if the value of the Type parameter is Directory.
@@ -12133,6 +12158,11 @@ func (s *ListDirectoriesAndFilesResponseBodyEntries) SetCtime(v string) *ListDir
 
 func (s *ListDirectoriesAndFilesResponseBodyEntries) SetFileId(v string) *ListDirectoriesAndFilesResponseBodyEntries {
 	s.FileId = &v
+	return s
+}
+
+func (s *ListDirectoriesAndFilesResponseBodyEntries) SetHasArchiveFile(v string) *ListDirectoriesAndFilesResponseBodyEntries {
+	s.HasArchiveFile = &v
 	return s
 }
 
@@ -12229,7 +12259,8 @@ type ListLifecycleRetrieveJobsRequest struct {
 	// *   canceled: The task is canceled.
 	// *   completed: The task is completed.
 	// *   failed: The task has failed.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s ListLifecycleRetrieveJobsRequest) String() string {
@@ -12257,6 +12288,11 @@ func (s *ListLifecycleRetrieveJobsRequest) SetPageSize(v int32) *ListLifecycleRe
 
 func (s *ListLifecycleRetrieveJobsRequest) SetStatus(v string) *ListLifecycleRetrieveJobsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsRequest) SetStorageType(v string) *ListLifecycleRetrieveJobsRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -12326,7 +12362,8 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	// *   canceled: The task is canceled.
 	// *   completed: The task is completed.
 	// *   failed: The task has failed.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The time when the task was updated.
 	//
 	// The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
@@ -12373,6 +12410,11 @@ func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetRetrieve
 
 func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetStatus(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
 	s.Status = &v
+	return s
+}
+
+func (s *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs) SetStorageType(v string) *ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs {
+	s.StorageType = &v
 	return s
 }
 
@@ -17680,6 +17722,10 @@ func (client *Client) CreateLifecycleRetrieveJobWithOptions(request *CreateLifec
 		query["Paths"] = request.Paths
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21215,6 +21261,10 @@ func (client *Client) ListLifecycleRetrieveJobsWithOptions(request *ListLifecycl
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
 	}
 
 	req := &openapi.OpenApiRequest{
