@@ -2100,6 +2100,7 @@ type QueryBrokerDemandResponseBodyData struct {
 	DemandDomain        *string  `json:"DemandDomain,omitempty" xml:"DemandDomain,omitempty"`
 	DemandPrice         *float32 `json:"DemandPrice,omitempty" xml:"DemandPrice,omitempty"`
 	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email               *string  `json:"Email,omitempty" xml:"Email,omitempty"`
 	Mobile              *string  `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	OrderType           *int32   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	PartnerDomain       *string  `json:"PartnerDomain,omitempty" xml:"PartnerDomain,omitempty"`
@@ -2153,6 +2154,11 @@ func (s *QueryBrokerDemandResponseBodyData) SetDemandPrice(v float32) *QueryBrok
 
 func (s *QueryBrokerDemandResponseBodyData) SetDescription(v string) *QueryBrokerDemandResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *QueryBrokerDemandResponseBodyData) SetEmail(v string) *QueryBrokerDemandResponseBodyData {
+	s.Email = &v
 	return s
 }
 
