@@ -2517,7 +2517,8 @@ type CreateDBResourceGroupRequest struct {
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rules    []*CreateDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s CreateDBResourceGroupRequest) String() string {
@@ -2580,6 +2581,150 @@ func (s *CreateDBResourceGroupRequest) SetMinComputeResource(v string) *CreateDB
 
 func (s *CreateDBResourceGroupRequest) SetRegionId(v string) *CreateDBResourceGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetRules(v []*CreateDBResourceGroupRequestRules) *CreateDBResourceGroupRequest {
+	s.Rules = v
+	return s
+}
+
+type CreateDBResourceGroupRequestRules struct {
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	QueryTime       *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	TargetGroupName *string `json:"TargetGroupName,omitempty" xml:"TargetGroupName,omitempty"`
+}
+
+func (s CreateDBResourceGroupRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequestRules) SetGroupName(v string) *CreateDBResourceGroupRequestRules {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRules) SetQueryTime(v string) *CreateDBResourceGroupRequestRules {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRules) SetTargetGroupName(v string) *CreateDBResourceGroupRequestRules {
+	s.TargetGroupName = &v
+	return s
+}
+
+type CreateDBResourceGroupShrinkRequest struct {
+	// A reserved parameter.
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// A reserved parameter.
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EnableSpot  *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// The name of the resource group.
+	//
+	// *   The name can be up to 255 characters in length.
+	// *   The name must start with a letter or a digit.
+	// *   The name can contain letters, digits, hyphens (\_), and underscores (\_).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// *   **Interactive**
+	// *   **Job**
+	//
+	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// A reserved parameter.
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum reserved computing resources. Unit: ACU.
+	//
+	// *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	// A reserved parameter.
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum reserved computing resources. Unit: AnalyticDB Compute Units (ACUs).
+	//
+	// *   When GroupType is set to Interactive, set this parameter to 16 ACUs.
+	// *   When GroupType is set to Job, set this parameter to 0 ACUs.
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s CreateDBResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClusterMode(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClusterSizeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetDBClusterId(v string) *CreateDBResourceGroupShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetEnableSpot(v bool) *CreateDBResourceGroupShrinkRequest {
+	s.EnableSpot = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetGroupName(v string) *CreateDBResourceGroupShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetGroupType(v string) *CreateDBResourceGroupShrinkRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMaxClusterCount(v int32) *CreateDBResourceGroupShrinkRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMaxComputeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMinClusterCount(v int32) *CreateDBResourceGroupShrinkRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.MinComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetRegionId(v string) *CreateDBResourceGroupShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetRulesShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.RulesShrink = &v
 	return s
 }
 
@@ -9194,7 +9339,8 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// A reserved parameter.
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
-	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	MinComputeResource *string                                               `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	Rules              []*DescribeDBResourceGroupResponseBodyGroupsInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// A reserved parameter.
 	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
 	// The state of the resource group. Valid values:
@@ -9275,6 +9421,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinComputeResource(v 
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRules(v []*DescribeDBResourceGroupResponseBodyGroupsInfoRules) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Rules = v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRunningClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.RunningClusterCount = &v
 	return s
@@ -9287,6 +9438,35 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetStatus(v string) *Des
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetUpdateTime(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRules struct {
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	QueryTime       *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	TargetGroupName *string `json:"TargetGroupName,omitempty" xml:"TargetGroupName,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRules) SetGroupName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRules {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRules) SetQueryTime(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRules {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRules) SetTargetGroupName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRules {
+	s.TargetGroupName = &v
 	return s
 }
 
@@ -18687,7 +18867,8 @@ type ModifyDBResourceGroupRequest struct {
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rules    []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s ModifyDBResourceGroupRequest) String() string {
@@ -18750,6 +18931,152 @@ func (s *ModifyDBResourceGroupRequest) SetMinComputeResource(v string) *ModifyDB
 
 func (s *ModifyDBResourceGroupRequest) SetRegionId(v string) *ModifyDBResourceGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetRules(v []*ModifyDBResourceGroupRequestRules) *ModifyDBResourceGroupRequest {
+	s.Rules = v
+	return s
+}
+
+type ModifyDBResourceGroupRequestRules struct {
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	QueryTime       *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	TargetGroupName *string `json:"TargetGroupName,omitempty" xml:"TargetGroupName,omitempty"`
+}
+
+func (s ModifyDBResourceGroupRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestRules) SetGroupName(v string) *ModifyDBResourceGroupRequestRules {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRules) SetQueryTime(v string) *ModifyDBResourceGroupRequestRules {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRules) SetTargetGroupName(v string) *ModifyDBResourceGroupRequestRules {
+	s.TargetGroupName = &v
+	return s
+}
+
+type ModifyDBResourceGroupShrinkRequest struct {
+	// A reserved parameter.
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// A reserved parameter.
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the preemptible instance feature for the resource group. This feature can be enabled only for job resource groups. Valid values:
+	//
+	// *   **True**
+	// *   **False**
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// The name of the resource group.
+	//
+	// > You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the name of a resource group in a cluster.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// *   **Interactive**
+	// *   **Job**
+	//
+	// > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// A reserved parameter.
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources. Unit: ACU.
+	//
+	// *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
+	// *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	// A reserved parameter.
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
+	//
+	// *   If the GroupType parameter is set to Interactive, set the value to 16ACU.
+	// *   If GroupType is set to Job, set the value to 0ACU.
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s ModifyDBResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetClusterMode(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetClusterSizeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetDBClusterId(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetEnableSpot(v bool) *ModifyDBResourceGroupShrinkRequest {
+	s.EnableSpot = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetGroupName(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetGroupType(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMaxClusterCount(v int32) *ModifyDBResourceGroupShrinkRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMaxComputeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMinClusterCount(v int32) *ModifyDBResourceGroupShrinkRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.MinComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetRegionId(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetRulesShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.RulesShrink = &v
 	return s
 }
 
@@ -20703,11 +21030,17 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDBResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
 		query["ClusterMode"] = request.ClusterMode
@@ -20751,6 +21084,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResource
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -26556,11 +26893,17 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 	return _result, _err
 }
 
-func (client *Client) ModifyDBResourceGroupWithOptions(request *ModifyDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyDBResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
 		query["ClusterMode"] = request.ClusterMode
@@ -26604,6 +26947,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(request *ModifyDBResource
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
