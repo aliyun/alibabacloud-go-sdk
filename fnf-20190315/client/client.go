@@ -368,7 +368,6 @@ func (s *CreateScheduleResponse) SetBody(v *CreateScheduleResponseBody) *CreateS
 }
 
 type DeleteFlowRequest struct {
-	// The name of the flow. The name can contain only letters, digits, underscores (\_), and hyphens (-). It cannot start with a digit or a hyphen (-). It must be 1 to 128 characters in length.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -433,19 +432,7 @@ func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowRespo
 }
 
 type DeleteScheduleRequest struct {
-	// The name of the flow that is associated with the time-based schedule. The name must be unique within the region and cannot be modified after the time-based schedule is created. The name must meet the following conventions:
-	//
-	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   The name must start with a letter or an underscore (\_).
-	// *   The name is case-sensitive.
-	// *   The name must be 1 to 128 characters in length.
-	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// The name of the time-based schedule. The name must meet the following conventions:
-	//
-	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   The name must start with a letter or an underscore (\_).
-	// *   The name is case-sensitive.
-	// *   The name must be 1 to 128 characters in length.
+	FlowName     *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	ScheduleName *string `json:"ScheduleName,omitempty" xml:"ScheduleName,omitempty"`
 }
 
@@ -2843,13 +2830,13 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
+		body["Name"] = request.Name
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFlow"),
@@ -2894,17 +2881,17 @@ func (client *Client) DeleteScheduleWithOptions(request *DeleteScheduleRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
-		query["FlowName"] = request.FlowName
+		body["FlowName"] = request.FlowName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScheduleName)) {
-		query["ScheduleName"] = request.ScheduleName
+		body["ScheduleName"] = request.ScheduleName
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSchedule"),
