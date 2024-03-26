@@ -637,13 +637,15 @@ func (s *CreateDigitalHumanProjectResponse) SetBody(v *CreateDigitalHumanProject
 }
 
 type CreateLivePortraitProjectRequest struct {
-	AudioId           *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
-	AudioUrl          *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
-	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl          *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Intro             *string `json:"Intro,omitempty" xml:"Intro,omitempty"`
-	JwtToken          *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	AudioId      *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
+	AudioUrl     *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustomParams *string `json:"CustomParams,omitempty" xml:"CustomParams,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Intro        *string `json:"Intro,omitempty" xml:"Intro,omitempty"`
+	JwtToken     *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	// Deprecated
 	LightModel        *bool   `json:"LightModel,omitempty" xml:"LightModel,omitempty"`
 	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OutputConfig      *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
@@ -673,6 +675,11 @@ func (s *CreateLivePortraitProjectRequest) SetAudioUrl(v string) *CreateLivePort
 
 func (s *CreateLivePortraitProjectRequest) SetContent(v string) *CreateLivePortraitProjectRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateLivePortraitProjectRequest) SetCustomParams(v string) *CreateLivePortraitProjectRequest {
+	s.CustomParams = &v
 	return s
 }
 
@@ -16717,6 +16724,10 @@ func (client *Client) CreateLivePortraitProjectWithOptions(request *CreateLivePo
 
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomParams)) {
+		body["CustomParams"] = request.CustomParams
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
