@@ -624,6 +624,52 @@ func (s *AutoScalingConstraintsSupportMetricTags) SetTags(v []*Tag) *AutoScaling
 	return s
 }
 
+type AutoScalingPolicy struct {
+	Constraints  *AutoScalingPolicyConstraints `json:"constraints,omitempty" xml:"constraints,omitempty" type:"Struct"`
+	ScalingRules []*ScalingRule                `json:"scalingRules,omitempty" xml:"scalingRules,omitempty" type:"Repeated"`
+}
+
+func (s AutoScalingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoScalingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *AutoScalingPolicy) SetConstraints(v *AutoScalingPolicyConstraints) *AutoScalingPolicy {
+	s.Constraints = v
+	return s
+}
+
+func (s *AutoScalingPolicy) SetScalingRules(v []*ScalingRule) *AutoScalingPolicy {
+	s.ScalingRules = v
+	return s
+}
+
+type AutoScalingPolicyConstraints struct {
+	MaxCapacity *int32 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
+	MinCapacity *int32 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+}
+
+func (s AutoScalingPolicyConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoScalingPolicyConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *AutoScalingPolicyConstraints) SetMaxCapacity(v int32) *AutoScalingPolicyConstraints {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *AutoScalingPolicyConstraints) SetMinCapacity(v int32) *AutoScalingPolicyConstraints {
+	s.MinCapacity = &v
+	return s
+}
+
 type ByLoadScalingRule struct {
 	// 比较符。
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
@@ -2857,6 +2903,7 @@ func (s *NodeGroup) SetZoneId(v string) *NodeGroup {
 type NodeGroupConfig struct {
 	// 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
 	AdditionalSecurityGroupIds []*string `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
+	ComponentTags              []*string `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
 	// 成本优化模式配置。
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
 	// 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
@@ -2936,6 +2983,11 @@ func (s NodeGroupConfig) GoString() string {
 
 func (s *NodeGroupConfig) SetAdditionalSecurityGroupIds(v []*string) *NodeGroupConfig {
 	s.AdditionalSecurityGroupIds = v
+	return s
+}
+
+func (s *NodeGroupConfig) SetComponentTags(v []*string) *NodeGroupConfig {
+	s.ComponentTags = v
 	return s
 }
 
