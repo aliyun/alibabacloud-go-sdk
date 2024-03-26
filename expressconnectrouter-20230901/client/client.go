@@ -1996,6 +1996,7 @@ type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList stru
 	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	EcrId                 *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 	GmtCreate             *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2033,6 +2034,11 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList)
 
 func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetChildInstanceType(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
 	s.ChildInstanceType = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) SetEcrId(v string) *DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList {
+	s.EcrId = &v
 	return s
 }
 
