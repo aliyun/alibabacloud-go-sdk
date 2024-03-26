@@ -1774,6 +1774,7 @@ func (s *VideoModerationResponseBody) SetRequestId(v string) *VideoModerationRes
 }
 
 type VideoModerationResponseBodyData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1783,6 +1784,11 @@ func (s VideoModerationResponseBodyData) String() string {
 
 func (s VideoModerationResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *VideoModerationResponseBodyData) SetDataId(v string) *VideoModerationResponseBodyData {
+	s.DataId = &v
+	return s
 }
 
 func (s *VideoModerationResponseBodyData) SetTaskId(v string) *VideoModerationResponseBodyData {
@@ -1965,6 +1971,7 @@ type VideoModerationResultResponseBodyData struct {
 	DataId      *string                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
 	LiveId      *string                                           `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	TaskId      *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyData) String() string {
@@ -1992,6 +1999,11 @@ func (s *VideoModerationResultResponseBodyData) SetFrameResult(v *VideoModeratio
 
 func (s *VideoModerationResultResponseBodyData) SetLiveId(v string) *VideoModerationResultResponseBodyData {
 	s.LiveId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModerationResultResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -2206,8 +2218,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
-	Result  []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Service *string                                                                `json:"Service,omitempty" xml:"Service,omitempty"`
+	CustomImage  []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
+	Result       []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult       `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Service      *string                                                                      `json:"Service,omitempty" xml:"Service,omitempty"`
+	TextInImage  map[string]interface{}                                                       `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) String() string {
@@ -2218,6 +2233,16 @@ func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) GoString(
 	return s.String()
 }
 
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetCustomImage(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.CustomImage = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetPublicFigure(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.PublicFigure = v
+	return s
+}
+
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetResult(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
 	s.Result = v
 	return s
@@ -2225,6 +2250,51 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetResul
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetService(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
 	s.Service = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetTextInImage(v map[string]interface{}) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.TextInImage = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) SetImageId(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage {
+	s.ImageId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) SetLibId(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage {
+	s.LibId = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure struct {
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) SetFigureId(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure {
+	s.FigureId = &v
 	return s
 }
 
@@ -2340,6 +2410,7 @@ func (s *VoiceModerationResponseBody) SetRequestId(v string) *VoiceModerationRes
 }
 
 type VoiceModerationResponseBodyData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2349,6 +2420,11 @@ func (s VoiceModerationResponseBodyData) String() string {
 
 func (s VoiceModerationResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *VoiceModerationResponseBodyData) SetDataId(v string) *VoiceModerationResponseBodyData {
+	s.DataId = &v
+	return s
 }
 
 func (s *VoiceModerationResponseBodyData) SetTaskId(v string) *VoiceModerationResponseBodyData {
@@ -2527,6 +2603,7 @@ func (s *VoiceModerationResultResponseBody) SetRequestId(v string) *VoiceModerat
 }
 
 type VoiceModerationResultResponseBodyData struct {
+	DataId       *string                                              `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	LiveId       *string                                              `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 	TaskId       *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -2539,6 +2616,11 @@ func (s VoiceModerationResultResponseBodyData) String() string {
 
 func (s VoiceModerationResultResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *VoiceModerationResultResponseBodyData) SetDataId(v string) *VoiceModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
 }
 
 func (s *VoiceModerationResultResponseBodyData) SetLiveId(v string) *VoiceModerationResultResponseBodyData {
