@@ -73,9 +73,9 @@ func (s *AddAITemplateResponseBody) SetTemplateId(v string) *AddAITemplateRespon
 }
 
 type AddAITemplateResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddAITemplateResponse) String() string {
@@ -219,9 +219,9 @@ func (s *AddCategoryResponseBodyCategory) SetType(v string) *AddCategoryResponse
 }
 
 type AddCategoryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddCategoryResponse) String() string {
@@ -403,9 +403,9 @@ func (s *AddEditingProjectResponseBodyProject) SetTitle(v string) *AddEditingPro
 }
 
 type AddEditingProjectResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddEditingProjectResponse) String() string {
@@ -621,9 +621,9 @@ func (s *AddEditingProjectMaterialsResponseBodyMaterialList) SetTitle(v string) 
 }
 
 type AddEditingProjectMaterialsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddEditingProjectMaterialsResponse) String() string {
@@ -724,9 +724,9 @@ func (s *AddTranscodeTemplateGroupResponseBody) SetTranscodeTemplateGroupId(v st
 }
 
 type AddTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddTranscodeTemplateGroupResponse) String() string {
@@ -839,9 +839,9 @@ func (s *AddVodDomainResponseBody) SetRequestId(v string) *AddVodDomainResponseB
 }
 
 type AddVodDomainResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVodDomainResponse) String() string {
@@ -868,11 +868,11 @@ func (s *AddVodDomainResponse) SetBody(v *AddVodDomainResponseBody) *AddVodDomai
 }
 
 type AddVodStorageForAppRequest struct {
-	// The ID of the application. You can obtain the application ID from the response to the [CreateAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-createappinfo) or [ListAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-listappinfo) operation.
+	// The IDs of applications. You can obtain the application ID from the `AppId` parameter in the response to the [CreateAppInfo](~~CreateAppInfo~~) or [ListAppInfo](~~ListAppInfo~~) operation.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The address of an Object Storage Service (OSS) bucket. This parameter does not take effect. You can call this operation to add only VOD buckets.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The storage type. Default value: vod_oss_bucket.
+	// The storage class. Default value: **vod_oss_bucket**.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
@@ -925,9 +925,9 @@ func (s *AddVodStorageForAppResponseBody) SetStorageLocation(v string) *AddVodSt
 }
 
 type AddVodStorageForAppResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddVodStorageForAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVodStorageForAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVodStorageForAppResponse) String() string {
@@ -954,14 +954,14 @@ func (s *AddVodStorageForAppResponse) SetBody(v *AddVodStorageForAppResponseBody
 }
 
 type AddVodTemplateRequest struct {
-	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
+	// The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](~~113600~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the template.
 	//
-	// *   The name can be up to 128 bytes in length.
+	// *   The name cannot exceed 128 bytes.
 	// *   The value must be encoded in UTF-8.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of the snapshot template. The value is a JSON-formatted string. For more information about the data structure, see the "SnapshotTemplateConfig" section of the [Media processing parameters](~~98618~~) topic.
+	// The configurations of the snapshot template. The value must be a JSON string. For more information about the data structure, see [SnapshotTemplateConfig](~~98618~~).
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The type of the template. Set the value to **Snapshot**.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
@@ -998,7 +998,7 @@ func (s *AddVodTemplateRequest) SetTemplateType(v string) *AddVodTemplateRequest
 type AddVodTemplateResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the snapshot template. You can call the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
+	// The ID of the snapshot template. You can call the [SubmitSnapshotJob](~~72213~~) operation to submit snapshot jobs.
 	VodTemplateId *string `json:"VodTemplateId,omitempty" xml:"VodTemplateId,omitempty"`
 }
 
@@ -1021,9 +1021,9 @@ func (s *AddVodTemplateResponseBody) SetVodTemplateId(v string) *AddVodTemplateR
 }
 
 type AddVodTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddVodTemplateResponse) String() string {
@@ -1197,9 +1197,9 @@ func (s *AddWatermarkResponseBodyWatermarkInfo) SetWatermarkId(v string) *AddWat
 }
 
 type AddWatermarkResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddWatermarkResponse) String() string {
@@ -1309,9 +1309,9 @@ func (s *AttachAppPolicyToIdentityResponseBody) SetRequestId(v string) *AttachAp
 }
 
 type AttachAppPolicyToIdentityResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachAppPolicyToIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachAppPolicyToIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachAppPolicyToIdentityResponse) String() string {
@@ -1403,9 +1403,9 @@ func (s *BatchSetVodDomainConfigsResponseBody) SetRequestId(v string) *BatchSetV
 }
 
 type BatchSetVodDomainConfigsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchSetVodDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchSetVodDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchSetVodDomainConfigsResponse) String() string {
@@ -1480,9 +1480,9 @@ func (s *BatchStartVodDomainResponseBody) SetRequestId(v string) *BatchStartVodD
 }
 
 type BatchStartVodDomainResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchStartVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchStartVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchStartVodDomainResponse) String() string {
@@ -1557,9 +1557,9 @@ func (s *BatchStopVodDomainResponseBody) SetRequestId(v string) *BatchStopVodDom
 }
 
 type BatchStopVodDomainResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchStopVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchStopVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchStopVodDomainResponse) String() string {
@@ -1651,9 +1651,9 @@ func (s *CancelUrlUploadJobsResponseBody) SetRequestId(v string) *CancelUrlUploa
 }
 
 type CancelUrlUploadJobsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelUrlUploadJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelUrlUploadJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelUrlUploadJobsResponse) String() string {
@@ -1736,9 +1736,9 @@ func (s *CreateAppInfoResponseBody) SetRequestId(v string) *CreateAppInfoRespons
 }
 
 type CreateAppInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppInfoResponse) String() string {
@@ -1802,9 +1802,9 @@ func (s *CreateAuditResponseBody) SetRequestId(v string) *CreateAuditResponseBod
 }
 
 type CreateAuditResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAuditResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAuditResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAuditResponse) String() string {
@@ -2008,9 +2008,9 @@ func (s *CreateUploadAttachedMediaResponseBody) SetUploadAuth(v string) *CreateU
 }
 
 type CreateUploadAttachedMediaResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUploadAttachedMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUploadAttachedMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUploadAttachedMediaResponse) String() string {
@@ -2209,9 +2209,9 @@ func (s *CreateUploadImageResponseBody) SetUploadAuth(v string) *CreateUploadIma
 }
 
 type CreateUploadImageResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUploadImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUploadImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUploadImageResponse) String() string {
@@ -2407,9 +2407,9 @@ func (s *CreateUploadVideoResponseBody) SetVideoId(v string) *CreateUploadVideoR
 }
 
 type CreateUploadVideoResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUploadVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUploadVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUploadVideoResponse) String() string {
@@ -2506,9 +2506,9 @@ func (s *DecryptKMSDataKeyResponseBody) SetRequestId(v string) *DecryptKMSDataKe
 }
 
 type DecryptKMSDataKeyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DecryptKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DecryptKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DecryptKMSDataKeyResponse) String() string {
@@ -2574,9 +2574,9 @@ func (s *DeleteAIImageInfosResponseBody) SetRequestId(v string) *DeleteAIImageIn
 }
 
 type DeleteAIImageInfosResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAIImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAIImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAIImageInfosResponse) String() string {
@@ -2649,9 +2649,9 @@ func (s *DeleteAITemplateResponseBody) SetTemplateId(v string) *DeleteAITemplate
 }
 
 type DeleteAITemplateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAITemplateResponse) String() string {
@@ -2714,9 +2714,9 @@ func (s *DeleteAppInfoResponseBody) SetRequestId(v string) *DeleteAppInfoRespons
 }
 
 type DeleteAppInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppInfoResponse) String() string {
@@ -2789,9 +2789,9 @@ func (s *DeleteAttachedMediaResponseBody) SetRequestId(v string) *DeleteAttached
 }
 
 type DeleteAttachedMediaResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAttachedMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAttachedMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAttachedMediaResponse) String() string {
@@ -2854,9 +2854,9 @@ func (s *DeleteCategoryResponseBody) SetRequestId(v string) *DeleteCategoryRespo
 }
 
 type DeleteCategoryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCategoryResponse) String() string {
@@ -2929,9 +2929,9 @@ func (s *DeleteDynamicImageResponseBody) SetRequestId(v string) *DeleteDynamicIm
 }
 
 type DeleteDynamicImageResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDynamicImageResponse) String() string {
@@ -3018,9 +3018,9 @@ func (s *DeleteEditingProjectResponseBody) SetRequestId(v string) *DeleteEditing
 }
 
 type DeleteEditingProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEditingProjectResponse) String() string {
@@ -3117,9 +3117,9 @@ func (s *DeleteEditingProjectMaterialsResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteEditingProjectMaterialsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEditingProjectMaterialsResponse) String() string {
@@ -3234,9 +3234,9 @@ func (s *DeleteImageResponseBody) SetRequestId(v string) *DeleteImageResponseBod
 }
 
 type DeleteImageResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -3305,9 +3305,9 @@ func (s *DeleteMessageCallbackResponseBody) SetRequestId(v string) *DeleteMessag
 }
 
 type DeleteMessageCallbackResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMessageCallbackResponse) String() string {
@@ -3334,11 +3334,18 @@ func (s *DeleteMessageCallbackResponse) SetBody(v *DeleteMessageCallbackResponse
 }
 
 type DeleteMezzaninesRequest struct {
-	// Specifies whether to forcibly delete the mezzanine file. Default value: **false**.
+	// Specifies whether to forcibly delete the source file. Valid values:
 	//
-	// > If a video is delivered without transcoding or is asynchronously transcoded, the mezzanine file of the video is used for original-quality playback. By default, the mezzanine file of the video cannot be deleted. To forcibly delete the mezzanine file, set this parameter to **true**.
+	// *   **false** (default)
+	// *   **true**
+	//
+	// >  If a video is uploaded without transcoding or is asynchronously transcoded, the source file of the video is used for original-quality playback. By default, the source file of the video cannot be deleted. To forcibly delete the mezzanine file, set this parameter to **true**.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The list of video IDs. A maximum of 20 video IDs can be specified at a time. Separate multiple IDs with commas (,).
+	// The IDs of audio or video files whose source files that you want to delete. You can specify up to 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
+	//
+	// *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
+	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you called to obtain the upload URL and credential.
+	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation that you called to query media information after the audio or video file is uploaded.
 	VideoIds *string `json:"VideoIds,omitempty" xml:"VideoIds,omitempty"`
 }
 
@@ -3361,12 +3368,13 @@ func (s *DeleteMezzaninesRequest) SetVideoIds(v string) *DeleteMezzaninesRequest
 }
 
 type DeleteMezzaninesResponseBody struct {
-	// The IDs of the videos that do not exist.
+	// The IDs of the audio or video files that do not exist.
 	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the videos whose mezzanine files cannot be deleted.
-	// > Generally, mezzanine files cannot be deleted if they are used for original-quality playback or you do not have required [permissions](~~113600~~) to delete them.
+	// The IDs of the audio or video files whose source files cannot be deleted.
+	//
+	// >  In most cases, source files cannot be deleted if they are used for original-quality playback or you do not have required permissions to delete them. For more information, see [Overview](~~113600~~).
 	UnRemoveableVideoIds []*string `json:"UnRemoveableVideoIds,omitempty" xml:"UnRemoveableVideoIds,omitempty" type:"Repeated"`
 }
 
@@ -3394,9 +3402,9 @@ func (s *DeleteMezzaninesResponseBody) SetUnRemoveableVideoIds(v []*string) *Del
 }
 
 type DeleteMezzaninesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMezzaninesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMezzaninesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMezzaninesResponse) String() string {
@@ -3423,12 +3431,13 @@ func (s *DeleteMezzaninesResponse) SetBody(v *DeleteMezzaninesResponseBody) *Del
 }
 
 type DeleteMultipartUploadRequest struct {
-	// The ID of the media file, namely, the audio or video ID. You can use one of the following methods to obtain the audio or video ID:
-	// * Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the audio or video ID. Use this method if the audio or video file is uploaded by using the ApsaraVideo VOD console.
-	// * View the value of the VideoId parameter returned by the [CreateUploadVideo](~~55407~~) operation that you called to obtain an upload URL and credential.
-	// * View the value of the VideoId parameter returned by the [SearchMedia](~~86044~~) operation that you called to query an audio or video ID after the audio or video file is uploaded.
+	// The ID of the media file (VideoId). You can use one of the following methods to obtain the ID:
+	//
+	// *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
+	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you called to obtain the upload URL and credential.
+	// *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation that you called to query media information after the audio or video file is uploaded.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The type of the media file. Set the value to **video**, which indicates audio and video files.
+	// The type of the media file. Set the value to **video**. video indicates audio and video files.
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
@@ -3475,9 +3484,9 @@ func (s *DeleteMultipartUploadResponseBody) SetRequestId(v string) *DeleteMultip
 }
 
 type DeleteMultipartUploadResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMultipartUploadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMultipartUploadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMultipartUploadResponse) String() string {
@@ -3550,9 +3559,9 @@ func (s *DeleteStreamResponseBody) SetRequestId(v string) *DeleteStreamResponseB
 }
 
 type DeleteStreamResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteStreamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStreamResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteStreamResponse) String() string {
@@ -3643,9 +3652,9 @@ func (s *DeleteTranscodeTemplateGroupResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTranscodeTemplateGroupResponse) String() string {
@@ -3728,9 +3737,9 @@ func (s *DeleteVideoResponseBody) SetRequestId(v string) *DeleteVideoResponseBod
 }
 
 type DeleteVideoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVideoResponse) String() string {
@@ -3811,9 +3820,9 @@ func (s *DeleteVodDomainResponseBody) SetRequestId(v string) *DeleteVodDomainRes
 }
 
 type DeleteVodDomainResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVodDomainResponse) String() string {
@@ -3843,7 +3852,14 @@ type DeleteVodSpecificConfigRequest struct {
 	// The ID of the configuration.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The domain name for CDN.
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The environment of configuration.
+	//
+	// Value:
+	//
+	// online: production environment
+	//
+	// gray: simulation environment
 	Env           *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -3901,9 +3917,9 @@ func (s *DeleteVodSpecificConfigResponseBody) SetRequestId(v string) *DeleteVodS
 }
 
 type DeleteVodSpecificConfigResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVodSpecificConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodSpecificConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVodSpecificConfigResponse) String() string {
@@ -3973,9 +3989,9 @@ func (s *DeleteVodTemplateResponseBody) SetVodTemplateId(v string) *DeleteVodTem
 }
 
 type DeleteVodTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVodTemplateResponse) String() string {
@@ -4038,9 +4054,9 @@ func (s *DeleteWatermarkResponseBody) SetRequestId(v string) *DeleteWatermarkRes
 }
 
 type DeleteWatermarkResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteWatermarkResponse) String() string {
@@ -4214,9 +4230,9 @@ func (s *DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis) SetVi
 }
 
 type DescribePlayTopVideosResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayTopVideosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePlayTopVideosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePlayTopVideosResponse) String() string {
@@ -4348,9 +4364,9 @@ func (s *DescribePlayUserAvgResponseBodyUserPlayStatisAvgsUserPlayStatisAvg) Set
 }
 
 type DescribePlayUserAvgResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayUserAvgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePlayUserAvgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePlayUserAvgResponse) String() string {
@@ -4574,9 +4590,9 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayUserTotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePlayUserTotalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePlayUserTotalResponse) String() string {
@@ -4736,9 +4752,9 @@ func (s *DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStati
 }
 
 type DescribePlayVideoStatisResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayVideoStatisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePlayVideoStatisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePlayVideoStatisResponse) String() string {
@@ -4942,9 +4958,9 @@ func (s *DescribeVodAIDataResponseBodyAIDataAIDataItemDataDataItem) SetValue(v s
 }
 
 type DescribeVodAIDataResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodAIDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodAIDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodAIDataResponse) String() string {
@@ -5121,9 +5137,9 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertListCert)
 }
 
 type DescribeVodCertificateListResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodCertificateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodCertificateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodCertificateListResponse) String() string {
@@ -5359,9 +5375,9 @@ func (s *DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule) SetVa
 }
 
 type DescribeVodDomainBpsDataResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainBpsDataResponse) String() string {
@@ -5545,9 +5561,9 @@ func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo) SetStatu
 }
 
 type DescribeVodDomainCertificateInfoResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainCertificateInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainCertificateInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainCertificateInfoResponse) String() string {
@@ -5739,9 +5755,9 @@ func (s *DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionAr
 }
 
 type DescribeVodDomainConfigsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainConfigsResponse) String() string {
@@ -5997,9 +6013,9 @@ func (s *DescribeVodDomainDetailResponseBodyDomainDetailSourcesSource) SetType(v
 }
 
 type DescribeVodDomainDetailResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainDetailResponse) String() string {
@@ -6259,9 +6275,9 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfo
 }
 
 type DescribeVodDomainLogResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainLogResponse) String() string {
@@ -6445,9 +6461,9 @@ func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule)
 }
 
 type DescribeVodDomainSrcBpsDataResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponse) String() string {
@@ -6638,9 +6654,9 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDat
 }
 
 type DescribeVodDomainSrcTrafficDataResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponse) String() string {
@@ -6869,9 +6885,9 @@ func (s *DescribeVodDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModul
 }
 
 type DescribeVodDomainTrafficDataResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainTrafficDataResponse) String() string {
@@ -6898,10 +6914,10 @@ func (s *DescribeVodDomainTrafficDataResponse) SetBody(v *DescribeVodDomainTraff
 }
 
 type DescribeVodDomainUsageDataRequest struct {
-	// The region in which you want to query data. Default value: CN. Valid values:
+	// The region in which you want to query data. Valid values:
 	//
-	// *   **CN**: the Chinese mainland.
-	// *   **OverSeas**: outside the Chinese mainland.
+	// *   **CN**: Chinese mainland
+	// *   **OverSeas**: outside the Chinese mainland
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The accelerated domain name. If you leave this parameter empty, the merged data of all your accelerated domain names is returned. Separate multiple accelerated domain names with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -6990,11 +7006,10 @@ type DescribeVodDomainUsageDataResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of content returned. Valid values:
+	// The type of the data. Valid values:
 	//
-	// *   **static**: static content
-	// *   **dynamic**: dynamic requests
-	// *   **all**: all content
+	// *   **bps**: bandwidth
+	// *   **traf**: traffic
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The traffic or bandwidth data returned at each interval.
 	UsageDataPerInterval *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
@@ -7066,7 +7081,7 @@ func (s *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval) SetDataModu
 }
 
 type DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The timestamp of the returned data. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The traffic or bandwidth data. Unit: bit/s.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -7091,9 +7106,9 @@ func (s *DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule) S
 }
 
 type DescribeVodDomainUsageDataResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodDomainUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodDomainUsageDataResponse) String() string {
@@ -7217,9 +7232,9 @@ func (s *DescribeVodRefreshQuotaResponseBody) SetBlockRemain(v string) *Describe
 }
 
 type DescribeVodRefreshQuotaResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodRefreshQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodRefreshQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodRefreshQuotaResponse) String() string {
@@ -7480,9 +7495,9 @@ func (s *DescribeVodRefreshTasksResponseBodyTasksTask) SetTaskId(v string) *Desc
 }
 
 type DescribeVodRefreshTasksResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodRefreshTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodRefreshTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodRefreshTasksResponse) String() string {
@@ -7650,9 +7665,9 @@ func (s *DescribeVodStorageDataResponseBodyStorageDataStorageDataItem) SetTimeSt
 }
 
 type DescribeVodStorageDataResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodStorageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodStorageDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodStorageDataResponse) String() string {
@@ -7679,6 +7694,7 @@ func (s *DescribeVodStorageDataResponse) SetBody(v *DescribeVodStorageDataRespon
 }
 
 type DescribeVodTranscodeDataRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The interval at which you want to query data. Valid values:
@@ -7712,6 +7728,11 @@ func (s DescribeVodTranscodeDataRequest) String() string {
 
 func (s DescribeVodTranscodeDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVodTranscodeDataRequest) SetAppId(v string) *DescribeVodTranscodeDataRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *DescribeVodTranscodeDataRequest) SetEndTime(v string) *DescribeVodTranscodeDataRequest {
@@ -7873,9 +7894,9 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemDataD
 }
 
 type DescribeVodTranscodeDataResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodTranscodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodTranscodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodTranscodeDataResponse) String() string {
@@ -8213,9 +8234,9 @@ func (s *DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource) SetType
 }
 
 type DescribeVodUserDomainsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodUserDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodUserDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodUserDomainsResponse) String() string {
@@ -8291,9 +8312,9 @@ func (s *DescribeVodVerifyContentResponseBody) SetRequestId(v string) *DescribeV
 }
 
 type DescribeVodVerifyContentResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeVodVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeVodVerifyContentResponse) String() string {
@@ -8400,9 +8421,9 @@ func (s *DetachAppPolicyFromIdentityResponseBody) SetRequestId(v string) *Detach
 }
 
 type DetachAppPolicyFromIdentityResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachAppPolicyFromIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachAppPolicyFromIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachAppPolicyFromIdentityResponse) String() string {
@@ -8429,7 +8450,15 @@ func (s *DetachAppPolicyFromIdentityResponse) SetBody(v *DetachAppPolicyFromIden
 }
 
 type GenerateDownloadSecretKeyRequest struct {
-	AppDecryptKey        *string `json:"AppDecryptKey,omitempty" xml:"AppDecryptKey,omitempty"`
+	// A custom string of 16 to 32 characters in length. The string must contain uppercase letters, lowercase letters, and digits.
+	AppDecryptKey *string `json:"AppDecryptKey,omitempty" xml:"AppDecryptKey,omitempty"`
+	// The unique identifier of the app.
+	//
+	// *   Android: the SHA-1 fingerprint of the keystore. The value is a string that contains a colon (:).
+	// *   iOS: the bundle ID of the app.
+	// *   Windows: the serial number in the digital signature certificate.
+	//
+	// For more information about how to obtain the unique identifier of an app, see [Obtain the unique app identifier](~~86107#section-wtj-9d7-lg2~~).
 	AppIdentification    *string `json:"AppIdentification,omitempty" xml:"AppIdentification,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -8470,8 +8499,10 @@ func (s *GenerateDownloadSecretKeyRequest) SetResourceOwnerId(v int64) *Generate
 }
 
 type GenerateDownloadSecretKeyResponseBody struct {
+	// The key file for secure download.
 	AppEncryptKey *string `json:"AppEncryptKey,omitempty" xml:"AppEncryptKey,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateDownloadSecretKeyResponseBody) String() string {
@@ -8493,9 +8524,9 @@ func (s *GenerateDownloadSecretKeyResponseBody) SetRequestId(v string) *Generate
 }
 
 type GenerateDownloadSecretKeyResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDownloadSecretKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDownloadSecretKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateDownloadSecretKeyResponse) String() string {
@@ -8592,9 +8623,9 @@ func (s *GenerateKMSDataKeyResponseBody) SetRequestId(v string) *GenerateKMSData
 }
 
 type GenerateKMSDataKeyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateKMSDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateKMSDataKeyResponse) String() string {
@@ -8782,9 +8813,9 @@ func (s *GetAIImageJobsResponseBodyAIImageJobList) SetVideoId(v string) *GetAIIm
 }
 
 type GetAIImageJobsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAIImageJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAIImageJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAIImageJobsResponse) String() string {
@@ -10035,9 +10066,9 @@ func (s *GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResu
 }
 
 type GetAIMediaAuditJobResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAIMediaAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAIMediaAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAIMediaAuditJobResponse) String() string {
@@ -10186,9 +10217,9 @@ func (s *GetAITemplateResponseBodyTemplateInfo) SetTemplateType(v string) *GetAI
 }
 
 type GetAITemplateResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAITemplateResponse) String() string {
@@ -10459,9 +10490,9 @@ func (s *GetAIVideoTagResultResponseBodyVideoTagResultTime) SetTimes(v []*string
 }
 
 type GetAIVideoTagResultResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAIVideoTagResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAIVideoTagResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAIVideoTagResultResponse) String() string {
@@ -10508,7 +10539,8 @@ func (s *GetAppInfosRequest) SetAppIds(v string) *GetAppInfosRequest {
 type GetAppInfosResponseBody struct {
 	// The details of each application.
 	AppInfoList []*GetAppInfosResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code that is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the application that was not found.
 	NonExistAppIds []*string `json:"NonExistAppIds,omitempty" xml:"NonExistAppIds,omitempty" type:"Repeated"`
 	// The ID of the request.
@@ -10608,9 +10640,9 @@ func (s *GetAppInfosResponseBodyAppInfoList) SetType(v string) *GetAppInfosRespo
 }
 
 type GetAppInfosResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppInfosResponse) String() string {
@@ -10856,9 +10888,9 @@ func (s *GetAttachedMediaInfoResponseBodyAttachedMediaListCategories) SetParentI
 }
 
 type GetAttachedMediaInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAttachedMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAttachedMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAttachedMediaInfoResponse) String() string {
@@ -11015,9 +11047,9 @@ func (s *GetAuditHistoryResponseBodyHistories) SetStatus(v string) *GetAuditHist
 }
 
 type GetAuditHistoryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAuditHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAuditHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAuditHistoryResponse) String() string {
@@ -11260,9 +11292,9 @@ func (s *GetCategoriesResponseBodySubCategoriesCategory) SetType(v string) *GetC
 }
 
 type GetCategoriesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCategoriesResponse) String() string {
@@ -11405,9 +11437,9 @@ func (s *GetDefaultAITemplateResponseBodyTemplateInfo) SetTemplateType(v string)
 }
 
 type GetDefaultAITemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDefaultAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDefaultAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDefaultAITemplateResponse) String() string {
@@ -11575,9 +11607,9 @@ func (s *GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList) SetWat
 }
 
 type GetDigitalWatermarkExtractResultResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDigitalWatermarkExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDigitalWatermarkExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDigitalWatermarkExtractResultResponse) String() string {
@@ -11759,9 +11791,9 @@ func (s *GetEditingProjectResponseBodyProject) SetTitle(v string) *GetEditingPro
 }
 
 type GetEditingProjectResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEditingProjectResponse) String() string {
@@ -12069,9 +12101,9 @@ func (s *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSprites) SetS
 }
 
 type GetEditingProjectMaterialsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponse) String() string {
@@ -12327,9 +12359,9 @@ func (s *GetImageInfoResponseBodyImageInfoMezzanine) SetWidth(v int32) *GetImage
 }
 
 type GetImageInfoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetImageInfoResponse) String() string {
@@ -12599,9 +12631,9 @@ func (s *GetImageInfosResponseBodyImageInfoMezzanine) SetWidth(v int32) *GetImag
 }
 
 type GetImageInfosResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetImageInfosResponse) String() string {
@@ -12780,9 +12812,9 @@ func (s *GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailLi
 }
 
 type GetMediaAuditAudioResultDetailResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditAudioResultDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaAuditAudioResultDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaAuditAudioResultDetailResponse) String() string {
@@ -13919,9 +13951,9 @@ func (s *GetMediaAuditResultResponseBodyMediaAuditResultVideoResultTerrorismResu
 }
 
 type GetMediaAuditResultResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaAuditResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaAuditResultResponse) String() string {
@@ -14139,9 +14171,9 @@ func (s *GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList) SetUrl
 }
 
 type GetMediaAuditResultDetailResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditResultDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaAuditResultDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaAuditResultDetailResponse) String() string {
@@ -14438,9 +14470,9 @@ func (s *GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerroris
 }
 
 type GetMediaAuditResultTimelineResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaAuditResultTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaAuditResultTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaAuditResultTimelineResponse) String() string {
@@ -14659,9 +14691,9 @@ func (s *GetMediaDNAResultResponseBodyDNAResultVideoDNADetailInput) SetStart(v s
 }
 
 type GetMediaDNAResultResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaDNAResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaDNAResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaDNAResultResponse) String() string {
@@ -14841,9 +14873,9 @@ func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetUserData(v string) 
 }
 
 type GetMediaRefreshJobsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaRefreshJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaRefreshJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaRefreshJobsResponse) String() string {
@@ -14992,9 +15024,9 @@ func (s *GetMessageCallbackResponseBodyMessageCallback) SetMnsQueueName(v string
 }
 
 type GetMessageCallbackResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMessageCallbackResponse) String() string {
@@ -15568,9 +15600,9 @@ func (s *GetMezzanineInfoResponseBodyMezzanineVideoStreamList) SetWidth(v string
 }
 
 type GetMezzanineInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMezzanineInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMezzanineInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMezzanineInfoResponse) String() string {
@@ -15801,11 +15833,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) SetPlayInfo(v []*GetPlayInfoRespon
 }
 
 type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
-	// The color depth. This value must be an integer.
+	// The color depth. This value is an integer.
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
 	// The bitrate of the media stream. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The quality of the media stream. Valid values:
 	//
@@ -15820,7 +15852,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   **HQ**: high sound quality
 	// *   **AUTO**: adaptive bitrate
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The duration of the media stream. Unit: seconds.
+	// The duration of the media stream. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Indicates whether the media stream is encrypted. Valid values:
 	//
@@ -15861,7 +15893,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   **1**: tracing watermark
 	// *   **2**: copyright watermark
 	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The update time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The type of Narrowband HD transcoding. Valid values:
 	//
@@ -16028,7 +16060,18 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	// *   **audio**
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage class of the audio or video file. Valid values:
+	//
+	// *   **Standard**: All media resources are stored as Standard objects.
+	// *   **IA**: All media resources are stored as IA objects.
+	// *   **Archive**: All media resources are stored as Archive objects.
+	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
+	// *   **SourceIA**: Only the source files are IA objects.
+	// *   **SourceArchive**: Only the source files are Archive objects.
+	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+	// *   **Changing**: The storage class of the audio or video file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The title of the audio or video file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -16090,9 +16133,9 @@ func (s *GetPlayInfoResponseBodyVideoBase) SetVideoId(v string) *GetPlayInfoResp
 }
 
 type GetPlayInfoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPlayInfoResponse) String() string {
@@ -16350,9 +16393,9 @@ func (s *GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSumm
 }
 
 type GetTranscodeSummaryResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranscodeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranscodeSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranscodeSummaryResponse) String() string {
@@ -16718,9 +16761,9 @@ func (s *GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoListOutputFile
 }
 
 type GetTranscodeTaskResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranscodeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranscodeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranscodeTaskResponse) String() string {
@@ -17027,9 +17070,9 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTem
 }
 
 type GetTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranscodeTemplateGroupResponse) String() string {
@@ -17205,9 +17248,9 @@ func (s *GetURLUploadInfosResponseBodyURLUploadInfoList) SetUserData(v string) *
 }
 
 type GetURLUploadInfosResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetURLUploadInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetURLUploadInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetURLUploadInfosResponse) String() string {
@@ -17403,9 +17446,9 @@ func (s *GetUploadDetailsResponseBodyUploadDetails) SetUploadStatus(v string) *G
 }
 
 type GetUploadDetailsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUploadDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUploadDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUploadDetailsResponse) String() string {
@@ -17685,9 +17728,9 @@ func (s *GetVideoInfoResponseBodyVideoSnapshots) SetSnapshot(v []*string) *GetVi
 }
 
 type GetVideoInfoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoInfoResponse) String() string {
@@ -17930,9 +17973,9 @@ func (s *GetVideoInfosResponseBodyVideoList) SetVideoId(v string) *GetVideoInfos
 }
 
 type GetVideoInfosResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoInfosResponse) String() string {
@@ -18274,9 +18317,9 @@ func (s *GetVideoListResponseBodyVideoListVideoSnapshots) SetSnapshot(v []*strin
 }
 
 type GetVideoListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoListResponse) String() string {
@@ -18420,9 +18463,9 @@ func (s *GetVideoPlayAuthResponseBodyVideoMeta) SetVideoId(v string) *GetVideoPl
 }
 
 type GetVideoPlayAuthResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoPlayAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoPlayAuthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoPlayAuthResponse) String() string {
@@ -18558,9 +18601,9 @@ func (s *GetVodTemplateResponseBodyVodTemplateInfo) SetVodTemplateId(v string) *
 }
 
 type GetVodTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVodTemplateResponse) String() string {
@@ -18703,9 +18746,9 @@ func (s *GetWatermarkResponseBodyWatermarkInfo) SetWatermarkId(v string) *GetWat
 }
 
 type GetWatermarkResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetWatermarkResponse) String() string {
@@ -18846,9 +18889,9 @@ func (s *ListAIImageInfoResponseBodyAIImageInfoList) SetVideoId(v string) *ListA
 }
 
 type ListAIImageInfoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAIImageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAIImageInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAIImageInfoResponse) String() string {
@@ -19067,9 +19110,9 @@ func (s *ListAIJobResponseBodyNonExistAIJobIds) SetString_(v []*string) *ListAIJ
 }
 
 type ListAIJobResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAIJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAIJobResponse) String() string {
@@ -19218,9 +19261,9 @@ func (s *ListAITemplateResponseBodyTemplateInfoList) SetTemplateType(v string) *
 }
 
 type ListAITemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAITemplateResponse) String() string {
@@ -19380,9 +19423,9 @@ func (s *ListAppInfoResponseBodyAppInfoList) SetType(v string) *ListAppInfoRespo
 }
 
 type ListAppInfoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppInfoResponse) String() string {
@@ -19537,9 +19580,9 @@ func (s *ListAppPoliciesForIdentityResponseBodyAppPolicyList) SetPolicyValue(v s
 }
 
 type ListAppPoliciesForIdentityResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppPoliciesForIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppPoliciesForIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppPoliciesForIdentityResponse) String() string {
@@ -19648,9 +19691,9 @@ func (s *ListAuditSecurityIpResponseBodySecurityIpList) SetSecurityGroupName(v s
 }
 
 type ListAuditSecurityIpResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAuditSecurityIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuditSecurityIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAuditSecurityIpResponse) String() string {
@@ -19808,9 +19851,9 @@ func (s *ListDynamicImageResponseBodyDynamicImageList) SetWidth(v string) *ListD
 }
 
 type ListDynamicImageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDynamicImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDynamicImageResponse) String() string {
@@ -20148,9 +20191,9 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoS
 }
 
 type ListLiveRecordVideoResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLiveRecordVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLiveRecordVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLiveRecordVideoResponse) String() string {
@@ -20346,9 +20389,9 @@ func (s *ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot) SetUrl(v strin
 }
 
 type ListSnapshotsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSnapshotsResponse) String() string {
@@ -20516,9 +20559,9 @@ func (s *ListTranscodeTaskResponseBodyTranscodeTaskList) SetVideoId(v string) *L
 }
 
 type ListTranscodeTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTranscodeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTranscodeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTranscodeTaskResponse) String() string {
@@ -20654,9 +20697,9 @@ func (s *ListTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupList) SetTr
 }
 
 type ListTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTranscodeTemplateGroupResponse) String() string {
@@ -20806,9 +20849,9 @@ func (s *ListVodTemplateResponseBodyVodTemplateInfoList) SetVodTemplateId(v stri
 }
 
 type ListVodTemplateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVodTemplateResponse) String() string {
@@ -20934,9 +20977,9 @@ func (s *ListWatermarkResponseBodyWatermarkInfos) SetWatermarkId(v string) *List
 }
 
 type ListWatermarkResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListWatermarkResponse) String() string {
@@ -21031,9 +21074,9 @@ func (s *MoveAppResourceResponseBody) SetRequestId(v string) *MoveAppResourceRes
 }
 
 type MoveAppResourceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveAppResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveAppResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveAppResourceResponse) String() string {
@@ -21115,9 +21158,9 @@ func (s *PreloadVodObjectCachesResponseBody) SetRequestId(v string) *PreloadVodO
 }
 
 type PreloadVodObjectCachesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PreloadVodObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PreloadVodObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PreloadVodObjectCachesResponse) String() string {
@@ -21153,9 +21196,9 @@ type ProduceEditingProjectVideoRequest struct {
 	// The video metadata. The value must be in JSON format. For more information about the parameter structure, see [MediaMetadata](~~52839#title_rtf_ry5\_gjp~~).
 	MediaMetadata *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The configuration of video production. The value must be in JSON format. For more information about the parameter structure, see [ProduceConfig](~~52839#title_ybl\_7cs_y7d~~).
+	// The configuration of video production. The value must be in the JSON format. For more information about the parameter structure, see [ProduceConfig](~~52839#title-ybl-7cs-y7d~~).
 	//
-	// > The StorageLocation field is required if you create an online editing project in a region other than the China (Shanghai) region.
+	// >  StorageLocation is required if you produce videos in a region other than China (Shanghai).
 	ProduceConfig *string `json:"ProduceConfig,omitempty" xml:"ProduceConfig,omitempty"`
 	// The ID of the online editing project. You can use one of the following methods to obtain the ID of the online editing project:
 	//
@@ -21278,9 +21321,9 @@ func (s *ProduceEditingProjectVideoResponseBody) SetRequestId(v string) *Produce
 }
 
 type ProduceEditingProjectVideoResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ProduceEditingProjectVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProduceEditingProjectVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ProduceEditingProjectVideoResponse) String() string {
@@ -21448,9 +21491,9 @@ func (s *RefreshMediaPlayUrlsResponseBody) SetRequestId(v string) *RefreshMediaP
 }
 
 type RefreshMediaPlayUrlsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshMediaPlayUrlsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshMediaPlayUrlsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshMediaPlayUrlsResponse) String() string {
@@ -21482,9 +21525,9 @@ type RefreshUploadVideoRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the audio or video file. You can use one of the following methods to obtain the ID:
 	//
-	// * Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the audio or video file.
-	// * View the value of the VideoId parameter returned by the [CreateUploadVideo](~~55407~~) operation that you called to upload the audio or video file.
-	// * View the value of the VideoId parameter returned by the [SearchMedia](~~86044~~) operation that you called to query the ID of the audio or video file after you upload the file.
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** in the left-side navigation pane to view the ID.
+	// *   View the value of the VideoId parameter returned by the [CreateUploadVideo](~~55407~~) operation that you called to upload the audio or video file.
+	// *   After an audio or video file is uploaded, obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation that you call to query the audio or video ID.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -21521,11 +21564,11 @@ type RefreshUploadVideoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The upload URL.
 	//
-	// > The upload URL returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload URL, you must decode the upload URL by using the Base64 algorithm. You must parse the upload URL only if you use native Object Storage Service (OSS) SDKs or OSS API for uploads.
+	// >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use the OSS SDK or call an OSS API operation to upload media files.
 	UploadAddress *string `json:"UploadAddress,omitempty" xml:"UploadAddress,omitempty"`
 	// The upload credential.
 	//
-	// > The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
+	// >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload media files.
 	UploadAuth *string `json:"UploadAuth,omitempty" xml:"UploadAuth,omitempty"`
 	// The ID of the audio or video file.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
@@ -21560,9 +21603,9 @@ func (s *RefreshUploadVideoResponseBody) SetVideoId(v string) *RefreshUploadVide
 }
 
 type RefreshUploadVideoResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshUploadVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshUploadVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshUploadVideoResponse) String() string {
@@ -21654,9 +21697,9 @@ func (s *RefreshVodObjectCachesResponseBody) SetRequestId(v string) *RefreshVodO
 }
 
 type RefreshVodObjectCachesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshVodObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshVodObjectCachesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshVodObjectCachesResponse) String() string {
@@ -21683,19 +21726,27 @@ func (s *RefreshVodObjectCachesResponse) SetBody(v *RefreshVodObjectCachesRespon
 }
 
 type RegisterMediaRequest struct {
-	// The metadata of the media file that you want to register. The value is a JSON string. You can specify the metadata for a maximum of 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata** section of this topic.
+	// The metadata of the media files. The value must be a JSON string. You can specify the metadata for up to 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata** section of this topic.
 	RegisterMetadatas *string `json:"RegisterMetadatas,omitempty" xml:"RegisterMetadatas,omitempty"`
-	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
+	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID:
+	//
 	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.
-	// *   View the value of the TranscodeTemplateGroupId parameter returned by the [AddTranscodeTemplateGroup](~~102665~~) operation that you called to create a transcoding template group.
-	// *   View the value of the TranscodeTemplateGroupId parameter returned by the [ListTranscodeTemplateGroup](~~102669~~) operation that you called to query a transcoding template group.
-	// > *   If you do not need to transcode the media file, set the TemplateGroupId parameter to VOD_NO_TRANSCODE. Otherwise, an exception occurs during video playback. If you need to transcode the media file, specify the ID of the transcoding template group.
-	// > *   If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
+	// *   Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [AddTranscodeTemplateGroup](~~102665~~) operation that you called to create a transcoding template group.
+	// *   Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [ListTranscodeTemplateGroup](~~102669~~) operation that you called to query transcoding template groups.
+	//
+	// >
+	//
+	// *   If you do not need to transcode media files, set the TemplateGroupId parameter to VOD_NO_TRANSCODE. If you do not specify this configuration, errors occur on your files. If you need to transcode media files, specify the ID of the transcoding template group.
+	//
+	// *   If you specify both WorkflowId and TemplateGroupId, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The custom configurations such as callback configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952#section\_6fg_qll_v3w~~) topic.
+	// The custom settings. The value must be a JSON string. You can configure settings such as message callbacks. For more information, see [UserData](~~86952#section\_6fg_qll_v3w~~).
+	//
+	// >  You cannot configure callbacks for this operation. No callback message is returned after the media files are registered even if you configure callback settings for this parameter. If you configure callback settings for the UserData parameter when you create media processing jobs such as transcoding and snapshot capture jobs for the media file, the callback URL that you specified is used. If you do not configure callback settings when you create media processing jobs, the callback URL that you specified for the UserData parameter when you register the media file is used.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
-	// > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
+	// The ID of the workflow. To view the workflow ID, perform the following steps: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
+	//
+	// >  If you specify both WorkflowId and TemplateGroupId, the value of WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
@@ -21760,13 +21811,14 @@ func (s *RegisterMediaResponseBody) SetRequestId(v string) *RegisterMediaRespons
 }
 
 type RegisterMediaResponseBodyRegisteredMediaList struct {
-	// The OSS URL of the media file.
+	// The URL of the media file.
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of the VideoId parameter returned by ApsaraVideo VOD takes effect.
+	// The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of this parameter is the same as that of the VideoId parameter.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// Indicates whether the media file is newly registered or repeatedly registered. Valid values:
-	// - **true**: The media file is newly registered.
-	// - **false**: The media file is repeatedly registered.
+	//
+	// *   **true**: The media file is newly registered.
+	// *   **false**: The media file is repeatedly registered.
 	NewRegister *bool `json:"NewRegister,omitempty" xml:"NewRegister,omitempty"`
 }
 
@@ -21794,9 +21846,9 @@ func (s *RegisterMediaResponseBodyRegisteredMediaList) SetNewRegister(v bool) *R
 }
 
 type RegisterMediaResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterMediaResponse) String() string {
@@ -21971,9 +22023,9 @@ func (s *RestoreMediaResponseBodyIgnoredList) SetMediaId(v []*string) *RestoreMe
 }
 
 type RestoreMediaResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestoreMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestoreMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestoreMediaResponse) String() string {
@@ -22226,9 +22278,9 @@ func (s *SearchEditingProjectResponseBodyProjectListProject) SetTitle(v string) 
 }
 
 type SearchEditingProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchEditingProjectResponse) String() string {
@@ -22336,7 +22388,7 @@ func (s *SearchMediaRequest) SetSortBy(v string) *SearchMediaRequest {
 }
 
 type SearchMediaResponseBody struct {
-	// The AI type.
+	// The information about the media assets.
 	MediaList []*SearchMediaResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -22379,15 +22431,15 @@ type SearchMediaResponseBodyMediaList struct {
 	AiData *SearchMediaResponseBodyMediaListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
 	// The basic information about AI data.
 	AiRoughData *SearchMediaResponseBodyMediaListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
-	// [Details about auxiliary media assets](~~86991~~).
+	// [The information about the auxiliary media asset](~~86991~~).
 	AttachedMedia *SearchMediaResponseBodyMediaListAttachedMedia `json:"AttachedMedia,omitempty" xml:"AttachedMedia,omitempty" type:"Struct"`
-	// [Details about audio files](~~86991~~).
+	// [The information about the audio](~~86991~~).
 	Audio *SearchMediaResponseBodyMediaListAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// [Details about image files](~~86991~~).
+	// [The information about the image](~~86991~~).
 	Image *SearchMediaResponseBodyMediaListImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// The ID of the file.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The type of the media asset. Valid values:
 	//
@@ -22396,7 +22448,7 @@ type SearchMediaResponseBodyMediaList struct {
 	// *   **image**
 	// *   **attached**
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// [Details about video files](~~86991~~).
+	// [The information about the video](~~86991~~).
 	Video *SearchMediaResponseBodyMediaListVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -22550,7 +22602,7 @@ func (s *SearchMediaResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetTo(v f
 }
 
 type SearchMediaResponseBodyMediaListAiDataOcrInfo struct {
-	// The text.
+	// The text content.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The start time of the subtitle.
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
@@ -22582,13 +22634,13 @@ func (s *SearchMediaResponseBodyMediaListAiDataOcrInfo) SetTo(v float64) *Search
 }
 
 type SearchMediaResponseBodyMediaListAiRoughData struct {
-	// The AI type.
+	// The AI category.
 	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
 	// The ID of the AI task.
 	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
 	// The save type.
 	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	// The status of the data.
+	// The data status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -22631,21 +22683,21 @@ type SearchMediaResponseBodyMediaListAttachedMedia struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The list of category IDs.
 	Categories []*SearchMediaResponseBodyMediaListAttachedMediaCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the auxiliary media asset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the auxiliary media asset.
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the auxiliary media asset. Valid values:
 	//
-	// *   **Uploading**: The auxiliary media asset is being uploaded. This is the initial status.
-	// *   **Normal**: The auxiliary media asset is uploaded.
-	// *   **UploadFail**: The auxiliary media asset fails to be uploaded.
+	// *   **Uploading**
+	// *   **Normal**
+	// *   **UploadFail**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The endpoint of the OSS bucket in which the auxiliary media asset is stored.
+	// The region in which the auxiliary media asset is stored.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the auxiliary media asset.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -22730,7 +22782,7 @@ type SearchMediaResponseBodyMediaListAttachedMediaCategories struct {
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The level of the category.
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the parent category.
+	// The ID of the parent node.
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
@@ -22767,13 +22819,13 @@ type SearchMediaResponseBodyMediaListAudio struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The ID of the audio file.
 	AudioId *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
-	// The category ID of the audio file.
+	// The ID of the category.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The URL of the thumbnail.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the audio file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -22784,14 +22836,14 @@ type SearchMediaResponseBodyMediaListAudio struct {
 	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
 	// The duration of the audio file.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The source. Valid values:
+	// The source of the audio file. Valid values:
 	//
 	// *   **general**: The audio file is uploaded by using ApsaraVideo VOD.
 	// *   **short_video**: The audio file is uploaded to ApsaraVideo VOD by using the short video SDK. For more information, see [Introduction](~~53407~~).
 	// *   **editing**: The audio file is uploaded to ApsaraVideo VOD after online editing and production. For more information, see [ProduceEditingProjectVideo](~~68536~~).
-	// *   **live**: The audio stream is recorded and uploaded as a file to ApsaraVideo VOD.
+	// *   **live**: The audio file is recorded and uploaded as a file to ApsaraVideo VOD.
 	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
-	// The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The preprocessing status. Only preprocessed videos can be used for live streaming in the production studio. Valid values:
 	//
@@ -22810,9 +22862,9 @@ type SearchMediaResponseBodyMediaListAudio struct {
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
 	// The size of the audio file.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The list of automatic snapshots.
+	// The automatic snapshots.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The list of sprite snapshots.
+	// The sprite snapshots.
 	SpriteSnapshots []*string `json:"SpriteSnapshots,omitempty" xml:"SpriteSnapshots,omitempty" type:"Repeated"`
 	// The status of the audio file. Valid values:
 	//
@@ -22827,18 +22879,18 @@ type SearchMediaResponseBodyMediaListAudio struct {
 	// *   **IA**: All media resources are stored as IA objects.
 	// *   **Archive**: All media resources are stored as Archive objects.
 	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-	// *   **SourceIA**: Only the source files are IA objects.
-	// *   **SourceArchive**: Only the source files are Archive objects.
-	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+	// *   **SourceIA**: Only the source file is stored as an IA object.
+	// *   **SourceArchive**: Only the source file is stored as an Archive object.
+	// *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
 	// *   **Changing**: The storage class is being modified.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The endpoint of the OSS bucket in which the audio file is stored.
+	// The region in which the audio is stored.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the audio file.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the audio file.
+	// The title of the audio file
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The transcoding mode. Default value: FastTranscode. Valid values:
+	// The transcoding mode. Valid values:
 	//
 	// *   **FastTranscode**: The audio file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
 	// *   **NoTranscode**: The audio file can be played without being transcoded. You can immediately play the file after it is uploaded.
@@ -22972,25 +23024,25 @@ func (s *SearchMediaResponseBodyMediaListAudio) SetTranscodeMode(v string) *Sear
 type SearchMediaResponseBodyMediaListImage struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the image file.
+	// The ID of the category.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The time when the image file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the image file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the image file.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the image file.
 	//
-	// *   **Uploading**: The image file is being uploaded. This is the initial status.
-	// *   **Normal**: The image file is uploaded.
-	// *   **UploadFail**: The image file fails to be uploaded.
+	// *   **Uploading**
+	// *   **Normal**
+	// *   **UploadFail**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The endpoint of the OSS bucket in which the image file is stored.
+	// The region in which the image is stored.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the image file.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -23071,13 +23123,13 @@ func (s *SearchMediaResponseBodyMediaListImage) SetURL(v string) *SearchMediaRes
 type SearchMediaResponseBodyMediaListVideo struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the video file.
+	// The ID of the category.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The URL of the thumbnail.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the video file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -23088,14 +23140,14 @@ type SearchMediaResponseBodyMediaListVideo struct {
 	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
 	// The duration of the video file. Unit: seconds.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The source. Valid values:
+	// The source of the video file. Valid values:
 	//
 	// *   **general**: The video file is uploaded by using ApsaraVideo VOD.
 	// *   **short_video**: The video file is uploaded by using the short video SDK.
 	// *   **editing**: The video file is produced after online editing.
 	// *   **live**: The video stream is recorded and uploaded as a file.
 	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
-	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The preprocessing status. Valid values:
 	//
@@ -23114,11 +23166,11 @@ type SearchMediaResponseBodyMediaListVideo struct {
 	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
 	// The size of the video file.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The list of automatic snapshots.
+	// The automatic snapshots.
 	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The list of sprite snapshots.
+	// The sprite snapshots.
 	SpriteSnapshots []*string `json:"SpriteSnapshots,omitempty" xml:"SpriteSnapshots,omitempty" type:"Repeated"`
-	// The status of the video file. Valid values:
+	// The status of the file. Valid values:
 	//
 	// *   **Uploading**
 	// *   **UploadFail**
@@ -23134,18 +23186,19 @@ type SearchMediaResponseBodyMediaListVideo struct {
 	// *   **IA**: All media resources are stored as IA objects.
 	// *   **Archive**: All media resources are stored as Archive objects.
 	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-	// *   **SourceIA**: Only the source files are IA objects.
-	// *   **SourceArchive**: Only the source files are Archive objects.
-	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// *   **Changing**: The storage class is being modified.
+	// *   **SourceIA**: Only the source file is stored as an IA object.
+	// *   **SourceArchive**: Only the source file is stored as an Archive object.
+	// *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
+	// *   **Changing**: The storage class of the video file is being changed.
+	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The endpoint of the OSS bucket in which the video file is stored.
+	// The region in which the video is stored.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the video file.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the video file.
+	// The title of the video.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The transcoding mode. Default value: FastTranscode. Valid values:
+	// The transcoding mode. Valid values:
 	//
 	// *   **FastTranscode**: The video file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
 	// *   **NoTranscode**: The video file can be played without being transcoded. You can immediately play the file after it is uploaded.
@@ -23279,9 +23332,9 @@ func (s *SearchMediaResponseBodyMediaListVideo) SetVideoId(v string) *SearchMedi
 }
 
 type SearchMediaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchMediaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchMediaResponse) String() string {
@@ -23308,14 +23361,14 @@ func (s *SearchMediaResponse) SetBody(v *SearchMediaResponseBody) *SearchMediaRe
 }
 
 type SetAuditSecurityIpRequest struct {
-	// The IP addresses to be added to a review security group. You can add a maximum of 100 IP addresses to each review security group. Separate multiple IP addresses with commas (,). You can enter individual IP addresses or a CIDR block.
+	// The IP addresses that you want to add to the review security group. You can add a maximum of 100 IP addresses to a review security group. Separate multiple IP addresses with commas (,). You can add IP addresses in the following formats to review security groups:
 	//
-	// *   Individual IP address: for example, 10.23.12.24
-	// *   CIDR block: for example, 10.23.12.24/24, where /24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges from `1 to 32`.
+	// *   IP address: 192.168.0.1
+	// *   CIDR block: 192.168.0.1/24. /24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges `from 1 to 32`.
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
 	// The operation type. Valid values:
 	//
-	// *   **Append**: adds the IP addresses to the original whitelist. This is the default value.
+	// *   **Append** (default): adds the IP addresses to the original whitelist.
 	// *   **Cover**: overwrites the original whitelist.
 	// *   **Delete**: removes the IP addresses from the original whitelist.
 	OperateMode *string `json:"OperateMode,omitempty" xml:"OperateMode,omitempty"`
@@ -23365,9 +23418,9 @@ func (s *SetAuditSecurityIpResponseBody) SetRequestId(v string) *SetAuditSecurit
 }
 
 type SetAuditSecurityIpResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetAuditSecurityIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetAuditSecurityIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetAuditSecurityIpResponse) String() string {
@@ -23468,9 +23521,9 @@ func (s *SetCrossdomainContentResponseBody) SetRequestId(v string) *SetCrossdoma
 }
 
 type SetCrossdomainContentResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetCrossdomainContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetCrossdomainContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetCrossdomainContentResponse) String() string {
@@ -23543,9 +23596,9 @@ func (s *SetDefaultAITemplateResponseBody) SetTemplateId(v string) *SetDefaultAI
 }
 
 type SetDefaultAITemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDefaultAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDefaultAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDefaultAITemplateResponse) String() string {
@@ -23608,9 +23661,9 @@ func (s *SetDefaultTranscodeTemplateGroupResponseBody) SetRequestId(v string) *S
 }
 
 type SetDefaultTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDefaultTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDefaultTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDefaultTranscodeTemplateGroupResponse) String() string {
@@ -23673,9 +23726,9 @@ func (s *SetDefaultWatermarkResponseBody) SetRequestId(v string) *SetDefaultWate
 }
 
 type SetDefaultWatermarkResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDefaultWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDefaultWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDefaultWatermarkResponse) String() string {
@@ -23769,9 +23822,9 @@ func (s *SetEditingProjectMaterialsResponseBody) SetRequestId(v string) *SetEdit
 }
 
 type SetEditingProjectMaterialsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetEditingProjectMaterialsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetEditingProjectMaterialsResponse) String() string {
@@ -23895,9 +23948,9 @@ func (s *SetMessageCallbackResponseBody) SetRequestId(v string) *SetMessageCallb
 }
 
 type SetMessageCallbackResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetMessageCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetMessageCallbackResponse) String() string {
@@ -24003,9 +24056,9 @@ func (s *SetVodDomainCertificateResponseBody) SetRequestId(v string) *SetVodDoma
 }
 
 type SetVodDomainCertificateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetVodDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetVodDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetVodDomainCertificateResponse) String() string {
@@ -24130,9 +24183,9 @@ func (s *SubmitAIImageAuditJobResponseBody) SetRequestId(v string) *SubmitAIImag
 }
 
 type SubmitAIImageAuditJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAIImageAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAIImageAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAIImageAuditJobResponse) String() string {
@@ -24262,9 +24315,9 @@ func (s *SubmitAIImageJobResponseBody) SetRequestId(v string) *SubmitAIImageJobR
 }
 
 type SubmitAIImageJobResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAIImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAIImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAIImageJobResponse) String() string {
@@ -24445,9 +24498,9 @@ func (s *SubmitAIJobResponseBodyAIJobListAIJob) SetType(v string) *SubmitAIJobRe
 }
 
 type SubmitAIJobResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAIJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAIJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAIJobResponse) String() string {
@@ -24563,9 +24616,9 @@ func (s *SubmitAIMediaAuditJobResponseBody) SetRequestId(v string) *SubmitAIMedi
 }
 
 type SubmitAIMediaAuditJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitAIMediaAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAIMediaAuditJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitAIMediaAuditJobResponse) String() string {
@@ -24669,9 +24722,9 @@ func (s *SubmitDigitalWatermarkExtractJobResponseBody) SetRequestId(v string) *S
 }
 
 type SubmitDigitalWatermarkExtractJobResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDigitalWatermarkExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDigitalWatermarkExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDigitalWatermarkExtractJobResponse) String() string {
@@ -24777,9 +24830,9 @@ func (s *SubmitDynamicImageJobResponseBodyDynamicImageJob) SetJobId(v string) *S
 }
 
 type SubmitDynamicImageJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDynamicImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDynamicImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDynamicImageJobResponse) String() string {
@@ -24873,9 +24926,9 @@ func (s *SubmitMediaDNADeleteJobResponseBody) SetRequestId(v string) *SubmitMedi
 }
 
 type SubmitMediaDNADeleteJobResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitMediaDNADeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitMediaDNADeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitMediaDNADeleteJobResponse) String() string {
@@ -24987,9 +25040,9 @@ func (s *SubmitPreprocessJobsResponseBodyPreprocessJobsPreprocessJob) SetJobId(v
 }
 
 type SubmitPreprocessJobsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitPreprocessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitPreprocessJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitPreprocessJobsResponse) String() string {
@@ -25018,33 +25071,39 @@ func (s *SubmitPreprocessJobsResponse) SetBody(v *SubmitPreprocessJobsResponseBo
 type SubmitSnapshotJobRequest struct {
 	// The maximum number of snapshots. Default value: **1**.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The height of each snapshot. Valid values: `[8,4096]`. By default, the height of the video mezzanine file is used. Unit: pixel.
+	// The height of each snapshot. Valid values: `[8,4096]`. By default, the height of the video source is used. Unit: pixels.
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The snapshot interval. The value must be **greater than or equal to 0**. Unit: seconds. If you set this parameter to **0**, snapshots are taken at even intervals based on the video duration divided by the value of the Count parameter. Default value: **1**.
+	// The snapshot interval. The value must be **greater than or equal to 0**.
+	//
+	// *   Unit: seconds.
+	// *   Default value: **1**.
+	// *   If you set this parameter to **0**, snapshots are captured at even intervals based on the video duration divided by the value of the Count parameter.
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the snapshot template.
 	//
-	// *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+	// *   We recommend that you create a snapshot template before you specify the template ID. For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
 	// *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
-	// *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
 	SnapshotTemplateId *string `json:"SnapshotTemplateId,omitempty" xml:"SnapshotTemplateId,omitempty"`
-	// The start time of the specified snapshot time period.
+	// The point in time when the first snapshot is captured.
 	//
 	// *   Unit: milliseconds.
 	// *   Default value: **0**.
-	SpecifiedOffsetTime  *int64   `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	SpecifiedOffsetTime *int64 `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	// The playback positions at which you want to capture snapshots. Unit: milliseconds. You can specify up to 30 playback positions in a request.
 	SpecifiedOffsetTimes []*int64 `json:"SpecifiedOffsetTimes,omitempty" xml:"SpecifiedOffsetTimes,omitempty" type:"Repeated"`
 	// The sprite snapshot configuration. If you set this parameter, sprite snapshots are generated. For more information, see [SpriteSnapshotConfig](~~86952~~).
 	SpriteSnapshotConfig *string `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty"`
-	// The custom configurations, including the configuration of transparent data transmission and callback configurations. The value is a JSON-formatted string. For more information, see [UserData](~~86952~~).
+	// The custom configurations including the configuration of transparent data transmission and callback configurations. The value must be a JSON string. For more information, see [UserData](~~86952~~).
 	//
-	// **
-	//
-	// **Note** The callback configurations take effect only when you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console.
+	// >  To use the message callback feature, you must specify an HTTP callback URL and the callback events in the ApsaraVideo VOD console. Otherwise, the callback settings do not take effect.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video.
+	// The ID of the video. You can use one of the following methods to obtain the ID:
+	//
+	// *   After you upload a video in the ApsaraVideo VOD console, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the ID of the video.
+	// *   Obtain the video ID from the response to the [CreateUploadVideo](~~55407~~) operation that you called to obtain the upload URL and credential.
+	// *   Obtain the video ID from the response to the [SearchMedia](~~86044~~) operation that you called to query media information after the audio or video file is uploaded.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	// The width of each snapshot. Valid values: `[8,4096]`. By default, the width of the video mezzanine file is used. Unit: pixel.
+	// The width of each snapshot. Valid values: `[8,4096]`. By default, the width of the video source is used. Unit: pixels.
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -25109,33 +25168,39 @@ func (s *SubmitSnapshotJobRequest) SetWidth(v string) *SubmitSnapshotJobRequest 
 type SubmitSnapshotJobShrinkRequest struct {
 	// The maximum number of snapshots. Default value: **1**.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The height of each snapshot. Valid values: `[8,4096]`. By default, the height of the video mezzanine file is used. Unit: pixel.
+	// The height of each snapshot. Valid values: `[8,4096]`. By default, the height of the video source is used. Unit: pixels.
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The snapshot interval. The value must be **greater than or equal to 0**. Unit: seconds. If you set this parameter to **0**, snapshots are taken at even intervals based on the video duration divided by the value of the Count parameter. Default value: **1**.
+	// The snapshot interval. The value must be **greater than or equal to 0**.
+	//
+	// *   Unit: seconds.
+	// *   Default value: **1**.
+	// *   If you set this parameter to **0**, snapshots are captured at even intervals based on the video duration divided by the value of the Count parameter.
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the snapshot template.
 	//
-	// *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+	// *   We recommend that you create a snapshot template before you specify the template ID. For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
 	// *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
-	// *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
 	SnapshotTemplateId *string `json:"SnapshotTemplateId,omitempty" xml:"SnapshotTemplateId,omitempty"`
-	// The start time of the specified snapshot time period.
+	// The point in time when the first snapshot is captured.
 	//
 	// *   Unit: milliseconds.
 	// *   Default value: **0**.
-	SpecifiedOffsetTime        *int64  `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	SpecifiedOffsetTime *int64 `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	// The playback positions at which you want to capture snapshots. Unit: milliseconds. You can specify up to 30 playback positions in a request.
 	SpecifiedOffsetTimesShrink *string `json:"SpecifiedOffsetTimes,omitempty" xml:"SpecifiedOffsetTimes,omitempty"`
 	// The sprite snapshot configuration. If you set this parameter, sprite snapshots are generated. For more information, see [SpriteSnapshotConfig](~~86952~~).
 	SpriteSnapshotConfig *string `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty"`
-	// The custom configurations, including the configuration of transparent data transmission and callback configurations. The value is a JSON-formatted string. For more information, see [UserData](~~86952~~).
+	// The custom configurations including the configuration of transparent data transmission and callback configurations. The value must be a JSON string. For more information, see [UserData](~~86952~~).
 	//
-	// **
-	//
-	// **Note** The callback configurations take effect only when you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console.
+	// >  To use the message callback feature, you must specify an HTTP callback URL and the callback events in the ApsaraVideo VOD console. Otherwise, the callback settings do not take effect.
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video.
+	// The ID of the video. You can use one of the following methods to obtain the ID:
+	//
+	// *   After you upload a video in the ApsaraVideo VOD console, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the ID of the video.
+	// *   Obtain the video ID from the response to the [CreateUploadVideo](~~55407~~) operation that you called to obtain the upload URL and credential.
+	// *   Obtain the video ID from the response to the [SearchMedia](~~86044~~) operation that you called to query media information after the audio or video file is uploaded.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	// The width of each snapshot. Valid values: `[8,4096]`. By default, the width of the video mezzanine file is used. Unit: pixel.
+	// The width of each snapshot. Valid values: `[8,4096]`. By default, the width of the video source is used. Unit: pixels.
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -25241,9 +25306,9 @@ func (s *SubmitSnapshotJobResponseBodySnapshotJob) SetJobId(v string) *SubmitSna
 }
 
 type SubmitSnapshotJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitSnapshotJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSnapshotJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitSnapshotJobResponse) String() string {
@@ -25419,9 +25484,9 @@ func (s *SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob) SetJobId(v st
 }
 
 type SubmitTranscodeJobsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTranscodeJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTranscodeJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTranscodeJobsResponse) String() string {
@@ -25495,9 +25560,9 @@ func (s *SubmitWorkflowJobResponseBody) SetRequestId(v string) *SubmitWorkflowJo
 }
 
 type SubmitWorkflowJobResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitWorkflowJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitWorkflowJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitWorkflowJobResponse) String() string {
@@ -25584,9 +25649,9 @@ func (s *UpdateAITemplateResponseBody) SetTemplateId(v string) *UpdateAITemplate
 }
 
 type UpdateAITemplateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAITemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAITemplateResponse) String() string {
@@ -25682,9 +25747,9 @@ func (s *UpdateAppInfoResponseBody) SetRequestId(v string) *UpdateAppInfoRespons
 }
 
 type UpdateAppInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAppInfoResponse) String() string {
@@ -25754,9 +25819,9 @@ func (s *UpdateAttachedMediaInfosResponseBody) SetRequestId(v string) *UpdateAtt
 }
 
 type UpdateAttachedMediaInfosResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAttachedMediaInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAttachedMediaInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAttachedMediaInfosResponse) String() string {
@@ -25829,9 +25894,9 @@ func (s *UpdateCategoryResponseBody) SetRequestId(v string) *UpdateCategoryRespo
 }
 
 type UpdateCategoryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCategoryResponse) String() string {
@@ -25946,9 +26011,9 @@ func (s *UpdateEditingProjectResponseBody) SetRequestId(v string) *UpdateEditing
 }
 
 type UpdateEditingProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEditingProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateEditingProjectResponse) String() string {
@@ -26037,9 +26102,9 @@ func (s *UpdateImageInfosResponseBodyNonExistImageIds) SetImageId(v []*string) *
 }
 
 type UpdateImageInfosResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateImageInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateImageInfosResponse) String() string {
@@ -26066,6 +26131,12 @@ func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *Upd
 }
 
 type UpdateMediaStorageClassRequest struct {
+	// Specifies whether to change the storage class of a media asset that is stored for less than the minimum storage duration. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  If you forcibly change the storage class of a media asset that is stored for less than the minimum storage duration, additional data retrieval fees are incurred.
 	AllowUpdateWithoutTimeLimit *bool `json:"AllowUpdateWithoutTimeLimit,omitempty" xml:"AllowUpdateWithoutTimeLimit,omitempty"`
 	// The media asset ID. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
 	//
@@ -26084,7 +26155,7 @@ type UpdateMediaStorageClassRequest struct {
 	// *   **All**: modifies the storage classes of all resources including the source files and transcoded streams.
 	// *   **SourceFile**: modifies the storage classes of only the source files. The storage class of other resources is Standard.
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The storage class to which you want to modify. Valid values:
+	// The storage class. Valid values:
 	//
 	// *   **Standard**
 	// *   **IA**
@@ -26228,9 +26299,9 @@ func (s *UpdateMediaStorageClassResponseBodyIgnoredList) SetMediaId(v []*string)
 }
 
 type UpdateMediaStorageClassResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMediaStorageClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaStorageClassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateMediaStorageClassResponse) String() string {
@@ -26257,19 +26328,19 @@ func (s *UpdateMediaStorageClassResponse) SetBody(v *UpdateMediaStorageClassResp
 }
 
 type UpdateTranscodeTemplateGroupRequest struct {
-	// The lock status of the template group. Valid values:
+	// The lock status of the transcoding template group. Valid values:
 	//
-	// *   **Enabled**: The template group is locked.
-	// *   **Disabled**: The template group is not locked.
+	// *   **Enabled**: The transcoding template group is locked and cannot be modified.
+	// *   **Disabled** (default): The transcoding template group is not locked.
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	// The name of the transcoding template group.
 	//
-	// *   The name can be up to 128 bytes in length.
+	// *   The name cannot exceed 128 bytes.
 	// *   The value must be encoded in UTF-8.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The configurations of the transcoding template. The value is a JSON-formatted string. For more information about the data structure, see the "TranscodeTemplate" section of the [Basic data types](~~52839~~) topic.
+	// The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839~~).
 	TranscodeTemplateList *string `json:"TranscodeTemplateList,omitempty" xml:"TranscodeTemplateList,omitempty"`
 }
 
@@ -26327,9 +26398,9 @@ func (s *UpdateTranscodeTemplateGroupResponseBody) SetTranscodeTemplateGroupId(v
 }
 
 type UpdateTranscodeTemplateGroupResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTranscodeTemplateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTranscodeTemplateGroupResponse) String() string {
@@ -26437,9 +26508,9 @@ func (s *UpdateVideoInfoResponseBody) SetRequestId(v string) *UpdateVideoInfoRes
 }
 
 type UpdateVideoInfoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVideoInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVideoInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVideoInfoResponse) String() string {
@@ -26518,9 +26589,9 @@ func (s *UpdateVideoInfosResponseBody) SetRequestId(v string) *UpdateVideoInfosR
 }
 
 type UpdateVideoInfosResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVideoInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVideoInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVideoInfosResponse) String() string {
@@ -26609,9 +26680,9 @@ func (s *UpdateVodDomainResponseBody) SetRequestId(v string) *UpdateVodDomainRes
 }
 
 type UpdateVodDomainResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVodDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVodDomainResponse) String() string {
@@ -26698,9 +26769,9 @@ func (s *UpdateVodTemplateResponseBody) SetVodTemplateId(v string) *UpdateVodTem
 }
 
 type UpdateVodTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVodTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateVodTemplateResponse) String() string {
@@ -26852,9 +26923,9 @@ func (s *UpdateWatermarkResponseBodyWatermarkInfo) SetWatermarkId(v string) *Upd
 }
 
 type UpdateWatermarkResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateWatermarkResponse) String() string {
@@ -27026,9 +27097,9 @@ func (s *UploadMediaByURLResponseBodyUploadJobs) SetSourceURL(v string) *UploadM
 }
 
 type UploadMediaByURLResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadMediaByURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadMediaByURLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadMediaByURLResponse) String() string {
@@ -27174,9 +27245,9 @@ func (s *UploadStreamByURLResponseBody) SetStreamJobId(v string) *UploadStreamBy
 }
 
 type UploadStreamByURLResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadStreamByURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadStreamByURLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadStreamByURLResponse) String() string {
@@ -27259,9 +27330,9 @@ func (s *VerifyVodDomainOwnerResponseBody) SetRequestId(v string) *VerifyVodDoma
 }
 
 type VerifyVodDomainOwnerResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyVodDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyVodDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyVodDomainOwnerResponse) String() string {
@@ -27899,8 +27970,8 @@ func (client *Client) AddVodStorageForApp(request *AddVodStorageForAppRequest) (
 }
 
 /**
- * > *   After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
- * > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+ * *   After you add a snapshot template, you can call the [SubmitSnapshotJob](~~72213~~) operation and specify the template ID to submit a snapshot job.
+ * *   You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](~~57337~~) callback. For more information, see [Overview](~~55627~~).
  *
  * @param request AddVodTemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27952,8 +28023,8 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 }
 
 /**
- * > *   After you create a snapshot template, you can specify the ID of the snapshot template in the request of the [SubmitSnapshotJob](~~72213~~) operation to take snapshots.
- * > *   You can receive the [SnapshotComplete](~~57337~~) event notification by using an HTTP or HTTPS URL or in Message Service (MNS). For more information, see [Overview](~~55627~~).
+ * *   After you add a snapshot template, you can call the [SubmitSnapshotJob](~~72213~~) operation and specify the template ID to submit a snapshot job.
+ * *   You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](~~57337~~) callback. For more information, see [Overview](~~55627~~).
  *
  * @param request AddVodTemplateRequest
  * @return AddVodTemplateResponse
@@ -29503,7 +29574,7 @@ func (client *Client) DeleteMessageCallback(request *DeleteMessageCallbackReques
 }
 
 /**
- * All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+ * All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed based on source files. If you delete the source files, you cannot perform media processing operations. Exercise caution when you call this operation.
  *
  * @param request DeleteMezzaninesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29547,7 +29618,7 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 }
 
 /**
- * All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed on mezzanine files. If you delete the mezzanine files, you cannot perform follow-up media processing operations. Exercise caution when you call this operation.
+ * All media processing operations in ApsaraVideo VOD, such as transcoding, snapshot capture, and content moderation, are performed based on source files. If you delete the source files, you cannot perform media processing operations. Exercise caution when you call this operation.
  *
  * @param request DeleteMezzaninesRequest
  * @return DeleteMezzaninesResponse
@@ -29564,9 +29635,9 @@ func (client *Client) DeleteMezzanines(request *DeleteMezzaninesRequest) (_resul
 }
 
 /**
- * * In a multipart upload, fragments may be generated if the upload fails. In most cases, the fragments are automatically deleted after seven days. You can call this operation to delete the generated fragments after the upload is successful or fails.
- * * This operation does not delete the source file or transcoded file, but deletes only the fragments generated during the upload.
- * * If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated fragments.
+ * *   During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
+ * *   This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
+ * *   If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated parts.
  *
  * @param request DeleteMultipartUploadRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29614,9 +29685,9 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 }
 
 /**
- * * In a multipart upload, fragments may be generated if the upload fails. In most cases, the fragments are automatically deleted after seven days. You can call this operation to delete the generated fragments after the upload is successful or fails.
- * * This operation does not delete the source file or transcoded file, but deletes only the fragments generated during the upload.
- * * If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated fragments.
+ * *   During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
+ * *   This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
+ * *   If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated parts.
  *
  * @param request DeleteMultipartUploadRequest
  * @return DeleteMultipartUploadResponse
@@ -31477,6 +31548,10 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -31735,6 +31810,14 @@ func (client *Client) DetachAppPolicyFromIdentity(request *DetachAppPolicyFromId
 	return _result, _err
 }
 
+/**
+ * *   To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](~~86107~~).
+ * *   After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](~~124735~~).
+ *
+ * @param request GenerateDownloadSecretKeyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GenerateDownloadSecretKeyResponse
+ */
 func (client *Client) GenerateDownloadSecretKeyWithOptions(request *GenerateDownloadSecretKeyRequest, runtime *util.RuntimeOptions) (_result *GenerateDownloadSecretKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31784,6 +31867,13 @@ func (client *Client) GenerateDownloadSecretKeyWithOptions(request *GenerateDown
 	return _result, _err
 }
 
+/**
+ * *   To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](~~86107~~).
+ * *   After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](~~124735~~).
+ *
+ * @param request GenerateDownloadSecretKeyRequest
+ * @return GenerateDownloadSecretKeyResponse
+ */
 func (client *Client) GenerateDownloadSecretKey(request *GenerateDownloadSecretKeyRequest) (_result *GenerateDownloadSecretKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateDownloadSecretKeyResponse{}
@@ -33659,8 +33749,8 @@ func (client *Client) GetUploadDetails(request *GetUploadDetailsRequest) (_resul
 }
 
 /**
- * The video snapshot URLs.
- * > This operation returns only data about the snapshots that are captured when you upload a video. The snapshot data includes data of the thumbnail and snapshot data that is generated based on the workflow setting. To query the snapshot data that is generated after the video is uploaded, call the [ListSnapshots](~~ListSnapshots~~) operation. For more information, see [Video snapshots](~~99368~~).
+ * * You can call this operation to obtain basic information about multiple media files based on media IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags.
+ * * After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive notifications for the **VideoAnalysisComplete** event. For more information, see [Overview](~~55627~~) .
  *
  * @param request GetVideoInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33700,8 +33790,8 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 }
 
 /**
- * The video snapshot URLs.
- * > This operation returns only data about the snapshots that are captured when you upload a video. The snapshot data includes data of the thumbnail and snapshot data that is generated based on the workflow setting. To query the snapshot data that is generated after the video is uploaded, call the [ListSnapshots](~~ListSnapshots~~) operation. For more information, see [Video snapshots](~~99368~~).
+ * * You can call this operation to obtain basic information about multiple media files based on media IDs. The basic information includes the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags.
+ * * After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the **VideoAnalysisComplete** event and call this operation to query information about a media file after you receive notifications for the **VideoAnalysisComplete** event. For more information, see [Overview](~~55627~~) .
  *
  * @param request GetVideoInfoRequest
  * @return GetVideoInfoResponse
@@ -34937,17 +35027,16 @@ func (client *Client) PreloadVodObjectCaches(request *PreloadVodObjectCachesRequ
 }
 
 /**
+ * *   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
  * *   This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
  * *   The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
- * *   Videos are produced based on ProjectId and Timeline. The following rules apply when you specify the parameters:
- *     *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
- *     *   If you specify only the Timeline parameter, the system automatically creates an online editing project based on the specified timeline. Then, the system uses the source files specified in the timeline to produce videos.
- *     *   If you specify only the ProjectId parameter, the system obtains the latest timeline data of the specified project to produce videos.
- *     *   If you specify both the ProjectId and Timeline parameters, the system produces videos based on the specified timeline and updates the timeline data for the specified online editing project. You can also specify other parameters to update the corresponding information about the online editing project.
+ * *   Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
+ *     *   You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
+ *     *   If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
+ *     *   If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
+ *     *   If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
  * *   After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete** and **FileUploadComplete** event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete** and **TranscodeComplete** event notifications are sent to you.
  * *   You can add special effects to the video. For more information, see [Special effects](~~69082~~).
- * ### QPS limits
- * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request ProduceEditingProjectVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35031,17 +35120,16 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 }
 
 /**
+ * *   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
  * *   This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
  * *   The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library.
- * *   Videos are produced based on ProjectId and Timeline. The following rules apply when you specify the parameters:
- *     *   You must specify at least one of the ProjectId and Timeline parameters. Otherwise, video production fails.
- *     *   If you specify only the Timeline parameter, the system automatically creates an online editing project based on the specified timeline. Then, the system uses the source files specified in the timeline to produce videos.
- *     *   If you specify only the ProjectId parameter, the system obtains the latest timeline data of the specified project to produce videos.
- *     *   If you specify both the ProjectId and Timeline parameters, the system produces videos based on the specified timeline and updates the timeline data for the specified online editing project. You can also specify other parameters to update the corresponding information about the online editing project.
+ * *   Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
+ *     *   You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
+ *     *   If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
+ *     *   If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
+ *     *   If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
  * *   After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete** and **FileUploadComplete** event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete** and **TranscodeComplete** event notifications are sent to you.
  * *   You can add special effects to the video. For more information, see [Special effects](~~69082~~).
- * ### QPS limits
- * You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations in ApsaraVideo VOD](~~342790~~).
  *
  * @param request ProduceEditingProjectVideoRequest
  * @return ProduceEditingProjectVideoResponse
@@ -35155,7 +35243,7 @@ func (client *Client) RefreshMediaPlayUrls(request *RefreshMediaPlayUrlsRequest)
 }
 
 /**
- * If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+ * You can also call this operation to overwrite the source file of an audio or video file. After you call this operation, the system obtains the upload URL and uploads a new source file without changing the ID of the audio or video file. If you have configured transcoding or snapshot capture for the upload, the transcoding or snapshot capture job is automatically triggered. For more information, see [Upload URLs and credentials](~~55397~~).
  *
  * @param request RefreshUploadVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35207,7 +35295,7 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 }
 
 /**
- * If you want to overwrite a video or audio source file, you can obtain the upload URL of the source file by calling this operation. Then, you can upload a new source file without changing the video or audio ID. However, the file overwriting may automatically trigger transcoding and snapshot jobs if these jobs are configured. For more information, see [Upload URLs and credentials](~~55397~~).
+ * You can also call this operation to overwrite the source file of an audio or video file. After you call this operation, the system obtains the upload URL and uploads a new source file without changing the ID of the audio or video file. If you have configured transcoding or snapshot capture for the upload, the transcoding or snapshot capture job is automatically triggered. For more information, see [Upload URLs and credentials](~~55397~~).
  *
  * @param request RefreshUploadVideoRequest
  * @return RefreshUploadVideoResponse
@@ -35297,10 +35385,11 @@ func (client *Client) RefreshVodObjectCaches(request *RefreshVodObjectCachesRequ
 }
 
 /**
- * After you store an audio or video file in an Object Storage Service (OSS) bucket that is used for ApsaraVideo VOD, you can call the RegisterMedia operation to register the media file. After the media file is registered, you can use the media ID associated with the media file to submit transcoding jobs and snapshot jobs in ApsaraVideo VOD. For more information, see [SubmitTranscodeJobs](~~68570~~) and [SubmitSnapshotJob](~~72213~~).
- * > *   You can register up to 10 OSS media files that have the same storage location at a time.
- * > *   If you use the ApsaraVideo VOD console to upload a media file and do not specify a transcoding template group ID, ApsaraVideo VOD uses the default transcoding template group to transcode the media file. However, if you do not specify a transcoding template group ID when you call the RegisterMedia operation, ApsaraVideo VOD does not automatically transcode the media file after the media file is registered. If you specify a transcoding template group ID, ApsaraVideo VOD uses the specified transcoding template group to transcode the media file.
- * > *   If the media file that you want to register is registered before, this operation returns only the unique media ID that is associated with the media file. No further processing is performed.
+ * *   After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
+ * *   You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
+ * *   If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
+ * *   If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
+ * *   Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
  *
  * @param request RegisterMediaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35352,10 +35441,11 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 }
 
 /**
- * After you store an audio or video file in an Object Storage Service (OSS) bucket that is used for ApsaraVideo VOD, you can call the RegisterMedia operation to register the media file. After the media file is registered, you can use the media ID associated with the media file to submit transcoding jobs and snapshot jobs in ApsaraVideo VOD. For more information, see [SubmitTranscodeJobs](~~68570~~) and [SubmitSnapshotJob](~~72213~~).
- * > *   You can register up to 10 OSS media files that have the same storage location at a time.
- * > *   If you use the ApsaraVideo VOD console to upload a media file and do not specify a transcoding template group ID, ApsaraVideo VOD uses the default transcoding template group to transcode the media file. However, if you do not specify a transcoding template group ID when you call the RegisterMedia operation, ApsaraVideo VOD does not automatically transcode the media file after the media file is registered. If you specify a transcoding template group ID, ApsaraVideo VOD uses the specified transcoding template group to transcode the media file.
- * > *   If the media file that you want to register is registered before, this operation returns only the unique media ID that is associated with the media file. No further processing is performed.
+ * *   After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
+ * *   You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
+ * *   If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
+ * *   If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
+ * *   Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
  *
  * @param request RegisterMediaRequest
  * @return RegisterMediaResponse
@@ -35616,7 +35706,7 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 }
 
 /**
- * > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+ * You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
  *
  * @param request SetAuditSecurityIpRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35664,7 +35754,7 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 }
 
 /**
- * > You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
+ * You can play videos in the Checking or Blocked state only from the IP addresses that are added to review security groups.
  *
  * @param request SetAuditSecurityIpRequest
  * @return SetAuditSecurityIpResponse
@@ -36760,8 +36850,10 @@ func (client *Client) SubmitPreprocessJobs(request *SubmitPreprocessJobsRequest)
 }
 
 /**
- * > *   Only snapshots in the JPG format are generated.
- * > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+ * *   Only snapshots in the JPG format are generated.
+ * *   After a snapshot is captured, the [SnapshotComplete](~~57337~~) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
+ * ### [](#qps-)QPS limits
+ * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~342790~~).
  *
  * @param tmpReq SubmitSnapshotJobRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36843,8 +36935,10 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 }
 
 /**
- * > *   Only snapshots in the JPG format are generated.
- * > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
+ * *   Only snapshots in the JPG format are generated.
+ * *   After a snapshot is captured, the [SnapshotComplete](~~57337~~) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
+ * ### [](#qps-)QPS limits
+ * You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](~~342790~~).
  *
  * @param request SubmitSnapshotJobRequest
  * @return SubmitSnapshotJobResponse
@@ -37376,10 +37470,10 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 }
 
 /**
- * UpdateMediaStorageClass is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
- * If the storage class of a media asset is Archive or Cold Archive, the media asset is automatically restored when you call this operation. After the media asset is restored, the storage class is modified. To restore the media asset, you do not need to call the RestoreMedia operation. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard.
- * Media assets whose storage classes are being modified cannot be used or processed.
- * The media assets that are not of the Standard storage class have a limit on storage duration. If the storage duration does not meet the following requirements, you cannot change the storage classes: Infrequent Access (IA) media assets or source files are stored for at least 30 days, Archive media assets or source files are stored for at least 60 days, and Cold Archive media assets or source files are stored for at least 180 days.
+ * *   This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+ * *   If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
+ * *   Media assets whose storage classes are being modified cannot be used or processed.
+ * *   Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
  *
  * @param request UpdateMediaStorageClassRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37435,10 +37529,10 @@ func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaSto
 }
 
 /**
- * UpdateMediaStorageClass is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
- * If the storage class of a media asset is Archive or Cold Archive, the media asset is automatically restored when you call this operation. After the media asset is restored, the storage class is modified. To restore the media asset, you do not need to call the RestoreMedia operation. To modify the storage class of a Cold Archive media asset, you must specify the restoration priority. By default, the restoration priority is set to Standard.
- * Media assets whose storage classes are being modified cannot be used or processed.
- * The media assets that are not of the Standard storage class have a limit on storage duration. If the storage duration does not meet the following requirements, you cannot change the storage classes: Infrequent Access (IA) media assets or source files are stored for at least 30 days, Archive media assets or source files are stored for at least 60 days, and Cold Archive media assets or source files are stored for at least 180 days.
+ * *   This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+ * *   If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
+ * *   Media assets whose storage classes are being modified cannot be used or processed.
+ * *   Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
  *
  * @param request UpdateMediaStorageClassRequest
  * @return UpdateMediaStorageClassResponse
@@ -37455,8 +37549,7 @@ func (client *Client) UpdateMediaStorageClass(request *UpdateMediaStorageClassRe
 }
 
 /**
- * > *   You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
  *
  * @param request UpdateTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37508,8 +37601,7 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 }
 
 /**
- * > *   You cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * > *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
  *
  * @param request UpdateTranscodeTemplateGroupRequest
  * @return UpdateTranscodeTemplateGroupResponse
