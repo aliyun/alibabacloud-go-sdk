@@ -1573,6 +1573,282 @@ func (s *DescribeDdosEventResponse) SetBody(v *DescribeDdosEventResponseBody) *D
 	return s
 }
 
+type DescribeDdosOriginInstanceBillRequest struct {
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsShowList *bool   `json:"IsShowList,omitempty" xml:"IsShowList,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillRequest) SetEndTime(v int64) *DescribeDdosOriginInstanceBillRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillRequest) SetIsShowList(v bool) *DescribeDdosOriginInstanceBillRequest {
+	s.IsShowList = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillRequest) SetStartTime(v int64) *DescribeDdosOriginInstanceBillRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillRequest) SetType(v string) *DescribeDdosOriginInstanceBillRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponseBody struct {
+	DebtStatus                *int64                                                              `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
+	FlowList                  []*DescribeDdosOriginInstanceBillResponseBodyFlowList               `json:"FlowList,omitempty" xml:"FlowList,omitempty" type:"Repeated"`
+	FlowRegion                map[string]interface{}                                              `json:"FlowRegion,omitempty" xml:"FlowRegion,omitempty"`
+	InstanceId                *string                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpCount                   *int64                                                              `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
+	IpCountOrFunctionList     []*DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList  `json:"IpCountOrFunctionList,omitempty" xml:"IpCountOrFunctionList,omitempty" type:"Repeated"`
+	IpInfo                    *string                                                             `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	RequestId                 *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardAssetsFlowList    []*DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList `json:"StandardAssetsFlowList,omitempty" xml:"StandardAssetsFlowList,omitempty" type:"Repeated"`
+	StandardAssetsFlowRegion  map[string]interface{}                                              `json:"StandardAssetsFlowRegion,omitempty" xml:"StandardAssetsFlowRegion,omitempty"`
+	StandardAssetsTotalFlowCn *int64                                                              `json:"StandardAssetsTotalFlowCn,omitempty" xml:"StandardAssetsTotalFlowCn,omitempty"`
+	StandardAssetsTotalFlowOv *int64                                                              `json:"StandardAssetsTotalFlowOv,omitempty" xml:"StandardAssetsTotalFlowOv,omitempty"`
+	Status                    *int64                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalFlowCn               *int64                                                              `json:"TotalFlowCn,omitempty" xml:"TotalFlowCn,omitempty"`
+	TotalFlowOv               *int64                                                              `json:"TotalFlowOv,omitempty" xml:"TotalFlowOv,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetDebtStatus(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.DebtStatus = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetFlowList(v []*DescribeDdosOriginInstanceBillResponseBodyFlowList) *DescribeDdosOriginInstanceBillResponseBody {
+	s.FlowList = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetFlowRegion(v map[string]interface{}) *DescribeDdosOriginInstanceBillResponseBody {
+	s.FlowRegion = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetInstanceId(v string) *DescribeDdosOriginInstanceBillResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetIpCount(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.IpCount = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetIpCountOrFunctionList(v []*DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) *DescribeDdosOriginInstanceBillResponseBody {
+	s.IpCountOrFunctionList = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetIpInfo(v string) *DescribeDdosOriginInstanceBillResponseBody {
+	s.IpInfo = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetRequestId(v string) *DescribeDdosOriginInstanceBillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetStandardAssetsFlowList(v []*DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) *DescribeDdosOriginInstanceBillResponseBody {
+	s.StandardAssetsFlowList = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetStandardAssetsFlowRegion(v map[string]interface{}) *DescribeDdosOriginInstanceBillResponseBody {
+	s.StandardAssetsFlowRegion = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetStandardAssetsTotalFlowCn(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.StandardAssetsTotalFlowCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetStandardAssetsTotalFlowOv(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.StandardAssetsTotalFlowOv = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetStatus(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetTotalFlowCn(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.TotalFlowCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBody) SetTotalFlowOv(v int64) *DescribeDdosOriginInstanceBillResponseBody {
+	s.TotalFlowOv = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponseBodyFlowList struct {
+	MemberFlow *string `json:"MemberFlow,omitempty" xml:"MemberFlow,omitempty"`
+	RegionFlow *string `json:"RegionFlow,omitempty" xml:"RegionFlow,omitempty"`
+	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	TotalFlow  *int64  `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyFlowList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyFlowList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetMemberFlow(v string) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
+	s.MemberFlow = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetRegionFlow(v string) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
+	s.RegionFlow = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTime(v int64) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyFlowList) SetTotalFlow(v int64) *DescribeDdosOriginInstanceBillResponseBodyFlowList {
+	s.TotalFlow = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList struct {
+	Coverage    *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	IpCntCn     *int64  `json:"IpCntCn,omitempty" xml:"IpCntCn,omitempty"`
+	IpCntOv     *int64  `json:"IpCntOv,omitempty" xml:"IpCntOv,omitempty"`
+	MemberIpCnt *string `json:"MemberIpCnt,omitempty" xml:"MemberIpCnt,omitempty"`
+	Time        *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetCoverage(v string) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
+	s.Coverage = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetIpCntCn(v int64) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
+	s.IpCntCn = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetIpCntOv(v int64) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
+	s.IpCntOv = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetMemberIpCnt(v string) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
+	s.MemberIpCnt = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetTime(v int64) *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList {
+	s.Time = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList struct {
+	MemberFlow *string `json:"MemberFlow,omitempty" xml:"MemberFlow,omitempty"`
+	RegionFlow *string `json:"RegionFlow,omitempty" xml:"RegionFlow,omitempty"`
+	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	TotalFlow  *int64  `json:"TotalFlow,omitempty" xml:"TotalFlow,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) SetMemberFlow(v string) *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList {
+	s.MemberFlow = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) SetRegionFlow(v string) *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList {
+	s.RegionFlow = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) SetTime(v int64) *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList) SetTotalFlow(v int64) *DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList {
+	s.TotalFlow = &v
+	return s
+}
+
+type DescribeDdosOriginInstanceBillResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDdosOriginInstanceBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDdosOriginInstanceBillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDdosOriginInstanceBillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDdosOriginInstanceBillResponse) SetHeaders(v map[string]*string) *DescribeDdosOriginInstanceBillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponse) SetStatusCode(v int32) *DescribeDdosOriginInstanceBillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDdosOriginInstanceBillResponse) SetBody(v *DescribeDdosOriginInstanceBillResponseBody) *DescribeDdosOriginInstanceBillResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeExcpetionCountRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
@@ -4410,6 +4686,69 @@ func (s *QuerySchedruleOnDemandResponse) SetBody(v *QuerySchedruleOnDemandRespon
 	return s
 }
 
+type ReleaseDdosOriginInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReleaseDdosOriginInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseDdosOriginInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseDdosOriginInstanceRequest) SetInstanceId(v string) *ReleaseDdosOriginInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReleaseDdosOriginInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseDdosOriginInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseDdosOriginInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseDdosOriginInstanceResponseBody) SetRequestId(v string) *ReleaseDdosOriginInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseDdosOriginInstanceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseDdosOriginInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseDdosOriginInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseDdosOriginInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseDdosOriginInstanceResponse) SetHeaders(v map[string]*string) *ReleaseDdosOriginInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseDdosOriginInstanceResponse) SetStatusCode(v int32) *ReleaseDdosOriginInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseDdosOriginInstanceResponse) SetBody(v *ReleaseDdosOriginInstanceResponseBody) *ReleaseDdosOriginInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type SetInstanceModeOnDemandRequest struct {
 	// The IDs of on-demand instances.
 	//
@@ -5599,6 +5938,62 @@ func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *DescribeDdosOriginInstanceBillRequest, runtime *util.RuntimeOptions) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsShowList)) {
+		query["IsShowList"] = request.IsShowList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDdosOriginInstanceBill"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDdosOriginInstanceBillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDdosOriginInstanceBill(request *DescribeDdosOriginInstanceBillRequest) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDdosOriginInstanceBillResponse{}
+	_body, _err := client.DescribeDdosOriginInstanceBillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ## Usage notes
  * You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
@@ -6690,6 +7085,50 @@ func (client *Client) QuerySchedruleOnDemand(request *QuerySchedruleOnDemandRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySchedruleOnDemandResponse{}
 	_body, _err := client.QuerySchedruleOnDemandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseDdosOriginInstanceWithOptions(request *ReleaseDdosOriginInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseDdosOriginInstance"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseDdosOriginInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseDdosOriginInstance(request *ReleaseDdosOriginInstanceRequest) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseDdosOriginInstanceResponse{}
+	_body, _err := client.ReleaseDdosOriginInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
