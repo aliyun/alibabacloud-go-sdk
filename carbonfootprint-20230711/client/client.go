@@ -65,10 +65,14 @@ func (s *AllowResponse) SetBody(v *AllowResponseBody) *AllowResponse {
 }
 
 type GetSummaryDataRequest struct {
-	EndTime   *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Group     *string   `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Uids      []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
+	Uids []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
 }
 
 func (s GetSummaryDataRequest) String() string {
@@ -100,9 +104,13 @@ func (s *GetSummaryDataRequest) SetUids(v []*string) *GetSummaryDataRequest {
 }
 
 type GetSummaryDataShrinkRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Group      *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
 	UidsShrink *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
 }
 
@@ -135,8 +143,9 @@ func (s *GetSummaryDataShrinkRequest) SetUidsShrink(v string) *GetSummaryDataShr
 }
 
 type GetSummaryDataResponseBody struct {
+	// The returned data.
 	Data *GetSummaryDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -159,16 +168,26 @@ func (s *GetSummaryDataResponseBody) SetRequestId(v string) *GetSummaryDataRespo
 }
 
 type GetSummaryDataResponseBodyData struct {
-	AircraftConsumptionConversion    *string `json:"AircraftConsumptionConversion,omitempty" xml:"AircraftConsumptionConversion,omitempty"`
-	CarConsumptionConversion         *string `json:"CarConsumptionConversion,omitempty" xml:"CarConsumptionConversion,omitempty"`
-	LastMonthConsumptionConversion   *string `json:"LastMonthConsumptionConversion,omitempty" xml:"LastMonthConsumptionConversion,omitempty"`
-	LastYearConsumptionConversion    *string `json:"LastYearConsumptionConversion,omitempty" xml:"LastYearConsumptionConversion,omitempty"`
+	// Converted aircraft carbon emissions.
+	AircraftConsumptionConversion *string `json:"AircraftConsumptionConversion,omitempty" xml:"AircraftConsumptionConversion,omitempty"`
+	// Converted car carbon emissions.
+	CarConsumptionConversion *string `json:"CarConsumptionConversion,omitempty" xml:"CarConsumptionConversion,omitempty"`
+	// The carbon emissions in the previous month, in kgCO₂e.
+	LastMonthConsumptionConversion *string `json:"LastMonthConsumptionConversion,omitempty" xml:"LastMonthConsumptionConversion,omitempty"`
+	// The carbon emissions in the same month of the previous year, in kgCO₂e.
+	LastYearConsumptionConversion *string `json:"LastYearConsumptionConversion,omitempty" xml:"LastYearConsumptionConversion,omitempty"`
+	// The carbon emissions of the previous year, in kgCO₂e.
 	LastYearConsumptionConversionSum *string `json:"LastYearConsumptionConversionSum,omitempty" xml:"LastYearConsumptionConversionSum,omitempty"`
-	LatestDataTime                   *string `json:"LatestDataTime,omitempty" xml:"LatestDataTime,omitempty"`
-	ThisMonthConsumptionConversion   *string `json:"ThisMonthConsumptionConversion,omitempty" xml:"ThisMonthConsumptionConversion,omitempty"`
-	ThisYearConsumptionConversion    *string `json:"ThisYearConsumptionConversion,omitempty" xml:"ThisYearConsumptionConversion,omitempty"`
+	// The point in time at which the data is last updated.
+	LatestDataTime *string `json:"LatestDataTime,omitempty" xml:"LatestDataTime,omitempty"`
+	// The carbon emissions in this month, in kgCO₂e.
+	ThisMonthConsumptionConversion *string `json:"ThisMonthConsumptionConversion,omitempty" xml:"ThisMonthConsumptionConversion,omitempty"`
+	// The carbon emissions in the year of this month, in kgCO₂e.
+	ThisYearConsumptionConversion *string `json:"ThisYearConsumptionConversion,omitempty" xml:"ThisYearConsumptionConversion,omitempty"`
+	// The total carbon emissions within the specified time range, in kgCO₂e.
 	TotalCarbonConsumptionConversion *string `json:"TotalCarbonConsumptionConversion,omitempty" xml:"TotalCarbonConsumptionConversion,omitempty"`
-	TreeConsumptionConversion        *string `json:"TreeConsumptionConversion,omitempty" xml:"TreeConsumptionConversion,omitempty"`
+	// Converted tree carbon absorption.
+	TreeConsumptionConversion *string `json:"TreeConsumptionConversion,omitempty" xml:"TreeConsumptionConversion,omitempty"`
 }
 
 func (s GetSummaryDataResponseBodyData) String() string {
@@ -259,13 +278,22 @@ func (s *GetSummaryDataResponse) SetBody(v *GetSummaryDataResponseBody) *GetSumm
 }
 
 type QueryCarbonTrackRequest struct {
-	EndTime         *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FilterRDAccount *int32    `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
-	Group           *string   `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TopNum          *int32    `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
-	Uids            []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
-	UseCode         *int32    `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Whether to count the carbon emission details of multiple accounts. You can pass it in after opening the multi-account management. The default value and 0 is No and 1 is Yes.
+	FilterRDAccount *int32 `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
+	// The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// After sorting in reverse order according to the data value of the return value, only the first TopNum data will be returned. If no data is passed, all data will be returned by default.
+	TopNum *int32 `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
+	// The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
+	Uids []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
+	// Whether the return result uses code as the identifier(0 meas not used and 1 means used). If not passed, the default code is used.
+	//
+	// For example, when the return result is to summarize carbon emissions according to the cloud product dimension, the identifier of ECS is "ecs" when 0 is passed, and "Elastic Compute Service" when 1 is passed.
+	UseCode *int32 `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
 }
 
 func (s QueryCarbonTrackRequest) String() string {
@@ -312,13 +340,22 @@ func (s *QueryCarbonTrackRequest) SetUseCode(v int32) *QueryCarbonTrackRequest {
 }
 
 type QueryCarbonTrackShrinkRequest struct {
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FilterRDAccount *int32  `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
-	Group           *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TopNum          *int32  `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
-	UidsShrink      *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
-	UseCode         *int32  `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-02-01 23:59:59.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Whether to count the carbon emission details of multiple accounts. You can pass it in after opening the multi-account management. The default value and 0 is No and 1 is Yes.
+	FilterRDAccount *int32 `json:"FilterRDAccount,omitempty" xml:"FilterRDAccount,omitempty"`
+	// The statistical dimension. A value of productCode specifies that statistics are collected based on cloud service. A value of region specifies that statistics are collected based on region. A value of subUid specifies that statistics are collected based on Resource Access Management (RAM) user. If you do not specify this parameter, statistics are collected based on Alibaba Cloud account.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. Example: 2023-01-01 00:00:00.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// After sorting in reverse order according to the data value of the return value, only the first TopNum data will be returned. If no data is passed, all data will be returned by default.
+	TopNum *int32 `json:"TopNum,omitempty" xml:"TopNum,omitempty"`
+	// The list of Alibaba Cloud account IDs whose data needs to be queried.(used after enabling multi-account management).
+	UidsShrink *string `json:"Uids,omitempty" xml:"Uids,omitempty"`
+	// Whether the return result uses code as the identifier(0 meas not used and 1 means used). If not passed, the default code is used.
+	//
+	// For example, when the return result is to summarize carbon emissions according to the cloud product dimension, the identifier of ECS is "ecs" when 0 is passed, and "Elastic Compute Service" when 1 is passed.
+	UseCode *int32 `json:"UseCode,omitempty" xml:"UseCode,omitempty"`
 }
 
 func (s QueryCarbonTrackShrinkRequest) String() string {
@@ -365,8 +402,10 @@ func (s *QueryCarbonTrackShrinkRequest) SetUseCode(v int32) *QueryCarbonTrackShr
 }
 
 type QueryCarbonTrackResponseBody struct {
-	Data      []*QueryCarbonTrackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data records.
+	Data []*QueryCarbonTrackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCarbonTrackResponseBody) String() string {
@@ -388,12 +427,18 @@ func (s *QueryCarbonTrackResponseBody) SetRequestId(v string) *QueryCarbonTrackR
 }
 
 type QueryCarbonTrackResponseBodyData struct {
-	ProductCode    *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	QuotaValue     *float64 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	Region         *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	StatisticsDate *int64   `json:"StatisticsDate,omitempty" xml:"StatisticsDate,omitempty"`
-	SubUid         *string  `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
-	Uid            *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The service code.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The carbon emissions within the specified time range, in kgCO₂e.
+	QuotaValue *float64 `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	// The region in which the cloud service resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The date when the statistics are collected, which is a timestamp in milliseconds.
+	StatisticsDate *int64 `json:"StatisticsDate,omitempty" xml:"StatisticsDate,omitempty"`
+	// The ID of the RAM user.
+	SubUid *string `json:"SubUid,omitempty" xml:"SubUid,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryCarbonTrackResponseBodyData) String() string {
