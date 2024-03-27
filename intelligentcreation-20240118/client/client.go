@@ -193,6 +193,41 @@ func (s *DigitalHumanLiveBroadcastQAResult) SetSuccess(v bool) *DigitalHumanLive
 	return s
 }
 
+type DigitalVideoCommonResult struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DigitalVideoCommonResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DigitalVideoCommonResult) GoString() string {
+	return s.String()
+}
+
+func (s *DigitalVideoCommonResult) SetErrorCode(v string) *DigitalVideoCommonResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DigitalVideoCommonResult) SetErrorMessage(v string) *DigitalVideoCommonResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DigitalVideoCommonResult) SetRequestId(v string) *DigitalVideoCommonResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DigitalVideoCommonResult) SetSuccess(v bool) *DigitalVideoCommonResult {
+	s.Success = &v
+	return s
+}
+
 type DirectDeductResourceCmd struct {
 	AccountId    *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	Cost         *int64  `json:"cost,omitempty" xml:"cost,omitempty"`
@@ -483,6 +518,71 @@ func (s *SubmitBulletQuestionsQAResult) SetErrorMessage(v string) *SubmitBulletQ
 
 func (s *SubmitBulletQuestionsQAResult) SetSuccess(v bool) *SubmitBulletQuestionsQAResult {
 	s.Success = &v
+	return s
+}
+
+type SyncDigitalHumanVideoCmd struct {
+	AccountId     *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	ActionType    *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
+	IdempotentId  *string `json:"idempotentId,omitempty" xml:"idempotentId,omitempty"`
+	ImageScale    *string `json:"imageScale,omitempty" xml:"imageScale,omitempty"`
+	ImageUrl      *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	VideoDuration *int32  `json:"videoDuration,omitempty" xml:"videoDuration,omitempty"`
+	VideoId       *string `json:"videoId,omitempty" xml:"videoId,omitempty"`
+	VideoTitle    *string `json:"videoTitle,omitempty" xml:"videoTitle,omitempty"`
+	VideoUrl      *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+}
+
+func (s SyncDigitalHumanVideoCmd) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDigitalHumanVideoCmd) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetAccountId(v string) *SyncDigitalHumanVideoCmd {
+	s.AccountId = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetActionType(v string) *SyncDigitalHumanVideoCmd {
+	s.ActionType = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetIdempotentId(v string) *SyncDigitalHumanVideoCmd {
+	s.IdempotentId = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetImageScale(v string) *SyncDigitalHumanVideoCmd {
+	s.ImageScale = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetImageUrl(v string) *SyncDigitalHumanVideoCmd {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetVideoDuration(v int32) *SyncDigitalHumanVideoCmd {
+	s.VideoDuration = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetVideoId(v string) *SyncDigitalHumanVideoCmd {
+	s.VideoId = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetVideoTitle(v string) *SyncDigitalHumanVideoCmd {
+	s.VideoTitle = &v
+	return s
+}
+
+func (s *SyncDigitalHumanVideoCmd) SetVideoUrl(v string) *SyncDigitalHumanVideoCmd {
+	s.VideoUrl = &v
 	return s
 }
 
@@ -1431,6 +1531,52 @@ func (s *SubmitBulletQuestionsV1Response) SetBody(v *SubmitBulletQuestionsQAResu
 	return s
 }
 
+type SyncDigitalVideoRequest struct {
+	Body *SyncDigitalHumanVideoCmd `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDigitalVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDigitalVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDigitalVideoRequest) SetBody(v *SyncDigitalHumanVideoCmd) *SyncDigitalVideoRequest {
+	s.Body = v
+	return s
+}
+
+type SyncDigitalVideoResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DigitalVideoCommonResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDigitalVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDigitalVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDigitalVideoResponse) SetHeaders(v map[string]*string) *SyncDigitalVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDigitalVideoResponse) SetStatusCode(v int32) *SyncDigitalVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDigitalVideoResponse) SetBody(v *DigitalVideoCommonResult) *SyncDigitalVideoResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2047,6 +2193,47 @@ func (client *Client) SubmitBulletQuestionsV1(request *SubmitBulletQuestionsV1Re
 	headers := make(map[string]*string)
 	_result = &SubmitBulletQuestionsV1Response{}
 	_body, _err := client.SubmitBulletQuestionsV1WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncDigitalVideoWithOptions(request *SyncDigitalVideoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncDigitalVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDigitalVideo"),
+		Version:     tea.String("2024-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/videos/commands/syncDigitalVideo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncDigitalVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncDigitalVideo(request *SyncDigitalVideoRequest) (_result *SyncDigitalVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SyncDigitalVideoResponse{}
+	_body, _err := client.SyncDigitalVideoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
