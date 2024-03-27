@@ -5513,11 +5513,11 @@ type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struc
 	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
 	// The description of the operator in English.
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	// The display name of the operator.
+	// The name of the operator.
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The data types that are supported by the current operator. The data types are separated by commas (,).
+	// The data types that are supported by the operator. The data types are separated by commas (,).
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. This parameter is empty by default.
+	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. By default, this parameter is empty.
 	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
@@ -7855,9 +7855,9 @@ type DescribeDataSourceParametersRequest struct {
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   ckafka: Tencent Cloud Kafka (CKafka)
-	// *   obs: Huawei Cloud Object Storage Service (OBS)
-	// *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   **ckafka**: Tencent Cloud TDMQ for CKafka
+	// *   **obs**: Huawei Cloud Object Storage Service (OBS)
+	// *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
@@ -7917,27 +7917,27 @@ func (s *DescribeDataSourceParametersResponseBody) SetRequestId(v string) *Descr
 type DescribeDataSourceParametersResponseBodyData struct {
 	// Indicates whether the edit operation is supported. Valid values:
 	//
-	// *   0: no
-	// *   1: yes
+	// *   **0**
+	// *   **1**
 	CanEditted *int32 `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// *   qcloud: Tencent Cloud
-	// *   aliyun: Alibaba Cloud
-	// *   hcloud: Huawei Cloud
+	// *   **qcloud**: Tencent Cloud
+	// *   **aliyun**: Alibaba Cloud
+	// *   **hcloud**: Huawei Cloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// *   obs: Huawei Cloud OBS
-	// *   wafApi: download API of Tencent Cloud WAF
-	// *   ckafka: Tencent Cloud CKafka
+	// *   **obs**: Huawei Cloud Object Storage Service (OBS)
+	// *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+	// *   **ckafka**: Tencent Cloud TDMQ for CKafka
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The default value of the parameter.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	// Indicates whether the modification operation is forbidden. Valid values:
 	//
-	// *   true
-	// *   false
+	// *   **true**
+	// *   **false**
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// The method that is used to check the parameter format.
 	FormatCheck *string `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
@@ -7947,8 +7947,8 @@ type DescribeDataSourceParametersResponseBodyData struct {
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// *   1: data source
-	// *   2: log
+	// *   **1**: the parameters of the data source
+	// *   **2**: the parameters of the log
 	ParaLevel *int32 `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
 	// The name of the parameter.
 	ParaName *string `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
@@ -7958,10 +7958,10 @@ type DescribeDataSourceParametersResponseBodyData struct {
 	ParamValue []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
 	// Indicates whether the parameter is required. Valid values:
 	//
-	// *   1: yes
-	// *   0: no
+	// *   **1**: required
+	// *   **0**: optional
 	Required *int32 `json:"Required,omitempty" xml:"Required,omitempty"`
-	// The note on the parameter value.
+	// The note for the parameter value.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -8102,9 +8102,9 @@ type DescribeDisposeAndPlaybookRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The entity type. Valid values:
 	//
-	// *   ip: IP address
-	// *   process: process
-	// *   file: file
+	// *   ip
+	// *   process
+	// *   file
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
@@ -8202,7 +8202,7 @@ func (s *DescribeDisposeAndPlaybookResponseBody) SetSuccess(v bool) *DescribeDis
 type DescribeDisposeAndPlaybookResponseBodyData struct {
 	// The pagination information.
 	PageInfo *DescribeDisposeAndPlaybookResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The detailed data
+	// The detailed data.
 	ResponseData []*DescribeDisposeAndPlaybookResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -8267,11 +8267,11 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
 	// The key-value pairs each of which consists of opcode and oplevel.
 	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
-	// An array consisting of the codes of playbooks that are recommended for entity handling.
+	// The codes of the playbooks that are recommended for entity handling.
 	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
 	// The playbooks that can handle the entity.
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	// An array consisting of the IDs of the users who can handle objects.
+	// The IDs of the users who can handle objects.
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 }
 
@@ -8336,7 +8336,8 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// *   2: Quick event handling is selected.
 	// *   1: Quick event handling is displayed but not selected.
-	OpLevel     *string       `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
+	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
+	// The playbook parameters and the corresponding properties.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 	// The opcode configuration.
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
@@ -8885,7 +8886,7 @@ type DescribeEventDisposeRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The number of entries to return on each page. Maximum value: 500.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
 	//
@@ -10150,11 +10151,11 @@ type DescribeOperatorsResponseBodyData struct {
 	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
 	// The description of the operator in English.
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	// The display name of the operator.
+	// The name of the operator.
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The data types that are supported by the current operator. The data types are separated by commas (,).
+	// The data types that are supported by the operator. The data types are separated by commas (,).
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. This parameter is empty by default.
+	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. By default, this parameter is empty.
 	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
@@ -12506,10 +12507,10 @@ func (s *GetQuickQueryResponse) SetBody(v *GetQuickQueryResponseBody) *GetQuickQ
 }
 
 type GetStorageRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12562,7 +12563,9 @@ type GetStorageResponseBodyData struct {
 	// *   true
 	// *   false
 	DisplayRegion *bool `json:"DisplayRegion,omitempty" xml:"DisplayRegion,omitempty"`
-	// The region in which the logs are stored. Default value: cn-shanghai. Valid values: cn-shanghai for the China site and ap-southeast-1 for the international site.
+	// The region where the data is stored.
+	//
+	// If the data management center is **cn-hangzhou**, the default value of **Region** is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region** is ap-southeast-1, which specifies the Singapore region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The storage period of logs. Unit: day. Default value: 180. Valid values: 30 to 3000.
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
@@ -13797,33 +13800,33 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of entries per page. The value can be up to 100.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in China.
-	// *   ap-southeast-1: Your assets reside in regions outside China.
+	// *   **cn-hangzhou**: Your assets reside in regions in China.
+	// *   **ap-southeast-1**: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   predefine
-	// *   customize
+	// *   **predefine**
+	// *   **customize**
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   10: The simulation data is tested.
-	// *   15: The business data is being tested.
-	// *   20: The business data test ends.
-	// *   100: The rule takes effect.
+	// *   **0**: The rule is in the initial state.
+	// *   **10**: The simulation data is tested.
+	// *   **15**: The business data is being tested.
+	// *   **20**: The business data test is complete.
+	// *   **100**: The rule is in effect.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk level. The value is a JSON array. Valid values:
+	// The threat level. The value must be a JSON array. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// *   **serious**: high-risk.
+	// *   **suspicious**: medium-risk.
+	// *   **remind**: low-risk.
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -13893,7 +13896,7 @@ func (s *ListCloudSiemCustomizeRulesRequest) SetThreatLevel(v []*string) *ListCl
 type ListCloudSiemCustomizeRulesResponseBody struct {
 	// The HTTP status code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ListCloudSiemCustomizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -13901,8 +13904,8 @@ type ListCloudSiemCustomizeRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// *   **true**
+	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13997,24 +14000,24 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
-	// The type of the risk.
+	// The threat type.
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
+	// The internal code of the threat type.
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 	// The ID of the Alibaba Cloud account in SIEM.
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The extended information about event generation. If the value of eventTransferType is allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	// The extended information about event generation. If the value of **eventTransferType** is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Indicates whether the system generates an event for the alert. Valid values:
 	//
-	// *   0: no.
-	// *   1: yes.
+	// *   **0**: no.
+	// *   **1**: yes.
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	// The event generation method. Valid values:
+	// The method that is used to generate an event. Valid values:
 	//
-	// *   default: The default method is used.
-	// *   singleToSingle: The system generates an event for each alert.
-	// *   allToSingle: The system generates an event for alerts within a period of time.
+	// *   **default**: The default method is used.
+	// *   **singleToSingle**: The system generates an event for each alert.
+	// *   **allToSingle**: The system generates an event for alerts within a period of time.
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The time when the custom rule was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -14032,11 +14035,11 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
 	// The window length of the rule. The HTML escape characters are reversed.
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	// The query condition of the rule in the JSON format. The HTML escape characters are reversed.
+	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
 	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
 	// The description of the rule.
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+	// The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
 	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
 	// The name of the rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -14044,22 +14047,22 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   predefine
-	// *   customize
+	// *   **predefine**
+	// *   **customize**
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The rule status. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// *   0: The rule is in the initial state.
-	// *   10: The simulation data is tested.
-	// *   15: The business data is being tested.
-	// *   20: The business data test ends.
-	// *   100: The rule takes effect.
+	// *   **0**: The rule is in the initial state.
+	// *   **10**: The simulation data is tested.
+	// *   **15**: The business data is being tested.
+	// *   **20**: The business data test is complete.
+	// *   **100**: The rule is in effect.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The threat level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// *   **serious**: high-risk.
+	// *   **suspicious**: medium-risk.
+	// *   **remind**: low-risk.
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -14542,7 +14545,7 @@ type ListCustomizeRuleTestResultRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the rule.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The number of entries per page. Valid values: 1 to 100.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
@@ -14698,13 +14701,13 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The name of the alert, which corresponds to the name of the custom rule.
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The risk type, which indicates the alert type.
+	// The threat type, which indicates the alert type.
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// *   serious: high
-	// *   suspicious: medium
-	// *   remind: low
+	// *   serious: high.
+	// *   suspicious: medium.
+	// *   remind: low.
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The log source of the rule.
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
@@ -14716,8 +14719,8 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	MainUserId *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The status of the alert data. Valid values:
 	//
-	// *   test: business test data
-	// *   online: online data
+	// *   test: business test data.
+	// *   online: online data.
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
 	// The ID of the Alibaba Cloud account within which the alert is generated.
 	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
@@ -18909,12 +18912,16 @@ func (s *SaveQuickQueryResponse) SetBody(v *SaveQuickQueryResponseBody) *SaveQui
 }
 
 type SetStorageRequest struct {
-	// The storage region of logs. By default, the region of the data management center is used and cannot be changed. cn-shanghai is used for the China data management center, and ap-southeast-1 is used for the Outside China data management center. To change the region, contact the technical support of threat analysis.
+	// The storage region of logs.
+	//
+	// If the data management center is **cn-hangzhou**, the default value of **Region** is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region** is ap-southeast-1, which specifies the Singapore region.
+	//
+	// The region for log storage cannot be changed. To change the region, contact the technical support of threat analysis.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The storage duration of logs. Default value: 180. Minimum value: 30. Maximum value: 3000. Unit: days.
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
@@ -18946,8 +18953,8 @@ func (s *SetStorageRequest) SetTtl(v int32) *SetStorageRequest {
 type SetStorageResponseBody struct {
 	// Indicates whether the settings are saved. Valid values:
 	//
-	// *   true
-	// *   false
+	// *   true:
+	// *   false:
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
