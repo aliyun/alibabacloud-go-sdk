@@ -22231,6 +22231,99 @@ func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHos
 	return s
 }
 
+type ListJoinedOrganizationsResponseBody struct {
+	ErrorCode     *string                                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage  *string                                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Organizations []*ListJoinedOrganizationsResponseBodyOrganizations `json:"organizations,omitempty" xml:"organizations,omitempty" type:"Repeated"`
+	RequestId     *string                                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success       *bool                                               `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListJoinedOrganizationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJoinedOrganizationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJoinedOrganizationsResponseBody) SetErrorCode(v string) *ListJoinedOrganizationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBody) SetErrorMessage(v string) *ListJoinedOrganizationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBody) SetOrganizations(v []*ListJoinedOrganizationsResponseBodyOrganizations) *ListJoinedOrganizationsResponseBody {
+	s.Organizations = v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBody) SetRequestId(v string) *ListJoinedOrganizationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBody) SetSuccess(v bool) *ListJoinedOrganizationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListJoinedOrganizationsResponseBodyOrganizations struct {
+	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListJoinedOrganizationsResponseBodyOrganizations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJoinedOrganizationsResponseBodyOrganizations) GoString() string {
+	return s.String()
+}
+
+func (s *ListJoinedOrganizationsResponseBodyOrganizations) SetId(v string) *ListJoinedOrganizationsResponseBodyOrganizations {
+	s.Id = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBodyOrganizations) SetName(v string) *ListJoinedOrganizationsResponseBodyOrganizations {
+	s.Name = &v
+	return s
+}
+
+type ListJoinedOrganizationsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJoinedOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJoinedOrganizationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJoinedOrganizationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJoinedOrganizationsResponse) SetHeaders(v map[string]*string) *ListJoinedOrganizationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponse) SetStatusCode(v int32) *ListJoinedOrganizationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponse) SetBody(v *ListJoinedOrganizationsResponseBody) *ListJoinedOrganizationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMergeRequestCommentsRequest struct {
 	AccessToken        *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	CommentType        *string   `json:"commentType,omitempty" xml:"commentType,omitempty"`
@@ -48129,6 +48222,42 @@ func (client *Client) ListHostGroups(organizationId *string, request *ListHostGr
 	headers := make(map[string]*string)
 	_result = &ListHostGroupsResponse{}
 	_body, _err := client.ListHostGroupsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJoinedOrganizationsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJoinedOrganizationsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJoinedOrganizations"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users/joinedOrgs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJoinedOrganizationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJoinedOrganizations() (_result *ListJoinedOrganizationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJoinedOrganizationsResponse{}
+	_body, _err := client.ListJoinedOrganizationsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
