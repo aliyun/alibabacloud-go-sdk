@@ -4783,6 +4783,181 @@ func (s *ImportServiceDataResponse) SetBody(v *ImportServiceDataResponseBody) *I
 	return s
 }
 
+type ImportServiceDataV2Request struct {
+	DataType  *string                                `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Documents []*ImportServiceDataV2RequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	ServiceId *int64                                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s ImportServiceDataV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataV2Request) SetDataType(v string) *ImportServiceDataV2Request {
+	s.DataType = &v
+	return s
+}
+
+func (s *ImportServiceDataV2Request) SetDocuments(v []*ImportServiceDataV2RequestDocuments) *ImportServiceDataV2Request {
+	s.Documents = v
+	return s
+}
+
+func (s *ImportServiceDataV2Request) SetServiceId(v int64) *ImportServiceDataV2Request {
+	s.ServiceId = &v
+	return s
+}
+
+type ImportServiceDataV2RequestDocuments struct {
+	BizParams     map[string]*string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	DocId         *string            `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FileExtension *string            `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	FileName      *string            `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath      *string            `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	Version       *string            `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ImportServiceDataV2RequestDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataV2RequestDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetBizParams(v map[string]*string) *ImportServiceDataV2RequestDocuments {
+	s.BizParams = v
+	return s
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetDocId(v string) *ImportServiceDataV2RequestDocuments {
+	s.DocId = &v
+	return s
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetFileExtension(v string) *ImportServiceDataV2RequestDocuments {
+	s.FileExtension = &v
+	return s
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetFileName(v string) *ImportServiceDataV2RequestDocuments {
+	s.FileName = &v
+	return s
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetFilePath(v string) *ImportServiceDataV2RequestDocuments {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ImportServiceDataV2RequestDocuments) SetVersion(v string) *ImportServiceDataV2RequestDocuments {
+	s.Version = &v
+	return s
+}
+
+type ImportServiceDataV2ShrinkRequest struct {
+	DataType        *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s ImportServiceDataV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataV2ShrinkRequest) SetDataType(v string) *ImportServiceDataV2ShrinkRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ShrinkRequest) SetDocumentsShrink(v string) *ImportServiceDataV2ShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ShrinkRequest) SetServiceId(v int64) *ImportServiceDataV2ShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type ImportServiceDataV2ResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportServiceDataV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataV2ResponseBody) SetCode(v int32) *ImportServiceDataV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ResponseBody) SetData(v int64) *ImportServiceDataV2ResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ResponseBody) SetMsg(v string) *ImportServiceDataV2ResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ResponseBody) SetRequestId(v string) *ImportServiceDataV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportServiceDataV2ResponseBody) SetSuccess(v bool) *ImportServiceDataV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportServiceDataV2Response struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportServiceDataV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportServiceDataV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataV2Response) SetHeaders(v map[string]*string) *ImportServiceDataV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportServiceDataV2Response) SetStatusCode(v int32) *ImportServiceDataV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportServiceDataV2Response) SetBody(v *ImportServiceDataV2ResponseBody) *ImportServiceDataV2Response {
+	s.Body = v
+	return s
+}
+
 type InsertCustomRequest struct {
 	ApiId          *int32  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	CustomFileName *string `json:"CustomFileName,omitempty" xml:"CustomFileName,omitempty"`
@@ -9076,6 +9251,64 @@ func (client *Client) ImportServiceData(request *ImportServiceDataRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportServiceDataResponse{}
 	_body, _err := client.ImportServiceDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportServiceDataV2WithOptions(tmpReq *ImportServiceDataV2Request, runtime *util.RuntimeOptions) (_result *ImportServiceDataV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportServiceDataV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		body["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportServiceDataV2"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportServiceDataV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportServiceDataV2(request *ImportServiceDataV2Request) (_result *ImportServiceDataV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportServiceDataV2Response{}
+	_body, _err := client.ImportServiceDataV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
