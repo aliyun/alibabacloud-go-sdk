@@ -1,3 +1,12 @@
+2024-03-28 Version: v3.1.5
+- Update API CreateListener: add param HttpVersion.
+- Update API DescribeListener: update response param.
+- Update API ListAvailableAccelerateAreas: update response param.
+- Update API ListCustomRoutingEndpointGroups: add param AccessLogSwitch.
+- Update API ListListeners: update response param.
+- Update API UpdateListener: add param HttpVersion.
+
+
 2023-11-23 Version: v3.1.4
 - Generated golang 2019-11-20 for Ga.
 
