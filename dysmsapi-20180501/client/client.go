@@ -428,6 +428,7 @@ func (s *QueryMessageResponse) SetBody(v *QueryMessageResponseBody) *QueryMessag
 }
 
 type SendMessageToGlobeRequest struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The content of the message.
@@ -436,7 +437,7 @@ type SendMessageToGlobeRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
 	//
-	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+	// For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/sms/product-overview/dialing-codes?spm=a2c63.p38356.0.0.48b940a1PFYRMz).
 	//
 	// >  You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
@@ -450,6 +451,11 @@ func (s SendMessageToGlobeRequest) String() string {
 
 func (s SendMessageToGlobeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendMessageToGlobeRequest) SetChannelId(v string) *SendMessageToGlobeRequest {
+	s.ChannelId = &v
+	return s
 }
 
 func (s *SendMessageToGlobeRequest) SetFrom(v string) *SendMessageToGlobeRequest {
@@ -606,6 +612,7 @@ func (s *SendMessageToGlobeResponse) SetBody(v *SendMessageToGlobeResponseBody) 
 }
 
 type SendMessageWithTemplateRequest struct {
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The signature. To query the signature, log on to the [Short Message Service (SMS) console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Signatures** tab of the **Go China** page.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The extension code of the MO message.
@@ -628,6 +635,11 @@ func (s SendMessageWithTemplateRequest) String() string {
 
 func (s SendMessageWithTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendMessageWithTemplateRequest) SetChannelId(v string) *SendMessageWithTemplateRequest {
+	s.ChannelId = &v
+	return s
 }
 
 func (s *SendMessageWithTemplateRequest) SetFrom(v string) *SendMessageWithTemplateRequest {
@@ -1161,6 +1173,10 @@ func (client *Client) SendMessageToGlobeWithOptions(request *SendMessageToGlobeR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["From"] = request.From
 	}
@@ -1238,6 +1254,10 @@ func (client *Client) SendMessageWithTemplateWithOptions(request *SendMessageWit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["From"] = request.From
 	}
