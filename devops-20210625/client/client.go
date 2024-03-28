@@ -1623,6 +1623,360 @@ func (s *CreateCheckRunResponse) SetBody(v *CreateCheckRunResponseBody) *CreateC
 	return s
 }
 
+type CreateCommentRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	CommentType        *string `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	Content            *string `json:"content,omitempty" xml:"content,omitempty"`
+	Draft              *bool   `json:"draft,omitempty" xml:"draft,omitempty"`
+	FilePath           *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	LineNumber         *int32  `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	ParentCommentBizId *string `json:"parentCommentBizId,omitempty" xml:"parentCommentBizId,omitempty"`
+	PatchSetBizId      *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	Resolved           *bool   `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s CreateCommentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentRequest) SetAccessToken(v string) *CreateCommentRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetCommentType(v string) *CreateCommentRequest {
+	s.CommentType = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetContent(v string) *CreateCommentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetDraft(v bool) *CreateCommentRequest {
+	s.Draft = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetFilePath(v string) *CreateCommentRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetLineNumber(v int32) *CreateCommentRequest {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetParentCommentBizId(v string) *CreateCommentRequest {
+	s.ParentCommentBizId = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetPatchSetBizId(v string) *CreateCommentRequest {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetResolved(v bool) *CreateCommentRequest {
+	s.Resolved = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetLocalId(v int64) *CreateCommentRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetOrganizationId(v string) *CreateCommentRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateCommentRequest) SetRepositoryIdentity(v string) *CreateCommentRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type CreateCommentResponseBody struct {
+	ErrorCode    *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateCommentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateCommentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentResponseBody) SetErrorCode(v string) *CreateCommentResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateCommentResponseBody) SetErrorMessage(v string) *CreateCommentResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateCommentResponseBody) SetRequestId(v string) *CreateCommentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBody) SetResult(v *CreateCommentResponseBodyResult) *CreateCommentResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateCommentResponseBody) SetSuccess(v bool) *CreateCommentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCommentResponseBodyResult struct {
+	Author             *CreateCommentResponseBodyResultAuthor          `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	CommentBizId       *string                                         `json:"commentBizId,omitempty" xml:"commentBizId,omitempty"`
+	CommentTime        *string                                         `json:"commentTime,omitempty" xml:"commentTime,omitempty"`
+	CommentType        *string                                         `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	Content            *string                                         `json:"content,omitempty" xml:"content,omitempty"`
+	Deleted            *bool                                           `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	FilePath           *string                                         `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	LastEditTime       *string                                         `json:"lastEditTime,omitempty" xml:"lastEditTime,omitempty"`
+	LineNumber         *string                                         `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	ParentCommentBizId *string                                         `json:"parentCommentBizId,omitempty" xml:"parentCommentBizId,omitempty"`
+	RelatedPatchSet    *CreateCommentResponseBodyResultRelatedPatchSet `json:"relatedPatchSet,omitempty" xml:"relatedPatchSet,omitempty" type:"Struct"`
+	Resolved           *bool                                           `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	RootCommentBizId   *string                                         `json:"rootCommentBizId,omitempty" xml:"rootCommentBizId,omitempty"`
+	State              *string                                         `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s CreateCommentResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentResponseBodyResult) SetAuthor(v *CreateCommentResponseBodyResultAuthor) *CreateCommentResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetCommentBizId(v string) *CreateCommentResponseBodyResult {
+	s.CommentBizId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetCommentTime(v string) *CreateCommentResponseBodyResult {
+	s.CommentTime = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetCommentType(v string) *CreateCommentResponseBodyResult {
+	s.CommentType = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetContent(v string) *CreateCommentResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetDeleted(v bool) *CreateCommentResponseBodyResult {
+	s.Deleted = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetFilePath(v string) *CreateCommentResponseBodyResult {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetLastEditTime(v string) *CreateCommentResponseBodyResult {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetLineNumber(v string) *CreateCommentResponseBodyResult {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetParentCommentBizId(v string) *CreateCommentResponseBodyResult {
+	s.ParentCommentBizId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetRelatedPatchSet(v *CreateCommentResponseBodyResultRelatedPatchSet) *CreateCommentResponseBodyResult {
+	s.RelatedPatchSet = v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetResolved(v bool) *CreateCommentResponseBodyResult {
+	s.Resolved = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetRootCommentBizId(v string) *CreateCommentResponseBodyResult {
+	s.RootCommentBizId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResult) SetState(v string) *CreateCommentResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+type CreateCommentResponseBodyResultAuthor struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id        *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateCommentResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetAliyunPk(v string) *CreateCommentResponseBodyResultAuthor {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetAvatarUrl(v string) *CreateCommentResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetEmail(v string) *CreateCommentResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetId(v int64) *CreateCommentResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetName(v string) *CreateCommentResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetState(v string) *CreateCommentResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultAuthor) SetUsername(v string) *CreateCommentResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+type CreateCommentResponseBodyResultRelatedPatchSet struct {
+	CommitId             *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	PatchSetBizId        *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	PatchSetName         *string `json:"patchSetName,omitempty" xml:"patchSetName,omitempty"`
+	PatchSetNo           *string `json:"patchSetNo,omitempty" xml:"patchSetNo,omitempty"`
+	RelatedMergeItemType *string `json:"relatedMergeItemType,omitempty" xml:"relatedMergeItemType,omitempty"`
+	ShortId              *string `json:"shortId,omitempty" xml:"shortId,omitempty"`
+}
+
+func (s CreateCommentResponseBodyResultRelatedPatchSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentResponseBodyResultRelatedPatchSet) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetCommitId(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.CommitId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetCreatedAt(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetPatchSetBizId(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetPatchSetName(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.PatchSetName = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetPatchSetNo(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.PatchSetNo = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetRelatedMergeItemType(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.RelatedMergeItemType = &v
+	return s
+}
+
+func (s *CreateCommentResponseBodyResultRelatedPatchSet) SetShortId(v string) *CreateCommentResponseBodyResultRelatedPatchSet {
+	s.ShortId = &v
+	return s
+}
+
+type CreateCommentResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCommentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCommentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommentResponse) SetHeaders(v map[string]*string) *CreateCommentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCommentResponse) SetStatusCode(v int32) *CreateCommentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCommentResponse) SetBody(v *CreateCommentResponseBody) *CreateCommentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCommitStatusRequest struct {
 	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Context            *string `json:"context,omitempty" xml:"context,omitempty"`
@@ -1836,6 +2190,371 @@ func (s *CreateCommitStatusResponse) SetStatusCode(v int32) *CreateCommitStatusR
 }
 
 func (s *CreateCommitStatusResponse) SetBody(v *CreateCommitStatusResponseBody) *CreateCommitStatusResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCommitWithMultipleFilesRequest struct {
+	AccessToken        *string                                        `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Actions            []*CreateCommitWithMultipleFilesRequestActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	Branch             *string                                        `json:"branch,omitempty" xml:"branch,omitempty"`
+	CommitMessage      *string                                        `json:"commitMessage,omitempty" xml:"commitMessage,omitempty"`
+	OrganizationId     *string                                        `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string                                        `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetAccessToken(v string) *CreateCommitWithMultipleFilesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetActions(v []*CreateCommitWithMultipleFilesRequestActions) *CreateCommitWithMultipleFilesRequest {
+	s.Actions = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetBranch(v string) *CreateCommitWithMultipleFilesRequest {
+	s.Branch = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetCommitMessage(v string) *CreateCommitWithMultipleFilesRequest {
+	s.CommitMessage = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetOrganizationId(v string) *CreateCommitWithMultipleFilesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequest) SetRepositoryIdentity(v string) *CreateCommitWithMultipleFilesRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesRequestActions struct {
+	Action       *string `json:"action,omitempty" xml:"action,omitempty"`
+	Content      *string `json:"content,omitempty" xml:"content,omitempty"`
+	FilePath     *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	PreviousPath *string `json:"previousPath,omitempty" xml:"previousPath,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesRequestActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesRequestActions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesRequestActions) SetAction(v string) *CreateCommitWithMultipleFilesRequestActions {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequestActions) SetContent(v string) *CreateCommitWithMultipleFilesRequestActions {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequestActions) SetFilePath(v string) *CreateCommitWithMultipleFilesRequestActions {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesRequestActions) SetPreviousPath(v string) *CreateCommitWithMultipleFilesRequestActions {
+	s.PreviousPath = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesResponseBody struct {
+	ErrorCode *string                                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                          `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	RequestId *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *CreateCommitWithMultipleFilesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success   *bool                                            `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBody) SetErrorCode(v string) *CreateCommitWithMultipleFilesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBody) SetErrorMsg(v string) *CreateCommitWithMultipleFilesResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBody) SetRequestId(v string) *CreateCommitWithMultipleFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBody) SetResult(v *CreateCommitWithMultipleFilesResponseBodyResult) *CreateCommitWithMultipleFilesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBody) SetSuccess(v bool) *CreateCommitWithMultipleFilesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesResponseBodyResult struct {
+	Author         *CreateCommitWithMultipleFilesResponseBodyResultAuthor    `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	AuthorEmail    *string                                                   `json:"authorEmail,omitempty" xml:"authorEmail,omitempty"`
+	AuthorName     *string                                                   `json:"authorName,omitempty" xml:"authorName,omitempty"`
+	AuthoredDate   *string                                                   `json:"authoredDate,omitempty" xml:"authoredDate,omitempty"`
+	CommittedDate  *string                                                   `json:"committedDate,omitempty" xml:"committedDate,omitempty"`
+	Committer      *CreateCommitWithMultipleFilesResponseBodyResultCommitter `json:"committer,omitempty" xml:"committer,omitempty" type:"Struct"`
+	CommitterEmail *string                                                   `json:"committerEmail,omitempty" xml:"committerEmail,omitempty"`
+	CommitterName  *string                                                   `json:"committerName,omitempty" xml:"committerName,omitempty"`
+	CreatedAt      *string                                                   `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Id             *string                                                   `json:"id,omitempty" xml:"id,omitempty"`
+	Message        *string                                                   `json:"message,omitempty" xml:"message,omitempty"`
+	ParentIds      []*string                                                 `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
+	ShortId        *string                                                   `json:"shortId,omitempty" xml:"shortId,omitempty"`
+	Title          *string                                                   `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetAuthor(v *CreateCommitWithMultipleFilesResponseBodyResultAuthor) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetAuthorEmail(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetAuthorName(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetAuthoredDate(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.AuthoredDate = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetCommittedDate(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetCommitter(v *CreateCommitWithMultipleFilesResponseBodyResultCommitter) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.Committer = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetCommitterEmail(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetCommitterName(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetCreatedAt(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetId(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetMessage(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetParentIds(v []*string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.ParentIds = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetShortId(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.ShortId = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResult) SetTitle(v string) *CreateCommitWithMultipleFilesResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesResponseBodyResultAuthor struct {
+	AliyunPk   *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetAliyunPk(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetAvatarUrl(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetEmail(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetId(v int64) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetName(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetState(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetUsername(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultAuthor) SetWebsiteUrl(v string) *CreateCommitWithMultipleFilesResponseBodyResultAuthor {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesResponseBodyResultCommitter struct {
+	AliyunPk   *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl  *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email      *string `json:"email,omitempty" xml:"email,omitempty"`
+	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebsiteUrl *string `json:"websiteUrl,omitempty" xml:"websiteUrl,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResultCommitter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesResponseBodyResultCommitter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetAliyunPk(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetAvatarUrl(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetEmail(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetId(v int64) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetName(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetState(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.State = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetUsername(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponseBodyResultCommitter) SetWebsiteUrl(v string) *CreateCommitWithMultipleFilesResponseBodyResultCommitter {
+	s.WebsiteUrl = &v
+	return s
+}
+
+type CreateCommitWithMultipleFilesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCommitWithMultipleFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCommitWithMultipleFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitWithMultipleFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitWithMultipleFilesResponse) SetHeaders(v map[string]*string) *CreateCommitWithMultipleFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponse) SetStatusCode(v int32) *CreateCommitWithMultipleFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCommitWithMultipleFilesResponse) SetBody(v *CreateCommitWithMultipleFilesResponseBody) *CreateCommitWithMultipleFilesResponse {
 	s.Body = v
 	return s
 }
@@ -24501,11 +25220,13 @@ func (s *ListOrganizationsResponseBody) SetTotal(v int64) *ListOrganizationsResp
 }
 
 type ListOrganizationsResponseBodyResult struct {
-	AccessLevel      *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	OrganizationId   *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
-	OrganizationRole *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
+	AccessLevel       *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	NamespaceId       *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	OrganizationAlias *string `json:"organizationAlias,omitempty" xml:"organizationAlias,omitempty"`
+	OrganizationId    *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	OrganizationName  *string `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
+	OrganizationRole  *string `json:"organizationRole,omitempty" xml:"organizationRole,omitempty"`
 }
 
 func (s ListOrganizationsResponseBodyResult) String() string {
@@ -24523,6 +25244,16 @@ func (s *ListOrganizationsResponseBodyResult) SetAccessLevel(v int32) *ListOrgan
 
 func (s *ListOrganizationsResponseBodyResult) SetId(v int64) *ListOrganizationsResponseBodyResult {
 	s.Id = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetNamespaceId(v string) *ListOrganizationsResponseBodyResult {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListOrganizationsResponseBodyResult) SetOrganizationAlias(v string) *ListOrganizationsResponseBodyResult {
+	s.OrganizationAlias = &v
 	return s
 }
 
@@ -27386,6 +28117,7 @@ func (s *ListPushRulesResponse) SetBody(v *ListPushRulesResponseBody) *ListPushR
 type ListRepositoriesRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Archived       *bool   `json:"archived,omitempty" xml:"archived,omitempty"`
+	MinAccessLevel *int32  `json:"minAccessLevel,omitempty" xml:"minAccessLevel,omitempty"`
 	OrderBy        *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 	Page           *int64  `json:"page,omitempty" xml:"page,omitempty"`
@@ -27409,6 +28141,11 @@ func (s *ListRepositoriesRequest) SetAccessToken(v string) *ListRepositoriesRequ
 
 func (s *ListRepositoriesRequest) SetArchived(v bool) *ListRepositoriesRequest {
 	s.Archived = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetMinAccessLevel(v int32) *ListRepositoriesRequest {
+	s.MinAccessLevel = &v
 	return s
 }
 
@@ -42205,6 +42942,98 @@ func (client *Client) CreateCheckRun(request *CreateCheckRunRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateCommentWithOptions(request *CreateCommentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCommentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommentType)) {
+		body["commentType"] = request.CommentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Draft)) {
+		body["draft"] = request.Draft
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["filePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineNumber)) {
+		body["lineNumber"] = request.LineNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCommentBizId)) {
+		body["parentCommentBizId"] = request.ParentCommentBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PatchSetBizId)) {
+		body["patchSetBizId"] = request.PatchSetBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolved)) {
+		body["resolved"] = request.Resolved
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateComment"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/code_reviews/comments/create_comment"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCommentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateComment(request *CreateCommentRequest) (_result *CreateCommentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCommentResponse{}
+	_body, _err := client.CreateCommentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCommitStatusWithOptions(request *CreateCommitStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCommitStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42274,6 +43103,74 @@ func (client *Client) CreateCommitStatus(request *CreateCommitStatusRequest) (_r
 	headers := make(map[string]*string)
 	_result = &CreateCommitStatusResponse{}
 	_body, _err := client.CreateCommitStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCommitWithMultipleFilesWithOptions(request *CreateCommitWithMultipleFilesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCommitWithMultipleFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Actions)) {
+		body["actions"] = request.Actions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Branch)) {
+		body["branch"] = request.Branch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommitMessage)) {
+		body["commitMessage"] = request.CommitMessage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCommitWithMultipleFiles"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/repository/commits/files"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCommitWithMultipleFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCommitWithMultipleFiles(request *CreateCommitWithMultipleFilesRequest) (_result *CreateCommitWithMultipleFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCommitWithMultipleFilesResponse{}
+	_body, _err := client.CreateCommitWithMultipleFilesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49581,6 +50478,10 @@ func (client *Client) ListRepositoriesWithOptions(request *ListRepositoriesReque
 
 	if !tea.BoolValue(util.IsUnset(request.Archived)) {
 		query["archived"] = request.Archived
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinAccessLevel)) {
+		query["minAccessLevel"] = request.MinAccessLevel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
