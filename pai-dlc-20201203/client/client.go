@@ -2263,20 +2263,22 @@ func (s *StatusTransitionItem) SetStatus(v string) *StatusTransitionItem {
 }
 
 type Tensorboard struct {
-	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime  *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ReasonCode     *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage  *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SummaryPath    *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	TensorboardId  *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	DataSourceId           *string                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DisplayName            *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Duration               *string                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GmtCreateTime          *string                      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime          *string                      `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	JobId                  *string                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ReasonCode             *string                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage          *string                      `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId              *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status                 *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SummaryPath            *string                      `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
+	TensorboardId          *string                      `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
+	TensorboardSpec        *TensorboardSpec             `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
+	TensorboardUrl         *string                      `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
+	UserId                 *string                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s Tensorboard) String() string {
@@ -2342,8 +2344,18 @@ func (s *Tensorboard) SetSummaryPath(v string) *Tensorboard {
 	return s
 }
 
+func (s *Tensorboard) SetTensorboardDataSources(v []*TensorboardDataSourceSpec) *Tensorboard {
+	s.TensorboardDataSources = v
+	return s
+}
+
 func (s *Tensorboard) SetTensorboardId(v string) *Tensorboard {
 	s.TensorboardId = &v
+	return s
+}
+
+func (s *Tensorboard) SetTensorboardSpec(v *TensorboardSpec) *Tensorboard {
+	s.TensorboardSpec = v
 	return s
 }
 
@@ -2354,6 +2366,100 @@ func (s *Tensorboard) SetTensorboardUrl(v string) *Tensorboard {
 
 func (s *Tensorboard) SetUserId(v string) *Tensorboard {
 	s.UserId = &v
+	return s
+}
+
+type TensorboardDataSourceSpec struct {
+	DataSourceType  *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DirectoryName   *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
+	FullSummaryPath *string `json:"FullSummaryPath,omitempty" xml:"FullSummaryPath,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SummaryPath     *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s TensorboardDataSourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TensorboardDataSourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TensorboardDataSourceSpec) SetDataSourceType(v string) *TensorboardDataSourceSpec {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetDirectoryName(v string) *TensorboardDataSourceSpec {
+	s.DirectoryName = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetFullSummaryPath(v string) *TensorboardDataSourceSpec {
+	s.FullSummaryPath = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetId(v string) *TensorboardDataSourceSpec {
+	s.Id = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetName(v string) *TensorboardDataSourceSpec {
+	s.Name = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetSourceType(v string) *TensorboardDataSourceSpec {
+	s.SourceType = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetSummaryPath(v string) *TensorboardDataSourceSpec {
+	s.SummaryPath = &v
+	return s
+}
+
+func (s *TensorboardDataSourceSpec) SetUri(v string) *TensorboardDataSourceSpec {
+	s.Uri = &v
+	return s
+}
+
+type TensorboardSpec struct {
+	EcsType         *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s TensorboardSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TensorboardSpec) GoString() string {
+	return s.String()
+}
+
+func (s *TensorboardSpec) SetEcsType(v string) *TensorboardSpec {
+	s.EcsType = &v
+	return s
+}
+
+func (s *TensorboardSpec) SetSecurityGroupId(v string) *TensorboardSpec {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *TensorboardSpec) SetSwitchId(v string) *TensorboardSpec {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *TensorboardSpec) SetVpcId(v string) *TensorboardSpec {
+	s.VpcId = &v
 	return s
 }
 
@@ -2705,21 +2811,23 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
-	Cpu                   *int64            `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DataSourceId          *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSourceType        *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataSources           []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DisplayName           *string           `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	JobId                 *string           `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MaxRunningTimeMinutes *int64            `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	Memory                *int64            `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Options               *string           `json:"Options,omitempty" xml:"Options,omitempty"`
-	SourceId              *string           `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType            *string           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SummaryPath           *string           `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	SummaryRelativePath   *string           `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	Uri                   *string           `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId           *string           `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Cpu                    *int64                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DataSourceId           *string                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType         *string                      `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSources            []*DataSourceItem            `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DisplayName            *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	JobId                  *string                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MaxRunningTimeMinutes  *int64                       `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	Memory                 *int64                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Options                *string                      `json:"Options,omitempty" xml:"Options,omitempty"`
+	SourceId               *string                      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType             *string                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SummaryPath            *string                      `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	SummaryRelativePath    *string                      `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
+	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
+	TensorboardSpec        *TensorboardSpec             `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
+	Uri                    *string                      `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	WorkspaceId            *string                      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTensorboardRequest) String() string {
@@ -2792,6 +2900,16 @@ func (s *CreateTensorboardRequest) SetSummaryPath(v string) *CreateTensorboardRe
 
 func (s *CreateTensorboardRequest) SetSummaryRelativePath(v string) *CreateTensorboardRequest {
 	s.SummaryRelativePath = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetTensorboardDataSources(v []*TensorboardDataSourceSpec) *CreateTensorboardRequest {
+	s.TensorboardDataSources = v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetTensorboardSpec(v *TensorboardSpec) *CreateTensorboardRequest {
+	s.TensorboardSpec = v
 	return s
 }
 
@@ -4773,6 +4891,7 @@ type ListTensorboardsRequest struct {
 	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType   *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	ShowOwn       *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
@@ -4819,6 +4938,11 @@ func (s *ListTensorboardsRequest) SetPageNumber(v int32) *ListTensorboardsReques
 
 func (s *ListTensorboardsRequest) SetPageSize(v int32) *ListTensorboardsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetPaymentType(v string) *ListTensorboardsRequest {
+	s.PaymentType = &v
 	return s
 }
 
@@ -5532,6 +5656,14 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 	if !tea.BoolValue(util.IsUnset(request.SummaryRelativePath)) {
 		body["SummaryRelativePath"] = request.SummaryRelativePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TensorboardDataSources)) {
+		body["TensorboardDataSources"] = request.TensorboardDataSources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TensorboardSpec)) {
+		body["TensorboardSpec"] = request.TensorboardSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uri)) {
@@ -6472,6 +6604,10 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowOwn)) {
