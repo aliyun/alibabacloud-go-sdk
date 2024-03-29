@@ -5977,6 +5977,181 @@ func (s *PostMSSearchEnhanceResponse) SetBody(v *PostMSSearchEnhanceResponseBody
 	return s
 }
 
+type PostMSServiceDataImportRequest struct {
+	DataType  *string                                    `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Documents []*PostMSServiceDataImportRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	ServiceId *int64                                     `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s PostMSServiceDataImportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSServiceDataImportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSServiceDataImportRequest) SetDataType(v string) *PostMSServiceDataImportRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequest) SetDocuments(v []*PostMSServiceDataImportRequestDocuments) *PostMSServiceDataImportRequest {
+	s.Documents = v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequest) SetServiceId(v int64) *PostMSServiceDataImportRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type PostMSServiceDataImportRequestDocuments struct {
+	BizParams     map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	DocId         *string                `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	FileExtension *string                `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
+	FileName      *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePath      *string                `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	Version       *string                `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s PostMSServiceDataImportRequestDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSServiceDataImportRequestDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetBizParams(v map[string]interface{}) *PostMSServiceDataImportRequestDocuments {
+	s.BizParams = v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetDocId(v string) *PostMSServiceDataImportRequestDocuments {
+	s.DocId = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetFileExtension(v string) *PostMSServiceDataImportRequestDocuments {
+	s.FileExtension = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetFileName(v string) *PostMSServiceDataImportRequestDocuments {
+	s.FileName = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetFilePath(v string) *PostMSServiceDataImportRequestDocuments {
+	s.FilePath = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportRequestDocuments) SetVersion(v string) *PostMSServiceDataImportRequestDocuments {
+	s.Version = &v
+	return s
+}
+
+type PostMSServiceDataImportShrinkRequest struct {
+	DataType        *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s PostMSServiceDataImportShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSServiceDataImportShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSServiceDataImportShrinkRequest) SetDataType(v string) *PostMSServiceDataImportShrinkRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportShrinkRequest) SetDocumentsShrink(v string) *PostMSServiceDataImportShrinkRequest {
+	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportShrinkRequest) SetServiceId(v int64) *PostMSServiceDataImportShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type PostMSServiceDataImportResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PostMSServiceDataImportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSServiceDataImportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSServiceDataImportResponseBody) SetCode(v int32) *PostMSServiceDataImportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponseBody) SetData(v int64) *PostMSServiceDataImportResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponseBody) SetMsg(v string) *PostMSServiceDataImportResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponseBody) SetRequestId(v string) *PostMSServiceDataImportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponseBody) SetSuccess(v bool) *PostMSServiceDataImportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PostMSServiceDataImportResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PostMSServiceDataImportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PostMSServiceDataImportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSServiceDataImportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSServiceDataImportResponse) SetHeaders(v map[string]*string) *PostMSServiceDataImportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponse) SetStatusCode(v int32) *PostMSServiceDataImportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostMSServiceDataImportResponse) SetBody(v *PostMSServiceDataImportResponseBody) *PostMSServiceDataImportResponse {
+	s.Body = v
+	return s
+}
+
 type RequestTableQARequest struct {
 	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
@@ -9749,6 +9924,64 @@ func (client *Client) PostMSSearchEnhance(request *PostMSSearchEnhanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &PostMSSearchEnhanceResponse{}
 	_body, _err := client.PostMSSearchEnhanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostMSServiceDataImportWithOptions(tmpReq *PostMSServiceDataImportRequest, runtime *util.RuntimeOptions) (_result *PostMSServiceDataImportResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostMSServiceDataImportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Documents)) {
+		request.DocumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Documents, tea.String("Documents"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		body["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentsShrink)) {
+		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostMSServiceDataImport"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostMSServiceDataImportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostMSServiceDataImport(request *PostMSServiceDataImportRequest) (_result *PostMSServiceDataImportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostMSServiceDataImportResponse{}
+	_body, _err := client.PostMSServiceDataImportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
