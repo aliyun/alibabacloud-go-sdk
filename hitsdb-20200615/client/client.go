@@ -2678,7 +2678,10 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	CreateMilliseconds  *int64                                                `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
 	CreateTime          *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EnableCompute       *bool                                                 `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableLts           *bool                                                 `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
+	EnableMessage       *bool                                                 `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
 	EnableStream        *bool                                                 `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	EnableVector        *bool                                                 `json:"EnableVector,omitempty" xml:"EnableVector,omitempty"`
 	EngineType          *string                                               `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	ExpireTime          *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	ExpiredMilliseconds *int64                                                `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
@@ -2724,8 +2727,23 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableCompute(v bool
 	return s
 }
 
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableLts(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableLts = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableMessage(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableMessage = &v
+	return s
+}
+
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableStream(v bool) *GetLindormInstanceListResponseBodyInstanceList {
 	s.EnableStream = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableVector(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableVector = &v
 	return s
 }
 
