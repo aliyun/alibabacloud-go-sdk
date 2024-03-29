@@ -5249,6 +5249,223 @@ func (s *CreatePermissionApplyOrderResponse) SetBody(v *CreatePermissionApplyOrd
 	return s
 }
 
+type CreateProjectRequest struct {
+	ClientToken                    *string                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableDevelopment             *bool                       `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	IsAllowDownload                *int32                      `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
+	ProjectDescription             *string                     `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	ProjectIdentifier              *string                     `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	ProjectMode                    *int32                      `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	ProjectName                    *string                     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ResourceManagerResourceGroupId *string                     `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tags                           []*CreateProjectRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetClientToken(v string) *CreateProjectRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetDisableDevelopment(v bool) *CreateProjectRequest {
+	s.DisableDevelopment = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetIsAllowDownload(v int32) *CreateProjectRequest {
+	s.IsAllowDownload = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectDescription(v string) *CreateProjectRequest {
+	s.ProjectDescription = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectIdentifier(v string) *CreateProjectRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectMode(v int32) *CreateProjectRequest {
+	s.ProjectMode = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetResourceManagerResourceGroupId(v string) *CreateProjectRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetTags(v []*CreateProjectRequestTags) *CreateProjectRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateProjectRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateProjectRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTags) SetKey(v string) *CreateProjectRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateProjectRequestTags) SetValue(v string) *CreateProjectRequestTags {
+	s.Value = &v
+	return s
+}
+
+type CreateProjectShrinkRequest struct {
+	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisableDevelopment             *bool   `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	IsAllowDownload                *int32  `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
+	ProjectDescription             *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	ProjectIdentifier              *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	ProjectMode                    *int32  `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	ProjectName                    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s CreateProjectShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectShrinkRequest) SetClientToken(v string) *CreateProjectShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetDisableDevelopment(v bool) *CreateProjectShrinkRequest {
+	s.DisableDevelopment = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetIsAllowDownload(v int32) *CreateProjectShrinkRequest {
+	s.IsAllowDownload = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectDescription(v string) *CreateProjectShrinkRequest {
+	s.ProjectDescription = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectIdentifier(v string) *CreateProjectShrinkRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectMode(v int32) *CreateProjectShrinkRequest {
+	s.ProjectMode = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetProjectName(v string) *CreateProjectShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetResourceManagerResourceGroupId(v string) *CreateProjectShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetTagsShrink(v string) *CreateProjectShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetData(v int64) *CreateProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetHttpStatusCode(v int32) *CreateProjectResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProjectMemberRequest struct {
 	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -58139,6 +58356,88 @@ func (client *Client) CreatePermissionApplyOrder(request *CreatePermissionApplyO
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePermissionApplyOrderResponse{}
 	_body, _err := client.CreatePermissionApplyOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableDevelopment)) {
+		query["DisableDevelopment"] = request.DisableDevelopment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAllowDownload)) {
+		query["IsAllowDownload"] = request.IsAllowDownload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectDescription)) {
+		query["ProjectDescription"] = request.ProjectDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		query["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectMode)) {
+		query["ProjectMode"] = request.ProjectMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
