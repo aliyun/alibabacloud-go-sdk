@@ -12,6 +12,245 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AttachVscMountPointRequest struct {
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MountPointId  *string                `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIds        []*string              `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
+	VscType       *string                `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s AttachVscMountPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachVscMountPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachVscMountPointRequest) SetDescription(v string) *AttachVscMountPointRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetFileSystemId(v string) *AttachVscMountPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetInputRegionId(v string) *AttachVscMountPointRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *AttachVscMountPointRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetMountPointId(v string) *AttachVscMountPointRequest {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetVscIds(v []*string) *AttachVscMountPointRequest {
+	s.VscIds = v
+	return s
+}
+
+func (s *AttachVscMountPointRequest) SetVscType(v string) *AttachVscMountPointRequest {
+	s.VscType = &v
+	return s
+}
+
+type AttachVscMountPointShrinkRequest struct {
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId     *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MountPointId      *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIdsShrink      *string `json:"VscIds,omitempty" xml:"VscIds,omitempty"`
+	VscType           *string `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s AttachVscMountPointShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachVscMountPointShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetDescription(v string) *AttachVscMountPointShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetFileSystemId(v string) *AttachVscMountPointShrinkRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetInputRegionId(v string) *AttachVscMountPointShrinkRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetInstanceIdsShrink(v string) *AttachVscMountPointShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetMountPointId(v string) *AttachVscMountPointShrinkRequest {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetVscIdsShrink(v string) *AttachVscMountPointShrinkRequest {
+	s.VscIdsShrink = &v
+	return s
+}
+
+func (s *AttachVscMountPointShrinkRequest) SetVscType(v string) *AttachVscMountPointShrinkRequest {
+	s.VscType = &v
+	return s
+}
+
+type AttachVscMountPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachVscMountPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachVscMountPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachVscMountPointResponseBody) SetRequestId(v string) *AttachVscMountPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachVscMountPointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachVscMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachVscMountPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachVscMountPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachVscMountPointResponse) SetHeaders(v map[string]*string) *AttachVscMountPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachVscMountPointResponse) SetStatusCode(v int32) *AttachVscMountPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachVscMountPointResponse) SetBody(v *AttachVscMountPointResponseBody) *AttachVscMountPointResponse {
+	s.Body = v
+	return s
+}
+
+type BindVscMountPointAliasRequest struct {
+	AliasPrefix   *string `json:"AliasPrefix,omitempty" xml:"AliasPrefix,omitempty"`
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	MountPointId  *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+}
+
+func (s BindVscMountPointAliasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindVscMountPointAliasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindVscMountPointAliasRequest) SetAliasPrefix(v string) *BindVscMountPointAliasRequest {
+	s.AliasPrefix = &v
+	return s
+}
+
+func (s *BindVscMountPointAliasRequest) SetFileSystemId(v string) *BindVscMountPointAliasRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *BindVscMountPointAliasRequest) SetInputRegionId(v string) *BindVscMountPointAliasRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *BindVscMountPointAliasRequest) SetMountPointId(v string) *BindVscMountPointAliasRequest {
+	s.MountPointId = &v
+	return s
+}
+
+type BindVscMountPointAliasResponseBody struct {
+	MountPointAlias *string `json:"MountPointAlias,omitempty" xml:"MountPointAlias,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BindVscMountPointAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindVscMountPointAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindVscMountPointAliasResponseBody) SetMountPointAlias(v string) *BindVscMountPointAliasResponseBody {
+	s.MountPointAlias = &v
+	return s
+}
+
+func (s *BindVscMountPointAliasResponseBody) SetRequestId(v string) *BindVscMountPointAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BindVscMountPointAliasResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindVscMountPointAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindVscMountPointAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindVscMountPointAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindVscMountPointAliasResponse) SetHeaders(v map[string]*string) *BindVscMountPointAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindVscMountPointAliasResponse) SetStatusCode(v int32) *BindVscMountPointAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindVscMountPointAliasResponse) SetBody(v *BindVscMountPointAliasResponseBody) *BindVscMountPointAliasResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAccessGroupRequest struct {
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -71,9 +310,9 @@ func (s *CreateAccessGroupResponseBody) SetRequestId(v string) *CreateAccessGrou
 }
 
 type CreateAccessGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessGroupResponse) String() string {
@@ -170,9 +409,9 @@ func (s *CreateAccessRuleResponseBody) SetRequestId(v string) *CreateAccessRuleR
 }
 
 type CreateAccessRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessRuleResponse) String() string {
@@ -305,9 +544,9 @@ func (s *CreateFileSystemResponseBody) SetRequestId(v string) *CreateFileSystemR
 }
 
 type CreateFileSystemResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFileSystemResponse) String() string {
@@ -410,9 +649,9 @@ func (s *CreateMountPointResponseBody) SetRequestId(v string) *CreateMountPointR
 }
 
 type CreateMountPointResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMountPointResponse) String() string {
@@ -439,10 +678,10 @@ func (s *CreateMountPointResponse) SetBody(v *CreateMountPointResponseBody) *Cre
 }
 
 type CreateUserGroupsMappingRequest struct {
-	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	GroupNames    map[string]interface{} `json:"GroupNames,omitempty" xml:"GroupNames,omitempty"`
-	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
-	UserName      *string                `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	FileSystemId  *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	GroupNames    []*string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty" type:"Repeated"`
+	InputRegionId *string   `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	UserName      *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserGroupsMappingRequest) String() string {
@@ -458,7 +697,7 @@ func (s *CreateUserGroupsMappingRequest) SetFileSystemId(v string) *CreateUserGr
 	return s
 }
 
-func (s *CreateUserGroupsMappingRequest) SetGroupNames(v map[string]interface{}) *CreateUserGroupsMappingRequest {
+func (s *CreateUserGroupsMappingRequest) SetGroupNames(v []*string) *CreateUserGroupsMappingRequest {
 	s.GroupNames = v
 	return s
 }
@@ -526,9 +765,9 @@ func (s *CreateUserGroupsMappingResponseBody) SetRequestId(v string) *CreateUser
 }
 
 type CreateUserGroupsMappingResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserGroupsMappingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserGroupsMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserGroupsMappingResponse) String() string {
@@ -550,6 +789,128 @@ func (s *CreateUserGroupsMappingResponse) SetStatusCode(v int32) *CreateUserGrou
 }
 
 func (s *CreateUserGroupsMappingResponse) SetBody(v *CreateUserGroupsMappingResponseBody) *CreateUserGroupsMappingResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVscMountPointRequest struct {
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s CreateVscMountPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscMountPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscMountPointRequest) SetDescription(v string) *CreateVscMountPointRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVscMountPointRequest) SetFileSystemId(v string) *CreateVscMountPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateVscMountPointRequest) SetInputRegionId(v string) *CreateVscMountPointRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *CreateVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *CreateVscMountPointRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type CreateVscMountPointShrinkRequest struct {
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId     *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s CreateVscMountPointShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscMountPointShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscMountPointShrinkRequest) SetDescription(v string) *CreateVscMountPointShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVscMountPointShrinkRequest) SetFileSystemId(v string) *CreateVscMountPointShrinkRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *CreateVscMountPointShrinkRequest) SetInputRegionId(v string) *CreateVscMountPointShrinkRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *CreateVscMountPointShrinkRequest) SetInstanceIdsShrink(v string) *CreateVscMountPointShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type CreateVscMountPointResponseBody struct {
+	MountPointId *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateVscMountPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscMountPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscMountPointResponseBody) SetMountPointId(v string) *CreateVscMountPointResponseBody {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *CreateVscMountPointResponseBody) SetRequestId(v string) *CreateVscMountPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateVscMountPointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVscMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVscMountPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscMountPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscMountPointResponse) SetHeaders(v map[string]*string) *CreateVscMountPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVscMountPointResponse) SetStatusCode(v int32) *CreateVscMountPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVscMountPointResponse) SetBody(v *CreateVscMountPointResponseBody) *CreateVscMountPointResponse {
 	s.Body = v
 	return s
 }
@@ -595,9 +956,9 @@ func (s *DeleteAccessGroupResponseBody) SetRequestId(v string) *DeleteAccessGrou
 }
 
 type DeleteAccessGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessGroupResponse) String() string {
@@ -670,9 +1031,9 @@ func (s *DeleteAccessRuleResponseBody) SetRequestId(v string) *DeleteAccessRuleR
 }
 
 type DeleteAccessRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessRuleResponse) String() string {
@@ -739,9 +1100,9 @@ func (s *DeleteFileSystemResponseBody) SetRequestId(v string) *DeleteFileSystemR
 }
 
 type DeleteFileSystemResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFileSystemResponse) String() string {
@@ -814,9 +1175,9 @@ func (s *DeleteMountPointResponseBody) SetRequestId(v string) *DeleteMountPointR
 }
 
 type DeleteMountPointResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteMountPointResponse) String() string {
@@ -930,9 +1291,9 @@ func (s *DeleteUserGroupsMappingResponseBody) SetRequestId(v string) *DeleteUser
 }
 
 type DeleteUserGroupsMappingResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserGroupsMappingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserGroupsMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserGroupsMappingResponse) String() string {
@@ -954,6 +1315,81 @@ func (s *DeleteUserGroupsMappingResponse) SetStatusCode(v int32) *DeleteUserGrou
 }
 
 func (s *DeleteUserGroupsMappingResponse) SetBody(v *DeleteUserGroupsMappingResponseBody) *DeleteUserGroupsMappingResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVscMountPointRequest struct {
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	MountPointId  *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+}
+
+func (s DeleteVscMountPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscMountPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscMountPointRequest) SetFileSystemId(v string) *DeleteVscMountPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DeleteVscMountPointRequest) SetInputRegionId(v string) *DeleteVscMountPointRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *DeleteVscMountPointRequest) SetMountPointId(v string) *DeleteVscMountPointRequest {
+	s.MountPointId = &v
+	return s
+}
+
+type DeleteVscMountPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVscMountPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscMountPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscMountPointResponseBody) SetRequestId(v string) *DeleteVscMountPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVscMountPointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVscMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVscMountPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscMountPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscMountPointResponse) SetHeaders(v map[string]*string) *DeleteVscMountPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVscMountPointResponse) SetStatusCode(v int32) *DeleteVscMountPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVscMountPointResponse) SetBody(v *DeleteVscMountPointResponseBody) *DeleteVscMountPointResponse {
 	s.Body = v
 	return s
 }
@@ -1051,9 +1487,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1075,6 +1511,350 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVscMountPointsRequest struct {
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MountPointId  *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VscId         *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+}
+
+func (s DescribeVscMountPointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsRequest) SetFileSystemId(v string) *DescribeVscMountPointsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsRequest) SetInputRegionId(v string) *DescribeVscMountPointsRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsRequest) SetInstanceId(v string) *DescribeVscMountPointsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsRequest) SetMountPointId(v string) *DescribeVscMountPointsRequest {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsRequest) SetStatus(v string) *DescribeVscMountPointsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsRequest) SetVscId(v string) *DescribeVscMountPointsRequest {
+	s.VscId = &v
+	return s
+}
+
+type DescribeVscMountPointsResponseBody struct {
+	MountPoints []*DescribeVscMountPointsResponseBodyMountPoints `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeVscMountPointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsResponseBody) SetMountPoints(v []*DescribeVscMountPointsResponseBodyMountPoints) *DescribeVscMountPointsResponseBody {
+	s.MountPoints = v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBody) SetRequestId(v string) *DescribeVscMountPointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBody) SetTotalCount(v int32) *DescribeVscMountPointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeVscMountPointsResponseBodyMountPoints struct {
+	Description        *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceTotalCount *int32                                                    `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
+	Instances          []*DescribeVscMountPointsResponseBodyMountPointsInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	MountPointAlias    *string                                                   `json:"MountPointAlias,omitempty" xml:"MountPointAlias,omitempty"`
+	MountPointId       *string                                                   `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPoints) SetDescription(v string) *DescribeVscMountPointsResponseBodyMountPoints {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPoints) SetInstanceTotalCount(v int32) *DescribeVscMountPointsResponseBodyMountPoints {
+	s.InstanceTotalCount = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPoints) SetInstances(v []*DescribeVscMountPointsResponseBodyMountPointsInstances) *DescribeVscMountPointsResponseBodyMountPoints {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPoints) SetMountPointAlias(v string) *DescribeVscMountPointsResponseBodyMountPoints {
+	s.MountPointAlias = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPoints) SetMountPointId(v string) *DescribeVscMountPointsResponseBodyMountPoints {
+	s.MountPointId = &v
+	return s
+}
+
+type DescribeVscMountPointsResponseBodyMountPointsInstances struct {
+	InstanceId *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status     *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vscs       []*DescribeVscMountPointsResponseBodyMountPointsInstancesVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPointsInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPointsInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstances) SetInstanceId(v string) *DescribeVscMountPointsResponseBodyMountPointsInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstances) SetStatus(v string) *DescribeVscMountPointsResponseBodyMountPointsInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstances) SetVscs(v []*DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) *DescribeVscMountPointsResponseBodyMountPointsInstances {
+	s.Vscs = v
+	return s
+}
+
+type DescribeVscMountPointsResponseBodyMountPointsInstancesVscs struct {
+	VscId     *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	VscStatus *string `json:"VscStatus,omitempty" xml:"VscStatus,omitempty"`
+	VscType   *string `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) SetVscId(v string) *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs {
+	s.VscId = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) SetVscStatus(v string) *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs {
+	s.VscStatus = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs) SetVscType(v string) *DescribeVscMountPointsResponseBodyMountPointsInstancesVscs {
+	s.VscType = &v
+	return s
+}
+
+type DescribeVscMountPointsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVscMountPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVscMountPointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscMountPointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscMountPointsResponse) SetHeaders(v map[string]*string) *DescribeVscMountPointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponse) SetStatusCode(v int32) *DescribeVscMountPointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVscMountPointsResponse) SetBody(v *DescribeVscMountPointsResponseBody) *DescribeVscMountPointsResponse {
+	s.Body = v
+	return s
+}
+
+type DetachVscMountPointRequest struct {
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MountPointId  *string                `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIds        []*string              `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
+}
+
+func (s DetachVscMountPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachVscMountPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachVscMountPointRequest) SetDescription(v string) *DetachVscMountPointRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DetachVscMountPointRequest) SetFileSystemId(v string) *DetachVscMountPointRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DetachVscMountPointRequest) SetInputRegionId(v string) *DetachVscMountPointRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *DetachVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *DetachVscMountPointRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DetachVscMountPointRequest) SetMountPointId(v string) *DetachVscMountPointRequest {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *DetachVscMountPointRequest) SetVscIds(v []*string) *DetachVscMountPointRequest {
+	s.VscIds = v
+	return s
+}
+
+type DetachVscMountPointShrinkRequest struct {
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId     *string `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	MountPointId      *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIdsShrink      *string `json:"VscIds,omitempty" xml:"VscIds,omitempty"`
+}
+
+func (s DetachVscMountPointShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachVscMountPointShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetDescription(v string) *DetachVscMountPointShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetFileSystemId(v string) *DetachVscMountPointShrinkRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetInputRegionId(v string) *DetachVscMountPointShrinkRequest {
+	s.InputRegionId = &v
+	return s
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetInstanceIdsShrink(v string) *DetachVscMountPointShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetMountPointId(v string) *DetachVscMountPointShrinkRequest {
+	s.MountPointId = &v
+	return s
+}
+
+func (s *DetachVscMountPointShrinkRequest) SetVscIdsShrink(v string) *DetachVscMountPointShrinkRequest {
+	s.VscIdsShrink = &v
+	return s
+}
+
+type DetachVscMountPointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachVscMountPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachVscMountPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachVscMountPointResponseBody) SetRequestId(v string) *DetachVscMountPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachVscMountPointResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachVscMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachVscMountPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachVscMountPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachVscMountPointResponse) SetHeaders(v map[string]*string) *DetachVscMountPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachVscMountPointResponse) SetStatusCode(v int32) *DetachVscMountPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachVscMountPointResponse) SetBody(v *DetachVscMountPointResponseBody) *DetachVscMountPointResponse {
 	s.Body = v
 	return s
 }
@@ -1191,9 +1971,9 @@ func (s *GetAccessGroupResponseBodyAccessGroup) SetRuleCount(v int32) *GetAccess
 }
 
 type GetAccessGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccessGroupResponse) String() string {
@@ -1331,9 +2111,9 @@ func (s *GetAccessRuleResponseBodyAccessRule) SetRegionId(v string) *GetAccessRu
 }
 
 type GetAccessRuleResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccessRuleResponse) String() string {
@@ -1525,9 +2305,9 @@ func (s *GetFileSystemResponseBodyFileSystem) SetZoneId(v string) *GetFileSystem
 }
 
 type GetFileSystemResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFileSystemResponse) String() string {
@@ -1683,9 +2463,9 @@ func (s *GetMountPointResponseBodyMountPoint) SetVpcId(v string) *GetMountPointR
 }
 
 type GetMountPointResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMountPointResponse) String() string {
@@ -1798,9 +2578,9 @@ func (s *GetRegionResponseBodyAvailableZonesOptions) SetStorageType(v string) *G
 }
 
 type GetRegionResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRegionResponse) String() string {
@@ -1962,9 +2742,9 @@ func (s *ListAccessGroupsResponseBodyAccessGroups) SetRuleCount(v int32) *ListAc
 }
 
 type ListAccessGroupsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessGroupsResponse) String() string {
@@ -2126,9 +2906,9 @@ func (s *ListAccessRulesResponseBodyAccessRules) SetRegionId(v string) *ListAcce
 }
 
 type ListAccessRulesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessRulesResponse) String() string {
@@ -2344,9 +3124,9 @@ func (s *ListFileSystemsResponseBodyFileSystems) SetZoneId(v string) *ListFileSy
 }
 
 type ListFileSystemsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFileSystemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFileSystemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFileSystemsResponse) String() string {
@@ -2526,9 +3306,9 @@ func (s *ListMountPointsResponseBodyMountPoints) SetVpcId(v string) *ListMountPo
 }
 
 type ListMountPointsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMountPointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMountPointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMountPointsResponse) String() string {
@@ -2648,9 +3428,9 @@ func (s *ListUserGroupsMappingsResponseBodyUserGroupsMappings) SetUserName(v str
 }
 
 type ListUserGroupsMappingsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserGroupsMappingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserGroupsMappingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserGroupsMappingsResponse) String() string {
@@ -2729,9 +3509,9 @@ func (s *ModifyAccessGroupResponseBody) SetRequestId(v string) *ModifyAccessGrou
 }
 
 type ModifyAccessGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccessGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAccessGroupResponse) String() string {
@@ -2822,9 +3602,9 @@ func (s *ModifyAccessRuleResponseBody) SetRequestId(v string) *ModifyAccessRuleR
 }
 
 type ModifyAccessRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccessRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAccessRuleResponse) String() string {
@@ -2921,9 +3701,9 @@ func (s *ModifyFileSystemResponseBody) SetRequestId(v string) *ModifyFileSystemR
 }
 
 type ModifyFileSystemResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFileSystemResponse) String() string {
@@ -3014,9 +3794,9 @@ func (s *ModifyMountPointResponseBody) SetRequestId(v string) *ModifyMountPointR
 }
 
 type ModifyMountPointResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyMountPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyMountPointResponse) String() string {
@@ -3082,6 +3862,153 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ****
+ *
+ * @param tmpReq AttachVscMountPointRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AttachVscMountPointResponse
+ */
+func (client *Client) AttachVscMountPointWithOptions(tmpReq *AttachVscMountPointRequest, runtime *util.RuntimeOptions) (_result *AttachVscMountPointResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachVscMountPointShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VscIds)) {
+		request.VscIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VscIds, tea.String("VscIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPointId)) {
+		query["MountPointId"] = request.MountPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscIdsShrink)) {
+		query["VscIds"] = request.VscIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscType)) {
+		query["VscType"] = request.VscType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachVscMountPoint"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachVscMountPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * ****
+ *
+ * @param request AttachVscMountPointRequest
+ * @return AttachVscMountPointResponse
+ */
+func (client *Client) AttachVscMountPoint(request *AttachVscMountPointRequest) (_result *AttachVscMountPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachVscMountPointResponse{}
+	_body, _err := client.AttachVscMountPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BindVscMountPointAliasWithOptions(request *BindVscMountPointAliasRequest, runtime *util.RuntimeOptions) (_result *BindVscMountPointAliasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasPrefix)) {
+		query["AliasPrefix"] = request.AliasPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPointId)) {
+		query["MountPointId"] = request.MountPointId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindVscMountPointAlias"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindVscMountPointAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindVscMountPointAlias(request *BindVscMountPointAliasRequest) (_result *BindVscMountPointAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindVscMountPointAliasResponse{}
+	_body, _err := client.BindVscMountPointAliasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3411,6 +4338,68 @@ func (client *Client) CreateUserGroupsMapping(request *CreateUserGroupsMappingRe
 	return _result, _err
 }
 
+func (client *Client) CreateVscMountPointWithOptions(tmpReq *CreateVscMountPointRequest, runtime *util.RuntimeOptions) (_result *CreateVscMountPointResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateVscMountPointShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVscMountPoint"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVscMountPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVscMountPoint(request *CreateVscMountPointRequest) (_result *CreateVscMountPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVscMountPointResponse{}
+	_body, _err := client.CreateVscMountPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAccessGroupWithOptions(request *DeleteAccessGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3657,6 +4646,58 @@ func (client *Client) DeleteUserGroupsMapping(request *DeleteUserGroupsMappingRe
 	return _result, _err
 }
 
+func (client *Client) DeleteVscMountPointWithOptions(request *DeleteVscMountPointRequest, runtime *util.RuntimeOptions) (_result *DeleteVscMountPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPointId)) {
+		query["MountPointId"] = request.MountPointId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVscMountPoint"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVscMountPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteVscMountPoint(request *DeleteVscMountPointRequest) (_result *DeleteVscMountPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVscMountPointResponse{}
+	_body, _err := client.DeleteVscMountPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3698,6 +4739,144 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVscMountPointsWithOptions(request *DescribeVscMountPointsRequest, runtime *util.RuntimeOptions) (_result *DescribeVscMountPointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPointId)) {
+		query["MountPointId"] = request.MountPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscId)) {
+		query["VscId"] = request.VscId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVscMountPoints"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVscMountPointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVscMountPoints(request *DescribeVscMountPointsRequest) (_result *DescribeVscMountPointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVscMountPointsResponse{}
+	_body, _err := client.DescribeVscMountPointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachVscMountPointWithOptions(tmpReq *DetachVscMountPointRequest, runtime *util.RuntimeOptions) (_result *DetachVscMountPointResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetachVscMountPointShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VscIds)) {
+		request.VscIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VscIds, tea.String("VscIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputRegionId)) {
+		query["InputRegionId"] = request.InputRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPointId)) {
+		query["MountPointId"] = request.MountPointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscIdsShrink)) {
+		query["VscIds"] = request.VscIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachVscMountPoint"),
+		Version:     tea.String("2018-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachVscMountPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachVscMountPoint(request *DetachVscMountPointRequest) (_result *DetachVscMountPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachVscMountPointResponse{}
+	_body, _err := client.DetachVscMountPointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

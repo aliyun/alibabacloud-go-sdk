@@ -1,3 +1,12 @@
+2024-03-29 Version: v2.0.1
+- Update API AttachVscMountPoint: update param InstanceIds.
+- Update API AttachVscMountPoint: update param VscIds.
+- Update API CreateUserGroupsMapping: update response param.
+- Update API CreateVscMountPoint: update param InstanceIds.
+- Update API DetachVscMountPoint: update param InstanceIds.
+- Update API DetachVscMountPoint: update param VscIds.
+
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2018-06-20 for DFS.
 
