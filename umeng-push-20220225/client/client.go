@@ -873,6 +873,7 @@ type SendByAliasFileIdRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasFileIdRequest) String() string {
@@ -933,6 +934,11 @@ func (s *SendByAliasFileIdRequest) SetReceiptUrl(v string) *SendByAliasFileIdReq
 	return s
 }
 
+func (s *SendByAliasFileIdRequest) SetThirdPartyId(v string) *SendByAliasFileIdRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByAliasFileIdShrinkRequest struct {
 	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
@@ -944,6 +950,7 @@ type SendByAliasFileIdShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasFileIdShrinkRequest) String() string {
@@ -1001,6 +1008,11 @@ func (s *SendByAliasFileIdShrinkRequest) SetReceiptType(v int32) *SendByAliasFil
 
 func (s *SendByAliasFileIdShrinkRequest) SetReceiptUrl(v string) *SendByAliasFileIdShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetThirdPartyId(v string) *SendByAliasFileIdShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -1106,6 +1118,7 @@ type SendByAppRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAppRequest) String() string {
@@ -1156,6 +1169,11 @@ func (s *SendByAppRequest) SetReceiptUrl(v string) *SendByAppRequest {
 	return s
 }
 
+func (s *SendByAppRequest) SetThirdPartyId(v string) *SendByAppRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByAppShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1165,6 +1183,7 @@ type SendByAppShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAppShrinkRequest) String() string {
@@ -1212,6 +1231,11 @@ func (s *SendByAppShrinkRequest) SetReceiptType(v int32) *SendByAppShrinkRequest
 
 func (s *SendByAppShrinkRequest) SetReceiptUrl(v string) *SendByAppShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetThirdPartyId(v string) *SendByAppShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -1553,6 +1577,7 @@ type SendByDeviceFileIdRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceFileIdRequest) String() string {
@@ -1608,6 +1633,11 @@ func (s *SendByDeviceFileIdRequest) SetReceiptUrl(v string) *SendByDeviceFileIdR
 	return s
 }
 
+func (s *SendByDeviceFileIdRequest) SetThirdPartyId(v string) *SendByDeviceFileIdRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByDeviceFileIdShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1618,6 +1648,7 @@ type SendByDeviceFileIdShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceFileIdShrinkRequest) String() string {
@@ -1670,6 +1701,11 @@ func (s *SendByDeviceFileIdShrinkRequest) SetReceiptType(v int32) *SendByDeviceF
 
 func (s *SendByDeviceFileIdShrinkRequest) SetReceiptUrl(v string) *SendByDeviceFileIdShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetThirdPartyId(v string) *SendByDeviceFileIdShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -1776,6 +1812,7 @@ type SendByFilterRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByFilterRequest) String() string {
@@ -1831,6 +1868,11 @@ func (s *SendByFilterRequest) SetReceiptUrl(v string) *SendByFilterRequest {
 	return s
 }
 
+func (s *SendByFilterRequest) SetThirdPartyId(v string) *SendByFilterRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByFilterShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1841,6 +1883,7 @@ type SendByFilterShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByFilterShrinkRequest) String() string {
@@ -1893,6 +1936,11 @@ func (s *SendByFilterShrinkRequest) SetReceiptType(v int32) *SendByFilterShrinkR
 
 func (s *SendByFilterShrinkRequest) SetReceiptUrl(v string) *SendByFilterShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetThirdPartyId(v string) *SendByFilterShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -2406,6 +2454,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 		body["ReceiptUrl"] = request.ReceiptUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -2496,6 +2548,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 
 	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
 		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2694,6 +2750,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 		body["ReceiptUrl"] = request.ReceiptUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -2788,6 +2848,10 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
 		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
 	req := &openapi.OpenApiRequest{
