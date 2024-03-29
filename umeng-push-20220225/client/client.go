@@ -72,11 +72,12 @@ func (s *AndroidPayload) SetExtra(v map[string]interface{}) *AndroidPayload {
 
 type Aps struct {
 	Alert             *Alert  `json:"alert,omitempty" xml:"alert,omitempty"`
-	Badge             *int32  `json:"badge,omitempty" xml:"badge,omitempty"`
+	Badge             *string `json:"badge,omitempty" xml:"badge,omitempty"`
 	Category          *string `json:"category,omitempty" xml:"category,omitempty"`
 	ContentAvailable  *int32  `json:"contentAvailable,omitempty" xml:"contentAvailable,omitempty"`
 	InterruptionLevel *string `json:"interruptionLevel,omitempty" xml:"interruptionLevel,omitempty"`
 	Sound             *string `json:"sound,omitempty" xml:"sound,omitempty"`
+	ThreadID          *string `json:"threadID,omitempty" xml:"threadID,omitempty"`
 }
 
 func (s Aps) String() string {
@@ -92,7 +93,7 @@ func (s *Aps) SetAlert(v *Alert) *Aps {
 	return s
 }
 
-func (s *Aps) SetBadge(v int32) *Aps {
+func (s *Aps) SetBadge(v string) *Aps {
 	s.Badge = &v
 	return s
 }
@@ -114,6 +115,11 @@ func (s *Aps) SetInterruptionLevel(v string) *Aps {
 
 func (s *Aps) SetSound(v string) *Aps {
 	s.Sound = &v
+	return s
+}
+
+func (s *Aps) SetThreadID(v string) *Aps {
+	s.ThreadID = &v
 	return s
 }
 
@@ -290,8 +296,8 @@ func (s *ChannelProperties) SetXiaomiChannelId(v string) *ChannelProperties {
 }
 
 type IosPayload struct {
-	Aps   *Aps               `json:"aps,omitempty" xml:"aps,omitempty"`
-	Extra map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Aps   *Aps                   `json:"aps,omitempty" xml:"aps,omitempty"`
+	Extra map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
 }
 
 func (s IosPayload) String() string {
@@ -307,7 +313,7 @@ func (s *IosPayload) SetAps(v *Aps) *IosPayload {
 	return s
 }
 
-func (s *IosPayload) SetExtra(v map[string]*string) *IosPayload {
+func (s *IosPayload) SetExtra(v map[string]interface{}) *IosPayload {
 	s.Extra = v
 	return s
 }
@@ -429,9 +435,9 @@ func (s *CancelByMsgIdResponseBodyData) SetMsgId(v string) *CancelByMsgIdRespons
 }
 
 type CancelByMsgIdResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelByMsgIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelByMsgIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelByMsgIdResponse) String() string {
@@ -581,9 +587,9 @@ func (s *QueryMsgStatResponseBodyData) SetStatus(v int32) *QueryMsgStatResponseB
 }
 
 type QueryMsgStatResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMsgStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMsgStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMsgStatResponse) String() string {
@@ -620,6 +626,7 @@ type SendByAliasRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasRequest) String() string {
@@ -680,6 +687,11 @@ func (s *SendByAliasRequest) SetReceiptUrl(v string) *SendByAliasRequest {
 	return s
 }
 
+func (s *SendByAliasRequest) SetThirdPartyId(v string) *SendByAliasRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByAliasShrinkRequest struct {
 	Alias                   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	AliasType               *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
@@ -691,6 +703,7 @@ type SendByAliasShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByAliasShrinkRequest) String() string {
@@ -748,6 +761,11 @@ func (s *SendByAliasShrinkRequest) SetReceiptType(v int32) *SendByAliasShrinkReq
 
 func (s *SendByAliasShrinkRequest) SetReceiptUrl(v string) *SendByAliasShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetThirdPartyId(v string) *SendByAliasShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -816,9 +834,9 @@ func (s *SendByAliasResponseBodyData) SetMsgId(v string) *SendByAliasResponseBod
 }
 
 type SendByAliasResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByAliasResponse) String() string {
@@ -1051,9 +1069,9 @@ func (s *SendByAliasFileIdResponseBodyData) SetMsgId(v string) *SendByAliasFileI
 }
 
 type SendByAliasFileIdResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByAliasFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByAliasFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByAliasFileIdResponse) String() string {
@@ -1262,9 +1280,9 @@ func (s *SendByAppResponseBodyData) SetMsgId(v string) *SendByAppResponseBodyDat
 }
 
 type SendByAppResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByAppResponse) String() string {
@@ -1300,6 +1318,7 @@ type SendByDeviceRequest struct {
 	ProductionMode    *bool              `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType       *int32             `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl        *string            `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId      *string            `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceRequest) String() string {
@@ -1355,6 +1374,11 @@ func (s *SendByDeviceRequest) SetReceiptUrl(v string) *SendByDeviceRequest {
 	return s
 }
 
+func (s *SendByDeviceRequest) SetThirdPartyId(v string) *SendByDeviceRequest {
+	s.ThirdPartyId = &v
+	return s
+}
+
 type SendByDeviceShrinkRequest struct {
 	AndroidPayloadShrink    *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
 	ChannelPropertiesShrink *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
@@ -1365,6 +1389,7 @@ type SendByDeviceShrinkRequest struct {
 	ProductionMode          *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
 	ReceiptType             *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	ReceiptUrl              *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
 }
 
 func (s SendByDeviceShrinkRequest) String() string {
@@ -1417,6 +1442,11 @@ func (s *SendByDeviceShrinkRequest) SetReceiptType(v int32) *SendByDeviceShrinkR
 
 func (s *SendByDeviceShrinkRequest) SetReceiptUrl(v string) *SendByDeviceShrinkRequest {
 	s.ReceiptUrl = &v
+	return s
+}
+
+func (s *SendByDeviceShrinkRequest) SetThirdPartyId(v string) *SendByDeviceShrinkRequest {
+	s.ThirdPartyId = &v
 	return s
 }
 
@@ -1485,9 +1515,9 @@ func (s *SendByDeviceResponseBodyData) SetMsgId(v string) *SendByDeviceResponseB
 }
 
 type SendByDeviceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByDeviceResponse) String() string {
@@ -1708,9 +1738,9 @@ func (s *SendByDeviceFileIdResponseBodyData) SetMsgId(v string) *SendByDeviceFil
 }
 
 type SendByDeviceFileIdResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByDeviceFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByDeviceFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByDeviceFileIdResponse) String() string {
@@ -1931,9 +1961,9 @@ func (s *SendByFilterResponseBodyData) SetMsgId(v string) *SendByFilterResponseB
 }
 
 type SendByFilterResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendByFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendByFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendByFilterResponse) String() string {
@@ -2041,9 +2071,9 @@ func (s *UploadDeviceResponseBodyData) SetFileId(v string) *UploadDeviceResponse
 }
 
 type UploadDeviceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadDeviceResponse) String() string {
@@ -2270,6 +2300,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
 		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2558,6 +2592,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.ReceiptUrl)) {
 		body["ReceiptUrl"] = request.ReceiptUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyId)) {
+		body["ThirdPartyId"] = request.ThirdPartyId
 	}
 
 	req := &openapi.OpenApiRequest{

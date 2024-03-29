@@ -1,3 +1,8 @@
+2024-03-29 Version: v1.0.6
+- Update API SendByAlias: add param ThirdPartyId.
+- Update API SendByDevice: add param ThirdPartyId.
+
+
 2023-09-20 Version: v1.0.5
 - Generated golang 2022-02-25 for umeng-push.
 
