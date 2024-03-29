@@ -22992,8 +22992,9 @@ func (s *ListJoinedOrganizationsResponseBody) SetSuccess(v bool) *ListJoinedOrga
 }
 
 type ListJoinedOrganizationsResponseBodyOrganizations struct {
-	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsOrgAdmin *bool   `json:"isOrgAdmin,omitempty" xml:"isOrgAdmin,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListJoinedOrganizationsResponseBodyOrganizations) String() string {
@@ -23006,6 +23007,11 @@ func (s ListJoinedOrganizationsResponseBodyOrganizations) GoString() string {
 
 func (s *ListJoinedOrganizationsResponseBodyOrganizations) SetId(v string) *ListJoinedOrganizationsResponseBodyOrganizations {
 	s.Id = &v
+	return s
+}
+
+func (s *ListJoinedOrganizationsResponseBodyOrganizations) SetIsOrgAdmin(v bool) *ListJoinedOrganizationsResponseBodyOrganizations {
+	s.IsOrgAdmin = &v
 	return s
 }
 
