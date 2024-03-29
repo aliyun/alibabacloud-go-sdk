@@ -177,7 +177,8 @@ type ConfigureDtsJobRequest struct {
 	// The SID of the Oracle database.
 	//
 	// >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
-	Reserve *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	Reserve         *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The password of the source database account.
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
 	// The IP address of the source instance.
@@ -489,6 +490,11 @@ func (s *ConfigureDtsJobRequest) SetReserve(v string) *ConfigureDtsJobRequest {
 	return s
 }
 
+func (s *ConfigureDtsJobRequest) SetResourceGroupId(v string) *ConfigureDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ConfigureDtsJobRequest) SetSourceEndpointDatabaseName(v string) *ConfigureDtsJobRequest {
 	s.SourceEndpointDatabaseName = &v
 	return s
@@ -734,7 +740,8 @@ type ConfigureDtsJobAdvanceRequest struct {
 	// The SID of the Oracle database.
 	//
 	// >  If the **DestinationEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in a non-RAC architecture, this parameter is available and required.
-	Reserve *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	Reserve         *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The password of the source database account.
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
 	// The IP address of the source instance.
@@ -1046,6 +1053,11 @@ func (s *ConfigureDtsJobAdvanceRequest) SetReserve(v string) *ConfigureDtsJobAdv
 	return s
 }
 
+func (s *ConfigureDtsJobAdvanceRequest) SetResourceGroupId(v string) *ConfigureDtsJobAdvanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ConfigureDtsJobAdvanceRequest) SetSourceEndpointDatabaseName(v string) *ConfigureDtsJobAdvanceRequest {
 	s.SourceEndpointDatabaseName = &v
 	return s
@@ -1240,7 +1252,8 @@ type ConfigureMigrationJobRequest struct {
 	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
 	//
 	// >  The region ID of the data migration instance is the same as that of the destination database.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ConfigureMigrationJobRequest) String() string {
@@ -1303,6 +1316,11 @@ func (s *ConfigureMigrationJobRequest) SetOwnerId(v string) *ConfigureMigrationJ
 
 func (s *ConfigureMigrationJobRequest) SetRegionId(v string) *ConfigureMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureMigrationJobRequest) SetResourceGroupId(v string) *ConfigureMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1700,9 +1718,10 @@ type ConfigureMigrationJobAlertRequest struct {
 	// *   If the task that you monitor enters an abnormal state, an alert is triggered.
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ConfigureMigrationJobAlertRequest) String() string {
@@ -1755,6 +1774,11 @@ func (s *ConfigureMigrationJobAlertRequest) SetOwnerId(v string) *ConfigureMigra
 
 func (s *ConfigureMigrationJobAlertRequest) SetRegionId(v string) *ConfigureMigrationJobAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureMigrationJobAlertRequest) SetResourceGroupId(v string) *ConfigureMigrationJobAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1875,7 +1899,8 @@ type ConfigureSubscriptionRequest struct {
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
-	Reserve *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	Reserve         *string `json:"Reserve,omitempty" xml:"Reserve,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the source database.
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
 	// The engine of the source database. Valid values: **MySQL**, **PostgreSQL**, and **Oracle**.
@@ -2038,6 +2063,11 @@ func (s *ConfigureSubscriptionRequest) SetRegionId(v string) *ConfigureSubscript
 
 func (s *ConfigureSubscriptionRequest) SetReserve(v string) *ConfigureSubscriptionRequest {
 	s.Reserve = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetResourceGroupId(v string) *ConfigureSubscriptionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2220,9 +2250,10 @@ type ConfigureSubscriptionInstanceRequest struct {
 	SubscriptionDataType *ConfigureSubscriptionInstanceRequestSubscriptionDataType `json:"SubscriptionDataType,omitempty" xml:"SubscriptionDataType,omitempty" type:"Struct"`
 	SubscriptionInstance *ConfigureSubscriptionInstanceRequestSubscriptionInstance `json:"SubscriptionInstance,omitempty" xml:"SubscriptionInstance,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is discontinued.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
@@ -2272,6 +2303,11 @@ func (s *ConfigureSubscriptionInstanceRequest) SetOwnerId(v string) *ConfigureSu
 
 func (s *ConfigureSubscriptionInstanceRequest) SetRegionId(v string) *ConfigureSubscriptionInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionInstanceRequest) SetResourceGroupId(v string) *ConfigureSubscriptionInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2568,6 +2604,7 @@ type ConfigureSubscriptionInstanceAlertRequest struct {
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
 	OwnerId          *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -2617,6 +2654,11 @@ func (s *ConfigureSubscriptionInstanceAlertRequest) SetOwnerId(v string) *Config
 
 func (s *ConfigureSubscriptionInstanceAlertRequest) SetRegionId(v string) *ConfigureSubscriptionInstanceAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionInstanceAlertRequest) SetResourceGroupId(v string) *ConfigureSubscriptionInstanceAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2714,6 +2756,7 @@ type ConfigureSynchronizationJobRequest struct {
 	MigrationReserved *string `json:"MigrationReserved,omitempty" xml:"MigrationReserved,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform initial schema synchronization. Valid values:
 	//
 	// *   **true**: yes
@@ -2790,6 +2833,11 @@ func (s *ConfigureSynchronizationJobRequest) SetOwnerId(v string) *ConfigureSync
 
 func (s *ConfigureSynchronizationJobRequest) SetRegionId(v string) *ConfigureSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureSynchronizationJobRequest) SetResourceGroupId(v string) *ConfigureSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3170,6 +3218,7 @@ type ConfigureSynchronizationJobAlertRequest struct {
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
 	OwnerId          *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -3226,6 +3275,11 @@ func (s *ConfigureSynchronizationJobAlertRequest) SetOwnerId(v string) *Configur
 
 func (s *ConfigureSynchronizationJobAlertRequest) SetRegionId(v string) *ConfigureSynchronizationJobAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureSynchronizationJobAlertRequest) SetResourceGroupId(v string) *ConfigureSynchronizationJobAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3311,9 +3365,10 @@ type ConfigureSynchronizationJobReplicatorCompareRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -3357,6 +3412,11 @@ func (s *ConfigureSynchronizationJobReplicatorCompareRequest) SetOwnerId(v strin
 
 func (s *ConfigureSynchronizationJobReplicatorCompareRequest) SetRegionId(v string) *ConfigureSynchronizationJobReplicatorCompareRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ConfigureSynchronizationJobReplicatorCompareRequest) SetResourceGroupId(v string) *ConfigureSynchronizationJobReplicatorCompareRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3459,7 +3519,8 @@ type CountJobByConditionRequest struct {
 	// One of the query conditions. The ID of the region. For more information, see [Supported regions](~~141033~~).
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the source database.
 	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
 	// The status of the DTS task.
@@ -3560,6 +3621,11 @@ func (s *CountJobByConditionRequest) SetRegion(v string) *CountJobByConditionReq
 
 func (s *CountJobByConditionRequest) SetRegionId(v string) *CountJobByConditionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CountJobByConditionRequest) SetResourceGroupId(v string) *CountJobByConditionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3698,7 +3764,8 @@ type CreateConsumerChannelRequest struct {
 	// >  You must specify at least one of the **DtsInstanceId** and **DtsJobId**. parameters.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateConsumerChannelRequest) String() string {
@@ -3736,6 +3803,11 @@ func (s *CreateConsumerChannelRequest) SetDtsJobId(v string) *CreateConsumerChan
 
 func (s *CreateConsumerChannelRequest) SetRegionId(v string) *CreateConsumerChannelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateConsumerChannelRequest) SetResourceGroupId(v string) *CreateConsumerChannelRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3838,6 +3910,7 @@ type CreateConsumerGroupRequest struct {
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
 	OwnerId               *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -3877,6 +3950,11 @@ func (s *CreateConsumerGroupRequest) SetOwnerId(v string) *CreateConsumerGroupRe
 
 func (s *CreateConsumerGroupRequest) SetRegionId(v string) *CreateConsumerGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateConsumerGroupRequest) SetResourceGroupId(v string) *CreateConsumerGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3982,7 +4060,8 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
 	Phones *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateDedicatedClusterMonitorRuleRequest) String() string {
@@ -4040,6 +4119,11 @@ func (s *CreateDedicatedClusterMonitorRuleRequest) SetPhones(v string) *CreateDe
 
 func (s *CreateDedicatedClusterMonitorRuleRequest) SetRegionId(v string) *CreateDedicatedClusterMonitorRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDedicatedClusterMonitorRuleRequest) SetResourceGroupId(v string) *CreateDedicatedClusterMonitorRuleRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4487,7 +4571,8 @@ type CreateJobMonitorRuleRequest struct {
 	// *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to enable the alert rule. Valid values:
 	//
 	// *   **Y**: enables the alert rule.
@@ -4542,6 +4627,11 @@ func (s *CreateJobMonitorRuleRequest) SetPhone(v string) *CreateJobMonitorRuleRe
 
 func (s *CreateJobMonitorRuleRequest) SetRegionId(v string) *CreateJobMonitorRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateJobMonitorRuleRequest) SetResourceGroupId(v string) *CreateJobMonitorRuleRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4676,7 +4766,8 @@ type CreateMigrationJobRequest struct {
 	// The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](~~141033~~).
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the region where the data migration instance resides. You do not need to specify this parameter because this parameter will be removed in the future.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateMigrationJobRequest) String() string {
@@ -4714,6 +4805,11 @@ func (s *CreateMigrationJobRequest) SetRegion(v string) *CreateMigrationJobReque
 
 func (s *CreateMigrationJobRequest) SetRegionId(v string) *CreateMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateMigrationJobRequest) SetResourceGroupId(v string) *CreateMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4793,7 +4889,8 @@ func (s *CreateMigrationJobResponse) SetBody(v *CreateMigrationJobResponseBody) 
 }
 
 type CreateReverseDtsJobRequest struct {
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateReverseDtsJobRequest) String() string {
@@ -4806,6 +4903,11 @@ func (s CreateReverseDtsJobRequest) GoString() string {
 
 func (s *CreateReverseDtsJobRequest) SetDtsJobId(v string) *CreateReverseDtsJobRequest {
 	s.DtsJobId = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobRequest) SetResourceGroupId(v string) *CreateReverseDtsJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4911,8 +5013,9 @@ type CreateSubscriptionInstanceRequest struct {
 	// >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](~~141033~~).
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The subscription length.
 	//
 	// *   If the billing cycle is **Year**, the value range is **1 to 5**.
@@ -4967,6 +5070,11 @@ func (s *CreateSubscriptionInstanceRequest) SetRegion(v string) *CreateSubscript
 
 func (s *CreateSubscriptionInstanceRequest) SetRegionId(v string) *CreateSubscriptionInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSubscriptionInstanceRequest) SetResourceGroupId(v string) *CreateSubscriptionInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5095,8 +5203,9 @@ type CreateSynchronizationJobRequest struct {
 	// *   **Month**
 	//
 	// >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
-	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the region where the source database resides. For more information, see [List of supported regions](~~141033~~).
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
 	// The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
@@ -5178,6 +5287,11 @@ func (s *CreateSynchronizationJobRequest) SetPeriod(v string) *CreateSynchroniza
 
 func (s *CreateSynchronizationJobRequest) SetRegionId(v string) *CreateSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSynchronizationJobRequest) SetResourceGroupId(v string) *CreateSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5347,7 +5461,8 @@ type DeleteConsumerChannelRequest struct {
 	// >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteConsumerChannelRequest) String() string {
@@ -5375,6 +5490,11 @@ func (s *DeleteConsumerChannelRequest) SetDtsJobId(v string) *DeleteConsumerChan
 
 func (s *DeleteConsumerChannelRequest) SetRegionId(v string) *DeleteConsumerChannelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteConsumerChannelRequest) SetResourceGroupId(v string) *DeleteConsumerChannelRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5460,6 +5580,7 @@ type DeleteConsumerGroupRequest struct {
 	ConsumerGroupID *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
 	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -5489,6 +5610,11 @@ func (s *DeleteConsumerGroupRequest) SetOwnerId(v string) *DeleteConsumerGroupRe
 
 func (s *DeleteConsumerGroupRequest) SetRegionId(v string) *DeleteConsumerGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteConsumerGroupRequest) SetResourceGroupId(v string) *DeleteConsumerGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5574,9 +5700,11 @@ type DeleteDtsJobRequest struct {
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	JobType  *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The error code returned if the call failed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The dynamic error code. This parameter will be removed in the future.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DeleteDtsJobRequest) String() string {
@@ -5607,8 +5735,18 @@ func (s *DeleteDtsJobRequest) SetRegionId(v string) *DeleteDtsJobRequest {
 	return s
 }
 
+func (s *DeleteDtsJobRequest) SetResourceGroupId(v string) *DeleteDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteDtsJobRequest) SetSynchronizationDirection(v string) *DeleteDtsJobRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DeleteDtsJobRequest) SetZeroEtlJob(v bool) *DeleteDtsJobRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -5716,7 +5854,9 @@ type DeleteDtsJobsRequest struct {
 	// > *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZeroEtlJob      *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DeleteDtsJobsRequest) String() string {
@@ -5734,6 +5874,16 @@ func (s *DeleteDtsJobsRequest) SetDtsJobIds(v string) *DeleteDtsJobsRequest {
 
 func (s *DeleteDtsJobsRequest) SetRegionId(v string) *DeleteDtsJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDtsJobsRequest) SetResourceGroupId(v string) *DeleteDtsJobsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteDtsJobsRequest) SetZeroEtlJob(v bool) *DeleteDtsJobsRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -5832,9 +5982,10 @@ type DeleteMigrationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteMigrationJobRequest) String() string {
@@ -5862,6 +6013,11 @@ func (s *DeleteMigrationJobRequest) SetOwnerId(v string) *DeleteMigrationJobRequ
 
 func (s *DeleteMigrationJobRequest) SetRegionId(v string) *DeleteMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteMigrationJobRequest) SetResourceGroupId(v string) *DeleteMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5935,9 +6091,10 @@ func (s *DeleteMigrationJobResponse) SetBody(v *DeleteMigrationJobResponseBody) 
 
 type DeleteSubscriptionInstanceRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -5962,6 +6119,11 @@ func (s *DeleteSubscriptionInstanceRequest) SetOwnerId(v string) *DeleteSubscrip
 
 func (s *DeleteSubscriptionInstanceRequest) SetRegionId(v string) *DeleteSubscriptionInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSubscriptionInstanceRequest) SetResourceGroupId(v string) *DeleteSubscriptionInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6040,9 +6202,10 @@ func (s *DeleteSubscriptionInstanceResponse) SetBody(v *DeleteSubscriptionInstan
 
 type DeleteSynchronizationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
 }
@@ -6067,6 +6230,11 @@ func (s *DeleteSynchronizationJobRequest) SetOwnerId(v string) *DeleteSynchroniz
 
 func (s *DeleteSynchronizationJobRequest) SetRegionId(v string) *DeleteSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSynchronizationJobRequest) SetResourceGroupId(v string) *DeleteSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6291,11 +6459,12 @@ func (s *DescribeChannelAccountResponse) SetBody(v *DescribeChannelAccountRespon
 }
 
 type DescribeCheckJobsRequest struct {
-	CheckType  *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobName    *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CheckType       *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCheckJobsRequest) String() string {
@@ -6328,6 +6497,11 @@ func (s *DescribeCheckJobsRequest) SetPageNumber(v int32) *DescribeCheckJobsRequ
 
 func (s *DescribeCheckJobsRequest) SetPageSize(v int32) *DescribeCheckJobsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCheckJobsRequest) SetResourceGroupId(v string) *DescribeCheckJobsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6559,7 +6733,8 @@ type DescribeClusterOperateLogsRequest struct {
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **20**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value must be in the UNIX timestamp format. Unit: milliseconds. If you do not specify this parameter, the data within the last seven days is returned by default.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -6609,6 +6784,11 @@ func (s *DescribeClusterOperateLogsRequest) SetPageNumber(v int32) *DescribeClus
 
 func (s *DescribeClusterOperateLogsRequest) SetPageSize(v int32) *DescribeClusterOperateLogsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClusterOperateLogsRequest) SetResourceGroupId(v string) *DescribeClusterOperateLogsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6819,8 +6999,9 @@ type DescribeClusterUsedUtilizationRequest struct {
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeClusterUsedUtilizationRequest) String() string {
@@ -6868,6 +7049,11 @@ func (s *DescribeClusterUsedUtilizationRequest) SetOwnerID(v string) *DescribeCl
 
 func (s *DescribeClusterUsedUtilizationRequest) SetRegionId(v string) *DescribeClusterUsedUtilizationRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeClusterUsedUtilizationRequest) SetResourceGroupId(v string) *DescribeClusterUsedUtilizationRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7095,7 +7281,8 @@ type DescribeConnectionStatusRequest struct {
 	// >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
 	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle**. Valid values:
 	//
 	// *   **SID**: non-RAC architecture
@@ -7214,6 +7401,11 @@ func (s *DescribeConnectionStatusRequest) SetDestinationEndpointUserName(v strin
 
 func (s *DescribeConnectionStatusRequest) SetRegionId(v string) *DescribeConnectionStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeConnectionStatusRequest) SetResourceGroupId(v string) *DescribeConnectionStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7370,7 +7562,8 @@ type DescribeConsumerChannelRequest struct {
 	// The parent task ID of the distributed task.
 	ParentChannelId *string `json:"ParentChannelId,omitempty" xml:"ParentChannelId,omitempty"`
 	// The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeConsumerChannelRequest) String() string {
@@ -7408,6 +7601,11 @@ func (s *DescribeConsumerChannelRequest) SetParentChannelId(v string) *DescribeC
 
 func (s *DescribeConsumerChannelRequest) SetRegionId(v string) *DescribeConsumerChannelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeConsumerChannelRequest) SetResourceGroupId(v string) *DescribeConsumerChannelRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7580,8 +7778,9 @@ type DescribeConsumerGroupRequest struct {
 	// The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -7616,6 +7815,11 @@ func (s *DescribeConsumerGroupRequest) SetPageSize(v int32) *DescribeConsumerGro
 
 func (s *DescribeConsumerGroupRequest) SetRegionId(v string) *DescribeConsumerGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeConsumerGroupRequest) SetResourceGroupId(v string) *DescribeConsumerGroupRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7800,6 +8004,7 @@ type DescribeDTSIPRequest struct {
 	// >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
 	//
 	// >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
@@ -7821,6 +8026,11 @@ func (s *DescribeDTSIPRequest) SetDestinationEndpointRegion(v string) *DescribeD
 
 func (s *DescribeDTSIPRequest) SetRegionId(v string) *DescribeDTSIPRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDTSIPRequest) SetResourceGroupId(v string) *DescribeDTSIPRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7920,7 +8130,8 @@ type DescribeDataCheckReportUrlRequest struct {
 	// The name of the verified source database.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the table verified in the source database.
 	TbName *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
 }
@@ -7945,6 +8156,11 @@ func (s *DescribeDataCheckReportUrlRequest) SetDbName(v string) *DescribeDataChe
 
 func (s *DescribeDataCheckReportUrlRequest) SetDtsJobId(v string) *DescribeDataCheckReportUrlRequest {
 	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDataCheckReportUrlRequest) SetResourceGroupId(v string) *DescribeDataCheckReportUrlRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8046,7 +8262,8 @@ type DescribeDataCheckTableDetailsRequest struct {
 	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the schema whose data is verified in the source database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The status of the data verification result. Valid values:
@@ -8083,6 +8300,11 @@ func (s *DescribeDataCheckTableDetailsRequest) SetPageNumber(v int32) *DescribeD
 
 func (s *DescribeDataCheckTableDetailsRequest) SetPageSize(v int32) *DescribeDataCheckTableDetailsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDetailsRequest) SetResourceGroupId(v string) *DescribeDataCheckTableDetailsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8326,12 +8548,13 @@ func (s *DescribeDataCheckTableDetailsResponse) SetBody(v *DescribeDataCheckTabl
 }
 
 type DescribeDataCheckTableDiffDetailsRequest struct {
-	CheckType  *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TbName     *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
+	CheckType       *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TbName          *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
 }
 
 func (s DescribeDataCheckTableDiffDetailsRequest) String() string {
@@ -8364,6 +8587,11 @@ func (s *DescribeDataCheckTableDiffDetailsRequest) SetPageNumber(v int64) *Descr
 
 func (s *DescribeDataCheckTableDiffDetailsRequest) SetPageSize(v int64) *DescribeDataCheckTableDiffDetailsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDataCheckTableDiffDetailsRequest) SetResourceGroupId(v string) *DescribeDataCheckTableDiffDetailsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8512,7 +8740,8 @@ type DescribeDedicatedClusterRequest struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region in which the instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDedicatedClusterRequest) String() string {
@@ -8535,6 +8764,11 @@ func (s *DescribeDedicatedClusterRequest) SetOwnerId(v string) *DescribeDedicate
 
 func (s *DescribeDedicatedClusterRequest) SetRegionId(v string) *DescribeDedicatedClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedClusterRequest) SetResourceGroupId(v string) *DescribeDedicatedClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8773,6 +9007,7 @@ type DescribeDedicatedClusterMonitorRuleRequest struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDedicatedClusterMonitorRuleRequest) String() string {
@@ -8795,6 +9030,11 @@ func (s *DescribeDedicatedClusterMonitorRuleRequest) SetOwnerId(v string) *Descr
 
 func (s *DescribeDedicatedClusterMonitorRuleRequest) SetRegionId(v string) *DescribeDedicatedClusterMonitorRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDedicatedClusterMonitorRuleRequest) SetResourceGroupId(v string) *DescribeDedicatedClusterMonitorRuleRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8920,7 +9160,8 @@ type DescribeDtsEtlJobVersionInfoRequest struct {
 	// The number of entries to return on each page. Default value: 20.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeDtsEtlJobVersionInfoRequest) String() string {
@@ -8953,6 +9194,11 @@ func (s *DescribeDtsEtlJobVersionInfoRequest) SetPageSize(v int32) *DescribeDtsE
 
 func (s *DescribeDtsEtlJobVersionInfoRequest) SetRegionId(v string) *DescribeDtsEtlJobVersionInfoRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsEtlJobVersionInfoRequest) SetResourceGroupId(v string) *DescribeDtsEtlJobVersionInfoRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9181,9 +9427,11 @@ type DescribeDtsJobDetailRequest struct {
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking task.
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SyncSubJobHistory *bool   `json:"SyncSubJobHistory,omitempty" xml:"SyncSubJobHistory,omitempty"`
 	// Queries the details of a data migration, data synchronization, or change tracking task.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DescribeDtsJobDetailRequest) String() string {
@@ -9209,6 +9457,11 @@ func (s *DescribeDtsJobDetailRequest) SetRegionId(v string) *DescribeDtsJobDetai
 	return s
 }
 
+func (s *DescribeDtsJobDetailRequest) SetResourceGroupId(v string) *DescribeDtsJobDetailRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDtsJobDetailRequest) SetSyncSubJobHistory(v bool) *DescribeDtsJobDetailRequest {
 	s.SyncSubJobHistory = &v
 	return s
@@ -9216,6 +9469,11 @@ func (s *DescribeDtsJobDetailRequest) SetSyncSubJobHistory(v bool) *DescribeDtsJ
 
 func (s *DescribeDtsJobDetailRequest) SetSynchronizationDirection(v string) *DescribeDtsJobDetailRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailRequest) SetZeroEtlJob(v bool) *DescribeDtsJobDetailRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -13976,7 +14234,9 @@ type DescribeDtsJobsRequest struct {
 	// The ID of the parent task.
 	//
 	// >  In most cases, you do not need to specify this parameter.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
 	// *   **MIGRATION**: data migration. This is the default value.
@@ -14081,6 +14341,7 @@ type DescribeDtsJobsRequest struct {
 	// - **true**: does not return **DbObject**.
 	// - **false**: returns **DbObject**. If you set this parameter to false, the response time is shortened.
 	WithoutDbList *bool `json:"WithoutDbList,omitempty" xml:"WithoutDbList,omitempty"`
+	ZeroEtlJob    *bool `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DescribeDtsJobsRequest) String() string {
@@ -14113,6 +14374,16 @@ func (s *DescribeDtsJobsRequest) SetDtsJobId(v string) *DescribeDtsJobsRequest {
 
 func (s *DescribeDtsJobsRequest) SetGroupId(v string) *DescribeDtsJobsRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetInstanceId(v string) *DescribeDtsJobsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetInstanceType(v string) *DescribeDtsJobsRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -14183,6 +14454,11 @@ func (s *DescribeDtsJobsRequest) SetType(v string) *DescribeDtsJobsRequest {
 
 func (s *DescribeDtsJobsRequest) SetWithoutDbList(v bool) *DescribeDtsJobsRequest {
 	s.WithoutDbList = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetZeroEtlJob(v bool) *DescribeDtsJobsRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -18005,7 +18281,8 @@ type DescribeDtsServiceLogRequest struct {
 	// The number of log entries to return on each page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// > *   To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
@@ -18023,6 +18300,7 @@ type DescribeDtsServiceLogRequest struct {
 	// *   **ONLINE_WRITER**: incremental migration
 	// *   **SYNC_WRITER**: incremental synchronization
 	SubJobType *string `json:"SubJobType,omitempty" xml:"SubJobType,omitempty"`
+	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DescribeDtsServiceLogRequest) String() string {
@@ -18063,6 +18341,11 @@ func (s *DescribeDtsServiceLogRequest) SetRegionId(v string) *DescribeDtsService
 	return s
 }
 
+func (s *DescribeDtsServiceLogRequest) SetResourceGroupId(v string) *DescribeDtsServiceLogRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDtsServiceLogRequest) SetStartTime(v int64) *DescribeDtsServiceLogRequest {
 	s.StartTime = &v
 	return s
@@ -18075,6 +18358,11 @@ func (s *DescribeDtsServiceLogRequest) SetStatus(v string) *DescribeDtsServiceLo
 
 func (s *DescribeDtsServiceLogRequest) SetSubJobType(v string) *DescribeDtsServiceLogRequest {
 	s.SubJobType = &v
+	return s
+}
+
+func (s *DescribeDtsServiceLogRequest) SetZeroEtlJob(v bool) *DescribeDtsServiceLogRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -18231,9 +18519,10 @@ type DescribeEndpointSwitchStatusRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](~~201858~~) operation.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -18263,6 +18552,11 @@ func (s *DescribeEndpointSwitchStatusRequest) SetOwnerId(v string) *DescribeEndp
 
 func (s *DescribeEndpointSwitchStatusRequest) SetRegionId(v string) *DescribeEndpointSwitchStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEndpointSwitchStatusRequest) SetResourceGroupId(v string) *DescribeEndpointSwitchStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -18363,7 +18657,8 @@ type DescribeEtlJobLogsRequest struct {
 	// The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeEtlJobLogsRequest) String() string {
@@ -18381,6 +18676,11 @@ func (s *DescribeEtlJobLogsRequest) SetDtsJobId(v string) *DescribeEtlJobLogsReq
 
 func (s *DescribeEtlJobLogsRequest) SetRegionId(v string) *DescribeEtlJobLogsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEtlJobLogsRequest) SetResourceGroupId(v string) *DescribeEtlJobLogsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -18540,8 +18840,9 @@ type DescribeInitializationStatusRequest struct {
 	// The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **30**.
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
 }
@@ -18576,6 +18877,11 @@ func (s *DescribeInitializationStatusRequest) SetPageSize(v int32) *DescribeInit
 
 func (s *DescribeInitializationStatusRequest) SetRegionId(v string) *DescribeInitializationStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInitializationStatusRequest) SetResourceGroupId(v string) *DescribeInitializationStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -18947,7 +19253,8 @@ type DescribeJobMonitorRuleRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeJobMonitorRuleRequest) String() string {
@@ -18965,6 +19272,11 @@ func (s *DescribeJobMonitorRuleRequest) SetDtsJobId(v string) *DescribeJobMonito
 
 func (s *DescribeJobMonitorRuleRequest) SetRegionId(v string) *DescribeJobMonitorRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeJobMonitorRuleRequest) SetResourceGroupId(v string) *DescribeJobMonitorRuleRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -19189,7 +19501,8 @@ type DescribeMetricListRequest struct {
 	// The monitored object. If the **MetricType** parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The monitoring interval. Unit: seconds. Minimum value: 15.
-	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period          *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -19249,6 +19562,11 @@ func (s *DescribeMetricListRequest) SetParam(v string) *DescribeMetricListReques
 
 func (s *DescribeMetricListRequest) SetPeriod(v int64) *DescribeMetricListRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *DescribeMetricListRequest) SetResourceGroupId(v string) *DescribeMetricListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -19424,9 +19742,10 @@ type DescribeMigrationJobAlertRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeMigrationJobAlertRequest) String() string {
@@ -19459,6 +19778,11 @@ func (s *DescribeMigrationJobAlertRequest) SetOwnerId(v string) *DescribeMigrati
 
 func (s *DescribeMigrationJobAlertRequest) SetRegionId(v string) *DescribeMigrationJobAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMigrationJobAlertRequest) SetResourceGroupId(v string) *DescribeMigrationJobAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -19599,7 +19923,8 @@ type DescribeMigrationJobDetailRequest struct {
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailRequest) String() string {
@@ -19647,6 +19972,11 @@ func (s *DescribeMigrationJobDetailRequest) SetPageSize(v int32) *DescribeMigrat
 
 func (s *DescribeMigrationJobDetailRequest) SetRegionId(v string) *DescribeMigrationJobDetailRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMigrationJobDetailRequest) SetResourceGroupId(v string) *DescribeMigrationJobDetailRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -20146,9 +20476,10 @@ type DescribeMigrationJobStatusRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeMigrationJobStatusRequest) String() string {
@@ -20181,6 +20512,11 @@ func (s *DescribeMigrationJobStatusRequest) SetOwnerId(v string) *DescribeMigrat
 
 func (s *DescribeMigrationJobStatusRequest) SetRegionId(v string) *DescribeMigrationJobStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMigrationJobStatusRequest) SetResourceGroupId(v string) *DescribeMigrationJobStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -20797,8 +21133,9 @@ type DescribeMigrationJobsRequest struct {
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the data migration instances reside. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*DescribeMigrationJobsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*DescribeMigrationJobsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMigrationJobsRequest) String() string {
@@ -20836,6 +21173,11 @@ func (s *DescribeMigrationJobsRequest) SetPageSize(v int32) *DescribeMigrationJo
 
 func (s *DescribeMigrationJobsRequest) SetRegionId(v string) *DescribeMigrationJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMigrationJobsRequest) SetResourceGroupId(v string) *DescribeMigrationJobsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -21585,7 +21927,8 @@ type DescribePreCheckStatusRequest struct {
 	// The number of entries to return on each page. Default value: **20**.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The filter item used to filter tables, views, and functions during schema migration.
 	StructPhase *string `json:"StructPhase,omitempty" xml:"StructPhase,omitempty"`
 	// The type of schema definition. Valid values:
@@ -21593,6 +21936,7 @@ type DescribePreCheckStatusRequest struct {
 	// *   **before**: schema migration or initial schema synchronization
 	// *   **after**: DDL operations performed during incremental data migration or synchronization
 	StructType *string `json:"StructType,omitempty" xml:"StructType,omitempty"`
+	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s DescribePreCheckStatusRequest) String() string {
@@ -21633,6 +21977,11 @@ func (s *DescribePreCheckStatusRequest) SetRegionId(v string) *DescribePreCheckS
 	return s
 }
 
+func (s *DescribePreCheckStatusRequest) SetResourceGroupId(v string) *DescribePreCheckStatusRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribePreCheckStatusRequest) SetStructPhase(v string) *DescribePreCheckStatusRequest {
 	s.StructPhase = &v
 	return s
@@ -21640,6 +21989,11 @@ func (s *DescribePreCheckStatusRequest) SetStructPhase(v string) *DescribePreChe
 
 func (s *DescribePreCheckStatusRequest) SetStructType(v string) *DescribePreCheckStatusRequest {
 	s.StructType = &v
+	return s
+}
+
+func (s *DescribePreCheckStatusRequest) SetZeroEtlJob(v bool) *DescribePreCheckStatusRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -22932,9 +23286,10 @@ type DescribeSubscriptionInstanceAlertRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -22964,6 +23319,11 @@ func (s *DescribeSubscriptionInstanceAlertRequest) SetOwnerId(v string) *Describ
 
 func (s *DescribeSubscriptionInstanceAlertRequest) SetRegionId(v string) *DescribeSubscriptionInstanceAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSubscriptionInstanceAlertRequest) SetResourceGroupId(v string) *DescribeSubscriptionInstanceAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -23097,9 +23457,10 @@ func (s *DescribeSubscriptionInstanceAlertResponse) SetBody(v *DescribeSubscript
 
 type DescribeSubscriptionInstanceStatusRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -23124,6 +23485,11 @@ func (s *DescribeSubscriptionInstanceStatusRequest) SetOwnerId(v string) *Descri
 
 func (s *DescribeSubscriptionInstanceStatusRequest) SetRegionId(v string) *DescribeSubscriptionInstanceStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSubscriptionInstanceStatusRequest) SetResourceGroupId(v string) *DescribeSubscriptionInstanceStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -23487,7 +23853,8 @@ type DescribeSubscriptionInstancesRequest struct {
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~49442~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the change tracking instance.
 	//
 	// >  If you specify this parameter, DTS returns all the change tracking instances that match the specified name.
@@ -23530,6 +23897,11 @@ func (s *DescribeSubscriptionInstancesRequest) SetPageSize(v int32) *DescribeSub
 
 func (s *DescribeSubscriptionInstancesRequest) SetRegionId(v string) *DescribeSubscriptionInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSubscriptionInstancesRequest) SetResourceGroupId(v string) *DescribeSubscriptionInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24036,7 +24408,8 @@ type DescribeSubscriptionMetaRequest struct {
 	// The ID of the distributed change tracking instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the region in which the change tracking instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
@@ -24067,6 +24440,11 @@ func (s *DescribeSubscriptionMetaRequest) SetRegionId(v string) *DescribeSubscri
 	return s
 }
 
+func (s *DescribeSubscriptionMetaRequest) SetResourceGroupId(v string) *DescribeSubscriptionMetaRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeSubscriptionMetaRequest) SetSid(v string) *DescribeSubscriptionMetaRequest {
 	s.Sid = &v
 	return s
@@ -24086,7 +24464,8 @@ type DescribeSubscriptionMetaShrinkRequest struct {
 	// The ID of the distributed change tracking instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the region in which the change tracking instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
@@ -24114,6 +24493,11 @@ func (s *DescribeSubscriptionMetaShrinkRequest) SetDtsInstanceId(v string) *Desc
 
 func (s *DescribeSubscriptionMetaShrinkRequest) SetRegionId(v string) *DescribeSubscriptionMetaShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSubscriptionMetaShrinkRequest) SetResourceGroupId(v string) *DescribeSubscriptionMetaShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24266,9 +24650,10 @@ type DescribeSynchronizationJobAlertRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -24305,6 +24690,11 @@ func (s *DescribeSynchronizationJobAlertRequest) SetOwnerId(v string) *DescribeS
 
 func (s *DescribeSynchronizationJobAlertRequest) SetRegionId(v string) *DescribeSynchronizationJobAlertRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationJobAlertRequest) SetResourceGroupId(v string) *DescribeSynchronizationJobAlertRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24458,9 +24848,10 @@ type DescribeSynchronizationJobReplicatorCompareRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -24499,6 +24890,11 @@ func (s *DescribeSynchronizationJobReplicatorCompareRequest) SetOwnerId(v string
 
 func (s *DescribeSynchronizationJobReplicatorCompareRequest) SetRegionId(v string) *DescribeSynchronizationJobReplicatorCompareRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationJobReplicatorCompareRequest) SetResourceGroupId(v string) *DescribeSynchronizationJobReplicatorCompareRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -24597,7 +24993,8 @@ type DescribeSynchronizationJobStatusRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -24636,6 +25033,11 @@ func (s *DescribeSynchronizationJobStatusRequest) SetOwnerId(v string) *Describe
 
 func (s *DescribeSynchronizationJobStatusRequest) SetRegionId(v string) *DescribeSynchronizationJobStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationJobStatusRequest) SetResourceGroupId(v string) *DescribeSynchronizationJobStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -25334,9 +25736,10 @@ type DescribeSynchronizationJobStatusListRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance IDs.
 	SynchronizationJobIdListJsonStr *string `json:"SynchronizationJobIdListJsonStr,omitempty" xml:"SynchronizationJobIdListJsonStr,omitempty"`
 }
@@ -25366,6 +25769,11 @@ func (s *DescribeSynchronizationJobStatusListRequest) SetOwnerId(v string) *Desc
 
 func (s *DescribeSynchronizationJobStatusListRequest) SetRegionId(v string) *DescribeSynchronizationJobStatusListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationJobStatusListRequest) SetResourceGroupId(v string) *DescribeSynchronizationJobStatusListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -25560,7 +25968,8 @@ type DescribeSynchronizationJobsRequest struct {
 	// The name of the data synchronization task.
 	//
 	// >  Fuzzy matching is supported.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
 	//
 	// >
@@ -25605,6 +26014,11 @@ func (s *DescribeSynchronizationJobsRequest) SetPageSize(v int32) *DescribeSynch
 
 func (s *DescribeSynchronizationJobsRequest) SetRegionId(v string) *DescribeSynchronizationJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationJobsRequest) SetResourceGroupId(v string) *DescribeSynchronizationJobsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -26368,7 +26782,8 @@ type DescribeSynchronizationObjectModifyStatusRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The task ID, which is returned after you call the [ModifySynchronizationObject](~~49451~~) operation to modify the objects to be synchronized.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -26398,6 +26813,11 @@ func (s *DescribeSynchronizationObjectModifyStatusRequest) SetOwnerId(v string) 
 
 func (s *DescribeSynchronizationObjectModifyStatusRequest) SetRegionId(v string) *DescribeSynchronizationObjectModifyStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSynchronizationObjectModifyStatusRequest) SetResourceGroupId(v string) *DescribeSynchronizationObjectModifyStatusRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -26748,7 +27168,8 @@ type DescribeTagKeysRequest struct {
 	// The number of tags to return on each page if the DTS instance has multiple tags. Default value: 20.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
@@ -26780,6 +27201,11 @@ func (s *DescribeTagKeysRequest) SetPageSize(v int32) *DescribeTagKeysRequest {
 
 func (s *DescribeTagKeysRequest) SetRegionId(v string) *DescribeTagKeysRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagKeysRequest) SetResourceGroupId(v string) *DescribeTagKeysRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -26892,7 +27318,8 @@ type DescribeTagValuesRequest struct {
 	// The number of tag values to return each time for a tag key that has multiple values. Default value: 20.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
 	//
 	// >  If this parameter is left empty, the values of all tag keys of the current user are returned.
@@ -26931,6 +27358,11 @@ func (s *DescribeTagValuesRequest) SetPageSize(v int32) *DescribeTagValuesReques
 
 func (s *DescribeTagValuesRequest) SetRegionId(v string) *DescribeTagValuesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagValuesRequest) SetResourceGroupId(v string) *DescribeTagValuesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -27049,7 +27481,8 @@ type InitDtsRdsInstanceRequest struct {
 	// >*   You must specify the EndpointRegion parameter or the **EndpointCenId** parameter based on the type of the node.
 	EndpointRegion *string `json:"EndpointRegion,omitempty" xml:"EndpointRegion,omitempty"`
 	// The ID of the region in which the active geo-redundancy database cluster resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s InitDtsRdsInstanceRequest) String() string {
@@ -27087,6 +27520,11 @@ func (s *InitDtsRdsInstanceRequest) SetEndpointRegion(v string) *InitDtsRdsInsta
 
 func (s *InitDtsRdsInstanceRequest) SetRegionId(v string) *InitDtsRdsInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *InitDtsRdsInstanceRequest) SetResourceGroupId(v string) *InitDtsRdsInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -27200,7 +27638,8 @@ type ListDedicatedClusterRequest struct {
 	// >  You must set the **Type parameter** to specify the type of the query condition.
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the cluster. Valid values:
 	//
 	// *   **init**: The cluster is being initialized.
@@ -27262,6 +27701,11 @@ func (s *ListDedicatedClusterRequest) SetParams(v string) *ListDedicatedClusterR
 
 func (s *ListDedicatedClusterRequest) SetRegionId(v string) *ListDedicatedClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDedicatedClusterRequest) SetResourceGroupId(v string) *ListDedicatedClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -27561,8 +28005,9 @@ type ListTagResourcesRequest struct {
 	// >  If a query does not return all results, you can specify the returned **NextToken** parameter in the next query to obtain more results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -27583,6 +28028,11 @@ func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesReques
 
 func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceGroupId(v string) *ListTagResourcesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -27798,7 +28248,8 @@ type ModifyConsumerChannelRequest struct {
 	// >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyConsumerChannelRequest) String() string {
@@ -27841,6 +28292,11 @@ func (s *ModifyConsumerChannelRequest) SetDtsJobId(v string) *ModifyConsumerChan
 
 func (s *ModifyConsumerChannelRequest) SetRegionId(v string) *ModifyConsumerChannelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyConsumerChannelRequest) SetResourceGroupId(v string) *ModifyConsumerChannelRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -27934,6 +28390,7 @@ type ModifyConsumerGroupPasswordRequest struct {
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
 	OwnerId               *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 	// The new password of the consumer group.
@@ -27983,6 +28440,11 @@ func (s *ModifyConsumerGroupPasswordRequest) SetOwnerId(v string) *ModifyConsume
 
 func (s *ModifyConsumerGroupPasswordRequest) SetRegionId(v string) *ModifyConsumerGroupPasswordRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyConsumerGroupPasswordRequest) SetResourceGroupId(v string) *ModifyConsumerGroupPasswordRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28071,6 +28533,7 @@ type ModifyConsumptionTimestampRequest struct {
 	ConsumptionTimestamp *string `json:"ConsumptionTimestamp,omitempty" xml:"ConsumptionTimestamp,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -28100,6 +28563,11 @@ func (s *ModifyConsumptionTimestampRequest) SetOwnerId(v string) *ModifyConsumpt
 
 func (s *ModifyConsumptionTimestampRequest) SetRegionId(v string) *ModifyConsumptionTimestampRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyConsumptionTimestampRequest) SetResourceGroupId(v string) *ModifyConsumptionTimestampRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28191,7 +28659,8 @@ type ModifyDedicatedClusterRequest struct {
 	OversoldRatio *int32  `json:"OversoldRatio,omitempty" xml:"OversoldRatio,omitempty"`
 	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDedicatedClusterRequest) String() string {
@@ -28229,6 +28698,11 @@ func (s *ModifyDedicatedClusterRequest) SetOwnerId(v string) *ModifyDedicatedClu
 
 func (s *ModifyDedicatedClusterRequest) SetRegionId(v string) *ModifyDedicatedClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDedicatedClusterRequest) SetResourceGroupId(v string) *ModifyDedicatedClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28350,7 +28824,8 @@ type ModifyDtsJobRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
 	//
 	// *   **true**
@@ -28365,6 +28840,7 @@ type ModifyDtsJobRequest struct {
 	// *   Default value: **Forward**.
 	// *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobRequest) String() string {
@@ -28435,6 +28911,11 @@ func (s *ModifyDtsJobRequest) SetReserved(v string) *ModifyDtsJobRequest {
 	return s
 }
 
+func (s *ModifyDtsJobRequest) SetResourceGroupId(v string) *ModifyDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDtsJobRequest) SetStructureInitialization(v bool) *ModifyDtsJobRequest {
 	s.StructureInitialization = &v
 	return s
@@ -28442,6 +28923,11 @@ func (s *ModifyDtsJobRequest) SetStructureInitialization(v bool) *ModifyDtsJobRe
 
 func (s *ModifyDtsJobRequest) SetSynchronizationDirection(v string) *ModifyDtsJobRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *ModifyDtsJobRequest) SetZeroEtlJob(v bool) *ModifyDtsJobRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -28481,7 +28967,8 @@ type ModifyDtsJobAdvanceRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
 	//
 	// *   **true**
@@ -28496,6 +28983,7 @@ type ModifyDtsJobAdvanceRequest struct {
 	// *   Default value: **Forward**.
 	// *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobAdvanceRequest) String() string {
@@ -28566,6 +29054,11 @@ func (s *ModifyDtsJobAdvanceRequest) SetReserved(v string) *ModifyDtsJobAdvanceR
 	return s
 }
 
+func (s *ModifyDtsJobAdvanceRequest) SetResourceGroupId(v string) *ModifyDtsJobAdvanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDtsJobAdvanceRequest) SetStructureInitialization(v bool) *ModifyDtsJobAdvanceRequest {
 	s.StructureInitialization = &v
 	return s
@@ -28573,6 +29066,11 @@ func (s *ModifyDtsJobAdvanceRequest) SetStructureInitialization(v bool) *ModifyD
 
 func (s *ModifyDtsJobAdvanceRequest) SetSynchronizationDirection(v string) *ModifyDtsJobAdvanceRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *ModifyDtsJobAdvanceRequest) SetZeroEtlJob(v bool) *ModifyDtsJobAdvanceRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -28612,7 +29110,8 @@ type ModifyDtsJobShrinkRequest struct {
 	// The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
-	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved        *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform schema migration or synchronization. Valid values:
 	//
 	// *   **true**
@@ -28627,6 +29126,7 @@ type ModifyDtsJobShrinkRequest struct {
 	// *   Default value: **Forward**.
 	// *   This parameter is required only if the topology of the data synchronization instance is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobShrinkRequest) String() string {
@@ -28697,6 +29197,11 @@ func (s *ModifyDtsJobShrinkRequest) SetReserved(v string) *ModifyDtsJobShrinkReq
 	return s
 }
 
+func (s *ModifyDtsJobShrinkRequest) SetResourceGroupId(v string) *ModifyDtsJobShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDtsJobShrinkRequest) SetStructureInitialization(v bool) *ModifyDtsJobShrinkRequest {
 	s.StructureInitialization = &v
 	return s
@@ -28704,6 +29209,11 @@ func (s *ModifyDtsJobShrinkRequest) SetStructureInitialization(v bool) *ModifyDt
 
 func (s *ModifyDtsJobShrinkRequest) SetSynchronizationDirection(v string) *ModifyDtsJobShrinkRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *ModifyDtsJobShrinkRequest) SetZeroEtlJob(v bool) *ModifyDtsJobShrinkRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -28792,10 +29302,11 @@ func (s *ModifyDtsJobResponse) SetBody(v *ModifyDtsJobResponseBody) *ModifyDtsJo
 }
 
 type ModifyDtsJobConfigRequest struct {
-	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameters      *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDtsJobConfigRequest) String() string {
@@ -28823,6 +29334,11 @@ func (s *ModifyDtsJobConfigRequest) SetParameters(v string) *ModifyDtsJobConfigR
 
 func (s *ModifyDtsJobConfigRequest) SetRegionId(v string) *ModifyDtsJobConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobConfigRequest) SetResourceGroupId(v string) *ModifyDtsJobConfigRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28877,6 +29393,7 @@ type ModifyDtsJobDedicatedClusterRequest struct {
 	DtsJobIds          *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDtsJobDedicatedClusterRequest) String() string {
@@ -28904,6 +29421,11 @@ func (s *ModifyDtsJobDedicatedClusterRequest) SetOwnerId(v string) *ModifyDtsJob
 
 func (s *ModifyDtsJobDedicatedClusterRequest) SetRegionId(v string) *ModifyDtsJobDedicatedClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobDedicatedClusterRequest) SetResourceGroupId(v string) *ModifyDtsJobDedicatedClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28998,7 +29520,8 @@ type ModifyDtsJobDuLimitRequest struct {
 	DuLimit *int64  `json:"DuLimit,omitempty" xml:"DuLimit,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region in which the DTS instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDtsJobDuLimitRequest) String() string {
@@ -29026,6 +29549,11 @@ func (s *ModifyDtsJobDuLimitRequest) SetOwnerId(v string) *ModifyDtsJobDuLimitRe
 
 func (s *ModifyDtsJobDuLimitRequest) SetRegionId(v string) *ModifyDtsJobDuLimitRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobDuLimitRequest) SetResourceGroupId(v string) *ModifyDtsJobDuLimitRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29131,6 +29659,7 @@ type ModifyDtsJobEndpointRequest struct {
 	EndpointPort             *string `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
 	Password                 *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	ShardPassword            *string `json:"ShardPassword,omitempty" xml:"ShardPassword,omitempty"`
 	ShardUsername            *string `json:"ShardUsername,omitempty" xml:"ShardUsername,omitempty"`
@@ -29203,6 +29732,11 @@ func (s *ModifyDtsJobEndpointRequest) SetPassword(v string) *ModifyDtsJobEndpoin
 
 func (s *ModifyDtsJobEndpointRequest) SetRegionId(v string) *ModifyDtsJobEndpointRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetResourceGroupId(v string) *ModifyDtsJobEndpointRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29309,7 +29843,9 @@ type ModifyDtsJobNameRequest struct {
 	// >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZeroEtlJob      *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobNameRequest) String() string {
@@ -29332,6 +29868,16 @@ func (s *ModifyDtsJobNameRequest) SetDtsJobName(v string) *ModifyDtsJobNameReque
 
 func (s *ModifyDtsJobNameRequest) SetRegionId(v string) *ModifyDtsJobNameRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobNameRequest) SetResourceGroupId(v string) *ModifyDtsJobNameRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDtsJobNameRequest) SetZeroEtlJob(v bool) *ModifyDtsJobNameRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -29441,11 +29987,13 @@ type ModifyDtsJobPasswordRequest struct {
 	// >  This parameter must be specified and cannot be the same as the current password.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The account of the source or destination database.
 	//
 	// >  This parameter must be specified.
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobPasswordRequest) String() string {
@@ -29476,8 +30024,18 @@ func (s *ModifyDtsJobPasswordRequest) SetRegionId(v string) *ModifyDtsJobPasswor
 	return s
 }
 
+func (s *ModifyDtsJobPasswordRequest) SetResourceGroupId(v string) *ModifyDtsJobPasswordRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDtsJobPasswordRequest) SetUserName(v string) *ModifyDtsJobPasswordRequest {
 	s.UserName = &v
+	return s
+}
+
+func (s *ModifyDtsJobPasswordRequest) SetZeroEtlJob(v bool) *ModifyDtsJobPasswordRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -29573,11 +30131,12 @@ func (s *ModifyDtsJobPasswordResponse) SetBody(v *ModifyDtsJobPasswordResponseBo
 }
 
 type ModifyDynamicConfigRequest struct {
-	ConfigList  *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
-	DtsJobId    *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	EnableLimit *bool   `json:"EnableLimit,omitempty" xml:"EnableLimit,omitempty"`
-	JobCode     *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ConfigList      *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	EnableLimit     *bool   `json:"EnableLimit,omitempty" xml:"EnableLimit,omitempty"`
+	JobCode         *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyDynamicConfigRequest) String() string {
@@ -29610,6 +30169,11 @@ func (s *ModifyDynamicConfigRequest) SetJobCode(v string) *ModifyDynamicConfigRe
 
 func (s *ModifyDynamicConfigRequest) SetRegionId(v string) *ModifyDynamicConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDynamicConfigRequest) SetResourceGroupId(v string) *ModifyDynamicConfigRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29705,7 +30269,8 @@ type ModifySubscriptionRequest struct {
 	// The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to retrieve data definition language (DDL) statements. Valid values:
 	//
 	// *   **true**: yes
@@ -29743,6 +30308,11 @@ func (s *ModifySubscriptionRequest) SetDtsJobId(v string) *ModifySubscriptionReq
 
 func (s *ModifySubscriptionRequest) SetRegionId(v string) *ModifySubscriptionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySubscriptionRequest) SetResourceGroupId(v string) *ModifySubscriptionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29833,9 +30403,10 @@ func (s *ModifySubscriptionResponse) SetBody(v *ModifySubscriptionResponseBody) 
 
 type ModifySubscriptionObjectRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 	// The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
@@ -29862,6 +30433,11 @@ func (s *ModifySubscriptionObjectRequest) SetOwnerId(v string) *ModifySubscripti
 
 func (s *ModifySubscriptionObjectRequest) SetRegionId(v string) *ModifySubscriptionObjectRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySubscriptionObjectRequest) SetResourceGroupId(v string) *ModifySubscriptionObjectRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29945,9 +30521,10 @@ func (s *ModifySubscriptionObjectResponse) SetBody(v *ModifySubscriptionObjectRe
 
 type ModifySynchronizationObjectRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -29982,6 +30559,11 @@ func (s *ModifySynchronizationObjectRequest) SetOwnerId(v string) *ModifySynchro
 
 func (s *ModifySynchronizationObjectRequest) SetRegionId(v string) *ModifySynchronizationObjectRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySynchronizationObjectRequest) SetResourceGroupId(v string) *ModifySynchronizationObjectRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30091,7 +30673,8 @@ type RenewInstanceRequest struct {
 	// *   **Month**: monthly subscription. This is the default value.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -30124,6 +30707,11 @@ func (s *RenewInstanceRequest) SetPeriod(v string) *RenewInstanceRequest {
 
 func (s *RenewInstanceRequest) SetRegionId(v string) *RenewInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RenewInstanceRequest) SetResourceGroupId(v string) *RenewInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30257,8 +30845,9 @@ type ResetDtsJobRequest struct {
 	// The ID of the data synchronization or change tracking instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the data synchronization or change tracking task.
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -30290,6 +30879,11 @@ func (s *ResetDtsJobRequest) SetDtsJobId(v string) *ResetDtsJobRequest {
 
 func (s *ResetDtsJobRequest) SetRegionId(v string) *ResetDtsJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ResetDtsJobRequest) SetResourceGroupId(v string) *ResetDtsJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30391,9 +30985,10 @@ func (s *ResetDtsJobResponse) SetBody(v *ResetDtsJobResponseBody) *ResetDtsJobRe
 
 type ResetSynchronizationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -30427,6 +31022,11 @@ func (s *ResetSynchronizationJobRequest) SetOwnerId(v string) *ResetSynchronizat
 
 func (s *ResetSynchronizationJobRequest) SetRegionId(v string) *ResetSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ResetSynchronizationJobRequest) SetResourceGroupId(v string) *ResetSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30512,6 +31112,7 @@ type ReverseTwoWayDirectionRequest struct {
 	DtsInstanceId     *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	IgnoreErrorSubJob *bool   `json:"IgnoreErrorSubJob,omitempty" xml:"IgnoreErrorSubJob,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ReverseTwoWayDirectionRequest) String() string {
@@ -30534,6 +31135,11 @@ func (s *ReverseTwoWayDirectionRequest) SetIgnoreErrorSubJob(v bool) *ReverseTwo
 
 func (s *ReverseTwoWayDirectionRequest) SetRegionId(v string) *ReverseTwoWayDirectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ReverseTwoWayDirectionRequest) SetResourceGroupId(v string) *ReverseTwoWayDirectionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30635,8 +31241,9 @@ type ShieldPrecheckRequest struct {
 	// > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
 	//
 	// *   **CHECK_SERVER_ID**: value of server_id in the source database
-	PrecheckItems *string `json:"PrecheckItems,omitempty" xml:"PrecheckItems,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PrecheckItems   *string `json:"PrecheckItems,omitempty" xml:"PrecheckItems,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ShieldPrecheckRequest) String() string {
@@ -30659,6 +31266,11 @@ func (s *ShieldPrecheckRequest) SetPrecheckItems(v string) *ShieldPrecheckReques
 
 func (s *ShieldPrecheckRequest) SetRegionId(v string) *ShieldPrecheckRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ShieldPrecheckRequest) SetResourceGroupId(v string) *ShieldPrecheckRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30736,7 +31348,8 @@ type SkipPreCheckRequest struct {
 	// The ID of the precheck task. You can call the **DescribePreCheckStatus** operation to query the task ID.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to skip the precheck item. Valid values:
 	//
 	// *   **true**: skips the precheck item.
@@ -30798,6 +31411,11 @@ func (s *SkipPreCheckRequest) SetJobId(v string) *SkipPreCheckRequest {
 
 func (s *SkipPreCheckRequest) SetRegionId(v string) *SkipPreCheckRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SkipPreCheckRequest) SetResourceGroupId(v string) *SkipPreCheckRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -30943,7 +31561,8 @@ type StartDtsJobRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Default value: Forward. Valid values:
 	//
 	// *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -30952,6 +31571,7 @@ type StartDtsJobRequest struct {
 	//
 	// >You can set this parameter to **Reverse** to start the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s StartDtsJobRequest) String() string {
@@ -30977,8 +31597,18 @@ func (s *StartDtsJobRequest) SetRegionId(v string) *StartDtsJobRequest {
 	return s
 }
 
+func (s *StartDtsJobRequest) SetResourceGroupId(v string) *StartDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *StartDtsJobRequest) SetSynchronizationDirection(v string) *StartDtsJobRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *StartDtsJobRequest) SetZeroEtlJob(v bool) *StartDtsJobRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -31081,7 +31711,9 @@ type StartDtsJobsRequest struct {
 	// *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZeroEtlJob      *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s StartDtsJobsRequest) String() string {
@@ -31099,6 +31731,16 @@ func (s *StartDtsJobsRequest) SetDtsJobIds(v string) *StartDtsJobsRequest {
 
 func (s *StartDtsJobsRequest) SetRegionId(v string) *StartDtsJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StartDtsJobsRequest) SetResourceGroupId(v string) *StartDtsJobsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *StartDtsJobsRequest) SetZeroEtlJob(v bool) *StartDtsJobsRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -31197,9 +31839,10 @@ type StartMigrationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s StartMigrationJobRequest) String() string {
@@ -31227,6 +31870,11 @@ func (s *StartMigrationJobRequest) SetOwnerId(v string) *StartMigrationJobReques
 
 func (s *StartMigrationJobRequest) SetRegionId(v string) *StartMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StartMigrationJobRequest) SetResourceGroupId(v string) *StartMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31304,7 +31952,8 @@ type StartReverseWriterRequest struct {
 	// > The default value is the offset that is automatically saved by DTS when the task is paused.
 	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
 	// The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s StartReverseWriterRequest) String() string {
@@ -31322,6 +31971,11 @@ func (s *StartReverseWriterRequest) SetCheckPoint(v string) *StartReverseWriterR
 
 func (s *StartReverseWriterRequest) SetDtsJobId(v string) *StartReverseWriterRequest {
 	s.DtsJobId = &v
+	return s
+}
+
+func (s *StartReverseWriterRequest) SetResourceGroupId(v string) *StartReverseWriterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31395,9 +32049,10 @@ func (s *StartReverseWriterResponse) SetBody(v *StartReverseWriterResponseBody) 
 
 type StartSubscriptionInstanceRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 }
@@ -31422,6 +32077,11 @@ func (s *StartSubscriptionInstanceRequest) SetOwnerId(v string) *StartSubscripti
 
 func (s *StartSubscriptionInstanceRequest) SetRegionId(v string) *StartSubscriptionInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StartSubscriptionInstanceRequest) SetResourceGroupId(v string) *StartSubscriptionInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31507,9 +32167,10 @@ func (s *StartSubscriptionInstanceResponse) SetBody(v *StartSubscriptionInstance
 
 type StartSynchronizationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -31543,6 +32204,11 @@ func (s *StartSynchronizationJobRequest) SetOwnerId(v string) *StartSynchronizat
 
 func (s *StartSynchronizationJobRequest) SetRegionId(v string) *StartSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StartSynchronizationJobRequest) SetResourceGroupId(v string) *StartSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31637,7 +32303,8 @@ type StopDedicatedClusterRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region in which the instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s StopDedicatedClusterRequest) String() string {
@@ -31670,6 +32337,11 @@ func (s *StopDedicatedClusterRequest) SetOwnerId(v string) *StopDedicatedCluster
 
 func (s *StopDedicatedClusterRequest) SetRegionId(v string) *StopDedicatedClusterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StopDedicatedClusterRequest) SetResourceGroupId(v string) *StopDedicatedClusterRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31752,8 +32424,9 @@ type StopDtsJobRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking task.
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -31763,6 +32436,7 @@ type StopDtsJobRequest struct {
 	// *   Default value: **Forward**.
 	// *   You can set this parameter to **Reverse** to stop the reverse synchronization task only when the topology is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s StopDtsJobRequest) String() string {
@@ -31788,8 +32462,18 @@ func (s *StopDtsJobRequest) SetRegionId(v string) *StopDtsJobRequest {
 	return s
 }
 
+func (s *StopDtsJobRequest) SetResourceGroupId(v string) *StopDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *StopDtsJobRequest) SetSynchronizationDirection(v string) *StopDtsJobRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *StopDtsJobRequest) SetZeroEtlJob(v bool) *StopDtsJobRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -31892,7 +32576,9 @@ type StopDtsJobsRequest struct {
 	// *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZeroEtlJob      *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s StopDtsJobsRequest) String() string {
@@ -31910,6 +32596,16 @@ func (s *StopDtsJobsRequest) SetDtsJobIds(v string) *StopDtsJobsRequest {
 
 func (s *StopDtsJobsRequest) SetRegionId(v string) *StopDtsJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StopDtsJobsRequest) SetResourceGroupId(v string) *StopDtsJobsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *StopDtsJobsRequest) SetZeroEtlJob(v bool) *StopDtsJobsRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -32010,9 +32706,10 @@ type StopMigrationJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s StopMigrationJobRequest) String() string {
@@ -32045,6 +32742,11 @@ func (s *StopMigrationJobRequest) SetOwnerId(v string) *StopMigrationJobRequest 
 
 func (s *StopMigrationJobRequest) SetRegionId(v string) *StopMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StopMigrationJobRequest) SetResourceGroupId(v string) *StopMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -32131,7 +32833,8 @@ type SummaryJobDetailRequest struct {
 	// *   **03**: The task is in the incremental migration phase.
 	JobCode *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of schema definition. Valid values:
 	//
 	// *   **before**: schema migration or initial schema synchronization
@@ -32146,6 +32849,7 @@ type SummaryJobDetailRequest struct {
 	// *   Default value: **Forward**.
 	// *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s SummaryJobDetailRequest) String() string {
@@ -32176,6 +32880,11 @@ func (s *SummaryJobDetailRequest) SetRegionId(v string) *SummaryJobDetailRequest
 	return s
 }
 
+func (s *SummaryJobDetailRequest) SetResourceGroupId(v string) *SummaryJobDetailRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *SummaryJobDetailRequest) SetStructType(v string) *SummaryJobDetailRequest {
 	s.StructType = &v
 	return s
@@ -32183,6 +32892,11 @@ func (s *SummaryJobDetailRequest) SetStructType(v string) *SummaryJobDetailReque
 
 func (s *SummaryJobDetailRequest) SetSynchronizationDirection(v string) *SummaryJobDetailRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *SummaryJobDetailRequest) SetZeroEtlJob(v bool) *SummaryJobDetailRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -32320,7 +33034,8 @@ type SuspendDtsJobRequest struct {
 	// >  You can call the [DescribeDtsJobs](~~209702~~) operation to obtain the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**: Data is synchronized from the source database to the destination database.
@@ -32330,6 +33045,7 @@ type SuspendDtsJobRequest struct {
 	// *   Default value: **Forward**.
 	// *   You can set this parameter to **Reverse** to pause the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	ZeroEtlJob               *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s SuspendDtsJobRequest) String() string {
@@ -32355,8 +33071,18 @@ func (s *SuspendDtsJobRequest) SetRegionId(v string) *SuspendDtsJobRequest {
 	return s
 }
 
+func (s *SuspendDtsJobRequest) SetResourceGroupId(v string) *SuspendDtsJobRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *SuspendDtsJobRequest) SetSynchronizationDirection(v string) *SuspendDtsJobRequest {
 	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *SuspendDtsJobRequest) SetZeroEtlJob(v bool) *SuspendDtsJobRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -32459,7 +33185,9 @@ type SuspendDtsJobsRequest struct {
 	// *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
 	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ZeroEtlJob      *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s SuspendDtsJobsRequest) String() string {
@@ -32477,6 +33205,16 @@ func (s *SuspendDtsJobsRequest) SetDtsJobIds(v string) *SuspendDtsJobsRequest {
 
 func (s *SuspendDtsJobsRequest) SetRegionId(v string) *SuspendDtsJobsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SuspendDtsJobsRequest) SetResourceGroupId(v string) *SuspendDtsJobsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *SuspendDtsJobsRequest) SetZeroEtlJob(v bool) *SuspendDtsJobsRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -32577,9 +33315,10 @@ type SuspendMigrationJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
-	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	MigrationJobId  *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s SuspendMigrationJobRequest) String() string {
@@ -32612,6 +33351,11 @@ func (s *SuspendMigrationJobRequest) SetOwnerId(v string) *SuspendMigrationJobRe
 
 func (s *SuspendMigrationJobRequest) SetRegionId(v string) *SuspendMigrationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SuspendMigrationJobRequest) SetResourceGroupId(v string) *SuspendMigrationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -32685,9 +33429,10 @@ func (s *SuspendMigrationJobResponse) SetBody(v *SuspendMigrationJobResponseBody
 
 type SuspendSynchronizationJobRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -32721,6 +33466,11 @@ func (s *SuspendSynchronizationJobRequest) SetOwnerId(v string) *SuspendSynchron
 
 func (s *SuspendSynchronizationJobRequest) SetRegionId(v string) *SuspendSynchronizationJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SuspendSynchronizationJobRequest) SetResourceGroupId(v string) *SuspendSynchronizationJobRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -32806,6 +33556,7 @@ type SwitchPhysicalDtsJobToCloudRequest struct {
 	DtsInstanceId            *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 }
 
@@ -32829,6 +33580,11 @@ func (s *SwitchPhysicalDtsJobToCloudRequest) SetDtsJobId(v string) *SwitchPhysic
 
 func (s *SwitchPhysicalDtsJobToCloudRequest) SetRegionId(v string) *SwitchPhysicalDtsJobToCloudRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SwitchPhysicalDtsJobToCloudRequest) SetResourceGroupId(v string) *SwitchPhysicalDtsJobToCloudRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -32923,9 +33679,10 @@ type SwitchSynchronizationEndpointRequest struct {
 	Endpoint       *SwitchSynchronizationEndpointRequestEndpoint       `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
 	SourceEndpoint *SwitchSynchronizationEndpointRequestSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
 	// *   **Forward**
@@ -32969,6 +33726,11 @@ func (s *SwitchSynchronizationEndpointRequest) SetOwnerId(v string) *SwitchSynch
 
 func (s *SwitchSynchronizationEndpointRequest) SetRegionId(v string) *SwitchSynchronizationEndpointRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SwitchSynchronizationEndpointRequest) SetResourceGroupId(v string) *SwitchSynchronizationEndpointRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33145,8 +33907,9 @@ func (s *SwitchSynchronizationEndpointResponse) SetBody(v *SwitchSynchronization
 
 type TagResourcesRequest struct {
 	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -33162,6 +33925,11 @@ func (s TagResourcesRequest) GoString() string {
 
 func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceGroupId(v string) *TagResourcesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33297,7 +34065,8 @@ type TransferInstanceClassRequest struct {
 	// *   **DOWNGRADE**
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s TransferInstanceClassRequest) String() string {
@@ -33325,6 +34094,11 @@ func (s *TransferInstanceClassRequest) SetOrderType(v string) *TransferInstanceC
 
 func (s *TransferInstanceClassRequest) SetRegionId(v string) *TransferInstanceClassRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *TransferInstanceClassRequest) SetResourceGroupId(v string) *TransferInstanceClassRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33482,7 +34256,8 @@ type TransferPayTypeRequest struct {
 	// >  You must specify this parameter only if you set the **ChargeType** parameter to **PrePaid**.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s TransferPayTypeRequest) String() string {
@@ -33515,6 +34290,11 @@ func (s *TransferPayTypeRequest) SetPeriod(v string) *TransferPayTypeRequest {
 
 func (s *TransferPayTypeRequest) SetRegionId(v string) *TransferPayTypeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *TransferPayTypeRequest) SetResourceGroupId(v string) *TransferPayTypeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33658,8 +34438,9 @@ type UntagResourcesRequest struct {
 	// *   If you specify both the All parameter and the **TagKey.N** parameter, the All parameter does not take effect.
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -33680,6 +34461,11 @@ func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 
 func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceGroupId(v string) *UntagResourcesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33774,7 +34560,8 @@ type UpgradeTwoWayRequest struct {
 	// The ID of the data synchronization instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s UpgradeTwoWayRequest) String() string {
@@ -33797,6 +34584,11 @@ func (s *UpgradeTwoWayRequest) SetInstanceId(v string) *UpgradeTwoWayRequest {
 
 func (s *UpgradeTwoWayRequest) SetRegionId(v string) *UpgradeTwoWayRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeTwoWayRequest) SetResourceGroupId(v string) *UpgradeTwoWayRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -33902,12 +34694,14 @@ type WhiteIpListRequest struct {
 	// >
 	// *   If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
 	// *   If the DTS task is a data migration or data synchronization task, you must specify this parameter.
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
 	//
 	// >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s WhiteIpListRequest) String() string {
@@ -33933,8 +34727,18 @@ func (s *WhiteIpListRequest) SetRegionId(v string) *WhiteIpListRequest {
 	return s
 }
 
+func (s *WhiteIpListRequest) SetResourceGroupId(v string) *WhiteIpListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *WhiteIpListRequest) SetType(v string) *WhiteIpListRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *WhiteIpListRequest) SetZeroEtlJob(v bool) *WhiteIpListRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -34293,6 +35097,10 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
 		query["SourceEndpointDatabaseName"] = request.SourceEndpointDatabaseName
 	}
@@ -34559,6 +35367,10 @@ func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrati
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationEndpoint)) {
 		query["DestinationEndpoint"] = request.DestinationEndpoint
 	}
@@ -34658,6 +35470,10 @@ func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMi
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34762,6 +35578,10 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 
 	if !tea.BoolValue(util.IsUnset(request.Reserve)) {
 		query["Reserve"] = request.Reserve
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointDatabaseName)) {
@@ -34891,6 +35711,10 @@ func (client *Client) ConfigureSubscriptionInstanceWithOptions(request *Configur
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -34999,6 +35823,10 @@ func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *Con
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -35075,6 +35903,10 @@ func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureS
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
@@ -35192,6 +36024,10 @@ func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *Confi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -35262,6 +36098,10 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(re
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -35347,6 +36187,10 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SrcDbType)) {
 		query["SrcDbType"] = request.SrcDbType
 	}
@@ -35423,6 +36267,10 @@ func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerCh
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35485,6 +36333,10 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -35569,6 +36421,10 @@ func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *Crea
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35788,6 +36644,10 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.State)) {
 		query["State"] = request.State
 	}
@@ -35882,6 +36742,10 @@ func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35932,6 +36796,10 @@ func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJo
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
 		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36007,6 +36875,10 @@ func (client *Client) CreateSubscriptionInstanceWithOptions(request *CreateSubsc
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
@@ -36103,6 +36975,10 @@ func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchro
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceRegion)) {
 		query["SourceRegion"] = request.SourceRegion
 	}
@@ -36194,6 +37070,10 @@ func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerCh
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36248,6 +37128,10 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -36310,8 +37194,16 @@ func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runt
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36360,6 +37252,14 @@ func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36425,6 +37325,10 @@ func (client *Client) DeleteMigrationJobWithOptions(request *DeleteMigrationJobR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36488,6 +37392,10 @@ func (client *Client) DeleteSubscriptionInstanceWithOptions(request *DeleteSubsc
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -36557,6 +37465,10 @@ func (client *Client) DeleteSynchronizationJobWithOptions(request *DeleteSynchro
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
@@ -36697,6 +37609,10 @@ func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsReq
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36736,6 +37652,11 @@ func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		body["AccountId"] = request.AccountId
@@ -36774,7 +37695,8 @@ func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClu
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterOperateLogs"),
@@ -36812,6 +37734,11 @@ func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		body["AccountId"] = request.AccountId
@@ -36850,7 +37777,8 @@ func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *Describ
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterUsedUtilization"),
@@ -36935,6 +37863,10 @@ func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConne
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointArchitecture)) {
@@ -37045,6 +37977,10 @@ func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsum
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37105,6 +38041,10 @@ func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumer
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -37163,6 +38103,10 @@ func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
@@ -37228,6 +38172,10 @@ func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDat
 		query["DtsJobId"] = request.DtsJobId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TbName)) {
 		query["TbName"] = request.TbName
 	}
@@ -37286,6 +38234,10 @@ func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
@@ -37360,6 +38312,10 @@ func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *Desc
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TbName)) {
 		query["TbName"] = request.TbName
 	}
@@ -37416,6 +38372,10 @@ func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedic
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37466,6 +38426,10 @@ func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *De
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37528,6 +38492,10 @@ func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeD
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37580,12 +38548,20 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SyncSubJobHistory)) {
 		query["SyncSubJobHistory"] = request.SyncSubJobHistory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37656,6 +38632,14 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
 		query["JobType"] = request.JobType
 	}
@@ -37710,6 +38694,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.WithoutDbList)) {
 		query["WithoutDbList"] = request.WithoutDbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37783,6 +38771,10 @@ func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -37793,6 +38785,10 @@ func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServi
 
 	if !tea.BoolValue(util.IsUnset(request.SubJobType)) {
 		query["SubJobType"] = request.SubJobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37858,6 +38854,10 @@ func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeE
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -37914,6 +38914,10 @@ func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37976,6 +38980,10 @@ func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeI
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
 		query["SynchronizationJobId"] = request.SynchronizationJobId
 	}
@@ -38028,6 +39036,10 @@ func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMoni
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -38067,6 +39079,11 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		body["AccountId"] = request.AccountId
@@ -38113,7 +39130,8 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMetricList"),
@@ -38170,6 +39188,10 @@ func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38247,6 +39269,10 @@ func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMig
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MigrationMode)) {
 		query["MigrationMode"] = request.MigrationMode
 	}
@@ -38317,6 +39343,10 @@ func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMig
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -38379,6 +39409,10 @@ func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigratio
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
@@ -38449,12 +39483,20 @@ func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreChec
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StructPhase)) {
 		query["StructPhase"] = request.StructPhase
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StructType)) {
 		query["StructType"] = request.StructType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38513,6 +39555,10 @@ func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *Desc
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -38567,6 +39613,10 @@ func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *Des
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -38635,6 +39685,10 @@ func (client *Client) DescribeSubscriptionInstancesWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceName)) {
@@ -38709,6 +39763,10 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Sid)) {
@@ -38786,6 +39844,10 @@ func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *Descri
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -38848,6 +39910,10 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(req
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -38914,6 +39980,10 @@ func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *Descr
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -38976,6 +40046,10 @@ func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *D
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobIdListJsonStr)) {
@@ -39044,6 +40118,10 @@ func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSy
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobName)) {
@@ -39117,6 +40195,10 @@ func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(reque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -39181,6 +40263,10 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
@@ -39249,6 +40335,10 @@ func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
@@ -39331,6 +40421,10 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39406,6 +40500,10 @@ func (client *Client) ListDedicatedClusterWithOptions(request *ListDedicatedClus
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.State)) {
 		query["State"] = request.State
 	}
@@ -39467,6 +40565,10 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
@@ -39555,6 +40657,10 @@ func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerCh
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39630,6 +40736,10 @@ func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyCons
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -39714,6 +40824,10 @@ func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsu
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -39796,6 +40910,10 @@ func (client *Client) ModifyDedicatedClusterWithOptions(request *ModifyDedicated
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -39885,12 +41003,20 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
 		query["StructureInitialization"] = request.StructureInitialization
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	body := map[string]interface{}{}
@@ -40083,6 +41209,10 @@ func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40137,6 +41267,10 @@ func (client *Client) ModifyDtsJobDedicatedClusterWithOptions(request *ModifyDts
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40201,6 +41335,10 @@ func (client *Client) ModifyDtsJobDuLimitWithOptions(request *ModifyDtsJobDuLimi
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40298,6 +41436,10 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
 		query["RoleName"] = request.RoleName
 	}
@@ -40370,6 +41512,14 @@ func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40426,8 +41576,16 @@ func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPassw
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
 		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40490,6 +41648,10 @@ func (client *Client) ModifyDynamicConfigWithOptions(request *ModifyDynamicConfi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40544,6 +41706,10 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDDL)) {
@@ -40614,6 +41780,10 @@ func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscri
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
@@ -40690,6 +41860,10 @@ func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySync
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -40772,6 +41946,10 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40829,6 +42007,10 @@ func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -40900,6 +42082,10 @@ func (client *Client) ResetSynchronizationJobWithOptions(request *ResetSynchroni
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -40966,6 +42152,10 @@ func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41025,6 +42215,10 @@ func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41081,6 +42275,10 @@ func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Skip)) {
@@ -41147,8 +42345,16 @@ func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtim
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41197,6 +42403,14 @@ func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41262,6 +42476,10 @@ func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41321,6 +42539,10 @@ func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterR
 
 	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
 		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41388,6 +42610,10 @@ func (client *Client) StartSubscriptionInstanceWithOptions(request *StartSubscri
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionInstanceId)) {
 		query["SubscriptionInstanceId"] = request.SubscriptionInstanceId
 	}
@@ -41432,15 +42658,6 @@ func (client *Client) StartSubscriptionInstance(request *StartSubscriptionInstan
 	return _result, _err
 }
 
-/**
- * >
- * *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
- * *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
- *
- * @param request StartSynchronizationJobRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartSynchronizationJobResponse
- */
 func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchronizationJobRequest, runtime *util.RuntimeOptions) (_result *StartSynchronizationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41457,6 +42674,10 @@ func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchroni
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -41490,14 +42711,6 @@ func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchroni
 	return _result, _err
 }
 
-/**
- * >
- * *   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service) of Data Transmission Service (DTS).
- * *   When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the task will be prechecked.
- *
- * @param request StartSynchronizationJobRequest
- * @return StartSynchronizationJobResponse
- */
 func (client *Client) StartSynchronizationJob(request *StartSynchronizationJobRequest) (_result *StartSynchronizationJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartSynchronizationJobResponse{}
@@ -41533,6 +42746,10 @@ func (client *Client) StopDedicatedClusterWithOptions(request *StopDedicatedClus
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41587,8 +42804,16 @@ func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41637,6 +42862,14 @@ func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41706,6 +42939,10 @@ func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41768,12 +43005,20 @@ func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StructType)) {
 		query["StructType"] = request.StructType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41835,8 +43080,16 @@ func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41891,6 +43144,14 @@ func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41960,6 +43221,10 @@ func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJo
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -42032,6 +43297,10 @@ func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynch
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -42101,6 +43370,10 @@ func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhys
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
 		query["SynchronizationDirection"] = request.SynchronizationDirection
 	}
@@ -42165,6 +43438,10 @@ func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSy
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
@@ -42248,6 +43525,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -42327,6 +43608,10 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -42397,6 +43682,10 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -42459,6 +43748,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
@@ -42543,6 +43836,10 @@ func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -42613,8 +43910,16 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
