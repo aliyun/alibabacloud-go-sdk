@@ -1381,14 +1381,34 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CreateUserProvisioningRequest struct {
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CreateUserProvisioningRequest) String() string {
@@ -1440,7 +1460,9 @@ func (s *CreateUserProvisioningRequest) SetTargetType(v string) *CreateUserProvi
 }
 
 type CreateUserProvisioningResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user provisioning.
 	UserProvisioning *CreateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
 }
 
@@ -1463,22 +1485,56 @@ func (s *CreateUserProvisioningResponseBody) SetUserProvisioning(v *CreateUserPr
 }
 
 type CreateUserProvisioningResponseBodyUserProvisioning struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the RAM user provisioning. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the member.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s CreateUserProvisioningResponseBodyUserProvisioning) String() string {
@@ -2275,8 +2331,16 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteUserProvisioningRequest struct {
-	DeletionStrategy   *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// >  If you do not specify this parameter, the deletion policy that is configured when you create the RAM user provisioning is used.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the RAM user provisioning.
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -2304,6 +2368,7 @@ func (s *DeleteUserProvisioningRequest) SetUserProvisioningId(v string) *DeleteU
 }
 
 type DeleteUserProvisioningResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2350,8 +2415,11 @@ func (s *DeleteUserProvisioningResponse) SetBody(v *DeleteUserProvisioningRespon
 }
 
 type DeleteUserProvisioningEventRequest struct {
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EventId            *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the RAM user provisioning event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the RAM user provisioning.
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -2379,6 +2447,7 @@ func (s *DeleteUserProvisioningEventRequest) SetUserProvisioningId(v string) *De
 }
 
 type DeleteUserProvisioningEventResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3573,6 +3642,7 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 }
 
 type GetLoginPreferenceRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3590,8 +3660,10 @@ func (s *GetLoginPreferenceRequest) SetDirectoryId(v string) *GetLoginPreference
 }
 
 type GetLoginPreferenceResponseBody struct {
+	// The logon preference.
 	LoginPreference *GetLoginPreferenceResponseBodyLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLoginPreferenceResponseBody) String() string {
@@ -3613,6 +3685,11 @@ func (s *GetLoginPreferenceResponseBody) SetRequestId(v string) *GetLoginPrefere
 }
 
 type GetLoginPreferenceResponseBodyLoginPreference struct {
+	// The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist.
+	//
+	// The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
+	//
+	// If the return value of this parameter is empty, no IP address whitelists are configured.
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 }
 
@@ -3917,6 +3994,7 @@ func (s *GetMFAAuthenticationStatusResponse) SetBody(v *GetMFAAuthenticationStat
 }
 
 type GetPasswordPolicyRequest struct {
+	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3934,8 +4012,10 @@ func (s *GetPasswordPolicyRequest) SetDirectoryId(v string) *GetPasswordPolicyRe
 }
 
 type GetPasswordPolicyResponseBody struct {
+	// The password policy.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBody) String() string {
@@ -3957,18 +4037,62 @@ func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolic
 }
 
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	HardExpire                 *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	MaxLoginAttempts           *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
-	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MaxPasswordLength          *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
-	MinPasswordDifferentChars  *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
-	MinPasswordLength          *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
-	PasswordNotContainUsername *bool  `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowerCaseChars      *bool  `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUpperCaseChars      *bool  `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
+	// Indicates whether to disable logon after a password expires. Valid values:
+	//
+	// *   true: disables logon after a password expires.
+	// *   false: does not disable logon after a password expires.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The number of password retries.
+	//
+	// If wrong passwords are entered for the specified consecutive times, the account is locked for 1 hour.
+	//
+	// Valid values: 0 to 32. The value 0 indicates that the number of password retries is not limited.
+	MaxLoginAttempts *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
+	// The validity period of a password.
+	//
+	// Valid values: 1 to 120. Unit: days.
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The maximum password length.
+	MaxPasswordLength *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
+	// The minimum number of different characters in a password.
+	//
+	// The minimum value is 0, which indicates that the minimum number of different characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
+	MinPasswordDifferentChars *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
+	// The minimum password length.
+	//
+	// Valid values: 8 to 32 characters.
+	MinPasswordLength *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
+	// Indicates whether to exclude the username from the password. Valid values:
+	//
+	// *   true: A password cannot contain the username.
+	// *   false: A password can contain the username.
+	PasswordNotContainUsername *bool `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
+	// The policy for password history check.
+	//
+	// The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 indicates that all historical passwords can be reused.
+	//
+	// >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Indicates whether lowercase letters are required in a password. Valid values:
+	//
+	// *   true: Lowercase letters are required in a password.
+	// *   false: Lowercase letters are not required in a password.
+	RequireLowerCaseChars *bool `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
+	// Indicates whether digits are required in a password. Valid values:
+	//
+	// *   true: Digits are required in a password.
+	// *   false: Digits are not required in a password.
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether special characters are required in a password. Valid values:
+	//
+	// *   true: Special characters are required in a password.
+	// *   false: Special characters are not required in a password.
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether uppercase letters are required in a password. Valid values:
+	//
+	// *   true: Uppercase letters are required in a password.
+	// *   false: Uppercase letters are not required in a password.
+	RequireUpperCaseChars *bool `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -4661,7 +4785,8 @@ type GetUserResponseBodyUser struct {
 	// The display name of the user.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email      *string                            `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExternalId *GetUserResponseBodyUserExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
 	// The first name of the user.
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
@@ -4712,6 +4837,11 @@ func (s *GetUserResponseBodyUser) SetEmail(v string) *GetUserResponseBodyUser {
 	return s
 }
 
+func (s *GetUserResponseBodyUser) SetExternalId(v *GetUserResponseBodyUserExternalId) *GetUserResponseBodyUser {
+	s.ExternalId = v
+	return s
+}
+
 func (s *GetUserResponseBodyUser) SetFirstName(v string) *GetUserResponseBodyUser {
 	s.FirstName = &v
 	return s
@@ -4747,6 +4877,29 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 	return s
 }
 
+type GetUserResponseBodyUserExternalId struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+}
+
+func (s GetUserResponseBodyUserExternalId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyUserExternalId) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyUserExternalId) SetId(v string) *GetUserResponseBodyUserExternalId {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUserExternalId) SetIssuer(v string) *GetUserResponseBodyUserExternalId {
+	s.Issuer = &v
+	return s
+}
+
 type GetUserResponse struct {
 	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -4772,6 +4925,127 @@ func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
 }
 
 func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserIdRequest struct {
+	DirectoryId *string                     `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	ExternalId  *GetUserIdRequestExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
+}
+
+func (s GetUserIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdRequest) SetDirectoryId(v string) *GetUserIdRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserIdRequest) SetExternalId(v *GetUserIdRequestExternalId) *GetUserIdRequest {
+	s.ExternalId = v
+	return s
+}
+
+type GetUserIdRequestExternalId struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+}
+
+func (s GetUserIdRequestExternalId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdRequestExternalId) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdRequestExternalId) SetId(v string) *GetUserIdRequestExternalId {
+	s.Id = &v
+	return s
+}
+
+func (s *GetUserIdRequestExternalId) SetIssuer(v string) *GetUserIdRequestExternalId {
+	s.Issuer = &v
+	return s
+}
+
+type GetUserIdShrinkRequest struct {
+	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	ExternalIdShrink *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+}
+
+func (s GetUserIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdShrinkRequest) SetDirectoryId(v string) *GetUserIdShrinkRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserIdShrinkRequest) SetExternalIdShrink(v string) *GetUserIdShrinkRequest {
+	s.ExternalIdShrink = &v
+	return s
+}
+
+type GetUserIdResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdResponseBody) SetRequestId(v string) *GetUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserIdResponseBody) SetUserId(v string) *GetUserIdResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetUserIdResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserIdResponse) SetHeaders(v map[string]*string) *GetUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserIdResponse) SetStatusCode(v int32) *GetUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserIdResponse) SetBody(v *GetUserIdResponseBody) *GetUserIdResponse {
 	s.Body = v
 	return s
 }
@@ -4859,7 +5133,9 @@ func (s *GetUserMFAAuthenticationSettingsResponse) SetBody(v *GetUserMFAAuthenti
 }
 
 type GetUserProvisioningRequest struct {
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the RAM user provisioning.
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -4882,7 +5158,9 @@ func (s *GetUserProvisioningRequest) SetUserProvisioningId(v string) *GetUserPro
 }
 
 type GetUserProvisioningResponseBody struct {
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user provisioning.
 	UserProvisioning *GetUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
 }
 
@@ -4905,22 +5183,56 @@ func (s *GetUserProvisioningResponseBody) SetUserProvisioning(v *GetUserProvisio
 }
 
 type GetUserProvisioningResponseBodyUserProvisioning struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the RAM user provisioning. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the member.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s GetUserProvisioningResponseBodyUserProvisioning) String() string {
@@ -5041,6 +5353,7 @@ func (s *GetUserProvisioningResponse) SetBody(v *GetUserProvisioningResponseBody
 }
 
 type GetUserProvisioningConfigurationRequest struct {
+	// The ID of the resource directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -5058,7 +5371,9 @@ func (s *GetUserProvisioningConfigurationRequest) SetDirectoryId(v string) *GetU
 }
 
 type GetUserProvisioningConfigurationResponseBody struct {
-	RequestId                     *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The global configurations of the RAM user provisioning.
 	UserProvisioningConfiguration *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
 }
 
@@ -5081,11 +5396,24 @@ func (s *GetUserProvisioningConfigurationResponseBody) SetUserProvisioningConfig
 }
 
 type GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+	//
+	// Default value: https://homenew.console.aliyun.com.
 	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	SessionDuration    *int32  `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The duration of the logon session.
+	//
+	// Unit: hours.
+	//
+	// Valid values: 1 to 24.
+	//
+	// Default value: 6.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) String() string {
@@ -5151,8 +5479,10 @@ func (s *GetUserProvisioningConfigurationResponse) SetBody(v *GetUserProvisionin
 }
 
 type GetUserProvisioningEventRequest struct {
+	// The ID of the resource directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the RAM user provisioning event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 
 func (s GetUserProvisioningEventRequest) String() string {
@@ -5174,7 +5504,9 @@ func (s *GetUserProvisioningEventRequest) SetEventId(v string) *GetUserProvision
 }
 
 type GetUserProvisioningEventResponseBody struct {
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The RAM user provisioning event.
 	UserProvisioningEvent *GetUserProvisioningEventResponseBodyUserProvisioningEvent `json:"UserProvisioningEvent,omitempty" xml:"UserProvisioningEvent,omitempty" type:"Struct"`
 }
 
@@ -5197,24 +5529,67 @@ func (s *GetUserProvisioningEventResponseBody) SetUserProvisioningEvent(v *GetUs
 }
 
 type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	ErrorCount          *int64  `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	ErrorInfo           *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	LatestAsyncTime     *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The number of execution failures.
+	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// The error message that is displayed when the last execution of the RAM user provisioning event failed.
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the RAM user provisioning event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The time at which the RAM user provisioning event was last executed.
+	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The type of the source operation. Valid values:
+	//
+	// *   StartProvisioning: enables the RAM user provisioning.
+	// *   DeleteProvisioning: deletes the RAM user provisioning.
+	// *   AddUserToGroup: adds a user to a user group.
+	// *   RemoveUserFromGroup: removes a user from a user group.
+	// *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning.
+	//
+	// The value is fixed as the ID of the member in the resource directory.````
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object for which you create the RAM user provisioning.
+	//
+	// The value is fixed as the name of the member in the resource directory.````
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning event.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s GetUserProvisioningEventResponseBodyUserProvisioningEvent) String() string {
@@ -5345,8 +5720,10 @@ func (s *GetUserProvisioningEventResponse) SetBody(v *GetUserProvisioningEventRe
 }
 
 type GetUserProvisioningRdAccountStatisticsRequest struct {
+	// The ID of the resource directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	RdMemberId  *string `json:"RdMemberId,omitempty" xml:"RdMemberId,omitempty"`
+	// The ID of the member in the resource directory.
+	RdMemberId *string `json:"RdMemberId,omitempty" xml:"RdMemberId,omitempty"`
 }
 
 func (s GetUserProvisioningRdAccountStatisticsRequest) String() string {
@@ -5368,7 +5745,9 @@ func (s *GetUserProvisioningRdAccountStatisticsRequest) SetRdMemberId(v string) 
 }
 
 type GetUserProvisioningRdAccountStatisticsResponseBody struct {
-	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics of the RAM user provisioning.
 	UserProvisioningStatistics *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
 }
 
@@ -5391,12 +5770,18 @@ func (s *GetUserProvisioningRdAccountStatisticsResponseBody) SetUserProvisioning
 }
 
 type GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics struct {
-	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EntityId         *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	FailedEventCount *int64  `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
-	LatestAsyncTime  *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
-	OwnerPk          *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The entity ID, which is the ID of the member in the resource directory.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The number of failed RAM user provisioning events.
+	FailedEventCount *int64 `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
+	// The time when the RAM user provisioning was last performed.
+	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The entity type. The value is fixed as `RD Account`.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) String() string {
@@ -5467,7 +5852,9 @@ func (s *GetUserProvisioningRdAccountStatisticsResponse) SetBody(v *GetUserProvi
 }
 
 type GetUserProvisioningStatisticsRequest struct {
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the RAM user provisioning.
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -5490,7 +5877,9 @@ func (s *GetUserProvisioningStatisticsRequest) SetUserProvisioningId(v string) *
 }
 
 type GetUserProvisioningStatisticsResponseBody struct {
-	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics of the RAM user provisioning.
 	UserProvisioningStatistics *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
 }
 
@@ -5513,12 +5902,18 @@ func (s *GetUserProvisioningStatisticsResponseBody) SetUserProvisioningStatistic
 }
 
 type GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics struct {
-	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EntityId         *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	FailedEventCount *int64  `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
-	LatestAsyncTime  *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
-	OwnerPk          *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The entity ID, which is the ID of the RAM user provisioning.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The number of failed RAM user provisioning events that are associated with the RAM user provisioning.
+	FailedEventCount *int64 `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
+	// The time when the RAM user provisioning was last performed.
+	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The entity type. The value is fixed as `User Provisioning`.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) String() string {
@@ -7971,9 +8366,19 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListUserProvisioningEventsRequest struct {
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+	//
+	// When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the RAM user provisioning.
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -8006,11 +8411,26 @@ func (s *ListUserProvisioningEventsRequest) SetUserProvisioningId(v string) *Lis
 }
 
 type ListUserProvisioningEventsResponseBody struct {
-	IsTruncated            *bool                                                           `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults             *int32                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken              *string                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts            *int32                                                          `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	//
+	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The RAM user provisioning events.
 	UserProvisioningEvents []*ListUserProvisioningEventsResponseBodyUserProvisioningEvents `json:"UserProvisioningEvents,omitempty" xml:"UserProvisioningEvents,omitempty" type:"Repeated"`
 }
 
@@ -8053,24 +8473,67 @@ func (s *ListUserProvisioningEventsResponseBody) SetUserProvisioningEvents(v []*
 }
 
 type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	ErrorCount          *int64  `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	ErrorInfo           *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	LatestAsyncTime     *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The number of execution failures.
+	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	// The error message that is displayed when the last execution of the RAM user provisioning event failed.
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the RAM user provisioning event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The time at which the RAM user provisioning event was last executed.
+	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The type of the source operation. Valid values:
+	//
+	// *   StartProvisioning: enables the RAM user provisioning.
+	// *   DeleteProvisioning: deletes the RAM user provisioning.
+	// *   AddUserToGroup: adds a user to a user group.
+	// *   RemoveUserFromGroup: removes a user from a user group.
+	// *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning.
+	//
+	// The value is fixed as the ID of the account in the resource directory.````
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object for which you create the RAM user provisioning.
+	//
+	// If `RD-Account` is returned, the value of this parameter is the name of the account that is used to access the instance.``
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s ListUserProvisioningEventsResponseBodyUserProvisioningEvents) String() string {
@@ -8201,13 +8664,32 @@ func (s *ListUserProvisioningEventsResponse) SetBody(v *ListUserProvisioningEven
 }
 
 type ListUserProvisioningsRequest struct {
-	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PrincipalId   *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
+	//
+	// When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	TargetId      *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetType    *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListUserProvisioningsRequest) String() string {
@@ -8254,11 +8736,26 @@ func (s *ListUserProvisioningsRequest) SetTargetType(v string) *ListUserProvisio
 }
 
 type ListUserProvisioningsResponseBody struct {
-	IsTruncated       *bool                                                 `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	MaxResults        *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts       *int32                                                `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// Indicates whether the queried entries are truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	//
+	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	// The RAM user provisionings.
 	UserProvisionings []*ListUserProvisioningsResponseBodyUserProvisionings `json:"UserProvisionings,omitempty" xml:"UserProvisionings,omitempty" type:"Repeated"`
 }
 
@@ -8301,22 +8798,56 @@ func (s *ListUserProvisioningsResponseBody) SetUserProvisionings(v []*ListUserPr
 }
 
 type ListUserProvisioningsResponseBodyUserProvisionings struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the RAM user provisioning. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s ListUserProvisioningsResponseBodyUserProvisionings) String() string {
@@ -8571,7 +9102,8 @@ type ListUsersResponseBodyUsers struct {
 	// The display name of the user.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email      *string                               `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExternalId *ListUsersResponseBodyUsersExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
 	// The first name of the user.
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
@@ -8622,6 +9154,11 @@ func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUs
 	return s
 }
 
+func (s *ListUsersResponseBodyUsers) SetExternalId(v *ListUsersResponseBodyUsersExternalId) *ListUsersResponseBodyUsers {
+	s.ExternalId = v
+	return s
+}
+
 func (s *ListUsersResponseBodyUsers) SetFirstName(v string) *ListUsersResponseBodyUsers {
 	s.FirstName = &v
 	return s
@@ -8654,6 +9191,29 @@ func (s *ListUsersResponseBodyUsers) SetUserId(v string) *ListUsersResponseBodyU
 
 func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBodyUsers {
 	s.UserName = &v
+	return s
+}
+
+type ListUsersResponseBodyUsersExternalId struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+}
+
+func (s ListUsersResponseBodyUsersExternalId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBodyUsersExternalId) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBodyUsersExternalId) SetId(v string) *ListUsersResponseBodyUsersExternalId {
+	s.Id = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsersExternalId) SetIssuer(v string) *ListUsersResponseBodyUsersExternalId {
+	s.Issuer = &v
 	return s
 }
 
@@ -9221,9 +9781,15 @@ func (s *ResetUserPasswordResponse) SetBody(v *ResetUserPasswordResponseBody) *R
 }
 
 type RetryUserProvisioningEventRequest struct {
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The ID of the RAM user provisioning event.
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 
 func (s RetryUserProvisioningEventRequest) String() string {
@@ -9250,6 +9816,7 @@ func (s *RetryUserProvisioningEventRequest) SetEventId(v string) *RetryUserProvi
 }
 
 type RetryUserProvisioningEventResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9498,7 +10065,15 @@ func (s *SetExternalSAMLIdentityProviderResponse) SetBody(v *SetExternalSAMLIden
 }
 
 type SetLoginPreferenceRequest struct {
-	DirectoryId       *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist. Limits:
+	//
+	// *   You can enter IP addresses or CIDR blocks. IPv4 addresses are supported.
+	// *   You can enter up to 100 IP addresses or CIDR blocks. Separate multiple IP addresses or CIDR blocks with semicolons `(;)`.
+	// *   If you do not specify this parameter, the original settings are retained.
+	// *   If you set this parameter to a semicolon (`;`), the value of this parameter is cleared.
+	// *   The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 }
 
@@ -9521,6 +10096,7 @@ func (s *SetLoginPreferenceRequest) SetLoginNetworkMasks(v string) *SetLoginPref
 }
 
 type SetLoginPreferenceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9642,13 +10218,37 @@ func (s *SetMFAAuthenticationStatusResponse) SetBody(v *SetMFAAuthenticationStat
 }
 
 type SetPasswordPolicyRequest struct {
-	DirectoryId                *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	MaxLoginAttempts           *int32  `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
-	MaxPasswordAge             *int32  `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MinPasswordDifferentChars  *int32  `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
-	MinPasswordLength          *int32  `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
-	PasswordNotContainUsername *bool   `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
-	PasswordReusePrevention    *int32  `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// The ID of the directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The number of password retries.
+	//
+	// If you enter wrong passwords for the specified consecutive times, the account is locked for 1 hour.
+	//
+	// Valid values: 0 to 32. The value 0 specifies that the number of password retries is not limited.
+	MaxLoginAttempts *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
+	// The validity period of a password.
+	//
+	// Valid values: 1 to 120. Unit: days.
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum number of unique characters in a password.
+	//
+	// The minimum value is 0, which specifies that the minimum number of unique characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
+	MinPasswordDifferentChars *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
+	// The minimum password length.
+	//
+	// Valid values: 8 to 32 characters.
+	MinPasswordLength *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
+	// Specifies whether a password can contain the username. Valid value:
+	//
+	// *   true: A password cannot contain the username.
+	// *   false: A password can contain the username.
+	PasswordNotContainUsername *bool `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
+	// The policy for password history check.
+	//
+	// The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 specifies that all historical passwords can be reused.
+	//
+	// >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
 }
 
 func (s SetPasswordPolicyRequest) String() string {
@@ -9695,6 +10295,7 @@ func (s *SetPasswordPolicyRequest) SetPasswordReusePrevention(v int32) *SetPassw
 }
 
 type SetPasswordPolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10884,11 +11485,22 @@ func (s *UpdateUserMFAAuthenticationSettingsResponse) SetBody(v *UpdateUserMFAAu
 }
 
 type UpdateUserProvisioningRequest struct {
-	DirectoryId            *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	NewDeletionStrategy    *string `json:"NewDeletionStrategy,omitempty" xml:"NewDeletionStrategy,omitempty"`
-	NewDescription         *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	NewDeletionStrategy *string `json:"NewDeletionStrategy,omitempty" xml:"NewDeletionStrategy,omitempty"`
+	// The new description of the RAM user provisioning.
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The new conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	NewDuplicationStrategy *string `json:"NewDuplicationStrategy,omitempty" xml:"NewDuplicationStrategy,omitempty"`
-	UserProvisioningId     *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s UpdateUserProvisioningRequest) String() string {
@@ -10925,7 +11537,9 @@ func (s *UpdateUserProvisioningRequest) SetUserProvisioningId(v string) *UpdateU
 }
 
 type UpdateUserProvisioningResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user provisioning.
 	UserProvisioning *UpdateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
 }
 
@@ -10948,22 +11562,56 @@ func (s *UpdateUserProvisioningResponseBody) SetUserProvisioning(v *UpdateUserPr
 }
 
 type UpdateUserProvisioningResponseBodyUserProvisioning struct {
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	//
+	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	// The description for the RAM user provisioning.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	//
+	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	// The identity ID of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The identity name of the RAM user provisioning. Valid values:
+	//
+	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	// The identity type of the RAM user provisioning. Valid values:
+	//
+	// *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+	// *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	// The status of the RAM user provisioning. Valid values:
+	//
+	// *   Enabled
+	// *   Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the account in the resource directory.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the resource directory.
+	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the RAM user provisioning.
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
 func (s UpdateUserProvisioningResponseBodyUserProvisioning) String() string {
@@ -11084,9 +11732,20 @@ func (s *UpdateUserProvisioningResponse) SetBody(v *UpdateUserProvisioningRespon
 }
 
 type UpdateUserProvisioningConfigurationRequest struct {
-	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The new default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+	//
+	// Default value: https://homenew.console.aliyun.com.
 	NewDefaultLandingPage *string `json:"NewDefaultLandingPage,omitempty" xml:"NewDefaultLandingPage,omitempty"`
-	NewSessionDuration    *int32  `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
+	// The new duration of the logon session.
+	//
+	// Unit: hours.
+	//
+	// Valid values: 1 to 24.
+	//
+	// Default value: 6.
+	NewSessionDuration *int32 `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
 }
 
 func (s UpdateUserProvisioningConfigurationRequest) String() string {
@@ -11113,7 +11772,9 @@ func (s *UpdateUserProvisioningConfigurationRequest) SetNewSessionDuration(v int
 }
 
 type UpdateUserProvisioningConfigurationResponseBody struct {
-	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The global configurations of the RAM user provisioning.
 	UserProvisioningConfiguration *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
 }
 
@@ -11136,11 +11797,24 @@ func (s *UpdateUserProvisioningConfigurationResponseBody) SetUserProvisioningCon
 }
 
 type UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
+	//
+	// Default value: https://homenew.console.aliyun.com.
 	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
-	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	SessionDuration    *int32  `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the resource directory.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The duration of the logon session.
+	//
+	// Unit: hours.
+	//
+	// Valid values: 1 to 24.
+	//
+	// Default value: 6.
+	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The modification time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) String() string {
@@ -13749,6 +14423,60 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
 	_body, _err := client.GetUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserIdWithOptions(tmpReq *GetUserIdRequest, runtime *util.RuntimeOptions) (_result *GetUserIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetUserIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalId)) {
+		request.ExternalIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalId, tea.String("ExternalId"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalIdShrink)) {
+		query["ExternalId"] = request.ExternalIdShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserId"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserIdResponse{}
+	_body, _err := client.GetUserIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
