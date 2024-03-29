@@ -290,6 +290,7 @@ type CreateClusterRequestNetworks struct {
 	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
 	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
 	SecurityGroupId    *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	TailIpVersion      *string                                           `json:"TailIpVersion,omitempty" xml:"TailIpVersion,omitempty"`
 	VSwitchId          *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchZoneId      *string                                           `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
 	VpcId              *string                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -317,6 +318,11 @@ func (s *CreateClusterRequestNetworks) SetNewVpdInfo(v *CreateClusterRequestNetw
 
 func (s *CreateClusterRequestNetworks) SetSecurityGroupId(v string) *CreateClusterRequestNetworks {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworks) SetTailIpVersion(v string) *CreateClusterRequestNetworks {
+	s.TailIpVersion = &v
 	return s
 }
 
