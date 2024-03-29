@@ -1563,6 +1563,7 @@ type GetInstanceResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The time when the instance expires.
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// Deprecated
 	// The extended configurations. We recommend you configure the productInfo, internetInfo, or aclInfo parameter instead of this parameter.
 	ExtConfig *GetInstanceResponseBodyDataExtConfig `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
 	// The number of groups.
@@ -1800,12 +1801,25 @@ func (s *GetInstanceResponseBodyDataAccountInfo) SetUsername(v string) *GetInsta
 }
 
 type GetInstanceResponseBodyDataAclInfo struct {
-	// The authentication type of the instance.
+	// Deprecated
+	// The authentication types of the instance. Deprecated, it is recommended to use the aclTypes field.
 	//
 	// Valid values:
 	//
-	// *   default: intelligent authentication
+	// default: intelligent authentication
+	//
+	// apache_acl: apache acl authentication
 	AclType *string `json:"aclType,omitempty" xml:"aclType,omitempty"`
+	// The authentication types of the instance.
+	//
+	// Valid values:
+	//
+	// default: intelligent authentication
+	//
+	// apache_acl: apache acl authentication
+	AclTypes []*string `json:"aclTypes,omitempty" xml:"aclTypes,omitempty" type:"Repeated"`
+	// No need for authentication in intranet.
+	DefaultVpcAuthFree *bool `json:"defaultVpcAuthFree,omitempty" xml:"defaultVpcAuthFree,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDataAclInfo) String() string {
@@ -1818,6 +1832,16 @@ func (s GetInstanceResponseBodyDataAclInfo) GoString() string {
 
 func (s *GetInstanceResponseBodyDataAclInfo) SetAclType(v string) *GetInstanceResponseBodyDataAclInfo {
 	s.AclType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataAclInfo) SetAclTypes(v []*string) *GetInstanceResponseBodyDataAclInfo {
+	s.AclTypes = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataAclInfo) SetDefaultVpcAuthFree(v bool) *GetInstanceResponseBodyDataAclInfo {
+	s.DefaultVpcAuthFree = &v
 	return s
 }
 
@@ -4562,6 +4586,7 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateInstanceRequest struct {
+	AclInfo *UpdateInstanceRequestAclInfo `json:"aclInfo,omitempty" xml:"aclInfo,omitempty" type:"Struct"`
 	// The updated name of the instance.
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	// The updated network information about the instance.
@@ -4578,6 +4603,11 @@ func (s UpdateInstanceRequest) String() string {
 
 func (s UpdateInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceRequest) SetAclInfo(v *UpdateInstanceRequestAclInfo) *UpdateInstanceRequest {
+	s.AclInfo = v
+	return s
 }
 
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
@@ -4597,6 +4627,29 @@ func (s *UpdateInstanceRequest) SetProductInfo(v *UpdateInstanceRequestProductIn
 
 func (s *UpdateInstanceRequest) SetRemark(v string) *UpdateInstanceRequest {
 	s.Remark = &v
+	return s
+}
+
+type UpdateInstanceRequestAclInfo struct {
+	AclTypes           []*string `json:"aclTypes,omitempty" xml:"aclTypes,omitempty" type:"Repeated"`
+	DefaultVpcAuthFree *bool     `json:"defaultVpcAuthFree,omitempty" xml:"defaultVpcAuthFree,omitempty"`
+}
+
+func (s UpdateInstanceRequestAclInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestAclInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestAclInfo) SetAclTypes(v []*string) *UpdateInstanceRequestAclInfo {
+	s.AclTypes = v
+	return s
+}
+
+func (s *UpdateInstanceRequestAclInfo) SetDefaultVpcAuthFree(v bool) *UpdateInstanceRequestAclInfo {
+	s.DefaultVpcAuthFree = &v
 	return s
 }
 
@@ -6051,6 +6104,10 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclInfo)) {
+		body["aclInfo"] = request.AclInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["instanceName"] = request.InstanceName
 	}
