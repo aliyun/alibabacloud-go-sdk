@@ -878,8 +878,6 @@ type CreateGlobalDistributeCacheRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
 	//
-	// **
-	//
 	// **Description** You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1279,7 +1277,8 @@ type CreateInstanceRequest struct {
 	//
 	// > If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// 系统自动生成的安全 Token，无需传入
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks.
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	// The ID of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter and use the **BackupId** or **RestoreTime** parameter to specify the backup file.
@@ -1995,7 +1994,7 @@ type CreateTairInstanceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 集群备份集ID。
+	// The backup set ID.
 	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
 	// The coupon code.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
@@ -4871,7 +4870,7 @@ func (s *DescribeBackupTasksResponseBodyAccessDeniedDetail) SetPolicyType(v stri
 
 type DescribeBackupTasksResponseBodyBackupJobs struct {
 	// The ID of the backup task.
-	BackupJobID *int32 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
+	BackupJobID *int64 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
 	// The state of the backup task. Valid values:
 	//
 	// *   **NoStart**: The backup task is not started.
@@ -4907,7 +4906,7 @@ func (s DescribeBackupTasksResponseBodyBackupJobs) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupJobID(v int32) *DescribeBackupTasksResponseBodyBackupJobs {
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupJobID(v int64) *DescribeBackupTasksResponseBodyBackupJobs {
 	s.BackupJobID = &v
 	return s
 }
@@ -4973,8 +4972,8 @@ func (s *DescribeBackupTasksResponse) SetBody(v *DescribeBackupTasksResponseBody
 
 type DescribeBackupsRequest struct {
 	// The ID of the backup file.
-	BackupId    *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupJobId *int32 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	BackupId    *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance whose backup files you want to query.
@@ -5007,12 +5006,12 @@ func (s DescribeBackupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupsRequest) SetBackupId(v int32) *DescribeBackupsRequest {
+func (s *DescribeBackupsRequest) SetBackupId(v int64) *DescribeBackupsRequest {
 	s.BackupId = &v
 	return s
 }
 
-func (s *DescribeBackupsRequest) SetBackupJobId(v int32) *DescribeBackupsRequest {
+func (s *DescribeBackupsRequest) SetBackupJobId(v int64) *DescribeBackupsRequest {
 	s.BackupJobId = &v
 	return s
 }
@@ -5874,14 +5873,22 @@ func (s *DescribeClusterBackupListRequest) SetStartTime(v string) *DescribeClust
 }
 
 type DescribeClusterBackupListResponseBody struct {
-	ClusterBackups  []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
-	FreeSize        *int64                                                 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
-	FullStorageSize *int64                                                 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	LogStorageSize  *int64                                                 `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
-	MaxResults      *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	PageNumber      *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The backup sets of the instance. An instance backup contains the backup sets of all nodes in the instance.
+	ClusterBackups []*DescribeClusterBackupListResponseBodyClusterBackups `json:"ClusterBackups,omitempty" xml:"ClusterBackups,omitempty" type:"Repeated"`
+	// This parameter does not take effect. Ignore this parameter.
+	FreeSize *int64 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
+	// The size of the full backup file of the instance. Unit: bytes. Full backups originate from scheduled backups, manual backups, and backups generated during cache analysis.
+	//
+	// >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid full backups of the instance.
+	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
+	// The size of the log backup file of the instance. Unit: bytes. This parameter is valid only when flashback is enabled.
+	//
+	// >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid log backups of the instance.
+	LogStorageSize *int64  `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClusterBackupListResponseBody) String() string {
@@ -5933,16 +5940,30 @@ func (s *DescribeClusterBackupListResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackups struct {
-	Backups                []*DescribeClusterBackupListResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
-	ClusterBackupEndTime   *string                                                       `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
-	ClusterBackupId        *string                                                       `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
-	ClusterBackupMode      *string                                                       `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
-	ClusterBackupSize      *string                                                       `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
-	ClusterBackupStartTime *string                                                       `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
-	ClusterBackupStatus    *string                                                       `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
-	IsAvail                *int32                                                        `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
-	Progress               *string                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ShardClassMemory       *int32                                                        `json:"ShardClassMemory,omitempty" xml:"ShardClassMemory,omitempty"`
+	// The backup sets of all nodes in the instance.
+	Backups []*DescribeClusterBackupListResponseBodyClusterBackupsBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Repeated"`
+	// The end time of the backup.
+	ClusterBackupEndTime *string `json:"ClusterBackupEndTime,omitempty" xml:"ClusterBackupEndTime,omitempty"`
+	// The ID of the backup set.
+	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	// The backup mode.
+	ClusterBackupMode *string `json:"ClusterBackupMode,omitempty" xml:"ClusterBackupMode,omitempty"`
+	// The size of the backup set.
+	ClusterBackupSize *string `json:"ClusterBackupSize,omitempty" xml:"ClusterBackupSize,omitempty"`
+	// The start time of the backup.
+	ClusterBackupStartTime *string `json:"ClusterBackupStartTime,omitempty" xml:"ClusterBackupStartTime,omitempty"`
+	// The status of the backup set.
+	//
+	// *   OK
+	// *   RUNNING
+	// *   Failed
+	ClusterBackupStatus *string `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
+	// Indicates whether the backup set is valid. A value of 0 indicates that node-level backups failed or have not been completed.
+	IsAvail *int32 `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	// The backup progress. The system displays only the progress of running backup tasks.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The memory size of a single node during a full backup. Unit: MB.
+	ShardClassMemory *int32 `json:"ShardClassMemory,omitempty" xml:"ShardClassMemory,omitempty"`
 }
 
 func (s DescribeClusterBackupListResponseBodyClusterBackups) String() string {
@@ -6004,18 +6025,38 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetShardClassMemor
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
-	BackupDownloadURL         *string                                                              `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	BackupEndTime             *string                                                              `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupId                  *string                                                              `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupIntranetDownloadURL *string                                                              `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	BackupName                *string                                                              `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
-	BackupSize                *string                                                              `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	BackupStartTime           *string                                                              `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupStatus              *string                                                              `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	Engine                    *string                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExtraInfo                 *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	InstanceName              *string                                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsAvail                   *string                                                              `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	// The public download URL of the backup file.
+	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	// The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// The ID of the backup file.
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The internal download URL of the backup file.
+	//
+	// >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the ApsaraDB for Redis instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the ApsaraDB for Redis instance.
+	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
+	// The backup name.
+	BackupName *string `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
+	// The size of the backup file. Unit: bytes.
+	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The status of the backup. Valid values:
+	//
+	// *   **OK**
+	// *   **ERROR**
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The database engine. The return value is **redis**.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The additional information.
+	ExtraInfo *DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether the backup set is available. Valid values:
+	//
+	// *   **0**: unavailable
+	// *   **1**: available
+	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
 }
 
 func (s DescribeClusterBackupListResponseBodyClusterBackupsBackups) String() string {
@@ -6087,6 +6128,7 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetIsAvail(
 }
 
 type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {
+	// The engine version.
 	CustinsDbVersion *string `json:"CustinsDbVersion,omitempty" xml:"CustinsDbVersion,omitempty"`
 }
 
@@ -8761,9 +8803,9 @@ func (s *DescribeHistoryMonitorValuesResponse) SetBody(v *DescribeHistoryMonitor
 type DescribeHistoryTasksRequest struct {
 	// The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time.
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
+	// The instance ID. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Set the value to Instance.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -8771,30 +8813,40 @@ type DescribeHistoryTasksRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the pending task. You can call the [DescribeRegions](https://next.api.aliyun.com/document/R-kvstore/2015-01-01/DescribeRegions) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   Scheduled
-	// *   Running
-	// *   Succeed
-	// *   Failed
-	// *   Cancelling
-	// *   Canceled
-	// *   Waiting
+	// *   **Scheduled**
+	// *   **Running**
+	// *   **Succeed**
+	// *   **Failed**
+	// *   **Cancelling**
+	// *   **Canceled**
+	// *   **Waiting**
 	//
-	// Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+	// >  This parameter is empty by default, which indicates that tasks in all states are queried. Separate multiple states with commas (,).
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of task IDs.
+	// The task ID. This parameter is empty by default, which indicates that you can specify an unlimited number of task IDs. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. Separate multiple task types with commas (,). You can specify up to 30 task types. This parameter is empty by default, which indicates that you can specify an unlimited number of task types.
+	// The task type. This parameter is empty by default, which indicates that you can specify an unlimited number of task types.
+	//
+	// *   **ModifyInsSpec**
+	// *   **DeleteInsNode**
+	// *   **AddInsNode**
+	// *   **HaSwitch**
+	// *   **RestartIns**
+	// *   **CreateIns**
+	// *   **ModifyInsConfig**
+	//
+	// >  Separate multiple task types with commas (,).
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried.
 	ToStartTime *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
 }
 
@@ -8882,13 +8934,13 @@ func (s *DescribeHistoryTasksRequest) SetToStartTime(v string) *DescribeHistoryT
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// The request source. Valid values: System and User.
+	// The queried task objects.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
+	// The maximum number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of tasks that meet these constraints without taking pagination into account.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -8928,26 +8980,92 @@ func (s *DescribeHistoryTasksResponseBody) SetTotalCount(v int32) *DescribeHisto
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	ActionInfo      *string  `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	CallerSource    *string  `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	CallerUid       *string  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	CurrentStepName *string  `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	DbType          *string  `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EndTime         *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType    *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Product         *string  `json:"Product,omitempty" xml:"Product,omitempty"`
-	Progress        *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ReasonCode      *string  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemainTime      *int32   `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	StartTime       *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskDetail      *string  `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
-	TaskId          *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType        *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Uid             *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// A set of allowed actions that can be taken on the task. The system matches the current step name and status of the task to the available actions specified by ActionInfo. If no matching action is found, the current status of the task does not support any action. Example:
+	//
+	//     {"steps": [
+	//         {
+	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.
+	//           "action_info": {    // The actions supported for this step.
+	//             "Waiting": [      // The status, which matches Status.
+	//               "modifySwitchTime" // The action. Multiple actions are supported.
+	//             ]
+	//           }
+	//         },
+	//         {
+	//           "step_name": "init_task", // The name of the step.
+	//           "action_info": {    // The actions supported for this step.
+	//             "Running": [      // The status.
+	//               "cancel",       // The action.
+	//               "pause"
+	//             ]
+	//           }
+	//         }
+	//       ]
+	//     }
+	//
+	// The system may support the following actions:
+	//
+	// *   **retry**
+	// *   **cancel**
+	// *   **modifySwitchTime**: changes the switching or restoration time.
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
+	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
+	// The request source. Valid values:
+	//
+	// *   **System**
+	// *   **User**
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// The name of the current step. If this parameter is left empty, the task is not started.
+	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	// The database type. The return value is redis.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The end time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type. The return value is Instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The product. The return value is kvstore.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The task progress. Valid values: 0 to 100.
+	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The reason why the current task was initiated.
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The estimated amount of time remaining to complete the task. Unit: seconds. A value of 0 indicates that the task is completed.
+	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// The start time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status.
+	//
+	// *   **Scheduled**
+	// *   **Running**
+	// *   **Succeed**
+	// *   **Failed**
+	// *   **Cancelling**
+	// *   **Canceled**
+	// *   **Waiting**
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task details. The details vary based on the task type.
+	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type.
+	//
+	// *   **ModifyInsSpec**
+	// *   **DeleteInsNode**
+	// *   **AddInsNode**
+	// *   **HaSwitch**
+	// *   **RestartIns**
+	// *   **CreateIns**
+	// *   **ModifyInsConfig**
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The ID of the user to which the resources belong.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeHistoryTasksResponseBodyItems) String() string {
@@ -12207,7 +12325,7 @@ type DescribeParameterTemplatesRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~ListResourceGroups~~) operation to query the IDs of resource groups.
+	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
 	//
 	// >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](~~151181~~).
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -12735,7 +12853,7 @@ type DescribePriceRequest struct {
 	// *   **false**: forcefully changes the configurations.
 	// *   **true** (default): does not forcefully change the configurations.
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The instance type.****
+	// The instance type.
 	//
 	// **To view the instance type, perform the following steps:**
 	//
@@ -13100,15 +13218,16 @@ func (s *DescribePriceResponseBodyOrderCouponsCoupon) SetName(v string) *Describ
 }
 
 type DescribePriceResponseBodyOrderDepreciateInfo struct {
-	CheapRate           *int64  `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	CheapStandAmount    *int64  `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	Differential        *int64  `json:"Differential,omitempty" xml:"Differential,omitempty"`
-	DifferentialName    *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	IsContractActivity  *bool   `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
-	ListPrice           *int64  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	MonthPrice          *int64  `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	OriginalStandAmount *int64  `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	CheapRate           *int64                                                        `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *int64                                                        `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	ContractActivity    *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
+	Differential        *int64                                                        `json:"Differential,omitempty" xml:"Differential,omitempty"`
+	DifferentialName    *string                                                       `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
+	IsContractActivity  *bool                                                         `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	IsShow              *bool                                                         `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	ListPrice           *int64                                                        `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	MonthPrice          *int64                                                        `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *int64                                                        `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
 }
 
 func (s DescribePriceResponseBodyOrderDepreciateInfo) String() string {
@@ -13126,6 +13245,11 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetCheapRate(v int64) *De
 
 func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetCheapStandAmount(v int64) *DescribePriceResponseBodyOrderDepreciateInfo {
 	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetContractActivity(v *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) *DescribePriceResponseBodyOrderDepreciateInfo {
+	s.ContractActivity = v
 	return s
 }
 
@@ -13161,6 +13285,76 @@ func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetMonthPrice(v int64) *D
 
 func (s *DescribePriceResponseBodyOrderDepreciateInfo) SetOriginalStandAmount(v int64) *DescribePriceResponseBodyOrderDepreciateInfo {
 	s.OriginalStandAmount = &v
+	return s
+}
+
+type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
+	ActivityId   *int64                                                                 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityName *string                                                                `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	FinalFee     *float64                                                               `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
+	FinalPromFee *float64                                                               `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode   *string                                                                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionIds    *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds `json:"OptionIds,omitempty" xml:"OptionIds,omitempty" type:"Struct"`
+	ProdFee      *float64                                                               `json:"ProdFee,omitempty" xml:"ProdFee,omitempty"`
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetActivityId(v int64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetActivityName(v string) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetFinalFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.FinalFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetFinalPromFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetOptionCode(v string) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetOptionIds(v *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.OptionIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivity) SetProdFee(v float64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivity {
+	s.ProdFee = &v
+	return s
+}
+
+type DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds struct {
+	OptionId []*int64 `json:"OptionId,omitempty" xml:"OptionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds) SetOptionId(v []*int64) *DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds {
+	s.OptionId = v
 	return s
 }
 
@@ -13248,7 +13442,8 @@ func (s *DescribePriceResponseBodySubOrders) SetSubOrder(v []*DescribePriceRespo
 }
 
 type DescribePriceResponseBodySubOrdersSubOrder struct {
-	DepreciateInfo *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	ContractActivity *bool                                                     `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty"`
+	DepreciateInfo   *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	// The discount amount of the order.
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The instance ID.
@@ -13273,6 +13468,11 @@ func (s DescribePriceResponseBodySubOrdersSubOrder) String() string {
 
 func (s DescribePriceResponseBodySubOrdersSubOrder) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrder) SetContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrder {
+	s.ContractActivity = &v
+	return s
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrder) SetDepreciateInfo(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) *DescribePriceResponseBodySubOrdersSubOrder {
@@ -13336,14 +13536,15 @@ func (s *DescribePriceResponseBodySubOrdersSubOrder) SetTradeAmount(v string) *D
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo struct {
-	CheapRate           *int64  `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	CheapStandAmount    *int64  `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	Differential        *int64  `json:"Differential,omitempty" xml:"Differential,omitempty"`
-	DifferentialName    *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	IsContractActivity  *bool   `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	ListPrice           *int64  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
-	MonthPrice          *int64  `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	OriginalStandAmount *int64  `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	CheapRate           *int64                                                                    `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *int64                                                                    `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	ContractActivity    *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
+	Differential        *int64                                                                    `json:"Differential,omitempty" xml:"Differential,omitempty"`
+	DifferentialName    *string                                                                   `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
+	IsContractActivity  *bool                                                                     `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	ListPrice           *int64                                                                    `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	MonthPrice          *int64                                                                    `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *int64                                                                    `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) String() string {
@@ -13361,6 +13562,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetCheapRate(
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetCheapStandAmount(v int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
 	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetContractActivity(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.ContractActivity = v
 	return s
 }
 
@@ -13394,6 +13600,76 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetOriginalSt
 	return s
 }
 
+type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity struct {
+	ActivityId   *int64                                                                             `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ActivityName *string                                                                            `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	FinalFee     *float64                                                                           `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
+	FinalPromFee *float64                                                                           `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode   *string                                                                            `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionIds    *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds `json:"OptionIds,omitempty" xml:"OptionIds,omitempty" type:"Struct"`
+	ProdFee      *float64                                                                           `json:"ProdFee,omitempty" xml:"ProdFee,omitempty"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetActivityId(v int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetActivityName(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ActivityName = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetFinalFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.FinalFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetFinalPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.FinalPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetOptionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetOptionIds(v *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.OptionIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity) SetProdFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity {
+	s.ProdFee = &v
+	return s
+}
+
+type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds struct {
+	OptionId []*int64 `json:"OptionId,omitempty" xml:"OptionId,omitempty" type:"Repeated"`
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds) SetOptionId(v []*int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds {
+	s.OptionId = v
+	return s
+}
+
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstance struct {
 	ModuleInstance []*DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
 }
@@ -13412,16 +13688,17 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstance) SetModuleInst
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance struct {
-	DiscountFee     *float64                                                                           `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
-	ModuleAttrs     *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Struct"`
-	ModuleCode      *string                                                                            `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	ModuleId        *string                                                                            `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	ModuleName      *string                                                                            `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	NeedOrderPay    *bool                                                                              `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
-	PayFee          *float64                                                                           `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
-	PricingModule   *bool                                                                              `json:"PricingModule,omitempty" xml:"PricingModule,omitempty"`
-	StandPrice      *float64                                                                           `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	TotalProductFee *float64                                                                           `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+	ContractActivity *bool                                                                              `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty"`
+	DiscountFee      *float64                                                                           `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
+	ModuleAttrs      *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Struct"`
+	ModuleCode       *string                                                                            `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId         *string                                                                            `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName       *string                                                                            `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	NeedOrderPay     *bool                                                                              `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
+	PayFee           *float64                                                                           `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
+	PricingModule    *bool                                                                              `json:"PricingModule,omitempty" xml:"PricingModule,omitempty"`
+	StandPrice       *float64                                                                           `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	TotalProductFee  *float64                                                                           `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) String() string {
@@ -13430,6 +13707,11 @@ func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) 
 
 func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetContractActivity(v bool) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.ContractActivity = &v
+	return s
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetDiscountFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
@@ -13640,11 +13922,14 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailList) SetPromDetail
 }
 
 type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail struct {
-	FinalPromFee  *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
-	OptionCode    *string  `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	PromType      *string  `json:"PromType,omitempty" xml:"PromType,omitempty"`
-	PromotionId   *int64   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	PromotionName *string  `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	ActivityExtInfo map[string]interface{} `json:"ActivityExtInfo,omitempty" xml:"ActivityExtInfo,omitempty"`
+	DerivedPromType *string                `json:"DerivedPromType,omitempty" xml:"DerivedPromType,omitempty"`
+	FinalPromFee    *float64               `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
+	OptionCode      *string                `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromType        *string                `json:"PromType,omitempty" xml:"PromType,omitempty"`
+	PromotionCode   *string                `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	PromotionId     *int64                 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName   *string                `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) String() string {
@@ -13653,6 +13938,16 @@ func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) Stri
 
 func (s DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) SetActivityExtInfo(v map[string]interface{}) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail {
+	s.ActivityExtInfo = v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) SetDerivedPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail {
+	s.DerivedPromType = &v
+	return s
 }
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) SetFinalPromFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail {
@@ -13667,6 +13962,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) Set
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) SetPromType(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail {
 	s.PromType = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail) SetPromotionCode(v string) *DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail {
+	s.PromotionCode = &v
 	return s
 }
 
@@ -14937,7 +15237,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The slow log entries.
+	// The slow query log entries.
 	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -15030,9 +15330,9 @@ type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The slow query statement.
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The name of the database.
+	// The database name.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The name of the database, which serves the same purpose as the **DBName** parameter. We recommend that you use the value of the **DBName** parameter.
+	// The database name. This parameter serves the same purpose as the **DBName** parameter. We recommend that you use the **DBName** parameter.
 	DataBaseName *string `json:"DataBaseName,omitempty" xml:"DataBaseName,omitempty"`
 	// The amount of time consumed to execute the slow query statement. Unit: microseconds.
 	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
@@ -18984,6 +19284,7 @@ type ModifyInstanceSpecRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The major version to which you want to upgrade. When you change the configurations of an instance, you can upgrade the major version of the instance by setting this parameter. Valid values: **4.0** and **5.0**.
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The change type. This parameter is required when you change the configurations of a subscription instance. Default value: UPGRADE. Valid values:
 	//
 	// *   **UPGRADE**: upgrades the configurations of a subscription instance.
@@ -18994,7 +19295,10 @@ type ModifyInstanceSpecRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of read-only nodes. This parameter is available only for read/write splitting instances that use cloud disks. Valid values: 1 to 5.
+	// The number of read replicas. Valid values: 0 to 5. This parameter applies only to the following scenarios:
+	//
+	// *   If the instance is a standard instance that uses cloud disks, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	// *   If the instance is a read/write splitting instance that uses cloud disks, you can use this parameter to customize the number of read replicas. You can also set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -19063,6 +19367,11 @@ func (s *ModifyInstanceSpecRequest) SetInstanceId(v string) *ModifyInstanceSpecR
 
 func (s *ModifyInstanceSpecRequest) SetMajorVersion(v string) *ModifyInstanceSpecRequest {
 	s.MajorVersion = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetNodeType(v string) *ModifyInstanceSpecRequest {
+	s.NodeType = &v
 	return s
 }
 
@@ -20603,22 +20912,15 @@ type RestartInstanceRequest struct {
 	//
 	// *   **Immediately**: immediately restarts the instance.
 	// *   **MaintainTime**: restarts the instance during the maintenance window.
-	//
-	// Enumeration values:
-	//
-	// *   0
-	// *   1
-	// *   Immediately
-	// *   MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The operation that you want to perform. Set the value to **RestartInstance**.
+	// The ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to update the instance to the latest minor version when the instance is restarted. Valid values:
+	// Specifies whether to update to the latest minor version when the instance is restarted. Valid values:
 	//
 	// *   **true**: updates the minor version.
 	// *   **false**: does not update the minor version.
@@ -21107,35 +21409,41 @@ func (s *SwitchInstanceProxyResponse) SetBody(v *SwitchInstanceProxyResponseBody
 }
 
 type SwitchNetworkRequest struct {
-	// The retention period of the endpoint for the classic network. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
+	// The retention period of the classic network endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
 	//
-	// > *   This parameter is required when **RetainClassic** is set to **True**.
-	// > *   After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](~~ModifyInstanceNetExpireTime~~) operation to modify the retention period of the endpoint for the classic network.
+	// >
+	//
+	// *   This parameter is available and required only when the **RetainClassic** parameter is set to **True**.
+	//
+	// *   After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](~~61010~~) operation to modify the retention period of the classic network endpoint.
 	ClassicExpiredDays *string `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query instance IDs.
+	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to retain the original endpoint for the classic network after you switch the instance from classic network to VPC. Valid values:
+	// Specifies whether to retain the original classic network endpoint after you switch the instance from classic network to VPC. Default value: False. Valid values:
 	//
-	// *   **True**: retains the original endpoint.
-	// *   **False**: does not retain the original endpoint. This is the default value.
+	// *   **True**: retains the classic network endpoint.
+	// *   **False**: does not retain the classic network endpoint.
 	//
-	// >  This parameter can be used only when the network type of the instance is classic network.
+	// > This parameter is available only when the network type of the instance is classic network.
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The network type to which you want to switch. Set the value to **VPC**.
 	TargetNetworkType *string `json:"TargetNetworkType,omitempty" xml:"TargetNetworkType,omitempty"`
-	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query vSwitch IDs.
+	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
 	//
-	// >  The vSwitch and the ApsaraDB for Redis instance must belong to the same zone.
+	// > The vSwitch and the ApsaraDB for Redis instance must be deployed in the same zone.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query VPC IDs.
+	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
 	//
-	// > *   The VPC and the ApsaraDB for Redis instance must be deployed in the same region.
-	// > *   After you set this parameter, you must also set the **VSwitchId** parameter.
+	// >
+	//
+	// *   The VPC and the ApsaraDB for Redis instance must be deployed in the same region.
+	//
+	// *   After you set this parameter, you must also set the **VSwitchId** parameter.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -22934,8 +23242,7 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 /**
  * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
  * You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
- * **
- * **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+ * > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
  *
  * @param request CreateInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23149,8 +23456,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 /**
  * Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
  * You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
- * **
- * **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+ * > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
  *
  * @param request CreateInstanceRequest
  * @return CreateInstanceResponse
@@ -23282,7 +23588,6 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 /**
  * For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
  * Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
- * >
  * *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
  * *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
  *
@@ -23486,7 +23791,6 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 /**
  * For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
  * Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
- * >
  * *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
  * *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
  *
@@ -30015,6 +30319,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 
 	if !tea.BoolValue(util.IsUnset(request.MajorVersion)) {
 		query["MajorVersion"] = request.MajorVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
+		query["NodeType"] = request.NodeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
