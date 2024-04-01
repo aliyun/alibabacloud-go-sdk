@@ -1955,18 +1955,22 @@ func (s *BargeInCallResponse) SetBody(v *BargeInCallResponseBody) *BargeInCallRe
 }
 
 type BlindTransferRequest struct {
-	CallPriority         *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
-	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
-	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StrategyName         *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	StrategyParams       *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
-	TimeoutSeconds       *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	Transferee           *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
-	TransfereeType       *string `json:"TransfereeType,omitempty" xml:"TransfereeType,omitempty"`
-	Transferor           *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CallPriority             *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
+	ContactFlowVariables     *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	DeviceId                 *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	QueuingOverflowThreshold *int64  `json:"QueuingOverflowThreshold,omitempty" xml:"QueuingOverflowThreshold,omitempty"`
+	QueuingTimeoutSeconds    *int64  `json:"QueuingTimeoutSeconds,omitempty" xml:"QueuingTimeoutSeconds,omitempty"`
+	RoutingType              *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
+	StrategyName             *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	StrategyParams           *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
+	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TimeoutSeconds           *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Transferee               *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
+	TransfereeType           *string `json:"TransfereeType,omitempty" xml:"TransfereeType,omitempty"`
+	Transferor               *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
+	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BlindTransferRequest) String() string {
@@ -2002,6 +2006,21 @@ func (s *BlindTransferRequest) SetJobId(v string) *BlindTransferRequest {
 	return s
 }
 
+func (s *BlindTransferRequest) SetQueuingOverflowThreshold(v int64) *BlindTransferRequest {
+	s.QueuingOverflowThreshold = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetQueuingTimeoutSeconds(v int64) *BlindTransferRequest {
+	s.QueuingTimeoutSeconds = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetRoutingType(v string) *BlindTransferRequest {
+	s.RoutingType = &v
+	return s
+}
+
 func (s *BlindTransferRequest) SetStrategyName(v string) *BlindTransferRequest {
 	s.StrategyName = &v
 	return s
@@ -2009,6 +2028,11 @@ func (s *BlindTransferRequest) SetStrategyName(v string) *BlindTransferRequest {
 
 func (s *BlindTransferRequest) SetStrategyParams(v string) *BlindTransferRequest {
 	s.StrategyParams = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetTags(v string) *BlindTransferRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -12759,16 +12783,21 @@ func (s *ImportDoNotCallNumbersResponse) SetBody(v *ImportDoNotCallNumbersRespon
 }
 
 type InitiateAttendedTransferRequest struct {
-	CallPriority   *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StrategyName   *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	StrategyParams *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
-	TimeoutSeconds *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	Transferee     *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
-	Transferor     *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CallPriority             *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
+	DeviceId                 *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	QueuingOverflowThreshold *int64  `json:"QueuingOverflowThreshold,omitempty" xml:"QueuingOverflowThreshold,omitempty"`
+	QueuingTimeoutSeconds    *int64  `json:"QueuingTimeoutSeconds,omitempty" xml:"QueuingTimeoutSeconds,omitempty"`
+	RoutingType              *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
+	StrategyName             *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	StrategyParams           *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
+	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TimeoutSeconds           *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Transferee               *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
+	TransfereeType           *string `json:"TransfereeType,omitempty" xml:"TransfereeType,omitempty"`
+	Transferor               *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
+	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s InitiateAttendedTransferRequest) String() string {
@@ -12799,6 +12828,21 @@ func (s *InitiateAttendedTransferRequest) SetJobId(v string) *InitiateAttendedTr
 	return s
 }
 
+func (s *InitiateAttendedTransferRequest) SetQueuingOverflowThreshold(v int64) *InitiateAttendedTransferRequest {
+	s.QueuingOverflowThreshold = &v
+	return s
+}
+
+func (s *InitiateAttendedTransferRequest) SetQueuingTimeoutSeconds(v int64) *InitiateAttendedTransferRequest {
+	s.QueuingTimeoutSeconds = &v
+	return s
+}
+
+func (s *InitiateAttendedTransferRequest) SetRoutingType(v string) *InitiateAttendedTransferRequest {
+	s.RoutingType = &v
+	return s
+}
+
 func (s *InitiateAttendedTransferRequest) SetStrategyName(v string) *InitiateAttendedTransferRequest {
 	s.StrategyName = &v
 	return s
@@ -12809,6 +12853,11 @@ func (s *InitiateAttendedTransferRequest) SetStrategyParams(v string) *InitiateA
 	return s
 }
 
+func (s *InitiateAttendedTransferRequest) SetTags(v string) *InitiateAttendedTransferRequest {
+	s.Tags = &v
+	return s
+}
+
 func (s *InitiateAttendedTransferRequest) SetTimeoutSeconds(v int32) *InitiateAttendedTransferRequest {
 	s.TimeoutSeconds = &v
 	return s
@@ -12816,6 +12865,11 @@ func (s *InitiateAttendedTransferRequest) SetTimeoutSeconds(v int32) *InitiateAt
 
 func (s *InitiateAttendedTransferRequest) SetTransferee(v string) *InitiateAttendedTransferRequest {
 	s.Transferee = &v
+	return s
+}
+
+func (s *InitiateAttendedTransferRequest) SetTransfereeType(v string) *InitiateAttendedTransferRequest {
+	s.TransfereeType = &v
 	return s
 }
 
@@ -15741,6 +15795,129 @@ func (s *ListAudioFilesResponse) SetStatusCode(v int32) *ListAudioFilesResponse 
 }
 
 func (s *ListAudioFilesResponse) SetBody(v *ListAudioFilesResponseBody) *ListAudioFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListBlacklistCallTaggingsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+}
+
+func (s ListBlacklistCallTaggingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBlacklistCallTaggingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBlacklistCallTaggingsRequest) SetInstanceId(v string) *ListBlacklistCallTaggingsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsRequest) SetNumberList(v string) *ListBlacklistCallTaggingsRequest {
+	s.NumberList = &v
+	return s
+}
+
+type ListBlacklistCallTaggingsResponseBody struct {
+	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListBlacklistCallTaggingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBlacklistCallTaggingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBlacklistCallTaggingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBlacklistCallTaggingsResponseBody) SetCode(v string) *ListBlacklistCallTaggingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBody) SetData(v []*ListBlacklistCallTaggingsResponseBodyData) *ListBlacklistCallTaggingsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBody) SetHttpStatusCode(v int32) *ListBlacklistCallTaggingsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBody) SetMessage(v string) *ListBlacklistCallTaggingsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBody) SetRequestId(v string) *ListBlacklistCallTaggingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBlacklistCallTaggingsResponseBodyData struct {
+	Blacklisted *bool   `json:"Blacklisted,omitempty" xml:"Blacklisted,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Number      *string `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s ListBlacklistCallTaggingsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBlacklistCallTaggingsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBlacklistCallTaggingsResponseBodyData) SetBlacklisted(v bool) *ListBlacklistCallTaggingsResponseBodyData {
+	s.Blacklisted = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBodyData) SetJobId(v string) *ListBlacklistCallTaggingsResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponseBodyData) SetNumber(v string) *ListBlacklistCallTaggingsResponseBodyData {
+	s.Number = &v
+	return s
+}
+
+type ListBlacklistCallTaggingsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBlacklistCallTaggingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBlacklistCallTaggingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBlacklistCallTaggingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBlacklistCallTaggingsResponse) SetHeaders(v map[string]*string) *ListBlacklistCallTaggingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponse) SetStatusCode(v int32) *ListBlacklistCallTaggingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBlacklistCallTaggingsResponse) SetBody(v *ListBlacklistCallTaggingsResponseBody) *ListBlacklistCallTaggingsResponse {
 	s.Body = v
 	return s
 }
@@ -42054,12 +42231,28 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 		query["JobId"] = request.JobId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QueuingOverflowThreshold)) {
+		query["QueuingOverflowThreshold"] = request.QueuingOverflowThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueuingTimeoutSeconds)) {
+		query["QueuingTimeoutSeconds"] = request.QueuingTimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingType)) {
+		query["RoutingType"] = request.RoutingType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StrategyName)) {
 		query["StrategyName"] = request.StrategyName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StrategyParams)) {
 		query["StrategyParams"] = request.StrategyParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
@@ -45222,6 +45415,18 @@ func (client *Client) InitiateAttendedTransferWithOptions(request *InitiateAtten
 		query["JobId"] = request.JobId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QueuingOverflowThreshold)) {
+		query["QueuingOverflowThreshold"] = request.QueuingOverflowThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueuingTimeoutSeconds)) {
+		query["QueuingTimeoutSeconds"] = request.QueuingTimeoutSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingType)) {
+		query["RoutingType"] = request.RoutingType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StrategyName)) {
 		query["StrategyName"] = request.StrategyName
 	}
@@ -45230,12 +45435,20 @@ func (client *Client) InitiateAttendedTransferWithOptions(request *InitiateAtten
 		query["StrategyParams"] = request.StrategyParams
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TimeoutSeconds)) {
 		query["TimeoutSeconds"] = request.TimeoutSeconds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Transferee)) {
 		query["Transferee"] = request.Transferee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransfereeType)) {
+		query["TransfereeType"] = request.TransfereeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Transferor)) {
@@ -45767,6 +45980,54 @@ func (client *Client) ListAudioFiles(request *ListAudioFilesRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAudioFilesResponse{}
 	_body, _err := client.ListAudioFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBlacklistCallTaggingsWithOptions(request *ListBlacklistCallTaggingsRequest, runtime *util.RuntimeOptions) (_result *ListBlacklistCallTaggingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberList)) {
+		query["NumberList"] = request.NumberList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBlacklistCallTaggings"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBlacklistCallTaggingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBlacklistCallTaggings(request *ListBlacklistCallTaggingsRequest) (_result *ListBlacklistCallTaggingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBlacklistCallTaggingsResponse{}
+	_body, _err := client.ListBlacklistCallTaggingsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
