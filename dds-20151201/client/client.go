@@ -1365,44 +1365,47 @@ func (s *CreateGlobalSecurityIPGroupResponse) SetBody(v *CreateGlobalSecurityIPG
 type CreateNodeRequest struct {
 	// The username of the account. The username must meet the following requirements:
 	//
-	// * The username starts with a lowercase letter.
-	// * The username contains lowercase letters, digits, and underscores (\_).
-	// * The username is 4 to 16 characters in length.
+	// *   The username starts with a lowercase letter.
+	// *   The username can contain lowercase letters, digits, and underscores (\_).
+	// *   The username must be 4 to 16 characters in length.
 	//
-	// > * Keywords cannot be used as account usernames.
-	// > * The permissions of this account are fixed at read-only.
-	// > * The username and password are required to be set only when you apply for an endpoint for the shard node for the first time.
+	// >
+	//
+	// *   Keywords cannot be used as accounts.
+	//
+	// *   This account is granted the read-only permissions.
+	// *   The username and password need to be set if you apply for an endpoint for the shard node for the first time.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account. The password must meet the following requirements:
 	//
-	// * The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters.
-	// * These special characters include ! @ # $ % ^ & \* ( ) \_ + - =
-	// * The password is 8 to 32 characters in length.
+	// *   The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// *   These special characters include ! @ # $ % ^ & \* ( ) \_ + - =
+	// *   The password is 8 to 32 characters in length.
 	//
-	// >  The account password of the shard node cannot be reset.
+	// >  ApsaraDB for MongoDB does not allow you to reset the password of an account.
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// Specifies whether to enable automatic payment. Default value: true. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-	// *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Orders**. On the **Orders** page, find the order and complete the payment.********
+	// *   **true** (default): enables automatic payment. Make sure that you have sufficient balance within your account.
+	// *   **false**: disables automatic payment. You can perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > Orders. On the **Orders** page, find the order that you want to pay for and complete the payment.
 	//
-	// >  This parameter is required when the billing method of the instance is subscription.
+	// >  This parameter is required only when the billing method of the instance is subscription.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The business information. This is an additional parameter.
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The coupon code. Default value: **youhuiquan\_promotion\_option\_id\_for\_blank**.
+	// The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// The ID of the sharded cluster instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The specifications of the shard or mongos node. For more information, see [Instance types](~~57141~~).
+	// The instance type of the shard or mongos node. For more information, see [Instance types](~~57141~~).
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
 	// The disk capacity of the node. Unit: GB.
 	//
-	// Valid values: **10** to **2000**. The value must be a multiple of 10. Unit: GB.
+	// Valid values: **10** to **2000**. The value must be a multiple of 10.
 	//
-	// >  This parameter is required if the NodeType parameter is set to **shard**.
+	// >  This parameter is required only when the NodeType parameter is set to **shard**.
 	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
 	// The type of the node. Valid values:
 	//
@@ -1413,16 +1416,16 @@ type CreateNodeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of read-only nodes in the shard node.
 	//
-	// Valid values: **0** to **5**. The value must be an integer. Default value: **0**.
+	// Valid values: **0**, 1, 2, 3, 4, and **5**. Default value: **0**.
 	//
 	// >  This parameter is available only for ApsaraDB for MongoDB instances that are purchased on the China site (aliyun.com).
 	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to apply for an endpoint for the shard node. Default value: false. Valid values:
+	// Specifies whether to apply for an endpoint for the shard node. Valid values:
 	//
 	// *   **true**: applies for an endpoint for the shard node.
-	// *   **false** : does not apply for an endpoint for the shard node.
+	// *   **false** (default): does not apply for an endpoint for the shard node.
 	ShardDirect *bool `json:"ShardDirect,omitempty" xml:"ShardDirect,omitempty"`
 }
 
@@ -1515,11 +1518,11 @@ func (s *CreateNodeRequest) SetShardDirect(v bool) *CreateNodeRequest {
 }
 
 type CreateNodeResponseBody struct {
-	// The ID of the node.
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2983,8 +2986,8 @@ type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   \*\*rds_apsaradb_transfer\*\*: data migration
-	// *   \*\*rds_apsaradb_upgrade\*\*: minor version update
+	// *   **rds_apsaradb_transfer**: data migration
+	// *   **rds_apsaradb_upgrade**: minor version update
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The task type in English.
 	TaskTypeInfoEn *string `json:"TaskTypeInfoEn,omitempty" xml:"TaskTypeInfoEn,omitempty"`
@@ -13792,7 +13795,7 @@ type DescribeRegionsResponseBodyRegionsDdsRegion struct {
 	//
 	// The value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is **cn-hangzhou**, the following values are returned for the LocalName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value **1** is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value **1（）** is returned for the LocalName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en**, the value **China (Hangzhou)** is returned for the LocalName parameter.
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// The zones.
@@ -13856,7 +13859,7 @@ type DescribeRegionsResponseBodyRegionsDdsRegionZonesZone struct {
 	//
 	// The value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value ** H** is returned for the ZoneName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value **H** is returned for the ZoneName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en**, the value **Hangzhou Zone H** is returned for the ZoneName parameter.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
@@ -16239,7 +16242,7 @@ func (s *DestroyInstanceResponse) SetBody(v *DestroyInstanceResponseBody) *Destr
 }
 
 type EvaluateResourceRequest struct {
-	// The stype of the instance.
+	// The type of the instance.
 	//
 	// > This parameter is required when you check whether resources are sufficient for creating or upgrading a replica set instance. For more information about instance types, see [Instance types](~~57141~~).
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
@@ -16249,11 +16252,21 @@ type EvaluateResourceRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the database engine. Valid values:
 	//
+	// *   **7.0**
+	// *   **6.0**
 	// *   **5.0**
 	// *   **4.4**
 	// *   **4.2**
 	// *   **4.0**
-	// *   **3.4**
+	//
+	// <!---->
+	//
+	// *   3.4
+	// *   4.0
+	// *   4.2
+	// *   4.4
+	// *   5.0
+	// *   6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17796,6 +17809,129 @@ func (s *ModifyDBInstanceDescriptionResponse) SetStatusCode(v int32) *ModifyDBIn
 }
 
 func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescriptionResponseBody) *ModifyDBInstanceDescriptionResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceDiskTypeRequest struct {
+	AutoPay               *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew             *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BusinessInfo          *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DbInstanceStorageType *string `json:"DbInstanceStorageType,omitempty" xml:"DbInstanceStorageType,omitempty"`
+	ExtraParam            *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
+	OrderType             *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ProvisionedIops       *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBInstanceDiskTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceDiskTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetAutoPay(v bool) *ModifyDBInstanceDiskTypeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetAutoRenew(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetBusinessInfo(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.BusinessInfo = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetCouponNo(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetDBInstanceId(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetDbInstanceStorageType(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.DbInstanceStorageType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetExtraParam(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.ExtraParam = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetOrderType(v string) *ModifyDBInstanceDiskTypeRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetProvisionedIops(v int64) *ModifyDBInstanceDiskTypeRequest {
+	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceDiskTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBInstanceDiskTypeResponseBody struct {
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceDiskTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceDiskTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceDiskTypeResponseBody) SetOrderId(v string) *ModifyDBInstanceDiskTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeResponseBody) SetRequestId(v string) *ModifyDBInstanceDiskTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceDiskTypeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceDiskTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceDiskTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceDiskTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceDiskTypeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceDiskTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeResponse) SetStatusCode(v int32) *ModifyDBInstanceDiskTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceDiskTypeResponse) SetBody(v *ModifyDBInstanceDiskTypeResponseBody) *ModifyDBInstanceDiskTypeResponse {
 	s.Body = v
 	return s
 }
@@ -22803,8 +22939,8 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 }
 
 /**
- * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
- * This operation is applicable only to sharded cluster instances.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+ * This operation applies only to sharded cluster instances.
  *
  * @param request CreateNodeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22904,8 +23040,8 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 }
 
 /**
- * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
- * This operation is applicable only to sharded cluster instances.
+ * Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+ * This operation applies only to sharded cluster instances.
  *
  * @param request CreateNodeRequest
  * @return CreateNodeResponse
@@ -28569,6 +28705,86 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
 	_body, _err := client.ModifyDBInstanceDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceDiskTypeWithOptions(request *ModifyDBInstanceDiskTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceDiskTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {
+		query["BusinessInfo"] = request.BusinessInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
+		query["CouponNo"] = request.CouponNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceStorageType)) {
+		query["DbInstanceStorageType"] = request.DbInstanceStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraParam)) {
+		query["ExtraParam"] = request.ExtraParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedIops)) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceDiskType"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceDiskTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDBInstanceDiskType(request *ModifyDBInstanceDiskTypeRequest) (_result *ModifyDBInstanceDiskTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceDiskTypeResponse{}
+	_body, _err := client.ModifyDBInstanceDiskTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
