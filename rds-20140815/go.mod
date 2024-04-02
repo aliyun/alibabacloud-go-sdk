@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/rds-20140815/v4
+module github.com/alibabacloud-go/rds-20140815/v5
 
 go 1.15
 

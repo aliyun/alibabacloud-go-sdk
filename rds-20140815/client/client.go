@@ -3635,12 +3635,7 @@ type CreateDBInstanceRequest struct {
 	// > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	// > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// Specifies whether to enable the I/O acceleration feature. Valid values:
-	//
-	// *   1: The feature is enabled.
-	// *   0: The feature is disabled.
-	//
-	// >  For more information about the I/O acceleration feature of general enhanced SSDs (ESSDs), see [Introduction](~~2527067~~).
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -4367,12 +4362,7 @@ type CreateDBInstanceShrinkRequest struct {
 	// > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	// > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// Specifies whether to enable the I/O acceleration feature. Valid values:
-	//
-	// *   1: The feature is enabled.
-	// *   0: The feature is disabled.
-	//
-	// >  For more information about the I/O acceleration feature of general enhanced SSDs (ESSDs), see [Introduction](~~2527067~~).
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -14317,7 +14307,13 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **True**: Incremental backup is enabled.
 	// *   **False**: Incremental backup is disabled.
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
-	EnablePitrProtection      *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
+	// Whether PITR recovery is enabled at any point in time (the upgraded version of the original log backup). Return value:
+	//
+	// - True: Yes
+	// - False: no
+	//
+	// > Only MySQL instances return this parameter.
+	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
 	// Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
 	//
 	// *   **Disable**
@@ -14338,7 +14334,8 @@ type DescribeBackupPolicyResponseBody struct {
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
 	// The number of days for which log backup files are retained.
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	PitrRetentionPeriod      *int32 `json:"PitrRetentionPeriod,omitempty" xml:"PitrRetentionPeriod,omitempty"`
+	// The number of days to restore at any point in time.
+	PitrRetentionPeriod *int32 `json:"PitrRetentionPeriod,omitempty" xml:"PitrRetentionPeriod,omitempty"`
 	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
 	//
 	// *   **Monday**
@@ -18314,9 +18311,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
 	BabelfishConfig *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig `json:"BabelfishConfig,omitempty" xml:"BabelfishConfig,omitempty" type:"Struct"`
-	// An invalid parameter. You can ignore this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// An invalid parameter. You can ignore this parameter.
+	// An invalid parameter. You do not need to specify this parameter.
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The RDS edition. Valid values:
 	//
@@ -18327,7 +18324,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **Finance**: RDS Enterprise Edition
 	// *   **Serverless_basic**: RDS Basic Edition for serverless instances
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// A reserved parameter.
+	// A reserved parameter. You do not need to specify this parameter.
 	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The character set collation of the instance.
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
@@ -18472,6 +18469,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// *   **Postpaid**: pay-as-you-go
 	// *   **Prepaid**: subscription
+	// *   **SERVERLESS**
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port that is used to connect to the instance over an internal network.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -21234,23 +21232,23 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetDBInstanceN
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
 	//
-	// > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+	// >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
 	BabelfishPort *string `json:"BabelfishPort,omitempty" xml:"BabelfishPort,omitempty"`
-	// The endpoints of the instance.
+	// The endpoint of the instance.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The types of the endpoints. Valid values:
+	// The type of the endpoint. Valid values:
 	//
-	// *   **Normal**: regular endpoints
-	// *   **ReadWriteSplitting**: read/write splitting endpoints
+	// *   **Normal**: a regular endpoint
+	// *   **ReadWriteSplitting**: a read/write splitting endpoint
 	ConnectionStringType *string `json:"ConnectionStringType,omitempty" xml:"ConnectionStringType,omitempty"`
 	// The information about the instance weight.
 	//
-	// > This parameter is returned only for instances that have read/write splitting endpoints.
+	// >  This parameter is returned only when the read/write splitting feature is enabled for the instance.
 	DBInstanceWeights *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBInstanceWeights `json:"DBInstanceWeights,omitempty" xml:"DBInstanceWeights,omitempty" type:"Struct"`
 	// The policy that is used to assign read weights. This parameter is returned only for a read/write splitting endpoint. Valid values:
 	//
-	// *   **Standard**: The system automatically assigns read weights to the instance and its read-only instances based on the specifications of these instances.
-	// *   **Custom**: You must manually assign read weights to the instance and its read-only instances.
+	// *   **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
+	// *   **Custom**: You must manually allocate read weights to the instance and its read-only instances.
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
 	// The remaining validity period of the instance in the classic network in hybrid access mode. Unit: seconds.
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
@@ -21260,34 +21258,34 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo st
 	//
 	// *   Valid values when the instance resides in the classic network:
 	//
-	//     *   **Inner:**: internal network
-	//     *   **Public**: Internet
+	//     *   **Inner**
+	//     *   **Public**
 	//
 	// *   Valid values when the instance resides in a virtual private cloud (VPC):
 	//
-	//     *   **Private**: internal network
-	//     *   **Public**: Internet
+	//     *   **Private**
+	//     *   **Public**
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
 	// The latency threshold. This parameter is returned only for a read/write splitting endpoint. Unit: seconds.
 	//
-	// > If the latency on a read-only instance exceeds the specified threshold, the system no longer forwards read requests to the read-only instance.
+	// >  If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer forwards read requests to the read-only instance.
 	MaxDelayTime *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
 	// The PgBouncer port.
 	//
-	// > This parameter is returned only when PgBouncer is enabled for the instance that runs PostgreSQL.
+	// >  This parameter is returned only when PgBouncer is enabled for the instance that runs PostgreSQL.
 	PGBouncerPort *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
 	// The port that is used to connect to the instance.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The details of the IP address whitelist.
+	// The IP addresses in the whitelist for the instance.
 	SecurityIPGroups *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroups `json:"SecurityIPGroups,omitempty" xml:"SecurityIPGroups,omitempty" type:"Struct"`
 	// Indicates whether the IP version can be updated. Valid values:
 	//
-	// *   **Enable**: The IP version can be updated.
-	// *   **Disabled**: The IP version cannot be updated.
+	// *   **Enable**
+	// *   **Disabled**
 	//
-	// > The IP version can be updated from IPv4 to IPv6.
+	// >  The IP version can be updated from IPv4 to IPv6.
 	Upgradeable *string `json:"Upgradeable,omitempty" xml:"Upgradeable,omitempty"`
-	// The VPC ID.
+	// The VPC ID of the instance.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -21401,7 +21399,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDBI
 	Availability *string `json:"Availability,omitempty" xml:"Availability,omitempty"`
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The role of the instance. Valid values:
+	// The type of the instance. Valid values:
 	//
 	// *   **Master**: primary instance
 	// *   **Readonly**: read-only instance
@@ -21465,7 +21463,7 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInf
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSecurityIPGroupsSecurityIPGroup struct {
 	// The name of the IP address whitelist.
 	SecurityIPGroupName *string `json:"SecurityIPGroupName,omitempty" xml:"SecurityIPGroupName,omitempty"`
-	// The IP addresses that is contained in the IP address whitelist.
+	// The IP address in the whitelist.
 	SecurityIPs *string `json:"SecurityIPs,omitempty" xml:"SecurityIPs,omitempty"`
 }
 
@@ -23220,8 +23218,9 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **Finance**: RDS Enterprise Edition
 	//
 	// >  This parameter is returned only when the **InstanceLevel** parameter is set to **1**.
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A reserved parameter.
+	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
 	// *   **Standard**: standard mode
@@ -23232,11 +23231,13 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass    *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceCpuCores *string `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
 	// The instance description.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceMemory *string `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The type of the network connection to the instance. Valid values:
 	//
 	// *   **Internet**
@@ -23298,7 +23299,11 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	//
 	// *   **Classic**
 	// *   **VPC**
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// Whether IO acceleration is enabled. The value has the following meanings:
+	//
+	// - 1: enabled
+	// - 0: not enabled
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
@@ -23405,6 +23410,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceClass(v st
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceCpuCores(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.DBInstanceCpuCores = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceDescription(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.DBInstanceDescription = &v
 	return s
@@ -23412,6 +23422,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceDescriptio
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceId(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceMemory(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.DBInstanceMemory = &v
 	return s
 }
 
@@ -39016,7 +39031,8 @@ type DescribeSecretsRequest struct {
 	// The number of entries per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group where the instance is located.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -43292,118 +43308,6 @@ func (s *GrantOperatorPermissionResponse) SetBody(v *GrantOperatorPermissionResp
 	return s
 }
 
-type ImportDatabaseBetweenInstancesRequest struct {
-	// The names of the source and destination databases. The value of this parameter is a JSON string.
-	//
-	// >  If the source instance runs SQL Server, the value of this parameter consists of one or more key-value pairs. In each key-value pair, the key specifies the name of the source database, and the value specifies the name of the destination database. A source database can have a different name from the destination database. For example, `{"DBNames":{"srcdb":"destdb","srcdb2":"destmydb2"}}` indicates that srcdb is migrated to destdb and srcdb2 is migrated to destmydb2. The names of source databases cannot be the same, and the names of destination databases cannot be the same.
-	DBInfo *string `json:"DBInfo,omitempty" xml:"DBInfo,omitempty"`
-	// The ID of the instance.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the source instance, which cannot be the same as the ID of the destination instance.
-	SourceDBInstanceId *string `json:"SourceDBInstanceId,omitempty" xml:"SourceDBInstanceId,omitempty"`
-}
-
-func (s ImportDatabaseBetweenInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDatabaseBetweenInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetDBInfo(v string) *ImportDatabaseBetweenInstancesRequest {
-	s.DBInfo = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetDBInstanceId(v string) *ImportDatabaseBetweenInstancesRequest {
-	s.DBInstanceId = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetOwnerAccount(v string) *ImportDatabaseBetweenInstancesRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetOwnerId(v int64) *ImportDatabaseBetweenInstancesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetResourceOwnerAccount(v string) *ImportDatabaseBetweenInstancesRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetResourceOwnerId(v int64) *ImportDatabaseBetweenInstancesRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesRequest) SetSourceDBInstanceId(v string) *ImportDatabaseBetweenInstancesRequest {
-	s.SourceDBInstanceId = &v
-	return s
-}
-
-type ImportDatabaseBetweenInstancesResponseBody struct {
-	// The ID of the import task.
-	ImportId *string `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ImportDatabaseBetweenInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDatabaseBetweenInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDatabaseBetweenInstancesResponseBody) SetImportId(v string) *ImportDatabaseBetweenInstancesResponseBody {
-	s.ImportId = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesResponseBody) SetRequestId(v string) *ImportDatabaseBetweenInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ImportDatabaseBetweenInstancesResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ImportDatabaseBetweenInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ImportDatabaseBetweenInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDatabaseBetweenInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDatabaseBetweenInstancesResponse) SetHeaders(v map[string]*string) *ImportDatabaseBetweenInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesResponse) SetStatusCode(v int32) *ImportDatabaseBetweenInstancesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ImportDatabaseBetweenInstancesResponse) SetBody(v *ImportDatabaseBetweenInstancesResponseBody) *ImportDatabaseBetweenInstancesResponse {
-	s.Body = v
-	return s
-}
-
 type ImportUserBackupFileRequest struct {
 	// A JSON array that consists of the information about the full backup file stored as an object in an OSS bucket. Example: `{"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}`
 	//
@@ -44795,7 +44699,7 @@ type MigrateToOtherZoneRequest struct {
 	//
 	// >  If you set this parameter to **ScheduleTime**, you must specify the **SwitchTime** parameter.
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter.
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// Specifies whether to change the specifications of the instance during the cross-zone migration. Valid values:
 	//
@@ -45876,23 +45780,25 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyCollationTimeZoneRequest struct {
-	// The character set collation of the instance. Valid values:
+	// The character set collation of the instance. By default, the system does not modify the character set collation of the instance. Valid values:
 	//
+	// *   **Chinese_PRC_CI_AS**
+	// *   **Chinese_PRC_CS_AS**
+	// *   **Chinese_PRC_BIN**
 	// *   **Latin1\_General_CI_AS**
 	// *   **Latin1\_General_CS_AS**
 	// *   **SQL_Latin1\_General_CP1\_CI_AS**
 	// *   **SQL_Latin1\_General_CP1\_CS_AS**
-	// *   **Chinese_PRC_CS_AS**
-	// *   **Chinese_PRC_BIN**
-	// *   **Chinese_PRC_CI_AS**
 	// *   **Japanese_CI_AS**
 	// *   **Japanese_CS_AS**
 	// *   **Chinese_Taiwan_Stroke_CI_AS**
 	// *   **Chinese_Taiwan_Stroke_CS_AS**
 	//
-	// By default, the system does not modify the character set collation of the instance.
+	// >
 	//
-	// > You must specify one of the **Collation** and **Timezone** parameters.
+	// *   The default character set collation of the instance is **Chinese_PRC_CI_AS**.
+	//
+	// *   You must specify one of the **Collation** and **Timezone** parameters.
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -45901,7 +45807,11 @@ type ModifyCollationTimeZoneRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The time zone of the instance. By default, the system does not modify the time zone.
 	//
-	// > You must specify one of the **Collation** and **Timezone** parameters.
+	// >
+	//
+	// *   The default time zone of the instance is **China Standard Time**.
+	//
+	// *   You must specify one of the **Collation** and **Timezone** parameters.
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 }
 
@@ -48327,7 +48237,7 @@ type ModifyDBInstanceSSLRequest struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
 	// *   **cert**
-	// *   **perfer**
+	// *   **prefer**
 	// *   **verify-ca**
 	// *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
 	ACL *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
@@ -48335,7 +48245,11 @@ type ModifyDBInstanceSSLRequest struct {
 	//
 	// *   **aliyun**: a cloud certificate
 	// *   **custom**: a custom certificate
-	CAType      *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	// User-defined certificate. The custom certificate is in pfx format.
+	//
+	// - Public address: `oss-<region ID>.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
+	// - Intranet address: `oss-<region ID>-internal.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
 	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
@@ -48362,11 +48276,12 @@ type ModifyDBInstanceSSLRequest struct {
 	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PassWord        *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+	// The password of the certificate.
+	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// The method that is used to verify the replication permissions. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
 	// *   **cert**
-	// *   **perfer**
+	// *   **prefer**
 	// *   **verify-ca**
 	// *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
 	ReplicationACL       *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
@@ -55636,12 +55551,9 @@ type ResetAccountPasswordRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The new password.
 	//
-	// >
-	//
-	// *   The value must be 8 to 32 characters in length.
-	//
-	// *   The value must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-	// *   The following special characters are supported: ! @ # $ & % ^ \* ( ) \_ + - =
+	// > *   The value must be 8 to 32 characters in length.
+	// > *   The value must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+	// > *   The following special characters are supported: ! @ # $ & % ^ \* ( ) \_ + - =
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -76563,113 +76475,6 @@ func (client *Client) GrantOperatorPermission(request *GrantOperatorPermissionRe
 }
 
 /**
- * ### [](#)Supported database engine
- * *   SQL Server
- * ### [](#)Description
- * We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
- * ### [](#)Precautions
- * *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
- * *   Before you call this operation, **make sure that the following conditions are met**:
- *     *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
- *     *   The source and destination instances must be created by using the same user.
- *     *   The instance is in the Running state.
- *     *   The source and destination databases must be in the Running state.
- *     *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
- * > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
- * > *   You can migrate the data of multiple databases at a time.
- *
- * @param request ImportDatabaseBetweenInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ImportDatabaseBetweenInstancesResponse
- */
-func (client *Client) ImportDatabaseBetweenInstancesWithOptions(request *ImportDatabaseBetweenInstancesRequest, runtime *util.RuntimeOptions) (_result *ImportDatabaseBetweenInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBInfo)) {
-		query["DBInfo"] = request.DBInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
-		query["DBInstanceId"] = request.DBInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceDBInstanceId)) {
-		query["SourceDBInstanceId"] = request.SourceDBInstanceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ImportDatabaseBetweenInstances"),
-		Version:     tea.String("2014-08-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ImportDatabaseBetweenInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * ### [](#)Supported database engine
- * *   SQL Server
- * ### [](#)Description
- * We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
- * ### [](#)Precautions
- * *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
- * *   Before you call this operation, **make sure that the following conditions are met**:
- *     *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
- *     *   The source and destination instances must be created by using the same user.
- *     *   The instance is in the Running state.
- *     *   The source and destination databases must be in the Running state.
- *     *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
- * > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
- * > *   You can migrate the data of multiple databases at a time.
- *
- * @param request ImportDatabaseBetweenInstancesRequest
- * @return ImportDatabaseBetweenInstancesResponse
- */
-func (client *Client) ImportDatabaseBetweenInstances(request *ImportDatabaseBetweenInstancesRequest) (_result *ImportDatabaseBetweenInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportDatabaseBetweenInstancesResponse{}
-	_body, _err := client.ImportDatabaseBetweenInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
  * ### [](#)Supported database engines
  * *   MySQL
  * ### [](#)Description
@@ -78134,7 +77939,11 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 }
 
 /**
- * > This operation is phased out.
+ * ### [](#)Supported database engines
+ * RDS SQL Server
+ * ### [](#)References
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+ * [Change the character set collation and the time zone of system databases](~~95700~~)
  *
  * @param request ModifyCollationTimeZoneRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -78194,7 +78003,11 @@ func (client *Client) ModifyCollationTimeZoneWithOptions(request *ModifyCollatio
 }
 
 /**
- * > This operation is phased out.
+ * ### [](#)Supported database engines
+ * RDS SQL Server
+ * ### [](#)References
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+ * [Change the character set collation and the time zone of system databases](~~95700~~)
  *
  * @param request ModifyCollationTimeZoneRequest
  * @return ModifyCollationTimeZoneResponse
