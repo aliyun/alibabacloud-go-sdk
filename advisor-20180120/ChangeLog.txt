@@ -1,3 +1,9 @@
+2024-04-02 Version: v1.3.0
+- Support API DescribeCostCheckAdvices.
+- Support API DescribeCostCheckResults.
+- Support API ReportBizAlertInfo.
+
+
 2024-02-26 Version: v1.2.0
 - Support API ReportBizAlertInfo.
 

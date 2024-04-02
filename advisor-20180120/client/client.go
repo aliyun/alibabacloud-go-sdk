@@ -1044,6 +1044,712 @@ func (s *DescribeAdvisorResourcesResponse) SetBody(v *DescribeAdvisorResourcesRe
 	return s
 }
 
+type DescribeCostCheckAdvicesRequest struct {
+	CheckId      *string   `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds    []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity     *string   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetCheckId(v string) *DescribeCostCheckAdvicesRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetLanguage(v string) *DescribeCostCheckAdvicesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetPageNumber(v int32) *DescribeCostCheckAdvicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetPageSize(v int32) *DescribeCostCheckAdvicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetRegionIds(v []*string) *DescribeCostCheckAdvicesRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetResourceIds(v []*string) *DescribeCostCheckAdvicesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetResourceName(v string) *DescribeCostCheckAdvicesRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetSeverity(v string) *DescribeCostCheckAdvicesRequest {
+	s.Severity = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesShrinkRequest struct {
+	CheckId           *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIdsShrink   *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ResourceName      *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetCheckId(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetLanguage(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetPageNumber(v int32) *DescribeCostCheckAdvicesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetPageSize(v int32) *DescribeCostCheckAdvicesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetRegionIdsShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetResourceIdsShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.ResourceIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetResourceName(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetSeverity(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeCostCheckAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesResponseBody) SetCode(v string) *DescribeCostCheckAdvicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBody) SetData(v *DescribeCostCheckAdvicesResponseBodyData) *DescribeCostCheckAdvicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBody) SetMessage(v string) *DescribeCostCheckAdvicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBody) SetRequestId(v string) *DescribeCostCheckAdvicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBody) SetSuccess(v string) *DescribeCostCheckAdvicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesResponseBodyData struct {
+	AdviceList []*DescribeCostCheckAdvicesResponseBodyDataAdviceList `json:"AdviceList,omitempty" xml:"AdviceList,omitempty" type:"Repeated"`
+	CheckId    *string                                               `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	PageNumber *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyData) SetAdviceList(v []*DescribeCostCheckAdvicesResponseBodyDataAdviceList) *DescribeCostCheckAdvicesResponseBodyData {
+	s.AdviceList = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyData) SetCheckId(v string) *DescribeCostCheckAdvicesResponseBodyData {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyData) SetPageNumber(v int32) *DescribeCostCheckAdvicesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyData) SetPageSize(v int32) *DescribeCostCheckAdvicesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyData) SetTotalCount(v int32) *DescribeCostCheckAdvicesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesResponseBodyDataAdviceList struct {
+	AliyunId     *int64                                                    `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	Content      *string                                                   `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime      *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtDeleted   *int64                                                    `json:"GmtDeleted,omitempty" xml:"GmtDeleted,omitempty"`
+	Product      *string                                                   `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId     *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string                                                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string                                                   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity     *string                                                   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartTime    *int64                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tags         []*DescribeCostCheckAdvicesResponseBodyDataAdviceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Url          *string                                                   `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserName     *string                                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ZoneId       *string                                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyDataAdviceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyDataAdviceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetAliyunId(v int64) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.AliyunId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetContent(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetEndTime(v int64) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetGmtDeleted(v int64) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.GmtDeleted = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetProduct(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetRegionId(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetResourceId(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetResourceName(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetSeverity(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetStartTime(v int64) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetTags(v []*DescribeCostCheckAdvicesResponseBodyDataAdviceListTags) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetUrl(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetUserName(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetZoneId(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesResponseBodyDataAdviceListTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyDataAdviceListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesResponseBodyDataAdviceListTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceListTags) SetTagKey(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceListTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceListTags) SetTagValue(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceListTags {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeCostCheckAdvicesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCostCheckAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCostCheckAdvicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckAdvicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesResponse) SetHeaders(v map[string]*string) *DescribeCostCheckAdvicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponse) SetStatusCode(v int32) *DescribeCostCheckAdvicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponse) SetBody(v *DescribeCostCheckAdvicesResponseBody) *DescribeCostCheckAdvicesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCostCheckResultsRequest struct {
+	CheckIds     []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	GroupBy      *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	Product      *string   `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionIds    []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity     *int32    `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeCostCheckResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsRequest) SetCheckIds(v []*string) *DescribeCostCheckResultsRequest {
+	s.CheckIds = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetGroupBy(v string) *DescribeCostCheckResultsRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetProduct(v string) *DescribeCostCheckResultsRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetRegionIds(v []*string) *DescribeCostCheckResultsRequest {
+	s.RegionIds = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetResourceIds(v []*string) *DescribeCostCheckResultsRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetResourceName(v string) *DescribeCostCheckResultsRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetSeverity(v int32) *DescribeCostCheckResultsRequest {
+	s.Severity = &v
+	return s
+}
+
+type DescribeCostCheckResultsShrinkRequest struct {
+	CheckIdsShrink    *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
+	GroupBy           *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	Product           *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionIdsShrink   *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ResourceName      *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity          *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeCostCheckResultsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetCheckIdsShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.CheckIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetGroupBy(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetProduct(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetRegionIdsShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetResourceIdsShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.ResourceIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetResourceName(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetSeverity(v int32) *DescribeCostCheckResultsShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+type DescribeCostCheckResultsResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeCostCheckResultsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeCostCheckResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsResponseBody) SetCode(v string) *DescribeCostCheckResultsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBody) SetData(v *DescribeCostCheckResultsResponseBodyData) *DescribeCostCheckResultsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBody) SetMessage(v string) *DescribeCostCheckResultsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBody) SetRequestId(v string) *DescribeCostCheckResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBody) SetSuccess(v string) *DescribeCostCheckResultsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeCostCheckResultsResponseBodyData struct {
+	AdviceResourceCount *int32                                               `json:"AdviceResourceCount,omitempty" xml:"AdviceResourceCount,omitempty"`
+	GroupBy             *string                                              `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	NormalCount         *int32                                               `json:"NormalCount,omitempty" xml:"NormalCount,omitempty"`
+	ResourceCount       *int32                                               `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	TotalCount          *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ViewGroup           []*DescribeCostCheckResultsResponseBodyDataViewGroup `json:"ViewGroup,omitempty" xml:"ViewGroup,omitempty" type:"Repeated"`
+	WarningCount        *int32                                               `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
+}
+
+func (s DescribeCostCheckResultsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetAdviceResourceCount(v int32) *DescribeCostCheckResultsResponseBodyData {
+	s.AdviceResourceCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetGroupBy(v string) *DescribeCostCheckResultsResponseBodyData {
+	s.GroupBy = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetNormalCount(v int32) *DescribeCostCheckResultsResponseBodyData {
+	s.NormalCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetResourceCount(v int32) *DescribeCostCheckResultsResponseBodyData {
+	s.ResourceCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetTotalCount(v int32) *DescribeCostCheckResultsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetViewGroup(v []*DescribeCostCheckResultsResponseBodyDataViewGroup) *DescribeCostCheckResultsResponseBodyData {
+	s.ViewGroup = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyData) SetWarningCount(v int32) *DescribeCostCheckResultsResponseBodyData {
+	s.WarningCount = &v
+	return s
+}
+
+type DescribeCostCheckResultsResponseBodyDataViewGroup struct {
+	CheckItems              []*DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems `json:"CheckItems,omitempty" xml:"CheckItems,omitempty" type:"Repeated"`
+	GroupCode               *string                                                        `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	GroupCount              *int32                                                         `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	GroupExpectedSavingCost *float32                                                       `json:"GroupExpectedSavingCost,omitempty" xml:"GroupExpectedSavingCost,omitempty"`
+	GroupName               *string                                                        `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s DescribeCostCheckResultsResponseBodyDataViewGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsResponseBodyDataViewGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroup) SetCheckItems(v []*DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) *DescribeCostCheckResultsResponseBodyDataViewGroup {
+	s.CheckItems = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroup) SetGroupCode(v string) *DescribeCostCheckResultsResponseBodyDataViewGroup {
+	s.GroupCode = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroup) SetGroupCount(v int32) *DescribeCostCheckResultsResponseBodyDataViewGroup {
+	s.GroupCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroup) SetGroupExpectedSavingCost(v float32) *DescribeCostCheckResultsResponseBodyDataViewGroup {
+	s.GroupExpectedSavingCost = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroup) SetGroupName(v string) *DescribeCostCheckResultsResponseBodyDataViewGroup {
+	s.GroupName = &v
+	return s
+}
+
+type DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems struct {
+	AdviceCount         *int32   `json:"AdviceCount,omitempty" xml:"AdviceCount,omitempty"`
+	AdviceResourceCount *int32   `json:"AdviceResourceCount,omitempty" xml:"AdviceResourceCount,omitempty"`
+	Category            *string  `json:"Category,omitempty" xml:"Category,omitempty"`
+	CheckId             *string  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName           *string  `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	CurrentCost         *float32 `json:"CurrentCost,omitempty" xml:"CurrentCost,omitempty"`
+	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpectedSavingCost  *float32 `json:"ExpectedSavingCost,omitempty" xml:"ExpectedSavingCost,omitempty"`
+	OptimizedCost       *float32 `json:"OptimizedCost,omitempty" xml:"OptimizedCost,omitempty"`
+	Product             *string  `json:"Product,omitempty" xml:"Product,omitempty"`
+	Severity            *int32   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Summary             *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Tips                *string  `json:"Tips,omitempty" xml:"Tips,omitempty"`
+}
+
+func (s DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetAdviceCount(v int32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.AdviceCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetAdviceResourceCount(v int32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.AdviceResourceCount = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetCategory(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetCheckId(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetCheckName(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.CheckName = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetCurrentCost(v float32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.CurrentCost = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetDescription(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetExpectedSavingCost(v float32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.ExpectedSavingCost = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetOptimizedCost(v float32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.OptimizedCost = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetProduct(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetSeverity(v int32) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetSummary(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Summary = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems) SetTips(v string) *DescribeCostCheckResultsResponseBodyDataViewGroupCheckItems {
+	s.Tips = &v
+	return s
+}
+
+type DescribeCostCheckResultsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCostCheckResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCostCheckResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCostCheckResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCostCheckResultsResponse) SetHeaders(v map[string]*string) *DescribeCostCheckResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponse) SetStatusCode(v int32) *DescribeCostCheckResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsResponse) SetBody(v *DescribeCostCheckResultsResponseBody) *DescribeCostCheckResultsResponse {
+	s.Body = v
+	return s
+}
+
 type GetHistoryAdvicesRequest struct {
 	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -2083,6 +2789,170 @@ func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResources
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvisorResourcesResponse{}
 	_body, _err := client.DescribeAdvisorResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCheckAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeCostCheckAdvicesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCostCheckAdvicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
+		query["ResourceIds"] = request.ResourceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCostCheckAdvices"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCostCheckAdvicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCostCheckAdvices(request *DescribeCostCheckAdvicesRequest) (_result *DescribeCostCheckAdvicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCostCheckAdvicesResponse{}
+	_body, _err := client.DescribeCostCheckAdvicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCheckResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeCostCheckResultsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCostCheckResultsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckIds)) {
+		request.CheckIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckIds, tea.String("CheckIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckIdsShrink)) {
+		query["CheckIds"] = request.CheckIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
+		query["GroupBy"] = request.GroupBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
+		query["ResourceIds"] = request.ResourceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCostCheckResults"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCostCheckResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCostCheckResults(request *DescribeCostCheckResultsRequest) (_result *DescribeCostCheckResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCostCheckResultsResponse{}
+	_body, _err := client.DescribeCostCheckResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
