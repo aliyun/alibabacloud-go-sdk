@@ -6408,9 +6408,10 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponse) SetBody(v *RecognizeMedic
 }
 
 type RecognizeMixedInvoicesRequest struct {
-	PageNo *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Url    *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body   io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	MergePdfPages *bool     `json:"MergePdfPages,omitempty" xml:"MergePdfPages,omitempty"`
+	PageNo        *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Url           *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body          io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMixedInvoicesRequest) String() string {
@@ -6419,6 +6420,11 @@ func (s RecognizeMixedInvoicesRequest) String() string {
 
 func (s RecognizeMixedInvoicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeMixedInvoicesRequest) SetMergePdfPages(v bool) *RecognizeMixedInvoicesRequest {
+	s.MergePdfPages = &v
+	return s
 }
 
 func (s *RecognizeMixedInvoicesRequest) SetPageNo(v int32) *RecognizeMixedInvoicesRequest {
@@ -11430,6 +11436,10 @@ func (client *Client) RecognizeMixedInvoicesWithOptions(request *RecognizeMixedI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MergePdfPages)) {
+		query["MergePdfPages"] = request.MergePdfPages
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
 	}
