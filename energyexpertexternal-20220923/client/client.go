@@ -12,9 +12,1379 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CarbonEmissionElecSummaryItem struct {
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	DataUnit           *string  `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
+	Ratio              *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	RawData            *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s CarbonEmissionElecSummaryItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarbonEmissionElecSummaryItem) GoString() string {
+	return s.String()
+}
+
+func (s *CarbonEmissionElecSummaryItem) SetCarbonEmissionData(v float64) *CarbonEmissionElecSummaryItem {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *CarbonEmissionElecSummaryItem) SetDataUnit(v string) *CarbonEmissionElecSummaryItem {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *CarbonEmissionElecSummaryItem) SetName(v string) *CarbonEmissionElecSummaryItem {
+	s.Name = &v
+	return s
+}
+
+func (s *CarbonEmissionElecSummaryItem) SetRatio(v float64) *CarbonEmissionElecSummaryItem {
+	s.Ratio = &v
+	return s
+}
+
+func (s *CarbonEmissionElecSummaryItem) SetRawData(v float64) *CarbonEmissionElecSummaryItem {
+	s.RawData = &v
+	return s
+}
+
+type ConstituteItem struct {
+	CarbonEmissionData *float64                         `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	DataUnit           *string                          `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	EmissionSource     *string                          `json:"emissionSource,omitempty" xml:"emissionSource,omitempty"`
+	EmissionSourceKey  *string                          `json:"emissionSourceKey,omitempty" xml:"emissionSourceKey,omitempty"`
+	EnterpriseName     *string                          `json:"enterpriseName,omitempty" xml:"enterpriseName,omitempty"`
+	EnvGasEmissions    []*ConstituteItemEnvGasEmissions `json:"envGasEmissions,omitempty" xml:"envGasEmissions,omitempty" type:"Repeated"`
+	Name               *string                          `json:"name,omitempty" xml:"name,omitempty"`
+	NameKey            *string                          `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	Ratio              *float64                         `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	RawData            *float64                         `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	SubConstituteItems []*ConstituteItem                `json:"subConstituteItems,omitempty" xml:"subConstituteItems,omitempty" type:"Repeated"`
+}
+
+func (s ConstituteItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConstituteItem) GoString() string {
+	return s.String()
+}
+
+func (s *ConstituteItem) SetCarbonEmissionData(v float64) *ConstituteItem {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *ConstituteItem) SetDataUnit(v string) *ConstituteItem {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *ConstituteItem) SetEmissionSource(v string) *ConstituteItem {
+	s.EmissionSource = &v
+	return s
+}
+
+func (s *ConstituteItem) SetEmissionSourceKey(v string) *ConstituteItem {
+	s.EmissionSourceKey = &v
+	return s
+}
+
+func (s *ConstituteItem) SetEnterpriseName(v string) *ConstituteItem {
+	s.EnterpriseName = &v
+	return s
+}
+
+func (s *ConstituteItem) SetEnvGasEmissions(v []*ConstituteItemEnvGasEmissions) *ConstituteItem {
+	s.EnvGasEmissions = v
+	return s
+}
+
+func (s *ConstituteItem) SetName(v string) *ConstituteItem {
+	s.Name = &v
+	return s
+}
+
+func (s *ConstituteItem) SetNameKey(v string) *ConstituteItem {
+	s.NameKey = &v
+	return s
+}
+
+func (s *ConstituteItem) SetRatio(v float64) *ConstituteItem {
+	s.Ratio = &v
+	return s
+}
+
+func (s *ConstituteItem) SetRawData(v float64) *ConstituteItem {
+	s.RawData = &v
+	return s
+}
+
+func (s *ConstituteItem) SetSubConstituteItems(v []*ConstituteItem) *ConstituteItem {
+	s.SubConstituteItems = v
+	return s
+}
+
+type ConstituteItemEnvGasEmissions struct {
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	GasEmissionData    *float64 `json:"gasEmissionData,omitempty" xml:"gasEmissionData,omitempty"`
+	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
+	Type               *string  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ConstituteItemEnvGasEmissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConstituteItemEnvGasEmissions) GoString() string {
+	return s.String()
+}
+
+func (s *ConstituteItemEnvGasEmissions) SetCarbonEmissionData(v float64) *ConstituteItemEnvGasEmissions {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *ConstituteItemEnvGasEmissions) SetGasEmissionData(v float64) *ConstituteItemEnvGasEmissions {
+	s.GasEmissionData = &v
+	return s
+}
+
+func (s *ConstituteItemEnvGasEmissions) SetName(v string) *ConstituteItemEnvGasEmissions {
+	s.Name = &v
+	return s
+}
+
+func (s *ConstituteItemEnvGasEmissions) SetType(v string) *ConstituteItemEnvGasEmissions {
+	s.Type = &v
+	return s
+}
+
+type EpdInventoryConstituteItem struct {
+	CarbonEmission               *float64                      `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	Factor                       *string                       `json:"factor,omitempty" xml:"factor,omitempty"`
+	FactorDataset                *string                       `json:"factorDataset,omitempty" xml:"factorDataset,omitempty"`
+	FactorId                     *string                       `json:"factorId,omitempty" xml:"factorId,omitempty"`
+	FactorType                   *int32                        `json:"factorType,omitempty" xml:"factorType,omitempty"`
+	FactorUnit                   *string                       `json:"factorUnit,omitempty" xml:"factorUnit,omitempty"`
+	InventoryId                  *int64                        `json:"inventoryId,omitempty" xml:"inventoryId,omitempty"`
+	InventoryUnit                *string                       `json:"inventoryUnit,omitempty" xml:"inventoryUnit,omitempty"`
+	InventoryValue               *float64                      `json:"inventoryValue,omitempty" xml:"inventoryValue,omitempty"`
+	InventoryValuePerProduct     *float64                      `json:"inventoryValuePerProduct,omitempty" xml:"inventoryValuePerProduct,omitempty"`
+	InventoryValuePerProductUnit *string                       `json:"inventoryValuePerProductUnit,omitempty" xml:"inventoryValuePerProductUnit,omitempty"`
+	Items                        []*EpdInventoryConstituteItem `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Name                         *string                       `json:"name,omitempty" xml:"name,omitempty"`
+	Num                          *int64                        `json:"num,omitempty" xml:"num,omitempty"`
+	Percent                      *float64                      `json:"percent,omitempty" xml:"percent,omitempty"`
+	Quantity                     *float64                      `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	ResourceType                 *string                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	State                        *int32                        `json:"state,omitempty" xml:"state,omitempty"`
+	Unit                         *string                       `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s EpdInventoryConstituteItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EpdInventoryConstituteItem) GoString() string {
+	return s.String()
+}
+
+func (s *EpdInventoryConstituteItem) SetCarbonEmission(v float64) *EpdInventoryConstituteItem {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetFactor(v string) *EpdInventoryConstituteItem {
+	s.Factor = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetFactorDataset(v string) *EpdInventoryConstituteItem {
+	s.FactorDataset = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetFactorId(v string) *EpdInventoryConstituteItem {
+	s.FactorId = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetFactorType(v int32) *EpdInventoryConstituteItem {
+	s.FactorType = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetFactorUnit(v string) *EpdInventoryConstituteItem {
+	s.FactorUnit = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetInventoryId(v int64) *EpdInventoryConstituteItem {
+	s.InventoryId = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetInventoryUnit(v string) *EpdInventoryConstituteItem {
+	s.InventoryUnit = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetInventoryValue(v float64) *EpdInventoryConstituteItem {
+	s.InventoryValue = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetInventoryValuePerProduct(v float64) *EpdInventoryConstituteItem {
+	s.InventoryValuePerProduct = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetInventoryValuePerProductUnit(v string) *EpdInventoryConstituteItem {
+	s.InventoryValuePerProductUnit = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetItems(v []*EpdInventoryConstituteItem) *EpdInventoryConstituteItem {
+	s.Items = v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetName(v string) *EpdInventoryConstituteItem {
+	s.Name = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetNum(v int64) *EpdInventoryConstituteItem {
+	s.Num = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetPercent(v float64) *EpdInventoryConstituteItem {
+	s.Percent = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetQuantity(v float64) *EpdInventoryConstituteItem {
+	s.Quantity = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetResourceType(v string) *EpdInventoryConstituteItem {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetState(v int32) *EpdInventoryConstituteItem {
+	s.State = &v
+	return s
+}
+
+func (s *EpdInventoryConstituteItem) SetUnit(v string) *EpdInventoryConstituteItem {
+	s.Unit = &v
+	return s
+}
+
+type GwpInventoryConstitute struct {
+	ByResourceType []*GwpResourceConstitute  `json:"byResourceType,omitempty" xml:"byResourceType,omitempty" type:"Repeated"`
+	CarbonEmission *float64                  `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	Items          []*GwpInventoryConstitute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Name           *string                   `json:"name,omitempty" xml:"name,omitempty"`
+	Percent        *float64                  `json:"percent,omitempty" xml:"percent,omitempty"`
+	ResourceType   *int32                    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Unit           *string                   `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GwpInventoryConstitute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GwpInventoryConstitute) GoString() string {
+	return s.String()
+}
+
+func (s *GwpInventoryConstitute) SetByResourceType(v []*GwpResourceConstitute) *GwpInventoryConstitute {
+	s.ByResourceType = v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetCarbonEmission(v float64) *GwpInventoryConstitute {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetItems(v []*GwpInventoryConstitute) *GwpInventoryConstitute {
+	s.Items = v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetName(v string) *GwpInventoryConstitute {
+	s.Name = &v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetPercent(v float64) *GwpInventoryConstitute {
+	s.Percent = &v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetResourceType(v int32) *GwpInventoryConstitute {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GwpInventoryConstitute) SetUnit(v string) *GwpInventoryConstitute {
+	s.Unit = &v
+	return s
+}
+
+type GwpResourceConstitute struct {
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	Name           *string  `json:"name,omitempty" xml:"name,omitempty"`
+	Percent        *string  `json:"percent,omitempty" xml:"percent,omitempty"`
+	ResourceType   *int32   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Unit           *string  `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GwpResourceConstitute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GwpResourceConstitute) GoString() string {
+	return s.String()
+}
+
+func (s *GwpResourceConstitute) SetCarbonEmission(v float64) *GwpResourceConstitute {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GwpResourceConstitute) SetName(v string) *GwpResourceConstitute {
+	s.Name = &v
+	return s
+}
+
+func (s *GwpResourceConstitute) SetPercent(v string) *GwpResourceConstitute {
+	s.Percent = &v
+	return s
+}
+
+func (s *GwpResourceConstitute) SetResourceType(v int32) *GwpResourceConstitute {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GwpResourceConstitute) SetUnit(v string) *GwpResourceConstitute {
+	s.Unit = &v
+	return s
+}
+
+type OrgEmission struct {
+	CarbonEmissionData          *float64                         `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	ModuleEmissionList          []*OrgEmissionModuleEmissionList `json:"moduleEmissionList,omitempty" xml:"moduleEmissionList,omitempty" type:"Repeated"`
+	Name                        *string                          `json:"name,omitempty" xml:"name,omitempty"`
+	NameKey                     *string                          `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	Ratio                       *float64                         `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	SubEmissionItems            []*OrgEmission                   `json:"subEmissionItems,omitempty" xml:"subEmissionItems,omitempty" type:"Repeated"`
+	WeightingCarbonEmissionData *float64                         `json:"weightingCarbonEmissionData,omitempty" xml:"weightingCarbonEmissionData,omitempty"`
+	WeightingProportion         *float64                         `json:"weightingProportion,omitempty" xml:"weightingProportion,omitempty"`
+	WeightingRatio              *float64                         `json:"weightingRatio,omitempty" xml:"weightingRatio,omitempty"`
+}
+
+func (s OrgEmission) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OrgEmission) GoString() string {
+	return s.String()
+}
+
+func (s *OrgEmission) SetCarbonEmissionData(v float64) *OrgEmission {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *OrgEmission) SetModuleEmissionList(v []*OrgEmissionModuleEmissionList) *OrgEmission {
+	s.ModuleEmissionList = v
+	return s
+}
+
+func (s *OrgEmission) SetName(v string) *OrgEmission {
+	s.Name = &v
+	return s
+}
+
+func (s *OrgEmission) SetNameKey(v string) *OrgEmission {
+	s.NameKey = &v
+	return s
+}
+
+func (s *OrgEmission) SetRatio(v float64) *OrgEmission {
+	s.Ratio = &v
+	return s
+}
+
+func (s *OrgEmission) SetSubEmissionItems(v []*OrgEmission) *OrgEmission {
+	s.SubEmissionItems = v
+	return s
+}
+
+func (s *OrgEmission) SetWeightingCarbonEmissionData(v float64) *OrgEmission {
+	s.WeightingCarbonEmissionData = &v
+	return s
+}
+
+func (s *OrgEmission) SetWeightingProportion(v float64) *OrgEmission {
+	s.WeightingProportion = &v
+	return s
+}
+
+func (s *OrgEmission) SetWeightingRatio(v float64) *OrgEmission {
+	s.WeightingRatio = &v
+	return s
+}
+
+type OrgEmissionModuleEmissionList struct {
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
+	NameKey            *string  `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	Ratio              *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+}
+
+func (s OrgEmissionModuleEmissionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OrgEmissionModuleEmissionList) GoString() string {
+	return s.String()
+}
+
+func (s *OrgEmissionModuleEmissionList) SetCarbonEmissionData(v float64) *OrgEmissionModuleEmissionList {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *OrgEmissionModuleEmissionList) SetName(v string) *OrgEmissionModuleEmissionList {
+	s.Name = &v
+	return s
+}
+
+func (s *OrgEmissionModuleEmissionList) SetNameKey(v string) *OrgEmissionModuleEmissionList {
+	s.NameKey = &v
+	return s
+}
+
+func (s *OrgEmissionModuleEmissionList) SetRatio(v float64) *OrgEmissionModuleEmissionList {
+	s.Ratio = &v
+	return s
+}
+
+type GenerateResultRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GenerateResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateResultRequest) SetCode(v string) *GenerateResultRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateResultRequest) SetProductId(v int64) *GenerateResultRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GenerateResultRequest) SetProductType(v int64) *GenerateResultRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GenerateResultResponseBody struct {
+	// The returned data. `true` indicates that the request is successful, `false` indicates that the request fails.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GenerateResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateResultResponseBody) SetData(v bool) *GenerateResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GenerateResultResponseBody) SetRequestId(v string) *GenerateResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateResultResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateResultResponse) SetHeaders(v map[string]*string) *GenerateResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateResultResponse) SetStatusCode(v int32) *GenerateResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateResultResponse) SetBody(v *GenerateResultResponseBody) *GenerateResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetAreaElecConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Year.
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetAreaElecConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAreaElecConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAreaElecConstituteRequest) SetCode(v string) *GetAreaElecConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAreaElecConstituteRequest) SetYear(v int32) *GetAreaElecConstituteRequest {
+	s.Year = &v
+	return s
+}
+
+type GetAreaElecConstituteResponseBody struct {
+	// The code returned for the request. A value of Success indicates that the request was successful. Other values indicate that the request failed. You can troubleshoot the error by viewing the error message returned.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data *GetAreaElecConstituteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetAreaElecConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAreaElecConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAreaElecConstituteResponseBody) SetCode(v string) *GetAreaElecConstituteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBody) SetData(v *GetAreaElecConstituteResponseBodyData) *GetAreaElecConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBody) SetRequestId(v string) *GetAreaElecConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAreaElecConstituteResponseBodyData struct {
+	// Photoelectric power consumption and carbon emission data of each enterprise.
+	Light []*CarbonEmissionElecSummaryItem `json:"light,omitempty" xml:"light,omitempty" type:"Repeated"`
+	// Data on nuclear power consumption and carbon emissions at each enterprise.
+	Nuclear []*CarbonEmissionElecSummaryItem `json:"nuclear,omitempty" xml:"nuclear,omitempty" type:"Repeated"`
+	// Data on renewable electricity consumption and carbon emissions at each enterprise.
+	Renewing []*CarbonEmissionElecSummaryItem `json:"renewing,omitempty" xml:"renewing,omitempty" type:"Repeated"`
+	// Data on mains electricity consumption and carbon emission of each enterprise.
+	Urban []*CarbonEmissionElecSummaryItem `json:"urban,omitempty" xml:"urban,omitempty" type:"Repeated"`
+	// Hydropower consumption and carbon emission data of each enterprise.
+	Water []*CarbonEmissionElecSummaryItem `json:"water,omitempty" xml:"water,omitempty" type:"Repeated"`
+	// Wind power consumption and carbon emission data of each enterprise.
+	Wind []*CarbonEmissionElecSummaryItem `json:"wind,omitempty" xml:"wind,omitempty" type:"Repeated"`
+	// Data of zero electricity consumption and carbon emission of each enterprise.
+	Zero []*CarbonEmissionElecSummaryItem `json:"zero,omitempty" xml:"zero,omitempty" type:"Repeated"`
+}
+
+func (s GetAreaElecConstituteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAreaElecConstituteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetLight(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Light = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetNuclear(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Nuclear = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetRenewing(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Renewing = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetUrban(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Urban = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetWater(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Water = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetWind(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Wind = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponseBodyData) SetZero(v []*CarbonEmissionElecSummaryItem) *GetAreaElecConstituteResponseBodyData {
+	s.Zero = v
+	return s
+}
+
+type GetAreaElecConstituteResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAreaElecConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAreaElecConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAreaElecConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAreaElecConstituteResponse) SetHeaders(v map[string]*string) *GetAreaElecConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponse) SetStatusCode(v int32) *GetAreaElecConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAreaElecConstituteResponse) SetBody(v *GetAreaElecConstituteResponseBody) *GetAreaElecConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetCarbonEmissionTrendRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Module code.
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// Module type.
+	ModuleType *int32 `json:"moduleType,omitempty" xml:"moduleType,omitempty"`
+	// Trend Type.
+	TrendType *int32 `json:"trendType,omitempty" xml:"trendType,omitempty"`
+	// The list of inventory year.
+	YearList []*int32 `json:"yearList,omitempty" xml:"yearList,omitempty" type:"Repeated"`
+}
+
+func (s GetCarbonEmissionTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendRequest) SetCode(v string) *GetCarbonEmissionTrendRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendRequest) SetModuleCode(v string) *GetCarbonEmissionTrendRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendRequest) SetModuleType(v int32) *GetCarbonEmissionTrendRequest {
+	s.ModuleType = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendRequest) SetTrendType(v int32) *GetCarbonEmissionTrendRequest {
+	s.TrendType = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendRequest) SetYearList(v []*int32) *GetCarbonEmissionTrendRequest {
+	s.YearList = v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBody struct {
+	// The response parameters.
+	Data *GetCarbonEmissionTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBody) SetData(v *GetCarbonEmissionTrendResponseBodyData) *GetCarbonEmissionTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBody) SetRequestId(v string) *GetCarbonEmissionTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBodyData struct {
+	// Actual emission list.
+	ActualEmissionList []*GetCarbonEmissionTrendResponseBodyDataActualEmissionList `json:"actualEmissionList,omitempty" xml:"actualEmissionList,omitempty" type:"Repeated"`
+	// Target Emission List.
+	TargetEmissionList []*GetCarbonEmissionTrendResponseBodyDataTargetEmissionList `json:"targetEmissionList,omitempty" xml:"targetEmissionList,omitempty" type:"Repeated"`
+}
+
+func (s GetCarbonEmissionTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyData) SetActualEmissionList(v []*GetCarbonEmissionTrendResponseBodyDataActualEmissionList) *GetCarbonEmissionTrendResponseBodyData {
+	s.ActualEmissionList = v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyData) SetTargetEmissionList(v []*GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) *GetCarbonEmissionTrendResponseBodyData {
+	s.TargetEmissionList = v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBodyDataActualEmissionList struct {
+	// Data item list.
+	Items []*GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The year.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataActualEmissionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataActualEmissionList) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionList) SetItems(v []*GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) *GetCarbonEmissionTrendResponseBodyDataActualEmissionList {
+	s.Items = v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionList) SetYear(v string) *GetCarbonEmissionTrendResponseBodyDataActualEmissionList {
+	s.Year = &v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems struct {
+	// Carbon emissions.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The month.
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// The year.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) SetCarbonEmissionData(v float64) *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) SetMonth(v int32) *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems {
+	s.Month = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems) SetYear(v string) *GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems {
+	s.Year = &v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBodyDataTargetEmissionList struct {
+	// Data item list.
+	Items []*GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The year.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) SetItems(v []*GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList {
+	s.Items = v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList) SetYear(v string) *GetCarbonEmissionTrendResponseBodyDataTargetEmissionList {
+	s.Year = &v
+	return s
+}
+
+type GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems struct {
+	// Carbon emissions.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The month.
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// The year.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) SetCarbonEmissionData(v float64) *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) SetMonth(v int32) *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems {
+	s.Month = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems) SetYear(v string) *GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems {
+	s.Year = &v
+	return s
+}
+
+type GetCarbonEmissionTrendResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCarbonEmissionTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCarbonEmissionTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCarbonEmissionTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCarbonEmissionTrendResponse) SetHeaders(v map[string]*string) *GetCarbonEmissionTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponse) SetStatusCode(v int32) *GetCarbonEmissionTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCarbonEmissionTrendResponse) SetBody(v *GetCarbonEmissionTrendResponseBody) *GetCarbonEmissionTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataItemListRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+}
+
+func (s GetDataItemListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataItemListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataItemListRequest) SetCode(v string) *GetDataItemListRequest {
+	s.Code = &v
+	return s
+}
+
+type GetDataItemListResponseBody struct {
+	// Response parameters.
+	Data []*GetDataItemListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDataItemListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataItemListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataItemListResponseBody) SetData(v []*GetDataItemListResponseBodyData) *GetDataItemListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDataItemListResponseBody) SetRequestId(v string) *GetDataItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataItemListResponseBodyData struct {
+	// The identifier of the data item.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The name of the data item.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Data filling method, 1: monthly value 2: annual value.
+	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
+	// The data item unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetDataItemListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataItemListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataItemListResponseBodyData) SetCode(v string) *GetDataItemListResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDataItemListResponseBodyData) SetName(v string) *GetDataItemListResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataItemListResponseBodyData) SetPeriod(v int32) *GetDataItemListResponseBodyData {
+	s.Period = &v
+	return s
+}
+
+func (s *GetDataItemListResponseBodyData) SetUnit(v string) *GetDataItemListResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetDataItemListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataItemListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataItemListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataItemListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataItemListResponse) SetHeaders(v map[string]*string) *GetDataItemListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataItemListResponse) SetStatusCode(v int32) *GetDataItemListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataItemListResponse) SetBody(v *GetDataItemListResponseBody) *GetDataItemListResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataQualityAnalysisRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data quality assessment type: 1 is DQI and 2 is DQR.
+	DataQualityEvaluationType *int64 `json:"dataQualityEvaluationType,omitempty" xml:"dataQualityEvaluationType,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetDataQualityAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisRequest) SetCode(v string) *GetDataQualityAnalysisRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisRequest) SetDataQualityEvaluationType(v int64) *GetDataQualityAnalysisRequest {
+	s.DataQualityEvaluationType = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisRequest) SetProductId(v int64) *GetDataQualityAnalysisRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisRequest) SetProductType(v int64) *GetDataQualityAnalysisRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBody struct {
+	// The response parameters.
+	Data *GetDataQualityAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBody) SetData(v *GetDataQualityAnalysisResponseBodyData) *GetDataQualityAnalysisResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBody) SetRequestId(v string) *GetDataQualityAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyData struct {
+	// Score of each inventory.
+	DataQuality []*GetDataQualityAnalysisResponseBodyDataDataQuality `json:"dataQuality,omitempty" xml:"dataQuality,omitempty" type:"Repeated"`
+	// Data quality result.
+	DataQualityResult *GetDataQualityAnalysisResponseBodyDataDataQualityResult `json:"dataQualityResult,omitempty" xml:"dataQualityResult,omitempty" type:"Struct"`
+	// Sensitivity analysis list
+	SensitivityList []*GetDataQualityAnalysisResponseBodyDataSensitivityList `json:"sensitivityList,omitempty" xml:"sensitivityList,omitempty" type:"Repeated"`
+	// Uncertainty value. The model\"s overall percentage uncertainty results. "10.00%" symbolizes a 10.00% uncertainty, indicating that the carbon footprint lies within ±10.00%. This is derived from a weighted aggregation of individual inventory uncertainties.
+	Uncertainty *string `json:"uncertainty,omitempty" xml:"uncertainty,omitempty"`
+	// Uncertainty list
+	UncertaintyValues []*GetDataQualityAnalysisResponseBodyDataUncertaintyValues `json:"uncertaintyValues,omitempty" xml:"uncertaintyValues,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyData) SetDataQuality(v []*GetDataQualityAnalysisResponseBodyDataDataQuality) *GetDataQualityAnalysisResponseBodyData {
+	s.DataQuality = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyData) SetDataQualityResult(v *GetDataQualityAnalysisResponseBodyDataDataQualityResult) *GetDataQualityAnalysisResponseBodyData {
+	s.DataQualityResult = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyData) SetSensitivityList(v []*GetDataQualityAnalysisResponseBodyDataSensitivityList) *GetDataQualityAnalysisResponseBodyData {
+	s.SensitivityList = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyData) SetUncertainty(v string) *GetDataQualityAnalysisResponseBodyData {
+	s.Uncertainty = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyData) SetUncertaintyValues(v []*GetDataQualityAnalysisResponseBodyDataUncertaintyValues) *GetDataQualityAnalysisResponseBodyData {
+	s.UncertaintyValues = v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyDataDataQuality struct {
+	// Inventory name
+	Inventory *string `json:"inventory,omitempty" xml:"inventory,omitempty"`
+	// Score. The distribution ranges from 1 to 5. A value closer to 1 indicates better data quality.
+	Score *GetDataQualityAnalysisResponseBodyDataDataQualityScore `json:"score,omitempty" xml:"score,omitempty" type:"Struct"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQuality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQuality) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQuality) SetInventory(v string) *GetDataQualityAnalysisResponseBodyDataDataQuality {
+	s.Inventory = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQuality) SetScore(v *GetDataQualityAnalysisResponseBodyDataDataQualityScore) *GetDataQualityAnalysisResponseBodyDataDataQuality {
+	s.Score = v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyDataDataQualityScore struct {
+	// Data quality evaluation indicator 1: activity data credibility.
+	G1 *float64 `json:"g1,omitempty" xml:"g1,omitempty"`
+	// Data quality evaluation indicator 2: data factor reliability.
+	G2 *float64 `json:"g2,omitempty" xml:"g2,omitempty"`
+	// Data quality evaluation indicator 3: time representativeness.
+	G3 *float64 `json:"g3,omitempty" xml:"g3,omitempty"`
+	// Data quality evaluation indicator 4: geographic representativeness.
+	G4 *float64 `json:"g4,omitempty" xml:"g4,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQualityScore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQualityScore) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityScore) SetG1(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityScore {
+	s.G1 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityScore) SetG2(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityScore {
+	s.G2 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityScore) SetG3(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityScore {
+	s.G3 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityScore) SetG4(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityScore {
+	s.G4 = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyDataDataQualityResult struct {
+	// The score. This parameter is applicable to DQR results. The distribution ranges from 1 to 5. A value closer to 1 indicates better data quality. The number of valid digits is kept to four decimal places.
+	DataQualityScore *float64 `json:"data_quality_score,omitempty" xml:"data_quality_score,omitempty"`
+	// Data quality evaluation indicator 1: activity data credibility.
+	G1 *float64 `json:"g1,omitempty" xml:"g1,omitempty"`
+	// Data quality evaluation indicator 2: data factor reliability.
+	G2 *float64 `json:"g2,omitempty" xml:"g2,omitempty"`
+	// Data quality evaluation indicator 3: time representativeness.
+	G3 *float64 `json:"g3,omitempty" xml:"g3,omitempty"`
+	// Data quality evaluation indicator 4: geographic representativeness.
+	G4 *float64 `json:"g4,omitempty" xml:"g4,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQualityResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataDataQualityResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityResult) SetDataQualityScore(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityResult {
+	s.DataQualityScore = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityResult) SetG1(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityResult {
+	s.G1 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityResult) SetG2(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityResult {
+	s.G2 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityResult) SetG3(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityResult {
+	s.G3 = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataDataQualityResult) SetG4(v float64) *GetDataQualityAnalysisResponseBodyDataDataQualityResult {
+	s.G4 = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyDataSensitivityList struct {
+	// Inventory id
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Name of the inventory item.
+	Inventory *string `json:"inventory,omitempty" xml:"inventory,omitempty"`
+	// List of emission reduction measures.
+	ReductionList []*string `json:"reductionList,omitempty" xml:"reductionList,omitempty" type:"Repeated"`
+	// Sensitivity percentage.
+	Sensitivity *float64 `json:"sensitivity,omitempty" xml:"sensitivity,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataSensitivityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataSensitivityList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataSensitivityList) SetId(v string) *GetDataQualityAnalysisResponseBodyDataSensitivityList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataSensitivityList) SetInventory(v string) *GetDataQualityAnalysisResponseBodyDataSensitivityList {
+	s.Inventory = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataSensitivityList) SetReductionList(v []*string) *GetDataQualityAnalysisResponseBodyDataSensitivityList {
+	s.ReductionList = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataSensitivityList) SetSensitivity(v float64) *GetDataQualityAnalysisResponseBodyDataSensitivityList {
+	s.Sensitivity = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponseBodyDataUncertaintyValues struct {
+	// The name of the inventory. Format: process name / inventory name.
+	Inventory *string `json:"inventory,omitempty" xml:"inventory,omitempty"`
+	// Inventory uncertainty absolute contribution size. The impact of the quality of each inventory data on the carbon footprint results in the modeling process, when the uncertain contribution of a list is large, please improve its data quality as much as possible to improve the accuracy of carbon footprint analysis. The meaning of "1.4964" is not determined to contribute 1.4964 kgCO₂ e/unit, where unit is the unit of the product.
+	UncertaintyContribution *string `json:"uncertaintyContribution,omitempty" xml:"uncertaintyContribution,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataUncertaintyValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponseBodyDataUncertaintyValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataUncertaintyValues) SetInventory(v string) *GetDataQualityAnalysisResponseBodyDataUncertaintyValues {
+	s.Inventory = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponseBodyDataUncertaintyValues) SetUncertaintyContribution(v string) *GetDataQualityAnalysisResponseBodyDataUncertaintyValues {
+	s.UncertaintyContribution = &v
+	return s
+}
+
+type GetDataQualityAnalysisResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataQualityAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataQualityAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityAnalysisResponse) SetHeaders(v map[string]*string) *GetDataQualityAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponse) SetStatusCode(v int32) *GetDataQualityAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataQualityAnalysisResponse) SetBody(v *GetDataQualityAnalysisResponseBody) *GetDataQualityAnalysisResponse {
+	s.Body = v
+	return s
+}
+
 type GetDeviceInfoRequest struct {
-	DeviceId  *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	Ds        *string `json:"ds,omitempty" xml:"ds,omitempty"`
+	// The ID of the device.
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// The date on which the statistics are collected.
+	Ds *string `json:"ds,omitempty" xml:"ds,omitempty"`
+	// The ID of the site.
 	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
 }
 
@@ -42,11 +1412,16 @@ func (s *GetDeviceInfoRequest) SetFactoryId(v string) *GetDeviceInfoRequest {
 }
 
 type GetDeviceInfoResponseBody struct {
-	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *GetDeviceInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	HttpCode  *int32                         `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	// The code returned for the request. A value of Success indicates that the request was successful. Other values indicate that the request failed. You can troubleshoot the error by viewing the error message returned.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	Data *GetDeviceInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDeviceInfoResponseBody) String() string {
@@ -83,11 +1458,16 @@ func (s *GetDeviceInfoResponseBody) SetSuccess(v bool) *GetDeviceInfoResponseBod
 }
 
 type GetDeviceInfoResponseBodyData struct {
-	DeviceId       *string                                    `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	DeviceName     *string                                    `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
-	FirstTypeName  *string                                    `json:"firstTypeName,omitempty" xml:"firstTypeName,omitempty"`
-	RecordList     []*GetDeviceInfoResponseBodyDataRecordList `json:"recordList,omitempty" xml:"recordList,omitempty" type:"Repeated"`
-	SecondTypeName *string                                    `json:"secondTypeName,omitempty" xml:"secondTypeName,omitempty"`
+	// The ID of the device.
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// The name of the device.
+	DeviceName *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	// The level 1 meter type.
+	FirstTypeName *string `json:"firstTypeName,omitempty" xml:"firstTypeName,omitempty"`
+	// The device parameters.
+	RecordList []*GetDeviceInfoResponseBodyDataRecordList `json:"recordList,omitempty" xml:"recordList,omitempty" type:"Repeated"`
+	// The level 2 meter type.
+	SecondTypeName *string `json:"secondTypeName,omitempty" xml:"secondTypeName,omitempty"`
 }
 
 func (s GetDeviceInfoResponseBodyData) String() string {
@@ -124,12 +1504,18 @@ func (s *GetDeviceInfoResponseBodyData) SetSecondTypeName(v string) *GetDeviceIn
 }
 
 type GetDeviceInfoResponseBodyDataRecordList struct {
-	Identifier     *string  `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	ParamName      *string  `json:"paramName,omitempty" xml:"paramName,omitempty"`
-	StatisticsDate *string  `json:"statisticsDate,omitempty" xml:"statisticsDate,omitempty"`
-	Type           *string  `json:"type,omitempty" xml:"type,omitempty"`
-	Unit           *string  `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value          *float64 `json:"value,omitempty" xml:"value,omitempty"`
+	// The identifier of the device.
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// The name of the parameter.
+	ParamName *string `json:"paramName,omitempty" xml:"paramName,omitempty"`
+	// The date on which the statistics were collected.
+	StatisticsDate *string `json:"statisticsDate,omitempty" xml:"statisticsDate,omitempty"`
+	// The type of the measuring point.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The unit of the parameter value.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The value of the measuring point.
+	Value *float64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetDeviceInfoResponseBodyDataRecordList) String() string {
@@ -171,9 +1557,9 @@ func (s *GetDeviceInfoResponseBodyDataRecordList) SetValue(v float64) *GetDevice
 }
 
 type GetDeviceInfoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeviceInfoResponse) String() string {
@@ -200,6 +1586,7 @@ func (s *GetDeviceInfoResponse) SetBody(v *GetDeviceInfoResponseBody) *GetDevice
 }
 
 type GetDeviceListRequest struct {
+	// The ID of the site.
 	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
 }
 
@@ -217,11 +1604,16 @@ func (s *GetDeviceListRequest) SetFactoryId(v string) *GetDeviceListRequest {
 }
 
 type GetDeviceListResponseBody struct {
-	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *GetDeviceListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	HttpCode  *int32                         `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	// The code returned for the request.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	Data *GetDeviceListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDeviceListResponseBody) String() string {
@@ -258,11 +1650,16 @@ func (s *GetDeviceListResponseBody) SetSuccess(v bool) *GetDeviceListResponseBod
 }
 
 type GetDeviceListResponseBodyData struct {
-	Code       *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	// The code returned for the request.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The devices.
 	DeviceList []*GetDeviceListResponseBodyDataDeviceList `json:"deviceList,omitempty" xml:"deviceList,omitempty" type:"Repeated"`
-	FactoryId  *string                                    `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
-	HttpCode   *int32                                     `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	Success    *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	// The ID of the site.
+	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDeviceListResponseBodyData) String() string {
@@ -299,12 +1696,18 @@ func (s *GetDeviceListResponseBodyData) SetSuccess(v bool) *GetDeviceListRespons
 }
 
 type GetDeviceListResponseBodyDataDeviceList struct {
-	DeviceId       *string                                      `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	DeviceName     *string                                      `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
-	FirstTypeName  *string                                      `json:"firstTypeName,omitempty" xml:"firstTypeName,omitempty"`
-	Info           *GetDeviceListResponseBodyDataDeviceListInfo `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
-	ParentDevice   *string                                      `json:"parentDevice,omitempty" xml:"parentDevice,omitempty"`
-	SecondTypeName *string                                      `json:"secondTypeName,omitempty" xml:"secondTypeName,omitempty"`
+	// The ID of the device.
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// The name of the device.
+	DeviceName *string `json:"deviceName,omitempty" xml:"deviceName,omitempty"`
+	// The level 1 meter type.
+	FirstTypeName *string `json:"firstTypeName,omitempty" xml:"firstTypeName,omitempty"`
+	// The information about the device.
+	Info *GetDeviceListResponseBodyDataDeviceListInfo `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
+	// The ID of the parent device.
+	ParentDevice *string `json:"parentDevice,omitempty" xml:"parentDevice,omitempty"`
+	// The level 2 meter type.
+	SecondTypeName *string `json:"secondTypeName,omitempty" xml:"secondTypeName,omitempty"`
 }
 
 func (s GetDeviceListResponseBodyDataDeviceList) String() string {
@@ -346,11 +1749,16 @@ func (s *GetDeviceListResponseBodyDataDeviceList) SetSecondTypeName(v string) *G
 }
 
 type GetDeviceListResponseBodyDataDeviceListInfo struct {
-	ConstKva      *int32 `json:"constKva,omitempty" xml:"constKva,omitempty"`
-	Ct            *int32 `json:"ct,omitempty" xml:"ct,omitempty"`
+	// The rated capacity.
+	ConstKva *int32 `json:"constKva,omitempty" xml:"constKva,omitempty"`
+	// The transformation ratio of current.
+	Ct *int32 `json:"ct,omitempty" xml:"ct,omitempty"`
+	// The magnification ratio.
 	Magnification *int32 `json:"magnification,omitempty" xml:"magnification,omitempty"`
-	Pressure      *int32 `json:"pressure,omitempty" xml:"pressure,omitempty"`
-	Pt            *int32 `json:"pt,omitempty" xml:"pt,omitempty"`
+	// The high and low voltage.
+	Pressure *int32 `json:"pressure,omitempty" xml:"pressure,omitempty"`
+	// The transformation ratio of voltage.
+	Pt *int32 `json:"pt,omitempty" xml:"pt,omitempty"`
 }
 
 func (s GetDeviceListResponseBodyDataDeviceListInfo) String() string {
@@ -387,9 +1795,9 @@ func (s *GetDeviceListResponseBodyDataDeviceListInfo) SetPt(v int32) *GetDeviceL
 }
 
 type GetDeviceListResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDeviceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeviceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDeviceListResponse) String() string {
@@ -415,12 +1823,2830 @@ func (s *GetDeviceListResponse) SetBody(v *GetDeviceListResponseBody) *GetDevice
 	return s
 }
 
+type GetElecConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Year.
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteRequest) SetCode(v string) *GetElecConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetElecConstituteRequest) SetYear(v int32) *GetElecConstituteRequest {
+	s.Year = &v
+	return s
+}
+
+type GetElecConstituteResponseBody struct {
+	// The returned data.
+	Data *GetElecConstituteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetElecConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBody) SetData(v *GetElecConstituteResponseBodyData) *GetElecConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBody) SetRequestId(v string) *GetElecConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyData struct {
+	// Photoelectric power consumption and carbon emission data of each enterprise.
+	Light *GetElecConstituteResponseBodyDataLight `json:"light,omitempty" xml:"light,omitempty" type:"Struct"`
+	// Data on nuclear power consumption and carbon emissions at each enterprise.
+	Nuclear *GetElecConstituteResponseBodyDataNuclear `json:"nuclear,omitempty" xml:"nuclear,omitempty" type:"Struct"`
+	// Data on renewable electricity consumption and carbon emissions at each enterprise.
+	Renewing *GetElecConstituteResponseBodyDataRenewing `json:"renewing,omitempty" xml:"renewing,omitempty" type:"Struct"`
+	// Data on mains power electricity consumption and carbon emission of each enterprise.
+	Urban *GetElecConstituteResponseBodyDataUrban `json:"urban,omitempty" xml:"urban,omitempty" type:"Struct"`
+	// Hydropower consumption and carbon emission data of each enterprise.
+	Water *GetElecConstituteResponseBodyDataWater `json:"water,omitempty" xml:"water,omitempty" type:"Struct"`
+	// Wind power consumption and carbon emission data of each enterprise.
+	Wind *GetElecConstituteResponseBodyDataWind `json:"wind,omitempty" xml:"wind,omitempty" type:"Struct"`
+	// Data of zero electricity consumption and carbon emission of each enterprise.
+	Zero *GetElecConstituteResponseBodyDataZero `json:"zero,omitempty" xml:"zero,omitempty" type:"Struct"`
+}
+
+func (s GetElecConstituteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyData) SetLight(v *GetElecConstituteResponseBodyDataLight) *GetElecConstituteResponseBodyData {
+	s.Light = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetNuclear(v *GetElecConstituteResponseBodyDataNuclear) *GetElecConstituteResponseBodyData {
+	s.Nuclear = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetRenewing(v *GetElecConstituteResponseBodyDataRenewing) *GetElecConstituteResponseBodyData {
+	s.Renewing = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetUrban(v *GetElecConstituteResponseBodyDataUrban) *GetElecConstituteResponseBodyData {
+	s.Urban = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetWater(v *GetElecConstituteResponseBodyDataWater) *GetElecConstituteResponseBodyData {
+	s.Water = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetWind(v *GetElecConstituteResponseBodyDataWind) *GetElecConstituteResponseBodyData {
+	s.Wind = v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyData) SetZero(v *GetElecConstituteResponseBodyDataZero) *GetElecConstituteResponseBodyData {
+	s.Zero = v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataLight struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataLight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataLight) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataLight {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetDataUnit(v string) *GetElecConstituteResponseBodyDataLight {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetName(v string) *GetElecConstituteResponseBodyDataLight {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetNameKey(v string) *GetElecConstituteResponseBodyDataLight {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetRatio(v float64) *GetElecConstituteResponseBodyDataLight {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataLight) SetRawData(v float64) *GetElecConstituteResponseBodyDataLight {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataNuclear struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataNuclear) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataNuclear) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataNuclear {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetDataUnit(v string) *GetElecConstituteResponseBodyDataNuclear {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetName(v string) *GetElecConstituteResponseBodyDataNuclear {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetNameKey(v string) *GetElecConstituteResponseBodyDataNuclear {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetRatio(v float64) *GetElecConstituteResponseBodyDataNuclear {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataNuclear) SetRawData(v float64) *GetElecConstituteResponseBodyDataNuclear {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataRenewing struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataRenewing) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataRenewing) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataRenewing {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetDataUnit(v string) *GetElecConstituteResponseBodyDataRenewing {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetName(v string) *GetElecConstituteResponseBodyDataRenewing {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetNameKey(v string) *GetElecConstituteResponseBodyDataRenewing {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetRatio(v float64) *GetElecConstituteResponseBodyDataRenewing {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataRenewing) SetRawData(v float64) *GetElecConstituteResponseBodyDataRenewing {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataUrban struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataUrban) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataUrban) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataUrban {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetDataUnit(v string) *GetElecConstituteResponseBodyDataUrban {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetName(v string) *GetElecConstituteResponseBodyDataUrban {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetNameKey(v string) *GetElecConstituteResponseBodyDataUrban {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetRatio(v float64) *GetElecConstituteResponseBodyDataUrban {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataUrban) SetRawData(v float64) *GetElecConstituteResponseBodyDataUrban {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataWater struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataWater) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataWater) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataWater {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetDataUnit(v string) *GetElecConstituteResponseBodyDataWater {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetName(v string) *GetElecConstituteResponseBodyDataWater {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetNameKey(v string) *GetElecConstituteResponseBodyDataWater {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetRatio(v float64) *GetElecConstituteResponseBodyDataWater {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWater) SetRawData(v float64) *GetElecConstituteResponseBodyDataWater {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataWind struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataWind) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataWind) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataWind {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetDataUnit(v string) *GetElecConstituteResponseBodyDataWind {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetName(v string) *GetElecConstituteResponseBodyDataWind {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetNameKey(v string) *GetElecConstituteResponseBodyDataWind {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetRatio(v float64) *GetElecConstituteResponseBodyDataWind {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataWind) SetRawData(v float64) *GetElecConstituteResponseBodyDataWind {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponseBodyDataZero struct {
+	// Carbon emission.
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of name.
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+}
+
+func (s GetElecConstituteResponseBodyDataZero) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponseBodyDataZero) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetCarbonEmissionData(v float64) *GetElecConstituteResponseBodyDataZero {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetDataUnit(v string) *GetElecConstituteResponseBodyDataZero {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetName(v string) *GetElecConstituteResponseBodyDataZero {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetNameKey(v string) *GetElecConstituteResponseBodyDataZero {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetRatio(v float64) *GetElecConstituteResponseBodyDataZero {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecConstituteResponseBodyDataZero) SetRawData(v float64) *GetElecConstituteResponseBodyDataZero {
+	s.RawData = &v
+	return s
+}
+
+type GetElecConstituteResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetElecConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetElecConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecConstituteResponse) SetHeaders(v map[string]*string) *GetElecConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetElecConstituteResponse) SetStatusCode(v int32) *GetElecConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetElecConstituteResponse) SetBody(v *GetElecConstituteResponseBody) *GetElecConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetElecTrendRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// List of years.
+	YearList []*int32 `json:"yearList,omitempty" xml:"yearList,omitempty" type:"Repeated"`
+}
+
+func (s GetElecTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendRequest) SetCode(v string) *GetElecTrendRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetElecTrendRequest) SetYearList(v []*int32) *GetElecTrendRequest {
+	s.YearList = v
+	return s
+}
+
+type GetElecTrendResponseBody struct {
+	// The code returned for the request. A value of Success indicates that the request was successful. Other values indicate that the request failed. You can troubleshoot the error by viewing the error message returned.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data *GetElecTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetElecTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBody) SetCode(v string) *GetElecTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBody) SetData(v *GetElecTrendResponseBodyData) *GetElecTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetElecTrendResponseBody) SetRequestId(v string) *GetElecTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetElecTrendResponseBodyData struct {
+	// Photoelectricity monthly electricity consumption and carbon emissions and other data.
+	Light []*GetElecTrendResponseBodyDataLight `json:"light,omitempty" xml:"light,omitempty" type:"Repeated"`
+	// Monthly electricity consumption and carbon emissions data for nuclear power
+	Nuclear []*GetElecTrendResponseBodyDataNuclear `json:"nuclear,omitempty" xml:"nuclear,omitempty" type:"Repeated"`
+	// Monthly data on renewable electricity consumption and carbon emissions
+	Renewing []*GetElecTrendResponseBodyDataRenewing `json:"renewing,omitempty" xml:"renewing,omitempty" type:"Repeated"`
+	// Data such as monthly electricity consumption and carbon emissions from the mains.
+	Urban []*GetElecTrendResponseBodyDataUrban `json:"urban,omitempty" xml:"urban,omitempty" type:"Repeated"`
+	// Monthly data on electricity consumption and carbon emissions for hydropower.
+	Water []*GetElecTrendResponseBodyDataWater `json:"water,omitempty" xml:"water,omitempty" type:"Repeated"`
+	// Monthly wind power consumption and carbon emission data
+	Wind []*GetElecTrendResponseBodyDataWind `json:"wind,omitempty" xml:"wind,omitempty" type:"Repeated"`
+	// Zero electricity monthly electricity consumption and carbon emissions and other data.
+	Zero []*GetElecTrendResponseBodyDataZero `json:"zero,omitempty" xml:"zero,omitempty" type:"Repeated"`
+}
+
+func (s GetElecTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyData) SetLight(v []*GetElecTrendResponseBodyDataLight) *GetElecTrendResponseBodyData {
+	s.Light = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetNuclear(v []*GetElecTrendResponseBodyDataNuclear) *GetElecTrendResponseBodyData {
+	s.Nuclear = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetRenewing(v []*GetElecTrendResponseBodyDataRenewing) *GetElecTrendResponseBodyData {
+	s.Renewing = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetUrban(v []*GetElecTrendResponseBodyDataUrban) *GetElecTrendResponseBodyData {
+	s.Urban = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetWater(v []*GetElecTrendResponseBodyDataWater) *GetElecTrendResponseBodyData {
+	s.Water = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetWind(v []*GetElecTrendResponseBodyDataWind) *GetElecTrendResponseBodyData {
+	s.Wind = v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyData) SetZero(v []*GetElecTrendResponseBodyDataZero) *GetElecTrendResponseBodyData {
+	s.Zero = v
+	return s
+}
+
+type GetElecTrendResponseBodyDataLight struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power type name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e. 50%).
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataLight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataLight) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataLight {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetDataUnit(v string) *GetElecTrendResponseBodyDataLight {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetMonth(v int32) *GetElecTrendResponseBodyDataLight {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetName(v string) *GetElecTrendResponseBodyDataLight {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetNameKey(v string) *GetElecTrendResponseBodyDataLight {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetRatio(v float64) *GetElecTrendResponseBodyDataLight {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetRawData(v float64) *GetElecTrendResponseBodyDataLight {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataLight) SetYear(v string) *GetElecTrendResponseBodyDataLight {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataNuclear struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The price unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataNuclear) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataNuclear) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataNuclear {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetDataUnit(v string) *GetElecTrendResponseBodyDataNuclear {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetMonth(v int32) *GetElecTrendResponseBodyDataNuclear {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetName(v string) *GetElecTrendResponseBodyDataNuclear {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetNameKey(v string) *GetElecTrendResponseBodyDataNuclear {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetRatio(v float64) *GetElecTrendResponseBodyDataNuclear {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetRawData(v float64) *GetElecTrendResponseBodyDataNuclear {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataNuclear) SetYear(v string) *GetElecTrendResponseBodyDataNuclear {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataRenewing struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The price unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataRenewing) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataRenewing) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataRenewing {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetDataUnit(v string) *GetElecTrendResponseBodyDataRenewing {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetMonth(v int32) *GetElecTrendResponseBodyDataRenewing {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetName(v string) *GetElecTrendResponseBodyDataRenewing {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetNameKey(v string) *GetElecTrendResponseBodyDataRenewing {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetRatio(v float64) *GetElecTrendResponseBodyDataRenewing {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetRawData(v float64) *GetElecTrendResponseBodyDataRenewing {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataRenewing) SetYear(v string) *GetElecTrendResponseBodyDataRenewing {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataUrban struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The price unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e. 50%).
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataUrban) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataUrban) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataUrban {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetDataUnit(v string) *GetElecTrendResponseBodyDataUrban {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetMonth(v int32) *GetElecTrendResponseBodyDataUrban {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetName(v string) *GetElecTrendResponseBodyDataUrban {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetNameKey(v string) *GetElecTrendResponseBodyDataUrban {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetRatio(v float64) *GetElecTrendResponseBodyDataUrban {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetRawData(v float64) *GetElecTrendResponseBodyDataUrban {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataUrban) SetYear(v string) *GetElecTrendResponseBodyDataUrban {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataWater struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e. 50%).
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataWater) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataWater) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataWater {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetDataUnit(v string) *GetElecTrendResponseBodyDataWater {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetMonth(v int32) *GetElecTrendResponseBodyDataWater {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetName(v string) *GetElecTrendResponseBodyDataWater {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetNameKey(v string) *GetElecTrendResponseBodyDataWater {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetRatio(v float64) *GetElecTrendResponseBodyDataWater {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetRawData(v float64) *GetElecTrendResponseBodyDataWater {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWater) SetYear(v string) *GetElecTrendResponseBodyDataWater {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataWind struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The price unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataWind) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataWind) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataWind {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetDataUnit(v string) *GetElecTrendResponseBodyDataWind {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetMonth(v int32) *GetElecTrendResponseBodyDataWind {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetName(v string) *GetElecTrendResponseBodyDataWind {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetNameKey(v string) *GetElecTrendResponseBodyDataWind {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetRatio(v float64) *GetElecTrendResponseBodyDataWind {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetRawData(v float64) *GetElecTrendResponseBodyDataWind {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataWind) SetYear(v string) *GetElecTrendResponseBodyDataWind {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponseBodyDataZero struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// The price unit.
+	DataUnit *string `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
+	// Month
+	Month *int32 `json:"month,omitempty" xml:"month,omitempty"`
+	// Power Type Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Power Type Code
+	NameKey *string `json:"nameKey,omitempty" xml:"nameKey,omitempty"`
+	// Proportion of electricity consumption to all electricity consumption in the month: example value: 0.5 (i. e., 50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Electricity consumption
+	RawData *float64 `json:"rawData,omitempty" xml:"rawData,omitempty"`
+	// Year
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetElecTrendResponseBodyDataZero) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponseBodyDataZero) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetCarbonEmissionData(v float64) *GetElecTrendResponseBodyDataZero {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetDataUnit(v string) *GetElecTrendResponseBodyDataZero {
+	s.DataUnit = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetMonth(v int32) *GetElecTrendResponseBodyDataZero {
+	s.Month = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetName(v string) *GetElecTrendResponseBodyDataZero {
+	s.Name = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetNameKey(v string) *GetElecTrendResponseBodyDataZero {
+	s.NameKey = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetRatio(v float64) *GetElecTrendResponseBodyDataZero {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetRawData(v float64) *GetElecTrendResponseBodyDataZero {
+	s.RawData = &v
+	return s
+}
+
+func (s *GetElecTrendResponseBodyDataZero) SetYear(v string) *GetElecTrendResponseBodyDataZero {
+	s.Year = &v
+	return s
+}
+
+type GetElecTrendResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetElecTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetElecTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElecTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetElecTrendResponse) SetHeaders(v map[string]*string) *GetElecTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetElecTrendResponse) SetStatusCode(v int32) *GetElecTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetElecTrendResponse) SetBody(v *GetElecTrendResponseBody) *GetElecTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetEmissionSourceConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Module code.
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// Module type.
+	ModuleType *int32 `json:"moduleType,omitempty" xml:"moduleType,omitempty"`
+	// Year of inventory.
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetEmissionSourceConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSourceConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSourceConstituteRequest) SetCode(v string) *GetEmissionSourceConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteRequest) SetModuleCode(v string) *GetEmissionSourceConstituteRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteRequest) SetModuleType(v int32) *GetEmissionSourceConstituteRequest {
+	s.ModuleType = &v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteRequest) SetYear(v int32) *GetEmissionSourceConstituteRequest {
+	s.Year = &v
+	return s
+}
+
+type GetEmissionSourceConstituteResponseBody struct {
+	// Response parameters
+	Data []*ConstituteItem `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetEmissionSourceConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSourceConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSourceConstituteResponseBody) SetData(v []*ConstituteItem) *GetEmissionSourceConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteResponseBody) SetRequestId(v string) *GetEmissionSourceConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEmissionSourceConstituteResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEmissionSourceConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEmissionSourceConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSourceConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSourceConstituteResponse) SetHeaders(v map[string]*string) *GetEmissionSourceConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteResponse) SetStatusCode(v int32) *GetEmissionSourceConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEmissionSourceConstituteResponse) SetBody(v *GetEmissionSourceConstituteResponseBody) *GetEmissionSourceConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetEmissionSummaryRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Module code.
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// Module type.
+	ModuleType *int32 `json:"moduleType,omitempty" xml:"moduleType,omitempty"`
+	// Year of inventory.
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetEmissionSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSummaryRequest) SetCode(v string) *GetEmissionSummaryRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEmissionSummaryRequest) SetModuleCode(v string) *GetEmissionSummaryRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetEmissionSummaryRequest) SetModuleType(v int32) *GetEmissionSummaryRequest {
+	s.ModuleType = &v
+	return s
+}
+
+func (s *GetEmissionSummaryRequest) SetYear(v int32) *GetEmissionSummaryRequest {
+	s.Year = &v
+	return s
+}
+
+type GetEmissionSummaryResponseBody struct {
+	// Details of summarized data
+	Data *GetEmissionSummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetEmissionSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSummaryResponseBody) SetData(v *GetEmissionSummaryResponseBodyData) *GetEmissionSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBody) SetRequestId(v string) *GetEmissionSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEmissionSummaryResponseBodyData struct {
+	// Percentage of scheduled.
+	ActualEmissionRatio *float64 `json:"actualEmissionRatio,omitempty" xml:"actualEmissionRatio,omitempty"`
+	// Carbon emissions reduction.
+	CarbonSaveConversion *float64 `json:"carbonSaveConversion,omitempty" xml:"carbonSaveConversion,omitempty"`
+	// Statistical indicators for this cycle.
+	CurrentPeriodCarbonEmissionData *float64 `json:"currentPeriodCarbonEmissionData,omitempty" xml:"currentPeriodCarbonEmissionData,omitempty"`
+	// Whether to show the weighting ratio carbon emission.
+	IsWeighting *bool `json:"isWeighting,omitempty" xml:"isWeighting,omitempty"`
+	// Last period statistical indicators.
+	LastPeriodCarbonEmissionData *float64 `json:"lastPeriodCarbonEmissionData,omitempty" xml:"lastPeriodCarbonEmissionData,omitempty"`
+	// Calculation of carbon emissions based on shareholding ratio in the last cycle.
+	LastPeriodWeightingCarbonEmissionData *float64 `json:"lastPeriodWeightingCarbonEmissionData,omitempty" xml:"lastPeriodWeightingCarbonEmissionData,omitempty"`
+	// Year-on-year.
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Total carbon emissions.
+	TotalCarbonEmissionData *float64 `json:"totalCarbonEmissionData,omitempty" xml:"totalCarbonEmissionData,omitempty"`
+	// Calculate carbon emissions by share ratio
+	WeightingCarbonEmissionData *float64 `json:"weightingCarbonEmissionData,omitempty" xml:"weightingCarbonEmissionData,omitempty"`
+	// Year-on-year of weighting ratio carbon emissions.
+	WeightingRatio *float64 `json:"weightingRatio,omitempty" xml:"weightingRatio,omitempty"`
+}
+
+func (s GetEmissionSummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetActualEmissionRatio(v float64) *GetEmissionSummaryResponseBodyData {
+	s.ActualEmissionRatio = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetCarbonSaveConversion(v float64) *GetEmissionSummaryResponseBodyData {
+	s.CarbonSaveConversion = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetCurrentPeriodCarbonEmissionData(v float64) *GetEmissionSummaryResponseBodyData {
+	s.CurrentPeriodCarbonEmissionData = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetIsWeighting(v bool) *GetEmissionSummaryResponseBodyData {
+	s.IsWeighting = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetLastPeriodCarbonEmissionData(v float64) *GetEmissionSummaryResponseBodyData {
+	s.LastPeriodCarbonEmissionData = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetLastPeriodWeightingCarbonEmissionData(v float64) *GetEmissionSummaryResponseBodyData {
+	s.LastPeriodWeightingCarbonEmissionData = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetRatio(v float64) *GetEmissionSummaryResponseBodyData {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetTotalCarbonEmissionData(v float64) *GetEmissionSummaryResponseBodyData {
+	s.TotalCarbonEmissionData = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetWeightingCarbonEmissionData(v float64) *GetEmissionSummaryResponseBodyData {
+	s.WeightingCarbonEmissionData = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponseBodyData) SetWeightingRatio(v float64) *GetEmissionSummaryResponseBodyData {
+	s.WeightingRatio = &v
+	return s
+}
+
+type GetEmissionSummaryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEmissionSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEmissionSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmissionSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmissionSummaryResponse) SetHeaders(v map[string]*string) *GetEmissionSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEmissionSummaryResponse) SetStatusCode(v int32) *GetEmissionSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEmissionSummaryResponse) SetBody(v *GetEmissionSummaryResponseBody) *GetEmissionSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type GetEpdInventoryConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetEpdInventoryConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdInventoryConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdInventoryConstituteRequest) SetCode(v string) *GetEpdInventoryConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEpdInventoryConstituteRequest) SetProductId(v int64) *GetEpdInventoryConstituteRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetEpdInventoryConstituteRequest) SetProductType(v int64) *GetEpdInventoryConstituteRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetEpdInventoryConstituteResponseBody struct {
+	// List of environmental impact results.
+	Data []*EpdInventoryConstituteItem `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetEpdInventoryConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdInventoryConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdInventoryConstituteResponseBody) SetData(v []*EpdInventoryConstituteItem) *GetEpdInventoryConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEpdInventoryConstituteResponseBody) SetRequestId(v string) *GetEpdInventoryConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEpdInventoryConstituteResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEpdInventoryConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEpdInventoryConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdInventoryConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdInventoryConstituteResponse) SetHeaders(v map[string]*string) *GetEpdInventoryConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEpdInventoryConstituteResponse) SetStatusCode(v int32) *GetEpdInventoryConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEpdInventoryConstituteResponse) SetBody(v *GetEpdInventoryConstituteResponseBody) *GetEpdInventoryConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetEpdSummaryRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetEpdSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdSummaryRequest) SetCode(v string) *GetEpdSummaryRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEpdSummaryRequest) SetProductId(v int64) *GetEpdSummaryRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetEpdSummaryRequest) SetProductType(v int64) *GetEpdSummaryRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetEpdSummaryResponseBody struct {
+	// Response parameters
+	Data []*GetEpdSummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetEpdSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdSummaryResponseBody) SetData(v []*GetEpdSummaryResponseBodyData) *GetEpdSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBody) SetRequestId(v string) *GetEpdSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEpdSummaryResponseBodyData struct {
+	// Emissions. The result is maintained up to 31 decimal places for precise intermediate calculation and subsequently truncated for display. It is advised to pair the emissions figure with the unit of the environmental impact result for a comprehensive understanding.
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	// The evaluation index adopted for the environmental impact
+	Indicator *string `json:"indicator,omitempty" xml:"indicator,omitempty"`
+	// The category key. The environmental impact category. Currently, a maximum of 19 categories are supported. Enumeration refers to [Carbon Footprint Appendices](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/CarbonFootprintAppendices-en.pdf).
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Calculation method standard
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The name of the category.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Category num: the unique serial number of the environmental impact category. A maximum of 19 categories are supported. Enumeration refers to [Carbon Footprint Appendices](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/CarbonFootprintAppendices-en.pdf).
+	Num *int64 `json:"num,omitempty" xml:"num,omitempty"`
+	// Environmental impact result Value Unit.
+	PreUnit *string `json:"preUnit,omitempty" xml:"preUnit,omitempty"`
+	// The data status. 1 indicates that the calculation is accurate, 2 indicates that the default data is used, and 3 indicates that the missing factor uses the value of 0.
+	State *int64 `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s GetEpdSummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdSummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetCarbonEmission(v float64) *GetEpdSummaryResponseBodyData {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetIndicator(v string) *GetEpdSummaryResponseBodyData {
+	s.Indicator = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetKey(v string) *GetEpdSummaryResponseBodyData {
+	s.Key = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetMethod(v string) *GetEpdSummaryResponseBodyData {
+	s.Method = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetName(v string) *GetEpdSummaryResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetNum(v int64) *GetEpdSummaryResponseBodyData {
+	s.Num = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetPreUnit(v string) *GetEpdSummaryResponseBodyData {
+	s.PreUnit = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponseBodyData) SetState(v int64) *GetEpdSummaryResponseBodyData {
+	s.State = &v
+	return s
+}
+
+type GetEpdSummaryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEpdSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEpdSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEpdSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEpdSummaryResponse) SetHeaders(v map[string]*string) *GetEpdSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEpdSummaryResponse) SetStatusCode(v int32) *GetEpdSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEpdSummaryResponse) SetBody(v *GetEpdSummaryResponseBody) *GetEpdSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type GetFootprintListRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The pagination parameter. The number of the page that starts from 1.
+	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetFootprintListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFootprintListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFootprintListRequest) SetCode(v string) *GetFootprintListRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFootprintListRequest) SetCurrentPage(v int64) *GetFootprintListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFootprintListRequest) SetPageSize(v int64) *GetFootprintListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFootprintListRequest) SetProductType(v int64) *GetFootprintListRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetFootprintListResponseBody struct {
+	// The response parameters.
+	Data *GetFootprintListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetFootprintListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFootprintListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFootprintListResponseBody) SetData(v *GetFootprintListResponseBodyData) *GetFootprintListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFootprintListResponseBody) SetRequestId(v string) *GetFootprintListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFootprintListResponseBodyData struct {
+	// The page number.
+	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Product Detail List.
+	Records []*GetFootprintListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// Total Pages
+	TotalPage *int64 `json:"totalPage,omitempty" xml:"totalPage,omitempty"`
+}
+
+func (s GetFootprintListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFootprintListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFootprintListResponseBodyData) SetCurrentPage(v int64) *GetFootprintListResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyData) SetPageSize(v int64) *GetFootprintListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyData) SetRecords(v []*GetFootprintListResponseBodyDataRecords) *GetFootprintListResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyData) SetTotal(v int64) *GetFootprintListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyData) SetTotalPage(v int64) *GetFootprintListResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type GetFootprintListResponseBodyDataRecords struct {
+	// The amount of the product.
+	Amount *float64 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// Authentication status enumeration value, please refer to [link](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/CarbonFootprintAppendices-en.pdf).
+	AuthStatus *int64 `json:"authStatus,omitempty" xml:"authStatus,omitempty"`
+	// Calculation end time.
+	CheckEndTime *string `json:"checkEndTime,omitempty" xml:"checkEndTime,omitempty"`
+	// Calculation start time.
+	CheckStartTime *string `json:"checkStartTime,omitempty" xml:"checkStartTime,omitempty"`
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The user who created it.
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The product ID.
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Indicates whether the demo model is a built-in model. A value of 1 indicates a true value and a value of 0 indicates a false value.
+	IsDemoModel *int64 `json:"isDemoModel,omitempty" xml:"isDemoModel,omitempty"`
+	// The literal expression corresponding to lifeCycleType, `From Cradle to Gate` and `From Cradle to Grave`.
+	LifeCycle *string `json:"lifeCycle,omitempty" xml:"lifeCycle,omitempty"`
+	// 1 is `From Cradle to Gate`, and 2 is `From Cradle to Grave`.
+	LifeCycleType *int64 `json:"lifeCycleType,omitempty" xml:"lifeCycleType,omitempty"`
+	// The product name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Product category enumeration value, please refer to [Carbon Footprint Appendices](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/CarbonFootprintAppendices-en.pdf).
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Unit enumeration value. Please refer to [Carbon Footprint Appendices](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/CarbonFootprintAppendices-en.pdf).
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetFootprintListResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFootprintListResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetAmount(v float64) *GetFootprintListResponseBodyDataRecords {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetAuthStatus(v int64) *GetFootprintListResponseBodyDataRecords {
+	s.AuthStatus = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetCheckEndTime(v string) *GetFootprintListResponseBodyDataRecords {
+	s.CheckEndTime = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetCheckStartTime(v string) *GetFootprintListResponseBodyDataRecords {
+	s.CheckStartTime = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetCode(v string) *GetFootprintListResponseBodyDataRecords {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetCreatedBy(v string) *GetFootprintListResponseBodyDataRecords {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetId(v int64) *GetFootprintListResponseBodyDataRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetIsDemoModel(v int64) *GetFootprintListResponseBodyDataRecords {
+	s.IsDemoModel = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetLifeCycle(v string) *GetFootprintListResponseBodyDataRecords {
+	s.LifeCycle = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetLifeCycleType(v int64) *GetFootprintListResponseBodyDataRecords {
+	s.LifeCycleType = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetName(v string) *GetFootprintListResponseBodyDataRecords {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetType(v string) *GetFootprintListResponseBodyDataRecords {
+	s.Type = &v
+	return s
+}
+
+func (s *GetFootprintListResponseBodyDataRecords) SetUnit(v string) *GetFootprintListResponseBodyDataRecords {
+	s.Unit = &v
+	return s
+}
+
+type GetFootprintListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFootprintListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFootprintListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFootprintListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFootprintListResponse) SetHeaders(v map[string]*string) *GetFootprintListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFootprintListResponse) SetStatusCode(v int32) *GetFootprintListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFootprintListResponse) SetBody(v *GetFootprintListResponseBody) *GetFootprintListResponse {
+	s.Body = v
+	return s
+}
+
+type GetGasConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Module code.
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// Module type.
+	ModuleType *int32 `json:"moduleType,omitempty" xml:"moduleType,omitempty"`
+	// Year
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetGasConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGasConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGasConstituteRequest) SetCode(v string) *GetGasConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGasConstituteRequest) SetModuleCode(v string) *GetGasConstituteRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetGasConstituteRequest) SetModuleType(v int32) *GetGasConstituteRequest {
+	s.ModuleType = &v
+	return s
+}
+
+func (s *GetGasConstituteRequest) SetYear(v int32) *GetGasConstituteRequest {
+	s.Year = &v
+	return s
+}
+
+type GetGasConstituteResponseBody struct {
+	// The data returned.
+	Data []*GetGasConstituteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetGasConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGasConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGasConstituteResponseBody) SetData(v []*GetGasConstituteResponseBodyData) *GetGasConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGasConstituteResponseBody) SetRequestId(v string) *GetGasConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGasConstituteResponseBodyData struct {
+	// Carbon emissions
+	CarbonEmissionData *float64 `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
+	// Gas emissions
+	GasEmissionData *float64 `json:"gasEmissionData,omitempty" xml:"gasEmissionData,omitempty"`
+	// Name of gas
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Proportion of carbon emissions. Example value: 0.5 (50%)
+	Ratio *float64 `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	// Gas Type
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetGasConstituteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGasConstituteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGasConstituteResponseBodyData) SetCarbonEmissionData(v float64) *GetGasConstituteResponseBodyData {
+	s.CarbonEmissionData = &v
+	return s
+}
+
+func (s *GetGasConstituteResponseBodyData) SetGasEmissionData(v float64) *GetGasConstituteResponseBodyData {
+	s.GasEmissionData = &v
+	return s
+}
+
+func (s *GetGasConstituteResponseBodyData) SetName(v string) *GetGasConstituteResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGasConstituteResponseBodyData) SetRatio(v float64) *GetGasConstituteResponseBodyData {
+	s.Ratio = &v
+	return s
+}
+
+func (s *GetGasConstituteResponseBodyData) SetType(v int32) *GetGasConstituteResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetGasConstituteResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGasConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGasConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGasConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGasConstituteResponse) SetHeaders(v map[string]*string) *GetGasConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGasConstituteResponse) SetStatusCode(v int32) *GetGasConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGasConstituteResponse) SetBody(v *GetGasConstituteResponseBody) *GetGasConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetGwpBenchmarkListRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetGwpBenchmarkListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkListRequest) SetCode(v string) *GetGwpBenchmarkListRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListRequest) SetProductId(v int64) *GetGwpBenchmarkListRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListRequest) SetProductType(v int64) *GetGwpBenchmarkListRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetGwpBenchmarkListResponseBody struct {
+	// The response parameters.
+	Data *GetGwpBenchmarkListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetGwpBenchmarkListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkListResponseBody) SetData(v *GetGwpBenchmarkListResponseBodyData) *GetGwpBenchmarkListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBody) SetRequestId(v string) *GetGwpBenchmarkListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGwpBenchmarkListResponseBodyData struct {
+	// Active carbon reduction ranking list.
+	Items []*GetGwpBenchmarkListResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// unit of emissions. The default value is `kgCO₂e/productUnit`.
+	// The `productUnit` is the unit selected for the product. The unit value is changed to `tCO₂e/productUnit` or `gCO₂e/productUnit`. For more information, see the remarks in the quantity column.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpBenchmarkListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkListResponseBodyData) SetItems(v []*GetGwpBenchmarkListResponseBodyDataItems) *GetGwpBenchmarkListResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyData) SetUnit(v string) *GetGwpBenchmarkListResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpBenchmarkListResponseBodyDataItems struct {
+	// `activeReduction=benchmarkEmission-carbonEmission` Generally, baseline emissions are greater than inventory emissions. Maintain four decimal places. Unit pertains to a higher-level unit.
+	ActiveReduction *float64 `json:"activeReduction,omitempty" xml:"activeReduction,omitempty"`
+	// Benchmark emissions. Maintain four decimal places. Unit pertains to a higher-level unit.
+	BenchmarkEmission *float64 `json:"benchmarkEmission,omitempty" xml:"benchmarkEmission,omitempty"`
+	// Benchmark name
+	BenchmarkName *string `json:"benchmarkName,omitempty" xml:"benchmarkName,omitempty"`
+	// Inventory emissions. Maintain four decimal places. Unit pertains to a higher-level unit.
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	// name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Unused temporarily.
+	Percent *string `json:"percent,omitempty" xml:"percent,omitempty"`
+}
+
+func (s GetGwpBenchmarkListResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkListResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetActiveReduction(v float64) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.ActiveReduction = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetBenchmarkEmission(v float64) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.BenchmarkEmission = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetBenchmarkName(v string) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.BenchmarkName = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetCarbonEmission(v float64) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetName(v string) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponseBodyDataItems) SetPercent(v string) *GetGwpBenchmarkListResponseBodyDataItems {
+	s.Percent = &v
+	return s
+}
+
+type GetGwpBenchmarkListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGwpBenchmarkListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGwpBenchmarkListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkListResponse) SetHeaders(v map[string]*string) *GetGwpBenchmarkListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponse) SetStatusCode(v int32) *GetGwpBenchmarkListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkListResponse) SetBody(v *GetGwpBenchmarkListResponseBody) *GetGwpBenchmarkListResponse {
+	s.Body = v
+	return s
+}
+
+type GetGwpBenchmarkSummaryRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetGwpBenchmarkSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkSummaryRequest) SetCode(v string) *GetGwpBenchmarkSummaryRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryRequest) SetProductId(v int64) *GetGwpBenchmarkSummaryRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryRequest) SetProductType(v int64) *GetGwpBenchmarkSummaryRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetGwpBenchmarkSummaryResponseBody struct {
+	// The response parameters.
+	Data *GetGwpBenchmarkSummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetGwpBenchmarkSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBody) SetData(v *GetGwpBenchmarkSummaryResponseBodyData) *GetGwpBenchmarkSummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBody) SetRequestId(v string) *GetGwpBenchmarkSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGwpBenchmarkSummaryResponseBodyData struct {
+	// Carbon Reduction Contribution Top4 Details.
+	Items []*GetGwpBenchmarkSummaryResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Emission amount is presented with four decimal places. Normally, modeling doesn\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// Unit of emissions. The default value is `kgCO₂e/productUnit.` `productUnit` is the unit selected for the product. The unit value is changed to `tCO₂e/productUnit` or `gCO₂e/productUnit`. For more information, see the remarks in the quantity column.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpBenchmarkSummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkSummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyData) SetItems(v []*GetGwpBenchmarkSummaryResponseBodyDataItems) *GetGwpBenchmarkSummaryResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyData) SetQuantity(v int64) *GetGwpBenchmarkSummaryResponseBodyData {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyData) SetUnit(v string) *GetGwpBenchmarkSummaryResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpBenchmarkSummaryResponseBodyDataItems struct {
+	// Name of carbon reduction details.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Percentage of emissions. The value is of the string type. Two decimal places are reserved for numbers. For example, "99.01" indicates the 99.01% of this type of emissions to the total emissions. Note that the returned string itself does not contain a percent sign.
+	Percent *string `json:"percent,omitempty" xml:"percent,omitempty"`
+	// Emission amount is presented with four decimal places. Normally, modeling doesn\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
+	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// Unit of emissions. The default value is `kgCO₂e/productUnit.` `productUnit` is the unit selected for the product. The unit value is changed to `tCO₂e/productUnit` or `gCO₂e/productUnit`. For more information, see the remarks in the quantity column.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpBenchmarkSummaryResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkSummaryResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyDataItems) SetName(v string) *GetGwpBenchmarkSummaryResponseBodyDataItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyDataItems) SetPercent(v string) *GetGwpBenchmarkSummaryResponseBodyDataItems {
+	s.Percent = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyDataItems) SetQuantity(v int64) *GetGwpBenchmarkSummaryResponseBodyDataItems {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponseBodyDataItems) SetUnit(v string) *GetGwpBenchmarkSummaryResponseBodyDataItems {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpBenchmarkSummaryResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGwpBenchmarkSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGwpBenchmarkSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpBenchmarkSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpBenchmarkSummaryResponse) SetHeaders(v map[string]*string) *GetGwpBenchmarkSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponse) SetStatusCode(v int32) *GetGwpBenchmarkSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGwpBenchmarkSummaryResponse) SetBody(v *GetGwpBenchmarkSummaryResponseBody) *GetGwpBenchmarkSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type GetGwpInventoryConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetGwpInventoryConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventoryConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventoryConstituteRequest) SetCode(v string) *GetGwpInventoryConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteRequest) SetProductId(v int64) *GetGwpInventoryConstituteRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteRequest) SetProductType(v int64) *GetGwpInventoryConstituteRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetGwpInventoryConstituteResponseBody struct {
+	// The response parameters.
+	Data *GetGwpInventoryConstituteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetGwpInventoryConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventoryConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventoryConstituteResponseBody) SetData(v *GetGwpInventoryConstituteResponseBodyData) *GetGwpInventoryConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponseBody) SetRequestId(v string) *GetGwpInventoryConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGwpInventoryConstituteResponseBodyData struct {
+	// Aggregated by resource type of an inventory.
+	ByResourceType []*GwpInventoryConstitute `json:"byResourceType,omitempty" xml:"byResourceType,omitempty" type:"Repeated"`
+	// Emission quantity: may be positive, negative, or 0. To ensure the calculation accuracy, 24 decimal places are reserved for the calculation process. We recommend that you intercept data based on your business requirements.
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	// Organized by hierarchy from high to low, according to the flow-> process-> inventory hierarchy.
+	Items []*GwpInventoryConstitute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Emission Unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpInventoryConstituteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventoryConstituteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventoryConstituteResponseBodyData) SetByResourceType(v []*GwpInventoryConstitute) *GetGwpInventoryConstituteResponseBodyData {
+	s.ByResourceType = v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponseBodyData) SetCarbonEmission(v float64) *GetGwpInventoryConstituteResponseBodyData {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponseBodyData) SetItems(v []*GwpInventoryConstitute) *GetGwpInventoryConstituteResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponseBodyData) SetName(v string) *GetGwpInventoryConstituteResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponseBodyData) SetUnit(v string) *GetGwpInventoryConstituteResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpInventoryConstituteResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGwpInventoryConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGwpInventoryConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventoryConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventoryConstituteResponse) SetHeaders(v map[string]*string) *GetGwpInventoryConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponse) SetStatusCode(v int32) *GetGwpInventoryConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGwpInventoryConstituteResponse) SetBody(v *GetGwpInventoryConstituteResponseBody) *GetGwpInventoryConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetGwpInventorySummaryRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetGwpInventorySummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventorySummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventorySummaryRequest) SetCode(v string) *GetGwpInventorySummaryRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryRequest) SetProductId(v int64) *GetGwpInventorySummaryRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryRequest) SetProductType(v int64) *GetGwpInventorySummaryRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetGwpInventorySummaryResponseBody struct {
+	// The returned results.
+	Data *GetGwpInventorySummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetGwpInventorySummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventorySummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventorySummaryResponseBody) SetData(v *GetGwpInventorySummaryResponseBodyData) *GetGwpInventorySummaryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBody) SetRequestId(v string) *GetGwpInventorySummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGwpInventorySummaryResponseBodyData struct {
+	// Top 4 types of carbon footprint contribution.
+	Items []*GetGwpInventorySummaryResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The emission quantity.
+	Quantity *float64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The time when the result was generated, in the millisecond timestamp format.
+	ResultGenerateTime *int64 `json:"resultGenerateTime,omitempty" xml:"resultGenerateTime,omitempty"`
+	// Emission Unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpInventorySummaryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventorySummaryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventorySummaryResponseBodyData) SetItems(v []*GetGwpInventorySummaryResponseBodyDataItems) *GetGwpInventorySummaryResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyData) SetQuantity(v float64) *GetGwpInventorySummaryResponseBodyData {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyData) SetResultGenerateTime(v int64) *GetGwpInventorySummaryResponseBodyData {
+	s.ResultGenerateTime = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyData) SetUnit(v string) *GetGwpInventorySummaryResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpInventorySummaryResponseBodyDataItems struct {
+	// Inventory resource type name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Percentage.
+	Percent *string `json:"percent,omitempty" xml:"percent,omitempty"`
+	// Quantity.
+	Quantity *float64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetGwpInventorySummaryResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventorySummaryResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventorySummaryResponseBodyDataItems) SetName(v string) *GetGwpInventorySummaryResponseBodyDataItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyDataItems) SetPercent(v string) *GetGwpInventorySummaryResponseBodyDataItems {
+	s.Percent = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyDataItems) SetQuantity(v float64) *GetGwpInventorySummaryResponseBodyDataItems {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponseBodyDataItems) SetUnit(v string) *GetGwpInventorySummaryResponseBodyDataItems {
+	s.Unit = &v
+	return s
+}
+
+type GetGwpInventorySummaryResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGwpInventorySummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGwpInventorySummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGwpInventorySummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGwpInventorySummaryResponse) SetHeaders(v map[string]*string) *GetGwpInventorySummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponse) SetStatusCode(v int32) *GetGwpInventorySummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGwpInventorySummaryResponse) SetBody(v *GetGwpInventorySummaryResponseBody) *GetGwpInventorySummaryResponse {
+	s.Body = v
+	return s
+}
+
+type GetInventoryListRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Type of emission
+	//
+	// >  Valid values: footprint | emission. Meaning: footprint: all inventories are involved in the calculation; emission: only inventories with positive and zero emissions are involved in the calculation, and negative numbers are not involved in the calculation.
+	EmissionType *string `json:"emissionType,omitempty" xml:"emissionType,omitempty"`
+	// Group by
+	//
+	// >  Valid values: resource | process | resourceType | processType. Meaning: resource: aggregation by inventory group, process: aggregation by operation group, resourceType: aggregation by inventory type, processType: aggregation by phase group
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change. For more information, see the type value of the enumerated values.
+	MethodType *string `json:"methodType,omitempty" xml:"methodType,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetInventoryListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryListRequest) SetCode(v string) *GetInventoryListRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInventoryListRequest) SetEmissionType(v string) *GetInventoryListRequest {
+	s.EmissionType = &v
+	return s
+}
+
+func (s *GetInventoryListRequest) SetGroup(v string) *GetInventoryListRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *GetInventoryListRequest) SetMethodType(v string) *GetInventoryListRequest {
+	s.MethodType = &v
+	return s
+}
+
+func (s *GetInventoryListRequest) SetProductId(v int64) *GetInventoryListRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetInventoryListRequest) SetProductType(v int64) *GetInventoryListRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetInventoryListResponseBody struct {
+	// The response parameters.
+	Data *GetInventoryListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetInventoryListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryListResponseBody) SetData(v *GetInventoryListResponseBodyData) *GetInventoryListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInventoryListResponseBody) SetRequestId(v string) *GetInventoryListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetInventoryListResponseBodyData struct {
+	// Inventory detail.
+	Items []*GetInventoryListResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Unit of product.
+	ProductUnit *string `json:"productUnit,omitempty" xml:"productUnit,omitempty"`
+	// Emission Unit: The default value is kgCO₂ /productUnit. productUnit is the unit selected for the product. The unit value is changed to tCO₂ e/productUnit or gCO₂ e/productUnit based on the emission quantity. For more information, see the quantity column.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s GetInventoryListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryListResponseBodyData) SetItems(v []*GetInventoryListResponseBodyDataItems) *GetInventoryListResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *GetInventoryListResponseBodyData) SetProductUnit(v string) *GetInventoryListResponseBodyData {
+	s.ProductUnit = &v
+	return s
+}
+
+func (s *GetInventoryListResponseBodyData) SetUnit(v string) *GetInventoryListResponseBodyData {
+	s.Unit = &v
+	return s
+}
+
+type GetInventoryListResponseBodyDataItems struct {
+	// Emission quantity: may be positive, negative, or 0. To ensure the calculation accuracy, 24 decimal places are reserved for the calculation process. We recommend that you intercept data based on your business requirements.
+	CarbonEmission *float64 `json:"carbonEmission,omitempty" xml:"carbonEmission,omitempty"`
+	// Name
+	//
+	// > The name is related to the request parameters group. Request parameters: resource, return name parameter meaning: list name; request parameters: process, return name parameter meaning: process name; request parameters: resourceType, return name parameter meaning: inventory resource type name; request parameters: processType, return name parameter meaning: flow name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Percentage
+	Percent *string `json:"percent,omitempty" xml:"percent,omitempty"`
+	// Process Name: It is only meaningful when the request parameters group is resource.
+	ProcessName *string `json:"processName,omitempty" xml:"processName,omitempty"`
+}
+
+func (s GetInventoryListResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryListResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryListResponseBodyDataItems) SetCarbonEmission(v float64) *GetInventoryListResponseBodyDataItems {
+	s.CarbonEmission = &v
+	return s
+}
+
+func (s *GetInventoryListResponseBodyDataItems) SetName(v string) *GetInventoryListResponseBodyDataItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetInventoryListResponseBodyDataItems) SetPercent(v string) *GetInventoryListResponseBodyDataItems {
+	s.Percent = &v
+	return s
+}
+
+func (s *GetInventoryListResponseBodyDataItems) SetProcessName(v string) *GetInventoryListResponseBodyDataItems {
+	s.ProcessName = &v
+	return s
+}
+
+type GetInventoryListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInventoryListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetInventoryListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryListResponse) SetHeaders(v map[string]*string) *GetInventoryListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInventoryListResponse) SetStatusCode(v int32) *GetInventoryListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInventoryListResponse) SetBody(v *GetInventoryListResponseBody) *GetInventoryListResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrgAndFactoryResponseBody struct {
-	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Data      []*GetOrgAndFactoryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	HttpCode  *int32                              `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	// The code returned for the request.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// data
+	Data []*GetOrgAndFactoryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetOrgAndFactoryResponseBody) String() string {
@@ -457,10 +4683,14 @@ func (s *GetOrgAndFactoryResponseBody) SetSuccess(v bool) *GetOrgAndFactoryRespo
 }
 
 type GetOrgAndFactoryResponseBodyData struct {
-	AliyunPk         *string                                        `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
-	FactoryList      []*GetOrgAndFactoryResponseBodyDataFactoryList `json:"factoryList,omitempty" xml:"factoryList,omitempty" type:"Repeated"`
-	OrganizationId   *string                                        `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
-	OrganizationName *string                                        `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AliyunPk *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	// The sites.
+	FactoryList []*GetOrgAndFactoryResponseBodyDataFactoryList `json:"factoryList,omitempty" xml:"factoryList,omitempty" type:"Repeated"`
+	// The ID of the organization.
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// The name of the organization.
+	OrganizationName *string `json:"organizationName,omitempty" xml:"organizationName,omitempty"`
 }
 
 func (s GetOrgAndFactoryResponseBodyData) String() string {
@@ -492,7 +4722,9 @@ func (s *GetOrgAndFactoryResponseBodyData) SetOrganizationName(v string) *GetOrg
 }
 
 type GetOrgAndFactoryResponseBodyDataFactoryList struct {
-	FactoryId   *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// The ID of the site.
+	FactoryId *string `json:"factoryId,omitempty" xml:"factoryId,omitempty"`
+	// The name of the site.
 	FactoryName *string `json:"factoryName,omitempty" xml:"factoryName,omitempty"`
 }
 
@@ -515,9 +4747,9 @@ func (s *GetOrgAndFactoryResponseBodyDataFactoryList) SetFactoryName(v string) *
 }
 
 type GetOrgAndFactoryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOrgAndFactoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrgAndFactoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOrgAndFactoryResponse) String() string {
@@ -539,6 +4771,769 @@ func (s *GetOrgAndFactoryResponse) SetStatusCode(v int32) *GetOrgAndFactoryRespo
 }
 
 func (s *GetOrgAndFactoryResponse) SetBody(v *GetOrgAndFactoryResponseBody) *GetOrgAndFactoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetOrgConstituteRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Module code.
+	ModuleCode *string `json:"moduleCode,omitempty" xml:"moduleCode,omitempty"`
+	// Module type.
+	ModuleType *int32 `json:"moduleType,omitempty" xml:"moduleType,omitempty"`
+	// Year.
+	Year *int32 `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s GetOrgConstituteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgConstituteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgConstituteRequest) SetCode(v string) *GetOrgConstituteRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrgConstituteRequest) SetModuleCode(v string) *GetOrgConstituteRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetOrgConstituteRequest) SetModuleType(v int32) *GetOrgConstituteRequest {
+	s.ModuleType = &v
+	return s
+}
+
+func (s *GetOrgConstituteRequest) SetYear(v int32) *GetOrgConstituteRequest {
+	s.Year = &v
+	return s
+}
+
+type GetOrgConstituteResponseBody struct {
+	// The data returned.
+	Data *OrgEmission `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetOrgConstituteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgConstituteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgConstituteResponseBody) SetData(v *OrgEmission) *GetOrgConstituteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOrgConstituteResponseBody) SetRequestId(v string) *GetOrgConstituteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOrgConstituteResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrgConstituteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOrgConstituteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgConstituteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgConstituteResponse) SetHeaders(v map[string]*string) *GetOrgConstituteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrgConstituteResponse) SetStatusCode(v int32) *GetOrgConstituteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrgConstituteResponse) SetBody(v *GetOrgConstituteResponseBody) *GetOrgConstituteResponse {
+	s.Body = v
+	return s
+}
+
+type GetPcrInfoRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetPcrInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPcrInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPcrInfoRequest) SetCode(v string) *GetPcrInfoRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPcrInfoRequest) SetProductId(v string) *GetPcrInfoRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetPcrInfoRequest) SetProductType(v int64) *GetPcrInfoRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetPcrInfoResponseBody struct {
+	// The response parameters.
+	Data *GetPcrInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPcrInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPcrInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPcrInfoResponseBody) SetData(v *GetPcrInfoResponseBodyData) *GetPcrInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPcrInfoResponseBody) SetRequestId(v string) *GetPcrInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPcrInfoResponseBodyData struct {
+	// The timestamp when the report was created. The timestamp is in milliseconds.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Report name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Download url link.
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetPcrInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPcrInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPcrInfoResponseBodyData) SetCreateTime(v string) *GetPcrInfoResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPcrInfoResponseBodyData) SetName(v string) *GetPcrInfoResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPcrInfoResponseBodyData) SetUrl(v string) *GetPcrInfoResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GetPcrInfoResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPcrInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPcrInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPcrInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPcrInfoResponse) SetHeaders(v map[string]*string) *GetPcrInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPcrInfoResponse) SetStatusCode(v int32) *GetPcrInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPcrInfoResponse) SetBody(v *GetPcrInfoResponseBody) *GetPcrInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetReductionProposalRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The type of the data quality evaluation. 1 is DQI and 2 is DQR.
+	DataQualityEvaluationType *int32 `json:"dataQualityEvaluationType,omitempty" xml:"dataQualityEvaluationType,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s GetReductionProposalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReductionProposalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetReductionProposalRequest) SetCode(v string) *GetReductionProposalRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetReductionProposalRequest) SetDataQualityEvaluationType(v int32) *GetReductionProposalRequest {
+	s.DataQualityEvaluationType = &v
+	return s
+}
+
+func (s *GetReductionProposalRequest) SetProductId(v int64) *GetReductionProposalRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetReductionProposalRequest) SetProductType(v int64) *GetReductionProposalRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetReductionProposalResponseBody struct {
+	// The returned data.
+	Data *GetReductionProposalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetReductionProposalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReductionProposalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetReductionProposalResponseBody) SetData(v *GetReductionProposalResponseBodyData) *GetReductionProposalResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetReductionProposalResponseBody) SetRequestId(v string) *GetReductionProposalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetReductionProposalResponseBodyData struct {
+	// Proactive carbon reduction recommendations and advice.
+	Reduction *string `json:"reduction,omitempty" xml:"reduction,omitempty"`
+	// Active carbon reduction assessment.
+	ReductionEvaluation *string `json:"reductionEvaluation,omitempty" xml:"reductionEvaluation,omitempty"`
+}
+
+func (s GetReductionProposalResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReductionProposalResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetReductionProposalResponseBodyData) SetReduction(v string) *GetReductionProposalResponseBodyData {
+	s.Reduction = &v
+	return s
+}
+
+func (s *GetReductionProposalResponseBodyData) SetReductionEvaluation(v string) *GetReductionProposalResponseBodyData {
+	s.ReductionEvaluation = &v
+	return s
+}
+
+type GetReductionProposalResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReductionProposalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetReductionProposalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReductionProposalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetReductionProposalResponse) SetHeaders(v map[string]*string) *GetReductionProposalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetReductionProposalResponse) SetStatusCode(v int32) *GetReductionProposalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetReductionProposalResponse) SetBody(v *GetReductionProposalResponseBody) *GetReductionProposalResponse {
+	s.Body = v
+	return s
+}
+
+type IsCompletedRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The product id.
+	ProductId *int64 `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+	ProductType *int64 `json:"productType,omitempty" xml:"productType,omitempty"`
+}
+
+func (s IsCompletedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsCompletedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IsCompletedRequest) SetCode(v string) *IsCompletedRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *IsCompletedRequest) SetProductId(v int64) *IsCompletedRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *IsCompletedRequest) SetProductType(v int64) *IsCompletedRequest {
+	s.ProductType = &v
+	return s
+}
+
+type IsCompletedResponseBody struct {
+	// The response parameters.
+	Data *IsCompletedResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request. The value is unique for each request. This facilitates subsequent troubleshooting.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s IsCompletedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsCompletedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IsCompletedResponseBody) SetData(v *IsCompletedResponseBodyData) *IsCompletedResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *IsCompletedResponseBody) SetRequestId(v string) *IsCompletedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type IsCompletedResponseBodyData struct {
+	// Modified time in milliseconds, e.g. 1711438780000.
+	ModifiedTime *int64 `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	// The unique key of this generation task.
+	TaskKey *string `json:"taskKey,omitempty" xml:"taskKey,omitempty"`
+	// Unused temporarily.
+	TaskShortResult *string `json:"taskShortResult,omitempty" xml:"taskShortResult,omitempty"`
+	// The status of the report generation task. The possible values are `running`, `success`, and `error`, which mean generating, generating succeeded, and generating failed, respectively. If you encounter a result generation failure, check the model, correct the model, and then generate the result again.
+	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
+}
+
+func (s IsCompletedResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsCompletedResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *IsCompletedResponseBodyData) SetModifiedTime(v int64) *IsCompletedResponseBodyData {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *IsCompletedResponseBodyData) SetTaskKey(v string) *IsCompletedResponseBodyData {
+	s.TaskKey = &v
+	return s
+}
+
+func (s *IsCompletedResponseBodyData) SetTaskShortResult(v string) *IsCompletedResponseBodyData {
+	s.TaskShortResult = &v
+	return s
+}
+
+func (s *IsCompletedResponseBodyData) SetTaskStatus(v string) *IsCompletedResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+type IsCompletedResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IsCompletedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s IsCompletedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsCompletedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IsCompletedResponse) SetHeaders(v map[string]*string) *IsCompletedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IsCompletedResponse) SetStatusCode(v int32) *IsCompletedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IsCompletedResponse) SetBody(v *IsCompletedResponseBody) *IsCompletedResponse {
+	s.Body = v
+	return s
+}
+
+type PushDeviceDataRequest struct {
+	// The type of the device. [View device type definitions](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/Deviceappendixes-en.pdf)
+	DeviceType *string `json:"deviceType,omitempty" xml:"deviceType,omitempty"`
+	// List of devices to which data is pushed.
+	Devices []*PushDeviceDataRequestDevices `json:"devices,omitempty" xml:"devices,omitempty" type:"Repeated"`
+}
+
+func (s PushDeviceDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushDeviceDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushDeviceDataRequest) SetDeviceType(v string) *PushDeviceDataRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *PushDeviceDataRequest) SetDevices(v []*PushDeviceDataRequestDevices) *PushDeviceDataRequest {
+	s.Devices = v
+	return s
+}
+
+type PushDeviceDataRequestDevices struct {
+	// Measuring point information To avoid accuracy problems, the measurement point data is uniformly transmitted to the string. The function of missing required fields cannot be used normally. Some functions may be affected due to the lack of recommend fields. For details, please refer to the notes of equipment measuring points in the appendix. [Reference Point Definition](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/Deviceappendixes-en.pdf
+	// )
+	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// If the deviceType parameter is set to 12, 13, or 17, you must set the system_id parameter. The field name is still device_id. If the deviceType parameter is set to 15 or 16, no Other situations will be transmitted.
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// Data generation time of measuring point.
+	RecordTime *string `json:"recordTime,omitempty" xml:"recordTime,omitempty"`
+}
+
+func (s PushDeviceDataRequestDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushDeviceDataRequestDevices) GoString() string {
+	return s.String()
+}
+
+func (s *PushDeviceDataRequestDevices) SetData(v map[string]interface{}) *PushDeviceDataRequestDevices {
+	s.Data = v
+	return s
+}
+
+func (s *PushDeviceDataRequestDevices) SetDeviceId(v string) *PushDeviceDataRequestDevices {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *PushDeviceDataRequestDevices) SetRecordTime(v string) *PushDeviceDataRequestDevices {
+	s.RecordTime = &v
+	return s
+}
+
+type PushDeviceDataResponseBody struct {
+	// Whether the data is pushed successfully. Success is returned.
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s PushDeviceDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushDeviceDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushDeviceDataResponseBody) SetData(v string) *PushDeviceDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PushDeviceDataResponseBody) SetRequestId(v string) *PushDeviceDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PushDeviceDataResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushDeviceDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PushDeviceDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushDeviceDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushDeviceDataResponse) SetHeaders(v map[string]*string) *PushDeviceDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushDeviceDataResponse) SetStatusCode(v int32) *PushDeviceDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushDeviceDataResponse) SetBody(v *PushDeviceDataResponseBody) *PushDeviceDataResponse {
+	s.Body = v
+	return s
+}
+
+type PushItemDataRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Push data list.
+	Items *PushItemDataRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Struct"`
+	// The year of the data created.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s PushItemDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushItemDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushItemDataRequest) SetCode(v string) *PushItemDataRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *PushItemDataRequest) SetItems(v *PushItemDataRequestItems) *PushItemDataRequest {
+	s.Items = v
+	return s
+}
+
+func (s *PushItemDataRequest) SetYear(v string) *PushItemDataRequest {
+	s.Year = &v
+	return s
+}
+
+type PushItemDataRequestItems struct {
+	// The data item code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The month.
+	Month *string `json:"month,omitempty" xml:"month,omitempty"`
+	// The value of the data item.
+	Value *float64 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s PushItemDataRequestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushItemDataRequestItems) GoString() string {
+	return s.String()
+}
+
+func (s *PushItemDataRequestItems) SetCode(v string) *PushItemDataRequestItems {
+	s.Code = &v
+	return s
+}
+
+func (s *PushItemDataRequestItems) SetMonth(v string) *PushItemDataRequestItems {
+	s.Month = &v
+	return s
+}
+
+func (s *PushItemDataRequestItems) SetValue(v float64) *PushItemDataRequestItems {
+	s.Value = &v
+	return s
+}
+
+type PushItemDataResponseBody struct {
+	// Whether the data is pushed successfully.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s PushItemDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushItemDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushItemDataResponseBody) SetData(v bool) *PushItemDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PushItemDataResponseBody) SetRequestId(v string) *PushItemDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PushItemDataResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushItemDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PushItemDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushItemDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushItemDataResponse) SetHeaders(v map[string]*string) *PushItemDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushItemDataResponse) SetStatusCode(v int32) *PushItemDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushItemDataResponse) SetBody(v *PushItemDataResponseBody) *PushItemDataResponse {
+	s.Body = v
+	return s
+}
+
+type RecalculateCarbonEmissionRequest struct {
+	// The enterprise code.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Year of inventory.
+	Year *string `json:"year,omitempty" xml:"year,omitempty"`
+}
+
+func (s RecalculateCarbonEmissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecalculateCarbonEmissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecalculateCarbonEmissionRequest) SetCode(v string) *RecalculateCarbonEmissionRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *RecalculateCarbonEmissionRequest) SetYear(v string) *RecalculateCarbonEmissionRequest {
+	s.Year = &v
+	return s
+}
+
+type RecalculateCarbonEmissionResponseBody struct {
+	// The returned data. A value of true indicates that the request is successful. A value of false indicates that the request fails.
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RecalculateCarbonEmissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecalculateCarbonEmissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecalculateCarbonEmissionResponseBody) SetData(v bool) *RecalculateCarbonEmissionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecalculateCarbonEmissionResponseBody) SetRequestId(v string) *RecalculateCarbonEmissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecalculateCarbonEmissionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecalculateCarbonEmissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecalculateCarbonEmissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecalculateCarbonEmissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecalculateCarbonEmissionResponse) SetHeaders(v map[string]*string) *RecalculateCarbonEmissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecalculateCarbonEmissionResponse) SetStatusCode(v int32) *RecalculateCarbonEmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecalculateCarbonEmissionResponse) SetBody(v *RecalculateCarbonEmissionResponseBody) *RecalculateCarbonEmissionResponse {
 	s.Body = v
 	return s
 }
@@ -590,6 +5585,285 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) GenerateResultWithOptions(request *GenerateResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateResult"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/generate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateResult(request *GenerateResultRequest) (_result *GenerateResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateResultResponse{}
+	_body, _err := client.GenerateResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAreaElecConstituteWithOptions(request *GetAreaElecConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAreaElecConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAreaElecConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/elec/area"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAreaElecConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAreaElecConstitute(request *GetAreaElecConstituteRequest) (_result *GetAreaElecConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAreaElecConstituteResponse{}
+	_body, _err := client.GetAreaElecConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCarbonEmissionTrendWithOptions(request *GetCarbonEmissionTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCarbonEmissionTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		body["moduleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleType)) {
+		body["moduleType"] = request.ModuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrendType)) {
+		body["trendType"] = request.TrendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YearList)) {
+		body["yearList"] = request.YearList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCarbonEmissionTrend"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/trend"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCarbonEmissionTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCarbonEmissionTrend(request *GetCarbonEmissionTrendRequest) (_result *GetCarbonEmissionTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCarbonEmissionTrendResponse{}
+	_body, _err := client.GetCarbonEmissionTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataItemListWithOptions(request *GetDataItemListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataItemListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataItemList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/data/item/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataItemList(request *GetDataItemListRequest) (_result *GetDataItemListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDataItemListResponse{}
+	_body, _err := client.GetDataItemListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataQualityAnalysisWithOptions(request *GetDataQualityAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataQualityAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataQualityEvaluationType)) {
+		body["dataQualityEvaluationType"] = request.DataQualityEvaluationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataQualityAnalysis"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/data/quality/analysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataQualityAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataQualityAnalysis(request *GetDataQualityAnalysisRequest) (_result *GetDataQualityAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDataQualityAnalysisResponse{}
+	_body, _err := client.GetDataQualityAnalysisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+ * *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+ *
+ * @param request GetDeviceInfoRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDeviceInfoResponse
+ */
 func (client *Client) GetDeviceInfoWithOptions(request *GetDeviceInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -632,6 +5906,13 @@ func (client *Client) GetDeviceInfoWithOptions(request *GetDeviceInfoRequest, he
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+ * *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+ *
+ * @param request GetDeviceInfoRequest
+ * @return GetDeviceInfoResponse
+ */
 func (client *Client) GetDeviceInfo(request *GetDeviceInfoRequest) (_result *GetDeviceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -644,6 +5925,15 @@ func (client *Client) GetDeviceInfo(request *GetDeviceInfoRequest) (_result *Get
 	return _result, _err
 }
 
+/**
+ * *   You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+ * *   Virtual meters at the site are not returned.
+ *
+ * @param request GetDeviceListRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDeviceListResponse
+ */
 func (client *Client) GetDeviceListWithOptions(request *GetDeviceListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeviceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -678,6 +5968,13 @@ func (client *Client) GetDeviceListWithOptions(request *GetDeviceListRequest, he
 	return _result, _err
 }
 
+/**
+ * *   You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+ * *   Virtual meters at the site are not returned.
+ *
+ * @param request GetDeviceListRequest
+ * @return GetDeviceListResponse
+ */
 func (client *Client) GetDeviceList(request *GetDeviceListRequest) (_result *GetDeviceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -690,6 +5987,737 @@ func (client *Client) GetDeviceList(request *GetDeviceListRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetElecConstituteWithOptions(request *GetElecConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetElecConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetElecConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/elec/constitute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetElecConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetElecConstitute(request *GetElecConstituteRequest) (_result *GetElecConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetElecConstituteResponse{}
+	_body, _err := client.GetElecConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetElecTrendWithOptions(request *GetElecTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetElecTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YearList)) {
+		body["yearList"] = request.YearList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetElecTrend"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/elec/trend"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetElecTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetElecTrend(request *GetElecTrendRequest) (_result *GetElecTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetElecTrendResponse{}
+	_body, _err := client.GetElecTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEmissionSourceConstituteWithOptions(request *GetEmissionSourceConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEmissionSourceConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		body["moduleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleType)) {
+		body["moduleType"] = request.ModuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmissionSourceConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/constitute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEmissionSourceConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEmissionSourceConstitute(request *GetEmissionSourceConstituteRequest) (_result *GetEmissionSourceConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEmissionSourceConstituteResponse{}
+	_body, _err := client.GetEmissionSourceConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEmissionSummaryWithOptions(request *GetEmissionSummaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEmissionSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		body["moduleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleType)) {
+		body["moduleType"] = request.ModuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmissionSummary"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/summary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEmissionSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEmissionSummary(request *GetEmissionSummaryRequest) (_result *GetEmissionSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEmissionSummaryResponse{}
+	_body, _err := client.GetEmissionSummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEpdInventoryConstituteWithOptions(request *GetEpdInventoryConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEpdInventoryConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEpdInventoryConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/epd/inventory/constitute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEpdInventoryConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEpdInventoryConstitute(request *GetEpdInventoryConstituteRequest) (_result *GetEpdInventoryConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEpdInventoryConstituteResponse{}
+	_body, _err := client.GetEpdInventoryConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEpdSummaryWithOptions(request *GetEpdSummaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEpdSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEpdSummary"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/epd/summary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEpdSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEpdSummary(request *GetEpdSummaryRequest) (_result *GetEpdSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEpdSummaryResponse{}
+	_body, _err := client.GetEpdSummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFootprintListWithOptions(request *GetFootprintListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFootprintListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFootprintList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/product/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFootprintListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFootprintList(request *GetFootprintListRequest) (_result *GetFootprintListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFootprintListResponse{}
+	_body, _err := client.GetFootprintListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGasConstituteWithOptions(request *GetGasConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGasConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		body["moduleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleType)) {
+		body["moduleType"] = request.ModuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGasConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/gas/constitute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGasConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGasConstitute(request *GetGasConstituteRequest) (_result *GetGasConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGasConstituteResponse{}
+	_body, _err := client.GetGasConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGwpBenchmarkListWithOptions(request *GetGwpBenchmarkListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGwpBenchmarkListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGwpBenchmarkList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/gwp/benchmark/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGwpBenchmarkListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGwpBenchmarkList(request *GetGwpBenchmarkListRequest) (_result *GetGwpBenchmarkListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGwpBenchmarkListResponse{}
+	_body, _err := client.GetGwpBenchmarkListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGwpBenchmarkSummaryWithOptions(request *GetGwpBenchmarkSummaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGwpBenchmarkSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGwpBenchmarkSummary"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/gwp/benchmark/summary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGwpBenchmarkSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGwpBenchmarkSummary(request *GetGwpBenchmarkSummaryRequest) (_result *GetGwpBenchmarkSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGwpBenchmarkSummaryResponse{}
+	_body, _err := client.GetGwpBenchmarkSummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGwpInventoryConstituteWithOptions(request *GetGwpInventoryConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGwpInventoryConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGwpInventoryConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/gwp/inventory/constitute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGwpInventoryConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGwpInventoryConstitute(request *GetGwpInventoryConstituteRequest) (_result *GetGwpInventoryConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGwpInventoryConstituteResponse{}
+	_body, _err := client.GetGwpInventoryConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGwpInventorySummaryWithOptions(request *GetGwpInventorySummaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGwpInventorySummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGwpInventorySummary"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/gwp/inventory/summary"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGwpInventorySummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGwpInventorySummary(request *GetGwpInventorySummaryRequest) (_result *GetGwpInventorySummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGwpInventorySummaryResponse{}
+	_body, _err := client.GetGwpInventorySummaryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInventoryListWithOptions(request *GetInventoryListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInventoryListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmissionType)) {
+		body["emissionType"] = request.EmissionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		body["group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MethodType)) {
+		body["methodType"] = request.MethodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInventoryList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/inventory/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInventoryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInventoryList(request *GetInventoryListRequest) (_result *GetInventoryListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInventoryListResponse{}
+	_body, _err := client.GetInventoryListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
+ * *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
+ * *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetOrgAndFactoryResponse
+ */
 func (client *Client) GetOrgAndFactoryWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrgAndFactoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -714,11 +6742,410 @@ func (client *Client) GetOrgAndFactoryWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
+/**
+ * *   You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
+ * *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
+ * *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+ *
+ * @return GetOrgAndFactoryResponse
+ */
 func (client *Client) GetOrgAndFactory() (_result *GetOrgAndFactoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetOrgAndFactoryResponse{}
 	_body, _err := client.GetOrgAndFactoryWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrgConstituteWithOptions(request *GetOrgConstituteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrgConstituteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		body["moduleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleType)) {
+		body["moduleType"] = request.ModuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrgConstitute"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/analysis/org"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrgConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrgConstitute(request *GetOrgConstituteRequest) (_result *GetOrgConstituteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetOrgConstituteResponse{}
+	_body, _err := client.GetOrgConstituteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPcrInfoWithOptions(request *GetPcrInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPcrInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPcrInfo"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/pcr/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPcrInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPcrInfo(request *GetPcrInfoRequest) (_result *GetPcrInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPcrInfoResponse{}
+	_body, _err := client.GetPcrInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetReductionProposalWithOptions(request *GetReductionProposalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetReductionProposalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataQualityEvaluationType)) {
+		body["dataQualityEvaluationType"] = request.DataQualityEvaluationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetReductionProposal"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/reduction/proposal"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetReductionProposalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetReductionProposal(request *GetReductionProposalRequest) (_result *GetReductionProposalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetReductionProposalResponse{}
+	_body, _err := client.GetReductionProposalWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IsCompletedWithOptions(request *IsCompletedRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *IsCompletedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["productId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["productType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IsCompleted"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/footprint/result/completed"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IsCompletedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IsCompleted(request *IsCompletedRequest) (_result *IsCompletedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &IsCompletedResponse{}
+	_body, _err := client.IsCompletedWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PushDeviceDataWithOptions(request *PushDeviceDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushDeviceDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		body["deviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Devices)) {
+		body["devices"] = request.Devices
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushDeviceData"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/data/increment/push"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushDeviceDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushDeviceData(request *PushDeviceDataRequest) (_result *PushDeviceDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushDeviceDataResponse{}
+	_body, _err := client.PushDeviceDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * N/A.
+ *
+ * @param request PushItemDataRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PushItemDataResponse
+ */
+func (client *Client) PushItemDataWithOptions(request *PushItemDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushItemDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Items)) {
+		body["items"] = request.Items
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushItemData"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/data/item/push"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushItemDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * N/A.
+ *
+ * @param request PushItemDataRequest
+ * @return PushItemDataResponse
+ */
+func (client *Client) PushItemData(request *PushItemDataRequest) (_result *PushItemDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushItemDataResponse{}
+	_body, _err := client.PushItemDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecalculateCarbonEmissionWithOptions(request *RecalculateCarbonEmissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecalculateCarbonEmissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		body["year"] = request.Year
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecalculateCarbonEmission"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/carbon/emission/data/item/recalculate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecalculateCarbonEmissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecalculateCarbonEmission(request *RecalculateCarbonEmissionRequest) (_result *RecalculateCarbonEmissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RecalculateCarbonEmissionResponse{}
+	_body, _err := client.RecalculateCarbonEmissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
