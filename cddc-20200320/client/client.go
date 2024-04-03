@@ -21,7 +21,10 @@ type CreateDedicatedHostRequest struct {
 	// >  If you do not specify this parameter, the default value **false** is used.
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken     *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterAlias    *string   `json:"ClusterAlias,omitempty" xml:"ClusterAlias,omitempty"`
+	ClusterServices []*string `json:"ClusterServices,omitempty" xml:"ClusterServices,omitempty" type:"Repeated"`
+	ClusterType     *string   `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
 	//
 	// >  The database engine of the host is the same as the database engine of the cluster.
@@ -53,7 +56,8 @@ type CreateDedicatedHostRequest struct {
 	// *   **AliLinux**: other images.
 	//
 	// >  When you create a host that runs SQL Server, you must specify a host image.
-	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	ImageCategory  *string                                   `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	MyBaseEcsClass *CreateDedicatedHostRequestMyBaseEcsClass `json:"MyBaseEcsClass,omitempty" xml:"MyBaseEcsClass,omitempty" type:"Struct"`
 	// The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
 	//
 	// *   The password must be 8 to 30 characters in length.
@@ -79,6 +83,7 @@ type CreateDedicatedHostRequest struct {
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcID     *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
 	// The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
@@ -98,6 +103,21 @@ func (s *CreateDedicatedHostRequest) SetAutoRenew(v string) *CreateDedicatedHost
 
 func (s *CreateDedicatedHostRequest) SetClientToken(v string) *CreateDedicatedHostRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequest) SetClusterAlias(v string) *CreateDedicatedHostRequest {
+	s.ClusterAlias = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequest) SetClusterServices(v []*string) *CreateDedicatedHostRequest {
+	s.ClusterServices = v
+	return s
+}
+
+func (s *CreateDedicatedHostRequest) SetClusterType(v string) *CreateDedicatedHostRequest {
+	s.ClusterType = &v
 	return s
 }
 
@@ -123,6 +143,11 @@ func (s *CreateDedicatedHostRequest) SetHostStorageType(v string) *CreateDedicat
 
 func (s *CreateDedicatedHostRequest) SetImageCategory(v string) *CreateDedicatedHostRequest {
 	s.ImageCategory = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequest) SetMyBaseEcsClass(v *CreateDedicatedHostRequestMyBaseEcsClass) *CreateDedicatedHostRequest {
+	s.MyBaseEcsClass = v
 	return s
 }
 
@@ -171,12 +196,331 @@ func (s *CreateDedicatedHostRequest) SetVSwitchId(v string) *CreateDedicatedHost
 	return s
 }
 
+func (s *CreateDedicatedHostRequest) SetVpcID(v string) *CreateDedicatedHostRequest {
+	s.VpcID = &v
+	return s
+}
+
 func (s *CreateDedicatedHostRequest) SetZoneId(v string) *CreateDedicatedHostRequest {
 	s.ZoneId = &v
 	return s
 }
 
+type CreateDedicatedHostRequestMyBaseEcsClass struct {
+	Amount                  *int64    `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoRenew               *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType              *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DataDiskCategory        *string   `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskCount           *int64    `json:"DataDiskCount,omitempty" xml:"DataDiskCount,omitempty"`
+	DataDiskSize            *int64    `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DepolymentSetId         *string   `json:"DepolymentSetId,omitempty" xml:"DepolymentSetId,omitempty"`
+	EcsClassCode            *string   `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
+	InternetChargeType      *string   `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int64    `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	KeyPairName             *string   `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	Password                *string   `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodType              *string   `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	SecurityGroupIds        []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SystemDiskCategory      *string   `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskSize          *int64    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Tags                    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s CreateDedicatedHostRequestMyBaseEcsClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedHostRequestMyBaseEcsClass) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetAmount(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetAutoRenew(v bool) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetChargeType(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetDataDiskCategory(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetDataDiskCount(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.DataDiskCount = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetDataDiskSize(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.DataDiskSize = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetDepolymentSetId(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.DepolymentSetId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetEcsClassCode(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.EcsClassCode = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetInternetChargeType(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetInternetMaxBandwidthOut(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetKeyPairName(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetPassword(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetPeriod(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetPeriodType(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetSecurityGroupIds(v []*string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetSystemDiskCategory(v string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetSystemDiskSize(v int64) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateDedicatedHostRequestMyBaseEcsClass) SetTags(v []*string) *CreateDedicatedHostRequestMyBaseEcsClass {
+	s.Tags = v
+	return s
+}
+
+type CreateDedicatedHostShrinkRequest struct {
+	// Specifies whether to enable the auto-renewal feature. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  If you do not specify this parameter, the default value **false** is used.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterAlias          *string `json:"ClusterAlias,omitempty" xml:"ClusterAlias,omitempty"`
+	ClusterServicesShrink *string `json:"ClusterServices,omitempty" xml:"ClusterServices,omitempty"`
+	ClusterType           *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
+	//
+	// >  The database engine of the host is the same as the database engine of the cluster.
+	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	// The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
+	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
+	// The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
+	//
+	// *   512
+	// *   1024
+	// *   1536
+	// *   2048
+	// *   2560
+	// *   3072
+	// *   3584
+	// *   4096
+	HostStorage *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
+	// The disk type of the host. This parameter takes effect only for dedicated clusters that run Tair. Valid values:
+	//
+	// *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+	// *   **cloud_essd0**: PL0 ESSD.
+	HostStorageType *string `json:"HostStorageType,omitempty" xml:"HostStorageType,omitempty"`
+	// The image of the host. Valid values:
+	//
+	// *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+	// *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+	// *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+	// *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+	// *   **AliLinux**: other images.
+	//
+	// >  When you create a host that runs SQL Server, you must specify a host image.
+	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	MyBaseEcsClassShrink *string `json:"MyBaseEcsClass,omitempty" xml:"MyBaseEcsClass,omitempty"`
+	// The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
+	//
+	// *   The password must be 8 to 30 characters in length.
+	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /
+	OsPassword *string `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the host. Set the value to **prepaid**.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// *   **Year**
+	// *   **Month**
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The [region ID](~~198326~~) of the dedicated cluster.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The subscription duration of the host.
+	//
+	// *   Valid values when **Period** is set to **Year**: **1** to **5**.****
+	// *   Valid values when **Period** is set to **Month**: **1** to **9**.
+	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcID     *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
+	// The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDedicatedHostShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDedicatedHostShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetAutoRenew(v string) *CreateDedicatedHostShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetClientToken(v string) *CreateDedicatedHostShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetClusterAlias(v string) *CreateDedicatedHostShrinkRequest {
+	s.ClusterAlias = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetClusterServicesShrink(v string) *CreateDedicatedHostShrinkRequest {
+	s.ClusterServicesShrink = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetClusterType(v string) *CreateDedicatedHostShrinkRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetDedicatedHostGroupId(v string) *CreateDedicatedHostShrinkRequest {
+	s.DedicatedHostGroupId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetHostClass(v string) *CreateDedicatedHostShrinkRequest {
+	s.HostClass = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetHostStorage(v string) *CreateDedicatedHostShrinkRequest {
+	s.HostStorage = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetHostStorageType(v string) *CreateDedicatedHostShrinkRequest {
+	s.HostStorageType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetImageCategory(v string) *CreateDedicatedHostShrinkRequest {
+	s.ImageCategory = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetMyBaseEcsClassShrink(v string) *CreateDedicatedHostShrinkRequest {
+	s.MyBaseEcsClassShrink = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetOsPassword(v string) *CreateDedicatedHostShrinkRequest {
+	s.OsPassword = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetOwnerId(v int64) *CreateDedicatedHostShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetPayType(v string) *CreateDedicatedHostShrinkRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetPeriod(v string) *CreateDedicatedHostShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetRegionId(v string) *CreateDedicatedHostShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetResourceOwnerAccount(v string) *CreateDedicatedHostShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetResourceOwnerId(v int64) *CreateDedicatedHostShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetUsedTime(v string) *CreateDedicatedHostShrinkRequest {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetVSwitchId(v string) *CreateDedicatedHostShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetVpcID(v string) *CreateDedicatedHostShrinkRequest {
+	s.VpcID = &v
+	return s
+}
+
+func (s *CreateDedicatedHostShrinkRequest) SetZoneId(v string) *CreateDedicatedHostShrinkRequest {
+	s.ZoneId = &v
+	return s
+}
+
 type CreateDedicatedHostResponseBody struct {
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The created hosts.
 	DedicateHostList *CreateDedicatedHostResponseBodyDedicateHostList `json:"DedicateHostList,omitempty" xml:"DedicateHostList,omitempty" type:"Struct"`
 	// The order ID.
@@ -191,6 +535,11 @@ func (s CreateDedicatedHostResponseBody) String() string {
 
 func (s CreateDedicatedHostResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDedicatedHostResponseBody) SetClusterName(v string) *CreateDedicatedHostResponseBody {
+	s.ClusterName = &v
+	return s
 }
 
 func (s *CreateDedicatedHostResponseBody) SetDedicateHostList(v *CreateDedicatedHostResponseBodyDedicateHostList) *CreateDedicatedHostResponseBody {
@@ -244,9 +593,9 @@ func (s *CreateDedicatedHostResponseBodyDedicateHostListDedicateHostList) SetDed
 }
 
 type CreateDedicatedHostResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDedicatedHostResponse) String() string {
@@ -384,9 +733,9 @@ func (s *CreateDedicatedHostAccountResponseBody) SetRequestId(v string) *CreateD
 }
 
 type CreateDedicatedHostAccountResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDedicatedHostAccountResponse) String() string {
@@ -566,9 +915,9 @@ func (s *CreateDedicatedHostGroupResponseBody) SetRequestId(v string) *CreateDed
 }
 
 type CreateDedicatedHostGroupResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDedicatedHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDedicatedHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDedicatedHostGroupResponse) String() string {
@@ -1200,9 +1549,9 @@ func (s *CreateMyBaseResponseBodyOrderListOrderList) SetOrderId(v string) *Creat
 }
 
 type CreateMyBaseResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateMyBaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMyBaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateMyBaseResponse) String() string {
@@ -1304,9 +1653,9 @@ func (s *DeleteDedicatedHostAccountResponseBody) SetRequestId(v string) *DeleteD
 }
 
 type DeleteDedicatedHostAccountResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDedicatedHostAccountResponse) String() string {
@@ -1397,9 +1746,9 @@ func (s *DeleteDedicatedHostGroupResponseBody) SetRequestId(v string) *DeleteDed
 }
 
 type DeleteDedicatedHostGroupResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDedicatedHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDedicatedHostGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDedicatedHostGroupResponse) String() string {
@@ -1774,9 +2123,9 @@ func (s *DescribeDedicatedHostAttributeResponseBody) SetZoneId(v string) *Descri
 }
 
 type DescribeDedicatedHostAttributeResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedHostAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedHostAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedHostAttributeResponse) String() string {
@@ -1991,9 +2340,9 @@ func (s *DescribeDedicatedHostDisksResponseBodyDisks) SetZoneId(v string) *Descr
 }
 
 type DescribeDedicatedHostDisksResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedHostDisksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedHostDisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedHostDisksResponse) String() string {
@@ -2386,9 +2735,9 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHost
 }
 
 type DescribeDedicatedHostGroupsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedHostGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedHostGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedHostGroupsResponse) String() string {
@@ -2923,9 +3272,9 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) SetZone
 }
 
 type DescribeDedicatedHostsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDedicatedHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDedicatedHostsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponse) String() string {
@@ -3196,9 +3545,9 @@ func (s *DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems) SetStorageI
 }
 
 type DescribeHostEcsLevelInfoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHostEcsLevelInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHostEcsLevelInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHostEcsLevelInfoResponse) String() string {
@@ -3303,9 +3652,9 @@ func (s *DescribeHostWebShellResponseBody) SetRequestId(v string) *DescribeHostW
 }
 
 type DescribeHostWebShellResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHostWebShellResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHostWebShellResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHostWebShellResponse) String() string {
@@ -3417,9 +3766,9 @@ func (s *DescribeRegionsResponseBodyRegionsRDSRegion) SetZoneId(v string) *Descr
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -3608,9 +3957,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -3715,9 +4064,9 @@ func (s *ModifyDedicatedHostAccountResponseBody) SetRequestId(v string) *ModifyD
 }
 
 type ModifyDedicatedHostAccountResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedHostAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedHostAccountResponse) String() string {
@@ -3822,9 +4171,9 @@ func (s *ModifyDedicatedHostAttributeResponseBody) SetRequestId(v string) *Modif
 }
 
 type ModifyDedicatedHostAttributeResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedHostAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedHostAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedHostAttributeResponse) String() string {
@@ -3954,9 +4303,9 @@ func (s *ModifyDedicatedHostClassResponseBody) SetTaskId(v string) *ModifyDedica
 }
 
 type ModifyDedicatedHostClassResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedHostClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedHostClassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedHostClassResponse) String() string {
@@ -4110,9 +4459,9 @@ func (s *ModifyDedicatedHostGroupAttributeResponseBody) SetRequestId(v string) *
 }
 
 type ModifyDedicatedHostGroupAttributeResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedHostGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedHostGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedHostGroupAttributeResponse) String() string {
@@ -4220,9 +4569,9 @@ func (s *ModifyDedicatedHostPasswordResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyDedicatedHostPasswordResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDedicatedHostPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDedicatedHostPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDedicatedHostPasswordResponse) String() string {
@@ -4398,9 +4747,9 @@ func (s *QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos) SetVpc
 }
 
 type QueryHostBaseInfoByInstanceResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryHostBaseInfoByInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryHostBaseInfoByInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryHostBaseInfoByInstanceResponse) String() string {
@@ -4657,9 +5006,9 @@ func (s *QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfosPerfInf
 }
 
 type QueryHostInstanceConsoleInfoResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryHostInstanceConsoleInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryHostInstanceConsoleInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryHostInstanceConsoleInfoResponse) String() string {
@@ -4771,9 +5120,9 @@ func (s *ReplaceDedicatedHostResponseBody) SetTaskId(v int32) *ReplaceDedicatedH
 }
 
 type ReplaceDedicatedHostResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReplaceDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReplaceDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReplaceDedicatedHostResponse) String() string {
@@ -4897,9 +5246,9 @@ func (s *RestartDedicatedHostResponseBody) SetTaskId(v int32) *RestartDedicatedH
 }
 
 type RestartDedicatedHostResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestartDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartDedicatedHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestartDedicatedHostResponse) String() string {
@@ -5040,9 +5389,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -5156,9 +5505,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -5231,11 +5580,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateDedicatedHostWithOptions(request *CreateDedicatedHostRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedHostResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDedicatedHostWithOptions(tmpReq *CreateDedicatedHostRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedHostResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDedicatedHostShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterServices)) {
+		request.ClusterServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterServices, tea.String("ClusterServices"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MyBaseEcsClass)) {
+		request.MyBaseEcsClassShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MyBaseEcsClass, tea.String("MyBaseEcsClass"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
@@ -5243,6 +5602,18 @@ func (client *Client) CreateDedicatedHostWithOptions(request *CreateDedicatedHos
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterAlias)) {
+		query["ClusterAlias"] = request.ClusterAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterServicesShrink)) {
+		query["ClusterServices"] = request.ClusterServicesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DedicatedHostGroupId)) {
@@ -5263,6 +5634,10 @@ func (client *Client) CreateDedicatedHostWithOptions(request *CreateDedicatedHos
 
 	if !tea.BoolValue(util.IsUnset(request.ImageCategory)) {
 		query["ImageCategory"] = request.ImageCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MyBaseEcsClassShrink)) {
+		query["MyBaseEcsClass"] = request.MyBaseEcsClassShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OsPassword)) {
@@ -5299,6 +5674,10 @@ func (client *Client) CreateDedicatedHostWithOptions(request *CreateDedicatedHos
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcID)) {
+		query["VpcID"] = request.VpcID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
