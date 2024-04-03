@@ -241,7 +241,9 @@ type CreateAclRequest struct {
 	// *   **Read**: data reads
 	// *   **Describe**: reads of transaction IDs****
 	// *   **IdempotentWrite**: idempotent data writes to clusters****
-	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclOperationType  *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclOperationTypes *string `json:"AclOperationTypes,omitempty" xml:"AclOperationTypes,omitempty"`
+	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
 	// The name or ID of the resource.
 	//
 	// *   The value can be the name of a topic, consumer group, or cluster, or the ID of a transaction.
@@ -259,6 +261,7 @@ type CreateAclRequest struct {
 	// *   **Cluster**
 	// *   **TransactionalId**: transaction
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	Host            *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID.
@@ -282,6 +285,16 @@ func (s *CreateAclRequest) SetAclOperationType(v string) *CreateAclRequest {
 	return s
 }
 
+func (s *CreateAclRequest) SetAclOperationTypes(v string) *CreateAclRequest {
+	s.AclOperationTypes = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetAclPermissionType(v string) *CreateAclRequest {
+	s.AclPermissionType = &v
+	return s
+}
+
 func (s *CreateAclRequest) SetAclResourceName(v string) *CreateAclRequest {
 	s.AclResourceName = &v
 	return s
@@ -294,6 +307,11 @@ func (s *CreateAclRequest) SetAclResourcePatternType(v string) *CreateAclRequest
 
 func (s *CreateAclRequest) SetAclResourceType(v string) *CreateAclRequest {
 	s.AclResourceType = &v
+	return s
+}
+
+func (s *CreateAclRequest) SetHost(v string) *CreateAclRequest {
+	s.Host = &v
 	return s
 }
 
@@ -1323,6 +1341,7 @@ func (s *CreatePrePayOrderResponse) SetBody(v *CreatePrePayOrderResponseBody) *C
 type CreateSaslUserRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Mechanism  *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
 	// The password of the SASL user.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The region ID.
@@ -1348,6 +1367,11 @@ func (s CreateSaslUserRequest) GoString() string {
 
 func (s *CreateSaslUserRequest) SetInstanceId(v string) *CreateSaslUserRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSaslUserRequest) SetMechanism(v string) *CreateSaslUserRequest {
+	s.Mechanism = &v
 	return s
 }
 
@@ -1662,7 +1686,9 @@ type DeleteAclRequest struct {
 	//
 	// *   **Write**
 	// *   **Read**
-	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclOperationType  *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclOperationTypes *string `json:"AclOperationTypes,omitempty" xml:"AclOperationTypes,omitempty"`
+	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
 	// The name of the resource.
 	//
 	// *   The value can be the name of a topic or consumer group.
@@ -1678,6 +1704,7 @@ type DeleteAclRequest struct {
 	// *   **Topic**
 	// *   **Group**
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	Host            *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region.
@@ -1699,6 +1726,16 @@ func (s *DeleteAclRequest) SetAclOperationType(v string) *DeleteAclRequest {
 	return s
 }
 
+func (s *DeleteAclRequest) SetAclOperationTypes(v string) *DeleteAclRequest {
+	s.AclOperationTypes = &v
+	return s
+}
+
+func (s *DeleteAclRequest) SetAclPermissionType(v string) *DeleteAclRequest {
+	s.AclPermissionType = &v
+	return s
+}
+
 func (s *DeleteAclRequest) SetAclResourceName(v string) *DeleteAclRequest {
 	s.AclResourceName = &v
 	return s
@@ -1711,6 +1748,11 @@ func (s *DeleteAclRequest) SetAclResourcePatternType(v string) *DeleteAclRequest
 
 func (s *DeleteAclRequest) SetAclResourceType(v string) *DeleteAclRequest {
 	s.AclResourceType = &v
+	return s
+}
+
+func (s *DeleteAclRequest) SetHost(v string) *DeleteAclRequest {
+	s.Host = &v
 	return s
 }
 
@@ -1993,6 +2035,7 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 type DeleteSaslUserRequest struct {
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Mechanism  *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The SASL mechanism. Valid values:
@@ -2016,6 +2059,11 @@ func (s DeleteSaslUserRequest) GoString() string {
 
 func (s *DeleteSaslUserRequest) SetInstanceId(v string) *DeleteSaslUserRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteSaslUserRequest) SetMechanism(v string) *DeleteSaslUserRequest {
+	s.Mechanism = &v
 	return s
 }
 
@@ -2203,6 +2251,8 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type DescribeAclsRequest struct {
+	AclOperationType  *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
 	// The name or ID of the resource.
 	//
 	// *   The value can be the name of a topic or a consumer group.
@@ -2218,6 +2268,7 @@ type DescribeAclsRequest struct {
 	// *   **Topic**
 	// *   **Group**
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	Host            *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region.
@@ -2234,6 +2285,16 @@ func (s DescribeAclsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAclsRequest) SetAclOperationType(v string) *DescribeAclsRequest {
+	s.AclOperationType = &v
+	return s
+}
+
+func (s *DescribeAclsRequest) SetAclPermissionType(v string) *DescribeAclsRequest {
+	s.AclPermissionType = &v
+	return s
+}
+
 func (s *DescribeAclsRequest) SetAclResourceName(v string) *DescribeAclsRequest {
 	s.AclResourceName = &v
 	return s
@@ -2246,6 +2307,11 @@ func (s *DescribeAclsRequest) SetAclResourcePatternType(v string) *DescribeAclsR
 
 func (s *DescribeAclsRequest) SetAclResourceType(v string) *DescribeAclsRequest {
 	s.AclResourceType = &v
+	return s
+}
+
+func (s *DescribeAclsRequest) SetHost(v string) *DescribeAclsRequest {
+	s.Host = &v
 	return s
 }
 
@@ -2332,7 +2398,8 @@ type DescribeAclsResponseBodyKafkaAclListKafkaAclVO struct {
 	//
 	// *   **Write**
 	// *   **Read**
-	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclOperationType  *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
 	// The name of the resource.
 	//
 	// *   The value can be the name of a topic or a consumer group.
@@ -2364,6 +2431,11 @@ func (s DescribeAclsResponseBodyKafkaAclListKafkaAclVO) GoString() string {
 
 func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclOperationType(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
 	s.AclOperationType = &v
+	return s
+}
+
+func (s *DescribeAclsResponseBodyKafkaAclListKafkaAclVO) SetAclPermissionType(v string) *DescribeAclsResponseBodyKafkaAclListKafkaAclVO {
+	s.AclPermissionType = &v
 	return s
 }
 
@@ -2510,6 +2582,7 @@ func (s *DescribeSaslUsersResponseBodySaslUserList) SetSaslUserVO(v []*DescribeS
 }
 
 type DescribeSaslUsersResponseBodySaslUserListSaslUserVO struct {
+	Mechanism *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
 	// The password that is used to access the Elasticsearch cluster.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The request type. Valid values:
@@ -2529,6 +2602,11 @@ func (s DescribeSaslUsersResponseBodySaslUserListSaslUserVO) String() string {
 
 func (s DescribeSaslUsersResponseBodySaslUserListSaslUserVO) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSaslUsersResponseBodySaslUserListSaslUserVO) SetMechanism(v string) *DescribeSaslUsersResponseBodySaslUserListSaslUserVO {
+	s.Mechanism = &v
+	return s
 }
 
 func (s *DescribeSaslUsersResponseBodySaslUserListSaslUserVO) SetPassword(v string) *DescribeSaslUsersResponseBodySaslUserListSaslUserVO {
@@ -3422,7 +3500,8 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
 	// The time when the last message consumed by the consumer group was generated.
-	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	LastTimestamp     *int64                                                            `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	RebalanceInfoList *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList `json:"RebalanceInfoList,omitempty" xml:"RebalanceInfoList,omitempty" type:"Struct"`
 	// The consumption progress of each topic to which the consumer group is subscribed.
 	TopicList *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
 	// The number of messages that were not consumed in all topics. This is also known as the number of accumulated messages in all topics.
@@ -3442,6 +3521,11 @@ func (s *GetConsumerProgressResponseBodyConsumerProgress) SetLastTimestamp(v int
 	return s
 }
 
+func (s *GetConsumerProgressResponseBodyConsumerProgress) SetRebalanceInfoList(v *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) *GetConsumerProgressResponseBodyConsumerProgress {
+	s.RebalanceInfoList = v
+	return s
+}
+
 func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTopicList(v *GetConsumerProgressResponseBodyConsumerProgressTopicList) *GetConsumerProgressResponseBodyConsumerProgress {
 	s.TopicList = v
 	return s
@@ -3449,6 +3533,70 @@ func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTopicList(v *GetCon
 
 func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTotalDiff(v int64) *GetConsumerProgressResponseBodyConsumerProgress {
 	s.TotalDiff = &v
+	return s
+}
+
+type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList struct {
+	RebalanceInfoList []*GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList `json:"RebalanceInfoList,omitempty" xml:"RebalanceInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) SetRebalanceInfoList(v []*GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList {
+	s.RebalanceInfoList = v
+	return s
+}
+
+type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList struct {
+	Generation             *int64  `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LastRebalanceTimestamp *int64  `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
+	Reason                 *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RebalanceSuccess       *bool   `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
+	RebalanceTimeConsuming *int64  `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetGeneration(v int64) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.Generation = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetGroupId(v string) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetLastRebalanceTimestamp(v int64) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.LastRebalanceTimestamp = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetReason(v string) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetRebalanceSuccess(v bool) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.RebalanceSuccess = &v
+	return s
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) SetRebalanceTimeConsuming(v int64) *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList {
+	s.RebalanceTimeConsuming = &v
 	return s
 }
 
@@ -8343,6 +8491,14 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 		query["AclOperationType"] = request.AclOperationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AclOperationTypes)) {
+		query["AclOperationTypes"] = request.AclOperationTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclPermissionType)) {
+		query["AclPermissionType"] = request.AclPermissionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AclResourceName)) {
 		query["AclResourceName"] = request.AclResourceName
 	}
@@ -8353,6 +8509,10 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.AclResourceType)) {
 		query["AclResourceType"] = request.AclResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -8693,6 +8853,10 @@ func (client *Client) CreateSaslUserWithOptions(request *CreateSaslUserRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mechanism)) {
+		query["Mechanism"] = request.Mechanism
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		query["Password"] = request.Password
 	}
@@ -8852,6 +9016,14 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 		query["AclOperationType"] = request.AclOperationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AclOperationTypes)) {
+		query["AclOperationTypes"] = request.AclOperationTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclPermissionType)) {
+		query["AclPermissionType"] = request.AclPermissionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AclResourceName)) {
 		query["AclResourceName"] = request.AclResourceName
 	}
@@ -8862,6 +9034,10 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.AclResourceType)) {
 		query["AclResourceType"] = request.AclResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -9020,6 +9196,10 @@ func (client *Client) DeleteSaslUserWithOptions(request *DeleteSaslUserRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mechanism)) {
+		query["Mechanism"] = request.Mechanism
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9124,6 +9304,14 @@ func (client *Client) DescribeAclsWithOptions(request *DescribeAclsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclOperationType)) {
+		query["AclOperationType"] = request.AclOperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclPermissionType)) {
+		query["AclPermissionType"] = request.AclPermissionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AclResourceName)) {
 		query["AclResourceName"] = request.AclResourceName
 	}
@@ -9134,6 +9322,10 @@ func (client *Client) DescribeAclsWithOptions(request *DescribeAclsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.AclResourceType)) {
 		query["AclResourceType"] = request.AclResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
