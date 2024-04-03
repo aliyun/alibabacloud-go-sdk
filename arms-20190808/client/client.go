@@ -6920,9 +6920,7 @@ type CreateOrUpdateIMRobotRequest struct {
 	// The webhook URL of the IM chatbot.
 	RobotAddress *string `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
 	// The ID of the IM chatbot.
-	//
-	// - If you do not specify the parameter, a new IM chatbot is created.
-	// - If you specify this parameter, the specified IM chatbot is modified.
+	// > If you do not specify the parameter, a new IM chatbot is created.
 	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 	// The name of the IM chatbot.
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
@@ -7711,7 +7709,8 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	//     	 ]
 	MatchingRules *string `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty"`
 	// The name of the silence policy.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -22132,7 +22131,9 @@ func (s *GetRetcodeLogstoreResponse) SetBody(v *GetRetcodeLogstoreResponseBody) 
 }
 
 type GetRetcodeShareUrlRequest struct {
-	// The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+	// The process identifier (PID) of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the `pid=xxx` format. The PID is usually percent encoded as `xxx%40xxx`. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `eb4zdose6v%409781be0f44d****`, you must replace `%40` with @ to obtain `eb4zdose6v@9781be0f44d****`.
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 }
 
@@ -26081,7 +26082,8 @@ func (s *ImportAppAlertRulesResponse) SetBody(v *ImportAppAlertRulesResponseBody
 
 type InitEnvironmentRequest struct {
 	// The language. Valid values: zh and en. Default value: zh.
-	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	AliyunLang      *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	CreateAuthToken *bool   `json:"CreateAuthToken,omitempty" xml:"CreateAuthToken,omitempty"`
 	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// type of managed:
@@ -26103,6 +26105,11 @@ func (s InitEnvironmentRequest) GoString() string {
 
 func (s *InitEnvironmentRequest) SetAliyunLang(v string) *InitEnvironmentRequest {
 	s.AliyunLang = &v
+	return s
+}
+
+func (s *InitEnvironmentRequest) SetCreateAuthToken(v bool) *InitEnvironmentRequest {
+	s.CreateAuthToken = &v
 	return s
 }
 
@@ -29348,8 +29355,9 @@ func (s *ListDashboardsRequest) SetTitle(v string) *ListDashboardsRequest {
 
 type ListDashboardsResponseBody struct {
 	// The information about the Grafana dashboard.
-	DashboardVos  []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
-	EnvironmentId *string                                   `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	DashboardVos         []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	EnvironmentId        *string                                   `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	GrafanaServiceOpened *string                                   `json:"GrafanaServiceOpened,omitempty" xml:"GrafanaServiceOpened,omitempty"`
 	// The indicators of whether the Prometheus service has been activated.
 	PrometheusServiceOpened *string `json:"PrometheusServiceOpened,omitempty" xml:"PrometheusServiceOpened,omitempty"`
 	// The request ID.
@@ -29371,6 +29379,11 @@ func (s *ListDashboardsResponseBody) SetDashboardVos(v []*ListDashboardsResponse
 
 func (s *ListDashboardsResponseBody) SetEnvironmentId(v string) *ListDashboardsResponseBody {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListDashboardsResponseBody) SetGrafanaServiceOpened(v string) *ListDashboardsResponseBody {
+	s.GrafanaServiceOpened = &v
 	return s
 }
 
@@ -30739,7 +30752,7 @@ func (s *ListEnvironmentDashboardsResponseBody) SetSuccess(v bool) *ListEnvironm
 type ListEnvironmentDashboardsResponseBodyData struct {
 	// List of dashboard.
 	Dashboards []*ListEnvironmentDashboardsResponseBodyDataDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
-	// Totle of the dashboards.
+	// Total of the dashboards.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -35090,14 +35103,18 @@ func (s *ListScenarioResponse) SetBody(v *ListScenarioResponseBody) *ListScenari
 }
 
 type ListSilencePoliciesRequest struct {
-	// The operation that you want to perform. Set the value to **ListSilencePolicies**.
+	// Specifies whether to query the details of a silence policy. Valid values:
+	//
+	// *   `true`: Details of the silence policy are queried.
+	// *   `false`: Details about notification policies are not queried.
 	IsDetail *bool `json:"IsDetail,omitempty" xml:"IsDetail,omitempty"`
-	// An array of matching condition objects.
+	// The name of the silence policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page.
-	Page     *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of the page to return.
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the silence policy.
+	// The number of entries to return on each page.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -35135,16 +35152,9 @@ func (s *ListSilencePoliciesRequest) SetSize(v int64) *ListSilencePoliciesReques
 }
 
 type ListSilencePoliciesResponseBody struct {
-	// The value of the matching condition.
+	// The objects that were returned.
 	PageBean *ListSilencePoliciesResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
-	// The logical operator of the matching condition. Valid values:
-	//
-	// *   `eq`: equal to.
-	// *   `neq`: not equal to.
-	// *   `in`: contains.
-	// *   `nin`: does not contain.
-	// *   `re`: regular expression match.
-	// *   `nre`: regular expression mismatch.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -35167,13 +35177,13 @@ func (s *ListSilencePoliciesResponseBody) SetRequestId(v string) *ListSilencePol
 }
 
 type ListSilencePoliciesResponseBodyPageBean struct {
-	// The name of the silence policy.
+	// The number of the page returned.
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of silence policies that were returned.
+	// An array of silence policy objects.
 	SilencePolicies []*ListSilencePoliciesResponseBodyPageBeanSilencePolicies `json:"SilencePolicies,omitempty" xml:"SilencePolicies,omitempty" type:"Repeated"`
-	// The number of entries that were returned on each page.
+	// The number of entries returned per page.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// An array of matching rule objects.
+	// The number of silence policies that were returned.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -35206,14 +35216,11 @@ func (s *ListSilencePoliciesResponseBodyPageBean) SetTotal(v int64) *ListSilence
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePolicies struct {
-	// The name of the silence policy.
+	// The ID of the silence policy.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to query the details of a silence policy. Valid values:
-	//
-	// *   `true`: Details of the silence policy are queried.
-	// *   `false`: Details of the silence policy are not queried.
+	// An array of matching rule objects.
 	MatchingRules []*ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules `json:"MatchingRules,omitempty" xml:"MatchingRules,omitempty" type:"Repeated"`
-	// An array of returned objects.
+	// The name of the silence policy.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -35241,7 +35248,7 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePolicies) SetName(v strin
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules struct {
-	// The ID of the request.
+	// An array of matching condition objects.
 	MatchingConditions []*ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions `json:"MatchingConditions,omitempty" xml:"MatchingConditions,omitempty" type:"Repeated"`
 }
 
@@ -35259,9 +35266,19 @@ func (s *ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules) Se
 }
 
 type ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the matching condition.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The logical operator of the matching condition. Valid values:
+	//
+	// *   `eq`: equal to
+	// *   `neq`: not equal to
+	// *   `in`: contains
+	// *   `nin`: does not contain
+	// *   `re`: regular expression match
+	// *   `nre`: regular expression mismatch
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the matching condition.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions) String() string {
@@ -41700,7 +41717,9 @@ func (s *SendTTSVerifyLinkResponse) SetBody(v *SendTTSVerifyLinkResponseBody) *S
 type SetRetcodeShareStatusRequest struct {
 	// The name of the application that is monitored by Browser Monitoring.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The process identifier (PID) of the application. For more information, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+	// The process identifier (PID) of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the `pid=xxx` format. The PID is usually percent encoded as `xxx%40xxx`. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `eb4zdose6v%409781be0f44d****`, you must replace `%40` with @ to obtain `eb4zdose6v@9781be0f44d****`.
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// Specifies whether to turn on or turn off the logon-free sharing switch. Valid values:
 	//
@@ -42352,7 +42371,15 @@ func (s *SyncRecordingRulesResponse) SetBody(v *SyncRecordingRulesResponseBody) 
 type TagResourcesRequest struct {
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the ARMS resources for which you want to modify tags. Valid values: WEB: Browser Monitoring APPLICATION: Application Monitoring PROMETHEUS: Managed Service for Prometheus SYNTHETICTASK: Synthetic Monitoring ALERTRULE: Application Monitoring alert rules PROMETHEUSALERTRULE: Prometheus alert rules
+	// The type of the ARMS resources for which you want to modify tags. Valid values:
+	//
+	// *   WEB: Browser Monitoring
+	// *   APPLICATION: Application Monitoring
+	// *   PROMETHEUS: Managed Service for Prometheus
+	// *   SYNTHETICTASK: Synthetic Monitoring
+	// *   ALERTRULE: Application Monitoring alert rule
+	// *   PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
+	// *   XTRACEAPP: Managed Service for OpenTelemetry
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resource. You can specify a maximum of 20 tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -42693,7 +42720,15 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the ARMS resources for which you want to modify tags.
+	// The type of the ARMS resources for which you want to modify tags. Valid values:
+	//
+	// *   WEB: Browser Monitoring
+	// *   APPLICATION: Application Monitoring
+	// *   PROMETHEUS: Managed Service for Prometheus
+	// *   SYNTHETICTASK: Synthetic Monitoring
+	// *   ALERTRULE: Application Monitoring alert rule
+	// *   PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
+	// *   XTRACEAPP: Managed Service for OpenTelemetry
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. You can specify a maximum of 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -43715,13 +43750,16 @@ func (s *UpdateEnvServiceMonitorResponse) SetBody(v *UpdateEnvServiceMonitorResp
 }
 
 type UpdateEnvironmentRequest struct {
-	// Locale, the default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Environment name.
+	// The environment name.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
-	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// Fee package.
+	// * When the EnvironmentType is CS: it can be specified as CS_Basic (default) or CS-Pro.
+	// * When the EnvironmentType is a different value, please enter a null value.
+	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -43760,13 +43798,13 @@ func (s *UpdateEnvironmentRequest) SetRegionId(v string) *UpdateEnvironmentReque
 }
 
 type UpdateEnvironmentResponseBody struct {
-	// The status code or error code.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The result of the operation.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -54912,6 +54950,10 @@ func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
 		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateAuthToken)) {
+		query["CreateAuthToken"] = request.CreateAuthToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
