@@ -13545,6 +13545,7 @@ type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo struct {
 	ListPrice           *int64                                                                    `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	MonthPrice          *int64                                                                    `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
 	OriginalStandAmount *int64                                                                    `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) String() string {
@@ -13597,6 +13598,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetMonthPrice
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetOriginalStandAmount(v int64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
 	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetStartTime(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -16921,6 +16927,8 @@ type MigrateToOtherZoneRequest struct {
 	//
 	// *   **Immediately**: immediately switched after the data is migrated.
 	// *   **MaintainTime**: switched within the maintenance window.
+	// *   **0**: immediately switched after the data is migrated.
+	// *   **1**: switched within the maintenance window.
 	//
 	// >  Default value: **Immediately**.
 	EffectiveTime        *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
@@ -21431,7 +21439,7 @@ type SwitchNetworkRequest struct {
 	// > This parameter is available only when the network type of the instance is classic network.
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The network type to which you want to switch. Set the value to **VPC**.
+	// The network type to which you want to switch. If you want to switch to VPC network, Set the value to **VPC**.
 	TargetNetworkType *string `json:"TargetNetworkType,omitempty" xml:"TargetNetworkType,omitempty"`
 	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
 	//
