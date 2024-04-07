@@ -13,13 +13,13 @@ import (
 )
 
 type AttachVscMountPointRequest struct {
-	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
-	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	MountPointId  *string                `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
-	VscIds        []*string              `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
-	VscType       *string                `json:"VscType,omitempty" xml:"VscType,omitempty"`
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string   `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	MountPointId  *string   `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIds        []*string `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
+	VscType       *string   `json:"VscType,omitempty" xml:"VscType,omitempty"`
 }
 
 func (s AttachVscMountPointRequest) String() string {
@@ -45,7 +45,7 @@ func (s *AttachVscMountPointRequest) SetInputRegionId(v string) *AttachVscMountP
 	return s
 }
 
-func (s *AttachVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *AttachVscMountPointRequest {
+func (s *AttachVscMountPointRequest) SetInstanceIds(v []*string) *AttachVscMountPointRequest {
 	s.InstanceIds = v
 	return s
 }
@@ -794,10 +794,10 @@ func (s *CreateUserGroupsMappingResponse) SetBody(v *CreateUserGroupsMappingResp
 }
 
 type CreateVscMountPointRequest struct {
-	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
-	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string   `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateVscMountPointRequest) String() string {
@@ -823,7 +823,7 @@ func (s *CreateVscMountPointRequest) SetInputRegionId(v string) *CreateVscMountP
 	return s
 }
 
-func (s *CreateVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *CreateVscMountPointRequest {
+func (s *CreateVscMountPointRequest) SetInstanceIds(v []*string) *CreateVscMountPointRequest {
 	s.InstanceIds = v
 	return s
 }
@@ -1720,12 +1720,12 @@ func (s *DescribeVscMountPointsResponse) SetBody(v *DescribeVscMountPointsRespon
 }
 
 type DetachVscMountPointRequest struct {
-	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileSystemId  *string                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	InputRegionId *string                `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
-	InstanceIds   map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	MountPointId  *string                `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
-	VscIds        []*string              `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemId  *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	InputRegionId *string   `json:"InputRegionId,omitempty" xml:"InputRegionId,omitempty"`
+	InstanceIds   []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	MountPointId  *string   `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	VscIds        []*string `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
 }
 
 func (s DetachVscMountPointRequest) String() string {
@@ -1751,7 +1751,7 @@ func (s *DetachVscMountPointRequest) SetInputRegionId(v string) *DetachVscMountP
 	return s
 }
 
-func (s *DetachVscMountPointRequest) SetInstanceIds(v map[string]interface{}) *DetachVscMountPointRequest {
+func (s *DetachVscMountPointRequest) SetInstanceIds(v []*string) *DetachVscMountPointRequest {
 	s.InstanceIds = v
 	return s
 }
