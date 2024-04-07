@@ -981,6 +981,7 @@ type DescribeClusterResponseBody struct {
 	ClusterName        *string                                  `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	ClusterType        *string                                  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components         []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	ComputingIpVersion *string                                  `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
 	CreateTime         *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	HpnZone            *string                                  `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	Networks           []*DescribeClusterResponseBodyNetworks   `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
@@ -1024,6 +1025,11 @@ func (s *DescribeClusterResponseBody) SetClusterType(v string) *DescribeClusterR
 
 func (s *DescribeClusterResponseBody) SetComponents(v []*DescribeClusterResponseBodyComponents) *DescribeClusterResponseBody {
 	s.Components = v
+	return s
+}
+
+func (s *DescribeClusterResponseBody) SetComputingIpVersion(v string) *DescribeClusterResponseBody {
+	s.ComputingIpVersion = &v
 	return s
 }
 
@@ -3010,6 +3016,7 @@ type ListClustersResponseBodyClusters struct {
 	ClusterName        *string     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	ClusterType        *string     `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	Components         interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	ComputingIpVersion *string     `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
 	CreateTime         *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	HpnZone            *string     `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	NodeCount          *int64      `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
@@ -3051,6 +3058,11 @@ func (s *ListClustersResponseBodyClusters) SetClusterType(v string) *ListCluster
 
 func (s *ListClustersResponseBodyClusters) SetComponents(v interface{}) *ListClustersResponseBodyClusters {
 	s.Components = v
+	return s
+}
+
+func (s *ListClustersResponseBodyClusters) SetComputingIpVersion(v string) *ListClustersResponseBodyClusters {
+	s.ComputingIpVersion = &v
 	return s
 }
 
