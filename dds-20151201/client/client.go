@@ -3053,11 +3053,21 @@ func (s *DescribeActiveOperationTaskTypeResponse) SetBody(v *DescribeActiveOpera
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// Specifies whether the task can be canceled. Valid values: -**0**: The task cannot be canceled. -**1**: The task can be canceled.
+	// Specifies whether to allow the cancellation operation. Valid values:
+	//
+	// *   **0**: The cancellation operation is not allowed.
+	// *   **1**: The cancellation operation is allowed.
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the time can be modified. Valid values: -**0**: The time cannot be modified. -**1**: The time can be modified.
+	// Specifies whether to allow the modification operation. Valid values:
+	//
+	// *   **0**: The modification operation is not allowed.
+	// *   **1**: The modification operation is allowed.
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The type of configuration change. Valid values: -**all** (default): All O\&M tasks are returned. -**S0**: O\&M tasks that are executed for exception fixing are returned. -**S1**: O\&M tasks that are executed for regular O\&M are returned.
+	// The type of task configuration change. Valid values:
+	//
+	// *   **all** (default): The configurations of all O\&M tasks are changed.
+	// *   **S0**: The configurations of tasks initiated to fix exceptions are changed.
+	// *   **S1**: The configurations of system O\&M tasks are changed.
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
 	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
@@ -3071,11 +3081,18 @@ type DescribeActiveOperationTasksRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the service.
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region of the instance. If you set the Region parameter to all, all tasks created within your Alibaba Cloud account are queried. In this case, you must also set the TaskType parameter to all.
+	// The region ID of the instance.
+	//
+	// >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType** parameter to **all**.
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies the status of the task. Valid values: **0**: The task is waiting to be run. **1**: The task is running. **2**: The task is run. **3**: The task failed to be run.
+	// The status of the task. Valid values:
+	//
+	// *   **0**: waiting for execution
+	// *   **1**: being executed
+	// *   **2**: successful
+	// *   **3**: failed
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
@@ -3171,7 +3188,7 @@ type DescribeActiveOperationTasksResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -3211,22 +3228,22 @@ func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) 
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// None
+	// N/A
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether the change is allowed.
+	// Indicates whether the modification operation is allowed.
 	//
-	// *   **0**: The change is not allowed.
-	// *   **1**: The change is allowed.
+	// *   **0**: The modification operation is not allowed.
+	// *   **1**: The modification operation is allowed.
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The change level of the O\&M task.
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// None
+	// N/A
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
 	// The task type in English.
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
 	// The time when the task was created.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// None
+	// N/A
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
 	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
@@ -3236,15 +3253,15 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	// The task ID.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// None
+	// N/A
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	// None
+	// N/A
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
 	// The description of the instance.
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the task is modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
@@ -3252,17 +3269,17 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The result information. The value of this parameter can be ignored.
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the O\&M task started to run. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the task. The time follows the ISO 8601 standard in the *yyyy-mm-dd* T*hh:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// None
+	// N/A
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The subinstances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The point in time when the switchover is performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC. Service interruptions may occur during switchover.
+	// The switchover point in time in which disconnection may occur. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The task type.
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// None
+	// N/A
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
 	// The task type in Chinese.
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
@@ -13030,6 +13047,7 @@ type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo struct {
 	ListPrice           *float64                                                                  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	MonthPrice          *float64                                                                  `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
 	OriginalStandAmount *float64                                                                  `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) String() string {
@@ -13087,6 +13105,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetMonthPrice
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetOriginalStandAmount(v float64) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
 	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo) SetStartTime(v string) *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -13795,7 +13818,7 @@ type DescribeRegionsResponseBodyRegionsDdsRegion struct {
 	//
 	// The value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is **cn-hangzhou**, the following values are returned for the LocalName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value **1（）** is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh**, the value **华东1（杭州）** is returned for the LocalName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en**, the value **China (Hangzhou)** is returned for the LocalName parameter.
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// The zones.
