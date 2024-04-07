@@ -25156,8 +25156,9 @@ func (s *ListOrganizationMembersResponse) SetBody(v *ListOrganizationMembersResp
 }
 
 type ListOrganizationsRequest struct {
-	AccessLevel    *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
-	MinAccessLevel *int32 `json:"minAccessLevel,omitempty" xml:"minAccessLevel,omitempty"`
+	AccessLevel    *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	MinAccessLevel *int32  `json:"minAccessLevel,omitempty" xml:"minAccessLevel,omitempty"`
 }
 
 func (s ListOrganizationsRequest) String() string {
@@ -25170,6 +25171,11 @@ func (s ListOrganizationsRequest) GoString() string {
 
 func (s *ListOrganizationsRequest) SetAccessLevel(v int32) *ListOrganizationsRequest {
 	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListOrganizationsRequest) SetAccessToken(v string) *ListOrganizationsRequest {
+	s.AccessToken = &v
 	return s
 }
 
@@ -49622,6 +49628,10 @@ func (client *Client) ListOrganizationsWithOptions(request *ListOrganizationsReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
 		query["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinAccessLevel)) {
