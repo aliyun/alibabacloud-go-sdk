@@ -3506,33 +3506,34 @@ func (s *GetRunRequest) SetWorkspace(v string) *GetRunRequest {
 }
 
 type GetRunResponseBody struct {
-	AppName          *string                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppRevision      *string                           `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	Calls            *string                           `json:"Calls,omitempty" xml:"Calls,omitempty"`
-	CreateTime       *string                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DefaultRuntime   *string                           `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	Description      *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime          *string                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityName       *string                           `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType       *string                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ExecuteDirectory *string                           `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	ExecuteOptions   *GetRunResponseBodyExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
-	Failures         *string                           `json:"Failures,omitempty" xml:"Failures,omitempty"`
-	HostId           *string                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	Inputs           *string                           `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	Labels           map[string]*string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	OutputFolder     *string                           `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	Outputs          *string                           `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunId            *string                           `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	RunName          *string                           `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	Source           *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
-	StartTime        *string                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmissionId     *string                           `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	Timing           *string                           `json:"Timing,omitempty" xml:"Timing,omitempty"`
-	User             *string                           `json:"User,omitempty" xml:"User,omitempty"`
-	Workspace        *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName            *string                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision        *string                           `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	BillingInstanceIds []*string                         `json:"BillingInstanceIds,omitempty" xml:"BillingInstanceIds,omitempty" type:"Repeated"`
+	Calls              *string                           `json:"Calls,omitempty" xml:"Calls,omitempty"`
+	CreateTime         *string                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRuntime     *string                           `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	Description        *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime            *string                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityName         *string                           `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType         *string                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ExecuteDirectory   *string                           `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
+	ExecuteOptions     *GetRunResponseBodyExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
+	Failures           *string                           `json:"Failures,omitempty" xml:"Failures,omitempty"`
+	HostId             *string                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Inputs             *string                           `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels             map[string]*string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	OutputFolder       *string                           `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Outputs            *string                           `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	RequestId          *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunId              *string                           `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	RunName            *string                           `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Source             *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime          *string                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId       *string                           `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Timing             *string                           `json:"Timing,omitempty" xml:"Timing,omitempty"`
+	User               *string                           `json:"User,omitempty" xml:"User,omitempty"`
+	Workspace          *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetRunResponseBody) String() string {
@@ -3550,6 +3551,11 @@ func (s *GetRunResponseBody) SetAppName(v string) *GetRunResponseBody {
 
 func (s *GetRunResponseBody) SetAppRevision(v string) *GetRunResponseBody {
 	s.AppRevision = &v
+	return s
+}
+
+func (s *GetRunResponseBody) SetBillingInstanceIds(v []*string) *GetRunResponseBody {
+	s.BillingInstanceIds = v
 	return s
 }
 
@@ -11094,7 +11100,7 @@ func (client *Client) TagApp(request *TagAppRequest) (_result *TagAppResponse, _
 }
 
 /**
- * @deprecated
+ * @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
  *
  * @param tmpReq UpdateEntityRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11151,7 +11157,7 @@ func (client *Client) UpdateEntityWithOptions(tmpReq *UpdateEntityRequest, runti
 }
 
 /**
- * @deprecated
+ * @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
  *
  * @param request UpdateEntityRequest
  * @return UpdateEntityResponse
