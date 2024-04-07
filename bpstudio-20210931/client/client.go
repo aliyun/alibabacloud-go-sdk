@@ -609,7 +609,8 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 type DeployApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -729,8 +730,9 @@ type ExecuteOperationASyncRequest struct {
 	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
 	//
 	//     <!-- -->
-	Attributes  map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	ClientToken *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
 	// - The name of the ECS: rename
 	// - Specificationof ecs: modifyInstanceType
@@ -810,7 +812,8 @@ type ExecuteOperationASyncShrinkRequest struct {
 	//
 	//     <!-- -->
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
 	// - The name of the ECS: rename
 	// - Specificationof ecs: modifyInstanceType
@@ -2941,7 +2944,8 @@ func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplat
 type ReleaseApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -3040,7 +3044,8 @@ func (s *ReleaseApplicationResponse) SetBody(v *ReleaseApplicationResponseBody) 
 type ValidateApplicationRequest struct {
 	// The ID of the application.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
@@ -3137,10 +3142,11 @@ func (s *ValidateApplicationResponse) SetBody(v *ValidateApplicationResponseBody
 }
 
 type ValuateApplicationRequest struct {
-	// The ID of the application.
+	// The operation that you want to perform. Set the value to ValuateApplication.
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the application you want to query belongs.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the application.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3168,13 +3174,13 @@ func (s *ValuateApplicationRequest) SetResourceGroupId(v string) *ValuateApplica
 }
 
 type ValuateApplicationResponseBody struct {
-	// The HTTP status code.
+	// The code of the query task.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the application.
-	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Idempotent notation
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
