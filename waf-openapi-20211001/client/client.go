@@ -2096,6 +2096,262 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 	return s
 }
 
+type DescribeCloudResourcesRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// *   **cn-hangzhou**: Chinese mainland.
+	// *   **ap-southeast-1**: outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The domain name. You can use this parameter if you set ResourceProduct to fc or sae.
+	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
+	// The function name. You can use this parameter if you set ResourceProduct to fc.
+	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
+	// The ID of the resource.
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The cloud service to which the resource belongs. Valid values:
+	//
+	// *   **alb**: Application Load Balancer (ALB).
+	// *   **mse**: Microservices Engine (MSE).
+	// *   **fc**: Function Compute.
+	// *   **sae**: Serverless App Engine (SAE).
+	//
+	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The region ID of the resource. For information about region IDs, see the following table.
+	//
+	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The route name. You can use this parameter if you set ResourceProduct to mse.
+	ResourceRouteName *string `json:"ResourceRouteName,omitempty" xml:"ResourceRouteName,omitempty"`
+}
+
+func (s DescribeCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourcesRequest) SetInstanceId(v string) *DescribeCloudResourcesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetOwnerUserId(v string) *DescribeCloudResourcesRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetPageNumber(v int64) *DescribeCloudResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetPageSize(v int64) *DescribeCloudResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetRegionId(v string) *DescribeCloudResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceDomain(v string) *DescribeCloudResourcesRequest {
+	s.ResourceDomain = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceFunction(v string) *DescribeCloudResourcesRequest {
+	s.ResourceFunction = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceInstanceId(v string) *DescribeCloudResourcesRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeCloudResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceName(v string) *DescribeCloudResourcesRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceProduct(v string) *DescribeCloudResourcesRequest {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceRegionId(v string) *DescribeCloudResourcesRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesRequest) SetResourceRouteName(v string) *DescribeCloudResourcesRequest {
+	s.ResourceRouteName = &v
+	return s
+}
+
+type DescribeCloudResourcesResponseBody struct {
+	// The cloud service resources that are added to WAF.
+	CloudResources []*DescribeCloudResourcesResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of cloud service resources returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourcesResponseBody) SetCloudResources(v []*DescribeCloudResourcesResponseBodyCloudResources) *DescribeCloudResourcesResponseBody {
+	s.CloudResources = v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBody) SetRequestId(v string) *DescribeCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeCloudResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCloudResourcesResponseBodyCloudResources struct {
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The domain name. This parameter has a value only if the value of ResourceProduct is fc or sae.
+	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
+	// The function name. This parameter has a value only if the value of ResourceProduct is fc.
+	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
+	// The ID of the resource.
+	ResourceInstance *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The cloud service to which the resource belongs. Valid values:
+	//
+	// *   **alb**: ALB.
+	// *   **mse**: MSE.
+	// *   **fc**: Function Compute.
+	// *   **sae**: SAE.
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The region ID of the resource.
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The route name. This parameter has a value only if the value of ResourceProduct is mse.
+	ResourceRouteName *string `json:"ResourceRouteName,omitempty" xml:"ResourceRouteName,omitempty"`
+	// The service name. This parameter has a value only if the value of ResourceProduct is fc.
+	ResourceService *string `json:"ResourceService,omitempty" xml:"ResourceService,omitempty"`
+}
+
+func (s DescribeCloudResourcesResponseBodyCloudResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourcesResponseBodyCloudResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetOwnerUserId(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceDomain(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceDomain = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceFunction(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceFunction = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceInstance(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceInstance = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceName(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceProduct(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceRegionId(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceRouteName(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceRouteName = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceService(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceService = &v
+	return s
+}
+
+type DescribeCloudResourcesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourcesResponse) SetHeaders(v map[string]*string) *DescribeCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponse) SetStatusCode(v int32) *DescribeCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponse) SetBody(v *DescribeCloudResourcesResponseBody) *DescribeCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDefenseResourceGroupRequest struct {
 	// The name of the protected object group whose information you want to query.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -2609,7 +2865,8 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	// The time when the protected object was created. Unit: milliseconds.
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the protected object was modified. Unit: milliseconds.
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The pattern in which the protected object is protected.
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
@@ -3591,7 +3848,7 @@ type DescribeDomainDNSRecordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland
+	// *   **cn-hangzhou**: Chinese mainland.
 	// *   **ap-southeast-1**: outside the Chinese mainland.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
@@ -7104,6 +7361,309 @@ func (s *DescribePeakTrendResponse) SetStatusCode(v int32) *DescribePeakTrendRes
 }
 
 func (s *DescribePeakTrendResponse) SetBody(v *DescribePeakTrendResponseBody) *DescribePeakTrendResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProductInstancesRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// *   **cn-hangzhou**: Chinese mainland.
+	// *   **ap-southeast-1**: outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The public IP address of the instance.
+	ResourceIp *string `json:"ResourceIp,omitempty" xml:"ResourceIp,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the instance.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The cloud service to which the instance belongs. Valid values:
+	//
+	// *   **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// *   **clb7**: Layer 7 CLB.
+	// *   **ecs**: Elastic Compute Service (ECS).
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The region ID of the instance. Valid values:
+	//
+	// *   **cn-chengdu**: China (Chengdu).
+	// *   **cn-beijing**: China (Beijing).
+	// *   **cn-zhangjiakou**: China (Zhangjiakou).
+	// *   **cn-hangzhou**: China (Hangzhou).
+	// *   **cn-shanghai**: China (Shanghai).
+	// *   **cn-shenzhen**: China (Shenzhen).
+	// *   **cn-qingdao**: China (Qingdao).
+	// *   **cn-hongkong**: China (Hong Kong).
+	// *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	// *   **ap-southeast-5**: Indonesia (Jakarta).
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+}
+
+func (s DescribeProductInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesRequest) SetInstanceId(v string) *DescribeProductInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetOwnerUserId(v string) *DescribeProductInstancesRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetPageNumber(v int64) *DescribeProductInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetPageSize(v int64) *DescribeProductInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetRegionId(v string) *DescribeProductInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceInstanceId(v string) *DescribeProductInstancesRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceIp(v string) *DescribeProductInstancesRequest {
+	s.ResourceIp = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceManagerResourceGroupId(v string) *DescribeProductInstancesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceName(v string) *DescribeProductInstancesRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceProduct(v string) *DescribeProductInstancesRequest {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceRegionId(v string) *DescribeProductInstancesRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+type DescribeProductInstancesResponseBody struct {
+	// The information about the instances.
+	ProductInstances []*DescribeProductInstancesResponseBodyProductInstances `json:"ProductInstances,omitempty" xml:"ProductInstances,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProductInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponseBody) SetProductInstances(v []*DescribeProductInstancesResponseBodyProductInstances) *DescribeProductInstancesResponseBody {
+	s.ProductInstances = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBody) SetRequestId(v string) *DescribeProductInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBody) SetTotalCount(v int64) *DescribeProductInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProductInstancesResponseBodyProductInstances struct {
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The ID of the instance.
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The public IP address of the instance.
+	ResourceIp *string `json:"ResourceIp,omitempty" xml:"ResourceIp,omitempty"`
+	// The name of the instance.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The information about the ports.
+	ResourcePorts []*DescribeProductInstancesResponseBodyProductInstancesResourcePorts `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
+	// The cloud service to which the instance belongs. Valid values:
+	//
+	// *   **clb4**: Layer 4 CLB.
+	// *   **clb7**: Layer 7 CLB.
+	// *   **ecs**: ECS.
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The region ID of the instance. Valid values:
+	//
+	// *   **cn-chengdu**: China (Chengdu).
+	// *   **cn-beijing**: China (Beijing).
+	// *   **cn-zhangjiakou**: China (Zhangjiakou).
+	// *   **cn-hangzhou**: China (Hangzhou).
+	// *   **cn-shanghai**: China (Shanghai).
+	// *   **cn-shenzhen**: China (Shenzhen).
+	// *   **cn-qingdao**: China (Qingdao).
+	// *   **cn-hongkong**: China (Hong Kong).
+	// *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	// *   **ap-southeast-5**: Indonesia (Jakarta).
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetOwnerUserId(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceId(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceIp(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceIp = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceName(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourcePorts(v []*DescribeProductInstancesResponseBodyProductInstancesResourcePorts) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourcePorts = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceProduct(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceRegionId(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceRegionId = &v
+	return s
+}
+
+type DescribeProductInstancesResponseBodyProductInstancesResourcePorts struct {
+	// The information about the certificates.
+	Certificates []*DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The port number.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// *   **http**
+	// *   **https**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesResourcePorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesResourcePorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetCertificates(v []*DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) *DescribeProductInstancesResponseBodyProductInstancesResourcePorts {
+	s.Certificates = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetPort(v int32) *DescribeProductInstancesResponseBodyProductInstancesResourcePorts {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetProtocol(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePorts {
+	s.Protocol = &v
+	return s
+}
+
+type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates struct {
+	// The ID of the certificate.
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The name of the certificate.
+	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetCertificateId(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetCertificateName(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
+	s.CertificateName = &v
+	return s
+}
+
+type DescribeProductInstancesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProductInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeProductInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponse) SetHeaders(v map[string]*string) *DescribeProductInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponse) SetStatusCode(v int32) *DescribeProductInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponse) SetBody(v *DescribeProductInstancesResponseBody) *DescribeProductInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -11821,6 +12381,90 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 	return s
 }
 
+type SyncProductInstanceRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// *   **cn-hangzhou**: Chinese mainland.
+	// *   **ap-southeast-1**: outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s SyncProductInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncProductInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncProductInstanceRequest) SetInstanceId(v string) *SyncProductInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SyncProductInstanceRequest) SetRegionId(v string) *SyncProductInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SyncProductInstanceRequest) SetResourceManagerResourceGroupId(v string) *SyncProductInstanceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type SyncProductInstanceResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncProductInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncProductInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncProductInstanceResponseBody) SetRequestId(v string) *SyncProductInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncProductInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncProductInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncProductInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncProductInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncProductInstanceResponse) SetHeaders(v map[string]*string) *SyncProductInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncProductInstanceResponse) SetStatusCode(v int32) *SyncProductInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncProductInstanceResponse) SetBody(v *SyncProductInstanceResponseBody) *SyncProductInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -12850,6 +13494,98 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertsResponse{}
 	_body, _err := client.DescribeCertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudResourcesWithOptions(request *DescribeCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDomain)) {
+		query["ResourceDomain"] = request.ResourceDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceFunction)) {
+		query["ResourceFunction"] = request.ResourceFunction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRouteName)) {
+		query["ResourceRouteName"] = request.ResourceRouteName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudResources"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequest) (_result *DescribeCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudResourcesResponse{}
+	_body, _err := client.DescribeCloudResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14134,6 +14870,90 @@ func (client *Client) DescribePeakTrend(request *DescribePeakTrendRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePeakTrendResponse{}
 	_body, _err := client.DescribePeakTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProductInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeProductInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIp)) {
+		query["ResourceIp"] = request.ResourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProductInstances"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProductInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProductInstances(request *DescribeProductInstancesRequest) (_result *DescribeProductInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProductInstancesResponse{}
+	_body, _err := client.DescribeProductInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16296,6 +17116,71 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTemplateResourcesResponse{}
 	_body, _err := client.ModifyTemplateResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+ *
+ * @param request SyncProductInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SyncProductInstanceResponse
+ */
+func (client *Client) SyncProductInstanceWithOptions(request *SyncProductInstanceRequest, runtime *util.RuntimeOptions) (_result *SyncProductInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncProductInstance"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncProductInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
+ *
+ * @param request SyncProductInstanceRequest
+ * @return SyncProductInstanceResponse
+ */
+func (client *Client) SyncProductInstance(request *SyncProductInstanceRequest) (_result *SyncProductInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncProductInstanceResponse{}
+	_body, _err := client.SyncProductInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
