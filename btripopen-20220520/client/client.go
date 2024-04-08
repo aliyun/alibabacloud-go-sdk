@@ -4671,7 +4671,9 @@ type AddressGetRequest struct {
 	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	SubCorpId         *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	TaobaoCallbackUrl *string `json:"taobao_callback_url,omitempty" xml:"taobao_callback_url,omitempty"`
+	TravelerId        *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
 	Type              *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UseBookingProxy   *int32  `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
 	UserId            *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -4743,8 +4745,18 @@ func (s *AddressGetRequest) SetTaobaoCallbackUrl(v string) *AddressGetRequest {
 	return s
 }
 
+func (s *AddressGetRequest) SetTravelerId(v string) *AddressGetRequest {
+	s.TravelerId = &v
+	return s
+}
+
 func (s *AddressGetRequest) SetType(v int32) *AddressGetRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetUseBookingProxy(v int32) *AddressGetRequest {
+	s.UseBookingProxy = &v
 	return s
 }
 
@@ -6798,6 +6810,7 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
 	MailFullAddress               *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
 	MailProvince                  *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	MealNormalInvoiceFee          *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
 	PenaltyFee                    *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
 	Remark                        *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	ServiceFee                    *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
@@ -6881,6 +6894,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailFullAddress(v string) *A
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMailProvince(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.MailProvince = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetMealNormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.MealNormalInvoiceFee = &v
 	return s
 }
 
@@ -48292,25 +48310,27 @@ func (s *HotelRoomInfoResponseBody) SetTraceId(v string) *HotelRoomInfoResponseB
 }
 
 type HotelRoomInfoResponseBodyModule struct {
-	BedInfos         []*HotelRoomInfoResponseBodyModuleBedInfos   `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
-	ExtraBed         *int32                                       `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
-	ExtraBedDesc     *string                                      `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
-	Floor            *string                                      `json:"floor,omitempty" xml:"floor,omitempty"`
-	InternetWay      *string                                      `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
-	MaxOccupancy     *int32                                       `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	RoomDesc         *string                                      `json:"room_desc,omitempty" xml:"room_desc,omitempty"`
-	RoomFacilities   *string                                      `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
-	RoomFacilityList []*string                                    `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
-	RoomId           *string                                      `json:"room_id,omitempty" xml:"room_id,omitempty"`
-	RoomImage        *string                                      `json:"room_image,omitempty" xml:"room_image,omitempty"`
-	RoomImages       []*HotelRoomInfoResponseBodyModuleRoomImages `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
-	RoomName         *string                                      `json:"room_name,omitempty" xml:"room_name,omitempty"`
-	RoomType         *int32                                       `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	Roomarea         *string                                      `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
-	Rooms            *int32                                       `json:"rooms,omitempty" xml:"rooms,omitempty"`
-	Window           *string                                      `json:"window,omitempty" xml:"window,omitempty"`
-	WindowBad        *string                                      `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
-	WindowView       *string                                      `json:"window_view,omitempty" xml:"window_view,omitempty"`
+	BedInfoGroupList []*HotelRoomInfoResponseBodyModuleBedInfoGroupList `json:"bed_info_group_list,omitempty" xml:"bed_info_group_list,omitempty" type:"Repeated"`
+	BedInfos         []*HotelRoomInfoResponseBodyModuleBedInfos         `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
+	ExtraBed         *int32                                             `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
+	ExtraBedDesc     *string                                            `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
+	Floor            *string                                            `json:"floor,omitempty" xml:"floor,omitempty"`
+	InternetWay      *string                                            `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
+	MaxOccupancy     *int32                                             `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	RoomDesc         *string                                            `json:"room_desc,omitempty" xml:"room_desc,omitempty"`
+	RoomFacilities   *string                                            `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
+	RoomFacilityList []*string                                          `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
+	RoomId           *string                                            `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	RoomImage        *string                                            `json:"room_image,omitempty" xml:"room_image,omitempty"`
+	RoomImages       []*HotelRoomInfoResponseBodyModuleRoomImages       `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
+	RoomName         *string                                            `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	RoomType         *int32                                             `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	Roomarea         *string                                            `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
+	Rooms            *int32                                             `json:"rooms,omitempty" xml:"rooms,omitempty"`
+	Smoke            *string                                            `json:"smoke,omitempty" xml:"smoke,omitempty"`
+	Window           *string                                            `json:"window,omitempty" xml:"window,omitempty"`
+	WindowBad        *string                                            `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
+	WindowView       *string                                            `json:"window_view,omitempty" xml:"window_view,omitempty"`
 }
 
 func (s HotelRoomInfoResponseBodyModule) String() string {
@@ -48319,6 +48339,11 @@ func (s HotelRoomInfoResponseBodyModule) String() string {
 
 func (s HotelRoomInfoResponseBodyModule) GoString() string {
 	return s.String()
+}
+
+func (s *HotelRoomInfoResponseBodyModule) SetBedInfoGroupList(v []*HotelRoomInfoResponseBodyModuleBedInfoGroupList) *HotelRoomInfoResponseBodyModule {
+	s.BedInfoGroupList = v
+	return s
 }
 
 func (s *HotelRoomInfoResponseBodyModule) SetBedInfos(v []*HotelRoomInfoResponseBodyModuleBedInfos) *HotelRoomInfoResponseBodyModule {
@@ -48401,6 +48426,11 @@ func (s *HotelRoomInfoResponseBodyModule) SetRooms(v int32) *HotelRoomInfoRespon
 	return s
 }
 
+func (s *HotelRoomInfoResponseBodyModule) SetSmoke(v string) *HotelRoomInfoResponseBodyModule {
+	s.Smoke = &v
+	return s
+}
+
 func (s *HotelRoomInfoResponseBodyModule) SetWindow(v string) *HotelRoomInfoResponseBodyModule {
 	s.Window = &v
 	return s
@@ -48416,11 +48446,77 @@ func (s *HotelRoomInfoResponseBodyModule) SetWindowView(v string) *HotelRoomInfo
 	return s
 }
 
+type HotelRoomInfoResponseBodyModuleBedInfoGroupList struct {
+	BedInfos []*HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
+}
+
+func (s HotelRoomInfoResponseBodyModuleBedInfoGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelRoomInfoResponseBodyModuleBedInfoGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupList) SetBedInfos(v []*HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) *HotelRoomInfoResponseBodyModuleBedInfoGroupList {
+	s.BedInfos = v
+	return s
+}
+
+type HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos struct {
+	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
+	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
+	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
+	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
+	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetBedDesc(v string) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.BedDesc = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetBedNum(v int32) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.BedNum = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetBedSize(v string) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.BedSize = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetBedType(v string) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.BedType = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetLength(v string) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.Length = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) SetWidth(v string) *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos {
+	s.Width = &v
+	return s
+}
+
 type HotelRoomInfoResponseBodyModuleBedInfos struct {
 	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
 	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
 	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
 	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
+	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
+	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s HotelRoomInfoResponseBodyModuleBedInfos) String() string {
@@ -48448,6 +48544,16 @@ func (s *HotelRoomInfoResponseBodyModuleBedInfos) SetBedSize(v string) *HotelRoo
 
 func (s *HotelRoomInfoResponseBodyModuleBedInfos) SetBedType(v string) *HotelRoomInfoResponseBodyModuleBedInfos {
 	s.BedType = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfos) SetLength(v string) *HotelRoomInfoResponseBodyModuleBedInfos {
+	s.Length = &v
+	return s
+}
+
+func (s *HotelRoomInfoResponseBodyModuleBedInfos) SetWidth(v string) *HotelRoomInfoResponseBodyModuleBedInfos {
+	s.Width = &v
 	return s
 }
 
@@ -49544,24 +49650,25 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosImageinfos) SetUrl(v s
 }
 
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos struct {
-	BedInfos         []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
-	ExtraBed         *int32                                                                `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
-	ExtraBedDesc     *string                                                               `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
-	Floor            *string                                                               `json:"floor,omitempty" xml:"floor,omitempty"`
-	InternetWay      *string                                                               `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
-	MaxOccupancy     *int32                                                                `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	RoomFacilities   *string                                                               `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
-	RoomFacilityList []*string                                                             `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
-	RoomId           *string                                                               `json:"room_id,omitempty" xml:"room_id,omitempty"`
-	RoomImage        *string                                                               `json:"room_image,omitempty" xml:"room_image,omitempty"`
-	RoomImages       []*string                                                             `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
-	RoomName         *string                                                               `json:"room_name,omitempty" xml:"room_name,omitempty"`
-	RoomType         *int32                                                                `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	Roomarea         *string                                                               `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
-	Rooms            *int32                                                                `json:"rooms,omitempty" xml:"rooms,omitempty"`
-	Window           *string                                                               `json:"window,omitempty" xml:"window,omitempty"`
-	WindowBad        *string                                                               `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
-	WindowView       *string                                                               `json:"window_view,omitempty" xml:"window_view,omitempty"`
+	BedInfoGroupList []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList `json:"bed_info_group_list,omitempty" xml:"bed_info_group_list,omitempty" type:"Repeated"`
+	BedInfos         []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos         `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
+	ExtraBed         *int32                                                                        `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
+	ExtraBedDesc     *string                                                                       `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
+	Floor            *string                                                                       `json:"floor,omitempty" xml:"floor,omitempty"`
+	InternetWay      *string                                                                       `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
+	MaxOccupancy     *int32                                                                        `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	RoomFacilities   *string                                                                       `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
+	RoomFacilityList []*string                                                                     `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
+	RoomId           *string                                                                       `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	RoomImage        *string                                                                       `json:"room_image,omitempty" xml:"room_image,omitempty"`
+	RoomImages       []*string                                                                     `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
+	RoomName         *string                                                                       `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	RoomType         *int32                                                                        `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	Roomarea         *string                                                                       `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
+	Rooms            *int32                                                                        `json:"rooms,omitempty" xml:"rooms,omitempty"`
+	Window           *string                                                                       `json:"window,omitempty" xml:"window,omitempty"`
+	WindowBad        *string                                                                       `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
+	WindowView       *string                                                                       `json:"window_view,omitempty" xml:"window_view,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) String() string {
@@ -49570,6 +49677,11 @@ func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) String() str
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) GoString() string {
 	return s.String()
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) SetBedInfoGroupList(v []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos {
+	s.BedInfoGroupList = v
+	return s
 }
 
 func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) SetBedInfos(v []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos {
@@ -49662,11 +49774,77 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfos) SetWindowVi
 	return s
 }
 
+type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList struct {
+	BedInfos []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos `json:"bed_Infos,omitempty" xml:"bed_Infos,omitempty" type:"Repeated"`
+}
+
+func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList) SetBedInfos(v []*HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupList {
+	s.BedInfos = v
+	return s
+}
+
+type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos struct {
+	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
+	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
+	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
+	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
+	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
+	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetBedDesc(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.BedDesc = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetBedNum(v int32) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.BedNum = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetBedSize(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.BedSize = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetBedType(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.BedType = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetLength(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.Length = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos) SetWidth(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfoGroupListBedInfos {
+	s.Width = &v
+	return s
+}
+
 type HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos struct {
 	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
 	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
 	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
 	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
+	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
+	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) String() string {
@@ -49694,6 +49872,16 @@ func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) Set
 
 func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) SetBedType(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos {
 	s.BedType = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) SetLength(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos {
+	s.Length = &v
+	return s
+}
+
+func (s *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos) SetWidth(v string) *HotelStaticInfoResponseBodyModuleHotelStaticInfosRoomInfosBedInfos {
+	s.Width = &v
 	return s
 }
 
@@ -62413,6 +62601,9 @@ type MealBillSettlementQueryResponseBodyModuleItems struct {
 	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
 	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
 	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ConsumeReportAddress   *string  `json:"consume_report_address,omitempty" xml:"consume_report_address,omitempty"`
+	ConsumeReportCity      *string  `json:"consume_report_city,omitempty" xml:"consume_report_city,omitempty"`
+	ConsumeReportCityCode  *string  `json:"consume_report_city_code,omitempty" xml:"consume_report_city_code,omitempty"`
 	ConsumerScene          *string  `json:"consumer_scene,omitempty" xml:"consumer_scene,omitempty"`
 	CorpSettleFee          *float64 `json:"corp_settle_fee,omitempty" xml:"corp_settle_fee,omitempty"`
 	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
@@ -62506,6 +62697,21 @@ func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCapitalDirection(v s
 
 func (s *MealBillSettlementQueryResponseBodyModuleItems) SetCascadeDepartment(v string) *MealBillSettlementQueryResponseBodyModuleItems {
 	s.CascadeDepartment = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetConsumeReportAddress(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ConsumeReportAddress = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetConsumeReportCity(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ConsumeReportCity = &v
+	return s
+}
+
+func (s *MealBillSettlementQueryResponseBodyModuleItems) SetConsumeReportCityCode(v string) *MealBillSettlementQueryResponseBodyModuleItems {
+	s.ConsumeReportCityCode = &v
 	return s
 }
 
@@ -62739,6 +62945,435 @@ func (s *MealBillSettlementQueryResponse) SetStatusCode(v int32) *MealBillSettle
 }
 
 func (s *MealBillSettlementQueryResponse) SetBody(v *MealBillSettlementQueryResponseBody) *MealBillSettlementQueryResponse {
+	s.Body = v
+	return s
+}
+
+type MealOrderDetailQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s MealOrderDetailQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderDetailQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderDetailQueryHeaders) SetCommonHeaders(v map[string]*string) *MealOrderDetailQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *MealOrderDetailQueryHeaders) SetXAcsBtripCorpToken(v string) *MealOrderDetailQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type MealOrderDetailQueryRequest struct {
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MealOrderDetailQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderDetailQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderDetailQueryRequest) SetUserId(v string) *MealOrderDetailQueryRequest {
+	s.UserId = &v
+	return s
+}
+
+type MealOrderDetailQueryResponseBody struct {
+	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealOrderDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s MealOrderDetailQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderDetailQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetCode(v string) *MealOrderDetailQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetMessage(v string) *MealOrderDetailQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetModule(v *MealOrderDetailQueryResponseBodyModule) *MealOrderDetailQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetRequestId(v string) *MealOrderDetailQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetSuccess(v bool) *MealOrderDetailQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBody) SetTraceId(v string) *MealOrderDetailQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type MealOrderDetailQueryResponseBodyModule struct {
+	CorpCodeOrderId    *string `json:"corp_code_order_id,omitempty" xml:"corp_code_order_id,omitempty"`
+	CorpId             *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpPayAmount      *int64  `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
+	CorpRefundAmount   *int64  `json:"corp_refund_amount,omitempty" xml:"corp_refund_amount,omitempty"`
+	MerchantName       *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
+	OrderId            *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus        *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderSubStatus     *int32  `json:"order_sub_status,omitempty" xml:"order_sub_status,omitempty"`
+	OrderType          *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	PayAmount          *int64  `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
+	PayType            *int32  `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	PersonPayAmount    *int64  `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
+	PersonRefundAmount *int64  `json:"person_refund_amount,omitempty" xml:"person_refund_amount,omitempty"`
+	RefundAmount       *int64  `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
+	SceneName          *string `json:"scene_name,omitempty" xml:"scene_name,omitempty"`
+	SettleTime         *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	UserAlipayId       *string `json:"user_alipay_id,omitempty" xml:"user_alipay_id,omitempty"`
+	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MealOrderDetailQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderDetailQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetCorpCodeOrderId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.CorpCodeOrderId = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetCorpId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetCorpPayAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.CorpPayAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetCorpRefundAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.CorpRefundAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetMerchantName(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.MerchantName = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetOrderId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetOrderStatus(v int32) *MealOrderDetailQueryResponseBodyModule {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetOrderSubStatus(v int32) *MealOrderDetailQueryResponseBodyModule {
+	s.OrderSubStatus = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetOrderType(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.OrderType = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetPayAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.PayAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetPayType(v int32) *MealOrderDetailQueryResponseBodyModule {
+	s.PayType = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetPersonPayAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.PersonPayAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetPersonRefundAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.PersonRefundAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetRefundAmount(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.RefundAmount = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetSceneName(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.SceneName = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetSettleTime(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.SettleTime = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetUserAlipayId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.UserAlipayId = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetUserId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+type MealOrderDetailQueryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MealOrderDetailQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MealOrderDetailQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderDetailQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderDetailQueryResponse) SetHeaders(v map[string]*string) *MealOrderDetailQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponse) SetStatusCode(v int32) *MealOrderDetailQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponse) SetBody(v *MealOrderDetailQueryResponseBody) *MealOrderDetailQueryResponse {
+	s.Body = v
+	return s
+}
+
+type MealOrderListQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s MealOrderListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryHeaders) SetCommonHeaders(v map[string]*string) *MealOrderListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *MealOrderListQueryHeaders) SetXAcsBtripCorpToken(v string) *MealOrderListQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type MealOrderListQueryRequest struct {
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MealOrderListQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryRequest) SetUserId(v string) *MealOrderListQueryRequest {
+	s.UserId = &v
+	return s
+}
+
+type MealOrderListQueryResponseBody struct {
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s MealOrderListQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryResponseBody) SetCode(v string) *MealOrderListQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBody) SetMessage(v string) *MealOrderListQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBody) SetModule(v *MealOrderListQueryResponseBodyModule) *MealOrderListQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBody) SetRequestId(v string) *MealOrderListQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBody) SetSuccess(v bool) *MealOrderListQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBody) SetTraceId(v string) *MealOrderListQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type MealOrderListQueryResponseBodyModule struct {
+	OrderList []*MealOrderListQueryResponseBodyModuleOrderList `json:"order_list,omitempty" xml:"order_list,omitempty" type:"Repeated"`
+}
+
+func (s MealOrderListQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryResponseBodyModule) SetOrderList(v []*MealOrderListQueryResponseBodyModuleOrderList) *MealOrderListQueryResponseBodyModule {
+	s.OrderList = v
+	return s
+}
+
+type MealOrderListQueryResponseBodyModuleOrderList struct {
+	CorpPayAmount   *int64  `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
+	MerchantName    *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
+	OrderId         *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus     *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderType       *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	PayAmount       *int64  `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
+	PersonPayAmount *int64  `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
+	SettleTime      *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+}
+
+func (s MealOrderListQueryResponseBodyModuleOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryResponseBodyModuleOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetCorpPayAmount(v int64) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.CorpPayAmount = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetMerchantName(v string) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.MerchantName = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetOrderId(v string) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetOrderStatus(v int32) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetOrderType(v string) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.OrderType = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetPayAmount(v int64) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.PayAmount = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetPersonPayAmount(v int64) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.PersonPayAmount = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponseBodyModuleOrderList) SetSettleTime(v string) *MealOrderListQueryResponseBodyModuleOrderList {
+	s.SettleTime = &v
+	return s
+}
+
+type MealOrderListQueryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MealOrderListQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MealOrderListQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MealOrderListQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MealOrderListQueryResponse) SetHeaders(v map[string]*string) *MealOrderListQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MealOrderListQueryResponse) SetStatusCode(v int32) *MealOrderListQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MealOrderListQueryResponse) SetBody(v *MealOrderListQueryResponseBody) *MealOrderListQueryResponse {
 	s.Body = v
 	return s
 }
@@ -72317,6 +72952,7 @@ type WaitApplyInvoiceTaskDetailQueryResponseBodyModule struct {
 	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
 	MailFullAddress               *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
 	MailProvince                  *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	MealNormalInvoiceFee          *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
 	PenaltyFee                    *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
 	Remark                        *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	ServiceFee                    *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
@@ -72400,6 +73036,11 @@ func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailFullAddress(v
 
 func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMailProvince(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
 	s.MailProvince = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetMealNormalInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.MealNormalInvoiceFee = &v
 	return s
 }
 
@@ -72674,8 +73315,16 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 		query["taobao_callback_url"] = request.TaobaoCallbackUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TravelerId)) {
+		query["traveler_id"] = request.TravelerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseBookingProxy)) {
+		query["use_booking_proxy"] = request.UseBookingProxy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -82138,6 +82787,116 @@ func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRe
 	headers := &MealBillSettlementQueryHeaders{}
 	_result = &MealBillSettlementQueryResponse{}
 	_body, _err := client.MealBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MealOrderDetailQueryWithOptions(orderId *string, request *MealOrderDetailQueryRequest, headers *MealOrderDetailQueryHeaders, runtime *util.RuntimeOptions) (_result *MealOrderDetailQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MealOrderDetailQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/meal/v1/orders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MealOrderDetailQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MealOrderDetailQuery(orderId *string, request *MealOrderDetailQueryRequest) (_result *MealOrderDetailQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &MealOrderDetailQueryHeaders{}
+	_result = &MealOrderDetailQueryResponse{}
+	_body, _err := client.MealOrderDetailQueryWithOptions(orderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MealOrderListQueryWithOptions(request *MealOrderListQueryRequest, headers *MealOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *MealOrderListQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MealOrderListQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/meal/v1/orders"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MealOrderListQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MealOrderListQuery(request *MealOrderListQueryRequest) (_result *MealOrderListQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &MealOrderListQueryHeaders{}
+	_result = &MealOrderListQueryResponse{}
+	_body, _err := client.MealOrderListQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
