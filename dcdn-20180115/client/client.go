@@ -697,6 +697,191 @@ func (s *BatchDeleteDcdnDomainConfigsResponse) SetBody(v *BatchDeleteDcdnDomainC
 	return s
 }
 
+type BatchDeleteDcdnKvRequest struct {
+	Keys      []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	Namespace *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s BatchDeleteDcdnKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvRequest) SetKeys(v []*string) *BatchDeleteDcdnKvRequest {
+	s.Keys = v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvRequest) SetNamespace(v string) *BatchDeleteDcdnKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+type BatchDeleteDcdnKvShrinkRequest struct {
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s BatchDeleteDcdnKvShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvShrinkRequest) SetKeysShrink(v string) *BatchDeleteDcdnKvShrinkRequest {
+	s.KeysShrink = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvShrinkRequest) SetNamespace(v string) *BatchDeleteDcdnKvShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+type BatchDeleteDcdnKvResponseBody struct {
+	FailKeys    []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
+}
+
+func (s BatchDeleteDcdnKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvResponseBody) SetFailKeys(v []*string) *BatchDeleteDcdnKvResponseBody {
+	s.FailKeys = v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvResponseBody) SetRequestId(v string) *BatchDeleteDcdnKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvResponseBody) SetSuccessKeys(v []*string) *BatchDeleteDcdnKvResponseBody {
+	s.SuccessKeys = v
+	return s
+}
+
+type BatchDeleteDcdnKvResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteDcdnKvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchDeleteDcdnKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvResponse) SetHeaders(v map[string]*string) *BatchDeleteDcdnKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvResponse) SetStatusCode(v int32) *BatchDeleteDcdnKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvResponse) SetBody(v *BatchDeleteDcdnKvResponseBody) *BatchDeleteDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
+type BatchDeleteDcdnKvWithHighCapacityRequest struct {
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityRequest) SetNamespace(v string) *BatchDeleteDcdnKvWithHighCapacityRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityRequest) SetUrl(v string) *BatchDeleteDcdnKvWithHighCapacityRequest {
+	s.Url = &v
+	return s
+}
+
+type BatchDeleteDcdnKvWithHighCapacityResponseBody struct {
+	FailKeys    []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponseBody) SetFailKeys(v []*string) *BatchDeleteDcdnKvWithHighCapacityResponseBody {
+	s.FailKeys = v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponseBody) SetRequestId(v string) *BatchDeleteDcdnKvWithHighCapacityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponseBody) SetSuccessKeys(v []*string) *BatchDeleteDcdnKvWithHighCapacityResponseBody {
+	s.SuccessKeys = v
+	return s
+}
+
+type BatchDeleteDcdnKvWithHighCapacityResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteDcdnKvWithHighCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnKvWithHighCapacityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponse) SetHeaders(v map[string]*string) *BatchDeleteDcdnKvWithHighCapacityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponse) SetStatusCode(v int32) *BatchDeleteDcdnKvWithHighCapacityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnKvWithHighCapacityResponse) SetBody(v *BatchDeleteDcdnKvWithHighCapacityResponseBody) *BatchDeleteDcdnKvWithHighCapacityResponse {
+	s.Body = v
+	return s
+}
+
 type BatchDeleteDcdnWafRulesRequest struct {
 	// The IDs of the protection rules that you want to delete. Separate multiple IDs with commas (,).
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
@@ -835,7 +1020,6 @@ func (s *BatchModifyDcdnWafRulesResponse) SetBody(v *BatchModifyDcdnWafRulesResp
 }
 
 type BatchPutDcdnKvRequest struct {
-	// The key-value pairs. The key-value pairs can be up to 2 MB in size.
 	KvList []*BatchPutDcdnKvRequestKvList `json:"KvList,omitempty" xml:"KvList,omitempty" type:"Repeated"`
 	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -860,14 +1044,10 @@ func (s *BatchPutDcdnKvRequest) SetNamespace(v string) *BatchPutDcdnKvRequest {
 }
 
 type BatchPutDcdnKvRequestKvList struct {
-	// The expiration time. The value is a timestamp in seconds. The expiration time cannot be earlier than the current time. If you specify Expiration and ExpirationTtl, only ExpirationTtl takes effect.
-	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// The relative expiration time. Unit: seconds. If you specify Expiration and ExpirationTtl, only ExpirationTtl takes effect.
-	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
-	// The key. The key can be up to 512 characters in length and cannot contain spaces.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Expiration    *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	ExpirationTtl *int64  `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s BatchPutDcdnKvRequestKvList) String() string {
@@ -899,7 +1079,6 @@ func (s *BatchPutDcdnKvRequestKvList) SetValue(v string) *BatchPutDcdnKvRequestK
 }
 
 type BatchPutDcdnKvShrinkRequest struct {
-	// The key-value pairs. The key-value pairs can be up to 2 MB in size.
 	KvListShrink *string `json:"KvList,omitempty" xml:"KvList,omitempty"`
 	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -980,6 +1159,87 @@ func (s *BatchPutDcdnKvResponse) SetStatusCode(v int32) *BatchPutDcdnKvResponse 
 }
 
 func (s *BatchPutDcdnKvResponse) SetBody(v *BatchPutDcdnKvResponseBody) *BatchPutDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
+type BatchPutDcdnKvWithHighCapacityRequest struct {
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s BatchPutDcdnKvWithHighCapacityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvWithHighCapacityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityRequest) SetNamespace(v string) *BatchPutDcdnKvWithHighCapacityRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityRequest) SetUrl(v string) *BatchPutDcdnKvWithHighCapacityRequest {
+	s.Url = &v
+	return s
+}
+
+type BatchPutDcdnKvWithHighCapacityResponseBody struct {
+	FailKeys    []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
+}
+
+func (s BatchPutDcdnKvWithHighCapacityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvWithHighCapacityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponseBody) SetFailKeys(v []*string) *BatchPutDcdnKvWithHighCapacityResponseBody {
+	s.FailKeys = v
+	return s
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponseBody) SetRequestId(v string) *BatchPutDcdnKvWithHighCapacityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponseBody) SetSuccessKeys(v []*string) *BatchPutDcdnKvWithHighCapacityResponseBody {
+	s.SuccessKeys = v
+	return s
+}
+
+type BatchPutDcdnKvWithHighCapacityResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchPutDcdnKvWithHighCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchPutDcdnKvWithHighCapacityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchPutDcdnKvWithHighCapacityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponse) SetHeaders(v map[string]*string) *BatchPutDcdnKvWithHighCapacityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponse) SetStatusCode(v int32) *BatchPutDcdnKvWithHighCapacityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchPutDcdnKvWithHighCapacityResponse) SetBody(v *BatchPutDcdnKvWithHighCapacityResponseBody) *BatchPutDcdnKvWithHighCapacityResponse {
 	s.Body = v
 	return s
 }
@@ -28641,6 +28901,93 @@ func (s *PutDcdnKvNamespaceResponse) SetBody(v *PutDcdnKvNamespaceResponseBody) 
 	return s
 }
 
+type PutDcdnKvWithHighCapacityRequest struct {
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s PutDcdnKvWithHighCapacityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvWithHighCapacityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvWithHighCapacityRequest) SetKey(v string) *PutDcdnKvWithHighCapacityRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityRequest) SetNamespace(v string) *PutDcdnKvWithHighCapacityRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityRequest) SetUrl(v string) *PutDcdnKvWithHighCapacityRequest {
+	s.Url = &v
+	return s
+}
+
+type PutDcdnKvWithHighCapacityResponseBody struct {
+	Length    *int32  `json:"Length,omitempty" xml:"Length,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutDcdnKvWithHighCapacityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvWithHighCapacityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvWithHighCapacityResponseBody) SetLength(v int32) *PutDcdnKvWithHighCapacityResponseBody {
+	s.Length = &v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityResponseBody) SetRequestId(v string) *PutDcdnKvWithHighCapacityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityResponseBody) SetValue(v string) *PutDcdnKvWithHighCapacityResponseBody {
+	s.Value = &v
+	return s
+}
+
+type PutDcdnKvWithHighCapacityResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutDcdnKvWithHighCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PutDcdnKvWithHighCapacityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvWithHighCapacityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvWithHighCapacityResponse) SetHeaders(v map[string]*string) *PutDcdnKvWithHighCapacityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityResponse) SetStatusCode(v int32) *PutDcdnKvWithHighCapacityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutDcdnKvWithHighCapacityResponse) SetBody(v *PutDcdnKvWithHighCapacityResponseBody) *PutDcdnKvWithHighCapacityResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshDcdnObjectCachesRequest struct {
 	// Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
 	//
@@ -31674,6 +32021,110 @@ func (client *Client) BatchDeleteDcdnDomainConfigs(request *BatchDeleteDcdnDomai
 	return _result, _err
 }
 
+func (client *Client) BatchDeleteDcdnKvWithOptions(tmpReq *BatchDeleteDcdnKvRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteDcdnKvResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchDeleteDcdnKvShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
+		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, tea.String("Keys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeysShrink)) {
+		body["Keys"] = request.KeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteDcdnKv"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteDcdnKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteDcdnKv(request *BatchDeleteDcdnKvRequest) (_result *BatchDeleteDcdnKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchDeleteDcdnKvResponse{}
+	_body, _err := client.BatchDeleteDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteDcdnKvWithHighCapacityWithOptions(request *BatchDeleteDcdnKvWithHighCapacityRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteDcdnKvWithHighCapacityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteDcdnKvWithHighCapacity"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteDcdnKvWithHighCapacity(request *BatchDeleteDcdnKvWithHighCapacityRequest) (_result *BatchDeleteDcdnKvWithHighCapacityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchDeleteDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.BatchDeleteDcdnKvWithHighCapacityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   You can call this operation up to 20 times per second per account.
  * *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
@@ -31806,16 +32257,18 @@ func (client *Client) BatchPutDcdnKvWithOptions(tmpReq *BatchPutDcdnKvRequest, r
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.KvListShrink)) {
-		query["KvList"] = request.KvListShrink
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["Namespace"] = request.Namespace
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KvListShrink)) {
+		body["KvList"] = request.KvListShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchPutDcdnKv"),
@@ -31841,6 +32294,54 @@ func (client *Client) BatchPutDcdnKv(request *BatchPutDcdnKvRequest) (_result *B
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchPutDcdnKvResponse{}
 	_body, _err := client.BatchPutDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchPutDcdnKvWithHighCapacityWithOptions(request *BatchPutDcdnKvWithHighCapacityRequest, runtime *util.RuntimeOptions) (_result *BatchPutDcdnKvWithHighCapacityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchPutDcdnKvWithHighCapacity"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchPutDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchPutDcdnKvWithHighCapacity(request *BatchPutDcdnKvWithHighCapacityRequest) (_result *BatchPutDcdnKvWithHighCapacityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchPutDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.BatchPutDcdnKvWithHighCapacityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44087,6 +44588,58 @@ func (client *Client) PutDcdnKvNamespace(request *PutDcdnKvNamespaceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &PutDcdnKvNamespaceResponse{}
 	_body, _err := client.PutDcdnKvNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKvWithHighCapacityWithOptions(request *PutDcdnKvWithHighCapacityRequest, runtime *util.RuntimeOptions) (_result *PutDcdnKvWithHighCapacityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutDcdnKvWithHighCapacity"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKvWithHighCapacity(request *PutDcdnKvWithHighCapacityRequest) (_result *PutDcdnKvWithHighCapacityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutDcdnKvWithHighCapacityResponse{}
+	_body, _err := client.PutDcdnKvWithHighCapacityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
