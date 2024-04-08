@@ -1934,25 +1934,26 @@ func (s *CreateOmsMysqlDataSourceResponse) SetBody(v *CreateOmsMysqlDataSourceRe
 }
 
 type CreateProjectRequest struct {
-	CommonTransferConfig      *CreateProjectRequestCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
-	EnableFullTransfer        *bool                                     `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
-	EnableFullVerify          *bool                                     `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
-	EnableIncrTransfer        *bool                                     `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
-	EnableReverseIncrTransfer *bool                                     `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
-	EnableStructTransfer      *bool                                     `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
-	FullTransferConfig        *CreateProjectRequestFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
-	Id                        *string                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncrTransferConfig        *CreateProjectRequestIncrTransferConfig   `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
-	LabelIds                  []*string                                 `json:"LabelIds,omitempty" xml:"LabelIds,omitempty" type:"Repeated"`
-	Name                      *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssKey                    *string                                   `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	SinkEndpointId            *string                                   `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
-	SourceEndpointId          *string                                   `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
-	StructTransferConfig      *CreateProjectRequestStructTransferConfig `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
-	TransferMapping           *CreateProjectRequestTransferMapping      `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
-	Type                      *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UseOss                    *bool                                     `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
-	WorkerGradeId             *string                                   `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+	CommonTransferConfig      *CreateProjectRequestCommonTransferConfig      `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	EnableFullTransfer        *bool                                          `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify          *bool                                          `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer        *bool                                          `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableReverseIncrTransfer *bool                                          `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer      *bool                                          `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	FullTransferConfig        *CreateProjectRequestFullTransferConfig        `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	Id                        *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncrTransferConfig        *CreateProjectRequestIncrTransferConfig        `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
+	LabelIds                  []*string                                      `json:"LabelIds,omitempty" xml:"LabelIds,omitempty" type:"Repeated"`
+	Name                      *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssKey                    *string                                        `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	ReverseIncrTransferConfig *CreateProjectRequestReverseIncrTransferConfig `json:"ReverseIncrTransferConfig,omitempty" xml:"ReverseIncrTransferConfig,omitempty" type:"Struct"`
+	SinkEndpointId            *string                                        `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
+	SourceEndpointId          *string                                        `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	StructTransferConfig      *CreateProjectRequestStructTransferConfig      `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
+	TransferMapping           *CreateProjectRequestTransferMapping           `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
+	Type                      *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseOss                    *bool                                          `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
+	WorkerGradeId             *string                                        `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -2020,6 +2021,11 @@ func (s *CreateProjectRequest) SetName(v string) *CreateProjectRequest {
 
 func (s *CreateProjectRequest) SetOssKey(v string) *CreateProjectRequest {
 	s.OssKey = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetReverseIncrTransferConfig(v *CreateProjectRequestReverseIncrTransferConfig) *CreateProjectRequest {
+	s.ReverseIncrTransferConfig = v
 	return s
 }
 
@@ -2181,6 +2187,10 @@ type CreateProjectRequestFullTransferConfig struct {
 	FullTransferSpeedMode    *string `json:"FullTransferSpeedMode,omitempty" xml:"FullTransferSpeedMode,omitempty"`
 	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
 	NonePkUkTruncateDstTable *bool   `json:"NonePkUkTruncateDstTable,omitempty" xml:"NonePkUkTruncateDstTable,omitempty"`
+	ReadWorkerNum            *int32  `json:"ReadWorkerNum,omitempty" xml:"ReadWorkerNum,omitempty"`
+	ThrottleIOPS             *int32  `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps              *int32  `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
+	WriteWorkerNum           *int32  `json:"WriteWorkerNum,omitempty" xml:"WriteWorkerNum,omitempty"`
 }
 
 func (s CreateProjectRequestFullTransferConfig) String() string {
@@ -2211,6 +2221,26 @@ func (s *CreateProjectRequestFullTransferConfig) SetNonePkUkTruncateDstTable(v b
 	return s
 }
 
+func (s *CreateProjectRequestFullTransferConfig) SetReadWorkerNum(v int32) *CreateProjectRequestFullTransferConfig {
+	s.ReadWorkerNum = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetThrottleIOPS(v int32) *CreateProjectRequestFullTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetThrottleRps(v int32) *CreateProjectRequestFullTransferConfig {
+	s.ThrottleRps = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetWriteWorkerNum(v int32) *CreateProjectRequestFullTransferConfig {
+	s.WriteWorkerNum = &v
+	return s
+}
+
 type CreateProjectRequestIncrTransferConfig struct {
 	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
 	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
@@ -2218,6 +2248,9 @@ type CreateProjectRequestIncrTransferConfig struct {
 	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
 	StartTimestamp            *string   `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+	SupportDDLTypes           []*string `json:"SupportDDLTypes,omitempty" xml:"SupportDDLTypes,omitempty" type:"Repeated"`
+	ThrottleIOPS              *int32    `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps               *int32    `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
 }
 
 func (s CreateProjectRequestIncrTransferConfig) String() string {
@@ -2255,6 +2288,86 @@ func (s *CreateProjectRequestIncrTransferConfig) SetStartTimestamp(v string) *Cr
 
 func (s *CreateProjectRequestIncrTransferConfig) SetStoreLogKeptHour(v int32) *CreateProjectRequestIncrTransferConfig {
 	s.StoreLogKeptHour = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetSupportDDLTypes(v []*string) *CreateProjectRequestIncrTransferConfig {
+	s.SupportDDLTypes = v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetThrottleIOPS(v int32) *CreateProjectRequestIncrTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetThrottleRps(v int32) *CreateProjectRequestIncrTransferConfig {
+	s.ThrottleRps = &v
+	return s
+}
+
+type CreateProjectRequestReverseIncrTransferConfig struct {
+	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
+	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
+	IncrSyncConcurrency       *int32    `json:"IncrSyncConcurrency,omitempty" xml:"IncrSyncConcurrency,omitempty"`
+	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
+	StartTimestamp            *string   `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+	SupportDDLTypes           []*string `json:"SupportDDLTypes,omitempty" xml:"SupportDDLTypes,omitempty" type:"Repeated"`
+	ThrottleIOPS              *int32    `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps               *int32    `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
+}
+
+func (s CreateProjectRequestReverseIncrTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestReverseIncrTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetEnableIncrSyncStatistics(v bool) *CreateProjectRequestReverseIncrTransferConfig {
+	s.EnableIncrSyncStatistics = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetEnableSequencingWithinTxn(v bool) *CreateProjectRequestReverseIncrTransferConfig {
+	s.EnableSequencingWithinTxn = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetIncrSyncConcurrency(v int32) *CreateProjectRequestReverseIncrTransferConfig {
+	s.IncrSyncConcurrency = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetRecordTypeWhiteList(v []*string) *CreateProjectRequestReverseIncrTransferConfig {
+	s.RecordTypeWhiteList = v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetStartTimestamp(v string) *CreateProjectRequestReverseIncrTransferConfig {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetStoreLogKeptHour(v int32) *CreateProjectRequestReverseIncrTransferConfig {
+	s.StoreLogKeptHour = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetSupportDDLTypes(v []*string) *CreateProjectRequestReverseIncrTransferConfig {
+	s.SupportDDLTypes = v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetThrottleIOPS(v int32) *CreateProjectRequestReverseIncrTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *CreateProjectRequestReverseIncrTransferConfig) SetThrottleRps(v int32) *CreateProjectRequestReverseIncrTransferConfig {
+	s.ThrottleRps = &v
 	return s
 }
 
@@ -3157,25 +3270,26 @@ func (s *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) S
 }
 
 type CreateProjectShrinkRequest struct {
-	CommonTransferConfigShrink *string `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty"`
-	EnableFullTransfer         *bool   `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
-	EnableFullVerify           *bool   `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
-	EnableIncrTransfer         *bool   `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
-	EnableReverseIncrTransfer  *bool   `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
-	EnableStructTransfer       *bool   `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
-	FullTransferConfigShrink   *string `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty"`
-	Id                         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncrTransferConfigShrink   *string `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty"`
-	LabelIdsShrink             *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssKey                     *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	SinkEndpointId             *string `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
-	SourceEndpointId           *string `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
-	StructTransferConfigShrink *string `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty"`
-	TransferMappingShrink      *string `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty"`
-	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UseOss                     *bool   `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
-	WorkerGradeId              *string `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+	CommonTransferConfigShrink      *string `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty"`
+	EnableFullTransfer              *bool   `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify                *bool   `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer              *bool   `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableReverseIncrTransfer       *bool   `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer            *bool   `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	FullTransferConfigShrink        *string `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty"`
+	Id                              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncrTransferConfigShrink        *string `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty"`
+	LabelIdsShrink                  *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
+	Name                            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssKey                          *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	ReverseIncrTransferConfigShrink *string `json:"ReverseIncrTransferConfig,omitempty" xml:"ReverseIncrTransferConfig,omitempty"`
+	SinkEndpointId                  *string `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
+	SourceEndpointId                *string `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	StructTransferConfigShrink      *string `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty"`
+	TransferMappingShrink           *string `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty"`
+	Type                            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseOss                          *bool   `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
+	WorkerGradeId                   *string `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
 }
 
 func (s CreateProjectShrinkRequest) String() string {
@@ -3243,6 +3357,11 @@ func (s *CreateProjectShrinkRequest) SetName(v string) *CreateProjectShrinkReque
 
 func (s *CreateProjectShrinkRequest) SetOssKey(v string) *CreateProjectShrinkRequest {
 	s.OssKey = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetReverseIncrTransferConfigShrink(v string) *CreateProjectShrinkRequest {
+	s.ReverseIncrTransferConfigShrink = &v
 	return s
 }
 
@@ -10258,17 +10377,21 @@ func (s *DescribeInstanceTopologyResponse) SetBody(v *DescribeInstanceTopologyRe
 }
 
 type DescribeInstancesRequest struct {
-	// The number of CPU cores used in the cluster.
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The size of used memory in the cluster, in GB.
+	// The name of the OceanBase cluster. It must be 1 to 20 characters in length. If this parameter is not specified, the value is the instance ID of the cluster by default.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The total memory size of the cluster, in GB.
+	// The number of the page to return.
+	// - Pages start from page 1.
+	// - Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The information about the memory resources of the cluster.
+	// The number of rows to return on each page.
+	// - Maximum value: 100.
+	// - Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of CPU cores of each replica node in the cluster.
+	// The ID of the resource group. If you do not specify this parameter, all resources are returned.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The memory size of each replica node in the cluster, in GB.
+	// The keyword for fuzzy search, which can be an instance ID, instance name, tenant ID, or tenant name.
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 }
 
@@ -10311,10 +10434,12 @@ func (s *DescribeInstancesRequest) SetSearchKey(v string) *DescribeInstancesRequ
 }
 
 type DescribeInstancesResponseBody struct {
-	// The total storage space of the cluster, in GB.
-	Instances  []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information of the OceanBase cluster.
+	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of OceanBase clusters queried.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -10341,64 +10466,126 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	// The time in UTC when the cluster expires.
+	// The information about the zone in which the cluster is deployed.
 	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The storage space of each replica node in the cluster, in GB.
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The product code of the OceanBase cluster.
 	// - oceanbase_oceanbasepre_public_cn: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in a China site.
 	// - oceanbase_oceanbasepost_public_cn: indicates an OceanBase cluster that is billed based on the pay-as-you-go plan and that is deployed in a China site.
 	// - oceanbase_obpre_public_intl: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in an international site.
-	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The number of CPU cores of the cluster.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The CPU architecture of the cluster.
 	CpuArchitecture *string `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
-	// The number of OceanBase clusters queried.
-	CreateTime              *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time in UTC when the cluster was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies parameters for the automatic scaling of the data disk.
 	DataDiskAutoScaleConfig *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig `json:"DataDiskAutoScaleConfig,omitempty" xml:"DataDiskAutoScaleConfig,omitempty" type:"Struct"`
-	// The request ID.
+	// The data replica distribution mode of the cluster. The value is in the n-n-n format, where n is the number of OBServer nodes in each IDC.
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
+	// The deployment type of the cluster. Valid values:
+	// - multiple: multi-IDC deployment
+	// - single: single-IDC deployment
+	// - dual: dual-IDC deployment
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The information about the memory resources of the cluster.
+	// The size of the storage space, in GB.
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The number of CPU cores used in the cluster.
-	DiskType                        *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EnableReadOnlyReplicaManagement *bool   `json:"EnableReadOnlyReplicaManagement,omitempty" xml:"EnableReadOnlyReplicaManagement,omitempty"`
-	// The ID of the OceanBase cluster.
-	EnableUpgradeNodes *bool `json:"EnableUpgradeNodes,omitempty" xml:"EnableUpgradeNodes,omitempty"`
-	// The whitelist information of the cluster.
-	ExpireSeconds *int32 `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
-	// The information about the storage resources of the cluster.
-	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InTempCapacityStatus *bool   `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
-	// The instance type.
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The total storage space of the cluster, in GB.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The return result of the request.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
-	// You can call this operation to obtain the list of OceanBase clusters.
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The return result of the request.
-	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	// The information about the CPU resources of the cluster.
-	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The type of the storage disk where the cluster is deployed.
 	// The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
-	Resource *DescribeInstancesResponseBodyInstancesResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// The number of OceanBase clusters queried.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// Indicates whether the cluster supports read-only replicas.
+	EnableReadOnlyReplicaManagement *bool `json:"EnableReadOnlyReplicaManagement,omitempty" xml:"EnableReadOnlyReplicaManagement,omitempty"`
+	// Indicates whether new nodes can be added.
+	EnableUpgradeNodes *bool `json:"EnableUpgradeNodes,omitempty" xml:"EnableUpgradeNodes,omitempty"`
+	// The time elapsed since the expiration of the cluster, in seconds.
+	// > In subscription mode, if the cluster has not expired, this parameter indicates the remaining validity period of the cluster. If the cluster has expired, this parameter indicates the time elapsed since the expiration.
+	ExpireSeconds *int32 `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
+	// The time in UTC when the cluster expires.
+	// > This parameter is valid only for subscription instances.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Specifies whether to indicate the temporary status of the capacity.
+	InTempCapacityStatus *bool `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
+	// The specifications of the cluster.  You can specify one of the following four plans:
+	// - 8C32G: indicates 8 CPU cores and 32 GB of memory.
+	// - 14C70G: indicates 14 CPU cores and 70 GB of memory.
+	// - 30C180G: indicates 30 CPU cores and 180 GB of memory.
+	// - 62C400G: indicates 62 CPU cores and 400 GB of memory.
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the OceanBase cluster.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The role of the instance.
+	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
+	// The instance type.
+	// - cluster: indicates a cluster instance.
+	// - mtenant: indicates a tenant instance in MySQL mode.
+	// - mtenant_serverless: indicates a serverless instance in MySQL mode.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The time period in UTC for the daily routine maintenance of the cluster.
+	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	// The memory size of the instance, in GB.
+	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 	// The billing method for the OceanBase cluster. Valid values:
 	// - PREPAY: the subscription billing method.
 	// - POSTPAY: the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The information about cluster resources.
+	Resource *DescribeInstancesResponseBodyInstancesResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The series of the OceanBase cluster. Valid values:
+	// - NORMAL: the high availability edition.
+	// - BASIC: the basic edition.
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The number of resource units in the cluster.
+	// The status of the cluster. Valid values:
+	// - ONLINE: The cluster is running.
+	// - PENDING_CREATE: The cluster is being created.
+	// - ARREARS_CLOSED("arrears_closed"): The cluster is suspended due to insufficient balance.
+	// - PREPAID_EXPIRE_CLOSED("prepaid_expire_closed"): The cluster is suspended because the subscription has expired.
+	// - WHITE_LIST_MODIFYING("white_list_modifying"): The allowlist of the cluster is being modified.
+	// - SSL_MODIFYING("ssl_modifying"): The Secure Sockets Layer (SSL) settings of the cluster are being modified.
+	// - PARAMETER_MODIFYING("parameter_modifying"): Parameters of the cluster are being modified.
+	// - TENANT_CREATING("tenant_creating"): A tenant is being created in the cluster.
+	// - TENANT_SPEC_MODIFYING("tenant_spec_modifying"): The specifications of a tenant in the cluster are being modified.
+	// - EXPANDING("expanding"): Nodes are being added to the cluster.
+	// - REDUCING("reducing"): Nodes are being removed from the cluster.
+	// - ZONE_CHANGING("zone_changing"): Zones of the cluster are being modified.
+	// - SPEC_UPGRADING: The service plan is being upgraded.
+	// - SPEC_DOWNGRADING("spec_downgrading"): The plan specification is being downgraded.
+	// - DISK_UPGRADING: The storage space is being expanded.
+	// - UPGRADING("upgrading"): The version of the cluster is being upgraded.
+	// - PENDING_DELETE("pending_delete"): The cluster is being deleted.
+	// - DELETED("deleted"): The cluster has been deleted.
+	// - ABNORMAL("abnormal"): The cluster is abnormal.
+	// - OFFLINE("offline"): The cluster is offline.
+	// - STANDBY_CREATING("standby_creating"): A standby cluster is being created for the cluster.
+	// - STANDBY_DELETING("standby_deleting"): A standby cluster of the cluster is being deleted.
+	// - SWITCHOVER_SWITCHING("switchover_switching"): The cluster is undergoing a primary/standby switchover.
+	// - STANDBY_DISCONNECTING("standby_disconnecting"): The cluster is being decoupled from its standby cluster.
+	// - LOG_DISK_UPGRADING("log_disk_upgrading"): The log disk of the cluster is being scaled out.
+	// - ISOLATION_OPTIMIZATION_MODIFYING("isolation_optimization_modifying"): The isolation optimization settings of the cluster are being modified.
+	// - DISKTYPE_MODIFYING("disktype_modifying"): The data disk type of the cluster is being modified.
+	// - PROXY_SERVICE_CREATING("proxy_service_creating"): The proxy service is being enabled for the cluster.
+	// - PROXY_SERVICE_DELETING("proxy_service_deleting"): The proxy service is being disabled for the cluster.
+	// - PROXY_SERVICE_SPEC_MODIFYING("proxy_service_spec_modifying"): The proxy service specification is being modified for the cluster.
+	// - READONLY_ADD_NODE("readonly_add_node"): A read-only node is being added to the cluster.
+	// - READONLY_REDUCE_NODE("readonly_reduce_node"): A read-only node is being removed from the cluster.
+	// - READONLY_REDUCE_ZONE("readonly_reduce_zone"): A read-only zone is being removed from the cluster.
+	// - READONLY_ADD_ZONE("readonly_add_zone"): A read-only zone is being added to the cluster.
+	// - READONLY_UPGRADE_SPEC("readonly_upgrade_spec"): The specification of read-only replicas is being upgraded.
+	// - READONLY_UPGRADE_DISK("readonly_upgrade_disk"): The disk space of read-only replicas is being scaled out.
+	// - READONLY_DOWNGRADE_SPEC("readonly_downgrade_spec"): The specification of read-only replicas is being downgraded.
+	// - READONLY_DOWNGRADE_DISK("readonly_downgrade_disk"): The disk space of read-only replicas is being scaled in.
+	// - CREATING_TENANT_READONLY_REPLICA("creating_tenant_readonly_replica"): A read-only replica is being created for a tenant in the cluster.
+	// - DELETING_TENANT_READONLY_REPLICA("deleting_tenant_readonly_replica"): A read-only replica is being deleted for a tenant in the cluster.
+	// - DISK_DOWNGRADING("disk_downgrading"): The disk space of the cluster is being scaled in.
+	// - DEPLOY_MODE_MODIFYING("deploy_mode_modifying"): The deployment mode of the cluster is being modified.
+	// > Generally, the cluster is in the ONLINE state.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The number of resource units in the cluster.
+	// The size of used storage space of the cluster, in GB.
 	UsedDiskSize *int64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
-	// The total number of CPU cores of the cluster.
+	// The OBServer version.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// vpcId
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -10563,14 +10750,22 @@ func (s *DescribeInstancesResponseBodyInstances) SetVpcId(v string) *DescribeIns
 }
 
 type DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig struct {
-	AutoScale           *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	MaxDiskSize         *int64  `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
-	ScaleStepInMerge    *int64  `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
-	ScaleStepInNormal   *int64  `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
-	UpperMergeThreshold *int64  `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
-	UpperScaleStrategy  *string `json:"UpperScaleStrategy,omitempty" xml:"UpperScaleStrategy,omitempty"`
-	UpperThreshold      *int64  `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
-	Upperbound          *int64  `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
+	// Specifies whether to enable the automatic scaling of the data disk.
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The maximum size of the disk, in GB.
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	// The size of scaling step during a major compaction.
+	ScaleStepInMerge *int64 `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
+	// The size of scaling step during daily use.
+	ScaleStepInNormal *int64 `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
+	// The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for major compactions.
+	UpperMergeThreshold *int64 `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
+	// The scale-out strategy. Valid values: RAW and PERCENTAGE.
+	UpperScaleStrategy *string `json:"UpperScaleStrategy,omitempty" xml:"UpperScaleStrategy,omitempty"`
+	// The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for daily use.
+	UpperThreshold *int64 `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
+	// The maximum space, in GB, to which the data disk can be scaled.
+	Upperbound *int64 `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) String() string {
@@ -10622,29 +10817,16 @@ func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetUpper
 }
 
 type DescribeInstancesResponseBodyInstancesResource struct {
+	// The information about capacity units.
 	CapacityUnit *DescribeInstancesResponseBodyInstancesResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
-	// Indicates whether new nodes can be added.
+	// The information about the CPU resources of the cluster.
 	Cpu *DescribeInstancesResponseBodyInstancesResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	// The time elapsed since the expiration of the cluster, in seconds.
+	// The information about the storage resources of the cluster.
 	DiskSize *DescribeInstancesResponseBodyInstancesResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	// The status of the cluster. Valid values:
-	// - PENDING_CREATE: The cluster is being created.
-	// - ONLINE: The cluster is running.
-	// - TENANT_CREATING: The tenant is being created.
-	// - TENANT_SPEC_MODIFYING: The tenant specifications are being modified.
-	// - EXPANDING: Nodes are being added to the cluster to increase its capacity.
-	// - REDUCING: Nodes are being removed from the cluster to reduce its capacity.
-	// - SPEC_UPGRADING: The service plan is being upgraded.
-	// - DISK_UPGRADING: The storage space is being expanded.
-	// - WHITE_LIST_MODIFYING: The whitelist is being modified.
-	// - PARAMETER_MODIFYING: Parameters are being modified.
-	// - SSL_MODIFYING: The SSL certificate is being changed.
-	// - PREPAID_EXPIRE_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to PREPAY.
-	// - ARREARS_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to POSTPAY.
-	// - PENDING_DELETE: The cluster is being deleted.
-	// Generally, the cluster is in the ONLINE state.
-	Memory    *DescribeInstancesResponseBodyInstancesResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	UnitCount *int64                                                `json:"UnitCount,omitempty" xml:"UnitCount,omitempty"`
+	// The information about the memory resources of the cluster.
+	Memory *DescribeInstancesResponseBodyInstancesResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The number of resource units in the cluster.
+	UnitCount *int64 `json:"UnitCount,omitempty" xml:"UnitCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesResource) String() string {
@@ -10681,8 +10863,11 @@ func (s *DescribeInstancesResponseBodyInstancesResource) SetUnitCount(v int64) *
 }
 
 type DescribeInstancesResponseBodyInstancesResourceCapacityUnit struct {
-	MaxCapacityUnit  *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
-	MinCapacityUnit  *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The maximum number of capacity units.
+	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	// The minimum number of capacity units.
+	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The number of used capacity units.
 	UsedCapacityUnit *int32 `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
 }
 
@@ -10710,18 +10895,13 @@ func (s *DescribeInstancesResponseBodyInstancesResourceCapacityUnit) SetUsedCapa
 }
 
 type DescribeInstancesResponseBodyInstancesResourceCpu struct {
+	// The number of original CPU cores in the cluster.
 	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
-	// The name of the OceanBase cluster.
-	// It must be 1 to 20 characters in length.
-	// If this parameter is not specified, the value is the instance ID of the cluster by default.
+	// The total number of CPU cores of the cluster.
 	TotalCpu *int64 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
-	// The data replica distribution mode of the cluster. Valid values:
-	//
-	// - n: indicates the single-IDC mode.
-	// - n-n: indicates the dual-IDC mode.
-	// - n-n-n: indicates the multi-IDC mode. The integer n represents the number of OBServer nodes in each IDC.
+	// The number of CPU cores of each replica node in the cluster.
 	UnitCpu *int64 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
-	// The search keyword.
+	// The number of CPU cores used in the cluster.
 	UsedCpu *int64 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
 }
 
@@ -10754,12 +10934,13 @@ func (s *DescribeInstancesResponseBodyInstancesResourceCpu) SetUsedCpu(v int64) 
 }
 
 type DescribeInstancesResponseBodyInstancesResourceDiskSize struct {
+	// The original size of the disk.
 	OriginalTotalDiskSize *int64 `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
-	// The request ID.
+	// The total storage space of the cluster, in GB.
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	// Example 1
+	// The storage space of each replica node in the cluster, in GB.
 	UnitDiskSize *int64 `json:"UnitDiskSize,omitempty" xml:"UnitDiskSize,omitempty"`
-	// $.parameters[7].schema.example
+	// The size of used storage space of the cluster, in GB.
 	UsedDiskSize *int64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
 }
 
@@ -10792,10 +10973,11 @@ func (s *DescribeInstancesResponseBodyInstancesResourceDiskSize) SetUsedDiskSize
 }
 
 type DescribeInstancesResponseBodyInstancesResourceMemory struct {
+	// The original memory size of the cluster, in GB.
 	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
-	// The number of CPU cores of the cluster.
+	// The total memory size of the cluster, in GB.
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	// The size of used storage space of the cluster, in GB.
+	// The memory size of each replica node in the cluster, in GB.
 	UnitMemory *int64 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
 	// The size of used memory in the cluster, in GB.
 	UsedMemory *int64 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
@@ -16004,41 +16186,42 @@ func (s *DescribeProjectResponseBody) SetTotalCount(v int64) *DescribeProjectRes
 }
 
 type DescribeProjectResponseBodyData struct {
-	AlarmStats                *DescribeProjectResponseBodyDataAlarmStats           `json:"AlarmStats,omitempty" xml:"AlarmStats,omitempty" type:"Struct"`
-	CommonTransferConfig      *DescribeProjectResponseBodyDataCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
-	DestConnId                *string                                              `json:"DestConnId,omitempty" xml:"DestConnId,omitempty"`
-	EnableFullTransfer        *bool                                                `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
-	EnableFullVerify          *bool                                                `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
-	EnableIncrTransfer        *bool                                                `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
-	EnableIncrVerify          *bool                                                `json:"EnableIncrVerify,omitempty" xml:"EnableIncrVerify,omitempty"`
-	EnableReverseIncrTransfer *bool                                                `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
-	EnableStructTransfer      *bool                                                `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
-	ExtraInfo                 *DescribeProjectResponseBodyDataExtraInfo            `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
-	FullTransferConfig        *DescribeProjectResponseBodyDataFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
-	GmtCreate                 *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtFinish                 *string                                              `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
-	GmtModified               *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GmtStart                  *string                                              `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
-	Id                        *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Importance                *string                                              `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	IncrTransferConfig        *DescribeProjectResponseBodyDataIncrTransferConfig   `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
-	IsMerging                 *bool                                                `json:"IsMerging,omitempty" xml:"IsMerging,omitempty"`
-	IsModifying               *bool                                                `json:"IsModifying,omitempty" xml:"IsModifying,omitempty"`
-	IsSubProject              *bool                                                `json:"IsSubProject,omitempty" xml:"IsSubProject,omitempty"`
-	Labels                    []*DescribeProjectResponseBodyDataLabels             `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name                      *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                     *string                                              `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SinkConnectInfo           *DescribeProjectResponseBodyDataSinkConnectInfo      `json:"SinkConnectInfo,omitempty" xml:"SinkConnectInfo,omitempty" type:"Struct"`
-	SinkEndpointType          *string                                              `json:"SinkEndpointType,omitempty" xml:"SinkEndpointType,omitempty"`
-	SourceConnectInfo         *DescribeProjectResponseBodyDataSourceConnectInfo    `json:"SourceConnectInfo,omitempty" xml:"SourceConnectInfo,omitempty" type:"Struct"`
-	SourceEndpointType        *string                                              `json:"SourceEndpointType,omitempty" xml:"SourceEndpointType,omitempty"`
-	Status                    *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Steps                     []*DescribeProjectResponseBodyDataSteps              `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	StructTransferConfig      *DescribeProjectResponseBodyDataStructTransferConfig `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
-	TransferMapping           *DescribeProjectResponseBodyDataTransferMapping      `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
-	Type                      *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkerGradeId             *string                                              `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
-	WorkerGradeInfo           *DescribeProjectResponseBodyDataWorkerGradeInfo      `json:"WorkerGradeInfo,omitempty" xml:"WorkerGradeInfo,omitempty" type:"Struct"`
+	AlarmStats                *DescribeProjectResponseBodyDataAlarmStats                `json:"AlarmStats,omitempty" xml:"AlarmStats,omitempty" type:"Struct"`
+	CommonTransferConfig      *DescribeProjectResponseBodyDataCommonTransferConfig      `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	DestConnId                *string                                                   `json:"DestConnId,omitempty" xml:"DestConnId,omitempty"`
+	EnableFullTransfer        *bool                                                     `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify          *bool                                                     `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer        *bool                                                     `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableIncrVerify          *bool                                                     `json:"EnableIncrVerify,omitempty" xml:"EnableIncrVerify,omitempty"`
+	EnableReverseIncrTransfer *bool                                                     `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer      *bool                                                     `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	ExtraInfo                 *DescribeProjectResponseBodyDataExtraInfo                 `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FullTransferConfig        *DescribeProjectResponseBodyDataFullTransferConfig        `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	GmtCreate                 *string                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtFinish                 *string                                                   `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
+	GmtModified               *string                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtStart                  *string                                                   `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	Id                        *string                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Importance                *string                                                   `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	IncrTransferConfig        *DescribeProjectResponseBodyDataIncrTransferConfig        `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
+	IsMerging                 *bool                                                     `json:"IsMerging,omitempty" xml:"IsMerging,omitempty"`
+	IsModifying               *bool                                                     `json:"IsModifying,omitempty" xml:"IsModifying,omitempty"`
+	IsSubProject              *bool                                                     `json:"IsSubProject,omitempty" xml:"IsSubProject,omitempty"`
+	Labels                    []*DescribeProjectResponseBodyDataLabels                  `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name                      *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner                     *string                                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ReverseIncrTransferConfig *DescribeProjectResponseBodyDataReverseIncrTransferConfig `json:"ReverseIncrTransferConfig,omitempty" xml:"ReverseIncrTransferConfig,omitempty" type:"Struct"`
+	SinkConnectInfo           *DescribeProjectResponseBodyDataSinkConnectInfo           `json:"SinkConnectInfo,omitempty" xml:"SinkConnectInfo,omitempty" type:"Struct"`
+	SinkEndpointType          *string                                                   `json:"SinkEndpointType,omitempty" xml:"SinkEndpointType,omitempty"`
+	SourceConnectInfo         *DescribeProjectResponseBodyDataSourceConnectInfo         `json:"SourceConnectInfo,omitempty" xml:"SourceConnectInfo,omitempty" type:"Struct"`
+	SourceEndpointType        *string                                                   `json:"SourceEndpointType,omitempty" xml:"SourceEndpointType,omitempty"`
+	Status                    *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Steps                     []*DescribeProjectResponseBodyDataSteps                   `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	StructTransferConfig      *DescribeProjectResponseBodyDataStructTransferConfig      `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
+	TransferMapping           *DescribeProjectResponseBodyDataTransferMapping           `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
+	Type                      *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkerGradeId             *string                                                   `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+	WorkerGradeInfo           *DescribeProjectResponseBodyDataWorkerGradeInfo           `json:"WorkerGradeInfo,omitempty" xml:"WorkerGradeInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeProjectResponseBodyData) String() string {
@@ -16166,6 +16349,11 @@ func (s *DescribeProjectResponseBodyData) SetName(v string) *DescribeProjectResp
 
 func (s *DescribeProjectResponseBodyData) SetOwner(v string) *DescribeProjectResponseBodyData {
 	s.Owner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetReverseIncrTransferConfig(v *DescribeProjectResponseBodyDataReverseIncrTransferConfig) *DescribeProjectResponseBodyData {
+	s.ReverseIncrTransferConfig = v
 	return s
 }
 
@@ -16472,6 +16660,10 @@ type DescribeProjectResponseBodyDataFullTransferConfig struct {
 	FullTransferSpeedMode    *string `json:"FullTransferSpeedMode,omitempty" xml:"FullTransferSpeedMode,omitempty"`
 	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
 	NonePkUkTruncateDstTable *bool   `json:"NonePkUkTruncateDstTable,omitempty" xml:"NonePkUkTruncateDstTable,omitempty"`
+	ReadWorkerNum            *int32  `json:"ReadWorkerNum,omitempty" xml:"ReadWorkerNum,omitempty"`
+	ThrottleIOPS             *int32  `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps              *int32  `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
+	WriteWorkerNum           *int32  `json:"WriteWorkerNum,omitempty" xml:"WriteWorkerNum,omitempty"`
 }
 
 func (s DescribeProjectResponseBodyDataFullTransferConfig) String() string {
@@ -16502,6 +16694,26 @@ func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetNonePkUkTruncateD
 	return s
 }
 
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetReadWorkerNum(v int32) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.ReadWorkerNum = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetThrottleIOPS(v int32) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetThrottleRps(v int32) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.ThrottleRps = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetWriteWorkerNum(v int32) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.WriteWorkerNum = &v
+	return s
+}
+
 type DescribeProjectResponseBodyDataIncrTransferConfig struct {
 	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
 	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
@@ -16509,6 +16721,9 @@ type DescribeProjectResponseBodyDataIncrTransferConfig struct {
 	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
 	StartTimestamp            *int64    `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+	SupportDDLTypes           []*string `json:"SupportDDLTypes,omitempty" xml:"SupportDDLTypes,omitempty" type:"Repeated"`
+	ThrottleIOPS              *int32    `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps               *int32    `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
 }
 
 func (s DescribeProjectResponseBodyDataIncrTransferConfig) String() string {
@@ -16549,6 +16764,21 @@ func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetStoreLogKeptHour(
 	return s
 }
 
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetSupportDDLTypes(v []*string) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.SupportDDLTypes = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetThrottleIOPS(v int32) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetThrottleRps(v int32) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.ThrottleRps = &v
+	return s
+}
+
 type DescribeProjectResponseBodyDataLabels struct {
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -16569,6 +16799,71 @@ func (s *DescribeProjectResponseBodyDataLabels) SetId(v string) *DescribeProject
 
 func (s *DescribeProjectResponseBodyDataLabels) SetName(v string) *DescribeProjectResponseBodyDataLabels {
 	s.Name = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataReverseIncrTransferConfig struct {
+	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
+	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
+	IncrSyncConcurrency       *int32    `json:"IncrSyncConcurrency,omitempty" xml:"IncrSyncConcurrency,omitempty"`
+	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
+	StartTimestamp            *int64    `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+	SupportDDLTypes           []*string `json:"SupportDDLTypes,omitempty" xml:"SupportDDLTypes,omitempty" type:"Repeated"`
+	ThrottleIOPS              *int32    `json:"ThrottleIOPS,omitempty" xml:"ThrottleIOPS,omitempty"`
+	ThrottleRps               *int32    `json:"ThrottleRps,omitempty" xml:"ThrottleRps,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataReverseIncrTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataReverseIncrTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetEnableIncrSyncStatistics(v bool) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.EnableIncrSyncStatistics = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetEnableSequencingWithinTxn(v bool) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.EnableSequencingWithinTxn = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetIncrSyncConcurrency(v int32) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.IncrSyncConcurrency = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetRecordTypeWhiteList(v []*string) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.RecordTypeWhiteList = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetStartTimestamp(v int64) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetStoreLogKeptHour(v int32) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.StoreLogKeptHour = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetSupportDDLTypes(v []*string) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.SupportDDLTypes = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetThrottleIOPS(v int32) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.ThrottleIOPS = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataReverseIncrTransferConfig) SetThrottleRps(v int32) *DescribeProjectResponseBodyDataReverseIncrTransferConfig {
+	s.ThrottleRps = &v
 	return s
 }
 
@@ -36267,6 +36562,10 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 		request.LabelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelIds, tea.String("LabelIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ReverseIncrTransferConfig)) {
+		request.ReverseIncrTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReverseIncrTransferConfig, tea.String("ReverseIncrTransferConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.StructTransferConfig)) {
 		request.StructTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StructTransferConfig, tea.String("StructTransferConfig"), tea.String("json"))
 	}
@@ -36322,6 +36621,10 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.OssKey)) {
 		body["OssKey"] = request.OssKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReverseIncrTransferConfigShrink)) {
+		body["ReverseIncrTransferConfig"] = request.ReverseIncrTransferConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SinkEndpointId)) {
