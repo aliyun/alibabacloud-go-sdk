@@ -2418,6 +2418,7 @@ type Sku struct {
 	Price         *int64     `json:"price,omitempty" xml:"price,omitempty"`
 	ProductId     *string    `json:"productId,omitempty" xml:"productId,omitempty"`
 	Quantity      *int64     `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	RankValue     *int64     `json:"rankValue,omitempty" xml:"rankValue,omitempty"`
 	ShopId        *string    `json:"shopId,omitempty" xml:"shopId,omitempty"`
 	SkuId         *string    `json:"skuId,omitempty" xml:"skuId,omitempty"`
 	SkuSpecs      []*SkuSpec `json:"skuSpecs,omitempty" xml:"skuSpecs,omitempty" type:"Repeated"`
@@ -2481,6 +2482,11 @@ func (s *Sku) SetProductId(v string) *Sku {
 
 func (s *Sku) SetQuantity(v int64) *Sku {
 	s.Quantity = &v
+	return s
+}
+
+func (s *Sku) SetRankValue(v int64) *Sku {
+	s.RankValue = &v
 	return s
 }
 
