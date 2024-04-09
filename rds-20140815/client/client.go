@@ -2870,13 +2870,16 @@ type CreateAccountRequest struct {
 	//
 	// > : The name cannot start with http:// or https://.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The username of the account.
+	// The name of the database account.
 	//
-	// *   The value must be unique.
 	//
-	// *   The value must start with a lowercase letter, and end with a lowercase letter or a digit.
+	// *   The name must be unique.
 	//
-	// *   The value can contain lowercase letters, digits, and underscores (\_).
+	// *   The name can contain lowercase letters, digits, and underscores (\_). For MySQL databases, the name can contain uppercase letters.
+	//
+	// *   The name must start with a letter and end with a letter or digit.
+	//
+	// *   For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is `Test1`, the name of the standard account cannot be `test1`.
 	//
 	// *   The length of the value must meet the following requirements:
 	//
@@ -2887,7 +2890,7 @@ type CreateAccountRequest struct {
 	//     *   If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
 	//     *   If the instance runs MariaDB, the value must be 2 to 16 characters in length.
 	//
-	// *   For more information about invalid characters, see [Forbidden keywords table](~~26317~~).
+	// *   For more information about invalid characters, see [Forbidden keywords](~~26317~~).
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account.
 	//
@@ -13634,7 +13637,7 @@ func (s *DescribeAvailableMetricsResponse) SetBody(v *DescribeAvailableMetricsRe
 }
 
 type DescribeAvailableRecoveryTimeRequest struct {
-	// The ID of the cross-region backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
+	// The ID of the cross-region data backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
 	CrossBackupId *int32 `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -13693,7 +13696,7 @@ func (s *DescribeAvailableRecoveryTimeRequest) SetResourceOwnerId(v int64) *Desc
 type DescribeAvailableRecoveryTimeResponseBody struct {
 	// The ID of the cross-region data backup file.
 	CrossBackupId *int32 `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
-	// The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
 	// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	RecoveryEndTime *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
@@ -14184,8 +14187,8 @@ type DescribeBackupPolicyRequest struct {
 	// *   **0**: Backup data is not compressed.
 	// *   **1**: Backup data is compressed by using zlib.
 	// *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-	// *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases and tables.
-	// *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables. This value is available only when the instance runs MySQL 8.0.
+	// *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+	// *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
@@ -14294,25 +14297,25 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **0**: Backup data is not compressed.
 	// *   **1**: Backup data is compressed by using zlib.
 	// *   **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-	// *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases and tables.
-	// *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables. This value is available only when the instance runs MySQL 8.0.
+	// *   **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+	// *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// *   **1**: The log backup feature is enabled.
-	// *   **0**: The log backup feature is disabled.
+	// *   **1**: enabled
+	// *   **0**: disabled
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
 	// Indicates whether incremental backup is enabled. Valid values:
 	//
 	// *   **True**: Incremental backup is enabled.
 	// *   **False**: Incremental backup is disabled.
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
-	// Whether PITR recovery is enabled at any point in time (the upgraded version of the original log backup). Return value:
+	// Indicates whether the point-in-time restoration (PITR) feature is enabled. The PITR feature is an enhancement of the log backup feature. Valid values:
 	//
-	// - True: Yes
-	// - False: no
+	// *   **True**
+	// *   **False**
 	//
-	// > Only MySQL instances return this parameter.
+	// >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](~~2666046~~).
 	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
 	// Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
 	//
@@ -14328,13 +14331,13 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **LogInterval**: Log backups are performed every 30 minutes.
 	// *   Default value: same as the value of the **PreferredBackupPeriod** parameter.
 	//
-	// > The **LogBackupFrequency** parameter is supported only when the instance runs **SQL Server**.
+	// >  This parameter is returned only when the instance runs SQL Server.
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
 	// The number of binary log files that you want to retain on the instance.
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
 	// The number of days for which log backup files are retained.
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The number of days to restore at any point in time.
+	// The number of days during which you can restore data of the instance to any point in time.
 	PitrRetentionPeriod *int32 `json:"PitrRetentionPeriod,omitempty" xml:"PitrRetentionPeriod,omitempty"`
 	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
 	//
@@ -14370,7 +14373,7 @@ type DescribeBackupPolicyResponseBody struct {
 	// *   **1**: The instance supports snapshot backups.
 	// *   **0**: The instance does not support snapshot backups.
 	//
-	// > This parameter is returned only when the instance runs SQL Server.
+	// >  This parameter is returned only when the instance runs SQL Server.
 	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
 }
 
@@ -23229,15 +23232,15 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// The endpoint of the instance.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
 	// The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
-	DBInstanceClass    *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceCpuCores *string `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The instance description.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceMemory *string `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
+	DBInstanceMemory *int32  `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The type of the network connection to the instance. Valid values:
 	//
 	// *   **Internet**
@@ -23405,13 +23408,13 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetCreateTime(v string)
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceClass(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
-	s.DBInstanceClass = &v
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceCPU(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.DBInstanceCPU = &v
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceCpuCores(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
-	s.DBInstanceCpuCores = &v
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceClass(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.DBInstanceClass = &v
 	return s
 }
 
@@ -23425,7 +23428,7 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceId(v strin
 	return s
 }
 
-func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceMemory(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetDBInstanceMemory(v int32) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.DBInstanceMemory = &v
 	return s
 }
@@ -31498,7 +31501,7 @@ type DescribeKmsAssociateResourcesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeKmsAssociateResourcesRequest) String() string {
@@ -31559,7 +31562,7 @@ func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerAccount(v string)
 	return s
 }
 
-func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerId(v string) *DescribeKmsAssociateResourcesRequest {
+func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerId(v int64) *DescribeKmsAssociateResourcesRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
@@ -48246,10 +48249,10 @@ type ModifyDBInstanceSSLRequest struct {
 	// *   **aliyun**: a cloud certificate
 	// *   **custom**: a custom certificate
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// User-defined certificate. The custom certificate is in pfx format.
+	// The custom certificate. The custom certificate is in the `PFX` format.
 	//
-	// - Public address: `oss-<region ID>.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
-	// - Intranet address: `oss-<region ID>-internal.aliyuncs.com:<Bucket name >:< certificate file name (with file suffix)>`
+	// *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
+	// *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
 	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
@@ -48278,7 +48281,7 @@ type ModifyDBInstanceSSLRequest struct {
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password of the certificate.
 	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The method that is used to verify the replication permissions. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
 	// *   **cert**
 	// *   **prefer**
@@ -52510,7 +52513,7 @@ type ModifySecurityGroupConfigurationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the ECS security group. Each instance can be added to up to three security groups. Separate the security group IDs with commas (,). To delete an ECS security group for the instance, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
+	// The ID of the ECS security group. Each instance can be added to up to 10 security groups. Separate multiple security groups with commas (,). To delete an ECS security group, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -57233,7 +57236,7 @@ type TransformDBInstancePayTypeRequest struct {
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -59325,11 +59328,12 @@ func (client *Client) CalculateDBInstanceWeight(request *CalculateDBInstanceWeig
 }
 
 /**
- * ### [](#)Supported database engine
- * *   SQL Server
- * ### [](#)Usage notes
+ * This operation is phased out.
+ * ### [](#)Supported database engines
+ * *   RDS SQL Server
+ * ### [](#)Description
  * This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
- * ### [](#)Precautions
+ * ### [](#)Usage notes
  * This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
  *
  * @param request CancelImportRequest
@@ -59394,11 +59398,12 @@ func (client *Client) CancelImportWithOptions(request *CancelImportRequest, runt
 }
 
 /**
- * ### [](#)Supported database engine
- * *   SQL Server
- * ### [](#)Usage notes
+ * This operation is phased out.
+ * ### [](#)Supported database engines
+ * *   RDS SQL Server
+ * ### [](#)Description
  * This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
- * ### [](#)Precautions
+ * ### [](#)Usage notes
  * This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
  *
  * @param request CancelImportRequest
@@ -65894,12 +65899,12 @@ func (client *Client) DescribeAvailableMetrics(request *DescribeAvailableMetrics
 }
 
 /**
- * >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+ * >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
  * ### [](#)Supported database engines
- * MySQL
+ * ApsaraDB RDS for MySQL instances with local disks
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
- * [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+ * >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Use the cross-region backup feature](~~120824~~)
  *
  * @param request DescribeAvailableRecoveryTimeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -65963,12 +65968,12 @@ func (client *Client) DescribeAvailableRecoveryTimeWithOptions(request *Describe
 }
 
 /**
- * >  To view the time range within which you can restore data from a standard backup set, see [DescribeBackups](~~26273~~)
+ * >  To view the time range within which you can restore data from a standard backup set, see DescribeBackups.
  * ### [](#)Supported database engines
- * MySQL
+ * ApsaraDB RDS for MySQL instances with local disks
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
- * [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+ * >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Use the cross-region backup feature](~~120824~~)
  *
  * @param request DescribeAvailableRecoveryTimeRequest
  * @return DescribeAvailableRecoveryTimeResponse
@@ -67189,15 +67194,15 @@ func (client *Client) DescribeCrossRegionBackupDBInstance(request *DescribeCross
 
 /**
  * ### [](#)Supported database engines
- * *   MySQL
- * *   PostgreSQL
- * *   SQL Server
+ * *   ApsaraDB RDS for MySQL instances with local disks
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
- * >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+ * >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
  *
  * @param request DescribeCrossRegionBackupsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -67286,15 +67291,15 @@ func (client *Client) DescribeCrossRegionBackupsWithOptions(request *DescribeCro
 
 /**
  * ### [](#)Supported database engines
- * *   MySQL
- * *   PostgreSQL
- * *   SQL Server
+ * *   ApsaraDB RDS for MySQL instances with local disks
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
  * *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
- * >  For more information about how to query cross-region log backup files, see [DescribeCrossRegionLogBackupFiles](~~121734~~).
+ * >  For more information about how to query cross-region log backup files, see DescribeCrossRegionLogBackupFiles.
  *
  * @param request DescribeCrossRegionBackupsRequest
  * @return DescribeCrossRegionBackupsResponse
