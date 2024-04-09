@@ -3370,7 +3370,7 @@ type DeleteDBResourceGroupRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	//
-	// > You can call the [DescribeDBResourceGroup](~~612410~~) operation to query the resource group information of a cluster, including the resource group name.
+	// >  You can call the [DescribeDBResourceGroup](~~612410~~) operation to query the information about resource groups of an AnalyticDB for MySQL cluster, including resource group names.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -6877,7 +6877,13 @@ type DescribeClusterResourceDetailResponseBodyDataResourceGroupList struct {
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
 	// A reserved parameter.
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	EnableSpot          *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// Indicates whether the preemptible instance feature is enabled for the resource group. After the preemptible instance feature is enabled, you are charged for resources at a lower unit price but the resources are probably released. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// The True value is returned only for job resource groups.
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
 	// A reserved parameter.
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum amount of reserved computing resources. Unit: ACUs.
@@ -6896,7 +6902,7 @@ type DescribeClusterResourceDetailResponseBodyDataResourceGroupList struct {
 	PoolUsers *string `json:"PoolUsers,omitempty" xml:"PoolUsers,omitempty"`
 	// A reserved parameter.
 	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
-	// The state of the resource group. Valid values:
+	// The status of the resource group. Valid values:
 	//
 	// *   **running**
 	// *   **deleting**
@@ -9318,7 +9324,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The time when the resource group was created. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The minimum amount of elastic computing resources. Unit: ACUs.
+	// The minimum amount of elastic computing resources. Unit: ACU.
 	ElasticMinComputeResource *string `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
 	EnableSpot                *string `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
 	// The name of the resource group.
@@ -9330,20 +9336,20 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// >  For more information about resource groups, see [Resource groups](~~428610~~).
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The Resource Access Management (RAM) user with which the resource group is associated.
+	// The Resource Access Management (RAM) user that is associated with the resource group.
 	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
 	// A reserved parameter.
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum amount of reserved computing resources. Unit: ACU.
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
 	// A reserved parameter.
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
 	MinComputeResource *string                                               `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	Rules              []*DescribeDBResourceGroupResponseBodyGroupsInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// A reserved parameter.
 	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
-	// The state of the resource group. Valid values:
+	// The status of the resource group. Valid values:
 	//
 	// *   **creating**: The resource group is being created.
 	// *   **ok**: The resource group is created.
@@ -14476,7 +14482,7 @@ type GetSparkAppAttemptLogResponseBodyData struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
-	// The number of entries per page. A value of 0 indicates that no valid logs are returned.
+	// The number of log entries. A value of 0 indicates that no valid logs are returned.
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	// The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -17721,9 +17727,9 @@ func (s *ListSparkTemplateFileIdsResponse) SetBody(v *ListSparkTemplateFileIdsRe
 }
 
 type LoadSampleDataSetRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -17741,7 +17747,7 @@ func (s *LoadSampleDataSetRequest) SetDBClusterId(v string) *LoadSampleDataSetRe
 }
 
 type LoadSampleDataSetResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -18459,11 +18465,11 @@ type ModifyClusterConnectionStringRequest struct {
 	// *   The prefix can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter.
 	// *   The prefix can be up to 30 characters in length.
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The current public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The port number that is used to connect to the cluster. Set the value to **3306**.
+	// The port number. Set the value to **3306**.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -18496,7 +18502,7 @@ func (s *ModifyClusterConnectionStringRequest) SetPort(v int32) *ModifyClusterCo
 }
 
 type ModifyClusterConnectionStringResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20205,7 +20211,7 @@ func (s *SubmitSparkLogAnalyzeTaskResponse) SetBody(v *SubmitSparkLogAnalyzeTask
 type UnbindAccountRequest struct {
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](~~612430~~) operation to view the information about a database account in a cluster, including the name of the database account.
+	// >  You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts of an AnalyticDB for MySQL cluster, including database account names.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
