@@ -237,9 +237,9 @@ func (s *GetH5PageTrendResponseBodyData) SetUnload(v float64) *GetH5PageTrendRes
 }
 
 type GetH5PageTrendResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetH5PageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetH5PageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetH5PageTrendResponse) String() string {
@@ -395,9 +395,9 @@ func (s *GetLaunchTrendResponseBodyData) SetTimePoint(v string) *GetLaunchTrendR
 }
 
 type GetLaunchTrendResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLaunchTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLaunchTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLaunchTrendResponse) String() string {
@@ -541,9 +541,9 @@ func (s *GetNativePageTrendResponseBodyData) SetTimePoint(v string) *GetNativePa
 }
 
 type GetNativePageTrendResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNativePageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNativePageTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNativePageTrendResponse) String() string {
@@ -687,9 +687,9 @@ func (s *GetNetworkTrendResponseBodyData) SetTimePoint(v string) *GetNetworkTren
 }
 
 type GetNetworkTrendResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNetworkTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNetworkTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNetworkTrendResponse) String() string {
@@ -792,11 +792,11 @@ func (s *GetStatTrendResponseBody) SetSuccess(v bool) *GetStatTrendResponseBody 
 }
 
 type GetStatTrendResponseBodyData struct {
-	AffectedUserCount *int64  `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
-	AffectedUserRate  *int64  `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
-	ErrorCount        *int64  `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	ErrorRate         *int64  `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
-	TimePoint         *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	AffectedUserCount *int64   `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
+	AffectedUserRate  *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
+	ErrorCount        *int64   `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	ErrorRate         *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
+	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetStatTrendResponseBodyData) String() string {
@@ -812,7 +812,7 @@ func (s *GetStatTrendResponseBodyData) SetAffectedUserCount(v int64) *GetStatTre
 	return s
 }
 
-func (s *GetStatTrendResponseBodyData) SetAffectedUserRate(v int64) *GetStatTrendResponseBodyData {
+func (s *GetStatTrendResponseBodyData) SetAffectedUserRate(v float64) *GetStatTrendResponseBodyData {
 	s.AffectedUserRate = &v
 	return s
 }
@@ -822,7 +822,7 @@ func (s *GetStatTrendResponseBodyData) SetErrorCount(v int64) *GetStatTrendRespo
 	return s
 }
 
-func (s *GetStatTrendResponseBodyData) SetErrorRate(v int64) *GetStatTrendResponseBodyData {
+func (s *GetStatTrendResponseBodyData) SetErrorRate(v float64) *GetStatTrendResponseBodyData {
 	s.ErrorRate = &v
 	return s
 }
@@ -833,9 +833,9 @@ func (s *GetStatTrendResponseBodyData) SetTimePoint(v string) *GetStatTrendRespo
 }
 
 type GetStatTrendResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetStatTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStatTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetStatTrendResponse) String() string {
@@ -993,9 +993,9 @@ func (s *GetSymUploadParamResponseBodyData) SetUploadAddress(v string) *GetSymUp
 }
 
 type GetSymUploadParamResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSymUploadParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSymUploadParamResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSymUploadParamResponse) String() string {
@@ -1127,9 +1127,9 @@ func (s *GetTodayStatTrendResponseBodyData) SetTimePoint(v string) *GetTodayStat
 }
 
 type GetTodayStatTrendResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTodayStatTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTodayStatTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTodayStatTrendResponse) String() string {
@@ -1214,9 +1214,9 @@ func (s *UpdateAlertPlanResponseBody) SetSuccess(v bool) *UpdateAlertPlanRespons
 }
 
 type UpdateAlertPlanResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAlertPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAlertPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAlertPlanResponse) String() string {
@@ -1380,9 +1380,9 @@ func (s *UploadSymbolFileResponseBody) SetTraceId(v string) *UploadSymbolFileRes
 }
 
 type UploadSymbolFileResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UploadSymbolFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadSymbolFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UploadSymbolFileResponse) String() string {
