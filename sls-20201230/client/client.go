@@ -736,7 +736,7 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 }
 
 type GroupConfiguration struct {
-	Fileds []*string `json:"fileds,omitempty" xml:"fileds,omitempty" type:"Repeated"`
+	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	Type   *string   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -748,8 +748,8 @@ func (s GroupConfiguration) GoString() string {
 	return s.String()
 }
 
-func (s *GroupConfiguration) SetFileds(v []*string) *GroupConfiguration {
-	s.Fileds = v
+func (s *GroupConfiguration) SetFields(v []*string) *GroupConfiguration {
+	s.Fields = v
 	return s
 }
 
@@ -1699,20 +1699,20 @@ func (s *OSSExportConfiguration) SetToTime(v int64) *OSSExportConfiguration {
 }
 
 type OSSExportConfigurationSink struct {
-	Bucket          *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	BufferInterval  *int64  `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	BufferSize      *int64  `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
-	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	ContentDetail   *string `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
-	ContentType     *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	DelaySec        *int64  `json:"delaySec,omitempty" xml:"delaySec,omitempty"`
-	Endpoint        *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	PathFormat      *string `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
-	PathFormatType  *string `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
-	Prefix          *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	RoleArn         *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Suffix          *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
-	TimeZone        *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	Bucket          *string                `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	BufferInterval  *int64                 `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
+	BufferSize      *int64                 `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
+	CompressionType *string                `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	ContentDetail   map[string]interface{} `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
+	ContentType     *string                `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	DelaySec        *int64                 `json:"delaySec,omitempty" xml:"delaySec,omitempty"`
+	Endpoint        *string                `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	PathFormat      *string                `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
+	PathFormatType  *string                `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
+	Prefix          *string                `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	RoleArn         *string                `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	Suffix          *string                `json:"suffix,omitempty" xml:"suffix,omitempty"`
+	TimeZone        *string                `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
 func (s OSSExportConfigurationSink) String() string {
@@ -1743,8 +1743,8 @@ func (s *OSSExportConfigurationSink) SetCompressionType(v string) *OSSExportConf
 	return s
 }
 
-func (s *OSSExportConfigurationSink) SetContentDetail(v string) *OSSExportConfigurationSink {
-	s.ContentDetail = &v
+func (s *OSSExportConfigurationSink) SetContentDetail(v map[string]interface{}) *OSSExportConfigurationSink {
+	s.ContentDetail = v
 	return s
 }
 
@@ -2375,6 +2375,35 @@ func (s *SinkEventStoreConfiguration) SetRoleArn(v string) *SinkEventStoreConfig
 	return s
 }
 
+type StoreViewStore struct {
+	Project   *string `json:"project,omitempty" xml:"project,omitempty"`
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	StoreName *string `json:"storeName,omitempty" xml:"storeName,omitempty"`
+}
+
+func (s StoreViewStore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StoreViewStore) GoString() string {
+	return s.String()
+}
+
+func (s *StoreViewStore) SetProject(v string) *StoreViewStore {
+	s.Project = &v
+	return s
+}
+
+func (s *StoreViewStore) SetQuery(v string) *StoreViewStore {
+	s.Query = &v
+	return s
+}
+
+func (s *StoreViewStore) SetStoreName(v string) *StoreViewStore {
+	s.StoreName = &v
+	return s
+}
+
 type TemplateConfiguration struct {
 	Aonotations map[string]interface{} `json:"aonotations,omitempty" xml:"aonotations,omitempty"`
 	Id          *string                `json:"id,omitempty" xml:"id,omitempty"`
@@ -2430,6 +2459,7 @@ type Ticket struct {
 	Extra          *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
 	Number         *int32  `json:"number,omitempty" xml:"number,omitempty"`
+	SharingTo      *string `json:"sharingTo,omitempty" xml:"sharingTo,omitempty"`
 	Ticket         *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
 	TicketId       *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
 	UsedNumber     *int32  `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
@@ -2476,6 +2506,11 @@ func (s *Ticket) SetName(v string) *Ticket {
 
 func (s *Ticket) SetNumber(v int32) *Ticket {
 	s.Number = &v
+	return s
+}
+
+func (s *Ticket) SetSharingTo(v string) *Ticket {
+	s.SharingTo = &v
 	return s
 }
 
@@ -5295,6 +5330,75 @@ func (s *CreateScheduledSQLResponse) SetStatusCode(v int32) *CreateScheduledSQLR
 	return s
 }
 
+type CreateSqlInstanceRequest struct {
+	Cu           *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	UseAsDefault *bool  `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
+}
+
+func (s CreateSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceRequest) SetCu(v int32) *CreateSqlInstanceRequest {
+	s.Cu = &v
+	return s
+}
+
+func (s *CreateSqlInstanceRequest) SetUseAsDefault(v bool) *CreateSqlInstanceRequest {
+	s.UseAsDefault = &v
+	return s
+}
+
+type CreateSqlInstanceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceResponse) SetHeaders(v map[string]*string) *CreateSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSqlInstanceResponse) SetStatusCode(v int32) *CreateSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateTicketRequest struct {
+	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
+	ExpirationTime            *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+}
+
+func (s CreateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequest) SetAccessTokenExpirationTime(v int64) *CreateTicketRequest {
+	s.AccessTokenExpirationTime = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetExpirationTime(v int64) *CreateTicketRequest {
+	s.ExpirationTime = &v
+	return s
+}
+
 type CreateTicketResponseBody struct {
 	Ticket *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
 }
@@ -7451,8 +7555,6 @@ type GetLogsV2Request struct {
 	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
 	// The parameter that is used to query data.
 	Session *string `json:"session,omitempty" xml:"session,omitempty"`
-	// The ID of the shard.
-	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
 	// The end of the time range to query. The value is the log time that is specified when log data is written.
 	//
 	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -7511,11 +7613,6 @@ func (s *GetLogsV2Request) SetReverse(v bool) *GetLogsV2Request {
 
 func (s *GetLogsV2Request) SetSession(v string) *GetLogsV2Request {
 	s.Session = &v
-	return s
-}
-
-func (s *GetLogsV2Request) SetShard(v int32) *GetLogsV2Request {
-	s.Shard = &v
 	return s
 }
 
@@ -8369,6 +8466,105 @@ func (s *GetShipperStatusResponse) SetStatusCode(v int32) *GetShipperStatusRespo
 
 func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *GetShipperStatusResponse {
 	s.Body = v
+	return s
+}
+
+type GetSlsServiceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ServiceStatus     `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSlsServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSlsServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSlsServiceResponse) SetHeaders(v map[string]*string) *GetSlsServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSlsServiceResponse) SetStatusCode(v int32) *GetSlsServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSlsServiceResponse) SetBody(v *ServiceStatus) *GetSlsServiceResponse {
+	s.Body = v
+	return s
+}
+
+type GetSqlInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*GetSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s GetSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceResponse) SetHeaders(v map[string]*string) *GetSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSqlInstanceResponse) SetStatusCode(v int32) *GetSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponse) SetBody(v []*GetSqlInstanceResponseBody) *GetSqlInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetSqlInstanceResponseBody struct {
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	Cu           *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
+	CreateTime   *int32  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	UpdateTime   *int32  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UseAsDefault *bool   `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
+}
+
+func (s GetSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceResponseBody) SetName(v string) *GetSqlInstanceResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBody) SetCu(v int32) *GetSqlInstanceResponseBody {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBody) SetCreateTime(v int32) *GetSqlInstanceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBody) SetUpdateTime(v int32) *GetSqlInstanceResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBody) SetUseAsDefault(v bool) *GetSqlInstanceResponseBody {
+	s.UseAsDefault = &v
 	return s
 }
 
@@ -9362,8 +9558,9 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListETLsRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListETLsRequest) String() string {
@@ -9372,6 +9569,11 @@ func (s ListETLsRequest) String() string {
 
 func (s ListETLsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListETLsRequest) SetLogstore(v string) *ListETLsRequest {
+	s.Logstore = &v
+	return s
 }
 
 func (s *ListETLsRequest) SetOffset(v int32) *ListETLsRequest {
@@ -9478,7 +9680,7 @@ type ListExternalStoreResponseBody struct {
 	// The number of external stores returned on the current page.
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	// The names of the external stores.
-	Externalstores []*ExternalStore `json:"externalstores,omitempty" xml:"externalstores,omitempty" type:"Repeated"`
+	Externalstores []*string `json:"externalstores,omitempty" xml:"externalstores,omitempty" type:"Repeated"`
 	// The number of external stores that meet the query conditions.
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
@@ -9496,7 +9698,7 @@ func (s *ListExternalStoreResponseBody) SetCount(v int32) *ListExternalStoreResp
 	return s
 }
 
-func (s *ListExternalStoreResponseBody) SetExternalstores(v []*ExternalStore) *ListExternalStoreResponseBody {
+func (s *ListExternalStoreResponseBody) SetExternalstores(v []*string) *ListExternalStoreResponseBody {
 	s.Externalstores = v
 	return s
 }
@@ -9928,8 +10130,9 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 }
 
 type ListOSSExportsRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListOSSExportsRequest) String() string {
@@ -9938,6 +10141,11 @@ func (s ListOSSExportsRequest) String() string {
 
 func (s ListOSSExportsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOSSExportsRequest) SetLogstore(v string) *ListOSSExportsRequest {
+	s.Logstore = &v
+	return s
 }
 
 func (s *ListOSSExportsRequest) SetOffset(v int32) *ListOSSExportsRequest {
@@ -10009,8 +10217,9 @@ func (s *ListOSSExportsResponse) SetBody(v *ListOSSExportsResponseBody) *ListOSS
 }
 
 type ListOSSHDFSExportsRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListOSSHDFSExportsRequest) String() string {
@@ -10019,6 +10228,11 @@ func (s ListOSSHDFSExportsRequest) String() string {
 
 func (s ListOSSHDFSExportsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOSSHDFSExportsRequest) SetLogstore(v string) *ListOSSHDFSExportsRequest {
+	s.Logstore = &v
+	return s
 }
 
 func (s *ListOSSHDFSExportsRequest) SetOffset(v int32) *ListOSSHDFSExportsRequest {
@@ -10090,8 +10304,9 @@ func (s *ListOSSHDFSExportsResponse) SetBody(v *ListOSSHDFSExportsResponseBody) 
 }
 
 type ListOSSIngestionsRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListOSSIngestionsRequest) String() string {
@@ -10100,6 +10315,11 @@ func (s ListOSSIngestionsRequest) String() string {
 
 func (s ListOSSIngestionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOSSIngestionsRequest) SetLogstore(v string) *ListOSSIngestionsRequest {
+	s.Logstore = &v
+	return s
 }
 
 func (s *ListOSSIngestionsRequest) SetOffset(v int32) *ListOSSIngestionsRequest {
@@ -10356,8 +10576,9 @@ func (s *ListSavedSearchResponse) SetBody(v *ListSavedSearchResponseBody) *ListS
 }
 
 type ListScheduledSQLsRequest struct {
-	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListScheduledSQLsRequest) String() string {
@@ -10366,6 +10587,11 @@ func (s ListScheduledSQLsRequest) String() string {
 
 func (s ListScheduledSQLsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListScheduledSQLsRequest) SetLogstore(v string) *ListScheduledSQLsRequest {
+	s.Logstore = &v
+	return s
 }
 
 func (s *ListScheduledSQLsRequest) SetOffset(v int64) *ListScheduledSQLsRequest {
@@ -10741,6 +10967,29 @@ func (s *MergeShardResponse) SetBody(v []*Shard) *MergeShardResponse {
 	return s
 }
 
+type OpenSlsServiceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s OpenSlsServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenSlsServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenSlsServiceResponse) SetHeaders(v map[string]*string) *OpenSlsServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenSlsServiceResponse) SetStatusCode(v int32) *OpenSlsServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PutAnnotationDataRequest struct {
 	// The unique identifier of the data.
 	AnnotationdataId *string `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
@@ -11012,6 +11261,75 @@ func (s *QueryMLServiceResultsResponse) SetStatusCode(v int32) *QueryMLServiceRe
 }
 
 func (s *QueryMLServiceResultsResponse) SetBody(v *QueryMLServiceResultsResponseBody) *QueryMLServiceResultsResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshTokenRequest struct {
+	AccessTokenExpirationTime *int64  `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
+	Ticket                    *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+}
+
+func (s RefreshTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshTokenRequest) SetAccessTokenExpirationTime(v int64) *RefreshTokenRequest {
+	s.AccessTokenExpirationTime = &v
+	return s
+}
+
+func (s *RefreshTokenRequest) SetTicket(v string) *RefreshTokenRequest {
+	s.Ticket = &v
+	return s
+}
+
+type RefreshTokenResponseBody struct {
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+}
+
+func (s RefreshTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshTokenResponseBody) SetAccessToken(v string) *RefreshTokenResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+type RefreshTokenResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshTokenResponse) SetHeaders(v map[string]*string) *RefreshTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshTokenResponse) SetStatusCode(v int32) *RefreshTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshTokenResponse) SetBody(v *RefreshTokenResponseBody) *RefreshTokenResponse {
 	s.Body = v
 	return s
 }
@@ -12995,6 +13313,52 @@ func (s *UpdateScheduledSQLResponse) SetStatusCode(v int32) *UpdateScheduledSQLR
 	return s
 }
 
+type UpdateSqlInstanceRequest struct {
+	Cu           *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+	UseAsDefault *bool  `json:"useAsDefault,omitempty" xml:"useAsDefault,omitempty"`
+}
+
+func (s UpdateSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceRequest) SetCu(v int32) *UpdateSqlInstanceRequest {
+	s.Cu = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceRequest) SetUseAsDefault(v bool) *UpdateSqlInstanceRequest {
+	s.UseAsDefault = &v
+	return s
+}
+
+type UpdateSqlInstanceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceResponse) SetHeaders(v map[string]*string) *UpdateSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSqlInstanceResponse) SetStatusCode(v int32) *UpdateSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpsertCollectionPolicyRequest struct {
 	Attribute         *UpsertCollectionPolicyRequestAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
 	CentralizeConfig  *UpsertCollectionPolicyRequestCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
@@ -13214,6 +13578,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 
 	client.Spi = interfaceSPI
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	return nil
 }
@@ -14850,9 +15215,76 @@ func (client *Client) CreateScheduledSQL(project *string, request *CreateSchedul
 	return _result, _err
 }
 
-func (client *Client) CreateTicketWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+func (client *Client) CreateSqlInstanceWithOptions(project *string, request *CreateSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cu)) {
+		body["cu"] = request.Cu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseAsDefault)) {
+		body["useAsDefault"] = request.UseAsDefault
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSqlInstance"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sqlinstance"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateSqlInstanceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSqlInstance(project *string, request *CreateSqlInstanceRequest) (_result *CreateSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSqlInstanceResponse{}
+	_body, _err := client.CreateSqlInstanceWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenExpirationTime)) {
+		query["accessTokenExpirationTime"] = request.AccessTokenExpirationTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpirationTime)) {
+		query["expirationTime"] = request.ExpirationTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTicket"),
@@ -14874,11 +15306,11 @@ func (client *Client) CreateTicketWithOptions(headers map[string]*string, runtim
 	return _result, _err
 }
 
-func (client *Client) CreateTicket() (_result *CreateTicketResponse, _err error) {
+func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateTicketResponse{}
-	_body, _err := client.CreateTicketWithOptions(headers, runtime)
+	_body, _err := client.CreateTicketWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17335,10 +17767,6 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 		body["session"] = request.Session
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Shard)) {
-		body["shard"] = request.Shard
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.To)) {
 		body["to"] = request.To
 	}
@@ -18027,6 +18455,81 @@ func (client *Client) GetShipperStatus(project *string, logstore *string, shippe
 	return _result, _err
 }
 
+func (client *Client) GetSlsServiceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSlsServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSlsService"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/slsservice"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSlsServiceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSlsService() (_result *GetSlsServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSlsServiceResponse{}
+	_body, _err := client.GetSlsServiceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSqlInstanceWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSqlInstanceResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSqlInstance"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sqlinstance"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &GetSqlInstanceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSqlInstance(project *string) (_result *GetSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSqlInstanceResponse{}
+	_body, _err := client.GetSqlInstanceWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAlertsWithOptions(project *string, request *ListAlertsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18602,6 +19105,10 @@ func (client *Client) ListETLsWithOptions(project *string, request *ListETLsRequ
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -19036,6 +19543,10 @@ func (client *Client) ListOSSExportsWithOptions(project *string, request *ListOS
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -19089,6 +19600,10 @@ func (client *Client) ListOSSHDFSExportsWithOptions(project *string, request *Li
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -19142,6 +19657,10 @@ func (client *Client) ListOSSIngestionsWithOptions(project *string, request *Lis
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -19338,6 +19857,10 @@ func (client *Client) ListScheduledSQLsWithOptions(project *string, request *Lis
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -19596,6 +20119,42 @@ func (client *Client) MergeShard(project *string, logstore *string, shard *strin
 	return _result, _err
 }
 
+func (client *Client) OpenSlsServiceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenSlsServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenSlsService"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/slsservice"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &OpenSlsServiceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenSlsService() (_result *OpenSlsServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OpenSlsServiceResponse{}
+	_body, _err := client.OpenSlsServiceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) PutAnnotationDataWithOptions(datasetId *string, request *PutAnnotationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutAnnotationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19819,7 +20378,7 @@ func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *s
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/logstores/" + tea.StringValue(logstoreName) + "/track"),
 		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
+		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
@@ -19914,6 +20473,56 @@ func (client *Client) QueryMLServiceResults(serviceName *string, request *QueryM
 	headers := make(map[string]*string)
 	_result = &QueryMLServiceResultsResponse{}
 	_body, _err := client.QueryMLServiceResultsWithOptions(serviceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshTokenWithOptions(request *RefreshTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefreshTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenExpirationTime)) {
+		query["accessTokenExpirationTime"] = request.AccessTokenExpirationTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ticket)) {
+		query["ticket"] = request.Ticket
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshToken"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/token/refresh"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshTokenResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshToken(request *RefreshTokenRequest) (_result *RefreshTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RefreshTokenResponse{}
+	_body, _err := client.RefreshTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21982,6 +22591,59 @@ func (client *Client) UpdateScheduledSQL(project *string, scheduledSQLName *stri
 	headers := make(map[string]*string)
 	_result = &UpdateScheduledSQLResponse{}
 	_body, _err := client.UpdateScheduledSQLWithOptions(project, scheduledSQLName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSqlInstanceWithOptions(project *string, request *UpdateSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cu)) {
+		body["cu"] = request.Cu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseAsDefault)) {
+		body["useAsDefault"] = request.UseAsDefault
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSqlInstance"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sqlinstance"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateSqlInstanceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSqlInstance(project *string, request *UpdateSqlInstanceRequest) (_result *UpdateSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSqlInstanceResponse{}
+	_body, _err := client.UpdateSqlInstanceWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
