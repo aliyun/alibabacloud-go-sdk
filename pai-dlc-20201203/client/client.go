@@ -4577,6 +4577,7 @@ type ListJobsRequest struct {
 	PageSize          *int32             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PipelineId        *string            `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	ResourceId        *string            `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceQuotaName *string            `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
 	ShowOwn           *bool              `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
 	SortBy            *string            `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime         *string            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -4655,6 +4656,11 @@ func (s *ListJobsRequest) SetResourceId(v string) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetResourceQuotaName(v string) *ListJobsRequest {
+	s.ResourceQuotaName = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetShowOwn(v bool) *ListJobsRequest {
 	s.ShowOwn = &v
 	return s
@@ -4708,6 +4714,7 @@ type ListJobsShrinkRequest struct {
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PipelineId        *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
 	ShowOwn           *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
 	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -4783,6 +4790,11 @@ func (s *ListJobsShrinkRequest) SetPipelineId(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetResourceId(v string) *ListJobsShrinkRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetResourceQuotaName(v string) *ListJobsShrinkRequest {
+	s.ResourceQuotaName = &v
 	return s
 }
 
@@ -6506,6 +6518,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceQuotaName)) {
+		query["ResourceQuotaName"] = request.ResourceQuotaName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowOwn)) {
