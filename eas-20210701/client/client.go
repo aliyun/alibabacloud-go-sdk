@@ -904,6 +904,100 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 	return s
 }
 
+type CloneServiceRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneServiceRequest) SetBody(v string) *CloneServiceRequest {
+	s.Body = &v
+	return s
+}
+
+type CloneServiceResponseBody struct {
+	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	// Id of the request
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CloneServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneServiceResponseBody) SetInternetEndpoint(v string) *CloneServiceResponseBody {
+	s.InternetEndpoint = &v
+	return s
+}
+
+func (s *CloneServiceResponseBody) SetIntranetEndpoint(v string) *CloneServiceResponseBody {
+	s.IntranetEndpoint = &v
+	return s
+}
+
+func (s *CloneServiceResponseBody) SetRequestId(v string) *CloneServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloneServiceResponseBody) SetServiceId(v string) *CloneServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CloneServiceResponseBody) SetServiceName(v string) *CloneServiceResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CloneServiceResponseBody) SetStatus(v string) *CloneServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CloneServiceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneServiceResponse) SetHeaders(v map[string]*string) *CloneServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneServiceResponse) SetStatusCode(v int32) *CloneServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneServiceResponse) SetBody(v *CloneServiceResponseBody) *CloneServiceResponse {
+	s.Body = v
+	return s
+}
+
 type CommitServiceResponseBody struct {
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -975,13 +1069,24 @@ type CreateAppServiceRequest struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The application version.
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Additional configurations that are required for the service deployment.
+	// The additional configurations that are required for service deployment.
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The number of instances.
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// The service name.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service specifications.
+	// The service specifications. Valid values:
+	//
+	// *   llama\_7b_fp16
+	// *   llama\_7b_int8
+	// *   llama\_13b_fp16
+	// *   llama\_7b_int8
+	// *   chatglm\_6b_fp16
+	// *   chatglm\_6b_int8
+	// *   chatglm2\_6b_fp16
+	// *   baichuan\_7b_int8
+	// *   baichuan\_13b_fp16
+	// *   baichuan\_7b_fp16
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -1439,9 +1544,8 @@ type CreateResourceRequest struct {
 	// The number of ECS instances.
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
 	// The type of the Elastic Compute Service (ECS) instance.
-	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 自运维资源组配置选项
+	EcsInstanceType            *string                                          `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	ResourceType               *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SelfManagedResourceOptions *CreateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
 	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
@@ -1498,14 +1602,10 @@ func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
 }
 
 type CreateResourceRequestSelfManagedResourceOptions struct {
-	// 自运维集群Id
-	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// 节点的标签键值对集合
-	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	// 节点污点的容忍度列表
-	NodeTolerations []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	// 授予云服务PAI-EAS相关权限的RAM角色名称
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ExternalClusterId *string                                                           `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
+	NodeMatchLabels   map[string]*string                                                `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	NodeTolerations   []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+	RoleName          *string                                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateResourceRequestSelfManagedResourceOptions) String() string {
@@ -1537,14 +1637,10 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) SetRoleName(v string) 
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
-	// 效果
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 键名
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 键名和键值的关系
+	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 键值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) String() string {
@@ -6133,11 +6229,12 @@ func (s *ListServiceVersionsRequest) SetPageSize(v int32) *ListServiceVersionsRe
 }
 
 type ListServiceVersionsResponseBody struct {
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Versions   []*ListServiceVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The versions of the service.
+	Versions []*ListServiceVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceVersionsResponseBody) String() string {
@@ -6174,11 +6271,25 @@ func (s *ListServiceVersionsResponseBody) SetVersions(v []*ListServiceVersionsRe
 }
 
 type ListServiceVersionsResponseBodyVersions struct {
-	BuildTime       *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
-	ImageAvailable  *string `json:"ImageAvailable,omitempty" xml:"ImageAvailable,omitempty"`
-	ImageId         *int32  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ServiceConfig   *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// The time when the service version was created. The time is displayed in UTC.
+	BuildTime *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
+	// Indicates whether the image is available. Valid values:
+	//
+	// *   true: The image is available.
+	// *   false: The image is unavailable.
+	// *   unknown: The availability of the image is unknown.
+	ImageAvailable *string `json:"ImageAvailable,omitempty" xml:"ImageAvailable,omitempty"`
+	// The ID of the image.
+	ImageId *int32 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The service deployment configurations. This parameter is returned only if the service is deployed by using a custom image.
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// Indicates whether EAS is enabled. Valid values:
+	//
+	// *   true: EAS is enabled.
+	// *   false: EAS is not enabled.
+	// *   unknown: The enabling status of EAS is unknown.
 	ServiceRunnable *string `json:"ServiceRunnable,omitempty" xml:"ServiceRunnable,omitempty"`
 }
 
@@ -6308,24 +6419,19 @@ type ListServicesRequest struct {
 	Filter    *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	GroupName *string            `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Label     map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 所属的group。
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order     *string            `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 376577
 	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
 	QuotaId          *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// 服务所属的资源组名称或ID。
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// 服务名。
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 服务运行的状态。
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	// 服务的类型定义。
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceStatus    *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -6470,24 +6576,19 @@ type ListServicesShrinkRequest struct {
 	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 所属的group。
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 376577
 	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
 	QuotaId          *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// 服务所属的资源组名称或ID。
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// 服务名。
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 服务运行的状态。
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	// 服务的类型定义。
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceStatus    *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesShrinkRequest) String() string {
@@ -6574,14 +6675,11 @@ func (s *ListServicesShrinkRequest) SetWorkspaceId(v string) *ListServicesShrink
 }
 
 type ListServicesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 服务列表。
-	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// 服务总数。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Services   []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -6996,25 +7094,32 @@ type UpdateAppServiceRequest struct {
 	//
 	// Valid values:
 	//
-	// *   LLM
+	// *   LLM: the large language model (LLM) application
 	//
 	//     <!-- -->
 	//
-	//     :
-	//
 	//     <!-- -->
-	//
-	//     the large language model (LLM) application
 	//
 	//     <!-- -->
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The application version.
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Additional configurations that are required for the service deployment.
+	// The additional configurations that are required for service deployment.
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The number of instances.
+	// The number of instances. This value must be greater than 0.
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The service specifications.
+	// The service specifications. Valid values:
+	//
+	// *   llama\_7b_fp16
+	// *   llama\_7b_int8
+	// *   llama\_13b_fp16
+	// *   llama\_7b_int8
+	// *   chatglm\_6b_fp16
+	// *   chatglm\_6b_int8
+	// *   chatglm2\_6b_fp16
+	// *   baichuan\_7b_int8
+	// *   baichuan\_13b_fp16
+	// *   baichuan\_7b_fp16
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -8016,7 +8121,10 @@ func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResp
 }
 
 type UpdateServiceInstanceRequest struct {
-	// Specifies whether to isolate the service instance.
+	// Specifies whether to isolate the service instance. Valid values:
+	//
+	// *   true
+	// *   false
 	Isolate *bool `json:"Isolate,omitempty" xml:"Isolate,omitempty"`
 }
 
@@ -8240,6 +8348,32 @@ type UpdateServiceSafetyLockRequest struct {
 	// *   all: locks all operations.
 	// *   dangerous: locks high-risk operations such as delete and stop operations.
 	// *   none: locks no operations.
+	//
+	// Enumerated values:
+	//
+	// *   all
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   dangerous
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   none
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	Lock *string `json:"Lock,omitempty" xml:"Lock,omitempty"`
 }
 
@@ -8434,6 +8568,47 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *string, request *CloneServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneService"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/clone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloneService(ClusterId *string, ServiceName *string, request *CloneServiceRequest) (_result *CloneServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloneServiceResponse{}
+	_body, _err := client.CloneServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8708,6 +8883,14 @@ func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 	return _result, _err
 }
 
+/**
+ * **Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+ *
+ * @param request CreateResourceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateResourceResponse
+ */
 func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8770,6 +8953,12 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 	return _result, _err
 }
 
+/**
+ * **Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+ *
+ * @param request CreateResourceRequest
+ * @return CreateResourceResponse
+ */
 func (client *Client) CreateResource(request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
