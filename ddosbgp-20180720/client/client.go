@@ -108,6 +108,103 @@ func (s *AddIpResponse) SetBody(v *AddIpResponseBody) *AddIpResponse {
 	return s
 }
 
+type AddRdMemberListRequest struct {
+	MemberList []*AddRdMemberListRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+}
+
+func (s AddRdMemberListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRdMemberListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRdMemberListRequest) SetMemberList(v []*AddRdMemberListRequestMemberList) *AddRdMemberListRequest {
+	s.MemberList = v
+	return s
+}
+
+type AddRdMemberListRequestMemberList struct {
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s AddRdMemberListRequestMemberList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRdMemberListRequestMemberList) GoString() string {
+	return s.String()
+}
+
+func (s *AddRdMemberListRequestMemberList) SetUid(v string) *AddRdMemberListRequestMemberList {
+	s.Uid = &v
+	return s
+}
+
+type AddRdMemberListShrinkRequest struct {
+	MemberListShrink *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
+}
+
+func (s AddRdMemberListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRdMemberListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRdMemberListShrinkRequest) SetMemberListShrink(v string) *AddRdMemberListShrinkRequest {
+	s.MemberListShrink = &v
+	return s
+}
+
+type AddRdMemberListResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddRdMemberListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRdMemberListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRdMemberListResponseBody) SetRequestId(v string) *AddRdMemberListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddRdMemberListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddRdMemberListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddRdMemberListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRdMemberListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRdMemberListResponse) SetHeaders(v map[string]*string) *AddRdMemberListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRdMemberListResponse) SetStatusCode(v int32) *AddRdMemberListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddRdMemberListResponse) SetBody(v *AddRdMemberListResponseBody) *AddRdMemberListResponse {
+	s.Body = v
+	return s
+}
+
 type AttachAssetGroupToInstanceRequest struct {
 	// The information about the asset to be associated.
 	AssetGroupList []*AttachAssetGroupToInstanceRequestAssetGroupList `json:"AssetGroupList,omitempty" xml:"AssetGroupList,omitempty" type:"Repeated"`
@@ -976,6 +1073,103 @@ func (s *DeleteIpResponse) SetStatusCode(v int32) *DeleteIpResponse {
 }
 
 func (s *DeleteIpResponse) SetBody(v *DeleteIpResponseBody) *DeleteIpResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRdMemberListRequest struct {
+	MemberList []*DeleteRdMemberListRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteRdMemberListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRdMemberListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRdMemberListRequest) SetMemberList(v []*DeleteRdMemberListRequestMemberList) *DeleteRdMemberListRequest {
+	s.MemberList = v
+	return s
+}
+
+type DeleteRdMemberListRequestMemberList struct {
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DeleteRdMemberListRequestMemberList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRdMemberListRequestMemberList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRdMemberListRequestMemberList) SetUid(v string) *DeleteRdMemberListRequestMemberList {
+	s.Uid = &v
+	return s
+}
+
+type DeleteRdMemberListShrinkRequest struct {
+	MemberListShrink *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
+}
+
+func (s DeleteRdMemberListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRdMemberListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRdMemberListShrinkRequest) SetMemberListShrink(v string) *DeleteRdMemberListShrinkRequest {
+	s.MemberListShrink = &v
+	return s
+}
+
+type DeleteRdMemberListResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRdMemberListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRdMemberListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRdMemberListResponseBody) SetRequestId(v string) *DeleteRdMemberListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRdMemberListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRdMemberListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRdMemberListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRdMemberListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRdMemberListResponse) SetHeaders(v map[string]*string) *DeleteRdMemberListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRdMemberListResponse) SetStatusCode(v int32) *DeleteRdMemberListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRdMemberListResponse) SetBody(v *DeleteRdMemberListResponseBody) *DeleteRdMemberListResponse {
 	s.Body = v
 	return s
 }
@@ -3295,6 +3489,216 @@ func (s *DescribePackIpListResponse) SetBody(v *DescribePackIpListResponseBody) 
 	return s
 }
 
+type DescribeRdMemberListRequest struct {
+	PageNo              *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+}
+
+func (s DescribeRdMemberListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdMemberListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdMemberListRequest) SetPageNo(v int32) *DescribeRdMemberListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeRdMemberListRequest) SetPageSize(v int32) *DescribeRdMemberListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRdMemberListRequest) SetResourceDirectoryId(v string) *DescribeRdMemberListRequest {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+type DescribeRdMemberListResponseBody struct {
+	MemberList []*DescribeRdMemberListResponseBodyMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total      *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeRdMemberListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdMemberListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdMemberListResponseBody) SetMemberList(v []*DescribeRdMemberListResponseBodyMemberList) *DescribeRdMemberListResponseBody {
+	s.MemberList = v
+	return s
+}
+
+func (s *DescribeRdMemberListResponseBody) SetRequestId(v string) *DescribeRdMemberListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRdMemberListResponseBody) SetTotal(v int64) *DescribeRdMemberListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeRdMemberListResponseBodyMemberList struct {
+	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeRdMemberListResponseBodyMemberList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdMemberListResponseBodyMemberList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdMemberListResponseBodyMemberList) SetGmtCreate(v int64) *DescribeRdMemberListResponseBodyMemberList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeRdMemberListResponseBodyMemberList) SetName(v string) *DescribeRdMemberListResponseBodyMemberList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeRdMemberListResponseBodyMemberList) SetUid(v string) *DescribeRdMemberListResponseBodyMemberList {
+	s.Uid = &v
+	return s
+}
+
+type DescribeRdMemberListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRdMemberListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRdMemberListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdMemberListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdMemberListResponse) SetHeaders(v map[string]*string) *DescribeRdMemberListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRdMemberListResponse) SetStatusCode(v int32) *DescribeRdMemberListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRdMemberListResponse) SetBody(v *DescribeRdMemberListResponseBody) *DescribeRdMemberListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRdStatusResponseBody struct {
+	CurrentUid              *string `json:"CurrentUid,omitempty" xml:"CurrentUid,omitempty"`
+	CurrentUidType          *string `json:"CurrentUidType,omitempty" xml:"CurrentUidType,omitempty"`
+	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	LocalEnable             *bool   `json:"LocalEnable,omitempty" xml:"LocalEnable,omitempty"`
+	MasterUid               *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
+	RemoteEnable            *bool   `json:"RemoteEnable,omitempty" xml:"RemoteEnable,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RootUid                 *string `json:"RootUid,omitempty" xml:"RootUid,omitempty"`
+	ServicePrincipalEnabled *bool   `json:"ServicePrincipalEnabled,omitempty" xml:"ServicePrincipalEnabled,omitempty"`
+}
+
+func (s DescribeRdStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdStatusResponseBody) SetCurrentUid(v string) *DescribeRdStatusResponseBody {
+	s.CurrentUid = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetCurrentUidType(v string) *DescribeRdStatusResponseBody {
+	s.CurrentUidType = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetEnabled(v bool) *DescribeRdStatusResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetLocalEnable(v bool) *DescribeRdStatusResponseBody {
+	s.LocalEnable = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetMasterUid(v string) *DescribeRdStatusResponseBody {
+	s.MasterUid = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetRemoteEnable(v bool) *DescribeRdStatusResponseBody {
+	s.RemoteEnable = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetRequestId(v string) *DescribeRdStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetRootUid(v string) *DescribeRdStatusResponseBody {
+	s.RootUid = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponseBody) SetServicePrincipalEnabled(v bool) *DescribeRdStatusResponseBody {
+	s.ServicePrincipalEnabled = &v
+	return s
+}
+
+type DescribeRdStatusResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRdStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRdStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdStatusResponse) SetHeaders(v map[string]*string) *DescribeRdStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRdStatusResponse) SetStatusCode(v int32) *DescribeRdStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRdStatusResponse) SetBody(v *DescribeRdStatusResponseBody) *DescribeRdStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
 	//
@@ -5182,6 +5586,56 @@ func (client *Client) AddIp(request *AddIpRequest) (_result *AddIpResponse, _err
 	return _result, _err
 }
 
+func (client *Client) AddRdMemberListWithOptions(tmpReq *AddRdMemberListRequest, runtime *util.RuntimeOptions) (_result *AddRdMemberListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddRdMemberListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MemberList)) {
+		request.MemberListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberList, tea.String("MemberList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberListShrink)) {
+		query["MemberList"] = request.MemberListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRdMemberList"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddRdMemberListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddRdMemberList(request *AddRdMemberListRequest) (_result *AddRdMemberListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddRdMemberListResponse{}
+	_body, _err := client.AddRdMemberListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetGroupToInstanceRequest, runtime *util.RuntimeOptions) (_result *AttachAssetGroupToInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5662,6 +6116,56 @@ func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIpResponse{}
 	_body, _err := client.DeleteIpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRdMemberListWithOptions(tmpReq *DeleteRdMemberListRequest, runtime *util.RuntimeOptions) (_result *DeleteRdMemberListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteRdMemberListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MemberList)) {
+		request.MemberListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberList, tea.String("MemberList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberListShrink)) {
+		query["MemberList"] = request.MemberListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRdMemberList"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRdMemberListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRdMemberList(request *DeleteRdMemberListRequest) (_result *DeleteRdMemberListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRdMemberListResponse{}
+	_body, _err := client.DeleteRdMemberListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6522,6 +7026,91 @@ func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackIpListResponse{}
 	_body, _err := client.DescribePackIpListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRdMemberListWithOptions(request *DescribeRdMemberListRequest, runtime *util.RuntimeOptions) (_result *DescribeRdMemberListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryId)) {
+		query["ResourceDirectoryId"] = request.ResourceDirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdMemberList"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRdMemberListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRdMemberList(request *DescribeRdMemberListRequest) (_result *DescribeRdMemberListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRdMemberListResponse{}
+	_body, _err := client.DescribeRdMemberListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRdStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRdStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdStatus"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRdStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRdStatusResponse{}
+	_body, _err := client.DescribeRdStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
