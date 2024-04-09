@@ -2355,6 +2355,7 @@ type CreateDBNodesRequest struct {
 	//
 	// *   RO
 	// *   STANDBY
+	// *   DLNode
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	// The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
 	// > - You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the details of cluster endpoints, including endpoint IDs.
@@ -6017,7 +6018,7 @@ type DescribeBackupsRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:
+	// The number of entries to return on each page. Valid values:
 	//
 	// *   **30**
 	// *   **50**
@@ -6201,7 +6202,8 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
 	// The ID of the cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// �The expected expiration time of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
+	// The expected expiration time of the backup set.
+	// > This parameter is supported only for instances that are enabled with sparse backup.
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	// The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
 	//
@@ -10065,11 +10067,12 @@ func (s *DescribeDBClusterTDEResponse) SetBody(v *DescribeDBClusterTDEResponseBo
 }
 
 type DescribeDBClusterVersionRequest struct {
-	// The revision version of the database engine.
-	//
-	// >  For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the `Revision Version` is released later than August 31, 2020. Otherwise, this parameter returns an empty value. For more information about the kernel version of a cluster that runs the PolarDB for MySQL, see [PolarDB for MySQL](~~423884~~).
+	// The ID of the cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the request.
+	// Specify to return the latest version information or a list of upgradeable versions.Valid values:
+	//
+	// - AVAILABLE_VERSION
+	// - LATEST_VERSION
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10116,56 +10119,58 @@ func (s *DescribeDBClusterVersionRequest) SetResourceOwnerId(v int64) *DescribeD
 }
 
 type DescribeDBClusterVersionResponseBody struct {
-	// The latest version of the database engine.
+	// The ID of cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The release note of the kernel version.
+	// The latest version of the database engine.
 	DBLatestVersion *string `json:"DBLatestVersion,omitempty" xml:"DBLatestVersion,omitempty"`
-	// The versions to which the cluster can be upgraded.
-	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
-	// The version of PolarProxy.
-	DBRevisionVersion     *string                                                      `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
-	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
 	// The minor version of the database engine.
 	//
-	// *   If `DBVersion` is **8.0**, the valid values of this parameter are:
+	// - If DBVersion is 8.0, the valid values of this parameter are:
+	//   - 8.0.2
+	//   - 8.0.1
+	// - If DBVersion is 5.7, set the value of this parameter to 5.7.28.
+	// - If DBVersion is 5.6, the value of this parameter is 5.6.16.
+	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
+	// The revision version of the database engine.
+	// >For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the Revision Version is released later than August 31, 2020. Otherwise, this parameter returns an empty value.
+	DBRevisionVersion     *string                                                      `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
+	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
+	// The version of the database engine. Valid values:
 	//
-	//     *   **8.0.2**
-	//     *   **8.0.1**
-	//
-	// *   If `DBVersion` is **5.7**, set the value of this parameter to **5.7.28**.
-	//
-	// *   If `DBVersion` is **5.6**, the value of this parameter is **5.6.16**.
+	// - 5.6
+	// - 5.7
+	// - 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The latest version of PolarProxy.
-	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
 	// The status of the minor version. Valid values:
 	//
 	// *   **Stable**: The minor version is stable.
 	// *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately update the cluster to the latest minor version.
 	//
-	// > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
+	// >  For more information about how to update the minor version, see [Minor version update](~~158572~~).
+	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
+	// Indicates whether the kernel is of the latest version. Valid values:
+	//
+	// - true
+	// - false
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	// The ID of the cluster.
-	IsProxyLatestVersion *string `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
-	// The revision version of the database engine.
-	ProxyLatestVersion *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
-	// The release status of the kernel version. Valid values:
+	// Indicates whether PolarProxy uses the latest version. Valid values:
 	//
-	// *   **Stable**: The kernel version is stable.
-	// *   **Old**: The kernel version is old. We recommend that you do not upgrade the cluster to this version returned for this parameter.
-	// *   **HighRisk**: The kernel version has critical defects. We recommend that you do not upgrade the cluster to this version returned for this parameter.
+	// - true
+	// - false
+	IsProxyLatestVersion *string `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
+	// The latest version of PolarProxy.
+	ProxyLatestVersion *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
+	// The revision version of the database engine.
 	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
-	// The code of the revision version of the database engine to which the cluster can be upgraded.
-	ProxyVersionStatus *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
 	// The status of PolarProxy. Valid values:
 	//
-	// *   **Stable**: The minor version is stable.
-	// *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
-	// *   **Beta**: The minor version is a beta version.
-	//
-	// > For more information about how to upgrade the PolarProxy version, see [Upgrade versions](~~158572~~).
+	// - Stable: The minor version is stable.
+	// - Old: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+	// - HighRisk: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	// - Beta: The minor version is a beta version.
+	ProxyVersionStatus *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10243,9 +10248,17 @@ func (s *DescribeDBClusterVersionResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
-	ReleaseNote         *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	ReleaseType         *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The release notes for the revision version.
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The release status of the revision version. Valid values:
+	//
+	// *   **Stable**: The revision version is stable.
+	// *   **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
+	// *   **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
+	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The code of the revision version of the database engine to which the cluster can be upgraded.
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
+	// The revision version of the database engine.
 	RevisionVersionName *string `json:"RevisionVersionName,omitempty" xml:"RevisionVersionName,omitempty"`
 }
 
@@ -10325,7 +10338,9 @@ type DescribeDBClustersRequest struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The database engine version of the cluster.
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// 查询方式，当取值为Simple时，将返回简略版参数
+	// The query mode of the list. The value Simple indicates that the simple mode is used. In this mode, only the basic metadata information of the cluster is returned.
+	//
+	// > If you do not specify this parameter, the detailed mode is used by default. Detailed information about the cluster is returned.
 	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	// Specifies whether the cluster has expired. Valid values:
 	//
@@ -10569,52 +10584,8 @@ func (s *DescribeDBClustersResponseBodyItems) SetDBCluster(v []*DescribeDBCluste
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// The type of the AI node. Valid values:
 	//
-	// *   SearchNode: Search node
-	// *   DLNode: ai node
-	//
-	// Enumeration values:
-	//
-	// *   SearchNode | DLNode
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     both
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// *   DLNode
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     DLNode
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// *   DLNode
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     DLNode
-	//
-	//     <!-- -->
-	//
-	//     .
+	// *   SearchNode: search node.
+	// *   DLNode: AI node.
 	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
 	// The edition of the cluster. Valid values:
 	//
@@ -10623,6 +10594,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// *   **Archive**: X-Engine Edition
 	// *   **NormalMultimaster**: Multi-master Cluster (Database/Table)
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the cluster was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the cluster.
@@ -10648,7 +10620,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// *   **0**: The cluster is not locked.
 	// *   **1**: The cluster is locked.
 	//
-	// > If the cluster is locked, you cannot delete the cluster.
+	// > You cannot delete clusters that are locked.
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
 	// The engine of the cluster.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -10663,29 +10635,31 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// > A specific value is returned only for subscription (**Prepaid**) clusters.
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The lock status of the cluster. Valid values:
+	// The lock state of the cluster. Valid values:
 	//
 	// *   **Unlock**: The cluster is not locked.
 	// *   **ManualLock**: The cluster is manually locked.
 	// *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockMode   *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// *   **Postpaid**: pay-as-you-go
+	// *   **Prepaid**: subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The ID of the region in which the node resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. An empty value indicates a common cluster.
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	// The billing method of the storage space. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// *   **Postpaid**: pay-as-you-go
+	// *   **Prepaid**: subscription
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage space that is billed based on the subscription billing method. Unit: bytes.
+	// The storage capacity that is billed based on the subscription billing method. Unit: byte.
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	// The storage space this is occupied by the cluster. Unit: bytes.
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
@@ -10694,6 +10668,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// *   **ON**: multi-zone data consistency is enabled, which is suitable for Standard Edition clusters of Multi-zone Edition.
 	// *   **OFF**: multi-zone data consistency is disabled.
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
+	SubCategory       *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 	// The tags of the cluster.
 	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The VPC ID of the cluster.
@@ -10719,6 +10694,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetAiType(v string) *Desc
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetCategory(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetCpuCores(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.CpuCores = &v
 	return s
 }
 
@@ -10797,6 +10777,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetLockMode(v string) *De
 	return s
 }
 
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetMemorySize(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.MemorySize = &v
+	return s
+}
+
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetPayType(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.PayType = &v
 	return s
@@ -10804,6 +10789,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetPayType(v string) *Des
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetRegionId(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetRemoteMemorySize(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.RemoteMemorySize = &v
 	return s
 }
 
@@ -10834,6 +10824,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetStorageUsed(v int64) *
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetStrictConsistency(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.StrictConsistency = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetSubCategory(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.SubCategory = &v
 	return s
 }
 
@@ -10882,7 +10877,7 @@ type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
 	// The role of the node. Valid values:
 	//
 	// *   **Writer**: The node is the primary node.
-	// *   **Reader**: The node is a read-only node.
+	// *   **Reader**: The node is the read-only node.
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// Indicates whether the hot standby feature is enabled. Valid values:
 	//
@@ -10896,7 +10891,10 @@ type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
 	// The ID of the region in which the node resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the serverless feature is enabled for the current node. **ON** indicates that the serverless feature is enabled. An empty value indicates that the serverless feature is disabled.
+	// Indicates whether the serverless feature is enabled for the current node.
+	//
+	// *   **ON** indicates that the serverless feature is enabled.
+	// *   An empty value indicates that the serverless feature is disabled.
 	Serverless *string `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
 	// The zone ID of the node.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -13674,7 +13672,7 @@ type DescribeGlobalDatabaseNetworksRequest struct {
 	FilterRegion *string `json:"FilterRegion,omitempty" xml:"FilterRegion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with [http:// or https://.](http://https://。)
+	// *   It cannot start with `http://` or `https://`.
 	// *   It must start with a letter.
 	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
 	// *   It must be 2 to 126 characters in length.
@@ -13685,7 +13683,7 @@ type DescribeGlobalDatabaseNetworksRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: 1. The value must be an integer that is greater than 0.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30. Valid values:
+	// The number of entries to return on each page. Default value: 30. Valid values:
 	//
 	// *   30
 	// *   50
@@ -13823,7 +13821,7 @@ type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with [http:// or https://.](http://https://。)
+	// *   It cannot start with `http://` or `https://`.
 	// *   It must start with a letter.
 	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
 	// *   It must be 2 to 126 characters in length.
@@ -22186,7 +22184,12 @@ type ModifyDBNodeClassRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
 	DBNodeTargetClass *string `json:"DBNodeTargetClass,omitempty" xml:"DBNodeTargetClass,omitempty"`
-	DBNodeType        *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
+	// The type of the node. Valid values:
+	//
+	// *   RO
+	// *   STANDBY
+	// *   DLNode
+	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	// The type of the configuration change. Valid values:
 	//
 	// *   **Upgrade**
@@ -22194,23 +22197,23 @@ type ModifyDBNodeClassRequest struct {
 	ModifyType   *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
-	// > *   If you specify the `PlannedStartTime` parameter but do not specify a value for the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	// >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-	// > *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	// > *   If this parameter is empty, the upgrade task is immediately performed.
+	// >*   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+	// >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// >*   If this parameter is left empty, the upgrade task is immediately performed.
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The category of the cluster. Valid values:
 	//
-	// *   **normal_exclusive**: dedicated
-	// *   **normal_general**: genera-purpose
+	// *   **normal_exclusive**: dedicated.
+	// *   **normal_general**: genera-purpose.
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
@@ -22283,11 +22286,11 @@ func (s *ModifyDBNodeClassRequest) SetSubCategory(v string) *ModifyDBNodeClassRe
 }
 
 type ModifyDBNodeClassResponseBody struct {
-	// The ID of the PolarDB cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25434,12 +25437,12 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpgradeDBClusterVersionRequest struct {
 	// The ID of cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values:
+	// Specifies whether to immediately run the kernel upgrade task. Valid values:
 	//
-	// - false: runs the task on schedule.
-	// - true: runs the task immediately. Default value: false.
+	// *   **false** (default)
+	// *   **true**
 	//
-	// > No need to use this parameter when calling this interface
+	// >  This parameter is not required when you call the operation.
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25457,19 +25460,21 @@ type UpgradeDBClusterVersionRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](~~2319145~~) operation to query the version code.
 	TargetDBRevisionVersionCode *string `json:"TargetDBRevisionVersionCode,omitempty" xml:"TargetDBRevisionVersionCode,omitempty"`
-	// Kernel version upgrade label. The value is fixed as INNOVATE.
-	// > this parameter is passed in, UpgradePolicy must pass COLD.
+	// The upgrade tag. The value is fixed as **INNOVATE**.
+	//
+	// > *   This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
+	// >*   If you specify this parameter, you must set `UpgradePolicy` to **COLD**.
 	UpgradeLabel *string `json:"UpgradeLabel,omitempty" xml:"UpgradeLabel,omitempty"`
-	// Kernel version upgrade strategy. Value:
+	// The upgrade policy. Valid values:
 	//
-	// - HOT: Hot Upgrade
-	// - COLD: Cold upgrade. Currently, only PolarDB MySQL version 8.0 cluster version supports this upgrade method.
+	// *   **HOT**: hot upgrade.
+	// *   **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
 	UpgradePolicy *string `json:"UpgradePolicy,omitempty" xml:"UpgradePolicy,omitempty"`
-	// There is no need to use this parameter to upgrade the type when calling this interface. Value:
+	// The update type. Valid values:
 	//
-	// - PROXY: Upgrade database proxy only (Proxy)
-	// - DB: Upgrade kernel engine only
-	// - ALL (default): Upgrade both database proxy and kernel engine simultaneously
+	// *   **PROXY**: specifies to upgrade PloarProxy.
+	// *   **DB**: specifies to upgrade the kernel version.
+	// *   **ALL**: specifies to upgrade both PloarProxy and kernel version.
 	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
@@ -29934,13 +29939,6 @@ func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest)
 	return _result, _err
 }
 
-/**
- * The release note of the kernel version.
- *
- * @param request DescribeDBClusterVersionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBClusterVersionResponse
- */
 func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClusterVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29994,12 +29992,6 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 	return _result, _err
 }
 
-/**
- * The release note of the kernel version.
- *
- * @param request DescribeDBClusterVersionRequest
- * @return DescribeDBClusterVersionResponse
- */
 func (client *Client) DescribeDBClusterVersion(request *DescribeDBClusterVersionRequest) (_result *DescribeDBClusterVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterVersionResponse{}
