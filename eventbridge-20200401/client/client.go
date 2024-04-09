@@ -4519,6 +4519,7 @@ type CreateEventStreamingRequestSourceSourcePrometheusParameters struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSourceSourcePrometheusParameters) String() string {
@@ -4541,6 +4542,11 @@ func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetDataTyp
 
 func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetLabels(v string) *CreateEventStreamingRequestSourceSourcePrometheusParameters {
 	s.Labels = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) SetRegionId(v string) *CreateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.RegionId = &v
 	return s
 }
 
@@ -5308,7 +5314,8 @@ func (s *CreateServiceLinkedRoleForProductRequest) SetProductName(v string) *Cre
 
 type CreateServiceLinkedRoleForProductResponseBody struct {
 	// The returned response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode *int32  `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The returned message. If the request is successful, success is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
@@ -5327,6 +5334,11 @@ func (s CreateServiceLinkedRoleForProductResponseBody) GoString() string {
 
 func (s *CreateServiceLinkedRoleForProductResponseBody) SetCode(v string) *CreateServiceLinkedRoleForProductResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleForProductResponseBody) SetHttpCode(v int32) *CreateServiceLinkedRoleForProductResponseBody {
+	s.HttpCode = &v
 	return s
 }
 
@@ -5619,6 +5631,7 @@ func (s *DeleteEventBusResponse) SetBody(v *DeleteEventBusResponseBody) *DeleteE
 }
 
 type DeleteEventSourceRequest struct {
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The name of the event source.
 	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 }
@@ -5629,6 +5642,11 @@ func (s DeleteEventSourceRequest) String() string {
 
 func (s DeleteEventSourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteEventSourceRequest) SetEventBusName(v string) *DeleteEventSourceRequest {
+	s.EventBusName = &v
+	return s
 }
 
 func (s *DeleteEventSourceRequest) SetEventSourceName(v string) *DeleteEventSourceRequest {
@@ -9199,6 +9217,7 @@ type GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) String() string {
@@ -9221,6 +9240,11 @@ func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetD
 
 func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetLabels(v string) *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
 	s.Labels = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters) SetRegionId(v string) *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters {
+	s.RegionId = &v
 	return s
 }
 
@@ -12871,7 +12895,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	// The parameters that are returned if Message Service (MNS) is specified as the event source.
 	SourceMNSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for MQTT is specified as the event source.
-	SourceMQTTParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMQTTParameters       *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters       `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourcePrometheusParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for RabbitMQ is specified as the event source.
 	SourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// Source RocketMQ Parameters
@@ -12905,6 +12930,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceMNSP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceMQTTParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourcePrometheusParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourcePrometheusParameters = v
 	return s
 }
 
@@ -13118,6 +13148,41 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParam
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) SetClusterId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) SetDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
+	s.DataType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) SetLabels(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters) SetRegionId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters {
+	s.RegionId = &v
 	return s
 }
 
@@ -19724,6 +19789,7 @@ type UpdateEventStreamingRequestSourceSourcePrometheusParameters struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateEventStreamingRequestSourceSourcePrometheusParameters) String() string {
@@ -19746,6 +19812,11 @@ func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetDataTyp
 
 func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetLabels(v string) *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
 	s.Labels = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourcePrometheusParameters) SetRegionId(v string) *UpdateEventStreamingRequestSourceSourcePrometheusParameters {
+	s.RegionId = &v
 	return s
 }
 
@@ -21012,6 +21083,10 @@ func (client *Client) DeleteEventSourceWithOptions(request *DeleteEventSourceReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		body["EventBusName"] = request.EventBusName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EventSourceName)) {
 		body["EventSourceName"] = request.EventSourceName
 	}
