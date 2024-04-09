@@ -116,6 +116,88 @@ func (s *AuthDiagnosisResponse) SetBody(v *AuthDiagnosisResponseBody) *AuthDiagn
 	return s
 }
 
+type GenerateCopilotResponseRequest struct {
+	LlmParamString *string `json:"llmParamString,omitempty" xml:"llmParamString,omitempty"`
+}
+
+func (s GenerateCopilotResponseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCopilotResponseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCopilotResponseRequest) SetLlmParamString(v string) *GenerateCopilotResponseRequest {
+	s.LlmParamString = &v
+	return s
+}
+
+type GenerateCopilotResponseResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data    *string `json:"data,omitempty" xml:"data,omitempty"`
+	Massage *string `json:"massage,omitempty" xml:"massage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GenerateCopilotResponseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCopilotResponseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCopilotResponseResponseBody) SetCode(v string) *GenerateCopilotResponseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateCopilotResponseResponseBody) SetData(v string) *GenerateCopilotResponseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GenerateCopilotResponseResponseBody) SetMassage(v string) *GenerateCopilotResponseResponseBody {
+	s.Massage = &v
+	return s
+}
+
+func (s *GenerateCopilotResponseResponseBody) SetRequestId(v string) *GenerateCopilotResponseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateCopilotResponseResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateCopilotResponseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateCopilotResponseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateCopilotResponseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateCopilotResponseResponse) SetHeaders(v map[string]*string) *GenerateCopilotResponseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateCopilotResponseResponse) SetStatusCode(v int32) *GenerateCopilotResponseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateCopilotResponseResponse) SetBody(v *GenerateCopilotResponseResponseBody) *GenerateCopilotResponseResponse {
+	s.Body = v
+	return s
+}
+
 type GetDiagnosisResultRequest struct {
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
@@ -458,6 +540,52 @@ func (client *Client) AuthDiagnosis(request *AuthDiagnosisRequest) (_result *Aut
 	headers := make(map[string]*string)
 	_result = &AuthDiagnosisResponse{}
 	_body, _err := client.AuthDiagnosisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateCopilotResponseWithOptions(request *GenerateCopilotResponseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateCopilotResponseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LlmParamString)) {
+		body["llmParamString"] = request.LlmParamString
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateCopilotResponse"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/copilot/generate_copilot_response"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateCopilotResponseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateCopilotResponse(request *GenerateCopilotResponseRequest) (_result *GenerateCopilotResponseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateCopilotResponseResponse{}
+	_body, _err := client.GenerateCopilotResponseWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
