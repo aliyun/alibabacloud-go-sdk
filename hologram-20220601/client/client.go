@@ -135,7 +135,8 @@ type CreateInstanceRequest struct {
 	// The validity period of the instance that you want to purchase. For example, you can specify a validity period of two months.
 	//
 	// > You do not need to configure this parameter for pay-as-you-go instances.
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	Duration                  *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	EnableServerlessComputing *bool  `json:"enableServerlessComputing,omitempty" xml:"enableServerlessComputing,omitempty"`
 	// The number of gateways. Valid values: 2 to 50.
 	//
 	// > This parameter is required only for virtual warehouse instances.
@@ -228,6 +229,11 @@ func (s *CreateInstanceRequest) SetCpu(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetDuration(v int64) *CreateInstanceRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetEnableServerlessComputing(v bool) *CreateInstanceRequest {
+	s.EnableServerlessComputing = &v
 	return s
 }
 
@@ -2561,7 +2567,8 @@ type ScaleInstanceRequest struct {
 	// *   This parameter is invalid for Hologres Shared Cluster instances.
 	//
 	// *   The specifications of 8-core 32GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
-	Cpu *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Cpu                       *int64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	EnableServerlessComputing *bool  `json:"enableServerlessComputing,omitempty" xml:"enableServerlessComputing,omitempty"`
 	// The number of gateways. Valid values: 2 to 50.
 	//
 	// > This parameter is required only for virtual warehouse instances.
@@ -2598,6 +2605,11 @@ func (s *ScaleInstanceRequest) SetColdStorageSize(v int64) *ScaleInstanceRequest
 
 func (s *ScaleInstanceRequest) SetCpu(v int64) *ScaleInstanceRequest {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ScaleInstanceRequest) SetEnableServerlessComputing(v bool) *ScaleInstanceRequest {
+	s.EnableServerlessComputing = &v
 	return s
 }
 
@@ -3344,6 +3356,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["duration"] = request.Duration
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableServerlessComputing)) {
+		body["enableServerlessComputing"] = request.EnableServerlessComputing
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GatewayCount)) {
 		body["gatewayCount"] = request.GatewayCount
 	}
@@ -3936,6 +3952,10 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 
 	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
 		body["cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableServerlessComputing)) {
+		body["enableServerlessComputing"] = request.EnableServerlessComputing
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayCount)) {
