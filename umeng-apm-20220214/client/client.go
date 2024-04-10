@@ -1086,11 +1086,11 @@ func (s *GetTodayStatTrendResponseBody) SetSuccess(v bool) *GetTodayStatTrendRes
 }
 
 type GetTodayStatTrendResponseBodyData struct {
-	AffectedUserCount *int64  `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
-	AffectedUserRate  *int64  `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
-	ErrorCount        *int64  `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	ErrorRate         *int64  `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
-	TimePoint         *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+	AffectedUserCount *int64   `json:"affectedUserCount,omitempty" xml:"affectedUserCount,omitempty"`
+	AffectedUserRate  *float64 `json:"affectedUserRate,omitempty" xml:"affectedUserRate,omitempty"`
+	ErrorCount        *int64   `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	ErrorRate         *float64 `json:"errorRate,omitempty" xml:"errorRate,omitempty"`
+	TimePoint         *string  `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
 }
 
 func (s GetTodayStatTrendResponseBodyData) String() string {
@@ -1106,7 +1106,7 @@ func (s *GetTodayStatTrendResponseBodyData) SetAffectedUserCount(v int64) *GetTo
 	return s
 }
 
-func (s *GetTodayStatTrendResponseBodyData) SetAffectedUserRate(v int64) *GetTodayStatTrendResponseBodyData {
+func (s *GetTodayStatTrendResponseBodyData) SetAffectedUserRate(v float64) *GetTodayStatTrendResponseBodyData {
 	s.AffectedUserRate = &v
 	return s
 }
@@ -1116,7 +1116,7 @@ func (s *GetTodayStatTrendResponseBodyData) SetErrorCount(v int64) *GetTodayStat
 	return s
 }
 
-func (s *GetTodayStatTrendResponseBodyData) SetErrorRate(v int64) *GetTodayStatTrendResponseBodyData {
+func (s *GetTodayStatTrendResponseBodyData) SetErrorRate(v float64) *GetTodayStatTrendResponseBodyData {
 	s.ErrorRate = &v
 	return s
 }
