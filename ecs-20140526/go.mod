@@ -9,5 +9,3 @@ require (
 	github.com/alibabacloud-go/tea v1.2.1
 	github.com/alibabacloud-go/tea-utils/v2 v2.0.5
 )
-
-retract v4.24.17 // because it contains a critical bug
