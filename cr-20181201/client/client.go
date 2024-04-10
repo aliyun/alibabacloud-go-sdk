@@ -73,9 +73,9 @@ func (s *CancelArtifactBuildTaskResponseBody) SetRequestId(v string) *CancelArti
 }
 
 type CancelArtifactBuildTaskResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelArtifactBuildTaskResponse) String() string {
@@ -166,9 +166,9 @@ func (s *CancelRepoBuildRecordResponseBody) SetRequestId(v string) *CancelRepoBu
 }
 
 type CancelRepoBuildRecordResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelRepoBuildRecordResponse) String() string {
@@ -245,9 +245,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -417,9 +417,9 @@ func (s *CreateArtifactBuildRuleResponseBody) SetRequestId(v string) *CreateArti
 }
 
 type CreateArtifactBuildRuleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateArtifactBuildRuleResponse) String() string {
@@ -510,9 +510,9 @@ func (s *CreateBuildRecordByRecordResponseBody) SetRequestId(v string) *CreateBu
 }
 
 type CreateBuildRecordByRecordResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBuildRecordByRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBuildRecordByRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateBuildRecordByRecordResponse) String() string {
@@ -610,9 +610,9 @@ func (s *CreateBuildRecordByRuleResponseBody) SetRequestId(v string) *CreateBuil
 }
 
 type CreateBuildRecordByRuleResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBuildRecordByRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBuildRecordByRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateBuildRecordByRuleResponse) String() string {
@@ -738,9 +738,9 @@ func (s *CreateChainResponseBody) SetRequestId(v string) *CreateChainResponseBod
 }
 
 type CreateChainResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateChainResponse) String() string {
@@ -848,9 +848,9 @@ func (s *CreateChartNamespaceResponseBody) SetRequestId(v string) *CreateChartNa
 }
 
 type CreateChartNamespaceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateChartNamespaceResponse) String() string {
@@ -970,9 +970,9 @@ func (s *CreateChartRepositoryResponseBody) SetRequestId(v string) *CreateChartR
 }
 
 type CreateChartRepositoryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateChartRepositoryResponse) String() string {
@@ -1083,9 +1083,9 @@ func (s *CreateInstanceEndpointAclPolicyResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateInstanceEndpointAclPolicyResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceEndpointAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceEndpointAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceEndpointAclPolicyResponse) String() string {
@@ -1201,9 +1201,9 @@ func (s *CreateInstanceVpcEndpointLinkedVpcResponseBody) SetRequestId(v string) 
 }
 
 type CreateInstanceVpcEndpointLinkedVpcResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateInstanceVpcEndpointLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateInstanceVpcEndpointLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateInstanceVpcEndpointLinkedVpcResponse) String() string {
@@ -1304,9 +1304,9 @@ func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceRes
 }
 
 type CreateNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNamespaceResponse) String() string {
@@ -1460,9 +1460,9 @@ func (s *CreateRepoBuildRuleResponseBody) SetRequestId(v string) *CreateRepoBuil
 }
 
 type CreateRepoBuildRuleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoBuildRuleResponse) String() string {
@@ -1597,9 +1597,9 @@ func (s *CreateRepoSourceCodeRepoResponseBody) SetRequestId(v string) *CreateRep
 }
 
 type CreateRepoSourceCodeRepoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoSourceCodeRepoResponse) String() string {
@@ -1744,9 +1744,9 @@ func (s *CreateRepoSyncRuleResponseBody) SetSyncRuleId(v string) *CreateRepoSync
 }
 
 type CreateRepoSyncRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoSyncRuleResponse) String() string {
@@ -1879,9 +1879,9 @@ func (s *CreateRepoSyncTaskResponseBody) SetSyncTaskId(v string) *CreateRepoSync
 }
 
 type CreateRepoSyncTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoSyncTaskResponse) String() string {
@@ -1989,9 +1989,9 @@ func (s *CreateRepoSyncTaskByRuleResponseBody) SetSyncTaskId(v string) *CreateRe
 }
 
 type CreateRepoSyncTaskByRuleResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoSyncTaskByRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoSyncTaskByRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoSyncTaskByRuleResponse) String() string {
@@ -2096,9 +2096,9 @@ func (s *CreateRepoTagResponseBody) SetRequestId(v string) *CreateRepoTagRespons
 }
 
 type CreateRepoTagResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoTagResponse) String() string {
@@ -2209,9 +2209,9 @@ func (s *CreateRepoTagScanTaskResponseBody) SetRequestId(v string) *CreateRepoTa
 }
 
 type CreateRepoTagScanTaskResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoTagScanTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoTagScanTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoTagScanTaskResponse) String() string {
@@ -2341,9 +2341,9 @@ func (s *CreateRepoTriggerResponseBody) SetTriggerId(v string) *CreateRepoTrigge
 }
 
 type CreateRepoTriggerResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepoTriggerResponse) String() string {
@@ -2475,9 +2475,9 @@ func (s *CreateRepositoryResponseBody) SetRequestId(v string) *CreateRepositoryR
 }
 
 type CreateRepositoryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRepositoryResponse) String() string {
@@ -2561,9 +2561,9 @@ func (s *DeleteChainResponseBody) SetRequestId(v string) *DeleteChainResponseBod
 }
 
 type DeleteChainResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteChainResponse) String() string {
@@ -2650,9 +2650,9 @@ func (s *DeleteChartNamespaceResponseBody) SetRequestId(v string) *DeleteChartNa
 }
 
 type DeleteChartNamespaceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteChartNamespaceResponse) String() string {
@@ -2757,9 +2757,9 @@ func (s *DeleteChartReleaseResponseBody) SetRequestId(v string) *DeleteChartRele
 }
 
 type DeleteChartReleaseResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteChartReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChartReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteChartReleaseResponse) String() string {
@@ -2853,9 +2853,9 @@ func (s *DeleteChartRepositoryResponseBody) SetRequestId(v string) *DeleteChartR
 }
 
 type DeleteChartRepositoryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteChartRepositoryResponse) String() string {
@@ -2932,9 +2932,9 @@ func (s *DeleteEventCenterRuleResponseBody) SetRequestId(v string) *DeleteEventC
 }
 
 type DeleteEventCenterRuleResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEventCenterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEventCenterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEventCenterRuleResponse) String() string {
@@ -3038,9 +3038,9 @@ func (s *DeleteInstanceEndpointAclPolicyResponseBody) SetRequestId(v string) *De
 }
 
 type DeleteInstanceEndpointAclPolicyResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceEndpointAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceEndpointAclPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceEndpointAclPolicyResponse) String() string {
@@ -3144,9 +3144,9 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponseBody) SetRequestId(v string) 
 }
 
 type DeleteInstanceVpcEndpointLinkedVpcResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteInstanceVpcEndpointLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceVpcEndpointLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteInstanceVpcEndpointLinkedVpcResponse) String() string {
@@ -3230,9 +3230,9 @@ func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceRes
 }
 
 type DeleteNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNamespaceResponse) String() string {
@@ -3323,9 +3323,9 @@ func (s *DeleteRepoBuildRuleResponseBody) SetRequestId(v string) *DeleteRepoBuil
 }
 
 type DeleteRepoBuildRuleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRepoBuildRuleResponse) String() string {
@@ -3409,9 +3409,9 @@ func (s *DeleteRepoSyncRuleResponseBody) SetRequestId(v string) *DeleteRepoSyncR
 }
 
 type DeleteRepoSyncRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRepoSyncRuleResponse) String() string {
@@ -3502,9 +3502,9 @@ func (s *DeleteRepoTagResponseBody) SetRequestId(v string) *DeleteRepoTagRespons
 }
 
 type DeleteRepoTagResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRepoTagResponse) String() string {
@@ -3598,9 +3598,9 @@ func (s *DeleteRepoTriggerResponseBody) SetRequestId(v string) *DeleteRepoTrigge
 }
 
 type DeleteRepoTriggerResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRepoTriggerResponse) String() string {
@@ -3701,9 +3701,9 @@ func (s *DeleteRepositoryResponseBody) SetRequestId(v string) *DeleteRepositoryR
 }
 
 type DeleteRepositoryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRepositoryResponse) String() string {
@@ -3771,13 +3771,14 @@ func (s *GetArtifactBuildRuleRequest) SetScopeType(v string) *GetArtifactBuildRu
 }
 
 type GetArtifactBuildRuleResponseBody struct {
-	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	BuildRuleId  *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ArtifactType *string                                     `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	BuildRuleId  *string                                     `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess    *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	Parameters   *GetArtifactBuildRuleResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScopeId      *string                                     `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string                                     `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s GetArtifactBuildRuleResponseBody) String() string {
@@ -3808,6 +3809,11 @@ func (s *GetArtifactBuildRuleResponseBody) SetIsSuccess(v bool) *GetArtifactBuil
 	return s
 }
 
+func (s *GetArtifactBuildRuleResponseBody) SetParameters(v *GetArtifactBuildRuleResponseBodyParameters) *GetArtifactBuildRuleResponseBody {
+	s.Parameters = v
+	return s
+}
+
 func (s *GetArtifactBuildRuleResponseBody) SetRequestId(v string) *GetArtifactBuildRuleResponseBody {
 	s.RequestId = &v
 	return s
@@ -3823,10 +3829,27 @@ func (s *GetArtifactBuildRuleResponseBody) SetScopeType(v string) *GetArtifactBu
 	return s
 }
 
+type GetArtifactBuildRuleResponseBodyParameters struct {
+	ImageIndexOnly *bool `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
+}
+
+func (s GetArtifactBuildRuleResponseBodyParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactBuildRuleResponseBodyParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildRuleResponseBodyParameters) SetImageIndexOnly(v bool) *GetArtifactBuildRuleResponseBodyParameters {
+	s.ImageIndexOnly = &v
+	return s
+}
+
 type GetArtifactBuildRuleResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetArtifactBuildRuleResponse) String() string {
@@ -4037,9 +4060,9 @@ func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetVersion(v string) *G
 }
 
 type GetArtifactBuildTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactBuildTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetArtifactBuildTaskResponse) String() string {
@@ -4144,9 +4167,9 @@ func (s *GetAuthorizationTokenResponseBody) SetTempUsername(v string) *GetAuthor
 }
 
 type GetAuthorizationTokenResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAuthorizationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAuthorizationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAuthorizationTokenResponse) String() string {
@@ -4500,9 +4523,9 @@ func (s *GetChainResponseBodyChainConfigRoutersTo) SetNodeName(v string) *GetCha
 }
 
 type GetChainResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChainResponse) String() string {
@@ -4646,9 +4669,9 @@ func (s *GetChartNamespaceResponseBody) SetResourceGroupId(v string) *GetChartNa
 }
 
 type GetChartNamespaceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChartNamespaceResponse) String() string {
@@ -4817,9 +4840,9 @@ func (s *GetChartRepositoryResponseBody) SetSummary(v string) *GetChartRepositor
 }
 
 type GetChartRepositoryResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChartRepositoryResponse) String() string {
@@ -4969,9 +4992,9 @@ func (s *GetInstanceResponseBodyTags) SetTagValue(v string) *GetInstanceResponse
 }
 
 type GetInstanceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -5033,9 +5056,9 @@ func (s *GetInstanceCountResponseBody) SetRequestId(v string) *GetInstanceCountR
 }
 
 type GetInstanceCountResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceCountResponse) String() string {
@@ -5217,9 +5240,9 @@ func (s *GetInstanceEndpointResponseBodyDomains) SetType(v string) *GetInstanceE
 }
 
 type GetInstanceEndpointResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceEndpointResponse) String() string {
@@ -5355,9 +5378,9 @@ func (s *GetInstanceUsageResponseBody) SetRequestId(v string) *GetInstanceUsageR
 }
 
 type GetInstanceUsageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceUsageResponse) String() string {
@@ -5525,9 +5548,9 @@ func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetVswitchId(v string) *G
 }
 
 type GetInstanceVpcEndpointResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceVpcEndpointResponse) String() string {
@@ -5669,9 +5692,9 @@ func (s *GetNamespaceResponseBody) SetResourceGroupId(v string) *GetNamespaceRes
 }
 
 type GetNamespaceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNamespaceResponse) String() string {
@@ -5822,9 +5845,9 @@ func (s *GetRepoBuildRecordResponseBodyImage) SetRepoNamespaceName(v string) *Ge
 }
 
 type GetRepoBuildRecordResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoBuildRecordResponse) String() string {
@@ -5922,9 +5945,9 @@ func (s *GetRepoBuildRecordStatusResponseBody) SetRequestId(v string) *GetRepoBu
 }
 
 type GetRepoBuildRecordStatusResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoBuildRecordStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoBuildRecordStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoBuildRecordStatusResponse) String() string {
@@ -6076,9 +6099,9 @@ func (s *GetRepoSourceCodeRepoResponseBody) SetRequestId(v string) *GetRepoSourc
 }
 
 type GetRepoSourceCodeRepoResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoSourceCodeRepoResponse) String() string {
@@ -6394,9 +6417,9 @@ func (s *GetRepoSyncTaskResponseBodyLayerTasks) SetTaskStatus(v string) *GetRepo
 }
 
 type GetRepoSyncTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoSyncTaskResponse) String() string {
@@ -6538,9 +6561,9 @@ func (s *GetRepoTagResponseBody) SetTag(v string) *GetRepoTagResponseBody {
 }
 
 type GetRepoTagResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoTagResponse) String() string {
@@ -6694,9 +6717,9 @@ func (s *GetRepoTagLayersResponseBodyLayers) SetLayerInstruction(v string) *GetR
 }
 
 type GetRepoTagLayersResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoTagLayersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoTagLayersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoTagLayersResponse) String() string {
@@ -7014,9 +7037,9 @@ func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetSignature(v string
 }
 
 type GetRepoTagManifestResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoTagManifestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoTagManifestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoTagManifestResponse) String() string {
@@ -7125,9 +7148,9 @@ func (s *GetRepoTagScanStatusResponseBody) SetStatus(v string) *GetRepoTagScanSt
 }
 
 type GetRepoTagScanStatusResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoTagScanStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoTagScanStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoTagScanStatusResponse) String() string {
@@ -7269,9 +7292,9 @@ func (s *GetRepoTagScanSummaryResponseBody) SetUnknownSeverity(v int32) *GetRepo
 }
 
 type GetRepoTagScanSummaryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepoTagScanSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepoTagScanSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepoTagScanSummaryResponse) String() string {
@@ -7468,9 +7491,9 @@ func (s *GetRepositoryResponseBody) SetTagImmutability(v bool) *GetRepositoryRes
 }
 
 type GetRepositoryResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRepositoryResponse) String() string {
@@ -7610,9 +7633,9 @@ func (s *ListArtifactBuildTaskLogResponseBodyBuildTaskLogs) SetMessage(v string)
 }
 
 type ListArtifactBuildTaskLogResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListArtifactBuildTaskLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListArtifactBuildTaskLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListArtifactBuildTaskLogResponse) String() string {
@@ -7819,9 +7842,9 @@ func (s *ListChainResponseBodyChains) SetScopeType(v string) *ListChainResponseB
 }
 
 type ListChainResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChainResponse) String() string {
@@ -8070,9 +8093,9 @@ func (s *ListChainInstanceResponseBodyChainInstancesChain) SetVersion(v int64) *
 }
 
 type ListChainInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChainInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChainInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChainInstanceResponse) String() string {
@@ -8273,9 +8296,9 @@ func (s *ListChartNamespaceResponseBodyNamespaces) SetResourceGroupId(v string) 
 }
 
 type ListChartNamespaceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChartNamespaceResponse) String() string {
@@ -8475,9 +8498,9 @@ func (s *ListChartReleaseResponseBodyChartReleases) SetStatus(v string) *ListCha
 }
 
 type ListChartReleaseResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChartReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChartReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChartReleaseResponse) String() string {
@@ -8708,9 +8731,9 @@ func (s *ListChartRepositoryResponseBodyRepositories) SetSummary(v string) *List
 }
 
 type ListChartRepositoryResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChartRepositoryResponse) String() string {
@@ -8967,9 +8990,9 @@ func (s *ListEventCenterRecordResponseBodyRecords) SetUpdateTime(v int64) *ListE
 }
 
 type ListEventCenterRecordResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEventCenterRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEventCenterRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEventCenterRecordResponse) String() string {
@@ -9078,9 +9101,9 @@ func (s *ListEventCenterRuleNameResponseBodyRuleNames) SetRuleName(v string) *Li
 }
 
 type ListEventCenterRuleNameResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEventCenterRuleNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEventCenterRuleNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEventCenterRuleNameResponse) String() string {
@@ -9325,9 +9348,9 @@ func (s *ListInstanceResponseBodyInstancesTags) SetTagValue(v string) *ListInsta
 }
 
 type ListInstanceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceResponse) String() string {
@@ -9548,9 +9571,9 @@ func (s *ListInstanceEndpointResponseBodyEndpointsLinkedVpcs) SetVpcId(v string)
 }
 
 type ListInstanceEndpointResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceEndpointResponse) String() string {
@@ -9662,9 +9685,9 @@ func (s *ListInstanceRegionResponseBodyRegions) SetRegionId(v string) *ListInsta
 }
 
 type ListInstanceRegionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceRegionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceRegionResponse) String() string {
@@ -9843,9 +9866,9 @@ func (s *ListNamespaceResponseBodyNamespaces) SetResourceGroupId(v string) *List
 }
 
 type ListNamespaceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNamespaceResponse) String() string {
@@ -10059,9 +10082,9 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecordsImage) SetRepoNamespaceName(
 }
 
 type ListRepoBuildRecordResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoBuildRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoBuildRecordResponse) String() string {
@@ -10219,9 +10242,9 @@ func (s *ListRepoBuildRecordLogResponseBodyBuildRecordLogs) SetMessage(v string)
 }
 
 type ListRepoBuildRecordLogResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoBuildRecordLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoBuildRecordLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoBuildRecordLogResponse) String() string {
@@ -10418,9 +10441,9 @@ func (s *ListRepoBuildRuleResponseBodyBuildRules) SetPushType(v string) *ListRep
 }
 
 type ListRepoBuildRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoBuildRuleResponse) String() string {
@@ -10711,9 +10734,9 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) SetTargetRepoName(v string) *Lis
 }
 
 type ListRepoSyncRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoSyncRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoSyncRuleResponse) String() string {
@@ -11011,9 +11034,9 @@ func (s *ListRepoSyncTaskResponseBodySyncTasksImageTo) SetRepoNamespaceName(v st
 }
 
 type ListRepoSyncTaskResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoSyncTaskResponse) String() string {
@@ -11199,9 +11222,9 @@ func (s *ListRepoTagResponseBodyImages) SetTag(v string) *ListRepoTagResponseBod
 }
 
 type ListRepoTagResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoTagResponse) String() string {
@@ -11492,9 +11515,9 @@ func (s *ListRepoTagScanResultResponseBodyVulnerabilities) SetVersionFormat(v st
 }
 
 type ListRepoTagScanResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoTagScanResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoTagScanResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoTagScanResultResponse) String() string {
@@ -11648,9 +11671,9 @@ func (s *ListRepoTriggerResponseBodyTriggers) SetTriggerUrl(v string) *ListRepoT
 }
 
 type ListRepoTriggerResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepoTriggerResponse) String() string {
@@ -11860,9 +11883,9 @@ func (s *ListRepositoryResponseBodyRepositories) SetTagImmutability(v bool) *Lis
 }
 
 type ListRepositoryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRepositoryResponse) String() string {
@@ -11884,6 +11907,449 @@ func (s *ListRepositoryResponse) SetStatusCode(v int32) *ListRepositoryResponse 
 }
 
 func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListScanBaselineByTaskRequest struct {
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListScanBaselineByTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanBaselineByTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanBaselineByTaskRequest) SetDigest(v string) *ListScanBaselineByTaskRequest {
+	s.Digest = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetInstanceId(v string) *ListScanBaselineByTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetLevel(v string) *ListScanBaselineByTaskRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetPageNo(v int32) *ListScanBaselineByTaskRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetPageSize(v int32) *ListScanBaselineByTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetRepoId(v string) *ListScanBaselineByTaskRequest {
+	s.RepoId = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetScanTaskId(v string) *ListScanBaselineByTaskRequest {
+	s.ScanTaskId = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskRequest) SetTag(v string) *ListScanBaselineByTaskRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListScanBaselineByTaskResponseBody struct {
+	Code      *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageNo    *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScanBaselines []*ListScanBaselineByTaskResponseBodyScanBaselines `json:"ScanBaselines,omitempty" xml:"ScanBaselines,omitempty" type:"Repeated"`
+	TotalCount    *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListScanBaselineByTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanBaselineByTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetCode(v int32) *ListScanBaselineByTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetIsSuccess(v bool) *ListScanBaselineByTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetPageNo(v int32) *ListScanBaselineByTaskResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetPageSize(v int32) *ListScanBaselineByTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetRequestId(v string) *ListScanBaselineByTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetScanBaselines(v []*ListScanBaselineByTaskResponseBodyScanBaselines) *ListScanBaselineByTaskResponseBody {
+	s.ScanBaselines = v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBody) SetTotalCount(v int32) *ListScanBaselineByTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListScanBaselineByTaskResponseBodyScanBaselines struct {
+	BaselineClassAlias        *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
+	BaselineDetailAdvice      *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
+	BaselineDetailDescription *string `json:"BaselineDetailDescription,omitempty" xml:"BaselineDetailDescription,omitempty"`
+	BaselineDetailPrompt      *string `json:"BaselineDetailPrompt,omitempty" xml:"BaselineDetailPrompt,omitempty"`
+	BaselineItemCount         *int32  `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
+	BaselineNameAlias         *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
+	BaselineNameKey           *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	BaselineNameLevel         *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
+	CreateTime                *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FirstScanTime             *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	HighRiskItemCount         *int32  `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
+	LowRiskItemCount          *int32  `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
+	MiddleRiskItemCount       *int32  `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
+	ScanTaskId                *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	UpdateTime                *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListScanBaselineByTaskResponseBodyScanBaselines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanBaselineByTaskResponseBodyScanBaselines) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineClassAlias(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineClassAlias = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineDetailAdvice(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineDetailAdvice = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineDetailDescription(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineDetailDescription = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineDetailPrompt(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineDetailPrompt = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineItemCount(v int32) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineItemCount = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineNameAlias(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineNameAlias = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineNameKey(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineNameKey = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetBaselineNameLevel(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.BaselineNameLevel = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetCreateTime(v int64) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetFirstScanTime(v int64) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.FirstScanTime = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetHighRiskItemCount(v int32) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.HighRiskItemCount = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetLowRiskItemCount(v int32) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.LowRiskItemCount = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetMiddleRiskItemCount(v int32) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.MiddleRiskItemCount = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetScanTaskId(v string) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.ScanTaskId = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponseBodyScanBaselines) SetUpdateTime(v int64) *ListScanBaselineByTaskResponseBodyScanBaselines {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListScanBaselineByTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScanBaselineByTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScanBaselineByTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanBaselineByTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanBaselineByTaskResponse) SetHeaders(v map[string]*string) *ListScanBaselineByTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponse) SetStatusCode(v int32) *ListScanBaselineByTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScanBaselineByTaskResponse) SetBody(v *ListScanBaselineByTaskResponseBody) *ListScanBaselineByTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListScanMaliciousFileByTaskRequest struct {
+	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListScanMaliciousFileByTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanMaliciousFileByTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetDigest(v string) *ListScanMaliciousFileByTaskRequest {
+	s.Digest = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetInstanceId(v string) *ListScanMaliciousFileByTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetLevel(v string) *ListScanMaliciousFileByTaskRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetPageNo(v int32) *ListScanMaliciousFileByTaskRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetPageSize(v int32) *ListScanMaliciousFileByTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetRepoId(v string) *ListScanMaliciousFileByTaskRequest {
+	s.RepoId = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetScanTaskId(v string) *ListScanMaliciousFileByTaskRequest {
+	s.ScanTaskId = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskRequest) SetTag(v string) *ListScanMaliciousFileByTaskRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListScanMaliciousFileByTaskResponseBody struct {
+	Code               *int32                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess          *bool                                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageNo             *int32                                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize           *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScanMaliciousFiles []*ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles `json:"ScanMaliciousFiles,omitempty" xml:"ScanMaliciousFiles,omitempty" type:"Repeated"`
+	TotalCount         *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListScanMaliciousFileByTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanMaliciousFileByTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetCode(v int32) *ListScanMaliciousFileByTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetIsSuccess(v bool) *ListScanMaliciousFileByTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetPageNo(v int32) *ListScanMaliciousFileByTaskResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetPageSize(v int32) *ListScanMaliciousFileByTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetRequestId(v string) *ListScanMaliciousFileByTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetScanMaliciousFiles(v []*ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) *ListScanMaliciousFileByTaskResponseBody {
+	s.ScanMaliciousFiles = v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBody) SetTotalCount(v int32) *ListScanMaliciousFileByTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FilePath      *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FirstScanTime *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	Level         *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	MaliciousMd5  *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	MaliciousName *string `json:"MaliciousName,omitempty" xml:"MaliciousName,omitempty"`
+	ScanTaskId    *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetCreateTime(v int64) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetFilePath(v string) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetFirstScanTime(v int64) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.FirstScanTime = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetLevel(v string) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.Level = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetMaliciousMd5(v string) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.MaliciousMd5 = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetMaliciousName(v string) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.MaliciousName = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetScanTaskId(v string) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.ScanTaskId = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) SetUpdateTime(v int64) *ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListScanMaliciousFileByTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListScanMaliciousFileByTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListScanMaliciousFileByTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScanMaliciousFileByTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScanMaliciousFileByTaskResponse) SetHeaders(v map[string]*string) *ListScanMaliciousFileByTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponse) SetStatusCode(v int32) *ListScanMaliciousFileByTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScanMaliciousFileByTaskResponse) SetBody(v *ListScanMaliciousFileByTaskResponseBody) *ListScanMaliciousFileByTaskResponse {
 	s.Body = v
 	return s
 }
@@ -12034,9 +12500,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -12123,9 +12589,9 @@ func (s *ResetLoginPasswordResponseBody) SetRequestId(v string) *ResetLoginPassw
 }
 
 type ResetLoginPasswordResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetLoginPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetLoginPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetLoginPasswordResponse) String() string {
@@ -12227,9 +12693,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -12314,9 +12780,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -12428,9 +12894,9 @@ func (s *UpdateChainResponseBody) SetRequestId(v string) *UpdateChainResponseBod
 }
 
 type UpdateChainResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateChainResponse) String() string {
@@ -12537,9 +13003,9 @@ func (s *UpdateChartNamespaceResponseBody) SetRequestId(v string) *UpdateChartNa
 }
 
 type UpdateChartNamespaceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChartNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateChartNamespaceResponse) String() string {
@@ -12650,9 +13116,9 @@ func (s *UpdateChartRepositoryResponseBody) SetRequestId(v string) *UpdateChartR
 }
 
 type UpdateChartRepositoryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChartRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateChartRepositoryResponse) String() string {
@@ -12897,9 +13363,9 @@ func (s *UpdateEventCenterRuleResponseBody) SetRuleId(v string) *UpdateEventCent
 }
 
 type UpdateEventCenterRuleResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateEventCenterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEventCenterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateEventCenterRuleResponse) String() string {
@@ -13006,9 +13472,9 @@ func (s *UpdateInstanceEndpointStatusResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateInstanceEndpointStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateInstanceEndpointStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceEndpointStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateInstanceEndpointStatusResponse) String() string {
@@ -13109,9 +13575,9 @@ func (s *UpdateNamespaceResponseBody) SetRequestId(v string) *UpdateNamespaceRes
 }
 
 type UpdateNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateNamespaceResponse) String() string {
@@ -13272,9 +13738,9 @@ func (s *UpdateRepoBuildRuleResponseBody) SetRequestId(v string) *UpdateRepoBuil
 }
 
 type UpdateRepoBuildRuleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRepoBuildRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRepoBuildRuleResponse) String() string {
@@ -13416,9 +13882,9 @@ func (s *UpdateRepoSourceCodeRepoResponseBody) SetRequestId(v string) *UpdateRep
 }
 
 type UpdateRepoSourceCodeRepoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRepoSourceCodeRepoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRepoSourceCodeRepoResponse) String() string {
@@ -13543,9 +14009,9 @@ func (s *UpdateRepoTriggerResponseBody) SetRequestId(v string) *UpdateRepoTrigge
 }
 
 type UpdateRepoTriggerResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRepoTriggerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRepoTriggerResponse) String() string {
@@ -13660,9 +14126,9 @@ func (s *UpdateRepositoryResponseBody) SetRequestId(v string) *UpdateRepositoryR
 }
 
 type UpdateRepositoryResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRepositoryResponse) String() string {
@@ -18072,6 +18538,86 @@ func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepositoryResponse{}
 	_body, _err := client.ListRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselineByTaskRequest, runtime *util.RuntimeOptions) (_result *ListScanBaselineByTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScanBaselineByTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScanBaselineByTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequest) (_result *ListScanBaselineByTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListScanBaselineByTaskResponse{}
+	_body, _err := client.ListScanBaselineByTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMaliciousFileByTaskRequest, runtime *util.RuntimeOptions) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScanMaliciousFileByTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScanMaliciousFileByTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFileByTaskRequest) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListScanMaliciousFileByTaskResponse{}
+	_body, _err := client.ListScanMaliciousFileByTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
