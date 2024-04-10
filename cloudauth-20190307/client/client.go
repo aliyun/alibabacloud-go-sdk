@@ -163,6 +163,146 @@ func (s *AIGCFaceVerifyResponse) SetBody(v *AIGCFaceVerifyResponseBody) *AIGCFac
 	return s
 }
 
+type BankMetaVerifyRequest struct {
+	BankCard    *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VerifyMode  *string `json:"VerifyMode,omitempty" xml:"VerifyMode,omitempty"`
+}
+
+func (s BankMetaVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyRequest) SetBankCard(v string) *BankMetaVerifyRequest {
+	s.BankCard = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetIdentifyNum(v string) *BankMetaVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetMobile(v string) *BankMetaVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetParamType(v string) *BankMetaVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetProductType(v string) *BankMetaVerifyRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetUserName(v string) *BankMetaVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *BankMetaVerifyRequest) SetVerifyMode(v string) *BankMetaVerifyRequest {
+	s.VerifyMode = &v
+	return s
+}
+
+type BankMetaVerifyResponseBody struct {
+	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *BankMetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s BankMetaVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyResponseBody) SetCode(v string) *BankMetaVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BankMetaVerifyResponseBody) SetMessage(v string) *BankMetaVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BankMetaVerifyResponseBody) SetRequestId(v string) *BankMetaVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BankMetaVerifyResponseBody) SetResultObject(v *BankMetaVerifyResponseBodyResultObject) *BankMetaVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type BankMetaVerifyResponseBodyResultObject struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s BankMetaVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyResponseBodyResultObject) SetBizCode(v string) *BankMetaVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *BankMetaVerifyResponseBodyResultObject) SetSubCode(v string) *BankMetaVerifyResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
+type BankMetaVerifyResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BankMetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BankMetaVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyResponse) SetHeaders(v map[string]*string) *BankMetaVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BankMetaVerifyResponse) SetStatusCode(v int32) *BankMetaVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BankMetaVerifyResponse) SetBody(v *BankMetaVerifyResponseBody) *BankMetaVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type CompareFaceVerifyRequest struct {
 	Crop                         *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	OuterOrderNo                 *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
@@ -1472,6 +1612,194 @@ func (s *DescribeOssUploadTokenResponse) SetStatusCode(v int32) *DescribeOssUplo
 }
 
 func (s *DescribeOssUploadTokenResponse) SetBody(v *DescribeOssUploadTokenResponseBody) *DescribeOssUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePageFaceVerifyDataRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SceneId     *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribePageFaceVerifyDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePageFaceVerifyDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetCurrentPage(v int64) *DescribePageFaceVerifyDataRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetEndDate(v string) *DescribePageFaceVerifyDataRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetPageSize(v int64) *DescribePageFaceVerifyDataRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetProductCode(v string) *DescribePageFaceVerifyDataRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetSceneId(v int64) *DescribePageFaceVerifyDataRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataRequest) SetStartDate(v string) *DescribePageFaceVerifyDataRequest {
+	s.StartDate = &v
+	return s
+}
+
+type DescribePageFaceVerifyDataResponseBody struct {
+	Code        *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	CurrentPage *string                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribePageFaceVerifyDataResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Message     *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize    *string                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *string                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *string                                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribePageFaceVerifyDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePageFaceVerifyDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetCode(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetCurrentPage(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetItems(v []*DescribePageFaceVerifyDataResponseBodyItems) *DescribePageFaceVerifyDataResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetMessage(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetPageSize(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetRequestId(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetSuccess(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetTotalCount(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBody) SetTotalPage(v string) *DescribePageFaceVerifyDataResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribePageFaceVerifyDataResponseBodyItems struct {
+	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName    *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	TotalCount   *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePageFaceVerifyDataResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePageFaceVerifyDataResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetDate(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetProductCode(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetSceneId(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetSceneName(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.SceneName = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetSuccessCount(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponseBodyItems) SetTotalCount(v string) *DescribePageFaceVerifyDataResponseBodyItems {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePageFaceVerifyDataResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePageFaceVerifyDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePageFaceVerifyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePageFaceVerifyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePageFaceVerifyDataResponse) SetHeaders(v map[string]*string) *DescribePageFaceVerifyDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponse) SetStatusCode(v int32) *DescribePageFaceVerifyDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePageFaceVerifyDataResponse) SetBody(v *DescribePageFaceVerifyDataResponseBody) *DescribePageFaceVerifyDataResponse {
 	s.Body = v
 	return s
 }
@@ -3326,6 +3654,389 @@ func (s *Mobile3MetaSimpleVerifyResponse) SetBody(v *Mobile3MetaSimpleVerifyResp
 	return s
 }
 
+type MobileDetectRequest struct {
+	Mobiles   *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+}
+
+func (s MobileDetectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileDetectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MobileDetectRequest) SetMobiles(v string) *MobileDetectRequest {
+	s.Mobiles = &v
+	return s
+}
+
+func (s *MobileDetectRequest) SetParamType(v string) *MobileDetectRequest {
+	s.ParamType = &v
+	return s
+}
+
+type MobileDetectResponseBody struct {
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *MobileDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s MobileDetectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileDetectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MobileDetectResponseBody) SetCode(v string) *MobileDetectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MobileDetectResponseBody) SetMessage(v string) *MobileDetectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MobileDetectResponseBody) SetRequestId(v string) *MobileDetectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MobileDetectResponseBody) SetResultObject(v *MobileDetectResponseBodyResultObject) *MobileDetectResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type MobileDetectResponseBodyResultObject struct {
+	ChargeCount *string                                      `json:"ChargeCount,omitempty" xml:"ChargeCount,omitempty"`
+	Items       []*MobileDetectResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s MobileDetectResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileDetectResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *MobileDetectResponseBodyResultObject) SetChargeCount(v string) *MobileDetectResponseBodyResultObject {
+	s.ChargeCount = &v
+	return s
+}
+
+func (s *MobileDetectResponseBodyResultObject) SetItems(v []*MobileDetectResponseBodyResultObjectItems) *MobileDetectResponseBodyResultObject {
+	s.Items = v
+	return s
+}
+
+type MobileDetectResponseBodyResultObjectItems struct {
+	Area    *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	Mobile  *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s MobileDetectResponseBodyResultObjectItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileDetectResponseBodyResultObjectItems) GoString() string {
+	return s.String()
+}
+
+func (s *MobileDetectResponseBodyResultObjectItems) SetArea(v string) *MobileDetectResponseBodyResultObjectItems {
+	s.Area = &v
+	return s
+}
+
+func (s *MobileDetectResponseBodyResultObjectItems) SetBizCode(v string) *MobileDetectResponseBodyResultObjectItems {
+	s.BizCode = &v
+	return s
+}
+
+func (s *MobileDetectResponseBodyResultObjectItems) SetIspName(v string) *MobileDetectResponseBodyResultObjectItems {
+	s.IspName = &v
+	return s
+}
+
+func (s *MobileDetectResponseBodyResultObjectItems) SetMobile(v string) *MobileDetectResponseBodyResultObjectItems {
+	s.Mobile = &v
+	return s
+}
+
+func (s *MobileDetectResponseBodyResultObjectItems) SetSubCode(v string) *MobileDetectResponseBodyResultObjectItems {
+	s.SubCode = &v
+	return s
+}
+
+type MobileDetectResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MobileDetectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MobileDetectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileDetectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MobileDetectResponse) SetHeaders(v map[string]*string) *MobileDetectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MobileDetectResponse) SetStatusCode(v int32) *MobileDetectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MobileDetectResponse) SetBody(v *MobileDetectResponseBody) *MobileDetectResponse {
+	s.Body = v
+	return s
+}
+
+type MobileOnlineStatusRequest struct {
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+}
+
+func (s MobileOnlineStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineStatusRequest) SetMobile(v string) *MobileOnlineStatusRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *MobileOnlineStatusRequest) SetParamType(v string) *MobileOnlineStatusRequest {
+	s.ParamType = &v
+	return s
+}
+
+type MobileOnlineStatusResponseBody struct {
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *MobileOnlineStatusResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s MobileOnlineStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineStatusResponseBody) SetCode(v string) *MobileOnlineStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponseBody) SetMessage(v string) *MobileOnlineStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponseBody) SetRequestId(v string) *MobileOnlineStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponseBody) SetResultObject(v *MobileOnlineStatusResponseBodyResultObject) *MobileOnlineStatusResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type MobileOnlineStatusResponseBodyResultObject struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s MobileOnlineStatusResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineStatusResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineStatusResponseBodyResultObject) SetBizCode(v string) *MobileOnlineStatusResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponseBodyResultObject) SetIspName(v string) *MobileOnlineStatusResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponseBodyResultObject) SetSubCode(v string) *MobileOnlineStatusResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
+type MobileOnlineStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MobileOnlineStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MobileOnlineStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineStatusResponse) SetHeaders(v map[string]*string) *MobileOnlineStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MobileOnlineStatusResponse) SetStatusCode(v int32) *MobileOnlineStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MobileOnlineStatusResponse) SetBody(v *MobileOnlineStatusResponseBody) *MobileOnlineStatusResponse {
+	s.Body = v
+	return s
+}
+
+type MobileOnlineTimeRequest struct {
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+}
+
+func (s MobileOnlineTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineTimeRequest) SetMobile(v string) *MobileOnlineTimeRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *MobileOnlineTimeRequest) SetParamType(v string) *MobileOnlineTimeRequest {
+	s.ParamType = &v
+	return s
+}
+
+type MobileOnlineTimeResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *MobileOnlineTimeResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s MobileOnlineTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineTimeResponseBody) SetCode(v string) *MobileOnlineTimeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponseBody) SetMessage(v string) *MobileOnlineTimeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponseBody) SetRequestId(v string) *MobileOnlineTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponseBody) SetResultObject(v *MobileOnlineTimeResponseBodyResultObject) *MobileOnlineTimeResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type MobileOnlineTimeResponseBodyResultObject struct {
+	BizCode  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	IspName  *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	TimeCode *string `json:"TimeCode,omitempty" xml:"TimeCode,omitempty"`
+}
+
+func (s MobileOnlineTimeResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineTimeResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineTimeResponseBodyResultObject) SetBizCode(v string) *MobileOnlineTimeResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponseBodyResultObject) SetIspName(v string) *MobileOnlineTimeResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponseBodyResultObject) SetTimeCode(v string) *MobileOnlineTimeResponseBodyResultObject {
+	s.TimeCode = &v
+	return s
+}
+
+type MobileOnlineTimeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MobileOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MobileOnlineTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MobileOnlineTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MobileOnlineTimeResponse) SetHeaders(v map[string]*string) *MobileOnlineTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MobileOnlineTimeResponse) SetStatusCode(v int32) *MobileOnlineTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MobileOnlineTimeResponse) SetBody(v *MobileOnlineTimeResponseBody) *MobileOnlineTimeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDeviceInfoRequest struct {
 	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -3812,6 +4523,74 @@ func (client *Client) AIGCFaceVerify(request *AIGCFaceVerifyRequest) (_result *A
 	runtime := &util.RuntimeOptions{}
 	_result = &AIGCFaceVerifyResponse{}
 	_body, _err := client.AIGCFaceVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BankMetaVerifyWithOptions(request *BankMetaVerifyRequest, runtime *util.RuntimeOptions) (_result *BankMetaVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BankCard)) {
+		query["BankCard"] = request.BankCard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyMode)) {
+		query["VerifyMode"] = request.VerifyMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BankMetaVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BankMetaVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BankMetaVerify(request *BankMetaVerifyRequest) (_result *BankMetaVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BankMetaVerifyResponse{}
+	_body, _err := client.BankMetaVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4461,6 +5240,70 @@ func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenR
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOssUploadTokenResponse{}
 	_body, _err := client.DescribeOssUploadTokenWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePageFaceVerifyDataWithOptions(request *DescribePageFaceVerifyDataRequest, runtime *util.RuntimeOptions) (_result *DescribePageFaceVerifyDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePageFaceVerifyData"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePageFaceVerifyDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePageFaceVerifyData(request *DescribePageFaceVerifyDataRequest) (_result *DescribePageFaceVerifyDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePageFaceVerifyDataResponse{}
+	_body, _err := client.DescribePageFaceVerifyDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5201,6 +6044,150 @@ func (client *Client) Mobile3MetaSimpleVerify(request *Mobile3MetaSimpleVerifyRe
 	runtime := &util.RuntimeOptions{}
 	_result = &Mobile3MetaSimpleVerifyResponse{}
 	_body, _err := client.Mobile3MetaSimpleVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MobileDetectWithOptions(request *MobileDetectRequest, runtime *util.RuntimeOptions) (_result *MobileDetectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobiles)) {
+		query["Mobiles"] = request.Mobiles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MobileDetect"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MobileDetectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MobileDetect(request *MobileDetectRequest) (_result *MobileDetectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MobileDetectResponse{}
+	_body, _err := client.MobileDetectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MobileOnlineStatusWithOptions(request *MobileOnlineStatusRequest, runtime *util.RuntimeOptions) (_result *MobileOnlineStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MobileOnlineStatus"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MobileOnlineStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MobileOnlineStatus(request *MobileOnlineStatusRequest) (_result *MobileOnlineStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MobileOnlineStatusResponse{}
+	_body, _err := client.MobileOnlineStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MobileOnlineTimeWithOptions(request *MobileOnlineTimeRequest, runtime *util.RuntimeOptions) (_result *MobileOnlineTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MobileOnlineTime"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MobileOnlineTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MobileOnlineTime(request *MobileOnlineTimeRequest) (_result *MobileOnlineTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MobileOnlineTimeResponse{}
+	_body, _err := client.MobileOnlineTimeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
