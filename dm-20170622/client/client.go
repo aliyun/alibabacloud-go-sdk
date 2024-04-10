@@ -4945,12 +4945,14 @@ func (s *SenderStatisticsDetailByParamResponseBodyData) SetMailDetail(v []*Sende
 }
 
 type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	LastUpdateTime    *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToAddress         *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	UtcLastUpdateTime *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ErrorClassification *string `json:"ErrorClassification,omitempty" xml:"ErrorClassification,omitempty"`
+	LastUpdateTime      *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subject             *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	ToAddress           *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	UtcLastUpdateTime   *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
 }
 
 func (s SenderStatisticsDetailByParamResponseBodyDataMailDetail) String() string {
@@ -4966,6 +4968,11 @@ func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetAccountName
 	return s
 }
 
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetErrorClassification(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.ErrorClassification = &v
+	return s
+}
+
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetLastUpdateTime(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
 	s.LastUpdateTime = &v
 	return s
@@ -4978,6 +4985,11 @@ func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetMessage(v s
 
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetStatus(v int32) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
 	s.Status = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetSubject(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.Subject = &v
 	return s
 }
 
