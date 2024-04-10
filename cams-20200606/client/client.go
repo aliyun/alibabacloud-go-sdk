@@ -13,11 +13,16 @@ import (
 )
 
 type AddChatappPhoneNumberRequest struct {
-	Cc            *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	CustSpaceId   *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	PhoneNumber   *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The country code.
+	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number without a country code.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The ID of the pre-registered phone number.
 	PreValidateId *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
-	VerifiedName  *string `json:"VerifiedName,omitempty" xml:"VerifiedName,omitempty"`
+	// The display name of the phone number.
+	VerifiedName *string `json:"VerifiedName,omitempty" xml:"VerifiedName,omitempty"`
 }
 
 func (s AddChatappPhoneNumberRequest) String() string {
@@ -54,10 +59,16 @@ func (s *AddChatappPhoneNumberRequest) SetVerifiedName(v string) *AddChatappPhon
 }
 
 type AddChatappPhoneNumberResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -90,9 +101,9 @@ func (s *AddChatappPhoneNumberResponseBody) SetRequestId(v string) *AddChatappPh
 }
 
 type AddChatappPhoneNumberResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddChatappPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddChatappPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddChatappPhoneNumberResponse) String() string {
@@ -339,9 +350,9 @@ func (s *BeeBotAssociateResponseBodyDataAssociate) SetTitle(v string) *BeeBotAss
 }
 
 type BeeBotAssociateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BeeBotAssociateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BeeBotAssociateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BeeBotAssociateResponse) String() string {
@@ -937,9 +948,9 @@ func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetValue(v string) *BeeBot
 }
 
 type BeeBotChatResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BeeBotChatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BeeBotChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BeeBotChatResponse) String() string {
@@ -1057,9 +1068,9 @@ func (s *ChatappBindWabaResponseBodyData) SetWabaId(v string) *ChatappBindWabaRe
 }
 
 type ChatappBindWabaResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappBindWabaResponse) String() string {
@@ -1104,6 +1115,7 @@ func (s *ChatappEmbedSignUpRequest) SetInputToken(v string) *ChatappEmbedSignUpR
 }
 
 type ChatappEmbedSignUpResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -1152,15 +1164,15 @@ func (s *ChatappEmbedSignUpResponseBody) SetWabas(v []*ChatappEmbedSignUpRespons
 }
 
 type ChatappEmbedSignUpResponseBodyWabas struct {
-	// The review status of the WhatsApp Business account.
+	// The review state of the WABA.
 	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
 	// The currency.
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The ID of the WhatsApp Business account.
+	// The ID of the WABA.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The namespace of the message template.
 	MessageTemplateNamespace *string `json:"MessageTemplateNamespace,omitempty" xml:"MessageTemplateNamespace,omitempty"`
-	// The name of the WhatsApp Business account.
+	// The name of the WABA.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1198,9 +1210,9 @@ func (s *ChatappEmbedSignUpResponseBodyWabas) SetName(v string) *ChatappEmbedSig
 }
 
 type ChatappEmbedSignUpResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappEmbedSignUpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappEmbedSignUpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappEmbedSignUpResponse) String() string {
@@ -1293,9 +1305,9 @@ func (s *ChatappMigrationRegisterResponseBody) SetRequestId(v string) *ChatappMi
 }
 
 type ChatappMigrationRegisterResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappMigrationRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappMigrationRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappMigrationRegisterResponse) String() string {
@@ -1427,9 +1439,9 @@ func (s *ChatappMigrationVerifiedResponseBodyData) SetPhoneNumber(v string) *Cha
 }
 
 type ChatappMigrationVerifiedResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappMigrationVerifiedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappMigrationVerifiedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappMigrationVerifiedResponse) String() string {
@@ -1456,7 +1468,9 @@ func (s *ChatappMigrationVerifiedResponse) SetBody(v *ChatappMigrationVerifiedRe
 }
 
 type ChatappPhoneNumberDeregisterRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -1479,10 +1493,16 @@ func (s *ChatappPhoneNumberDeregisterRequest) SetPhoneNumber(v string) *ChatappP
 }
 
 type ChatappPhoneNumberDeregisterResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1515,9 +1535,9 @@ func (s *ChatappPhoneNumberDeregisterResponseBody) SetRequestId(v string) *Chata
 }
 
 type ChatappPhoneNumberDeregisterResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappPhoneNumberDeregisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappPhoneNumberDeregisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappPhoneNumberDeregisterResponse) String() string {
@@ -1610,9 +1630,9 @@ func (s *ChatappPhoneNumberRegisterResponseBody) SetRequestId(v string) *Chatapp
 }
 
 type ChatappPhoneNumberRegisterResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappPhoneNumberRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappPhoneNumberRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappPhoneNumberRegisterResponse) String() string {
@@ -1800,9 +1820,9 @@ func (s *ChatappSyncPhoneNumberResponseBodyPhoneNumbers) SetVerifiedName(v strin
 }
 
 type ChatappSyncPhoneNumberResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappSyncPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappSyncPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappSyncPhoneNumberResponse) String() string {
@@ -1902,9 +1922,9 @@ func (s *ChatappVerifyAndRegisterResponseBody) SetRequestId(v string) *ChatappVe
 }
 
 type ChatappVerifyAndRegisterResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChatappVerifyAndRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatappVerifyAndRegisterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChatappVerifyAndRegisterResponse) String() string {
@@ -2030,9 +2050,9 @@ func (s *CreateChatappMigrationInitiateResponseBodyData) SetStatus(v string) *Cr
 }
 
 type CreateChatappMigrationInitiateResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateChatappMigrationInitiateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatappMigrationInitiateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateChatappMigrationInitiateResponse) String() string {
@@ -2081,7 +2101,7 @@ type CreateChatappTemplateRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
 	Components []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -2174,9 +2194,19 @@ func (s *CreateChatappTemplateRequest) SetTemplateType(v string) *CreateChatappT
 }
 
 type CreateChatappTemplateRequestComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// The buttons. This parameter applies only to **BUTTONS** components.
+	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**.
+	//
+	// >  The following section describes the limits on the number of buttons in a WhatsApp message.
+	//
+	// *   A marketing or utility WhatsApp message template supports up to 10 buttons.
+	//
+	// *   A WhatsApp message template can contain only one phone call button.
+	//
+	// *   A WhatsApp message template can contain up to two URL buttons.
+	//
+	// *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
 	Buttons []*CreateChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
 	// The description of the document.
 	Caption *string                                        `json:"Caption,omitempty" xml:"Caption,omitempty"`
@@ -2199,7 +2229,7 @@ type CreateChatappTemplateRequestComponents struct {
 	HasExpiration *bool   `json:"HasExpiration,omitempty" xml:"HasExpiration,omitempty"`
 	// The text of the message that you want to send.
 	//
-	// > If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The thumbnail URL of the video in the Viber message template.
 	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
@@ -2216,11 +2246,11 @@ type CreateChatappTemplateRequestComponents struct {
 	//
 	// *   **FOOTER** components are not supported in Viber message templates.
 	//
-	// *   In a Viber message template, media resources, such as images, videos, or documents, are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
+	// *   In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains both text and an image, the image is placed below the text in the message received on a device.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URL of the media resource.
 	//
-	// > We recommend that the resolution of the image is 800 × 800 in a Viber message template.
+	// >  We recommend that you use 800 × 800 images in Viber message templates.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -2303,37 +2333,37 @@ func (s *CreateChatappTemplateRequestComponents) SetUrl(v string) *CreateChatapp
 }
 
 type CreateChatappTemplateRequestComponentsButtons struct {
-	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
 	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
 	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages are not sent to customers if they click this button.
 	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
-	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The phone number. This parameter is valid only when the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
+	// The phone number. This parameter is valid only if the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 	// The display name of the button.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The type of the button. Valid values:
 	//
-	// *   **PHONE_NUMBER**: the phone call button
-	// *   **URL**: the URL button
-	// *   **QUICK_REPLY**: the quick reply button
-	// *   **COPY_CODE**: the copy code button if Category is set to AUTHENTICATION
-	// *   **ONE_TAP**: the one-tap autofill button if Category is set to AUTHENTICATION
+	// *   **PHONE_NUMBER**: phone call button
+	// *   **URL**: URL button
+	// *   **QUICK_REPLY**: quick reply button
+	// *   **COPY_CODE**: copy code button if Category is set to AUTHENTICATION
+	// *   **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
 	//
 	// >
 	//
-	// *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+	// *   In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	//
 	// *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
 	//
-	// *   If Category is set to AUTHENTICATION in a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value indicates that you must manually copy the verification code.
+	// *   If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
 	//
 	// *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -2541,7 +2571,7 @@ type CreateChatappTemplateShrinkRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -2634,7 +2664,6 @@ func (s *CreateChatappTemplateShrinkRequest) SetTemplateType(v string) *CreateCh
 }
 
 type CreateChatappTemplateResponseBody struct {
-	// 访问被拒绝详细信息。
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -2708,9 +2737,9 @@ func (s *CreateChatappTemplateResponseBodyData) SetTemplateName(v string) *Creat
 }
 
 type CreateChatappTemplateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateChatappTemplateResponse) String() string {
@@ -2737,9 +2766,12 @@ func (s *CreateChatappTemplateResponse) SetBody(v *CreateChatappTemplateResponse
 }
 
 type CreateFlowRequest struct {
-	Categories  []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowName    *string   `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The categories of the Flow.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
 func (s CreateFlowRequest) String() string {
@@ -2766,9 +2798,12 @@ func (s *CreateFlowRequest) SetFlowName(v string) *CreateFlowRequest {
 }
 
 type CreateFlowShrinkRequest struct {
+	// The categories of the Flow.
 	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
 func (s CreateFlowShrinkRequest) String() string {
@@ -2795,10 +2830,13 @@ func (s *CreateFlowShrinkRequest) SetFlowName(v string) *CreateFlowShrinkRequest
 }
 
 type CreateFlowResponseBody struct {
-	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *CreateFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *CreateFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2831,9 +2869,11 @@ func (s *CreateFlowResponseBody) SetRequestId(v string) *CreateFlowResponseBody 
 }
 
 type CreateFlowResponseBodyData struct {
+	// The categories of the Flow.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// flow ID。
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -2861,9 +2901,9 @@ func (s *CreateFlowResponseBodyData) SetFlowName(v string) *CreateFlowResponseBo
 }
 
 type CreateFlowResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFlowResponse) String() string {
@@ -3008,9 +3048,9 @@ func (s *CreatePhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *CreatePh
 }
 
 type CreatePhoneMessageQrdlResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePhoneMessageQrdlResponse) String() string {
@@ -3040,12 +3080,17 @@ type DeleteChatappTemplateRequest struct {
 	// The space ID of the user under the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
-	// The ID of the WhatsApp account that you register.
+	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
-	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	IsvCode  *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The code of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s DeleteChatappTemplateRequest) String() string {
@@ -3071,8 +3116,23 @@ func (s *DeleteChatappTemplateRequest) SetIsvCode(v string) *DeleteChatappTempla
 	return s
 }
 
+func (s *DeleteChatappTemplateRequest) SetLanguage(v string) *DeleteChatappTemplateRequest {
+	s.Language = &v
+	return s
+}
+
 func (s *DeleteChatappTemplateRequest) SetTemplateCode(v string) *DeleteChatappTemplateRequest {
 	s.TemplateCode = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetTemplateName(v string) *DeleteChatappTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetTemplateType(v string) *DeleteChatappTemplateRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -3118,9 +3178,9 @@ func (s *DeleteChatappTemplateResponseBody) SetRequestId(v string) *DeleteChatap
 }
 
 type DeleteChatappTemplateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteChatappTemplateResponse) String() string {
@@ -3147,8 +3207,9 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 }
 
 type DeleteFlowRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -3171,9 +3232,11 @@ func (s *DeleteFlowRequest) SetFlowId(v string) *DeleteFlowRequest {
 }
 
 type DeleteFlowResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3201,9 +3264,9 @@ func (s *DeleteFlowResponseBody) SetRequestId(v string) *DeleteFlowResponseBody 
 }
 
 type DeleteFlowResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFlowResponse) String() string {
@@ -3289,9 +3352,9 @@ func (s *DeletePhoneMessageQrdlResponseBody) SetRequestId(v string) *DeletePhone
 }
 
 type DeletePhoneMessageQrdlResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePhoneMessageQrdlResponse) String() string {
@@ -3372,9 +3435,9 @@ func (s *DeprecateFlowResponseBody) SetRequestId(v string) *DeprecateFlowRespons
 }
 
 type DeprecateFlowResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeprecateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeprecateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeprecateFlowResponse) String() string {
@@ -3401,9 +3464,9 @@ func (s *DeprecateFlowResponse) SetBody(v *DeprecateFlowResponseBody) *Deprecate
 }
 
 type EnableWhatsappROIMetricRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 }
 
@@ -3428,14 +3491,11 @@ func (s *EnableWhatsappROIMetricRequest) SetIsvCode(v string) *EnableWhatsappROI
 type EnableWhatsappROIMetricResponseBody struct {
 	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
-	//
-	// *   A value of OK indicates that the call is successful.
-	// *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+	// The value OK indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3468,9 +3528,9 @@ func (s *EnableWhatsappROIMetricResponseBody) SetRequestId(v string) *EnableWhat
 }
 
 type EnableWhatsappROIMetricResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableWhatsappROIMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableWhatsappROIMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableWhatsappROIMetricResponse) String() string {
@@ -3497,22 +3557,17 @@ func (s *EnableWhatsappROIMetricResponse) SetBody(v *EnableWhatsappROIMetricResp
 }
 
 type GetChatappPhoneNumberMetricRequest struct {
-	// The space ID of the user under the ISV account.
+	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	// The end of the time range to query.
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// Metric granularity. Valid values:
-	//
-	// - DAILY
-	// - HALF_HOUR
+	// The metric granularity.
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	// The business phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query.
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -3557,16 +3612,13 @@ func (s *GetChatappPhoneNumberMetricRequest) SetStart(v int64) *GetChatappPhoneN
 type GetChatappPhoneNumberMetricResponseBody struct {
 	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
-	//
-	// *   A value of OK indicates that the call is successful.
-	// *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+	// The value OK indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*GetChatappPhoneNumberMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message returned.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3604,17 +3656,23 @@ func (s *GetChatappPhoneNumberMetricResponseBody) SetRequestId(v string) *GetCha
 }
 
 type GetChatappPhoneNumberMetricResponseBodyData struct {
-	// Delivered count
+	// The number of delivered messages.
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range that you queried.
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The granularity at which bills are queried.
+	// The metric granularity.
+	//
+	// >  Valid values:
+	//
+	// *   DAILY
+	//
+	// *   HALF_HOUR
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The business phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Sent count
+	// The number of sent messages.
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range that you queried.
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -3657,9 +3715,9 @@ func (s *GetChatappPhoneNumberMetricResponseBodyData) SetStart(v int64) *GetChat
 }
 
 type GetChatappPhoneNumberMetricResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChatappPhoneNumberMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatappPhoneNumberMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChatappPhoneNumberMetricResponse) String() string {
@@ -3686,10 +3744,12 @@ func (s *GetChatappPhoneNumberMetricResponse) SetBody(v *GetChatappPhoneNumberMe
 }
 
 type GetChatappTemplateDetailRequest struct {
-	// The space ID of the user under the ISV account.
+	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
-	// The ID of the WhatsApp account that you registered.
+	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -3697,6 +3757,7 @@ type GetChatappTemplateDetailRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The code of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the message template. Valid values:
 	//
 	// *   **WHATSAPP**
@@ -3735,6 +3796,11 @@ func (s *GetChatappTemplateDetailRequest) SetLanguage(v string) *GetChatappTempl
 
 func (s *GetChatappTemplateDetailRequest) SetTemplateCode(v string) *GetChatappTemplateDetailRequest {
 	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetTemplateName(v string) *GetChatappTemplateDetailRequest {
+	s.TemplateName = &v
 	return s
 }
 
@@ -3825,13 +3891,14 @@ type GetChatappTemplateDetailResponseBodyData struct {
 	Example map[string]*string `json:"Example,omitempty" xml:"Example,omitempty"`
 	// The language that is used in the message template. For more information, see [Language codes](~~463420~~).
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Whatsapp中Authentication类型模板发送消息时的消息有效期
+	// The validity period of the WhatsApp authentication message.
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
 	// The name of the message template.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 模板质量
+	// The quality of the template.
 	QualityScore *string `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason why the template was rejected.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The code of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// The type of the message template. Valid values:
@@ -3906,31 +3973,33 @@ func (s *GetChatappTemplateDetailResponseBodyData) SetTemplateType(v string) *Ge
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponents struct {
-	// Whatsapp类型模板，Category为Authentication，并且Component Type为Body时有效，表示在Body上面显示不要将验证码信息提供给其它人的提示信息
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// This parameter applies only to components of the **BUTTONS** type. This parameter is passed in by converting its original JSON structure into a string.
+	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**. Before you specify this parameter, the format of the value must be changed from JSON to String.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The description of the file.
-	Caption *string                                                    `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	Cards   []*GetChatappTemplateDetailResponseBodyDataComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// Whatsapp Authentication模板验证码有效期（分钟），只在Whatsapp类型消息，Category为Authentication并且Component Type为Footer时有效（此信息显示在Footer位置）
+	// The description of the document.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The carousel cards.
+	Cards []*GetChatappTemplateDetailResponseBodyDataComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
+	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
 	CodeExpirationMinutes *int32 `json:"CodeExpirationMinutes,omitempty" xml:"CodeExpirationMinutes,omitempty"`
 	// The length of the video in the Viber message template. Valid values: 0 to 600. Unit: seconds.
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the file.
+	// The name of the document.
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the file attached in the Viber message template.
+	// The type of the document attached in the Viber message template.
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The type of the media resources that are included in the message.
+	// The format.
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 位置纬度属性
+	// The latitude of the location.
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// 位置地址
+	// The address of the location.
 	LocationAddress *string `json:"LocationAddress,omitempty" xml:"LocationAddress,omitempty"`
-	// 位置名称
+	// The name of the location.
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// 位置经度属性
-	Longitude             *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// The longitude of the location.
+	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// The variable when the coupon code expires in the limited-time offer template.
 	OfferExpirationTimeMs *string `json:"OfferExpirationTimeMs,omitempty" xml:"OfferExpirationTimeMs,omitempty"`
 	// The text of the message that you want to send.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -3945,19 +4014,16 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// >
 	//
-	// *   The following limits apply to components in WhatsApp message templates: A component of the **BODY** type cannot exceed 1,024 characters. A component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
-	//
-	// >
+	// *   The following limits apply to components in WhatsApp message templates: A **BODY** component cannot exceed 1,024 characters in length. A **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
 	//
 	// *   **FOOTER** components are not supported in Viber message templates.
 	//
-	// >
-	//
-	// *   In a Viber message template, a media resource, such as an image, a video, or a file, is placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
+	// *   In a Viber message template, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains both text and an image, the image is placed below the text in the message received on a device.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL of the material.
-	Url           *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	HasExpiration *bool   `json:"hasExpiration,omitempty" xml:"hasExpiration,omitempty"`
+	// The URL of the media resource.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Indicates whether the coupon code will expire in the limited-time offer template.
+	HasExpiration *bool `json:"hasExpiration,omitempty" xml:"hasExpiration,omitempty"`
 }
 
 func (s GetChatappTemplateDetailResponseBodyDataComponents) String() string {
@@ -4064,44 +4130,50 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetHasExpiration(v 
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
-	// Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，Whatsap Autofill操作的按钮文本
+	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
-	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
-	// 扩展字段
+	// The coupon code.
+	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
+	// The extended fields.
 	ExtendAttrs *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs `json:"ExtendAttrs,omitempty" xml:"ExtendAttrs,omitempty" type:"Struct"`
-	FlowAction  *string                                                               `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
-	FlowId      *string                                                               `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Whatsapp模板，在Category为Marketing,并且Button type为QUICK_REPLY时有效，表示按钮为营销退订按钮，客户如果点击了此按钮，并且在chatapp平台上配置了发送控制操作，则后续Marketing消息则不会发送到客户
-	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	// flow 数据事件类型
+	// 取值范围：NAVIGATE/DATA_EXCHANGE
+	FlowAction *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	// Flow ID
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
+	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	// 跳转屏
+	// 在FlowAction=NAVIGATE时必填
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
-	// Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的包名
+	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The phone number. This parameter is valid only if the returned value of the Type parameter is **PHONE_NUMBER**.
+	// The phone number. This parameter is valid only if the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的签名Hash值
+	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 	// The display name of the button.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The type of the button. Valid values:
 	//
-	// *   **PHONE_NUMBER**: a phone call button
-	// *   **URL**: a URL button
-	// *   **QUICK_REPLY**: a quick reply button
+	// *   **PHONE_NUMBER**: phone call button
+	// *   **URL**: URL button
+	// *   **QUICK_REPLY**: quick reply button
 	//
 	// >
 	//
-	// *   A quick reply button cannot coexist with a phone call button or a URL button in a message template.
+	// *   In a message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	//
 	// *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a message template.
 	//
-	// *   You can add only one button to a Viber message template, and the button must be a URL button.
+	// *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL to be accessed when you click the URL button.
+	// The URL to which you are redirected when you click the URL button.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// The type of the URL. Valid values:
 	//
-	// *   **static**: a static URL
-	// *   **dynamic**: a dynamic URL
+	// *   **static**
+	// *   **dynamic**
 	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
 }
 
@@ -4184,15 +4256,15 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetUrlType(v
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs struct {
-	// 事件类型
+	// The event type.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 意图编码
+	// The intent code.
 	IntentCode *string `json:"IntentCode,omitempty" xml:"IntentCode,omitempty"`
-	// 下一个模板语言
+	// The language of the next template.
 	NextLanguageCode *string `json:"NextLanguageCode,omitempty" xml:"NextLanguageCode,omitempty"`
-	// 下一个模板编码
+	// The code of the next template.
 	NextTemplateCode *string `json:"NextTemplateCode,omitempty" xml:"NextTemplateCode,omitempty"`
-	// 下一个模板名称
+	// The name of the next template.
 	NextTemplateName *string `json:"NextTemplateName,omitempty" xml:"NextTemplateName,omitempty"`
 }
 
@@ -4230,6 +4302,7 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs) S
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCards struct {
+	// The card components.
 	CardComponents []*GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents `json:"CardComponents,omitempty" xml:"CardComponents,omitempty" type:"Repeated"`
 }
 
@@ -4247,11 +4320,16 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCards) SetCardCompone
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents struct {
+	// The card buttons.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	Format  *string                                                                         `json:"Format,omitempty" xml:"Format,omitempty"`
-	Text    *string                                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
-	Type    *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url     *string                                                                         `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The type of the header in the carousel template. The header can only be an image or a video. The headers of all cards must be the same.
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The card text.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the component.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL address.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents) String() string {
@@ -4288,11 +4366,16 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents) 
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons struct {
+	// The phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	UrlType     *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	// The button content.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the button in the carousel template. Valid values: URL, PHONE_NUMBER, and QUICK_REQLY.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL to be accessed when you click the URL button.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The type of the URL. Valid values: static and dynamic.
+	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
 }
 
 func (s GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons) String() string {
@@ -4329,9 +4412,9 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsBu
 }
 
 type GetChatappTemplateDetailResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChatappTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatappTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChatappTemplateDetailResponse) String() string {
@@ -4360,23 +4443,23 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 type GetChatappTemplateMetricRequest struct {
 	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query.
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// Metric granularity. Valid values:
+	// The metric granularity.
 	//
-	// - DAILY
+	// >  Valid values:
+	//
+	// *   DAILY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
+	// The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+	// The template language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query.
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The code of the message template.
+	// The template code.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The type of the message template. Valid values:
-	//
-	// *   **WHATSAPP**
+	// The template type. Valid values: WHATSAPP and VIBER. If you do not specify this parameter, WHATSAPP is used by default.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -4431,16 +4514,13 @@ func (s *GetChatappTemplateMetricRequest) SetTemplateType(v string) *GetChatappT
 type GetChatappTemplateMetricResponseBody struct {
 	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
-	//
-	// *   A value of OK indicates that the call is successful.
-	// *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+	// The value OK indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*GetChatappTemplateMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message returned.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4478,21 +4558,21 @@ func (s *GetChatappTemplateMetricResponseBody) SetRequestId(v string) *GetChatap
 }
 
 type GetChatappTemplateMetricResponseBodyData struct {
-	// Click Statistics
+	// The statistics on button clicks.
 	Cliented []*GetChatappTemplateMetricResponseBodyDataCliented `json:"Cliented,omitempty" xml:"Cliented,omitempty" type:"Repeated"`
-	// Delivered count
+	// The number of delivered messages.
 	DeliveredCount *int32 `json:"DeliveredCount,omitempty" xml:"DeliveredCount,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range you queried.
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+	// The template language.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Read count
+	// The number of read messages.
 	ReadCount *int32 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
-	// Sent count
+	// The number of sent messages.
 	SentCount *int32 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range you queried.
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The code of the message template.
+	// The template code.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -4545,11 +4625,19 @@ func (s *GetChatappTemplateMetricResponseBodyData) SetTemplateCode(v string) *Ge
 }
 
 type GetChatappTemplateMetricResponseBodyDataCliented struct {
-	// Button name
+	// The text on the button.
 	ButtonContent *string `json:"ButtonContent,omitempty" xml:"ButtonContent,omitempty"`
-	// Clicked count
+	// The number of clicks.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of button.
+	// The button type.
+	//
+	// >  Valid values:
+	//
+	// *   url_button
+	//
+	// *   quick_relpy_button
+	//
+	// *   phone_number_button
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4577,9 +4665,9 @@ func (s *GetChatappTemplateMetricResponseBodyDataCliented) SetType(v string) *Ge
 }
 
 type GetChatappTemplateMetricResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChatappTemplateMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatappTemplateMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChatappTemplateMetricResponse) String() string {
@@ -4732,9 +4820,9 @@ func (s *GetChatappUploadAuthorizationResponseBodyData) SetSecurityToken(v strin
 }
 
 type GetChatappUploadAuthorizationResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChatappUploadAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatappUploadAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChatappUploadAuthorizationResponse) String() string {
@@ -4841,9 +4929,9 @@ func (s *GetChatappVerifyCodeResponseBody) SetRequestId(v string) *GetChatappVer
 }
 
 type GetChatappVerifyCodeResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetChatappVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatappVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetChatappVerifyCodeResponse) String() string {
@@ -4870,7 +4958,9 @@ func (s *GetChatappVerifyCodeResponse) SetBody(v *GetChatappVerifyCodeResponseBo
 }
 
 type GetCommerceSettingRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -4893,10 +4983,16 @@ func (s *GetCommerceSettingRequest) SetPhoneNumber(v string) *GetCommerceSetting
 }
 
 type GetCommerceSettingResponseBody struct {
-	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetCommerceSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetCommerceSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4929,7 +5025,9 @@ func (s *GetCommerceSettingResponseBody) SetRequestId(v string) *GetCommerceSett
 }
 
 type GetCommerceSettingResponseBodyData struct {
-	CartEnable     *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
+	// Indicates whether the shopping cart button is displayed.
+	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
+	// Indicates whether the catalog button is displayed.
 	CatalogVisible *bool `json:"CatalogVisible,omitempty" xml:"CatalogVisible,omitempty"`
 }
 
@@ -4952,9 +5050,9 @@ func (s *GetCommerceSettingResponseBodyData) SetCatalogVisible(v bool) *GetComme
 }
 
 type GetCommerceSettingResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCommerceSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCommerceSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCommerceSettingResponse) String() string {
@@ -4981,8 +5079,9 @@ func (s *GetCommerceSettingResponse) SetBody(v *GetCommerceSettingResponseBody) 
 }
 
 type GetFlowRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -5005,10 +5104,13 @@ func (s *GetFlowRequest) SetFlowId(v string) *GetFlowRequest {
 }
 
 type GetFlowResponseBody struct {
-	Code    *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5041,15 +5143,48 @@ func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
 }
 
 type GetFlowResponseBodyData struct {
-	Categories     []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	DataApiVersion *string   `json:"DataApiVersion,omitempty" xml:"DataApiVersion,omitempty"`
-	// flow ID。
-	FlowId            *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName          *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	JSONVersion       *string `json:"JSONVersion,omitempty" xml:"JSONVersion,omitempty"`
-	PreviewUrl        *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	PreviewUrlExpires *int64  `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The categories of the Flow.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The API version.
+	DataApiVersion *string `json:"DataApiVersion,omitempty" xml:"DataApiVersion,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The JSON version.
+	JSONVersion *string `json:"JSONVersion,omitempty" xml:"JSONVersion,omitempty"`
+	// The temporary preview URL.
+	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	// The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	PreviewUrlExpires *int64 `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
+	// The state of the Flow.
+	//
+	// Valid values:
+	//
+	// *   PUBLISHED
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DRAFT
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DEPRECATED
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetFlowResponseBodyData) String() string {
@@ -5101,9 +5236,9 @@ func (s *GetFlowResponseBodyData) SetStatus(v string) *GetFlowResponseBodyData {
 }
 
 type GetFlowResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFlowResponse) String() string {
@@ -5214,9 +5349,9 @@ func (s *GetFlowJSONAssestResponseBodyData) SetFlowId(v string) *GetFlowJSONAsse
 }
 
 type GetFlowJSONAssestResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFlowJSONAssestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFlowJSONAssestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFlowJSONAssestResponse) String() string {
@@ -5243,8 +5378,9 @@ func (s *GetFlowJSONAssestResponse) SetBody(v *GetFlowJSONAssestResponseBody) *G
 }
 
 type GetFlowPreviewUrlRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -5267,10 +5403,13 @@ func (s *GetFlowPreviewUrlRequest) SetFlowId(v string) *GetFlowPreviewUrlRequest
 }
 
 type GetFlowPreviewUrlResponseBody struct {
-	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetFlowPreviewUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetFlowPreviewUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5303,10 +5442,12 @@ func (s *GetFlowPreviewUrlResponseBody) SetRequestId(v string) *GetFlowPreviewUr
 }
 
 type GetFlowPreviewUrlResponseBodyData struct {
-	// flow ID。
-	FlowId            *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	PreviewUrl        *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	PreviewUrlExpires *int64  `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The temporary preview URL.
+	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	// The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	PreviewUrlExpires *int64 `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
 }
 
 func (s GetFlowPreviewUrlResponseBodyData) String() string {
@@ -5333,9 +5474,9 @@ func (s *GetFlowPreviewUrlResponseBodyData) SetPreviewUrlExpires(v int64) *GetFl
 }
 
 type GetFlowPreviewUrlResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFlowPreviewUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFlowPreviewUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFlowPreviewUrlResponse) String() string {
@@ -5461,9 +5602,9 @@ func (s *GetMigrationVerifyCodeResponseBodyData) SetPhoneNumber(v string) *GetMi
 }
 
 type GetMigrationVerifyCodeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMigrationVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMigrationVerifyCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMigrationVerifyCodeResponse) String() string {
@@ -5578,9 +5719,9 @@ func (s *GetPermissionByCodeResponseBody) SetRequestId(v string) *GetPermissionB
 }
 
 type GetPermissionByCodeResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPermissionByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPermissionByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPermissionByCodeResponse) String() string {
@@ -5695,9 +5836,9 @@ func (s *GetPhoneEncryptionPublicKeyResponseBodyData) SetPhoneNumber(v string) *
 }
 
 type GetPhoneEncryptionPublicKeyResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPhoneEncryptionPublicKeyResponse) String() string {
@@ -5823,9 +5964,9 @@ func (s *GetPhoneNumberVerificationStatusResponseBodyData) SetPhoneNumber(v stri
 }
 
 type GetPhoneNumberVerificationStatusResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPhoneNumberVerificationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPhoneNumberVerificationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPhoneNumberVerificationStatusResponse) String() string {
@@ -5852,8 +5993,10 @@ func (s *GetPhoneNumberVerificationStatusResponse) SetBody(v *GetPhoneNumberVeri
 }
 
 type GetPreValidatePhoneIdRequest struct {
+	// The phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// The verification code provided when you purchased the pre-registered phone number.
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
 func (s GetPreValidatePhoneIdRequest) String() string {
@@ -5875,10 +6018,13 @@ func (s *GetPreValidatePhoneIdRequest) SetVerifyCode(v string) *GetPreValidatePh
 }
 
 type GetPreValidatePhoneIdResponseBody struct {
-	Code    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetPreValidatePhoneIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The response code. The value OK indicates the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *GetPreValidatePhoneIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5911,7 +6057,9 @@ func (s *GetPreValidatePhoneIdResponseBody) SetRequestId(v string) *GetPreValida
 }
 
 type GetPreValidatePhoneIdResponseBodyData struct {
-	PhoneNumber   *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The phone number.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The ID of the phone number.
 	PhoneNumberId *string `json:"PhoneNumberId,omitempty" xml:"PhoneNumberId,omitempty"`
 }
 
@@ -5934,9 +6082,9 @@ func (s *GetPreValidatePhoneIdResponseBodyData) SetPhoneNumberId(v string) *GetP
 }
 
 type GetPreValidatePhoneIdResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPreValidatePhoneIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPreValidatePhoneIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPreValidatePhoneIdResponse) String() string {
@@ -5963,7 +6111,7 @@ func (s *GetPreValidatePhoneIdResponse) SetBody(v *GetPreValidatePhoneIdResponse
 }
 
 type GetWhatsappConnectionCatalogRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+	// The space ID of the user within the ISV account.
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6015,7 +6163,7 @@ type GetWhatsappConnectionCatalogResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned results.
+	// The returned data.
 	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6065,9 +6213,9 @@ func (s *GetWhatsappConnectionCatalogResponseBody) SetSuccess(v bool) *GetWhatsa
 }
 
 type GetWhatsappConnectionCatalogResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetWhatsappConnectionCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWhatsappConnectionCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetWhatsappConnectionCatalogResponse) String() string {
@@ -6094,6 +6242,7 @@ func (s *GetWhatsappConnectionCatalogResponse) SetBody(v *GetWhatsappConnectionC
 }
 
 type IsvGetAppIdRequest struct {
+	// 权限
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The type of the application. Set the value to WHATSAPP.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -6172,9 +6321,9 @@ func (s *IsvGetAppIdResponseBody) SetRequestId(v string) *IsvGetAppIdResponseBod
 }
 
 type IsvGetAppIdResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IsvGetAppIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IsvGetAppIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s IsvGetAppIdResponse) String() string {
@@ -6211,7 +6360,9 @@ type ListChatappTemplateRequest struct {
 	// The space ID of the user under the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
-	// The ID of the WhatsApp account that you register.
+	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -6219,7 +6370,7 @@ type ListChatappTemplateRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The name of the message template.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The paging settings.
+	// The pagination settings.
 	Page *ListChatappTemplateRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	// The type of the message template.
 	//
@@ -6278,9 +6429,9 @@ func (s *ListChatappTemplateRequest) SetTemplateType(v string) *ListChatappTempl
 }
 
 type ListChatappTemplateRequestPage struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Default value: 1.
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The number of message templates to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -6313,7 +6464,9 @@ type ListChatappTemplateShrinkRequest struct {
 	// The space ID of the user under the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
-	// The ID of the WhatsApp account that you register.
+	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	//
+	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -6321,7 +6474,7 @@ type ListChatappTemplateShrinkRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The name of the message template.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The paging settings.
+	// The pagination settings.
 	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The type of the message template.
 	//
@@ -6380,7 +6533,6 @@ func (s *ListChatappTemplateShrinkRequest) SetTemplateType(v string) *ListChatap
 }
 
 type ListChatappTemplateResponseBody struct {
-	// 访问被拒绝详细信息。
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -6393,7 +6545,7 @@ type ListChatappTemplateResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录条数。
+	// The total number of entries returned.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -6436,22 +6588,34 @@ func (s *ListChatappTemplateResponseBody) SetTotal(v int32) *ListChatappTemplate
 }
 
 type ListChatappTemplateResponseBodyListTemplate struct {
-	// The review status of the message template. Valid values:
+	// The review state of the message template. Valid values:
 	//
 	// *   **pass**: The message template is approved.
 	// *   **fail**: The message template is rejected.
 	// *   **auditing**: The message template is being reviewed.
 	// *   **unaudit**: The review is suspended.
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The category of the message template. Valid values:
+	// The category of the WhatsApp template. Valid values:
 	//
-	// *   **TRANSACTIONAL**: a transactional template
-	// *   **MARKETING**: a marketing template
-	// *   **OTP**: a one-time password template
+	// *   **UTILITY**: utility template
+	// *   **MARKETING**: marketing template
+	// *   **AUTHENTICATION**: authentication template
+	//
+	// The category of the Viber template. Valid values:
+	//
+	// *   **text**: template that contains only text
+	// *   **image**: template that contains only an image
+	// *   **text_image_button**: template that contains text, an image, and a button
+	// *   **text_button**: template that contains text and a button
+	// *   **document**: template that contains only a document
+	// *   **video**: template that contains only a video
+	// *   **text_video**: template that contains text and a video
+	// *   **text_video_button**: template that contains text, a video, and a button
+	// *   **text_image**: template that contains text and an image
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The language that is used in the message template. For more information, see [Language codes](~~463420~~).
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 模板审核被拒的原因
+	// The reason for the review failure.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The code of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
@@ -6505,9 +6669,9 @@ func (s *ListChatappTemplateResponseBodyListTemplate) SetTemplateType(v string) 
 }
 
 type ListChatappTemplateResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChatappTemplateResponse) String() string {
@@ -6534,9 +6698,12 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 }
 
 type ListFlowRequest struct {
-	CustSpaceId *string              `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowName    *string              `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	Page        *ListFlowRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The returned pages.
+	Page *ListFlowRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 }
 
 func (s ListFlowRequest) String() string {
@@ -6563,8 +6730,10 @@ func (s *ListFlowRequest) SetPage(v *ListFlowRequestPage) *ListFlowRequest {
 }
 
 type ListFlowRequestPage struct {
+	// The page number.
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	Size  *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The number of entries per page.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListFlowRequestPage) String() string {
@@ -6586,9 +6755,12 @@ func (s *ListFlowRequestPage) SetSize(v int32) *ListFlowRequestPage {
 }
 
 type ListFlowShrinkRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowName    *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	PageShrink  *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The returned pages.
+	PageShrink *string `json:"Page,omitempty" xml:"Page,omitempty"`
 }
 
 func (s ListFlowShrinkRequest) String() string {
@@ -6615,10 +6787,13 @@ func (s *ListFlowShrinkRequest) SetPageShrink(v string) *ListFlowShrinkRequest {
 }
 
 type ListFlowResponseBody struct {
-	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*ListFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*ListFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6651,9 +6826,11 @@ func (s *ListFlowResponseBody) SetRequestId(v string) *ListFlowResponseBody {
 }
 
 type ListFlowResponseBodyData struct {
+	// The categories of the Flows.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// flow ID。
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -6681,9 +6858,9 @@ func (s *ListFlowResponseBodyData) SetFlowName(v string) *ListFlowResponseBodyDa
 }
 
 type ListFlowResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFlowResponse) String() string {
@@ -6816,9 +6993,9 @@ func (s *ListPhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *ListPhoneM
 }
 
 type ListPhoneMessageQrdlResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPhoneMessageQrdlResponse) String() string {
@@ -6849,7 +7026,7 @@ type ListProductRequest struct {
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
 	// The cursor that points to the beginning of the page of the returned data.
 	Before *string `json:"Before,omitempty" xml:"Before,omitempty"`
-	// The ID of the product catalog.
+	// The catalog ID.
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -7052,9 +7229,9 @@ func (s *ListProductResponseBodyModelPagingCursors) SetBefore(v string) *ListPro
 }
 
 type ListProductResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductResponse) String() string {
@@ -7162,7 +7339,7 @@ type ListProductCatalogResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned results.
+	// The returned data.
 	Model *ListProductCatalogResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7280,9 +7457,9 @@ func (s *ListProductCatalogResponseBodyModelPagingCursors) SetBefore(v string) *
 }
 
 type ListProductCatalogResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProductCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProductCatalogResponse) String() string {
@@ -7325,7 +7502,7 @@ type ModifyChatappTemplateRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
 	Components []*ModifyChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -7346,6 +7523,7 @@ type ModifyChatappTemplateRequest struct {
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
 	// The message template code.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the message template.
 	//
 	// *   **WHATSAPP**
@@ -7407,19 +7585,34 @@ func (s *ModifyChatappTemplateRequest) SetTemplateCode(v string) *ModifyChatappT
 	return s
 }
 
+func (s *ModifyChatappTemplateRequest) SetTemplateName(v string) *ModifyChatappTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
 func (s *ModifyChatappTemplateRequest) SetTemplateType(v string) *ModifyChatappTemplateRequest {
 	s.TemplateType = &v
 	return s
 }
 
 type ModifyChatappTemplateRequestComponents struct {
-	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY in a WhatsApp message template.
+	// The note indicating that customers cannot share verification codes with others. The note is displayed in the message body. This parameter is valid only if Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to BODY for a WhatsApp message template.
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// The buttons. This parameter applies only to **BUTTONS** components.
-	Buttons []*ModifyChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The description of the media resource.
+	// The buttons. Specify this parameter only if you set the Type sub-parameter of the Components parameter to **BUTTONS**.
 	//
-	// > If the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **IMAGE, DOCUMENT, or VIDEO**, you can specify this parameter.
+	// >  The following section describes the limits on the number of buttons in a WhatsApp message.
+	//
+	// *   A marketing or utility WhatsApp message template supports up to 10 buttons.
+	//
+	// *   A WhatsApp message template can contain only one phone call button.
+	//
+	// *   A WhatsApp message template can contain up to two URL buttons.
+	//
+	// *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+	Buttons []*ModifyChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// >  You can specify this parameter if the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **IMAGE, DOCUMENT, or VIDEO**.
 	Caption *string                                        `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	Cards   []*ModifyChatappTemplateRequestComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
 	// The validity period of the verification code in the WhatsApp authentication template. Unit: minutes. This parameter is valid only when Category is set to AUTHENTICATION and the Type sub-parameter of the Components parameter is set to FOOTER in a WhatsApp message template. The validity period of the verification code is displayed in the footer.
@@ -7428,7 +7621,7 @@ type ModifyChatappTemplateRequestComponents struct {
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The name of the document.
 	//
-	// > If the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **DOCUMENT**, you can specify this parameter.
+	// >  You can specify this parameter if the Type sub-parameter of the Components parameter is set to **HEADER** and the Format sub-parameter of the Components parameter is set to **DOCUMENT**.
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The type of the document attached in the Viber message template.
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
@@ -7442,7 +7635,7 @@ type ModifyChatappTemplateRequestComponents struct {
 	HasExpiration *bool   `json:"HasExpiration,omitempty" xml:"HasExpiration,omitempty"`
 	// The text of the message that you want to send.
 	//
-	// > If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
+	// >  If Category is set to AUTHENTICATION, the Text sub-parameter of the Components parameter is empty.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The thumbnail URL of the video in the Viber message template.
 	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
@@ -7455,11 +7648,11 @@ type ModifyChatappTemplateRequestComponents struct {
 	//
 	// >
 	//
-	// *   In WhatsApp message templates, a **BODY** component cannot exceed 1,024 characters in length, and a **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
+	// *   The following limits apply to components in WhatsApp message templates: A **BODY** component cannot exceed 1,024 characters in length. A **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
 	//
 	// *   **FOOTER** components are not supported in Viber message templates.
 	//
-	// *   In a Viber message template, media resources, such as images, videos, or documents, are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed under the text in the message received on a device.
+	// *   In a Viber message template, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains text and images, the images are placed under the text in the message received on a device.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URL of the media resource.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -7544,37 +7737,37 @@ func (s *ModifyChatappTemplateRequestComponents) SetUrl(v string) *ModifyChatapp
 }
 
 type ModifyChatappTemplateRequestComponentsButtons struct {
-	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
 	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
 	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The unsubscribe button. This parameter is valid only when Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
+	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY for a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages are not sent to customers if they click this button.
 	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
-	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// The phone number.
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
+	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
 	// The text of the button.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The type of the button. Valid values:
 	//
-	// *   **PHONE_NUMBER**: the phone call button
-	// *   **URL**: the URL button
-	// *   **QUICK_REPLY**: the quick reply button
-	// *   **COPY_CODE**: the copy code button if Category is set to AUTHENTICATION
-	// *   **ONE_TAP**: the one-tap autofill button if Category is set to AUTHENTICATION
+	// *   **PHONE_NUMBER**: phone call button
+	// *   **URL**: URL button
+	// *   **QUICK_REPLY**: quick reply button
+	// *   **COPY_CODE**: copy code button if Category is set to AUTHENTICATION
+	// *   **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
 	//
 	// >
 	//
-	// *   In a WhatsApp message template, the quick reply button cannot be used together with the phone call button or the URL button.
+	// *   In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
 	//
 	// *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a WhatsApp message template.
 	//
-	// *   If Category is set to AUTHENTICATION in a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value indicates that you must manually copy the verification code.
+	// *   If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
 	//
 	// *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -7776,7 +7969,7 @@ type ModifyChatappTemplateShrinkRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The components of the message template.
 	//
-	// > If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The space ID of the user within the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -7797,6 +7990,7 @@ type ModifyChatappTemplateShrinkRequest struct {
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
 	// The message template code.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the message template.
 	//
 	// *   **WHATSAPP**
@@ -7855,6 +8049,11 @@ func (s *ModifyChatappTemplateShrinkRequest) SetMessageSendTtlSeconds(v int32) *
 
 func (s *ModifyChatappTemplateShrinkRequest) SetTemplateCode(v string) *ModifyChatappTemplateShrinkRequest {
 	s.TemplateCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetTemplateName(v string) *ModifyChatappTemplateShrinkRequest {
+	s.TemplateName = &v
 	return s
 }
 
@@ -7938,9 +8137,9 @@ func (s *ModifyChatappTemplateResponseBodyData) SetTemplateName(v string) *Modif
 }
 
 type ModifyChatappTemplateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyChatappTemplateResponse) String() string {
@@ -7967,10 +8166,14 @@ func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponse
 }
 
 type ModifyFlowRequest struct {
-	Categories  []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowId      *string   `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName    *string   `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The categories of the Flow.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
 func (s ModifyFlowRequest) String() string {
@@ -8002,10 +8205,14 @@ func (s *ModifyFlowRequest) SetFlowName(v string) *ModifyFlowRequest {
 }
 
 type ModifyFlowShrinkRequest struct {
+	// The categories of the Flow.
 	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
 func (s ModifyFlowShrinkRequest) String() string {
@@ -8037,10 +8244,13 @@ func (s *ModifyFlowShrinkRequest) SetFlowName(v string) *ModifyFlowShrinkRequest
 }
 
 type ModifyFlowResponseBody struct {
-	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *ModifyFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *ModifyFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8073,9 +8283,11 @@ func (s *ModifyFlowResponseBody) SetRequestId(v string) *ModifyFlowResponseBody 
 }
 
 type ModifyFlowResponseBodyData struct {
+	// The categories of the Flow.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// flow ID。
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The Flow ID.
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the Flow.
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -8103,9 +8315,9 @@ func (s *ModifyFlowResponseBodyData) SetFlowName(v string) *ModifyFlowResponseBo
 }
 
 type ModifyFlowResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFlowResponse) String() string {
@@ -8132,6 +8344,7 @@ func (s *ModifyFlowResponse) SetBody(v *ModifyFlowResponseBody) *ModifyFlowRespo
 }
 
 type ModifyPhoneBusinessProfileRequest struct {
+	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The space ID of the user under the independent software vendor (ISV) account.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// Modifies the business information of the account to which a specified phone number is bound.
@@ -8158,6 +8371,11 @@ func (s ModifyPhoneBusinessProfileRequest) String() string {
 
 func (s ModifyPhoneBusinessProfileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetAbout(v string) *ModifyPhoneBusinessProfileRequest {
+	s.About = &v
+	return s
 }
 
 func (s *ModifyPhoneBusinessProfileRequest) SetAddress(v string) *ModifyPhoneBusinessProfileRequest {
@@ -8201,6 +8419,7 @@ func (s *ModifyPhoneBusinessProfileRequest) SetWebsites(v []*string) *ModifyPhon
 }
 
 type ModifyPhoneBusinessProfileShrinkRequest struct {
+	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The space ID of the user under the independent software vendor (ISV) account.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// Modifies the business information of the account to which a specified phone number is bound.
@@ -8227,6 +8446,11 @@ func (s ModifyPhoneBusinessProfileShrinkRequest) String() string {
 
 func (s ModifyPhoneBusinessProfileShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetAbout(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.About = &v
+	return s
 }
 
 func (s *ModifyPhoneBusinessProfileShrinkRequest) SetAddress(v string) *ModifyPhoneBusinessProfileShrinkRequest {
@@ -8308,9 +8532,9 @@ func (s *ModifyPhoneBusinessProfileResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyPhoneBusinessProfileResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyPhoneBusinessProfileResponse) String() string {
@@ -8337,8 +8561,9 @@ func (s *ModifyPhoneBusinessProfileResponse) SetBody(v *ModifyPhoneBusinessProfi
 }
 
 type PublishFlowRequest struct {
+	// The space ID of the user within the independent software vendor (ISV) account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Flow ID。
+	// The Flow ID.
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -8361,9 +8586,11 @@ func (s *PublishFlowRequest) SetFlowId(v string) *PublishFlowRequest {
 }
 
 type PublishFlowResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// If OK is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8391,9 +8618,9 @@ func (s *PublishFlowResponseBody) SetRequestId(v string) *PublishFlowResponseBod
 }
 
 type PublishFlowResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PublishFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PublishFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PublishFlowResponse) String() string {
@@ -8445,13 +8672,14 @@ func (s *QueryChatappBindWabaRequest) SetIsvCode(v string) *QueryChatappBindWaba
 }
 
 type QueryChatappBindWabaResponseBody struct {
+	// The details about the access denial.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
 	// *   A value of OK indicates that the call is successful.
 	// *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -8493,7 +8721,17 @@ func (s *QueryChatappBindWabaResponseBody) SetRequestId(v string) *QueryChatappB
 }
 
 type QueryChatappBindWabaResponseBodyData struct {
-	// The review status of the WhatsApp Business account.
+	// The review state of the WhatsApp Business account (WABA).
+	//
+	// >  Valid values:
+	//
+	// *   PENDING: The WABA is to be reviewed.
+	//
+	// *   APPROVED: The WABA was approved.
+	//
+	// *   REJECTED: The WABA was rejected.
+	//
+	// *   DISABLED: The WABA was forbidden.
 	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
 	// The currency.
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
@@ -8539,9 +8777,9 @@ func (s *QueryChatappBindWabaResponseBodyData) SetName(v string) *QueryChatappBi
 }
 
 type QueryChatappBindWabaResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryChatappBindWabaResponse) String() string {
@@ -8572,6 +8810,7 @@ type QueryChatappPhoneNumbersRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryChatappPhoneNumbersRequest) String() string {
@@ -8589,6 +8828,11 @@ func (s *QueryChatappPhoneNumbersRequest) SetCustSpaceId(v string) *QueryChatapp
 
 func (s *QueryChatappPhoneNumbersRequest) SetIsvCode(v string) *QueryChatappPhoneNumbersRequest {
 	s.IsvCode = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersRequest) SetStatus(v string) *QueryChatappPhoneNumbersRequest {
+	s.Status = &v
 	return s
 }
 
@@ -8753,9 +8997,9 @@ func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetVerifiedName(v str
 }
 
 type QueryChatappPhoneNumbersResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryChatappPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryChatappPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryChatappPhoneNumbersResponse) String() string {
@@ -8855,6 +9099,7 @@ func (s *QueryPhoneBusinessProfileResponseBody) SetRequestId(v string) *QueryPho
 }
 
 type QueryPhoneBusinessProfileResponseBodyData struct {
+	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The address.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The description.
@@ -8875,6 +9120,11 @@ func (s QueryPhoneBusinessProfileResponseBodyData) String() string {
 
 func (s QueryPhoneBusinessProfileResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPhoneBusinessProfileResponseBodyData) SetAbout(v string) *QueryPhoneBusinessProfileResponseBodyData {
+	s.About = &v
+	return s
 }
 
 func (s *QueryPhoneBusinessProfileResponseBodyData) SetAddress(v string) *QueryPhoneBusinessProfileResponseBodyData {
@@ -8908,9 +9158,9 @@ func (s *QueryPhoneBusinessProfileResponseBodyData) SetWebsites(v []*string) *Qu
 }
 
 type QueryPhoneBusinessProfileResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPhoneBusinessProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPhoneBusinessProfileResponse) String() string {
@@ -9049,9 +9299,9 @@ func (s *QueryWabaBusinessInfoResponseBodyData) SetVertical(v string) *QueryWaba
 }
 
 type QueryWabaBusinessInfoResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryWabaBusinessInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryWabaBusinessInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryWabaBusinessInfoResponse) String() string {
@@ -9086,11 +9336,17 @@ type SendChatappMassMessageRequest struct {
 	// The ID of the WhatsApp Business account under the ISV account.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The fallback content.
-	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
-	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy.
-	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// The fallback rule.
+	//
+	// >  Valid values:
+	//
+	// *   undelivered: A fallback is triggered if the WhatsApp message is not delivered to clients. When the WhatsApp message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+	//
+	// *   sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
@@ -9100,7 +9356,7 @@ type SendChatappMassMessageRequest struct {
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The language. For more information about language codes, see [Language codes](~~463420~~).
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The list of phone numbers that receive the message.
+	// The phone numbers to which the message is sent.
 	SenderList []*SendChatappMassMessageRequestSenderList `json:"SenderList,omitempty" xml:"SenderList,omitempty" type:"Repeated"`
 	// The tag information when the ChannelType parameter is set to viber.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -9108,6 +9364,7 @@ type SendChatappMassMessageRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The encoding of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
@@ -9195,6 +9452,11 @@ func (s *SendChatappMassMessageRequest) SetTemplateCode(v string) *SendChatappMa
 	return s
 }
 
+func (s *SendChatappMassMessageRequest) SetTemplateName(v string) *SendChatappMassMessageRequest {
+	s.TemplateName = &v
+	return s
+}
+
 func (s *SendChatappMassMessageRequest) SetTtl(v int64) *SendChatappMassMessageRequest {
 	s.Ttl = &v
 	return s
@@ -9202,12 +9464,13 @@ func (s *SendChatappMassMessageRequest) SetTtl(v int64) *SendChatappMassMessageR
 
 type SendChatappMassMessageRequestSenderList struct {
 	FlowAction *SendChatappMassMessageRequestSenderListFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
-	// payload
-	Payload       []*string                                             `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	// The payload.
+	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
+	// The information about the product.
 	ProductAction *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
-	// The parameters of the message template.
+	// The parameters of the template.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The phone number that receives the message.
+	// The phone number to which the message is sent.
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
@@ -9268,8 +9531,10 @@ func (s *SendChatappMassMessageRequestSenderListFlowAction) SetFlowToken(v strin
 }
 
 type SendChatappMassMessageRequestSenderListProductAction struct {
-	Sections                   []*SendChatappMassMessageRequestSenderListProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
-	ThumbnailProductRetailerId *string                                                         `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
+	// The products. Up to 30 products and 10 categories can be added.
+	Sections []*SendChatappMassMessageRequestSenderListProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
+	// The retailer ID of the product.
+	ThumbnailProductRetailerId *string `json:"ThumbnailProductRetailerId,omitempty" xml:"ThumbnailProductRetailerId,omitempty"`
 }
 
 func (s SendChatappMassMessageRequestSenderListProductAction) String() string {
@@ -9291,8 +9556,10 @@ func (s *SendChatappMassMessageRequestSenderListProductAction) SetThumbnailProdu
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSections struct {
+	// The products.
 	ProductItems []*SendChatappMassMessageRequestSenderListProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
-	Title        *string                                                                     `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the category.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SendChatappMassMessageRequestSenderListProductActionSections) String() string {
@@ -9314,6 +9581,7 @@ func (s *SendChatappMassMessageRequestSenderListProductActionSections) SetTitle(
 }
 
 type SendChatappMassMessageRequestSenderListProductActionSectionsProductItems struct {
+	// The retailer ID of the product.
 	ProductRetailerId *string `json:"ProductRetailerId,omitempty" xml:"ProductRetailerId,omitempty"`
 }
 
@@ -9339,11 +9607,17 @@ type SendChatappMassMessageShrinkRequest struct {
 	// The ID of the WhatsApp Business account under the ISV account.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The fallback content.
-	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// 消息在指定时间内没有返回已到达回执时回落, 不填代表不根据此时间判断回落，只有发送失败和有失败的状态报告时才会回落。时间单位为秒 最小值为60，最大值43200
-	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy.
-	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// The fallback rule.
+	//
+	// >  Valid values:
+	//
+	// *   undelivered: A fallback is triggered if the WhatsApp message is not delivered to clients. When the WhatsApp message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
+	//
+	// *   sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The phone number of the message sender.
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
@@ -9353,7 +9627,7 @@ type SendChatappMassMessageShrinkRequest struct {
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The language. For more information about language codes, see [Language codes](~~463420~~).
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The list of phone numbers that receive the message.
+	// The phone numbers to which the message is sent.
 	SenderListShrink *string `json:"SenderList,omitempty" xml:"SenderList,omitempty"`
 	// The tag information when the ChannelType parameter is set to viber.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -9361,6 +9635,7 @@ type SendChatappMassMessageShrinkRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The encoding of the message template.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
@@ -9448,6 +9723,11 @@ func (s *SendChatappMassMessageShrinkRequest) SetTemplateCode(v string) *SendCha
 	return s
 }
 
+func (s *SendChatappMassMessageShrinkRequest) SetTemplateName(v string) *SendChatappMassMessageShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
 func (s *SendChatappMassMessageShrinkRequest) SetTtl(v int64) *SendChatappMassMessageShrinkRequest {
 	s.Ttl = &v
 	return s
@@ -9502,9 +9782,9 @@ func (s *SendChatappMassMessageResponseBody) SetRequestId(v string) *SendChatapp
 }
 
 type SendChatappMassMessageResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendChatappMassMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendChatappMassMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendChatappMassMessageResponse) String() string {
@@ -9571,12 +9851,24 @@ type SendChatappMessageRequest struct {
 	// The ID of the WhatsApp account that you register.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The content of the fallback message.
-	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback Short Message Service (SMS) message is sent if the message receipt that indicates the message is delivered to customers is not received. If this parameter is left empty, the fallback SMS message is sent only when the **message fails to be sent** or **the message receipt that indicates the message is not delivered to customers** is received. Valid values: 60 to 43200. Unit: seconds.
+	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId   *string                              `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	FallBackRule *string                              `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	FlowAction   *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// 回落规则。
+	//
+	// > 取值范围
+	// > - undelivered  消息不能发送到端时回落（在发送状态时模板、参数需要校验通过，模板被封、号码被封等不做校验）。参数值为空时默认使用此规则
+	// > - sentFailed  消息在校验模板、模板变量等参数时，校验不通过也会回落。只会强校验channelType, type, messageType, to, from(是否存在) 几个参数。
+	//
+	// <props="china">
+	//
+	// > 中国站此字段无效
+	// </props>
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	// Flow发送数据
+	FlowAction *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
 	// The phone number of the message sender.
 	//
 	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -9626,6 +9918,7 @@ type SendChatappMessageRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The code of the message template. This parameter is required only if you set the Type parameter to **template**.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The variables of the message template.
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
 	// The phone number that receives the message.
@@ -9749,6 +10042,11 @@ func (s *SendChatappMessageRequest) SetTemplateCode(v string) *SendChatappMessag
 	return s
 }
 
+func (s *SendChatappMessageRequest) SetTemplateName(v string) *SendChatappMessageRequest {
+	s.TemplateName = &v
+	return s
+}
+
 func (s *SendChatappMessageRequest) SetTemplateParams(v map[string]*string) *SendChatappMessageRequest {
 	s.TemplateParams = v
 	return s
@@ -9775,8 +10073,10 @@ func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest
 }
 
 type SendChatappMessageRequestFlowAction struct {
+	// flow默认参数
 	FlowActionData map[string]*string `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
-	FlowToken      *string            `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
+	// flow token信息
+	FlowToken *string `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
 }
 
 func (s SendChatappMessageRequestFlowAction) String() string {
@@ -9906,11 +10206,23 @@ type SendChatappMessageShrinkRequest struct {
 	// The ID of the WhatsApp account that you register.
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// The content of the fallback message.
-	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// Specifies the period of time after which the fallback Short Message Service (SMS) message is sent if the message receipt that indicates the message is delivered to customers is not received. If this parameter is left empty, the fallback SMS message is sent only when the **message fails to be sent** or **the message receipt that indicates the message is not delivered to customers** is received. Valid values: 60 to 43200. Unit: seconds.
+	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId       *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	FallBackRule     *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	// 回落规则。
+	//
+	// > 取值范围
+	// > - undelivered  消息不能发送到端时回落（在发送状态时模板、参数需要校验通过，模板被封、号码被封等不做校验）。参数值为空时默认使用此规则
+	// > - sentFailed  消息在校验模板、模板变量等参数时，校验不通过也会回落。只会强校验channelType, type, messageType, to, from(是否存在) 几个参数。
+	//
+	// <props="china">
+	//
+	// > 中国站此字段无效
+	// </props>
+	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	// Flow发送数据
 	FlowActionShrink *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	// The phone number of the message sender.
 	//
@@ -9961,6 +10273,7 @@ type SendChatappMessageShrinkRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The code of the message template. This parameter is required only if you set the Type parameter to **template**.
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The variables of the message template.
 	TemplateParamsShrink *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
 	// The phone number that receives the message.
@@ -10084,6 +10397,11 @@ func (s *SendChatappMessageShrinkRequest) SetTemplateCode(v string) *SendChatapp
 	return s
 }
 
+func (s *SendChatappMessageShrinkRequest) SetTemplateName(v string) *SendChatappMessageShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
 func (s *SendChatappMessageShrinkRequest) SetTemplateParamsShrink(v string) *SendChatappMessageShrinkRequest {
 	s.TemplateParamsShrink = &v
 	return s
@@ -10152,9 +10470,9 @@ func (s *SendChatappMessageResponseBody) SetRequestId(v string) *SendChatappMess
 }
 
 type SendChatappMessageResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendChatappMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendChatappMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendChatappMessageResponse) String() string {
@@ -10286,9 +10604,9 @@ func (s *SubmitIsvCustomerTermsResponseBody) SetRequestId(v string) *SubmitIsvCu
 }
 
 type SubmitIsvCustomerTermsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitIsvCustomerTermsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitIsvCustomerTermsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitIsvCustomerTermsResponse) String() string {
@@ -10401,9 +10719,9 @@ func (s *UpdateAccountWebhookResponseBody) SetRequestId(v string) *UpdateAccount
 }
 
 type UpdateAccountWebhookResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAccountWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAccountWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAccountWebhookResponse) String() string {
@@ -10430,10 +10748,14 @@ func (s *UpdateAccountWebhookResponse) SetBody(v *UpdateAccountWebhookResponseBo
 }
 
 type UpdateCommerceSettingRequest struct {
-	CartEnable     *bool   `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
-	CatalogVisible *bool   `json:"CatalogVisible,omitempty" xml:"CatalogVisible,omitempty"`
-	CustSpaceId    *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	PhoneNumber    *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Specifies whether to display the shopping cart button.
+	CartEnable *bool `json:"CartEnable,omitempty" xml:"CartEnable,omitempty"`
+	// Specifies whether to display the catalog button.
+	CatalogVisible *bool `json:"CatalogVisible,omitempty" xml:"CatalogVisible,omitempty"`
+	// The space ID of the user within the independent software vendor (ISV) account.
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The phone number.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
 func (s UpdateCommerceSettingRequest) String() string {
@@ -10465,9 +10787,14 @@ func (s *UpdateCommerceSettingRequest) SetPhoneNumber(v string) *UpdateCommerceS
 }
 
 type UpdateCommerceSettingResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10495,9 +10822,9 @@ func (s *UpdateCommerceSettingResponseBody) SetRequestId(v string) *UpdateCommer
 }
 
 type UpdateCommerceSettingResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCommerceSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCommerceSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCommerceSettingResponse) String() string {
@@ -10608,9 +10935,9 @@ func (s *UpdateFlowJSONAssetResponseBodyData) SetFlowId(v string) *UpdateFlowJSO
 }
 
 type UpdateFlowJSONAssetResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFlowJSONAssetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFlowJSONAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFlowJSONAssetResponse) String() string {
@@ -10696,9 +11023,9 @@ func (s *UpdatePhoneEncryptionPublicKeyResponseBody) SetRequestId(v string) *Upd
 }
 
 type UpdatePhoneEncryptionPublicKeyResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePhoneEncryptionPublicKeyResponse) String() string {
@@ -10849,9 +11176,9 @@ func (s *UpdatePhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *UpdatePh
 }
 
 type UpdatePhoneMessageQrdlResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePhoneMessageQrdlResponse) String() string {
@@ -10960,9 +11287,9 @@ func (s *UpdatePhoneWebhookResponseBody) SetRequestId(v string) *UpdatePhoneWebh
 }
 
 type UpdatePhoneWebhookResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePhoneWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePhoneWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePhoneWebhookResponse) String() string {
@@ -11035,6 +11362,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AddChatappPhoneNumberRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddChatappPhoneNumberResponse
+ */
 func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *AddChatappPhoneNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11084,6 +11418,12 @@ func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneN
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AddChatappPhoneNumberRequest
+ * @return AddChatappPhoneNumberResponse
+ */
 func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberRequest) (_result *AddChatappPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddChatappPhoneNumberResponse{}
@@ -11529,6 +11869,13 @@ func (client *Client) ChatappMigrationVerified(request *ChatappMigrationVerified
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ChatappPhoneNumberDeregisterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ChatappPhoneNumberDeregisterResponse
+ */
 func (client *Client) ChatappPhoneNumberDeregisterWithOptions(request *ChatappPhoneNumberDeregisterRequest, runtime *util.RuntimeOptions) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11566,6 +11913,12 @@ func (client *Client) ChatappPhoneNumberDeregisterWithOptions(request *ChatappPh
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ChatappPhoneNumberDeregisterRequest
+ * @return ChatappPhoneNumberDeregisterResponse
+ */
 func (client *Client) ChatappPhoneNumberDeregister(request *ChatappPhoneNumberDeregisterRequest) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChatappPhoneNumberDeregisterResponse{}
@@ -11932,6 +12285,13 @@ func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateReques
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param tmpReq CreateFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *util.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11979,6 +12339,12 @@ func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request CreateFlowRequest
+ * @return CreateFlowResponse
+ */
 func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFlowResponse{}
@@ -12072,8 +12438,20 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 		query["IsvCode"] = request.IsvCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12117,6 +12495,13 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12154,6 +12539,12 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteFlowRequest
+ * @return DeleteFlowResponse
+ */
 func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFlowResponse{}
@@ -12265,6 +12656,13 @@ func (client *Client) DeprecateFlow(request *DeprecateFlowRequest) (_result *Dep
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request EnableWhatsappROIMetricRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EnableWhatsappROIMetricResponse
+ */
 func (client *Client) EnableWhatsappROIMetricWithOptions(request *EnableWhatsappROIMetricRequest, runtime *util.RuntimeOptions) (_result *EnableWhatsappROIMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12302,6 +12700,12 @@ func (client *Client) EnableWhatsappROIMetricWithOptions(request *EnableWhatsapp
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request EnableWhatsappROIMetricRequest
+ * @return EnableWhatsappROIMetricResponse
+ */
 func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRequest) (_result *EnableWhatsappROIMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableWhatsappROIMetricResponse{}
@@ -12313,6 +12717,13 @@ func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRe
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetChatappPhoneNumberMetricRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetChatappPhoneNumberMetricResponse
+ */
 func (client *Client) GetChatappPhoneNumberMetricWithOptions(request *GetChatappPhoneNumberMetricRequest, runtime *util.RuntimeOptions) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12366,6 +12777,12 @@ func (client *Client) GetChatappPhoneNumberMetricWithOptions(request *GetChatapp
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetChatappPhoneNumberMetricRequest
+ * @return GetChatappPhoneNumberMetricResponse
+ */
 func (client *Client) GetChatappPhoneNumberMetric(request *GetChatappPhoneNumberMetricRequest) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChatappPhoneNumberMetricResponse{}
@@ -12409,6 +12826,10 @@ func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTem
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
@@ -12456,6 +12877,13 @@ func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetail
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetChatappTemplateMetricRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetChatappTemplateMetricResponse
+ */
 func (client *Client) GetChatappTemplateMetricWithOptions(request *GetChatappTemplateMetricRequest, runtime *util.RuntimeOptions) (_result *GetChatappTemplateMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12517,6 +12945,12 @@ func (client *Client) GetChatappTemplateMetricWithOptions(request *GetChatappTem
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetChatappTemplateMetricRequest
+ * @return GetChatappTemplateMetricResponse
+ */
 func (client *Client) GetChatappTemplateMetric(request *GetChatappTemplateMetricRequest) (_result *GetChatappTemplateMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChatappTemplateMetricResponse{}
@@ -12654,6 +13088,13 @@ func (client *Client) GetChatappVerifyCode(request *GetChatappVerifyCodeRequest)
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetCommerceSettingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCommerceSettingResponse
+ */
 func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingRequest, runtime *util.RuntimeOptions) (_result *GetCommerceSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12691,6 +13132,12 @@ func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingR
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetCommerceSettingRequest
+ * @return GetCommerceSettingResponse
+ */
 func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_result *GetCommerceSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCommerceSettingResponse{}
@@ -12702,6 +13149,13 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetFlowResponse
+ */
 func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *util.RuntimeOptions) (_result *GetFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12739,6 +13193,12 @@ func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetFlowRequest
+ * @return GetFlowResponse
+ */
 func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFlowResponse{}
@@ -12798,6 +13258,13 @@ func (client *Client) GetFlowJSONAssest(request *GetFlowJSONAssestRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetFlowPreviewUrlRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetFlowPreviewUrlResponse
+ */
 func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlRequest, runtime *util.RuntimeOptions) (_result *GetFlowPreviewUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12835,6 +13302,12 @@ func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlReq
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetFlowPreviewUrlRequest
+ * @return GetFlowPreviewUrlResponse
+ */
 func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_result *GetFlowPreviewUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFlowPreviewUrlResponse{}
@@ -13082,6 +13555,13 @@ func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVe
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetPreValidatePhoneIdRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPreValidatePhoneIdResponse
+ */
 func (client *Client) GetPreValidatePhoneIdWithOptions(request *GetPreValidatePhoneIdRequest, runtime *util.RuntimeOptions) (_result *GetPreValidatePhoneIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13119,6 +13599,12 @@ func (client *Client) GetPreValidatePhoneIdWithOptions(request *GetPreValidatePh
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetPreValidatePhoneIdRequest
+ * @return GetPreValidatePhoneIdResponse
+ */
 func (client *Client) GetPreValidatePhoneId(request *GetPreValidatePhoneIdRequest) (_result *GetPreValidatePhoneIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPreValidatePhoneIdResponse{}
@@ -13357,6 +13843,13 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param tmpReq ListFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListFlowResponse
+ */
 func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *util.RuntimeOptions) (_result *ListFlowResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13404,6 +13897,12 @@ func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *util
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListFlowRequest
+ * @return ListFlowResponse
+ */
 func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFlowResponse{}
@@ -13704,6 +14203,10 @@ func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemp
 		body["TemplateCode"] = request.TemplateCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
 		body["TemplateType"] = request.TemplateType
 	}
@@ -13748,6 +14251,13 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param tmpReq ModifyFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyFlowResponse
+ */
 func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *util.RuntimeOptions) (_result *ModifyFlowResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13799,6 +14309,12 @@ func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ModifyFlowRequest
+ * @return ModifyFlowResponse
+ */
 func (client *Client) ModifyFlow(request *ModifyFlowRequest) (_result *ModifyFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyFlowResponse{}
@@ -13829,6 +14345,10 @@ func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneB
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.About)) {
+		query["About"] = request.About
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Address)) {
 		query["Address"] = request.Address
 	}
@@ -13901,6 +14421,13 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PublishFlowRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PublishFlowResponse
+ */
 func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtime *util.RuntimeOptions) (_result *PublishFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13938,6 +14465,12 @@ func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PublishFlowRequest
+ * @return PublishFlowResponse
+ */
 func (client *Client) PublishFlow(request *PublishFlowRequest) (_result *PublishFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PublishFlowResponse{}
@@ -14029,6 +14562,10 @@ func (client *Client) QueryChatappPhoneNumbersWithOptions(request *QueryChatappP
 
 	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
 		query["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -14273,6 +14810,10 @@ func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassM
 		body["TemplateCode"] = request.TemplateCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
 		body["Ttl"] = request.Ttl
 	}
@@ -14428,6 +14969,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		body["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateParamsShrink)) {
@@ -14641,6 +15186,13 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateCommerceSettingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateCommerceSettingResponse
+ */
 func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateCommerceSettingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14686,6 +15238,12 @@ func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSe
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UpdateCommerceSettingRequest
+ * @return UpdateCommerceSettingResponse
+ */
 func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingRequest) (_result *UpdateCommerceSettingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCommerceSettingResponse{}
