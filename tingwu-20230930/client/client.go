@@ -747,6 +747,7 @@ type GetTaskInfoResponseBodyDataResult struct {
 	MeetingAssistance *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
 	PptExtraction     *string `json:"PptExtraction,omitempty" xml:"PptExtraction,omitempty"`
 	Summarization     *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	TextPolish        *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
 	Transcription     *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
 	Translation       *string `json:"Translation,omitempty" xml:"Translation,omitempty"`
 }
@@ -776,6 +777,11 @@ func (s *GetTaskInfoResponseBodyDataResult) SetPptExtraction(v string) *GetTaskI
 
 func (s *GetTaskInfoResponseBodyDataResult) SetSummarization(v string) *GetTaskInfoResponseBodyDataResult {
 	s.Summarization = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetTextPolish(v string) *GetTaskInfoResponseBodyDataResult {
+	s.TextPolish = &v
 	return s
 }
 
