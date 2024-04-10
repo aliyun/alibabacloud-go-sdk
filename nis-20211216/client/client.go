@@ -764,6 +764,8 @@ type GetInternetTupleRequest struct {
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The local IP address.
 	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local IP addresses for filtering.
+	CloudIpList []*string `json:"CloudIpList,omitempty" xml:"CloudIpList,omitempty" type:"Repeated"`
 	// The local Internet service provider (ISP).
 	//
 	// >  In most cases, the value is Alibaba or Alibaba Cloud.
@@ -873,6 +875,11 @@ func (s *GetInternetTupleRequest) SetCloudIp(v string) *GetInternetTupleRequest 
 	return s
 }
 
+func (s *GetInternetTupleRequest) SetCloudIpList(v []*string) *GetInternetTupleRequest {
+	s.CloudIpList = v
+	return s
+}
+
 func (s *GetInternetTupleRequest) SetCloudIsp(v string) *GetInternetTupleRequest {
 	s.CloudIsp = &v
 	return s
@@ -970,6 +977,8 @@ type GetInternetTupleShrinkRequest struct {
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The local IP address.
 	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local IP addresses for filtering.
+	CloudIpListShrink *string `json:"CloudIpList,omitempty" xml:"CloudIpList,omitempty"`
 	// The local Internet service provider (ISP).
 	//
 	// >  In most cases, the value is Alibaba or Alibaba Cloud.
@@ -1076,6 +1085,11 @@ func (s *GetInternetTupleShrinkRequest) SetBeginTime(v int64) *GetInternetTupleS
 
 func (s *GetInternetTupleShrinkRequest) SetCloudIp(v string) *GetInternetTupleShrinkRequest {
 	s.CloudIp = &v
+	return s
+}
+
+func (s *GetInternetTupleShrinkRequest) SetCloudIpListShrink(v string) *GetInternetTupleShrinkRequest {
+	s.CloudIpListShrink = &v
 	return s
 }
 
@@ -3130,6 +3144,10 @@ func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleReques
 	}
 	request := &GetInternetTupleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CloudIpList)) {
+		request.CloudIpListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CloudIpList, tea.String("CloudIpList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceList)) {
 		request.InstanceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceList, tea.String("InstanceList"), tea.String("json"))
 	}
@@ -3145,6 +3163,10 @@ func (client *Client) GetInternetTupleWithOptions(tmpReq *GetInternetTupleReques
 
 	if !tea.BoolValue(util.IsUnset(request.CloudIp)) {
 		query["CloudIp"] = request.CloudIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudIpListShrink)) {
+		query["CloudIpList"] = request.CloudIpListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CloudIsp)) {
