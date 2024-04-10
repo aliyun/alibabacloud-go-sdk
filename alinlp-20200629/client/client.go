@@ -5728,6 +5728,7 @@ type PostMSSearchEnhanceRequest struct {
 	Debug            *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
 	Fields           []*string              `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	Filters          *string                `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	MinScore         *float64               `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
 	Page             *int32                 `json:"Page,omitempty" xml:"Page,omitempty"`
 	Queries          *string                `json:"Queries,omitempty" xml:"Queries,omitempty"`
 	RankModelInfo    map[string]interface{} `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
@@ -5768,6 +5769,11 @@ func (s *PostMSSearchEnhanceRequest) SetFields(v []*string) *PostMSSearchEnhance
 
 func (s *PostMSSearchEnhanceRequest) SetFilters(v string) *PostMSSearchEnhanceRequest {
 	s.Filters = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetMinScore(v float64) *PostMSSearchEnhanceRequest {
+	s.MinScore = &v
 	return s
 }
 
@@ -5812,19 +5818,20 @@ func (s *PostMSSearchEnhanceRequest) SetUq(v string) *PostMSSearchEnhanceRequest
 }
 
 type PostMSSearchEnhanceShrinkRequest struct {
-	Body                   *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	CustomConfigInfoShrink *string `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
-	Debug                  *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
-	FieldsShrink           *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	Filters                *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	Page                   *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Queries                *string `json:"Queries,omitempty" xml:"Queries,omitempty"`
-	RankModelInfoShrink    *string `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
-	Rows                   *int32  `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	ServiceId              *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	SortShrink             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uq                     *string `json:"Uq,omitempty" xml:"Uq,omitempty"`
+	Body                   *string  `json:"Body,omitempty" xml:"Body,omitempty"`
+	CustomConfigInfoShrink *string  `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
+	Debug                  *bool    `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	FieldsShrink           *string  `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Filters                *string  `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	MinScore               *float64 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
+	Page                   *int32   `json:"Page,omitempty" xml:"Page,omitempty"`
+	Queries                *string  `json:"Queries,omitempty" xml:"Queries,omitempty"`
+	RankModelInfoShrink    *string  `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
+	Rows                   *int32   `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	ServiceId              *int64   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SortShrink             *string  `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type                   *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uq                     *string  `json:"Uq,omitempty" xml:"Uq,omitempty"`
 }
 
 func (s PostMSSearchEnhanceShrinkRequest) String() string {
@@ -5857,6 +5864,11 @@ func (s *PostMSSearchEnhanceShrinkRequest) SetFieldsShrink(v string) *PostMSSear
 
 func (s *PostMSSearchEnhanceShrinkRequest) SetFilters(v string) *PostMSSearchEnhanceShrinkRequest {
 	s.Filters = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetMinScore(v float64) *PostMSSearchEnhanceShrinkRequest {
+	s.MinScore = &v
 	return s
 }
 
@@ -9863,6 +9875,10 @@ func (client *Client) PostMSSearchEnhanceWithOptions(tmpReq *PostMSSearchEnhance
 
 	if !tea.BoolValue(util.IsUnset(request.Filters)) {
 		body["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinScore)) {
+		body["MinScore"] = request.MinScore
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
