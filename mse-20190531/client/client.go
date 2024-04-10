@@ -33710,11 +33710,13 @@ func (s *ListListenersByConfigResponseBody) SetTotalCount(v int32) *ListListener
 
 type ListListenersByConfigResponseBodyListeners struct {
 	// The IP address.
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip     *string            `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The verification string.
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
 	// The status.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListListenersByConfigResponseBodyListeners) String() string {
@@ -33730,6 +33732,11 @@ func (s *ListListenersByConfigResponseBodyListeners) SetIp(v string) *ListListen
 	return s
 }
 
+func (s *ListListenersByConfigResponseBodyListeners) SetLabels(v map[string]*string) *ListListenersByConfigResponseBodyListeners {
+	s.Labels = v
+	return s
+}
+
 func (s *ListListenersByConfigResponseBodyListeners) SetMd5(v string) *ListListenersByConfigResponseBodyListeners {
 	s.Md5 = &v
 	return s
@@ -33737,6 +33744,11 @@ func (s *ListListenersByConfigResponseBodyListeners) SetMd5(v string) *ListListe
 
 func (s *ListListenersByConfigResponseBodyListeners) SetStatus(v string) *ListListenersByConfigResponseBodyListeners {
 	s.Status = &v
+	return s
+}
+
+func (s *ListListenersByConfigResponseBodyListeners) SetVersion(v string) *ListListenersByConfigResponseBodyListeners {
+	s.Version = &v
 	return s
 }
 
@@ -33901,7 +33913,8 @@ type ListListenersByIpResponseBodyListeners struct {
 	// The group.
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The verification string.
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s ListListenersByIpResponseBodyListeners) String() string {
@@ -33924,6 +33937,11 @@ func (s *ListListenersByIpResponseBodyListeners) SetGroup(v string) *ListListene
 
 func (s *ListListenersByIpResponseBodyListeners) SetMd5(v string) *ListListenersByIpResponseBodyListeners {
 	s.Md5 = &v
+	return s
+}
+
+func (s *ListListenersByIpResponseBodyListeners) SetNamespaceId(v string) *ListListenersByIpResponseBodyListeners {
+	s.NamespaceId = &v
 	return s
 }
 
