@@ -5537,6 +5537,8 @@ type DescribeApsResourceGroupsRequest struct {
 	//
 	// >  You can call the [DescribeDBClusters](~~612397~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkloadId  *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
 }
 
 func (s DescribeApsResourceGroupsRequest) String() string {
@@ -5549,6 +5551,16 @@ func (s DescribeApsResourceGroupsRequest) GoString() string {
 
 func (s *DescribeApsResourceGroupsRequest) SetDBClusterId(v string) *DescribeApsResourceGroupsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsResourceGroupsRequest) SetRegionId(v string) *DescribeApsResourceGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsResourceGroupsRequest) SetWorkloadId(v string) *DescribeApsResourceGroupsRequest {
+	s.WorkloadId = &v
 	return s
 }
 
@@ -22249,6 +22261,14 @@ func (client *Client) DescribeApsResourceGroupsWithOptions(request *DescribeApsR
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
 	}
 
 	req := &openapi.OpenApiRequest{
