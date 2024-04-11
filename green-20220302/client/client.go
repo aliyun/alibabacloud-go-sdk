@@ -605,8 +605,9 @@ func (s *DescribeImageResultExtResponseBodyDataPublicFigure) SetFigureId(v strin
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImage struct {
-	OcrDatas  []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
-	RiskWords []*string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
+	CustomTexts []*DescribeImageResultExtResponseBodyDataTextInImageCustomTexts `json:"CustomTexts,omitempty" xml:"CustomTexts,omitempty" type:"Repeated"`
+	OcrDatas    []*string                                                       `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
+	RiskWords   []*string                                                       `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageResultExtResponseBodyDataTextInImage) String() string {
@@ -617,6 +618,11 @@ func (s DescribeImageResultExtResponseBodyDataTextInImage) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetCustomTexts(v []*DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) *DescribeImageResultExtResponseBodyDataTextInImage {
+	s.CustomTexts = v
+	return s
+}
+
 func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetOcrDatas(v []*string) *DescribeImageResultExtResponseBodyDataTextInImage {
 	s.OcrDatas = v
 	return s
@@ -624,6 +630,35 @@ func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetOcrDatas(v []*str
 
 func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetRiskWords(v []*string) *DescribeImageResultExtResponseBodyDataTextInImage {
 	s.RiskWords = v
+	return s
+}
+
+type DescribeImageResultExtResponseBodyDataTextInImageCustomTexts struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) SetKeyWords(v string) *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) SetLibId(v string) *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts {
+	s.LibId = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) SetLibName(v string) *DescribeImageResultExtResponseBodyDataTextInImageCustomTexts {
+	s.LibName = &v
 	return s
 }
 
