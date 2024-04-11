@@ -2100,9 +2100,11 @@ func (s *AddGatewayResponse) SetBody(v *AddGatewayResponseBody) *AddGatewayRespo
 }
 
 type AddGatewayAuthRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AuthResourceConfig *string `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
 	// The information about the resource to be authorized.
 	AuthResourceList []*AddGatewayAuthRequestAuthResourceList `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty" type:"Repeated"`
+	AuthResourceMode *int32                                   `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
 	// The application ID registered with the OIDC authentication service.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The application secret registered with the OIDC authentication service.
@@ -2156,8 +2158,18 @@ func (s *AddGatewayAuthRequest) SetAcceptLanguage(v string) *AddGatewayAuthReque
 	return s
 }
 
+func (s *AddGatewayAuthRequest) SetAuthResourceConfig(v string) *AddGatewayAuthRequest {
+	s.AuthResourceConfig = &v
+	return s
+}
+
 func (s *AddGatewayAuthRequest) SetAuthResourceList(v []*AddGatewayAuthRequestAuthResourceList) *AddGatewayAuthRequest {
 	s.AuthResourceList = v
+	return s
+}
+
+func (s *AddGatewayAuthRequest) SetAuthResourceMode(v int32) *AddGatewayAuthRequest {
+	s.AuthResourceMode = &v
 	return s
 }
 
@@ -2401,9 +2413,11 @@ func (s *AddGatewayAuthRequestExternalAuthZJSON) SetWithRequestBody(v bool) *Add
 }
 
 type AddGatewayAuthShrinkRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AuthResourceConfig *string `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
 	// The information about the resource to be authorized.
 	AuthResourceListShrink *string `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty"`
+	AuthResourceMode       *int32  `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
 	// The application ID registered with the OIDC authentication service.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The application secret registered with the OIDC authentication service.
@@ -2457,8 +2471,18 @@ func (s *AddGatewayAuthShrinkRequest) SetAcceptLanguage(v string) *AddGatewayAut
 	return s
 }
 
+func (s *AddGatewayAuthShrinkRequest) SetAuthResourceConfig(v string) *AddGatewayAuthShrinkRequest {
+	s.AuthResourceConfig = &v
+	return s
+}
+
 func (s *AddGatewayAuthShrinkRequest) SetAuthResourceListShrink(v string) *AddGatewayAuthShrinkRequest {
 	s.AuthResourceListShrink = &v
+	return s
+}
+
+func (s *AddGatewayAuthShrinkRequest) SetAuthResourceMode(v int32) *AddGatewayAuthShrinkRequest {
+	s.AuthResourceMode = &v
 	return s
 }
 
@@ -16602,30 +16626,32 @@ func (s *GetGatewayAuthDetailResponseBody) SetSuccess(v bool) *GetGatewayAuthDet
 }
 
 type GetGatewayAuthDetailResponseBodyData struct {
-	ClientId        *string                                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientSecret    *string                                             `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	CookieDomain    *string                                             `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
-	ExternalAuthZ   *GetGatewayAuthDetailResponseBodyDataExternalAuthZ  `json:"ExternalAuthZ,omitempty" xml:"ExternalAuthZ,omitempty" type:"Struct"`
-	GatewayId       *int64                                              `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GatewayUniqueId *string                                             `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	GmtCreate       *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id              *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsWhite         *bool                                               `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	Issuer          *string                                             `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Jwks            *string                                             `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
-	LoginUrl        *string                                             `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
-	Name            *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	RedirectUrl     *string                                             `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	ResourceList    []*GetGatewayAuthDetailResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	ScopesList      *string                                             `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
-	Status          *bool                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Sub             *string                                             `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	TokenName       *string                                             `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
-	TokenNamePrefix *string                                             `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
-	TokenPass       *bool                                               `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
-	TokenPosition   *string                                             `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
-	Type            *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	AuthResourceConfig *string                                             `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
+	AuthResourceMode   *int32                                              `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
+	ClientId           *string                                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientSecret       *string                                             `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	CookieDomain       *string                                             `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	ExternalAuthZ      *GetGatewayAuthDetailResponseBodyDataExternalAuthZ  `json:"ExternalAuthZ,omitempty" xml:"ExternalAuthZ,omitempty" type:"Struct"`
+	GatewayId          *int64                                              `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                             `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate          *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsWhite            *bool                                               `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	Issuer             *string                                             `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Jwks               *string                                             `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	LoginUrl           *string                                             `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	Name               *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	RedirectUrl        *string                                             `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	ResourceList       []*GetGatewayAuthDetailResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	ScopesList         *string                                             `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
+	Status             *bool                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Sub                *string                                             `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	TokenName          *string                                             `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	TokenNamePrefix    *string                                             `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	TokenPass          *bool                                               `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	TokenPosition      *string                                             `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	Type               *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetGatewayAuthDetailResponseBodyData) String() string {
@@ -16634,6 +16660,16 @@ func (s GetGatewayAuthDetailResponseBodyData) String() string {
 
 func (s GetGatewayAuthDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetAuthResourceConfig(v string) *GetGatewayAuthDetailResponseBodyData {
+	s.AuthResourceConfig = &v
+	return s
+}
+
+func (s *GetGatewayAuthDetailResponseBodyData) SetAuthResourceMode(v int32) *GetGatewayAuthDetailResponseBodyData {
+	s.AuthResourceMode = &v
+	return s
 }
 
 func (s *GetGatewayAuthDetailResponseBodyData) SetClientId(v string) *GetGatewayAuthDetailResponseBodyData {
@@ -52174,8 +52210,16 @@ func (client *Client) AddGatewayAuthWithOptions(tmpReq *AddGatewayAuthRequest, r
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthResourceConfig)) {
+		query["AuthResourceConfig"] = request.AuthResourceConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AuthResourceListShrink)) {
 		query["AuthResourceList"] = request.AuthResourceListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthResourceMode)) {
+		query["AuthResourceMode"] = request.AuthResourceMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
