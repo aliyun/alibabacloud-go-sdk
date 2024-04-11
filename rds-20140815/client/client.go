@@ -30799,6 +30799,8 @@ type DescribeInstanceKeywordsRequest struct {
 	//
 	// *   **account**
 	// *   **database**
+	//
+	// >  This parameter is required.
 	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -30844,7 +30846,7 @@ type DescribeInstanceKeywordsResponseBody struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of reserved keywords.
+	// The reserved keywords.
 	Words *DescribeInstanceKeywordsResponseBodyWords `json:"Words,omitempty" xml:"Words,omitempty" type:"Struct"`
 }
 
@@ -35632,12 +35634,14 @@ func (s *DescribePriceShrinkRequest) SetZoneId(v string) *DescribePriceShrinkReq
 }
 
 type DescribePriceResponseBody struct {
+	OrderParams *string `json:"OrderParams,omitempty" xml:"OrderParams,omitempty"`
 	// The price information.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the promotion rule.
-	Rules *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Rules           *DescribePriceResponseBodyRules           `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	ServerlessPrice *DescribePriceResponseBodyServerlessPrice `json:"ServerlessPrice,omitempty" xml:"ServerlessPrice,omitempty" type:"Struct"`
 	// Indicates whether discounts can be used.
 	ShowDiscount *bool `json:"ShowDiscount,omitempty" xml:"ShowDiscount,omitempty"`
 	// The estimated hourly fee that is calculated based on the maximum number of RCUs.
@@ -35654,6 +35658,11 @@ func (s DescribePriceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePriceResponseBody) SetOrderParams(v string) *DescribePriceResponseBody {
+	s.OrderParams = &v
+	return s
+}
+
 func (s *DescribePriceResponseBody) SetPriceInfo(v *DescribePriceResponseBodyPriceInfo) *DescribePriceResponseBody {
 	s.PriceInfo = v
 	return s
@@ -35666,6 +35675,11 @@ func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceRespons
 
 func (s *DescribePriceResponseBody) SetRules(v *DescribePriceResponseBodyRules) *DescribePriceResponseBody {
 	s.Rules = v
+	return s
+}
+
+func (s *DescribePriceResponseBody) SetServerlessPrice(v *DescribePriceResponseBodyServerlessPrice) *DescribePriceResponseBody {
+	s.ServerlessPrice = v
 	return s
 }
 
@@ -35693,10 +35707,13 @@ type DescribePriceResponseBodyPriceInfo struct {
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The discount.
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OrderLines    *string  `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
 	// The original price.
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// An array that consists of the ID of the promotion rule.
-	RuleIds *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	RuleIds           *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	TradeMaxRCUAmount *float32                                   `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
+	TradeMinRCUAmount *float32                                   `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
 	// The transaction price, which is equal to the original price minus the discount.
 	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
@@ -35729,6 +35746,11 @@ func (s *DescribePriceResponseBodyPriceInfo) SetDiscountPrice(v float32) *Descri
 	return s
 }
 
+func (s *DescribePriceResponseBodyPriceInfo) SetOrderLines(v string) *DescribePriceResponseBodyPriceInfo {
+	s.OrderLines = &v
+	return s
+}
+
 func (s *DescribePriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *DescribePriceResponseBodyPriceInfo {
 	s.OriginalPrice = &v
 	return s
@@ -35736,6 +35758,16 @@ func (s *DescribePriceResponseBodyPriceInfo) SetOriginalPrice(v float32) *Descri
 
 func (s *DescribePriceResponseBodyPriceInfo) SetRuleIds(v *DescribePriceResponseBodyPriceInfoRuleIds) *DescribePriceResponseBodyPriceInfo {
 	s.RuleIds = v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetTradeMaxRCUAmount(v float32) *DescribePriceResponseBodyPriceInfo {
+	s.TradeMaxRCUAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyPriceInfo) SetTradeMinRCUAmount(v float32) *DescribePriceResponseBodyPriceInfo {
+	s.TradeMinRCUAmount = &v
 	return s
 }
 
@@ -35895,6 +35927,77 @@ func (s *DescribePriceResponseBodyRulesRule) SetName(v string) *DescribePriceRes
 
 func (s *DescribePriceResponseBodyRulesRule) SetRuleId(v int64) *DescribePriceResponseBodyRulesRule {
 	s.RuleId = &v
+	return s
+}
+
+type DescribePriceResponseBodyServerlessPrice struct {
+	RCUDiscountMaxAmount   *float32 `json:"RCUDiscountMaxAmount,omitempty" xml:"RCUDiscountMaxAmount,omitempty"`
+	RCUDiscountMinAmount   *float32 `json:"RCUDiscountMinAmount,omitempty" xml:"RCUDiscountMinAmount,omitempty"`
+	RCUOriginalMaxAmount   *float32 `json:"RCUOriginalMaxAmount,omitempty" xml:"RCUOriginalMaxAmount,omitempty"`
+	RCUOriginalMinAmount   *float32 `json:"RCUOriginalMinAmount,omitempty" xml:"RCUOriginalMinAmount,omitempty"`
+	StorageOriginalAmount  *float32 `json:"StorageOriginalAmount,omitempty" xml:"StorageOriginalAmount,omitempty"`
+	TotalOriginalMaxAmount *float32 `json:"TotalOriginalMaxAmount,omitempty" xml:"TotalOriginalMaxAmount,omitempty"`
+	TotalOriginalMinAmount *float32 `json:"TotalOriginalMinAmount,omitempty" xml:"TotalOriginalMinAmount,omitempty"`
+	TradeMaxRCUAmount      *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
+	TradeMinRCUAmount      *float32 `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
+	StorageDiscountAmount  *float32 `json:"storageDiscountAmount,omitempty" xml:"storageDiscountAmount,omitempty"`
+}
+
+func (s DescribePriceResponseBodyServerlessPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceResponseBodyServerlessPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetRCUDiscountMaxAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.RCUDiscountMaxAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetRCUDiscountMinAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.RCUDiscountMinAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetRCUOriginalMaxAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.RCUOriginalMaxAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetRCUOriginalMinAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.RCUOriginalMinAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetStorageOriginalAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.StorageOriginalAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetTotalOriginalMaxAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.TotalOriginalMaxAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetTotalOriginalMinAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.TotalOriginalMinAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetTradeMaxRCUAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.TradeMaxRCUAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetTradeMinRCUAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.TradeMinRCUAmount = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyServerlessPrice) SetStorageDiscountAmount(v float32) *DescribePriceResponseBodyServerlessPrice {
+	s.StorageDiscountAmount = &v
 	return s
 }
 
@@ -61763,9 +61866,9 @@ func (client *Client) CreateOnlineDatabaseTask(request *CreateOnlineDatabaseTask
 
 /**
  * ### [](#)Supported database engines
- * MySQL
+ * RDS MySQL
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
  * [Delete a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition](~~464130~~)
  *
  * @param tmpReq CreateOrderForDeleteDBNodesRequest
@@ -61873,9 +61976,9 @@ func (client *Client) CreateOrderForDeleteDBNodesWithOptions(tmpReq *CreateOrder
 
 /**
  * ### [](#)Supported database engines
- * MySQL
+ * RDS MySQL
  * ### [](#)References
- * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
  * [Delete a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition](~~464130~~)
  *
  * @param request CreateOrderForDeleteDBNodesRequest
@@ -70875,6 +70978,17 @@ func (client *Client) DescribeInstanceCrossBackupPolicy(request *DescribeInstanc
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
+ * *   RDS MariaDB
+ *
+ * @param request DescribeInstanceKeywordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstanceKeywordsResponse
+ */
 func (client *Client) DescribeInstanceKeywordsWithOptions(request *DescribeInstanceKeywordsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceKeywordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70924,6 +71038,16 @@ func (client *Client) DescribeInstanceKeywordsWithOptions(request *DescribeInsta
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
+ * *   RDS MariaDB
+ *
+ * @param request DescribeInstanceKeywordsRequest
+ * @return DescribeInstanceKeywordsResponse
+ */
 func (client *Client) DescribeInstanceKeywords(request *DescribeInstanceKeywordsRequest) (_result *DescribeInstanceKeywordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceKeywordsResponse{}
