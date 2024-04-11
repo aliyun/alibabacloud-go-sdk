@@ -7134,6 +7134,200 @@ func (s *DescribeVodDomainUsageDataResponse) SetBody(v *DescribeVodDomainUsageDa
 	return s
 }
 
+type DescribeVodMediaPlayDataRequest struct {
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	OrderName    *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageNo       *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlayDate     *string `json:"PlayDate,omitempty" xml:"PlayDate,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	TerminalType *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
+}
+
+func (s DescribeVodMediaPlayDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodMediaPlayDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetMediaId(v string) *DescribeVodMediaPlayDataRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetOrderName(v string) *DescribeVodMediaPlayDataRequest {
+	s.OrderName = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetOrderType(v string) *DescribeVodMediaPlayDataRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetOs(v string) *DescribeVodMediaPlayDataRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetPageNo(v int64) *DescribeVodMediaPlayDataRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetPageSize(v int64) *DescribeVodMediaPlayDataRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetPlayDate(v string) *DescribeVodMediaPlayDataRequest {
+	s.PlayDate = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetRegion(v string) *DescribeVodMediaPlayDataRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataRequest) SetTerminalType(v string) *DescribeVodMediaPlayDataRequest {
+	s.TerminalType = &v
+	return s
+}
+
+type DescribeVodMediaPlayDataResponseBody struct {
+	PageNo      *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QoeInfoList []*DescribeVodMediaPlayDataResponseBodyQoeInfoList `json:"QoeInfoList,omitempty" xml:"QoeInfoList,omitempty" type:"Repeated"`
+	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeVodMediaPlayDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodMediaPlayDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodMediaPlayDataResponseBody) SetPageNo(v int64) *DescribeVodMediaPlayDataResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBody) SetPageSize(v int64) *DescribeVodMediaPlayDataResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBody) SetQoeInfoList(v []*DescribeVodMediaPlayDataResponseBodyQoeInfoList) *DescribeVodMediaPlayDataResponseBody {
+	s.QoeInfoList = v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBody) SetRequestId(v string) *DescribeVodMediaPlayDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBody) SetTotalCount(v int64) *DescribeVodMediaPlayDataResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeVodMediaPlayDataResponseBodyQoeInfoList struct {
+	DAU               *float32 `json:"DAU,omitempty" xml:"DAU,omitempty"`
+	MediaId           *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	PlayDuration      *float32 `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
+	PlayDurationPerUv *float32 `json:"PlayDurationPerUv,omitempty" xml:"PlayDurationPerUv,omitempty"`
+	PlayPerVv         *float32 `json:"PlayPerVv,omitempty" xml:"PlayPerVv,omitempty"`
+	PlaySuccessVv     *float32 `json:"PlaySuccessVv,omitempty" xml:"PlaySuccessVv,omitempty"`
+	VideoDuration     *float32 `json:"VideoDuration,omitempty" xml:"VideoDuration,omitempty"`
+	VideoTitle        *float32 `json:"VideoTitle,omitempty" xml:"VideoTitle,omitempty"`
+}
+
+func (s DescribeVodMediaPlayDataResponseBodyQoeInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodMediaPlayDataResponseBodyQoeInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetDAU(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.DAU = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetMediaId(v string) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetPlayDuration(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.PlayDuration = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetPlayDurationPerUv(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.PlayDurationPerUv = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetPlayPerVv(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.PlayPerVv = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetPlaySuccessVv(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.PlaySuccessVv = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetVideoDuration(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.VideoDuration = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponseBodyQoeInfoList) SetVideoTitle(v float32) *DescribeVodMediaPlayDataResponseBodyQoeInfoList {
+	s.VideoTitle = &v
+	return s
+}
+
+type DescribeVodMediaPlayDataResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodMediaPlayDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodMediaPlayDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodMediaPlayDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodMediaPlayDataResponse) SetHeaders(v map[string]*string) *DescribeVodMediaPlayDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponse) SetStatusCode(v int32) *DescribeVodMediaPlayDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodMediaPlayDataResponse) SetBody(v *DescribeVodMediaPlayDataResponseBody) *DescribeVodMediaPlayDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodRefreshQuotaRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -8588,10 +8782,14 @@ func (s *GenerateKMSDataKeyRequest) SetResourceOwnerId(v string) *GenerateKMSDat
 }
 
 type GenerateKMSDataKeyResponseBody struct {
+	// The ciphertext of the encrypted data key. This is used as CipherText when you create a transcoding job.
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the customer master key (CMK). The ID must be globally unique.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The Base64-encoded plaintext of the data key.
+	Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateKMSDataKeyResponseBody) String() string {
@@ -21632,12 +21830,24 @@ func (s *RefreshUploadVideoResponse) SetBody(v *RefreshUploadVideoResponseBody) 
 }
 
 type RefreshVodObjectCachesRequest struct {
+	// Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
+	//
+	//    - true:refresh all resources in the directory.
+	//
+	//    - false:refresh the changed resources in the directory.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The URL of the file to be prefetched. Separate multiple URLs with line breaks (\n or \r\n).
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The type of the object that you want to refresh. Valid values:
 	//
 	// *   **File** (default): refreshes files.
 	// *   **Directory**: refreshes the files in specified directories.
+	// *   **Regex**: refreshes content based on regular expressions.
+	// *   **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
+	//
+	// If you set the ObjectType parameter to File or Directory, you can view Refresh and prefetch resources to obtain more information. If you set the ObjectType parameter to Regex, you can view Configure URL refresh rules that contain regular expressions to obtain more information.
+	//
+	// If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
 	ObjectType    *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -21649,6 +21859,11 @@ func (s RefreshVodObjectCachesRequest) String() string {
 
 func (s RefreshVodObjectCachesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RefreshVodObjectCachesRequest) SetForce(v bool) *RefreshVodObjectCachesRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *RefreshVodObjectCachesRequest) SetObjectPath(v string) *RefreshVodObjectCachesRequest {
@@ -23550,10 +23765,6 @@ func (s *SetCrossdomainContentResponse) SetBody(v *SetCrossdomainContentResponse
 }
 
 type SetDefaultAITemplateRequest struct {
-	// The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
-	//
-	// *   Call the [AddAITemplate](~~102930~~) operation to add an AI template if no AI template exists. The value of TemplateId in the response is the ID of the AI template.
-	// *   Call the [ListAITemplate](~~102936~~) operation if the template already exists. The value of TemplateId in the response is the ID of the AI template.
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -23571,9 +23782,7 @@ func (s *SetDefaultAITemplateRequest) SetTemplateId(v string) *SetDefaultAITempl
 }
 
 type SetDefaultAITemplateResponseBody struct {
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the AI template.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -31293,6 +31502,82 @@ func (client *Client) DescribeVodDomainUsageData(request *DescribeVodDomainUsage
 	return _result, _err
 }
 
+func (client *Client) DescribeVodMediaPlayDataWithOptions(request *DescribeVodMediaPlayDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodMediaPlayDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
+		query["OrderName"] = request.OrderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		query["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayDate)) {
+		query["PlayDate"] = request.PlayDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
+		query["TerminalType"] = request.TerminalType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodMediaPlayData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodMediaPlayDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodMediaPlayData(request *DescribeVodMediaPlayDataRequest) (_result *DescribeVodMediaPlayDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodMediaPlayDataResponse{}
+	_body, _err := client.DescribeVodMediaPlayDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > *   This operation is available only in the **China (Shanghai)** region.
  * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
@@ -35326,6 +35611,10 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
 		query["ObjectPath"] = request.ObjectPath
 	}
@@ -35852,8 +36141,7 @@ func (client *Client) SetCrossdomainContent(request *SetCrossdomainContentReques
 }
 
 /**
- * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
- * *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+ * Specifies an AI template as the default template.
  *
  * @param request SetDefaultAITemplateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35893,8 +36181,7 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 }
 
 /**
- * *   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
- * *   Before you can call this operation to specify an AI template as the default template, you must obtain the ID of the AI template. You cannot delete an AI template that is set as the default template.
+ * Specifies an AI template as the default template.
  *
  * @param request SetDefaultAITemplateRequest
  * @return SetDefaultAITemplateResponse
