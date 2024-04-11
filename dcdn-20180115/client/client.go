@@ -2465,24 +2465,26 @@ func (s *CreateDcdnSLSRealTimeLogDeliveryResponse) SetBody(v *CreateDcdnSLSRealT
 }
 
 type CreateDcdnSubTaskRequest struct {
-	// [](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex)
+	// The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 	//
-	// **
-	//
-	// ****
+	// > If you do not specify a domain name, the tracking task is created for all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
-	// *   ****
+	// The IDs of the metrics that you want to include in the report. Separate multiple IDs with commas (,). Valid values:
+	//
+	// *   **2**: Popular URLs by Request
+	// *   **4**: Popular URLs by Traffic
+	// *   **6**: Popular Referer by Request
+	// *   **8**: Popular Referer by Traffic
+	// *   **10**: Popular Back-to-origin URLs by Request
+	// *   **12**: Popular Back-to-origin URLs by Traffic
+	// *   **14**: Top Client IPs by Request
+	// *   **16**: Top Client IPs by Traffic
+	// *   **18**: Popular Domain Names by Traffic
+	// *   **20**: PV/UV
+	// *   **22**: Visit Distribution by Region
+	// *   **24**: Distribution of ISPs
+	// *   **26**: Peak IPv4/IPv6 Bandwidth
+	// *   **27**: Back-to-origin bandwidth
 	ReportIds *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
 }
 
@@ -2505,6 +2507,7 @@ func (s *CreateDcdnSubTaskRequest) SetReportIds(v string) *CreateDcdnSubTaskRequ
 }
 
 type CreateDcdnSubTaskResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3314,7 +3317,7 @@ func (s *DeleteDcdnIpaSpecificConfigResponse) SetBody(v *DeleteDcdnIpaSpecificCo
 }
 
 type DeleteDcdnKvRequest struct {
-	// The ID of the request.
+	// The name of the key that you want to delete.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The namespace that you specify when you call the PutDcdnKvNamespace operation.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -3339,7 +3342,7 @@ func (s *DeleteDcdnKvRequest) SetNamespace(v string) *DeleteDcdnKvRequest {
 }
 
 type DeleteDcdnKvResponseBody struct {
-	// The name of the key to delete.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12361,9 +12364,9 @@ func (s *DescribeDcdnDomainRegionDataResponse) SetBody(v *DescribeDcdnDomainRegi
 }
 
 type DescribeDcdnDomainStagingConfigRequest struct {
-	// The names of the features to query. You can specify multiple features and separate them with commas (,).
+	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
+	// The names of the features to query. You can separate multiple features with commas (,).
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 }
 
@@ -12386,14 +12389,9 @@ func (s *DescribeDcdnDomainStagingConfigRequest) SetFunctionNames(v string) *Des
 }
 
 type DescribeDcdnDomainStagingConfigResponseBody struct {
-	// The status of the feature. Valid values:
-	//
-	// *   success
-	// *   testing
-	// *   failed
-	// *   configuring
-	DomainConfigs []*DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
 	// The configurations of accelerated domain names returned.
+	DomainConfigs []*DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12416,13 +12414,18 @@ func (s *DescribeDcdnDomainStagingConfigResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs struct {
-	// The name of the feature.
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The name of the configuration.
-	FunctionArgs []*DescribeDcdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Repeated"`
-	// The descriptions of a feature.
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The ID of the configuration.
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The following table describes the features.
+	FunctionArgs []*DescribeDcdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Repeated"`
+	// The name of the feature.
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The status. Valid values:
+	//
+	// *   success: The configuration is successful.
+	// *   testing: The configuration is under testing.
+	// *   failed: The task failed.
+	// *   configuring: The feature is being configured.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -12455,8 +12458,9 @@ func (s *DescribeDcdnDomainStagingConfigResponseBodyDomainConfigs) SetStatus(v s
 }
 
 type DescribeDcdnDomainStagingConfigResponseBodyDomainConfigsFunctionArgs struct {
+	// The name of the configuration.
+	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
 	// The value of the configuration.
-	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
 	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
 }
 
@@ -14958,20 +14962,11 @@ func (s *DescribeDcdnFullDomainsBlockIPHistoryResponse) SetBody(v *DescribeDcdnF
 }
 
 type DescribeDcdnHttpsDomainListRequest struct {
-	// The status of the certificate. Valid values:
-	//
-	// *   **ok**: The certificate is working as expected.
-	// *   **mismatch**: The certificate does not match the specified domain name.
-	// *   **expired**: The certificate has expired.
-	// *   **expire_soon**: The certificate is about to expire.
+	// The keyword that is used to search for certificates.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The total number of entries returned.
+	// The number of returned pages. Valid values: **1 to 100000**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The type of the certificate. Valid values:
-	//
-	// *   **free**: A free certificate.
-	// *   **cas**: A certificate that is purchased through Alibaba Cloud SSL Certificates Service.
-	// *   **upload**: A user-uploaded certificate.
+	// The number of entries to return on each page. Valid values: **1 to 500**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -14999,11 +14994,11 @@ func (s *DescribeDcdnHttpsDomainListRequest) SetPageSize(v int32) *DescribeDcdnH
 }
 
 type DescribeDcdnHttpsDomainListResponseBody struct {
-	// The time when the certificate became effective.
+	// The information about the certificate.
 	CertInfos *DescribeDcdnHttpsDomainListResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
-	// The returned primary domain name of the certificate.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1 to 500**. Default value: **20**.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15048,21 +15043,29 @@ func (s *DescribeDcdnHttpsDomainListResponseBodyCertInfos) SetCertInfo(v []*Desc
 }
 
 type DescribeDcdnHttpsDomainListResponseBodyCertInfosCertInfo struct {
-	// The certificate information about the domain name.
+	// The returned primary domain name of the certificate.
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	// The name of the certificate.
+	// The time at which the certificate expires.
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// The accelerated domain name for which the certificate information was queried.
+	// The name of the certificate.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The time when the certificate expires.
+	// The time at which the certificate became effective.
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The number of pages to return. Valid values: **1 to 100000**.
+	// The status of the certificate. Valid values:
+	//
+	// *   **ok**: The certificate is working as expected.
+	// *   **mismatch**: The certificate does not match the specified domain name.
+	// *   **expired**: The certificate has expired.
+	// *   **expire_soon**: The certificate is about to expire.
 	CertStatus *string `json:"CertStatus,omitempty" xml:"CertStatus,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeDcdnHttpsDomainList**.
+	// The type of the certificate. Valid values:
+	//
+	// *   **cas**: a certificate that is purchased by using Certificate Management Service
+	// *   **upload**: a custom certificate that you upload
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The keyword used for search.
+	// The time at which the certificate was updated.
 	CertUpdateTime *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
-	// The time when the certificate was updated.
+	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -26765,9 +26768,9 @@ func (s *DescribeRoutineSpecResponse) SetBody(v *DescribeRoutineSpecResponseBody
 }
 
 type DescribeRoutineUserInfoResponseBody struct {
-	// The ID of the request.
+	// The content returned by calling the operation.
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeRoutineUserInfo**.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28988,6 +28991,87 @@ func (s *PutDcdnKvWithHighCapacityResponse) SetBody(v *PutDcdnKvWithHighCapacity
 	return s
 }
 
+type RefreshDcdnObjectCacheByCacheTagRequest struct {
+	CacheTag   *string `json:"CacheTag,omitempty" xml:"CacheTag,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagRequest) SetCacheTag(v string) *RefreshDcdnObjectCacheByCacheTagRequest {
+	s.CacheTag = &v
+	return s
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagRequest) SetDomainName(v string) *RefreshDcdnObjectCacheByCacheTagRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagRequest) SetForce(v bool) *RefreshDcdnObjectCacheByCacheTagRequest {
+	s.Force = &v
+	return s
+}
+
+type RefreshDcdnObjectCacheByCacheTagResponseBody struct {
+	RefreshTaskId *string `json:"RefreshTaskId,omitempty" xml:"RefreshTaskId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagResponseBody) SetRefreshTaskId(v string) *RefreshDcdnObjectCacheByCacheTagResponseBody {
+	s.RefreshTaskId = &v
+	return s
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagResponseBody) SetRequestId(v string) *RefreshDcdnObjectCacheByCacheTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshDcdnObjectCacheByCacheTagResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshDcdnObjectCacheByCacheTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshDcdnObjectCacheByCacheTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagResponse) SetHeaders(v map[string]*string) *RefreshDcdnObjectCacheByCacheTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagResponse) SetStatusCode(v int32) *RefreshDcdnObjectCacheByCacheTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshDcdnObjectCacheByCacheTagResponse) SetBody(v *RefreshDcdnObjectCacheByCacheTagResponseBody) *RefreshDcdnObjectCacheByCacheTagResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshDcdnObjectCachesRequest struct {
 	// Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
 	//
@@ -29748,7 +29832,7 @@ func (s *SetDcdnDomainStagingConfigRequest) SetFunctions(v string) *SetDcdnDomai
 }
 
 type SetDcdnDomainStagingConfigResponseBody struct {
-	// The ID of the region.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30699,15 +30783,15 @@ func (s *UpdateDcdnDeliverTaskResponse) SetBody(v *UpdateDcdnDeliverTaskResponse
 }
 
 type UpdateDcdnDomainRequest struct {
-	// The top-level domain name.
+	// The accelerated domain name. You can specify only one domain name in each call.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The accelerated domain name. You can specify only one domain name in each call.
+	// The information about the addresses of origin servers.
 	Sources *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The operation that you want to perform. Set the value to **UpdateDcdnDomain**.
+	// The top-level domain.
 	TopLevelDomain *string `json:"TopLevelDomain,omitempty" xml:"TopLevelDomain,omitempty"`
 }
 
@@ -30750,7 +30834,7 @@ func (s *UpdateDcdnDomainRequest) SetTopLevelDomain(v string) *UpdateDcdnDomainR
 }
 
 type UpdateDcdnDomainResponseBody struct {
-	// The information about the addresses of origin servers.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -33140,10 +33224,8 @@ func (client *Client) CreateDcdnSLSRealTimeLogDelivery(request *CreateDcdnSLSRea
 }
 
 /**
- * **
- * ****
- * *
- * *
+ * > *   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+ * > *   You can call this operation up to three times per second per account.
  *
  * @param request CreateDcdnSubTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33187,10 +33269,8 @@ func (client *Client) CreateDcdnSubTaskWithOptions(request *CreateDcdnSubTaskReq
 }
 
 /**
- * **
- * ****
- * *
- * *
+ * > *   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+ * > *   You can call this operation up to three times per second per account.
  *
  * @param request CreateDcdnSubTaskRequest
  * @return CreateDcdnSubTaskResponse
@@ -37681,7 +37761,7 @@ func (client *Client) DescribeDcdnDomainRegionData(request *DescribeDcdnDomainRe
 }
 
 /**
- * The name of the accelerated domain.
+ * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeDcdnDomainStagingConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37725,7 +37805,7 @@ func (client *Client) DescribeDcdnDomainStagingConfigWithOptions(request *Descri
 }
 
 /**
- * The name of the accelerated domain.
+ * > You can call this operation up to 30 times per second per account.
  *
  * @param request DescribeDcdnDomainStagingConfigRequest
  * @return DescribeDcdnDomainStagingConfigResponse
@@ -38659,7 +38739,7 @@ func (client *Client) DescribeDcdnFullDomainsBlockIPHistory(request *DescribeDcd
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnHttpsDomainListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38707,7 +38787,7 @@ func (client *Client) DescribeDcdnHttpsDomainListWithOptions(request *DescribeDc
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeDcdnHttpsDomainListRequest
  * @return DescribeDcdnHttpsDomainListResponse
@@ -43295,7 +43375,7 @@ func (client *Client) DescribeRoutineSpec() (_result *DescribeRoutineSpecRespons
 }
 
 /**
- * >  You can call this operation up to 100 times per second per account.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @param request DescribeRoutineUserInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43324,7 +43404,7 @@ func (client *Client) DescribeRoutineUserInfoWithOptions(runtime *util.RuntimeOp
 }
 
 /**
- * >  You can call this operation up to 100 times per second per account.
+ * > You can call this operation up to 100 times per second per account.
  *
  * @return DescribeRoutineUserInfoResponse
  */
@@ -44647,6 +44727,58 @@ func (client *Client) PutDcdnKvWithHighCapacity(request *PutDcdnKvWithHighCapaci
 	return _result, _err
 }
 
+func (client *Client) RefreshDcdnObjectCacheByCacheTagWithOptions(request *RefreshDcdnObjectCacheByCacheTagRequest, runtime *util.RuntimeOptions) (_result *RefreshDcdnObjectCacheByCacheTagResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheTag)) {
+		query["CacheTag"] = request.CacheTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshDcdnObjectCacheByCacheTag"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshDcdnObjectCacheByCacheTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshDcdnObjectCacheByCacheTag(request *RefreshDcdnObjectCacheByCacheTagRequest) (_result *RefreshDcdnObjectCacheByCacheTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshDcdnObjectCacheByCacheTagResponse{}
+	_body, _err := client.RefreshDcdnObjectCacheByCacheTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   DCDN supports POST requests in which parameters are sent as a form.
  * *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
@@ -45936,7 +46068,7 @@ func (client *Client) UpdateDcdnDeliverTask(request *UpdateDcdnDeliverTaskReques
 }
 
 /**
- * >  You can call this operation up to 30 times per second per account.
+ * > You can call this operation up to 30 times per second per account.
  *
  * @param request UpdateDcdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45996,7 +46128,7 @@ func (client *Client) UpdateDcdnDomainWithOptions(request *UpdateDcdnDomainReque
 }
 
 /**
- * >  You can call this operation up to 30 times per second per account.
+ * > You can call this operation up to 30 times per second per account.
  *
  * @param request UpdateDcdnDomainRequest
  * @return UpdateDcdnDomainResponse
