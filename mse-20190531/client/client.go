@@ -7796,6 +7796,441 @@ func (s *CreateFlowRuleResponse) SetBody(v *CreateFlowRuleResponseBody) *CreateF
 	return s
 }
 
+type CreateGatewayCircuitBreakerRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	MaxAllowedMs        *int32  `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	MinRequestAmount    *int32  `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	RecoveryTimeoutSec  *int32  `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationSec     *int32  `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	Strategy            *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TriggerRatio        *int32  `json:"TriggerRatio,omitempty" xml:"TriggerRatio,omitempty"`
+}
+
+func (s CreateGatewayCircuitBreakerRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayCircuitBreakerRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetAcceptLanguage(v string) *CreateGatewayCircuitBreakerRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetBehaviorType(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetBodyEncoding(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetEnable(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetGatewayId(v int64) *CreateGatewayCircuitBreakerRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetGatewayUniqueId(v string) *CreateGatewayCircuitBreakerRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetMaxAllowedMs(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.MaxAllowedMs = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetMinRequestAmount(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.MinRequestAmount = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetRecoveryTimeoutSec(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.RecoveryTimeoutSec = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetResponseContentBody(v string) *CreateGatewayCircuitBreakerRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetResponseRedirectUrl(v string) *CreateGatewayCircuitBreakerRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetResponseStatusCode(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetRouteId(v int64) *CreateGatewayCircuitBreakerRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetRouteName(v string) *CreateGatewayCircuitBreakerRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetStatDurationSec(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.StatDurationSec = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetStrategy(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.Strategy = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleRequest) SetTriggerRatio(v int32) *CreateGatewayCircuitBreakerRuleRequest {
+	s.TriggerRatio = &v
+	return s
+}
+
+type CreateGatewayCircuitBreakerRuleResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGatewayCircuitBreakerRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayCircuitBreakerRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayCircuitBreakerRuleResponseBody) SetData(v int64) *CreateGatewayCircuitBreakerRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *CreateGatewayCircuitBreakerRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayCircuitBreakerRuleResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGatewayCircuitBreakerRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGatewayCircuitBreakerRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayCircuitBreakerRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayCircuitBreakerRuleResponse) SetHeaders(v map[string]*string) *CreateGatewayCircuitBreakerRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleResponse) SetStatusCode(v int32) *CreateGatewayCircuitBreakerRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayCircuitBreakerRuleResponse) SetBody(v *CreateGatewayCircuitBreakerRuleResponseBody) *CreateGatewayCircuitBreakerRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGatewayFlowRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	Threshold           *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s CreateGatewayFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetAcceptLanguage(v string) *CreateGatewayFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetBehaviorType(v int32) *CreateGatewayFlowRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetBodyEncoding(v int32) *CreateGatewayFlowRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetEnable(v int32) *CreateGatewayFlowRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetGatewayId(v int64) *CreateGatewayFlowRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetGatewayUniqueId(v string) *CreateGatewayFlowRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetResponseContentBody(v string) *CreateGatewayFlowRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetResponseRedirectUrl(v string) *CreateGatewayFlowRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetResponseStatusCode(v int32) *CreateGatewayFlowRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetRouteId(v int64) *CreateGatewayFlowRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetRouteName(v string) *CreateGatewayFlowRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleRequest) SetThreshold(v int32) *CreateGatewayFlowRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type CreateGatewayFlowRuleResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGatewayFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayFlowRuleResponseBody) SetData(v int64) *CreateGatewayFlowRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleResponseBody) SetRequestId(v string) *CreateGatewayFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayFlowRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGatewayFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGatewayFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayFlowRuleResponse) SetHeaders(v map[string]*string) *CreateGatewayFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleResponse) SetStatusCode(v int32) *CreateGatewayFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayFlowRuleResponse) SetBody(v *CreateGatewayFlowRuleResponseBody) *CreateGatewayFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGatewayIsolationRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	MaxConcurrency      *int32  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s CreateGatewayIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetAcceptLanguage(v string) *CreateGatewayIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetBehaviorType(v int32) *CreateGatewayIsolationRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetBodyEncoding(v int32) *CreateGatewayIsolationRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetEnable(v int32) *CreateGatewayIsolationRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetGatewayId(v int64) *CreateGatewayIsolationRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetGatewayUniqueId(v string) *CreateGatewayIsolationRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetMaxConcurrency(v int32) *CreateGatewayIsolationRuleRequest {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetResponseContentBody(v string) *CreateGatewayIsolationRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetResponseRedirectUrl(v string) *CreateGatewayIsolationRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetResponseStatusCode(v int32) *CreateGatewayIsolationRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetRouteId(v int64) *CreateGatewayIsolationRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleRequest) SetRouteName(v string) *CreateGatewayIsolationRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+type CreateGatewayIsolationRuleResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGatewayIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIsolationRuleResponseBody) SetData(v int64) *CreateGatewayIsolationRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleResponseBody) SetRequestId(v string) *CreateGatewayIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayIsolationRuleResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGatewayIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGatewayIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIsolationRuleResponse) SetHeaders(v map[string]*string) *CreateGatewayIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleResponse) SetStatusCode(v int32) *CreateGatewayIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayIsolationRuleResponse) SetBody(v *CreateGatewayIsolationRuleResponseBody) *CreateGatewayIsolationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIsolationRuleRequest struct {
 	AcceptLanguage *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -11398,6 +11833,93 @@ func (s *DeleteGatewayAuthConsumerResourceResponse) SetBody(v *DeleteGatewayAuth
 	return s
 }
 
+type DeleteGatewayCircuitBreakerRuleRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteGatewayCircuitBreakerRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayCircuitBreakerRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleRequest) SetAcceptLanguage(v string) *DeleteGatewayCircuitBreakerRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleRequest) SetGatewayUniqueId(v string) *DeleteGatewayCircuitBreakerRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleRequest) SetRouteId(v int64) *DeleteGatewayCircuitBreakerRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleRequest) SetRuleId(v int64) *DeleteGatewayCircuitBreakerRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteGatewayCircuitBreakerRuleResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayCircuitBreakerRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayCircuitBreakerRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleResponseBody) SetData(v bool) *DeleteGatewayCircuitBreakerRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *DeleteGatewayCircuitBreakerRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayCircuitBreakerRuleResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGatewayCircuitBreakerRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGatewayCircuitBreakerRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayCircuitBreakerRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleResponse) SetHeaders(v map[string]*string) *DeleteGatewayCircuitBreakerRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleResponse) SetStatusCode(v int32) *DeleteGatewayCircuitBreakerRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayCircuitBreakerRuleResponse) SetBody(v *DeleteGatewayCircuitBreakerRuleResponseBody) *DeleteGatewayCircuitBreakerRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGatewayDomainRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -11588,6 +12110,180 @@ func (s *DeleteGatewayDomainResponse) SetStatusCode(v int32) *DeleteGatewayDomai
 }
 
 func (s *DeleteGatewayDomainResponse) SetBody(v *DeleteGatewayDomainResponseBody) *DeleteGatewayDomainResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayFlowRuleRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteGatewayFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayFlowRuleRequest) SetAcceptLanguage(v string) *DeleteGatewayFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleRequest) SetGatewayUniqueId(v string) *DeleteGatewayFlowRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleRequest) SetRouteId(v int64) *DeleteGatewayFlowRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleRequest) SetRuleId(v int64) *DeleteGatewayFlowRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteGatewayFlowRuleResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayFlowRuleResponseBody) SetData(v bool) *DeleteGatewayFlowRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleResponseBody) SetRequestId(v string) *DeleteGatewayFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayFlowRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGatewayFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGatewayFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayFlowRuleResponse) SetHeaders(v map[string]*string) *DeleteGatewayFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleResponse) SetStatusCode(v int32) *DeleteGatewayFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayFlowRuleResponse) SetBody(v *DeleteGatewayFlowRuleResponseBody) *DeleteGatewayFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayIsolationRuleRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RuleId          *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteGatewayIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIsolationRuleRequest) SetAcceptLanguage(v string) *DeleteGatewayIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleRequest) SetGatewayUniqueId(v string) *DeleteGatewayIsolationRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleRequest) SetRouteId(v int64) *DeleteGatewayIsolationRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleRequest) SetRuleId(v int64) *DeleteGatewayIsolationRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteGatewayIsolationRuleResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIsolationRuleResponseBody) SetData(v bool) *DeleteGatewayIsolationRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleResponseBody) SetRequestId(v string) *DeleteGatewayIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayIsolationRuleResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGatewayIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGatewayIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIsolationRuleResponse) SetHeaders(v map[string]*string) *DeleteGatewayIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleResponse) SetStatusCode(v int32) *DeleteGatewayIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayIsolationRuleResponse) SetBody(v *DeleteGatewayIsolationRuleResponseBody) *DeleteGatewayIsolationRuleResponse {
 	s.Body = v
 	return s
 }
@@ -30597,6 +31293,385 @@ func (s *ListGatewayAuthConsumerResourceResponse) SetBody(v *ListGatewayAuthCons
 	return s
 }
 
+type ListGatewayCircuitBreakerRuleRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// just for POP
+	FilterParams *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleRequest) SetAcceptLanguage(v string) *ListGatewayCircuitBreakerRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleRequest) SetFilterParams(v string) *ListGatewayCircuitBreakerRuleRequest {
+	s.FilterParams = &v
+	return s
+}
+
+type ListGatewayCircuitBreakerRuleResponseBody struct {
+	Data      *ListGatewayCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBody) SetData(v *ListGatewayCircuitBreakerRuleResponseBodyData) *ListGatewayCircuitBreakerRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *ListGatewayCircuitBreakerRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayCircuitBreakerRuleResponseBodyData struct {
+	PageNumber *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayCircuitBreakerRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Results    []*ListGatewayCircuitBreakerRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TotalSize  *int32                                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetPageNumber(v int32) *ListGatewayCircuitBreakerRuleResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetPageSize(v int32) *ListGatewayCircuitBreakerRuleResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetResult(v []*ListGatewayCircuitBreakerRuleResponseBodyDataResult) *ListGatewayCircuitBreakerRuleResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetResults(v []*ListGatewayCircuitBreakerRuleResponseBodyDataResults) *ListGatewayCircuitBreakerRuleResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyData) SetTotalSize(v int32) *ListGatewayCircuitBreakerRuleResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayCircuitBreakerRuleResponseBodyDataResult struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxAllowedMs              *int32   `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	RecoveryTimeoutSec        *int32   `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationSec           *int32   `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TriggerRatio              *int32   `json:"TriggerRatio,omitempty" xml:"TriggerRatio,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetBehaviorType(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetBodyEncoding(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetEnable(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetGatewayId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetIdList(v []*int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.IdList = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetLimitMode(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetMaxAllowedMs(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.MaxAllowedMs = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetMinRequestAmount(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.MinRequestAmount = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetRecoveryTimeoutSec(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.RecoveryTimeoutSec = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetResponseAdditionalHeaders(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetResponseContentBody(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetResponseRedirectUrl(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetResponseStatusCode(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetRouteId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetRouteName(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetStatDurationSec(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.StatDurationSec = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetStrategy(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) SetTriggerRatio(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResult {
+	s.TriggerRatio = &v
+	return s
+}
+
+type ListGatewayCircuitBreakerRuleResponseBodyDataResults struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxAllowedMs              *int32   `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	RecoveryTimeoutSec        *int32   `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationSec           *int32   `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TriggerRatio              *int32   `json:"TriggerRatio,omitempty" xml:"TriggerRatio,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetBehaviorType(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetBodyEncoding(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetEnable(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetGatewayId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetGatewayUniqueId(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetIdList(v []*int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.IdList = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetLimitMode(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetMaxAllowedMs(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.MaxAllowedMs = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetMinRequestAmount(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.MinRequestAmount = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetRecoveryTimeoutSec(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.RecoveryTimeoutSec = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetResponseAdditionalHeaders(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetResponseContentBody(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetResponseRedirectUrl(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetResponseStatusCode(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetRouteId(v int64) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetRouteName(v string) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetStatDurationSec(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.StatDurationSec = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetStrategy(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResults) SetTriggerRatio(v int32) *ListGatewayCircuitBreakerRuleResponseBodyDataResults {
+	s.TriggerRatio = &v
+	return s
+}
+
+type ListGatewayCircuitBreakerRuleResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayCircuitBreakerRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayCircuitBreakerRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayCircuitBreakerRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponse) SetHeaders(v map[string]*string) *ListGatewayCircuitBreakerRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponse) SetStatusCode(v int32) *ListGatewayCircuitBreakerRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayCircuitBreakerRuleResponse) SetBody(v *ListGatewayCircuitBreakerRuleResponseBody) *ListGatewayCircuitBreakerRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ListGatewayDomainRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -30867,6 +31942,632 @@ func (s *ListGatewayDomainResponse) SetStatusCode(v int32) *ListGatewayDomainRes
 }
 
 func (s *ListGatewayDomainResponse) SetBody(v *ListGatewayDomainResponseBody) *ListGatewayDomainResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayFlowRuleRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// just for POP
+	FilterParams *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+}
+
+func (s ListGatewayFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleRequest) SetAcceptLanguage(v string) *ListGatewayFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleRequest) SetFilterParams(v string) *ListGatewayFlowRuleRequest {
+	s.FilterParams = &v
+	return s
+}
+
+type ListGatewayFlowRuleResponseBody struct {
+	Data      *ListGatewayFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGatewayFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleResponseBody) SetData(v *ListGatewayFlowRuleResponseBodyData) *ListGatewayFlowRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBody) SetRequestId(v string) *ListGatewayFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayFlowRuleResponseBodyData struct {
+	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayFlowRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Results    []*ListGatewayFlowRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TotalSize  *int32                                        `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayFlowRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleResponseBodyData) SetPageNumber(v int32) *ListGatewayFlowRuleResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyData) SetPageSize(v int32) *ListGatewayFlowRuleResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyData) SetResult(v []*ListGatewayFlowRuleResponseBodyDataResult) *ListGatewayFlowRuleResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyData) SetResults(v []*ListGatewayFlowRuleResponseBodyDataResults) *ListGatewayFlowRuleResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyData) SetTotalSize(v int32) *ListGatewayFlowRuleResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayFlowRuleResponseBodyDataResult struct {
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	Threshold           *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListGatewayFlowRuleResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetBehaviorType(v int32) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetBodyEncoding(v int32) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetEnable(v int32) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetGatewayId(v int64) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetId(v int64) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetResponseContentBody(v string) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetResponseRedirectUrl(v string) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetResponseStatusCode(v int32) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetRouteId(v int64) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetRouteName(v string) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResult) SetThreshold(v int32) *ListGatewayFlowRuleResponseBodyDataResult {
+	s.Threshold = &v
+	return s
+}
+
+type ListGatewayFlowRuleResponseBodyDataResults struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationMs            *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
+	Threshold                 *int32   `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListGatewayFlowRuleResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetBehaviorType(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetBodyEncoding(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetEnable(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetGatewayId(v int64) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetGatewayUniqueId(v string) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetId(v int64) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetIdList(v []*int64) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.IdList = v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetLimitMode(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetResponseAdditionalHeaders(v string) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetResponseContentBody(v string) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetResponseRedirectUrl(v string) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetResponseStatusCode(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetRouteId(v int64) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetRouteName(v string) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetStatDurationMs(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.StatDurationMs = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponseBodyDataResults) SetThreshold(v int32) *ListGatewayFlowRuleResponseBodyDataResults {
+	s.Threshold = &v
+	return s
+}
+
+type ListGatewayFlowRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayFlowRuleResponse) SetHeaders(v map[string]*string) *ListGatewayFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponse) SetStatusCode(v int32) *ListGatewayFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayFlowRuleResponse) SetBody(v *ListGatewayFlowRuleResponseBody) *ListGatewayFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayIsolationRuleRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// just for POP
+	FilterParams *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleRequest) SetAcceptLanguage(v string) *ListGatewayIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleRequest) SetFilterParams(v string) *ListGatewayIsolationRuleRequest {
+	s.FilterParams = &v
+	return s
+}
+
+type ListGatewayIsolationRuleResponseBody struct {
+	Data      *ListGatewayIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleResponseBody) SetData(v *ListGatewayIsolationRuleResponseBodyData) *ListGatewayIsolationRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBody) SetRequestId(v string) *ListGatewayIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayIsolationRuleResponseBodyData struct {
+	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayIsolationRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Results    []*ListGatewayIsolationRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TotalSize  *int32                                             `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyData) SetPageNumber(v int32) *ListGatewayIsolationRuleResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyData) SetPageSize(v int32) *ListGatewayIsolationRuleResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyData) SetResult(v []*ListGatewayIsolationRuleResponseBodyDataResult) *ListGatewayIsolationRuleResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyData) SetResults(v []*ListGatewayIsolationRuleResponseBodyDataResults) *ListGatewayIsolationRuleResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyData) SetTotalSize(v int32) *ListGatewayIsolationRuleResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayIsolationRuleResponseBodyDataResult struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxConcurrency            *int32   `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetBehaviorType(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetBodyEncoding(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetEnable(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetGatewayId(v int64) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetId(v int64) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetIdList(v []*int64) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.IdList = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetLimitMode(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetMaxConcurrency(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetResponseAdditionalHeaders(v string) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetResponseContentBody(v string) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetResponseRedirectUrl(v string) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetResponseStatusCode(v int32) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetRouteId(v int64) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResult) SetRouteName(v string) *ListGatewayIsolationRuleResponseBodyDataResult {
+	s.RouteName = &v
+	return s
+}
+
+type ListGatewayIsolationRuleResponseBodyDataResults struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxConcurrency            *int32   `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetBehaviorType(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetBodyEncoding(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetEnable(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetGatewayId(v int64) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetGatewayUniqueId(v string) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetId(v int64) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetIdList(v []*int64) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.IdList = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetLimitMode(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetMaxConcurrency(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetResponseAdditionalHeaders(v string) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetResponseContentBody(v string) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetResponseRedirectUrl(v string) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetResponseStatusCode(v int32) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetRouteId(v int64) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponseBodyDataResults) SetRouteName(v string) *ListGatewayIsolationRuleResponseBodyDataResults {
+	s.RouteName = &v
+	return s
+}
+
+type ListGatewayIsolationRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIsolationRuleResponse) SetHeaders(v map[string]*string) *ListGatewayIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponse) SetStatusCode(v int32) *ListGatewayIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIsolationRuleResponse) SetBody(v *ListGatewayIsolationRuleResponseBody) *ListGatewayIsolationRuleResponse {
 	s.Body = v
 	return s
 }
@@ -45375,6 +47076,308 @@ func (s *UpdateGatewayAuthConsumerStatusResponse) SetBody(v *UpdateGatewayAuthCo
 	return s
 }
 
+type UpdateGatewayCircuitBreakerRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaxAllowedMs        *int32  `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	MinRequestAmount    *int32  `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	RecoveryTimeoutSec  *int32  `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationSec     *int32  `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	Strategy            *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TriggerRatio        *int32  `json:"TriggerRatio,omitempty" xml:"TriggerRatio,omitempty"`
+}
+
+func (s UpdateGatewayCircuitBreakerRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayCircuitBreakerRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetAcceptLanguage(v string) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetBehaviorType(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetBodyEncoding(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetEnable(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetGatewayId(v int64) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetGatewayUniqueId(v string) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetId(v int64) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetMaxAllowedMs(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.MaxAllowedMs = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetMinRequestAmount(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.MinRequestAmount = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetRecoveryTimeoutSec(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.RecoveryTimeoutSec = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetResponseContentBody(v string) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetResponseRedirectUrl(v string) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetResponseStatusCode(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetRouteId(v int64) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetRouteName(v string) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetStatDurationSec(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.StatDurationSec = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetStrategy(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.Strategy = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleRequest) SetTriggerRatio(v int32) *UpdateGatewayCircuitBreakerRuleRequest {
+	s.TriggerRatio = &v
+	return s
+}
+
+type UpdateGatewayCircuitBreakerRuleResponseBody struct {
+	Data      *UpdateGatewayCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBody) SetData(v *UpdateGatewayCircuitBreakerRuleResponseBodyData) *UpdateGatewayCircuitBreakerRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBody) SetRequestId(v string) *UpdateGatewayCircuitBreakerRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayCircuitBreakerRuleResponseBodyData struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxAllowedMs              *int32   `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	MinRequestAmount          *int32   `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	RecoveryTimeoutSec        *int32   `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationSec           *int32   `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	Strategy                  *int32   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	TriggerRatio              *int32   `json:"TriggerRatio,omitempty" xml:"TriggerRatio,omitempty"`
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetBehaviorType(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetBodyEncoding(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetEnable(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetGatewayId(v int64) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetGatewayUniqueId(v string) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetId(v int64) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetIdList(v []*int64) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.IdList = v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetLimitMode(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetMaxAllowedMs(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.MaxAllowedMs = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetMinRequestAmount(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.MinRequestAmount = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetRecoveryTimeoutSec(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.RecoveryTimeoutSec = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetResponseAdditionalHeaders(v string) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetResponseContentBody(v string) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetResponseRedirectUrl(v string) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetResponseStatusCode(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetRouteId(v int64) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetRouteName(v string) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetStatDurationSec(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.StatDurationSec = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetStrategy(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.Strategy = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponseBodyData) SetTriggerRatio(v int32) *UpdateGatewayCircuitBreakerRuleResponseBodyData {
+	s.TriggerRatio = &v
+	return s
+}
+
+type UpdateGatewayCircuitBreakerRuleResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayCircuitBreakerRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayCircuitBreakerRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponse) SetHeaders(v map[string]*string) *UpdateGatewayCircuitBreakerRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponse) SetStatusCode(v int32) *UpdateGatewayCircuitBreakerRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayCircuitBreakerRuleResponse) SetBody(v *UpdateGatewayCircuitBreakerRuleResponseBody) *UpdateGatewayCircuitBreakerRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayDomainRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -45540,6 +47543,496 @@ func (s *UpdateGatewayDomainResponse) SetStatusCode(v int32) *UpdateGatewayDomai
 }
 
 func (s *UpdateGatewayDomainResponse) SetBody(v *UpdateGatewayDomainResponseBody) *UpdateGatewayDomainResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayFlowRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	Threshold           *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateGatewayFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetAcceptLanguage(v string) *UpdateGatewayFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetBehaviorType(v int32) *UpdateGatewayFlowRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetBodyEncoding(v int32) *UpdateGatewayFlowRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetEnable(v int32) *UpdateGatewayFlowRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetGatewayId(v int64) *UpdateGatewayFlowRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetGatewayUniqueId(v string) *UpdateGatewayFlowRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetId(v int64) *UpdateGatewayFlowRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetResponseContentBody(v string) *UpdateGatewayFlowRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetResponseRedirectUrl(v string) *UpdateGatewayFlowRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetResponseStatusCode(v int32) *UpdateGatewayFlowRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetRouteId(v int64) *UpdateGatewayFlowRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetRouteName(v string) *UpdateGatewayFlowRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleRequest) SetThreshold(v int32) *UpdateGatewayFlowRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateGatewayFlowRuleResponseBody struct {
+	Data      *UpdateGatewayFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGatewayFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFlowRuleResponseBody) SetData(v *UpdateGatewayFlowRuleResponseBodyData) *UpdateGatewayFlowRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBody) SetRequestId(v string) *UpdateGatewayFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayFlowRuleResponseBodyData struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	StatDurationMs            *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
+	Threshold                 *int32   `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateGatewayFlowRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFlowRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetBehaviorType(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetBodyEncoding(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetEnable(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetGatewayId(v int64) *UpdateGatewayFlowRuleResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetGatewayUniqueId(v string) *UpdateGatewayFlowRuleResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetId(v int64) *UpdateGatewayFlowRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetIdList(v []*int64) *UpdateGatewayFlowRuleResponseBodyData {
+	s.IdList = v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetLimitMode(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetResponseAdditionalHeaders(v string) *UpdateGatewayFlowRuleResponseBodyData {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetResponseContentBody(v string) *UpdateGatewayFlowRuleResponseBodyData {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetResponseRedirectUrl(v string) *UpdateGatewayFlowRuleResponseBodyData {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetResponseStatusCode(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetRouteId(v int64) *UpdateGatewayFlowRuleResponseBodyData {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetRouteName(v string) *UpdateGatewayFlowRuleResponseBodyData {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetStatDurationMs(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.StatDurationMs = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponseBodyData) SetThreshold(v int32) *UpdateGatewayFlowRuleResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateGatewayFlowRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayFlowRuleResponse) SetHeaders(v map[string]*string) *UpdateGatewayFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponse) SetStatusCode(v int32) *UpdateGatewayFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayFlowRuleResponse) SetBody(v *UpdateGatewayFlowRuleResponseBody) *UpdateGatewayFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayIsolationRuleRequest struct {
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	BehaviorType        *int32  `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding        *int32  `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaxConcurrency      *int32  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode  *int32  `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId             *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName           *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s UpdateGatewayIsolationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayIsolationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetAcceptLanguage(v string) *UpdateGatewayIsolationRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetBehaviorType(v int32) *UpdateGatewayIsolationRuleRequest {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetBodyEncoding(v int32) *UpdateGatewayIsolationRuleRequest {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetEnable(v int32) *UpdateGatewayIsolationRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetGatewayId(v int64) *UpdateGatewayIsolationRuleRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetGatewayUniqueId(v string) *UpdateGatewayIsolationRuleRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetId(v int64) *UpdateGatewayIsolationRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetMaxConcurrency(v int32) *UpdateGatewayIsolationRuleRequest {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetResponseContentBody(v string) *UpdateGatewayIsolationRuleRequest {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetResponseRedirectUrl(v string) *UpdateGatewayIsolationRuleRequest {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetResponseStatusCode(v int32) *UpdateGatewayIsolationRuleRequest {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetRouteId(v int64) *UpdateGatewayIsolationRuleRequest {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleRequest) SetRouteName(v string) *UpdateGatewayIsolationRuleRequest {
+	s.RouteName = &v
+	return s
+}
+
+type UpdateGatewayIsolationRuleResponseBody struct {
+	Data      *UpdateGatewayIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGatewayIsolationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayIsolationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBody) SetData(v *UpdateGatewayIsolationRuleResponseBodyData) *UpdateGatewayIsolationRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBody) SetRequestId(v string) *UpdateGatewayIsolationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayIsolationRuleResponseBodyData struct {
+	BehaviorType              *int32   `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	BodyEncoding              *int32   `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	Enable                    *int32   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GatewayId                 *int64   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId           *string  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                        *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdList                    []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	LimitMode                 *int32   `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	MaxConcurrency            *int32   `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	ResponseAdditionalHeaders *string  `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	ResponseContentBody       *string  `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	ResponseRedirectUrl       *string  `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	ResponseStatusCode        *int32   `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	RouteId                   *int64   `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName                 *string  `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s UpdateGatewayIsolationRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayIsolationRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetBehaviorType(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.BehaviorType = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetBodyEncoding(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.BodyEncoding = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetEnable(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetGatewayId(v int64) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetGatewayUniqueId(v string) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetId(v int64) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetIdList(v []*int64) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.IdList = v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetLimitMode(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.LimitMode = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetMaxConcurrency(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetResponseAdditionalHeaders(v string) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.ResponseAdditionalHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetResponseContentBody(v string) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.ResponseContentBody = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetResponseRedirectUrl(v string) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.ResponseRedirectUrl = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetResponseStatusCode(v int32) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.ResponseStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetRouteId(v int64) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponseBodyData) SetRouteName(v string) *UpdateGatewayIsolationRuleResponseBodyData {
+	s.RouteName = &v
+	return s
+}
+
+type UpdateGatewayIsolationRuleResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayIsolationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayIsolationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayIsolationRuleResponse) SetHeaders(v map[string]*string) *UpdateGatewayIsolationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponse) SetStatusCode(v int32) *UpdateGatewayIsolationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayIsolationRuleResponse) SetBody(v *UpdateGatewayIsolationRuleResponseBody) *UpdateGatewayIsolationRuleResponse {
 	s.Body = v
 	return s
 }
@@ -53834,6 +56327,290 @@ func (client *Client) CreateFlowRule(request *CreateFlowRuleRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateGatewayCircuitBreakerRuleWithOptions(request *CreateGatewayCircuitBreakerRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGatewayCircuitBreakerRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxAllowedMs)) {
+		query["MaxAllowedMs"] = request.MaxAllowedMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinRequestAmount)) {
+		query["MinRequestAmount"] = request.MinRequestAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryTimeoutSec)) {
+		query["RecoveryTimeoutSec"] = request.RecoveryTimeoutSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationSec)) {
+		query["StatDurationSec"] = request.StatDurationSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerRatio)) {
+		query["TriggerRatio"] = request.TriggerRatio
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewayCircuitBreakerRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayCircuitBreakerRule(request *CreateGatewayCircuitBreakerRuleRequest) (_result *CreateGatewayCircuitBreakerRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.CreateGatewayCircuitBreakerRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayFlowRuleWithOptions(request *CreateGatewayFlowRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGatewayFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewayFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayFlowRule(request *CreateGatewayFlowRuleRequest) (_result *CreateGatewayFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGatewayFlowRuleResponse{}
+	_body, _err := client.CreateGatewayFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayIsolationRuleWithOptions(request *CreateGatewayIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGatewayIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
+		query["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewayIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayIsolationRule(request *CreateGatewayIsolationRuleRequest) (_result *CreateGatewayIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGatewayIsolationRuleResponse{}
+	_body, _err := client.CreateGatewayIsolationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateIsolationRuleWithOptions(request *CreateIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateIsolationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54984,6 +57761,62 @@ func (client *Client) DeleteGatewayAuthConsumerResource(request *DeleteGatewayAu
 	return _result, _err
 }
 
+func (client *Client) DeleteGatewayCircuitBreakerRuleWithOptions(request *DeleteGatewayCircuitBreakerRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayCircuitBreakerRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayCircuitBreakerRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayCircuitBreakerRule(request *DeleteGatewayCircuitBreakerRuleRequest) (_result *DeleteGatewayCircuitBreakerRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.DeleteGatewayCircuitBreakerRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteGatewayDomainWithOptions(request *DeleteGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55029,6 +57862,118 @@ func (client *Client) DeleteGatewayDomain(request *DeleteGatewayDomainRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGatewayDomainResponse{}
 	_body, _err := client.DeleteGatewayDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayFlowRuleWithOptions(request *DeleteGatewayFlowRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayFlowRule(request *DeleteGatewayFlowRuleRequest) (_result *DeleteGatewayFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayFlowRuleResponse{}
+	_body, _err := client.DeleteGatewayFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayIsolationRuleWithOptions(request *DeleteGatewayIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayIsolationRule(request *DeleteGatewayIsolationRuleRequest) (_result *DeleteGatewayIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayIsolationRuleResponse{}
+	_body, _err := client.DeleteGatewayIsolationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -59727,6 +62672,54 @@ func (client *Client) ListGatewayAuthConsumerResource(request *ListGatewayAuthCo
 	return _result, _err
 }
 
+func (client *Client) ListGatewayCircuitBreakerRuleWithOptions(request *ListGatewayCircuitBreakerRuleRequest, runtime *util.RuntimeOptions) (_result *ListGatewayCircuitBreakerRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterParams)) {
+		query["FilterParams"] = request.FilterParams
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayCircuitBreakerRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayCircuitBreakerRule(request *ListGatewayCircuitBreakerRuleRequest) (_result *ListGatewayCircuitBreakerRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.ListGatewayCircuitBreakerRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGatewayDomainWithOptions(request *ListGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *ListGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59776,6 +62769,102 @@ func (client *Client) ListGatewayDomain(request *ListGatewayDomainRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGatewayDomainResponse{}
 	_body, _err := client.ListGatewayDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGatewayFlowRuleWithOptions(request *ListGatewayFlowRuleRequest, runtime *util.RuntimeOptions) (_result *ListGatewayFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterParams)) {
+		query["FilterParams"] = request.FilterParams
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayFlowRule(request *ListGatewayFlowRuleRequest) (_result *ListGatewayFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayFlowRuleResponse{}
+	_body, _err := client.ListGatewayFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGatewayIsolationRuleWithOptions(request *ListGatewayIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *ListGatewayIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterParams)) {
+		query["FilterParams"] = request.FilterParams
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayIsolationRule(request *ListGatewayIsolationRuleRequest) (_result *ListGatewayIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayIsolationRuleResponse{}
+	_body, _err := client.ListGatewayIsolationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63656,6 +66745,118 @@ func (client *Client) UpdateGatewayAuthConsumerStatus(request *UpdateGatewayAuth
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewayCircuitBreakerRuleWithOptions(request *UpdateGatewayCircuitBreakerRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayCircuitBreakerRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxAllowedMs)) {
+		query["MaxAllowedMs"] = request.MaxAllowedMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinRequestAmount)) {
+		query["MinRequestAmount"] = request.MinRequestAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryTimeoutSec)) {
+		query["RecoveryTimeoutSec"] = request.RecoveryTimeoutSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationSec)) {
+		query["StatDurationSec"] = request.StatDurationSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerRatio)) {
+		query["TriggerRatio"] = request.TriggerRatio
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayCircuitBreakerRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayCircuitBreakerRule(request *UpdateGatewayCircuitBreakerRuleRequest) (_result *UpdateGatewayCircuitBreakerRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayCircuitBreakerRuleResponse{}
+	_body, _err := client.UpdateGatewayCircuitBreakerRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGatewayDomainWithOptions(request *UpdateGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63725,6 +66926,190 @@ func (client *Client) UpdateGatewayDomain(request *UpdateGatewayDomainRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayDomainResponse{}
 	_body, _err := client.UpdateGatewayDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayFlowRuleWithOptions(request *UpdateGatewayFlowRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayFlowRule(request *UpdateGatewayFlowRuleRequest) (_result *UpdateGatewayFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayFlowRuleResponse{}
+	_body, _err := client.UpdateGatewayFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayIsolationRuleWithOptions(request *UpdateGatewayIsolationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayIsolationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BehaviorType)) {
+		query["BehaviorType"] = request.BehaviorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyEncoding)) {
+		query["BodyEncoding"] = request.BodyEncoding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
+		query["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentBody)) {
+		query["ResponseContentBody"] = request.ResponseContentBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRedirectUrl)) {
+		query["ResponseRedirectUrl"] = request.ResponseRedirectUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseStatusCode)) {
+		query["ResponseStatusCode"] = request.ResponseStatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayIsolationRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayIsolationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayIsolationRule(request *UpdateGatewayIsolationRuleRequest) (_result *UpdateGatewayIsolationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayIsolationRuleResponse{}
+	_body, _err := client.UpdateGatewayIsolationRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
