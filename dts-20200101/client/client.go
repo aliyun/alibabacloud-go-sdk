@@ -34248,6 +34248,8 @@ type TransferPayTypeRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	MaxDu    *int32  `json:"MaxDu,omitempty" xml:"MaxDu,omitempty"`
+	MinDu    *int32  `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	// The billing cycle of the subscription instance. Valid values:
 	//
 	// *   **Year**
@@ -34280,6 +34282,16 @@ func (s *TransferPayTypeRequest) SetChargeType(v string) *TransferPayTypeRequest
 
 func (s *TransferPayTypeRequest) SetDtsJobId(v string) *TransferPayTypeRequest {
 	s.DtsJobId = &v
+	return s
+}
+
+func (s *TransferPayTypeRequest) SetMaxDu(v int32) *TransferPayTypeRequest {
+	s.MaxDu = &v
+	return s
+}
+
+func (s *TransferPayTypeRequest) SetMinDu(v int32) *TransferPayTypeRequest {
+	s.MinDu = &v
 	return s
 }
 
@@ -43672,6 +43684,14 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
 		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDu)) {
+		query["MaxDu"] = request.MaxDu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDu)) {
+		query["MinDu"] = request.MinDu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
