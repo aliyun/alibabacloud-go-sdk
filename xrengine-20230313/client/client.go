@@ -15945,11 +15945,12 @@ func (s *QueryMotionShopVideoDetectResultResponseBodyData) SetVideoId(v string) 
 }
 
 type QueryMotionShopVideoDetectResultResponseBodyDataDetectResult struct {
-	Box                []*float64 `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
-	Code               *int32     `json:"Code,omitempty" xml:"Code,omitempty"`
-	CoverUrl           *string    `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	Message            *string    `json:"Message,omitempty" xml:"Message,omitempty"`
-	SelectedFrameIndex *int32     `json:"SelectedFrameIndex,omitempty" xml:"SelectedFrameIndex,omitempty"`
+	Box                []*float64   `json:"Box,omitempty" xml:"Box,omitempty" type:"Repeated"`
+	Code               *int32       `json:"Code,omitempty" xml:"Code,omitempty"`
+	CoverUrl           *string      `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	HumanBoxes         [][]*float64 `json:"HumanBoxes,omitempty" xml:"HumanBoxes,omitempty" type:"Repeated"`
+	Message            *string      `json:"Message,omitempty" xml:"Message,omitempty"`
+	SelectedFrameIndex *int32       `json:"SelectedFrameIndex,omitempty" xml:"SelectedFrameIndex,omitempty"`
 }
 
 func (s QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) String() string {
@@ -15972,6 +15973,11 @@ func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetCode(v
 
 func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetCoverUrl(v string) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
 	s.CoverUrl = &v
+	return s
+}
+
+func (s *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult) SetHumanBoxes(v [][]*float64) *QueryMotionShopVideoDetectResultResponseBodyDataDetectResult {
+	s.HumanBoxes = v
 	return s
 }
 
@@ -16114,10 +16120,11 @@ func (s *SubmitLongTtsTaskResponse) SetBody(v *SubmitLongTtsTaskResponseBody) *S
 }
 
 type SubmitMotionShopTaskRequest struct {
-	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	VideoId  *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	AvatarId         *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	JwtToken         *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
+	SelectedBoxIndex *int32  `json:"SelectedBoxIndex,omitempty" xml:"SelectedBoxIndex,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoId          *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s SubmitMotionShopTaskRequest) String() string {
@@ -16135,6 +16142,11 @@ func (s *SubmitMotionShopTaskRequest) SetAvatarId(v string) *SubmitMotionShopTas
 
 func (s *SubmitMotionShopTaskRequest) SetJwtToken(v string) *SubmitMotionShopTaskRequest {
 	s.JwtToken = &v
+	return s
+}
+
+func (s *SubmitMotionShopTaskRequest) SetSelectedBoxIndex(v int32) *SubmitMotionShopTaskRequest {
+	s.SelectedBoxIndex = &v
 	return s
 }
 
@@ -19747,6 +19759,10 @@ func (client *Client) SubmitMotionShopTaskWithOptions(request *SubmitMotionShopT
 
 	if !tea.BoolValue(util.IsUnset(request.JwtToken)) {
 		body["JwtToken"] = request.JwtToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelectedBoxIndex)) {
+		body["SelectedBoxIndex"] = request.SelectedBoxIndex
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
