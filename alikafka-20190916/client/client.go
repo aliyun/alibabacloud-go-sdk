@@ -577,6 +577,7 @@ type CreatePostPayOrderRequest struct {
 	// *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
 	// *   For more information about the valid values, see [Billing](~~84737~~).
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
 	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
@@ -588,7 +589,8 @@ type CreatePostPayOrderRequest struct {
 	// The ID of the resource group.
 	//
 	// If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId  *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessConfig *CreatePostPayOrderRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
 	// The edition of the instance. Valid values:
 	//
 	// *   **normal**: Standard Edition (High Write)
@@ -646,6 +648,11 @@ func (s *CreatePostPayOrderRequest) SetIoMaxSpec(v string) *CreatePostPayOrderRe
 	return s
 }
 
+func (s *CreatePostPayOrderRequest) SetPaidType(v int32) *CreatePostPayOrderRequest {
+	s.PaidType = &v
+	return s
+}
+
 func (s *CreatePostPayOrderRequest) SetPartitionNum(v int32) *CreatePostPayOrderRequest {
 	s.PartitionNum = &v
 	return s
@@ -661,6 +668,11 @@ func (s *CreatePostPayOrderRequest) SetResourceGroupId(v string) *CreatePostPayO
 	return s
 }
 
+func (s *CreatePostPayOrderRequest) SetServerlessConfig(v *CreatePostPayOrderRequestServerlessConfig) *CreatePostPayOrderRequest {
+	s.ServerlessConfig = v
+	return s
+}
+
 func (s *CreatePostPayOrderRequest) SetSpecType(v string) *CreatePostPayOrderRequest {
 	s.SpecType = &v
 	return s
@@ -673,6 +685,29 @@ func (s *CreatePostPayOrderRequest) SetTag(v []*CreatePostPayOrderRequestTag) *C
 
 func (s *CreatePostPayOrderRequest) SetTopicQuota(v int32) *CreatePostPayOrderRequest {
 	s.TopicQuota = &v
+	return s
+}
+
+type CreatePostPayOrderRequestServerlessConfig struct {
+	ReservedPublishCapacity   *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	ReservedSubscribeCapacity *int64 `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
+}
+
+func (s CreatePostPayOrderRequestServerlessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayOrderRequestServerlessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayOrderRequestServerlessConfig) SetReservedPublishCapacity(v int64) *CreatePostPayOrderRequestServerlessConfig {
+	s.ReservedPublishCapacity = &v
+	return s
+}
+
+func (s *CreatePostPayOrderRequestServerlessConfig) SetReservedSubscribeCapacity(v int64) *CreatePostPayOrderRequestServerlessConfig {
+	s.ReservedSubscribeCapacity = &v
 	return s
 }
 
@@ -705,6 +740,180 @@ func (s *CreatePostPayOrderRequestTag) SetKey(v string) *CreatePostPayOrderReque
 }
 
 func (s *CreatePostPayOrderRequestTag) SetValue(v string) *CreatePostPayOrderRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePostPayOrderShrinkRequest struct {
+	// The deployment mode of the instance. Valid values:
+	//
+	// *   **4**: deploys the instance that allows access from the Internet and a VPC.
+	// *   **5**: deploys the instance that allows access only from a VPC.
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk size.
+	//
+	// For more information about the valid values, see [Billing](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// *   **0**: ultra disk
+	// *   **1**: standard SSD
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   This parameter is required if the **DeployType** parameter is set to **4**.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// For more information about these instance editions, see [Billing](~~84737~~).
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tags.
+	Tag []*CreatePostPayOrderShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+}
+
+func (s CreatePostPayOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetDeployType(v int32) *CreatePostPayOrderShrinkRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetDiskSize(v int32) *CreatePostPayOrderShrinkRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetDiskType(v string) *CreatePostPayOrderShrinkRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetEipMax(v int32) *CreatePostPayOrderShrinkRequest {
+	s.EipMax = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetIoMax(v int32) *CreatePostPayOrderShrinkRequest {
+	s.IoMax = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetIoMaxSpec(v string) *CreatePostPayOrderShrinkRequest {
+	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetPaidType(v int32) *CreatePostPayOrderShrinkRequest {
+	s.PaidType = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetPartitionNum(v int32) *CreatePostPayOrderShrinkRequest {
+	s.PartitionNum = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetRegionId(v string) *CreatePostPayOrderShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetResourceGroupId(v string) *CreatePostPayOrderShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetServerlessConfigShrink(v string) *CreatePostPayOrderShrinkRequest {
+	s.ServerlessConfigShrink = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetSpecType(v string) *CreatePostPayOrderShrinkRequest {
+	s.SpecType = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetTag(v []*CreatePostPayOrderShrinkRequestTag) *CreatePostPayOrderShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequest) SetTopicQuota(v int32) *CreatePostPayOrderShrinkRequest {
+	s.TopicQuota = &v
+	return s
+}
+
+type CreatePostPayOrderShrinkRequestTag struct {
+	// The key of tag N.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   If this parameter is left empty, the keys of all tags are matched.
+	// *   The tag key must be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   If you do not specify a tag key, you cannot specify a tag value. If this parameter is not configured, all tag values are matched.
+	// *   The tag value must be 1 to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePostPayOrderShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayOrderShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayOrderShrinkRequestTag) SetKey(v string) *CreatePostPayOrderShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePostPayOrderShrinkRequestTag) SetValue(v string) *CreatePostPayOrderShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -3916,9 +4125,11 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The peak traffic allowed for the instance.
-	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMax     *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxRead *int32 `json:"IoMaxRead,omitempty" xml:"IoMaxRead,omitempty"`
 	// The traffic specification.
-	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	IoMaxSpec  *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	IoMaxWrite *int32  `json:"IoMaxWrite,omitempty" xml:"IoMaxWrite,omitempty"`
 	// The ID of the key that is used for disk encryption in the region where the instance is deployed.
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The retention period of messages in the instance. Unit: hours.
@@ -4068,8 +4279,18 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMax(v int32) *G
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMaxRead(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.IoMaxRead = &v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMaxSpec(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.IoMaxSpec = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMaxWrite(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.IoMaxWrite = &v
 	return s
 }
 
@@ -8624,15 +8845,21 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 /**
  * Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](~~84737~~).
  *
- * @param request CreatePostPayOrderRequest
+ * @param tmpReq CreatePostPayOrderRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return CreatePostPayOrderResponse
  */
-func (client *Client) CreatePostPayOrderWithOptions(request *CreatePostPayOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePostPayOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePostPayOrderWithOptions(tmpReq *CreatePostPayOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePostPayOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePostPayOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerlessConfig)) {
+		request.ServerlessConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerlessConfig, tea.String("ServerlessConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
 		query["DeployType"] = request.DeployType
@@ -8658,6 +8885,10 @@ func (client *Client) CreatePostPayOrderWithOptions(request *CreatePostPayOrderR
 		query["IoMaxSpec"] = request.IoMaxSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PaidType)) {
+		query["PaidType"] = request.PaidType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PartitionNum)) {
 		query["PartitionNum"] = request.PartitionNum
 	}
@@ -8668,6 +8899,10 @@ func (client *Client) CreatePostPayOrderWithOptions(request *CreatePostPayOrderR
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessConfigShrink)) {
+		query["ServerlessConfig"] = request.ServerlessConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
