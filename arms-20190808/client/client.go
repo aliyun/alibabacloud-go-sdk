@@ -965,16 +965,17 @@ func (s *GrafanaWorkspaceIntegration) SetSupportRegions(v []*string) *GrafanaWor
 }
 
 type GrafanaWorkspaceIntegrationDataSource struct {
-	ClusterType    *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	DatasourceId   *string `json:"datasourceId,omitempty" xml:"datasourceId,omitempty"`
-	DatasourceName *string `json:"datasourceName,omitempty" xml:"datasourceName,omitempty"`
-	DatasourceUrl  *string `json:"datasourceUrl,omitempty" xml:"datasourceUrl,omitempty"`
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	ExploreUrl     *string `json:"exploreUrl,omitempty" xml:"exploreUrl,omitempty"`
-	FolderUrl      *string `json:"folderUrl,omitempty" xml:"folderUrl,omitempty"`
-	RegionId       *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	ClusterType    *string            `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	DatasourceId   *string            `json:"datasourceId,omitempty" xml:"datasourceId,omitempty"`
+	DatasourceName *string            `json:"datasourceName,omitempty" xml:"datasourceName,omitempty"`
+	DatasourceUrl  *string            `json:"datasourceUrl,omitempty" xml:"datasourceUrl,omitempty"`
+	Description    *string            `json:"description,omitempty" xml:"description,omitempty"`
+	ExploreUrl     *string            `json:"exploreUrl,omitempty" xml:"exploreUrl,omitempty"`
+	Extra          map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	FolderUrl      *string            `json:"folderUrl,omitempty" xml:"folderUrl,omitempty"`
+	RegionId       *string            `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Status         *string            `json:"status,omitempty" xml:"status,omitempty"`
+	Type           *string            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GrafanaWorkspaceIntegrationDataSource) String() string {
@@ -1012,6 +1013,11 @@ func (s *GrafanaWorkspaceIntegrationDataSource) SetDescription(v string) *Grafan
 
 func (s *GrafanaWorkspaceIntegrationDataSource) SetExploreUrl(v string) *GrafanaWorkspaceIntegrationDataSource {
 	s.ExploreUrl = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceIntegrationDataSource) SetExtra(v map[string]*string) *GrafanaWorkspaceIntegrationDataSource {
+	s.Extra = v
 	return s
 }
 
@@ -8406,39 +8412,39 @@ func (s *CreatePrometheusAlertRuleResponse) SetBody(v *CreatePrometheusAlertRule
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// To edit a GlobalView aggregated instance, do you require all passed child instances to be verified successfully before creating a GlobalView instance (optional, default to false):
-	// - true
-	// - false
+	// Does it require all child instances to be verified successfully before creating a GlobalView instance. The default is false, which means partial success is possible.
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
-	// The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs.
+	// The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
+	// The ID of the ACK cluster. This parameter is required if you set the ClusterType parameter to aliyun-cs.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster. This parameter is required if you set ClusterType to remote-write, ecs, or global-view.
+	// The name of the created cluster. This parameter is required if you set the ClusterType parameter to remote-write or ecs.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Types include:
-	// - remote-write: General-purpose Instance
-	// - ecs: Prometheus for ECS
-	// - global-view: Global Aggregation Instance
-	// - aliyun-cs: Prometheus Instance for Container Service
-	// - cloud-product: Prometheus for cloud monitor
-	// - cloud-monitor: Prometheus for enterprise cloud monitor
-	// - flink: Prometheus for Flink
+	// The type of the cluster to which the Prometheus instance belongs. Valid values:
+	// * remote-write: Prometheus instance for remote write.
+	// * ecs(Not supported): Prometheus instance for ECS.
+	// * cloud-monitor(Not supported): Prometheus instance for Alibaba Cloud services in China.
+	// * cloud-product(Not supported): Prometheus instance for Alibaba Cloud services outside China.
+	// * global-view: Prometheus instance for GlobalView.
+	// * aliyun-cs(Not supported): Prometheus instance for Container Service for Kubernetes (ACK).
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Duration    *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
+	// Data storage duration (in days).
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	// The region ID. If you create a Prometheus instance for a cloud service in China, set this parameter to cn-shanghai.
+	// The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the custom resource group. You can specify this parameter to bind the instance to the resource group.
+	// The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
+	// The ID of the security group. This parameter is required if you set the ClusterType parameter to ecs.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
+	// JSON string for child instances of the globalView instance.
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
-	// The tags of the instance. You can specify this parameter to manage tags for the instance.
+	// The tags of the instance. You can configure this parameter to manage tags for the instance.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the vSwitch. This parameter is required if you set ClusterType to ecs or create an ASK managed cluster.
+	// The ID of the vSwitch. This parameter is required if you set the ClusterType parameter to ecs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC). This parameter is required if you set ClusterType to ecs or create a serverless Kubernetes (ASK) managed cluster.
+	// The ID of virtual private cloud (VPC). This parameter is required if you set the ClusterType parameter to ecs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -8452,6 +8458,11 @@ func (s CreatePrometheusInstanceRequest) GoString() string {
 
 func (s *CreatePrometheusInstanceRequest) SetAllSubClustersSuccess(v bool) *CreatePrometheusInstanceRequest {
 	s.AllSubClustersSuccess = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetArchiveDuration(v int32) *CreatePrometheusInstanceRequest {
+	s.ArchiveDuration = &v
 	return s
 }
 
@@ -8539,18 +8550,13 @@ func (s *CreatePrometheusInstanceRequestTags) SetValue(v string) *CreatePromethe
 }
 
 type CreatePrometheusInstanceResponseBody struct {
-	// The status code that is returned. Valid values:
-	//
-	// *   `2XX: The request is successful.`
-	// *   `3XX: A redirection message is returned.`
-	// *   `4XX: The request is invalid.`
-	// *   `5XX: A server error occurred.`
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the created Prometheus instance.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message that is returned if the request failed.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10117,13 +10123,14 @@ func (s *CreateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 }
 
 type CreateTimingSyntheticTaskRequestCommonSetting struct {
-	CustomHost       *CreateTimingSyntheticTaskRequestCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	CustomVPCSetting *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
-	IpType           *int32                                                         `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	IsOpenTrace      *bool                                                          `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
-	MonitorSamples   *int32                                                         `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
-	TraceClientType  *int32                                                         `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
-	XtraceRegion     *string                                                        `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
+	CustomHost              *CreateTimingSyntheticTaskRequestCommonSettingCustomHost              `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomPrometheusSetting *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting `json:"CustomPrometheusSetting,omitempty" xml:"CustomPrometheusSetting,omitempty" type:"Struct"`
+	CustomVPCSetting        *CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting        `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
+	IpType                  *int32                                                                `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace             *bool                                                                 `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples          *int32                                                                `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType         *int32                                                                `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion            *string                                                               `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
 }
 
 func (s CreateTimingSyntheticTaskRequestCommonSetting) String() string {
@@ -10136,6 +10143,11 @@ func (s CreateTimingSyntheticTaskRequestCommonSetting) GoString() string {
 
 func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *CreateTimingSyntheticTaskRequestCommonSettingCustomHost) *CreateTimingSyntheticTaskRequestCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSetting) SetCustomPrometheusSetting(v *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) *CreateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomPrometheusSetting = v
 	return s
 }
 
@@ -10218,6 +10230,35 @@ func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType
 
 func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting struct {
+	PrometheusClusterId     *string            `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
+	PrometheusClusterRegion *string            `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
+	PrometheusLabels        map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusClusterId(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterId = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusClusterRegion(v string) *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterRegion = &v
+	return s
+}
+
+func (s *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusLabels(v map[string]*string) *CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusLabels = v
 	return s
 }
 
@@ -20832,6 +20873,7 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 }
 
 type GetPrometheusInstanceResponseBodyData struct {
+	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
 	// auth token string.
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// The ID of the Prometheus instance.
@@ -20876,6 +20918,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StorageDuration *int32  `json:"StorageDuration,omitempty" xml:"StorageDuration,omitempty"`
 	// The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 	// The tags of the instance.
@@ -20894,6 +20937,11 @@ func (s GetPrometheusInstanceResponseBodyData) String() string {
 
 func (s GetPrometheusInstanceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetArchiveDuration(v int32) *GetPrometheusInstanceResponseBodyData {
+	s.ArchiveDuration = &v
+	return s
 }
 
 func (s *GetPrometheusInstanceResponseBodyData) SetAuthToken(v string) *GetPrometheusInstanceResponseBodyData {
@@ -20983,6 +21031,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetResourceType(v string) *GetPr
 
 func (s *GetPrometheusInstanceResponseBodyData) SetSecurityGroupId(v string) *GetPrometheusInstanceResponseBodyData {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetStorageDuration(v int32) *GetPrometheusInstanceResponseBodyData {
+	s.StorageDuration = &v
 	return s
 }
 
@@ -24368,8 +24421,9 @@ func (s *GetTimingSyntheticTaskResponseBodyDataAvailableAssertions) SetType(v st
 
 type GetTimingSyntheticTaskResponseBodyDataCommonSetting struct {
 	// The custom host.
-	CustomHost       *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	CustomVPCSetting *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
+	CustomHost              *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost              `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomPrometheusSetting *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting `json:"CustomPrometheusSetting,omitempty" xml:"CustomPrometheusSetting,omitempty" type:"Struct"`
+	CustomVPCSetting        *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting        `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
 	// The IP version. Valid values:
 	//
 	// *   0: A version is automatically selected.
@@ -24403,6 +24457,11 @@ func (s GetTimingSyntheticTaskResponseBodyDataCommonSetting) GoString() string {
 
 func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetCustomHost(v *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSetting) SetCustomPrometheusSetting(v *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) *GetTimingSyntheticTaskResponseBodyDataCommonSetting {
+	s.CustomPrometheusSetting = v
 	return s
 }
 
@@ -24494,6 +24553,35 @@ func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) Set
 
 func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts) SetIps(v []*string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting struct {
+	PrometheusClusterId     *string            `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
+	PrometheusClusterRegion *string            `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
+	PrometheusLabels        map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) SetPrometheusClusterId(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterId = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) SetPrometheusClusterRegion(v string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterRegion = &v
+	return s
+}
+
+func (s *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting) SetPrometheusLabels(v map[string]*string) *GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting {
+	s.PrometheusLabels = v
 	return s
 }
 
@@ -26082,14 +26170,16 @@ func (s *ImportAppAlertRulesResponse) SetBody(v *ImportAppAlertRulesResponseBody
 
 type InitEnvironmentRequest struct {
 	// The language. Valid values: zh and en. Default value: zh.
-	AliyunLang      *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	CreateAuthToken *bool   `json:"CreateAuthToken,omitempty" xml:"CreateAuthToken,omitempty"`
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Whether to create a Token in order to enhance the security of data retrieval.
+	CreateAuthToken *bool `json:"CreateAuthToken,omitempty" xml:"CreateAuthToken,omitempty"`
 	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// type of managed:
-	// - none: not managed. default value of prometheus for ACK.
-	// - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
-	// - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+	// Whether agents or exporters are managed. Valid values:
+	//
+	// *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
+	// *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+	// *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
 	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -35924,6 +36014,7 @@ func (s *ListTimingSyntheticTasksResponseBodyData) SetTotal(v int32) *ListTiming
 }
 
 type ListTimingSyntheticTasksResponseBodyDataItems struct {
+	CommonSetting *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting `json:"CommonSetting,omitempty" xml:"CommonSetting,omitempty" type:"Struct"`
 	// The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
 	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	// The time when the task was created.
@@ -35960,6 +36051,11 @@ func (s ListTimingSyntheticTasksResponseBodyDataItems) String() string {
 
 func (s ListTimingSyntheticTasksResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetCommonSetting(v *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) *ListTimingSyntheticTasksResponseBodyDataItems {
+	s.CommonSetting = v
+	return s
 }
 
 func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetFrequency(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
@@ -36024,6 +36120,181 @@ func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetTaskType(v int32) *Li
 
 func (s *ListTimingSyntheticTasksResponseBodyDataItems) SetUrl(v string) *ListTimingSyntheticTasksResponseBodyDataItems {
 	s.Url = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting struct {
+	CustomHost              *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost              `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomPrometheusSetting *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting `json:"CustomPrometheusSetting,omitempty" xml:"CustomPrometheusSetting,omitempty" type:"Struct"`
+	CustomVPCSetting        *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting        `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
+	IpType                  *int32                                                                             `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IsOpenTrace             *bool                                                                              `json:"IsOpenTrace,omitempty" xml:"IsOpenTrace,omitempty"`
+	MonitorSamples          *int32                                                                             `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	TraceClientType         *int32                                                                             `json:"TraceClientType,omitempty" xml:"TraceClientType,omitempty"`
+	XtraceRegion            *string                                                                            `json:"XtraceRegion,omitempty" xml:"XtraceRegion,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetCustomHost(v *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.CustomHost = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetCustomPrometheusSetting(v *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.CustomPrometheusSetting = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetCustomVPCSetting(v *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.CustomVPCSetting = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetIpType(v int32) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.IpType = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetIsOpenTrace(v bool) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.IsOpenTrace = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetMonitorSamples(v int32) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.MonitorSamples = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetTraceClientType(v int32) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.TraceClientType = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting) SetXtraceRegion(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting {
+	s.XtraceRegion = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost struct {
+	Hosts      []*ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	SelectType *int32                                                                       `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) SetHosts(v []*ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost {
+	s.Hosts = v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost) SetSelectType(v int32) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost {
+	s.SelectType = &v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts struct {
+	Domain *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	IpType *int32    `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ips    []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) SetDomain(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) SetIpType(v int32) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts {
+	s.IpType = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts) SetIps(v []*string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts {
+	s.Ips = v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting struct {
+	PrometheusClusterId     *string            `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
+	PrometheusClusterRegion *string            `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
+	PrometheusLabels        map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) SetPrometheusClusterId(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) SetPrometheusClusterRegion(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterRegion = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting) SetPrometheusLabels(v map[string]*string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheusSetting {
+	s.PrometheusLabels = v
+	return s
+}
+
+type ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecureGroupId *string `json:"SecureGroupId,omitempty" xml:"SecureGroupId,omitempty"`
+	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) SetRegionId(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) SetSecureGroupId(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting {
+	s.SecureGroupId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) SetVSwitchId(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting) SetVpcId(v string) *ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting {
+	s.VpcId = &v
 	return s
 }
 
@@ -45015,6 +45286,112 @@ func (s *UpdatePrometheusGlobalViewResponse) SetBody(v *UpdatePrometheusGlobalVi
 	return s
 }
 
+type UpdatePrometheusInstanceRequest struct {
+	ArchiveDuration *int32  `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StorageDuration *int32  `json:"StorageDuration,omitempty" xml:"StorageDuration,omitempty"`
+}
+
+func (s UpdatePrometheusInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrometheusInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetArchiveDuration(v int32) *UpdatePrometheusInstanceRequest {
+	s.ArchiveDuration = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetClusterId(v string) *UpdatePrometheusInstanceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetRegionId(v string) *UpdatePrometheusInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetResourceGroupId(v string) *UpdatePrometheusInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetStorageDuration(v int32) *UpdatePrometheusInstanceRequest {
+	s.StorageDuration = &v
+	return s
+}
+
+type UpdatePrometheusInstanceResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePrometheusInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrometheusInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrometheusInstanceResponseBody) SetCode(v int32) *UpdatePrometheusInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceResponseBody) SetData(v string) *UpdatePrometheusInstanceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceResponseBody) SetMessage(v string) *UpdatePrometheusInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceResponseBody) SetRequestId(v string) *UpdatePrometheusInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePrometheusInstanceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePrometheusInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePrometheusInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePrometheusInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrometheusInstanceResponse) SetHeaders(v map[string]*string) *UpdatePrometheusInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceResponse) SetStatusCode(v int32) *UpdatePrometheusInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceResponse) SetBody(v *UpdatePrometheusInstanceResponseBody) *UpdatePrometheusInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePrometheusIntegrationRequest struct {
 	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -45633,8 +46010,9 @@ func (s *UpdateTimingSyntheticTaskRequestAvailableAssertions) SetType(v string) 
 
 type UpdateTimingSyntheticTaskRequestCommonSetting struct {
 	// The custom host.
-	CustomHost       *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost       `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
-	CustomVPCSetting *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
+	CustomHost              *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost              `json:"CustomHost,omitempty" xml:"CustomHost,omitempty" type:"Struct"`
+	CustomPrometheusSetting *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting `json:"CustomPrometheusSetting,omitempty" xml:"CustomPrometheusSetting,omitempty" type:"Struct"`
+	CustomVPCSetting        *UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting        `json:"CustomVPCSetting,omitempty" xml:"CustomVPCSetting,omitempty" type:"Struct"`
 	// The IP version. Valid values:
 	//
 	// *   0: A version is automatically selected.
@@ -45668,6 +46046,11 @@ func (s UpdateTimingSyntheticTaskRequestCommonSetting) GoString() string {
 
 func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetCustomHost(v *UpdateTimingSyntheticTaskRequestCommonSettingCustomHost) *UpdateTimingSyntheticTaskRequestCommonSetting {
 	s.CustomHost = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSetting) SetCustomPrometheusSetting(v *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) *UpdateTimingSyntheticTaskRequestCommonSetting {
+	s.CustomPrometheusSetting = v
 	return s
 }
 
@@ -45759,6 +46142,35 @@ func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIpType
 
 func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts) SetIps(v []*string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts {
 	s.Ips = v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting struct {
+	PrometheusClusterId     *string            `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
+	PrometheusClusterRegion *string            `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
+	PrometheusLabels        map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusClusterId(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterId = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusClusterRegion(v string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusClusterRegion = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting) SetPrometheusLabels(v map[string]*string) *UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting {
+	s.PrometheusLabels = v
 	return s
 }
 
@@ -49932,6 +50344,10 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllSubClustersSuccess)) {
 		query["AllSubClustersSuccess"] = request.AllSubClustersSuccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchiveDuration)) {
+		query["ArchiveDuration"] = request.ArchiveDuration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
@@ -60734,6 +61150,66 @@ func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobal
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusGlobalViewResponse{}
 	_body, _err := client.UpdatePrometheusGlobalViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometheusInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArchiveDuration)) {
+		query["ArchiveDuration"] = request.ArchiveDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageDuration)) {
+		query["StorageDuration"] = request.StorageDuration
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePrometheusInstance"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePrometheusInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstanceRequest) (_result *UpdatePrometheusInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePrometheusInstanceResponse{}
+	_body, _err := client.UpdatePrometheusInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
