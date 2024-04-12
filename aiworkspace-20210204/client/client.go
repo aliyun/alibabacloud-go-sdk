@@ -4154,6 +4154,7 @@ func (s *GetModelVersionResponse) SetBody(v *GetModelVersionResponseBody) *GetMo
 type GetPermissionRequest struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	Resource      *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -4172,6 +4173,11 @@ func (s *GetPermissionRequest) SetAccessibility(v string) *GetPermissionRequest 
 
 func (s *GetPermissionRequest) SetCreator(v string) *GetPermissionRequest {
 	s.Creator = &v
+	return s
+}
+
+func (s *GetPermissionRequest) SetOption(v string) *GetPermissionRequest {
+	s.Option = &v
 	return s
 }
 
@@ -9328,6 +9334,10 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 
 	if !tea.BoolValue(util.IsUnset(request.Creator)) {
 		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Option)) {
+		query["Option"] = request.Option
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
