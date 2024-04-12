@@ -696,12 +696,16 @@ func (s *GetTaskInfoResponseBody) SetRequestId(v string) *GetTaskInfoResponseBod
 }
 
 type GetTaskInfoResponseBodyData struct {
-	ErrorCode    *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Result       *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	TaskId       *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey      *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
-	TaskStatus   *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	ErrorCode           *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	OutputMp3Path       *string                            `json:"OutputMp3Path,omitempty" xml:"OutputMp3Path,omitempty"`
+	OutputMp4Path       *string                            `json:"OutputMp4Path,omitempty" xml:"OutputMp4Path,omitempty"`
+	OutputSpectrumPath  *string                            `json:"OutputSpectrumPath,omitempty" xml:"OutputSpectrumPath,omitempty"`
+	OutputThumbnailPath *string                            `json:"OutputThumbnailPath,omitempty" xml:"OutputThumbnailPath,omitempty"`
+	Result              *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	TaskId              *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskKey             *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskStatus          *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetTaskInfoResponseBodyData) String() string {
@@ -719,6 +723,26 @@ func (s *GetTaskInfoResponseBodyData) SetErrorCode(v string) *GetTaskInfoRespons
 
 func (s *GetTaskInfoResponseBodyData) SetErrorMessage(v string) *GetTaskInfoResponseBodyData {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyData) SetOutputMp3Path(v string) *GetTaskInfoResponseBodyData {
+	s.OutputMp3Path = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyData) SetOutputMp4Path(v string) *GetTaskInfoResponseBodyData {
+	s.OutputMp4Path = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyData) SetOutputSpectrumPath(v string) *GetTaskInfoResponseBodyData {
+	s.OutputSpectrumPath = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyData) SetOutputThumbnailPath(v string) *GetTaskInfoResponseBodyData {
+	s.OutputThumbnailPath = &v
 	return s
 }
 
