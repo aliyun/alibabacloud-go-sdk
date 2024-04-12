@@ -196,6 +196,128 @@ func (s *AcceptOperationTicketResponse) SetBody(v *AcceptOperationTicketResponse
 	return s
 }
 
+type AddDatabasesToGroupRequest struct {
+	DatabaseIds []*string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+	HostGroupId *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddDatabasesToGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatabasesToGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatabasesToGroupRequest) SetDatabaseIds(v []*string) *AddDatabasesToGroupRequest {
+	s.DatabaseIds = v
+	return s
+}
+
+func (s *AddDatabasesToGroupRequest) SetHostGroupId(v string) *AddDatabasesToGroupRequest {
+	s.HostGroupId = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupRequest) SetInstanceId(v string) *AddDatabasesToGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupRequest) SetRegionId(v string) *AddDatabasesToGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddDatabasesToGroupResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*AddDatabasesToGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s AddDatabasesToGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatabasesToGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatabasesToGroupResponseBody) SetRequestId(v string) *AddDatabasesToGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponseBody) SetResults(v []*AddDatabasesToGroupResponseBodyResults) *AddDatabasesToGroupResponseBody {
+	s.Results = v
+	return s
+}
+
+type AddDatabasesToGroupResponseBodyResults struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseId  *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s AddDatabasesToGroupResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatabasesToGroupResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatabasesToGroupResponseBodyResults) SetCode(v string) *AddDatabasesToGroupResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponseBodyResults) SetDatabaseId(v string) *AddDatabasesToGroupResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponseBodyResults) SetHostGroupId(v string) *AddDatabasesToGroupResponseBodyResults {
+	s.HostGroupId = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponseBodyResults) SetMessage(v string) *AddDatabasesToGroupResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+type AddDatabasesToGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDatabasesToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddDatabasesToGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatabasesToGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatabasesToGroupResponse) SetHeaders(v map[string]*string) *AddDatabasesToGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponse) SetStatusCode(v int32) *AddDatabasesToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDatabasesToGroupResponse) SetBody(v *AddDatabasesToGroupResponseBody) *AddDatabasesToGroupResponse {
+	s.Body = v
+	return s
+}
+
 type AddHostsToGroupRequest struct {
 	// The ID of the host group to which you want to add hosts.
 	//
@@ -504,6 +626,366 @@ func (s *AddUsersToGroupResponse) SetStatusCode(v int32) *AddUsersToGroupRespons
 }
 
 func (s *AddUsersToGroupResponse) SetBody(v *AddUsersToGroupResponseBody) *AddUsersToGroupResponse {
+	s.Body = v
+	return s
+}
+
+type AttachDatabaseAccountsToUserRequest struct {
+	Databases  []*AttachDatabaseAccountsToUserRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	InstanceId *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserId     *string                                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserRequest) SetDatabases(v []*AttachDatabaseAccountsToUserRequestDatabases) *AttachDatabaseAccountsToUserRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserRequest) SetInstanceId(v string) *AttachDatabaseAccountsToUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserRequest) SetRegionId(v string) *AttachDatabaseAccountsToUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserRequest) SetUserId(v string) *AttachDatabaseAccountsToUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserRequestDatabases) SetDatabaseAccountIds(v []*string) *AttachDatabaseAccountsToUserRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserRequestDatabases) SetDatabaseId(v string) *AttachDatabaseAccountsToUserRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserResponseBody struct {
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*AttachDatabaseAccountsToUserResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s AttachDatabaseAccountsToUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBody) SetRequestId(v string) *AttachDatabaseAccountsToUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBody) SetResults(v []*AttachDatabaseAccountsToUserResponseBodyResults) *AttachDatabaseAccountsToUserResponseBody {
+	s.Results = v
+	return s
+}
+
+type AttachDatabaseAccountsToUserResponseBodyResults struct {
+	Code             *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccounts []*AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	DatabaseId       *string                                                            `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Message          *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserId           *string                                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetCode(v string) *AttachDatabaseAccountsToUserResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetDatabaseAccounts(v []*AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) *AttachDatabaseAccountsToUserResponseBodyResults {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetDatabaseId(v string) *AttachDatabaseAccountsToUserResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetMessage(v string) *AttachDatabaseAccountsToUserResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResults) SetUserId(v string) *AttachDatabaseAccountsToUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts struct {
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) SetCode(v string) *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) SetDatabaseAccountId(v string) *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts) SetMessage(v string) *AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts {
+	s.Message = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachDatabaseAccountsToUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserResponse) SetHeaders(v map[string]*string) *AttachDatabaseAccountsToUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponse) SetStatusCode(v int32) *AttachDatabaseAccountsToUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserResponse) SetBody(v *AttachDatabaseAccountsToUserResponseBody) *AttachDatabaseAccountsToUserResponse {
+	s.Body = v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupRequest struct {
+	Databases   []*AttachDatabaseAccountsToUserGroupRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	InstanceId  *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupId *string                                              `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequest) SetDatabases(v []*AttachDatabaseAccountsToUserGroupRequestDatabases) *AttachDatabaseAccountsToUserGroupRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequest) SetInstanceId(v string) *AttachDatabaseAccountsToUserGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequest) SetRegionId(v string) *AttachDatabaseAccountsToUserGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequest) SetUserGroupId(v string) *AttachDatabaseAccountsToUserGroupRequest {
+	s.UserGroupId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequestDatabases) SetDatabaseAccountIds(v []*string) *AttachDatabaseAccountsToUserGroupRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupRequestDatabases) SetDatabaseId(v string) *AttachDatabaseAccountsToUserGroupRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupResponseBody struct {
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*AttachDatabaseAccountsToUserGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBody) SetRequestId(v string) *AttachDatabaseAccountsToUserGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBody) SetResults(v []*AttachDatabaseAccountsToUserGroupResponseBodyResults) *AttachDatabaseAccountsToUserGroupResponseBody {
+	s.Results = v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupResponseBodyResults struct {
+	Code             *string                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccounts []*AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	DatabaseId       *string                                                                 `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Message          *string                                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserGroupId      *string                                                                 `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetCode(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetDatabaseAccounts(v []*AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) *AttachDatabaseAccountsToUserGroupResponseBodyResults {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetDatabaseId(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetMessage(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResults) SetUserGroupId(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts struct {
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) SetCode(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) SetDatabaseAccountId(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts) SetMessage(v string) *AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts {
+	s.Message = &v
+	return s
+}
+
+type AttachDatabaseAccountsToUserGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachDatabaseAccountsToUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDatabaseAccountsToUserGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponse) SetHeaders(v map[string]*string) *AttachDatabaseAccountsToUserGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponse) SetStatusCode(v int32) *AttachDatabaseAccountsToUserGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachDatabaseAccountsToUserGroupResponse) SetBody(v *AttachDatabaseAccountsToUserGroupResponseBody) *AttachDatabaseAccountsToUserGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1515,11 +1997,11 @@ func (s *ConfigInstanceSecurityGroupsResponse) SetBody(v *ConfigInstanceSecurity
 }
 
 type ConfigInstanceWhiteListRequest struct {
-	// The ID of the bastion host for which a whitelist of public IP addresses is configured.
+	// The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Configures a whitelist of public IP addresses for a bastion host.
+	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ConfigInstanceWhiteList
+	// The public IP addresses that you want to add to the whitelist.
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -1547,8 +2029,10 @@ func (s *ConfigInstanceWhiteListRequest) SetWhiteList(v []*string) *ConfigInstan
 }
 
 type ConfigInstanceWhiteListResponseBody struct {
+	// The ID of the bastion host for which a whitelist of public IP addresses is configured.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConfigInstanceWhiteListResponseBody) String() string {
@@ -1594,6 +2078,258 @@ func (s *ConfigInstanceWhiteListResponse) SetStatusCode(v int32) *ConfigInstance
 }
 
 func (s *ConfigInstanceWhiteListResponse) SetBody(v *ConfigInstanceWhiteListResponseBody) *ConfigInstanceWhiteListResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatabaseRequest struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int32  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	PolarDBEndpointType    *string `json:"PolarDBEndpointType,omitempty" xml:"PolarDBEndpointType,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+}
+
+func (s CreateDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseRequest) SetActiveAddressType(v string) *CreateDatabaseRequest {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetComment(v string) *CreateDatabaseRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetDatabaseName(v string) *CreateDatabaseRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetDatabasePort(v int32) *CreateDatabaseRequest {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetDatabasePrivateAddress(v string) *CreateDatabaseRequest {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetDatabasePublicAddress(v string) *CreateDatabaseRequest {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetDatabaseType(v string) *CreateDatabaseRequest {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetInstanceId(v string) *CreateDatabaseRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetNetworkDomainId(v string) *CreateDatabaseRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetPolarDBEndpointType(v string) *CreateDatabaseRequest {
+	s.PolarDBEndpointType = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetRegionId(v string) *CreateDatabaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetSource(v string) *CreateDatabaseRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetSourceInstanceId(v string) *CreateDatabaseRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetSourceInstanceRegionId(v string) *CreateDatabaseRequest {
+	s.SourceInstanceRegionId = &v
+	return s
+}
+
+type CreateDatabaseResponseBody struct {
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseResponseBody) SetDatabaseId(v string) *CreateDatabaseResponseBody {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *CreateDatabaseResponseBody) SetRequestId(v string) *CreateDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatabaseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseResponse) SetHeaders(v map[string]*string) *CreateDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatabaseResponse) SetStatusCode(v int32) *CreateDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatabaseResponse) SetBody(v *CreateDatabaseResponseBody) *CreateDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatabaseAccountRequest struct {
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseSchema      *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LoginAttribute      *string `json:"LoginAttribute,omitempty" xml:"LoginAttribute,omitempty"`
+	Password            *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateDatabaseAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseAccountRequest) SetDatabaseAccountName(v string) *CreateDatabaseAccountRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetDatabaseId(v string) *CreateDatabaseAccountRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetDatabaseSchema(v string) *CreateDatabaseAccountRequest {
+	s.DatabaseSchema = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetInstanceId(v string) *CreateDatabaseAccountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetLoginAttribute(v string) *CreateDatabaseAccountRequest {
+	s.LoginAttribute = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetPassword(v string) *CreateDatabaseAccountRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountRequest) SetRegionId(v string) *CreateDatabaseAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateDatabaseAccountResponseBody struct {
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatabaseAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseAccountResponseBody) SetDatabaseAccountId(v string) *CreateDatabaseAccountResponseBody {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountResponseBody) SetRequestId(v string) *CreateDatabaseAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatabaseAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatabaseAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDatabaseAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseAccountResponse) SetHeaders(v map[string]*string) *CreateDatabaseAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatabaseAccountResponse) SetStatusCode(v int32) *CreateDatabaseAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatabaseAccountResponse) SetBody(v *CreateDatabaseAccountResponseBody) *CreateDatabaseAccountResponse {
 	s.Body = v
 	return s
 }
@@ -1770,38 +2506,38 @@ func (s *CreateHostResponse) SetBody(v *CreateHostResponseBody) *CreateHostRespo
 }
 
 type CreateHostAccountRequest struct {
+	// The name of the host account.
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the host to which you want to add a host account.
+	//
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the shared key.
+	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
+	// The ID of the bastion host in which you want to add a host account to the host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The passphrase of the private key for the host account.
 	//
 	// >  You can specify this parameter when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the shared key.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
+	// The password of the host account.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The private key of the host account. The value is a Base64-encoded string.
+	//
+	// >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	// The protocol of the host to which you want to add a host account.
 	//
 	// Valid values:
 	//
 	// *   SSH
 	// *   RDP
-	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// master
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The private key of the host account. The value is a Base64-encoded string.
-	//
-	// >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
-	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
+	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	// The region ID of the bastion host in which you want to add a host account to the host.
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the host to which you want to add a host account.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The ID of the bastion host in which you want to add a host account to the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The password of the host account.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1859,9 +2595,9 @@ func (s *CreateHostAccountRequest) SetRegionId(v string) *CreateHostAccountReque
 }
 
 type CreateHostAccountResponseBody struct {
-	// The ID of the request.
-	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// The operation that you want to perform. Set the value to **CreateHostAccount**.
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1923,9 +2659,7 @@ type CreateHostGroupRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host on which you want to create a host group.
 	//
-	// **
-	//
-	// **For more information about the mapping between region IDs and region names, see **Regions and zones[.](~~40654~~)
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2107,6 +2841,443 @@ func (s *CreateHostShareKeyResponse) SetStatusCode(v int32) *CreateHostShareKeyR
 }
 
 func (s *CreateHostShareKeyResponse) SetBody(v *CreateHostShareKeyResponseBody) *CreateHostShareKeyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNetworkDomainRequest struct {
+	Comment           *string                              `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	InstanceId        *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainName *string                              `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
+	NetworkDomainType *string                              `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	Proxies           []*CreateNetworkDomainRequestProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
+	RegionId          *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkDomainRequest) SetComment(v string) *CreateNetworkDomainRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequest) SetInstanceId(v string) *CreateNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequest) SetNetworkDomainName(v string) *CreateNetworkDomainRequest {
+	s.NetworkDomainName = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequest) SetNetworkDomainType(v string) *CreateNetworkDomainRequest {
+	s.NetworkDomainType = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequest) SetProxies(v []*CreateNetworkDomainRequestProxies) *CreateNetworkDomainRequest {
+	s.Proxies = v
+	return s
+}
+
+func (s *CreateNetworkDomainRequest) SetRegionId(v string) *CreateNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateNetworkDomainRequestProxies struct {
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	NodeType  *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	User      *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s CreateNetworkDomainRequestProxies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkDomainRequestProxies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetAddress(v string) *CreateNetworkDomainRequestProxies {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetNodeType(v string) *CreateNetworkDomainRequestProxies {
+	s.NodeType = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetPassword(v string) *CreateNetworkDomainRequestProxies {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetPort(v int32) *CreateNetworkDomainRequestProxies {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetProxyType(v string) *CreateNetworkDomainRequestProxies {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *CreateNetworkDomainRequestProxies) SetUser(v string) *CreateNetworkDomainRequestProxies {
+	s.User = &v
+	return s
+}
+
+type CreateNetworkDomainResponseBody struct {
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkDomainResponseBody) SetNetworkDomainId(v string) *CreateNetworkDomainResponseBody {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *CreateNetworkDomainResponseBody) SetRequestId(v string) *CreateNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNetworkDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkDomainResponse) SetHeaders(v map[string]*string) *CreateNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkDomainResponse) SetStatusCode(v int32) *CreateNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkDomainResponse) SetBody(v *CreateNetworkDomainResponseBody) *CreateNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePolicyRequest struct {
+	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Priority   *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyRequest) SetComment(v string) *CreatePolicyRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetInstanceId(v string) *CreatePolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetPriority(v string) *CreatePolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetRegionId(v string) *CreatePolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreatePolicyResponseBody struct {
+	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponseBody) SetPolicyId(v string) *CreatePolicyResponseBody {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponse) SetHeaders(v map[string]*string) *CreatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetStatusCode(v int32) *CreatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRuleRequest struct {
+	Comment            *string                        `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Databases          []*CreateRuleRequestDatabases  `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	EffectiveEndTime   *int64                         `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	EffectiveStartTime *int64                         `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	HostGroups         []*CreateRuleRequestHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
+	Hosts              []*CreateRuleRequestHosts      `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	InstanceId         *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId           *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleName           *string                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	UserGroupIds       []*string                      `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserIds            []*string                      `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequest) SetComment(v string) *CreateRuleRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetDatabases(v []*CreateRuleRequestDatabases) *CreateRuleRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *CreateRuleRequest) SetEffectiveEndTime(v int64) *CreateRuleRequest {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetEffectiveStartTime(v int64) *CreateRuleRequest {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetHostGroups(v []*CreateRuleRequestHostGroups) *CreateRuleRequest {
+	s.HostGroups = v
+	return s
+}
+
+func (s *CreateRuleRequest) SetHosts(v []*CreateRuleRequestHosts) *CreateRuleRequest {
+	s.Hosts = v
+	return s
+}
+
+func (s *CreateRuleRequest) SetInstanceId(v string) *CreateRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetRegionId(v string) *CreateRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetRuleName(v string) *CreateRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetUserGroupIds(v []*string) *CreateRuleRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *CreateRuleRequest) SetUserIds(v []*string) *CreateRuleRequest {
+	s.UserIds = v
+	return s
+}
+
+type CreateRuleRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s CreateRuleRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestDatabases) SetDatabaseAccountIds(v []*string) *CreateRuleRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *CreateRuleRequestDatabases) SetDatabaseId(v string) *CreateRuleRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type CreateRuleRequestHostGroups struct {
+	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
+	HostGroupId      *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+}
+
+func (s CreateRuleRequestHostGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestHostGroups) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestHostGroups) SetHostAccountNames(v []*string) *CreateRuleRequestHostGroups {
+	s.HostAccountNames = v
+	return s
+}
+
+func (s *CreateRuleRequestHostGroups) SetHostGroupId(v string) *CreateRuleRequestHostGroups {
+	s.HostGroupId = &v
+	return s
+}
+
+type CreateRuleRequestHosts struct {
+	HostAccountIds []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
+	HostId         *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s CreateRuleRequestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestHosts) SetHostAccountIds(v []*string) *CreateRuleRequestHosts {
+	s.HostAccountIds = v
+	return s
+}
+
+func (s *CreateRuleRequestHosts) SetHostId(v string) *CreateRuleRequestHosts {
+	s.HostId = &v
+	return s
+}
+
+type CreateRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleResponseBody) SetRequestId(v string) *CreateRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRuleResponseBody) SetRuleId(v string) *CreateRuleResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+type CreateRuleResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleResponse) SetHeaders(v map[string]*string) *CreateRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRuleResponse) SetStatusCode(v int32) *CreateRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2556,6 +3727,156 @@ func (s *CreateUserPublicKeyResponse) SetBody(v *CreateUserPublicKeyResponseBody
 	return s
 }
 
+type DeleteDatabaseRequest struct {
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseRequest) SetDatabaseId(v string) *DeleteDatabaseRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *DeleteDatabaseRequest) SetInstanceId(v string) *DeleteDatabaseRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDatabaseRequest) SetRegionId(v string) *DeleteDatabaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDatabaseResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseResponseBody) SetRequestId(v string) *DeleteDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatabaseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseResponse) SetHeaders(v map[string]*string) *DeleteDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatabaseResponse) SetStatusCode(v int32) *DeleteDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatabaseAccountRequest struct {
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDatabaseAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseAccountRequest) SetDatabaseAccountId(v string) *DeleteDatabaseAccountRequest {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *DeleteDatabaseAccountRequest) SetInstanceId(v string) *DeleteDatabaseAccountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDatabaseAccountRequest) SetRegionId(v string) *DeleteDatabaseAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDatabaseAccountResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatabaseAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseAccountResponseBody) SetRequestId(v string) *DeleteDatabaseAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatabaseAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatabaseAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatabaseAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatabaseAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatabaseAccountResponse) SetHeaders(v map[string]*string) *DeleteDatabaseAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatabaseAccountResponse) SetStatusCode(v int32) *DeleteDatabaseAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatabaseAccountResponse) SetBody(v *DeleteDatabaseAccountResponseBody) *DeleteDatabaseAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHostRequest struct {
 	// The ID of the host that you want to delete.
 	//
@@ -2892,6 +4213,231 @@ func (s *DeleteHostShareKeyResponse) SetBody(v *DeleteHostShareKeyResponseBody) 
 	return s
 }
 
+type DeleteNetworkDomainRequest struct {
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkDomainRequest) SetInstanceId(v string) *DeleteNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteNetworkDomainRequest) SetNetworkDomainId(v string) *DeleteNetworkDomainRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *DeleteNetworkDomainRequest) SetRegionId(v string) *DeleteNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteNetworkDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkDomainResponseBody) SetRequestId(v string) *DeleteNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkDomainResponse) SetHeaders(v map[string]*string) *DeleteNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkDomainResponse) SetStatusCode(v int32) *DeleteNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkDomainResponse) SetBody(v *DeleteNetworkDomainResponseBody) *DeleteNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePolicyRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeletePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyRequest) SetInstanceId(v string) *DeletePolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeletePolicyRequest) SetPolicyId(v string) *DeletePolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DeletePolicyRequest) SetRegionId(v string) *DeletePolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeletePolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponse) SetHeaders(v map[string]*string) *DeletePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetStatusCode(v int32) *DeletePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRuleRequest) SetInstanceId(v string) *DeleteRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteRuleRequest) SetRegionId(v string) *DeleteRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteRuleRequest) SetRuleId(v string) *DeleteRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRuleResponseBody) SetRequestId(v string) *DeleteRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRuleResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRuleResponse) SetHeaders(v map[string]*string) *DeleteRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRuleResponse) SetStatusCode(v int32) *DeleteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserRequest struct {
 	// The ID of the bastion host to which the user to be deleted belongs.
 	//
@@ -3061,9 +4607,9 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 }
 
 type DeleteUserPublicKeyRequest struct {
-	// The region ID of the bastion host on which you want to delete the public key from the user.
+	// The ID of the Bastionhost instance to which the users to be queried belong.
 	//
-	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the public key.
 	PublicKeyId *string `json:"PublicKeyId,omitempty" xml:"PublicKeyId,omitempty"`
@@ -3730,9 +5276,13 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the region.
+	// The natural language in which responses are returned. Valid values:
+	//
+	// *   **zh-CN**: Chinese. This is the default value.
+	// *   **en-US**: English.
+	// *   **ja**: Japanese.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of request.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3755,9 +5305,9 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// DescribeRegions
+	// The information about regions where you can create bastion hosts.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Queries available regions where you can create bastion hosts.
+	// The ID of request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3780,9 +5330,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -3833,6 +5386,366 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserRequest struct {
+	Databases  []*DetachDatabaseAccountsFromUserRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	InstanceId *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserId     *string                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserRequest) SetDatabases(v []*DetachDatabaseAccountsFromUserRequestDatabases) *DetachDatabaseAccountsFromUserRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserRequest) SetInstanceId(v string) *DetachDatabaseAccountsFromUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserRequest) SetRegionId(v string) *DetachDatabaseAccountsFromUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserRequest) SetUserId(v string) *DetachDatabaseAccountsFromUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserRequestDatabases) SetDatabaseAccountIds(v []*string) *DetachDatabaseAccountsFromUserRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserRequestDatabases) SetDatabaseId(v string) *DetachDatabaseAccountsFromUserRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserResponseBody struct {
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*DetachDatabaseAccountsFromUserResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBody) SetRequestId(v string) *DetachDatabaseAccountsFromUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBody) SetResults(v []*DetachDatabaseAccountsFromUserResponseBodyResults) *DetachDatabaseAccountsFromUserResponseBody {
+	s.Results = v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserResponseBodyResults struct {
+	Code             *string                                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccounts []*DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	DatabaseId       *string                                                              `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Message          *string                                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserId           *string                                                              `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResults) SetCode(v string) *DetachDatabaseAccountsFromUserResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResults) SetDatabaseAccounts(v []*DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) *DetachDatabaseAccountsFromUserResponseBodyResults {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResults) SetDatabaseId(v string) *DetachDatabaseAccountsFromUserResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResults) SetMessage(v string) *DetachDatabaseAccountsFromUserResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResults) SetUserId(v string) *DetachDatabaseAccountsFromUserResponseBodyResults {
+	s.UserId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts struct {
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) SetCode(v string) *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) SetDatabaseAccountId(v string) *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts) SetMessage(v string) *DetachDatabaseAccountsFromUserResponseBodyResultsDatabaseAccounts {
+	s.Message = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachDatabaseAccountsFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserResponse) SetHeaders(v map[string]*string) *DetachDatabaseAccountsFromUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponse) SetStatusCode(v int32) *DetachDatabaseAccountsFromUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserResponse) SetBody(v *DetachDatabaseAccountsFromUserResponseBody) *DetachDatabaseAccountsFromUserResponse {
+	s.Body = v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupRequest struct {
+	Databases   []*DetachDatabaseAccountsFromUserGroupRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	InstanceId  *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupId *string                                                `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequest) SetDatabases(v []*DetachDatabaseAccountsFromUserGroupRequestDatabases) *DetachDatabaseAccountsFromUserGroupRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequest) SetInstanceId(v string) *DetachDatabaseAccountsFromUserGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequest) SetRegionId(v string) *DetachDatabaseAccountsFromUserGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequest) SetUserGroupId(v string) *DetachDatabaseAccountsFromUserGroupRequest {
+	s.UserGroupId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequestDatabases) SetDatabaseAccountIds(v []*string) *DetachDatabaseAccountsFromUserGroupRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupRequestDatabases) SetDatabaseId(v string) *DetachDatabaseAccountsFromUserGroupRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupResponseBody struct {
+	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*DetachDatabaseAccountsFromUserGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBody) SetRequestId(v string) *DetachDatabaseAccountsFromUserGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBody) SetResults(v []*DetachDatabaseAccountsFromUserGroupResponseBodyResults) *DetachDatabaseAccountsFromUserGroupResponseBody {
+	s.Results = v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupResponseBodyResults struct {
+	Code             *string                                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccounts []*DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	DatabaseId       *string                                                                   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Message          *string                                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	UserGroupId      *string                                                                   `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResults) SetCode(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResults) SetDatabaseAccounts(v []*DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) *DetachDatabaseAccountsFromUserGroupResponseBodyResults {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResults) SetDatabaseId(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResults) SetMessage(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResults) SetUserGroupId(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResults {
+	s.UserGroupId = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts struct {
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) SetCode(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) SetDatabaseAccountId(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts) SetMessage(v string) *DetachDatabaseAccountsFromUserGroupResponseBodyResultsDatabaseAccounts {
+	s.Message = &v
+	return s
+}
+
+type DetachDatabaseAccountsFromUserGroupResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachDatabaseAccountsFromUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDatabaseAccountsFromUserGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponse) SetHeaders(v map[string]*string) *DetachDatabaseAccountsFromUserGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponse) SetStatusCode(v int32) *DetachDatabaseAccountsFromUserGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachDatabaseAccountsFromUserGroupResponse) SetBody(v *DetachDatabaseAccountsFromUserGroupResponseBody) *DetachDatabaseAccountsFromUserGroupResponse {
 	s.Body = v
 	return s
 }
@@ -4816,6 +6729,81 @@ func (s *DisableInstancePublicAccessResponse) SetBody(v *DisableInstancePublicAc
 	return s
 }
 
+type DisableRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DisableRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRuleRequest) SetInstanceId(v string) *DisableRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableRuleRequest) SetRegionId(v string) *DisableRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DisableRuleRequest) SetRuleId(v string) *DisableRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DisableRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRuleResponseBody) SetRequestId(v string) *DisableRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableRuleResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableRuleResponse) SetHeaders(v map[string]*string) *DisableRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableRuleResponse) SetStatusCode(v int32) *DisableRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableRuleResponse) SetBody(v *DisableRuleResponseBody) *DisableRuleResponse {
+	s.Body = v
+	return s
+}
+
 type EnableInstancePublicAccessRequest struct {
 	// The ID of the bastion host.
 	//
@@ -4893,6 +6881,537 @@ func (s *EnableInstancePublicAccessResponse) SetStatusCode(v int32) *EnableInsta
 }
 
 func (s *EnableInstancePublicAccessResponse) SetBody(v *EnableInstancePublicAccessResponseBody) *EnableInstancePublicAccessResponse {
+	s.Body = v
+	return s
+}
+
+type EnableRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s EnableRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRuleRequest) SetInstanceId(v string) *EnableRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableRuleRequest) SetRegionId(v string) *EnableRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnableRuleRequest) SetRuleId(v string) *EnableRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type EnableRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRuleResponseBody) SetRequestId(v string) *EnableRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableRuleResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableRuleResponse) SetHeaders(v map[string]*string) *EnableRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableRuleResponse) SetStatusCode(v int32) *EnableRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableRuleResponse) SetBody(v *EnableRuleResponseBody) *EnableRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateAssetOperationTokenRequest struct {
+	AssetAccountId           *string `json:"AssetAccountId,omitempty" xml:"AssetAccountId,omitempty"`
+	AssetAccountName         *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
+	AssetAccountPassword     *string `json:"AssetAccountPassword,omitempty" xml:"AssetAccountPassword,omitempty"`
+	AssetAccountProtocolName *string `json:"AssetAccountProtocolName,omitempty" xml:"AssetAccountProtocolName,omitempty"`
+	AssetId                  *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	AssetType                *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GenerateAssetOperationTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAssetOperationTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetAccountId(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetAccountId = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetAccountName(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetAccountName = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetAccountPassword(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetAccountPassword = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetAccountProtocolName(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetAccountProtocolName = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetId(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetId = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetAssetType(v string) *GenerateAssetOperationTokenRequest {
+	s.AssetType = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetInstanceId(v string) *GenerateAssetOperationTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenRequest) SetRegionId(v string) *GenerateAssetOperationTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GenerateAssetOperationTokenResponseBody struct {
+	AssetOperationToken *GenerateAssetOperationTokenResponseBodyAssetOperationToken `json:"AssetOperationToken,omitempty" xml:"AssetOperationToken,omitempty" type:"Struct"`
+	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateAssetOperationTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAssetOperationTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAssetOperationTokenResponseBody) SetAssetOperationToken(v *GenerateAssetOperationTokenResponseBodyAssetOperationToken) *GenerateAssetOperationTokenResponseBody {
+	s.AssetOperationToken = v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBody) SetRequestId(v string) *GenerateAssetOperationTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateAssetOperationTokenResponseBodyAssetOperationToken struct {
+	CountLeft     *int64  `json:"CountLeft,omitempty" xml:"CountLeft,omitempty"`
+	ExpireTime    *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HasCountLimit *bool   `json:"HasCountLimit,omitempty" xml:"HasCountLimit,omitempty"`
+	MaxRenewCount *int64  `json:"MaxRenewCount,omitempty" xml:"MaxRenewCount,omitempty"`
+	RenewCount    *int64  `json:"RenewCount,omitempty" xml:"RenewCount,omitempty"`
+	Token         *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	TokenId       *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+}
+
+func (s GenerateAssetOperationTokenResponseBodyAssetOperationToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAssetOperationTokenResponseBodyAssetOperationToken) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetCountLeft(v int64) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.CountLeft = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetExpireTime(v int64) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetHasCountLimit(v bool) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.HasCountLimit = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetMaxRenewCount(v int64) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.MaxRenewCount = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetRenewCount(v int64) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.RenewCount = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetToken(v string) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponseBodyAssetOperationToken) SetTokenId(v string) *GenerateAssetOperationTokenResponseBodyAssetOperationToken {
+	s.TokenId = &v
+	return s
+}
+
+type GenerateAssetOperationTokenResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAssetOperationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateAssetOperationTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAssetOperationTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAssetOperationTokenResponse) SetHeaders(v map[string]*string) *GenerateAssetOperationTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponse) SetStatusCode(v int32) *GenerateAssetOperationTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateAssetOperationTokenResponse) SetBody(v *GenerateAssetOperationTokenResponseBody) *GenerateAssetOperationTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabaseRequest struct {
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseRequest) SetDatabaseId(v string) *GetDatabaseRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetInstanceId(v string) *GetDatabaseRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetRegionId(v string) *GetDatabaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetDatabaseResponseBody struct {
+	Database  *GetDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBody) SetDatabase(v *GetDatabaseResponseBodyDatabase) *GetDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetRequestId(v string) *GetDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDatabaseResponseBodyDatabase struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int64  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+	SourceInstanceState    *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s GetDatabaseResponseBodyDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBodyDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetActiveAddressType(v string) *GetDatabaseResponseBodyDatabase {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetComment(v string) *GetDatabaseResponseBodyDatabase {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabaseId(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabaseName(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabasePort(v int64) *GetDatabaseResponseBodyDatabase {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabasePrivateAddress(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabasePublicAddress(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetDatabaseType(v string) *GetDatabaseResponseBodyDatabase {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetNetworkDomainId(v string) *GetDatabaseResponseBodyDatabase {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSource(v string) *GetDatabaseResponseBodyDatabase {
+	s.Source = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSourceInstanceId(v string) *GetDatabaseResponseBodyDatabase {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSourceInstanceRegionId(v string) *GetDatabaseResponseBodyDatabase {
+	s.SourceInstanceRegionId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetSourceInstanceState(v string) *GetDatabaseResponseBodyDatabase {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type GetDatabaseResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponse) SetHeaders(v map[string]*string) *GetDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseResponse) SetStatusCode(v int32) *GetDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabaseAccountRequest struct {
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetDatabaseAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseAccountRequest) SetDatabaseAccountId(v string) *GetDatabaseAccountRequest {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *GetDatabaseAccountRequest) SetInstanceId(v string) *GetDatabaseAccountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDatabaseAccountRequest) SetRegionId(v string) *GetDatabaseAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetDatabaseAccountResponseBody struct {
+	DatabaseAccount *GetDatabaseAccountResponseBodyDatabaseAccount `json:"DatabaseAccount,omitempty" xml:"DatabaseAccount,omitempty" type:"Struct"`
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDatabaseAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseAccountResponseBody) SetDatabaseAccount(v *GetDatabaseAccountResponseBodyDatabaseAccount) *GetDatabaseAccountResponseBody {
+	s.DatabaseAccount = v
+	return s
+}
+
+func (s *GetDatabaseAccountResponseBody) SetRequestId(v string) *GetDatabaseAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDatabaseAccountResponseBodyDatabaseAccount struct {
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseSchema      *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
+	HasPassword         *bool   `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	LoginAttribute      *string `json:"LoginAttribute,omitempty" xml:"LoginAttribute,omitempty"`
+}
+
+func (s GetDatabaseAccountResponseBodyDatabaseAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseAccountResponseBodyDatabaseAccount) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseAccountResponseBodyDatabaseAccount) SetDatabaseAccountId(v string) *GetDatabaseAccountResponseBodyDatabaseAccount {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *GetDatabaseAccountResponseBodyDatabaseAccount) SetDatabaseAccountName(v string) *GetDatabaseAccountResponseBodyDatabaseAccount {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *GetDatabaseAccountResponseBodyDatabaseAccount) SetDatabaseSchema(v string) *GetDatabaseAccountResponseBodyDatabaseAccount {
+	s.DatabaseSchema = &v
+	return s
+}
+
+func (s *GetDatabaseAccountResponseBodyDatabaseAccount) SetHasPassword(v bool) *GetDatabaseAccountResponseBodyDatabaseAccount {
+	s.HasPassword = &v
+	return s
+}
+
+func (s *GetDatabaseAccountResponseBodyDatabaseAccount) SetLoginAttribute(v string) *GetDatabaseAccountResponseBodyDatabaseAccount {
+	s.LoginAttribute = &v
+	return s
+}
+
+type GetDatabaseAccountResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseAccountResponse) SetHeaders(v map[string]*string) *GetDatabaseAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseAccountResponse) SetStatusCode(v int32) *GetDatabaseAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseAccountResponse) SetBody(v *GetDatabaseAccountResponseBody) *GetDatabaseAccountResponse {
 	s.Body = v
 	return s
 }
@@ -5300,15 +7819,17 @@ func (s *GetHostAccountResponse) SetBody(v *GetHostAccountResponseBody) *GetHost
 }
 
 type GetHostGroupRequest struct {
-	// The region ID of the Bastionhost instance where you want to query the host group.
+	// The ID of the host group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// MyHostGroup
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host group.
+	// The ID of the bastion host in which you want to query the details of the host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host in which you want to query the details of the host group.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5336,11 +7857,9 @@ func (s *GetHostGroupRequest) SetRegionId(v string) *GetHostGroupRequest {
 }
 
 type GetHostGroupResponseBody struct {
-	// The ID of the host group that you want to query.
-	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// The details of the host group returned.
 	HostGroup *GetHostGroupResponseBodyHostGroup `json:"HostGroup,omitempty" xml:"HostGroup,omitempty" type:"Struct"`
-	// my host group.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5363,11 +7882,11 @@ func (s *GetHostGroupResponseBody) SetRequestId(v string) *GetHostGroupResponseB
 }
 
 type GetHostGroupResponseBodyHostGroup struct {
-	// The details of the host group returned.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The description of the host group.
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the host group.
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// The name of the host group.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -5546,12 +8065,11 @@ func (s *GetHostShareKeyResponse) SetBody(v *GetHostShareKeyResponseBody) *GetHo
 }
 
 type GetInstanceADAuthServerRequest struct {
-	// The field that is used to indicate the email address of a user on the AD server.
+	// The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether passwords are required. Valid values:
+	// The region ID of the bastion host.
 	//
-	// *   **true**: required
-	// *   **false**: not required
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5574,12 +8092,9 @@ func (s *GetInstanceADAuthServerRequest) SetRegionId(v string) *GetInstanceADAut
 }
 
 type GetInstanceADAuthServerResponseBody struct {
-	// The operation that you want to perform. Set the value to **GetInstanceADAuthServer**.
+	// The settings of AD authentication.
 	AD *GetInstanceADAuthServerResponseBodyAD `json:"AD,omitempty" xml:"AD,omitempty" type:"Struct"`
-	// Indicates whether SSL is supported. Valid values:
-	//
-	// *   **true**: supported
-	// *   **false**: not supported
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5602,29 +8117,35 @@ func (s *GetInstanceADAuthServerResponseBody) SetRequestId(v string) *GetInstanc
 }
 
 type GetInstanceADAuthServerResponseBodyAD struct {
-	// The port that is used to access the AD server.
+	// The distinguished name (DN) of the AD server account.
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The ID of the bastion host to query.
-	//
-	// You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The settings of AD authentication.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The address of the secondary AD server.
-	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
-	// The field that is used to indicate the mobile phone number of a user on the AD server.
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The address of the AD server.
-	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// The Base DN of the AD server.
+	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
+	// The domain on the AD server.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The field that is used to indicate the email address of a user on the AD server.
+	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
+	// The condition that is used to filter users.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// Indicates whether passwords are required. Valid values:
+	//
+	// *   **true**:
+	// *   **false**
+	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	// Indicates whether SSL is supported. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	IsSSL *bool `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// The field that is used to indicate the name of a user on the AD server.
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The field that is used to indicate the name of a user on the AD server.
 	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// Queries the settings of Active Directory (AD) authentication on a bastion host.
-	Port          *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The port that is used to access the AD server.
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The address of the LDAP server.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The address of the secondary LDAP server.
 	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
 }
 
@@ -5905,9 +8426,13 @@ func (s *GetInstanceLDAPAuthServerResponse) SetBody(v *GetInstanceLDAPAuthServer
 }
 
 type GetInstanceTwoFactorRequest struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the bastion host.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform. Set the value to **GetInstanceTwoFactor**.
+	// The region ID of the bastion host.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5932,9 +8457,7 @@ func (s *GetInstanceTwoFactorRequest) SetRegionId(v string) *GetInstanceTwoFacto
 type GetInstanceTwoFactorResponseBody struct {
 	// The settings of two-factor authentication.
 	Config *GetInstanceTwoFactorResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
-	//
-	// >  If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5957,10 +8480,17 @@ func (s *GetInstanceTwoFactorResponseBody) SetRequestId(v string) *GetInstanceTw
 }
 
 type GetInstanceTwoFactorResponseBodyConfig struct {
-	// Queries the settings of two-factor authentication on a bastion host.
-	EnableTwoFactor   *bool     `json:"EnableTwoFactor,omitempty" xml:"EnableTwoFactor,omitempty"`
-	SkipTwoFactorTime *int64    `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
-	TwoFactorMethods  []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
+	// Indicates whether two-factor authentication is enabled. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	EnableTwoFactor *bool `json:"EnableTwoFactor,omitempty" xml:"EnableTwoFactor,omitempty"`
+	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
+	//
+	// > If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
+	SkipTwoFactorTime *int64 `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
+	// The two-factor authentication methods.
+	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceTwoFactorResponseBodyConfig) String() string {
@@ -6011,6 +8541,1213 @@ func (s *GetInstanceTwoFactorResponse) SetStatusCode(v int32) *GetInstanceTwoFac
 }
 
 func (s *GetInstanceTwoFactorResponse) SetBody(v *GetInstanceTwoFactorResponseBody) *GetInstanceTwoFactorResponse {
+	s.Body = v
+	return s
+}
+
+type GetNetworkDomainRequest struct {
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkDomainRequest) SetInstanceId(v string) *GetNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetNetworkDomainRequest) SetNetworkDomainId(v string) *GetNetworkDomainRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *GetNetworkDomainRequest) SetRegionId(v string) *GetNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetNetworkDomainResponseBody struct {
+	NetworkDomain *GetNetworkDomainResponseBodyNetworkDomain `json:"NetworkDomain,omitempty" xml:"NetworkDomain,omitempty" type:"Struct"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkDomainResponseBody) SetNetworkDomain(v *GetNetworkDomainResponseBodyNetworkDomain) *GetNetworkDomainResponseBody {
+	s.NetworkDomain = v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBody) SetRequestId(v string) *GetNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetNetworkDomainResponseBodyNetworkDomain struct {
+	Comment           *string                                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Default           *bool                                               `json:"Default,omitempty" xml:"Default,omitempty"`
+	NetworkDomainId   *string                                             `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	NetworkDomainName *string                                             `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
+	NetworkDomainType *string                                             `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	Proxies           []*GetNetworkDomainResponseBodyNetworkDomainProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
+}
+
+func (s GetNetworkDomainResponseBodyNetworkDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkDomainResponseBodyNetworkDomain) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetComment(v string) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetDefault(v bool) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.Default = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetNetworkDomainId(v string) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetNetworkDomainName(v string) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.NetworkDomainName = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetNetworkDomainType(v string) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.NetworkDomainType = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomain) SetProxies(v []*GetNetworkDomainResponseBodyNetworkDomainProxies) *GetNetworkDomainResponseBodyNetworkDomain {
+	s.Proxies = v
+	return s
+}
+
+type GetNetworkDomainResponseBodyNetworkDomainProxies struct {
+	Address             *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	HasPassword         *bool   `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	NodeType            *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Port                *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyState          *string `json:"ProxyState,omitempty" xml:"ProxyState,omitempty"`
+	ProxyStateErrorCode *string `json:"ProxyStateErrorCode,omitempty" xml:"ProxyStateErrorCode,omitempty"`
+	ProxyType           *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	User                *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s GetNetworkDomainResponseBodyNetworkDomainProxies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkDomainResponseBodyNetworkDomainProxies) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetAddress(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.Address = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetHasPassword(v bool) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.HasPassword = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetNodeType(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetPort(v int32) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.Port = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetProxyState(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.ProxyState = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetProxyStateErrorCode(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.ProxyStateErrorCode = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetProxyType(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponseBodyNetworkDomainProxies) SetUser(v string) *GetNetworkDomainResponseBodyNetworkDomainProxies {
+	s.User = &v
+	return s
+}
+
+type GetNetworkDomainResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkDomainResponse) SetHeaders(v map[string]*string) *GetNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNetworkDomainResponse) SetStatusCode(v int32) *GetNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNetworkDomainResponse) SetBody(v *GetNetworkDomainResponseBody) *GetNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
+type GetPolicyRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyRequest) SetInstanceId(v string) *GetPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPolicyRequest) SetPolicyId(v string) *GetPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetPolicyRequest) SetRegionId(v string) *GetPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetPolicyResponseBody struct {
+	Policy    *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBody) SetPolicy(v *GetPolicyResponseBodyPolicy) *GetPolicyResponseBody {
+	s.Policy = v
+	return s
+}
+
+func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPolicyResponseBodyPolicy struct {
+	AccessTimeRangeConfig *GetPolicyResponseBodyPolicyAccessTimeRangeConfig `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty" type:"Struct"`
+	ApprovalConfig        *GetPolicyResponseBodyPolicyApprovalConfig        `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
+	CommandConfig         *GetPolicyResponseBodyPolicyCommandConfig         `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty" type:"Struct"`
+	Comment               *string                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IPAclConfig           *GetPolicyResponseBodyPolicyIPAclConfig           `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty" type:"Struct"`
+	PolicyId              *string                                           `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName            *string                                           `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Priority              *int64                                            `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProtocolConfig        *GetPolicyResponseBodyPolicyProtocolConfig        `json:"ProtocolConfig,omitempty" xml:"ProtocolConfig,omitempty" type:"Struct"`
+}
+
+func (s GetPolicyResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetAccessTimeRangeConfig(v *GetPolicyResponseBodyPolicyAccessTimeRangeConfig) *GetPolicyResponseBodyPolicy {
+	s.AccessTimeRangeConfig = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetApprovalConfig(v *GetPolicyResponseBodyPolicyApprovalConfig) *GetPolicyResponseBodyPolicy {
+	s.ApprovalConfig = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetCommandConfig(v *GetPolicyResponseBodyPolicyCommandConfig) *GetPolicyResponseBodyPolicy {
+	s.CommandConfig = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetComment(v string) *GetPolicyResponseBodyPolicy {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetIPAclConfig(v *GetPolicyResponseBodyPolicyIPAclConfig) *GetPolicyResponseBodyPolicy {
+	s.IPAclConfig = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPolicyId(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPolicyName(v string) *GetPolicyResponseBodyPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetPriority(v int64) *GetPolicyResponseBodyPolicy {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicy) SetProtocolConfig(v *GetPolicyResponseBodyPolicyProtocolConfig) *GetPolicyResponseBodyPolicy {
+	s.ProtocolConfig = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyAccessTimeRangeConfig struct {
+	EffectiveTime []*GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyResponseBodyPolicyAccessTimeRangeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyAccessTimeRangeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfig) SetEffectiveTime(v []*GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) *GetPolicyResponseBodyPolicyAccessTimeRangeConfig {
+	s.EffectiveTime = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime struct {
+	Days  []*string `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
+	Hours []*string `json:"Hours,omitempty" xml:"Hours,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) SetDays(v []*string) *GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime {
+	s.Days = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime) SetHours(v []*string) *GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime {
+	s.Hours = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyApprovalConfig struct {
+	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
+}
+
+func (s GetPolicyResponseBodyPolicyApprovalConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyApprovalConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyApprovalConfig) SetSwitchStatus(v string) *GetPolicyResponseBodyPolicyApprovalConfig {
+	s.SwitchStatus = &v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyCommandConfig struct {
+	Approval *GetPolicyResponseBodyPolicyCommandConfigApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Struct"`
+	Deny     *GetPolicyResponseBodyPolicyCommandConfigDeny     `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Struct"`
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyCommandConfig) SetApproval(v *GetPolicyResponseBodyPolicyCommandConfigApproval) *GetPolicyResponseBodyPolicyCommandConfig {
+	s.Approval = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyCommandConfig) SetDeny(v *GetPolicyResponseBodyPolicyCommandConfigDeny) *GetPolicyResponseBodyPolicyCommandConfig {
+	s.Deny = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyCommandConfigApproval struct {
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfigApproval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfigApproval) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyCommandConfigApproval) SetCommands(v []*string) *GetPolicyResponseBodyPolicyCommandConfigApproval {
+	s.Commands = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyCommandConfigDeny struct {
+	AclType  *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfigDeny) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyCommandConfigDeny) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyCommandConfigDeny) SetAclType(v string) *GetPolicyResponseBodyPolicyCommandConfigDeny {
+	s.AclType = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyCommandConfigDeny) SetCommands(v []*string) *GetPolicyResponseBodyPolicyCommandConfigDeny {
+	s.Commands = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyIPAclConfig struct {
+	AclType *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	IPs     []*string `json:"IPs,omitempty" xml:"IPs,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyResponseBodyPolicyIPAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyIPAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyIPAclConfig) SetAclType(v string) *GetPolicyResponseBodyPolicyIPAclConfig {
+	s.AclType = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyIPAclConfig) SetIPs(v []*string) *GetPolicyResponseBodyPolicyIPAclConfig {
+	s.IPs = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyProtocolConfig struct {
+	RDP *GetPolicyResponseBodyPolicyProtocolConfigRDP `json:"RDP,omitempty" xml:"RDP,omitempty" type:"Struct"`
+	SSH *GetPolicyResponseBodyPolicyProtocolConfigSSH `json:"SSH,omitempty" xml:"SSH,omitempty" type:"Struct"`
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfig) SetRDP(v *GetPolicyResponseBodyPolicyProtocolConfigRDP) *GetPolicyResponseBodyPolicyProtocolConfig {
+	s.RDP = v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfig) SetSSH(v *GetPolicyResponseBodyPolicyProtocolConfigSSH) *GetPolicyResponseBodyPolicyProtocolConfig {
+	s.SSH = v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyProtocolConfigRDP struct {
+	ClipboardDownload *string `json:"ClipboardDownload,omitempty" xml:"ClipboardDownload,omitempty"`
+	ClipboardUpload   *string `json:"ClipboardUpload,omitempty" xml:"ClipboardUpload,omitempty"`
+	DiskRedirection   *string `json:"DiskRedirection,omitempty" xml:"DiskRedirection,omitempty"`
+	RecordKeyboard    *string `json:"RecordKeyboard,omitempty" xml:"RecordKeyboard,omitempty"`
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfigRDP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfigRDP) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetClipboardDownload(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.ClipboardDownload = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetClipboardUpload(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.ClipboardUpload = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetDiskRedirection(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.DiskRedirection = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetRecordKeyboard(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.RecordKeyboard = &v
+	return s
+}
+
+type GetPolicyResponseBodyPolicyProtocolConfigSSH struct {
+	ExecCommand      *string `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty"`
+	SFTPChannel      *string `json:"SFTPChannel,omitempty" xml:"SFTPChannel,omitempty"`
+	SFTPDownloadFile *string `json:"SFTPDownloadFile,omitempty" xml:"SFTPDownloadFile,omitempty"`
+	SFTPMkdir        *string `json:"SFTPMkdir,omitempty" xml:"SFTPMkdir,omitempty"`
+	SFTPRemoveFile   *string `json:"SFTPRemoveFile,omitempty" xml:"SFTPRemoveFile,omitempty"`
+	SFTPRenameFile   *string `json:"SFTPRenameFile,omitempty" xml:"SFTPRenameFile,omitempty"`
+	SFTPRmdir        *string `json:"SFTPRmdir,omitempty" xml:"SFTPRmdir,omitempty"`
+	SFTPUploadFile   *string `json:"SFTPUploadFile,omitempty" xml:"SFTPUploadFile,omitempty"`
+	SSHChannel       *string `json:"SSHChannel,omitempty" xml:"SSHChannel,omitempty"`
+	X11Forwarding    *string `json:"X11Forwarding,omitempty" xml:"X11Forwarding,omitempty"`
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfigSSH) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponseBodyPolicyProtocolConfigSSH) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetExecCommand(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.ExecCommand = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPChannel(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPChannel = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPDownloadFile(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPDownloadFile = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPMkdir(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPMkdir = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPRemoveFile(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPRemoveFile = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPRenameFile(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPRenameFile = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPRmdir(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPRmdir = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPUploadFile(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SFTPUploadFile = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSSHChannel(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.SSHChannel = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetX11Forwarding(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.X11Forwarding = &v
+	return s
+}
+
+type GetPolicyResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyResponse) SetStatusCode(v int32) *GetPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetPolicyAssetScopeRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetPolicyAssetScopeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeRequest) SetInstanceId(v string) *GetPolicyAssetScopeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeRequest) SetPolicyId(v string) *GetPolicyAssetScopeRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeRequest) SetRegionId(v string) *GetPolicyAssetScopeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponseBody struct {
+	AssetScope *GetPolicyAssetScopeResponseBodyAssetScope `json:"AssetScope,omitempty" xml:"AssetScope,omitempty" type:"Struct"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponseBody) SetAssetScope(v *GetPolicyAssetScopeResponseBodyAssetScope) *GetPolicyAssetScopeResponseBody {
+	s.AssetScope = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBody) SetRequestId(v string) *GetPolicyAssetScopeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponseBodyAssetScope struct {
+	Databases  []*GetPolicyAssetScopeResponseBodyAssetScopeDatabases  `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	HostGroups []*GetPolicyAssetScopeResponseBodyAssetScopeHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
+	Hosts      []*GetPolicyAssetScopeResponseBodyAssetScopeHosts      `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	ScopeType  *string                                                `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScope) SetDatabases(v []*GetPolicyAssetScopeResponseBodyAssetScopeDatabases) *GetPolicyAssetScopeResponseBodyAssetScope {
+	s.Databases = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScope) SetHostGroups(v []*GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) *GetPolicyAssetScopeResponseBodyAssetScope {
+	s.HostGroups = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScope) SetHosts(v []*GetPolicyAssetScopeResponseBodyAssetScopeHosts) *GetPolicyAssetScopeResponseBodyAssetScope {
+	s.Hosts = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScope) SetScopeType(v string) *GetPolicyAssetScopeResponseBodyAssetScope {
+	s.ScopeType = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponseBodyAssetScopeDatabases struct {
+	AccountScopeType   *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeDatabases) SetAccountScopeType(v string) *GetPolicyAssetScopeResponseBodyAssetScopeDatabases {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeDatabases) SetDatabaseAccountIds(v []*string) *GetPolicyAssetScopeResponseBodyAssetScopeDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeDatabases) SetDatabaseId(v string) *GetPolicyAssetScopeResponseBodyAssetScopeDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponseBodyAssetScopeHostGroups struct {
+	AccountNames     []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
+	AccountScopeType *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	HostGroupId      *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) SetAccountNames(v []*string) *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups {
+	s.AccountNames = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) SetAccountScopeType(v string) *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups) SetHostGroupId(v string) *GetPolicyAssetScopeResponseBodyAssetScopeHostGroups {
+	s.HostGroupId = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponseBodyAssetScopeHosts struct {
+	AccountScopeType *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	HostAccountIds   []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
+	HostId           *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponseBodyAssetScopeHosts) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHosts) SetAccountScopeType(v string) *GetPolicyAssetScopeResponseBodyAssetScopeHosts {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHosts) SetHostAccountIds(v []*string) *GetPolicyAssetScopeResponseBodyAssetScopeHosts {
+	s.HostAccountIds = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponseBodyAssetScopeHosts) SetHostId(v string) *GetPolicyAssetScopeResponseBodyAssetScopeHosts {
+	s.HostId = &v
+	return s
+}
+
+type GetPolicyAssetScopeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyAssetScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPolicyAssetScopeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyAssetScopeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyAssetScopeResponse) SetHeaders(v map[string]*string) *GetPolicyAssetScopeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponse) SetStatusCode(v int32) *GetPolicyAssetScopeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolicyAssetScopeResponse) SetBody(v *GetPolicyAssetScopeResponseBody) *GetPolicyAssetScopeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPolicyUserScopeRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetPolicyUserScopeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyUserScopeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyUserScopeRequest) SetInstanceId(v string) *GetPolicyUserScopeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPolicyUserScopeRequest) SetPolicyId(v string) *GetPolicyUserScopeRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetPolicyUserScopeRequest) SetRegionId(v string) *GetPolicyUserScopeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetPolicyUserScopeResponseBody struct {
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserScope *GetPolicyUserScopeResponseBodyUserScope `json:"UserScope,omitempty" xml:"UserScope,omitempty" type:"Struct"`
+}
+
+func (s GetPolicyUserScopeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyUserScopeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyUserScopeResponseBody) SetRequestId(v string) *GetPolicyUserScopeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPolicyUserScopeResponseBody) SetUserScope(v *GetPolicyUserScopeResponseBodyUserScope) *GetPolicyUserScopeResponseBody {
+	s.UserScope = v
+	return s
+}
+
+type GetPolicyUserScopeResponseBodyUserScope struct {
+	ScopeType    *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserIds      []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s GetPolicyUserScopeResponseBodyUserScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyUserScopeResponseBodyUserScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyUserScopeResponseBodyUserScope) SetScopeType(v string) *GetPolicyUserScopeResponseBodyUserScope {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *GetPolicyUserScopeResponseBodyUserScope) SetUserGroupIds(v []*string) *GetPolicyUserScopeResponseBodyUserScope {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *GetPolicyUserScopeResponseBodyUserScope) SetUserIds(v []*string) *GetPolicyUserScopeResponseBodyUserScope {
+	s.UserIds = v
+	return s
+}
+
+type GetPolicyUserScopeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyUserScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPolicyUserScopeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPolicyUserScopeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPolicyUserScopeResponse) SetHeaders(v map[string]*string) *GetPolicyUserScopeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPolicyUserScopeResponse) SetStatusCode(v int32) *GetPolicyUserScopeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPolicyUserScopeResponse) SetBody(v *GetPolicyUserScopeResponseBody) *GetPolicyUserScopeResponse {
+	s.Body = v
+	return s
+}
+
+type GetRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleRequest) SetInstanceId(v string) *GetRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRuleRequest) SetRegionId(v string) *GetRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetRuleRequest) SetRuleId(v string) *GetRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetRuleResponseBody struct {
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rule      *GetRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+}
+
+func (s GetRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBody) SetRequestId(v string) *GetRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRuleResponseBody) SetRule(v *GetRuleResponseBodyRule) *GetRuleResponseBody {
+	s.Rule = v
+	return s
+}
+
+type GetRuleResponseBodyRule struct {
+	Comment            *string                              `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Databases          []*GetRuleResponseBodyRuleDatabases  `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	EffectiveEndTime   *string                              `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	EffectiveStartTime *string                              `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	HostGroups         []*GetRuleResponseBodyRuleHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
+	Hosts              []*GetRuleResponseBodyRuleHosts      `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	RuleId             *string                              `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	UserGroups         []*GetRuleResponseBodyRuleUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
+	Users              []*GetRuleResponseBodyRuleUsers      `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s GetRuleResponseBodyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRule) SetComment(v string) *GetRuleResponseBodyRule {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetDatabases(v []*GetRuleResponseBodyRuleDatabases) *GetRuleResponseBodyRule {
+	s.Databases = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetEffectiveEndTime(v string) *GetRuleResponseBodyRule {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetEffectiveStartTime(v string) *GetRuleResponseBodyRule {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetHostGroups(v []*GetRuleResponseBodyRuleHostGroups) *GetRuleResponseBodyRule {
+	s.HostGroups = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetHosts(v []*GetRuleResponseBodyRuleHosts) *GetRuleResponseBodyRule {
+	s.Hosts = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetRuleId(v string) *GetRuleResponseBodyRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetRuleName(v string) *GetRuleResponseBodyRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetUserGroups(v []*GetRuleResponseBodyRuleUserGroups) *GetRuleResponseBodyRule {
+	s.UserGroups = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRule) SetUsers(v []*GetRuleResponseBodyRuleUsers) *GetRuleResponseBodyRule {
+	s.Users = v
+	return s
+}
+
+type GetRuleResponseBodyRuleDatabases struct {
+	DatabaseAccounts []*GetRuleResponseBodyRuleDatabasesDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	DatabaseId       *string                                             `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleDatabases) SetDatabaseAccounts(v []*GetRuleResponseBodyRuleDatabasesDatabaseAccounts) *GetRuleResponseBodyRuleDatabases {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleDatabases) SetDatabaseId(v string) *GetRuleResponseBodyRuleDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleDatabasesDatabaseAccounts struct {
+	DatabaseAccountId *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleDatabasesDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleDatabasesDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleDatabasesDatabaseAccounts) SetDatabaseAccountId(v string) *GetRuleResponseBodyRuleDatabasesDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleHostGroups struct {
+	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
+	HostGroupId      *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleHostGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleHostGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleHostGroups) SetHostAccountNames(v []*string) *GetRuleResponseBodyRuleHostGroups {
+	s.HostAccountNames = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleHostGroups) SetHostGroupId(v string) *GetRuleResponseBodyRuleHostGroups {
+	s.HostGroupId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleHosts struct {
+	HostAccounts []*GetRuleResponseBodyRuleHostsHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
+	HostId       *string                                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleHosts) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleHosts) SetHostAccounts(v []*GetRuleResponseBodyRuleHostsHostAccounts) *GetRuleResponseBodyRuleHosts {
+	s.HostAccounts = v
+	return s
+}
+
+func (s *GetRuleResponseBodyRuleHosts) SetHostId(v string) *GetRuleResponseBodyRuleHosts {
+	s.HostId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleHostsHostAccounts struct {
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleHostsHostAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleHostsHostAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleHostsHostAccounts) SetHostAccountId(v string) *GetRuleResponseBodyRuleHostsHostAccounts {
+	s.HostAccountId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleUserGroups struct {
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleUserGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleUserGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleUserGroups) SetUserGroupId(v string) *GetRuleResponseBodyRuleUserGroups {
+	s.UserGroupId = &v
+	return s
+}
+
+type GetRuleResponseBodyRuleUsers struct {
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetRuleResponseBodyRuleUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyRuleUsers) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyRuleUsers) SetUserId(v string) *GetRuleResponseBodyRuleUsers {
+	s.UserId = &v
+	return s
+}
+
+type GetRuleResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponse) SetHeaders(v map[string]*string) *GetRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRuleResponse) SetStatusCode(v int32) *GetRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRuleResponse) SetBody(v *GetRuleResponseBody) *GetRuleResponse {
 	s.Body = v
 	return s
 }
@@ -6268,13 +10005,17 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserGroupRequest struct {
-	// The ID of the request.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the user group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+	// The ID of the bastion host in which you want to query the details of the user group.
 	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host in which you want to query the details of the user group.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the user group.
+	//
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -6302,9 +10043,9 @@ func (s *GetUserGroupRequest) SetUserGroupId(v string) *GetUserGroupRequest {
 }
 
 type GetUserGroupResponseBody struct {
-	// Queries the details of a specified user group in a specified Bastionhost instance.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// GetUserGroup
+	// The details of the user group returned.
 	UserGroup *GetUserGroupResponseBodyUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
 }
 
@@ -6327,10 +10068,11 @@ func (s *GetUserGroupResponseBody) SetUserGroup(v *GetUserGroupResponseBodyUserG
 }
 
 type GetUserGroupResponseBodyUserGroup struct {
-	// GetUserGroup
-	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The description of the user group.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// WB662865
+	// The name of the user group.
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -6556,26 +10298,1080 @@ func (s *ListApproveCommandsResponse) SetBody(v *ListApproveCommandsResponseBody
 	return s
 }
 
+type ListDatabaseAccountsRequest struct {
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDatabaseAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsRequest) SetDatabaseAccountName(v string) *ListDatabaseAccountsRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetDatabaseId(v string) *ListDatabaseAccountsRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetInstanceId(v string) *ListDatabaseAccountsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetPageNumber(v string) *ListDatabaseAccountsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetPageSize(v string) *ListDatabaseAccountsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsRequest) SetRegionId(v string) *ListDatabaseAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDatabaseAccountsResponseBody struct {
+	DatabaseAccounts []*ListDatabaseAccountsResponseBodyDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabaseAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsResponseBody) SetDatabaseAccounts(v []*ListDatabaseAccountsResponseBodyDatabaseAccounts) *ListDatabaseAccountsResponseBody {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBody) SetRequestId(v string) *ListDatabaseAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBody) SetTotalCount(v int64) *ListDatabaseAccountsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabaseAccountsResponseBodyDatabaseAccounts struct {
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseSchema      *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
+	HasPassword         *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+}
+
+func (s ListDatabaseAccountsResponseBodyDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsResponseBodyDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseAccountId(v string) *ListDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseAccountName(v string) *ListDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseId(v string) *ListDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseSchema(v string) *ListDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseSchema = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponseBodyDatabaseAccounts) SetHasPassword(v string) *ListDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.HasPassword = &v
+	return s
+}
+
+type ListDatabaseAccountsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabaseAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabaseAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsResponse) SetHeaders(v map[string]*string) *ListDatabaseAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponse) SetStatusCode(v int32) *ListDatabaseAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsResponse) SetBody(v *ListDatabaseAccountsResponseBody) *ListDatabaseAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabaseAccountsForUserRequest struct {
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetDatabaseAccountName(v string) *ListDatabaseAccountsForUserRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetDatabaseId(v string) *ListDatabaseAccountsForUserRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetInstanceId(v string) *ListDatabaseAccountsForUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetPageNumber(v string) *ListDatabaseAccountsForUserRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetPageSize(v string) *ListDatabaseAccountsForUserRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetRegionId(v string) *ListDatabaseAccountsForUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserRequest) SetUserId(v string) *ListDatabaseAccountsForUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserResponseBody struct {
+	DatabaseAccounts []*ListDatabaseAccountsForUserResponseBodyDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserResponseBody) SetDatabaseAccounts(v []*ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) *ListDatabaseAccountsForUserResponseBody {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBody) SetRequestId(v string) *ListDatabaseAccountsForUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBody) SetTotalCount(v int64) *ListDatabaseAccountsForUserResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserResponseBodyDatabaseAccounts struct {
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	IsAuthorized        *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	ProtocolName        *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) SetDatabaseAccountId(v string) *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) SetDatabaseAccountName(v string) *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) SetDatabaseId(v string) *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) SetIsAuthorized(v bool) *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts {
+	s.IsAuthorized = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts) SetProtocolName(v string) *ListDatabaseAccountsForUserResponseBodyDatabaseAccounts {
+	s.ProtocolName = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabaseAccountsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserResponse) SetHeaders(v map[string]*string) *ListDatabaseAccountsForUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponse) SetStatusCode(v int32) *ListDatabaseAccountsForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserResponse) SetBody(v *ListDatabaseAccountsForUserResponseBody) *ListDatabaseAccountsForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabaseAccountsForUserGroupRequest struct {
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupId         *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetDatabaseAccountName(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetDatabaseId(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetInstanceId(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetPageNumber(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetPageSize(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetRegionId(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupRequest) SetUserGroupId(v string) *ListDatabaseAccountsForUserGroupRequest {
+	s.UserGroupId = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserGroupResponseBody struct {
+	DatabaseAccounts []*ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBody) SetDatabaseAccounts(v []*ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) *ListDatabaseAccountsForUserGroupResponseBody {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBody) SetRequestId(v string) *ListDatabaseAccountsForUserGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBody) SetTotalCount(v int64) *ListDatabaseAccountsForUserGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts struct {
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	IsAuthorized        *bool   `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	ProtocolName        *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) SetDatabaseAccountId(v string) *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) SetDatabaseAccountName(v string) *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) SetDatabaseId(v string) *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) SetIsAuthorized(v bool) *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts {
+	s.IsAuthorized = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts) SetProtocolName(v string) *ListDatabaseAccountsForUserGroupResponseBodyDatabaseAccounts {
+	s.ProtocolName = &v
+	return s
+}
+
+type ListDatabaseAccountsForUserGroupResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabaseAccountsForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabaseAccountsForUserGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabaseAccountsForUserGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponse) SetHeaders(v map[string]*string) *ListDatabaseAccountsForUserGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponse) SetStatusCode(v int32) *ListDatabaseAccountsForUserGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabaseAccountsForUserGroupResponse) SetBody(v *ListDatabaseAccountsForUserGroupResponseBody) *ListDatabaseAccountsForUserGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesRequest struct {
+	DatabaseType    *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	HostGroupId     *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesRequest) SetDatabaseType(v string) *ListDatabasesRequest {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetHostGroupId(v string) *ListDatabasesRequest {
+	s.HostGroupId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetInstanceId(v string) *ListDatabasesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetNetworkDomainId(v string) *ListDatabasesRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetPageNumber(v string) *ListDatabasesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetPageSize(v string) *ListDatabasesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetRegionId(v string) *ListDatabasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetSource(v string) *ListDatabasesRequest {
+	s.Source = &v
+	return s
+}
+
+type ListDatabasesResponseBody struct {
+	Databases  []*ListDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBody) SetDatabases(v []*ListDatabasesResponseBodyDatabases) *ListDatabasesResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetRequestId(v string) *ListDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetTotalCount(v int64) *ListDatabasesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabasesResponseBodyDatabases struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int32  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+	SourceInstanceState    *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s ListDatabasesResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetActiveAddressType(v string) *ListDatabasesResponseBodyDatabases {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetComment(v string) *ListDatabasesResponseBodyDatabases {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabaseId(v string) *ListDatabasesResponseBodyDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabaseName(v string) *ListDatabasesResponseBodyDatabases {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabasePort(v int32) *ListDatabasesResponseBodyDatabases {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabasePrivateAddress(v string) *ListDatabasesResponseBodyDatabases {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabasePublicAddress(v string) *ListDatabasesResponseBodyDatabases {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabaseType(v string) *ListDatabasesResponseBodyDatabases {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetNetworkDomainId(v string) *ListDatabasesResponseBodyDatabases {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetSource(v string) *ListDatabasesResponseBodyDatabases {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetSourceInstanceId(v string) *ListDatabasesResponseBodyDatabases {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetSourceInstanceRegionId(v string) *ListDatabasesResponseBodyDatabases {
+	s.SourceInstanceRegionId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetSourceInstanceState(v string) *ListDatabasesResponseBodyDatabases {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type ListDatabasesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponse) SetHeaders(v map[string]*string) *ListDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetStatusCode(v int32) *ListDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesForUserRequest struct {
+	DatabaseAddress *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabaseType    *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListDatabasesForUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserRequest) SetDatabaseAddress(v string) *ListDatabasesForUserRequest {
+	s.DatabaseAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetDatabaseName(v string) *ListDatabasesForUserRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetDatabaseType(v string) *ListDatabasesForUserRequest {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetInstanceId(v string) *ListDatabasesForUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetNetworkDomainId(v string) *ListDatabasesForUserRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetPageNumber(v string) *ListDatabasesForUserRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetPageSize(v string) *ListDatabasesForUserRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetRegionId(v string) *ListDatabasesForUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserRequest) SetUserId(v string) *ListDatabasesForUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListDatabasesForUserResponseBody struct {
+	Databases  []*ListDatabasesForUserResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabasesForUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserResponseBody) SetDatabases(v []*ListDatabasesForUserResponseBodyDatabases) *ListDatabasesForUserResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBody) SetRequestId(v string) *ListDatabasesForUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBody) SetTotalCount(v int64) *ListDatabasesForUserResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabasesForUserResponseBodyDatabases struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int64  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+}
+
+func (s ListDatabasesForUserResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetActiveAddressType(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetComment(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabaseId(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabaseName(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabasePort(v int64) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabasePrivateAddress(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabasePublicAddress(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetDatabaseType(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetNetworkDomainId(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetSource(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponseBodyDatabases) SetSourceInstanceId(v string) *ListDatabasesForUserResponseBodyDatabases {
+	s.SourceInstanceId = &v
+	return s
+}
+
+type ListDatabasesForUserResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesForUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserResponse) SetHeaders(v map[string]*string) *ListDatabasesForUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesForUserResponse) SetStatusCode(v int32) *ListDatabasesForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesForUserResponse) SetBody(v *ListDatabasesForUserResponseBody) *ListDatabasesForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesForUserGroupRequest struct {
+	DatabaseAddress *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabaseType    *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupId     *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+}
+
+func (s ListDatabasesForUserGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetDatabaseAddress(v string) *ListDatabasesForUserGroupRequest {
+	s.DatabaseAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetDatabaseName(v string) *ListDatabasesForUserGroupRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetDatabaseType(v string) *ListDatabasesForUserGroupRequest {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetInstanceId(v string) *ListDatabasesForUserGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetNetworkDomainId(v string) *ListDatabasesForUserGroupRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetPageNumber(v string) *ListDatabasesForUserGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetPageSize(v string) *ListDatabasesForUserGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetRegionId(v string) *ListDatabasesForUserGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupRequest) SetUserGroupId(v string) *ListDatabasesForUserGroupRequest {
+	s.UserGroupId = &v
+	return s
+}
+
+type ListDatabasesForUserGroupResponseBody struct {
+	Databases  []*ListDatabasesForUserGroupResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabasesForUserGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserGroupResponseBody) SetDatabases(v []*ListDatabasesForUserGroupResponseBodyDatabases) *ListDatabasesForUserGroupResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBody) SetRequestId(v string) *ListDatabasesForUserGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBody) SetTotalCount(v int64) *ListDatabasesForUserGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabasesForUserGroupResponseBodyDatabases struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseAccountCount   *int64  `json:"DatabaseAccountCount,omitempty" xml:"DatabaseAccountCount,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int64  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+}
+
+func (s ListDatabasesForUserGroupResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserGroupResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetActiveAddressType(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetComment(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabaseAccountCount(v int64) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabaseAccountCount = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabaseId(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabaseName(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabasePort(v int64) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabasePrivateAddress(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabasePublicAddress(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetDatabaseType(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetNetworkDomainId(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetSource(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponseBodyDatabases) SetSourceInstanceId(v string) *ListDatabasesForUserGroupResponseBodyDatabases {
+	s.SourceInstanceId = &v
+	return s
+}
+
+type ListDatabasesForUserGroupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesForUserGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesForUserGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesForUserGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesForUserGroupResponse) SetHeaders(v map[string]*string) *ListDatabasesForUserGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponse) SetStatusCode(v int32) *ListDatabasesForUserGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesForUserGroupResponse) SetBody(v *ListDatabasesForUserGroupResponseBody) *ListDatabasesForUserGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ListHostAccountsRequest struct {
-	// Indicates whether a password is configured for the host account.
-	//
-	// Valid values:
-	//
-	// *   true: A password is configured for the host account.
-	// *   false: No passwords are configured for the host account.
+	// The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The protocol used by the host whose accounts you want to query.
+	// The ID of the specified host whose accounts you want to query.
 	//
-	// Valid values:
-	//
-	// *   SSH
-	// *   RDP
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the shared key.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform.
+	// The ID of the bastion host in which you want to query accounts of the specified host.
 	//
-	// Set the value to **ListHostAccounts**.
+	// >  You can call the DescribeInstances operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -6583,11 +11379,16 @@ type ListHostAccountsRequest struct {
 	//
 	// >  We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
-	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The ID of the specified host whose accounts you want to query.
+	// The protocol used by the host whose accounts you want to query.
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	// Valid values:
+	//
+	// *   SSH
+	// *   RDP
+	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	// The region ID of the bastion host in which you want to query accounts of the specified host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6635,13 +11436,11 @@ func (s *ListHostAccountsRequest) SetRegionId(v string) *ListHostAccountsRequest
 }
 
 type ListHostAccountsResponseBody struct {
-	// The ID of the host account.
-	HostAccounts []*ListHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	// An array that consists of the queried host accounts.
+	HostAccounts []*ListHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the bastion host in which you want to query accounts of the specified host.
-	//
-	// >  You can call the DescribeInstances operation to query the ID of the bastion host.
+	// The total number of host accounts that are queried.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6669,23 +11468,31 @@ func (s *ListHostAccountsResponseBody) SetTotalCount(v int32) *ListHostAccountsR
 }
 
 type ListHostAccountsResponseBodyHostAccounts struct {
-	// The fingerprint of the private key for the host account.
+	// Indicates whether a password is configured for the host account.
+	//
+	// Valid values:
+	//
+	// *   true: A password is configured for the host account.
+	// *   false: No passwords are configured for the host account.
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// The ID of the request.
+	// The ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The name of the host account.
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the shared key.
+	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
 	// The name of the shared key.
-	HostAccountName  *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	HostId           *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	HostShareKeyId   *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
+	// The fingerprint of the private key for the host account.
+	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
 	// The protocol that is used by the host.
 	//
 	// Valid values:
 	//
 	// *   SSH
 	// *   RDP
-	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
-	// The number of the page to return. Default value: **1**.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -6913,23 +11720,30 @@ func (s *ListHostAccountsForHostShareKeyResponse) SetBody(v *ListHostAccountsFor
 }
 
 type ListHostAccountsForUserRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The name of the host account that you want to query. Exact match is supported.
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host for which the host accounts were queried.
+	// The ID of the host to query.
+	//
+	// > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The total number of host accounts returned.
+	// The ID of the bastion host on which you want to perform the query. The host accounts that the specified user is authorized to manage on the specified host are queried.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.\
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	//
+	// > We recommend that you do not leave this parameter empty.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the bastion host on which you want to perform the query. The host accounts that the specified user is authorized to manage on the specified host are queried.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user for which you want to query authorized host accounts.
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the host account that you want to query. Exact match is supported.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the host account.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6977,17 +11791,11 @@ func (s *ListHostAccountsForUserRequest) SetUserId(v string) *ListHostAccountsFo
 }
 
 type ListHostAccountsForUserResponseBody struct {
-	// The host accounts returned.
+	// An array that consists of the queried host accounts.
 	HostAccounts []*ListHostAccountsForUserResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	// The ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// The total number of host accounts that were queried.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7015,23 +11823,21 @@ func (s *ListHostAccountsForUserResponseBody) SetTotalCount(v int32) *ListHostAc
 }
 
 type ListHostAccountsForUserResponseBodyHostAccounts struct {
-	// The protocol that is used by the host account. Valid values:
+	// The ID of the host account.
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The name of the host account.
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the host for which the host accounts were queried.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// Indicates whether the user is authorized to manage the host account. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	// The protocol that is used by the host. Valid values:
 	//
 	// *   **SSH**
 	// *   **RDP**
-	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the host account.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the request.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the host for which you want to query the host accounts that the user is authorized to manage.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// Indicates whether the user is authorized to manage the host account. Valid values:
-	//
-	// *   **true**: The user is authorized to manage the host account.
-	// *   **false**: The user is not authorized to manage the host account.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -8811,6 +13617,938 @@ func (s *ListHostsForUserGroupResponse) SetBody(v *ListHostsForUserGroupResponse
 	return s
 }
 
+type ListNetworkDomainsRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainName *string `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
+	NetworkDomainType *string `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	PageNumber        *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListNetworkDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkDomainsRequest) SetInstanceId(v string) *ListNetworkDomainsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetNetworkDomainName(v string) *ListNetworkDomainsRequest {
+	s.NetworkDomainName = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetNetworkDomainType(v string) *ListNetworkDomainsRequest {
+	s.NetworkDomainType = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetPageNumber(v string) *ListNetworkDomainsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetPageSize(v string) *ListNetworkDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNetworkDomainsRequest) SetRegionId(v string) *ListNetworkDomainsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListNetworkDomainsResponseBody struct {
+	NetworkDomains []*ListNetworkDomainsResponseBodyNetworkDomains `json:"NetworkDomains,omitempty" xml:"NetworkDomains,omitempty" type:"Repeated"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNetworkDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkDomainsResponseBody) SetNetworkDomains(v []*ListNetworkDomainsResponseBodyNetworkDomains) *ListNetworkDomainsResponseBody {
+	s.NetworkDomains = v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBody) SetRequestId(v string) *ListNetworkDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBody) SetTotalCount(v int64) *ListNetworkDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNetworkDomainsResponseBodyNetworkDomains struct {
+	Comment           *string                                                     `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Default           *bool                                                       `json:"Default,omitempty" xml:"Default,omitempty"`
+	NetworkDomainId   *string                                                     `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	NetworkDomainName *string                                                     `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
+	NetworkDomainType *string                                                     `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	ProxiesState      []*ListNetworkDomainsResponseBodyNetworkDomainsProxiesState `json:"ProxiesState,omitempty" xml:"ProxiesState,omitempty" type:"Repeated"`
+}
+
+func (s ListNetworkDomainsResponseBodyNetworkDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkDomainsResponseBodyNetworkDomains) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetComment(v string) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetDefault(v bool) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.Default = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetNetworkDomainId(v string) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetNetworkDomainName(v string) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.NetworkDomainName = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetNetworkDomainType(v string) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.NetworkDomainType = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomains) SetProxiesState(v []*ListNetworkDomainsResponseBodyNetworkDomainsProxiesState) *ListNetworkDomainsResponseBodyNetworkDomains {
+	s.ProxiesState = v
+	return s
+}
+
+type ListNetworkDomainsResponseBodyNetworkDomainsProxiesState struct {
+	NodeType   *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	ProxyState *string `json:"ProxyState,omitempty" xml:"ProxyState,omitempty"`
+}
+
+func (s ListNetworkDomainsResponseBodyNetworkDomainsProxiesState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkDomainsResponseBodyNetworkDomainsProxiesState) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomainsProxiesState) SetNodeType(v string) *ListNetworkDomainsResponseBodyNetworkDomainsProxiesState {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponseBodyNetworkDomainsProxiesState) SetProxyState(v string) *ListNetworkDomainsResponseBodyNetworkDomainsProxiesState {
+	s.ProxyState = &v
+	return s
+}
+
+type ListNetworkDomainsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNetworkDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNetworkDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkDomainsResponse) SetHeaders(v map[string]*string) *ListNetworkDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNetworkDomainsResponse) SetStatusCode(v int32) *ListNetworkDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNetworkDomainsResponse) SetBody(v *ListNetworkDomainsResponseBody) *ListNetworkDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOperationDatabaseAccountsRequest struct {
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListOperationDatabaseAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabaseAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetDatabaseAccountName(v string) *ListOperationDatabaseAccountsRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetDatabaseId(v string) *ListOperationDatabaseAccountsRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetInstanceId(v string) *ListOperationDatabaseAccountsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetPageNumber(v string) *ListOperationDatabaseAccountsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetPageSize(v string) *ListOperationDatabaseAccountsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsRequest) SetRegionId(v string) *ListOperationDatabaseAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListOperationDatabaseAccountsResponseBody struct {
+	DatabaseAccounts []*ListOperationDatabaseAccountsResponseBodyDatabaseAccounts `json:"DatabaseAccounts,omitempty" xml:"DatabaseAccounts,omitempty" type:"Repeated"`
+	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOperationDatabaseAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabaseAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabaseAccountsResponseBody) SetDatabaseAccounts(v []*ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) *ListOperationDatabaseAccountsResponseBody {
+	s.DatabaseAccounts = v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBody) SetRequestId(v string) *ListOperationDatabaseAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBody) SetTotalCount(v int64) *ListOperationDatabaseAccountsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOperationDatabaseAccountsResponseBodyDatabaseAccounts struct {
+	DBName              *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseId          *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	HasPassword         *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	LoginAttribute      *string `json:"LoginAttribute,omitempty" xml:"LoginAttribute,omitempty"`
+	ProtocolName        *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+}
+
+func (s ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetDBName(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DBName = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseAccountId(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseAccountName(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetDatabaseId(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetHasPassword(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.HasPassword = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetLoginAttribute(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.LoginAttribute = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts) SetProtocolName(v string) *ListOperationDatabaseAccountsResponseBodyDatabaseAccounts {
+	s.ProtocolName = &v
+	return s
+}
+
+type ListOperationDatabaseAccountsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOperationDatabaseAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOperationDatabaseAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabaseAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabaseAccountsResponse) SetHeaders(v map[string]*string) *ListOperationDatabaseAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponse) SetStatusCode(v int32) *ListOperationDatabaseAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationDatabaseAccountsResponse) SetBody(v *ListOperationDatabaseAccountsResponseBody) *ListOperationDatabaseAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOperationDatabasesRequest struct {
+	DatabaseAddress     *string `json:"DatabaseAddress,omitempty" xml:"DatabaseAddress,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabaseType        *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId    *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s ListOperationDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabasesRequest) SetDatabaseAddress(v string) *ListOperationDatabasesRequest {
+	s.DatabaseAddress = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetDatabaseName(v string) *ListOperationDatabasesRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetDatabaseType(v string) *ListOperationDatabasesRequest {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetInstanceId(v string) *ListOperationDatabasesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetPageNumber(v string) *ListOperationDatabasesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetPageSize(v string) *ListOperationDatabasesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetRegionId(v string) *ListOperationDatabasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetSource(v string) *ListOperationDatabasesRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetSourceInstanceId(v string) *ListOperationDatabasesRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesRequest) SetSourceInstanceState(v string) *ListOperationDatabasesRequest {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type ListOperationDatabasesResponseBody struct {
+	Databases  []*ListOperationDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOperationDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabasesResponseBody) SetDatabases(v []*ListOperationDatabasesResponseBodyDatabases) *ListOperationDatabasesResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBody) SetRequestId(v string) *ListOperationDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBody) SetTotalCount(v int64) *ListOperationDatabasesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOperationDatabasesResponseBodyDatabases struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *int64  `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	DatabaseType           *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
+	SourceInstanceState    *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s ListOperationDatabasesResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabasesResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetActiveAddressType(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetComment(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabaseId(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabaseName(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabasePort(v int64) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabasePrivateAddress(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabasePublicAddress(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetDatabaseType(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetSource(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.Source = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetSourceInstanceId(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetSourceInstanceRegionId(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.SourceInstanceRegionId = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponseBodyDatabases) SetSourceInstanceState(v string) *ListOperationDatabasesResponseBodyDatabases {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type ListOperationDatabasesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOperationDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOperationDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationDatabasesResponse) SetHeaders(v map[string]*string) *ListOperationDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationDatabasesResponse) SetStatusCode(v int32) *ListOperationDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationDatabasesResponse) SetBody(v *ListOperationDatabasesResponseBody) *ListOperationDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListOperationHostAccountsRequest struct {
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	HostId          *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListOperationHostAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostAccountsRequest) SetHostAccountName(v string) *ListOperationHostAccountsRequest {
+	s.HostAccountName = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsRequest) SetHostId(v string) *ListOperationHostAccountsRequest {
+	s.HostId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsRequest) SetInstanceId(v string) *ListOperationHostAccountsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsRequest) SetPageNumber(v string) *ListOperationHostAccountsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsRequest) SetPageSize(v string) *ListOperationHostAccountsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsRequest) SetRegionId(v string) *ListOperationHostAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListOperationHostAccountsResponseBody struct {
+	HostAccounts []*ListOperationHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOperationHostAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostAccountsResponseBody) SetHostAccounts(v []*ListOperationHostAccountsResponseBodyHostAccounts) *ListOperationHostAccountsResponseBody {
+	s.HostAccounts = v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBody) SetRequestId(v string) *ListOperationHostAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBody) SetTotalCount(v int64) *ListOperationHostAccountsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOperationHostAccountsResponseBodyHostAccounts struct {
+	HasPassword           *bool                                                       `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	HostAccountId         *string                                                     `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	HostAccountName       *string                                                     `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	HostId                *string                                                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostShareKeyId        *string                                                     `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
+	PrivateKeyFingerprint *string                                                     `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
+	ProtocolName          *string                                                     `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	SSHConfig             *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig `json:"SSHConfig,omitempty" xml:"SSHConfig,omitempty" type:"Struct"`
+}
+
+func (s ListOperationHostAccountsResponseBodyHostAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostAccountsResponseBodyHostAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetHasPassword(v bool) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.HasPassword = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetHostAccountId(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.HostAccountId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetHostAccountName(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.HostAccountName = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetHostId(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.HostId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetHostShareKeyId(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.HostShareKeyId = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetPrivateKeyFingerprint(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.PrivateKeyFingerprint = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetProtocolName(v string) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.ProtocolName = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccounts) SetSSHConfig(v *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig) *ListOperationHostAccountsResponseBodyHostAccounts {
+	s.SSHConfig = v
+	return s
+}
+
+type ListOperationHostAccountsResponseBodyHostAccountsSSHConfig struct {
+	EnableSFTPChannel *bool `json:"EnableSFTPChannel,omitempty" xml:"EnableSFTPChannel,omitempty"`
+	EnableSSHChannel  *bool `json:"EnableSSHChannel,omitempty" xml:"EnableSSHChannel,omitempty"`
+}
+
+func (s ListOperationHostAccountsResponseBodyHostAccountsSSHConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostAccountsResponseBodyHostAccountsSSHConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig) SetEnableSFTPChannel(v bool) *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig {
+	s.EnableSFTPChannel = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig) SetEnableSSHChannel(v bool) *ListOperationHostAccountsResponseBodyHostAccountsSSHConfig {
+	s.EnableSSHChannel = &v
+	return s
+}
+
+type ListOperationHostAccountsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOperationHostAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOperationHostAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostAccountsResponse) SetHeaders(v map[string]*string) *ListOperationHostAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponse) SetStatusCode(v int32) *ListOperationHostAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationHostAccountsResponse) SetBody(v *ListOperationHostAccountsResponseBody) *ListOperationHostAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOperationHostsRequest struct {
+	HostAddress         *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	HostName            *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OSType              *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	PageNumber          *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId    *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s ListOperationHostsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostsRequest) SetHostAddress(v string) *ListOperationHostsRequest {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetHostName(v string) *ListOperationHostsRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetInstanceId(v string) *ListOperationHostsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetOSType(v string) *ListOperationHostsRequest {
+	s.OSType = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetPageNumber(v string) *ListOperationHostsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetPageSize(v string) *ListOperationHostsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetRegionId(v string) *ListOperationHostsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetSource(v string) *ListOperationHostsRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetSourceInstanceId(v string) *ListOperationHostsRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListOperationHostsRequest) SetSourceInstanceState(v string) *ListOperationHostsRequest {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type ListOperationHostsResponseBody struct {
+	Hosts      []*ListOperationHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOperationHostsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostsResponseBody) SetHosts(v []*ListOperationHostsResponseBodyHosts) *ListOperationHostsResponseBody {
+	s.Hosts = v
+	return s
+}
+
+func (s *ListOperationHostsResponseBody) SetRequestId(v string) *ListOperationHostsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBody) SetTotalCount(v int64) *ListOperationHostsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOperationHostsResponseBodyHosts struct {
+	ActiveAddressType   *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment             *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	HostId              *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostName            *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	HostPrivateAddress  *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
+	HostPublicAddress   *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
+	OSType              *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceInstanceId    *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
+}
+
+func (s ListOperationHostsResponseBodyHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostsResponseBodyHosts) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetActiveAddressType(v string) *ListOperationHostsResponseBodyHosts {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetComment(v string) *ListOperationHostsResponseBodyHosts {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetHostId(v string) *ListOperationHostsResponseBodyHosts {
+	s.HostId = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetHostName(v string) *ListOperationHostsResponseBodyHosts {
+	s.HostName = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetHostPrivateAddress(v string) *ListOperationHostsResponseBodyHosts {
+	s.HostPrivateAddress = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetHostPublicAddress(v string) *ListOperationHostsResponseBodyHosts {
+	s.HostPublicAddress = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetOSType(v string) *ListOperationHostsResponseBodyHosts {
+	s.OSType = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetSource(v string) *ListOperationHostsResponseBodyHosts {
+	s.Source = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetSourceInstanceId(v string) *ListOperationHostsResponseBodyHosts {
+	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *ListOperationHostsResponseBodyHosts) SetSourceInstanceState(v string) *ListOperationHostsResponseBodyHosts {
+	s.SourceInstanceState = &v
+	return s
+}
+
+type ListOperationHostsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOperationHostsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOperationHostsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationHostsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationHostsResponse) SetHeaders(v map[string]*string) *ListOperationHostsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationHostsResponse) SetStatusCode(v int32) *ListOperationHostsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationHostsResponse) SetBody(v *ListOperationHostsResponseBody) *ListOperationHostsResponse {
+	s.Body = v
+	return s
+}
+
 type ListOperationTicketsRequest struct {
 	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9011,6 +14749,292 @@ func (s *ListOperationTicketsResponse) SetBody(v *ListOperationTicketsResponseBo
 	return s
 }
 
+type ListPoliciesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesRequest) SetInstanceId(v string) *ListPoliciesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPageNumber(v string) *ListPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPageSize(v string) *ListPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetPolicyName(v string) *ListPoliciesRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetRegionId(v string) *ListPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListPoliciesResponseBody struct {
+	Policies   []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBody) SetPolicies(v []*ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetTotalCount(v int64) *ListPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPoliciesResponseBodyPolicies struct {
+	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s ListPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetComment(v string) *ListPoliciesResponseBodyPolicies {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicyId(v string) *ListPoliciesResponseBodyPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesResponseBodyPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPriority(v int64) *ListPoliciesResponseBodyPolicies {
+	s.Priority = &v
+	return s
+}
+
+type ListPoliciesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponse) SetHeaders(v map[string]*string) *ListPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetStatusCode(v int32) *ListPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRulesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleState  *string `json:"RuleState,omitempty" xml:"RuleState,omitempty"`
+}
+
+func (s ListRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesRequest) SetInstanceId(v string) *ListRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetPageNumber(v string) *ListRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetPageSize(v string) *ListRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetRegionId(v string) *ListRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetRuleName(v string) *ListRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetRuleState(v string) *ListRulesRequest {
+	s.RuleState = &v
+	return s
+}
+
+type ListRulesResponseBody struct {
+	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules      []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBody) SetRequestId(v string) *ListRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRulesResponseBody) SetRules(v []*ListRulesResponseBodyRules) *ListRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *ListRulesResponseBody) SetTotalCount(v int64) *ListRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRulesResponseBodyRules struct {
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	EffectiveEndTime   *int64  `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	EffectiveStartTime *int64  `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	RuleId             *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleState          *string `json:"RuleState,omitempty" xml:"RuleState,omitempty"`
+}
+
+func (s ListRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRules) SetComment(v string) *ListRulesResponseBodyRules {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRules) SetEffectiveEndTime(v int64) *ListRulesResponseBodyRules {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRules) SetEffectiveStartTime(v int64) *ListRulesResponseBodyRules {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRules) SetRuleId(v string) *ListRulesResponseBodyRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRules) SetRuleName(v string) *ListRulesResponseBodyRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRules) SetRuleState(v string) *ListRulesResponseBodyRules {
+	s.RuleState = &v
+	return s
+}
+
+type ListRulesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponse) SetHeaders(v map[string]*string) *ListRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRulesResponse) SetStatusCode(v int32) *ListRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -9153,19 +15177,17 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The region ID of the Bastionhost instance.
+	// The token for starting the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the instance.
+	// The region ID of the Bastionhost instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The value of the tag.
+	// The IDs of instances. The ID is up to 20.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The operation that you want to perform.
+	// The type of the resource.
 	//
-	// Set the value to **ListTagResources**.
+	// Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of tag N.
-	//
-	// Valid values of N: 1 to 20.
+	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -9203,11 +15225,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The ID of the request.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The type of the resource.
+	// The key of tag N.
 	//
-	// The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// Valid values of N: 1 to 20.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9230,11 +15254,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// Queries the tags bound to one or more Bastionhost instances.
+	// The token for starting the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// ListTagResources
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 58928
+	// The information about Bastionhost instances and the tags bound to Bastionhost instances.
+	//
+	// The following information is included: instance ID, resource type, tag key, and tag value.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -9262,10 +15288,16 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -10085,6 +16117,222 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 	return s
 }
 
+type ModifyDatabaseRequest struct {
+	ActiveAddressType      *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DatabaseId             *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabasePort           *string `json:"DatabasePort,omitempty" xml:"DatabasePort,omitempty"`
+	DatabasePrivateAddress *string `json:"DatabasePrivateAddress,omitempty" xml:"DatabasePrivateAddress,omitempty"`
+	DatabasePublicAddress  *string `json:"DatabasePublicAddress,omitempty" xml:"DatabasePublicAddress,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId        *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceInstanceId       *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+}
+
+func (s ModifyDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseRequest) SetActiveAddressType(v string) *ModifyDatabaseRequest {
+	s.ActiveAddressType = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetComment(v string) *ModifyDatabaseRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetDatabaseId(v string) *ModifyDatabaseRequest {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetDatabaseName(v string) *ModifyDatabaseRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetDatabasePort(v string) *ModifyDatabaseRequest {
+	s.DatabasePort = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetDatabasePrivateAddress(v string) *ModifyDatabaseRequest {
+	s.DatabasePrivateAddress = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetDatabasePublicAddress(v string) *ModifyDatabaseRequest {
+	s.DatabasePublicAddress = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetInstanceId(v string) *ModifyDatabaseRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetNetworkDomainId(v string) *ModifyDatabaseRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetRegionId(v string) *ModifyDatabaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDatabaseRequest) SetSourceInstanceId(v string) *ModifyDatabaseRequest {
+	s.SourceInstanceId = &v
+	return s
+}
+
+type ModifyDatabaseResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseResponseBody) SetRequestId(v string) *ModifyDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDatabaseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseResponse) SetHeaders(v map[string]*string) *ModifyDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDatabaseResponse) SetStatusCode(v int32) *ModifyDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDatabaseResponse) SetBody(v *ModifyDatabaseResponseBody) *ModifyDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDatabaseAccountRequest struct {
+	DatabaseAccountId   *string `json:"DatabaseAccountId,omitempty" xml:"DatabaseAccountId,omitempty"`
+	DatabaseAccountName *string `json:"DatabaseAccountName,omitempty" xml:"DatabaseAccountName,omitempty"`
+	DatabaseSchema      *string `json:"DatabaseSchema,omitempty" xml:"DatabaseSchema,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Password            *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDatabaseAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseAccountRequest) SetDatabaseAccountId(v string) *ModifyDatabaseAccountRequest {
+	s.DatabaseAccountId = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountRequest) SetDatabaseAccountName(v string) *ModifyDatabaseAccountRequest {
+	s.DatabaseAccountName = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountRequest) SetDatabaseSchema(v string) *ModifyDatabaseAccountRequest {
+	s.DatabaseSchema = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountRequest) SetInstanceId(v string) *ModifyDatabaseAccountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountRequest) SetPassword(v string) *ModifyDatabaseAccountRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountRequest) SetRegionId(v string) *ModifyDatabaseAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDatabaseAccountResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDatabaseAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseAccountResponseBody) SetRequestId(v string) *ModifyDatabaseAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDatabaseAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDatabaseAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDatabaseAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatabaseAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatabaseAccountResponse) SetHeaders(v map[string]*string) *ModifyDatabaseAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDatabaseAccountResponse) SetStatusCode(v int32) *ModifyDatabaseAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDatabaseAccountResponse) SetBody(v *ModifyDatabaseAccountResponseBody) *ModifyDatabaseAccountResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyHostRequest struct {
 	// The new description of the host. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -10340,21 +16588,21 @@ func (s *ModifyHostAccountResponse) SetBody(v *ModifyHostAccountResponseBody) *M
 }
 
 type ModifyHostGroupRequest struct {
-	// The new name of the host group. The name can be up to 128 characters in length.
+	// The new description of the host group. The value can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The region ID of the Bastionhost instance where you want to modify the information of the host group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The ID of the host group that you want to modify.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// The new name of the host group. The name can be up to 128 characters in length.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the request.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Bastionhost instance where you want to modify the information of the host group.
+	// The ID of the bastion host on which you want to modify the information about the host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host on which you want to modify the information about the host group.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11337,6 +17585,443 @@ func (s *ModifyInstanceTwoFactorResponse) SetBody(v *ModifyInstanceTwoFactorResp
 	return s
 }
 
+type ModifyNetworkDomainRequest struct {
+	Comment           *string                              `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	InstanceId        *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId   *string                              `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	NetworkDomainName *string                              `json:"NetworkDomainName,omitempty" xml:"NetworkDomainName,omitempty"`
+	NetworkDomainType *string                              `json:"NetworkDomainType,omitempty" xml:"NetworkDomainType,omitempty"`
+	Proxies           []*ModifyNetworkDomainRequestProxies `json:"Proxies,omitempty" xml:"Proxies,omitempty" type:"Repeated"`
+	RegionId          *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkDomainRequest) SetComment(v string) *ModifyNetworkDomainRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetInstanceId(v string) *ModifyNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetNetworkDomainId(v string) *ModifyNetworkDomainRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetNetworkDomainName(v string) *ModifyNetworkDomainRequest {
+	s.NetworkDomainName = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetNetworkDomainType(v string) *ModifyNetworkDomainRequest {
+	s.NetworkDomainType = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetProxies(v []*ModifyNetworkDomainRequestProxies) *ModifyNetworkDomainRequest {
+	s.Proxies = v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequest) SetRegionId(v string) *ModifyNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyNetworkDomainRequestProxies struct {
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	NodeType  *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	User      *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s ModifyNetworkDomainRequestProxies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkDomainRequestProxies) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetAddress(v string) *ModifyNetworkDomainRequestProxies {
+	s.Address = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetNodeType(v string) *ModifyNetworkDomainRequestProxies {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetPassword(v string) *ModifyNetworkDomainRequestProxies {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetPort(v int32) *ModifyNetworkDomainRequestProxies {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetProxyType(v string) *ModifyNetworkDomainRequestProxies {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainRequestProxies) SetUser(v string) *ModifyNetworkDomainRequestProxies {
+	s.User = &v
+	return s
+}
+
+type ModifyNetworkDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkDomainResponseBody) SetRequestId(v string) *ModifyNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyNetworkDomainResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNetworkDomainResponse) SetHeaders(v map[string]*string) *ModifyNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNetworkDomainResponse) SetStatusCode(v int32) *ModifyNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNetworkDomainResponse) SetBody(v *ModifyNetworkDomainResponseBody) *ModifyNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyPolicyRequest struct {
+	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Priority   *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequest) SetComment(v string) *ModifyPolicyRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetInstanceId(v string) *ModifyPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetPolicyId(v string) *ModifyPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetPolicyName(v string) *ModifyPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetPriority(v string) *ModifyPolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetRegionId(v string) *ModifyPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyResponseBody) SetRequestId(v string) *ModifyPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyResponse) SetHeaders(v map[string]*string) *ModifyPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPolicyResponse) SetStatusCode(v int32) *ModifyPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPolicyResponse) SetBody(v *ModifyPolicyResponseBody) *ModifyPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyRuleRequest struct {
+	Comment            *string                        `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Databases          []*ModifyRuleRequestDatabases  `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	EffectiveEndTime   *int64                         `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	EffectiveStartTime *int64                         `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	HostGroups         []*ModifyRuleRequestHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
+	Hosts              []*ModifyRuleRequestHosts      `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	InstanceId         *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId           *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId             *string                        `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName           *string                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	UserGroupIds       []*string                      `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserIds            []*string                      `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s ModifyRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleRequest) SetComment(v string) *ModifyRuleRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetDatabases(v []*ModifyRuleRequestDatabases) *ModifyRuleRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetEffectiveEndTime(v int64) *ModifyRuleRequest {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetEffectiveStartTime(v int64) *ModifyRuleRequest {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetHostGroups(v []*ModifyRuleRequestHostGroups) *ModifyRuleRequest {
+	s.HostGroups = v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetHosts(v []*ModifyRuleRequestHosts) *ModifyRuleRequest {
+	s.Hosts = v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetInstanceId(v string) *ModifyRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetRegionId(v string) *ModifyRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetRuleId(v string) *ModifyRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetRuleName(v string) *ModifyRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetUserGroupIds(v []*string) *ModifyRuleRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *ModifyRuleRequest) SetUserIds(v []*string) *ModifyRuleRequest {
+	s.UserIds = v
+	return s
+}
+
+type ModifyRuleRequestDatabases struct {
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s ModifyRuleRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleRequestDatabases) SetDatabaseAccountIds(v []*string) *ModifyRuleRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *ModifyRuleRequestDatabases) SetDatabaseId(v string) *ModifyRuleRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type ModifyRuleRequestHostGroups struct {
+	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
+	HostGroupId      *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+}
+
+func (s ModifyRuleRequestHostGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleRequestHostGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleRequestHostGroups) SetHostAccountNames(v []*string) *ModifyRuleRequestHostGroups {
+	s.HostAccountNames = v
+	return s
+}
+
+func (s *ModifyRuleRequestHostGroups) SetHostGroupId(v string) *ModifyRuleRequestHostGroups {
+	s.HostGroupId = &v
+	return s
+}
+
+type ModifyRuleRequestHosts struct {
+	HostAccountIds []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
+	HostId         *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s ModifyRuleRequestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleRequestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleRequestHosts) SetHostAccountIds(v []*string) *ModifyRuleRequestHosts {
+	s.HostAccountIds = v
+	return s
+}
+
+func (s *ModifyRuleRequestHosts) SetHostId(v string) *ModifyRuleRequestHosts {
+	s.HostId = &v
+	return s
+}
+
+type ModifyRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleResponseBody) SetRequestId(v string) *ModifyRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyRuleResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRuleResponse) SetHeaders(v map[string]*string) *ModifyRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRuleResponse) SetStatusCode(v int32) *ModifyRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRuleResponse) SetBody(v *ModifyRuleResponseBody) *ModifyRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyUserRequest struct {
 	// The new description of the user. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -11647,6 +18332,344 @@ func (s *ModifyUserGroupResponse) SetBody(v *ModifyUserGroupResponseBody) *Modif
 	return s
 }
 
+type ModifyUserPublicKeyRequest struct {
+	// The new description of the user group. The description can be up to 500 characters in length.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the bastion host that is used to modify the public key of the user.
+	//
+	// > You can call the [describeinstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The new public key.
+	//
+	// > The public key must be encoded in Base64.
+	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	// The ID of the public key that you want to modify.
+	PublicKeyId *string `json:"PublicKeyId,omitempty" xml:"PublicKeyId,omitempty"`
+	// The name of the public key that you want to modify. This name can be up to 128 characters in length.
+	PublicKeyName *string `json:"PublicKeyName,omitempty" xml:"PublicKeyName,omitempty"`
+	// The region ID of the bastion host that is used to modify the public key of the user.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyUserPublicKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserPublicKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserPublicKeyRequest) SetComment(v string) *ModifyUserPublicKeyRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyRequest) SetInstanceId(v string) *ModifyUserPublicKeyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyRequest) SetPublicKey(v string) *ModifyUserPublicKeyRequest {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyRequest) SetPublicKeyId(v string) *ModifyUserPublicKeyRequest {
+	s.PublicKeyId = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyRequest) SetPublicKeyName(v string) *ModifyUserPublicKeyRequest {
+	s.PublicKeyName = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyRequest) SetRegionId(v string) *ModifyUserPublicKeyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyUserPublicKeyResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyUserPublicKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserPublicKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserPublicKeyResponseBody) SetRequestId(v string) *ModifyUserPublicKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyUserPublicKeyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyUserPublicKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserPublicKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserPublicKeyResponse) SetHeaders(v map[string]*string) *ModifyUserPublicKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyUserPublicKeyResponse) SetStatusCode(v int32) *ModifyUserPublicKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyUserPublicKeyResponse) SetBody(v *ModifyUserPublicKeyResponseBody) *ModifyUserPublicKeyResponse {
+	s.Body = v
+	return s
+}
+
+type MoveDatabasesToNetworkDomainRequest struct {
+	DatabaseIds     []*string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string   `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s MoveDatabasesToNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveDatabasesToNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveDatabasesToNetworkDomainRequest) SetDatabaseIds(v []*string) *MoveDatabasesToNetworkDomainRequest {
+	s.DatabaseIds = v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainRequest) SetInstanceId(v string) *MoveDatabasesToNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainRequest) SetNetworkDomainId(v string) *MoveDatabasesToNetworkDomainRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainRequest) SetRegionId(v string) *MoveDatabasesToNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type MoveDatabasesToNetworkDomainResponseBody struct {
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*MoveDatabasesToNetworkDomainResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s MoveDatabasesToNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveDatabasesToNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveDatabasesToNetworkDomainResponseBody) SetRequestId(v string) *MoveDatabasesToNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainResponseBody) SetResults(v []*MoveDatabasesToNetworkDomainResponseBodyResults) *MoveDatabasesToNetworkDomainResponseBody {
+	s.Results = v
+	return s
+}
+
+type MoveDatabasesToNetworkDomainResponseBodyResults struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s MoveDatabasesToNetworkDomainResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveDatabasesToNetworkDomainResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *MoveDatabasesToNetworkDomainResponseBodyResults) SetCode(v string) *MoveDatabasesToNetworkDomainResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainResponseBodyResults) SetDatabaseId(v string) *MoveDatabasesToNetworkDomainResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainResponseBodyResults) SetMessage(v string) *MoveDatabasesToNetworkDomainResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+type MoveDatabasesToNetworkDomainResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveDatabasesToNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveDatabasesToNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveDatabasesToNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveDatabasesToNetworkDomainResponse) SetHeaders(v map[string]*string) *MoveDatabasesToNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainResponse) SetStatusCode(v int32) *MoveDatabasesToNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveDatabasesToNetworkDomainResponse) SetBody(v *MoveDatabasesToNetworkDomainResponseBody) *MoveDatabasesToNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
+type MoveHostsToNetworkDomainRequest struct {
+	HostIds         []*string `json:"HostIds,omitempty" xml:"HostIds,omitempty" type:"Repeated"`
+	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string   `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s MoveHostsToNetworkDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveHostsToNetworkDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveHostsToNetworkDomainRequest) SetHostIds(v []*string) *MoveHostsToNetworkDomainRequest {
+	s.HostIds = v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainRequest) SetInstanceId(v string) *MoveHostsToNetworkDomainRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainRequest) SetNetworkDomainId(v string) *MoveHostsToNetworkDomainRequest {
+	s.NetworkDomainId = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainRequest) SetRegionId(v string) *MoveHostsToNetworkDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type MoveHostsToNetworkDomainResponseBody struct {
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*MoveHostsToNetworkDomainResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s MoveHostsToNetworkDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveHostsToNetworkDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveHostsToNetworkDomainResponseBody) SetRequestId(v string) *MoveHostsToNetworkDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainResponseBody) SetResults(v []*MoveHostsToNetworkDomainResponseBodyResults) *MoveHostsToNetworkDomainResponseBody {
+	s.Results = v
+	return s
+}
+
+type MoveHostsToNetworkDomainResponseBodyResults struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s MoveHostsToNetworkDomainResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveHostsToNetworkDomainResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *MoveHostsToNetworkDomainResponseBodyResults) SetCode(v string) *MoveHostsToNetworkDomainResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainResponseBodyResults) SetHostId(v string) *MoveHostsToNetworkDomainResponseBodyResults {
+	s.HostId = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainResponseBodyResults) SetMessage(v string) *MoveHostsToNetworkDomainResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+type MoveHostsToNetworkDomainResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveHostsToNetworkDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveHostsToNetworkDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveHostsToNetworkDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveHostsToNetworkDomainResponse) SetHeaders(v map[string]*string) *MoveHostsToNetworkDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainResponse) SetStatusCode(v int32) *MoveHostsToNetworkDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveHostsToNetworkDomainResponse) SetBody(v *MoveHostsToNetworkDomainResponseBody) *MoveHostsToNetworkDomainResponse {
+	s.Body = v
+	return s
+}
+
 type MoveResourceGroupRequest struct {
 	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -11891,6 +18914,128 @@ func (s *RejectOperationTicketResponse) SetStatusCode(v int32) *RejectOperationT
 }
 
 func (s *RejectOperationTicketResponse) SetBody(v *RejectOperationTicketResponseBody) *RejectOperationTicketResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveDatabasesFromGroupRequest struct {
+	DatabaseIds []*string `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
+	HostGroupId *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RemoveDatabasesFromGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDatabasesFromGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDatabasesFromGroupRequest) SetDatabaseIds(v []*string) *RemoveDatabasesFromGroupRequest {
+	s.DatabaseIds = v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupRequest) SetHostGroupId(v string) *RemoveDatabasesFromGroupRequest {
+	s.HostGroupId = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupRequest) SetInstanceId(v string) *RemoveDatabasesFromGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupRequest) SetRegionId(v string) *RemoveDatabasesFromGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RemoveDatabasesFromGroupResponseBody struct {
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*RemoveDatabasesFromGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s RemoveDatabasesFromGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDatabasesFromGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDatabasesFromGroupResponseBody) SetRequestId(v string) *RemoveDatabasesFromGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponseBody) SetResults(v []*RemoveDatabasesFromGroupResponseBodyResults) *RemoveDatabasesFromGroupResponseBody {
+	s.Results = v
+	return s
+}
+
+type RemoveDatabasesFromGroupResponseBodyResults struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseId  *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s RemoveDatabasesFromGroupResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDatabasesFromGroupResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDatabasesFromGroupResponseBodyResults) SetCode(v string) *RemoveDatabasesFromGroupResponseBodyResults {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponseBodyResults) SetDatabaseId(v string) *RemoveDatabasesFromGroupResponseBodyResults {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponseBodyResults) SetHostGroupId(v string) *RemoveDatabasesFromGroupResponseBodyResults {
+	s.HostGroupId = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponseBodyResults) SetMessage(v string) *RemoveDatabasesFromGroupResponseBodyResults {
+	s.Message = &v
+	return s
+}
+
+type RemoveDatabasesFromGroupResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveDatabasesFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveDatabasesFromGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveDatabasesFromGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveDatabasesFromGroupResponse) SetHeaders(v map[string]*string) *RemoveDatabasesFromGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponse) SetStatusCode(v int32) *RemoveDatabasesFromGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveDatabasesFromGroupResponse) SetBody(v *RemoveDatabasesFromGroupResponseBody) *RemoveDatabasesFromGroupResponse {
 	s.Body = v
 	return s
 }
@@ -12195,6 +19340,81 @@ func (s *RemoveUsersFromGroupResponse) SetBody(v *RemoveUsersFromGroupResponseBo
 	return s
 }
 
+type RenewAssetOperationTokenRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TokenId    *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+}
+
+func (s RenewAssetOperationTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewAssetOperationTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewAssetOperationTokenRequest) SetInstanceId(v string) *RenewAssetOperationTokenRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewAssetOperationTokenRequest) SetRegionId(v string) *RenewAssetOperationTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RenewAssetOperationTokenRequest) SetTokenId(v string) *RenewAssetOperationTokenRequest {
+	s.TokenId = &v
+	return s
+}
+
+type RenewAssetOperationTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewAssetOperationTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewAssetOperationTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewAssetOperationTokenResponseBody) SetRequestId(v string) *RenewAssetOperationTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewAssetOperationTokenResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewAssetOperationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenewAssetOperationTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewAssetOperationTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewAssetOperationTokenResponse) SetHeaders(v map[string]*string) *RenewAssetOperationTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewAssetOperationTokenResponse) SetStatusCode(v int32) *RenewAssetOperationTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewAssetOperationTokenResponse) SetBody(v *RenewAssetOperationTokenResponseBody) *RenewAssetOperationTokenResponse {
+	s.Body = v
+	return s
+}
+
 type ResetHostAccountCredentialRequest struct {
 	// The type of the logon credential that you want to delete. Valid values:
 	//
@@ -12286,6 +19506,1137 @@ func (s *ResetHostAccountCredentialResponse) SetStatusCode(v int32) *ResetHostAc
 }
 
 func (s *ResetHostAccountCredentialResponse) SetBody(v *ResetHostAccountCredentialResponseBody) *ResetHostAccountCredentialResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigRequest struct {
+	AccessTimeRangeConfig *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty" type:"Struct"`
+	InstanceId            *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId              *string                                                     `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId              *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequest) SetAccessTimeRangeConfig(v *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) *SetPolicyAccessTimeRangeConfigRequest {
+	s.AccessTimeRangeConfig = v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequest) SetInstanceId(v string) *SetPolicyAccessTimeRangeConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequest) SetPolicyId(v string) *SetPolicyAccessTimeRangeConfigRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequest) SetRegionId(v string) *SetPolicyAccessTimeRangeConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig struct {
+	EffectiveTime []*SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig) SetEffectiveTime(v []*SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime) *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfig {
+	s.EffectiveTime = v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime struct {
+	Days  []*int32 `json:"Days,omitempty" xml:"Days,omitempty" type:"Repeated"`
+	Hours []*int32 `json:"Hours,omitempty" xml:"Hours,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime) SetDays(v []*int32) *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime {
+	s.Days = v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime) SetHours(v []*int32) *SetPolicyAccessTimeRangeConfigRequestAccessTimeRangeConfigEffectiveTime {
+	s.Hours = v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigShrinkRequest struct {
+	AccessTimeRangeConfigShrink *string `json:"AccessTimeRangeConfig,omitempty" xml:"AccessTimeRangeConfig,omitempty"`
+	InstanceId                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId                    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetAccessTimeRangeConfigShrink(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest {
+	s.AccessTimeRangeConfigShrink = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetInstanceId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetPolicyId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigShrinkRequest) SetRegionId(v string) *SetPolicyAccessTimeRangeConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigResponseBody) SetRequestId(v string) *SetPolicyAccessTimeRangeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyAccessTimeRangeConfigResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyAccessTimeRangeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyAccessTimeRangeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAccessTimeRangeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAccessTimeRangeConfigResponse) SetHeaders(v map[string]*string) *SetPolicyAccessTimeRangeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigResponse) SetStatusCode(v int32) *SetPolicyAccessTimeRangeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyAccessTimeRangeConfigResponse) SetBody(v *SetPolicyAccessTimeRangeConfigResponseBody) *SetPolicyAccessTimeRangeConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyApprovalConfigRequest struct {
+	ApprovalConfig *SetPolicyApprovalConfigRequestApprovalConfig `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty" type:"Struct"`
+	InstanceId     *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId       *string                                       `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId       *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyApprovalConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyApprovalConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyApprovalConfigRequest) SetApprovalConfig(v *SetPolicyApprovalConfigRequestApprovalConfig) *SetPolicyApprovalConfigRequest {
+	s.ApprovalConfig = v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigRequest) SetInstanceId(v string) *SetPolicyApprovalConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigRequest) SetPolicyId(v string) *SetPolicyApprovalConfigRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigRequest) SetRegionId(v string) *SetPolicyApprovalConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyApprovalConfigRequestApprovalConfig struct {
+	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
+}
+
+func (s SetPolicyApprovalConfigRequestApprovalConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyApprovalConfigRequestApprovalConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyApprovalConfigRequestApprovalConfig) SetSwitchStatus(v string) *SetPolicyApprovalConfigRequestApprovalConfig {
+	s.SwitchStatus = &v
+	return s
+}
+
+type SetPolicyApprovalConfigShrinkRequest struct {
+	ApprovalConfigShrink *string `json:"ApprovalConfig,omitempty" xml:"ApprovalConfig,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId             *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyApprovalConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyApprovalConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyApprovalConfigShrinkRequest) SetApprovalConfigShrink(v string) *SetPolicyApprovalConfigShrinkRequest {
+	s.ApprovalConfigShrink = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigShrinkRequest) SetInstanceId(v string) *SetPolicyApprovalConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigShrinkRequest) SetPolicyId(v string) *SetPolicyApprovalConfigShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigShrinkRequest) SetRegionId(v string) *SetPolicyApprovalConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyApprovalConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyApprovalConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyApprovalConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyApprovalConfigResponseBody) SetRequestId(v string) *SetPolicyApprovalConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyApprovalConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyApprovalConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyApprovalConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyApprovalConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyApprovalConfigResponse) SetHeaders(v map[string]*string) *SetPolicyApprovalConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigResponse) SetStatusCode(v int32) *SetPolicyApprovalConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyApprovalConfigResponse) SetBody(v *SetPolicyApprovalConfigResponseBody) *SetPolicyApprovalConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyAssetScopeRequest struct {
+	Databases  []*SetPolicyAssetScopeRequestDatabases  `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	HostGroups []*SetPolicyAssetScopeRequestHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
+	Hosts      []*SetPolicyAssetScopeRequestHosts      `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	InstanceId *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId   *string                                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId   *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeType  *string                                 `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s SetPolicyAssetScopeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeRequest) SetDatabases(v []*SetPolicyAssetScopeRequestDatabases) *SetPolicyAssetScopeRequest {
+	s.Databases = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetHostGroups(v []*SetPolicyAssetScopeRequestHostGroups) *SetPolicyAssetScopeRequest {
+	s.HostGroups = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetHosts(v []*SetPolicyAssetScopeRequestHosts) *SetPolicyAssetScopeRequest {
+	s.Hosts = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetInstanceId(v string) *SetPolicyAssetScopeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetPolicyId(v string) *SetPolicyAssetScopeRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetRegionId(v string) *SetPolicyAssetScopeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequest) SetScopeType(v string) *SetPolicyAssetScopeRequest {
+	s.ScopeType = &v
+	return s
+}
+
+type SetPolicyAssetScopeRequestDatabases struct {
+	AccountScopeType   *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	DatabaseAccountIds []*string `json:"DatabaseAccountIds,omitempty" xml:"DatabaseAccountIds,omitempty" type:"Repeated"`
+	DatabaseId         *string   `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+}
+
+func (s SetPolicyAssetScopeRequestDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeRequestDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeRequestDatabases) SetAccountScopeType(v string) *SetPolicyAssetScopeRequestDatabases {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestDatabases) SetDatabaseAccountIds(v []*string) *SetPolicyAssetScopeRequestDatabases {
+	s.DatabaseAccountIds = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestDatabases) SetDatabaseId(v string) *SetPolicyAssetScopeRequestDatabases {
+	s.DatabaseId = &v
+	return s
+}
+
+type SetPolicyAssetScopeRequestHostGroups struct {
+	AccountNames     []*string `json:"AccountNames,omitempty" xml:"AccountNames,omitempty" type:"Repeated"`
+	AccountScopeType *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	HostGroupId      *string   `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+}
+
+func (s SetPolicyAssetScopeRequestHostGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeRequestHostGroups) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeRequestHostGroups) SetAccountNames(v []*string) *SetPolicyAssetScopeRequestHostGroups {
+	s.AccountNames = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestHostGroups) SetAccountScopeType(v string) *SetPolicyAssetScopeRequestHostGroups {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestHostGroups) SetHostGroupId(v string) *SetPolicyAssetScopeRequestHostGroups {
+	s.HostGroupId = &v
+	return s
+}
+
+type SetPolicyAssetScopeRequestHosts struct {
+	AccountScopeType *string   `json:"AccountScopeType,omitempty" xml:"AccountScopeType,omitempty"`
+	HostAccountIds   []*string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty" type:"Repeated"`
+	HostId           *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+}
+
+func (s SetPolicyAssetScopeRequestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeRequestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeRequestHosts) SetAccountScopeType(v string) *SetPolicyAssetScopeRequestHosts {
+	s.AccountScopeType = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestHosts) SetHostAccountIds(v []*string) *SetPolicyAssetScopeRequestHosts {
+	s.HostAccountIds = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeRequestHosts) SetHostId(v string) *SetPolicyAssetScopeRequestHosts {
+	s.HostId = &v
+	return s
+}
+
+type SetPolicyAssetScopeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyAssetScopeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeResponseBody) SetRequestId(v string) *SetPolicyAssetScopeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyAssetScopeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyAssetScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyAssetScopeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyAssetScopeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyAssetScopeResponse) SetHeaders(v map[string]*string) *SetPolicyAssetScopeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyAssetScopeResponse) SetStatusCode(v int32) *SetPolicyAssetScopeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyAssetScopeResponse) SetBody(v *SetPolicyAssetScopeResponseBody) *SetPolicyAssetScopeResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyCommandConfigRequest struct {
+	CommandConfig *SetPolicyCommandConfigRequestCommandConfig `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty" type:"Struct"`
+	InstanceId    *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId      *string                                     `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId      *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyCommandConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigRequest) SetCommandConfig(v *SetPolicyCommandConfigRequestCommandConfig) *SetPolicyCommandConfigRequest {
+	s.CommandConfig = v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequest) SetInstanceId(v string) *SetPolicyCommandConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequest) SetPolicyId(v string) *SetPolicyCommandConfigRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequest) SetRegionId(v string) *SetPolicyCommandConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyCommandConfigRequestCommandConfig struct {
+	Approval *SetPolicyCommandConfigRequestCommandConfigApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Struct"`
+	Deny     *SetPolicyCommandConfigRequestCommandConfigDeny     `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Struct"`
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigRequestCommandConfig) SetApproval(v *SetPolicyCommandConfigRequestCommandConfigApproval) *SetPolicyCommandConfigRequestCommandConfig {
+	s.Approval = v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequestCommandConfig) SetDeny(v *SetPolicyCommandConfigRequestCommandConfigDeny) *SetPolicyCommandConfigRequestCommandConfig {
+	s.Deny = v
+	return s
+}
+
+type SetPolicyCommandConfigRequestCommandConfigApproval struct {
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfigApproval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfigApproval) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigRequestCommandConfigApproval) SetCommands(v []*string) *SetPolicyCommandConfigRequestCommandConfigApproval {
+	s.Commands = v
+	return s
+}
+
+type SetPolicyCommandConfigRequestCommandConfigDeny struct {
+	AclType  *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfigDeny) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigRequestCommandConfigDeny) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigRequestCommandConfigDeny) SetAclType(v string) *SetPolicyCommandConfigRequestCommandConfigDeny {
+	s.AclType = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigRequestCommandConfigDeny) SetCommands(v []*string) *SetPolicyCommandConfigRequestCommandConfigDeny {
+	s.Commands = v
+	return s
+}
+
+type SetPolicyCommandConfigShrinkRequest struct {
+	CommandConfigShrink *string `json:"CommandConfig,omitempty" xml:"CommandConfig,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId            *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyCommandConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigShrinkRequest) SetCommandConfigShrink(v string) *SetPolicyCommandConfigShrinkRequest {
+	s.CommandConfigShrink = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigShrinkRequest) SetInstanceId(v string) *SetPolicyCommandConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigShrinkRequest) SetPolicyId(v string) *SetPolicyCommandConfigShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigShrinkRequest) SetRegionId(v string) *SetPolicyCommandConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyCommandConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyCommandConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigResponseBody) SetRequestId(v string) *SetPolicyCommandConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyCommandConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyCommandConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyCommandConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyCommandConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyCommandConfigResponse) SetHeaders(v map[string]*string) *SetPolicyCommandConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyCommandConfigResponse) SetStatusCode(v int32) *SetPolicyCommandConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyCommandConfigResponse) SetBody(v *SetPolicyCommandConfigResponseBody) *SetPolicyCommandConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyIPAclConfigRequest struct {
+	IPAclConfig *SetPolicyIPAclConfigRequestIPAclConfig `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty" type:"Struct"`
+	InstanceId  *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId    *string                                 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId    *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyIPAclConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyIPAclConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyIPAclConfigRequest) SetIPAclConfig(v *SetPolicyIPAclConfigRequestIPAclConfig) *SetPolicyIPAclConfigRequest {
+	s.IPAclConfig = v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigRequest) SetInstanceId(v string) *SetPolicyIPAclConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigRequest) SetPolicyId(v string) *SetPolicyIPAclConfigRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigRequest) SetRegionId(v string) *SetPolicyIPAclConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyIPAclConfigRequestIPAclConfig struct {
+	AclType *string   `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	IPs     []*string `json:"IPs,omitempty" xml:"IPs,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyIPAclConfigRequestIPAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyIPAclConfigRequestIPAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyIPAclConfigRequestIPAclConfig) SetAclType(v string) *SetPolicyIPAclConfigRequestIPAclConfig {
+	s.AclType = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigRequestIPAclConfig) SetIPs(v []*string) *SetPolicyIPAclConfigRequestIPAclConfig {
+	s.IPs = v
+	return s
+}
+
+type SetPolicyIPAclConfigShrinkRequest struct {
+	IPAclConfigShrink *string `json:"IPAclConfig,omitempty" xml:"IPAclConfig,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyIPAclConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyIPAclConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyIPAclConfigShrinkRequest) SetIPAclConfigShrink(v string) *SetPolicyIPAclConfigShrinkRequest {
+	s.IPAclConfigShrink = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigShrinkRequest) SetInstanceId(v string) *SetPolicyIPAclConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigShrinkRequest) SetPolicyId(v string) *SetPolicyIPAclConfigShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigShrinkRequest) SetRegionId(v string) *SetPolicyIPAclConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyIPAclConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyIPAclConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyIPAclConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyIPAclConfigResponseBody) SetRequestId(v string) *SetPolicyIPAclConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyIPAclConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyIPAclConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyIPAclConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyIPAclConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyIPAclConfigResponse) SetHeaders(v map[string]*string) *SetPolicyIPAclConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigResponse) SetStatusCode(v int32) *SetPolicyIPAclConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyIPAclConfigResponse) SetBody(v *SetPolicyIPAclConfigResponseBody) *SetPolicyIPAclConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyProtocolConfigRequest struct {
+	InstanceId     *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId       *string                                       `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	ProtocolConfig *SetPolicyProtocolConfigRequestProtocolConfig `json:"ProtocolConfig,omitempty" xml:"ProtocolConfig,omitempty" type:"Struct"`
+	RegionId       *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigRequest) SetInstanceId(v string) *SetPolicyProtocolConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequest) SetPolicyId(v string) *SetPolicyProtocolConfigRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequest) SetProtocolConfig(v *SetPolicyProtocolConfigRequestProtocolConfig) *SetPolicyProtocolConfigRequest {
+	s.ProtocolConfig = v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequest) SetRegionId(v string) *SetPolicyProtocolConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyProtocolConfigRequestProtocolConfig struct {
+	RDP *SetPolicyProtocolConfigRequestProtocolConfigRDP `json:"RDP,omitempty" xml:"RDP,omitempty" type:"Struct"`
+	SSH *SetPolicyProtocolConfigRequestProtocolConfigSSH `json:"SSH,omitempty" xml:"SSH,omitempty" type:"Struct"`
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfig) SetRDP(v *SetPolicyProtocolConfigRequestProtocolConfigRDP) *SetPolicyProtocolConfigRequestProtocolConfig {
+	s.RDP = v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfig) SetSSH(v *SetPolicyProtocolConfigRequestProtocolConfigSSH) *SetPolicyProtocolConfigRequestProtocolConfig {
+	s.SSH = v
+	return s
+}
+
+type SetPolicyProtocolConfigRequestProtocolConfigRDP struct {
+	ClipboardDownload *string `json:"ClipboardDownload,omitempty" xml:"ClipboardDownload,omitempty"`
+	ClipboardUpload   *string `json:"ClipboardUpload,omitempty" xml:"ClipboardUpload,omitempty"`
+	DiskRedirection   *string `json:"DiskRedirection,omitempty" xml:"DiskRedirection,omitempty"`
+	RecordKeyboard    *string `json:"RecordKeyboard,omitempty" xml:"RecordKeyboard,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfigRDP) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfigRDP) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetClipboardDownload(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.ClipboardDownload = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetClipboardUpload(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.ClipboardUpload = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetDiskRedirection(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.DiskRedirection = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigRDP) SetRecordKeyboard(v string) *SetPolicyProtocolConfigRequestProtocolConfigRDP {
+	s.RecordKeyboard = &v
+	return s
+}
+
+type SetPolicyProtocolConfigRequestProtocolConfigSSH struct {
+	ExecCommand      *string `json:"ExecCommand,omitempty" xml:"ExecCommand,omitempty"`
+	SFTPChannel      *string `json:"SFTPChannel,omitempty" xml:"SFTPChannel,omitempty"`
+	SFTPDownloadFile *string `json:"SFTPDownloadFile,omitempty" xml:"SFTPDownloadFile,omitempty"`
+	SFTPMkdir        *string `json:"SFTPMkdir,omitempty" xml:"SFTPMkdir,omitempty"`
+	SFTPRemoveFile   *string `json:"SFTPRemoveFile,omitempty" xml:"SFTPRemoveFile,omitempty"`
+	SFTPRenameFile   *string `json:"SFTPRenameFile,omitempty" xml:"SFTPRenameFile,omitempty"`
+	SFTPRmdir        *string `json:"SFTPRmdir,omitempty" xml:"SFTPRmdir,omitempty"`
+	SFTPUploadFile   *string `json:"SFTPUploadFile,omitempty" xml:"SFTPUploadFile,omitempty"`
+	SSHChannel       *string `json:"SSHChannel,omitempty" xml:"SSHChannel,omitempty"`
+	X11Forwarding    *string `json:"X11Forwarding,omitempty" xml:"X11Forwarding,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfigSSH) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigRequestProtocolConfigSSH) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetExecCommand(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.ExecCommand = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPChannel(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPChannel = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPDownloadFile(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPDownloadFile = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPMkdir(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPMkdir = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPRemoveFile(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPRemoveFile = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPRenameFile(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPRenameFile = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPRmdir(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPRmdir = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPUploadFile(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SFTPUploadFile = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSSHChannel(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.SSHChannel = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetX11Forwarding(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.X11Forwarding = &v
+	return s
+}
+
+type SetPolicyProtocolConfigShrinkRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId             *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	ProtocolConfigShrink *string `json:"ProtocolConfig,omitempty" xml:"ProtocolConfig,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigShrinkRequest) SetInstanceId(v string) *SetPolicyProtocolConfigShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigShrinkRequest) SetPolicyId(v string) *SetPolicyProtocolConfigShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigShrinkRequest) SetProtocolConfigShrink(v string) *SetPolicyProtocolConfigShrinkRequest {
+	s.ProtocolConfigShrink = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigShrinkRequest) SetRegionId(v string) *SetPolicyProtocolConfigShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPolicyProtocolConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigResponseBody) SetRequestId(v string) *SetPolicyProtocolConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyProtocolConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyProtocolConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyProtocolConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyProtocolConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyProtocolConfigResponse) SetHeaders(v map[string]*string) *SetPolicyProtocolConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigResponse) SetStatusCode(v int32) *SetPolicyProtocolConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigResponse) SetBody(v *SetPolicyProtocolConfigResponseBody) *SetPolicyProtocolConfigResponse {
+	s.Body = v
+	return s
+}
+
+type SetPolicyUserScopeRequest struct {
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PolicyId     *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeType    *string   `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	UserIds      []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s SetPolicyUserScopeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyUserScopeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyUserScopeRequest) SetInstanceId(v string) *SetPolicyUserScopeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetPolicyId(v string) *SetPolicyUserScopeRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetRegionId(v string) *SetPolicyUserScopeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetScopeType(v string) *SetPolicyUserScopeRequest {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetUserGroupIds(v []*string) *SetPolicyUserScopeRequest {
+	s.UserGroupIds = v
+	return s
+}
+
+func (s *SetPolicyUserScopeRequest) SetUserIds(v []*string) *SetPolicyUserScopeRequest {
+	s.UserIds = v
+	return s
+}
+
+type SetPolicyUserScopeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPolicyUserScopeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyUserScopeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyUserScopeResponseBody) SetRequestId(v string) *SetPolicyUserScopeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPolicyUserScopeResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPolicyUserScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetPolicyUserScopeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPolicyUserScopeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPolicyUserScopeResponse) SetHeaders(v map[string]*string) *SetPolicyUserScopeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPolicyUserScopeResponse) SetStatusCode(v int32) *SetPolicyUserScopeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetPolicyUserScopeResponse) SetBody(v *SetPolicyUserScopeResponseBody) *SetPolicyUserScopeResponse {
 	s.Body = v
 	return s
 }
@@ -12765,6 +21116,246 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type VerifyInstanceADAuthServerRequest struct {
+	Account       *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	BaseDN        *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
+	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSSL         *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
+	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
+}
+
+func (s VerifyInstanceADAuthServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceADAuthServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetAccount(v string) *VerifyInstanceADAuthServerRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetBaseDN(v string) *VerifyInstanceADAuthServerRequest {
+	s.BaseDN = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetDomain(v string) *VerifyInstanceADAuthServerRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetFilter(v string) *VerifyInstanceADAuthServerRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetInstanceId(v string) *VerifyInstanceADAuthServerRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetIsSSL(v string) *VerifyInstanceADAuthServerRequest {
+	s.IsSSL = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetPassword(v string) *VerifyInstanceADAuthServerRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetPort(v string) *VerifyInstanceADAuthServerRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetRegionId(v string) *VerifyInstanceADAuthServerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetServer(v string) *VerifyInstanceADAuthServerRequest {
+	s.Server = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerRequest) SetStandbyServer(v string) *VerifyInstanceADAuthServerRequest {
+	s.StandbyServer = &v
+	return s
+}
+
+type VerifyInstanceADAuthServerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VerifyInstanceADAuthServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceADAuthServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceADAuthServerResponseBody) SetRequestId(v string) *VerifyInstanceADAuthServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyInstanceADAuthServerResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyInstanceADAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VerifyInstanceADAuthServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceADAuthServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceADAuthServerResponse) SetHeaders(v map[string]*string) *VerifyInstanceADAuthServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerResponse) SetStatusCode(v int32) *VerifyInstanceADAuthServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyInstanceADAuthServerResponse) SetBody(v *VerifyInstanceADAuthServerResponseBody) *VerifyInstanceADAuthServerResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyInstanceLDAPAuthServerRequest struct {
+	Account       *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	BaseDN        *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
+	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSSL         *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
+	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
+}
+
+func (s VerifyInstanceLDAPAuthServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceLDAPAuthServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetAccount(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetBaseDN(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.BaseDN = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetFilter(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetInstanceId(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetIsSSL(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.IsSSL = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetPassword(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetPort(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetRegionId(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetServer(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.Server = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerRequest) SetStandbyServer(v string) *VerifyInstanceLDAPAuthServerRequest {
+	s.StandbyServer = &v
+	return s
+}
+
+type VerifyInstanceLDAPAuthServerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VerifyInstanceLDAPAuthServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceLDAPAuthServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceLDAPAuthServerResponseBody) SetRequestId(v string) *VerifyInstanceLDAPAuthServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyInstanceLDAPAuthServerResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyInstanceLDAPAuthServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VerifyInstanceLDAPAuthServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyInstanceLDAPAuthServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyInstanceLDAPAuthServerResponse) SetHeaders(v map[string]*string) *VerifyInstanceLDAPAuthServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerResponse) SetStatusCode(v int32) *VerifyInstanceLDAPAuthServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyInstanceLDAPAuthServerResponse) SetBody(v *VerifyInstanceLDAPAuthServerResponseBody) *VerifyInstanceLDAPAuthServerResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -12943,6 +21534,62 @@ func (client *Client) AcceptOperationTicket(request *AcceptOperationTicketReques
 	return _result, _err
 }
 
+func (client *Client) AddDatabasesToGroupWithOptions(request *AddDatabasesToGroupRequest, runtime *util.RuntimeOptions) (_result *AddDatabasesToGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseIds)) {
+		query["DatabaseIds"] = request.DatabaseIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroupId)) {
+		query["HostGroupId"] = request.HostGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDatabasesToGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDatabasesToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDatabasesToGroup(request *AddDatabasesToGroupRequest) (_result *AddDatabasesToGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDatabasesToGroupResponse{}
+	_body, _err := client.AddDatabasesToGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
  * # Limits
@@ -13084,6 +21731,118 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUsersToGroupResponse{}
 	_body, _err := client.AddUsersToGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachDatabaseAccountsToUserWithOptions(request *AttachDatabaseAccountsToUserRequest, runtime *util.RuntimeOptions) (_result *AttachDatabaseAccountsToUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDatabaseAccountsToUser"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachDatabaseAccountsToUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachDatabaseAccountsToUser(request *AttachDatabaseAccountsToUserRequest) (_result *AttachDatabaseAccountsToUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachDatabaseAccountsToUserResponse{}
+	_body, _err := client.AttachDatabaseAccountsToUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachDatabaseAccountsToUserGroupWithOptions(request *AttachDatabaseAccountsToUserGroupRequest, runtime *util.RuntimeOptions) (_result *AttachDatabaseAccountsToUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupId)) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDatabaseAccountsToUserGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachDatabaseAccountsToUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachDatabaseAccountsToUserGroup(request *AttachDatabaseAccountsToUserGroupRequest) (_result *AttachDatabaseAccountsToUserGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachDatabaseAccountsToUserGroupResponse{}
+	_body, _err := client.AttachDatabaseAccountsToUserGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13441,7 +22200,10 @@ func (client *Client) ConfigInstanceSecurityGroups(request *ConfigInstanceSecuri
 }
 
 /**
- * The ID of the request, which is used to locate and troubleshoot issues.
+ * ## Usage notes
+ * You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+ * ## Limits
+ * You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ConfigInstanceWhiteListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13489,7 +22251,10 @@ func (client *Client) ConfigInstanceWhiteListWithOptions(request *ConfigInstance
 }
 
 /**
- * The ID of the request, which is used to locate and troubleshoot issues.
+ * ## Usage notes
+ * You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
+ * ## Limits
+ * You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ConfigInstanceWhiteListRequest
  * @return ConfigInstanceWhiteListResponse
@@ -13498,6 +22263,170 @@ func (client *Client) ConfigInstanceWhiteList(request *ConfigInstanceWhiteListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigInstanceWhiteListResponse{}
 	_body, _err := client.ConfigInstanceWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, runtime *util.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActiveAddressType)) {
+		query["ActiveAddressType"] = request.ActiveAddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePort)) {
+		query["DatabasePort"] = request.DatabasePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePrivateAddress)) {
+		query["DatabasePrivateAddress"] = request.DatabasePrivateAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePublicAddress)) {
+		query["DatabasePublicAddress"] = request.DatabasePublicAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseType)) {
+		query["DatabaseType"] = request.DatabaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarDBEndpointType)) {
+		query["PolarDBEndpointType"] = request.PolarDBEndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceRegionId)) {
+		query["SourceInstanceRegionId"] = request.SourceInstanceRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatabase"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CreateDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatabaseAccountWithOptions(request *CreateDatabaseAccountRequest, runtime *util.RuntimeOptions) (_result *CreateDatabaseAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseSchema)) {
+		query["DatabaseSchema"] = request.DatabaseSchema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginAttribute)) {
+		query["LoginAttribute"] = request.LoginAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatabaseAccount"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatabaseAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDatabaseAccount(request *CreateDatabaseAccountRequest) (_result *CreateDatabaseAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatabaseAccountResponse{}
+	_body, _err := client.CreateDatabaseAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13785,6 +22714,214 @@ func (client *Client) CreateHostShareKey(request *CreateHostShareKeyRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateNetworkDomainWithOptions(request *CreateNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainName)) {
+		query["NetworkDomainName"] = request.NetworkDomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainType)) {
+		query["NetworkDomainType"] = request.NetworkDomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Proxies)) {
+		query["Proxies"] = request.Proxies
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNetworkDomain(request *CreateNetworkDomainRequest) (_result *CreateNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkDomainResponse{}
+	_body, _err := client.CreateNetworkDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CreatePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveEndTime)) {
+		query["EffectiveEndTime"] = request.EffectiveEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveStartTime)) {
+		query["EffectiveStartTime"] = request.EffectiveStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroups)) {
+		query["HostGroups"] = request.HostGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hosts)) {
+		query["Hosts"] = request.Hosts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		query["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRuleResponse{}
+	_body, _err := client.CreateRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ## Usage notes
  * You can call this operation to add a user to a bastion host. You can add local users and Resource Access Management (RAM) users. After a Bastionhost administrator adds a user to a bastion host, the O&M personnel can log on to the bastion host as the user to perform O&M operations on the host on which they have permissions.
@@ -14064,6 +23201,110 @@ func (client *Client) CreateUserPublicKey(request *CreateUserPublicKeyRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, runtime *util.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatabase"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatabaseResponse{}
+	_body, _err := client.DeleteDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatabaseAccountWithOptions(request *DeleteDatabaseAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteDatabaseAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountId)) {
+		query["DatabaseAccountId"] = request.DatabaseAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatabaseAccount"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatabaseAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDatabaseAccount(request *DeleteDatabaseAccountRequest) (_result *DeleteDatabaseAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatabaseAccountResponse{}
+	_body, _err := client.DeleteDatabaseAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteHostWithOptions(request *DeleteHostRequest, runtime *util.RuntimeOptions) (_result *DeleteHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14118,10 +23359,10 @@ func (client *Client) DeleteHost(request *DeleteHostRequest) (_result *DeleteHos
 
 /**
  * ## Usage notes
- * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+ * This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
  * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## QPS Limit
+ * The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
  *
  * @param request DeleteHostAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14170,10 +23411,10 @@ func (client *Client) DeleteHostAccountWithOptions(request *DeleteHostAccountReq
 
 /**
  * ## Usage notes
- * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
+ * This interface is used to delete individual host accounts. If a host account is no longer in use, you can invoke this interface to delete the host account for that host that has been configured on the bastion.
  * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## QPS Limit
+ * The single-user QPS limit of this interface is 10 times/second. If the limit is exceeded, the API call will be stream-limited, which may affect your business, please call reasonably.
  *
  * @param request DeleteHostAccountRequest
  * @return DeleteHostAccountResponse
@@ -14303,6 +23544,162 @@ func (client *Client) DeleteHostShareKey(request *DeleteHostShareKeyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHostShareKeyResponse{}
 	_body, _err := client.DeleteHostShareKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkDomainWithOptions(request *DeleteNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNetworkDomain(request *DeleteNetworkDomainRequest) (_result *DeleteNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkDomainResponse{}
+	_body, _err := client.DeleteNetworkDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.DeletePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRuleResponse{}
+	_body, _err := client.DeleteRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14640,6 +24037,118 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachDatabaseAccountsFromUserWithOptions(request *DetachDatabaseAccountsFromUserRequest, runtime *util.RuntimeOptions) (_result *DetachDatabaseAccountsFromUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDatabaseAccountsFromUser"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachDatabaseAccountsFromUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachDatabaseAccountsFromUser(request *DetachDatabaseAccountsFromUserRequest) (_result *DetachDatabaseAccountsFromUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachDatabaseAccountsFromUserResponse{}
+	_body, _err := client.DetachDatabaseAccountsFromUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachDatabaseAccountsFromUserGroupWithOptions(request *DetachDatabaseAccountsFromUserGroupRequest, runtime *util.RuntimeOptions) (_result *DetachDatabaseAccountsFromUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupId)) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDatabaseAccountsFromUserGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachDatabaseAccountsFromUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachDatabaseAccountsFromUserGroup(request *DetachDatabaseAccountsFromUserGroupRequest) (_result *DetachDatabaseAccountsFromUserGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachDatabaseAccountsFromUserGroupResponse{}
+	_body, _err := client.DetachDatabaseAccountsFromUserGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14988,6 +24497,58 @@ func (client *Client) DisableInstancePublicAccess(request *DisableInstancePublic
 	return _result, _err
 }
 
+func (client *Client) DisableRuleWithOptions(request *DisableRuleRequest, runtime *util.RuntimeOptions) (_result *DisableRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableRule(request *DisableRuleRequest) (_result *DisableRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableRuleResponse{}
+	_body, _err := client.DisableRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableInstancePublicAccessWithOptions(request *EnableInstancePublicAccessRequest, runtime *util.RuntimeOptions) (_result *EnableInstancePublicAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15029,6 +24590,234 @@ func (client *Client) EnableInstancePublicAccess(request *EnableInstancePublicAc
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstancePublicAccessResponse{}
 	_body, _err := client.EnableInstancePublicAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableRuleWithOptions(request *EnableRuleRequest, runtime *util.RuntimeOptions) (_result *EnableRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableRuleResponse{}
+	_body, _err := client.EnableRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateAssetOperationTokenWithOptions(request *GenerateAssetOperationTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateAssetOperationTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetAccountId)) {
+		query["AssetAccountId"] = request.AssetAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetAccountName)) {
+		query["AssetAccountName"] = request.AssetAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetAccountPassword)) {
+		query["AssetAccountPassword"] = request.AssetAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetAccountProtocolName)) {
+		query["AssetAccountProtocolName"] = request.AssetAccountProtocolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetId)) {
+		query["AssetId"] = request.AssetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
+		query["AssetType"] = request.AssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAssetOperationToken"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateAssetOperationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateAssetOperationToken(request *GenerateAssetOperationTokenRequest) (_result *GenerateAssetOperationTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateAssetOperationTokenResponse{}
+	_body, _err := client.GenerateAssetOperationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabase"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseAccountWithOptions(request *GetDatabaseAccountRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountId)) {
+		query["DatabaseAccountId"] = request.DatabaseAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabaseAccount"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseAccount(request *GetDatabaseAccountRequest) (_result *GetDatabaseAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatabaseAccountResponse{}
+	_body, _err := client.GetDatabaseAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15245,7 +25034,10 @@ func (client *Client) GetHostShareKey(request *GetHostShareKeyRequest) (_result 
 }
 
 /**
- * The condition that is used to filter users.
+ * ###
+ * You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+ * ### Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request GetInstanceADAuthServerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -15289,7 +25081,10 @@ func (client *Client) GetInstanceADAuthServerWithOptions(request *GetInstanceADA
 }
 
 /**
- * The condition that is used to filter users.
+ * ###
+ * You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O\\&M operations on servers.
+ * ### Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request GetInstanceADAuthServerRequest
  * @return GetInstanceADAuthServerResponse
@@ -15354,9 +25149,9 @@ func (client *Client) GetInstanceLDAPAuthServer(request *GetInstanceLDAPAuthServ
 }
 
 /**
- * Indicates whether two-factor authentication is enabled. Valid values:
- * *   **true**: enabled
- * *   **false**: disabled
+ * You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+ * ### Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request GetInstanceTwoFactorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -15400,9 +25195,9 @@ func (client *Client) GetInstanceTwoFactorWithOptions(request *GetInstanceTwoFac
 }
 
 /**
- * Indicates whether two-factor authentication is enabled. Valid values:
- * *   **true**: enabled
- * *   **false**: disabled
+ * You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
+ * ### Limit
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request GetInstanceTwoFactorRequest
  * @return GetInstanceTwoFactorResponse
@@ -15411,6 +25206,266 @@ func (client *Client) GetInstanceTwoFactor(request *GetInstanceTwoFactorRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceTwoFactorResponse{}
 	_body, _err := client.GetInstanceTwoFactorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetNetworkDomainWithOptions(request *GetNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *GetNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNetworkDomain(request *GetNetworkDomainRequest) (_result *GetNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetNetworkDomainResponse{}
+	_body, _err := client.GetNetworkDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicy"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPolicyResponse{}
+	_body, _err := client.GetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPolicyAssetScopeWithOptions(request *GetPolicyAssetScopeRequest, runtime *util.RuntimeOptions) (_result *GetPolicyAssetScopeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicyAssetScope"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPolicyAssetScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPolicyAssetScope(request *GetPolicyAssetScopeRequest) (_result *GetPolicyAssetScopeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPolicyAssetScopeResponse{}
+	_body, _err := client.GetPolicyAssetScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPolicyUserScopeWithOptions(request *GetPolicyUserScopeRequest, runtime *util.RuntimeOptions) (_result *GetPolicyUserScopeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPolicyUserScope"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPolicyUserScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPolicyUserScope(request *GetPolicyUserScopeRequest) (_result *GetPolicyUserScopeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPolicyUserScopeResponse{}
+	_body, _err := client.GetPolicyUserScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.RuntimeOptions) (_result *GetRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRuleResponse{}
+	_body, _err := client.GetRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15571,6 +25626,430 @@ func (client *Client) ListApproveCommands(request *ListApproveCommandsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApproveCommandsResponse{}
 	_body, _err := client.ListApproveCommandsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccountsWithOptions(request *ListDatabaseAccountsRequest, runtime *util.RuntimeOptions) (_result *ListDatabaseAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabaseAccounts"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabaseAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccounts(request *ListDatabaseAccountsRequest) (_result *ListDatabaseAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabaseAccountsResponse{}
+	_body, _err := client.ListDatabaseAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccountsForUserWithOptions(request *ListDatabaseAccountsForUserRequest, runtime *util.RuntimeOptions) (_result *ListDatabaseAccountsForUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabaseAccountsForUser"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabaseAccountsForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccountsForUser(request *ListDatabaseAccountsForUserRequest) (_result *ListDatabaseAccountsForUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabaseAccountsForUserResponse{}
+	_body, _err := client.ListDatabaseAccountsForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccountsForUserGroupWithOptions(request *ListDatabaseAccountsForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListDatabaseAccountsForUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupId)) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabaseAccountsForUserGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabaseAccountsForUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabaseAccountsForUserGroup(request *ListDatabaseAccountsForUserGroupRequest) (_result *ListDatabaseAccountsForUserGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabaseAccountsForUserGroupResponse{}
+	_body, _err := client.ListDatabaseAccountsForUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, runtime *util.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseType)) {
+		query["DatabaseType"] = request.DatabaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroupId)) {
+		query["HostGroupId"] = request.HostGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabases"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.ListDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabasesForUserWithOptions(request *ListDatabasesForUserRequest, runtime *util.RuntimeOptions) (_result *ListDatabasesForUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAddress)) {
+		query["DatabaseAddress"] = request.DatabaseAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseType)) {
+		query["DatabaseType"] = request.DatabaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabasesForUser"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabasesForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabasesForUser(request *ListDatabasesForUserRequest) (_result *ListDatabasesForUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabasesForUserResponse{}
+	_body, _err := client.ListDatabasesForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatabasesForUserGroupWithOptions(request *ListDatabasesForUserGroupRequest, runtime *util.RuntimeOptions) (_result *ListDatabasesForUserGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAddress)) {
+		query["DatabaseAddress"] = request.DatabaseAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseType)) {
+		query["DatabaseType"] = request.DatabaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupId)) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabasesForUserGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabasesForUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatabasesForUserGroup(request *ListDatabasesForUserGroupRequest) (_result *ListDatabasesForUserGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabasesForUserGroupResponse{}
+	_body, _err := client.ListDatabasesForUserGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16442,6 +26921,358 @@ func (client *Client) ListHostsForUserGroup(request *ListHostsForUserGroupReques
 	return _result, _err
 }
 
+func (client *Client) ListNetworkDomainsWithOptions(request *ListNetworkDomainsRequest, runtime *util.RuntimeOptions) (_result *ListNetworkDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainName)) {
+		query["NetworkDomainName"] = request.NetworkDomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainType)) {
+		query["NetworkDomainType"] = request.NetworkDomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNetworkDomains"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNetworkDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNetworkDomains(request *ListNetworkDomainsRequest) (_result *ListNetworkDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNetworkDomainsResponse{}
+	_body, _err := client.ListNetworkDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOperationDatabaseAccountsWithOptions(request *ListOperationDatabaseAccountsRequest, runtime *util.RuntimeOptions) (_result *ListOperationDatabaseAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationDatabaseAccounts"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationDatabaseAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationDatabaseAccounts(request *ListOperationDatabaseAccountsRequest) (_result *ListOperationDatabaseAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOperationDatabaseAccountsResponse{}
+	_body, _err := client.ListOperationDatabaseAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOperationDatabasesWithOptions(request *ListOperationDatabasesRequest, runtime *util.RuntimeOptions) (_result *ListOperationDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAddress)) {
+		query["DatabaseAddress"] = request.DatabaseAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseType)) {
+		query["DatabaseType"] = request.DatabaseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceState)) {
+		query["SourceInstanceState"] = request.SourceInstanceState
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationDatabases"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationDatabases(request *ListOperationDatabasesRequest) (_result *ListOperationDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOperationDatabasesResponse{}
+	_body, _err := client.ListOperationDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOperationHostAccountsWithOptions(request *ListOperationHostAccountsRequest, runtime *util.RuntimeOptions) (_result *ListOperationHostAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostAccountName)) {
+		query["HostAccountName"] = request.HostAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostId)) {
+		query["HostId"] = request.HostId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationHostAccounts"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationHostAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationHostAccounts(request *ListOperationHostAccountsRequest) (_result *ListOperationHostAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOperationHostAccountsResponse{}
+	_body, _err := client.ListOperationHostAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOperationHostsWithOptions(request *ListOperationHostsRequest, runtime *util.RuntimeOptions) (_result *ListOperationHostsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostAddress)) {
+		query["HostAddress"] = request.HostAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSType)) {
+		query["OSType"] = request.OSType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceState)) {
+		query["SourceInstanceState"] = request.SourceInstanceState
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationHosts"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationHostsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationHosts(request *ListOperationHostsRequest) (_result *ListOperationHostsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOperationHostsResponse{}
+	_body, _err := client.ListOperationHostsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListOperationTicketsWithOptions(request *ListOperationTicketsRequest, runtime *util.RuntimeOptions) (_result *ListOperationTicketsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16495,6 +27326,130 @@ func (client *Client) ListOperationTickets(request *ListOperationTicketsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOperationTicketsResponse{}
 	_body, _err := client.ListOperationTicketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicies"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.ListPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *util.RuntimeOptions) (_result *ListRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleState)) {
+		query["RuleState"] = request.RuleState
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRules"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRulesResponse{}
+	_body, _err := client.ListRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16886,6 +27841,154 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &LockUsersResponse{}
 	_body, _err := client.LockUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDatabaseWithOptions(request *ModifyDatabaseRequest, runtime *util.RuntimeOptions) (_result *ModifyDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActiveAddressType)) {
+		query["ActiveAddressType"] = request.ActiveAddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseId)) {
+		query["DatabaseId"] = request.DatabaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePort)) {
+		query["DatabasePort"] = request.DatabasePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePrivateAddress)) {
+		query["DatabasePrivateAddress"] = request.DatabasePrivateAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabasePublicAddress)) {
+		query["DatabasePublicAddress"] = request.DatabasePublicAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
+		query["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDatabase"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDatabase(request *ModifyDatabaseRequest) (_result *ModifyDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDatabaseResponse{}
+	_body, _err := client.ModifyDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDatabaseAccountWithOptions(request *ModifyDatabaseAccountRequest, runtime *util.RuntimeOptions) (_result *ModifyDatabaseAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountId)) {
+		query["DatabaseAccountId"] = request.DatabaseAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseAccountName)) {
+		query["DatabaseAccountName"] = request.DatabaseAccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseSchema)) {
+		query["DatabaseSchema"] = request.DatabaseSchema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDatabaseAccount"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDatabaseAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDatabaseAccount(request *ModifyDatabaseAccountRequest) (_result *ModifyDatabaseAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDatabaseAccountResponse{}
+	_body, _err := client.ModifyDatabaseAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17621,6 +28724,226 @@ func (client *Client) ModifyInstanceTwoFactor(request *ModifyInstanceTwoFactorRe
 	return _result, _err
 }
 
+func (client *Client) ModifyNetworkDomainWithOptions(request *ModifyNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainName)) {
+		query["NetworkDomainName"] = request.NetworkDomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainType)) {
+		query["NetworkDomainType"] = request.NetworkDomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Proxies)) {
+		query["Proxies"] = request.Proxies
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyNetworkDomain(request *ModifyNetworkDomainRequest) (_result *ModifyNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNetworkDomainResponse{}
+	_body, _err := client.ModifyNetworkDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPolicy"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *ModifyPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPolicyResponse{}
+	_body, _err := client.ModifyPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveEndTime)) {
+		query["EffectiveEndTime"] = request.EffectiveEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveStartTime)) {
+		query["EffectiveStartTime"] = request.EffectiveStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroups)) {
+		query["HostGroups"] = request.HostGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hosts)) {
+		query["Hosts"] = request.Hosts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		query["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRule"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyRule(request *ModifyRuleRequest) (_result *ModifyRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRuleResponse{}
+	_body, _err := client.ModifyRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime *util.RuntimeOptions) (_result *ModifyUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17778,6 +29101,182 @@ func (client *Client) ModifyUserGroup(request *ModifyUserGroupRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyUserGroupResponse{}
 	_body, _err := client.ModifyUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyUserPublicKeyWithOptions(request *ModifyUserPublicKeyRequest, runtime *util.RuntimeOptions) (_result *ModifyUserPublicKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKey)) {
+		query["PublicKey"] = request.PublicKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKeyId)) {
+		query["PublicKeyId"] = request.PublicKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKeyName)) {
+		query["PublicKeyName"] = request.PublicKeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUserPublicKey"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyUserPublicKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyUserPublicKey(request *ModifyUserPublicKeyRequest) (_result *ModifyUserPublicKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyUserPublicKeyResponse{}
+	_body, _err := client.ModifyUserPublicKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MoveDatabasesToNetworkDomainWithOptions(request *MoveDatabasesToNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *MoveDatabasesToNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseIds)) {
+		query["DatabaseIds"] = request.DatabaseIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveDatabasesToNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveDatabasesToNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveDatabasesToNetworkDomain(request *MoveDatabasesToNetworkDomainRequest) (_result *MoveDatabasesToNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveDatabasesToNetworkDomainResponse{}
+	_body, _err := client.MoveDatabasesToNetworkDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MoveHostsToNetworkDomainWithOptions(request *MoveHostsToNetworkDomainRequest, runtime *util.RuntimeOptions) (_result *MoveHostsToNetworkDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostIds)) {
+		query["HostIds"] = request.HostIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveHostsToNetworkDomain"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveHostsToNetworkDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveHostsToNetworkDomain(request *MoveHostsToNetworkDomainRequest) (_result *MoveHostsToNetworkDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveHostsToNetworkDomainResponse{}
+	_body, _err := client.MoveHostsToNetworkDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17960,6 +29459,62 @@ func (client *Client) RejectOperationTicket(request *RejectOperationTicketReques
 	return _result, _err
 }
 
+func (client *Client) RemoveDatabasesFromGroupWithOptions(request *RemoveDatabasesFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveDatabasesFromGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabaseIds)) {
+		query["DatabaseIds"] = request.DatabaseIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroupId)) {
+		query["HostGroupId"] = request.HostGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveDatabasesFromGroup"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveDatabasesFromGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveDatabasesFromGroup(request *RemoveDatabasesFromGroupRequest) (_result *RemoveDatabasesFromGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveDatabasesFromGroupResponse{}
+	_body, _err := client.RemoveDatabasesFromGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveHostsFromGroupWithOptions(request *RemoveHostsFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveHostsFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18089,6 +29644,58 @@ func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest)
 	return _result, _err
 }
 
+func (client *Client) RenewAssetOperationTokenWithOptions(request *RenewAssetOperationTokenRequest, runtime *util.RuntimeOptions) (_result *RenewAssetOperationTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewAssetOperationToken"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewAssetOperationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewAssetOperationToken(request *RenewAssetOperationTokenRequest) (_result *RenewAssetOperationTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewAssetOperationTokenResponse{}
+	_body, _err := client.RenewAssetOperationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResetHostAccountCredentialWithOptions(request *ResetHostAccountCredentialRequest, runtime *util.RuntimeOptions) (_result *ResetHostAccountCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18138,6 +29745,448 @@ func (client *Client) ResetHostAccountCredential(request *ResetHostAccountCreden
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetHostAccountCredentialResponse{}
 	_body, _err := client.ResetHostAccountCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyAccessTimeRangeConfigWithOptions(tmpReq *SetPolicyAccessTimeRangeConfigRequest, runtime *util.RuntimeOptions) (_result *SetPolicyAccessTimeRangeConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetPolicyAccessTimeRangeConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AccessTimeRangeConfig)) {
+		request.AccessTimeRangeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccessTimeRangeConfig, tea.String("AccessTimeRangeConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTimeRangeConfigShrink)) {
+		query["AccessTimeRangeConfig"] = request.AccessTimeRangeConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyAccessTimeRangeConfig"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyAccessTimeRangeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyAccessTimeRangeConfig(request *SetPolicyAccessTimeRangeConfigRequest) (_result *SetPolicyAccessTimeRangeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyAccessTimeRangeConfigResponse{}
+	_body, _err := client.SetPolicyAccessTimeRangeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyApprovalConfigWithOptions(tmpReq *SetPolicyApprovalConfigRequest, runtime *util.RuntimeOptions) (_result *SetPolicyApprovalConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetPolicyApprovalConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApprovalConfig)) {
+		request.ApprovalConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApprovalConfig, tea.String("ApprovalConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalConfigShrink)) {
+		query["ApprovalConfig"] = request.ApprovalConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyApprovalConfig"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyApprovalConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyApprovalConfig(request *SetPolicyApprovalConfigRequest) (_result *SetPolicyApprovalConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyApprovalConfigResponse{}
+	_body, _err := client.SetPolicyApprovalConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyAssetScopeWithOptions(request *SetPolicyAssetScopeRequest, runtime *util.RuntimeOptions) (_result *SetPolicyAssetScopeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Databases)) {
+		query["Databases"] = request.Databases
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostGroups)) {
+		query["HostGroups"] = request.HostGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hosts)) {
+		query["Hosts"] = request.Hosts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyAssetScope"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyAssetScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyAssetScope(request *SetPolicyAssetScopeRequest) (_result *SetPolicyAssetScopeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyAssetScopeResponse{}
+	_body, _err := client.SetPolicyAssetScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyCommandConfigWithOptions(tmpReq *SetPolicyCommandConfigRequest, runtime *util.RuntimeOptions) (_result *SetPolicyCommandConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetPolicyCommandConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommandConfig)) {
+		request.CommandConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommandConfig, tea.String("CommandConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommandConfigShrink)) {
+		query["CommandConfig"] = request.CommandConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyCommandConfig"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyCommandConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyCommandConfig(request *SetPolicyCommandConfigRequest) (_result *SetPolicyCommandConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyCommandConfigResponse{}
+	_body, _err := client.SetPolicyCommandConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyIPAclConfigWithOptions(tmpReq *SetPolicyIPAclConfigRequest, runtime *util.RuntimeOptions) (_result *SetPolicyIPAclConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetPolicyIPAclConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IPAclConfig)) {
+		request.IPAclConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IPAclConfig, tea.String("IPAclConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IPAclConfigShrink)) {
+		query["IPAclConfig"] = request.IPAclConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyIPAclConfig"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyIPAclConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyIPAclConfig(request *SetPolicyIPAclConfigRequest) (_result *SetPolicyIPAclConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyIPAclConfigResponse{}
+	_body, _err := client.SetPolicyIPAclConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyProtocolConfigWithOptions(tmpReq *SetPolicyProtocolConfigRequest, runtime *util.RuntimeOptions) (_result *SetPolicyProtocolConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetPolicyProtocolConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProtocolConfig)) {
+		request.ProtocolConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProtocolConfig, tea.String("ProtocolConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtocolConfigShrink)) {
+		query["ProtocolConfig"] = request.ProtocolConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyProtocolConfig"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyProtocolConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyProtocolConfig(request *SetPolicyProtocolConfigRequest) (_result *SetPolicyProtocolConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyProtocolConfigResponse{}
+	_body, _err := client.SetPolicyProtocolConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPolicyUserScopeWithOptions(request *SetPolicyUserScopeRequest, runtime *util.RuntimeOptions) (_result *SetPolicyUserScopeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
+		query["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPolicyUserScope"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPolicyUserScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPolicyUserScope(request *SetPolicyUserScopeRequest) (_result *SetPolicyUserScopeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPolicyUserScopeResponse{}
+	_body, _err := client.SetPolicyUserScopeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18379,6 +30428,170 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyInstanceADAuthServerWithOptions(request *VerifyInstanceADAuthServerRequest, runtime *util.RuntimeOptions) (_result *VerifyInstanceADAuthServerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseDN)) {
+		query["BaseDN"] = request.BaseDN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSSL)) {
+		query["IsSSL"] = request.IsSSL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Server)) {
+		query["Server"] = request.Server
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyServer)) {
+		query["StandbyServer"] = request.StandbyServer
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyInstanceADAuthServer"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyInstanceADAuthServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyInstanceADAuthServer(request *VerifyInstanceADAuthServerRequest) (_result *VerifyInstanceADAuthServerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyInstanceADAuthServerResponse{}
+	_body, _err := client.VerifyInstanceADAuthServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyInstanceLDAPAuthServerWithOptions(request *VerifyInstanceLDAPAuthServerRequest, runtime *util.RuntimeOptions) (_result *VerifyInstanceLDAPAuthServerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseDN)) {
+		query["BaseDN"] = request.BaseDN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSSL)) {
+		query["IsSSL"] = request.IsSSL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Server)) {
+		query["Server"] = request.Server
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyServer)) {
+		query["StandbyServer"] = request.StandbyServer
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyInstanceLDAPAuthServer"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyInstanceLDAPAuthServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyInstanceLDAPAuthServer(request *VerifyInstanceLDAPAuthServerRequest) (_result *VerifyInstanceLDAPAuthServerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyInstanceLDAPAuthServerResponse{}
+	_body, _err := client.VerifyInstanceLDAPAuthServerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
