@@ -5499,11 +5499,16 @@ type ApplyAddRequestExternalTravelerStandard struct {
 	EconomyDiscount           *int32                                                   `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount             *int32                                                   `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins              *string                                                  `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode        *int64                                                   `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode            *int64                                                   `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
 	HotelCitys                []*ApplyAddRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
 	HotelIntlCitys            []*ApplyAddRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode         *int64                                                   `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode             *int64                                                   `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	InternationalFlightCabins *string                                                  `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	PremiumEconomyDiscount    *int32                                                   `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType               *int32                                                   `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode             *int64                                                   `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats                *string                                                  `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
@@ -5535,6 +5540,16 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetFlightCabins(v string) *App
 	return s
 }
 
+func (s *ApplyAddRequestExternalTravelerStandard) SetFlightIntlRuleCode(v int64) *ApplyAddRequestExternalTravelerStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetFlightRuleCode(v int64) *ApplyAddRequestExternalTravelerStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyAddRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyAddRequestExternalTravelerStandardHotelCitys) *ApplyAddRequestExternalTravelerStandard {
 	s.HotelCitys = v
 	return s
@@ -5542,6 +5557,16 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyAddReq
 
 func (s *ApplyAddRequestExternalTravelerStandard) SetHotelIntlCitys(v []*ApplyAddRequestExternalTravelerStandardHotelIntlCitys) *ApplyAddRequestExternalTravelerStandard {
 	s.HotelIntlCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetHotelIntlRuleCode(v int64) *ApplyAddRequestExternalTravelerStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetHotelRuleCode(v int64) *ApplyAddRequestExternalTravelerStandard {
+	s.HotelRuleCode = &v
 	return s
 }
 
@@ -5557,6 +5582,11 @@ func (s *ApplyAddRequestExternalTravelerStandard) SetPremiumEconomyDiscount(v in
 
 func (s *ApplyAddRequestExternalTravelerStandard) SetReserveType(v int32) *ApplyAddRequestExternalTravelerStandard {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerStandard) SetTrainRuleCode(v int64) *ApplyAddRequestExternalTravelerStandard {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -5917,11 +5947,16 @@ type ApplyAddRequestTravelerStandard struct {
 	EconomyDiscount           *int32                                           `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount             *int32                                           `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins              *string                                          `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode        *int64                                           `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode            *int64                                           `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
 	HotelCitys                []*ApplyAddRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
 	HotelIntlCitys            []*ApplyAddRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode         *int64                                           `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode             *int64                                           `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	InternationalFlightCabins *string                                          `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
 	PremiumEconomyDiscount    *int32                                           `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType               *int32                                           `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode             *int64                                           `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats                *string                                          `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 	UserId                    *string                                          `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -5959,6 +5994,16 @@ func (s *ApplyAddRequestTravelerStandard) SetFlightCabins(v string) *ApplyAddReq
 	return s
 }
 
+func (s *ApplyAddRequestTravelerStandard) SetFlightIntlRuleCode(v int64) *ApplyAddRequestTravelerStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetFlightRuleCode(v int64) *ApplyAddRequestTravelerStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyAddRequestTravelerStandard) SetHotelCitys(v []*ApplyAddRequestTravelerStandardHotelCitys) *ApplyAddRequestTravelerStandard {
 	s.HotelCitys = v
 	return s
@@ -5966,6 +6011,16 @@ func (s *ApplyAddRequestTravelerStandard) SetHotelCitys(v []*ApplyAddRequestTrav
 
 func (s *ApplyAddRequestTravelerStandard) SetHotelIntlCitys(v []*ApplyAddRequestTravelerStandardHotelIntlCitys) *ApplyAddRequestTravelerStandard {
 	s.HotelIntlCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetHotelIntlRuleCode(v int64) *ApplyAddRequestTravelerStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetHotelRuleCode(v int64) *ApplyAddRequestTravelerStandard {
+	s.HotelRuleCode = &v
 	return s
 }
 
@@ -5981,6 +6036,11 @@ func (s *ApplyAddRequestTravelerStandard) SetPremiumEconomyDiscount(v int32) *Ap
 
 func (s *ApplyAddRequestTravelerStandard) SetReserveType(v int32) *ApplyAddRequestTravelerStandard {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetTrainRuleCode(v int64) *ApplyAddRequestTravelerStandard {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -7974,15 +8034,20 @@ func (s *ApplyModifyRequestExternalTravelerList) SetUserNameEn(v string) *ApplyM
 }
 
 type ApplyModifyRequestExternalTravelerStandard struct {
-	BusinessDiscount *int32                                                      `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount  *int32                                                      `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                                      `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                                     `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	HotelIntlCitys   []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	BusinessDiscount   *int32                                                      `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount    *int32                                                      `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount      *int32                                                      `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins       *string                                                     `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode *int64                                                      `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode     *int64                                                      `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys         []*ApplyModifyRequestExternalTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys     []*ApplyModifyRequestExternalTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode  *int64                                                      `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode      *int64                                                      `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	// 超级经济舱折扣。1到10的整数
 	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode          *int64  `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats             *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
@@ -8014,6 +8079,16 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetFlightCabins(v string) *
 	return s
 }
 
+func (s *ApplyModifyRequestExternalTravelerStandard) SetFlightIntlRuleCode(v int64) *ApplyModifyRequestExternalTravelerStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandard) SetFlightRuleCode(v int64) *ApplyModifyRequestExternalTravelerStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestExternalTravelerStandardHotelCitys) *ApplyModifyRequestExternalTravelerStandard {
 	s.HotelCitys = v
 	return s
@@ -8024,6 +8099,16 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelIntlCitys(v []*Appl
 	return s
 }
 
+func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelIntlRuleCode(v int64) *ApplyModifyRequestExternalTravelerStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandard) SetHotelRuleCode(v int64) *ApplyModifyRequestExternalTravelerStandard {
+	s.HotelRuleCode = &v
+	return s
+}
+
 func (s *ApplyModifyRequestExternalTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyModifyRequestExternalTravelerStandard {
 	s.PremiumEconomyDiscount = &v
 	return s
@@ -8031,6 +8116,11 @@ func (s *ApplyModifyRequestExternalTravelerStandard) SetPremiumEconomyDiscount(v
 
 func (s *ApplyModifyRequestExternalTravelerStandard) SetReserveType(v int32) *ApplyModifyRequestExternalTravelerStandard {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerStandard) SetTrainRuleCode(v int64) *ApplyModifyRequestExternalTravelerStandard {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -8386,16 +8476,21 @@ func (s *ApplyModifyRequestTravelerList) SetUserName(v string) *ApplyModifyReque
 }
 
 type ApplyModifyRequestTravelerStandard struct {
-	BusinessDiscount *int32                                              `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet       []*ApplyModifyRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	EconomyDiscount  *int32                                              `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount    *int32                                              `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins     *string                                             `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys       []*ApplyModifyRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	HotelIntlCitys   []*ApplyModifyRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	BusinessDiscount   *int32                                              `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet         []*ApplyModifyRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	EconomyDiscount    *int32                                              `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount      *int32                                              `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins       *string                                             `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode *int64                                              `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode     *int64                                              `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys         []*ApplyModifyRequestTravelerStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys     []*ApplyModifyRequestTravelerStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode  *int64                                              `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode      *int64                                              `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	// 超级经济舱折扣。1到10的整数
 	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode          *int64  `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats             *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -8433,6 +8528,16 @@ func (s *ApplyModifyRequestTravelerStandard) SetFlightCabins(v string) *ApplyMod
 	return s
 }
 
+func (s *ApplyModifyRequestTravelerStandard) SetFlightIntlRuleCode(v int64) *ApplyModifyRequestTravelerStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetFlightRuleCode(v int64) *ApplyModifyRequestTravelerStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyModifyRequestTravelerStandard) SetHotelCitys(v []*ApplyModifyRequestTravelerStandardHotelCitys) *ApplyModifyRequestTravelerStandard {
 	s.HotelCitys = v
 	return s
@@ -8443,6 +8548,16 @@ func (s *ApplyModifyRequestTravelerStandard) SetHotelIntlCitys(v []*ApplyModifyR
 	return s
 }
 
+func (s *ApplyModifyRequestTravelerStandard) SetHotelIntlRuleCode(v int64) *ApplyModifyRequestTravelerStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetHotelRuleCode(v int64) *ApplyModifyRequestTravelerStandard {
+	s.HotelRuleCode = &v
+	return s
+}
+
 func (s *ApplyModifyRequestTravelerStandard) SetPremiumEconomyDiscount(v int32) *ApplyModifyRequestTravelerStandard {
 	s.PremiumEconomyDiscount = &v
 	return s
@@ -8450,6 +8565,11 @@ func (s *ApplyModifyRequestTravelerStandard) SetPremiumEconomyDiscount(v int32) 
 
 func (s *ApplyModifyRequestTravelerStandard) SetReserveType(v int32) *ApplyModifyRequestTravelerStandard {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyModifyRequestTravelerStandard) SetTrainRuleCode(v int64) *ApplyModifyRequestTravelerStandard {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -9275,10 +9395,15 @@ type ApplyQueryResponseBodyModuleExternalTravelerList struct {
 	EconomyDiscount        *int32                                                            `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount          *int32                                                            `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins           *string                                                           `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode     *int64                                                            `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode         *int64                                                            `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
 	HotelCitys             []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
 	HotelIntlCitys         []*ApplyQueryResponseBodyModuleExternalTravelerListHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode      *int64                                                            `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode          *int64                                                            `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	PremiumEconomyDiscount *int32                                                            `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32                                                            `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode          *int64                                                            `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats             *string                                                           `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 	UserName               *string                                                           `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -9311,6 +9436,16 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetFlightCabins(v str
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetFlightIntlRuleCode(v int64) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetFlightRuleCode(v int64) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.HotelCitys = v
 	return s
@@ -9321,6 +9456,16 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelIntlCitys(v [
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelIntlRuleCode(v int64) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetHotelRuleCode(v int64) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.HotelRuleCode = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetPremiumEconomyDiscount(v int32) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.PremiumEconomyDiscount = &v
 	return s
@@ -9328,6 +9473,11 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetPremiumEconomyDisc
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetReserveType(v int32) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetTrainRuleCode(v int64) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -9646,10 +9796,15 @@ type ApplyQueryResponseBodyModuleTravelerList struct {
 	EconomyDiscount        *int32                                                    `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
 	FirstDiscount          *int32                                                    `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins           *string                                                   `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode     *int64                                                    `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode         *int64                                                    `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
 	HotelCitys             []*ApplyQueryResponseBodyModuleTravelerListHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
 	HotelIntlCitys         []*ApplyQueryResponseBodyModuleTravelerListHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode      *int64                                                    `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode          *int64                                                    `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
 	PremiumEconomyDiscount *int32                                                    `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
 	ReserveType            *int32                                                    `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode          *int64                                                    `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
 	TrainSeats             *string                                                   `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 	UserId                 *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName               *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -9688,6 +9843,16 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetFlightCabins(v string) *Ap
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetFlightIntlRuleCode(v int64) *ApplyQueryResponseBodyModuleTravelerList {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetFlightRuleCode(v int64) *ApplyQueryResponseBodyModuleTravelerList {
+	s.FlightRuleCode = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelCitys(v []*ApplyQueryResponseBodyModuleTravelerListHotelCitys) *ApplyQueryResponseBodyModuleTravelerList {
 	s.HotelCitys = v
 	return s
@@ -9698,6 +9863,16 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelIntlCitys(v []*ApplyQ
 	return s
 }
 
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelIntlRuleCode(v int64) *ApplyQueryResponseBodyModuleTravelerList {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetHotelRuleCode(v int64) *ApplyQueryResponseBodyModuleTravelerList {
+	s.HotelRuleCode = &v
+	return s
+}
+
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetPremiumEconomyDiscount(v int32) *ApplyQueryResponseBodyModuleTravelerList {
 	s.PremiumEconomyDiscount = &v
 	return s
@@ -9705,6 +9880,11 @@ func (s *ApplyQueryResponseBodyModuleTravelerList) SetPremiumEconomyDiscount(v i
 
 func (s *ApplyQueryResponseBodyModuleTravelerList) SetReserveType(v int32) *ApplyQueryResponseBodyModuleTravelerList {
 	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleTravelerList) SetTrainRuleCode(v int64) *ApplyQueryResponseBodyModuleTravelerList {
+	s.TrainRuleCode = &v
 	return s
 }
 
@@ -72184,6 +72364,554 @@ func (s *TrainTicketScanQueryResponse) SetBody(v *TrainTicketScanQueryResponseBo
 	return s
 }
 
+type TravelStandardListQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TravelStandardListQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryHeaders) SetCommonHeaders(v map[string]*string) *TravelStandardListQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TravelStandardListQueryHeaders) SetXAcsBtripCorpToken(v string) *TravelStandardListQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TravelStandardListQueryRequest struct {
+	FromGroup *bool   `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	PageNo    *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	RuleName  *string `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+}
+
+func (s TravelStandardListQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryRequest) SetFromGroup(v bool) *TravelStandardListQueryRequest {
+	s.FromGroup = &v
+	return s
+}
+
+func (s *TravelStandardListQueryRequest) SetPageNo(v int32) *TravelStandardListQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *TravelStandardListQueryRequest) SetPageSize(v int32) *TravelStandardListQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *TravelStandardListQueryRequest) SetRuleName(v string) *TravelStandardListQueryRequest {
+	s.RuleName = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBody struct {
+	Code      *int32                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TravelStandardListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBody) SetCode(v int32) *TravelStandardListQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBody) SetMessage(v string) *TravelStandardListQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBody) SetModule(v *TravelStandardListQueryResponseBodyModule) *TravelStandardListQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBody) SetRequestId(v string) *TravelStandardListQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBody) SetSuccess(v bool) *TravelStandardListQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBody) SetTraceId(v string) *TravelStandardListQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBodyModule struct {
+	Items     []*TravelStandardListQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	TotalSize *int32                                            `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBodyModule) SetItems(v []*TravelStandardListQueryResponseBodyModuleItems) *TravelStandardListQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModule) SetTotalSize(v int32) *TravelStandardListQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBodyModuleItems struct {
+	MainReserveRule *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule   `json:"main_reserve_rule,omitempty" xml:"main_reserve_rule,omitempty" type:"Struct"`
+	ReserveRuleDesc []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc `json:"reserve_rule_desc,omitempty" xml:"reserve_rule_desc,omitempty" type:"Repeated"`
+	Scope           *int32                                                           `json:"scope,omitempty" xml:"scope,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItems) SetMainReserveRule(v *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) *TravelStandardListQueryResponseBodyModuleItems {
+	s.MainReserveRule = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItems) SetReserveRuleDesc(v []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) *TravelStandardListQueryResponseBodyModuleItems {
+	s.ReserveRuleDesc = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItems) SetScope(v int32) *TravelStandardListQueryResponseBodyModuleItems {
+	s.Scope = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBodyModuleItemsMainReserveRule struct {
+	OpenServiceTypeList []*string `json:"open_service_type_list,omitempty" xml:"open_service_type_list,omitempty" type:"Repeated"`
+	RuleCode            *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleDesc            *string   `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
+	RuleId              *int64    `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
+	RuleName            *string   `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) SetOpenServiceTypeList(v []*string) *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule {
+	s.OpenServiceTypeList = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) SetRuleCode(v int64) *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule {
+	s.RuleCode = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) SetRuleDesc(v string) *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) SetRuleId(v int64) *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) SetRuleName(v string) *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule {
+	s.RuleName = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc struct {
+	DataList []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
+	Title    *string                                                                  `json:"title,omitempty" xml:"title,omitempty"`
+	Type     *string                                                                  `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) SetDataList(v []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList) *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc {
+	s.DataList = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) SetTitle(v string) *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc {
+	s.Title = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) SetType(v string) *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc {
+	s.Type = &v
+	return s
+}
+
+type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList) SetKey(v string) *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList {
+	s.Key = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList) SetValue(v string) *TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList {
+	s.Value = &v
+	return s
+}
+
+type TravelStandardListQueryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TravelStandardListQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TravelStandardListQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardListQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardListQueryResponse) SetHeaders(v map[string]*string) *TravelStandardListQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TravelStandardListQueryResponse) SetStatusCode(v int32) *TravelStandardListQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TravelStandardListQueryResponse) SetBody(v *TravelStandardListQueryResponseBody) *TravelStandardListQueryResponse {
+	s.Body = v
+	return s
+}
+
+type TravelStandardQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TravelStandardQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryHeaders) SetCommonHeaders(v map[string]*string) *TravelStandardQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TravelStandardQueryHeaders) SetXAcsBtripCorpToken(v string) *TravelStandardQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TravelStandardQueryRequest struct {
+	FromGroup       *bool     `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	RuleCode        *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	ServiceTypeList []*string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty" type:"Repeated"`
+}
+
+func (s TravelStandardQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryRequest) SetFromGroup(v bool) *TravelStandardQueryRequest {
+	s.FromGroup = &v
+	return s
+}
+
+func (s *TravelStandardQueryRequest) SetRuleCode(v int64) *TravelStandardQueryRequest {
+	s.RuleCode = &v
+	return s
+}
+
+func (s *TravelStandardQueryRequest) SetServiceTypeList(v []*string) *TravelStandardQueryRequest {
+	s.ServiceTypeList = v
+	return s
+}
+
+type TravelStandardQueryShrinkRequest struct {
+	FromGroup             *bool   `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	RuleCode              *int64  `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	ServiceTypeListShrink *string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty"`
+}
+
+func (s TravelStandardQueryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryShrinkRequest) SetFromGroup(v bool) *TravelStandardQueryShrinkRequest {
+	s.FromGroup = &v
+	return s
+}
+
+func (s *TravelStandardQueryShrinkRequest) SetRuleCode(v int64) *TravelStandardQueryShrinkRequest {
+	s.RuleCode = &v
+	return s
+}
+
+func (s *TravelStandardQueryShrinkRequest) SetServiceTypeListShrink(v string) *TravelStandardQueryShrinkRequest {
+	s.ServiceTypeListShrink = &v
+	return s
+}
+
+type TravelStandardQueryResponseBody struct {
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TravelStandardQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TravelStandardQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponseBody) SetCode(v string) *TravelStandardQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBody) SetMessage(v string) *TravelStandardQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBody) SetModule(v *TravelStandardQueryResponseBodyModule) *TravelStandardQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBody) SetRequestId(v string) *TravelStandardQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBody) SetSuccess(v bool) *TravelStandardQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBody) SetTraceId(v string) *TravelStandardQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TravelStandardQueryResponseBodyModule struct {
+	ActivatedServiceTypeList []*string                                         `json:"activated_service_type_list,omitempty" xml:"activated_service_type_list,omitempty" type:"Repeated"`
+	ReserveRule              *TravelStandardQueryResponseBodyModuleReserveRule `json:"reserve_rule,omitempty" xml:"reserve_rule,omitempty" type:"Struct"`
+}
+
+func (s TravelStandardQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponseBodyModule) SetActivatedServiceTypeList(v []*string) *TravelStandardQueryResponseBodyModule {
+	s.ActivatedServiceTypeList = v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModule) SetReserveRule(v *TravelStandardQueryResponseBodyModuleReserveRule) *TravelStandardQueryResponseBodyModule {
+	s.ReserveRule = v
+	return s
+}
+
+type TravelStandardQueryResponseBodyModuleReserveRule struct {
+	MainReserveRule  *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule    `json:"main_reserve_rule,omitempty" xml:"main_reserve_rule,omitempty" type:"Struct"`
+	ModuleConfigList []*TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList `json:"module_config_list,omitempty" xml:"module_config_list,omitempty" type:"Repeated"`
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRule) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRule) SetMainReserveRule(v *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) *TravelStandardQueryResponseBodyModuleReserveRule {
+	s.MainReserveRule = v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRule) SetModuleConfigList(v []*TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList) *TravelStandardQueryResponseBodyModuleReserveRule {
+	s.ModuleConfigList = v
+	return s
+}
+
+type TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule struct {
+	OpenServiceTypeList []*string `json:"open_service_type_list,omitempty" xml:"open_service_type_list,omitempty" type:"Repeated"`
+	RuleCode            *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleDesc            *string   `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
+	RuleId              *int64    `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
+	RuleName            *string   `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) SetOpenServiceTypeList(v []*string) *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule {
+	s.OpenServiceTypeList = v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) SetRuleCode(v int64) *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule {
+	s.RuleCode = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) SetRuleDesc(v string) *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) SetRuleId(v int64) *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) SetRuleName(v string) *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule {
+	s.RuleName = &v
+	return s
+}
+
+type TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList struct {
+	Code  *string `json:"code,omitempty" xml:"code,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList) SetCode(v string) *TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList {
+	s.Code = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList) SetValue(v string) *TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList {
+	s.Value = &v
+	return s
+}
+
+type TravelStandardQueryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TravelStandardQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TravelStandardQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TravelStandardQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TravelStandardQueryResponse) SetHeaders(v map[string]*string) *TravelStandardQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TravelStandardQueryResponse) SetStatusCode(v int32) *TravelStandardQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TravelStandardQueryResponse) SetBody(v *TravelStandardQueryResponseBody) *TravelStandardQueryResponse {
+	s.Body = v
+	return s
+}
+
 type UserQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -84442,6 +85170,142 @@ func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest)
 	headers := &TrainTicketScanQueryHeaders{}
 	_result = &TrainTicketScanQueryResponse{}
 	_body, _err := client.TrainTicketScanQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandardListQueryRequest, headers *TravelStandardListQueryHeaders, runtime *util.RuntimeOptions) (_result *TravelStandardListQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FromGroup)) {
+		query["from_group"] = request.FromGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["rule_name"] = request.RuleName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TravelStandardListQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/travel-manage/v1/standards/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TravelStandardListQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TravelStandardListQuery(request *TravelStandardListQueryRequest) (_result *TravelStandardListQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TravelStandardListQueryHeaders{}
+	_result = &TravelStandardListQueryResponse{}
+	_body, _err := client.TravelStandardListQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TravelStandardQueryWithOptions(tmpReq *TravelStandardQueryRequest, headers *TravelStandardQueryHeaders, runtime *util.RuntimeOptions) (_result *TravelStandardQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TravelStandardQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServiceTypeList)) {
+		request.ServiceTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceTypeList, tea.String("service_type_list"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FromGroup)) {
+		query["from_group"] = request.FromGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleCode)) {
+		query["rule_code"] = request.RuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTypeListShrink)) {
+		query["service_type_list"] = request.ServiceTypeListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TravelStandardQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/travel-manage/v1/standards/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TravelStandardQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (_result *TravelStandardQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TravelStandardQueryHeaders{}
+	_result = &TravelStandardQueryResponse{}
+	_body, _err := client.TravelStandardQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
