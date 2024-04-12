@@ -5755,23 +5755,62 @@ func (s *QueryDomainGroupListResponse) SetBody(v *QueryDomainGroupListResponseBo
 }
 
 type QueryDomainListRequest struct {
-	Ccompany              *string                      `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
-	DomainGroupId         *string                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainName            *string                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndExpirationDate     *int64                       `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndRegistrationDate   *int64                       `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Lang                  *string                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OrderByType           *string                      `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
-	OrderKeyType          *string                      `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
-	PageNum               *int32                       `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize              *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string                      `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	QueryType             *string                      `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	ResourceGroupId       *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StartExpirationDate   *int64                       `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartRegistrationDate *int64                       `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	Tag                   []*QueryDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserClientIp          *string                      `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The name of the domain name registrant.
+	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	// The ID of the domain name group.
+	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// The domain name that you want to search for.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	// The end of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order of the information based on which the domain names are sorted, such as the registration date and expiration date. Valid values:
+	//
+	// *   **ASC**: ascending order
+	// *   **DESC**: descending order
+	//
+	// >  If this parameter is not specified, the default value **DESC** is used.
+	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
+	// The field that you use to sort the domain names. Valid values:
+	//
+	// *   **RegistrationDate**: registration date
+	// *   **ExpirationDate**: expiration date
+	//
+	// >  If this parameter is not specified, the domain names are sorted by the time when they were added to the database.
+	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
+	// The page number.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   **New gTLD**: new generic top-level domain names
+	// *   **gTLD**: generic top-level domain names
+	// *   **ccTLD**: country code top-level domain names
+	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	// The category of the domain names that you want to query. Valid values:
+	//
+	// *   **1**: the domain names that need to be renewed
+	// *   **2**: the domain names that need to be redeemed
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The beginning of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	// The beginning of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	// The tags to add to the resource.
+	Tag []*QueryDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The IP address of the client. Set the value to **127.0.0.1**.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryDomainListRequest) String() string {
@@ -5868,7 +5907,9 @@ func (s *QueryDomainListRequest) SetUserClientIp(v string) *QueryDomainListReque
 }
 
 type QueryDomainListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag to add to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag to add to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5891,14 +5932,22 @@ func (s *QueryDomainListRequestTag) SetValue(v string) *QueryDomainListRequestTa
 }
 
 type QueryDomainListResponseBody struct {
-	CurrentPageNum *int32                           `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                            `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                            `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                           `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                           `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The page number.
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The domain names.
+	Data *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether the current page is followed by a page.
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the current page is preceded by a page.
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names returned.
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages returned.
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryDomainListResponseBody) String() string {
@@ -5967,26 +6016,65 @@ func (s *QueryDomainListResponseBodyData) SetDomain(v []*QueryDomainListResponse
 }
 
 type QueryDomainListResponseBodyDataDomain struct {
-	Ccompany               *string                                   `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
-	DomainAuditStatus      *string                                   `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	DomainGroupId          *string                                   `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName        *string                                   `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName             *string                                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainStatus           *string                                   `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType             *string                                   `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	ExpirationCurrDateDiff *int32                                    `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate         *string                                   `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong     *int64                                    `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus   *string                                   `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId             *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                *bool                                     `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	ProductId              *string                                   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegistrantType         *string                                   `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrationDate       *string                                   `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong   *int64                                    `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                 *string                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId        *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag                    *QueryDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// The name of the domain name registrant.
+	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	// The state of real-name verification for the domain name. Valid values:
+	//
+	// *   **FAILED**: Real-name verification for the domain name fails.
+	// *   **SUCCEED**: Real-name verification for the domain name is successful.
+	// *   **NONAUDIT**: Real-name verification for the domain name is not performed.
+	// *   **AUDITING**: Real-name verification for the domain name is in progress.
+	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	// The ID of the domain name group.
+	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// The name of the domain name group.
+	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The state of the domain name. Valid values:
+	//
+	// *   **1**: The domain name needs to be renewed.
+	// *   **2**: The domain name needs to be redeemed.
+	// *   **3**: The domain name is normal.
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The type of the domain name. Valid values:
+	//
+	// *   **New gTLD**
+	// *   **gTLD**
+	// *   **ccTLD**
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The number of days from the expiration date of the domain name to the current date.
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// The time when the domain name expires.
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The validity period of the domain name. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// Indicates whether the domain name expires. Valid values:
+	//
+	// *   **1**: The domain name does not expire.
+	// *   **2**: The domain name expires.
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the domain name is a premium domain name.
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// The service ID.
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The registration type of the domain name. Valid values:
+	//
+	// *   **1**: individual
+	// *   **2**: enterprise
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// The time when the domain name was registered.
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// Indicates how long the domain name has been registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	// The remarks of the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the resource group to which the domain name belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags added to the resource.
+	Tag *QueryDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s QueryDomainListResponseBodyDataDomain) String() string {
@@ -6115,7 +6203,9 @@ func (s *QueryDomainListResponseBodyDataDomainTag) SetTag(v []*QueryDomainListRe
 }
 
 type QueryDomainListResponseBodyDataDomainTagTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag added to the resource.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag added to the resource.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12458,9 +12548,17 @@ func (s *SaveBatchTaskForDomainNameProxyServiceResponse) SetBody(v *SaveBatchTas
 }
 
 type SaveBatchTaskForGenerateDomainCertificateRequest struct {
-	DomainNames  []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The domain names.
+	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForGenerateDomainCertificateRequest) String() string {
@@ -12487,9 +12585,17 @@ func (s *SaveBatchTaskForGenerateDomainCertificateRequest) SetUserClientIp(v str
 }
 
 type SaveBatchTaskForGenerateDomainCertificateShrinkRequest struct {
+	// The domain names.
 	DomainNamesShrink *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForGenerateDomainCertificateShrinkRequest) String() string {
@@ -12516,8 +12622,10 @@ func (s *SaveBatchTaskForGenerateDomainCertificateShrinkRequest) SetUserClientIp
 }
 
 type SaveBatchTaskForGenerateDomainCertificateResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// The task ID.
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForGenerateDomainCertificateResponseBody) String() string {
@@ -12684,6 +12792,8 @@ func (s *SaveBatchTaskForReserveDropListDomainRequest) SetDomains(v []*SaveBatch
 }
 
 type SaveBatchTaskForReserveDropListDomainRequestDomains struct {
+	Dns1       *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	Dns2       *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -12693,6 +12803,16 @@ func (s SaveBatchTaskForReserveDropListDomainRequestDomains) String() string {
 
 func (s SaveBatchTaskForReserveDropListDomainRequestDomains) GoString() string {
 	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDns1(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
+	s.Dns1 = &v
+	return s
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDns2(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
+	s.Dns2 = &v
+	return s
 }
 
 func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDomainName(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
@@ -15309,8 +15429,16 @@ func (s *SaveSingleTaskForDomainNameProxyServiceResponse) SetBody(v *SaveSingleT
 }
 
 type SaveSingleTaskForGenerateDomainCertificateRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the error message to return if the request fails. Valid values:
+	//
+	// *   **zh**: Chinese.
+	// *   **en**: English.
+	//
+	// Default value: **en**.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -15338,8 +15466,10 @@ func (s *SaveSingleTaskForGenerateDomainCertificateRequest) SetUserClientIp(v st
 }
 
 type SaveSingleTaskForGenerateDomainCertificateResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// The task ID.
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForGenerateDomainCertificateResponseBody) String() string {
