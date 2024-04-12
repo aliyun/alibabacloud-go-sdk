@@ -1396,6 +1396,7 @@ type GetInstanceResponseBody struct {
 	Labels            []*GetInstanceResponseBodyLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestSnapshot    *GetInstanceResponseBodyLatestSnapshot    `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
 	Message           *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeErrorRecovery *GetInstanceResponseBodyNodeErrorRecovery `json:"NodeErrorRecovery,omitempty" xml:"NodeErrorRecovery,omitempty" type:"Struct"`
 	PaymentType       *string                                   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	Priority          *int64                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ReasonCode        *string                                   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
@@ -1547,6 +1548,11 @@ func (s *GetInstanceResponseBody) SetLatestSnapshot(v *GetInstanceResponseBodyLa
 
 func (s *GetInstanceResponseBody) SetMessage(v string) *GetInstanceResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetNodeErrorRecovery(v *GetInstanceResponseBodyNodeErrorRecovery) *GetInstanceResponseBody {
+	s.NodeErrorRecovery = v
 	return s
 }
 
@@ -1942,6 +1948,35 @@ func (s *GetInstanceResponseBodyLatestSnapshot) SetRepositoryUrl(v string) *GetI
 
 func (s *GetInstanceResponseBodyLatestSnapshot) SetStatus(v string) *GetInstanceResponseBodyLatestSnapshot {
 	s.Status = &v
+	return s
+}
+
+type GetInstanceResponseBodyNodeErrorRecovery struct {
+	AutoSwitchCountdownSeconds  *int64 `json:"autoSwitchCountdownSeconds,omitempty" xml:"autoSwitchCountdownSeconds,omitempty"`
+	EnableAutoSwitchOnNodeError *bool  `json:"enableAutoSwitchOnNodeError,omitempty" xml:"enableAutoSwitchOnNodeError,omitempty"`
+	HasNodeError                *bool  `json:"hasNodeError,omitempty" xml:"hasNodeError,omitempty"`
+}
+
+func (s GetInstanceResponseBodyNodeErrorRecovery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyNodeErrorRecovery) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyNodeErrorRecovery) SetAutoSwitchCountdownSeconds(v int64) *GetInstanceResponseBodyNodeErrorRecovery {
+	s.AutoSwitchCountdownSeconds = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyNodeErrorRecovery) SetEnableAutoSwitchOnNodeError(v bool) *GetInstanceResponseBodyNodeErrorRecovery {
+	s.EnableAutoSwitchOnNodeError = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyNodeErrorRecovery) SetHasNodeError(v bool) *GetInstanceResponseBodyNodeErrorRecovery {
+	s.HasNodeError = &v
 	return s
 }
 
