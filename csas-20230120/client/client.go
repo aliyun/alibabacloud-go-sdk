@@ -7131,6 +7131,170 @@ func (s *ListUserGroupsForRegistrationPolicyResponse) SetBody(v *ListUserGroupsF
 	return s
 }
 
+type ListUsersRequest struct {
+	CurrentPage     *int64    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department      *string   `json:"Department,omitempty" xml:"Department,omitempty"`
+	FuzzyUsername   *string   `json:"FuzzyUsername,omitempty" xml:"FuzzyUsername,omitempty"`
+	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PreciseUsername *string   `json:"PreciseUsername,omitempty" xml:"PreciseUsername,omitempty"`
+	SaseUserIds     []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
+	Status          *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersRequest) SetCurrentPage(v int64) *ListUsersRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetDepartment(v string) *ListUsersRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetFuzzyUsername(v string) *ListUsersRequest {
+	s.FuzzyUsername = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetPageSize(v int64) *ListUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetPreciseUsername(v string) *ListUsersRequest {
+	s.PreciseUsername = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetSaseUserIds(v []*string) *ListUsersRequest {
+	s.SaseUserIds = v
+	return s
+}
+
+func (s *ListUsersRequest) SetStatus(v string) *ListUsersRequest {
+	s.Status = &v
+	return s
+}
+
+type ListUsersResponseBody struct {
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum  *string                       `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Users     []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s ListUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUsersResponseBody) SetTotalNum(v string) *ListUsersResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListUsersResponseBody {
+	s.Users = v
+	return s
+}
+
+type ListUsersResponseBodyUsers struct {
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	Email      *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpName    *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
+	Phone      *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListUsersResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponseBodyUsers) SetDepartment(v string) *ListUsersResponseBodyUsers {
+	s.Department = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetEmail(v string) *ListUsersResponseBodyUsers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetIdpName(v string) *ListUsersResponseBodyUsers {
+	s.IdpName = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetPhone(v string) *ListUsersResponseBodyUsers {
+	s.Phone = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetSaseUserId(v string) *ListUsersResponseBodyUsers {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetStatus(v string) *ListUsersResponseBodyUsers {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyUsers) SetUsername(v string) *ListUsersResponseBodyUsers {
+	s.Username = &v
+	return s
+}
+
+type ListUsersResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersResponse) SetHeaders(v map[string]*string) *ListUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDynamicRouteRequest struct {
 	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
@@ -8709,6 +8873,75 @@ func (s *UpdateUserGroupResponse) SetStatusCode(v int32) *UpdateUserGroupRespons
 }
 
 func (s *UpdateUserGroupResponse) SetBody(v *UpdateUserGroupResponseBody) *UpdateUserGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUsersStatusRequest struct {
+	SaseUserIds []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateUsersStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUsersStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUsersStatusRequest) SetSaseUserIds(v []*string) *UpdateUsersStatusRequest {
+	s.SaseUserIds = v
+	return s
+}
+
+func (s *UpdateUsersStatusRequest) SetStatus(v string) *UpdateUsersStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateUsersStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUsersStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUsersStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUsersStatusResponseBody) SetRequestId(v string) *UpdateUsersStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUsersStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUsersStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUsersStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUsersStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUsersStatusResponse) SetHeaders(v map[string]*string) *UpdateUsersStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUsersStatusResponse) SetStatusCode(v int32) *UpdateUsersStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUsersStatusResponse) SetBody(v *UpdateUsersStatusResponseBody) *UpdateUsersStatusResponse {
 	s.Body = v
 	return s
 }
@@ -10773,6 +11006,46 @@ func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroup
 	return _result, _err
 }
 
+func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsersResponse{}
+	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11340,6 +11613,54 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserGroupResponse{}
 	_body, _err := client.UpdateUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUsersStatusWithOptions(request *UpdateUsersStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUsersStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SaseUserIds)) {
+		query["SaseUserIds"] = request.SaseUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUsersStatus"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUsersStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUsersStatus(request *UpdateUsersStatusRequest) (_result *UpdateUsersStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUsersStatusResponse{}
+	_body, _err := client.UpdateUsersStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
