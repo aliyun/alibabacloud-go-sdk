@@ -78,6 +78,7 @@ func (s *Alias) SetVersionId(v string) *Alias {
 }
 
 type AsyncConfig struct {
+	AsyncTask                 *bool              `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
 	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
 	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
@@ -92,6 +93,11 @@ func (s AsyncConfig) String() string {
 
 func (s AsyncConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AsyncConfig) SetAsyncTask(v bool) *AsyncConfig {
+	s.AsyncTask = &v
+	return s
 }
 
 func (s *AsyncConfig) SetCreatedTime(v string) *AsyncConfig {
@@ -124,6 +130,142 @@ func (s *AsyncConfig) SetMaxAsyncRetryAttempts(v int64) *AsyncConfig {
 	return s
 }
 
+type AsyncTask struct {
+	AlreadyRetriedTimes *int64            `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
+	DestinationStatus   *string           `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
+	DurationMs          *int64            `json:"durationMs,omitempty" xml:"durationMs,omitempty"`
+	EndTime             *int64            `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Events              []*AsyncTaskEvent `json:"events" xml:"events" type:"Repeated"`
+	FunctionArn         *string           `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	InstanceId          *string           `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Qualifier           *string           `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	RequestId           *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ReturnPayload       *string           `json:"returnPayload,omitempty" xml:"returnPayload,omitempty"`
+	StartedTime         *int64            `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
+	Status              *string           `json:"status,omitempty" xml:"status,omitempty"`
+	TaskErrorMessage    *string           `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
+	TaskId              *string           `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskPayload         *string           `json:"taskPayload,omitempty" xml:"taskPayload,omitempty"`
+}
+
+func (s AsyncTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncTask) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncTask) SetAlreadyRetriedTimes(v int64) *AsyncTask {
+	s.AlreadyRetriedTimes = &v
+	return s
+}
+
+func (s *AsyncTask) SetDestinationStatus(v string) *AsyncTask {
+	s.DestinationStatus = &v
+	return s
+}
+
+func (s *AsyncTask) SetDurationMs(v int64) *AsyncTask {
+	s.DurationMs = &v
+	return s
+}
+
+func (s *AsyncTask) SetEndTime(v int64) *AsyncTask {
+	s.EndTime = &v
+	return s
+}
+
+func (s *AsyncTask) SetEvents(v []*AsyncTaskEvent) *AsyncTask {
+	s.Events = v
+	return s
+}
+
+func (s *AsyncTask) SetFunctionArn(v string) *AsyncTask {
+	s.FunctionArn = &v
+	return s
+}
+
+func (s *AsyncTask) SetInstanceId(v string) *AsyncTask {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AsyncTask) SetQualifier(v string) *AsyncTask {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *AsyncTask) SetRequestId(v string) *AsyncTask {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AsyncTask) SetReturnPayload(v string) *AsyncTask {
+	s.ReturnPayload = &v
+	return s
+}
+
+func (s *AsyncTask) SetStartedTime(v int64) *AsyncTask {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *AsyncTask) SetStatus(v string) *AsyncTask {
+	s.Status = &v
+	return s
+}
+
+func (s *AsyncTask) SetTaskErrorMessage(v string) *AsyncTask {
+	s.TaskErrorMessage = &v
+	return s
+}
+
+func (s *AsyncTask) SetTaskId(v string) *AsyncTask {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncTask) SetTaskPayload(v string) *AsyncTask {
+	s.TaskPayload = &v
+	return s
+}
+
+type AsyncTaskEvent struct {
+	EventDetail *string `json:"eventDetail,omitempty" xml:"eventDetail,omitempty"`
+	EventId     *int64  `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
+	Timestamp   *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s AsyncTaskEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncTaskEvent) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncTaskEvent) SetEventDetail(v string) *AsyncTaskEvent {
+	s.EventDetail = &v
+	return s
+}
+
+func (s *AsyncTaskEvent) SetEventId(v int64) *AsyncTaskEvent {
+	s.EventId = &v
+	return s
+}
+
+func (s *AsyncTaskEvent) SetStatus(v string) *AsyncTaskEvent {
+	s.Status = &v
+	return s
+}
+
+func (s *AsyncTaskEvent) SetTimestamp(v int64) *AsyncTaskEvent {
+	s.Timestamp = &v
+	return s
+}
+
 type AuthConfig struct {
 	AuthInfo *string `json:"authInfo,omitempty" xml:"authInfo,omitempty"`
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
@@ -144,6 +286,64 @@ func (s *AuthConfig) SetAuthInfo(v string) *AuthConfig {
 
 func (s *AuthConfig) SetAuthType(v string) *AuthConfig {
 	s.AuthType = &v
+	return s
+}
+
+type BatchWindow struct {
+	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
+	TimeBasedWindow  *int32 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
+}
+
+func (s BatchWindow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchWindow) GoString() string {
+	return s.String()
+}
+
+func (s *BatchWindow) SetCountBasedWindow(v int32) *BatchWindow {
+	s.CountBasedWindow = &v
+	return s
+}
+
+func (s *BatchWindow) SetTimeBasedWindow(v int32) *BatchWindow {
+	s.TimeBasedWindow = &v
+	return s
+}
+
+type CDNTriggerConfig struct {
+	EventName    *string              `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
+	Filter       map[string][]*string `json:"filter" xml:"filter"`
+	Notes        *string              `json:"notes,omitempty" xml:"notes,omitempty"`
+}
+
+func (s CDNTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CDNTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CDNTriggerConfig) SetEventName(v string) *CDNTriggerConfig {
+	s.EventName = &v
+	return s
+}
+
+func (s *CDNTriggerConfig) SetEventVersion(v string) *CDNTriggerConfig {
+	s.EventVersion = &v
+	return s
+}
+
+func (s *CDNTriggerConfig) SetFilter(v map[string][]*string) *CDNTriggerConfig {
+	s.Filter = v
+	return s
+}
+
+func (s *CDNTriggerConfig) SetNotes(v string) *CDNTriggerConfig {
+	s.Notes = &v
 	return s
 }
 
@@ -829,6 +1029,46 @@ func (s *DNSOption) SetValue(v string) *DNSOption {
 	return s
 }
 
+type DeadLetterQueue struct {
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s DeadLetterQueue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeadLetterQueue) GoString() string {
+	return s.String()
+}
+
+func (s *DeadLetterQueue) SetArn(v string) *DeadLetterQueue {
+	s.Arn = &v
+	return s
+}
+
+type DeliveryOption struct {
+	Concurrency *int64  `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
+	EventSchema *string `json:"eventSchema,omitempty" xml:"eventSchema,omitempty"`
+}
+
+func (s DeliveryOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeliveryOption) GoString() string {
+	return s.String()
+}
+
+func (s *DeliveryOption) SetConcurrency(v int64) *DeliveryOption {
+	s.Concurrency = &v
+	return s
+}
+
+func (s *DeliveryOption) SetEventSchema(v string) *DeliveryOption {
+	s.EventSchema = &v
+	return s
+}
+
 type Destination struct {
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
 }
@@ -918,6 +1158,157 @@ func (s *Error) SetMessage(v string) *Error {
 
 func (s *Error) SetRequestId(v string) *Error {
 	s.RequestId = &v
+	return s
+}
+
+type EventBridgeTriggerConfig struct {
+	AsyncInvocationType    *bool              `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
+	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
+	EventSinkConfig        *EventSinkConfig   `json:"eventSinkConfig,omitempty" xml:"eventSinkConfig,omitempty"`
+	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
+	RunOptions             *RunOptions        `json:"runOptions,omitempty" xml:"runOptions,omitempty"`
+	TriggerEnable          *bool              `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
+}
+
+func (s EventBridgeTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventBridgeTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventBridgeTriggerConfig) SetAsyncInvocationType(v bool) *EventBridgeTriggerConfig {
+	s.AsyncInvocationType = &v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetEventRuleFilterPattern(v string) *EventBridgeTriggerConfig {
+	s.EventRuleFilterPattern = &v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetEventSinkConfig(v *EventSinkConfig) *EventBridgeTriggerConfig {
+	s.EventSinkConfig = v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetEventSourceConfig(v *EventSourceConfig) *EventBridgeTriggerConfig {
+	s.EventSourceConfig = v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetRunOptions(v *RunOptions) *EventBridgeTriggerConfig {
+	s.RunOptions = v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerConfig {
+	s.TriggerEnable = &v
+	return s
+}
+
+type EventSinkConfig struct {
+	DeliveryOption *DeliveryOption `json:"deliveryOption,omitempty" xml:"deliveryOption,omitempty"`
+}
+
+func (s EventSinkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSinkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventSinkConfig) SetDeliveryOption(v *DeliveryOption) *EventSinkConfig {
+	s.DeliveryOption = v
+	return s
+}
+
+type EventSourceConfig struct {
+	EventSourceParameters *EventSourceParameters `json:"eventSourceParameters,omitempty" xml:"eventSourceParameters,omitempty"`
+	EventSourceType       *string                `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
+}
+
+func (s EventSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventSourceConfig) SetEventSourceParameters(v *EventSourceParameters) *EventSourceConfig {
+	s.EventSourceParameters = v
+	return s
+}
+
+func (s *EventSourceConfig) SetEventSourceType(v string) *EventSourceConfig {
+	s.EventSourceType = &v
+	return s
+}
+
+type EventSourceParameters struct {
+	SourceDTSParameters      *SourceDTSParameters      `json:"sourceDTSParameters,omitempty" xml:"sourceDTSParameters,omitempty"`
+	SourceKafkaParameters    *SourceKafkaParameters    `json:"sourceKafkaParameters,omitempty" xml:"sourceKafkaParameters,omitempty"`
+	SourceMNSParameters      *SourceMNSParameters      `json:"sourceMNSParameters,omitempty" xml:"sourceMNSParameters,omitempty"`
+	SourceMQTTParameters     *SourceMQTTParameters     `json:"sourceMQTTParameters,omitempty" xml:"sourceMQTTParameters,omitempty"`
+	SourceRabbitMQParameters *SourceRabbitMQParameters `json:"sourceRabbitMQParameters,omitempty" xml:"sourceRabbitMQParameters,omitempty"`
+	SourceRocketMQParameters *SourceRocketMQParameters `json:"sourceRocketMQParameters,omitempty" xml:"sourceRocketMQParameters,omitempty"`
+}
+
+func (s EventSourceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSourceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *EventSourceParameters) SetSourceDTSParameters(v *SourceDTSParameters) *EventSourceParameters {
+	s.SourceDTSParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceKafkaParameters(v *SourceKafkaParameters) *EventSourceParameters {
+	s.SourceKafkaParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceMNSParameters(v *SourceMNSParameters) *EventSourceParameters {
+	s.SourceMNSParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceMQTTParameters(v *SourceMQTTParameters) *EventSourceParameters {
+	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceRabbitMQParameters(v *SourceRabbitMQParameters) *EventSourceParameters {
+	s.SourceRabbitMQParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQParameters) *EventSourceParameters {
+	s.SourceRocketMQParameters = v
+	return s
+}
+
+type Filter struct {
+	Key *Key `json:"key,omitempty" xml:"key,omitempty"`
+}
+
+func (s Filter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Filter) GoString() string {
+	return s.String()
+}
+
+func (s *Filter) SetKey(v *Key) *Filter {
+	s.Key = v
 	return s
 }
 
@@ -1240,6 +1631,41 @@ func (s *HTTPTrigger) SetUrlIntranet(v string) *HTTPTrigger {
 	return s
 }
 
+type HTTPTriggerConfig struct {
+	AuthConfig         *string   `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	Methods            []*string `json:"methods" xml:"methods" type:"Repeated"`
+}
+
+func (s HTTPTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HTTPTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HTTPTriggerConfig) SetAuthConfig(v string) *HTTPTriggerConfig {
+	s.AuthConfig = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetDisableURLInternet(v bool) *HTTPTriggerConfig {
+	s.DisableURLInternet = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetMethods(v []*string) *HTTPTriggerConfig {
+	s.Methods = v
+	return s
+}
+
 type InputCodeLocation struct {
 	Checksum      *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
@@ -1318,6 +1744,52 @@ func (s *InstanceLifecycleConfig) SetInitializer(v *LifecycleHook) *InstanceLife
 
 func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycleConfig {
 	s.PreStop = v
+	return s
+}
+
+type JobConfig struct {
+	MaxRetryTime    *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	TriggerInterval *int32 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+}
+
+func (s JobConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JobConfig) SetMaxRetryTime(v int32) *JobConfig {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *JobConfig) SetTriggerInterval(v int32) *JobConfig {
+	s.TriggerInterval = &v
+	return s
+}
+
+type Key struct {
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+}
+
+func (s Key) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Key) GoString() string {
+	return s.String()
+}
+
+func (s *Key) SetPrefix(v string) *Key {
+	s.Prefix = &v
+	return s
+}
+
+func (s *Key) SetSuffix(v string) *Key {
+	s.Suffix = &v
 	return s
 }
 
@@ -1464,6 +1936,29 @@ func (s *ListAsyncInvokeConfigOutput) SetConfigs(v []*AsyncConfig) *ListAsyncInv
 
 func (s *ListAsyncInvokeConfigOutput) SetNextToken(v string) *ListAsyncInvokeConfigOutput {
 	s.NextToken = &v
+	return s
+}
+
+type ListAsyncTaskOutput struct {
+	NextToken *string      `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Tasks     []*AsyncTask `json:"tasks" xml:"tasks" type:"Repeated"`
+}
+
+func (s ListAsyncTaskOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAsyncTaskOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListAsyncTaskOutput) SetNextToken(v string) *ListAsyncTaskOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAsyncTaskOutput) SetTasks(v []*AsyncTask) *ListAsyncTaskOutput {
+	s.Tasks = v
 	return s
 }
 
@@ -1784,6 +2279,35 @@ func (s *LogConfig) SetProject(v string) *LogConfig {
 	return s
 }
 
+type MNSTopicTriggerConfig struct {
+	FilterTag           *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
+	NotifyContentFormat *string `json:"notifyContentFormat,omitempty" xml:"notifyContentFormat,omitempty"`
+	NotifyStrategy      *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+}
+
+func (s MNSTopicTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MNSTopicTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MNSTopicTriggerConfig) SetFilterTag(v string) *MNSTopicTriggerConfig {
+	s.FilterTag = &v
+	return s
+}
+
+func (s *MNSTopicTriggerConfig) SetNotifyContentFormat(v string) *MNSTopicTriggerConfig {
+	s.NotifyContentFormat = &v
+	return s
+}
+
+func (s *MNSTopicTriggerConfig) SetNotifyStrategy(v string) *MNSTopicTriggerConfig {
+	s.NotifyStrategy = &v
+	return s
+}
+
 type NASConfig struct {
 	GroupId     *int32            `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	MountPoints []*NASMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
@@ -1897,6 +2421,29 @@ func (s *OSSMountPoint) SetMountDir(v string) *OSSMountPoint {
 
 func (s *OSSMountPoint) SetReadOnly(v bool) *OSSMountPoint {
 	s.ReadOnly = &v
+	return s
+}
+
+type OSSTriggerConfig struct {
+	Events []*string `json:"events" xml:"events" type:"Repeated"`
+	Filter *Filter   `json:"filter,omitempty" xml:"filter,omitempty"`
+}
+
+func (s OSSTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OSSTriggerConfig) SetEvents(v []*string) *OSSTriggerConfig {
+	s.Events = v
+	return s
+}
+
+func (s *OSSTriggerConfig) SetFilter(v *Filter) *OSSTriggerConfig {
+	s.Filter = v
 	return s
 }
 
@@ -2058,6 +2605,7 @@ func (s *PublishVersionInput) SetDescription(v string) *PublishVersionInput {
 }
 
 type PutAsyncInvokeConfigInput struct {
+	AsyncTask                 *bool              `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
 	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
 	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
 	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
@@ -2069,6 +2617,11 @@ func (s PutAsyncInvokeConfigInput) String() string {
 
 func (s PutAsyncInvokeConfigInput) GoString() string {
 	return s.String()
+}
+
+func (s *PutAsyncInvokeConfigInput) SetAsyncTask(v bool) *PutAsyncInvokeConfigInput {
+	s.AsyncTask = &v
+	return s
 }
 
 func (s *PutAsyncInvokeConfigInput) SetDestinationConfig(v *DestinationConfig) *PutAsyncInvokeConfigInput {
@@ -2190,6 +2743,23 @@ func (s *Resource) SetTags(v map[string]*string) *Resource {
 	return s
 }
 
+type RetryStrategy struct {
+	PushRetryStrategy *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
+}
+
+func (s RetryStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *RetryStrategy) SetPushRetryStrategy(v string) *RetryStrategy {
+	s.PushRetryStrategy = &v
+	return s
+}
+
 type RewriteConfig struct {
 	EqualRules    []*EqualRule    `json:"equalRules" xml:"equalRules" type:"Repeated"`
 	RegexRules    []*RegexRule    `json:"regexRules" xml:"regexRules" type:"Repeated"`
@@ -2236,6 +2806,111 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 	return s
 }
 
+type RunOptions struct {
+	BatchWindow     *BatchWindow     `json:"batchWindow,omitempty" xml:"batchWindow,omitempty"`
+	DeadLetterQueue *DeadLetterQueue `json:"deadLetterQueue,omitempty" xml:"deadLetterQueue,omitempty"`
+	ErrorsTolerance *string          `json:"errorsTolerance,omitempty" xml:"errorsTolerance,omitempty"`
+	Mode            *string          `json:"mode,omitempty" xml:"mode,omitempty"`
+	RetryStrategy   *RetryStrategy   `json:"retryStrategy,omitempty" xml:"retryStrategy,omitempty"`
+}
+
+func (s RunOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOptions) GoString() string {
+	return s.String()
+}
+
+func (s *RunOptions) SetBatchWindow(v *BatchWindow) *RunOptions {
+	s.BatchWindow = v
+	return s
+}
+
+func (s *RunOptions) SetDeadLetterQueue(v *DeadLetterQueue) *RunOptions {
+	s.DeadLetterQueue = v
+	return s
+}
+
+func (s *RunOptions) SetErrorsTolerance(v string) *RunOptions {
+	s.ErrorsTolerance = &v
+	return s
+}
+
+func (s *RunOptions) SetMode(v string) *RunOptions {
+	s.Mode = &v
+	return s
+}
+
+func (s *RunOptions) SetRetryStrategy(v *RetryStrategy) *RunOptions {
+	s.RetryStrategy = v
+	return s
+}
+
+type SLSTriggerConfig struct {
+	Enable            *bool                `json:"enable,omitempty" xml:"enable,omitempty"`
+	FunctionParameter map[string]*string   `json:"functionParameter" xml:"functionParameter"`
+	JobConfig         *JobConfig           `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
+	LogConfig         *SLSTriggerLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *SourceConfig        `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+}
+
+func (s SLSTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SLSTriggerConfig) SetEnable(v bool) *SLSTriggerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *SLSTriggerConfig) SetFunctionParameter(v map[string]*string) *SLSTriggerConfig {
+	s.FunctionParameter = v
+	return s
+}
+
+func (s *SLSTriggerConfig) SetJobConfig(v *JobConfig) *SLSTriggerConfig {
+	s.JobConfig = v
+	return s
+}
+
+func (s *SLSTriggerConfig) SetLogConfig(v *SLSTriggerLogConfig) *SLSTriggerConfig {
+	s.LogConfig = v
+	return s
+}
+
+func (s *SLSTriggerConfig) SetSourceConfig(v *SourceConfig) *SLSTriggerConfig {
+	s.SourceConfig = v
+	return s
+}
+
+type SLSTriggerLogConfig struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s SLSTriggerLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSTriggerLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SLSTriggerLogConfig) SetLogstore(v string) *SLSTriggerLogConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *SLSTriggerLogConfig) SetProject(v string) *SLSTriggerLogConfig {
+	s.Project = &v
+	return s
+}
+
 type ScheduledAction struct {
 	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -2274,6 +2949,359 @@ func (s *ScheduledAction) SetStartTime(v string) *ScheduledAction {
 
 func (s *ScheduledAction) SetTarget(v int64) *ScheduledAction {
 	s.Target = &v
+	return s
+}
+
+type SourceConfig struct {
+	Logstore  *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s SourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *SourceConfig) SetStartTime(v int64) *SourceConfig {
+	s.StartTime = &v
+	return s
+}
+
+type SourceDTSParameters struct {
+	BrokerUrl      *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
+	InitCheckPoint *int32  `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
+	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Sid            *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s SourceDTSParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceDTSParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceDTSParameters) SetBrokerUrl(v string) *SourceDTSParameters {
+	s.BrokerUrl = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetInitCheckPoint(v int32) *SourceDTSParameters {
+	s.InitCheckPoint = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetPassword(v string) *SourceDTSParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetRegionId(v string) *SourceDTSParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetSid(v string) *SourceDTSParameters {
+	s.Sid = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetTaskId(v string) *SourceDTSParameters {
+	s.TaskId = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetTopic(v string) *SourceDTSParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *SourceDTSParameters) SetUsername(v string) *SourceDTSParameters {
+	s.Username = &v
+	return s
+}
+
+type SourceKafkaParameters struct {
+	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s SourceKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceKafkaParameters) SetConsumerGroup(v string) *SourceKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetInstanceId(v string) *SourceKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetNetwork(v string) *SourceKafkaParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetOffsetReset(v string) *SourceKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetRegionId(v string) *SourceKafkaParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetSecurityGroupId(v string) *SourceKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetTopic(v string) *SourceKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetVSwitchIds(v string) *SourceKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetVpcId(v string) *SourceKafkaParameters {
+	s.VpcId = &v
+	return s
+}
+
+type SourceMNSParameters struct {
+	IsBase64Decode *bool   `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
+	QueueName      *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SourceMNSParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceMNSParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceMNSParameters) SetIsBase64Decode(v bool) *SourceMNSParameters {
+	s.IsBase64Decode = &v
+	return s
+}
+
+func (s *SourceMNSParameters) SetQueueName(v string) *SourceMNSParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *SourceMNSParameters) SetRegionId(v string) *SourceMNSParameters {
+	s.RegionId = &v
+	return s
+}
+
+type SourceMQTTParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SourceMQTTParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceMQTTParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceMQTTParameters) SetInstanceId(v string) *SourceMQTTParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceMQTTParameters) SetRegionId(v string) *SourceMQTTParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceMQTTParameters) SetTopic(v string) *SourceMQTTParameters {
+	s.Topic = &v
+	return s
+}
+
+type SourceRabbitMQParameters struct {
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	QueueName       *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+}
+
+func (s SourceRabbitMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceRabbitMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceRabbitMQParameters) SetInstanceId(v string) *SourceRabbitMQParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetQueueName(v string) *SourceRabbitMQParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetRegionId(v string) *SourceRabbitMQParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetVirtualHostName(v string) *SourceRabbitMQParameters {
+	s.VirtualHostName = &v
+	return s
+}
+
+type SourceRocketMQParameters struct {
+	AuthType                *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	FilterType              *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	GroupID                 *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceEndpoint        *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Offset                  *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Timestamp               *int32  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Topic                   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SourceRocketMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceRocketMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceRocketMQParameters) SetAuthType(v string) *SourceRocketMQParameters {
+	s.AuthType = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetFilterType(v string) *SourceRocketMQParameters {
+	s.FilterType = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetGroupID(v string) *SourceRocketMQParameters {
+	s.GroupID = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceEndpoint(v string) *SourceRocketMQParameters {
+	s.InstanceEndpoint = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceId(v string) *SourceRocketMQParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceNetwork(v string) *SourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstancePassword(v string) *SourceRocketMQParameters {
+	s.InstancePassword = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *SourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceType(v string) *SourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceUsername(v string) *SourceRocketMQParameters {
+	s.InstanceUsername = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceVSwitchIds(v string) *SourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceVpcId(v string) *SourceRocketMQParameters {
+	s.InstanceVpcId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetOffset(v string) *SourceRocketMQParameters {
+	s.Offset = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetRegionId(v string) *SourceRocketMQParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTag(v string) *SourceRocketMQParameters {
+	s.Tag = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTimestamp(v int32) *SourceRocketMQParameters {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTopic(v string) *SourceRocketMQParameters {
+	s.Topic = &v
 	return s
 }
 
@@ -2466,6 +3494,35 @@ func (s *TargetTrackingPolicy) SetName(v string) *TargetTrackingPolicy {
 
 func (s *TargetTrackingPolicy) SetStartTime(v string) *TargetTrackingPolicy {
 	s.StartTime = &v
+	return s
+}
+
+type TimerTriggerConfig struct {
+	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	Enable         *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Payload        *string `json:"payload,omitempty" xml:"payload,omitempty"`
+}
+
+func (s TimerTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TimerTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TimerTriggerConfig) SetCronExpression(v string) *TimerTriggerConfig {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *TimerTriggerConfig) SetEnable(v bool) *TimerTriggerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *TimerTriggerConfig) SetPayload(v string) *TimerTriggerConfig {
+	s.Payload = &v
 	return s
 }
 
@@ -2946,6 +4003,7 @@ func (s *WildcardRule) SetReplacement(v string) *WildcardRule {
 }
 
 type CreateAliasRequest struct {
+	// The request parameters for creating an alias.
 	Body *CreateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2992,6 +4050,7 @@ func (s *CreateAliasResponse) SetBody(v *Alias) *CreateAliasResponse {
 }
 
 type CreateCustomDomainRequest struct {
+	// The information about the custom domain name.
 	Body *CreateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3038,6 +4097,7 @@ func (s *CreateCustomDomainResponse) SetBody(v *CustomDomain) *CreateCustomDomai
 }
 
 type CreateFunctionRequest struct {
+	// The information about function configurations.
 	Body *CreateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3084,6 +4144,7 @@ func (s *CreateFunctionResponse) SetBody(v *Function) *CreateFunctionResponse {
 }
 
 type CreateLayerVersionRequest struct {
+	// The information about layer configurations.
 	Body *CreateLayerVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3130,6 +4191,7 @@ func (s *CreateLayerVersionResponse) SetBody(v *Layer) *CreateLayerVersionRespon
 }
 
 type CreateTriggerRequest struct {
+	// The trigger configurations.
 	Body *CreateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3176,6 +4238,7 @@ func (s *CreateTriggerResponse) SetBody(v *Trigger) *CreateTriggerResponse {
 }
 
 type CreateVpcBindingRequest struct {
+	// The configurations of the virtual private cloud (VPC) binding.
 	Body *CreateVpcBindingInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3239,6 +4302,7 @@ func (s *DeleteAliasResponse) SetStatusCode(v int32) *DeleteAliasResponse {
 }
 
 type DeleteAsyncInvokeConfigRequest struct {
+	// The version or alias of the function.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3394,6 +4458,7 @@ func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionR
 }
 
 type DeleteProvisionConfigRequest struct {
+	// The function alias or LATEST.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3509,6 +4574,7 @@ func (s *GetAliasResponse) SetBody(v *Alias) *GetAliasResponse {
 }
 
 type GetAsyncInvokeConfigRequest struct {
+	// The version or alias of the function.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3613,6 +4679,7 @@ func (s *GetCustomDomainResponse) SetBody(v *CustomDomain) *GetCustomDomainRespo
 }
 
 type GetFunctionRequest struct {
+	// The version or alias of the function.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3659,6 +4726,7 @@ func (s *GetFunctionResponse) SetBody(v *Function) *GetFunctionResponse {
 }
 
 type GetFunctionCodeRequest struct {
+	// The version or alias of the function.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3763,6 +4831,7 @@ func (s *GetLayerVersionByArnResponse) SetBody(v *Layer) *GetLayerVersionByArnRe
 }
 
 type GetProvisionConfigRequest struct {
+	// The function alias or LATEST.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -3808,53 +4877,6 @@ func (s *GetProvisionConfigResponse) SetBody(v *ProvisionConfig) *GetProvisionCo
 	return s
 }
 
-type GetResourceTagsRequest struct {
-	// The resource ID.
-	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
-}
-
-func (s GetResourceTagsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceTagsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceTagsRequest) SetArn(v string) *GetResourceTagsRequest {
-	s.Arn = &v
-	return s
-}
-
-type GetResourceTagsResponse struct {
-	Headers    map[string]*string     `json:"headers" xml:"headers"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetResourceTagsOutput `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetResourceTagsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetResourceTagsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetResourceTagsResponse) SetHeaders(v map[string]*string) *GetResourceTagsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetResourceTagsResponse) SetStatusCode(v int32) *GetResourceTagsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetResourceTagsResponse) SetBody(v *GetResourceTagsOutput) *GetResourceTagsResponse {
-	s.Body = v
-	return s
-}
-
 type GetTriggerResponse struct {
 	Headers    map[string]*string `json:"headers" xml:"headers"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -3885,9 +4907,12 @@ func (s *GetTriggerResponse) SetBody(v *Trigger) *GetTriggerResponse {
 }
 
 type InvokeFunctionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
-	XFcInvocationType *string            `json:"x-fc-invocation-type,omitempty" xml:"x-fc-invocation-type,omitempty"`
-	XFcLogType        *string            `json:"x-fc-log-type,omitempty" xml:"x-fc-log-type,omitempty"`
+	CommonHeaders  map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
+	XFcAsyncTaskId *string            `json:"x-fc-async-task-id,omitempty" xml:"x-fc-async-task-id,omitempty"`
+	// The type of function invocation. Valid values: Sync and Async.
+	XFcInvocationType *string `json:"x-fc-invocation-type,omitempty" xml:"x-fc-invocation-type,omitempty"`
+	// The log type of function invocation. Valid values: None and Tail.
+	XFcLogType *string `json:"x-fc-log-type,omitempty" xml:"x-fc-log-type,omitempty"`
 }
 
 func (s InvokeFunctionHeaders) String() string {
@@ -3903,6 +4928,11 @@ func (s *InvokeFunctionHeaders) SetCommonHeaders(v map[string]*string) *InvokeFu
 	return s
 }
 
+func (s *InvokeFunctionHeaders) SetXFcAsyncTaskId(v string) *InvokeFunctionHeaders {
+	s.XFcAsyncTaskId = &v
+	return s
+}
+
 func (s *InvokeFunctionHeaders) SetXFcInvocationType(v string) *InvokeFunctionHeaders {
 	s.XFcInvocationType = &v
 	return s
@@ -3914,8 +4944,10 @@ func (s *InvokeFunctionHeaders) SetXFcLogType(v string) *InvokeFunctionHeaders {
 }
 
 type InvokeFunctionRequest struct {
-	Body      io.Reader `json:"body,omitempty" xml:"body,omitempty"`
-	Qualifier *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The request parameters of function invocation.
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// The version or alias of the function.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s InvokeFunctionRequest) String() string {
@@ -3966,9 +4998,12 @@ func (s *InvokeFunctionResponse) SetBody(v io.Reader) *InvokeFunctionResponse {
 }
 
 type ListAliasesRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of aliases returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The alias prefix.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s ListAliasesRequest) String() string {
@@ -4024,9 +5059,12 @@ func (s *ListAliasesResponse) SetBody(v *ListAliasesOutput) *ListAliasesResponse
 }
 
 type ListAsyncInvokeConfigsRequest struct {
+	// The function name. If you do not configure this parameter, the asynchronous invocation configurations of all functions are displayed.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The maximum number of entries to be returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The paging information. This parameter specifies the start point of the query.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListAsyncInvokeConfigsRequest) String() string {
@@ -4082,9 +5120,12 @@ func (s *ListAsyncInvokeConfigsResponse) SetBody(v *ListAsyncInvokeConfigOutput)
 }
 
 type ListConcurrencyConfigsRequest struct {
+	// The function name. If you leave this parameter empty, the concurrency configurations of all functions are returned.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken    *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The maximum number of entries returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListConcurrencyConfigsRequest) String() string {
@@ -4140,9 +5181,12 @@ func (s *ListConcurrencyConfigsResponse) SetBody(v *ListConcurrencyConfigsOutput
 }
 
 type ListCustomDomainsRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of custom domain names returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The domain name prefix.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s ListCustomDomainsRequest) String() string {
@@ -4198,8 +5242,11 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainOutput) *ListCust
 }
 
 type ListFunctionVersionsRequest struct {
+	// The sorting mode of function versions. Valid values: BACKWARD and FORWARD.
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of function versions that are returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -4256,11 +5303,11 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
-	// The number of functions to return.
+	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// A pagination token.
+	// The pagination token.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// A prefix of function names.
+	// The prefix of the function name.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
@@ -4317,8 +5364,10 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsOutput) *ListFunctionsRe
 }
 
 type ListInstancesRequest struct {
-	Qualifier     *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	WithAllActive *bool   `json:"withAllActive,omitempty" xml:"withAllActive,omitempty"`
+	// The function version or alias.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// Specifies whether to list all instances. Valid values: true and false.
+	WithAllActive *bool `json:"withAllActive,omitempty" xml:"withAllActive,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -4369,7 +5418,9 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesOutput) *ListInstancesRe
 }
 
 type ListLayerVersionsRequest struct {
-	Limit        *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of versions to be returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The initial version of the layer.
 	StartVersion *string `json:"startVersion,omitempty" xml:"startVersion,omitempty"`
 }
 
@@ -4421,11 +5472,16 @@ func (s *ListLayerVersionsResponse) SetBody(v *ListLayerVersionOutput) *ListLaye
 }
 
 type ListLayersRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of layers that are returned
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Official  *string `json:"official,omitempty" xml:"official,omitempty"`
-	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	Public    *string `json:"public,omitempty" xml:"public,omitempty"`
+	// Specifies whether the layer is official. Valid values: true and false.
+	Official *string `json:"official,omitempty" xml:"official,omitempty"`
+	// The name prefix of the layer.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// Specifies whether the layer is public. Valid values: true and false.
+	Public *string `json:"public,omitempty" xml:"public,omitempty"`
 }
 
 func (s ListLayersRequest) String() string {
@@ -4687,71 +5743,13 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesOutput) *ListTagRe
 	return s
 }
 
-type ListTaggedResourcesRequest struct {
-	// The number of resources to return.
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The type of the resource quantity. ALIYUN::FC::FUNCTION indicates functions in Function Compute 3.0. ALIYUN::FC::SERVICE indicates the original service of Function Compute. The default value is ALIYUN::FC:FUNCTION.
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-}
-
-func (s ListTaggedResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaggedResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaggedResourcesRequest) SetLimit(v int32) *ListTaggedResourcesRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListTaggedResourcesRequest) SetNextToken(v string) *ListTaggedResourcesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTaggedResourcesRequest) SetResourceType(v string) *ListTaggedResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-type ListTaggedResourcesResponse struct {
-	Headers    map[string]*string         `json:"headers" xml:"headers"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListTaggedResourcesOutput `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListTaggedResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaggedResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaggedResourcesResponse) SetHeaders(v map[string]*string) *ListTaggedResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTaggedResourcesResponse) SetStatusCode(v int32) *ListTaggedResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListTaggedResourcesResponse) SetBody(v *ListTaggedResourcesOutput) *ListTaggedResourcesResponse {
-	s.Body = v
-	return s
-}
-
 type ListTriggersRequest struct {
-	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The number of triggers returned.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The token for the next page.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The trigger name prefix.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
 func (s ListTriggersRequest) String() string {
@@ -4883,8 +5881,10 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 }
 
 type PutAsyncInvokeConfigRequest struct {
-	Body      *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
-	Qualifier *string                    `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The configurations of asynchronous function invocation.
+	Body *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
+	// The version or alias of the function.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s PutAsyncInvokeConfigRequest) String() string {
@@ -4982,6 +5982,7 @@ func (s *PutConcurrencyConfigResponse) SetBody(v *ConcurrencyConfig) *PutConcurr
 }
 
 type PutLayerACLRequest struct {
+	// Specifies whether the layer is a public layer. Valid values: true and false.
 	Public *string `json:"public,omitempty" xml:"public,omitempty"`
 }
 
@@ -5022,8 +6023,10 @@ func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 }
 
 type PutProvisionConfigRequest struct {
-	Body      *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
-	Qualifier *string                  `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The information about the provisioned configuration.
+	Body *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
+	// The function alias or LATEST.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
 func (s PutProvisionConfigRequest) String() string {
@@ -5073,47 +6076,6 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 	return s
 }
 
-type TagResourceRequest struct {
-	// The configuration of the resource tag.
-	Body *TagResourceInput `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s TagResourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourceRequest) SetBody(v *TagResourceInput) *TagResourceRequest {
-	s.Body = v
-	return s
-}
-
-type TagResourceResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s TagResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourceResponse) SetHeaders(v map[string]*string) *TagResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TagResourceResponse) SetStatusCode(v int32) *TagResourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type TagResourcesRequest struct {
 	Body *TagResourcesInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5150,61 +6112,6 @@ func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesRes
 }
 
 func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UntagResourceRequest struct {
-	// Specifies whether to delete all tags.
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// The resource ID.
-	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
-	// The tag name.
-	TagKeys *string `json:"tagKeys,omitempty" xml:"tagKeys,omitempty"`
-}
-
-func (s UntagResourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourceRequest) SetAll(v bool) *UntagResourceRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UntagResourceRequest) SetArn(v string) *UntagResourceRequest {
-	s.Arn = &v
-	return s
-}
-
-func (s *UntagResourceRequest) SetTagKeys(v string) *UntagResourceRequest {
-	s.TagKeys = &v
-	return s
-}
-
-type UntagResourceResponse struct {
-	Headers    map[string]*string `json:"headers" xml:"headers"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s UntagResourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourceResponse) SetHeaders(v map[string]*string) *UntagResourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UntagResourceResponse) SetStatusCode(v int32) *UntagResourceResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -5303,6 +6210,7 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 type UpdateAliasRequest struct {
+	// The alias information to be updated.
 	Body *UpdateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5349,6 +6257,7 @@ func (s *UpdateAliasResponse) SetBody(v *Alias) *UpdateAliasResponse {
 }
 
 type UpdateCustomDomainRequest struct {
+	// The information about the custom domain name.
 	Body *UpdateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5395,6 +6304,7 @@ func (s *UpdateCustomDomainResponse) SetBody(v *CustomDomain) *UpdateCustomDomai
 }
 
 type UpdateFunctionRequest struct {
+	// The function information
 	Body *UpdateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5441,6 +6351,7 @@ func (s *UpdateFunctionResponse) SetBody(v *Function) *UpdateFunctionResponse {
 }
 
 type UpdateTriggerRequest struct {
+	// The trigger configurations.
 	Body *UpdateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6523,68 +7434,6 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request GetResourceTagsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetResourceTagsResponse
- */
-// Deprecated
-func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceTagsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Arn)) {
-		query["arn"] = request.Arn
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetResourceTags"),
-		Version:     tea.String("2023-03-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2023-03-30/tag"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetResourceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request GetResourceTagsRequest
- * @return GetResourceTagsResponse
- */
-// Deprecated
-func (client *Client) GetResourceTags(request *GetResourceTagsRequest) (_result *GetResourceTagsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourceTagsResponse{}
-	_body, _err := client.GetResourceTagsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6634,6 +7483,10 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAsyncTaskId)) {
+		realHeaders["x-fc-async-task-id"] = util.ToJSONString(headers.XFcAsyncTaskId)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
@@ -7327,76 +8180,6 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request ListTaggedResourcesRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTaggedResourcesResponse
- */
-// Deprecated
-func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTaggedResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["nextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["resourceType"] = request.ResourceType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTaggedResources"),
-		Version:     tea.String("2023-03-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2023-03-30/tags"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTaggedResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request ListTaggedResourcesRequest
- * @return ListTaggedResourcesResponse
- */
-// Deprecated
-func (client *Client) ListTaggedResources(request *ListTaggedResourcesRequest) (_result *ListTaggedResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTaggedResourcesResponse{}
-	_body, _err := client.ListTaggedResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListTriggersWithOptions(functionName *string, request *ListTriggersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7709,63 +8492,6 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request TagResourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourceResponse
- */
-// Deprecated
-func (client *Client) TagResourceWithOptions(request *TagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(request.Body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResource"),
-		Version:     tea.String("2023-03-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2023-03-30/tag"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &TagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request TagResourceRequest
- * @return TagResourceResponse
- */
-// Deprecated
-func (client *Client) TagResource(request *TagResourceRequest) (_result *TagResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &TagResourceResponse{}
-	_body, _err := client.TagResourceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7800,76 +8526,6 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	headers := make(map[string]*string)
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request UntagResourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UntagResourceResponse
- */
-// Deprecated
-func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
-		query["all"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Arn)) {
-		query["arn"] = request.Arn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
-		query["tagKeys"] = request.TagKeys
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResource"),
-		Version:     tea.String("2023-03-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2023-03-30/tag"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UntagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request UntagResourceRequest
- * @return UntagResourceResponse
- */
-// Deprecated
-func (client *Client) UntagResource(request *UntagResourceRequest) (_result *UntagResourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UntagResourceResponse{}
-	_body, _err := client.UntagResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

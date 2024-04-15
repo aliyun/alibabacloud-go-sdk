@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/fc-20230330/v3
+module github.com/alibabacloud-go/fc-20230330/v4
 
 go 1.15
 
