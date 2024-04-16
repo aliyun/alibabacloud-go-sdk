@@ -870,6 +870,7 @@ func (s *CreateJobRequestTasksExecutorPolicyArraySpec) SetIndexStep(v int32) *Cr
 type CreateJobRequestTasksTaskSpec struct {
 	Resource     *CreateJobRequestTasksTaskSpecResource       `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	TaskExecutor []*CreateJobRequestTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
+	VolumeMount  []*CreateJobRequestTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
 }
 
 func (s CreateJobRequestTasksTaskSpec) String() string {
@@ -887,6 +888,11 @@ func (s *CreateJobRequestTasksTaskSpec) SetResource(v *CreateJobRequestTasksTask
 
 func (s *CreateJobRequestTasksTaskSpec) SetTaskExecutor(v []*CreateJobRequestTasksTaskSpecTaskExecutor) *CreateJobRequestTasksTaskSpec {
 	s.TaskExecutor = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpec) SetVolumeMount(v []*CreateJobRequestTasksTaskSpecVolumeMount) *CreateJobRequestTasksTaskSpec {
+	s.VolumeMount = v
 	return s
 }
 
@@ -943,7 +949,8 @@ func (s *CreateJobRequestTasksTaskSpecResourceDisks) SetType(v string) *CreateJo
 }
 
 type CreateJobRequestTasksTaskSpecTaskExecutor struct {
-	VM *CreateJobRequestTasksTaskSpecTaskExecutorVM `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
+	Container *CreateJobRequestTasksTaskSpecTaskExecutorContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	VM        *CreateJobRequestTasksTaskSpecTaskExecutorVM        `json:"VM,omitempty" xml:"VM,omitempty" type:"Struct"`
 }
 
 func (s CreateJobRequestTasksTaskSpecTaskExecutor) String() string {
@@ -954,8 +961,71 @@ func (s CreateJobRequestTasksTaskSpecTaskExecutor) GoString() string {
 	return s.String()
 }
 
+func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetContainer(v *CreateJobRequestTasksTaskSpecTaskExecutorContainer) *CreateJobRequestTasksTaskSpecTaskExecutor {
+	s.Container = v
+	return s
+}
+
 func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetVM(v *CreateJobRequestTasksTaskSpecTaskExecutorVM) *CreateJobRequestTasksTaskSpecTaskExecutor {
 	s.VM = v
+	return s
+}
+
+type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
+	Command         []*string                                                            `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	Image           *string                                                              `json:"Image,omitempty" xml:"Image,omitempty"`
+	WorkingDir      *string                                                              `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+}
+
+func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetCommand(v []*string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.Command = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetEnvironmentVars(v []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetImage(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.Image = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetWorkingDir(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.WorkingDir = &v
+	return s
+}
+
+type CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) SetName(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars) SetValue(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars {
+	s.Value = &v
 	return s
 }
 
@@ -985,6 +1055,35 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetPrologScript(v string) 
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetScript(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
 	s.Script = &v
+	return s
+}
+
+type CreateJobRequestTasksTaskSpecVolumeMount struct {
+	MountOptions *string `json:"MountOptions,omitempty" xml:"MountOptions,omitempty"`
+	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	VolumeDriver *string `json:"VolumeDriver,omitempty" xml:"VolumeDriver,omitempty"`
+}
+
+func (s CreateJobRequestTasksTaskSpecVolumeMount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequestTasksTaskSpecVolumeMount) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetMountOptions(v string) *CreateJobRequestTasksTaskSpecVolumeMount {
+	s.MountOptions = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetMountPath(v string) *CreateJobRequestTasksTaskSpecVolumeMount {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetVolumeDriver(v string) *CreateJobRequestTasksTaskSpecVolumeMount {
+	s.VolumeDriver = &v
 	return s
 }
 
@@ -1211,6 +1310,267 @@ func (s *DeleteJobsResponse) SetStatusCode(v int32) *DeleteJobsResponse {
 }
 
 func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeJobMetricDataRequest struct {
+	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
+	JobId      *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MetricName *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	TaskName   *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s DescribeJobMetricDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricDataRequest) SetArrayIndex(v []*int32) *DescribeJobMetricDataRequest {
+	s.ArrayIndex = v
+	return s
+}
+
+func (s *DescribeJobMetricDataRequest) SetJobId(v string) *DescribeJobMetricDataRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataRequest) SetMetricName(v string) *DescribeJobMetricDataRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataRequest) SetTaskName(v string) *DescribeJobMetricDataRequest {
+	s.TaskName = &v
+	return s
+}
+
+type DescribeJobMetricDataShrinkRequest struct {
+	ArrayIndexShrink *string `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MetricName       *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s DescribeJobMetricDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricDataShrinkRequest) SetArrayIndexShrink(v string) *DescribeJobMetricDataShrinkRequest {
+	s.ArrayIndexShrink = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataShrinkRequest) SetJobId(v string) *DescribeJobMetricDataShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataShrinkRequest) SetMetricName(v string) *DescribeJobMetricDataShrinkRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataShrinkRequest) SetTaskName(v string) *DescribeJobMetricDataShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+type DescribeJobMetricDataResponseBody struct {
+	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeJobMetricDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricDataResponseBody) SetDataPoints(v string) *DescribeJobMetricDataResponseBody {
+	s.DataPoints = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataResponseBody) SetPeriod(v int32) *DescribeJobMetricDataResponseBody {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataResponseBody) SetRequestId(v string) *DescribeJobMetricDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeJobMetricDataResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeJobMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeJobMetricDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricDataResponse) SetHeaders(v map[string]*string) *DescribeJobMetricDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJobMetricDataResponse) SetStatusCode(v int32) *DescribeJobMetricDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJobMetricDataResponse) SetBody(v *DescribeJobMetricDataResponseBody) *DescribeJobMetricDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeJobMetricLastRequest struct {
+	ArrayIndex []*int32 `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty" type:"Repeated"`
+	JobId      *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TaskName   *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s DescribeJobMetricLastRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricLastRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricLastRequest) SetArrayIndex(v []*int32) *DescribeJobMetricLastRequest {
+	s.ArrayIndex = v
+	return s
+}
+
+func (s *DescribeJobMetricLastRequest) SetJobId(v string) *DescribeJobMetricLastRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobMetricLastRequest) SetTaskName(v string) *DescribeJobMetricLastRequest {
+	s.TaskName = &v
+	return s
+}
+
+type DescribeJobMetricLastShrinkRequest struct {
+	ArrayIndexShrink *string `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TaskName         *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s DescribeJobMetricLastShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricLastShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricLastShrinkRequest) SetArrayIndexShrink(v string) *DescribeJobMetricLastShrinkRequest {
+	s.ArrayIndexShrink = &v
+	return s
+}
+
+func (s *DescribeJobMetricLastShrinkRequest) SetJobId(v string) *DescribeJobMetricLastShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobMetricLastShrinkRequest) SetTaskName(v string) *DescribeJobMetricLastShrinkRequest {
+	s.TaskName = &v
+	return s
+}
+
+type DescribeJobMetricLastResponseBody struct {
+	Metrics   []*DescribeJobMetricLastResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeJobMetricLastResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricLastResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricLastResponseBody) SetMetrics(v []*DescribeJobMetricLastResponseBodyMetrics) *DescribeJobMetricLastResponseBody {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeJobMetricLastResponseBody) SetRequestId(v string) *DescribeJobMetricLastResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeJobMetricLastResponseBodyMetrics struct {
+	ArrayIndex *int32  `json:"ArrayIndex,omitempty" xml:"ArrayIndex,omitempty"`
+	Metric     *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+}
+
+func (s DescribeJobMetricLastResponseBodyMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricLastResponseBodyMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricLastResponseBodyMetrics) SetArrayIndex(v int32) *DescribeJobMetricLastResponseBodyMetrics {
+	s.ArrayIndex = &v
+	return s
+}
+
+func (s *DescribeJobMetricLastResponseBodyMetrics) SetMetric(v string) *DescribeJobMetricLastResponseBodyMetrics {
+	s.Metric = &v
+	return s
+}
+
+type DescribeJobMetricLastResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeJobMetricLastResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeJobMetricLastResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobMetricLastResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobMetricLastResponse) SetHeaders(v map[string]*string) *DescribeJobMetricLastResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJobMetricLastResponse) SetStatusCode(v int32) *DescribeJobMetricLastResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJobMetricLastResponse) SetBody(v *DescribeJobMetricLastResponseBody) *DescribeJobMetricLastResponse {
 	s.Body = v
 	return s
 }
@@ -1997,11 +2357,9 @@ func (s *ListExecutorsShrinkRequest) SetPageSize(v string) *ListExecutorsShrinkR
 
 type ListExecutorsResponseBody struct {
 	Executors  []*ListExecutorsResponseBodyExecutors `json:"Executors,omitempty" xml:"Executors,omitempty" type:"Repeated"`
-	JobId      *string                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskName   *string                               `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TotalCount *string                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2018,11 +2376,6 @@ func (s *ListExecutorsResponseBody) SetExecutors(v []*ListExecutorsResponseBodyE
 	return s
 }
 
-func (s *ListExecutorsResponseBody) SetJobId(v string) *ListExecutorsResponseBody {
-	s.JobId = &v
-	return s
-}
-
 func (s *ListExecutorsResponseBody) SetPageNumber(v string) *ListExecutorsResponseBody {
 	s.PageNumber = &v
 	return s
@@ -2035,11 +2388,6 @@ func (s *ListExecutorsResponseBody) SetPageSize(v string) *ListExecutorsResponse
 
 func (s *ListExecutorsResponseBody) SetRequestId(v string) *ListExecutorsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListExecutorsResponseBody) SetTaskName(v string) *ListExecutorsResponseBody {
-	s.TaskName = &v
 	return s
 }
 
@@ -3104,6 +3452,126 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteJobsResponse{}
 	_body, _err := client.DeleteJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeJobMetricDataWithOptions(tmpReq *DescribeJobMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeJobMetricDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeJobMetricDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ArrayIndex)) {
+		request.ArrayIndexShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArrayIndex, tea.String("ArrayIndex"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArrayIndexShrink)) {
+		query["ArrayIndex"] = request.ArrayIndexShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJobMetricData"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJobMetricDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeJobMetricData(request *DescribeJobMetricDataRequest) (_result *DescribeJobMetricDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeJobMetricDataResponse{}
+	_body, _err := client.DescribeJobMetricDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeJobMetricLastWithOptions(tmpReq *DescribeJobMetricLastRequest, runtime *util.RuntimeOptions) (_result *DescribeJobMetricLastResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeJobMetricLastShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ArrayIndex)) {
+		request.ArrayIndexShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ArrayIndex, tea.String("ArrayIndex"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArrayIndexShrink)) {
+		query["ArrayIndex"] = request.ArrayIndexShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJobMetricLast"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJobMetricLastResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastRequest) (_result *DescribeJobMetricLastResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeJobMetricLastResponse{}
+	_body, _err := client.DescribeJobMetricLastWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
