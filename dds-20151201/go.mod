@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dds-20151201/v7
+module github.com/alibabacloud-go/dds-20151201/v8
 
 go 1.15
 

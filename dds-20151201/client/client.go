@@ -5300,7 +5300,7 @@ func (s *DescribeBackupStorageResponse) SetBody(v *DescribeBackupStorageResponse
 }
 
 type DescribeBackupTasksRequest struct {
-	BackupJobId          *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	BackupJobId          *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5317,7 +5317,7 @@ func (s DescribeBackupTasksRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupTasksRequest) SetBackupJobId(v int64) *DescribeBackupTasksRequest {
+func (s *DescribeBackupTasksRequest) SetBackupJobId(v string) *DescribeBackupTasksRequest {
 	s.BackupJobId = &v
 	return s
 }
@@ -5378,7 +5378,7 @@ func (s *DescribeBackupTasksResponseBody) SetRequestId(v string) *DescribeBackup
 type DescribeBackupTasksResponseBodyBackupJobs struct {
 	BackupSetStatus *string `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupjobId     *int64  `json:"BackupjobId,omitempty" xml:"BackupjobId,omitempty"`
+	BackupjobId     *string `json:"BackupjobId,omitempty" xml:"BackupjobId,omitempty"`
 	JobMode         *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
 	Progress        *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 }
@@ -5401,7 +5401,7 @@ func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupStartTime(v string)
 	return s
 }
 
-func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupjobId(v int64) *DescribeBackupTasksResponseBodyBackupJobs {
+func (s *DescribeBackupTasksResponseBodyBackupJobs) SetBackupjobId(v string) *DescribeBackupTasksResponseBodyBackupJobs {
 	s.BackupjobId = &v
 	return s
 }
@@ -5614,12 +5614,12 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	// The end of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The ID of the backup set.
-	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup set.
 	//
 	// > You can use this URL to download the backup set from on the Elastic Compute Service (ECS) instance which is on the same network as the ApsaraDB for MongoDB instance.
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	BackupJobId               *int64  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	BackupJobId               *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The method that is used to generate the backup set. Valid values:
 	//
 	// *   **Snapshot**
@@ -5670,7 +5670,7 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTime(v string) *D
 	return s
 }
 
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int64) *DescribeBackupsResponseBodyBackupsBackup {
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v string) *DescribeBackupsResponseBodyBackupsBackup {
 	s.BackupId = &v
 	return s
 }
@@ -5680,7 +5680,7 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupIntranetDownloadURL(
 	return s
 }
 
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupJobId(v int64) *DescribeBackupsResponseBodyBackupsBackup {
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupJobId(v string) *DescribeBackupsResponseBodyBackupsBackup {
 	s.BackupJobId = &v
 	return s
 }
@@ -16714,7 +16714,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MigrateAvailableZoneRequest struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The ID of the instance.
 	//
 	// > If the instance is deployed in a VPC, you must specify the **Vswitch** parameter.
@@ -16750,11 +16749,6 @@ func (s MigrateAvailableZoneRequest) String() string {
 
 func (s MigrateAvailableZoneRequest) GoString() string {
 	return s.String()
-}
-
-func (s *MigrateAvailableZoneRequest) SetCategory(v string) *MigrateAvailableZoneRequest {
-	s.Category = &v
-	return s
 }
 
 func (s *MigrateAvailableZoneRequest) SetDBInstanceId(v string) *MigrateAvailableZoneRequest {
@@ -28020,10 +28014,6 @@ func (client *Client) MigrateAvailableZoneWithOptions(request *MigrateAvailableZ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		query["Category"] = request.Category
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
