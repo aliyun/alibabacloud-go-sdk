@@ -6150,10 +6150,11 @@ func (s *LinkInstanceCategoryResponse) SetBody(v *LinkInstanceCategoryResponseBo
 }
 
 type ListAgentRequest struct {
-	AgentName  *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	GoodsCodes *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AgentName   *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	GoodsCodes  *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s ListAgentRequest) String() string {
@@ -6181,6 +6182,11 @@ func (s *ListAgentRequest) SetPageNumber(v int32) *ListAgentRequest {
 
 func (s *ListAgentRequest) SetPageSize(v int32) *ListAgentRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAgentRequest) SetProductCode(v string) *ListAgentRequest {
+	s.ProductCode = &v
 	return s
 }
 
@@ -6230,6 +6236,7 @@ type ListAgentResponseBodyData struct {
 	AgentId       *int64                 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	AgentKey      *string                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	AgentName     *string                `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	DefaultAgent  *bool                  `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 }
 
@@ -6253,6 +6260,11 @@ func (s *ListAgentResponseBodyData) SetAgentKey(v string) *ListAgentResponseBody
 
 func (s *ListAgentResponseBodyData) SetAgentName(v string) *ListAgentResponseBodyData {
 	s.AgentName = &v
+	return s
+}
+
+func (s *ListAgentResponseBodyData) SetDefaultAgent(v bool) *ListAgentResponseBodyData {
+	s.DefaultAgent = &v
 	return s
 }
 
@@ -13738,6 +13750,10 @@ func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
 	}
 
 	req := &openapi.OpenApiRequest{
