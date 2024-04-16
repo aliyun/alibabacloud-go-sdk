@@ -2783,8 +2783,9 @@ type CreateAuthorityTemplateResponseBody struct {
 	//
 	// *   **true**: The request was successful.
 	// *   **false**: The request failed.
-	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateAuthorityTemplateResponseBody) String() string {
@@ -2905,9 +2906,9 @@ type CreateDataArchiveOrderRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The parameters for archiving data.
 	Param *CreateDataArchiveOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	// The ID of the parent ticket. A parent ticket is generated only when a sub ticket is created.
+	// The ID of the parent ticket. A parent ticket is generated only when a child ticket is created.
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The plugin type. Default value: DATA_ARCHIVE.
+	// The type of the plug-in. Default value: DATA_ARCHIVE.
 	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 	// The list of the related users.
 	RelatedUserList []*string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
@@ -2954,43 +2955,48 @@ func (s *CreateDataArchiveOrderRequest) SetTid(v int64) *CreateDataArchiveOrderR
 }
 
 type CreateDataArchiveOrderRequestParam struct {
-	// The database for archiving data. Valid values:
+	// The type of the destination database for archiving data. Valid values:
 	//
-	// *   inner_oss: Built-in Object Storage Service (OSS) of Database Backup (DBS).
-	// *   oss_userself: OSS of user.
-	// *   mysql: ApsaraDB RDS for MySQL.
-	// *   polardb: PolarDB for MySQL.
-	// *   lindorm: Lindorm.
+	// >  If you set ArchiveMethod to a value other than inner_oss, you must connect the destination database for archiving data to Data Management (DMS) before you create the data archiving ticket. After the database is connected to DMS, the database is displayed in the Instances Connected section of the DMS console.
+	//
+	// *   **inner_oss**: dedicated storage, which is a built-in Object Storage Service (OSS) bucket.
+	// *   **oss_userself**: OSS bucket of the user.
+	// *   **mysql**: ApsaraDB RDS for MySQL instance.
+	// *   **polardb**: PolarDB for MySQL cluster.
+	// *   **adb_mysql**: AnalyticDB for MySQL V3.0 cluster.
+	// *   **lindorm**: ApsaraDB for Lindorm instance.
 	ArchiveMethod *string `json:"ArchiveMethod,omitempty" xml:"ArchiveMethod,omitempty"`
-	// 填写Crontab表达式，以便定期执行任务，更多信息，请参见[Crontab表达式](~~206581~~)。
-	// 当运行方式为周期归档时需要填写该参数。
+	// A crontab expression that specifies the scheduling cycle to run the task. For more information, see the [Crontab expressions](~~206581~~) section of the "Create shadow tables for synchronization" topic. This parameter is required if RunMethod is set to schedule.
 	CronStr *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
 	// Specifies whether the database is a logical database.
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	// The post behaviors.
 	OrderAfter []*string `json:"OrderAfter,omitempty" xml:"OrderAfter,omitempty" type:"Repeated"`
-	// The running mode. Only now is supported, which indicates that data archiving is immediately executed.
+	// The method that is used to run the data archiving task. Valid values:
+	//
+	// *   **schedule**: The data archiving task is periodically scheduled.
+	// *   **now**: The data archiving task is immediately run.
 	RunMethod *string `json:"RunMethod,omitempty" xml:"RunMethod,omitempty"`
-	// 源库目录（catalog）。
-	// - **def**：对于两层逻辑结构的数据库，如MySQL，PolarDB MySQL，AnalyticDB MySQL，固定为def。
-	// - **空字符串**： 对于lindorm与MongoDB，填入空字符串。
-	// - **catalog名**：对于三层逻辑结构的数据库，如PostgreSQL，填入catalog名。
+	// The catalog of the source database. Valid values:
+	//
+	// *   **def**: Set this parameter to def if the source database is of the two-layer logical schema, such as a MySQL database, a PolarDB for MySQL cluster, or an AnalyticDB for MySQL instance.
+	// *   **An empty string**: Set this parameter to an empty string if the source database is an ApsaraDB for Lindorm or ApsaraDB for MongoDB instance.
+	// *   **Catalog name**: Set this parameter to the catalog name of the source database if the source database is of the three-layer logical schema, such as a PostgreSQL database.
 	SourceCatalogName *string `json:"SourceCatalogName,omitempty" xml:"SourceCatalogName,omitempty"`
-	// 源实例名称。
+	// The name of the source instance.
 	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
-	// 源库Schema，源库与目标库同名。
-	// 如MySQL为库名，PostgreSQL为Schema名。
+	// The schema name of the source database. The schema name of the source database is the same as that of the destination database. If the source database is a MySQL database, this parameter specifies the name of the source database. If the source database is a PostgreSQL database, this parameter specifies the schema name of the source database.
 	SourceSchemaName *string `json:"SourceSchemaName,omitempty" xml:"SourceSchemaName,omitempty"`
 	// The collection of tables to be archived.
 	TableIncludes []*CreateDataArchiveOrderRequestParamTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`
-	// The table names mapped in the destination database.
+	// The table names mapped to the destination database. If you call an API operation to create the data archiving ticket, you do not need to specify this parameter. The default value is used.
 	TableMapping []*string `json:"TableMapping,omitempty" xml:"TableMapping,omitempty" type:"Repeated"`
-	// 目标库Host，若目标实例同时开放了内网与公网，优先写入内网Host。
+	// The host of the destination instance. If the destination instance can be accessed over an internal network or the Internet, preferentially set the value to the internal endpoint of the destination instance.
 	//
-	// - 若归档目标为OSS，则为Bucket名。
-	// - 若归档目标为专属存储，则为inner_oss。
+	// *   If the data is archived in an OSS bucket, set the value to the name of the bucket.
+	// *   If the data is archived in the dedicated storage space, set the value to inner_oss.
 	TargetInstanceHost *string `json:"TargetInstanceHost,omitempty" xml:"TargetInstanceHost,omitempty"`
-	// The configuration of archiving variables.
+	// The configuration of archiving variables. You can use a time variable as a filter condition for archiving data. Each variable has two attributes: name and pattern.
 	Variables []*CreateDataArchiveOrderRequestParamVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -3065,7 +3071,7 @@ func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*CreateDataArchive
 type CreateDataArchiveOrderRequestParamTableIncludes struct {
 	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The filter condition specified by the WHERE clause of the archiving configuration.
+	// The filter condition specified by the WHERE clause of the archiving configuration. If a time variable is used in the filter condition, the filter condition is specified in the following format: field name <=\"${variable name}\". The variable name in the filter condition must be the same as the Name value of Variables.
 	TableWhere *string `json:"TableWhere,omitempty" xml:"TableWhere,omitempty"`
 }
 
@@ -3115,9 +3121,9 @@ type CreateDataArchiveOrderShrinkRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The parameters for archiving data.
 	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The ID of the parent ticket. A parent ticket is generated only when a sub ticket is created.
+	// The ID of the parent ticket. A parent ticket is generated only when a child ticket is created.
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The plugin type. Default value: DATA_ARCHIVE.
+	// The type of the plug-in. Default value: DATA_ARCHIVE.
 	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
 	// The list of the related users.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
@@ -3164,18 +3170,18 @@ func (s *CreateDataArchiveOrderShrinkRequest) SetTid(v int64) *CreateDataArchive
 }
 
 type CreateDataArchiveOrderResponseBody struct {
-	// The data archiving ticket IDs.
+	// The ID of the data archiving ticket.
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-	// Error code
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request, which is used to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true
-	// *   false
+	// *   **true**
+	// *   **false**
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6788,7 +6794,7 @@ type CreateStandardGroupResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The created security rule set.
+	// The information about the created security rule set.
 	StandardGroup *CreateStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -6835,7 +6841,8 @@ type CreateStandardGroupResponseBodyStandardGroup struct {
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The description of the security rule set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The security rule set ID.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The control mode. Valid values:
 	//
 	// *   **NONE_CONTROL**: Flexible Management
@@ -25443,7 +25450,8 @@ type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
 	// *   **SUCCESS**: The ticket is approved.
 	// *   **FAIL**: The ticket fails to pass the approval.
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Release remarks.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the user who creates the ticket. You can obtain the user ID by calling the [GetUser](~~147098~~) operation and querying the value of the UserId parameter. The value is not the unique ID (UID) of the Alibaba Cloud account.
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// Indicates whether the approval is terminated. Valid values:
@@ -31853,6 +31861,292 @@ func (s *ListScenariosResponse) SetBody(v *ListScenariosResponseBody) *ListScena
 	return s
 }
 
+type ListSensitiveColumnInfoRequest struct {
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	InstanceId *int32  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetColumnName(v string) *ListSensitiveColumnInfoRequest {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetInstanceId(v int32) *ListSensitiveColumnInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetPageNumber(v int32) *ListSensitiveColumnInfoRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetPageSize(v int32) *ListSensitiveColumnInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetSchemaName(v string) *ListSensitiveColumnInfoRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetTableName(v string) *ListSensitiveColumnInfoRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoRequest) SetTid(v int64) *ListSensitiveColumnInfoRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBody struct {
+	ErrorCode           *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SensitiveColumnList *ListSensitiveColumnInfoResponseBodySensitiveColumnList `json:"SensitiveColumnList,omitempty" xml:"SensitiveColumnList,omitempty" type:"Struct"`
+	Success             *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount          *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetErrorCode(v string) *ListSensitiveColumnInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetErrorMessage(v string) *ListSensitiveColumnInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetRequestId(v string) *ListSensitiveColumnInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetSensitiveColumnList(v *ListSensitiveColumnInfoResponseBodySensitiveColumnList) *ListSensitiveColumnInfoResponseBody {
+	s.SensitiveColumnList = v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetSuccess(v bool) *ListSensitiveColumnInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBody) SetTotalCount(v int64) *ListSensitiveColumnInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBodySensitiveColumnList struct {
+	SensitiveColumn []*ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn `json:"SensitiveColumn,omitempty" xml:"SensitiveColumn,omitempty" type:"Repeated"`
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnList) SetSensitiveColumn(v []*ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) *ListSensitiveColumnInfoResponseBodySensitiveColumnList {
+	s.SensitiveColumn = v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn struct {
+	CategoryName                *string                                                                                           `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	ColumnName                  *string                                                                                           `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DefaultDesensitizationRule  *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule  `json:"DefaultDesensitizationRule,omitempty" xml:"DefaultDesensitizationRule,omitempty" type:"Struct"`
+	InstanceId                  *int32                                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsPlain                     *bool                                                                                             `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	SampleData                  *string                                                                                           `json:"SampleData,omitempty" xml:"SampleData,omitempty"`
+	SchemaName                  *string                                                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SecurityLevel               *string                                                                                           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	SemiDesensitizationRuleList *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList `json:"SemiDesensitizationRuleList,omitempty" xml:"SemiDesensitizationRuleList,omitempty" type:"Struct"`
+	TableName                   *string                                                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	UserSensitivityLevel        *string                                                                                           `json:"UserSensitivityLevel,omitempty" xml:"UserSensitivityLevel,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetCategoryName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetColumnName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetDefaultDesensitizationRule(v *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.DefaultDesensitizationRule = v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetInstanceId(v int32) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetIsPlain(v bool) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.IsPlain = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetSampleData(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.SampleData = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetSchemaName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetSecurityLevel(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.SecurityLevel = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetSemiDesensitizationRuleList(v *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.SemiDesensitizationRuleList = v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetTableName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) SetUserSensitivityLevel(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn {
+	s.UserSensitivityLevel = &v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule struct {
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule) SetRuleId(v int64) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule) SetRuleName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule {
+	s.RuleName = &v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList struct {
+	SemiDesensitizationRule []*ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule `json:"SemiDesensitizationRule,omitempty" xml:"SemiDesensitizationRule,omitempty" type:"Repeated"`
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList) SetSemiDesensitizationRule(v []*ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList {
+	s.SemiDesensitizationRule = v
+	return s
+}
+
+type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule struct {
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule) SetRuleId(v int64) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule) SetRuleName(v string) *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule {
+	s.RuleName = &v
+	return s
+}
+
+type ListSensitiveColumnInfoResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSensitiveColumnInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSensitiveColumnInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveColumnInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveColumnInfoResponse) SetHeaders(v map[string]*string) *ListSensitiveColumnInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponse) SetStatusCode(v int32) *ListSensitiveColumnInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSensitiveColumnInfoResponse) SetBody(v *ListSensitiveColumnInfoResponseBody) *ListSensitiveColumnInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListSensitiveColumnsRequest struct {
 	// The name of the field. You can call the [ListColumns](~~141870~~) operation to query the name of the field.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
@@ -32645,9 +32939,19 @@ func (s *ListSensitiveDataAuditLogResponse) SetBody(v *ListSensitiveDataAuditLog
 }
 
 type ListSensitivityLevelRequest struct {
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the ID of the classification template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the type of the classification template.
+	//
+	// Valid values:
+	//
+	// *   USER_DEFINE: a custom template.
+	// *   INNER: a built-in template.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~) in the topic "Manage DMS tenants."
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListSensitivityLevelRequest) String() string {
@@ -32674,11 +32978,19 @@ func (s *ListSensitivityLevelRequest) SetTid(v int64) *ListSensitivityLevelReque
 }
 
 type ListSensitivityLevelResponseBody struct {
-	ErrorCode            *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage         *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId            *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sensitivity levels.
 	SensitivityLevelList []*ListSensitivityLevelResponseBodySensitivityLevelList `json:"SensitivityLevelList,omitempty" xml:"SensitivityLevelList,omitempty" type:"Repeated"`
-	Success              *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSensitivityLevelResponseBody) String() string {
@@ -32715,9 +33027,16 @@ func (s *ListSensitivityLevelResponseBody) SetSuccess(v bool) *ListSensitivityLe
 }
 
 type ListSensitivityLevelResponseBodySensitivityLevelList struct {
-	IsPlain      *bool   `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Indicates whether the fields of the sensitive level are displayed in plaintext.
+	IsPlain *bool `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	// The name of the sensitive level.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the classification template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the classification template. Valid values:
+	//
+	// *   **INNER**: a built-in template.
+	// *   **USER_DEFINE**: a custom template.
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -38003,7 +38322,7 @@ func (s *ReRunTaskFlowInstanceResponse) SetBody(v *ReRunTaskFlowInstanceResponse
 }
 
 type RefundPayAsYouGoOrderRequest struct {
-	// The ID of the sales order instance.
+	// The instance ID in the sales order.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -41887,10 +42206,16 @@ func (s *UpdateScenarioResponse) SetBody(v *UpdateScenarioResponseBody) *UpdateS
 }
 
 type UpdateStandardGroupRequest struct {
+	// The description of the security rule set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The security rule set ID. You can call the [ListStandardGroups](~~465940~~) operation to obtain the ID of the security rule set.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the security rule set.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tenant ID.
+	//
+	// >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s UpdateStandardGroupRequest) String() string {
@@ -41922,11 +42247,19 @@ func (s *UpdateStandardGroupRequest) SetTid(v int64) *UpdateStandardGroupRequest
 }
 
 type UpdateStandardGroupResponseBody struct {
-	ErrorCode     *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The request ID. You can use the request ID to locate logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the security rule set.
 	StandardGroup *UpdateStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
-	Success       *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateStandardGroupResponseBody) String() string {
@@ -41963,12 +42296,22 @@ func (s *UpdateStandardGroupResponseBody) SetSuccess(v bool) *UpdateStandardGrou
 }
 
 type UpdateStandardGroupResponseBodyStandardGroup struct {
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
+	// The type of the database for which the security rules are used.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description of the security rule set.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The security rule set ID.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The control mode. Valid values:
+	//
+	// *   **NONE_CONTROL**: Flexible Management
+	// *   **STABLE**: Stable Change
+	// *   **COMMON**: Security Collaboration
+	GroupMode *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	// The name of the security rule set.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the user who last modified the security rules.
+	LastMenderId *int64 `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
 }
 
 func (s UpdateStandardGroupResponseBodyStandardGroup) String() string {
@@ -53182,6 +53525,74 @@ func (client *Client) ListScenarios(request *ListScenariosRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListScenariosResponse{}
 	_body, _err := client.ListScenariosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSensitiveColumnInfoWithOptions(request *ListSensitiveColumnInfoRequest, runtime *util.RuntimeOptions) (_result *ListSensitiveColumnInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSensitiveColumnInfo"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSensitiveColumnInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSensitiveColumnInfo(request *ListSensitiveColumnInfoRequest) (_result *ListSensitiveColumnInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSensitiveColumnInfoResponse{}
+	_body, _err := client.ListSensitiveColumnInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
