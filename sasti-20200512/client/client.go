@@ -137,9 +137,9 @@ func (s *DescribeDomainReportResponseBody) SetWhois(v string) *DescribeDomainRep
 }
 
 type DescribeDomainReportResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainReportResponse) String() string {
@@ -248,9 +248,9 @@ func (s *DescribeFileReportResponseBody) SetThreatTypes(v string) *DescribeFileR
 }
 
 type DescribeFileReportResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFileReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFileReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFileReportResponse) String() string {
@@ -389,9 +389,9 @@ func (s *DescribeIpReportResponseBody) SetWhois(v string) *DescribeIpReportRespo
 }
 
 type DescribeIpReportResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIpReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIpReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIpReportResponse) String() string {
