@@ -10352,6 +10352,195 @@ func (s *DesensitizeDataResponse) SetBody(v *DesensitizeDataResponseBody) *Desen
 	return s
 }
 
+type DsgQuerySensResultRequest struct {
+	Col           *string `json:"Col,omitempty" xml:"Col,omitempty"`
+	DbType        *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Level         *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderField    *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SensStatus    *string `json:"SensStatus,omitempty" xml:"SensStatus,omitempty"`
+	SensitiveId   *string `json:"SensitiveId,omitempty" xml:"SensitiveId,omitempty"`
+	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	Table         *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DsgQuerySensResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgQuerySensResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DsgQuerySensResultRequest) SetCol(v string) *DsgQuerySensResultRequest {
+	s.Col = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetDbType(v string) *DsgQuerySensResultRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetLevel(v string) *DsgQuerySensResultRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetNodeName(v string) *DsgQuerySensResultRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetOrder(v string) *DsgQuerySensResultRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetOrderField(v string) *DsgQuerySensResultRequest {
+	s.OrderField = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetPageNo(v int32) *DsgQuerySensResultRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetPageSize(v int32) *DsgQuerySensResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetProjectName(v string) *DsgQuerySensResultRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetSchemaName(v string) *DsgQuerySensResultRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetSensStatus(v string) *DsgQuerySensResultRequest {
+	s.SensStatus = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetSensitiveId(v string) *DsgQuerySensResultRequest {
+	s.SensitiveId = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetSensitiveName(v string) *DsgQuerySensResultRequest {
+	s.SensitiveName = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetTable(v string) *DsgQuerySensResultRequest {
+	s.Table = &v
+	return s
+}
+
+func (s *DsgQuerySensResultRequest) SetTenantId(v string) *DsgQuerySensResultRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DsgQuerySensResultResponseBody struct {
+	Data                interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicErrorCode    *string     `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string     `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DsgQuerySensResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgQuerySensResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DsgQuerySensResultResponseBody) SetData(v interface{}) *DsgQuerySensResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetDynamicErrorCode(v string) *DsgQuerySensResultResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetDynamicErrorMessage(v string) *DsgQuerySensResultResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetErrorCode(v string) *DsgQuerySensResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetErrorMessage(v string) *DsgQuerySensResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetHttpStatusCode(v int32) *DsgQuerySensResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetRequestId(v string) *DsgQuerySensResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponseBody) SetSuccess(v bool) *DsgQuerySensResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DsgQuerySensResultResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DsgQuerySensResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DsgQuerySensResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgQuerySensResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DsgQuerySensResultResponse) SetHeaders(v map[string]*string) *DsgQuerySensResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DsgQuerySensResultResponse) SetStatusCode(v int32) *DsgQuerySensResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DsgQuerySensResultResponse) SetBody(v *DsgQuerySensResultResponseBody) *DsgQuerySensResultResponse {
+	s.Body = v
+	return s
+}
+
 type EstablishRelationTableToBusinessRequest struct {
 	// The ID of the workflow. You can call the [ListBusiness](~~173945~~) operation to query the ID.
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
@@ -60866,6 +61055,106 @@ func (client *Client) DesensitizeData(request *DesensitizeDataRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DesensitizeDataResponse{}
 	_body, _err := client.DesensitizeDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DsgQuerySensResultWithOptions(request *DsgQuerySensResultRequest, runtime *util.RuntimeOptions) (_result *DsgQuerySensResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Col)) {
+		body["Col"] = request.Col
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		body["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		body["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		body["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		body["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensStatus)) {
+		body["SensStatus"] = request.SensStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveId)) {
+		body["SensitiveId"] = request.SensitiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveName)) {
+		body["SensitiveName"] = request.SensitiveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		body["Table"] = request.Table
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DsgQuerySensResult"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DsgQuerySensResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DsgQuerySensResult(request *DsgQuerySensResultRequest) (_result *DsgQuerySensResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DsgQuerySensResultResponse{}
+	_body, _err := client.DsgQuerySensResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
