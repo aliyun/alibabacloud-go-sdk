@@ -3601,6 +3601,52 @@ func (s *RenderRefundOrderResponse) SetBody(v *RefundRenderResult) *RenderRefund
 	return s
 }
 
+type SplitPurchaseOrderRequest struct {
+	Body *PurchaseOrderRenderQuery `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SplitPurchaseOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitPurchaseOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SplitPurchaseOrderRequest) SetBody(v *PurchaseOrderRenderQuery) *SplitPurchaseOrderRequest {
+	s.Body = v
+	return s
+}
+
+type SplitPurchaseOrderResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PurchaseOrderRenderResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SplitPurchaseOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitPurchaseOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SplitPurchaseOrderResponse) SetHeaders(v map[string]*string) *SplitPurchaseOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SplitPurchaseOrderResponse) SetStatusCode(v int32) *SplitPurchaseOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SplitPurchaseOrderResponse) SetBody(v *PurchaseOrderRenderResult) *SplitPurchaseOrderResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4568,6 +4614,47 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 	headers := make(map[string]*string)
 	_result = &RenderRefundOrderResponse{}
 	_body, _err := client.RenderRefundOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitPurchaseOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SplitPurchaseOrder"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/commands/split"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SplitPurchaseOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SplitPurchaseOrder(request *SplitPurchaseOrderRequest) (_result *SplitPurchaseOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SplitPurchaseOrderResponse{}
+	_body, _err := client.SplitPurchaseOrderWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
