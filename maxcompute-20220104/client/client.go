@@ -1227,11 +1227,13 @@ type GetProjectResponseBodyDataProperties struct {
 	// This operation does not return a value for this parameter.
 	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
 	// Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
-	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
+	EnableDecimal2      *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
+	EnableFdcCacheForce *bool `json:"enableFdcCacheForce,omitempty" xml:"enableFdcCacheForce,omitempty"`
 	// Indicates whether tunnel quota routing is enabled.
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The encryption information.
 	Encryption *GetProjectResponseBodyDataPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
+	FdcQuota   *string                                         `json:"fdcQuota,omitempty" xml:"fdcQuota,omitempty"`
 	// The number of days for which backup data can be retained.
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
 	// The upper limit for the resources that are consumed by an SQL statement.
@@ -1271,6 +1273,11 @@ func (s *GetProjectResponseBodyDataProperties) SetEnableDecimal2(v bool) *GetPro
 	return s
 }
 
+func (s *GetProjectResponseBodyDataProperties) SetEnableFdcCacheForce(v bool) *GetProjectResponseBodyDataProperties {
+	s.EnableFdcCacheForce = &v
+	return s
+}
+
 func (s *GetProjectResponseBodyDataProperties) SetEnableTunnelQuotaRoute(v bool) *GetProjectResponseBodyDataProperties {
 	s.EnableTunnelQuotaRoute = &v
 	return s
@@ -1278,6 +1285,11 @@ func (s *GetProjectResponseBodyDataProperties) SetEnableTunnelQuotaRoute(v bool)
 
 func (s *GetProjectResponseBodyDataProperties) SetEncryption(v *GetProjectResponseBodyDataPropertiesEncryption) *GetProjectResponseBodyDataProperties {
 	s.Encryption = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataProperties) SetFdcQuota(v string) *GetProjectResponseBodyDataProperties {
+	s.FdcQuota = &v
 	return s
 }
 
