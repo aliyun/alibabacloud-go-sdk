@@ -5950,6 +5950,129 @@ func (s *ApplyTagPoliciesResponse) SetBody(v *ApplyTagPoliciesResponseBody) *App
 	return s
 }
 
+type BindSentinelBlockFallbackDefinitionRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	FallbackId     *int64  `json:"FallbackId,omitempty" xml:"FallbackId,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	TargetType     *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s BindSentinelBlockFallbackDefinitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSentinelBlockFallbackDefinitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetAcceptLanguage(v string) *BindSentinelBlockFallbackDefinitionRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetAppName(v string) *BindSentinelBlockFallbackDefinitionRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetFallbackId(v int64) *BindSentinelBlockFallbackDefinitionRequest {
+	s.FallbackId = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetNamespace(v string) *BindSentinelBlockFallbackDefinitionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetResource(v string) *BindSentinelBlockFallbackDefinitionRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionRequest) SetTargetType(v string) *BindSentinelBlockFallbackDefinitionRequest {
+	s.TargetType = &v
+	return s
+}
+
+type BindSentinelBlockFallbackDefinitionResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindSentinelBlockFallbackDefinitionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSentinelBlockFallbackDefinitionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetCode(v int32) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetData(v bool) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetHttpStatusCode(v int32) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetMessage(v string) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetRequestId(v string) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponseBody) SetSuccess(v string) *BindSentinelBlockFallbackDefinitionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindSentinelBlockFallbackDefinitionResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindSentinelBlockFallbackDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindSentinelBlockFallbackDefinitionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindSentinelBlockFallbackDefinitionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponse) SetHeaders(v map[string]*string) *BindSentinelBlockFallbackDefinitionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponse) SetStatusCode(v int32) *BindSentinelBlockFallbackDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindSentinelBlockFallbackDefinitionResponse) SetBody(v *BindSentinelBlockFallbackDefinitionResponseBody) *BindSentinelBlockFallbackDefinitionResponse {
+	s.Body = v
+	return s
+}
+
 type CloneNacosConfigRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -37279,6 +37402,199 @@ func (s *ListSecurityGroupRuleResponse) SetBody(v *ListSecurityGroupRuleResponse
 	return s
 }
 
+type ListSentinelBlockFallbackDefinitionsRequest struct {
+	AcceptLanguage    *string  `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName           *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClassificationSet []*int32 `json:"ClassificationSet,omitempty" xml:"ClassificationSet,omitempty" type:"Repeated"`
+	Namespace         *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListSentinelBlockFallbackDefinitionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSentinelBlockFallbackDefinitionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsRequest) SetAcceptLanguage(v string) *ListSentinelBlockFallbackDefinitionsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsRequest) SetAppName(v string) *ListSentinelBlockFallbackDefinitionsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsRequest) SetClassificationSet(v []*int32) *ListSentinelBlockFallbackDefinitionsRequest {
+	s.ClassificationSet = v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsRequest) SetNamespace(v string) *ListSentinelBlockFallbackDefinitionsRequest {
+	s.Namespace = &v
+	return s
+}
+
+type ListSentinelBlockFallbackDefinitionsShrinkRequest struct {
+	AcceptLanguage          *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName                 *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClassificationSetShrink *string `json:"ClassificationSet,omitempty" xml:"ClassificationSet,omitempty"`
+	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListSentinelBlockFallbackDefinitionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSentinelBlockFallbackDefinitionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsShrinkRequest) SetAcceptLanguage(v string) *ListSentinelBlockFallbackDefinitionsShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsShrinkRequest) SetAppName(v string) *ListSentinelBlockFallbackDefinitionsShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsShrinkRequest) SetClassificationSetShrink(v string) *ListSentinelBlockFallbackDefinitionsShrinkRequest {
+	s.ClassificationSetShrink = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsShrinkRequest) SetNamespace(v string) *ListSentinelBlockFallbackDefinitionsShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+type ListSentinelBlockFallbackDefinitionsResponseBody struct {
+	Data           []*ListSentinelBlockFallbackDefinitionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetData(v []*ListSentinelBlockFallbackDefinitionsResponseBodyData) *ListSentinelBlockFallbackDefinitionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetHttpStatusCode(v int32) *ListSentinelBlockFallbackDefinitionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetMessage(v string) *ListSentinelBlockFallbackDefinitionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetRequestId(v string) *ListSentinelBlockFallbackDefinitionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetSuccess(v bool) *ListSentinelBlockFallbackDefinitionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSentinelBlockFallbackDefinitionsResponseBodyData struct {
+	AppName                *string                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	FallbackBehavior       map[string]interface{} `json:"FallbackBehavior,omitempty" xml:"FallbackBehavior,omitempty"`
+	Id                     *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace              *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ResourceClassification *string                `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	TargetMap              map[string]interface{} `json:"TargetMap,omitempty" xml:"TargetMap,omitempty"`
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetAppName(v string) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetFallbackBehavior(v map[string]interface{}) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.FallbackBehavior = v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetId(v string) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetName(v string) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetNamespace(v string) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetResourceClassification(v string) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.ResourceClassification = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponseBodyData) SetTargetMap(v map[string]interface{}) *ListSentinelBlockFallbackDefinitionsResponseBodyData {
+	s.TargetMap = v
+	return s
+}
+
+type ListSentinelBlockFallbackDefinitionsResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSentinelBlockFallbackDefinitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSentinelBlockFallbackDefinitionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponse) SetHeaders(v map[string]*string) *ListSentinelBlockFallbackDefinitionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponse) SetStatusCode(v int32) *ListSentinelBlockFallbackDefinitionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSentinelBlockFallbackDefinitionsResponse) SetBody(v *ListSentinelBlockFallbackDefinitionsResponseBody) *ListSentinelBlockFallbackDefinitionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceSourceRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -55781,6 +56097,70 @@ func (client *Client) ApplyTagPolicies(request *ApplyTagPoliciesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) BindSentinelBlockFallbackDefinitionWithOptions(request *BindSentinelBlockFallbackDefinitionRequest, runtime *util.RuntimeOptions) (_result *BindSentinelBlockFallbackDefinitionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackId)) {
+		query["FallbackId"] = request.FallbackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindSentinelBlockFallbackDefinition"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindSentinelBlockFallbackDefinitionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindSentinelBlockFallbackDefinition(request *BindSentinelBlockFallbackDefinitionRequest) (_result *BindSentinelBlockFallbackDefinitionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindSentinelBlockFallbackDefinitionResponse{}
+	_body, _err := client.BindSentinelBlockFallbackDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * mse-200-105
  *
@@ -63821,6 +64201,68 @@ func (client *Client) ListSecurityGroupRule(request *ListSecurityGroupRuleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecurityGroupRuleResponse{}
 	_body, _err := client.ListSecurityGroupRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSentinelBlockFallbackDefinitionsWithOptions(tmpReq *ListSentinelBlockFallbackDefinitionsRequest, runtime *util.RuntimeOptions) (_result *ListSentinelBlockFallbackDefinitionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSentinelBlockFallbackDefinitionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClassificationSet)) {
+		request.ClassificationSetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClassificationSet, tea.String("ClassificationSet"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClassificationSetShrink)) {
+		query["ClassificationSet"] = request.ClassificationSetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSentinelBlockFallbackDefinitions"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSentinelBlockFallbackDefinitionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSentinelBlockFallbackDefinitions(request *ListSentinelBlockFallbackDefinitionsRequest) (_result *ListSentinelBlockFallbackDefinitionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSentinelBlockFallbackDefinitionsResponse{}
+	_body, _err := client.ListSentinelBlockFallbackDefinitionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,8 @@
+2024-04-17 Version: v5.5.0
+- Support API BindSentinelBlockFallbackDefinition.
+- Support API ListSentinelBlockFallbackDefinitions.
+
+
 2024-04-11 Version: v5.4.1
 - Generated golang 2019-05-31 for mse.
 
