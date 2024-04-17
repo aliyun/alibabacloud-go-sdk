@@ -1358,6 +1358,8 @@ type CloseDeliveryRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s CloseDeliveryRequest) String() string {
@@ -1380,6 +1382,16 @@ func (s *CloseDeliveryRequest) SetProductCode(v string) *CloseDeliveryRequest {
 
 func (s *CloseDeliveryRequest) SetRegionId(v string) *CloseDeliveryRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CloseDeliveryRequest) SetRoleFor(v int64) *CloseDeliveryRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *CloseDeliveryRequest) SetRoleType(v int32) *CloseDeliveryRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -1448,6 +1460,8 @@ type DeleteAutomateResponseConfigRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DeleteAutomateResponseConfigRequest) String() string {
@@ -1465,6 +1479,16 @@ func (s *DeleteAutomateResponseConfigRequest) SetId(v int64) *DeleteAutomateResp
 
 func (s *DeleteAutomateResponseConfigRequest) SetRegionId(v string) *DeleteAutomateResponseConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteAutomateResponseConfigRequest) SetRoleFor(v int64) *DeleteAutomateResponseConfigRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DeleteAutomateResponseConfigRequest) SetRoleType(v int32) *DeleteAutomateResponseConfigRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -1674,6 +1698,8 @@ func (s *DeleteBindAccountResponse) SetBody(v *DeleteBindAccountResponseBody) *D
 type DeleteCustomizeRuleRequest struct {
 	// The region in which the service is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the rule.
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
@@ -1688,6 +1714,16 @@ func (s DeleteCustomizeRuleRequest) GoString() string {
 
 func (s *DeleteCustomizeRuleRequest) SetRegionId(v string) *DeleteCustomizeRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCustomizeRuleRequest) SetRoleFor(v int64) *DeleteCustomizeRuleRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DeleteCustomizeRuleRequest) SetRoleType(v int32) *DeleteCustomizeRuleRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2202,6 +2238,8 @@ type DeleteWhiteRuleListRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DeleteWhiteRuleListRequest) String() string {
@@ -2219,6 +2257,16 @@ func (s *DeleteWhiteRuleListRequest) SetId(v int64) *DeleteWhiteRuleListRequest 
 
 func (s *DeleteWhiteRuleListRequest) SetRegionId(v string) *DeleteWhiteRuleListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteWhiteRuleListRequest) SetRoleFor(v int64) *DeleteWhiteRuleListRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DeleteWhiteRuleListRequest) SetRoleType(v int32) *DeleteWhiteRuleListRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2306,6 +2354,8 @@ type DescribeAggregateFunctionRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAggregateFunctionRequest) String() string {
@@ -2318,6 +2368,16 @@ func (s DescribeAggregateFunctionRequest) GoString() string {
 
 func (s *DescribeAggregateFunctionRequest) SetRegionId(v string) *DescribeAggregateFunctionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAggregateFunctionRequest) SetRoleFor(v int64) *DescribeAggregateFunctionRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAggregateFunctionRequest) SetRoleType(v int32) *DescribeAggregateFunctionRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2430,6 +2490,8 @@ type DescribeAlertSceneRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSceneRequest) String() string {
@@ -2442,6 +2504,16 @@ func (s DescribeAlertSceneRequest) GoString() string {
 
 func (s *DescribeAlertSceneRequest) SetRegionId(v string) *DescribeAlertSceneRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneRequest) SetRoleFor(v int64) *DescribeAlertSceneRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertSceneRequest) SetRoleType(v int32) *DescribeAlertSceneRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2630,6 +2702,8 @@ type DescribeAlertSceneByEventRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSceneByEventRequest) String() string {
@@ -2647,6 +2721,16 @@ func (s *DescribeAlertSceneByEventRequest) SetIncidentUuid(v string) *DescribeAl
 
 func (s *DescribeAlertSceneByEventRequest) SetRegionId(v string) *DescribeAlertSceneByEventRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneByEventRequest) SetRoleFor(v int64) *DescribeAlertSceneByEventRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertSceneByEventRequest) SetRoleType(v int32) *DescribeAlertSceneByEventRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2841,6 +2925,8 @@ type DescribeAlertSourceRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -2865,6 +2951,16 @@ func (s *DescribeAlertSourceRequest) SetLevel(v []*string) *DescribeAlertSourceR
 
 func (s *DescribeAlertSourceRequest) SetRegionId(v string) *DescribeAlertSourceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertSourceRequest) SetRoleFor(v int64) *DescribeAlertSourceRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertSourceRequest) SetRoleType(v int32) *DescribeAlertSourceRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -2984,6 +3080,8 @@ type DescribeAlertSourceWithEventRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAlertSourceWithEventRequest) String() string {
@@ -3001,6 +3099,16 @@ func (s *DescribeAlertSourceWithEventRequest) SetIncidentUuid(v string) *Describ
 
 func (s *DescribeAlertSourceWithEventRequest) SetRegionId(v string) *DescribeAlertSourceWithEventRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertSourceWithEventRequest) SetRoleFor(v int64) *DescribeAlertSourceWithEventRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertSourceWithEventRequest) SetRoleType(v int32) *DescribeAlertSourceWithEventRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -3113,6 +3221,9 @@ type DescribeAlertTypeRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
 func (s DescribeAlertTypeRequest) String() string {
@@ -3125,6 +3236,21 @@ func (s DescribeAlertTypeRequest) GoString() string {
 
 func (s *DescribeAlertTypeRequest) SetRegionId(v string) *DescribeAlertTypeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertTypeRequest) SetRoleFor(v int64) *DescribeAlertTypeRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertTypeRequest) SetRoleType(v int32) *DescribeAlertTypeRequest {
+	s.RoleType = &v
+	return s
+}
+
+func (s *DescribeAlertTypeRequest) SetRuleType(v string) *DescribeAlertTypeRequest {
+	s.RuleType = &v
 	return s
 }
 
@@ -3258,6 +3384,8 @@ type DescribeAlertsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The source of the alert.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
@@ -3311,6 +3439,16 @@ func (s *DescribeAlertsRequest) SetPageSize(v int32) *DescribeAlertsRequest {
 
 func (s *DescribeAlertsRequest) SetRegionId(v string) *DescribeAlertsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetRoleFor(v int64) *DescribeAlertsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetRoleType(v int32) *DescribeAlertsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -3750,6 +3888,8 @@ type DescribeAlertsCountRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -3769,6 +3909,16 @@ func (s *DescribeAlertsCountRequest) SetEndTime(v int64) *DescribeAlertsCountReq
 
 func (s *DescribeAlertsCountRequest) SetRegionId(v string) *DescribeAlertsCountRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsCountRequest) SetRoleFor(v int64) *DescribeAlertsCountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertsCountRequest) SetRoleType(v int32) *DescribeAlertsCountRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -3915,6 +4065,8 @@ type DescribeAlertsWithEntityRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handing policy.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
@@ -3949,6 +4101,16 @@ func (s *DescribeAlertsWithEntityRequest) SetPageSize(v int32) *DescribeAlertsWi
 
 func (s *DescribeAlertsWithEntityRequest) SetRegionId(v string) *DescribeAlertsWithEntityRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetRoleFor(v int64) *DescribeAlertsWithEntityRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetRoleType(v int32) *DescribeAlertsWithEntityRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -4395,6 +4557,8 @@ type DescribeAlertsWithEventRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The data source of the alert.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The ID of the account within which the alert is generated.
@@ -4441,6 +4605,16 @@ func (s *DescribeAlertsWithEventRequest) SetPageSize(v int32) *DescribeAlertsWit
 
 func (s *DescribeAlertsWithEventRequest) SetRegionId(v string) *DescribeAlertsWithEventRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetRoleFor(v int64) *DescribeAlertsWithEventRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetRoleType(v int32) *DescribeAlertsWithEventRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -4610,7 +4784,8 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	// *   hcloud: Huawei Cloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The time when the alert was closed.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityList *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
 	// The time when the alert was received.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the alert was last updated.
@@ -4751,6 +4926,11 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetEndTime(v strin
 	return s
 }
 
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetEntityList(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.EntityList = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
 	s.GmtCreate = &v
 	return s
@@ -4879,6 +5059,8 @@ type DescribeAttackTimeLineRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -4908,6 +5090,16 @@ func (s *DescribeAttackTimeLineRequest) SetIncidentUuid(v string) *DescribeAttac
 
 func (s *DescribeAttackTimeLineRequest) SetRegionId(v string) *DescribeAttackTimeLineRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAttackTimeLineRequest) SetRoleFor(v int64) *DescribeAttackTimeLineRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAttackTimeLineRequest) SetRoleType(v int32) *DescribeAttackTimeLineRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -5237,6 +5429,8 @@ type DescribeAutomateResponseConfigCounterRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigCounterRequest) String() string {
@@ -5249,6 +5443,16 @@ func (s DescribeAutomateResponseConfigCounterRequest) GoString() string {
 
 func (s *DescribeAutomateResponseConfigCounterRequest) SetRegionId(v string) *DescribeAutomateResponseConfigCounterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigCounterRequest) SetRoleFor(v int64) *DescribeAutomateResponseConfigCounterRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigCounterRequest) SetRoleType(v int32) *DescribeAutomateResponseConfigCounterRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -5366,6 +5570,8 @@ type DescribeAutomateResponseConfigFeatureRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigFeatureRequest) String() string {
@@ -5383,6 +5589,16 @@ func (s *DescribeAutomateResponseConfigFeatureRequest) SetAutoResponseType(v str
 
 func (s *DescribeAutomateResponseConfigFeatureRequest) SetRegionId(v string) *DescribeAutomateResponseConfigFeatureRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigFeatureRequest) SetRoleFor(v int64) *DescribeAutomateResponseConfigFeatureRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigFeatureRequest) SetRoleType(v int32) *DescribeAutomateResponseConfigFeatureRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -5615,6 +5831,8 @@ type DescribeAutomateResponseConfigPlayBooksRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigPlayBooksRequest) String() string {
@@ -5637,6 +5855,16 @@ func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetEntityType(v string)
 
 func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetRegionId(v string) *DescribeAutomateResponseConfigPlayBooksRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetRoleFor(v int64) *DescribeAutomateResponseConfigPlayBooksRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetRoleType(v int32) *DescribeAutomateResponseConfigPlayBooksRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -5789,6 +6017,8 @@ type DescribeCloudSiemAssetsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsRequest) String() string {
@@ -5821,6 +6051,16 @@ func (s *DescribeCloudSiemAssetsRequest) SetPageSize(v int32) *DescribeCloudSiem
 
 func (s *DescribeCloudSiemAssetsRequest) SetRegionId(v string) *DescribeCloudSiemAssetsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemAssetsRequest) SetRoleFor(v int64) *DescribeCloudSiemAssetsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCloudSiemAssetsRequest) SetRoleType(v int32) *DescribeCloudSiemAssetsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -6105,6 +6345,8 @@ type DescribeCloudSiemAssetsCounterRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsCounterRequest) String() string {
@@ -6122,6 +6364,16 @@ func (s *DescribeCloudSiemAssetsCounterRequest) SetIncidentUuid(v string) *Descr
 
 func (s *DescribeCloudSiemAssetsCounterRequest) SetRegionId(v string) *DescribeCloudSiemAssetsCounterRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemAssetsCounterRequest) SetRoleFor(v int64) *DescribeCloudSiemAssetsCounterRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCloudSiemAssetsCounterRequest) SetRoleType(v int32) *DescribeCloudSiemAssetsCounterRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -6243,6 +6495,8 @@ type DescribeCloudSiemEventDetailRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCloudSiemEventDetailRequest) String() string {
@@ -6260,6 +6514,16 @@ func (s *DescribeCloudSiemEventDetailRequest) SetIncidentUuid(v string) *Describ
 
 func (s *DescribeCloudSiemEventDetailRequest) SetRegionId(v string) *DescribeCloudSiemEventDetailRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventDetailRequest) SetRoleFor(v int64) *DescribeCloudSiemEventDetailRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventDetailRequest) SetRoleType(v int32) *DescribeCloudSiemEventDetailRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -6514,6 +6778,8 @@ type DescribeCloudSiemEventsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the event. Valid values:
@@ -6581,6 +6847,16 @@ func (s *DescribeCloudSiemEventsRequest) SetPageSize(v int32) *DescribeCloudSiem
 
 func (s *DescribeCloudSiemEventsRequest) SetRegionId(v string) *DescribeCloudSiemEventsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsRequest) SetRoleFor(v int64) *DescribeCloudSiemEventsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsRequest) SetRoleType(v int32) *DescribeCloudSiemEventsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -6732,6 +7008,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
 	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
 	// The remarks of the event.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the event. Valid values:
@@ -6821,6 +7098,11 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetIncidentNameEn(
 
 func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetReferAccount(v string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
+	s.ReferAccount = &v
 	return s
 }
 
@@ -7262,6 +7544,8 @@ type DescribeCustomizeRuleCountRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleCountRequest) String() string {
@@ -7274,6 +7558,16 @@ func (s DescribeCustomizeRuleCountRequest) GoString() string {
 
 func (s *DescribeCustomizeRuleCountRequest) SetRegionId(v string) *DescribeCustomizeRuleCountRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountRequest) SetRoleFor(v int64) *DescribeCustomizeRuleCountRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountRequest) SetRoleType(v int32) *DescribeCustomizeRuleCountRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -7327,6 +7621,10 @@ func (s *DescribeCustomizeRuleCountResponseBody) SetSuccess(v bool) *DescribeCus
 }
 
 type DescribeCustomizeRuleCountResponseBodyData struct {
+	AggregationRuleNum    *int32 `json:"AggregationRuleNum,omitempty" xml:"AggregationRuleNum,omitempty"`
+	CustomizeRuleNum      *int32 `json:"CustomizeRuleNum,omitempty" xml:"CustomizeRuleNum,omitempty"`
+	ExpertRuleNum         *int32 `json:"ExpertRuleNum,omitempty" xml:"ExpertRuleNum,omitempty"`
+	GraphComputingRuleNum *int32 `json:"GraphComputingRuleNum,omitempty" xml:"GraphComputingRuleNum,omitempty"`
 	// The number of rules that are used to identify high-risk threats.
 	HighRuleNum *int32 `json:"HighRuleNum,omitempty" xml:"HighRuleNum,omitempty"`
 	// The total number of rules.
@@ -7334,7 +7632,11 @@ type DescribeCustomizeRuleCountResponseBodyData struct {
 	// The number of rules that are used to identify low-risk threats.
 	LowRuleNum *int32 `json:"LowRuleNum,omitempty" xml:"LowRuleNum,omitempty"`
 	// The number of rules that are used to identify medium-risk threats.
-	MediumRuleNum *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
+	MediumRuleNum      *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
+	PredefinedRuleNum  *int32 `json:"PredefinedRuleNum,omitempty" xml:"PredefinedRuleNum,omitempty"`
+	SingleAlertRuleNum *int32 `json:"SingleAlertRuleNum,omitempty" xml:"SingleAlertRuleNum,omitempty"`
+	TotalRuleNum       *int32 `json:"TotalRuleNum,omitempty" xml:"TotalRuleNum,omitempty"`
+	UnEventRuleNum     *int32 `json:"UnEventRuleNum,omitempty" xml:"UnEventRuleNum,omitempty"`
 }
 
 func (s DescribeCustomizeRuleCountResponseBodyData) String() string {
@@ -7343,6 +7645,26 @@ func (s DescribeCustomizeRuleCountResponseBodyData) String() string {
 
 func (s DescribeCustomizeRuleCountResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetAggregationRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.AggregationRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetCustomizeRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.CustomizeRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetExpertRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.ExpertRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetGraphComputingRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.GraphComputingRuleNum = &v
+	return s
 }
 
 func (s *DescribeCustomizeRuleCountResponseBodyData) SetHighRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
@@ -7362,6 +7684,26 @@ func (s *DescribeCustomizeRuleCountResponseBodyData) SetLowRuleNum(v int32) *Des
 
 func (s *DescribeCustomizeRuleCountResponseBodyData) SetMediumRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
 	s.MediumRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetPredefinedRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.PredefinedRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetSingleAlertRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.SingleAlertRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetTotalRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.TotalRuleNum = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleCountResponseBodyData) SetUnEventRuleNum(v int32) *DescribeCustomizeRuleCountResponseBodyData {
+	s.UnEventRuleNum = &v
 	return s
 }
 
@@ -7402,6 +7744,8 @@ type DescribeCustomizeRuleTestRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestRequest) String() string {
@@ -7419,6 +7763,16 @@ func (s *DescribeCustomizeRuleTestRequest) SetId(v int64) *DescribeCustomizeRule
 
 func (s *DescribeCustomizeRuleTestRequest) SetRegionId(v string) *DescribeCustomizeRuleTestRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleTestRequest) SetRoleFor(v int64) *DescribeCustomizeRuleTestRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleTestRequest) SetRoleType(v int32) *DescribeCustomizeRuleTestRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -7546,6 +7900,8 @@ type DescribeCustomizeRuleTestHistogramRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestHistogramRequest) String() string {
@@ -7563,6 +7919,16 @@ func (s *DescribeCustomizeRuleTestHistogramRequest) SetId(v int64) *DescribeCust
 
 func (s *DescribeCustomizeRuleTestHistogramRequest) SetRegionId(v string) *DescribeCustomizeRuleTestHistogramRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleTestHistogramRequest) SetRoleFor(v int64) *DescribeCustomizeRuleTestHistogramRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeCustomizeRuleTestHistogramRequest) SetRoleType(v int32) *DescribeCustomizeRuleTestHistogramRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -8115,6 +8481,8 @@ type DescribeDisposeAndPlaybookRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookRequest) String() string {
@@ -8147,6 +8515,16 @@ func (s *DescribeDisposeAndPlaybookRequest) SetPageSize(v int32) *DescribeDispos
 
 func (s *DescribeDisposeAndPlaybookRequest) SetRegionId(v string) *DescribeDisposeAndPlaybookRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookRequest) SetRoleFor(v int64) *DescribeDisposeAndPlaybookRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookRequest) SetRoleType(v int32) *DescribeDisposeAndPlaybookRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -8433,6 +8811,8 @@ type DescribeDisposeStrategyPlaybookRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -8452,6 +8832,16 @@ func (s *DescribeDisposeStrategyPlaybookRequest) SetEndTime(v int64) *DescribeDi
 
 func (s *DescribeDisposeStrategyPlaybookRequest) SetRegionId(v string) *DescribeDisposeStrategyPlaybookRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDisposeStrategyPlaybookRequest) SetRoleFor(v int64) *DescribeDisposeStrategyPlaybookRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeDisposeStrategyPlaybookRequest) SetRoleType(v int32) *DescribeDisposeStrategyPlaybookRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -8575,6 +8965,8 @@ type DescribeEntityInfoRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handling policy.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
@@ -8604,6 +8996,16 @@ func (s *DescribeEntityInfoRequest) SetIncidentUuid(v string) *DescribeEntityInf
 
 func (s *DescribeEntityInfoRequest) SetRegionId(v string) *DescribeEntityInfoRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEntityInfoRequest) SetRoleFor(v int64) *DescribeEntityInfoRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeEntityInfoRequest) SetRoleType(v int32) *DescribeEntityInfoRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -8737,11 +9139,15 @@ func (s *DescribeEntityInfoResponse) SetBody(v *DescribeEntityInfoResponseBody) 
 }
 
 type DescribeEventCountByThreatLevelRequest struct {
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor   *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType  *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeEventCountByThreatLevelRequest) String() string {
@@ -8752,8 +9158,28 @@ func (s DescribeEventCountByThreatLevelRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEventCountByThreatLevelRequest) SetEndTime(v int64) *DescribeEventCountByThreatLevelRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeEventCountByThreatLevelRequest) SetRegionId(v string) *DescribeEventCountByThreatLevelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelRequest) SetRoleFor(v int64) *DescribeEventCountByThreatLevelRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelRequest) SetRoleType(v int32) *DescribeEventCountByThreatLevelRequest {
+	s.RoleType = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelRequest) SetStartTime(v int64) *DescribeEventCountByThreatLevelRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -8893,6 +9319,8 @@ type DescribeEventDisposeRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeEventDisposeRequest) String() string {
@@ -8920,6 +9348,16 @@ func (s *DescribeEventDisposeRequest) SetPageSize(v int32) *DescribeEventDispose
 
 func (s *DescribeEventDisposeRequest) SetRegionId(v string) *DescribeEventDisposeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventDisposeRequest) SetRoleFor(v int64) *DescribeEventDisposeRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeEventDisposeRequest) SetRoleType(v int32) *DescribeEventDisposeRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -9511,6 +9949,8 @@ type DescribeLogFieldsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogFieldsRequest) String() string {
@@ -9533,6 +9973,16 @@ func (s *DescribeLogFieldsRequest) SetLogType(v string) *DescribeLogFieldsReques
 
 func (s *DescribeLogFieldsRequest) SetRegionId(v string) *DescribeLogFieldsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogFieldsRequest) SetRoleFor(v int64) *DescribeLogFieldsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeLogFieldsRequest) SetRoleType(v int32) *DescribeLogFieldsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -9671,6 +10121,8 @@ type DescribeLogSourceRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogSourceRequest) String() string {
@@ -9688,6 +10140,16 @@ func (s *DescribeLogSourceRequest) SetLogType(v string) *DescribeLogSourceReques
 
 func (s *DescribeLogSourceRequest) SetRegionId(v string) *DescribeLogSourceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogSourceRequest) SetRoleFor(v int64) *DescribeLogSourceRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeLogSourceRequest) SetRoleType(v int32) *DescribeLogSourceRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -9944,6 +10406,8 @@ type DescribeLogTypeRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeLogTypeRequest) String() string {
@@ -9956,6 +10420,16 @@ func (s DescribeLogTypeRequest) GoString() string {
 
 func (s *DescribeLogTypeRequest) SetRegionId(v string) *DescribeLogTypeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogTypeRequest) SetRoleFor(v int64) *DescribeLogTypeRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeLogTypeRequest) SetRoleType(v int32) *DescribeLogTypeRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -10068,6 +10542,8 @@ type DescribeOperatorsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The type of the scenario in which the operator is used. Valid values:
 	//
 	// *   If you do not specify this parameter, the default scenario is used.
@@ -10085,6 +10561,16 @@ func (s DescribeOperatorsRequest) GoString() string {
 
 func (s *DescribeOperatorsRequest) SetRegionId(v string) *DescribeOperatorsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOperatorsRequest) SetRoleFor(v int64) *DescribeOperatorsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeOperatorsRequest) SetRoleType(v int32) *DescribeOperatorsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -10344,6 +10830,8 @@ type DescribeScopeUsersRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeScopeUsersRequest) String() string {
@@ -10356,6 +10844,16 @@ func (s DescribeScopeUsersRequest) GoString() string {
 
 func (s *DescribeScopeUsersRequest) SetRegionId(v string) *DescribeScopeUsersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeScopeUsersRequest) SetRoleFor(v int64) *DescribeScopeUsersRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeScopeUsersRequest) SetRoleType(v int32) *DescribeScopeUsersRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -10410,11 +10908,13 @@ func (s *DescribeScopeUsersResponseBody) SetSuccess(v bool) *DescribeScopeUsersR
 
 type DescribeScopeUsersResponseBodyData struct {
 	// The ID of the security information and event management (SIEM) user.
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AliUid    *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// An array consisting of the domain names that are protected by the WAF instance.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -10432,6 +10932,11 @@ func (s *DescribeScopeUsersResponseBodyData) SetAliUid(v int64) *DescribeScopeUs
 	return s
 }
 
+func (s *DescribeScopeUsersResponseBodyData) SetCloudCode(v string) *DescribeScopeUsersResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
 func (s *DescribeScopeUsersResponseBodyData) SetDomains(v []*string) *DescribeScopeUsersResponseBodyData {
 	s.Domains = v
 	return s
@@ -10439,6 +10944,11 @@ func (s *DescribeScopeUsersResponseBodyData) SetDomains(v []*string) *DescribeSc
 
 func (s *DescribeScopeUsersResponseBodyData) SetInstanceId(v string) *DescribeScopeUsersResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeScopeUsersResponseBodyData) SetUserId(v string) *DescribeScopeUsersResponseBodyData {
+	s.UserId = &v
 	return s
 }
 
@@ -10560,6 +11070,8 @@ type DescribeStorageRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeStorageRequest) String() string {
@@ -10572,6 +11084,16 @@ func (s DescribeStorageRequest) GoString() string {
 
 func (s *DescribeStorageRequest) SetRegionId(v string) *DescribeStorageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeStorageRequest) SetRoleFor(v int64) *DescribeStorageRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeStorageRequest) SetRoleType(v int32) *DescribeStorageRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -10705,6 +11227,7 @@ type DescribeUserBuyStatusResponseBodyData struct {
 	MasterUserId *int64 `json:"MasterUserId,omitempty" xml:"MasterUserId,omitempty"`
 	// The display name of the management account of the resource directory.
 	MasterUserName *string `json:"MasterUserName,omitempty" xml:"MasterUserName,omitempty"`
+	RdOrder        *int32  `json:"RdOrder,omitempty" xml:"RdOrder,omitempty"`
 	// The instance ID of Security Center.
 	SasInstanceId *string `json:"SasInstanceId,omitempty" xml:"SasInstanceId,omitempty"`
 	// The ID of the logon Alibaba Cloud account.
@@ -10761,6 +11284,11 @@ func (s *DescribeUserBuyStatusResponseBodyData) SetMasterUserName(v string) *Des
 	return s
 }
 
+func (s *DescribeUserBuyStatusResponseBodyData) SetRdOrder(v int32) *DescribeUserBuyStatusResponseBodyData {
+	s.RdOrder = &v
+	return s
+}
+
 func (s *DescribeUserBuyStatusResponseBodyData) SetSasInstanceId(v string) *DescribeUserBuyStatusResponseBodyData {
 	s.SasInstanceId = &v
 	return s
@@ -10813,6 +11341,8 @@ type DescribeWafScopeRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeWafScopeRequest) String() string {
@@ -10830,6 +11360,16 @@ func (s *DescribeWafScopeRequest) SetEntityId(v int64) *DescribeWafScopeRequest 
 
 func (s *DescribeWafScopeRequest) SetRegionId(v string) *DescribeWafScopeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeWafScopeRequest) SetRoleFor(v int64) *DescribeWafScopeRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeWafScopeRequest) SetRoleType(v int32) *DescribeWafScopeRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -10959,6 +11499,8 @@ type DescribeWhiteRuleListRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeWhiteRuleListRequest) String() string {
@@ -10996,6 +11538,16 @@ func (s *DescribeWhiteRuleListRequest) SetPageSize(v int32) *DescribeWhiteRuleLi
 
 func (s *DescribeWhiteRuleListRequest) SetRegionId(v string) *DescribeWhiteRuleListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetRoleFor(v int64) *DescribeWhiteRuleListRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetRoleType(v int32) *DescribeWhiteRuleListRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -11725,11 +12277,14 @@ func (s *DoSelfDelegateResponse) SetBody(v *DoSelfDelegateResponseBody) *DoSelfD
 }
 
 type EnableAccessForCloudSiemRequest struct {
+	AutoSubmit *int32 `json:"AutoSubmit,omitempty" xml:"AutoSubmit,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
 	//
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s EnableAccessForCloudSiemRequest) String() string {
@@ -11740,8 +12295,23 @@ func (s EnableAccessForCloudSiemRequest) GoString() string {
 	return s.String()
 }
 
+func (s *EnableAccessForCloudSiemRequest) SetAutoSubmit(v int32) *EnableAccessForCloudSiemRequest {
+	s.AutoSubmit = &v
+	return s
+}
+
 func (s *EnableAccessForCloudSiemRequest) SetRegionId(v string) *EnableAccessForCloudSiemRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *EnableAccessForCloudSiemRequest) SetRoleFor(v int64) *EnableAccessForCloudSiemRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *EnableAccessForCloudSiemRequest) SetRoleType(v int32) *EnableAccessForCloudSiemRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -11883,6 +12453,8 @@ type GetCapacityRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s GetCapacityRequest) String() string {
@@ -11895,6 +12467,16 @@ func (s GetCapacityRequest) GoString() string {
 
 func (s *GetCapacityRequest) SetRegionId(v string) *GetCapacityRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetCapacityRequest) SetRoleFor(v int64) *GetCapacityRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *GetCapacityRequest) SetRoleType(v int32) *GetCapacityRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -12512,6 +13094,8 @@ type GetStorageRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s GetStorageRequest) String() string {
@@ -12524,6 +13108,16 @@ func (s GetStorageRequest) GoString() string {
 
 func (s *GetStorageRequest) SetRegionId(v string) *GetStorageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetStorageRequest) SetRoleFor(v int64) *GetStorageRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *GetStorageRequest) SetRoleType(v int32) *GetStorageRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -12820,6 +13414,8 @@ type ListAccountsByLogRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListAccountsByLogRequest) String() string {
@@ -12847,6 +13443,16 @@ func (s *ListAccountsByLogRequest) SetProdCode(v string) *ListAccountsByLogReque
 
 func (s *ListAccountsByLogRequest) SetRegionId(v string) *ListAccountsByLogRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAccountsByLogRequest) SetRoleFor(v int64) *ListAccountsByLogRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListAccountsByLogRequest) SetRoleType(v int32) *ListAccountsByLogRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -12970,6 +13576,8 @@ type ListAllProdsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListAllProdsRequest) String() string {
@@ -12982,6 +13590,16 @@ func (s ListAllProdsRequest) GoString() string {
 
 func (s *ListAllProdsRequest) SetRegionId(v string) *ListAllProdsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAllProdsRequest) SetRoleFor(v int64) *ListAllProdsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListAllProdsRequest) SetRoleType(v int32) *ListAllProdsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -13153,6 +13771,8 @@ type ListAutomateResponseConfigsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The name of the automated response rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
@@ -13204,6 +13824,16 @@ func (s *ListAutomateResponseConfigsRequest) SetPlaybookUuid(v string) *ListAuto
 
 func (s *ListAutomateResponseConfigsRequest) SetRegionId(v string) *ListAutomateResponseConfigsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAutomateResponseConfigsRequest) SetRoleFor(v int64) *ListAutomateResponseConfigsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListAutomateResponseConfigsRequest) SetRoleType(v int32) *ListAutomateResponseConfigsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -13344,6 +13974,7 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	// *   event
 	// *   alert
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
+	DataType         *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The trigger condition of the rule. The value is in the JSON format.
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
 	// The creation time.
@@ -13388,6 +14019,11 @@ func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetAliuid(v in
 
 func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetAutoResponseType(v string) *ListAutomateResponseConfigsResponseBodyDataResponseData {
 	s.AutoResponseType = &v
+	return s
+}
+
+func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetDataType(v int32) *ListAutomateResponseConfigsResponseBodyDataResponseData {
+	s.DataType = &v
 	return s
 }
 
@@ -13797,7 +14433,9 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	// The end of the time range to query. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the custom rule.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. The value can be up to 100.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
@@ -13805,6 +14443,8 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	// *   **cn-hangzhou**: Your assets reside in regions in China.
 	// *   **ap-southeast-1**: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
@@ -13858,6 +14498,16 @@ func (s *ListCloudSiemCustomizeRulesRequest) SetId(v string) *ListCloudSiemCusto
 	return s
 }
 
+func (s *ListCloudSiemCustomizeRulesRequest) SetOrder(v string) *ListCloudSiemCustomizeRulesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCloudSiemCustomizeRulesRequest) SetOrderField(v string) *ListCloudSiemCustomizeRulesRequest {
+	s.OrderField = &v
+	return s
+}
+
 func (s *ListCloudSiemCustomizeRulesRequest) SetPageSize(v int32) *ListCloudSiemCustomizeRulesRequest {
 	s.PageSize = &v
 	return s
@@ -13865,6 +14515,16 @@ func (s *ListCloudSiemCustomizeRulesRequest) SetPageSize(v int32) *ListCloudSiem
 
 func (s *ListCloudSiemCustomizeRulesRequest) SetRegionId(v string) *ListCloudSiemCustomizeRulesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCloudSiemCustomizeRulesRequest) SetRoleFor(v int64) *ListCloudSiemCustomizeRulesRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListCloudSiemCustomizeRulesRequest) SetRoleType(v int32) *ListCloudSiemCustomizeRulesRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -14005,7 +14665,9 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	// The internal code of the threat type.
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 	// The ID of the Alibaba Cloud account in SIEM.
-	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Aliuid   *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	AttCk    *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The extended information about event generation. If the value of **eventTransferType** is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Indicates whether the system generates an event for the alert. Valid values:
@@ -14086,6 +14748,16 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyDataResponseData) SetAlertTypeMd
 
 func (s *ListCloudSiemCustomizeRulesResponseBodyDataResponseData) SetAliuid(v int64) *ListCloudSiemCustomizeRulesResponseBodyDataResponseData {
 	s.Aliuid = &v
+	return s
+}
+
+func (s *ListCloudSiemCustomizeRulesResponseBodyDataResponseData) SetAttCk(v string) *ListCloudSiemCustomizeRulesResponseBodyDataResponseData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *ListCloudSiemCustomizeRulesResponseBodyDataResponseData) SetDataType(v int32) *ListCloudSiemCustomizeRulesResponseBodyDataResponseData {
+	s.DataType = &v
 	return s
 }
 
@@ -14216,12 +14888,17 @@ func (s *ListCloudSiemCustomizeRulesResponse) SetBody(v *ListCloudSiemCustomizeR
 type ListCloudSiemPredefinedRulesRequest struct {
 	// The alert type.
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AttCk     *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The page number. Pages start from page 1.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The end of the time range to query. Unit: milliseconds.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The ID of the rule.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LogSource  *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// The number of entries per page. Maximum value: 100.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
@@ -14229,6 +14906,8 @@ type ListCloudSiemPredefinedRulesRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
@@ -14267,6 +14946,11 @@ func (s *ListCloudSiemPredefinedRulesRequest) SetAlertType(v string) *ListCloudS
 	return s
 }
 
+func (s *ListCloudSiemPredefinedRulesRequest) SetAttCk(v string) *ListCloudSiemPredefinedRulesRequest {
+	s.AttCk = &v
+	return s
+}
+
 func (s *ListCloudSiemPredefinedRulesRequest) SetCurrentPage(v int32) *ListCloudSiemPredefinedRulesRequest {
 	s.CurrentPage = &v
 	return s
@@ -14277,8 +14961,28 @@ func (s *ListCloudSiemPredefinedRulesRequest) SetEndTime(v int64) *ListCloudSiem
 	return s
 }
 
+func (s *ListCloudSiemPredefinedRulesRequest) SetEventTransferType(v string) *ListCloudSiemPredefinedRulesRequest {
+	s.EventTransferType = &v
+	return s
+}
+
 func (s *ListCloudSiemPredefinedRulesRequest) SetId(v string) *ListCloudSiemPredefinedRulesRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesRequest) SetLogSource(v string) *ListCloudSiemPredefinedRulesRequest {
+	s.LogSource = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesRequest) SetOrder(v string) *ListCloudSiemPredefinedRulesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesRequest) SetOrderField(v string) *ListCloudSiemPredefinedRulesRequest {
+	s.OrderField = &v
 	return s
 }
 
@@ -14289,6 +14993,16 @@ func (s *ListCloudSiemPredefinedRulesRequest) SetPageSize(v int32) *ListCloudSie
 
 func (s *ListCloudSiemPredefinedRulesRequest) SetRegionId(v string) *ListCloudSiemPredefinedRulesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesRequest) SetRoleFor(v int64) *ListCloudSiemPredefinedRulesRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesRequest) SetRoleType(v int32) *ListCloudSiemPredefinedRulesRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -14425,7 +15139,9 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo) SetTotalCount(v i
 
 type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	// The type of the risk.
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType         *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AttCk             *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
 	// The time when the rule was created.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the rule was modified.
@@ -14435,7 +15151,9 @@ type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	// The internal code of the rule description.
 	RuleDescMds *string `json:"RuleDescMds,omitempty" xml:"RuleDescMds,omitempty"`
 	// The name of the rule.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleNameCn *string `json:"RuleNameCn,omitempty" xml:"RuleNameCn,omitempty"`
+	RuleNameEn *string `json:"RuleNameEn,omitempty" xml:"RuleNameEn,omitempty"`
 	// The internal code of the rule name.
 	RuleNameMds *string `json:"RuleNameMds,omitempty" xml:"RuleNameMds,omitempty"`
 	// The log source of the rule.
@@ -14466,6 +15184,16 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetAlertType(
 	return s
 }
 
+func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetAttCk(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetEventTransferType(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
+	s.EventTransferType = &v
+	return s
+}
+
 func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetGmtCreate(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
 	s.GmtCreate = &v
 	return s
@@ -14488,6 +15216,16 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetRuleDescMd
 
 func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetRuleName(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
 	s.RuleName = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetRuleNameCn(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
+	s.RuleNameCn = &v
+	return s
+}
+
+func (s *ListCloudSiemPredefinedRulesResponseBodyDataResponseData) SetRuleNameEn(v string) *ListCloudSiemPredefinedRulesResponseBodyDataResponseData {
+	s.RuleNameEn = &v
 	return s
 }
 
@@ -14552,6 +15290,8 @@ type ListCustomizeRuleTestResultRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultRequest) String() string {
@@ -14579,6 +15319,16 @@ func (s *ListCustomizeRuleTestResultRequest) SetPageSize(v int32) *ListCustomize
 
 func (s *ListCustomizeRuleTestResultRequest) SetRegionId(v string) *ListCustomizeRuleTestResultRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetRoleFor(v int64) *ListCustomizeRuleTestResultRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetRoleType(v int32) *ListCustomizeRuleTestResultRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -15200,6 +15950,8 @@ type ListDeliveryRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListDeliveryRequest) String() string {
@@ -15212,6 +15964,16 @@ func (s ListDeliveryRequest) GoString() string {
 
 func (s *ListDeliveryRequest) SetRegionId(v string) *ListDeliveryRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDeliveryRequest) SetRoleFor(v int64) *ListDeliveryRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListDeliveryRequest) SetRoleType(v int32) *ListDeliveryRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -15534,6 +16296,8 @@ type ListDisposeStrategyRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the SOAR handling policy.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 	// The beginning of the time range to query. Unit: milliseconds.
@@ -15605,6 +16369,16 @@ func (s *ListDisposeStrategyRequest) SetPlaybookUuid(v string) *ListDisposeStrat
 
 func (s *ListDisposeStrategyRequest) SetRegionId(v string) *ListDisposeStrategyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetRoleFor(v int64) *ListDisposeStrategyRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetRoleType(v int32) *ListDisposeStrategyRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -15943,6 +16717,8 @@ type ListImportedLogsByProdRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s ListImportedLogsByProdRequest) String() string {
@@ -15965,6 +16741,16 @@ func (s *ListImportedLogsByProdRequest) SetProdCode(v string) *ListImportedLogsB
 
 func (s *ListImportedLogsByProdRequest) SetRegionId(v string) *ListImportedLogsByProdRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdRequest) SetRoleFor(v int64) *ListImportedLogsByProdRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdRequest) SetRoleType(v int32) *ListImportedLogsByProdRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -16016,6 +16802,7 @@ type ListImportedLogsByProdResponseBodyData struct {
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The display log code.
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	LogType    *int32  `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The time when the log was last added.
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The code of the cloud service to which the log belongs.
@@ -16061,6 +16848,11 @@ func (s *ListImportedLogsByProdResponseBodyData) SetLogCode(v string) *ListImpor
 
 func (s *ListImportedLogsByProdResponseBodyData) SetLogMdsCode(v string) *ListImportedLogsByProdResponseBodyData {
 	s.LogMdsCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetLogType(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.LogType = &v
 	return s
 }
 
@@ -17483,6 +18275,8 @@ type OpenDeliveryRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s OpenDeliveryRequest) String() string {
@@ -17505,6 +18299,16 @@ func (s *OpenDeliveryRequest) SetProductCode(v string) *OpenDeliveryRequest {
 
 func (s *OpenDeliveryRequest) SetRegionId(v string) *OpenDeliveryRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *OpenDeliveryRequest) SetRoleFor(v int64) *OpenDeliveryRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *OpenDeliveryRequest) SetRoleType(v int32) *OpenDeliveryRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -17588,6 +18392,8 @@ type PostAutomateResponseConfigRequest struct {
 	// *   **cn-hangzhou**: Your assets reside in regions in China.
 	// *   **ap-southeast-1**: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The rule name.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The ID of the user who created the rule.
@@ -17629,6 +18435,16 @@ func (s *PostAutomateResponseConfigRequest) SetId(v int64) *PostAutomateResponse
 
 func (s *PostAutomateResponseConfigRequest) SetRegionId(v string) *PostAutomateResponseConfigRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostAutomateResponseConfigRequest) SetRoleFor(v int64) *PostAutomateResponseConfigRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostAutomateResponseConfigRequest) SetRoleType(v int32) *PostAutomateResponseConfigRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -17725,6 +18541,7 @@ type PostCustomizeRuleRequest struct {
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The internal code of the risk type.
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
+	AttCk        *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
 	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Specifies whether to convert an alert to an event. Valid values:
@@ -17755,6 +18572,8 @@ type PostCustomizeRuleRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The query condition of the rule. The value is in the JSON format.
 	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
 	// The description of the rule.
@@ -17788,6 +18607,11 @@ func (s *PostCustomizeRuleRequest) SetAlertType(v string) *PostCustomizeRuleRequ
 
 func (s *PostCustomizeRuleRequest) SetAlertTypeMds(v string) *PostCustomizeRuleRequest {
 	s.AlertTypeMds = &v
+	return s
+}
+
+func (s *PostCustomizeRuleRequest) SetAttCk(v string) *PostCustomizeRuleRequest {
+	s.AttCk = &v
 	return s
 }
 
@@ -17838,6 +18662,16 @@ func (s *PostCustomizeRuleRequest) SetQueryCycle(v string) *PostCustomizeRuleReq
 
 func (s *PostCustomizeRuleRequest) SetRegionId(v string) *PostCustomizeRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostCustomizeRuleRequest) SetRoleFor(v int64) *PostCustomizeRuleRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostCustomizeRuleRequest) SetRoleType(v int32) *PostCustomizeRuleRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -17926,7 +18760,9 @@ type PostCustomizeRuleResponseBodyData struct {
 	// The internal code of the risk type.
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
-	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Aliuid   *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	AttCk    *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	DataType *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
 	// Indicates whether the system generates an event for the alert. Valid values:
@@ -18007,6 +18843,16 @@ func (s *PostCustomizeRuleResponseBodyData) SetAlertTypeMds(v string) *PostCusto
 
 func (s *PostCustomizeRuleResponseBodyData) SetAliuid(v int64) *PostCustomizeRuleResponseBodyData {
 	s.Aliuid = &v
+	return s
+}
+
+func (s *PostCustomizeRuleResponseBodyData) SetAttCk(v string) *PostCustomizeRuleResponseBodyData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *PostCustomizeRuleResponseBodyData) SetDataType(v int32) *PostCustomizeRuleResponseBodyData {
+	s.DataType = &v
 	return s
 }
 
@@ -18142,6 +18988,8 @@ type PostCustomizeRuleTestRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The simulation data for the test. This parameter is available only when TestType is set to simulate.
 	SimulatedData *string `json:"SimulatedData,omitempty" xml:"SimulatedData,omitempty"`
 	// The test type. Valid values:
@@ -18166,6 +19014,16 @@ func (s *PostCustomizeRuleTestRequest) SetId(v int64) *PostCustomizeRuleTestRequ
 
 func (s *PostCustomizeRuleTestRequest) SetRegionId(v string) *PostCustomizeRuleTestRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostCustomizeRuleTestRequest) SetRoleFor(v int64) *PostCustomizeRuleTestRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostCustomizeRuleTestRequest) SetRoleType(v int32) *PostCustomizeRuleTestRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18270,7 +19128,9 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The remarks of the event.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The status of the event. Valid values:
 	//
 	// *   0: unhandled
@@ -18310,6 +19170,16 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetRegionId(v string) *PostEve
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetRemark(v string) *PostEventDisposeAndWhiteruleListRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetRoleFor(v int64) *PostEventDisposeAndWhiteruleListRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetRoleType(v int32) *PostEventDisposeAndWhiteruleListRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18404,6 +19274,8 @@ type PostEventWhiteruleListRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The alert whitelist rule. The value is a JSON object.
 	WhiteruleList *string `json:"WhiteruleList,omitempty" xml:"WhiteruleList,omitempty"`
 }
@@ -18423,6 +19295,16 @@ func (s *PostEventWhiteruleListRequest) SetIncidentUuid(v string) *PostEventWhit
 
 func (s *PostEventWhiteruleListRequest) SetRegionId(v string) *PostEventWhiteruleListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostEventWhiteruleListRequest) SetRoleFor(v int64) *PostEventWhiteruleListRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostEventWhiteruleListRequest) SetRoleType(v int32) *PostEventWhiteruleListRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18517,6 +19399,8 @@ type PostFinishCustomizeRuleTestRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s PostFinishCustomizeRuleTestRequest) String() string {
@@ -18534,6 +19418,16 @@ func (s *PostFinishCustomizeRuleTestRequest) SetId(v int64) *PostFinishCustomize
 
 func (s *PostFinishCustomizeRuleTestRequest) SetRegionId(v string) *PostFinishCustomizeRuleTestRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostFinishCustomizeRuleTestRequest) SetRoleFor(v int64) *PostFinishCustomizeRuleTestRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostFinishCustomizeRuleTestRequest) SetRoleType(v int32) *PostFinishCustomizeRuleTestRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18628,6 +19522,8 @@ type PostRuleStatusChangeRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The type of the rule. Valid values:
 	//
 	// *   predefine
@@ -18655,6 +19551,16 @@ func (s *PostRuleStatusChangeRequest) SetInUse(v bool) *PostRuleStatusChangeRequ
 
 func (s *PostRuleStatusChangeRequest) SetRegionId(v string) *PostRuleStatusChangeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PostRuleStatusChangeRequest) SetRoleFor(v int64) *PostRuleStatusChangeRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *PostRuleStatusChangeRequest) SetRoleType(v int32) *PostRuleStatusChangeRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18747,6 +19653,8 @@ type RestoreCapacityRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
 	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s RestoreCapacityRequest) String() string {
@@ -18759,6 +19667,16 @@ func (s RestoreCapacityRequest) GoString() string {
 
 func (s *RestoreCapacityRequest) SetRegionId(v string) *RestoreCapacityRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RestoreCapacityRequest) SetRoleFor(v int64) *RestoreCapacityRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *RestoreCapacityRequest) SetRoleType(v int32) *RestoreCapacityRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -18923,6 +19841,8 @@ type SetStorageRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The storage duration of logs. Default value: 180. Minimum value: 30. Maximum value: 3000. Unit: days.
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
@@ -18942,6 +19862,16 @@ func (s *SetStorageRequest) SetRegion(v string) *SetStorageRequest {
 
 func (s *SetStorageRequest) SetRegionId(v string) *SetStorageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SetStorageRequest) SetRoleFor(v int64) *SetStorageRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *SetStorageRequest) SetRoleType(v int32) *SetStorageRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -19349,6 +20279,8 @@ type UpdateAutomateResponseConfigStatusRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions inside China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s UpdateAutomateResponseConfigStatusRequest) String() string {
@@ -19371,6 +20303,16 @@ func (s *UpdateAutomateResponseConfigStatusRequest) SetInUse(v bool) *UpdateAuto
 
 func (s *UpdateAutomateResponseConfigStatusRequest) SetRegionId(v string) *UpdateAutomateResponseConfigStatusRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateAutomateResponseConfigStatusRequest) SetRoleFor(v int64) *UpdateAutomateResponseConfigStatusRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *UpdateAutomateResponseConfigStatusRequest) SetRoleType(v int32) *UpdateAutomateResponseConfigStatusRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -19462,6 +20404,8 @@ type UpdateWhiteRuleListRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The unique ID of the whitelist rule.
 	WhiteRuleId *int64 `json:"WhiteRuleId,omitempty" xml:"WhiteRuleId,omitempty"`
 }
@@ -19486,6 +20430,16 @@ func (s *UpdateWhiteRuleListRequest) SetIncidentUuid(v string) *UpdateWhiteRuleL
 
 func (s *UpdateWhiteRuleListRequest) SetRegionId(v string) *UpdateWhiteRuleListRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateWhiteRuleListRequest) SetRoleFor(v int64) *UpdateWhiteRuleListRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *UpdateWhiteRuleListRequest) SetRoleType(v int32) *UpdateWhiteRuleListRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -20041,6 +20995,14 @@ func (client *Client) CloseDeliveryWithOptions(request *CloseDeliveryRequest, ru
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -20087,6 +21049,14 @@ func (client *Client) DeleteAutomateResponseConfigWithOptions(request *DeleteAut
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20191,6 +21161,14 @@ func (client *Client) DeleteCustomizeRuleWithOptions(request *DeleteCustomizeRul
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -20457,6 +21435,14 @@ func (client *Client) DeleteWhiteRuleListWithOptions(request *DeleteWhiteRuleLis
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -20501,6 +21487,14 @@ func (client *Client) DescribeAggregateFunctionWithOptions(request *DescribeAggr
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -20543,6 +21537,14 @@ func (client *Client) DescribeAlertSceneWithOptions(request *DescribeAlertSceneR
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20591,6 +21593,14 @@ func (client *Client) DescribeAlertSceneByEventWithOptions(request *DescribeAler
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20645,6 +21655,14 @@ func (client *Client) DescribeAlertSourceWithOptions(request *DescribeAlertSourc
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
 	}
@@ -20697,6 +21715,14 @@ func (client *Client) DescribeAlertSourceWithEventWithOptions(request *DescribeA
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -20739,6 +21765,18 @@ func (client *Client) DescribeAlertTypeWithOptions(request *DescribeAlertTypeReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		body["RuleType"] = request.RuleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20813,6 +21851,14 @@ func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, 
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		body["Source"] = request.Source
 	}
@@ -20871,6 +21917,14 @@ func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCoun
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -20935,6 +21989,14 @@ func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlert
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SophonTaskId)) {
@@ -21009,6 +22071,14 @@ func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlerts
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		body["Source"] = request.Source
 	}
@@ -21071,6 +22141,14 @@ func (client *Client) DescribeAttackTimeLineWithOptions(request *DescribeAttackT
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -21165,6 +22243,14 @@ func (client *Client) DescribeAutomateResponseConfigCounterWithOptions(request *
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21211,6 +22297,14 @@ func (client *Client) DescribeAutomateResponseConfigFeatureWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21263,6 +22357,14 @@ func (client *Client) DescribeAutomateResponseConfigPlayBooksWithOptions(request
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21325,6 +22427,14 @@ func (client *Client) DescribeCloudSiemAssetsWithOptions(request *DescribeCloudS
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21373,6 +22483,14 @@ func (client *Client) DescribeCloudSiemAssetsCounterWithOptions(request *Describ
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21419,6 +22537,14 @@ func (client *Client) DescribeCloudSiemEventDetailWithOptions(request *DescribeC
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21495,6 +22621,14 @@ func (client *Client) DescribeCloudSiemEventsWithOptions(request *DescribeCloudS
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -21653,6 +22787,14 @@ func (client *Client) DescribeCustomizeRuleCountWithOptions(request *DescribeCus
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21701,6 +22843,14 @@ func (client *Client) DescribeCustomizeRuleTestWithOptions(request *DescribeCust
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21747,6 +22897,14 @@ func (client *Client) DescribeCustomizeRuleTestHistogramWithOptions(request *Des
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21917,6 +23075,14 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -21963,6 +23129,14 @@ func (client *Client) DescribeDisposeStrategyPlaybookWithOptions(request *Descri
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -22025,6 +23199,14 @@ func (client *Client) DescribeEntityInfoWithOptions(request *DescribeEntityInfoR
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SophonTaskId)) {
 		body["SophonTaskId"] = request.SophonTaskId
 	}
@@ -22069,8 +23251,24 @@ func (client *Client) DescribeEventCountByThreatLevelWithOptions(request *Descri
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22127,6 +23325,14 @@ func (client *Client) DescribeEventDisposeWithOptions(request *DescribeEventDisp
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22273,6 +23479,14 @@ func (client *Client) DescribeLogFieldsWithOptions(request *DescribeLogFieldsReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -22319,6 +23533,14 @@ func (client *Client) DescribeLogSourceWithOptions(request *DescribeLogSourceReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22409,6 +23631,14 @@ func (client *Client) DescribeLogTypeWithOptions(request *DescribeLogTypeRequest
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -22451,6 +23681,14 @@ func (client *Client) DescribeOperatorsWithOptions(request *DescribeOperatorsReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SceneType)) {
@@ -22545,6 +23783,14 @@ func (client *Client) DescribeScopeUsersWithOptions(request *DescribeScopeUsersR
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -22631,6 +23877,14 @@ func (client *Client) DescribeStorageWithOptions(request *DescribeStorageRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22729,6 +23983,14 @@ func (client *Client) DescribeWafScopeWithOptions(request *DescribeWafScopeReque
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -22791,6 +24053,14 @@ func (client *Client) DescribeWhiteRuleListWithOptions(request *DescribeWhiteRul
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22953,8 +24223,20 @@ func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessF
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSubmit)) {
+		body["AutoSubmit"] = request.AutoSubmit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23043,6 +24325,14 @@ func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtim
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23265,6 +24555,14 @@ func (client *Client) GetStorageWithOptions(request *GetStorageRequest, runtime 
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -23369,6 +24667,14 @@ func (client *Client) ListAccountsByLogWithOptions(request *ListAccountsByLogReq
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -23411,6 +24717,14 @@ func (client *Client) ListAllProdsWithOptions(request *ListAllProdsRequest, runt
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23479,6 +24793,14 @@ func (client *Client) ListAutomateResponseConfigsWithOptions(request *ListAutoma
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
@@ -23649,12 +24971,28 @@ func (client *Client) ListCloudSiemCustomizeRulesWithOptions(request *ListCloudS
 		body["Id"] = request.Id
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		body["OrderField"] = request.OrderField
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
@@ -23721,6 +25059,10 @@ func (client *Client) ListCloudSiemPredefinedRulesWithOptions(request *ListCloud
 		body["AlertType"] = request.AlertType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AttCk)) {
+		body["AttCk"] = request.AttCk
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		body["CurrentPage"] = request.CurrentPage
 	}
@@ -23729,8 +25071,24 @@ func (client *Client) ListCloudSiemPredefinedRulesWithOptions(request *ListCloud
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EventTransferType)) {
+		body["EventTransferType"] = request.EventTransferType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSource)) {
+		body["LogSource"] = request.LogSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		body["OrderField"] = request.OrderField
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
@@ -23739,6 +25097,14 @@ func (client *Client) ListCloudSiemPredefinedRulesWithOptions(request *ListCloud
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
@@ -23815,6 +25181,14 @@ func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustom
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23965,6 +25339,14 @@ func (client *Client) ListDeliveryWithOptions(request *ListDeliveryRequest, runt
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -24053,6 +25435,14 @@ func (client *Client) ListDisposeStrategyWithOptions(request *ListDisposeStrateg
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SophonTaskId)) {
 		body["SophonTaskId"] = request.SophonTaskId
 	}
@@ -24111,6 +25501,14 @@ func (client *Client) ListImportedLogsByProdWithOptions(request *ListImportedLog
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24669,6 +26067,14 @@ func (client *Client) OpenDeliveryWithOptions(request *OpenDeliveryRequest, runt
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -24733,6 +26139,14 @@ func (client *Client) PostAutomateResponseConfigWithOptions(request *PostAutomat
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		body["RuleName"] = request.RuleName
 	}
@@ -24789,6 +26203,10 @@ func (client *Client) PostCustomizeRuleWithOptions(request *PostCustomizeRuleReq
 		body["AlertTypeMds"] = request.AlertTypeMds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AttCk)) {
+		body["AttCk"] = request.AttCk
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EventTransferExt)) {
 		body["EventTransferExt"] = request.EventTransferExt
 	}
@@ -24827,6 +26245,14 @@ func (client *Client) PostCustomizeRuleWithOptions(request *PostCustomizeRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleCondition)) {
@@ -24901,6 +26327,14 @@ func (client *Client) PostCustomizeRuleTestWithOptions(request *PostCustomizeRul
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SimulatedData)) {
 		body["SimulatedData"] = request.SimulatedData
 	}
@@ -24969,6 +26403,14 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithOptions(request *PostE
 		body["Remark"] = request.Remark
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
 	}
@@ -25019,6 +26461,14 @@ func (client *Client) PostEventWhiteruleListWithOptions(request *PostEventWhiter
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WhiteruleList)) {
@@ -25073,6 +26523,14 @@ func (client *Client) PostFinishCustomizeRuleTestWithOptions(request *PostFinish
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -25125,6 +26583,14 @@ func (client *Client) PostRuleStatusChangeWithOptions(request *PostRuleStatusCha
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		body["RuleType"] = request.RuleType
 	}
@@ -25171,6 +26637,14 @@ func (client *Client) RestoreCapacityWithOptions(request *RestoreCapacityRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -25271,6 +26745,14 @@ func (client *Client) SetStorageWithOptions(request *SetStorageRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ttl)) {
@@ -25485,6 +26967,14 @@ func (client *Client) UpdateAutomateResponseConfigStatusWithOptions(request *Upd
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -25535,6 +27025,14 @@ func (client *Client) UpdateWhiteRuleListWithOptions(request *UpdateWhiteRuleLis
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WhiteRuleId)) {
