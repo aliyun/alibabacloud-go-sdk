@@ -1935,6 +1935,7 @@ type QueryBookingDomainInfoResponseBody struct {
 	MaxBid          *float32 `json:"MaxBid,omitempty" xml:"MaxBid,omitempty"`
 	PartnerType     *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
 	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnatchNo        *string  `json:"SnatchNo,omitempty" xml:"SnatchNo,omitempty"`
 	TransferInPrice *float32 `json:"TransferInPrice,omitempty" xml:"TransferInPrice,omitempty"`
 }
 
@@ -1973,6 +1974,11 @@ func (s *QueryBookingDomainInfoResponseBody) SetPartnerType(v string) *QueryBook
 
 func (s *QueryBookingDomainInfoResponseBody) SetRequestId(v string) *QueryBookingDomainInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryBookingDomainInfoResponseBody) SetSnatchNo(v string) *QueryBookingDomainInfoResponseBody {
+	s.SnatchNo = &v
 	return s
 }
 
