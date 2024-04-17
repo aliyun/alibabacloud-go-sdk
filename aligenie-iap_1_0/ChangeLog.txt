@@ -1,3 +1,6 @@
+2024-04-17 Version: v0.1.1
+- Generated golang iap_1.0 for AliGenie.
+
 2024-04-16 Version: v0.1.0
 - Support API CallBackThirdRightSendPlan.
 - Support API CheckThirdRightSendPlan.
