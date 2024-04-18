@@ -565,6 +565,129 @@ func (s *CancelRobotTaskResponse) SetBody(v *CancelRobotTaskResponseBody) *Cance
 	return s
 }
 
+type ChangeMediaTypeRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
+	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ChangeMediaTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeMediaTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeMediaTypeRequest) SetCallId(v string) *ChangeMediaTypeRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetCalledNum(v string) *ChangeMediaTypeRequest {
+	s.CalledNum = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetMediaType(v string) *ChangeMediaTypeRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetOutId(v string) *ChangeMediaTypeRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetOwnerId(v int64) *ChangeMediaTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetResourceOwnerAccount(v string) *ChangeMediaTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChangeMediaTypeRequest) SetResourceOwnerId(v int64) *ChangeMediaTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ChangeMediaTypeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeMediaTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeMediaTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeMediaTypeResponseBody) SetAccessDeniedDetail(v string) *ChangeMediaTypeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ChangeMediaTypeResponseBody) SetCode(v string) *ChangeMediaTypeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeMediaTypeResponseBody) SetMessage(v string) *ChangeMediaTypeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeMediaTypeResponseBody) SetModel(v bool) *ChangeMediaTypeResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *ChangeMediaTypeResponseBody) SetSuccess(v bool) *ChangeMediaTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeMediaTypeResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeMediaTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeMediaTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeMediaTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeMediaTypeResponse) SetHeaders(v map[string]*string) *ChangeMediaTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeMediaTypeResponse) SetStatusCode(v int32) *ChangeMediaTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeMediaTypeResponse) SetBody(v *ChangeMediaTypeResponseBody) *ChangeMediaTypeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCallTaskRequest struct {
 	// The type of the task template. Valid values:
 	//
@@ -940,6 +1063,129 @@ func (s *CreateRobotTaskResponse) SetBody(v *CreateRobotTaskResponseBody) *Creat
 	return s
 }
 
+type DegradeVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DegradeVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DegradeVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DegradeVideoFileRequest) SetCallId(v string) *DegradeVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetCalledNumber(v string) *DegradeVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetMediaType(v string) *DegradeVideoFileRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetOutId(v string) *DegradeVideoFileRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetOwnerId(v int64) *DegradeVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetResourceOwnerAccount(v string) *DegradeVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DegradeVideoFileRequest) SetResourceOwnerId(v int64) *DegradeVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DegradeVideoFileResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DegradeVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DegradeVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DegradeVideoFileResponseBody) SetAccessDeniedDetail(v string) *DegradeVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DegradeVideoFileResponseBody) SetCode(v string) *DegradeVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DegradeVideoFileResponseBody) SetData(v map[string]interface{}) *DegradeVideoFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DegradeVideoFileResponseBody) SetMessage(v string) *DegradeVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DegradeVideoFileResponseBody) SetSuccess(v bool) *DegradeVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DegradeVideoFileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DegradeVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DegradeVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DegradeVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DegradeVideoFileResponse) SetHeaders(v map[string]*string) *DegradeVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DegradeVideoFileResponse) SetStatusCode(v int32) *DegradeVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DegradeVideoFileResponse) SetBody(v *DegradeVideoFileResponseBody) *DegradeVideoFileResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1166,6 +1412,117 @@ func (s *ExecuteCallTaskResponse) SetStatusCode(v int32) *ExecuteCallTaskRespons
 }
 
 func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *ExecuteCallTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetCallProgressRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetCallProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallProgressRequest) SetCallId(v string) *GetCallProgressRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *GetCallProgressRequest) SetCalledNum(v string) *GetCallProgressRequest {
+	s.CalledNum = &v
+	return s
+}
+
+func (s *GetCallProgressRequest) SetOwnerId(v int64) *GetCallProgressRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetCallProgressRequest) SetResourceOwnerAccount(v string) *GetCallProgressRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetCallProgressRequest) SetResourceOwnerId(v int64) *GetCallProgressRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetCallProgressResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCallProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallProgressResponseBody) SetAccessDeniedDetail(v string) *GetCallProgressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetCallProgressResponseBody) SetCode(v string) *GetCallProgressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCallProgressResponseBody) SetMessage(v string) *GetCallProgressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCallProgressResponseBody) SetModel(v map[string]interface{}) *GetCallProgressResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetCallProgressResponseBody) SetSuccess(v bool) *GetCallProgressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCallProgressResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCallProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCallProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallProgressResponse) SetHeaders(v map[string]*string) *GetCallProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCallProgressResponse) SetStatusCode(v int32) *GetCallProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCallProgressResponse) SetBody(v *GetCallProgressResponseBody) *GetCallProgressResponse {
 	s.Body = v
 	return s
 }
@@ -1424,6 +1781,111 @@ func (s *GetTokenResponse) SetStatusCode(v int32) *GetTokenResponse {
 }
 
 func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetVideoFieldUrlRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VideoFile            *string `json:"VideoFile,omitempty" xml:"VideoFile,omitempty"`
+}
+
+func (s GetVideoFieldUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoFieldUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoFieldUrlRequest) SetOwnerId(v int64) *GetVideoFieldUrlRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlRequest) SetResourceOwnerAccount(v string) *GetVideoFieldUrlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlRequest) SetResourceOwnerId(v int64) *GetVideoFieldUrlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlRequest) SetVideoFile(v string) *GetVideoFieldUrlRequest {
+	s.VideoFile = &v
+	return s
+}
+
+type GetVideoFieldUrlResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetVideoFieldUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoFieldUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoFieldUrlResponseBody) SetAccessDeniedDetail(v string) *GetVideoFieldUrlResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponseBody) SetCode(v string) *GetVideoFieldUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponseBody) SetMessage(v string) *GetVideoFieldUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponseBody) SetModel(v map[string]interface{}) *GetVideoFieldUrlResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponseBody) SetSuccess(v bool) *GetVideoFieldUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVideoFieldUrlResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoFieldUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVideoFieldUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoFieldUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoFieldUrlResponse) SetHeaders(v map[string]*string) *GetVideoFieldUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponse) SetStatusCode(v int32) *GetVideoFieldUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoFieldUrlResponse) SetBody(v *GetVideoFieldUrlResponseBody) *GetVideoFieldUrlResponse {
 	s.Body = v
 	return s
 }
@@ -2628,6 +3090,240 @@ func (s *ListHotlineTransferRegisterFileResponse) SetStatusCode(v int32) *ListHo
 }
 
 func (s *ListHotlineTransferRegisterFileResponse) SetBody(v *ListHotlineTransferRegisterFileResponseBody) *ListHotlineTransferRegisterFileResponse {
+	s.Body = v
+	return s
+}
+
+type PauseVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s PauseVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PauseVideoFileRequest) SetCallId(v string) *PauseVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *PauseVideoFileRequest) SetCalledNumber(v string) *PauseVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *PauseVideoFileRequest) SetOwnerId(v int64) *PauseVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PauseVideoFileRequest) SetResourceOwnerAccount(v string) *PauseVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *PauseVideoFileRequest) SetResourceOwnerId(v int64) *PauseVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type PauseVideoFileResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PauseVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PauseVideoFileResponseBody) SetAccessDeniedDetail(v string) *PauseVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *PauseVideoFileResponseBody) SetCode(v string) *PauseVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PauseVideoFileResponseBody) SetData(v map[string]interface{}) *PauseVideoFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PauseVideoFileResponseBody) SetMessage(v string) *PauseVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PauseVideoFileResponseBody) SetSuccess(v bool) *PauseVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PauseVideoFileResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PauseVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PauseVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PauseVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PauseVideoFileResponse) SetHeaders(v map[string]*string) *PauseVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PauseVideoFileResponse) SetStatusCode(v int32) *PauseVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PauseVideoFileResponse) SetBody(v *PauseVideoFileResponseBody) *PauseVideoFileResponse {
+	s.Body = v
+	return s
+}
+
+type PlayVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VideoId              *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s PlayVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PlayVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PlayVideoFileRequest) SetCallId(v string) *PlayVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetCalledNumber(v string) *PlayVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetOutId(v string) *PlayVideoFileRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetOwnerId(v int64) *PlayVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetResourceOwnerAccount(v string) *PlayVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetResourceOwnerId(v int64) *PlayVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *PlayVideoFileRequest) SetVideoId(v string) *PlayVideoFileRequest {
+	s.VideoId = &v
+	return s
+}
+
+type PlayVideoFileResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model              *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PlayVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PlayVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PlayVideoFileResponseBody) SetAccessDeniedDetail(v string) *PlayVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *PlayVideoFileResponseBody) SetCode(v string) *PlayVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PlayVideoFileResponseBody) SetMessage(v string) *PlayVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PlayVideoFileResponseBody) SetModel(v bool) *PlayVideoFileResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *PlayVideoFileResponseBody) SetSuccess(v bool) *PlayVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PlayVideoFileResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PlayVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PlayVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PlayVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PlayVideoFileResponse) SetHeaders(v map[string]*string) *PlayVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PlayVideoFileResponse) SetStatusCode(v int32) *PlayVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PlayVideoFileResponse) SetBody(v *PlayVideoFileResponseBody) *PlayVideoFileResponse {
 	s.Body = v
 	return s
 }
@@ -4237,6 +4933,117 @@ func (s *QueryRobotv2AllListResponse) SetBody(v *QueryRobotv2AllListResponseBody
 	return s
 }
 
+type QueryVideoPlayProgressRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QueryVideoPlayProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoPlayProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoPlayProgressRequest) SetCallId(v string) *QueryVideoPlayProgressRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressRequest) SetCalledNumber(v string) *QueryVideoPlayProgressRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressRequest) SetOwnerId(v int64) *QueryVideoPlayProgressRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressRequest) SetResourceOwnerAccount(v string) *QueryVideoPlayProgressRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressRequest) SetResourceOwnerId(v int64) *QueryVideoPlayProgressRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QueryVideoPlayProgressResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryVideoPlayProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoPlayProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoPlayProgressResponseBody) SetAccessDeniedDetail(v string) *QueryVideoPlayProgressResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponseBody) SetCode(v string) *QueryVideoPlayProgressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponseBody) SetData(v map[string]interface{}) *QueryVideoPlayProgressResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponseBody) SetMessage(v string) *QueryVideoPlayProgressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponseBody) SetSuccess(v bool) *QueryVideoPlayProgressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryVideoPlayProgressResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryVideoPlayProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryVideoPlayProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryVideoPlayProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryVideoPlayProgressResponse) SetHeaders(v map[string]*string) *QueryVideoPlayProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponse) SetStatusCode(v int32) *QueryVideoPlayProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryVideoPlayProgressResponse) SetBody(v *QueryVideoPlayProgressResponseBody) *QueryVideoPlayProgressResponse {
+	s.Body = v
+	return s
+}
+
 type QueryVirtualNumberRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
@@ -4808,6 +5615,237 @@ func (s *RecoverCallInConfigResponse) SetBody(v *RecoverCallInConfigResponseBody
 	return s
 }
 
+type ResumeVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ResumeVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeVideoFileRequest) SetCallId(v string) *ResumeVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *ResumeVideoFileRequest) SetCalledNumber(v string) *ResumeVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *ResumeVideoFileRequest) SetOwnerId(v int64) *ResumeVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ResumeVideoFileRequest) SetResourceOwnerAccount(v string) *ResumeVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ResumeVideoFileRequest) SetResourceOwnerId(v int64) *ResumeVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ResumeVideoFileResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResumeVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeVideoFileResponseBody) SetAccessDeniedDetail(v string) *ResumeVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ResumeVideoFileResponseBody) SetCode(v string) *ResumeVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResumeVideoFileResponseBody) SetData(v map[string]interface{}) *ResumeVideoFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ResumeVideoFileResponseBody) SetMessage(v string) *ResumeVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResumeVideoFileResponseBody) SetSuccess(v bool) *ResumeVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResumeVideoFileResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResumeVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeVideoFileResponse) SetHeaders(v map[string]*string) *ResumeVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeVideoFileResponse) SetStatusCode(v int32) *ResumeVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeVideoFileResponse) SetBody(v *ResumeVideoFileResponseBody) *ResumeVideoFileResponse {
+	s.Body = v
+	return s
+}
+
+type SeekVideoFileRequest struct {
+	// 呼叫唯一ID
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// 被叫号码
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 快进或快退值，负数为快退，单位秒
+	SeekTimes *int64 `json:"SeekTimes,omitempty" xml:"SeekTimes,omitempty"`
+}
+
+func (s SeekVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeekVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SeekVideoFileRequest) SetCallId(v string) *SeekVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *SeekVideoFileRequest) SetCalledNumber(v string) *SeekVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SeekVideoFileRequest) SetOwnerId(v int64) *SeekVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SeekVideoFileRequest) SetResourceOwnerAccount(v string) *SeekVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SeekVideoFileRequest) SetResourceOwnerId(v int64) *SeekVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SeekVideoFileRequest) SetSeekTimes(v int64) *SeekVideoFileRequest {
+	s.SeekTimes = &v
+	return s
+}
+
+type SeekVideoFileResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SeekVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeekVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SeekVideoFileResponseBody) SetAccessDeniedDetail(v string) *SeekVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *SeekVideoFileResponseBody) SetCode(v string) *SeekVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SeekVideoFileResponseBody) SetData(v map[string]interface{}) *SeekVideoFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SeekVideoFileResponseBody) SetMessage(v string) *SeekVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SeekVideoFileResponseBody) SetSuccess(v bool) *SeekVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SeekVideoFileResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SeekVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SeekVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeekVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SeekVideoFileResponse) SetHeaders(v map[string]*string) *SeekVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SeekVideoFileResponse) SetStatusCode(v int32) *SeekVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SeekVideoFileResponse) SetBody(v *SeekVideoFileResponseBody) *SeekVideoFileResponse {
+	s.Body = v
+	return s
+}
+
 type SendVerificationRequest struct {
 	// The business type. Set the value to **CONTACT**.
 	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
@@ -5267,6 +6305,147 @@ func (s *SingleCallByTtsResponse) SetBody(v *SingleCallByTtsResponseBody) *Singl
 	return s
 }
 
+type SingleCallByVideoRequest struct {
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	VideoCode            *string `json:"VideoCode,omitempty" xml:"VideoCode,omitempty"`
+	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SingleCallByVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleCallByVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SingleCallByVideoRequest) SetCalledNumber(v string) *SingleCallByVideoRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetCalledShowNumber(v string) *SingleCallByVideoRequest {
+	s.CalledShowNumber = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetOutId(v string) *SingleCallByVideoRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetOwnerId(v int64) *SingleCallByVideoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetPlayTimes(v int32) *SingleCallByVideoRequest {
+	s.PlayTimes = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetResourceOwnerAccount(v string) *SingleCallByVideoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetResourceOwnerId(v int64) *SingleCallByVideoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetSpeed(v int32) *SingleCallByVideoRequest {
+	s.Speed = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetVideoCode(v string) *SingleCallByVideoRequest {
+	s.VideoCode = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetVoiceCode(v string) *SingleCallByVideoRequest {
+	s.VoiceCode = &v
+	return s
+}
+
+func (s *SingleCallByVideoRequest) SetVolume(v int32) *SingleCallByVideoRequest {
+	s.Volume = &v
+	return s
+}
+
+type SingleCallByVideoResponseBody struct {
+	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SingleCallByVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleCallByVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SingleCallByVideoResponseBody) SetCallId(v string) *SingleCallByVideoResponseBody {
+	s.CallId = &v
+	return s
+}
+
+func (s *SingleCallByVideoResponseBody) SetCode(v string) *SingleCallByVideoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SingleCallByVideoResponseBody) SetMessage(v string) *SingleCallByVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SingleCallByVideoResponseBody) SetRequestId(v string) *SingleCallByVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SingleCallByVideoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SingleCallByVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SingleCallByVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleCallByVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SingleCallByVideoResponse) SetHeaders(v map[string]*string) *SingleCallByVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SingleCallByVideoResponse) SetStatusCode(v int32) *SingleCallByVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SingleCallByVideoResponse) SetBody(v *SingleCallByVideoResponseBody) *SingleCallByVideoResponse {
+	s.Body = v
+	return s
+}
+
 type SingleCallByVoiceRequest struct {
 	// The number for receiving voice notifications.
 	//
@@ -5440,6 +6619,129 @@ func (s *SingleCallByVoiceResponse) SetBody(v *SingleCallByVoiceResponseBody) *S
 	return s
 }
 
+type SkipVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SkipTimes            *int64  `json:"SkipTimes,omitempty" xml:"SkipTimes,omitempty"`
+}
+
+func (s SkipVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SkipVideoFileRequest) SetCallId(v string) *SkipVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetCalledNumber(v string) *SkipVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetOutId(v string) *SkipVideoFileRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetOwnerId(v int64) *SkipVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetResourceOwnerAccount(v string) *SkipVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetResourceOwnerId(v int64) *SkipVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SkipVideoFileRequest) SetSkipTimes(v int64) *SkipVideoFileRequest {
+	s.SkipTimes = &v
+	return s
+}
+
+type SkipVideoFileResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SkipVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SkipVideoFileResponseBody) SetAccessDeniedDetail(v string) *SkipVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *SkipVideoFileResponseBody) SetCode(v string) *SkipVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SkipVideoFileResponseBody) SetData(v bool) *SkipVideoFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SkipVideoFileResponseBody) SetMessage(v string) *SkipVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SkipVideoFileResponseBody) SetSuccess(v bool) *SkipVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SkipVideoFileResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SkipVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SkipVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SkipVideoFileResponse) SetHeaders(v map[string]*string) *SkipVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SkipVideoFileResponse) SetStatusCode(v int32) *SkipVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SkipVideoFileResponse) SetBody(v *SkipVideoFileResponseBody) *SkipVideoFileResponse {
+	s.Body = v
+	return s
+}
+
 type SmartCallRequest struct {
 	// Specifies whether the playback of the recording file can be interrupted. Default value: **true**. The default value indicates that the playback of the recording file can be interrupted.
 	//
@@ -5514,7 +6816,8 @@ type SmartCallRequest struct {
 	// *   If you specify a value out of the valid range, the default value **10000** is used.
 	//
 	// *   The parameter value can be adjusted during the conversation. The last setting prevails.
-	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	MuteTime       *int32   `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	NoiseThreshold *float64 `json:"NoiseThreshold,omitempty" xml:"NoiseThreshold,omitempty"`
 	// The ID that is reserved for the caller of the operation. This ID is returned to the caller in a receipt message.
 	//
 	// The value is of the STRING type and must be 1 to 15 bytes in length.
@@ -5641,6 +6944,11 @@ func (s *SmartCallRequest) SetEnableITN(v bool) *SmartCallRequest {
 
 func (s *SmartCallRequest) SetMuteTime(v int32) *SmartCallRequest {
 	s.MuteTime = &v
+	return s
+}
+
+func (s *SmartCallRequest) SetNoiseThreshold(v float64) *SmartCallRequest {
+	s.NoiseThreshold = &v
 	return s
 }
 
@@ -6462,6 +7770,129 @@ func (s *SubmitHotlineTransferRegisterResponse) SetBody(v *SubmitHotlineTransfer
 	return s
 }
 
+type UpgradeVideoFileRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpgradeVideoFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeVideoFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeVideoFileRequest) SetCallId(v string) *UpgradeVideoFileRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetCalledNumber(v string) *UpgradeVideoFileRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetMediaType(v string) *UpgradeVideoFileRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetOutId(v string) *UpgradeVideoFileRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetOwnerId(v int64) *UpgradeVideoFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetResourceOwnerAccount(v string) *UpgradeVideoFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpgradeVideoFileRequest) SetResourceOwnerId(v int64) *UpgradeVideoFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpgradeVideoFileResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpgradeVideoFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeVideoFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeVideoFileResponseBody) SetAccessDeniedDetail(v string) *UpgradeVideoFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpgradeVideoFileResponseBody) SetCode(v string) *UpgradeVideoFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeVideoFileResponseBody) SetData(v map[string]interface{}) *UpgradeVideoFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpgradeVideoFileResponseBody) SetMessage(v string) *UpgradeVideoFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeVideoFileResponseBody) SetSuccess(v bool) *UpgradeVideoFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpgradeVideoFileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeVideoFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeVideoFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeVideoFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeVideoFileResponse) SetHeaders(v map[string]*string) *UpgradeVideoFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeVideoFileResponse) SetStatusCode(v int32) *UpgradeVideoFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeVideoFileResponse) SetBody(v *UpgradeVideoFileResponseBody) *UpgradeVideoFileResponse {
+	s.Body = v
+	return s
+}
+
 type UploadRobotTaskCalledFileRequest struct {
 	// The called numbers. Separate multiple called numbers with commas (,).
 	//
@@ -6996,6 +8427,74 @@ func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ChangeMediaTypeWithOptions(request *ChangeMediaTypeRequest, runtime *util.RuntimeOptions) (_result *ChangeMediaTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNum)) {
+		query["CalledNum"] = request.CalledNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeMediaType"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeMediaTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result *ChangeMediaTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeMediaTypeResponse{}
+	_body, _err := client.ChangeMediaTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can create up to 1,000 voice notifications for each task.
  * ### QPS limits
@@ -7218,6 +8717,74 @@ func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DegradeVideoFileWithOptions(request *DegradeVideoFileRequest, runtime *util.RuntimeOptions) (_result *DegradeVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DegradeVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DegradeVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DegradeVideoFile(request *DegradeVideoFileRequest) (_result *DegradeVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DegradeVideoFileResponse{}
+	_body, _err := client.DegradeVideoFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
  * ### QPS limits
@@ -7370,6 +8937,66 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest, runtime *util.RuntimeOptions) (_result *GetCallProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNum)) {
+		query["CalledNum"] = request.CalledNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCallProgress"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCallProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCallProgress(request *GetCallProgressRequest) (_result *GetCallProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCallProgressResponse{}
+	_body, _err := client.GetCallProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### QPS limits
  * You can call this operation up to 100 times per second per account.
@@ -7505,6 +9132,62 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTokenResponse{}
 	_body, _err := client.GetTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVideoFieldUrlWithOptions(request *GetVideoFieldUrlRequest, runtime *util.RuntimeOptions) (_result *GetVideoFieldUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoFile)) {
+		query["VideoFile"] = request.VideoFile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoFieldUrl"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoFieldUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVideoFieldUrl(request *GetVideoFieldUrlRequest) (_result *GetVideoFieldUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoFieldUrlResponse{}
+	_body, _err := client.GetVideoFieldUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7966,6 +9649,134 @@ func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransf
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineTransferRegisterFileResponse{}
 	_body, _err := client.ListHotlineTransferRegisterFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PauseVideoFileWithOptions(request *PauseVideoFileRequest, runtime *util.RuntimeOptions) (_result *PauseVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PauseVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PauseVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PauseVideoFile(request *PauseVideoFileRequest) (_result *PauseVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PauseVideoFileResponse{}
+	_body, _err := client.PauseVideoFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, runtime *util.RuntimeOptions) (_result *PlayVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PlayVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PlayVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PlayVideoFile(request *PlayVideoFileRequest) (_result *PlayVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PlayVideoFileResponse{}
+	_body, _err := client.PlayVideoFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8743,6 +10554,66 @@ func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryVideoPlayProgressWithOptions(request *QueryVideoPlayProgressRequest, runtime *util.RuntimeOptions) (_result *QueryVideoPlayProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryVideoPlayProgress"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryVideoPlayProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryVideoPlayProgress(request *QueryVideoPlayProgressRequest) (_result *QueryVideoPlayProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryVideoPlayProgressResponse{}
+	_body, _err := client.QueryVideoPlayProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### QPS limits
  * You can call this operation up to 100 times per second per account.
@@ -9045,6 +10916,130 @@ func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (
 	return _result, _err
 }
 
+func (client *Client) ResumeVideoFileWithOptions(request *ResumeVideoFileRequest, runtime *util.RuntimeOptions) (_result *ResumeVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeVideoFile(request *ResumeVideoFileRequest) (_result *ResumeVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeVideoFileResponse{}
+	_body, _err := client.ResumeVideoFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SeekVideoFileWithOptions(request *SeekVideoFileRequest, runtime *util.RuntimeOptions) (_result *SeekVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeekTimes)) {
+		query["SeekTimes"] = request.SeekTimes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SeekVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SeekVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SeekVideoFile(request *SeekVideoFileRequest) (_result *SeekVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SeekVideoFileResponse{}
+	_body, _err := client.SeekVideoFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### QPS limits
  * You can call this operation up to 100 times per second per account.
@@ -9310,6 +11305,90 @@ func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) SingleCallByVideoWithOptions(request *SingleCallByVideoRequest, runtime *util.RuntimeOptions) (_result *SingleCallByVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledShowNumber)) {
+		query["CalledShowNumber"] = request.CalledShowNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimes)) {
+		query["PlayTimes"] = request.PlayTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Speed)) {
+		query["Speed"] = request.Speed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoCode)) {
+		query["VideoCode"] = request.VideoCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceCode)) {
+		query["VoiceCode"] = request.VoiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		query["Volume"] = request.Volume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SingleCallByVideo"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SingleCallByVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SingleCallByVideo(request *SingleCallByVideoRequest) (_result *SingleCallByVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SingleCallByVideoResponse{}
+	_body, _err := client.SingleCallByVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
  * You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
@@ -9409,6 +11488,74 @@ func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) SkipVideoFileWithOptions(request *SkipVideoFileRequest, runtime *util.RuntimeOptions) (_result *SkipVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipTimes)) {
+		query["SkipTimes"] = request.SkipTimes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SkipVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SkipVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SkipVideoFile(request *SkipVideoFileRequest) (_result *SkipVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SkipVideoFileResponse{}
+	_body, _err := client.SkipVideoFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
  * *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
@@ -9475,6 +11622,10 @@ func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.MuteTime)) {
 		query["MuteTime"] = request.MuteTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoiseThreshold)) {
+		query["NoiseThreshold"] = request.NoiseThreshold
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutId)) {
@@ -9971,6 +12122,74 @@ func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransf
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitHotlineTransferRegisterResponse{}
 	_body, _err := client.SubmitHotlineTransferRegisterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeVideoFileWithOptions(request *UpgradeVideoFileRequest, runtime *util.RuntimeOptions) (_result *UpgradeVideoFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeVideoFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeVideoFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeVideoFile(request *UpgradeVideoFileRequest) (_result *UpgradeVideoFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeVideoFileResponse{}
+	_body, _err := client.UpgradeVideoFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
