@@ -228,6 +228,7 @@ type CreateInstanceRequest struct {
 	ResourceGroupId  *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceSpec     *CreateInstanceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	Storage          *CreateInstanceRequestStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tag              []*CreateInstanceRequestTag          `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UsePromotionCode *bool                                `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	VSwitchIds       []*string                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	VpcId            *string                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -324,6 +325,11 @@ func (s *CreateInstanceRequest) SetResourceSpec(v *CreateInstanceRequestResource
 
 func (s *CreateInstanceRequest) SetStorage(v *CreateInstanceRequestStorage) *CreateInstanceRequest {
 	s.Storage = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetTag(v []*CreateInstanceRequestTag) *CreateInstanceRequest {
+	s.Tag = v
 	return s
 }
 
@@ -427,6 +433,29 @@ func (s *CreateInstanceRequestStorageOss) SetBucket(v string) *CreateInstanceReq
 	return s
 }
 
+type CreateInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestTag) SetKey(v string) *CreateInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateInstanceShrinkRequest struct {
 	ArchitectureType     *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
@@ -445,6 +474,7 @@ type CreateInstanceShrinkRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceSpecShrink   *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 	StorageShrink        *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	TagShrink            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	UsePromotionCode     *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	VSwitchIdsShrink     *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -541,6 +571,11 @@ func (s *CreateInstanceShrinkRequest) SetResourceSpecShrink(v string) *CreateIns
 
 func (s *CreateInstanceShrinkRequest) SetStorageShrink(v string) *CreateInstanceShrinkRequest {
 	s.StorageShrink = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetTagShrink(v string) *CreateInstanceShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -2719,11 +2754,15 @@ func (s *QueryConvertInstancePriceResponseBody) SetSuccess(v bool) *QueryConvert
 type QueryConvertInstancePriceResponseBodyPriceInfo struct {
 	Code               *string                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Currency           *string                                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo     *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	DiscountAmount     *float32                                                            `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool                                                               `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
 	Message            *string                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	OriginalAmount     *float32                                                            `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	Rules              []*QueryConvertInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                                             `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                                             `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	TradeAmount        *float32                                                            `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
@@ -2745,8 +2784,18 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *
 	return s
 }
 
+func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetDepreciateInfo(v *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) *QueryConvertInstancePriceResponseBodyPriceInfo {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryConvertInstancePriceResponseBodyPriceInfo {
 	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v bool) *QueryConvertInstancePriceResponseBodyPriceInfo {
+	s.IsContractActivity = &v
 	return s
 }
 
@@ -2770,8 +2819,65 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryConv
 	return s
 }
 
+func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetStandDiscountPrice(v string) *QueryConvertInstancePriceResponseBodyPriceInfo {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetStandPrice(v string) *QueryConvertInstancePriceResponseBodyPriceInfo {
+	s.StandPrice = &v
+	return s
+}
+
 func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryConvertInstancePriceResponseBodyPriceInfo {
 	s.TradeAmount = &v
+	return s
+}
+
+type QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
+	CheapRate           *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	MonthPrice          *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapRate(v string) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapStandAmount(v string) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetIsShow(v bool) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetMonthPrice(v string) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetOriginalStandAmount(v string) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTime(v string) *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -3200,11 +3306,15 @@ func (s *QueryCreateInstancePriceResponseBody) SetSuccess(v bool) *QueryCreateIn
 type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo     *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool                                                              `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
 	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	Rules              []*QueryCreateInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                                            `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                                            `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
@@ -3226,8 +3336,18 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *Q
 	return s
 }
 
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetDepreciateInfo(v *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfo {
 	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v bool) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.IsContractActivity = &v
 	return s
 }
 
@@ -3251,8 +3371,65 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryCreat
 	return s
 }
 
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetStandDiscountPrice(v string) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetStandPrice(v string) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.StandPrice = &v
+	return s
+}
+
 func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfo {
 	s.TradeAmount = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
+	CheapRate           *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	MonthPrice          *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapRate(v string) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapStandAmount(v string) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetIsShow(v bool) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetMonthPrice(v string) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetOriginalStandAmount(v string) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTime(v string) *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -3527,11 +3704,15 @@ func (s *QueryModifyInstancePriceResponseBody) SetSuccess(v bool) *QueryModifyIn
 type QueryModifyInstancePriceResponseBodyPriceInfo struct {
 	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo     *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool                                                              `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
 	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	Rules              []*QueryModifyInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                                            `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                                            `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
@@ -3553,8 +3734,18 @@ func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *Q
 	return s
 }
 
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetDepreciateInfo(v *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryModifyInstancePriceResponseBodyPriceInfo {
 	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v bool) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.IsContractActivity = &v
 	return s
 }
 
@@ -3578,8 +3769,65 @@ func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryModif
 	return s
 }
 
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetStandDiscountPrice(v string) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetStandPrice(v string) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.StandPrice = &v
+	return s
+}
+
 func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryModifyInstancePriceResponseBodyPriceInfo {
 	s.TradeAmount = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
+	CheapRate           *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	MonthPrice          *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapRate(v string) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapStandAmount(v string) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetIsShow(v bool) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetMonthPrice(v string) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetOriginalStandAmount(v string) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTime(v string) *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -3737,11 +3985,15 @@ func (s *QueryRenewInstancePriceResponseBody) SetSuccess(v bool) *QueryRenewInst
 type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	Code               *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Currency           *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo     *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
 	DiscountAmount     *float32                                                          `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool                                                             `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
 	Message            *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	OriginalAmount     *float32                                                          `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	Rules              []*QueryRenewInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                                           `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                                           `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	TradeAmount        *float32                                                          `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
@@ -3763,8 +4015,18 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *Qu
 	return s
 }
 
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetDepreciateInfo(v *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.DepreciateInfo = v
+	return s
+}
+
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryRenewInstancePriceResponseBodyPriceInfo {
 	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v bool) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.IsContractActivity = &v
 	return s
 }
 
@@ -3788,8 +4050,65 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryRenewI
 	return s
 }
 
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetStandDiscountPrice(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetStandPrice(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.StandPrice = &v
+	return s
+}
+
 func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryRenewInstancePriceResponseBodyPriceInfo {
 	s.TradeAmount = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
+	CheapRate           *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	CheapStandAmount    *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	IsShow              *bool   `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	MonthPrice          *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapRate(v string) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapStandAmount(v string) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetIsShow(v bool) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetMonthPrice(v string) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetOriginalStandAmount(v string) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTime(v string) *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.StartTime = &v
 	return s
 }
 
@@ -4353,6 +4672,10 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 		request.StorageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Storage, tea.String("Storage"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.VSwitchIds)) {
 		request.VSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitchIds, tea.String("VSwitchIds"), tea.String("json"))
 	}
@@ -4424,6 +4747,10 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.StorageShrink)) {
 		body["Storage"] = request.StorageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		body["Tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsePromotionCode)) {
