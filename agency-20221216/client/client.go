@@ -1126,11 +1126,15 @@ type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
 	// The time that Distribution Customer successfully associated with Distributor.
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
 	// Account CID of Distribution Customer.
-	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	Cid         *int64  `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	CustomerBd  *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	DelayAmount *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
+	DelayStatus *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
 	// The E-mail of Distribution Customer.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// Valid mobile number of Distribution Customer.
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
 	// Description of Distribution Customer.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// Account Type:
@@ -1173,6 +1177,21 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCid(v int64) *
 	return s
 }
 
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetCustomerBd(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.CustomerBd = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetDelayAmount(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.DelayAmount = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetDelayStatus(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.DelayStatus = &v
+	return s
+}
+
 func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetEmail(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
 	s.Email = &v
 	return s
@@ -1180,6 +1199,11 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetEmail(v string
 
 func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetMobile(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
 	s.Mobile = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetNewBuyStatus(v string) *GetAccountInfoResponseBodyAccountInfoListAccountInfo {
+	s.NewBuyStatus = &v
 	return s
 }
 
@@ -2260,6 +2284,7 @@ type InviteSubAccountRequestAccountInfoList struct {
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
 	// The total budget Credit of Sub Account that distributed by Partner.
 	CreditLine *string `json:"CreditLine,omitempty" xml:"CreditLine,omitempty"`
+	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
 	// Customer ID, Returning ID from CreateCustomer API.
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	// The email address of End User,  which will receive the invitation email.
@@ -2298,6 +2323,11 @@ func (s *InviteSubAccountRequestAccountInfoList) SetAccountNickname(v string) *I
 
 func (s *InviteSubAccountRequestAccountInfoList) SetCreditLine(v string) *InviteSubAccountRequestAccountInfoList {
 	s.CreditLine = &v
+	return s
+}
+
+func (s *InviteSubAccountRequestAccountInfoList) SetCustomerBd(v string) *InviteSubAccountRequestAccountInfoList {
+	s.CustomerBd = &v
 	return s
 }
 
@@ -3063,6 +3093,7 @@ type SetAccountInfoRequest struct {
 	// * Use the official name of Company, if Sub Account is an enterprise.
 	// * Use the official name of Partner, if Sub Account is a T2 reseller.
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
+	CustomerBd      *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
 	// Description of Sub Account.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The UID of Sub Account.
@@ -3079,6 +3110,11 @@ func (s SetAccountInfoRequest) GoString() string {
 
 func (s *SetAccountInfoRequest) SetAccountNickname(v string) *SetAccountInfoRequest {
 	s.AccountNickname = &v
+	return s
+}
+
+func (s *SetAccountInfoRequest) SetCustomerBd(v string) *SetAccountInfoRequest {
+	s.CustomerBd = &v
 	return s
 }
 
@@ -4621,6 +4657,10 @@ func (client *Client) SetAccountInfoWithOptions(request *SetAccountInfoRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountNickname)) {
 		query["AccountNickname"] = request.AccountNickname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerBd)) {
+		query["CustomerBd"] = request.CustomerBd
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Remark)) {
