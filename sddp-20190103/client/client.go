@@ -21,12 +21,14 @@ type CreateConfigRequest struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The description of the common configuration item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Chinese
 	// *   **en_us**: English
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is deprecated.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
 	//
@@ -163,6 +165,7 @@ type CreateDataLimitRequest struct {
 	// *   **0**: no
 	// *   **1**: yes (default)
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
@@ -211,7 +214,8 @@ type CreateDataLimitRequest struct {
 	// *   **cn-shenzhen**: China (Shenzhen)
 	// *   **cn-hongkong**: China (Hong Kong)
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is deprecated.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The username that is used to access the database.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -410,7 +414,8 @@ type CreateRuleRequest struct {
 	// *   **2**: audit rule
 	// *   **3**: anomalous event detection rule
 	// *   **99**: custom rule
-	RuleType *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// This parameter is deprecated.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The statistical expression.
 	StatExpress *string `json:"StatExpress,omitempty" xml:"StatExpress,omitempty"`
@@ -587,6 +592,7 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 type CreateScanTaskRequest struct {
 	// The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
 	DataLimitId *int64 `json:"DataLimitId,omitempty" xml:"DataLimitId,omitempty"`
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
 	IntervalDay *int32 `json:"IntervalDay,omitempty" xml:"IntervalDay,omitempty"`
@@ -612,7 +618,8 @@ type CreateScanTaskRequest struct {
 	ScanRange *int32 `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
 	// The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
 	ScanRangeContent *string `json:"ScanRangeContent,omitempty" xml:"ScanRangeContent,omitempty"`
-	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is deprecated.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The name of the scan task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The account that is used to create the scan task.
@@ -747,12 +754,14 @@ func (s *CreateScanTaskResponse) SetBody(v *CreateScanTaskResponseBody) *CreateS
 }
 
 type CreateSlrRoleRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
 	// *   **en_us**: English
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is deprecated.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -837,6 +846,7 @@ func (s *CreateSlrRoleResponse) SetBody(v *CreateSlrRoleResponseBody) *CreateSlr
 }
 
 type DeleteDataLimitRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the data asset.
 	//
@@ -846,7 +856,8 @@ type DeleteDataLimitRequest struct {
 	//
 	// *   **zh_cn**: Chinese
 	// *   **en_us**: English
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is deprecated.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -926,11 +937,13 @@ func (s *DeleteDataLimitResponse) SetBody(v *DeleteDataLimitResponseBody) *Delet
 }
 
 type DeleteRuleRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the sensitive data detection rule.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is deprecated.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -1200,6 +1213,7 @@ func (s *DescribeCategoryTemplateListResponse) SetBody(v *DescribeCategoryTempla
 type DescribeCategoryTemplateRuleListRequest struct {
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
@@ -2633,6 +2647,7 @@ func (s *DescribeDataAssetsResponse) SetBody(v *DescribeDataAssetsResponseBody) 
 }
 
 type DescribeDataLimitDetailRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The unique ID of the data asset that you want to query.
 	//
@@ -2841,6 +2856,7 @@ func (s *DescribeDataLimitDetailResponse) SetBody(v *DescribeDataLimitDetailResp
 }
 
 type DescribeDataLimitSetRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
@@ -3191,13 +3207,15 @@ type DescribeDataLimitsRequest struct {
 	// The end of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
-	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberAccount *int64  `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The parent ID of the data asset to be queried. Valid values:
@@ -3271,6 +3289,11 @@ func (s *DescribeDataLimitsRequest) SetFeatureType(v int32) *DescribeDataLimitsR
 
 func (s *DescribeDataLimitsRequest) SetLang(v string) *DescribeDataLimitsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataLimitsRequest) SetMemberAccount(v int64) *DescribeDataLimitsRequest {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -3405,7 +3428,8 @@ type DescribeDataLimitsResponseBodyItems struct {
 	// The region in which the data asset resides.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The retention period of raw logs. Unit: days.
-	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	LogStoreDay   *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	// The next time when the data asset is scanned. The value is a UNIX timestamp. Unit: milliseconds.
 	NextStartTime *int64 `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
 	// Indicates whether the optical character recognition (OCR) feature is enabled. Valid values:
@@ -3576,6 +3600,11 @@ func (s *DescribeDataLimitsResponseBodyItems) SetLocalName(v string) *DescribeDa
 
 func (s *DescribeDataLimitsResponseBodyItems) SetLogStoreDay(v int32) *DescribeDataLimitsResponseBodyItems {
 	s.LogStoreDay = &v
+	return s
+}
+
+func (s *DescribeDataLimitsResponseBodyItems) SetMemberAccount(v int64) *DescribeDataLimitsResponseBodyItems {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -4155,6 +4184,7 @@ func (s *DescribeDataMaskingTasksResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
+	DstMemberAccount *int64 `json:"DstMemberAccount,omitempty" xml:"DstMemberAccount,omitempty"`
 	// The destination directory.
 	DstPath *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
 	// The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
@@ -4172,7 +4202,8 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	// The user who created the de-identification task.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The number of times that the de-identification task is run.
-	RunCount *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
+	RunCount         *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
+	SrcMemberAccount *int64 `json:"SrcMemberAccount,omitempty" xml:"SrcMemberAccount,omitempty"`
 	// The source path.
 	SrcPath *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
 	// The code of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
@@ -4202,6 +4233,11 @@ func (s DescribeDataMaskingTasksResponseBodyItems) String() string {
 
 func (s DescribeDataMaskingTasksResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstMemberAccount(v int64) *DescribeDataMaskingTasksResponseBodyItems {
+	s.DstMemberAccount = &v
+	return s
 }
 
 func (s *DescribeDataMaskingTasksResponseBodyItems) SetDstPath(v string) *DescribeDataMaskingTasksResponseBodyItems {
@@ -4246,6 +4282,11 @@ func (s *DescribeDataMaskingTasksResponseBodyItems) SetOwner(v string) *Describe
 
 func (s *DescribeDataMaskingTasksResponseBodyItems) SetRunCount(v int32) *DescribeDataMaskingTasksResponseBodyItems {
 	s.RunCount = &v
+	return s
+}
+
+func (s *DescribeDataMaskingTasksResponseBodyItems) SetSrcMemberAccount(v int64) *DescribeDataMaskingTasksResponseBodyItems {
+	s.SrcMemberAccount = &v
 	return s
 }
 
@@ -4767,6 +4808,7 @@ type DescribeDataObjectsRequest struct {
 	FileType          *int64  `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberAccount     *int64  `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	ModelIds          *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
 	ModelTagIds       *string `json:"ModelTagIds,omitempty" xml:"ModelTagIds,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4818,6 +4860,11 @@ func (s *DescribeDataObjectsRequest) SetInstanceId(v string) *DescribeDataObject
 
 func (s *DescribeDataObjectsRequest) SetLang(v string) *DescribeDataObjectsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetMemberAccount(v int64) *DescribeDataObjectsRequest {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -4913,6 +4960,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	InstanceDescription *string                                          `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	InstanceId          *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LastScanTime        *int64                                           `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	MemberAccount       *int64                                           `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	ModelTags           []*DescribeDataObjectsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	Name                *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	ObjectFileCategory  *string                                          `json:"ObjectFileCategory,omitempty" xml:"ObjectFileCategory,omitempty"`
@@ -4956,6 +5004,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetInstanceId(v string) *Describe
 
 func (s *DescribeDataObjectsResponseBodyItems) SetLastScanTime(v int64) *DescribeDataObjectsResponseBodyItems {
 	s.LastScanTime = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetMemberAccount(v int64) *DescribeDataObjectsResponseBodyItems {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -5703,6 +5756,7 @@ func (s *DescribeEventDetailResponse) SetBody(v *DescribeEventDetailResponseBody
 }
 
 type DescribeEventTypesRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
@@ -6344,8 +6398,9 @@ type DescribeInstanceSourcesRequest struct {
 	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
-	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the content within the request and response. Valid values:
@@ -8132,6 +8187,7 @@ type DescribeParentInstanceRequest struct {
 	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MemberAccount   *int64  `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceType    *int64  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
@@ -8182,6 +8238,11 @@ func (s *DescribeParentInstanceRequest) SetInstanceId(v string) *DescribeParentI
 
 func (s *DescribeParentInstanceRequest) SetLang(v string) *DescribeParentInstanceRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeParentInstanceRequest) SetMemberAccount(v int64) *DescribeParentInstanceRequest {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -8252,6 +8313,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	InstanceId                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSize                *int64  `json:"InstanceSize,omitempty" xml:"InstanceSize,omitempty"`
 	LocalName                   *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	MemberAccount               *int64  `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	ParentId                    *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	ResourceType                *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SupportConnectNodes         *string `json:"SupportConnectNodes,omitempty" xml:"SupportConnectNodes,omitempty"`
@@ -8316,6 +8378,11 @@ func (s *DescribeParentInstanceResponseBodyItems) SetInstanceSize(v int64) *Desc
 
 func (s *DescribeParentInstanceResponseBodyItems) SetLocalName(v string) *DescribeParentInstanceResponseBodyItems {
 	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeParentInstanceResponseBodyItems) SetMemberAccount(v int64) *DescribeParentInstanceResponseBodyItems {
+	s.MemberAccount = &v
 	return s
 }
 
@@ -8384,6 +8451,7 @@ func (s *DescribeParentInstanceResponse) SetBody(v *DescribeParentInstanceRespon
 }
 
 type DescribeRiskLevelsRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
@@ -9565,7 +9633,7 @@ type DescribeUserStatusResponseBodyUserStatus struct {
 	// *   **0**: The current account has the administrative permissions or read-only permissions on Data Security Center.
 	// *   **1**: The current account has the permissions to manage data domains.
 	DataManagerRole *int32 `json:"DataManagerRole,omitempty" xml:"DataManagerRole,omitempty"`
-	// The ID of the instance within the current account.
+	// The ID of the data security center instance purchased by the main account.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of instances within the current account.
 	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
@@ -9746,8 +9814,9 @@ func (s *DescribeUserStatusResponse) SetBody(v *DescribeUserStatusResponseBody) 
 
 type DisableUserConfigRequest struct {
 	// The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh_cn**: Chinese (default)
@@ -9831,8 +9900,9 @@ type ExecDatamaskRequest struct {
 	// *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
 	// *   **dataList**: the data that needs to be de-identified.
 	// *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// *   **zh_cn**: Simplified Chinese
@@ -10025,8 +10095,9 @@ type ModifyDataLimitRequest struct {
 	//
 	// *   **MySQL**
 	// *   **SQLServer**
-	EngineType  *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	FeatureType *int32  `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is deprecated.
+	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The unique ID of the data asset for which you want to modify configuration items.
 	//
 	// > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
@@ -10425,6 +10496,7 @@ func (s *ModifyEventStatusResponse) SetBody(v *ModifyEventStatusResponseBody) *M
 }
 
 type ModifyEventTypeStatusRequest struct {
+	// This parameter is deprecated.
 	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
 	// The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -12247,6 +12319,10 @@ func (client *Client) DescribeDataLimitsWithOptions(request *DescribeDataLimitsR
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MemberAccount)) {
+		query["MemberAccount"] = request.MemberAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -12657,6 +12733,10 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MemberAccount)) {
+		query["MemberAccount"] = request.MemberAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelIds)) {
 		query["ModelIds"] = request.ModelIds
 	}
@@ -13001,9 +13081,10 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 }
 
 /**
- * You can call this operation to query the data assets that DSC is not authorized to access. This helps you obtain information about the data assets.
- * # Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+ * This operation is no longer used for the KMS console of the new version.
+ * # [](#qps-)QPS limits
+ * This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeInstanceSourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13091,9 +13172,10 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 }
 
 /**
- * You can call this operation to query the data assets that DSC is not authorized to access. This helps you obtain information about the data assets.
- * # Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+ * This operation is no longer used for the KMS console of the new version.
+ * # [](#qps-)QPS limits
+ * This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeInstanceSourcesRequest
  * @return DescribeInstanceSourcesResponse
@@ -13536,6 +13618,10 @@ func (client *Client) DescribeParentInstanceWithOptions(request *DescribeParentI
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberAccount)) {
+		query["MemberAccount"] = request.MemberAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
