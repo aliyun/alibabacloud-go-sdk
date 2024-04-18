@@ -1,3 +1,12 @@
+2024-04-18 Version: v3.1.0
+- Support API CreateAccount.
+- Support API DeleteAccount.
+- Support API DescribeAccounts.
+- Support API Grant.
+- Support API ModifyAccountPassword.
+- Support API Revoke.
+
+
 2023-08-15 Version: v3.0.1
 - Generated golang 2019-01-01 for HBase.
 
