@@ -1741,7 +1741,8 @@ type ApproveOrderRequest struct {
 	// The description of the ticket.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the user to which the ticket is transferred. If ApprovalType is set to TRANSFER, you need to specify this parameter.
-	NewApprover *int64 `json:"NewApprover,omitempty" xml:"NewApprover,omitempty"`
+	NewApprover     *int64  `json:"NewApprover,omitempty" xml:"NewApprover,omitempty"`
+	NewApproverList *string `json:"NewApproverList,omitempty" xml:"NewApproverList,omitempty"`
 	// The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
 	OldApprover *int64 `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
@@ -1780,6 +1781,11 @@ func (s *ApproveOrderRequest) SetComment(v string) *ApproveOrderRequest {
 
 func (s *ApproveOrderRequest) SetNewApprover(v int64) *ApproveOrderRequest {
 	s.NewApprover = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetNewApproverList(v string) *ApproveOrderRequest {
+	s.NewApproverList = &v
 	return s
 }
 
@@ -13226,6 +13232,7 @@ func (s *GetDataCorrectOrderDetailResponseBody) SetSuccess(v bool) *GetDataCorre
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
+	ConfigDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail `json:"ConfigDetail,omitempty" xml:"ConfigDetail,omitempty" type:"Struct"`
 	// The information about the database in which data is changed.
 	DatabaseList *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
 	// The execution mode of the ticket after the ticket is approved. Valid values:
@@ -13262,6 +13269,11 @@ func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) GoString() 
 	return s.String()
 }
 
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetConfigDetail(v *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail {
+	s.ConfigDetail = v
+	return s
+}
+
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetDatabaseList(v *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail {
 	s.DatabaseList = v
 	return s
@@ -13284,6 +13296,159 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetPreChec
 
 func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail) SetStatus(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail {
 	s.Status = &v
+	return s
+}
+
+type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail struct {
+	Cron                  *bool                                                                                   `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	CronCallTimes         *int32                                                                                  `json:"CronCallTimes,omitempty" xml:"CronCallTimes,omitempty"`
+	CronExtConfig         *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig   `json:"CronExtConfig,omitempty" xml:"CronExtConfig,omitempty" type:"Struct"`
+	CronFormat            *string                                                                                 `json:"CronFormat,omitempty" xml:"CronFormat,omitempty"`
+	CronLastCallStartTime *string                                                                                 `json:"CronLastCallStartTime,omitempty" xml:"CronLastCallStartTime,omitempty"`
+	CronNextCallTime      *string                                                                                 `json:"CronNextCallTime,omitempty" xml:"CronNextCallTime,omitempty"`
+	CronStatus            *string                                                                                 `json:"CronStatus,omitempty" xml:"CronStatus,omitempty"`
+	CsvTableName          *string                                                                                 `json:"CsvTableName,omitempty" xml:"CsvTableName,omitempty"`
+	CurrentTaskId         *int64                                                                                  `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	DetailType            *string                                                                                 `json:"DetailType,omitempty" xml:"DetailType,omitempty"`
+	Duration              *int32                                                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileEncoding          *string                                                                                 `json:"FileEncoding,omitempty" xml:"FileEncoding,omitempty"`
+	FileType              *string                                                                                 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ImportExtConfig       *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig `json:"ImportExtConfig,omitempty" xml:"ImportExtConfig,omitempty" type:"Struct"`
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCron(v bool) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.Cron = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronCallTimes(v int32) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronCallTimes = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronExtConfig(v *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronExtConfig = v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronFormat(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronFormat = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronLastCallStartTime(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronLastCallStartTime = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronNextCallTime(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronNextCallTime = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCronStatus(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CronStatus = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCsvTableName(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CsvTableName = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetCurrentTaskId(v int64) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.CurrentTaskId = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetDetailType(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.DetailType = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetDuration(v int32) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetFileEncoding(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.FileEncoding = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetFileType(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail) SetImportExtConfig(v *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail {
+	s.ImportExtConfig = v
+	return s
+}
+
+type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig struct {
+	CurrentClearTaskCount             *int32 `json:"CurrentClearTaskCount,omitempty" xml:"CurrentClearTaskCount,omitempty"`
+	OptimizeTableAfterEveryClearTimes *int32 `json:"OptimizeTableAfterEveryClearTimes,omitempty" xml:"OptimizeTableAfterEveryClearTimes,omitempty"`
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig) SetCurrentClearTaskCount(v int32) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig {
+	s.CurrentClearTaskCount = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig) SetOptimizeTableAfterEveryClearTimes(v int32) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCronExtConfig {
+	s.OptimizeTableAfterEveryClearTimes = &v
+	return s
+}
+
+type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig struct {
+	CsvFirstRowIsColumnDef *bool   `json:"CsvFirstRowIsColumnDef,omitempty" xml:"CsvFirstRowIsColumnDef,omitempty"`
+	IgnoreError            *bool   `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	ImportMode             *string `json:"ImportMode,omitempty" xml:"ImportMode,omitempty"`
+	InsertType             *string `json:"InsertType,omitempty" xml:"InsertType,omitempty"`
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) SetCsvFirstRowIsColumnDef(v bool) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig {
+	s.CsvFirstRowIsColumnDef = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) SetIgnoreError(v bool) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig {
+	s.IgnoreError = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) SetImportMode(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig {
+	s.ImportMode = &v
+	return s
+}
+
+func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig) SetInsertType(v string) *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig {
+	s.InsertType = &v
 	return s
 }
 
@@ -44861,6 +45026,10 @@ func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.NewApprover)) {
 		query["NewApprover"] = request.NewApprover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewApproverList)) {
+		query["NewApproverList"] = request.NewApproverList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OldApprover)) {
