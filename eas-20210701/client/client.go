@@ -5015,6 +5015,116 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 	return s
 }
 
+type DescribeSpotDiscountHistoryRequest struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsProtect    *bool   `json:"IsProtect,omitempty" xml:"IsProtect,omitempty"`
+}
+
+func (s DescribeSpotDiscountHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSpotDiscountHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSpotDiscountHistoryRequest) SetInstanceType(v string) *DescribeSpotDiscountHistoryRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryRequest) SetIsProtect(v bool) *DescribeSpotDiscountHistoryRequest {
+	s.IsProtect = &v
+	return s
+}
+
+type DescribeSpotDiscountHistoryResponseBody struct {
+	RequestId     *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpotDiscounts []*DescribeSpotDiscountHistoryResponseBodySpotDiscounts `json:"SpotDiscounts,omitempty" xml:"SpotDiscounts,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSpotDiscountHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSpotDiscountHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBody) SetRequestId(v string) *DescribeSpotDiscountHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBody) SetSpotDiscounts(v []*DescribeSpotDiscountHistoryResponseBodySpotDiscounts) *DescribeSpotDiscountHistoryResponseBody {
+	s.SpotDiscounts = v
+	return s
+}
+
+type DescribeSpotDiscountHistoryResponseBodySpotDiscounts struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotDiscount *string `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
+	Timestamp    *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeSpotDiscountHistoryResponseBodySpotDiscounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSpotDiscountHistoryResponseBodySpotDiscounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBodySpotDiscounts) SetInstanceType(v string) *DescribeSpotDiscountHistoryResponseBodySpotDiscounts {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBodySpotDiscounts) SetSpotDiscount(v string) *DescribeSpotDiscountHistoryResponseBodySpotDiscounts {
+	s.SpotDiscount = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBodySpotDiscounts) SetTimestamp(v string) *DescribeSpotDiscountHistoryResponseBodySpotDiscounts {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponseBodySpotDiscounts) SetZoneId(v string) *DescribeSpotDiscountHistoryResponseBodySpotDiscounts {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeSpotDiscountHistoryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSpotDiscountHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSpotDiscountHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSpotDiscountHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSpotDiscountHistoryResponse) SetHeaders(v map[string]*string) *DescribeSpotDiscountHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponse) SetStatusCode(v int32) *DescribeSpotDiscountHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSpotDiscountHistoryResponse) SetBody(v *DescribeSpotDiscountHistoryResponseBody) *DescribeSpotDiscountHistoryResponse {
+	s.Body = v
+	return s
+}
+
 type DevelopServiceRequest struct {
 	// Specifies whether to exit development mode. Valid values:
 	//
@@ -10455,6 +10565,56 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 	headers := make(map[string]*string)
 	_result = &DescribeServiceMirrorResponse{}
 	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSpotDiscountHistoryWithOptions(request *DescribeSpotDiscountHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSpotDiscountHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsProtect)) {
+		query["IsProtect"] = request.IsProtect
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSpotDiscountHistory"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/public/spot_discount"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSpotDiscountHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSpotDiscountHistory(request *DescribeSpotDiscountHistoryRequest) (_result *DescribeSpotDiscountHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeSpotDiscountHistoryResponse{}
+	_body, _err := client.DescribeSpotDiscountHistoryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
