@@ -6479,21 +6479,40 @@ func (s *DescribeCharacterSetNameResponse) SetBody(v *DescribeCharacterSetNameRe
 }
 
 type DescribeClassListRequest struct {
-	// The maximum number of IOPS.
+	// The code of the commodity. Valid values:
+	//
+	// *   polardb_sub: the subscription cluster in regions in the Chinese mainland
+	// *   polardb_sub \_intl: the subscription cluster in regions outside the Chinese mainland
+	// *   polardb_payg: the pay-as-you-go cluster in regions in the Chinese mainland
+	// *   polardb_payg_intl: the pay-as-you-go cluster in regions outside the Chinese mainland
+	// *   polardb_sub_jushita: the subscription cluster for CloudTmall
+	// *   polardb_payg_jushita: the pay-as-you-go cluster for CloudTmall
+	// *   polardb_sub_cainiao: the subscription cluster for Cainiao
+	// *   polardb_payg_cainiao: the pay-as-you-go cluster for Cainiao
+	//
+	// > *   If you use an Alibaba Cloud account on the China site, you can view only the codes of the commodities that are available in the Chinese mainland.
+	// >*   If you are using an Alibaba Cloud international account, you can view only the codes of the commodities that are available outside the Chinese mainland.
+	// >*   If you use a CloudTmall account, you can view only the codes of the commodities that are available in CloudTmall.
+	// >*   If you use a Cainiao account, you can view only the codes of the commodities that are available in Cainiao.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The number of nodes. Valid values:
 	//
-	// *   single
-	// *   cluster
-	// *   all
+	// *   single: Standalone Edition.
+	// *   cluster: Cluster Edition.
+	// *   all: both Standalone Edition and Cluster Edition.
 	MasterHa *string `json:"MasterHa,omitempty" xml:"MasterHa,omitempty"`
-	// The specification type of the cluster.
+	// The type of the order. Valid values:
+	//
+	// *   BUY: The order is used to purchase a cluster.
+	// *   UPGRADE: The order is used to change the specifications of a cluster.
+	// *   RENEW: The order is used to renew a cluster.
+	// *   CONVERT: The order is used to change the billing method of a cluster.
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of CPU cores.
+	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6554,14 +6573,10 @@ func (s *DescribeClassListRequest) SetResourceOwnerId(v int64) *DescribeClassLis
 
 type DescribeClassListResponseBody struct {
 	// The specifications of the cluster.
-	Items    []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RegionId *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The price.
-	//
-	// Unit: cents (US dollars).
-	//
-	// > *   If you set the CommodityCode parameter to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
-	// > *   If you set the CommodityCode parameter to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
+	Items []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7169,7 +7184,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// *   **General**: general-purpose.
 	//
 	// > This parameter is supported only for PolarDB for MySQL clusters of Cluster Edition.
-	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	SubCategory                  *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	SupportInstantSwitchWithImci *string `json:"SupportInstantSwitchWithImci,omitempty" xml:"SupportInstantSwitchWithImci,omitempty"`
 	// Details about the tags.
 	Tags []*DescribeDBClusterAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The VPC ID of the cluster.
@@ -7440,6 +7456,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetStrictConsistency(v string) 
 
 func (s *DescribeDBClusterAttributeResponseBody) SetSubCategory(v string) *DescribeDBClusterAttributeResponseBody {
 	s.SubCategory = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSupportInstantSwitchWithImci(v string) *DescribeDBClusterAttributeResponseBody {
+	s.SupportInstantSwitchWithImci = &v
 	return s
 }
 
@@ -20625,7 +20646,7 @@ func (s *ModifyDBClusterMaintainTimeRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyDBClusterMaintainTimeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21668,14 +21689,14 @@ type ModifyDBClusterStorageSpaceRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new storage capacity. Unit: GB.
+	// The storage capacity that you can select when you change the cluster. Unit: GB.
 	//
-	// > Valid values for PolarDB for MySQL Standard Edition are 20 to 32000.
+	// >  You can set this parameter for PolarDB for MySQL clusters of Standard Edition to a value that ranges from 20 to 32000.
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	// The category of the cluster. Default value: ON. Valid values:
 	//
 	// *   **normal_exclusive**: dedicated
-	// *   **normal_general**: genera-purpose
+	// *   **normal_general**: general-purpose
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
@@ -22486,14 +22507,14 @@ type ModifyDBNodesClassRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-	// >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// >*   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	// >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-	// >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	// >*   If this parameter is empty, the upgrade task is immediately performed.
+	// >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// >*   If this parameter is left empty, the upgrade task is immediately performed.
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
