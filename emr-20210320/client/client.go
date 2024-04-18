@@ -5586,6 +5586,111 @@ func (s *ValueConstraints) SetValues(v []*int32) *ValueConstraints {
 	return s
 }
 
+type CreateApiTemplateRequest struct {
+	// 接口名。
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// 接口request内容。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 地域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 集群模板名字。
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s CreateApiTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiTemplateRequest) SetApiName(v string) *CreateApiTemplateRequest {
+	s.ApiName = &v
+	return s
+}
+
+func (s *CreateApiTemplateRequest) SetContent(v string) *CreateApiTemplateRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateApiTemplateRequest) SetRegionId(v string) *CreateApiTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApiTemplateRequest) SetResourceGroupId(v string) *CreateApiTemplateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateApiTemplateRequest) SetTemplateName(v string) *CreateApiTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type CreateApiTemplateResponseBody struct {
+	// 请求ID。
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateApiTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiTemplateResponseBody) SetRequestId(v string) *CreateApiTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApiTemplateResponseBody) SetSuccess(v string) *CreateApiTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateApiTemplateResponseBody) SetTemplateId(v string) *CreateApiTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateApiTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApiTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApiTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiTemplateResponse) SetHeaders(v map[string]*string) *CreateApiTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApiTemplateResponse) SetStatusCode(v int32) *CreateApiTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApiTemplateResponse) SetBody(v *CreateApiTemplateResponseBody) *CreateApiTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// The configurations of the applications. Valid values of N: 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
@@ -36131,6 +36236,113 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateApiTemplateRequest struct {
+	// 接口名。
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// 接口request内容。
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 区域ID。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组ID。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 集群模板id。
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 集群模板名字。
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateApiTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApiTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApiTemplateRequest) SetApiName(v string) *UpdateApiTemplateRequest {
+	s.ApiName = &v
+	return s
+}
+
+func (s *UpdateApiTemplateRequest) SetContent(v string) *UpdateApiTemplateRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateApiTemplateRequest) SetRegionId(v string) *UpdateApiTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateApiTemplateRequest) SetResourceGroupId(v string) *UpdateApiTemplateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateApiTemplateRequest) SetTemplateId(v string) *UpdateApiTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateApiTemplateRequest) SetTemplateName(v string) *UpdateApiTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type UpdateApiTemplateResponseBody struct {
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Deprecated
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateApiTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApiTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApiTemplateResponseBody) SetRequestId(v string) *UpdateApiTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateApiTemplateResponseBody) SetSuccess(v bool) *UpdateApiTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateApiTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateApiTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateApiTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApiTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApiTemplateResponse) SetHeaders(v map[string]*string) *UpdateApiTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApiTemplateResponse) SetStatusCode(v int32) *UpdateApiTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateApiTemplateResponse) SetBody(v *UpdateApiTemplateResponseBody) *UpdateApiTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateApplicationConfigsRequest struct {
 	// The application configurations.
 	ApplicationConfigs []*UpdateApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
@@ -36317,6 +36529,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateApiTemplateWithOptions(request *CreateApiTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateApiTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApiTemplate"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateApiTemplate(request *CreateApiTemplateRequest) (_result *CreateApiTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApiTemplateResponse{}
+	_body, _err := client.CreateApiTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40547,6 +40819,83 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * 修改集群模板
+ *
+ * @param request UpdateApiTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateApiTemplateResponse
+ */
+func (client *Client) UpdateApiTemplateWithOptions(request *UpdateApiTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateApiTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApiTemplate"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * 修改集群模板
+ *
+ * @param request UpdateApiTemplateRequest
+ * @return UpdateApiTemplateResponse
+ */
+func (client *Client) UpdateApiTemplate(request *UpdateApiTemplateRequest) (_result *UpdateApiTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateApiTemplateResponse{}
+	_body, _err := client.UpdateApiTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
