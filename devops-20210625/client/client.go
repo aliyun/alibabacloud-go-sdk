@@ -7697,6 +7697,7 @@ type CreateWorkitemResponseBodyWorkitem struct {
 	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
 	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	DocumentFormat         *string `json:"documentFormat,omitempty" xml:"documentFormat,omitempty"`
 	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
@@ -7741,6 +7742,11 @@ func (s *CreateWorkitemResponseBodyWorkitem) SetCreator(v string) *CreateWorkite
 
 func (s *CreateWorkitemResponseBodyWorkitem) SetDocument(v string) *CreateWorkitemResponseBodyWorkitem {
 	s.Document = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetDocumentFormat(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.DocumentFormat = &v
 	return s
 }
 
@@ -19560,6 +19566,7 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	Creator                *string                                            `json:"creator,omitempty" xml:"creator,omitempty"`
 	CustomFields           []*GetWorkItemInfoResponseBodyWorkitemCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
 	Document               *string                                            `json:"document,omitempty" xml:"document,omitempty"`
+	DocumentFormat         *string                                            `json:"documentFormat,omitempty" xml:"documentFormat,omitempty"`
 	FinishTime             *int64                                             `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
 	GmtCreate              *int64                                             `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *int64                                             `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
@@ -19615,6 +19622,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetCustomFields(v []*GetWorkItemIn
 
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetDocument(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.Document = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetDocumentFormat(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.DocumentFormat = &v
 	return s
 }
 
@@ -41660,6 +41672,7 @@ type UpdateWorkItemResponseBodyWorkitem struct {
 	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
 	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	DocumentFormat         *string `json:"documentFormat,omitempty" xml:"documentFormat,omitempty"`
 	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
@@ -41704,6 +41717,11 @@ func (s *UpdateWorkItemResponseBodyWorkitem) SetCreator(v string) *UpdateWorkIte
 
 func (s *UpdateWorkItemResponseBodyWorkitem) SetDocument(v string) *UpdateWorkItemResponseBodyWorkitem {
 	s.Document = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetDocumentFormat(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.DocumentFormat = &v
 	return s
 }
 
