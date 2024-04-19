@@ -1251,6 +1251,7 @@ func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationRes
 
 type ImageModerationResponseBodyData struct {
 	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Ext    *ImageModerationResponseBodyDataExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
 	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -1267,8 +1268,53 @@ func (s *ImageModerationResponseBodyData) SetDataId(v string) *ImageModerationRe
 	return s
 }
 
+func (s *ImageModerationResponseBodyData) SetExt(v *ImageModerationResponseBodyDataExt) *ImageModerationResponseBodyData {
+	s.Ext = v
+	return s
+}
+
 func (s *ImageModerationResponseBodyData) SetResult(v []*ImageModerationResponseBodyDataResult) *ImageModerationResponseBodyData {
 	s.Result = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExt struct {
+	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
+}
+
+func (s ImageModerationResponseBodyDataExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExt) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExt) SetRecognition(v []*ImageModerationResponseBodyDataExtRecognition) *ImageModerationResponseBodyDataExt {
+	s.Recognition = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtRecognition struct {
+	Classification *string  `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtRecognition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtRecognition) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtRecognition) SetClassification(v string) *ImageModerationResponseBodyDataExtRecognition {
+	s.Classification = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtRecognition) SetConfidence(v float32) *ImageModerationResponseBodyDataExtRecognition {
+	s.Confidence = &v
 	return s
 }
 
