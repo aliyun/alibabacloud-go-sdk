@@ -12163,12 +12163,12 @@ type DescribeSQLLogsRequest struct {
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution duration of the query. Unit: seconds.
+	// The execution duration of the SQL statement. Unit: seconds.
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution state of the query. Valid values:
+	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// *   **1**: successful.
+	// *   **0**: failed.
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
@@ -12340,9 +12340,9 @@ type DescribeSQLLogsResponseBodyItems struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The role of the database.
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	// The execution duration of the query.
+	// The execution duration of the SQL statement.
 	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution state of the query. Valid values:
+	// The execution status of the SQL statement. Valid values:
 	//
 	// *   **success**
 	// *   **fail**
@@ -12485,12 +12485,12 @@ type DescribeSQLLogsV2Request struct {
 	//
 	// >  The end time must be later than the start time. The interval cannot be more than 24 hours.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution duration of the query. Unit: seconds.
+	// The execution duration of the SQL statement. Unit: seconds.
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution state of the query. Valid values:
+	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// *   **1**: successful.
+	// *   **0**: failed.
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
@@ -12669,9 +12669,9 @@ type DescribeSQLLogsV2ResponseBodyItems struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The role of the database.
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	// The execution duration of the query.
+	// The execution duration of the SQL statement.
 	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution state of the query. Valid values:
+	// The execution status of the SQL statement. Valid values:
 	//
 	// *   **success**
 	// *   **fail**
@@ -13799,10 +13799,10 @@ type DownloadSQLLogsRecordsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The execution duration of the SQL statement. Unit: seconds.
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution state of the SQL statement.
+	// The execution status of the SQL statement.
 	//
-	// *   **success**
-	// *   **fail**
+	// *   **1**: successful.
+	// *   **0**: failed.
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The language of the file that contains the query diagnostic information. Valid values:
 	//
@@ -16989,18 +16989,20 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 }
 
 type QueryCollectionDataRequest struct {
-	Collection        *string    `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content           *string    `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId      *string    `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter            *string    `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeValues     *bool      `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	Metrics           *string    `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace         *string    `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string    `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TopK              *int64     `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	Vector            []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	Collection        *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content           *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId      *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter            *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch      *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs  map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeValues     *bool                             `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
+	Metrics           *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace         *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK              *int64                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	Vector            []*float64                        `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
 }
 
 func (s QueryCollectionDataRequest) String() string {
@@ -17028,6 +17030,16 @@ func (s *QueryCollectionDataRequest) SetDBInstanceId(v string) *QueryCollectionD
 
 func (s *QueryCollectionDataRequest) SetFilter(v string) *QueryCollectionDataRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetHybridSearch(v string) *QueryCollectionDataRequest {
+	s.HybridSearch = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryCollectionDataRequest {
+	s.HybridSearchArgs = v
 	return s
 }
 
@@ -17072,18 +17084,20 @@ func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDat
 }
 
 type QueryCollectionDataShrinkRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter            *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeValues     *bool   `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	Metrics           *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TopK              *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	VectorShrink      *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
+	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content                *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter                 *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch           *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeValues          *bool   `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
+	Metrics                *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword      *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK                   *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	VectorShrink           *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
 }
 
 func (s QueryCollectionDataShrinkRequest) String() string {
@@ -17111,6 +17125,16 @@ func (s *QueryCollectionDataShrinkRequest) SetDBInstanceId(v string) *QueryColle
 
 func (s *QueryCollectionDataShrinkRequest) SetFilter(v string) *QueryCollectionDataShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetHybridSearch(v string) *QueryCollectionDataShrinkRequest {
+	s.HybridSearch = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetHybridSearchArgsShrink(v string) *QueryCollectionDataShrinkRequest {
+	s.HybridSearchArgsShrink = &v
 	return s
 }
 
@@ -17288,22 +17312,24 @@ func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody
 }
 
 type QueryContentRequest struct {
-	Collection           *string  `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content              *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId         *string  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName             *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl              *string  `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter               *string  `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeVector        *bool    `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics              *string  `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace            *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindow         []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
-	RegionId             *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor         *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                 *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval *bool    `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	Collection           *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content              *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId         *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName             *string                           `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl              *string                           `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Filter               *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch         *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs     map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeVector        *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	Metrics              *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace            *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword    *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindow         []*int32                          `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor         *float64                          `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	TopK                 *int32                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UseFullTextRetrieval *bool                             `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentRequest) String() string {
@@ -17341,6 +17367,16 @@ func (s *QueryContentRequest) SetFileUrl(v string) *QueryContentRequest {
 
 func (s *QueryContentRequest) SetFilter(v string) *QueryContentRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetHybridSearch(v string) *QueryContentRequest {
+	s.HybridSearch = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentRequest {
+	s.HybridSearchArgs = v
 	return s
 }
 
@@ -17395,22 +17431,24 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 type QueryContentAdvanceRequest struct {
-	Collection           *string   `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content              *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId         *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName             *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject        io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter               *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeVector        *bool     `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics              *string   `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace            *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string   `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindow         []*int32  `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor         *float64  `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                 *int32    `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval *bool     `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	Collection           *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content              *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId         *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName             *string                           `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject        io.Reader                         `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Filter               *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch         *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs     map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeVector        *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	Metrics              *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace            *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword    *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindow         []*int32                          `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor         *float64                          `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	TopK                 *int32                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UseFullTextRetrieval *bool                             `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentAdvanceRequest) String() string {
@@ -17448,6 +17486,16 @@ func (s *QueryContentAdvanceRequest) SetFileUrlObject(v io.Reader) *QueryContent
 
 func (s *QueryContentAdvanceRequest) SetFilter(v string) *QueryContentAdvanceRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetHybridSearch(v string) *QueryContentAdvanceRequest {
+	s.HybridSearch = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentAdvanceRequest {
+	s.HybridSearchArgs = v
 	return s
 }
 
@@ -17502,22 +17550,24 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 type QueryContentShrinkRequest struct {
-	Collection           *string  `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content              *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId         *string  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName             *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl              *string  `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter               *string  `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeVector        *bool    `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics              *string  `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace            *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindowShrink   *string  `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
-	RegionId             *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor         *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                 *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval *bool    `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	Collection             *string  `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content                *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId           *string  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName               *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl                *string  `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Filter                 *string  `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch           *string  `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgsShrink *string  `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeVector          *bool    `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	Metrics                *string  `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace              *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword      *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId                *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindowShrink     *string  `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
+	RegionId               *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor           *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	TopK                   *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UseFullTextRetrieval   *bool    `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentShrinkRequest) String() string {
@@ -17555,6 +17605,16 @@ func (s *QueryContentShrinkRequest) SetFileUrl(v string) *QueryContentShrinkRequ
 
 func (s *QueryContentShrinkRequest) SetFilter(v string) *QueryContentShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetHybridSearch(v string) *QueryContentShrinkRequest {
+	s.HybridSearch = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetHybridSearchArgsShrink(v string) *QueryContentShrinkRequest {
+	s.HybridSearchArgsShrink = &v
 	return s
 }
 
@@ -27834,6 +27894,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 	}
 	request := &QueryCollectionDataShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HybridSearchArgs)) {
+		request.HybridSearchArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HybridSearchArgs, tea.String("HybridSearchArgs"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Vector)) {
 		request.VectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Vector, tea.String("Vector"), tea.String("json"))
 	}
@@ -27853,6 +27917,14 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridSearch)) {
+		query["HybridSearch"] = request.HybridSearch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridSearchArgsShrink)) {
+		query["HybridSearchArgs"] = request.HybridSearchArgsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeValues)) {
@@ -27928,6 +28000,10 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 	}
 	request := &QueryContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HybridSearchArgs)) {
+		request.HybridSearchArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HybridSearchArgs, tea.String("HybridSearchArgs"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.RecallWindow)) {
 		request.RecallWindowShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecallWindow, tea.String("RecallWindow"), tea.String("json"))
 	}
@@ -27955,6 +28031,14 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridSearch)) {
+		query["HybridSearch"] = request.HybridSearch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HybridSearchArgsShrink)) {
+		query["HybridSearchArgs"] = request.HybridSearchArgsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeVector)) {
