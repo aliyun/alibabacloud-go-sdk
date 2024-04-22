@@ -3219,7 +3219,8 @@ type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
 	// The quota for user groups.
 	GroupQuota *int32 `json:"GroupQuota,omitempty" xml:"GroupQuota,omitempty"`
 	// The number of tasks that are being performed.
-	InProgressTaskCount *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
+	InProgressTaskCount                     *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
+	InlinePolicyPerAccessConfigurationQuota *int32 `json:"InlinePolicyPerAccessConfigurationQuota,omitempty" xml:"InlinePolicyPerAccessConfigurationQuota,omitempty"`
 	// The region ID of the directory.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of SCIM credentials.
@@ -3287,6 +3288,11 @@ func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetGroupQuota(v 
 
 func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetInProgressTaskCount(v int32) *GetDirectoryStatisticsResponseBodyDirectoryStatistics {
 	s.InProgressTaskCount = &v
+	return s
+}
+
+func (s *GetDirectoryStatisticsResponseBodyDirectoryStatistics) SetInlinePolicyPerAccessConfigurationQuota(v int32) *GetDirectoryStatisticsResponseBodyDirectoryStatistics {
+	s.InlinePolicyPerAccessConfigurationQuota = &v
 	return s
 }
 
