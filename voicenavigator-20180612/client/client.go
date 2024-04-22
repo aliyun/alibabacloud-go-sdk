@@ -3511,17 +3511,19 @@ func (s *ListConversationsResponseBody) SetTotalCount(v int64) *ListConversation
 }
 
 type ListConversationsResponseBodyConversations struct {
-	CalledNumber             *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber            *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId           *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EndReason                *int32  `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
-	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HasLastPlaybackCompleted *bool   `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
-	HasToAgent               *bool   `json:"HasToAgent,omitempty" xml:"HasToAgent,omitempty"`
-	Rounds                   *int32  `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
-	SandBox                  *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
-	SkillGroup               *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
-	StartTime                *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CalledNumber             *string   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CallingNumber            *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	ConversationId           *string   `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	DsReport                 *string   `json:"DsReport,omitempty" xml:"DsReport,omitempty"`
+	DsReportTitles           []*string `json:"DsReportTitles,omitempty" xml:"DsReportTitles,omitempty" type:"Repeated"`
+	EndReason                *int32    `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
+	EndTime                  *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HasLastPlaybackCompleted *bool     `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
+	HasToAgent               *bool     `json:"HasToAgent,omitempty" xml:"HasToAgent,omitempty"`
+	Rounds                   *int32    `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
+	SandBox                  *bool     `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	SkillGroup               *string   `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	StartTime                *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListConversationsResponseBodyConversations) String() string {
@@ -3544,6 +3546,16 @@ func (s *ListConversationsResponseBodyConversations) SetCallingNumber(v string) 
 
 func (s *ListConversationsResponseBodyConversations) SetConversationId(v string) *ListConversationsResponseBodyConversations {
 	s.ConversationId = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetDsReport(v string) *ListConversationsResponseBodyConversations {
+	s.DsReport = &v
+	return s
+}
+
+func (s *ListConversationsResponseBodyConversations) SetDsReportTitles(v []*string) *ListConversationsResponseBodyConversations {
+	s.DsReportTitles = v
 	return s
 }
 
