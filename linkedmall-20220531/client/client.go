@@ -251,9 +251,9 @@ func (s *ApplyCreateDistributionOrderResponseBody) SetTotalCount(v int64) *Apply
 }
 
 type ApplyCreateDistributionOrderResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyCreateDistributionOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyCreateDistributionOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyCreateDistributionOrderResponse) String() string {
@@ -558,9 +558,9 @@ func (s *ApplyRefund4DistributionResponseBodyModel) SetSubDistributionOrderId(v 
 }
 
 type ApplyRefund4DistributionResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyRefund4DistributionResponse) String() string {
@@ -688,9 +688,9 @@ func (s *CancelDistributionTradeResponseBody) SetTotalCount(v int64) *CancelDist
 }
 
 type CancelDistributionTradeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelDistributionTradeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelDistributionTradeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelDistributionTradeResponse) String() string {
@@ -865,9 +865,9 @@ func (s *CancelRefund4DistributionResponseBodyModel) SetSubDistributionOrderId(v
 }
 
 type CancelRefund4DistributionResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelRefund4DistributionResponse) String() string {
@@ -1001,9 +1001,9 @@ func (s *ConfirmDisburse4DistributionResponseBody) SetTotalCount(v int64) *Confi
 }
 
 type ConfirmDisburse4DistributionResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmDisburse4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfirmDisburse4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfirmDisburse4DistributionResponse) String() string {
@@ -1248,9 +1248,9 @@ func (s *InitApplyRefund4DistributionResponseBodyModelRefundReasonList) SetRefun
 }
 
 type InitApplyRefund4DistributionResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitApplyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitApplyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitApplyRefund4DistributionResponse) String() string {
@@ -1495,9 +1495,9 @@ func (s *InitModifyRefund4DistributionResponseBodyModelRefundReasonList) SetRefu
 }
 
 type InitModifyRefund4DistributionResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InitModifyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitModifyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InitModifyRefund4DistributionResponse) String() string {
@@ -2148,9 +2148,9 @@ func (s *ListDistributionItemResponseBodyModelSkuListLmAttributeModels) SetValue
 }
 
 type ListDistributionItemResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDistributionItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDistributionItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDistributionItemResponse) String() string {
@@ -2747,9 +2747,9 @@ func (s *ListDistributionItemWithoutCacheResponseBodyModelSkuPropertysValues) Se
 }
 
 type ListDistributionItemWithoutCacheResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDistributionItemWithoutCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDistributionItemWithoutCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDistributionItemWithoutCacheResponse) String() string {
@@ -2972,9 +2972,9 @@ func (s *ListDistributionMallResponseBodyModel) SetStatus(v string) *ListDistrib
 }
 
 type ListDistributionMallResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDistributionMallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDistributionMallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDistributionMallResponse) String() string {
@@ -3291,9 +3291,9 @@ func (s *ModifyRefund4DistributionResponseBodyModel) SetSubDistributionOrderId(v
 }
 
 type ModifyRefund4DistributionResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRefund4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyRefund4DistributionResponse) String() string {
@@ -3484,9 +3484,9 @@ func (s *QueryChildDivisionCodeByIdResponseBodyModelDivisionList) SetPinyin(v st
 }
 
 type QueryChildDivisionCodeByIdResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryChildDivisionCodeByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryChildDivisionCodeByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryChildDivisionCodeByIdResponse) String() string {
@@ -3672,9 +3672,9 @@ func (s *QueryDistributionBillDetailResponseBodyModel) SetTotal(v int32) *QueryD
 }
 
 type QueryDistributionBillDetailResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDistributionBillDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDistributionBillDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDistributionBillDetailResponse) String() string {
@@ -3867,9 +3867,9 @@ func (s *QueryDistributionMallResponseBodyModel) SetStatus(v string) *QueryDistr
 }
 
 type QueryDistributionMallResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDistributionMallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDistributionMallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDistributionMallResponse) String() string {
@@ -4009,9 +4009,9 @@ func (s *QueryDistributionTradeStatusResponseBody) SetTotalCount(v int64) *Query
 }
 
 type QueryDistributionTradeStatusResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDistributionTradeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDistributionTradeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDistributionTradeStatusResponse) String() string {
@@ -4580,9 +4580,9 @@ func (s *QueryItemDetailResponseBodyModelSkuPropertysValues) SetText(v string) *
 }
 
 type QueryItemDetailResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryItemDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryItemDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryItemDetailResponse) String() string {
@@ -5169,9 +5169,9 @@ func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) SetText
 }
 
 type QueryItemDetailWithDivisionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryItemDetailWithDivisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryItemDetailWithDivisionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryItemDetailWithDivisionResponse) String() string {
@@ -5463,9 +5463,9 @@ func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetStatus(v int32)
 }
 
 type QueryItemGuideRetailPriceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryItemGuideRetailPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryItemGuideRetailPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryItemGuideRetailPriceResponse) String() string {
@@ -5716,9 +5716,9 @@ func (s *QueryLogistics4DistributionResponseBodyModelLogisticsDetailList) SetSta
 }
 
 type QueryLogistics4DistributionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLogistics4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLogistics4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLogistics4DistributionResponse) String() string {
@@ -5874,9 +5874,9 @@ func (s *QueryMallCategoryListResponseBodyModel) SetParentId(v int64) *QueryMall
 }
 
 type QueryMallCategoryListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMallCategoryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMallCategoryListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMallCategoryListResponse) String() string {
@@ -6157,9 +6157,9 @@ func (s *QueryOrderDetail4DistributionResponseBodyModelSubOrderListItemPrice) Se
 }
 
 type QueryOrderDetail4DistributionResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOrderDetail4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrderDetail4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOrderDetail4DistributionResponse) String() string {
@@ -6452,9 +6452,9 @@ func (s *QueryOrderList4DistributionResponseBodyModelSubOrderListItemPrice) SetF
 }
 
 type QueryOrderList4DistributionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOrderList4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrderList4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOrderList4DistributionResponse) String() string {
@@ -6789,9 +6789,9 @@ func (s *QueryRefundApplicationDetail4DistributionResponseBodyModelRefundFeeData
 }
 
 type QueryRefundApplicationDetail4DistributionResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRefundApplicationDetail4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRefundApplicationDetail4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRefundApplicationDetail4DistributionResponse) String() string {
@@ -8357,9 +8357,9 @@ func (s *RenderDistributionOrderResponseBodyModelUnsellableRenderOrderInfosShopP
 }
 
 type RenderDistributionOrderResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenderDistributionOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenderDistributionOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenderDistributionOrderResponse) String() string {
@@ -8505,9 +8505,9 @@ func (s *SubmitReturnGoodLogistics4DistributionResponseBody) SetTotalCount(v int
 }
 
 type SubmitReturnGoodLogistics4DistributionResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitReturnGoodLogistics4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitReturnGoodLogistics4DistributionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitReturnGoodLogistics4DistributionResponse) String() string {
