@@ -153,10 +153,10 @@ func (s *AddEntriesToAclResponse) SetBody(v *AddEntriesToAclResponseBody) *AddEn
 type AssociateAclsWithListenerRequest struct {
 	// The ID of the ACL. You can associate up to two ACL IDs.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
-	// The type of ACL. Valid values:
+	// The type of the ACL. Valid values:
 	//
-	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to it, the listener does not forward requests.
-	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are denied. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to it, the listener forwards all requests.
+	// *   **white**: Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are suitable for scenarios in which you want to allow access from specific IP addresses to an application. If a whitelist is improperly configured, risks may arise. After a whitelist is configured for a listener, only requests from the IP addresses that are added to the whitelist are distributed by the listener. If a whitelist is enabled but no IP address is added to the whitelist, the listener forwards all requests.
+	// *   **black**: All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the ACL, the listener forwards all requests.
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -169,7 +169,9 @@ type AssociateAclsWithListenerRequest struct {
 	// *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
+	//
+	// Only intelligent routing listeners support ACLs.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3834,9 +3836,7 @@ type CreateCustomRoutingEndpointTrafficPoliciesRequest struct {
 	//
 	// > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request is different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the endpoint for which you want to create the traffic destinations.
-	//
-	// > This parameter is required.
+	// The ID of the endpoint for which you want to create traffic destinations.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The configurations of the traffic destinations.
 	//
@@ -4690,8 +4690,7 @@ type CreateEndpointGroupsRequest struct {
 	//
 	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configurations of the endpoint groups.
+	DryRun                      *bool                                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EndpointGroupConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	//
@@ -4740,100 +4739,24 @@ func (s *CreateEndpointGroupsRequest) SetRegionId(v string) *CreateEndpointGroup
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurations struct {
-	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
-	//
-	// *   **true**
-	// *   **false** (default)
-	//
-	// You can specify this parameter for up to 10 endpoint groups.
-	EnableClientIPPreservationProxyProtocol *bool `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
-	// Specifies whether to preserve the IP addresses of clients that access the endpoint by using the TCP Option Address (TOA) module. Valid values:
-	//
-	// *   **true**
-	// *   **false** (default)
-	//
-	// You can specify this parameter for up to 10 endpoint groups.
-	EnableClientIPPreservationToa *bool `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
-	// The configurations of the endpoints.
-	EndpointConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	// The description of the endpoint group.
-	//
-	// The description can be up to 256 characters in length and cannot contain `http://` or `https://`.
-	//
-	// You can enter the descriptions of up to 10 endpoint groups.
-	EndpointGroupDescription *string `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
-	// The name of the endpoint group.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	//
-	// You can specify the names of up to 10 endpoint groups.
-	EndpointGroupName *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
-	// The ID of the region where you want to create the endpoint group.
-	//
-	// You can enter the region IDs of up to 10 endpoint groups.
-	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// The type of the endpoint group. Valid values:
-	//
-	// *   **default** (default)
-	// *   **virtual**
-	//
-	// You can specify the types of up to 10 endpoint groups.
-	//
-	// >  Only HTTP and HTTPS listeners support virtual endpoint groups.
-	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	// The protocol that is used by the backend service. Valid values:
-	//
-	// *   **HTTP** (default)
-	// *   **HTTPS**
-	//
-	// You can specify up to 10 backend service protocols.
-	//
-	// > *   You can specify this parameter only if the listener that is associated with the endpoint group uses **HTTP** or **HTTPS**.
-	// > *   For an **HTTP** listener, the backend service protocol must be **HTTP**.
-	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
-	//
-	// *   **true**
-	// *   **false** (default)
-	//
-	// You can enable the health check feature for up to 10 endpoint groups.
-	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// The interval at which health checks are performed. Unit: seconds.
-	//
-	// You can specify up to 10 health check intervals.
-	HealthCheckIntervalSeconds *int64 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	// The path to which health check requests are sent.
-	//
-	// You can specify up to 10 health check paths.
-	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The port that is used for health checks. Valid values: **1** to **65535**.
-	//
-	// You can specify up to 10 ports for health checks.
-	HealthCheckPort *int64 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	// The protocol over which health check requests are sent. Valid values:
-	//
-	// *   **tcp**
-	// *   **http**
-	// *   **https**
-	//
-	// You can specify up to 10 health check protocols.
-	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The port mapping.
-	PortOverrides []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	// The system tag.
-	SystemTag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
-	// The tags.
-	Tag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy. Valid values: **2** to **10**. Default value: **3**.
-	//
-	// You can specify the number of successful consecutive health checks or failed consecutive health checks for up to 10 endpoint groups.
-	ThresholdCount *int64 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	// The traffic distribution ratio. If a listener is associated with multiple endpoint groups, you can specify this parameter to distribute traffic to the endpoint groups based on ratios.
-	//
-	// Valid values: **1** to **100**. Default value: **100**.
-	//
-	// You can specify traffic distribution ratios for up to 10 endpoint groups.
-	TrafficPercentage *int64 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	EnableClientIPPreservationProxyProtocol *bool                                                                           `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
+	EnableClientIPPreservationToa           *bool                                                                           `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
+	EndpointConfigurations                  []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupDescription                *string                                                                         `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
+	EndpointGroupName                       *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EndpointGroupRegion                     *string                                                                         `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupType                       *string                                                                         `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointRequestProtocol                 *string                                                                         `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	HealthCheckEnabled                      *bool                                                                           `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckIntervalSeconds              *int64                                                                          `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	HealthCheckPath                         *string                                                                         `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckPort                         *int64                                                                          `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckProtocol                     *string                                                                         `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	PortOverrides                           []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	SystemTag                               []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag              `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+	Tag                                     []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag                    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ThresholdCount                          *int64                                                                          `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage                       *int64                                                                          `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurations) String() string {
@@ -4935,47 +4858,10 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetTrafficPerce
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
-	// The IP address, domain name, or instance ID based on the value of Type.
-	//
-	// You can specify up to 100 endpoint IP addresses or domain names in an endpoint group.
-	//
-	// >  This parameter is required.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The private IP address of the ENI.
-	//
-	// >  If you set Type to ENI, you can specify this parameter. If you do not specify this parameter, the primary private IP address of the ENI is used.
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
-	// The type of the endpoint. Valid values:
-	//
-	// *   **Domain**: a custom domain name
-	// *   **Ip**: a custom IP address
-	// *   **PublicIp**: a public IP address provided by Alibaba Cloud
-	// *   **ECS**: an Elastic Compute Service (ECS) instance
-	// *   **SLB**: a Server Load Balancer (SLB) instance
-	// *   **ALB**: an Application Load Balancer (ALB) instance
-	// *   **OSS**: an Object Storage Service (OSS) bucket
-	// *   **ENI**: an elastic network interface (ENI)
-	// *   **NLB**: a Network Load Balancer (NLB) instance
-	//
-	// >
-	//
-	// *   If you set this parameter to **ECS** or **SLB** and the service-linked role AliyunServiceRoleForGaVpcEndpoint does not exist, the system automatically creates the service-linked role.
-	//
-	// *   If you set this parameter to **ALB** and the service-linked role AliyunServiceRoleForGaAlb does not exist, the system automatically creates the service-linked role.
-	//
-	// *   If you set this parameter to **OSS** and the service-linked role AliyunServiceRoleForGaOss does not exist, the system automatically creates the service-linked role.
-	//
-	// For more information, see [Service linked roles](~~178360~~).
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the endpoint.
-	//
-	// Valid values: **0** to **255**.
-	//
-	// You can set the weights of up to 100 endpoints in an endpoint group.
-	//
-	// > *   This parameter is required.
-	// > *   If you set the weight of an endpoint to 0, GA does not route network traffic to the endpoint. Make sure that you are aware of the impact on your business before you set the endpoint weight to 0.
-	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight     *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
@@ -5007,16 +4893,7 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct {
-	// The endpoint port that is mapped to the listener port.
-	//
-	// You can specify up to five endpoint ports.
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The listener port that is mapped to the endpoint port.
-	//
-	// You can specify up to five listener ports.
-	//
-	// > *   Only HTTP and HTTPS listeners support port mappings.
-	// > *   The listener port in a port mapping must be the port that is used by the current listener.
 	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -5039,18 +4916,8 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Se
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag struct {
-	// The key of the system tag.
-	//
-	// You can enter up to 20 system tags.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The visibility of the system tag. Valid values:
-	//
-	// *   **public** (default): The system tag is visible and can be used for filtering.
-	// *   **private**: The system tag is invisible.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The value of the system tag.
-	//
-	// You can enter up to 20 system tags.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5078,13 +4945,7 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) SetVal
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsTag struct {
-	// The key of the tag.
-	//
-	// You can enter up to 20 tags.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// You can enter up to 20 tags.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5168,8 +5029,7 @@ type CreateForwardingRulesRequest struct {
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Details about the forwarding rules.
+	ClientToken     *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ForwardingRules []*CreateForwardingRulesRequestForwardingRules `json:"ForwardingRules,omitempty" xml:"ForwardingRules,omitempty" type:"Repeated"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -5211,20 +5071,11 @@ func (s *CreateForwardingRulesRequest) SetRegionId(v string) *CreateForwardingRu
 }
 
 type CreateForwardingRulesRequestForwardingRules struct {
-	// The name of the forwarding rule.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
-	ForwardingRuleName *string `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
-	// The priority of the forwarding rule. Valid values: **1** to **10000**. A lower value indicates a higher priority.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The forwarding action.
-	RuleActions []*CreateForwardingRulesRequestForwardingRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// The forwarding conditions.
-	RuleConditions []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// The direction in which the rule takes effect. You do not need to set this parameter.
-	//
-	// By default, this parameter is set to **request**, which indicates that the rule takes effect on requests.
-	RuleDirection *string `json:"RuleDirection,omitempty" xml:"RuleDirection,omitempty"`
+	ForwardingRuleName *string                                                      `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
+	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions        []*CreateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	RuleConditions     []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	RuleDirection      *string                                                      `json:"RuleDirection,omitempty" xml:"RuleDirection,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRules) String() string {
@@ -5261,63 +5112,10 @@ func (s *CreateForwardingRulesRequestForwardingRules) SetRuleDirection(v string)
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
-	// The forwarding configurations.
-	//
-	// >  We recommend that you do not use this parameter. We recommend that you use the **RuleActionType** and **RuleActionValue** parameters to configure forwarding actions.
 	ForwardGroupConfig *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The forwarding priority.
-	//
-	// >  This parameter does not take effect. Ignore this parameter.
-	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The type of the forwarding action. Valid values:
-	//
-	// *   **ForwardGroup**: forwards a request.
-	// *   **Redirect**: redirects a request.
-	// *   **FixResponse**: returns a fixed response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **AddHeader**: adds a header to a request.
-	// *   **RemoveHeaderConfig**: deletes the header from a request.
-	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	// The value of the forwarding action type.
-	//
-	// You must specify different JSON strings based on the **RuleActionType** parameter.
-	//
-	// A forwarding rule can contain only one forwarding action whose type is **ForwardGroup**, **Redirect**, or **FixResponse**. You must specify a forwarding action whose type is **Rewrite**, **AddHeader**, or **RemoveHeader** before a forwarding action whose type is **ForwardGroup**.
-	//
-	// *   If **RuleActionType** is set to **ForwardGroup**, this parameter specifies the information of a virtual endpoint group. You can forward requests to only one virtual endpoint group. Example: `{"type":"endpointgroup", "value":"epg-bp1enpdcrqhl78g6r****"}`.
-	//
-	//     *   `type`: set this parameter to `endpointgroup`.
-	//     *   `value`: set this parameter to the ID of a virtual endpoint group.
-	//
-	// *   If **RuleActionType** is set to **Redirect**, this parameter specifies redirecting configurations. You cannot leave all of the following parameters empty or configure all of these parameters to use the default values for a forwarding action whose type is **Redirect**: `protocol`, `domain`, `port`, `path`, and `query`. Example: `{"protocol":"HTTP", "domain":"www.example.com", "port":"80", "path":"/a","query":"value1", "code":"301" }`.
-	//
-	//     *   `protocol`: the protocol of requests after the requests are redirected. Valid values: `${protocol}` (default), `HTTP`, and `HTTPS`.
-	//     *   `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ * ! $ & | ( ) [ ]`.
-	//     *   `port`: the port to which requests are redirected. Default value: `${port}`. You can enter a port number that ranges from 1 to 63335.
-	//     *   `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ * $ : ( ) [ ] + |`. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
-	//     *   `query`: the query string of the requests to be redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > # | &`.
-	//     *   `code`: the redirecting code. Valid values: `301`, `302`, `303`, `307`, and `308`.
-	//
-	// *   If **RuleActionType** is set to **FixResponse**, this parameter specifies a fixed response. Example: `{"code":"200", "type":"text/plain", "content":"dssacav" }`.
-	//
-	//     *   `code`: the HTTP status code to return. The response status code must be one of the following numeric strings: `2xx`, `4xx`, and `5xx`. The letter `x` indicates a number from 0 to 9.
-	//     *   `type`: the type of the response content. Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
-	//     *   `content`: the response content. The response content cannot exceed 1,000 characters in length and does not support Chinese characters.
-	//
-	// *   If **RuleActionType** is set to **AddHeader**, this parameter specifies an HTTP header to be added. If a forwarding rule contains a forwarding action whose type is **AddHeader**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `[{"name":"header1","type":"userdefined", "value":"value"}]`.
-	//
-	//     *   `name`: the name of the HTTP header. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). The name of the HTTP header specified by **AddHeader** must be unique and cannot be the same as the name of the HTTP header specified by **RemoveHeader**.
-	//     *   `type`: the content type of the HTTP header. Valid values: `user-defined`, `ref`, and `system-defined`.
-	//     *   `value`: the content of the HTTP header. You cannot leave this parameter empty. If you set `type` to `user-defined`, the content must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The content can contain letters, digits, hyphens (-), and underscores (\_). The content cannot start or end with a space character. If you set `type` to `ref`, the content must be 1 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). The content cannot start or end with a space character. If you set `type` to `system-defined`, only `ClientSrcIp` is supported.
-	//
-	// *   If **RuleActionType** is set to **RemoveHeader**, this parameter specifies an HTTP header to be removed. If a forwarding rule contains a forwarding action whose type is **RemoveHeader**, you must specify another forwarding action whose type is **ForwardGroup**. The header must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). Example: `["header1"]`.
-	//
-	// *   If **RuleActionType** is set to **Rewrite**, this parameter specifies the rewriting configuration. If a forwarding rule contains a forwarding action whose type is **Rewrite**, you must specify another forwarding action whose type is **ForwardGroup**. Example: `{"domain":"value1", "path":"value2", "query":"value3"}`.
-	//
-	//     *   `domain`: the domain name to which requests are redirected. Default value: `${host}`. You can also enter a domain name. The domain name must be 3 to 128 characters in length, and can contain only lowercase letters, digits, and the following special characters: `. - ? = ~ _ - + / ^ * ! $ & | ( ) [ ]`.
-	//     *   `path`: the path to which requests are redirected. Default value: `${path}`. The path must be 1 to 128 characters in length. To use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? ~ ^ * $ : ( ) [ ] + |`. The path must start with a tilde (~). If you do not want to use a regular expression, the path can contain letters, digits, and the following special characters: `. - _ / = ? :`. The path must start with a forward slash (/).
-	//     *   `query`: the query string of the requests to be redirected. Default value: `${query}`. You can also specify a query string. The query string must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The query string cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > # | &`.
-	RuleActionValue *string `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
+	Order              *int32                                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
+	RuleActionType     *string                                                                   `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	RuleActionValue    *string                                                                   `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRulesRuleActions) String() string {
@@ -5349,9 +5147,6 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionVa
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig struct {
-	// The information about the endpoint group.
-	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	ServerGroupTuples []*CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -5369,9 +5164,6 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
-	// The ID of the endpoint group.
-	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you call **RuleActionType** and **RuleActionValue** to query forwarding actions.
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -5389,51 +5181,10 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	// The configuration of the domain name.
-	//
-	// >  We recommend that you do not use this parameter. We recommend that you use the **RuleConditionType** and **RuleConditionValue** parameters to configure forwarding conditions.
-	HostConfig *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// The configuration of the path.
-	//
-	// >  We recommend that you do not use this parameter. We recommend that you use the **RuleConditionType** and **RuleConditionValue** parameters to configure forwarding conditions.
-	PathConfig *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// The type of the forwarding conditions. Valid values:
-	//
-	// *   **Host**: domain name
-	// *   **Path**: path
-	// *   **RequestHeader**: HTTP header
-	// *   **Query**: query string
-	// *   **Method**: HTTP method
-	// *   **Cookie**: cookie
-	// *   **SourceIP**: source IP address
-	RuleConditionType *string `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
-	// The value of the forwarding condition type.
-	//
-	// You must specify different JSON strings based on the **RuleConditionType** parameter.
-	//
-	// *   If **RuleConditionType** is set to **Host**, this parameter specifies a domain name condition. A forwarding rule can contain only one forwarding condition whose type is host. You can specify multiple domain names in a forwarding condition. The relationship between multiple domain names is OR. The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?). Example: `["www.example.com", "www.aliyun.com"]`.
-	//
-	// *   If **RuleConditionType** is set to **Path**, this parameter specifies a path condition. A forwarding rule can contain multiple forwarding conditions whose types are path. The relationship between multiple path conditions is OR. You can specify multiple paths in a forwarding condition. The relationship between multiple paths is OR. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?). Example: `["/a", "/b/"]`.
-	//
-	// *   If **RuleConditionType** is set to **RequestHeader**, this parameter specifies an HTTP header condition that consists of key-value pairs. The header values in a forwarding condition must be unique. Example: `[{"header1":["value1","value2"]}]`.
-	//
-	//     *   Key: The key of an HTTP header must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
-	//     *   Value: The value of an HTTP header must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The value cannot start or end with a space character.
-	//
-	// *   If **RuleConditionType** is set to **Query**, this parameter specifies a query string condition that consists of key-value pairs. Example: `[{"query1":["value1"]}, {"query2":["value2"]}]`.
-	//
-	//     *   Key: The key of an HTTP header must be 1 to 100 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The key cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > \ ; / ? : @ & = + , $ % | " ^ ~`.
-	//     *   Value: The value of an HTTP header must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The value cannot contain uppercase letters, space characters, or the following special characters: `[ ] { } < > \ ; / ? : @ & = + , $ % | " ^ ~`.
-	//
-	// *   If **RuleConditionType** is set to **Method**, this parameter specifies an HTTP method condition. Valid values: **HEAD**, **GET**, **POST**, **OPTIONS**, **PUT**, **PATCH**, and **DELETE**. Example: `["GET", "OPTIONS", "POST"]`.
-	//
-	// *   If **RuleConditionType** is set to **Cookie**, this parameter specifies a cookie condition that consists of key-value pairs. Example: `[{"cookie1":["value1"]}, {"cookie2":["value2"]}]`.
-	//
-	//     *   Key: The key of a cookie must be 1 to 100 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
-	//     *   Value: The value of a cookie must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. The value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
-	//
-	// *   If **RuleConditionType** is set to **SourceIP**, this parameter specifies a source IP address condition. You can specify IP addresses, such as 1.1.XX.XX/32. You can also specify CIDR blocks, such as 2.2.XX.XX/24. A forwarding rule can contain only one forwarding condition whose type is source IP address. You can specify multiple source IP addresses in a forwarding condition. The relationship between multiple source IP addresses is OR. Example: `["1.1.XX.XX/32", "2.2.XX.XX/24"]`.
-	RuleConditionValue *string `json:"RuleConditionValue,omitempty" xml:"RuleConditionValue,omitempty"`
+	HostConfig         *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig         *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType  *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	RuleConditionValue *string                                                              `json:"RuleConditionValue,omitempty" xml:"RuleConditionValue,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
@@ -5465,11 +5216,6 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleCondi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig struct {
-	// The domain name.
-	//
-	// The domain name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), and periods (.). Supported wildcard characters are asterisks (\*) and question marks (?).
-	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5487,11 +5233,6 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig) Se
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig struct {
-	// The path.
-	//
-	// The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain only letters, digits, and the following special characters: $ - \_ . + / & ~ @ : \". Supported wildcard characters are asterisks (\*) and question marks (?).
-	//
-	// >  For GA instances created after July 12, 2022, all forwarding condition types and forwarding action types are supported. We recommend that you use **RuleConditionType** and **RuleConditionValue** to query forwarding conditions.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -7956,9 +7697,9 @@ func (s *DeleteCustomRoutingEndpointGroupsResponse) SetBody(v *DeleteCustomRouti
 type DeleteCustomRoutingEndpointTrafficPoliciesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the endpoint for which you want to delete traffic destinations.
 	//
@@ -10969,16 +10710,18 @@ type DescribeCustomRoutingEndPointTrafficPolicyResponseBody struct {
 	PortRanges []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The ID of the endpoint to which the traffic destination belongs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service ID to which the managed instance belongs.
+	// The ID of the service that manages the instance.
 	//
-	// >  Valid only when the ServiceManaged parameter is True.
+	// >  This parameter is returned only if the value of **ServiceManaged** is **true**.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// Is it a managed instance. Valid values:
+	// Indicates whether the instance is managed. Valid values:
 	//
-	// - true
-	// - false
+	// *   **true**
+	// *   **false**
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// A list of action policies that users can execute on this managed instance.
+	// The actions that users can perform on the managed instance.
+	// > *   This parameter is returned only if the value of **ServiceManaged** is **true**.
+	// > *   Users can perform only specific actions on a managed instance.
 	ServiceManagedInfos []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The status of the traffic destination.
 	//
@@ -11063,9 +10806,9 @@ func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetState(v stri
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges struct {
-	// The port range of the traffic destination.
+	// The first port of the port range used by the traffic destination to process requests.
 	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
-	// The first port of the port range.
+	// The last port of the port range used by the traffic destination to process requests.
 	ToPort *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
 }
 
@@ -11088,31 +10831,31 @@ func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) SetTo
 }
 
 type DescribeCustomRoutingEndPointTrafficPolicyResponseBodyServiceManagedInfos struct {
-	// Managed policy action name, Valid values:
-	// - Create
-	// - Update
-	// - Delete
-	// - Associate
-	// - UserUnmanaged
-	// - CreateChild
+	// The name of the action performed on the managed instance. Valid values:
+	//
+	// *   **Create**
+	// *   **Update**
+	// *   **Delete**
+	// *   **Associate**
+	// *   **UserUnmanaged**
+	// *   **CreateChild**
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Sub resource type, Valid values:
+	// The type of the child resource. Valid values:
 	//
-	// - Listener
-	// - IpSet
-	// - EndpointGroup
-	// - ForwardingRule
-	// - Endpoint
-	// - EndpointGroupDestination
-	// - EndpointPolicy
+	// *   **Listener**: listener.
+	// *   **IpSet**: acceleration region.
+	// *   **EndpointGroup**: endpoint group.
+	// *   **ForwardingRule**: forwarding rule.
+	// *   **Endpoint**: endpoint.
+	// *   **EndpointGroupDestination**: protocol mapping of an endpoint group that is associated with a custom routing listener.
+	// *   **EndpointPolicy**: traffic policy of an endpoint that is associated with a custom routing listener.
 	//
-	// >Only valid when the Action parameter is CreateChild.
+	// >  This parameter takes effect only if the value of **Action** is **CreateChild**.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// Is the managed policy action managed, Valid values:
+	// Indicates whether the specified actions are managed.
 	//
-	// - true: The managed policy action is managed, and users do not have permission to perform the operation specified in the Action on the managed instance.
-	//
-	// - false: The managed policy action is not managed, and users have permission to perform the operation specified in the Action on the managed instance.
+	// *   **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// *   **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -14027,13 +13770,7 @@ func (s *GetAclRequest) SetRegionId(v string) *GetAclRequest {
 }
 
 type GetAclResponseBody struct {
-	// The state of the network ACL. Valid values:
-	//
-	// *   **init**: The network ACL is being initialized.
-	// *   **active**: The network ACL is available.
-	// *   **configuring**: The network ACL is being configured.
-	// *   **updating**: The network ACL is being updated.
-	// *   **deleting**: The network ACL is being deleted.
+	// The entries of the ACL.
 	AclEntries []*GetAclResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The ID of the request.
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
@@ -14046,13 +13783,13 @@ type GetAclResponseBody struct {
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	// The ID of the network ACL.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The description of the network ACL entry.
+	// The listeners that are associated with the ACL.
 	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
 	// The ID of the network ACL.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the network ACL.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource group.
+	// The tags of the ACL.
 	Tags []*GetAclResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -14110,9 +13847,9 @@ func (s *GetAclResponseBody) SetTags(v []*GetAclResponseBodyTags) *GetAclRespons
 }
 
 type GetAclResponseBodyAclEntries struct {
-	// The list of network ACL entries that are returned. A maximum of 20 network ACL entries can be returned.
+	// An IP address entry (192.168.XX.XX) or a CIDR block entry (10.0.XX.XX/24).
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// The network ACL entry.
+	// The description of the ACL entry.
 	EntryDescription *string `json:"EntryDescription,omitempty" xml:"EntryDescription,omitempty"`
 }
 
@@ -14135,14 +13872,14 @@ func (s *GetAclResponseBodyAclEntries) SetEntryDescription(v string) *GetAclResp
 }
 
 type GetAclResponseBodyRelatedListeners struct {
-	// The type of the network ACL.
-	//
-	// *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios in which you want to allow only specified IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are forwarded by the listener. If the whitelist is enabled but no IP addresses are added to the network ACL, the listener does not forward requests.
-	// *   **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. Blacklists apply to scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the network ACL, the listener forwards all requests.
+	// The ID of the GA instance.
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// The ID of the listener.
+	// The type of the ACL. Valid values:
+	//
+	// *   **white**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are suitable for scenarios in which you want to allow only specific IP addresses to access an application. Risks may arise if an IP address whitelist is improperly configured. After you configure a whitelist for a listener, only requests from the IP addresses that are added to the whitelist are distributed by the listener. If a whitelist is enabled but no IP address is added to the whitelist, the listener forwards all requests.
+	// *   **black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses to an application. If a blacklist is enabled but no IP address is added to the blacklist, the listener forwards all requests.
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The listeners that are associated with the network ACL.
+	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -14170,9 +13907,9 @@ func (s *GetAclResponseBodyRelatedListeners) SetListenerId(v string) *GetAclResp
 }
 
 type GetAclResponseBodyTags struct {
-	// The tags of the ACL.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag key
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16005,7 +15742,7 @@ func (s *ListAccelerateAreasResponseBody) SetRequestId(v string) *ListAccelerate
 type ListAccelerateAreasResponseBodyAreas struct {
 	// The area ID.
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The area name.
+	// The name of the area.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The regions in the acceleration area.
 	RegionList []*ListAccelerateAreasResponseBodyAreasRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
@@ -16035,7 +15772,7 @@ func (s *ListAccelerateAreasResponseBodyAreas) SetRegionList(v []*ListAccelerate
 }
 
 type ListAccelerateAreasResponseBodyAreasRegionList struct {
-	// The region name.
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -19460,7 +19197,7 @@ func (s *ListBusiRegionsRequest) SetRegionId(v string) *ListBusiRegionsRequest {
 }
 
 type ListBusiRegionsResponseBody struct {
-	// The information of the regions.
+	// The information about the acceleration regions that are supported by GA.
 	Regions []*ListBusiRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19487,7 +19224,7 @@ func (s *ListBusiRegionsResponseBody) SetRequestId(v string) *ListBusiRegionsRes
 type ListBusiRegionsResponseBodyRegions struct {
 	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region where the GA instance is deployed. Only **cn-hangzhou** is returned.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -31586,20 +31323,20 @@ func (client *Client) CreateCustomRoutingEndpointGroups(request *CreateCustomRou
 }
 
 /**
- * This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic access policy of an endpoint. The CreateCustomRoutingEndpointTrafficPolicies operation takes effect only when **TrafficToEndpointPolicy** of an endpoint is set to **AllowCustom**.
+ * This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic access policy of an endpoint. This operation takes effect only if the value of **TrafficToEndpointPolicy** is set to **AllowCustom**, which allows traffic to specific destinations.
  * When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group to check whether traffic destinations are created for an endpoint in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, traffic destinations are being created. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, traffic destinations are created.
- * *   You cannot repeatedly call the **CreateCustomRoutingEndpointTrafficPolicies** operation for the same Global Accelerator (GA) instance within a specific period of time.
- * ### Prerequisites
+ * *   **CreateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of the task.
+ *     *   If the endpoint group is in the **updating** state, the traffic destinations are being created. In this state, you can only query the traffic destinations.
+ *     *   If the endpoint group is in the **active** state, the traffic destinations are created.
+ * *   You cannot call the **CreateCustomRoutingEndpointTrafficPolicies** operation repeatedly for the same GA instance in a specific period of time.
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
  * *   A standard GA instance is created. For more information, see [CreateAccelerator](~~206786~~).
- * *   A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
- * *   An endpoint is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](~~449382~~).
+ * *   If the bandwidth metering method of the standard GA instance is **pay-by-bandwidth**, a bandwidth plan must be associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
+ * *   An application that serves as the endpoint of the standard GA instance is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+ * *   The permissions to use custom routing listeners are acquired, and a custom routing listener is created. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
+ * *   Endpoint groups are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * *   Endpoints are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](~~449382~~).
  *
  * @param request CreateCustomRoutingEndpointTrafficPoliciesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31651,20 +31388,20 @@ func (client *Client) CreateCustomRoutingEndpointTrafficPoliciesWithOptions(requ
 }
 
 /**
- * This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic access policy of an endpoint. The CreateCustomRoutingEndpointTrafficPolicies operation takes effect only when **TrafficToEndpointPolicy** of an endpoint is set to **AllowCustom**.
+ * This operation takes effect only when the traffic access policy of an endpoint allows traffic to specified destinations. You can call the [DescribeCustomRoutingEndpoint](~~449386~~) operation to query the traffic access policy of an endpoint. This operation takes effect only if the value of **TrafficToEndpointPolicy** is set to **AllowCustom**, which allows traffic to specific destinations.
  * When you call this operation, take note of the following items:
- * *   **CreateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of an endpoint group to check whether traffic destinations are created for an endpoint in the endpoint group.
- *     *   If the endpoint group is in the **updating** state, traffic destinations are being created. In this case, you can perform only query operations.
- *     *   If the endpoint group is in the **active** state, traffic destinations are created.
- * *   You cannot repeatedly call the **CreateCustomRoutingEndpointTrafficPolicies** operation for the same Global Accelerator (GA) instance within a specific period of time.
- * ### Prerequisites
+ * *   **CreateCustomRoutingEndpointTrafficPolicies** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](~~449373~~) operation to query the status of the task.
+ *     *   If the endpoint group is in the **updating** state, the traffic destinations are being created. In this state, you can only query the traffic destinations.
+ *     *   If the endpoint group is in the **active** state, the traffic destinations are created.
+ * *   You cannot call the **CreateCustomRoutingEndpointTrafficPolicies** operation repeatedly for the same GA instance in a specific period of time.
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
  * *   A standard GA instance is created. For more information, see [CreateAccelerator](~~206786~~).
- * *   A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
- * *   An application is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
- * *   The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
- * *   An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
- * *   An endpoint is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](~~449382~~).
+ * *   If the bandwidth metering method of the standard GA instance is **pay-by-bandwidth**, a bandwidth plan must be associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](~~153239~~).
+ * *   An application that serves as the endpoint of the standard GA instance is deployed to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
+ * *   The permissions to use custom routing listeners are acquired, and a custom routing listener is created. Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager. For more information about how to create a custom routing listener, see [CreateListener](~~153253~~).
+ * *   Endpoint groups are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](~~449363~~).
+ * *   Endpoints are created for the custom routing listener. For more information, see [CreateCustomRoutingEndpoints](~~449382~~).
  *
  * @param request CreateCustomRoutingEndpointTrafficPoliciesRequest
  * @return CreateCustomRoutingEndpointTrafficPoliciesResponse
@@ -32011,10 +31748,6 @@ func (client *Client) CreateEndpointGroupsWithOptions(request *CreateEndpointGro
 		query["DryRun"] = request.DryRun
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndpointGroupConfigurations)) {
-		query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
 		query["ListenerId"] = request.ListenerId
 	}
@@ -32023,8 +31756,17 @@ func (client *Client) CreateEndpointGroupsWithOptions(request *CreateEndpointGro
 		query["RegionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupConfigurations)) {
+		bodyFlat["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateEndpointGroups"),
@@ -32092,10 +31834,6 @@ func (client *Client) CreateForwardingRulesWithOptions(request *CreateForwarding
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForwardingRules)) {
-		query["ForwardingRules"] = request.ForwardingRules
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
 		query["ListenerId"] = request.ListenerId
 	}
@@ -32104,8 +31842,17 @@ func (client *Client) CreateForwardingRulesWithOptions(request *CreateForwarding
 		query["RegionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForwardingRules)) {
+		bodyFlat["ForwardingRules"] = request.ForwardingRules
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateForwardingRules"),
@@ -36504,6 +36251,13 @@ func (client *Client) ListBandwidthPackages(request *ListBandwidthPackagesReques
 	return _result, _err
 }
 
+/**
+ * To query the detailed information about a bandwidth plan, call the **ListBandwidthPackages** operation. For more information, see [ListBandwidthPackages](~~2253239~~).
+ *
+ * @param request ListBandwidthackagesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListBandwidthackagesResponse
+ */
 func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthackagesRequest, runtime *util.RuntimeOptions) (_result *ListBandwidthackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36545,6 +36299,12 @@ func (client *Client) ListBandwidthackagesWithOptions(request *ListBandwidthacka
 	return _result, _err
 }
 
+/**
+ * To query the detailed information about a bandwidth plan, call the **ListBandwidthPackages** operation. For more information, see [ListBandwidthPackages](~~2253239~~).
+ *
+ * @param request ListBandwidthackagesRequest
+ * @return ListBandwidthackagesResponse
+ */
 func (client *Client) ListBandwidthackages(request *ListBandwidthackagesRequest) (_result *ListBandwidthackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBandwidthackagesResponse{}
