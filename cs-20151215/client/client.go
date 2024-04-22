@@ -2024,6 +2024,7 @@ type CreateClusterRequest struct {
 	//
 	// Default value: PostPaid.
 	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
+	// Deprecated
 	// Specifies whether to enable Center for Internet Security (CIS) reinforcement. For more information, see [CIS reinforcement](~~223744~~).
 	//
 	// Valid values:
@@ -2136,7 +2137,7 @@ type CreateClusterRequest struct {
 	//
 	// >  This parameter is required when you create worker nodes on existing ECS instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The cluster IP stack.
+	// The cluster ip_stack.
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	// Specifies whether to create an advanced security group. This parameter takes effect only if `security_group_id` is left empty.
 	//
@@ -2321,7 +2322,8 @@ type CreateClusterRequest struct {
 	// For more information about how to select a proper container runtime, see [How to select between Docker and Sandboxed-Container](~~160313~~).
 	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
-	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupId     *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityHardeningOs *bool   `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
 	// Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. `service-account-issuer` is the issuer of the `serviceaccount token`, which corresponds to the `iss` field in the `token payload`.
 	//
 	// For more information about `ServiceAccount`, see [Enable service account token volume projection](~~160384~~).
@@ -2785,6 +2787,11 @@ func (s *CreateClusterRequest) SetRuntime(v *Runtime) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSecurityHardeningOs(v bool) *CreateClusterRequest {
+	s.SecurityHardeningOs = &v
 	return s
 }
 
@@ -3608,7 +3615,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// Default value: 1.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CisEnabled      *bool  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
+	// Deprecated
+	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as the cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values:
 	//
 	// *   `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
@@ -3705,8 +3713,9 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// Specifies the ID of the security group to which you want to add the node pool. You must set this parameter or `security_group_ids`. We recommend that you set `security_group_ids`.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
-	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SocEnabled       *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
+	SecurityGroupIds    []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SecurityHardeningOs *bool     `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
+	SocEnabled          *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
 	// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values:
@@ -3908,6 +3917,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSecurityGroupId(v string) 
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetSecurityGroupIds(v []*string) *CreateClusterNodePoolRequestScalingGroup {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSecurityHardeningOs(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.SecurityHardeningOs = &v
 	return s
 }
 
@@ -7383,7 +7397,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CisEnabled      *bool  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
+	// Deprecated
+	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
 	//
 	// *   `true`: Pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created.
@@ -7465,8 +7480,9 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// The ID of the security group to which the node pool is added. If the node pool is added to multiple security groups, the first ID in the value of `security_group_ids` is returned.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of the security groups to which the node pool is added.
-	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SocEnabled       *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
+	SecurityGroupIds    []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SecurityHardeningOs *bool     `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
+	SocEnabled          *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
 	// Indicates whether preemptible instances are supplemented when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
@@ -7661,6 +7677,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSecurityGroup
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSecurityGroupIds(v []*string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSecurityHardeningOs(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SecurityHardeningOs = &v
 	return s
 }
 
@@ -8532,6 +8553,7 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	//
 	// If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	// Deprecated
 	// 是否开启CIS加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启CIS加固。
 	CisEnabled *bool `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
@@ -8617,7 +8639,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// The ID of the security group to which the node pool is added. If the node pool is added to multiple security groups, the first ID in the value of `security_group_ids` is returned.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of the security groups to which the node pool is added.
-	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SecurityGroupIds    []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SecurityHardeningOs *bool     `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
 	// 是否开启等保加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启等保加固。阿里云为Alibaba Cloud Linux 2和Alibaba Cloud Linux 3等保2.0三级版镜像提供等保合规的基线检查标准和扫描程序。
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -8820,6 +8843,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSecurityG
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSecurityGroupIds(v []*string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSecurityHardeningOs(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SecurityHardeningOs = &v
 	return s
 }
 
@@ -12726,7 +12754,7 @@ func (s *DescribePolicyInstancesStatusResponseBody) SetPolicyInstances(v []*Desc
 }
 
 type DescribePolicyInstancesStatusResponseBodyPolicyInstances struct {
-	// The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](https://www.alibabacloud.com/help/doc-detail/359819.html).
+	// The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](~~359819~~).
 	PolicyCategory *string `json:"policy_category,omitempty" xml:"policy_category,omitempty"`
 	// The description of the policy.
 	PolicyDescription *string `json:"policy_description,omitempty" xml:"policy_description,omitempty"`
@@ -20824,6 +20852,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		body["security_group_id"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityHardeningOs)) {
+		body["security_hardening_os"] = request.SecurityHardeningOs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceAccountIssuer)) {
