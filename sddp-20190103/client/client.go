@@ -5349,6 +5349,7 @@ type DescribeEventDetailResponseBodyEvent struct {
 	LogDetail *string `json:"LogDetail,omitempty" xml:"LogDetail,omitempty"`
 	// The username of the account that triggered the anomalous event.
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	NewAlarm  *bool   `json:"NewAlarm,omitempty" xml:"NewAlarm,omitempty"`
 	// The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The handling status for the anomalous event. Valid values:
@@ -5458,6 +5459,11 @@ func (s *DescribeEventDetailResponseBodyEvent) SetLoginName(v string) *DescribeE
 	return s
 }
 
+func (s *DescribeEventDetailResponseBodyEvent) SetNewAlarm(v bool) *DescribeEventDetailResponseBodyEvent {
+	s.NewAlarm = &v
+	return s
+}
+
 func (s *DescribeEventDetailResponseBodyEvent) SetProductCode(v string) *DescribeEventDetailResponseBodyEvent {
 	s.ProductCode = &v
 	return s
@@ -5531,10 +5537,12 @@ func (s *DescribeEventDetailResponseBodyEventDetail) SetResourceInfo(v []*Descri
 }
 
 type DescribeEventDetailResponseBodyEventDetailChart struct {
+	ChatType *int32 `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
 	// The data in the baseline behavior profile of the anomalous event.
 	Data *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The name of the baseline behavior chart of the anomalous event.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the chart. Valid values:
 	//
 	// *   **1**: column chart
@@ -5544,6 +5552,7 @@ type DescribeEventDetailResponseBodyEventDetailChart struct {
 	XLabel *string `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
 	// The descriptive label of data on the y-axis.
 	YLabel *string `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
+	ZLabel *string `json:"ZLabel,omitempty" xml:"ZLabel,omitempty"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChart) String() string {
@@ -5554,6 +5563,11 @@ func (s DescribeEventDetailResponseBodyEventDetailChart) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEventDetailResponseBodyEventDetailChart) SetChatType(v int32) *DescribeEventDetailResponseBodyEventDetailChart {
+	s.ChatType = &v
+	return s
+}
+
 func (s *DescribeEventDetailResponseBodyEventDetailChart) SetData(v *DescribeEventDetailResponseBodyEventDetailChartData) *DescribeEventDetailResponseBodyEventDetailChart {
 	s.Data = v
 	return s
@@ -5561,6 +5575,11 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetData(v *DescribeEve
 
 func (s *DescribeEventDetailResponseBodyEventDetailChart) SetLabel(v string) *DescribeEventDetailResponseBodyEventDetailChart {
 	s.Label = &v
+	return s
+}
+
+func (s *DescribeEventDetailResponseBodyEventDetailChart) SetName(v string) *DescribeEventDetailResponseBodyEventDetailChart {
+	s.Name = &v
 	return s
 }
 
@@ -5579,11 +5598,17 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetYLabel(v string) *D
 	return s
 }
 
+func (s *DescribeEventDetailResponseBodyEventDetailChart) SetZLabel(v string) *DescribeEventDetailResponseBodyEventDetailChart {
+	s.ZLabel = &v
+	return s
+}
+
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
 	// The values of data on the x-axis.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
 	// The values of data on the y-axis.
 	Y []*string `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
+	Z []*string `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChartData) String() string {
@@ -5604,9 +5629,15 @@ func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v []*string) 
 	return s
 }
 
+func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetZ(v []*string) *DescribeEventDetailResponseBodyEventDetailChartData {
+	s.Z = v
+	return s
+}
+
 type DescribeEventDetailResponseBodyEventDetailContent struct {
 	// The title of the content in the anomalous event.
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the content in the anomalous event.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -5621,6 +5652,11 @@ func (s DescribeEventDetailResponseBodyEventDetailContent) GoString() string {
 
 func (s *DescribeEventDetailResponseBodyEventDetailContent) SetLabel(v string) *DescribeEventDetailResponseBodyEventDetailContent {
 	s.Label = &v
+	return s
+}
+
+func (s *DescribeEventDetailResponseBodyEventDetailContent) SetName(v string) *DescribeEventDetailResponseBodyEventDetailContent {
+	s.Name = &v
 	return s
 }
 
