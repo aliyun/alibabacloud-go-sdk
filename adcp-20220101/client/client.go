@@ -83,9 +83,9 @@ func (s *AttachClusterToHubResponseBody) SetTaskId(v string) *AttachClusterToHub
 }
 
 type AttachClusterToHubResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachClusterToHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachClusterToHubResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachClusterToHubResponse) String() string {
@@ -117,7 +117,11 @@ type CreateHubClusterRequest struct {
 	// *   true: exposes the API server to the Internet.
 	// *   false: exposes the API server to the internal network.
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	ArgoServerEnabled  *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
 	// Specifies whether to enable the audit log feature. Valid values:
 	//
 	// *   true: enables the audit log feature.
@@ -126,7 +130,8 @@ type CreateHubClusterRequest struct {
 	// Specifies whether to use an advanced security group.
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
 	// The name of the master instance.
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
 	// The type of scenario for which the master instance is suitable. Valid values:
 	//
@@ -137,10 +142,16 @@ type CreateHubClusterRequest struct {
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region. You can call the DescribeRegions operation to query available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Resource Group ID.
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	// The ID of the vSwitch.
 	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   cost-optimized: cost-prioritized scheduling mode.
+	// *   stock-optimized: inventory-prioritized scheduling mode.
 	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
 }
 
@@ -192,6 +203,11 @@ func (s *CreateHubClusterRequest) SetRegionId(v string) *CreateHubClusterRequest
 	return s
 }
 
+func (s *CreateHubClusterRequest) SetResourceGroupID(v string) *CreateHubClusterRequest {
+	s.ResourceGroupID = &v
+	return s
+}
+
 func (s *CreateHubClusterRequest) SetVSwitches(v string) *CreateHubClusterRequest {
 	s.VSwitches = &v
 	return s
@@ -240,9 +256,9 @@ func (s *CreateHubClusterResponseBody) SetTaskId(v string) *CreateHubClusterResp
 }
 
 type CreateHubClusterResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateHubClusterResponse) String() string {
@@ -375,9 +391,9 @@ func (s *DeleteHubClusterResponseBody) SetTaskId(v string) *DeleteHubClusterResp
 }
 
 type DeleteHubClusterResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHubClusterResponse) String() string {
@@ -486,9 +502,9 @@ func (s *DeletePolicyInstanceResponseBody) SetRequestId(v string) *DeletePolicyI
 }
 
 type DeletePolicyInstanceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyInstanceResponse) String() string {
@@ -558,9 +574,9 @@ func (s *DeleteUserPermissionResponseBody) SetRequestId(v string) *DeleteUserPer
 }
 
 type DeleteUserPermissionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserPermissionResponse) String() string {
@@ -703,9 +719,9 @@ func (s *DeployPolicyInstanceResponseBody) SetRequestId(v string) *DeployPolicyI
 }
 
 type DeployPolicyInstanceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeployPolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployPolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeployPolicyInstanceResponse) String() string {
@@ -788,7 +804,8 @@ type DescribeHubClusterDetailsResponseBodyCluster struct {
 	// The configurations of Alibaba Cloud Service Mesh (ASM).
 	MeshConfig *DescribeHubClusterDetailsResponseBodyClusterMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
 	// The network configurations of the master instance.
-	Network        *DescribeHubClusterDetailsResponseBodyClusterNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	Network *DescribeHubClusterDetailsResponseBodyClusterNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The Argo workflow configuration.
 	WorkflowConfig *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig `json:"WorkflowConfig,omitempty" xml:"WorkflowConfig,omitempty" type:"Struct"`
 }
 
@@ -886,12 +903,16 @@ type DescribeHubClusterDetailsResponseBodyClusterClusterInfo struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The error message returned when the master instance failed to be created.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The cluster metadata.
+	MetaData *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty" type:"Struct"`
 	// The name of the master instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configurations of the master instance.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region in which the master instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of Resource Group.
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	// The status of the master instance. Valid values:
 	//
 	// *   initial: The master instance is being initialized.
@@ -936,6 +957,11 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetErrorMessag
 	return s
 }
 
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetMetaData(v *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
+	s.MetaData = v
+	return s
+}
+
 func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetName(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
 	s.Name = &v
 	return s
@@ -951,6 +977,11 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetRegionId(v 
 	return s
 }
 
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetResourceGroupID(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
+	s.ResourceGroupID = &v
+	return s
+}
+
 func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetState(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
 	s.State = &v
 	return s
@@ -963,6 +994,163 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetUpdateTime(
 
 func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetVersion(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfo {
 	s.Version = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData struct {
+	// The cluster metadata.
+	ACKOne *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne `json:"ACKOne,omitempty" xml:"ACKOne,omitempty" type:"Struct"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData) SetACKOne(v *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaData {
+	s.ACKOne = v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne struct {
+	// The GitOps metadata.
+	GitOps *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps `json:"GitOps,omitempty" xml:"GitOps,omitempty" type:"Struct"`
+	// The workflow metadata.
+	WorkFlow *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow `json:"WorkFlow,omitempty" xml:"WorkFlow,omitempty" type:"Struct"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne) SetGitOps(v *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne {
+	s.GitOps = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne) SetWorkFlow(v *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOne {
+	s.WorkFlow = v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps struct {
+	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
+	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
+	// Indicates whether GitOps is enabled. Valid values:
+	//
+	// *   true: GitOps is enabled.
+	// *   false: GitOps is disabled.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Indicates whether GitOps High Availability is enabled. Valid values:
+	//
+	// *   true:  GitOps High Availability is enabled.
+	// *   false:  GitOps High Availability is disabled.
+	HAEnabled *bool `json:"HAEnabled,omitempty" xml:"HAEnabled,omitempty"`
+	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+	//
+	// *   true
+	// *   false
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) SetAccessControlList(v []*string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps {
+	s.AccessControlList = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) SetEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) SetHAEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps {
+	s.HAEnabled = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps) SetPublicAccessEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneGitOps {
+	s.PublicAccessEnabled = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow struct {
+	// The Argo workflow metadata.
+	ArgoWorkflow *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow `json:"ArgoWorkflow,omitempty" xml:"ArgoWorkflow,omitempty" type:"Struct"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow) SetArgoWorkflow(v *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlow {
+	s.ArgoWorkflow = v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow struct {
+	// The Internet access control list (ACL). This parameter takes effect only if PublicAccessEnabled is set to true.
+	AccessControlList []*string `json:"AccessControlList,omitempty" xml:"AccessControlList,omitempty" type:"Repeated"`
+	// Specifies whether to enable the argo workflow. Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable public domain name resolution in the Argo CD or Argo Workflow console. Valid values:
+	//
+	// *   true
+	// *   false
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" xml:"PublicAccessEnabled,omitempty"`
+	// Specifies whether to enable the argo workflow. UI Valid values:
+	//
+	// *   **false** (default)
+	// *   **true**
+	ServerEnabled *string `json:"ServerEnabled,omitempty" xml:"ServerEnabled,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) SetAccessControlList(v []*string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow {
+	s.AccessControlList = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) SetEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) SetPublicAccessEnabled(v bool) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow {
+	s.PublicAccessEnabled = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow) SetServerEnabled(v string) *DescribeHubClusterDetailsResponseBodyClusterClusterInfoMetaDataACKOneWorkFlowArgoWorkflow {
+	s.ServerEnabled = &v
 	return s
 }
 
@@ -1148,10 +1336,20 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterNetwork) SetVpcId(v string)
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig struct {
-	ArgoServerEnabled    *bool                                                                      `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	PriceLimit           *string                                                                    `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	WorkflowScheduleMode *string                                                                    `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
-	WorkflowUnits        []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
+	// Specifies whether to enable the workflow instance UI. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   true
+	// *   false
+	ArgoServerEnabled *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
+	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
+	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
+	// The scheduling mode of the workflow. This parameter takes effect only if Profile is set to XFlow. Valid values:
+	//
+	// *   cost-optimized: cost-prioritized scheduling mode.
+	// *   stock-optimized: inventory-prioritized scheduling mode.
+	WorkflowScheduleMode *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
+	// The Argo workflow regions  configuration.
+	WorkflowUnits []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits `json:"WorkflowUnits,omitempty" xml:"WorkflowUnits,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) String() string {
@@ -1183,9 +1381,14 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfig) SetWorkflow
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits struct {
-	RegionId  *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitches.
 	VSwitches []*DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId     *string                                                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits) String() string {
@@ -1212,8 +1415,12 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches struct {
+	// The ID of the vSwitch.
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID of the cluster.
+	//
+	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnitsVSwitches) String() string {
@@ -1235,9 +1442,9 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterWorkflowConfigWorkflowUnits
 }
 
 type DescribeHubClusterDetailsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHubClusterDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHubClusterDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHubClusterDetailsResponse) String() string {
@@ -1319,9 +1526,9 @@ func (s *DescribeHubClusterKubeconfigResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeHubClusterKubeconfigResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHubClusterKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHubClusterKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHubClusterKubeconfigResponse) String() string {
@@ -1430,9 +1637,9 @@ func (s *DescribeHubClusterLogsResponseBodyLogs) SetLogLevel(v string) *Describe
 }
 
 type DescribeHubClusterLogsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHubClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHubClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHubClusterLogsResponse) String() string {
@@ -1459,7 +1666,10 @@ func (s *DescribeHubClusterLogsResponse) SetBody(v *DescribeHubClusterLogsRespon
 }
 
 type DescribeHubClustersRequest struct {
+	// The configurations of the cluster.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The resource group ID.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeHubClustersRequest) String() string {
@@ -1475,9 +1685,16 @@ func (s *DescribeHubClustersRequest) SetProfile(v string) *DescribeHubClustersRe
 	return s
 }
 
+func (s *DescribeHubClustersRequest) SetResourceGroupId(v string) *DescribeHubClustersRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DescribeHubClustersResponseBody struct {
-	Clusters  []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about clusters.
+	Clusters []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBody) String() string {
@@ -1499,13 +1716,20 @@ func (s *DescribeHubClustersResponseBody) SetRequestId(v string) *DescribeHubClu
 }
 
 type DescribeHubClustersResponseBodyClusters struct {
-	ApiServer   *DescribeHubClustersResponseBodyClustersApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	Conditions  []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Endpoints   *DescribeHubClustersResponseBodyClustersEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	LogConfig   *DescribeHubClustersResponseBodyClustersLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	MeshConfig  *DescribeHubClustersResponseBodyClustersMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
-	Network     *DescribeHubClustersResponseBodyClustersNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	// The information about the API server.
+	ApiServer *DescribeHubClustersResponseBodyClustersApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	// The details of the cluster.
+	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	// The deletion conditions of the cluster.
+	Conditions []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The endpoint of the cluster.
+	Endpoints *DescribeHubClustersResponseBodyClustersEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	// The logging configurations.
+	LogConfig *DescribeHubClustersResponseBodyClustersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	// The configurations of Alibaba Cloud Service Mesh (ASM).
+	MeshConfig *DescribeHubClustersResponseBodyClustersMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	// The network configurations of the cluster.
+	Network *DescribeHubClustersResponseBodyClustersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClustersResponseBodyClusters) String() string {
@@ -1552,8 +1776,14 @@ func (s *DescribeHubClustersResponseBodyClusters) SetNetwork(v *DescribeHubClust
 }
 
 type DescribeHubClustersResponseBodyClustersApiServer struct {
+	// The elastic IP address (EIP) ID.
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// Indicates whether public endpoint is enabled for the API server. Valid values:
+	//
+	// *   true
+	// *   false
+	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
+	// The ID of the Server Load Balancer (SLB) instance that is associated with the cluster.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -1581,16 +1811,38 @@ func (s *DescribeHubClustersResponseBodyClustersApiServer) SetLoadBalancerId(v s
 }
 
 type DescribeHubClustersResponseBodyClustersClusterInfo struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterSpec  *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The specification of the cluster.
+	//
+	// *   Only ack.pro.small is returned.
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The time when the cluster was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The error message that is returned if the cluster failed to be created.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile      *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State        *string `json:"State,omitempty" xml:"State,omitempty"`
-	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations of the cluster.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of Resource Group.
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// *   initial: The cluster is being initialized.
+	// *   failed: The cluster failed to be created.
+	// *   running: The cluster is running
+	// *   inactive: The cluster is pending.
+	// *   deleting: The cluster is being deleted.
+	// *   delete_failed: The cluster failed to be deleted.
+	// *   deleted: The cluster is deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The time when the cluster was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Kubernetes version of the cluster.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersClusterInfo) String() string {
@@ -1636,6 +1888,11 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetRegionId(v strin
 	return s
 }
 
+func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetResourceGroupID(v string) *DescribeHubClustersResponseBodyClustersClusterInfo {
+	s.ResourceGroupID = &v
+	return s
+}
+
 func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetState(v string) *DescribeHubClustersResponseBodyClustersClusterInfo {
 	s.State = &v
 	return s
@@ -1652,10 +1909,18 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 }
 
 type DescribeHubClustersResponseBodyClustersConditions struct {
+	// The error message that is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The reason for the deletion condition.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The status of the cluster that the deletion condition indicates. Valid values:
+	//
+	// *   True: The cluster cannot be deleted.
+	// *   False: The cluster can be deleted.
+	// *   Unknow: Whether the cluster can be deleted is unknown.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of deletion condition.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersConditions) String() string {
@@ -1687,8 +1952,10 @@ func (s *DescribeHubClustersResponseBodyClustersConditions) SetType(v string) *D
 }
 
 type DescribeHubClustersResponseBodyClustersEndpoints struct {
+	// The internal endpoint of the API server.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
+	// The public endpoint of the API server.
+	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersEndpoints) String() string {
@@ -1710,8 +1977,14 @@ func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetPublicApiServerEnd
 }
 
 type DescribeHubClustersResponseBodyClustersLogConfig struct {
-	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// Indicates whether the audit logging feature is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// The name of the project in Simple Log Service.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The number of days that logs are retained by Simple Log Service.
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -1739,8 +2012,13 @@ func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogStoreTTL(v stri
 }
 
 type DescribeHubClustersResponseBodyClustersMeshConfig struct {
-	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+	// Indicates whether ASM is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	// The ASM instance ID.
+	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersMeshConfig) String() string {
@@ -1762,10 +2040,14 @@ func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetMeshId(v string) 
 }
 
 type DescribeHubClustersResponseBodyClustersNetwork struct {
-	ClusterDomain    *string   `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The domain name of the cluster.
+	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
+	// The security group IDs.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
-	VSwitches        []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The IDs of vSwitches to which the cluster belongs.
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersNetwork) String() string {
@@ -1797,9 +2079,9 @@ func (s *DescribeHubClustersResponseBodyClustersNetwork) SetVpcId(v string) *Des
 }
 
 type DescribeHubClustersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHubClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHubClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHubClustersResponse) String() string {
@@ -2052,9 +2334,9 @@ func (s *DescribeManagedClustersResponseBodyClustersStatus) SetState(v string) *
 }
 
 type DescribeManagedClustersResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeManagedClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeManagedClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeManagedClustersResponse) String() string {
@@ -2131,9 +2413,9 @@ func (s *DescribePoliciesResponseBodyPolicies) SetNames(v []*string) *DescribePo
 }
 
 type DescribePoliciesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePoliciesResponse) String() string {
@@ -2160,7 +2442,7 @@ func (s *DescribePoliciesResponse) SetBody(v *DescribePoliciesResponseBody) *Des
 }
 
 type DescribePolicyDetailsRequest struct {
-	// The name of the policy.
+	// The policy name.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -2178,7 +2460,7 @@ func (s *DescribePolicyDetailsRequest) SetPolicyName(v string) *DescribePolicyDe
 }
 
 type DescribePolicyDetailsResponseBody struct {
-	// Detailed information about the policy.
+	// The policies.
 	Policy *DescribePolicyDetailsResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2219,7 +2501,7 @@ type DescribePolicyDetailsResponseBodyPolicy struct {
 	// Indicates whether parameters are required. Valid values:
 	//
 	// *   0: Parameters are required.
-	// *   1: Parameters are optional.
+	// *   1: Parameters are not required.
 	NoConfig *int32 `json:"NoConfig,omitempty" xml:"NoConfig,omitempty"`
 	// The severity level of the policy.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
@@ -2283,9 +2565,9 @@ func (s *DescribePolicyDetailsResponseBodyPolicy) SetUpdated(v string) *Describe
 }
 
 type DescribePolicyDetailsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyDetailsResponse) String() string {
@@ -2756,9 +3038,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyGovernanceInClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyGovernanceInClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponse) String() string {
@@ -2923,9 +3205,9 @@ func (s *DescribePolicyInstancesResponseBodyPolicies) SetTotalViolations(v int64
 }
 
 type DescribePolicyInstancesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyInstancesResponse) String() string {
@@ -3123,9 +3405,9 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) SetSever
 }
 
 type DescribePolicyInstancesStatusResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePolicyInstancesStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePolicyInstancesStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePolicyInstancesStatusResponse) String() string {
@@ -3220,9 +3502,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -3341,9 +3623,9 @@ func (s *DescribeUserPermissionsResponseBodyPermissions) SetRoleType(v string) *
 }
 
 type DescribeUserPermissionsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUserPermissionsResponse) String() string {
@@ -3439,9 +3721,9 @@ func (s *DetachClusterFromHubResponseBody) SetTaskId(v string) *DetachClusterFro
 }
 
 type DetachClusterFromHubResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachClusterFromHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachClusterFromHubResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachClusterFromHubResponse) String() string {
@@ -3468,41 +3750,21 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 }
 
 type GrantUserPermissionRequest struct {
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
-	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
+	IsRamRole *bool `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
+	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The predefined role that you want to assign. Valid values:
 	//
 	// *   admin: the administrator role.
 	// *   dev: the developer role.
-	//
-	// Enumerated values:
-	//
-	// *   arms-admin
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   dev
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   admin
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *   cluster: specifies that the permissions are scoped to a master instance.
+	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The ID of the RAM user or RAM role.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -3547,6 +3809,7 @@ func (s *GrantUserPermissionRequest) SetUserId(v string) *GrantUserPermissionReq
 }
 
 type GrantUserPermissionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3564,9 +3827,9 @@ func (s *GrantUserPermissionResponseBody) SetRequestId(v string) *GrantUserPermi
 }
 
 type GrantUserPermissionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantUserPermissionResponse) String() string {
@@ -3622,7 +3885,8 @@ type GrantUserPermissionsRequestPermissions struct {
 	//
 	// *   When the role_type parameter is set to all-clusters, set the parameter to an empty string.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
+	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
+	IsRamRole *bool `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The predefined role that you want to assign. Valid values:
@@ -3715,9 +3979,9 @@ func (s *GrantUserPermissionsResponseBody) SetRequestId(v string) *GrantUserPerm
 }
 
 type GrantUserPermissionsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantUserPermissionsResponse) String() string {
@@ -3787,7 +4051,10 @@ type UpdateHubClusterFeatureRequest struct {
 	// *   true
 	// *   false
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	// Specifies whether to enable Gateway. Valid values:
+	// - true
+	// - false
+	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
 	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
 	// *   true
@@ -3874,8 +4141,8 @@ func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubCluster
 	return s
 }
 
-func (s *UpdateHubClusterFeatureRequest) SetMSEEnabled(v bool) *UpdateHubClusterFeatureRequest {
-	s.MSEEnabled = &v
+func (s *UpdateHubClusterFeatureRequest) SetGatewayEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.GatewayEnabled = &v
 	return s
 }
 
@@ -3958,7 +4225,10 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	// *   true
 	// *   false
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	MSEEnabled *bool `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	// Specifies whether to enable Gateway. Valid values:
+	// - true
+	// - false
+	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
 	// Specifies whether to enable the monitoring dashboard feature for the workflow instance. This parameter takes effect only if Profile is set to XFlow. Valid values:
 	//
 	// *   true
@@ -4045,8 +4315,8 @@ func (s *UpdateHubClusterFeatureShrinkRequest) SetEnableMesh(v bool) *UpdateHubC
 	return s
 }
 
-func (s *UpdateHubClusterFeatureShrinkRequest) SetMSEEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
-	s.MSEEnabled = &v
+func (s *UpdateHubClusterFeatureShrinkRequest) SetGatewayEnabled(v bool) *UpdateHubClusterFeatureShrinkRequest {
+	s.GatewayEnabled = &v
 	return s
 }
 
@@ -4104,9 +4374,9 @@ func (s *UpdateHubClusterFeatureResponseBody) SetRequestId(v string) *UpdateHubC
 }
 
 type UpdateHubClusterFeatureResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateHubClusterFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHubClusterFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateHubClusterFeatureResponse) String() string {
@@ -4203,9 +4473,9 @@ func (s *UpdateUserPermissionResponseBody) SetRequestId(v string) *UpdateUserPer
 }
 
 type UpdateUserPermissionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserPermissionResponse) String() string {
@@ -4246,7 +4516,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
 		"cn-beijing":            tea.String("adcp.cn-beijing.aliyuncs.com"),
@@ -4394,6 +4663,10 @@ func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupID)) {
+		body["ResourceGroupID"] = request.ResourceGroupID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitches)) {
@@ -4820,6 +5093,10 @@ func (client *Client) DescribeHubClustersWithOptions(request *DescribeHubCluster
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
 		query["Profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5315,6 +5592,14 @@ func (client *Client) GrantUserPermission(request *GrantUserPermissionRequest) (
 	return _result, _err
 }
 
+/**
+ * @deprecated : GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
+ *
+ * @param tmpReq GrantUserPermissionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GrantUserPermissionsResponse
+ */
+// Deprecated
 func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5358,6 +5643,13 @@ func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissio
 	return _result, _err
 }
 
+/**
+ * @deprecated : GrantUserPermissions is deprecated, please use adcp::2022-01-01::GrantUserPermission instead.
+ *
+ * @param request GrantUserPermissionsRequest
+ * @return GrantUserPermissionsResponse
+ */
+// Deprecated
 func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest) (_result *GrantUserPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantUserPermissionsResponse{}
@@ -5425,8 +5717,8 @@ func (client *Client) UpdateHubClusterFeatureWithOptions(tmpReq *UpdateHubCluste
 		query["EnableMesh"] = request.EnableMesh
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MSEEnabled)) {
-		query["MSEEnabled"] = request.MSEEnabled
+	if !tea.BoolValue(util.IsUnset(request.GatewayEnabled)) {
+		query["GatewayEnabled"] = request.GatewayEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MonitorEnabled)) {
