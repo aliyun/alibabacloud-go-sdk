@@ -888,6 +888,93 @@ func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse
 	return s
 }
 
+type CreateUserSuppressionRequest struct {
+	Address              *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateUserSuppressionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserSuppressionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserSuppressionRequest) SetAddress(v string) *CreateUserSuppressionRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateUserSuppressionRequest) SetOwnerId(v int64) *CreateUserSuppressionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateUserSuppressionRequest) SetResourceOwnerAccount(v string) *CreateUserSuppressionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateUserSuppressionRequest) SetResourceOwnerId(v int64) *CreateUserSuppressionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateUserSuppressionResponseBody struct {
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuppressionId *string `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
+}
+
+func (s CreateUserSuppressionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserSuppressionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserSuppressionResponseBody) SetRequestId(v string) *CreateUserSuppressionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUserSuppressionResponseBody) SetSuppressionId(v string) *CreateUserSuppressionResponseBody {
+	s.SuppressionId = &v
+	return s
+}
+
+type CreateUserSuppressionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserSuppressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateUserSuppressionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserSuppressionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserSuppressionResponse) SetHeaders(v map[string]*string) *CreateUserSuppressionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUserSuppressionResponse) SetStatusCode(v int32) *CreateUserSuppressionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUserSuppressionResponse) SetBody(v *CreateUserSuppressionResponseBody) *CreateUserSuppressionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDomainRequest struct {
 	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2123,6 +2210,87 @@ func (s *GetIpfilterListResponse) SetBody(v *GetIpfilterListResponseBody) *GetIp
 	return s
 }
 
+type GetSuppressionListLevelRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetSuppressionListLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuppressionListLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuppressionListLevelRequest) SetOwnerId(v int64) *GetSuppressionListLevelRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetSuppressionListLevelRequest) SetResourceOwnerAccount(v string) *GetSuppressionListLevelRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetSuppressionListLevelRequest) SetResourceOwnerId(v int64) *GetSuppressionListLevelRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetSuppressionListLevelResponseBody struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuppressionListLevel *string `json:"SuppressionListLevel,omitempty" xml:"SuppressionListLevel,omitempty"`
+}
+
+func (s GetSuppressionListLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuppressionListLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuppressionListLevelResponseBody) SetRequestId(v string) *GetSuppressionListLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSuppressionListLevelResponseBody) SetSuppressionListLevel(v string) *GetSuppressionListLevelResponseBody {
+	s.SuppressionListLevel = &v
+	return s
+}
+
+type GetSuppressionListLevelResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSuppressionListLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSuppressionListLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSuppressionListLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSuppressionListLevelResponse) SetHeaders(v map[string]*string) *GetSuppressionListLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSuppressionListLevelResponse) SetStatusCode(v int32) *GetSuppressionListLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSuppressionListLevelResponse) SetBody(v *GetSuppressionListLevelResponseBody) *GetSuppressionListLevelResponse {
+	s.Body = v
+	return s
+}
+
 type GetTrackListRequest struct {
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Offset               *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
@@ -2625,6 +2793,205 @@ func (s *GetTrackListByMailFromAndTagNameResponse) SetStatusCode(v int32) *GetTr
 }
 
 func (s *GetTrackListByMailFromAndTagNameResponse) SetBody(v *GetTrackListByMailFromAndTagNameResponseBody) *GetTrackListByMailFromAndTagNameResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserSuppressionRequest struct {
+	Address              *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	EndBounceTime        *int32  `json:"EndBounceTime,omitempty" xml:"EndBounceTime,omitempty"`
+	EndCreateTime        *int32  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartBounceTime      *int32  `json:"StartBounceTime,omitempty" xml:"StartBounceTime,omitempty"`
+	StartCreateTime      *int32  `json:"StartCreateTime,omitempty" xml:"StartCreateTime,omitempty"`
+}
+
+func (s ListUserSuppressionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserSuppressionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserSuppressionRequest) SetAddress(v string) *ListUserSuppressionRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetEndBounceTime(v int32) *ListUserSuppressionRequest {
+	s.EndBounceTime = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetEndCreateTime(v int32) *ListUserSuppressionRequest {
+	s.EndCreateTime = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetOwnerId(v int64) *ListUserSuppressionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetPageNo(v int32) *ListUserSuppressionRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetPageSize(v int32) *ListUserSuppressionRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetResourceOwnerAccount(v string) *ListUserSuppressionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetResourceOwnerId(v int64) *ListUserSuppressionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetStartBounceTime(v int32) *ListUserSuppressionRequest {
+	s.StartBounceTime = &v
+	return s
+}
+
+func (s *ListUserSuppressionRequest) SetStartCreateTime(v int32) *ListUserSuppressionRequest {
+	s.StartCreateTime = &v
+	return s
+}
+
+type ListUserSuppressionResponseBody struct {
+	Data       *ListUserSuppressionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUserSuppressionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserSuppressionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserSuppressionResponseBody) SetData(v *ListUserSuppressionResponseBodyData) *ListUserSuppressionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBody) SetPageNumber(v int32) *ListUserSuppressionResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBody) SetPageSize(v int32) *ListUserSuppressionResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBody) SetRequestId(v string) *ListUserSuppressionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBody) SetTotalCount(v int32) *ListUserSuppressionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUserSuppressionResponseBodyData struct {
+	UserSuppressions []*ListUserSuppressionResponseBodyDataUserSuppressions `json:"UserSuppressions,omitempty" xml:"UserSuppressions,omitempty" type:"Repeated"`
+}
+
+func (s ListUserSuppressionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserSuppressionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserSuppressionResponseBodyData) SetUserSuppressions(v []*ListUserSuppressionResponseBodyDataUserSuppressions) *ListUserSuppressionResponseBodyData {
+	s.UserSuppressions = v
+	return s
+}
+
+type ListUserSuppressionResponseBodyDataUserSuppressions struct {
+	Address        *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTime     *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastBounceTime *int32  `json:"LastBounceTime,omitempty" xml:"LastBounceTime,omitempty"`
+	SuppressionId  *int32  `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListUserSuppressionResponseBodyDataUserSuppressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserSuppressionResponseBodyDataUserSuppressions) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserSuppressionResponseBodyDataUserSuppressions) SetAddress(v string) *ListUserSuppressionResponseBodyDataUserSuppressions {
+	s.Address = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBodyDataUserSuppressions) SetCreateTime(v int32) *ListUserSuppressionResponseBodyDataUserSuppressions {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBodyDataUserSuppressions) SetLastBounceTime(v int32) *ListUserSuppressionResponseBodyDataUserSuppressions {
+	s.LastBounceTime = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBodyDataUserSuppressions) SetSuppressionId(v int32) *ListUserSuppressionResponseBodyDataUserSuppressions {
+	s.SuppressionId = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponseBodyDataUserSuppressions) SetType(v string) *ListUserSuppressionResponseBodyDataUserSuppressions {
+	s.Type = &v
+	return s
+}
+
+type ListUserSuppressionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserSuppressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserSuppressionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserSuppressionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserSuppressionResponse) SetHeaders(v map[string]*string) *ListUserSuppressionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserSuppressionResponse) SetStatusCode(v int32) *ListUserSuppressionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserSuppressionResponse) SetBody(v *ListUserSuppressionResponseBody) *ListUserSuppressionResponse {
 	s.Body = v
 	return s
 }
@@ -4274,6 +4641,87 @@ func (s *QueryTaskByParamResponse) SetBody(v *QueryTaskByParamResponseBody) *Que
 	return s
 }
 
+type RemoveUserSuppressionRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SuppressionIds       *string `json:"SuppressionIds,omitempty" xml:"SuppressionIds,omitempty"`
+}
+
+func (s RemoveUserSuppressionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserSuppressionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserSuppressionRequest) SetOwnerId(v int64) *RemoveUserSuppressionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RemoveUserSuppressionRequest) SetResourceOwnerAccount(v string) *RemoveUserSuppressionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RemoveUserSuppressionRequest) SetResourceOwnerId(v int64) *RemoveUserSuppressionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RemoveUserSuppressionRequest) SetSuppressionIds(v string) *RemoveUserSuppressionRequest {
+	s.SuppressionIds = &v
+	return s
+}
+
+type RemoveUserSuppressionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveUserSuppressionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserSuppressionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserSuppressionResponseBody) SetRequestId(v string) *RemoveUserSuppressionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveUserSuppressionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUserSuppressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveUserSuppressionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserSuppressionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserSuppressionResponse) SetHeaders(v map[string]*string) *RemoveUserSuppressionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveUserSuppressionResponse) SetStatusCode(v int32) *RemoveUserSuppressionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveUserSuppressionResponse) SetBody(v *RemoveUserSuppressionResponseBody) *RemoveUserSuppressionResponse {
+	s.Body = v
+	return s
+}
+
 type SaveReceiverDetailRequest struct {
 	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4841,13 +5289,14 @@ func (s *SenderStatisticsDetailByParamResponseBodyData) SetMailDetail(v []*Sende
 }
 
 type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	LastUpdateTime    *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Subject           *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	ToAddress         *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	UtcLastUpdateTime *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ErrorClassification *string `json:"ErrorClassification,omitempty" xml:"ErrorClassification,omitempty"`
+	LastUpdateTime      *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subject             *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	ToAddress           *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	UtcLastUpdateTime   *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
 }
 
 func (s SenderStatisticsDetailByParamResponseBodyDataMailDetail) String() string {
@@ -4860,6 +5309,11 @@ func (s SenderStatisticsDetailByParamResponseBodyDataMailDetail) GoString() stri
 
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetAccountName(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
 	s.AccountName = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetErrorClassification(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.ErrorClassification = &v
 	return s
 }
 
@@ -4918,6 +5372,93 @@ func (s *SenderStatisticsDetailByParamResponse) SetStatusCode(v int32) *SenderSt
 }
 
 func (s *SenderStatisticsDetailByParamResponse) SetBody(v *SenderStatisticsDetailByParamResponseBody) *SenderStatisticsDetailByParamResponse {
+	s.Body = v
+	return s
+}
+
+type SetSuppressionListLevelRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SuppressionListLevel *string `json:"SuppressionListLevel,omitempty" xml:"SuppressionListLevel,omitempty"`
+}
+
+func (s SetSuppressionListLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuppressionListLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuppressionListLevelRequest) SetOwnerId(v int64) *SetSuppressionListLevelRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SetSuppressionListLevelRequest) SetResourceOwnerAccount(v string) *SetSuppressionListLevelRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SetSuppressionListLevelRequest) SetResourceOwnerId(v int64) *SetSuppressionListLevelRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SetSuppressionListLevelRequest) SetSuppressionListLevel(v string) *SetSuppressionListLevelRequest {
+	s.SuppressionListLevel = &v
+	return s
+}
+
+type SetSuppressionListLevelResponseBody struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuppressionListLevel *string `json:"SuppressionListLevel,omitempty" xml:"SuppressionListLevel,omitempty"`
+}
+
+func (s SetSuppressionListLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuppressionListLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuppressionListLevelResponseBody) SetRequestId(v string) *SetSuppressionListLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetSuppressionListLevelResponseBody) SetSuppressionListLevel(v string) *SetSuppressionListLevelResponseBody {
+	s.SuppressionListLevel = &v
+	return s
+}
+
+type SetSuppressionListLevelResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSuppressionListLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetSuppressionListLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSuppressionListLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetSuppressionListLevelResponse) SetHeaders(v map[string]*string) *SetSuppressionListLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetSuppressionListLevelResponse) SetStatusCode(v int32) *SetSuppressionListLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetSuppressionListLevelResponse) SetBody(v *SetSuppressionListLevelResponseBody) *SetSuppressionListLevelResponse {
 	s.Body = v
 	return s
 }
@@ -5783,6 +6324,62 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 	return _result, _err
 }
 
+func (client *Client) CreateUserSuppressionWithOptions(request *CreateUserSuppressionRequest, runtime *util.RuntimeOptions) (_result *CreateUserSuppressionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUserSuppression"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUserSuppressionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateUserSuppression(request *CreateUserSuppressionRequest) (_result *CreateUserSuppressionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUserSuppressionResponse{}
+	_body, _err := client.CreateUserSuppressionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6399,6 +6996,58 @@ func (client *Client) GetIpfilterList(request *GetIpfilterListRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetSuppressionListLevelWithOptions(request *GetSuppressionListLevelRequest, runtime *util.RuntimeOptions) (_result *GetSuppressionListLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSuppressionListLevel"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSuppressionListLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSuppressionListLevel(request *GetSuppressionListLevelRequest) (_result *GetSuppressionListLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSuppressionListLevelResponse{}
+	_body, _err := client.GetSuppressionListLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runtime *util.RuntimeOptions) (_result *GetTrackListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6568,6 +7217,86 @@ func (client *Client) GetTrackListByMailFromAndTagName(request *GetTrackListByMa
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTrackListByMailFromAndTagNameResponse{}
 	_body, _err := client.GetTrackListByMailFromAndTagNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserSuppressionWithOptions(request *ListUserSuppressionRequest, runtime *util.RuntimeOptions) (_result *ListUserSuppressionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndBounceTime)) {
+		query["EndBounceTime"] = request.EndBounceTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndCreateTime)) {
+		query["EndCreateTime"] = request.EndCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartBounceTime)) {
+		query["StartBounceTime"] = request.StartBounceTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartCreateTime)) {
+		query["StartCreateTime"] = request.StartCreateTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserSuppression"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserSuppressionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserSuppression(request *ListUserSuppressionRequest) (_result *ListUserSuppressionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserSuppressionResponse{}
+	_body, _err := client.ListUserSuppressionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7239,6 +7968,62 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) RemoveUserSuppressionWithOptions(request *RemoveUserSuppressionRequest, runtime *util.RuntimeOptions) (_result *RemoveUserSuppressionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuppressionIds)) {
+		query["SuppressionIds"] = request.SuppressionIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUserSuppression"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveUserSuppressionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveUserSuppression(request *RemoveUserSuppressionRequest) (_result *RemoveUserSuppressionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveUserSuppressionResponse{}
+	_body, _err := client.RemoveUserSuppressionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveReceiverDetailWithOptions(request *SaveReceiverDetailRequest, runtime *util.RuntimeOptions) (_result *SaveReceiverDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7528,6 +8313,62 @@ func (client *Client) SenderStatisticsDetailByParam(request *SenderStatisticsDet
 	runtime := &util.RuntimeOptions{}
 	_result = &SenderStatisticsDetailByParamResponse{}
 	_body, _err := client.SenderStatisticsDetailByParamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetSuppressionListLevelWithOptions(request *SetSuppressionListLevelRequest, runtime *util.RuntimeOptions) (_result *SetSuppressionListLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuppressionListLevel)) {
+		query["SuppressionListLevel"] = request.SuppressionListLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSuppressionListLevel"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetSuppressionListLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetSuppressionListLevel(request *SetSuppressionListLevelRequest) (_result *SetSuppressionListLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetSuppressionListLevelResponse{}
+	_body, _err := client.SetSuppressionListLevelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
