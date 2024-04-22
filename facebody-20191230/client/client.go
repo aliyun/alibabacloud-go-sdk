@@ -3221,8 +3221,9 @@ type DetectFaceResponseBodyData struct {
 	// 1
 	FaceProbabilityList []*float32 `json:"FaceProbabilityList,omitempty" xml:"FaceProbabilityList,omitempty" type:"Repeated"`
 	// 1
-	FaceRectangles []*int32 `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
-	LandmarkCount  *int32   `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
+	FaceRectangles []*int32   `json:"FaceRectangles,omitempty" xml:"FaceRectangles,omitempty" type:"Repeated"`
+	LandmarkCount  *int32     `json:"LandmarkCount,omitempty" xml:"LandmarkCount,omitempty"`
+	LandmarkScore  []*float32 `json:"LandmarkScore,omitempty" xml:"LandmarkScore,omitempty" type:"Repeated"`
 	// 1
 	Landmarks []*float32 `json:"Landmarks,omitempty" xml:"Landmarks,omitempty" type:"Repeated"`
 	// 1
@@ -3257,6 +3258,11 @@ func (s *DetectFaceResponseBodyData) SetFaceRectangles(v []*int32) *DetectFaceRe
 
 func (s *DetectFaceResponseBodyData) SetLandmarkCount(v int32) *DetectFaceResponseBodyData {
 	s.LandmarkCount = &v
+	return s
+}
+
+func (s *DetectFaceResponseBodyData) SetLandmarkScore(v []*float32) *DetectFaceResponseBodyData {
+	s.LandmarkScore = v
 	return s
 }
 
