@@ -732,8 +732,10 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirew
 }
 
 type BatchDeleteVpcFirewallControlPolicyRequest struct {
-	AclUuidList   []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
-	VpcFirewallId *string   `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
+	// The UUIDs of access control policies.
+	AclUuidList []*string `json:"AclUuidList,omitempty" xml:"AclUuidList,omitempty" type:"Repeated"`
+	// The instance ID of the VPC firewall.
+	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
 func (s BatchDeleteVpcFirewallControlPolicyRequest) String() string {
@@ -755,6 +757,7 @@ func (s *BatchDeleteVpcFirewallControlPolicyRequest) SetVpcFirewallId(v string) 
 }
 
 type BatchDeleteVpcFirewallControlPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1243,6 +1246,170 @@ func (s *CreateNatFirewallControlPolicyResponse) SetStatusCode(v int32) *CreateN
 }
 
 func (s *CreateNatFirewallControlPolicyResponse) SetBody(v *CreateNatFirewallControlPolicyResponseBody) *CreateNatFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSecurityProxyRequest struct {
+	FirewallSwitch    *string                                        `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
+	Lang              *string                                        `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NatGatewayId      *string                                        `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatRouteEntryList []*CreateSecurityProxyRequestNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
+	ProxyName         *string                                        `json:"ProxyName,omitempty" xml:"ProxyName,omitempty"`
+	RegionNo          *string                                        `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	StrictMode        *int32                                         `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	VpcId             *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchAuto       *string                                        `json:"VswitchAuto,omitempty" xml:"VswitchAuto,omitempty"`
+	VswitchCidr       *string                                        `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
+	VswitchId         *string                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+}
+
+func (s CreateSecurityProxyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityProxyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityProxyRequest) SetFirewallSwitch(v string) *CreateSecurityProxyRequest {
+	s.FirewallSwitch = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetLang(v string) *CreateSecurityProxyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetNatGatewayId(v string) *CreateSecurityProxyRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetNatRouteEntryList(v []*CreateSecurityProxyRequestNatRouteEntryList) *CreateSecurityProxyRequest {
+	s.NatRouteEntryList = v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetProxyName(v string) *CreateSecurityProxyRequest {
+	s.ProxyName = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetRegionNo(v string) *CreateSecurityProxyRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetStrictMode(v int32) *CreateSecurityProxyRequest {
+	s.StrictMode = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetVpcId(v string) *CreateSecurityProxyRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetVswitchAuto(v string) *CreateSecurityProxyRequest {
+	s.VswitchAuto = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetVswitchCidr(v string) *CreateSecurityProxyRequest {
+	s.VswitchCidr = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequest) SetVswitchId(v string) *CreateSecurityProxyRequest {
+	s.VswitchId = &v
+	return s
+}
+
+type CreateSecurityProxyRequestNatRouteEntryList struct {
+	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
+	NextHopId       *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType     *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s CreateSecurityProxyRequestNatRouteEntryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityProxyRequestNatRouteEntryList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityProxyRequestNatRouteEntryList) SetDestinationCidr(v string) *CreateSecurityProxyRequestNatRouteEntryList {
+	s.DestinationCidr = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequestNatRouteEntryList) SetNextHopId(v string) *CreateSecurityProxyRequestNatRouteEntryList {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequestNatRouteEntryList) SetNextHopType(v string) *CreateSecurityProxyRequestNatRouteEntryList {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *CreateSecurityProxyRequestNatRouteEntryList) SetRouteTableId(v string) *CreateSecurityProxyRequestNatRouteEntryList {
+	s.RouteTableId = &v
+	return s
+}
+
+type CreateSecurityProxyResponseBody struct {
+	ProxyId   *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSecurityProxyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityProxyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityProxyResponseBody) SetProxyId(v string) *CreateSecurityProxyResponseBody {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *CreateSecurityProxyResponseBody) SetRequestId(v string) *CreateSecurityProxyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSecurityProxyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSecurityProxyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSecurityProxyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityProxyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityProxyResponse) SetHeaders(v map[string]*string) *CreateSecurityProxyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSecurityProxyResponse) SetStatusCode(v int32) *CreateSecurityProxyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSecurityProxyResponse) SetBody(v *CreateSecurityProxyResponseBody) *CreateSecurityProxyResponse {
 	s.Body = v
 	return s
 }
@@ -5264,11 +5431,11 @@ func (s *DescribeDownloadTaskResponseBody) SetTotalCount(v int32) *DescribeDownl
 type DescribeDownloadTaskResponseBodyTasks struct {
 	// The time when the task was created. The value is a UNIX timestamp. Unit: seconds.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the task. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the task expires. The value is a UNIX timestamp. Unit: seconds.
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The size of the file.
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The URL of the OSS object.
+	// The URL of the OSS file.
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	// The status of the task. Valid values:
 	//
@@ -5688,8 +5855,13 @@ func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResp
 }
 
 type DescribeInstanceRiskLevelsRequest struct {
+	// The information about the instances.
 	Instances []*DescribeInstanceRiskLevelsRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Lang      *string                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeInstanceRiskLevelsRequest) String() string {
@@ -5711,10 +5883,14 @@ func (s *DescribeInstanceRiskLevelsRequest) SetLang(v string) *DescribeInstanceR
 }
 
 type DescribeInstanceRiskLevelsRequestInstances struct {
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID of your Cloud Firewall.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The public IP addresses of instances.
 	InternetIp []*string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty" type:"Repeated"`
-	IntranetIp *string   `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Uuid       *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The private IP address of the instance.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The UUID of the instance.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeInstanceRiskLevelsRequestInstances) String() string {
@@ -5746,8 +5922,10 @@ func (s *DescribeInstanceRiskLevelsRequestInstances) SetUuid(v string) *Describe
 }
 
 type DescribeInstanceRiskLevelsResponseBody struct {
+	// The information about the instances.
 	InstanceRisks []*DescribeInstanceRiskLevelsResponseBodyInstanceRisks `json:"InstanceRisks,omitempty" xml:"InstanceRisks,omitempty" type:"Repeated"`
-	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceRiskLevelsResponseBody) String() string {
@@ -5769,9 +5947,14 @@ func (s *DescribeInstanceRiskLevelsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeInstanceRiskLevelsResponseBodyInstanceRisks struct {
-	Details    []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	InstanceId *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Level      *string                                                       `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The risk levels of the Elastic Compute Service (ECS) instance.
+	Details []*DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The instance ID of your Cloud Firewall.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The risk levels. Valid values:
+	//
+	// *   **medium**
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisks) String() string {
@@ -5798,9 +5981,14 @@ func (s *DescribeInstanceRiskLevelsResponseBodyInstanceRisks) SetLevel(v string)
 }
 
 type DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails struct {
-	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP addresses of servers.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The risk levels. Valid values:
+	//
+	// *   **medium**
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails) String() string {
@@ -8846,13 +9034,30 @@ func (s *DescribePolicyPriorUsedResponse) SetBody(v *DescribePolicyPriorUsedResp
 }
 
 type DescribePostpayTrafficDetailRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchItem  *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number. Default value: 1.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The field based on which you want to sort the query results. Valid values:
+	//
+	// *   **resourceId**
+	// *   **trafficDay**
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instance ID or the IP address of the asset.
+	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The traffic type. This parameter is required. Valid values:
+	//
+	// *   **EIP_TRAFFIC**: traffic for the Internet firewall
+	// *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
 	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
@@ -8905,8 +9110,11 @@ func (s *DescribePostpayTrafficDetailRequest) SetTrafficType(v string) *Describe
 }
 
 type DescribePostpayTrafficDetailResponseBody struct {
-	RequestId   *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The traffic statistics.
 	TrafficList []*DescribePostpayTrafficDetailResponseBodyTrafficList `json:"TrafficList,omitempty" xml:"TrafficList,omitempty" type:"Repeated"`
 }
 
@@ -8934,14 +9142,25 @@ func (s *DescribePostpayTrafficDetailResponseBody) SetTrafficList(v []*DescribeP
 }
 
 type DescribePostpayTrafficDetailResponseBodyTrafficList struct {
-	InBytes      *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The inbound network throughput, which indicates the total number of bytes that are received. Unit: bytes.
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The instance ID of the asset.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the asset. This value takes effect only for the Internet firewall.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OutBytes     *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TotalBytes   *int64  `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	TrafficDay   *string `json:"TrafficDay,omitempty" xml:"TrafficDay,omitempty"`
-	TrafficType  *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	// The outbound network throughput, which indicates the total number of bytes that are sent. Unit: bytes.
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The total inbound and outbound network throughput, which indicates the total number of bytes that are sent and received. Unit: bytes.
+	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The date on which the statistics are collected.
+	TrafficDay *string `json:"TrafficDay,omitempty" xml:"TrafficDay,omitempty"`
+	// The traffic type. Valid values:
+	//
+	// *   **EIP_TRAFFIC**: traffic for the Internet firewall
+	// *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
+	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s DescribePostpayTrafficDetailResponseBodyTrafficList) String() string {
@@ -9022,6 +9241,10 @@ func (s *DescribePostpayTrafficDetailResponse) SetBody(v *DescribePostpayTraffic
 }
 
 type DescribePostpayTrafficTotalRequest struct {
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -9039,11 +9262,16 @@ func (s *DescribePostpayTrafficTotalRequest) SetLang(v string) *DescribePostpayT
 }
 
 type DescribePostpayTrafficTotalResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalAssets     *int64  `json:"TotalAssets,omitempty" xml:"TotalAssets,omitempty"`
-	TotalNatAssets  *int64  `json:"TotalNatAssets,omitempty" xml:"TotalNatAssets,omitempty"`
-	TotalNatTraffic *int64  `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
-	TotalTraffic    *int64  `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the assets that are protected by the Internet firewall.
+	TotalAssets *int64 `json:"TotalAssets,omitempty" xml:"TotalAssets,omitempty"`
+	// The total number of the assets that are protected by the NAT firewall.
+	TotalNatAssets *int64 `json:"TotalNatAssets,omitempty" xml:"TotalNatAssets,omitempty"`
+	// The total traffic for the NAT firewall. Unit: bytes.
+	TotalNatTraffic *int64 `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
+	// The total traffic for the Internet firewall. Unit: bytes.
+	TotalTraffic *int64 `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribePostpayTrafficTotalResponseBody) String() string {
@@ -10240,6 +10468,7 @@ func (s *DescribeSignatureLibVersionResponse) SetBody(v *DescribeSignatureLibVer
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListRequest struct {
+	// An array that consists of the details about the traffic redirection instance.
 	CandidateList []*DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList `json:"CandidateList,omitempty" xml:"CandidateList,omitempty" type:"Repeated"`
 	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
@@ -10281,7 +10510,9 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetTrFirewallRout
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList struct {
-	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The ID of the traffic redirection instance.
+	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The type of the traffic redirection instance.
 	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
 }
 
@@ -10304,6 +10535,7 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList) SetC
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest struct {
+	// An array that consists of the details about the traffic redirection instance.
 	CandidateListShrink *string `json:"CandidateList,omitempty" xml:"CandidateList,omitempty"`
 	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
@@ -19494,6 +19726,90 @@ func (client *Client) CreateNatFirewallControlPolicy(request *CreateNatFirewallC
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNatFirewallControlPolicyResponse{}
 	_body, _err := client.CreateNatFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSecurityProxyWithOptions(request *CreateSecurityProxyRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityProxyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallSwitch)) {
+		query["FirewallSwitch"] = request.FirewallSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatRouteEntryList)) {
+		query["NatRouteEntryList"] = request.NatRouteEntryList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyName)) {
+		query["ProxyName"] = request.ProxyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrictMode)) {
+		query["StrictMode"] = request.StrictMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchAuto)) {
+		query["VswitchAuto"] = request.VswitchAuto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchCidr)) {
+		query["VswitchCidr"] = request.VswitchCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSecurityProxy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSecurityProxyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSecurityProxy(request *CreateSecurityProxyRequest) (_result *CreateSecurityProxyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSecurityProxyResponse{}
+	_body, _err := client.CreateSecurityProxyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
