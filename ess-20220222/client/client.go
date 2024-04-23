@@ -340,6 +340,7 @@ func (s *AttachAlbServerGroupsResponse) SetBody(v *AttachAlbServerGroupsResponse
 }
 
 type AttachDBInstancesRequest struct {
+	AttachMode *string `json:"AttachMode,omitempty" xml:"AttachMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
 	//
 	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25965~~).
@@ -359,6 +360,7 @@ type AttachDBInstancesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AttachDBInstancesRequest) String() string {
@@ -367,6 +369,11 @@ func (s AttachDBInstancesRequest) String() string {
 
 func (s AttachDBInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AttachDBInstancesRequest) SetAttachMode(v string) *AttachDBInstancesRequest {
+	s.AttachMode = &v
+	return s
 }
 
 func (s *AttachDBInstancesRequest) SetClientToken(v string) *AttachDBInstancesRequest {
@@ -401,6 +408,11 @@ func (s *AttachDBInstancesRequest) SetResourceOwnerAccount(v string) *AttachDBIn
 
 func (s *AttachDBInstancesRequest) SetScalingGroupId(v string) *AttachDBInstancesRequest {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *AttachDBInstancesRequest) SetType(v string) *AttachDBInstancesRequest {
+	s.Type = &v
 	return s
 }
 
@@ -3648,7 +3660,8 @@ type CreateScalingConfigurationRequest struct {
 	// *   Example: the specified order of vSwitches for your scaling group is vsw1 and vsw2 and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify \["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
 	CustomPriorities []*CreateScalingConfigurationRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
-	DataDisks []*CreateScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DataDisks              []*CreateScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DedicatedHostClusterId *string                                       `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
@@ -3862,6 +3875,11 @@ func (s *CreateScalingConfigurationRequest) SetCustomPriorities(v []*CreateScali
 
 func (s *CreateScalingConfigurationRequest) SetDataDisks(v []*CreateScalingConfigurationRequestDataDisks) *CreateScalingConfigurationRequest {
 	s.DataDisks = v
+	return s
+}
+
+func (s *CreateScalingConfigurationRequest) SetDedicatedHostClusterId(v string) *CreateScalingConfigurationRequest {
+	s.DedicatedHostClusterId = &v
 	return s
 }
 
@@ -4711,7 +4729,8 @@ type CreateScalingConfigurationShrinkRequest struct {
 	// *   Example: the specified order of vSwitches for your scaling group is vsw1 and vsw2 and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify \["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
 	CustomPriorities []*CreateScalingConfigurationShrinkRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
-	DataDisks []*CreateScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DataDisks              []*CreateScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DedicatedHostClusterId *string                                             `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
 	// The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
@@ -4925,6 +4944,11 @@ func (s *CreateScalingConfigurationShrinkRequest) SetCustomPriorities(v []*Creat
 
 func (s *CreateScalingConfigurationShrinkRequest) SetDataDisks(v []*CreateScalingConfigurationShrinkRequestDataDisks) *CreateScalingConfigurationShrinkRequest {
 	s.DataDisks = v
+	return s
+}
+
+func (s *CreateScalingConfigurationShrinkRequest) SetDedicatedHostClusterId(v string) *CreateScalingConfigurationShrinkRequest {
+	s.DedicatedHostClusterId = &v
 	return s
 }
 
@@ -5824,7 +5848,8 @@ type CreateScalingGroupRequest struct {
 	// The IDs of the ApsaraDB RDS instances that you want to associate with the scaling group. The value can be a JSON array that contains multiple ApsaraDB RDS instance IDs. Separate multiple IDs with commas (,).
 	//
 	// You can associate only a limited number of ApsaraDB RDS instances with a scaling group. Go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of ApsaraDB RDS instances that you can associate with a scaling group.
-	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	DBInstanceIds *string                                 `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
+	DBInstances   []*CreateScalingGroupRequestDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
 	// The cooldown period of the scaling group after a scaling activity is complete. Valid values: 0 to 86400. Unit: seconds.
 	//
 	// During the cooldown period, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks.
@@ -6029,6 +6054,11 @@ func (s *CreateScalingGroupRequest) SetCustomPolicyARN(v string) *CreateScalingG
 
 func (s *CreateScalingGroupRequest) SetDBInstanceIds(v string) *CreateScalingGroupRequest {
 	s.DBInstanceIds = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequest) SetDBInstances(v []*CreateScalingGroupRequestDBInstances) *CreateScalingGroupRequest {
+	s.DBInstances = v
 	return s
 }
 
@@ -6243,6 +6273,35 @@ func (s *CreateScalingGroupRequestAlbServerGroups) SetPort(v int32) *CreateScali
 
 func (s *CreateScalingGroupRequestAlbServerGroups) SetWeight(v int32) *CreateScalingGroupRequestAlbServerGroups {
 	s.Weight = &v
+	return s
+}
+
+type CreateScalingGroupRequestDBInstances struct {
+	AttachMode   *string `json:"AttachMode,omitempty" xml:"AttachMode,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateScalingGroupRequestDBInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingGroupRequestDBInstances) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingGroupRequestDBInstances) SetAttachMode(v string) *CreateScalingGroupRequestDBInstances {
+	s.AttachMode = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestDBInstances) SetDBInstanceId(v string) *CreateScalingGroupRequestDBInstances {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestDBInstances) SetType(v string) *CreateScalingGroupRequestDBInstances {
+	s.Type = &v
 	return s
 }
 
@@ -12874,7 +12933,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	CreditSpecification *string                                                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	CustomPriorities    []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// Details of the data disks.
-	DataDisks []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DataDisks              []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DedicatedHostClusterId *string                                                                    `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
 	// The ID of the dedicated host on which the ECS instance is created. Preemptible instances cannot be created on dedicated hosts. If you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit parameters are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query dedicated host IDs.
@@ -13091,6 +13151,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCust
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetDataDisks(v []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.DataDisks = v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetDedicatedHostClusterId(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DedicatedHostClusterId = &v
 	return s
 }
 
@@ -14617,7 +14682,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// The Alibaba Cloud Resource Name (ARN) of the function that is specified in the custom scale-in policy. This parameter takes effect only if you set the first value of RemovalPolicies to CustomPolicy.
 	CustomPolicyARN *string `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
 	// The IDs of the ApsaraDB RDS instances that are associated with the scaling group.
-	DBInstanceIds []*string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
+	DBInstanceIds []*string                                                    `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
+	DBInstances   []*DescribeScalingGroupsResponseBodyScalingGroupsDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
 	// The cooldown period of the scaling group. During the cooldown period, Auto Scaling does not execute the scaling activities that are triggered by [CloudMonitor](~~35170~~) event-triggered tasks.
 	DefaultCooldown *int32 `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
 	// The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances.
@@ -14833,6 +14899,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCustomPolicyARN(v st
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetDBInstanceIds(v []*string) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.DBInstanceIds = v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetDBInstances(v []*DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.DBInstances = v
 	return s
 }
 
@@ -15110,6 +15181,35 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetPort(
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetWeight(v int32) *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups {
 	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupsResponseBodyScalingGroupsDBInstances struct {
+	DBInstanceId     *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	Type             *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) SetDBInstanceId(v string) *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) SetSecurityGroupIds(v []*string) *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances) SetType(v string) *DescribeScalingGroupsResponseBodyScalingGroupsDBInstances {
+	s.Type = &v
 	return s
 }
 
@@ -16663,6 +16763,7 @@ type DetachDBInstancesRequest struct {
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the scaling group.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoveSecurityGroup  *bool   `json:"RemoveSecurityGroup,omitempty" xml:"RemoveSecurityGroup,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
@@ -16698,6 +16799,11 @@ func (s *DetachDBInstancesRequest) SetOwnerId(v int64) *DetachDBInstancesRequest
 
 func (s *DetachDBInstancesRequest) SetRegionId(v string) *DetachDBInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DetachDBInstancesRequest) SetRemoveSecurityGroup(v bool) *DetachDBInstancesRequest {
+	s.RemoveSecurityGroup = &v
 	return s
 }
 
@@ -21138,7 +21244,8 @@ type ModifyScalingConfigurationRequest struct {
 	CreditSpecification *string                                              `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	CustomPriorities    []*ModifyScalingConfigurationRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
-	DataDisks []*ModifyScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DataDisks              []*ModifyScalingConfigurationRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DedicatedHostClusterId *string                                       `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
@@ -21319,6 +21426,11 @@ func (s *ModifyScalingConfigurationRequest) SetCustomPriorities(v []*ModifyScali
 
 func (s *ModifyScalingConfigurationRequest) SetDataDisks(v []*ModifyScalingConfigurationRequestDataDisks) *ModifyScalingConfigurationRequest {
 	s.DataDisks = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationRequest) SetDedicatedHostClusterId(v string) *ModifyScalingConfigurationRequest {
+	s.DedicatedHostClusterId = &v
 	return s
 }
 
@@ -22118,7 +22230,8 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	CreditSpecification *string                                                    `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	CustomPriorities    []*ModifyScalingConfigurationShrinkRequestCustomPriorities `json:"CustomPriorities,omitempty" xml:"CustomPriorities,omitempty" type:"Repeated"`
 	// The data disks.
-	DataDisks []*ModifyScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DataDisks              []*ModifyScalingConfigurationShrinkRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	DedicatedHostClusterId *string                                             `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
 	// The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
 	//
 	// You can call the DescribeDedicatedHosts operation to query the most recent list of dedicated host IDs.
@@ -22299,6 +22412,11 @@ func (s *ModifyScalingConfigurationShrinkRequest) SetCustomPriorities(v []*Modif
 
 func (s *ModifyScalingConfigurationShrinkRequest) SetDataDisks(v []*ModifyScalingConfigurationShrinkRequestDataDisks) *ModifyScalingConfigurationShrinkRequest {
 	s.DataDisks = v
+	return s
+}
+
+func (s *ModifyScalingConfigurationShrinkRequest) SetDedicatedHostClusterId(v string) *ModifyScalingConfigurationShrinkRequest {
+	s.DedicatedHostClusterId = &v
 	return s
 }
 
@@ -26015,6 +26133,10 @@ func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachMode)) {
+		query["AttachMode"] = request.AttachMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -26041,6 +26163,10 @@ func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesReq
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
 		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27227,6 +27353,10 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 		query["DataDisks"] = request.DataDisks
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DedicatedHostClusterId)) {
+		query["DedicatedHostClusterId"] = request.DedicatedHostClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DedicatedHostId)) {
 		query["DedicatedHostId"] = request.DedicatedHostId
 	}
@@ -27537,6 +27667,10 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceIds)) {
 		query["DBInstanceIds"] = request.DBInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstances)) {
+		query["DBInstances"] = request.DBInstances
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultCooldown)) {
@@ -29983,6 +30117,10 @@ func (client *Client) DetachDBInstancesWithOptions(request *DetachDBInstancesReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RemoveSecurityGroup)) {
+		query["RemoveSecurityGroup"] = request.RemoveSecurityGroup
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -31741,6 +31879,10 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 
 	if !tea.BoolValue(util.IsUnset(request.DataDisks)) {
 		query["DataDisks"] = request.DataDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedHostClusterId)) {
+		query["DedicatedHostClusterId"] = request.DedicatedHostClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DedicatedHostId)) {
