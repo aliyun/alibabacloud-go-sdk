@@ -5485,6 +5485,213 @@ func (s *DescribeEnterpriseSnapshotPolicyResponse) SetBody(v *DescribeEnterprise
 	return s
 }
 
+type DescribeEventsRequest struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventName    *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsRequest) SetEndTime(v string) *DescribeEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetEventName(v string) *DescribeEventsRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetMaxResults(v int32) *DescribeEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetNextToken(v string) *DescribeEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetRegionId(v string) *DescribeEventsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetResourceId(v string) *DescribeEventsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetResourceType(v string) *DescribeEventsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetStartTime(v string) *DescribeEventsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeEventsRequest) SetStatus(v string) *DescribeEventsRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeEventsResponseBody struct {
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceEvents []*DescribeEventsResponseBodyResourceEvents `json:"ResourceEvents,omitempty" xml:"ResourceEvents,omitempty" type:"Repeated"`
+	TotalCount     *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBody) SetNextToken(v string) *DescribeEventsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetRequestId(v string) *DescribeEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetResourceEvents(v []*DescribeEventsResponseBodyResourceEvents) *DescribeEventsResponseBody {
+	s.ResourceEvents = v
+	return s
+}
+
+func (s *DescribeEventsResponseBody) SetTotalCount(v int32) *DescribeEventsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEventsResponseBodyResourceEvents struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventLevel      *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	EventName       *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	RecommendAction *string `json:"RecommendAction,omitempty" xml:"RecommendAction,omitempty"`
+	RecommendParams *string `json:"RecommendParams,omitempty" xml:"RecommendParams,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEventsResponseBodyResourceEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponseBodyResourceEvents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetDescription(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetEndTime(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetEventLevel(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetEventName(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetEventType(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetRecommendAction(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.RecommendAction = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetRecommendParams(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.RecommendParams = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetResourceId(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetResourceType(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetStartTime(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeEventsResponseBodyResourceEvents) SetStatus(v string) *DescribeEventsResponseBodyResourceEvents {
+	s.Status = &v
+	return s
+}
+
+type DescribeEventsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEventsResponse) SetHeaders(v map[string]*string) *DescribeEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventsResponse) SetStatusCode(v int32) *DescribeEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *DescribeEventsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLensServiceStatusResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7539,9 +7746,12 @@ func (s *ModifyDiskReplicaPairResponse) SetBody(v *ModifyDiskReplicaPairResponse
 }
 
 type QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the request of SetDedicatedBlockStorageClusterDiskThroughput api.
 	QosRequestId *string `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the dedicated block storage cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) String() string {
@@ -7568,8 +7778,15 @@ func (s *QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) SetRegion
 }
 
 type QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the throughput after setting the throughput by SetDedicatedBlockStorageClusterDiskThroughput api.
+	//
+	// - SUCCESS: The throughput has been successfully set.
+	// - RUNNING: The throughput is currently being set.
+	// - WAIT(): The throughput is waiting to be set.
+	// - FAIL(): The throughput setting has failed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody) String() string {
@@ -8078,10 +8295,14 @@ func (s *ReprotectDiskReplicaPairResponse) SetBody(v *ReprotectDiskReplicaPairRe
 }
 
 type SetDedicatedBlockStorageClusterDiskThroughputRequest struct {
-	Bps         *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// Target throughput.
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetDedicatedBlockStorageClusterDiskThroughputRequest) String() string {
@@ -8113,6 +8334,7 @@ func (s *SetDedicatedBlockStorageClusterDiskThroughputRequest) SetRegionId(v str
 }
 
 type SetDedicatedBlockStorageClusterDiskThroughputResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11495,6 +11717,82 @@ func (client *Client) DescribeEnterpriseSnapshotPolicy(request *DescribeEnterpri
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnterpriseSnapshotPolicyResponse{}
 	_body, _err := client.DescribeEnterpriseSnapshotPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		query["EventName"] = request.EventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEvents"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.DescribeEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
