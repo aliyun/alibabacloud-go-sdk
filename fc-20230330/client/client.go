@@ -4620,6 +4620,52 @@ func (s *GetAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *GetAsyncInvokeCo
 	return s
 }
 
+type GetAsyncTaskRequest struct {
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+}
+
+func (s GetAsyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskRequest) SetQualifier(v string) *GetAsyncTaskRequest {
+	s.Qualifier = &v
+	return s
+}
+
+type GetAsyncTaskResponse struct {
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncTask         `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAsyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskResponse) SetHeaders(v map[string]*string) *GetAsyncTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncTaskResponse) SetStatusCode(v int32) *GetAsyncTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponse) SetBody(v *AsyncTask) *GetAsyncTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetConcurrencyConfigResponse struct {
 	Headers    map[string]*string `json:"headers" xml:"headers"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5119,6 +5165,100 @@ func (s *ListAsyncInvokeConfigsResponse) SetBody(v *ListAsyncInvokeConfigOutput)
 	return s
 }
 
+type ListAsyncTasksRequest struct {
+	IncludePayload   *bool   `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
+	Limit            *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	NextToken        *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Prefix           *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SortOrderByTime  *string `json:"sortOrderByTime,omitempty" xml:"sortOrderByTime,omitempty"`
+	StartedTimeBegin *int64  `json:"startedTimeBegin,omitempty" xml:"startedTimeBegin,omitempty"`
+	StartedTimeEnd   *int64  `json:"startedTimeEnd,omitempty" xml:"startedTimeEnd,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListAsyncTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAsyncTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAsyncTasksRequest) SetIncludePayload(v bool) *ListAsyncTasksRequest {
+	s.IncludePayload = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetLimit(v int32) *ListAsyncTasksRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetNextToken(v string) *ListAsyncTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetPrefix(v string) *ListAsyncTasksRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetQualifier(v string) *ListAsyncTasksRequest {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetSortOrderByTime(v string) *ListAsyncTasksRequest {
+	s.SortOrderByTime = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetStartedTimeBegin(v int64) *ListAsyncTasksRequest {
+	s.StartedTimeBegin = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetStartedTimeEnd(v int64) *ListAsyncTasksRequest {
+	s.StartedTimeEnd = &v
+	return s
+}
+
+func (s *ListAsyncTasksRequest) SetStatus(v string) *ListAsyncTasksRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAsyncTasksResponse struct {
+	Headers    map[string]*string   `json:"headers" xml:"headers"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAsyncTaskOutput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAsyncTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAsyncTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAsyncTasksResponse) SetHeaders(v map[string]*string) *ListAsyncTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAsyncTasksResponse) SetStatusCode(v int32) *ListAsyncTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAsyncTasksResponse) SetBody(v *ListAsyncTaskOutput) *ListAsyncTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ListConcurrencyConfigsRequest struct {
 	// The function name. If you leave this parameter empty, the concurrency configurations of all functions are returned.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -5608,11 +5748,18 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsOutput) *L
 }
 
 type ListTagResourcesRequest struct {
-	Limit        *int32                        `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag" xml:"Tag" type:"Repeated"`
+	// The number of resources to return.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs.
+	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
+	// You can query up to 20 tags at a time.
+	Tag []*ListTagResourcesRequestTag `json:"Tag" xml:"Tag" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -5649,9 +5796,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// 标签名
+	// The tag key.
+	//
+	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	// The tag value.
+	//
+	// The tag value can be up to 128 characters in length and can be an empty string.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5674,11 +5825,18 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesShrinkRequest struct {
-	Limit            *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of resources to return.
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
+	// You can query up to 20 tags at a time.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -6076,7 +6234,48 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 	return s
 }
 
+type StopAsyncTaskRequest struct {
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+}
+
+func (s StopAsyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAsyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAsyncTaskRequest) SetQualifier(v string) *StopAsyncTaskRequest {
+	s.Qualifier = &v
+	return s
+}
+
+type StopAsyncTaskResponse struct {
+	Headers    map[string]*string `json:"headers" xml:"headers"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopAsyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAsyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAsyncTaskResponse) SetHeaders(v map[string]*string) *StopAsyncTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAsyncTaskResponse) SetStatusCode(v int32) *StopAsyncTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type TagResourcesRequest struct {
+	// The configuration of the resource tag.
 	Body *TagResourcesInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6117,10 +6316,14 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId   []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey" xml:"TagKey" type:"Repeated"`
+	// Specifies whether to delete all tags.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The resource identifiers.
+	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag to remove. You can specify a maximum of 50 tags.
+	TagKey []*string `json:"TagKey" xml:"TagKey" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -6152,10 +6355,14 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesShrinkRequest struct {
-	All              *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	// Specifies whether to delete all tags.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The resource identifiers.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKeyShrink     *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The resource type.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag to remove. You can specify a maximum of 50 tags.
+	TagKeyShrink *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s UntagResourcesShrinkRequest) String() string {
@@ -7152,6 +7359,52 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 	return _result, _err
 }
 
+func (client *Client) GetAsyncTaskWithOptions(functionName *string, taskId *string, request *GetAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncTask"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAsyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncTask(functionName *string, taskId *string, request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAsyncTaskResponse{}
+	_body, _err := client.GetAsyncTaskWithOptions(functionName, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConcurrencyConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7669,6 +7922,84 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 	headers := make(map[string]*string)
 	_result = &ListAsyncInvokeConfigsResponse{}
 	_body, _err := client.ListAsyncInvokeConfigsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAsyncTasksWithOptions(functionName *string, request *ListAsyncTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAsyncTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludePayload)) {
+		query["includePayload"] = request.IncludePayload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrderByTime)) {
+		query["sortOrderByTime"] = request.SortOrderByTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartedTimeBegin)) {
+		query["startedTimeBegin"] = request.StartedTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartedTimeEnd)) {
+		query["startedTimeEnd"] = request.StartedTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAsyncTasks"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAsyncTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAsyncTasks(functionName *string, request *ListAsyncTasksRequest) (_result *ListAsyncTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAsyncTasksResponse{}
+	_body, _err := client.ListAsyncTasksWithOptions(functionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8485,6 +8816,52 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 	headers := make(map[string]*string)
 	_result = &PutProvisionConfigResponse{}
 	_body, _err := client.PutProvisionConfigWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopAsyncTaskWithOptions(functionName *string, taskId *string, request *StopAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAsyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAsyncTask"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId)) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopAsyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopAsyncTask(functionName *string, taskId *string, request *StopAsyncTaskRequest) (_result *StopAsyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopAsyncTaskResponse{}
+	_body, _err := client.StopAsyncTaskWithOptions(functionName, taskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
