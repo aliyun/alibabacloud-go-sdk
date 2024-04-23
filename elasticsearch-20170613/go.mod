@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/elasticsearch-20170613/v2
+module github.com/alibabacloud-go/elasticsearch-20170613/v3
 
 go 1.15
 
