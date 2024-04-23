@@ -445,6 +445,135 @@ func (s *CreateArtifactBuildRuleResponse) SetBody(v *CreateArtifactBuildRuleResp
 	return s
 }
 
+type CreateArtifactLifecycleRuleRequest struct {
+	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s CreateArtifactLifecycleRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactLifecycleRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetAuto(v bool) *CreateArtifactLifecycleRuleRequest {
+	s.Auto = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetEnableDeleteTag(v bool) *CreateArtifactLifecycleRuleRequest {
+	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetInstanceId(v string) *CreateArtifactLifecycleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetNamespaceName(v string) *CreateArtifactLifecycleRuleRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetRepoName(v string) *CreateArtifactLifecycleRuleRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetRetentionTagCount(v int64) *CreateArtifactLifecycleRuleRequest {
+	s.RetentionTagCount = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetScheduleTime(v string) *CreateArtifactLifecycleRuleRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetScope(v string) *CreateArtifactLifecycleRuleRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetTagRegexp(v string) *CreateArtifactLifecycleRuleRequest {
+	s.TagRegexp = &v
+	return s
+}
+
+type CreateArtifactLifecycleRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateArtifactLifecycleRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactLifecycleRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactLifecycleRuleResponseBody) SetCode(v string) *CreateArtifactLifecycleRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleResponseBody) SetIsSuccess(v bool) *CreateArtifactLifecycleRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleResponseBody) SetRequestId(v string) *CreateArtifactLifecycleRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleResponseBody) SetRuleId(v string) *CreateArtifactLifecycleRuleResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+type CreateArtifactLifecycleRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateArtifactLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateArtifactLifecycleRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactLifecycleRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactLifecycleRuleResponse) SetHeaders(v map[string]*string) *CreateArtifactLifecycleRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleResponse) SetStatusCode(v int32) *CreateArtifactLifecycleRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleResponse) SetBody(v *CreateArtifactLifecycleRuleResponseBody) *CreateArtifactLifecycleRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBuildRecordByRecordRequest struct {
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2503,6 +2632,87 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 	return s
 }
 
+type DeleteArtifactLifecycleRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteArtifactLifecycleRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactLifecycleRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactLifecycleRuleRequest) SetInstanceId(v string) *DeleteArtifactLifecycleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteArtifactLifecycleRuleRequest) SetRuleId(v string) *DeleteArtifactLifecycleRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteArtifactLifecycleRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteArtifactLifecycleRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactLifecycleRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactLifecycleRuleResponseBody) SetCode(v string) *DeleteArtifactLifecycleRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteArtifactLifecycleRuleResponseBody) SetIsSuccess(v bool) *DeleteArtifactLifecycleRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *DeleteArtifactLifecycleRuleResponseBody) SetRequestId(v string) *DeleteArtifactLifecycleRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteArtifactLifecycleRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteArtifactLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteArtifactLifecycleRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactLifecycleRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactLifecycleRuleResponse) SetHeaders(v map[string]*string) *DeleteArtifactLifecycleRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteArtifactLifecycleRuleResponse) SetStatusCode(v int32) *DeleteArtifactLifecycleRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteArtifactLifecycleRuleResponse) SetBody(v *DeleteArtifactLifecycleRuleResponseBody) *DeleteArtifactLifecycleRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteChainRequest struct {
 	// The ID of the delivery pipeline.
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
@@ -4084,6 +4294,165 @@ func (s *GetArtifactBuildTaskResponse) SetStatusCode(v int32) *GetArtifactBuildT
 }
 
 func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBody) *GetArtifactBuildTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetArtifactLifecycleRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetArtifactLifecycleRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactLifecycleRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactLifecycleRuleRequest) SetInstanceId(v string) *GetArtifactLifecycleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleRequest) SetRuleId(v string) *GetArtifactLifecycleRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetArtifactLifecycleRuleResponseBody struct {
+	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NextTime          *int64  `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s GetArtifactLifecycleRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactLifecycleRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetAuto(v bool) *GetArtifactLifecycleRuleResponseBody {
+	s.Auto = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetCode(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetCreateTime(v int64) *GetArtifactLifecycleRuleResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetEnableDeleteTag(v bool) *GetArtifactLifecycleRuleResponseBody {
+	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetInstanceId(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetIsSuccess(v bool) *GetArtifactLifecycleRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetModifiedTime(v int64) *GetArtifactLifecycleRuleResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetNamespaceName(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetNextTime(v int64) *GetArtifactLifecycleRuleResponseBody {
+	s.NextTime = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetRepoName(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetRequestId(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetRetentionTagCount(v int64) *GetArtifactLifecycleRuleResponseBody {
+	s.RetentionTagCount = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetRuleId(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetScheduleTime(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetScope(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponseBody) SetTagRegexp(v string) *GetArtifactLifecycleRuleResponseBody {
+	s.TagRegexp = &v
+	return s
+}
+
+type GetArtifactLifecycleRuleResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetArtifactLifecycleRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactLifecycleRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactLifecycleRuleResponse) SetHeaders(v map[string]*string) *GetArtifactLifecycleRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponse) SetStatusCode(v int32) *GetArtifactLifecycleRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactLifecycleRuleResponse) SetBody(v *GetArtifactLifecycleRuleResponseBody) *GetArtifactLifecycleRuleResponse {
 	s.Body = v
 	return s
 }
@@ -7657,6 +8026,212 @@ func (s *ListArtifactBuildTaskLogResponse) SetStatusCode(v int32) *ListArtifactB
 }
 
 func (s *ListArtifactBuildTaskLogResponse) SetBody(v *ListArtifactBuildTaskLogResponseBody) *ListArtifactBuildTaskLogResponse {
+	s.Body = v
+	return s
+}
+
+type ListArtifactLifecycleRuleRequest struct {
+	EnableDeleteTag *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListArtifactLifecycleRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactLifecycleRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactLifecycleRuleRequest) SetEnableDeleteTag(v bool) *ListArtifactLifecycleRuleRequest {
+	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleRequest) SetInstanceId(v string) *ListArtifactLifecycleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleRequest) SetPageNo(v int32) *ListArtifactLifecycleRuleRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleRequest) SetPageSize(v int32) *ListArtifactLifecycleRuleRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListArtifactLifecycleRuleResponseBody struct {
+	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess  *bool                                         `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageNo     *int32                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules      []*ListArtifactLifecycleRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListArtifactLifecycleRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactLifecycleRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetCode(v string) *ListArtifactLifecycleRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetIsSuccess(v bool) *ListArtifactLifecycleRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetPageNo(v int32) *ListArtifactLifecycleRuleResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetPageSize(v int32) *ListArtifactLifecycleRuleResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetRequestId(v string) *ListArtifactLifecycleRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetRules(v []*ListArtifactLifecycleRuleResponseBodyRules) *ListArtifactLifecycleRuleResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBody) SetTotalCount(v int32) *ListArtifactLifecycleRuleResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListArtifactLifecycleRuleResponseBodyRules struct {
+	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NextTime          *int64  `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s ListArtifactLifecycleRuleResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactLifecycleRuleResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetAuto(v bool) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.Auto = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetCreateTime(v int64) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetEnableDeleteTag(v bool) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetInstanceId(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetModifiedTime(v int64) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetNamespaceName(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetNextTime(v int64) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.NextTime = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetRepoName(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetRetentionTagCount(v int64) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.RetentionTagCount = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetRuleId(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetScheduleTime(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetScope(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetTagRegexp(v string) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.TagRegexp = &v
+	return s
+}
+
+type ListArtifactLifecycleRuleResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListArtifactLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListArtifactLifecycleRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactLifecycleRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactLifecycleRuleResponse) SetHeaders(v map[string]*string) *ListArtifactLifecycleRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponse) SetStatusCode(v int32) *ListArtifactLifecycleRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponse) SetBody(v *ListArtifactLifecycleRuleResponseBody) *ListArtifactLifecycleRuleResponse {
 	s.Body = v
 	return s
 }
@@ -12808,6 +13383,135 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateArtifactLifecycleRuleRequest struct {
+	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s UpdateArtifactLifecycleRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactLifecycleRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetAuto(v bool) *UpdateArtifactLifecycleRuleRequest {
+	s.Auto = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetEnableDeleteTag(v bool) *UpdateArtifactLifecycleRuleRequest {
+	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetInstanceId(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetNamespaceName(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetRepoName(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetRetentionTagCount(v int64) *UpdateArtifactLifecycleRuleRequest {
+	s.RetentionTagCount = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetRuleId(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetScheduleTime(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetScope(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleRequest) SetTagRegexp(v string) *UpdateArtifactLifecycleRuleRequest {
+	s.TagRegexp = &v
+	return s
+}
+
+type UpdateArtifactLifecycleRuleResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateArtifactLifecycleRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactLifecycleRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactLifecycleRuleResponseBody) SetCode(v string) *UpdateArtifactLifecycleRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleResponseBody) SetIsSuccess(v bool) *UpdateArtifactLifecycleRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleResponseBody) SetRequestId(v string) *UpdateArtifactLifecycleRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateArtifactLifecycleRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateArtifactLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateArtifactLifecycleRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactLifecycleRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactLifecycleRuleResponse) SetHeaders(v map[string]*string) *UpdateArtifactLifecycleRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleResponse) SetStatusCode(v int32) *UpdateArtifactLifecycleRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateArtifactLifecycleRuleResponse) SetBody(v *UpdateArtifactLifecycleRuleResponseBody) *UpdateArtifactLifecycleRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateChainRequest struct {
 	// The configuration of the delivery chain in the JSON format.
 	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
@@ -14434,6 +15138,82 @@ func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRe
 	return _result, _err
 }
 
+func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Auto)) {
+		query["Auto"] = request.Auto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableDeleteTag)) {
+		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionTagCount)) {
+		query["RetentionTagCount"] = request.RetentionTagCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleTime)) {
+		query["ScheduleTime"] = request.ScheduleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagRegexp)) {
+		query["TagRegexp"] = request.TagRegexp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArtifactLifecycleRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateArtifactLifecycleRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateArtifactLifecycleRule(request *CreateArtifactLifecycleRuleRequest) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateArtifactLifecycleRuleResponse{}
+	_body, _err := client.CreateArtifactLifecycleRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildRecordByRecordRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15535,6 +16315,54 @@ func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeleteArtifactLifecycleRuleWithOptions(request *DeleteArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteArtifactLifecycleRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteArtifactLifecycleRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteArtifactLifecycleRule(request *DeleteArtifactLifecycleRuleRequest) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteArtifactLifecycleRuleResponse{}
+	_body, _err := client.DeleteArtifactLifecycleRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtime *util.RuntimeOptions) (_result *DeleteChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16323,6 +17151,46 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetArtifactBuildTaskResponse{}
 	_body, _err := client.GetArtifactBuildTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *GetArtifactLifecycleRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifactLifecycleRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetArtifactLifecycleRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRuleRequest) (_result *GetArtifactLifecycleRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactLifecycleRuleResponse{}
+	_body, _err := client.GetArtifactLifecycleRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17378,6 +18246,46 @@ func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLog
 	runtime := &util.RuntimeOptions{}
 	_result = &ListArtifactBuildTaskLogResponse{}
 	_body, _err := client.ListArtifactBuildTaskLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *ListArtifactLifecycleRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListArtifactLifecycleRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListArtifactLifecycleRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRuleRequest) (_result *ListArtifactLifecycleRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListArtifactLifecycleRuleResponse{}
+	_body, _err := client.ListArtifactLifecycleRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18842,6 +19750,86 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Auto)) {
+		query["Auto"] = request.Auto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableDeleteTag)) {
+		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionTagCount)) {
+		query["RetentionTagCount"] = request.RetentionTagCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleTime)) {
+		query["ScheduleTime"] = request.ScheduleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagRegexp)) {
+		query["TagRegexp"] = request.TagRegexp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateArtifactLifecycleRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateArtifactLifecycleRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecycleRuleRequest) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateArtifactLifecycleRuleResponse{}
+	_body, _err := client.UpdateArtifactLifecycleRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
