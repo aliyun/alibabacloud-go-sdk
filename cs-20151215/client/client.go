@@ -5945,6 +5945,23 @@ func (s *DescribeClusterAddonInstanceResponse) SetBody(v *DescribeClusterAddonIn
 	return s
 }
 
+type DescribeClusterAddonMetadataRequest struct {
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeClusterAddonMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterAddonMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterAddonMetadataRequest) SetVersion(v string) *DescribeClusterAddonMetadataRequest {
+	s.Version = &v
+	return s
+}
+
 type DescribeClusterAddonMetadataResponseBody struct {
 	// The component schema parameters.
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
@@ -22103,14 +22120,25 @@ func (client *Client) DescribeClusterAddonInstance(ClusterID *string, AddonName 
 /**
  * @deprecated
  *
+ * @param request DescribeClusterAddonMetadataRequest
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
  * @return DescribeClusterAddonMetadataResponse
  */
 // Deprecated
-func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string, componentId *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonMetadataResponse, _err error) {
+func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string, componentId *string, request *DescribeClusterAddonMetadataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterAddonMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterAddonMetadata"),
@@ -22135,14 +22163,15 @@ func (client *Client) DescribeClusterAddonMetadataWithOptions(clusterId *string,
 /**
  * @deprecated
  *
+ * @param request DescribeClusterAddonMetadataRequest
  * @return DescribeClusterAddonMetadataResponse
  */
 // Deprecated
-func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentId *string, version *string) (_result *DescribeClusterAddonMetadataResponse, _err error) {
+func (client *Client) DescribeClusterAddonMetadata(clusterId *string, componentId *string, request *DescribeClusterAddonMetadataRequest) (_result *DescribeClusterAddonMetadataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeClusterAddonMetadataResponse{}
-	_body, _err := client.DescribeClusterAddonMetadataWithOptions(clusterId, componentId, version, headers, runtime)
+	_body, _err := client.DescribeClusterAddonMetadataWithOptions(clusterId, componentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
