@@ -1550,7 +1550,15 @@ func (s *CreatePrePayOrderResponse) SetBody(v *CreatePrePayOrderResponseBody) *C
 type CreateSaslUserRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mechanism  *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
+	// The encryption method. Valid values:
+	//
+	// *   SCRAM-SHA-512 (default)
+	// *   SCRAM-SHA-256
+	//
+	// >
+	//
+	// *   This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+	Mechanism *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
 	// The password of the SASL user.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The region ID.
@@ -1891,12 +1899,30 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteAclRequest struct {
-	// The operation type. Valid values:
+	// The operation allowed by the access control list (ACL). Valid values:
 	//
-	// *   **Write**
-	// *   **Read**
-	AclOperationType  *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	// *   **Write**: data writes
+	// *   **Read**: data reads
+	// *   **Describe**: reads of transactional IDs
+	// *   **IdempotentWrite**: idempotent data writes to clusters
+	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	// The operations allowed by the ACL. Separate multiple operations with commas (,).
+	//
+	// Valid values:
+	//
+	// *   **Write**: data writes
+	// *   **Read**: data reads
+	// *   **Describe**: reads of **transactional IDs**
+	// *   **IdempotentWrite**: idempotent data writes to **clusters**
+	//
+	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
 	AclOperationTypes *string `json:"AclOperationTypes,omitempty" xml:"AclOperationTypes,omitempty"`
+	// The authorization method. Valid values:
+	//
+	// *   Deny
+	// *   ALLOW
+	//
+	// >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
 	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
 	// The name of the resource.
 	//
@@ -1908,12 +1934,15 @@ type DeleteAclRequest struct {
 	// *   **LITERAL:** full match
 	// *   **PREFIXED**: prefix match
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	// The type of the resource.
+	// The resource type. Valid values:
 	//
-	// *   **Topic**
-	// *   **Group**
+	// *   **Topic**: topic
+	// *   **Group**: consumer group
+	// *   **Cluster**: cluster
+	// *   **TransactionalId**: transactional ID
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	Host            *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The IP address of the source.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region.
@@ -3382,11 +3411,13 @@ func (s *GetAllowedIpListResponse) SetBody(v *GetAllowedIpListResponseBody) *Get
 
 type GetConsumerListRequest struct {
 	// The name of the consumer group. If you do not configure this parameter, all consumer groups are queried.
-	ConsumerId  *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The page number.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The ID of the instance to which the consumer group belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries to be returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance to which the consumer group belongs.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -3429,15 +3460,18 @@ type GetConsumerListResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The consumer groups.
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
-	CurrentPage  *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of the page to return. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The returned message.
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
-	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total   *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetConsumerListResponseBody) String() string {
@@ -3506,15 +3540,15 @@ func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumer
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
-	// The consumer group that is automatically created by the system.
+	// Indicates that the consumer group was automatically created by the system.
 	AutomaticallyCreatedGroup *bool `json:"AutomaticallyCreatedGroup,omitempty" xml:"AutomaticallyCreatedGroup,omitempty"`
-	// The ID of the consumer group.
+	// The consumer group ID.
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The ID of the region where the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the consumer group.
+	// The instance description.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The tags.
 	Tags *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -3662,13 +3696,13 @@ func (s *GetConsumerProgressRequest) SetRegionId(v string) *GetConsumerProgressR
 }
 
 type GetConsumerProgressResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The returned HTTP status code. If the request is successful, 200 is returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The consumption status of the consumer group.
+	// The consumer progress of the consumer group.
 	ConsumerProgress *GetConsumerProgressResponseBodyConsumerProgress `json:"ConsumerProgress,omitempty" xml:"ConsumerProgress,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -3709,11 +3743,12 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
 	// The time when the last message consumed by the consumer group was generated.
-	LastTimestamp     *int64                                                            `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The details of rebalances in the consumer group.
 	RebalanceInfoList *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList `json:"RebalanceInfoList,omitempty" xml:"RebalanceInfoList,omitempty" type:"Struct"`
-	// The consumption progress of each topic to which the consumer group is subscribed.
+	// The consumer progress of each topic to which the consumer group subscribes.
 	TopicList *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	// The number of messages that were not consumed in all topics. This is also known as the number of accumulated messages in all topics.
+	// The total number of unconsumed messages in all topics to which the consumer group subscribes.
 	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
@@ -3763,12 +3798,18 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) SetRe
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList struct {
-	Generation             *int64  `json:"Generation,omitempty" xml:"Generation,omitempty"`
-	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	LastRebalanceTimestamp *int64  `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
-	Reason                 *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RebalanceSuccess       *bool   `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
-	RebalanceTimeConsuming *int64  `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
+	// The number of rebalances.
+	Generation *int64 `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	// The group ID of the subscriber.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the last rebalance occurred. Unit: milliseconds.
+	LastRebalanceTimestamp *int64 `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
+	// The cause of the rebalance.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Indicates whether new members are added to the consumer group in the rebalance.
+	RebalanceSuccess *bool `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
+	// The duration of the rebalance. Unit: milliseconds.
+	RebalanceTimeConsuming *int64 `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) String() string {
@@ -3829,11 +3870,11 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopicList(
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
 	// The time when the last consumed message in the topic was generated.
 	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The information about offsets in the topic.
+	// The consumer offsets.
 	OffsetList *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
-	// The name of the topic.
+	// The topic name.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The number of messages that were not consumed in the topic. This is also known as the number of accumulated messages in the topic.
+	// The number of unconsumed messages in the topic to which the consumer group subscribes.
 	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
@@ -3889,7 +3930,7 @@ type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList
 	ConsumerOffset *int64 `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
 	// The time when the last consumed message in the partition was generated.
 	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The ID of the partition.
+	// The partition ID.
 	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
 }
 
@@ -3959,6 +4000,7 @@ type GetInstanceListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group. You can obtain this ID on the Resource Group page in the Resource Management console.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Series          *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// The tags.
 	Tag []*GetInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -3988,6 +4030,11 @@ func (s *GetInstanceListRequest) SetRegionId(v string) *GetInstanceListRequest {
 
 func (s *GetInstanceListRequest) SetResourceGroupId(v string) *GetInstanceListRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetInstanceListRequest) SetSeries(v string) *GetInstanceListRequest {
+	s.Series = &v
 	return s
 }
 
@@ -4157,6 +4204,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, no value is returned.
 	// *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the returned value is the configured security group.
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	Series        *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// The instance status. Valid values:
 	//
 	// *   **0**: pending
@@ -4341,6 +4389,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSaslDomainEndpoin
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSecurityGroup(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.SecurityGroup = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSeries(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.Series = &v
 	return s
 }
 
@@ -6366,8 +6419,10 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 }
 
 type ReopenInstanceRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReopenInstanceRequest) String() string {
@@ -6389,10 +6444,14 @@ func (s *ReopenInstanceRequest) SetRegionId(v string) *ReopenInstanceRequest {
 }
 
 type ReopenInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned HTTP status code. If the request is successful, 200 is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReopenInstanceResponseBody) String() string {
@@ -6737,8 +6796,10 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 }
 
 type StopInstanceRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StopInstanceRequest) String() string {
@@ -6760,10 +6821,14 @@ func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned status code. If the request is successful, 200 is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopInstanceResponseBody) String() string {
@@ -7545,10 +7610,10 @@ func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBo
 type UpdateTopicConfigRequest struct {
 	// The key of the topic configuration.
 	//
-	// *   Valid values: retention.hours, max.message.bytes, and replications.
-	// *   retention.hours specifies the message retention period.
-	// *   max.message.bytes specifies the maximum size of a sent message.
-	// *   replications specifies the number of topic replicas.
+	// *   ApsaraMQ for Kafka V2 instances allow you to modify configurations only for topics that use local storage.
+	// *   ApsaraMQ for Kafka V3 instances allow you to modify configurations for all topics.
+	// *   The following keys are supported by `local topic` of ApsaraMQ for Kafka V2 instances: retention.ms, retention.bytes, and replications.
+	// *   The following keys are supported by ApsaraMQ for Kafka V3 instances: retention.hours and max.message.bytes.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -7558,9 +7623,8 @@ type UpdateTopicConfigRequest struct {
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	// The value of the topic configuration.
 	//
-	// *   retention.hours specifies the message retention period. The value is a string. Valid values: 24 to 8760.
-	// *   max.message.bytes specifies the maximum size of a sent message. The value is a string. Valid values: 1048576 to 10485760.
-	// *   replications specifies the number of topic replicas. The value is a string. Valid values: 1 to 3.
+	// *   `retention.hours` specifies the message retention period. Value type: string. Valid values: 24 to 8760.
+	// *   `max.message.bytes` specifies the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7781,14 +7845,22 @@ type UpgradePostPayOrderRequest struct {
 	// The disk size. Unit: GB.
 	//
 	// *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The Internet traffic for the instance.
 	//
-	// *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
-	// > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
-	// > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+	// *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >
+	//
+	// *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+	//
+	// *   If you set **EipModel** to **false**, set **EipMax** to **0**.
+	//
+	// *   When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
 	// Specifies whether to enable Internet access for the instance. Valid values:
 	//
@@ -7800,38 +7872,54 @@ type UpgradePostPayOrderRequest struct {
 	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
 	//
 	// *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
-	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	//
 	// *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
-	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
-	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
 	// The region ID of the instance.
-	RegionId         *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The parameters configured for the Serverless instance. When you create an ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
 	ServerlessConfig *UpgradePostPayOrderRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
-	// The edition of the instance. Valid values:
+	// The instance edition.
 	//
-	// *   **normal**: Standard Edition (High Write)
-	// *   **professional**: Professional Edition (High Write)
-	// *   **professionalForHighRead**: Professional Edition (High Read)
+	// Valid values for this parameter if you set PaidType to 1:
 	//
-	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing](~~84737~~).
+	// *   normal: Standard Edition (High Write)
+	// *   professional: Professional Edition (High Write)
+	// *   professionalForHighRead: Professional Edition (High Read)
+	//
+	// Valid values for this parameter if you set PaidType to 3:
+	//
+	// *   normal: Serverless Standard Edition
+	// *   professional: Serverless Professional Edition
+	//
+	// For more information, see [Billing](~~84737~~).
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The number of topics. We recommend that you do not configure this parameter.
 	//
-	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
@@ -7899,7 +7987,9 @@ func (s *UpgradePostPayOrderRequest) SetTopicQuota(v int32) *UpgradePostPayOrder
 }
 
 type UpgradePostPayOrderRequestServerlessConfig struct {
-	ReservedPublishCapacity   *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	// The traffic reserved for message publishing. Unit: MB/s. Valid values: 1 to 31457280. You can specify only integers for this parameter.
+	ReservedPublishCapacity *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	// The traffic reserved for message subscription. Unit: MB/s. Valid values: 1 to 31457280. You can specify only integers for this parameter.
 	ReservedSubscribeCapacity *int64 `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
 }
 
@@ -7925,14 +8015,22 @@ type UpgradePostPayOrderShrinkRequest struct {
 	// The disk size. Unit: GB.
 	//
 	// *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The Internet traffic for the instance.
 	//
-	// *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
-	// > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
-	// > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+	// *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >
+	//
+	// *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+	//
+	// *   If you set **EipModel** to **false**, set **EipMax** to **0**.
+	//
+	// *   When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
 	// Specifies whether to enable Internet access for the instance. Valid values:
 	//
@@ -7944,38 +8042,54 @@ type UpgradePostPayOrderShrinkRequest struct {
 	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
 	//
 	// *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
-	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	//
 	// *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
-	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
 	// The number of partitions. We recommend that you configure this parameter.
 	//
-	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
 	// The region ID of the instance.
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The parameters configured for the Serverless instance. When you create an ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
-	// The edition of the instance. Valid values:
+	// The instance edition.
 	//
-	// *   **normal**: Standard Edition (High Write)
-	// *   **professional**: Professional Edition (High Write)
-	// *   **professionalForHighRead**: Professional Edition (High Read)
+	// Valid values for this parameter if you set PaidType to 1:
 	//
-	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing](~~84737~~).
+	// *   normal: Standard Edition (High Write)
+	// *   professional: Professional Edition (High Write)
+	// *   professionalForHighRead: Professional Edition (High Read)
+	//
+	// Valid values for this parameter if you set PaidType to 3:
+	//
+	// *   normal: Serverless Standard Edition
+	// *   professional: Serverless Professional Edition
+	//
+	// For more information, see [Billing](~~84737~~).
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The number of topics. We recommend that you do not configure this parameter.
 	//
-	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+	//
+	// >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
 	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
@@ -9991,6 +10105,10 @@ func (client *Client) GetInstanceListWithOptions(request *GetInstanceListRequest
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Series)) {
+		query["Series"] = request.Series
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
 	}
@@ -10570,6 +10688,13 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can call this operation only if your instance is in the Stopped state.
+ *
+ * @param request ReopenInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReopenInstanceResponse
+ */
 func (client *Client) ReopenInstanceWithOptions(request *ReopenInstanceRequest, runtime *util.RuntimeOptions) (_result *ReopenInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10607,6 +10732,12 @@ func (client *Client) ReopenInstanceWithOptions(request *ReopenInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * You can call this operation only if your instance is in the Stopped state.
+ *
+ * @param request ReopenInstanceRequest
+ * @return ReopenInstanceResponse
+ */
 func (client *Client) ReopenInstance(request *ReopenInstanceRequest) (_result *ReopenInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReopenInstanceResponse{}
@@ -10755,6 +10886,13 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 	return _result, _err
 }
 
+/**
+ * You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+ *
+ * @param request StopInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10792,6 +10930,12 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 	return _result, _err
 }
 
+/**
+ * You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+ *
+ * @param request StopInstanceRequest
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInstanceResponse{}
