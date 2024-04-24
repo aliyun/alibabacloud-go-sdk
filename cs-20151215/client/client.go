@@ -15763,7 +15763,8 @@ func (s *MigrateClusterResponse) SetBody(v *MigrateClusterResponseBody) *Migrate
 
 type ModifyClusterRequest struct {
 	// The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
-	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
+	AccessControlList       []*string                                    `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
+	ApiServerCustomCertSans *ModifyClusterRequestApiServerCustomCertSans `json:"api_server_custom_cert_sans,omitempty" xml:"api_server_custom_cert_sans,omitempty" type:"Struct"`
 	// Specifies whether to associate an elastic IP address (EIP) with the cluster API server. This enables Internet access for the cluster. Valid values:
 	//
 	// *   `true`: associates an EIP with the cluster API server.
@@ -15825,6 +15826,11 @@ func (s *ModifyClusterRequest) SetAccessControlList(v []*string) *ModifyClusterR
 	return s
 }
 
+func (s *ModifyClusterRequest) SetApiServerCustomCertSans(v *ModifyClusterRequestApiServerCustomCertSans) *ModifyClusterRequest {
+	s.ApiServerCustomCertSans = v
+	return s
+}
+
 func (s *ModifyClusterRequest) SetApiServerEip(v bool) *ModifyClusterRequest {
 	s.ApiServerEip = &v
 	return s
@@ -15882,6 +15888,29 @@ func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterReques
 
 func (s *ModifyClusterRequest) SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest {
 	s.SystemEventsLogging = v
+	return s
+}
+
+type ModifyClusterRequestApiServerCustomCertSans struct {
+	Action                  *string   `json:"action,omitempty" xml:"action,omitempty"`
+	SubjectAlternativeNames []*string `json:"subject_alternative_names,omitempty" xml:"subject_alternative_names,omitempty" type:"Repeated"`
+}
+
+func (s ModifyClusterRequestApiServerCustomCertSans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClusterRequestApiServerCustomCertSans) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterRequestApiServerCustomCertSans) SetAction(v string) *ModifyClusterRequestApiServerCustomCertSans {
+	s.Action = &v
+	return s
+}
+
+func (s *ModifyClusterRequestApiServerCustomCertSans) SetSubjectAlternativeNames(v []*string) *ModifyClusterRequestApiServerCustomCertSans {
+	s.SubjectAlternativeNames = v
 	return s
 }
 
@@ -24811,6 +24840,10 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessControlList)) {
 		body["access_control_list"] = request.AccessControlList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiServerCustomCertSans)) {
+		body["api_server_custom_cert_sans"] = request.ApiServerCustomCertSans
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ApiServerEip)) {
