@@ -30232,9 +30232,19 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	AverageDialingTime           *int64   `json:"AverageDialingTime,omitempty" xml:"AverageDialingTime,omitempty"`
 	AverageTalkTime              *int64   `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
 	AverageWorkTime              *int64   `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAbandoned               *int64   `json:"CallsAbandoned,omitempty" xml:"CallsAbandoned,omitempty"`
+	CallsAgentHandled            *int64   `json:"CallsAgentHandled,omitempty" xml:"CallsAgentHandled,omitempty"`
 	CallsAnswered                *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
 	CallsDialed                  *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CallsOffered                 *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsQueuingCancelled        *int64   `json:"CallsQueuingCancelled,omitempty" xml:"CallsQueuingCancelled,omitempty"`
+	CallsQueuingFailed           *int64   `json:"CallsQueuingFailed,omitempty" xml:"CallsQueuingFailed,omitempty"`
+	CallsQueuingFailure          *int64   `json:"CallsQueuingFailure,omitempty" xml:"CallsQueuingFailure,omitempty"`
+	CallsQueuingOverflow         *int64   `json:"CallsQueuingOverflow,omitempty" xml:"CallsQueuingOverflow,omitempty"`
+	CallsQueuingRerouted         *int64   `json:"CallsQueuingRerouted,omitempty" xml:"CallsQueuingRerouted,omitempty"`
+	CallsQueuingTimeout          *int64   `json:"CallsQueuingTimeout,omitempty" xml:"CallsQueuingTimeout,omitempty"`
 	CallsServiceLevel30          *string  `json:"CallsServiceLevel30,omitempty" xml:"CallsServiceLevel30,omitempty"`
+	CallsServiceLevel30V2        *int64   `json:"CallsServiceLevel30V2,omitempty" xml:"CallsServiceLevel30V2,omitempty"`
 	MaxDialingTime               *int64   `json:"MaxDialingTime,omitempty" xml:"MaxDialingTime,omitempty"`
 	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
 	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
@@ -30243,6 +30253,7 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
 	TotalDialingTime             *int64   `json:"TotalDialingTime,omitempty" xml:"TotalDialingTime,omitempty"`
 	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWaitTime                *int64   `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
 	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
 }
 
@@ -30274,6 +30285,16 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 	return s
 }
 
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsAbandoned(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsAbandoned = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsAgentHandled(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsAgentHandled = &v
+	return s
+}
+
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsAnswered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
 	s.CallsAnswered = &v
 	return s
@@ -30284,8 +30305,48 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 	return s
 }
 
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsOffered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingCancelled(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingCancelled = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingFailed(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingFailed = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingFailure(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingFailure = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingOverflow(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingOverflow = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingRerouted(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingRerouted = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsQueuingTimeout(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsQueuingTimeout = &v
+	return s
+}
+
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsServiceLevel30(v string) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
 	s.CallsServiceLevel30 = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetCallsServiceLevel30V2(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.CallsServiceLevel30V2 = &v
 	return s
 }
 
@@ -30326,6 +30387,11 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetTotalTalkTime(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
 	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound) SetTotalWaitTime(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListOutbound {
+	s.TotalWaitTime = &v
 	return s
 }
 
