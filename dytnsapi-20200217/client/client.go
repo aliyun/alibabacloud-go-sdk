@@ -4239,6 +4239,152 @@ func (s *QueryPhoneNumberOnlineTimeResponse) SetBody(v *QueryPhoneNumberOnlineTi
 	return s
 }
 
+type QueryPhoneTwiceTelVerifyRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryPhoneTwiceTelVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneTwiceTelVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetAuthCode(v string) *QueryPhoneTwiceTelVerifyRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetInputNumber(v string) *QueryPhoneTwiceTelVerifyRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetMask(v string) *QueryPhoneTwiceTelVerifyRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetOwnerId(v int64) *QueryPhoneTwiceTelVerifyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetResourceOwnerAccount(v string) *QueryPhoneTwiceTelVerifyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetResourceOwnerId(v int64) *QueryPhoneTwiceTelVerifyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyRequest) SetStartTime(v string) *QueryPhoneTwiceTelVerifyRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryPhoneTwiceTelVerifyResponseBody struct {
+	AccessDeniedDetail *string                                   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *QueryPhoneTwiceTelVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryPhoneTwiceTelVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneTwiceTelVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBody) SetAccessDeniedDetail(v string) *QueryPhoneTwiceTelVerifyResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBody) SetCode(v string) *QueryPhoneTwiceTelVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBody) SetData(v *QueryPhoneTwiceTelVerifyResponseBodyData) *QueryPhoneTwiceTelVerifyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBody) SetMessage(v string) *QueryPhoneTwiceTelVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBody) SetRequestId(v string) *QueryPhoneTwiceTelVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryPhoneTwiceTelVerifyResponseBodyData struct {
+	CarrierCode  *string `json:"CarrierCode,omitempty" xml:"CarrierCode,omitempty"`
+	VerifyResult *int64  `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s QueryPhoneTwiceTelVerifyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneTwiceTelVerifyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBodyData) SetCarrierCode(v string) *QueryPhoneTwiceTelVerifyResponseBodyData {
+	s.CarrierCode = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponseBodyData) SetVerifyResult(v int64) *QueryPhoneTwiceTelVerifyResponseBodyData {
+	s.VerifyResult = &v
+	return s
+}
+
+type QueryPhoneTwiceTelVerifyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPhoneTwiceTelVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryPhoneTwiceTelVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPhoneTwiceTelVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponse) SetHeaders(v map[string]*string) *QueryPhoneTwiceTelVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponse) SetStatusCode(v int32) *QueryPhoneTwiceTelVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPhoneTwiceTelVerifyResponse) SetBody(v *QueryPhoneTwiceTelVerifyResponseBody) *QueryPhoneTwiceTelVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type QueryTagApplyRuleRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -7782,6 +7928,74 @@ func (client *Client) QueryPhoneNumberOnlineTime(request *QueryPhoneNumberOnline
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPhoneNumberOnlineTimeResponse{}
 	_body, _err := client.QueryPhoneNumberOnlineTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneTwiceTelVerifyWithOptions(request *QueryPhoneTwiceTelVerifyRequest, runtime *util.RuntimeOptions) (_result *QueryPhoneTwiceTelVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPhoneTwiceTelVerify"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryPhoneTwiceTelVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryPhoneTwiceTelVerify(request *QueryPhoneTwiceTelVerifyRequest) (_result *QueryPhoneTwiceTelVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryPhoneTwiceTelVerifyResponse{}
+	_body, _err := client.QueryPhoneTwiceTelVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
