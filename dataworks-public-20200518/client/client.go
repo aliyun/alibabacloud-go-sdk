@@ -541,6 +541,201 @@ func (s *AddProjectMemberToRoleResponse) SetBody(v *AddProjectMemberToRoleRespon
 	return s
 }
 
+type AddRecognizeRuleRequest struct {
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ColExclude           *string `json:"ColExclude,omitempty" xml:"ColExclude,omitempty"`
+	ColScan              *string `json:"ColScan,omitempty" xml:"ColScan,omitempty"`
+	CommentScan          *string `json:"CommentScan,omitempty" xml:"CommentScan,omitempty"`
+	ContentScan          *string `json:"ContentScan,omitempty" xml:"ContentScan,omitempty"`
+	HitThreshold         *int32  `json:"HitThreshold,omitempty" xml:"HitThreshold,omitempty"`
+	Level                *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	LevelName            *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeParent           *string `json:"NodeParent,omitempty" xml:"NodeParent,omitempty"`
+	OperationType        *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RecognizeRules       *string `json:"RecognizeRules,omitempty" xml:"RecognizeRules,omitempty"`
+	RecognizeRulesType   *string `json:"RecognizeRulesType,omitempty" xml:"RecognizeRulesType,omitempty"`
+	SensitiveDescription *string `json:"SensitiveDescription,omitempty" xml:"SensitiveDescription,omitempty"`
+	SensitiveName        *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s AddRecognizeRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecognizeRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecognizeRuleRequest) SetAccountName(v string) *AddRecognizeRuleRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetColExclude(v string) *AddRecognizeRuleRequest {
+	s.ColExclude = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetColScan(v string) *AddRecognizeRuleRequest {
+	s.ColScan = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetCommentScan(v string) *AddRecognizeRuleRequest {
+	s.CommentScan = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetContentScan(v string) *AddRecognizeRuleRequest {
+	s.ContentScan = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetHitThreshold(v int32) *AddRecognizeRuleRequest {
+	s.HitThreshold = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetLevel(v string) *AddRecognizeRuleRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetLevelName(v string) *AddRecognizeRuleRequest {
+	s.LevelName = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetNodeId(v string) *AddRecognizeRuleRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetNodeParent(v string) *AddRecognizeRuleRequest {
+	s.NodeParent = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetOperationType(v int32) *AddRecognizeRuleRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetRecognizeRules(v string) *AddRecognizeRuleRequest {
+	s.RecognizeRules = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetRecognizeRulesType(v string) *AddRecognizeRuleRequest {
+	s.RecognizeRulesType = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetSensitiveDescription(v string) *AddRecognizeRuleRequest {
+	s.SensitiveDescription = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetSensitiveName(v string) *AddRecognizeRuleRequest {
+	s.SensitiveName = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetStatus(v int32) *AddRecognizeRuleRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetTemplateId(v string) *AddRecognizeRuleRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddRecognizeRuleRequest) SetTenantId(v string) *AddRecognizeRuleRequest {
+	s.TenantId = &v
+	return s
+}
+
+type AddRecognizeRuleResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddRecognizeRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecognizeRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecognizeRuleResponseBody) SetData(v interface{}) *AddRecognizeRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddRecognizeRuleResponseBody) SetErrorCode(v string) *AddRecognizeRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddRecognizeRuleResponseBody) SetErrorMessage(v string) *AddRecognizeRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddRecognizeRuleResponseBody) SetHttpStatusCode(v int32) *AddRecognizeRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddRecognizeRuleResponseBody) SetRequestId(v string) *AddRecognizeRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddRecognizeRuleResponseBody) SetSuccess(v bool) *AddRecognizeRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddRecognizeRuleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddRecognizeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddRecognizeRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRecognizeRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRecognizeRuleResponse) SetHeaders(v map[string]*string) *AddRecognizeRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRecognizeRuleResponse) SetStatusCode(v int32) *AddRecognizeRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddRecognizeRuleResponse) SetBody(v *AddRecognizeRuleResponseBody) *AddRecognizeRuleResponse {
+	s.Body = v
+	return s
+}
+
 type AddToMetaCategoryRequest struct {
 	// The ID of the category.
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
@@ -9584,6 +9779,105 @@ func (s *DeleteQualityRuleResponse) SetBody(v *DeleteQualityRuleResponseBody) *D
 	return s
 }
 
+type DeleteRecognizeRuleRequest struct {
+	SensitiveId *string `json:"SensitiveId,omitempty" xml:"SensitiveId,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DeleteRecognizeRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognizeRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognizeRuleRequest) SetSensitiveId(v string) *DeleteRecognizeRuleRequest {
+	s.SensitiveId = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleRequest) SetTenantId(v string) *DeleteRecognizeRuleRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteRecognizeRuleResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteRecognizeRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognizeRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetData(v interface{}) *DeleteRecognizeRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetErrorCode(v string) *DeleteRecognizeRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetErrorMessage(v string) *DeleteRecognizeRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetHttpStatusCode(v int32) *DeleteRecognizeRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetRequestId(v string) *DeleteRecognizeRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponseBody) SetSuccess(v bool) *DeleteRecognizeRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRecognizeRuleResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRecognizeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRecognizeRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognizeRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognizeRuleResponse) SetHeaders(v map[string]*string) *DeleteRecognizeRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponse) SetStatusCode(v int32) *DeleteRecognizeRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRecognizeRuleResponse) SetBody(v *DeleteRecognizeRuleResponseBody) *DeleteRecognizeRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRemindRequest struct {
 	// The ID of the custom alert rule.
 	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
@@ -10537,6 +10831,487 @@ func (s *DsgQuerySensResultResponse) SetStatusCode(v int32) *DsgQuerySensResultR
 }
 
 func (s *DsgQuerySensResultResponse) SetBody(v *DsgQuerySensResultResponseBody) *DsgQuerySensResultResponse {
+	s.Body = v
+	return s
+}
+
+type DsgRunSensIdentifyRequest struct {
+	EsMetaParams []*DsgRunSensIdentifyRequestEsMetaParams `json:"EsMetaParams,omitempty" xml:"EsMetaParams,omitempty" type:"Repeated"`
+	TenantId     *string                                  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DsgRunSensIdentifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgRunSensIdentifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DsgRunSensIdentifyRequest) SetEsMetaParams(v []*DsgRunSensIdentifyRequestEsMetaParams) *DsgRunSensIdentifyRequest {
+	s.EsMetaParams = v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequest) SetTenantId(v string) *DsgRunSensIdentifyRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DsgRunSensIdentifyRequestEsMetaParams struct {
+	ClusterId     *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DbType        *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	InstanceId    *int64    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProjectName   *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SchemaName    *string   `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName     *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableNameList []*string `json:"TableNameList,omitempty" xml:"TableNameList,omitempty" type:"Repeated"`
+	User          *string   `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DsgRunSensIdentifyRequestEsMetaParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgRunSensIdentifyRequestEsMetaParams) GoString() string {
+	return s.String()
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetClusterId(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetDbType(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.DbType = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetInstanceId(v int64) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetProjectName(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetSchemaName(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetTableName(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.TableName = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetTableNameList(v []*string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.TableNameList = v
+	return s
+}
+
+func (s *DsgRunSensIdentifyRequestEsMetaParams) SetUser(v string) *DsgRunSensIdentifyRequestEsMetaParams {
+	s.User = &v
+	return s
+}
+
+type DsgRunSensIdentifyShrinkRequest struct {
+	EsMetaParamsShrink *string `json:"EsMetaParams,omitempty" xml:"EsMetaParams,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DsgRunSensIdentifyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgRunSensIdentifyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DsgRunSensIdentifyShrinkRequest) SetEsMetaParamsShrink(v string) *DsgRunSensIdentifyShrinkRequest {
+	s.EsMetaParamsShrink = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyShrinkRequest) SetTenantId(v string) *DsgRunSensIdentifyShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DsgRunSensIdentifyResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DsgRunSensIdentifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgRunSensIdentifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetData(v interface{}) *DsgRunSensIdentifyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetErrorCode(v string) *DsgRunSensIdentifyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetErrorMessage(v string) *DsgRunSensIdentifyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetHttpStatusCode(v int32) *DsgRunSensIdentifyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetRequestId(v string) *DsgRunSensIdentifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponseBody) SetSuccess(v bool) *DsgRunSensIdentifyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DsgRunSensIdentifyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DsgRunSensIdentifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DsgRunSensIdentifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgRunSensIdentifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DsgRunSensIdentifyResponse) SetHeaders(v map[string]*string) *DsgRunSensIdentifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponse) SetStatusCode(v int32) *DsgRunSensIdentifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DsgRunSensIdentifyResponse) SetBody(v *DsgRunSensIdentifyResponseBody) *DsgRunSensIdentifyResponse {
+	s.Body = v
+	return s
+}
+
+type DsgStopSensIdentifyRequest struct {
+	JobId    *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DsgStopSensIdentifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgStopSensIdentifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DsgStopSensIdentifyRequest) SetJobId(v int64) *DsgStopSensIdentifyRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyRequest) SetTenantId(v string) *DsgStopSensIdentifyRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DsgStopSensIdentifyResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DsgStopSensIdentifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgStopSensIdentifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetData(v interface{}) *DsgStopSensIdentifyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetErrorCode(v string) *DsgStopSensIdentifyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetErrorMessage(v string) *DsgStopSensIdentifyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetHttpStatusCode(v int32) *DsgStopSensIdentifyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetRequestId(v string) *DsgStopSensIdentifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponseBody) SetSuccess(v bool) *DsgStopSensIdentifyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DsgStopSensIdentifyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DsgStopSensIdentifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DsgStopSensIdentifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DsgStopSensIdentifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DsgStopSensIdentifyResponse) SetHeaders(v map[string]*string) *DsgStopSensIdentifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponse) SetStatusCode(v int32) *DsgStopSensIdentifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DsgStopSensIdentifyResponse) SetBody(v *DsgStopSensIdentifyResponseBody) *DsgStopSensIdentifyResponse {
+	s.Body = v
+	return s
+}
+
+type EditRecognizeRuleRequest struct {
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ColExclude           *string `json:"ColExclude,omitempty" xml:"ColExclude,omitempty"`
+	ColScan              *string `json:"ColScan,omitempty" xml:"ColScan,omitempty"`
+	CommentScan          *string `json:"CommentScan,omitempty" xml:"CommentScan,omitempty"`
+	ContentScan          *string `json:"ContentScan,omitempty" xml:"ContentScan,omitempty"`
+	HitThreshold         *int32  `json:"HitThreshold,omitempty" xml:"HitThreshold,omitempty"`
+	LevelName            *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeParent           *string `json:"NodeParent,omitempty" xml:"NodeParent,omitempty"`
+	OperationType        *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	RecognizeRules       *string `json:"RecognizeRules,omitempty" xml:"RecognizeRules,omitempty"`
+	RecognizeRulesType   *string `json:"RecognizeRulesType,omitempty" xml:"RecognizeRulesType,omitempty"`
+	SensitiveDescription *string `json:"SensitiveDescription,omitempty" xml:"SensitiveDescription,omitempty"`
+	SensitiveId          *string `json:"SensitiveId,omitempty" xml:"SensitiveId,omitempty"`
+	SensitiveName        *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId           *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Level                *string `json:"level,omitempty" xml:"level,omitempty"`
+}
+
+func (s EditRecognizeRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditRecognizeRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditRecognizeRuleRequest) SetAccountName(v string) *EditRecognizeRuleRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetColExclude(v string) *EditRecognizeRuleRequest {
+	s.ColExclude = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetColScan(v string) *EditRecognizeRuleRequest {
+	s.ColScan = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetCommentScan(v string) *EditRecognizeRuleRequest {
+	s.CommentScan = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetContentScan(v string) *EditRecognizeRuleRequest {
+	s.ContentScan = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetHitThreshold(v int32) *EditRecognizeRuleRequest {
+	s.HitThreshold = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetLevelName(v string) *EditRecognizeRuleRequest {
+	s.LevelName = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetNodeId(v string) *EditRecognizeRuleRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetNodeParent(v string) *EditRecognizeRuleRequest {
+	s.NodeParent = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetOperationType(v int32) *EditRecognizeRuleRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetRecognizeRules(v string) *EditRecognizeRuleRequest {
+	s.RecognizeRules = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetRecognizeRulesType(v string) *EditRecognizeRuleRequest {
+	s.RecognizeRulesType = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetSensitiveDescription(v string) *EditRecognizeRuleRequest {
+	s.SensitiveDescription = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetSensitiveId(v string) *EditRecognizeRuleRequest {
+	s.SensitiveId = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetSensitiveName(v string) *EditRecognizeRuleRequest {
+	s.SensitiveName = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetStatus(v int32) *EditRecognizeRuleRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetTemplateId(v string) *EditRecognizeRuleRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetTenantId(v string) *EditRecognizeRuleRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *EditRecognizeRuleRequest) SetLevel(v string) *EditRecognizeRuleRequest {
+	s.Level = &v
+	return s
+}
+
+type EditRecognizeRuleResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EditRecognizeRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditRecognizeRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditRecognizeRuleResponseBody) SetData(v interface{}) *EditRecognizeRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EditRecognizeRuleResponseBody) SetErrorCode(v string) *EditRecognizeRuleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EditRecognizeRuleResponseBody) SetErrorMessage(v string) *EditRecognizeRuleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EditRecognizeRuleResponseBody) SetHttpStatusCode(v int32) *EditRecognizeRuleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EditRecognizeRuleResponseBody) SetRequestId(v string) *EditRecognizeRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EditRecognizeRuleResponseBody) SetSuccess(v bool) *EditRecognizeRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EditRecognizeRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditRecognizeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EditRecognizeRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditRecognizeRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditRecognizeRuleResponse) SetHeaders(v map[string]*string) *EditRecognizeRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditRecognizeRuleResponse) SetStatusCode(v int32) *EditRecognizeRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EditRecognizeRuleResponse) SetBody(v *EditRecognizeRuleResponseBody) *EditRecognizeRuleResponse {
 	s.Body = v
 	return s
 }
@@ -46670,6 +47445,99 @@ func (s *QueryDISyncTaskConfigProcessResultResponse) SetBody(v *QueryDISyncTaskC
 	return s
 }
 
+type QueryDefaultTemplateRequest struct {
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryDefaultTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDefaultTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDefaultTemplateRequest) SetTenantId(v string) *QueryDefaultTemplateRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryDefaultTemplateResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDefaultTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDefaultTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetData(v interface{}) *QueryDefaultTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetErrorCode(v string) *QueryDefaultTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetErrorMessage(v string) *QueryDefaultTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetHttpStatusCode(v int32) *QueryDefaultTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetRequestId(v string) *QueryDefaultTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponseBody) SetSuccess(v bool) *QueryDefaultTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDefaultTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDefaultTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDefaultTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDefaultTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDefaultTemplateResponse) SetHeaders(v map[string]*string) *QueryDefaultTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponse) SetStatusCode(v int32) *QueryDefaultTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDefaultTemplateResponse) SetBody(v *QueryDefaultTemplateResponseBody) *QueryDefaultTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type QueryPublicModelEngineRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -46741,6 +47609,607 @@ func (s *QueryPublicModelEngineResponse) SetStatusCode(v int32) *QueryPublicMode
 }
 
 func (s *QueryPublicModelEngineResponse) SetBody(v *QueryPublicModelEngineResponseBody) *QueryPublicModelEngineResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRecognizeDataByRuleTypeRequest struct {
+	RecognizeRulesType *string `json:"RecognizeRulesType,omitempty" xml:"RecognizeRulesType,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryRecognizeDataByRuleTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeDataByRuleTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeDataByRuleTypeRequest) SetRecognizeRulesType(v string) *QueryRecognizeDataByRuleTypeRequest {
+	s.RecognizeRulesType = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeRequest) SetTenantId(v string) *QueryRecognizeDataByRuleTypeRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryRecognizeDataByRuleTypeResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryRecognizeDataByRuleTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeDataByRuleTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetData(v interface{}) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetErrorCode(v string) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetErrorMessage(v string) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetHttpStatusCode(v int32) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetRequestId(v string) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponseBody) SetSuccess(v bool) *QueryRecognizeDataByRuleTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryRecognizeDataByRuleTypeResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRecognizeDataByRuleTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRecognizeDataByRuleTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeDataByRuleTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponse) SetHeaders(v map[string]*string) *QueryRecognizeDataByRuleTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponse) SetStatusCode(v int32) *QueryRecognizeDataByRuleTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeDataByRuleTypeResponse) SetBody(v *QueryRecognizeDataByRuleTypeResponseBody) *QueryRecognizeDataByRuleTypeResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRecognizeRuleDetailRequest struct {
+	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryRecognizeRuleDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeRuleDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeRuleDetailRequest) SetSensitiveName(v string) *QueryRecognizeRuleDetailRequest {
+	s.SensitiveName = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailRequest) SetTenantId(v string) *QueryRecognizeRuleDetailRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryRecognizeRuleDetailResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryRecognizeRuleDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeRuleDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetData(v interface{}) *QueryRecognizeRuleDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetErrorCode(v string) *QueryRecognizeRuleDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetErrorMessage(v string) *QueryRecognizeRuleDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetHttpStatusCode(v int32) *QueryRecognizeRuleDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetRequestId(v string) *QueryRecognizeRuleDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponseBody) SetSuccess(v bool) *QueryRecognizeRuleDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryRecognizeRuleDetailResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRecognizeRuleDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRecognizeRuleDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeRuleDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeRuleDetailResponse) SetHeaders(v map[string]*string) *QueryRecognizeRuleDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponse) SetStatusCode(v int32) *QueryRecognizeRuleDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRuleDetailResponse) SetBody(v *QueryRecognizeRuleDetailResponseBody) *QueryRecognizeRuleDetailResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRecognizeRulesTypeResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryRecognizeRulesTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeRulesTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetData(v interface{}) *QueryRecognizeRulesTypeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetErrorCode(v string) *QueryRecognizeRulesTypeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetErrorMessage(v string) *QueryRecognizeRulesTypeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetHttpStatusCode(v int32) *QueryRecognizeRulesTypeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetRequestId(v string) *QueryRecognizeRulesTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponseBody) SetSuccess(v bool) *QueryRecognizeRulesTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryRecognizeRulesTypeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRecognizeRulesTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryRecognizeRulesTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRecognizeRulesTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRecognizeRulesTypeResponse) SetHeaders(v map[string]*string) *QueryRecognizeRulesTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponse) SetStatusCode(v int32) *QueryRecognizeRulesTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRecognizeRulesTypeResponse) SetBody(v *QueryRecognizeRulesTypeResponseBody) *QueryRecognizeRulesTypeResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySensClassificationRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QuerySensClassificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensClassificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensClassificationRequest) SetTemplateId(v string) *QuerySensClassificationRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *QuerySensClassificationRequest) SetTenantId(v string) *QuerySensClassificationRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QuerySensClassificationResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySensClassificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensClassificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensClassificationResponseBody) SetData(v interface{}) *QuerySensClassificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySensClassificationResponseBody) SetErrorCode(v string) *QuerySensClassificationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QuerySensClassificationResponseBody) SetErrorMessage(v string) *QuerySensClassificationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySensClassificationResponseBody) SetHttpStatusCode(v int32) *QuerySensClassificationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QuerySensClassificationResponseBody) SetRequestId(v string) *QuerySensClassificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySensClassificationResponseBody) SetSuccess(v bool) *QuerySensClassificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySensClassificationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySensClassificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySensClassificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensClassificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensClassificationResponse) SetHeaders(v map[string]*string) *QuerySensClassificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySensClassificationResponse) SetStatusCode(v int32) *QuerySensClassificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySensClassificationResponse) SetBody(v *QuerySensClassificationResponseBody) *QuerySensClassificationResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySensLevelRequest struct {
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId   *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QuerySensLevelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensLevelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensLevelRequest) SetTemplateId(v string) *QuerySensLevelRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *QuerySensLevelRequest) SetTenantId(v string) *QuerySensLevelRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QuerySensLevelResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySensLevelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensLevelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensLevelResponseBody) SetData(v interface{}) *QuerySensLevelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySensLevelResponseBody) SetErrorCode(v string) *QuerySensLevelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QuerySensLevelResponseBody) SetErrorMessage(v string) *QuerySensLevelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySensLevelResponseBody) SetHttpStatusCode(v int32) *QuerySensLevelResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QuerySensLevelResponseBody) SetRequestId(v string) *QuerySensLevelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySensLevelResponseBody) SetSuccess(v bool) *QuerySensLevelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySensLevelResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySensLevelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySensLevelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensLevelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensLevelResponse) SetHeaders(v map[string]*string) *QuerySensLevelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySensLevelResponse) SetStatusCode(v int32) *QuerySensLevelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySensLevelResponse) SetBody(v *QuerySensLevelResponseBody) *QuerySensLevelResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySensNodeInfoRequest struct {
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Status        *int32  `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s QuerySensNodeInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensNodeInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensNodeInfoRequest) SetNodeId(v string) *QuerySensNodeInfoRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetPageNo(v int32) *QuerySensNodeInfoRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetPageSize(v int32) *QuerySensNodeInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetSensitiveName(v string) *QuerySensNodeInfoRequest {
+	s.SensitiveName = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetTemplateId(v string) *QuerySensNodeInfoRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetTenantId(v string) *QuerySensNodeInfoRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoRequest) SetStatus(v int32) *QuerySensNodeInfoRequest {
+	s.Status = &v
+	return s
+}
+
+type QuerySensNodeInfoResponseBody struct {
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySensNodeInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensNodeInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetData(v interface{}) *QuerySensNodeInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetErrorCode(v string) *QuerySensNodeInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetErrorMessage(v string) *QuerySensNodeInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetHttpStatusCode(v int32) *QuerySensNodeInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetRequestId(v string) *QuerySensNodeInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponseBody) SetSuccess(v bool) *QuerySensNodeInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySensNodeInfoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySensNodeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySensNodeInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySensNodeInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySensNodeInfoResponse) SetHeaders(v map[string]*string) *QuerySensNodeInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponse) SetStatusCode(v int32) *QuerySensNodeInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySensNodeInfoResponse) SetBody(v *QuerySensNodeInfoResponseBody) *QuerySensNodeInfoResponse {
 	s.Body = v
 	return s
 }
@@ -56355,6 +57824,118 @@ func (client *Client) AddProjectMemberToRole(request *AddProjectMemberToRoleRequ
 	return _result, _err
 }
 
+func (client *Client) AddRecognizeRuleWithOptions(request *AddRecognizeRuleRequest, runtime *util.RuntimeOptions) (_result *AddRecognizeRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		body["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColExclude)) {
+		body["ColExclude"] = request.ColExclude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColScan)) {
+		body["ColScan"] = request.ColScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommentScan)) {
+		body["CommentScan"] = request.CommentScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentScan)) {
+		body["ContentScan"] = request.ContentScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HitThreshold)) {
+		body["HitThreshold"] = request.HitThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		body["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelName)) {
+		body["LevelName"] = request.LevelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParent)) {
+		body["NodeParent"] = request.NodeParent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecognizeRules)) {
+		body["RecognizeRules"] = request.RecognizeRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecognizeRulesType)) {
+		body["RecognizeRulesType"] = request.RecognizeRulesType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveDescription)) {
+		body["SensitiveDescription"] = request.SensitiveDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveName)) {
+		body["SensitiveName"] = request.SensitiveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRecognizeRule"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddRecognizeRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddRecognizeRule(request *AddRecognizeRuleRequest) (_result *AddRecognizeRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddRecognizeRuleResponse{}
+	_body, _err := client.AddRecognizeRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddToMetaCategoryWithOptions(request *AddToMetaCategoryRequest, runtime *util.RuntimeOptions) (_result *AddToMetaCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60710,6 +62291,54 @@ func (client *Client) DeleteQualityRule(request *DeleteQualityRuleRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteRecognizeRuleWithOptions(request *DeleteRecognizeRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRecognizeRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SensitiveId)) {
+		body["SensitiveId"] = request.SensitiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRecognizeRule"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRecognizeRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRecognizeRule(request *DeleteRecognizeRuleRequest) (_result *DeleteRecognizeRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRecognizeRuleResponse{}
+	_body, _err := client.DeleteRecognizeRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRemindWithOptions(request *DeleteRemindRequest, runtime *util.RuntimeOptions) (_result *DeleteRemindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61155,6 +62784,224 @@ func (client *Client) DsgQuerySensResult(request *DsgQuerySensResultRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DsgQuerySensResultResponse{}
 	_body, _err := client.DsgQuerySensResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DsgRunSensIdentifyWithOptions(tmpReq *DsgRunSensIdentifyRequest, runtime *util.RuntimeOptions) (_result *DsgRunSensIdentifyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DsgRunSensIdentifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EsMetaParams)) {
+		request.EsMetaParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EsMetaParams, tea.String("EsMetaParams"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EsMetaParamsShrink)) {
+		body["EsMetaParams"] = request.EsMetaParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DsgRunSensIdentify"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DsgRunSensIdentifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DsgRunSensIdentify(request *DsgRunSensIdentifyRequest) (_result *DsgRunSensIdentifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DsgRunSensIdentifyResponse{}
+	_body, _err := client.DsgRunSensIdentifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DsgStopSensIdentifyWithOptions(request *DsgStopSensIdentifyRequest, runtime *util.RuntimeOptions) (_result *DsgStopSensIdentifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DsgStopSensIdentify"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DsgStopSensIdentifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DsgStopSensIdentify(request *DsgStopSensIdentifyRequest) (_result *DsgStopSensIdentifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DsgStopSensIdentifyResponse{}
+	_body, _err := client.DsgStopSensIdentifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EditRecognizeRuleWithOptions(request *EditRecognizeRuleRequest, runtime *util.RuntimeOptions) (_result *EditRecognizeRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		body["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColExclude)) {
+		body["ColExclude"] = request.ColExclude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColScan)) {
+		body["ColScan"] = request.ColScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommentScan)) {
+		body["CommentScan"] = request.CommentScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentScan)) {
+		body["ContentScan"] = request.ContentScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HitThreshold)) {
+		body["HitThreshold"] = request.HitThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelName)) {
+		body["LevelName"] = request.LevelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParent)) {
+		body["NodeParent"] = request.NodeParent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecognizeRules)) {
+		body["RecognizeRules"] = request.RecognizeRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecognizeRulesType)) {
+		body["RecognizeRulesType"] = request.RecognizeRulesType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveDescription)) {
+		body["SensitiveDescription"] = request.SensitiveDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveId)) {
+		body["SensitiveId"] = request.SensitiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveName)) {
+		body["SensitiveName"] = request.SensitiveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		body["level"] = request.Level
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EditRecognizeRule"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EditRecognizeRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EditRecognizeRule(request *EditRecognizeRuleRequest) (_result *EditRecognizeRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EditRecognizeRuleResponse{}
+	_body, _err := client.EditRecognizeRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69325,6 +71172,50 @@ func (client *Client) QueryDISyncTaskConfigProcessResult(request *QueryDISyncTas
 	return _result, _err
 }
 
+func (client *Client) QueryDefaultTemplateWithOptions(request *QueryDefaultTemplateRequest, runtime *util.RuntimeOptions) (_result *QueryDefaultTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDefaultTemplate"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDefaultTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDefaultTemplate(request *QueryDefaultTemplateRequest) (_result *QueryDefaultTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDefaultTemplateResponse{}
+	_body, _err := client.QueryDefaultTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicModelEngineRequest, runtime *util.RuntimeOptions) (_result *QueryPublicModelEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69366,6 +71257,299 @@ func (client *Client) QueryPublicModelEngine(request *QueryPublicModelEngineRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPublicModelEngineResponse{}
 	_body, _err := client.QueryPublicModelEngineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeDataByRuleTypeWithOptions(request *QueryRecognizeDataByRuleTypeRequest, runtime *util.RuntimeOptions) (_result *QueryRecognizeDataByRuleTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecognizeRulesType)) {
+		body["RecognizeRulesType"] = request.RecognizeRulesType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRecognizeDataByRuleType"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRecognizeDataByRuleTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeDataByRuleType(request *QueryRecognizeDataByRuleTypeRequest) (_result *QueryRecognizeDataByRuleTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRecognizeDataByRuleTypeResponse{}
+	_body, _err := client.QueryRecognizeDataByRuleTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeRuleDetailWithOptions(request *QueryRecognizeRuleDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRecognizeRuleDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SensitiveName)) {
+		body["SensitiveName"] = request.SensitiveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRecognizeRuleDetail"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRecognizeRuleDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeRuleDetail(request *QueryRecognizeRuleDetailRequest) (_result *QueryRecognizeRuleDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRecognizeRuleDetailResponse{}
+	_body, _err := client.QueryRecognizeRuleDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeRulesTypeWithOptions(runtime *util.RuntimeOptions) (_result *QueryRecognizeRulesTypeResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRecognizeRulesType"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRecognizeRulesTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRecognizeRulesType() (_result *QueryRecognizeRulesTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRecognizeRulesTypeResponse{}
+	_body, _err := client.QueryRecognizeRulesTypeWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySensClassificationWithOptions(request *QuerySensClassificationRequest, runtime *util.RuntimeOptions) (_result *QuerySensClassificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySensClassification"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySensClassificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySensClassification(request *QuerySensClassificationRequest) (_result *QuerySensClassificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySensClassificationResponse{}
+	_body, _err := client.QuerySensClassificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySensLevelWithOptions(request *QuerySensLevelRequest, runtime *util.RuntimeOptions) (_result *QuerySensLevelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["tenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySensLevel"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySensLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySensLevel(request *QuerySensLevelRequest) (_result *QuerySensLevelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySensLevelResponse{}
+	_body, _err := client.QuerySensLevelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySensNodeInfoWithOptions(request *QuerySensNodeInfoRequest, runtime *util.RuntimeOptions) (_result *QuerySensNodeInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SensitiveName)) {
+		body["SensitiveName"] = request.SensitiveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySensNodeInfo"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySensNodeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySensNodeInfo(request *QuerySensNodeInfoRequest) (_result *QuerySensNodeInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySensNodeInfoResponse{}
+	_body, _err := client.QuerySensNodeInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
