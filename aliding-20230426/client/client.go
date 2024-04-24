@@ -26447,9 +26447,10 @@ func (s *InviteUsersShrinkHeaders) SetAccountContextShrink(v string) *InviteUser
 }
 
 type InviteUsersRequest struct {
-	InviteeList   []*InviteUsersRequestInviteeList `json:"InviteeList,omitempty" xml:"InviteeList,omitempty" type:"Repeated"`
-	TenantContext *InviteUsersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	ConferenceId  *string                          `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	InviteeList      []*InviteUsersRequestInviteeList      `json:"InviteeList,omitempty" xml:"InviteeList,omitempty" type:"Repeated"`
+	TenantContext    *InviteUsersRequestTenantContext      `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ConferenceId     *string                               `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	PhoneInviteeList []*InviteUsersRequestPhoneInviteeList `json:"phoneInviteeList,omitempty" xml:"phoneInviteeList,omitempty" type:"Repeated"`
 }
 
 func (s InviteUsersRequest) String() string {
@@ -26472,6 +26473,11 @@ func (s *InviteUsersRequest) SetTenantContext(v *InviteUsersRequestTenantContext
 
 func (s *InviteUsersRequest) SetConferenceId(v string) *InviteUsersRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *InviteUsersRequest) SetPhoneInviteeList(v []*InviteUsersRequestPhoneInviteeList) *InviteUsersRequest {
+	s.PhoneInviteeList = v
 	return s
 }
 
@@ -26515,10 +26521,34 @@ func (s *InviteUsersRequestTenantContext) SetTenantId(v string) *InviteUsersRequ
 	return s
 }
 
+type InviteUsersRequestPhoneInviteeList struct {
+	Nick        *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s InviteUsersRequestPhoneInviteeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InviteUsersRequestPhoneInviteeList) GoString() string {
+	return s.String()
+}
+
+func (s *InviteUsersRequestPhoneInviteeList) SetNick(v string) *InviteUsersRequestPhoneInviteeList {
+	s.Nick = &v
+	return s
+}
+
+func (s *InviteUsersRequestPhoneInviteeList) SetPhoneNumber(v string) *InviteUsersRequestPhoneInviteeList {
+	s.PhoneNumber = &v
+	return s
+}
+
 type InviteUsersShrinkRequest struct {
-	InviteeListShrink   *string `json:"InviteeList,omitempty" xml:"InviteeList,omitempty"`
-	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	ConferenceId        *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	InviteeListShrink      *string `json:"InviteeList,omitempty" xml:"InviteeList,omitempty"`
+	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	ConferenceId           *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	PhoneInviteeListShrink *string `json:"phoneInviteeList,omitempty" xml:"phoneInviteeList,omitempty"`
 }
 
 func (s InviteUsersShrinkRequest) String() string {
@@ -26541,6 +26571,11 @@ func (s *InviteUsersShrinkRequest) SetTenantContextShrink(v string) *InviteUsers
 
 func (s *InviteUsersShrinkRequest) SetConferenceId(v string) *InviteUsersShrinkRequest {
 	s.ConferenceId = &v
+	return s
+}
+
+func (s *InviteUsersShrinkRequest) SetPhoneInviteeListShrink(v string) *InviteUsersShrinkRequest {
+	s.PhoneInviteeListShrink = &v
 	return s
 }
 
@@ -42254,6 +42289,7 @@ type StartInstanceRequest struct {
 	FormUuid     *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
 	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	ProcessCode  *string `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
+	ProcessData  *string `json:"ProcessData,omitempty" xml:"ProcessData,omitempty"`
 	SystemToken  *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
@@ -42292,6 +42328,11 @@ func (s *StartInstanceRequest) SetLanguage(v string) *StartInstanceRequest {
 
 func (s *StartInstanceRequest) SetProcessCode(v string) *StartInstanceRequest {
 	s.ProcessCode = &v
+	return s
+}
+
+func (s *StartInstanceRequest) SetProcessData(v string) *StartInstanceRequest {
+	s.ProcessData = &v
 	return s
 }
 
@@ -44950,6 +44991,7 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetScreenSha
 
 type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting struct {
 	EnableChat             *int32 `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
+	EnableWebAnonymousJoin *bool  `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
 	JoinBeforeHost         *int32 `json:"JoinBeforeHost,omitempty" xml:"JoinBeforeHost,omitempty"`
 	LockMediaStatusMicMute *int32 `json:"LockMediaStatusMicMute,omitempty" xml:"LockMediaStatusMicMute,omitempty"`
 	LockNick               *int32 `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
@@ -44966,6 +45008,11 @@ func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtual
 
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetEnableChat(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.EnableChat = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetEnableWebAnonymousJoin(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.EnableWebAnonymousJoin = &v
 	return s
 }
 
@@ -55503,6 +55550,10 @@ func (client *Client) InviteUsersWithOptions(tmpReq *InviteUsersRequest, tmpHead
 		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhoneInviteeList)) {
+		request.PhoneInviteeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneInviteeList, tea.String("phoneInviteeList"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InviteeListShrink)) {
 		body["InviteeList"] = request.InviteeListShrink
@@ -55514,6 +55565,10 @@ func (client *Client) InviteUsersWithOptions(tmpReq *InviteUsersRequest, tmpHead
 
 	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
 		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneInviteeListShrink)) {
+		body["phoneInviteeList"] = request.PhoneInviteeListShrink
 	}
 
 	realHeaders := make(map[string]*string)
@@ -59822,6 +59877,10 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, tm
 
 	if !tea.BoolValue(util.IsUnset(request.ProcessCode)) {
 		body["ProcessCode"] = request.ProcessCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessData)) {
+		body["ProcessData"] = request.ProcessData
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
