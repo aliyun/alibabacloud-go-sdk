@@ -6326,6 +6326,99 @@ func (s *CloneNacosConfigResponse) SetBody(v *CloneNacosConfigResponseBody) *Clo
 	return s
 }
 
+type CloneSentinelRuleFromAhasRequest struct {
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AhasNamespace      *string `json:"AhasNamespace,omitempty" xml:"AhasNamespace,omitempty"`
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	IsAHASPublicRegion *bool   `json:"IsAHASPublicRegion,omitempty" xml:"IsAHASPublicRegion,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s CloneSentinelRuleFromAhasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSentinelRuleFromAhasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSentinelRuleFromAhasRequest) SetAcceptLanguage(v string) *CloneSentinelRuleFromAhasRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasRequest) SetAhasNamespace(v string) *CloneSentinelRuleFromAhasRequest {
+	s.AhasNamespace = &v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasRequest) SetAppName(v string) *CloneSentinelRuleFromAhasRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasRequest) SetIsAHASPublicRegion(v bool) *CloneSentinelRuleFromAhasRequest {
+	s.IsAHASPublicRegion = &v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasRequest) SetNamespace(v string) *CloneSentinelRuleFromAhasRequest {
+	s.Namespace = &v
+	return s
+}
+
+type CloneSentinelRuleFromAhasResponseBody struct {
+	Data      map[string][]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CloneSentinelRuleFromAhasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSentinelRuleFromAhasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSentinelRuleFromAhasResponseBody) SetData(v map[string][]*string) *CloneSentinelRuleFromAhasResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasResponseBody) SetRequestId(v string) *CloneSentinelRuleFromAhasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CloneSentinelRuleFromAhasResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneSentinelRuleFromAhasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneSentinelRuleFromAhasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSentinelRuleFromAhasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSentinelRuleFromAhasResponse) SetHeaders(v map[string]*string) *CloneSentinelRuleFromAhasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasResponse) SetStatusCode(v int32) *CloneSentinelRuleFromAhasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneSentinelRuleFromAhasResponse) SetBody(v *CloneSentinelRuleFromAhasResponseBody) *CloneSentinelRuleFromAhasResponse {
+	s.Body = v
+	return s
+}
+
 type CreateApplicationRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -56231,6 +56324,66 @@ func (client *Client) CloneNacosConfig(request *CloneNacosConfigRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CloneNacosConfigResponse{}
 	_body, _err := client.CloneNacosConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CloneSentinelRuleFromAhasWithOptions(request *CloneSentinelRuleFromAhasRequest, runtime *util.RuntimeOptions) (_result *CloneSentinelRuleFromAhasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AhasNamespace)) {
+		query["AhasNamespace"] = request.AhasNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAHASPublicRegion)) {
+		query["IsAHASPublicRegion"] = request.IsAHASPublicRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneSentinelRuleFromAhas"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneSentinelRuleFromAhasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloneSentinelRuleFromAhas(request *CloneSentinelRuleFromAhasRequest) (_result *CloneSentinelRuleFromAhasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloneSentinelRuleFromAhasResponse{}
+	_body, _err := client.CloneSentinelRuleFromAhasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
