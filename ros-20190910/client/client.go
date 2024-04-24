@@ -885,10 +885,18 @@ func (s *CreateChangeSetResponse) SetBody(v *CreateChangeSetResponseBody) *Creat
 
 type CreateDiagnosticRequest struct {
 	// The keyword in the diagnosis.
+	//
+	// You can specify the ID of the stack that you want to diagnose.
 	DiagnosticKey *string `json:"DiagnosticKey,omitempty" xml:"DiagnosticKey,omitempty"`
 	// The type of the item that is diagnosed. Set the value to Stack, which specifies that the stack is diagnosed.
 	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the diagnostic report to be generated. Only Chinese and English are supported.
+	//
+	// Valid values:
+	//
+	// *   zh-cn
+	// *   en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The name of the product that is diagonosed.
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
@@ -2636,7 +2644,8 @@ func (s *CreateTemplateScratchRequestSourceResourceGroup) SetResourceTypeFilter(
 
 type CreateTemplateScratchRequestSourceResources struct {
 	// The region ID.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedResourceTypeFilter []*string `json:"RelatedResourceTypeFilter,omitempty" xml:"RelatedResourceTypeFilter,omitempty" type:"Repeated"`
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource.
@@ -2653,6 +2662,11 @@ func (s CreateTemplateScratchRequestSourceResources) GoString() string {
 
 func (s *CreateTemplateScratchRequestSourceResources) SetRegionId(v string) *CreateTemplateScratchRequestSourceResources {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateScratchRequestSourceResources) SetRelatedResourceTypeFilter(v []*string) *CreateTemplateScratchRequestSourceResources {
+	s.RelatedResourceTypeFilter = v
 	return s
 }
 
@@ -8215,6 +8229,12 @@ func (s *GetStackGroupOperationResponse) SetBody(v *GetStackGroupOperationRespon
 }
 
 type GetStackInstanceRequest struct {
+	// Specifies whether to return the Outputs parameter. The Outputs parameter specifies the outputs of the stack. Valid values:
+	//
+	// *   Enabled: returns the Outputs parameter.
+	// *   Disabled (default): does not return the Outputs parameter.
+	//
+	// >  The Outputs parameter requires a long period of time to calculate. If you do not require the outputs of the stack, we recommend that you set OutputOption to Disabled to improve the response speed of the API operation.
 	OutputOption *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
 	// The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -8296,8 +8316,11 @@ type GetStackInstanceResponseBodyStackInstance struct {
 	// The time when the most recent successful drift detection was performed on the stack group.
 	//
 	// > This parameter is returned only if drift detection is performed on the stack group.
-	DriftDetectionTime *string                  `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
-	Outputs            []map[string]interface{} `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	DriftDetectionTime *string `json:"DriftDetectionTime,omitempty" xml:"DriftDetectionTime,omitempty"`
+	// The outputs of the stack.
+	//
+	// >  This parameter is returned if OutputOption is set to Enabled.
+	Outputs []map[string]interface{} `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	// The parameters that are used to override specific parameters.
 	ParameterOverrides []*GetStackInstanceResponseBodyStackInstanceParameterOverrides `json:"ParameterOverrides,omitempty" xml:"ParameterOverrides,omitempty" type:"Repeated"`
 	// The ID of the folder in the resource directory.
@@ -10311,6 +10334,7 @@ func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup) SetRe
 }
 
 type GetTemplateScratchResponseBodyTemplateScratchSourceResources struct {
+	RelatedResourceTypeFilter []*string `json:"RelatedResourceTypeFilter,omitempty" xml:"RelatedResourceTypeFilter,omitempty" type:"Repeated"`
 	// The resource ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
@@ -10323,6 +10347,11 @@ func (s GetTemplateScratchResponseBodyTemplateScratchSourceResources) String() s
 
 func (s GetTemplateScratchResponseBodyTemplateScratchSourceResources) GoString() string {
 	return s.String()
+}
+
+func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResources) SetRelatedResourceTypeFilter(v []*string) *GetTemplateScratchResponseBodyTemplateScratchSourceResources {
+	s.RelatedResourceTypeFilter = v
+	return s
 }
 
 func (s *GetTemplateScratchResponseBodyTemplateScratchSourceResources) SetResourceId(v string) *GetTemplateScratchResponseBodyTemplateScratchSourceResources {
@@ -16848,6 +16877,7 @@ type UpdateStackRequest struct {
 	//
 	// For more information, see [Ensure idempotence](~~134212~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Deprecated
 	// Specifies whether to roll back the resources in the stack when the stack fails to be updated.
 	//
 	// Default value: false. Valid values:
