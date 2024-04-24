@@ -24392,6 +24392,111 @@ func (s *ResetGlobalDatabaseNetworkResponse) SetBody(v *ResetGlobalDatabaseNetwo
 	return s
 }
 
+type RestartDBLinkRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s RestartDBLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDBLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDBLinkRequest) SetDBClusterId(v string) *RestartDBLinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RestartDBLinkRequest) SetOwnerAccount(v string) *RestartDBLinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RestartDBLinkRequest) SetOwnerId(v int64) *RestartDBLinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RestartDBLinkRequest) SetResourceOwnerAccount(v string) *RestartDBLinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RestartDBLinkRequest) SetResourceOwnerId(v int64) *RestartDBLinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RestartDBLinkRequest) SetSecurityToken(v string) *RestartDBLinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type RestartDBLinkResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s RestartDBLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDBLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDBLinkResponseBody) SetDBClusterId(v string) *RestartDBLinkResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RestartDBLinkResponseBody) SetRequestId(v string) *RestartDBLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartDBLinkResponseBody) SetTaskId(v string) *RestartDBLinkResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type RestartDBLinkResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartDBLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartDBLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartDBLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartDBLinkResponse) SetHeaders(v map[string]*string) *RestartDBLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartDBLinkResponse) SetStatusCode(v int32) *RestartDBLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartDBLinkResponse) SetBody(v *RestartDBLinkResponseBody) *RestartDBLinkResponse {
+	s.Body = v
+	return s
+}
+
 type RestartDBNodeRequest struct {
 	// The ID of the node.
 	//
@@ -36129,6 +36234,70 @@ func (client *Client) ResetGlobalDatabaseNetwork(request *ResetGlobalDatabaseNet
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetGlobalDatabaseNetworkResponse{}
 	_body, _err := client.ResetGlobalDatabaseNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestartDBLinkWithOptions(request *RestartDBLinkRequest, runtime *util.RuntimeOptions) (_result *RestartDBLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartDBLink"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartDBLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartDBLink(request *RestartDBLinkRequest) (_result *RestartDBLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartDBLinkResponse{}
+	_body, _err := client.RestartDBLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
