@@ -2258,7 +2258,7 @@ type CreateUploadVideoRequest struct {
 	// *   The name must contain a file name extension, which is not case-sensitive.
 	// *   For more information about file name extensions supported by ApsaraVideo VOD, see [Overview](~~55396~~).
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the audio or video file. Unit: bytes.
+	// The size of the source file. Unit: bytes.
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	// The storage address. To obtain the storage address, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**.
 	//
@@ -5403,6 +5403,169 @@ func (s *DescribeVodDomainBpsDataResponse) SetBody(v *DescribeVodDomainBpsDataRe
 	return s
 }
 
+type DescribeVodDomainBpsDataByLayerRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainBpsDataByLayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainBpsDataByLayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetDomainName(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetEndTime(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetInterval(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetIspNameEn(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetLayer(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.Layer = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetLocationNameEn(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetOwnerId(v int64) *DescribeVodDomainBpsDataByLayerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerRequest) SetStartTime(v string) *DescribeVodDomainBpsDataByLayerRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainBpsDataByLayerResponseBody struct {
+	BpsDataInterval *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
+	DataInterval    *int32                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	RequestId       *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBody) SetBpsDataInterval(v *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval) *DescribeVodDomainBpsDataByLayerResponseBody {
+	s.BpsDataInterval = v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBody) SetDataInterval(v int32) *DescribeVodDomainBpsDataByLayerResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBody) SetRequestId(v string) *DescribeVodDomainBpsDataByLayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval struct {
+	DataModule []*DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval) SetDataModule(v []*DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
+	TimeStamp    *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrafficValue *int64   `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	Value        *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetTrafficValue(v int64) *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.TrafficValue = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetValue(v float64) *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainBpsDataByLayerResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainBpsDataByLayerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainBpsDataByLayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponse) SetHeaders(v map[string]*string) *DescribeVodDomainBpsDataByLayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponse) SetStatusCode(v int32) *DescribeVodDomainBpsDataByLayerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainBpsDataByLayerResponse) SetBody(v *DescribeVodDomainBpsDataByLayerResponseBody) *DescribeVodDomainBpsDataByLayerResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodDomainCertificateInfoRequest struct {
 	// The accelerated domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -5472,11 +5635,11 @@ func (s *DescribeVodDomainCertificateInfoResponseBodyCertInfos) SetCertInfo(v []
 type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// The domain name that matches the certificate.
 	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
-	// The time at which the certificate expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time at which the certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
 	// The validity period of the certificate. Unit: months or years.
 	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The certificate authority (CA) that issued the certificate.
 	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
@@ -5486,14 +5649,14 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// *   **cas**: a certificate that is purchased from Certificate Management Service.
 	// *   **upload**: a user-uploaded certificate.
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The accelerated domain name.
+	// The accelerated domain name whose ICP filing status you want to update.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether the SSL certificate is enabled.
+	// The status of the SSL certificate.
 	//
 	// *   **on**
 	// *   **off**
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
-	// The status of the certificate. Valid values:
+	// The status of the certificate.
 	//
 	// *   **success**: The certificate is in effect.
 	// *   **checking**: The system is checking whether the domain name is added to ApsaraVideo VOD.
@@ -5503,7 +5666,7 @@ type DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
 	// *   **applying**: The certificate application is in progress.
 	// *   **failed**: The certificate application failed.
 	//
-	// > A value is returned for this parameter only if `free` is returned for `CertType`. If a value other than free is returned for CertType, an empty string is returned for this parameter.
+	// >  A value is returned for this parameter only when you set `CertType` to `free`. Otherwise, an empty value is returned for this parameter.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6041,6 +6204,169 @@ func (s *DescribeVodDomainDetailResponse) SetBody(v *DescribeVodDomainDetailResp
 	return s
 }
 
+type DescribeVodDomainHitRateDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainHitRateDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainHitRateDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainHitRateDataRequest) SetDomainName(v string) *DescribeVodDomainHitRateDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataRequest) SetEndTime(v string) *DescribeVodDomainHitRateDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataRequest) SetInterval(v string) *DescribeVodDomainHitRateDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataRequest) SetOwnerId(v int64) *DescribeVodDomainHitRateDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataRequest) SetStartTime(v string) *DescribeVodDomainHitRateDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainHitRateDataResponseBody struct {
+	DataInterval    *string                                                  `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName      *string                                                  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime         *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HitRateInterval *DescribeVodDomainHitRateDataResponseBodyHitRateInterval `json:"HitRateInterval,omitempty" xml:"HitRateInterval,omitempty" type:"Struct"`
+	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainHitRateDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainHitRateDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetDataInterval(v string) *DescribeVodDomainHitRateDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetDomainName(v string) *DescribeVodDomainHitRateDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetEndTime(v string) *DescribeVodDomainHitRateDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetHitRateInterval(v *DescribeVodDomainHitRateDataResponseBodyHitRateInterval) *DescribeVodDomainHitRateDataResponseBody {
+	s.HitRateInterval = v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetRequestId(v string) *DescribeVodDomainHitRateDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBody) SetStartTime(v string) *DescribeVodDomainHitRateDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainHitRateDataResponseBodyHitRateInterval struct {
+	DataModule []*DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainHitRateDataResponseBodyHitRateInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainHitRateDataResponseBodyHitRateInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBodyHitRateInterval) SetDataModule(v []*DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) *DescribeVodDomainHitRateDataResponseBodyHitRateInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule struct {
+	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) SetHttpsValue(v string) *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule {
+	s.HttpsValue = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) SetValue(v string) *DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainHitRateDataResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainHitRateDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainHitRateDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainHitRateDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainHitRateDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponse) SetStatusCode(v int32) *DescribeVodDomainHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainHitRateDataResponse) SetBody(v *DescribeVodDomainHitRateDataResponseBody) *DescribeVodDomainHitRateDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodDomainLogRequest struct {
 	// The domain name.
 	//
@@ -6299,6 +6625,1067 @@ func (s *DescribeVodDomainLogResponse) SetStatusCode(v int32) *DescribeVodDomain
 }
 
 func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBody) *DescribeVodDomainLogResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeBpsDataRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeBpsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeBpsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetIspNameEn(v string) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetLocationNameEn(v string) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeBpsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeBpsDataResponseBody struct {
+	Data      *DescribeVodDomainRealTimeBpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponseBody) SetData(v *DescribeVodDomainRealTimeBpsDataResponseBodyData) *DescribeVodDomainRealTimeBpsDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeBpsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeBpsDataResponseBodyData struct {
+	BpsModel []*DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel `json:"BpsModel,omitempty" xml:"BpsModel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponseBodyData) SetBpsModel(v []*DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) *DescribeVodDomainRealTimeBpsDataResponseBodyData {
+	s.BpsModel = v
+	return s
+}
+
+type DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel struct {
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) SetBps(v float32) *DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel {
+	s.Bps = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) SetTimeStamp(v string) *DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeBpsDataResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeBpsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeBpsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeBpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeBpsDataResponse) SetBody(v *DescribeVodDomainRealTimeBpsDataResponseBody) *DescribeVodDomainRealTimeBpsDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeByteHitRateDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeByteHitRateDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeByteHitRateDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeByteHitRateDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeByteHitRateDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeByteHitRateDataResponseBody struct {
+	Data      *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBody) SetData(v *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) *DescribeVodDomainRealTimeByteHitRateDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeByteHitRateDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeByteHitRateDataResponseBodyData struct {
+	ByteHitRateDataModel []*DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel `json:"ByteHitRateDataModel,omitempty" xml:"ByteHitRateDataModel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) SetByteHitRateDataModel(v []*DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData {
+	s.ByteHitRateDataModel = v
+	return s
+}
+
+type DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel struct {
+	ByteHitRate *float32 `json:"ByteHitRate,omitempty" xml:"ByteHitRate,omitempty"`
+	TimeStamp   *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) SetByteHitRate(v float32) *DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel {
+	s.ByteHitRate = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) SetTimeStamp(v string) *DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeByteHitRateDataResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeByteHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeByteHitRateDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeByteHitRateDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeByteHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeByteHitRateDataResponse) SetBody(v *DescribeVodDomainRealTimeByteHitRateDataResponseBody) *DescribeVodDomainRealTimeByteHitRateDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetIspNameEn(v string) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeHttpCodeDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponseBody struct {
+	DataInterval         *string                                                                `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName           *string                                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime              *string                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RealTimeHttpCodeData *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData `json:"RealTimeHttpCodeData,omitempty" xml:"RealTimeHttpCodeData,omitempty" type:"Struct"`
+	RequestId            *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime            *string                                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetDataInterval(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetDomainName(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetEndTime(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetRealTimeHttpCodeData(v *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.RealTimeHttpCodeData = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBody) SetStartTime(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData struct {
+	UsageData []*DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData `json:"UsageData,omitempty" xml:"UsageData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData) SetUsageData(v []*DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData {
+	s.UsageData = v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData struct {
+	TimeStamp *string                                                                              `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) SetTimeStamp(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData) SetValue(v *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData {
+	s.Value = v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue struct {
+	RealTimeCodeProportionData []*DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData `json:"RealTimeCodeProportionData,omitempty" xml:"RealTimeCodeProportionData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue) SetRealTimeCodeProportionData(v []*DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue {
+	s.RealTimeCodeProportionData = v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) SetCode(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) SetCount(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData) SetProportion(v string) *DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData {
+	s.Proportion = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeHttpCodeDataResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeHttpCodeDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeHttpCodeDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeHttpCodeDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeHttpCodeDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeHttpCodeDataResponse) SetBody(v *DescribeVodDomainRealTimeHttpCodeDataResponseBody) *DescribeVodDomainRealTimeHttpCodeDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeQpsDataRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeQpsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeQpsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetIspNameEn(v string) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetLocationNameEn(v string) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeQpsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeQpsDataResponseBody struct {
+	Data      *DescribeVodDomainRealTimeQpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponseBody) SetData(v *DescribeVodDomainRealTimeQpsDataResponseBodyData) *DescribeVodDomainRealTimeQpsDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeQpsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeQpsDataResponseBodyData struct {
+	QpsModel []*DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel `json:"QpsModel,omitempty" xml:"QpsModel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponseBodyData) SetQpsModel(v []*DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel) *DescribeVodDomainRealTimeQpsDataResponseBodyData {
+	s.QpsModel = v
+	return s
+}
+
+type DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel struct {
+	Qps       *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel) SetQps(v float32) *DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel {
+	s.Qps = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel) SetTimeStamp(v string) *DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeQpsDataResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeQpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeQpsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeQpsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeQpsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeQpsDataResponse) SetBody(v *DescribeVodDomainRealTimeQpsDataResponseBody) *DescribeVodDomainRealTimeQpsDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeReqHitRateDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeReqHitRateDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeReqHitRateDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeReqHitRateDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeReqHitRateDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeReqHitRateDataResponseBody struct {
+	Data      *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBody) SetData(v *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData) *DescribeVodDomainRealTimeReqHitRateDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeReqHitRateDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeReqHitRateDataResponseBodyData struct {
+	ReqHitRateDataModel []*DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel `json:"ReqHitRateDataModel,omitempty" xml:"ReqHitRateDataModel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData) SetReqHitRateDataModel(v []*DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData {
+	s.ReqHitRateDataModel = v
+	return s
+}
+
+type DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel struct {
+	ReqHitRate *float32 `json:"ReqHitRate,omitempty" xml:"ReqHitRate,omitempty"`
+	TimeStamp  *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) SetReqHitRate(v float32) *DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel {
+	s.ReqHitRate = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) SetTimeStamp(v string) *DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeReqHitRateDataResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeReqHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeReqHitRateDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeReqHitRateDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeReqHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeReqHitRateDataResponse) SetBody(v *DescribeVodDomainRealTimeReqHitRateDataResponseBody) *DescribeVodDomainRealTimeReqHitRateDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainRealTimeTrafficDataRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetIspNameEn(v string) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetLocationNameEn(v string) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeTrafficDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeTrafficDataResponseBody struct {
+	DataInterval                   *string                                                                         `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                     *string                                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                        *string                                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RealTimeTrafficDataPerInterval *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval `json:"RealTimeTrafficDataPerInterval,omitempty" xml:"RealTimeTrafficDataPerInterval,omitempty" type:"Struct"`
+	RequestId                      *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime                      *string                                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetDataInterval(v string) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetDomainName(v string) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetEndTime(v string) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetRealTimeTrafficDataPerInterval(v *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.RealTimeTrafficDataPerInterval = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBody) SetStartTime(v string) *DescribeVodDomainRealTimeTrafficDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval struct {
+	DataModule []*DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval) SetDataModule(v []*DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule struct {
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) SetValue(v string) *DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeTrafficDataResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeTrafficDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeTrafficDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeTrafficDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeTrafficDataResponse) SetBody(v *DescribeVodDomainRealTimeTrafficDataResponseBody) *DescribeVodDomainRealTimeTrafficDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeVodDomainReqHitRateDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainReqHitRateDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainReqHitRateDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainReqHitRateDataRequest) SetDomainName(v string) *DescribeVodDomainReqHitRateDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataRequest) SetEndTime(v string) *DescribeVodDomainReqHitRateDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataRequest) SetInterval(v string) *DescribeVodDomainReqHitRateDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataRequest) SetStartTime(v string) *DescribeVodDomainReqHitRateDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainReqHitRateDataResponseBody struct {
+	Data         *DescribeVodDomainReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DataInterval *string                                          `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName   *string                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetData(v *DescribeVodDomainReqHitRateDataResponseBodyData) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetDataInterval(v string) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetDomainName(v string) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetEndTime(v string) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetRequestId(v string) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBody) SetStartTime(v string) *DescribeVodDomainReqHitRateDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainReqHitRateDataResponseBodyData struct {
+	DataModule []*DescribeVodDomainReqHitRateDataResponseBodyDataDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBodyData) SetDataModule(v []*DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) *DescribeVodDomainReqHitRateDataResponseBodyData {
+	s.DataModule = v
+	return s
+}
+
+type DescribeVodDomainReqHitRateDataResponseBodyDataDataModule struct {
+	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) SetHttpsValue(v string) *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule {
+	s.HttpsValue = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) SetTimeStamp(v string) *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) SetValue(v string) *DescribeVodDomainReqHitRateDataResponseBodyDataDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeVodDomainReqHitRateDataResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainReqHitRateDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainReqHitRateDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainReqHitRateDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainReqHitRateDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponse) SetStatusCode(v int32) *DescribeVodDomainReqHitRateDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainReqHitRateDataResponse) SetBody(v *DescribeVodDomainReqHitRateDataResponseBody) *DescribeVodDomainReqHitRateDataResponse {
 	s.Body = v
 	return s
 }
@@ -7328,6 +8715,105 @@ func (s *DescribeVodMediaPlayDataResponse) SetBody(v *DescribeVodMediaPlayDataRe
 	return s
 }
 
+type DescribeVodRangeDataByLocateAndIspServiceRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetDomainName(v string) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetEndTime(v string) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetIspNameEn(v string) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetLocationNameEn(v string) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetOwnerId(v int64) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceRequest) SetStartTime(v string) *DescribeVodRangeDataByLocateAndIspServiceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodRangeDataByLocateAndIspServiceResponseBody struct {
+	JsonResult *string `json:"JsonResult,omitempty" xml:"JsonResult,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceResponseBody) SetJsonResult(v string) *DescribeVodRangeDataByLocateAndIspServiceResponseBody {
+	s.JsonResult = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceResponseBody) SetRequestId(v string) *DescribeVodRangeDataByLocateAndIspServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodRangeDataByLocateAndIspServiceResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodRangeDataByLocateAndIspServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodRangeDataByLocateAndIspServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceResponse) SetHeaders(v map[string]*string) *DescribeVodRangeDataByLocateAndIspServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceResponse) SetStatusCode(v int32) *DescribeVodRangeDataByLocateAndIspServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodRangeDataByLocateAndIspServiceResponse) SetBody(v *DescribeVodRangeDataByLocateAndIspServiceResponseBody) *DescribeVodRangeDataByLocateAndIspServiceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodRefreshQuotaRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -7888,6 +9374,7 @@ func (s *DescribeVodStorageDataResponse) SetBody(v *DescribeVodStorageDataRespon
 }
 
 type DescribeVodTranscodeDataRequest struct {
+	// The ID of the application. You can specify this parameter to query the transcoding statistics of a specific application. By default, the transcoding statistics of all applications is returned. You can obtain the application ID from the `AppId` parameter in the response to the [CreateAppInfo](~~CreateAppInfo~~) operation.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -8120,12 +9607,14 @@ type DescribeVodUserDomainsRequest struct {
 	// The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The search method. Valid values:
-	// *   **fuzzy_match**: fuzzy match. This is the default value.
-	// *   **pre_match**: prefix match.
-	// *   **suf_match**: suffix match.
-	// *   **full_match**: exact match.
+	//
+	// *   **fuzzy_match** (default): fuzzy match.
+	// *   **pre_match**: prefix match
+	// *   **suf_match**: suffix match
+	// *   **full_match**: exact match
 	DomainSearchType *string `json:"DomainSearchType,omitempty" xml:"DomainSearchType,omitempty"`
-	// The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
+	// The status of the domain name. Value values:
+	//
 	// *   **online**: indicates that the domain name is enabled.
 	// *   **offline**: indicates that the domain name is disabled.
 	// *   **configuring**: indicates that the domain name is being configured.
@@ -8134,12 +9623,12 @@ type DescribeVodUserDomainsRequest struct {
 	// *   **check_failed**: indicates that the domain name failed the review.
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
+	// The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: **1** to **50**.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Tag.
+	// The tags.
 	Tag []*DescribeVodUserDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -8194,11 +9683,11 @@ func (s *DescribeVodUserDomainsRequest) SetTag(v []*DescribeVodUserDomainsReques
 type DescribeVodUserDomainsRequestTag struct {
 	// The key of tag N. Valid values of N: **1** to **20**.
 	//
-	// If you do not specify this parameter, all tag keys are queried.
+	// By default, all tag keys are queried.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N. Valid values of N: **1** to **20**.
 	//
-	// If you do not specify this parameter, all tag values are queried.
+	// By default, all tag values are queried.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8223,13 +9712,13 @@ func (s *DescribeVodUserDomainsRequestTag) SetValue(v string) *DescribeVodUserDo
 type DescribeVodUserDomainsResponseBody struct {
 	// The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
 	Domains *DescribeVodUserDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8284,7 +9773,7 @@ func (s *DescribeVodUserDomainsResponseBodyDomains) SetPageData(v []*DescribeVod
 }
 
 type DescribeVodUserDomainsResponseBodyDomainsPageData struct {
-	// The canonical domain name that is assigned to the domain name for CDN.
+	// The CNAME that is assigned to the domain name for CDN.
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The remarks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -8299,18 +9788,18 @@ type DescribeVodUserDomainsResponseBodyDomainsPageData struct {
 	// *   **checking**: indicates that the domain name is under review.
 	// *   **check_failed**: indicates that the domain name failed the review.
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the domain name for CDN was added. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The last time when the domain name for CDN was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the domain name for CDN is in a sandbox environment.
+	// Indicates whether the accelerated domain name was in a sandbox.
 	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
 	// The information about the origin server.
 	Sources *DescribeVodUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
 	// Indicates whether HTTPS is enabled.
 	//
-	// - **on**: indicates that HTTPS is enabled.
-	// - **off**: indicates that HTTPS is disabled.
+	// *   **on**: HTTPS is enabled.
+	// *   **off**: HTTPS is not eabled.
 	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
@@ -8393,9 +9882,9 @@ type DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource struct {
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The type of the origin server. Valid values:
 	//
-	// *   **ipaddr**: a server that you can access by using an IP address.
-	// *   **domain**: a server that you can access by using a domain name.
-	// *   **oss**: an Object Storage Service (OSS) bucket.
+	// *   **ipaddr**: an IP address.
+	// *   **domain**: an origin domain name
+	// *   **oss**: the OSS domain of an Object Storage Service (OSS) bucket
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10717,7 +12206,10 @@ func (s *GetAIVideoTagResultResponse) SetBody(v *GetAIVideoTagResultResponseBody
 }
 
 type GetAppInfosRequest struct {
-	// The ID of the application. You can specify a maximum of 10 application IDs. Separate them with commas (,).
+	// The IDs of applications. You can obtain application IDs from the response to the [CreateAppInfo](~~113266~~) or [ListAppInfo](~~114000~~) operation.
+	//
+	// *   You can specify a maximum of 10 application IDs.
+	// *   Separate application IDs with commas (,).
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
 }
 
@@ -10739,7 +12231,7 @@ type GetAppInfosResponseBody struct {
 	AppInfoList []*GetAppInfosResponseBodyAppInfoList `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
 	// The HTTP status code that is returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the application that was not found.
+	// The IDs of applications that do not exist.
 	NonExistAppIds []*string `json:"NonExistAppIds,omitempty" xml:"NonExistAppIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10778,19 +12270,21 @@ type GetAppInfosResponseBodyAppInfoList struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the application was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the application was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the application.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last time when the application was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The status of the application. Valid values:
-	// - **Normal**
-	// - **Disable**
+	//
+	// *   **Normal**
+	// *   **Disable**
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the application. Valid values:
-	// - **System**
-	// - **Custom**
+	//
+	// *   **System**
+	// *   **Custom**
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -15881,10 +17375,10 @@ type GetPlayInfoRequest struct {
 	// *   **oss**
 	// *   **cdn**
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The custom playback configuration. The value is a JSON string. For more information, see [PlayConfig](~~86952~~).
+	// The custom playback configuration. The value must be a JSON string. You can specify a domain name for playback. For more information, see [PlayConfig](~~86952~~).
 	//
-	// >-   If you do not specify PlayConfig or `PlayDomain` in PlayConfig, the default domain name configured in ApsaraVideo VOD is used in this operation. If no default domain name is configured, the domain names are queried in reverse chronological order based on the time when the domain names were modified. The domain name that was last modified is used as the streaming domain name. To prevent domain name issues, we recommend that you specify the default streaming domain name. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management** > **Storage** > **Manage** > **Origin Domain Name** to set the default streaming domain name.
-	// >-   If the `EncryptType` parameter in PlayConfig is set to `AliyunVoDEncryption`, the playback URL of the stream encrypted by using proprietary cryptography is not returned to ensure video security. If you want to return such URL, you must set the `ResultType` parameter to `Multiple`.
+	// > *   If you do not set the PlayConfig parameter or the `PlayDomain` parameter that is nested under the PlayConfig parameter, the default domain name specified in ApsaraVideo VOD is used in this operation. If no default domain name is specified, the domain names are queried in reverse chronological order based on the time when the domain names were last modified. To prevent domain name issues, we recommend that you perform the following steps to specify the default playback domain name: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. Find the domain name that you want to configure and click **Manage** in the Actions column. On the page that appears, set the default playback domain name in the **Origin Domain Name** section.
+	// >*   If you set the `EncryptType` parameter nested under the PlayConfig parameter to `AliyunVoDEncryption`, the playback URLs of videos encrypted by using Alibaba Cloud proprietary cryptography are not automatically returned to ensure video security. To return playback URLs of videos encrypted by using Alibaba Cloud proprietary cryptography, you must set the `ResultType` parameter to `Multiple`.
 	PlayConfig *string `json:"PlayConfig,omitempty" xml:"PlayConfig,omitempty"`
 	// The CDN reauthentication configuration. The value is a JSON string. If CDN reauthentication is enabled, you can use this parameter to specify the UID and rand fields for URL authentication. For more information, see [URL authentication](~~57007~~).
 	ReAuthInfo *string `json:"ReAuthInfo,omitempty" xml:"ReAuthInfo,omitempty"`
@@ -16035,9 +17529,9 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
 	// The bitrate of the media stream. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The quality of the media stream. Valid values:
+	// The quality of the video stream. Valid values:
 	//
 	// *   **FD**: low definition
 	// *   **LD**: standard definition
@@ -16050,7 +17544,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   **HQ**: high sound quality
 	// *   **AUTO**: adaptive bitrate
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The duration of the media stream. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
+	// The duration of the media stream. Unit: seconds.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Indicates whether the media stream is encrypted. Valid values:
 	//
@@ -16060,7 +17554,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// The encryption type of the media stream. Valid values:
 	//
 	// *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
-	// *   **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+	// *   **HLSEncryption**: HTTP-Live-Streaming (HLS) encryption
 	//
 	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
@@ -16091,15 +17585,15 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   **1**: tracing watermark
 	// *   **2**: copyright watermark
 	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The time when the audio or video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The type of Narrowband HD transcoding. Valid values:
 	//
-	// *   **0**: normal transcoding
-	// *   **1.0**: Narrowband HD 1.0
-	// *   **2.0**: Narrowband HD 2.0
+	// *   **0**: regular transcoding
+	// *   **1.0**: Narrowband HD™ 1.0 transcoding
+	// *   **2.0**: Narrowband HD™ 2.0 transcoding
 	//
-	// This parameter is returned only when a quality that is available in the built-in Narrowband HD 1.0 transcoding template is specified. For more information, see the [Definition parameter in the TranscodeTemplate](~~52839~~) table.
+	// This parameter is returned only when a definition that is available in the built-in Narrowband HD™ 1.0 transcoding template is specified. For more information, see the [Definition parameter in the TranscodeTemplate](~~52839~~) table.
 	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
 	// The playback URL of the media stream.
 	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
@@ -16259,7 +17753,7 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the audio or video file. Valid values:
+	// The storage class of the audio file. Valid values:
 	//
 	// *   **Standard**: All media resources are stored as Standard objects.
 	// *   **IA**: All media resources are stored as IA objects.
@@ -16267,8 +17761,8 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	// *   **ColdArchive**: All media resources are stored as Cold Archive objects.
 	// *   **SourceIA**: Only the source files are IA objects.
 	// *   **SourceArchive**: Only the source files are Archive objects.
-	// *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-	// *   **Changing**: The storage class of the audio or video file is being changed.
+	// *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
+	// *   **Changing**: The storage class of the video file is being changed.
 	// *   **SourceChanging**: The storage class of the source file is being changed.
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The title of the audio or video file.
@@ -16362,7 +17856,7 @@ func (s *GetPlayInfoResponse) SetBody(v *GetPlayInfoResponseBody) *GetPlayInfoRe
 type GetTranscodeSummaryRequest struct {
 	// The ID of the audio or video file. You can specify up to 10 IDs. Separate the IDs with commas (,). You can use one of the following methods to obtain the ID:
 	//
-	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	// *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
 	// *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to obtain the upload URL and credential.
 	// *   Obtain the value of VideoId by calling the [SearchMedia](~~86044~~) operation. This method is applicable to files that have been uploaded.
 	VideoIds *string `json:"VideoIds,omitempty" xml:"VideoIds,omitempty"`
@@ -16414,14 +17908,15 @@ func (s *GetTranscodeSummaryResponseBody) SetTranscodeSummaryList(v []*GetTransc
 }
 
 type GetTranscodeSummaryResponseBodyTranscodeSummaryList struct {
-	// The time when the transcoding task was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The summaries of transcoding jobs.
 	TranscodeJobInfoSummaryList []*GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryList `json:"TranscodeJobInfoSummaryList,omitempty" xml:"TranscodeJobInfoSummaryList,omitempty" type:"Repeated"`
 	// The status of the transcoding task. Valid values:
-	// *   **Processing**: In progress.
+	//
+	// *   **Processing**: Transcoding is in process.
 	// *   **Partial**: Some transcoding jobs were complete.
 	// *   **CompleteAllSucc**: All transcoding jobs were successful.
 	// *   **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
@@ -16474,9 +17969,9 @@ func (s *GetTranscodeSummaryResponseBodyTranscodeSummaryList) SetVideoId(v strin
 type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryList struct {
 	// The average bitrate of the output video. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the transcoding job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	// The time when the transcoding job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding job was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The duration of the output video. Unit: seconds.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -16493,9 +17988,10 @@ type GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummaryL
 	// The height of the output video. Unit: pixels.
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The status of the transcoding job. Valid values:
-	// *   **Transcoding**
-	// *   **TranscodeSuccess**
-	// *   **TranscodeFail**
+	//
+	// *   **Transcoding**: Transcoding is in process.
+	// *   **TranscodeSuccess**: The job was successful.
+	// *   **TranscodeFail**: The job failed.
 	TranscodeJobStatus *string `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
 	// The transcoding progress. Valid values: `[0,100]`.
 	TranscodeProgress *int64 `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
@@ -17040,7 +18536,7 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup struct {
 	// *   **Default**
 	// *   **NotDefault**
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the template group is locked. Valid values:
+	// Indicates whether the transcoding template group is locked. Valid values:
 	//
 	// *   **Disabled**: The template group is not locked.
 	// *   **Enabled**: The template group is locked.
@@ -17106,11 +18602,11 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup) SetTransco
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList struct {
 	// The transcoding configurations of the audio stream. The value is a JSON string.
 	Audio *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	// The video cropping configurations. The value is a JSON string. For example, you can set this parameter to extract 5 seconds of content from a video to generate a new video.
+	// The clipping configurations of the video. The value is a JSON string. For example, this parameter is returned if you extract 5 seconds of content from a video to generate a new video.
 	Clip *string `json:"Clip,omitempty" xml:"Clip,omitempty"`
-	// The format of the container that is used to encapsulate audio and video streams. The value is a JSON string.
+	// The format of the container used to encapsulate audio and video streams. The value is a JSON string.
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
-	// CopyrightMark.
+	// The content of the copyright watermark.
 	CopyrightMark *string `json:"CopyrightMark,omitempty" xml:"CopyrightMark,omitempty"`
 	// Valid values for the definition of a common transcoding template:
 	//
@@ -17134,38 +18630,38 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	// *   **4K-NBV1**
 	//
 	// > *   You cannot change the definition of a transcoding template.
-	// >*   You cannot modify the system parameters of Narrowband HD™ 1.0 transcoding templates such as the video resolution, audio resolution, and bitrate.
+	// >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
 	// >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	// The encryption configuration for transcoding.
 	EncryptSetting *string `json:"EncryptSetting,omitempty" xml:"EncryptSetting,omitempty"`
-	// The transcoding segment configurations. This parameter is used when you transcode a media stream into an HLS file. The value is a JSON string.
+	// The transcoding segment configurations. This parameter must be returned if HTTP-Live-Streaming (HLS) encryption is used. The value is a JSON string.
 	MuxConfig *string `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty"`
-	// The packaging configuration. Only HTTP-Live-Streaming (HLS) packaging and DASH packaging are supported. The value is a JSON string.
+	// The packaging configuration. Only HLS packaging and DASH packaging are supported. The value is a JSON string.
 	PackageSetting *string `json:"PackageSetting,omitempty" xml:"PackageSetting,omitempty"`
-	// The video rotation identifier. This parameter is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
+	// The video rotation identifier. It is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
 	// The subtitle configurations. The value is a JSON string.
 	SubtitleList *string `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty"`
 	// The name of the transcoding template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// TraceMark.
+	// The content of the tracing watermark.
 	TraceMark *string `json:"TraceMark,omitempty" xml:"TraceMark,omitempty"`
-	// The conditional transcoding configurations. This parameter is used if you want to determine the basic logic based on the bitrate and resolution of the source file before the transcoded video is generated. The value is a JSON string.
+	// The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the source file before the video is transcoded. The value is a JSON-formatted string.
 	TransConfig *string `json:"TransConfig,omitempty" xml:"TransConfig,omitempty"`
 	// The custom path used to store the output files.
 	TranscodeFileRegular *string `json:"TranscodeFileRegular,omitempty" xml:"TranscodeFileRegular,omitempty"`
-	// The ID of the transcoding template.
+	// The transcoding template ID.
 	TranscodeTemplateId *string `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
 	// The type of the transcoding template. Valid values:
 	//
-	// *   **Normal** (default): a common transcoding template. You cannot set the PackageSetting parameter for this type of template.
-	// *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and creates a multi-bitrate video package. You must set the PackageSetting parameter for this type of template.
-	// *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file that is generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle packaging template and associate the subtitle packaging template with a video stream packaging template. You can configure only one subtitle packaging template in a template group.
+	// *   **Normal** (default): a common transcoding template. The PackageSetting parameter cannot be set for this type of template.
+	// *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and packages these video streams with a file. The PackageSetting parameter must be set for this type of template.
+	// *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file generated by packaging the multi-bitrate video streams of the corresponding video without transcoding. You must set the PackageSetting parameter for a subtitle package template and associate the subtitle package template with a video stream package template. A template group can contain only one subtitle package template.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The transcoding configurations of the video stream. The value is a JSON string.
 	Video *string `json:"Video,omitempty" xml:"Video,omitempty"`
-	// The IDs of associated watermarks.
+	// The IDs of the associated watermarks.
 	WatermarkIds []*string `json:"WatermarkIds,omitempty" xml:"WatermarkIds,omitempty" type:"Repeated"`
 }
 
@@ -20088,9 +21584,10 @@ type ListLiveRecordVideoRequest struct {
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting rule of results. Valid values:
-	// *   **CreationTime:Desc**: sorts the results based on the creation time in descending order. This is the default value.
-	// *   **CreationTime:Asc**: sorts the results based on the creation time in ascending order.
+	// The sorting rule of the results. Valid values:
+	//
+	// *   **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
+	// *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -20151,7 +21648,7 @@ type ListLiveRecordVideoResponseBody struct {
 	LiveRecordVideoList *ListLiveRecordVideoResponseBodyLiveRecordVideoList `json:"LiveRecordVideoList,omitempty" xml:"LiveRecordVideoList,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of videos returned.
+	// The total number of videos.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -20196,19 +21693,19 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoList) SetLiveRecordVideo(
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo struct {
-	// The name of the application.
+	// The name of the app.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the playlist.
 	PlaylistId *string `json:"PlaylistId,omitempty" xml:"PlaylistId,omitempty"`
-	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The recording end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	RecordEndTime *string `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
-	// The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The recording start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	// The name of the live stream.
+	// The name of the live-to-VOD file.
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The information about the video.
+	// The information about the live-to-VOD file.
 	Video *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -20258,32 +21755,33 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) SetV
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo struct {
 	// The ID of the video category.
 	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the video category.
+	// The category of the video.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the video.
+	// The URL of the video thumbnail.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the video was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video file was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the video.
+	// The description of the video file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video. Unit: seconds.
+	// The duration of the video file. Unit: seconds.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the video was updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The size of the mezzanine file. Unit: byte.
+	// The size of the source video file. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The array of video snapshot URLs.
 	Snapshots *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The status of the video. Valid values:
-	// *   **Uploading:**: indicates that the video is being uploaded.
-	// *   **UploadFail**: indicates that the video failed to be uploaded.
-	// *   **UploadSucces**: indicates that the video was uploaded.
-	// *   **Transcoding**: indicates that the video is being transcoded.
-	// *   **TranscodeFail**: indicates that the video failed to be transcoded.
-	// *   **Blocked**: indicates that the video is blocked.
-	// *   **Normal**: indicates that the video is in a normal state.
+	//
+	// *   **Uploading**
+	// *   **UploadFail**
+	// *   **UploadSuccess**
+	// *   **Transcoding**
+	// *   **TranscodeFail**
+	// *   **Blocked**
+	// *   **Normal**: The video is normal.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the video. Separate multiple tags with commas (,).
+	// The tags of the video. Multiple tags are separated with commas (,).
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the transcoding template group.
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
@@ -24294,13 +25792,13 @@ func (s *SetVodDomainCertificateResponse) SetBody(v *SetVodDomainCertificateResp
 }
 
 type SubmitAIImageAuditJobRequest struct {
-	// The configuration information about the review task.
+	// The configuration information about the review job.
 	//
-	// *   Other configuration items of the review task. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
-	// *   If you want to adjust moderation policies and rules based on ResourceType, submit a ticket to request technical support.
+	// *   Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
 	// *   The value of ResourceType can contain only letters, digits, and underscores (\_).
 	//
-	// >  You can specify a value for the ResourceType field based on the preceding limits. After you specify a value for the ResourceType field, you must submit a ticket. The value takes effect after Alibaba Cloud processes your ticket.
+	// > *   You can specify a value for the ResourceType field based on the preceding limits. After you specify a value for the ResourceType field, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply). The value takes effect after Alibaba Cloud processes your ticket.
+	// >*   If you want to change moderation policies and rules based on ResourceType, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact technical support.
 	MediaAuditConfiguration *string `json:"MediaAuditConfiguration,omitempty" xml:"MediaAuditConfiguration,omitempty"`
 	// The ID of the image.
 	//
@@ -24367,7 +25865,7 @@ func (s *SubmitAIImageAuditJobRequest) SetTemplateId(v string) *SubmitAIImageAud
 }
 
 type SubmitAIImageAuditJobResponseBody struct {
-	// The ID of the image review task.
+	// The ID of the image review job.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -24553,14 +26051,14 @@ func (s *SubmitAIImageJobResponse) SetBody(v *SubmitAIImageJobResponseBody) *Sub
 }
 
 type SubmitAIJobRequest struct {
-	// The configurations of the AI job. The value must be a JSON string.
+	// The configurations of the AI job. The value is a JSON string.
 	//
-	// *   If `Types` is set to `AIVideoTag`, you can configure `AnalyseTypes` for `Config` to set the analysis algorithm of a smart tagging job. Valid values:
+	// *   If you set `Types` to `AIVideoTag`, you can specify `AnalyseTypes` for `Config` to set the analysis algorithm of a smart tagging job. Valid values:
 	//
-	//     *   ASR: speech recognition.
-	//     *   OCR: image optical character recognition (OCR).
+	//     *   ASR: automatic speech recognition (ASR)
+	//     *   OCR: image optical character recognition (OCR)
 	//
-	// *   If `Types` is set to `AIMediaDNA`, you can configure `DNADBId` for `Config` to set the ID of the media fingerprint library for video fingerprinting jobs.
+	// *   If you set `Types` to `AIMediaDNA`, you can specify `DNADBId` for `Config` to set the ID of the media fingerprint library for video fingerprinting jobs.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the video. You can use one of the following methods to obtain the ID:
 	//
@@ -26549,7 +28047,7 @@ type UpdateTranscodeTemplateGroupRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839~~).
+	// The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
 	TranscodeTemplateList *string `json:"TranscodeTemplateList,omitempty" xml:"TranscodeTemplateList,omitempty"`
 }
 
@@ -27486,7 +28984,10 @@ type VerifyVodDomainOwnerRequest struct {
 	// The domain name of which you want to verify the ownership. You can specify only one domain name in each call.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The DNS verification method that is used to verify the ownership of the specified domain name.
+	// The verification method. Valid values:
+	//
+	// *   **dnsCheck**: uses a Domain Name System (DNS) record
+	// *   **fileCheck**: uses a verification file
 	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
@@ -30856,8 +32357,80 @@ func (client *Client) DescribeVodDomainBpsData(request *DescribeVodDomainBpsData
 	return _result, _err
 }
 
+func (client *Client) DescribeVodDomainBpsDataByLayerWithOptions(request *DescribeVodDomainBpsDataByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainBpsDataByLayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainBpsDataByLayer"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainBpsDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainBpsDataByLayer(request *DescribeVodDomainBpsDataByLayerRequest) (_result *DescribeVodDomainBpsDataByLayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainBpsDataByLayerResponse{}
+	_body, _err := client.DescribeVodDomainBpsDataByLayerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * > This operation is available only in the **China (Shanghai)** region.
+ * This operation is available only in the **China (Shanghai)** region.
  *
  * @param request DescribeVodDomainCertificateInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30901,7 +32474,7 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 }
 
 /**
- * > This operation is available only in the **China (Shanghai)** region.
+ * This operation is available only in the **China (Shanghai)** region.
  *
  * @param request DescribeVodDomainCertificateInfoRequest
  * @return DescribeVodDomainCertificateInfoResponse
@@ -31051,6 +32624,66 @@ func (client *Client) DescribeVodDomainDetail(request *DescribeVodDomainDetailRe
 	return _result, _err
 }
 
+func (client *Client) DescribeVodDomainHitRateDataWithOptions(request *DescribeVodDomainHitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainHitRateDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainHitRateData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainHitRateData(request *DescribeVodDomainHitRateDataRequest) (_result *DescribeVodDomainHitRateDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainHitRateDataResponse{}
+	_body, _err := client.DescribeVodDomainHitRateDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   This operation is available only in the **China (Shanghai)** region.
  * *   For more information about the log format and latency, see [Download logs](~~86099~~).
@@ -31131,6 +32764,350 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainLogResponse{}
 	_body, _err := client.DescribeVodDomainLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeBpsDataWithOptions(request *DescribeVodDomainRealTimeBpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeBpsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeBpsData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeBpsData(request *DescribeVodDomainRealTimeBpsDataRequest) (_result *DescribeVodDomainRealTimeBpsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeBpsDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeBpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeByteHitRateDataWithOptions(request *DescribeVodDomainRealTimeByteHitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeByteHitRateDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeByteHitRateData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeByteHitRateData(request *DescribeVodDomainRealTimeByteHitRateDataRequest) (_result *DescribeVodDomainRealTimeByteHitRateDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeByteHitRateDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeHttpCodeDataWithOptions(request *DescribeVodDomainRealTimeHttpCodeDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeHttpCodeDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeHttpCodeData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeHttpCodeDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeHttpCodeData(request *DescribeVodDomainRealTimeHttpCodeDataRequest) (_result *DescribeVodDomainRealTimeHttpCodeDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeHttpCodeDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeHttpCodeDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeQpsDataWithOptions(request *DescribeVodDomainRealTimeQpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeQpsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeQpsData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeQpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeQpsData(request *DescribeVodDomainRealTimeQpsDataRequest) (_result *DescribeVodDomainRealTimeQpsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeQpsDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeQpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeReqHitRateDataWithOptions(request *DescribeVodDomainRealTimeReqHitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeReqHitRateDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeReqHitRateData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeReqHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeReqHitRateData(request *DescribeVodDomainRealTimeReqHitRateDataRequest) (_result *DescribeVodDomainRealTimeReqHitRateDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeReqHitRateDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeReqHitRateDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeTrafficDataWithOptions(request *DescribeVodDomainRealTimeTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeTrafficDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeTrafficData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeTrafficData(request *DescribeVodDomainRealTimeTrafficDataRequest) (_result *DescribeVodDomainRealTimeTrafficDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeTrafficDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeTrafficDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainReqHitRateDataWithOptions(request *DescribeVodDomainReqHitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainReqHitRateDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainReqHitRateData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainReqHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainReqHitRateData(request *DescribeVodDomainReqHitRateDataRequest) (_result *DescribeVodDomainReqHitRateDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainReqHitRateDataResponse{}
+	_body, _err := client.DescribeVodDomainReqHitRateDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31578,6 +33555,70 @@ func (client *Client) DescribeVodMediaPlayData(request *DescribeVodMediaPlayData
 	return _result, _err
 }
 
+func (client *Client) DescribeVodRangeDataByLocateAndIspServiceWithOptions(request *DescribeVodRangeDataByLocateAndIspServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeVodRangeDataByLocateAndIspServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodRangeDataByLocateAndIspService"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodRangeDataByLocateAndIspServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodRangeDataByLocateAndIspService(request *DescribeVodRangeDataByLocateAndIspServiceRequest) (_result *DescribeVodRangeDataByLocateAndIspServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodRangeDataByLocateAndIspServiceResponse{}
+	_body, _err := client.DescribeVodRangeDataByLocateAndIspServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * > *   This operation is available only in the **China (Shanghai)** region.
  * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
@@ -31906,6 +33947,14 @@ func (client *Client) DescribeVodTranscodeData(request *DescribeVodTranscodeData
 	return _result, _err
 }
 
+/**
+ * *   You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+ * *   This operation is available only in the China (Shanghai) region.
+ *
+ * @param request DescribeVodUserDomainsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeVodUserDomainsResponse
+ */
 func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUserDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeVodUserDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31967,6 +34016,13 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 	return _result, _err
 }
 
+/**
+ * *   You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+ * *   This operation is available only in the China (Shanghai) region.
+ *
+ * @param request DescribeVodUserDomainsRequest
+ * @return DescribeVodUserDomainsResponse
+ */
 func (client *Client) DescribeVodUserDomains(request *DescribeVodUserDomainsRequest) (_result *DescribeVodUserDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodUserDomainsResponse{}
@@ -32495,7 +34551,7 @@ func (client *Client) GetAIVideoTagResult(request *GetAIVideoTagResultRequest) (
 }
 
 /**
- * Supports batch query.
+ * You can specify multiple accelerated domain names in a request.
  *
  * @param request GetAppInfosRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32535,7 +34591,7 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 }
 
 /**
- * Supports batch query.
+ * You can specify multiple accelerated domain names in a request.
  *
  * @param request GetAppInfosRequest
  * @return GetAppInfosResponse
@@ -33717,10 +35773,10 @@ func (client *Client) GetPlayInfo(request *GetPlayInfoRequest) (_result *GetPlay
 }
 
 /**
- * *   A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
- * *   You can query transcoding summaries for a maximum of 10 media files in one request.
+ * *   An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+ * *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
  * *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
- * *   **You can call this operation to query information only about transcoding tasks created within the past year.**
+ * *   **You can call this operation to query information only about transcoding tasks created within the past year.
  *
  * @param request GetTranscodeSummaryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33760,10 +35816,10 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 }
 
 /**
- * *   A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
- * *   You can query transcoding summaries for a maximum of 10 media files in one request.
+ * *   An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+ * *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
  * *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
- * *   **You can call this operation to query information only about transcoding tasks created within the past year.**
+ * *   **You can call this operation to query information only about transcoding tasks created within the past year.
  *
  * @param request GetTranscodeSummaryRequest
  * @return GetTranscodeSummaryResponse
@@ -33837,7 +35893,7 @@ func (client *Client) GetTranscodeTask(request *GetTranscodeTaskRequest) (_resul
 }
 
 /**
- * >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+ * This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
  *
  * @param request GetTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33877,7 +35933,7 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 }
 
 /**
- * >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+ * This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
  *
  * @param request GetTranscodeTemplateGroupRequest
  * @return GetTranscodeTemplateGroupResponse
@@ -34809,7 +36865,7 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 }
 
 /**
- * You can query a maximum of 5,000 videos based on the specified filter condition.
+ * You can query up to 5,000 videos based on the specified filter condition.
  *
  * @param request ListLiveRecordVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34877,7 +36933,7 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 }
 
 /**
- * You can query a maximum of 5,000 videos based on the specified filter condition.
+ * You can query up to 5,000 videos based on the specified filter condition.
  *
  * @param request ListLiveRecordVideoRequest
  * @return ListLiveRecordVideoResponse
@@ -35904,12 +37960,14 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 }
 
 /**
- * The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
- * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
- * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
- *     *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
- *     *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
- *     *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+ * The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+ * *   Method 1: Traverse data by page
+ *     You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+ * *   Method 2: Traverse all data (available only for audio and video files)
+ *     You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+ *     *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+ *     *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+ * Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
  *
  * @param request SearchMediaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35973,12 +38031,14 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 }
 
 /**
- * The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
- * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
- * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
- *     *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
- *     *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
- *     *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+ * The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+ * *   Method 1: Traverse data by page
+ *     You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+ * *   Method 2: Traverse all data (available only for audio and video files)
+ *     You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+ *     *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+ *     *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+ * Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
  *
  * @param request SearchMediaRequest
  * @return SearchMediaResponse
@@ -36521,6 +38581,13 @@ func (client *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRe
 	return _result, _err
 }
 
+/**
+ * This operation is available only in the Singapore region.
+ *
+ * @param request SubmitAIImageAuditJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitAIImageAuditJobResponse
+ */
 func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAuditJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAIImageAuditJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36578,6 +38645,12 @@ func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAud
 	return _result, _err
 }
 
+/**
+ * This operation is available only in the Singapore region.
+ *
+ * @param request SubmitAIImageAuditJobRequest
+ * @return SubmitAIImageAuditJobResponse
+ */
 func (client *Client) SubmitAIImageAuditJob(request *SubmitAIImageAuditJobRequest) (_result *SubmitAIImageAuditJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAIImageAuditJobResponse{}
@@ -37836,7 +39909,7 @@ func (client *Client) UpdateMediaStorageClass(request *UpdateMediaStorageClassRe
 }
 
 /**
- * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+ * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
  *
  * @param request UpdateTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37888,7 +39961,7 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 }
 
 /**
- * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+ * For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
  *
  * @param request UpdateTranscodeTemplateGroupRequest
  * @return UpdateTranscodeTemplateGroupResponse
@@ -38406,6 +40479,13 @@ func (client *Client) UploadStreamByURL(request *UploadStreamByURLRequest) (_res
 	return _result, _err
 }
 
+/**
+ * This operation is available only in the **China (Shanghai)** region.
+ *
+ * @param request VerifyVodDomainOwnerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return VerifyVodDomainOwnerResponse
+ */
 func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyVodDomainOwnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38447,6 +40527,12 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 	return _result, _err
 }
 
+/**
+ * This operation is available only in the **China (Shanghai)** region.
+ *
+ * @param request VerifyVodDomainOwnerRequest
+ * @return VerifyVodDomainOwnerResponse
+ */
 func (client *Client) VerifyVodDomainOwner(request *VerifyVodDomainOwnerRequest) (_result *VerifyVodDomainOwnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyVodDomainOwnerResponse{}
