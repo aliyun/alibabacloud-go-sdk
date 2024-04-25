@@ -106,6 +106,111 @@ func (s *AttachApplication2ConnectorResponse) SetBody(v *AttachApplication2Conne
 	return s
 }
 
+type CreateClientUserRequest struct {
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s CreateClientUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientUserRequest) SetDepartmentId(v string) *CreateClientUserRequest {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetDescription(v string) *CreateClientUserRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetEmail(v string) *CreateClientUserRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetIdpConfigId(v string) *CreateClientUserRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetMobileNumber(v string) *CreateClientUserRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetPassword(v string) *CreateClientUserRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateClientUserRequest) SetUsername(v string) *CreateClientUserRequest {
+	s.Username = &v
+	return s
+}
+
+type CreateClientUserResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateClientUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientUserResponseBody) SetData(v string) *CreateClientUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateClientUserResponseBody) SetRequestId(v string) *CreateClientUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateClientUserResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClientUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateClientUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientUserResponse) SetHeaders(v map[string]*string) *CreateClientUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClientUserResponse) SetStatusCode(v int32) *CreateClientUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClientUserResponse) SetBody(v *CreateClientUserResponseBody) *CreateClientUserResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDynamicRouteRequest struct {
 	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
@@ -225,6 +330,81 @@ func (s *CreateDynamicRouteResponse) SetStatusCode(v int32) *CreateDynamicRouteR
 }
 
 func (s *CreateDynamicRouteResponse) SetBody(v *CreateDynamicRouteResponseBody) *CreateDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIdpDepartmentRequest struct {
+	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	IdpConfigId    *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+}
+
+func (s CreateIdpDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdpDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdpDepartmentRequest) SetDepartmentName(v string) *CreateIdpDepartmentRequest {
+	s.DepartmentName = &v
+	return s
+}
+
+func (s *CreateIdpDepartmentRequest) SetIdpConfigId(v string) *CreateIdpDepartmentRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+type CreateIdpDepartmentResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIdpDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdpDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdpDepartmentResponseBody) SetData(v string) *CreateIdpDepartmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateIdpDepartmentResponseBody) SetRequestId(v string) *CreateIdpDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIdpDepartmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIdpDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIdpDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdpDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdpDepartmentResponse) SetHeaders(v map[string]*string) *CreateIdpDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIdpDepartmentResponse) SetStatusCode(v int32) *CreateIdpDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIdpDepartmentResponse) SetBody(v *CreateIdpDepartmentResponseBody) *CreateIdpDepartmentResponse {
 	s.Body = v
 	return s
 }
@@ -1115,6 +1295,69 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 	return s
 }
 
+type DeleteClientUserRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteClientUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientUserRequest) SetId(v string) *DeleteClientUserRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteClientUserResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteClientUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientUserResponseBody) SetRequestId(v string) *DeleteClientUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteClientUserResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClientUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteClientUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientUserResponse) SetHeaders(v map[string]*string) *DeleteClientUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClientUserResponse) SetStatusCode(v int32) *DeleteClientUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteClientUserResponse) SetBody(v *DeleteClientUserResponseBody) *DeleteClientUserResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDynamicRouteRequest struct {
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 }
@@ -1174,6 +1417,75 @@ func (s *DeleteDynamicRouteResponse) SetStatusCode(v int32) *DeleteDynamicRouteR
 }
 
 func (s *DeleteDynamicRouteResponse) SetBody(v *DeleteDynamicRouteResponseBody) *DeleteDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIdpDepartmentRequest struct {
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+}
+
+func (s DeleteIdpDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdpDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdpDepartmentRequest) SetDepartmentId(v string) *DeleteIdpDepartmentRequest {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *DeleteIdpDepartmentRequest) SetIdpConfigId(v string) *DeleteIdpDepartmentRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+type DeleteIdpDepartmentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIdpDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdpDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdpDepartmentResponseBody) SetRequestId(v string) *DeleteIdpDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIdpDepartmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIdpDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIdpDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdpDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdpDepartmentResponse) SetHeaders(v map[string]*string) *DeleteIdpDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIdpDepartmentResponse) SetStatusCode(v int32) *DeleteIdpDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIdpDepartmentResponse) SetBody(v *DeleteIdpDepartmentResponseBody) *DeleteIdpDepartmentResponse {
 	s.Body = v
 	return s
 }
@@ -1587,6 +1899,262 @@ func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2Conne
 	return s
 }
 
+type GetActiveIdpConfigResponseBody struct {
+	Data      *GetActiveIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetActiveIdpConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetActiveIdpConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetActiveIdpConfigResponseBody) SetData(v *GetActiveIdpConfigResponseBodyData) *GetActiveIdpConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponseBody) SetRequestId(v string) *GetActiveIdpConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetActiveIdpConfigResponseBodyData struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetActiveIdpConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetActiveIdpConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetActiveIdpConfigResponseBodyData) SetDescription(v string) *GetActiveIdpConfigResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponseBodyData) SetId(v string) *GetActiveIdpConfigResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponseBodyData) SetName(v string) *GetActiveIdpConfigResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponseBodyData) SetType(v string) *GetActiveIdpConfigResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetActiveIdpConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetActiveIdpConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetActiveIdpConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetActiveIdpConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetActiveIdpConfigResponse) SetHeaders(v map[string]*string) *GetActiveIdpConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponse) SetStatusCode(v int32) *GetActiveIdpConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetActiveIdpConfigResponse) SetBody(v *GetActiveIdpConfigResponseBody) *GetActiveIdpConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetClientUserRequest struct {
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetClientUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientUserRequest) SetIdpConfigId(v string) *GetClientUserRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *GetClientUserRequest) SetUsername(v string) *GetClientUserRequest {
+	s.Username = &v
+	return s
+}
+
+type GetClientUserResponseBody struct {
+	Data      *GetClientUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClientUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientUserResponseBody) SetData(v *GetClientUserResponseBodyData) *GetClientUserResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetClientUserResponseBody) SetRequestId(v string) *GetClientUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClientUserResponseBodyData struct {
+	Department   *GetClientUserResponseBodyDataDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	DepartmentId *string                                  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email        *string                                  `json:"Email,omitempty" xml:"Email,omitempty"`
+	Id           *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdpConfigId  *string                                  `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	MobileNumber *string                                  `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	Status       *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId       *string                                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username     *string                                  `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetClientUserResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientUserResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientUserResponseBodyData) SetDepartment(v *GetClientUserResponseBodyDataDepartment) *GetClientUserResponseBodyData {
+	s.Department = v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetDepartmentId(v string) *GetClientUserResponseBodyData {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetDescription(v string) *GetClientUserResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetEmail(v string) *GetClientUserResponseBodyData {
+	s.Email = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetId(v string) *GetClientUserResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetIdpConfigId(v string) *GetClientUserResponseBodyData {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetMobileNumber(v string) *GetClientUserResponseBodyData {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetStatus(v string) *GetClientUserResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetUserId(v string) *GetClientUserResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyData) SetUsername(v string) *GetClientUserResponseBodyData {
+	s.Username = &v
+	return s
+}
+
+type GetClientUserResponseBodyDataDepartment struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetClientUserResponseBodyDataDepartment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientUserResponseBodyDataDepartment) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientUserResponseBodyDataDepartment) SetId(v string) *GetClientUserResponseBodyDataDepartment {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientUserResponseBodyDataDepartment) SetName(v string) *GetClientUserResponseBodyDataDepartment {
+	s.Name = &v
+	return s
+}
+
+type GetClientUserResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClientUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClientUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientUserResponse) SetHeaders(v map[string]*string) *GetClientUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientUserResponse) SetStatusCode(v int32) *GetClientUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientUserResponse) SetBody(v *GetClientUserResponseBody) *GetClientUserResponse {
+	s.Body = v
+	return s
+}
+
 type GetDynamicRouteRequest struct {
 	DynamicRouteId *string `json:"DynamicRouteId,omitempty" xml:"DynamicRouteId,omitempty"`
 }
@@ -1735,6 +2303,196 @@ func (s *GetDynamicRouteResponse) SetStatusCode(v int32) *GetDynamicRouteRespons
 }
 
 func (s *GetDynamicRouteResponse) SetBody(v *GetDynamicRouteResponseBody) *GetDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
+type GetIdpConfigRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetIdpConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdpConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdpConfigRequest) SetId(v string) *GetIdpConfigRequest {
+	s.Id = &v
+	return s
+}
+
+type GetIdpConfigResponseBody struct {
+	Data      *GetIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIdpConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdpConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdpConfigResponseBody) SetData(v *GetIdpConfigResponseBodyData) *GetIdpConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetIdpConfigResponseBody) SetRequestId(v string) *GetIdpConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIdpConfigResponseBodyData struct {
+	// AccessKey ID
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// AccessKey Secret
+	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GetGroupUrl         *string `json:"GetGroupUrl,omitempty" xml:"GetGroupUrl,omitempty"`
+	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdpMetadata         *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
+	MfaConfigType       *string `json:"MfaConfigType,omitempty" xml:"MfaConfigType,omitempty"`
+	MobileLoginType     *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
+	MultiIdpInfo        *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PcLoginType         *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VerifyAesKey        *string `json:"VerifyAesKey,omitempty" xml:"VerifyAesKey,omitempty"`
+	VerifyToken         *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+	VerifyUrl           *string `json:"VerifyUrl,omitempty" xml:"VerifyUrl,omitempty"`
+}
+
+func (s GetIdpConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdpConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdpConfigResponseBodyData) SetAccessKey(v string) *GetIdpConfigResponseBodyData {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetAccessKeySecret(v string) *GetIdpConfigResponseBodyData {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetDescription(v string) *GetIdpConfigResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetGetGroupUrl(v string) *GetIdpConfigResponseBodyData {
+	s.GetGroupUrl = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetId(v string) *GetIdpConfigResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetIdpMetadata(v string) *GetIdpConfigResponseBodyData {
+	s.IdpMetadata = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetMfaConfigType(v string) *GetIdpConfigResponseBodyData {
+	s.MfaConfigType = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetMobileLoginType(v string) *GetIdpConfigResponseBodyData {
+	s.MobileLoginType = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetMobileMfaConfigType(v string) *GetIdpConfigResponseBodyData {
+	s.MobileMfaConfigType = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetMultiIdpInfo(v string) *GetIdpConfigResponseBodyData {
+	s.MultiIdpInfo = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetName(v string) *GetIdpConfigResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetPcLoginType(v string) *GetIdpConfigResponseBodyData {
+	s.PcLoginType = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetStatus(v string) *GetIdpConfigResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetType(v string) *GetIdpConfigResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetUpdateTime(v string) *GetIdpConfigResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetVerifyAesKey(v string) *GetIdpConfigResponseBodyData {
+	s.VerifyAesKey = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetVerifyToken(v string) *GetIdpConfigResponseBodyData {
+	s.VerifyToken = &v
+	return s
+}
+
+func (s *GetIdpConfigResponseBodyData) SetVerifyUrl(v string) *GetIdpConfigResponseBodyData {
+	s.VerifyUrl = &v
+	return s
+}
+
+type GetIdpConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIdpConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIdpConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdpConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdpConfigResponse) SetHeaders(v map[string]*string) *GetIdpConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIdpConfigResponse) SetStatusCode(v int32) *GetIdpConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIdpConfigResponse) SetBody(v *GetIdpConfigResponseBody) *GetIdpConfigResponse {
 	s.Body = v
 	return s
 }
@@ -3041,6 +3799,234 @@ func (s *ListApplicationsForPrivateAccessTagResponse) SetBody(v *ListApplication
 	return s
 }
 
+type ListClientUsersRequest struct {
+	CurrentPage  *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpConfigId  *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListClientUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersRequest) SetCurrentPage(v int64) *ListClientUsersRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetDepartmentId(v string) *ListClientUsersRequest {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetEmail(v string) *ListClientUsersRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetIdpConfigId(v string) *ListClientUsersRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetMobileNumber(v string) *ListClientUsersRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetPageSize(v int64) *ListClientUsersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetStatus(v string) *ListClientUsersRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClientUsersRequest) SetUsername(v string) *ListClientUsersRequest {
+	s.Username = &v
+	return s
+}
+
+type ListClientUsersResponseBody struct {
+	Data      *ListClientUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListClientUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersResponseBody) SetData(v *ListClientUsersResponseBodyData) *ListClientUsersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListClientUsersResponseBody) SetRequestId(v string) *ListClientUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListClientUsersResponseBodyData struct {
+	DataList []*ListClientUsersResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	TotalNum *int64                                     `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListClientUsersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersResponseBodyData) SetDataList(v []*ListClientUsersResponseBodyDataDataList) *ListClientUsersResponseBodyData {
+	s.DataList = v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyData) SetTotalNum(v int64) *ListClientUsersResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type ListClientUsersResponseBodyDataDataList struct {
+	Department   *ListClientUsersResponseBodyDataDataListDepartment `json:"Department,omitempty" xml:"Department,omitempty" type:"Struct"`
+	DepartmentId *string                                            `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email        *string                                            `json:"Email,omitempty" xml:"Email,omitempty"`
+	Id           *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdpConfigId  *string                                            `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	MobileNumber *string                                            `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId       *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username     *string                                            `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListClientUsersResponseBodyDataDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersResponseBodyDataDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetDepartment(v *ListClientUsersResponseBodyDataDataListDepartment) *ListClientUsersResponseBodyDataDataList {
+	s.Department = v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetDepartmentId(v string) *ListClientUsersResponseBodyDataDataList {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetDescription(v string) *ListClientUsersResponseBodyDataDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetEmail(v string) *ListClientUsersResponseBodyDataDataList {
+	s.Email = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetId(v string) *ListClientUsersResponseBodyDataDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetIdpConfigId(v string) *ListClientUsersResponseBodyDataDataList {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetMobileNumber(v string) *ListClientUsersResponseBodyDataDataList {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetStatus(v string) *ListClientUsersResponseBodyDataDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetUserId(v string) *ListClientUsersResponseBodyDataDataList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataList) SetUsername(v string) *ListClientUsersResponseBodyDataDataList {
+	s.Username = &v
+	return s
+}
+
+type ListClientUsersResponseBodyDataDataListDepartment struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListClientUsersResponseBodyDataDataListDepartment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersResponseBodyDataDataListDepartment) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersResponseBodyDataDataListDepartment) SetId(v string) *ListClientUsersResponseBodyDataDataListDepartment {
+	s.Id = &v
+	return s
+}
+
+func (s *ListClientUsersResponseBodyDataDataListDepartment) SetName(v string) *ListClientUsersResponseBodyDataDataListDepartment {
+	s.Name = &v
+	return s
+}
+
+type ListClientUsersResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClientUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListClientUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientUsersResponse) SetHeaders(v map[string]*string) *ListClientUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClientUsersResponse) SetStatusCode(v int32) *ListClientUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClientUsersResponse) SetBody(v *ListClientUsersResponseBody) *ListClientUsersResponse {
+	s.Body = v
+	return s
+}
+
 type ListConnectorsRequest struct {
 	ConnectorIds []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -3765,6 +4751,320 @@ func (s *ListExcessiveDeviceRegistrationApplicationsResponse) SetStatusCode(v in
 }
 
 func (s *ListExcessiveDeviceRegistrationApplicationsResponse) SetBody(v *ListExcessiveDeviceRegistrationApplicationsResponseBody) *ListExcessiveDeviceRegistrationApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIdpConfigsRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Include     *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListIdpConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpConfigsRequest) SetCurrentPage(v int64) *ListIdpConfigsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListIdpConfigsRequest) SetInclude(v string) *ListIdpConfigsRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *ListIdpConfigsRequest) SetPageSize(v int64) *ListIdpConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListIdpConfigsResponseBody struct {
+	Data      *ListIdpConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIdpConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpConfigsResponseBody) SetData(v *ListIdpConfigsResponseBodyData) *ListIdpConfigsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBody) SetRequestId(v string) *ListIdpConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIdpConfigsResponseBodyData struct {
+	DataList []*ListIdpConfigsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	TotalNum *int64                                    `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListIdpConfigsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpConfigsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpConfigsResponseBodyData) SetDataList(v []*ListIdpConfigsResponseBodyDataDataList) *ListIdpConfigsResponseBodyData {
+	s.DataList = v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyData) SetTotalNum(v int64) *ListIdpConfigsResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type ListIdpConfigsResponseBodyDataDataList struct {
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Mfa                 *string `json:"Mfa,omitempty" xml:"Mfa,omitempty"`
+	MobileLoginType     *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
+	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
+	MultiIdpInfo        *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PcLoginType         *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListIdpConfigsResponseBodyDataDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpConfigsResponseBodyDataDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetDescription(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetId(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetMfa(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Mfa = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetMobileLoginType(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.MobileLoginType = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetMobileMfaConfigType(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.MobileMfaConfigType = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetMultiIdpInfo(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.MultiIdpInfo = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetName(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetPcLoginType(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.PcLoginType = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetStatus(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetType(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponseBodyDataDataList) SetUpdateTime(v string) *ListIdpConfigsResponseBodyDataDataList {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListIdpConfigsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIdpConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIdpConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpConfigsResponse) SetHeaders(v map[string]*string) *ListIdpConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIdpConfigsResponse) SetStatusCode(v int32) *ListIdpConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIdpConfigsResponse) SetBody(v *ListIdpConfigsResponseBody) *ListIdpConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIdpDepartmentsRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListIdpDepartmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpDepartmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpDepartmentsRequest) SetCurrentPage(v int64) *ListIdpDepartmentsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListIdpDepartmentsRequest) SetIdpConfigId(v string) *ListIdpDepartmentsRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *ListIdpDepartmentsRequest) SetPageSize(v int64) *ListIdpDepartmentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListIdpDepartmentsResponseBody struct {
+	Data      *ListIdpDepartmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIdpDepartmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpDepartmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpDepartmentsResponseBody) SetData(v *ListIdpDepartmentsResponseBodyData) *ListIdpDepartmentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponseBody) SetRequestId(v string) *ListIdpDepartmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIdpDepartmentsResponseBodyData struct {
+	DataList []*ListIdpDepartmentsResponseBodyDataDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	TotalNum *int64                                        `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListIdpDepartmentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpDepartmentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpDepartmentsResponseBodyData) SetDataList(v []*ListIdpDepartmentsResponseBodyDataDataList) *ListIdpDepartmentsResponseBodyData {
+	s.DataList = v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponseBodyData) SetTotalNum(v int64) *ListIdpDepartmentsResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type ListIdpDepartmentsResponseBodyDataDataList struct {
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IdpConfigId *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListIdpDepartmentsResponseBodyDataDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpDepartmentsResponseBodyDataDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpDepartmentsResponseBodyDataDataList) SetId(v string) *ListIdpDepartmentsResponseBodyDataDataList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponseBodyDataDataList) SetIdpConfigId(v string) *ListIdpDepartmentsResponseBodyDataDataList {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponseBodyDataDataList) SetName(v string) *ListIdpDepartmentsResponseBodyDataDataList {
+	s.Name = &v
+	return s
+}
+
+type ListIdpDepartmentsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIdpDepartmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIdpDepartmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdpDepartmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdpDepartmentsResponse) SetHeaders(v map[string]*string) *ListIdpDepartmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponse) SetStatusCode(v int32) *ListIdpDepartmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIdpDepartmentsResponse) SetBody(v *ListIdpDepartmentsResponseBody) *ListIdpDepartmentsResponse {
 	s.Body = v
 	return s
 }
@@ -7295,6 +8595,237 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type UpdateClientUserRequest struct {
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+}
+
+func (s UpdateClientUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserRequest) SetDepartmentId(v string) *UpdateClientUserRequest {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *UpdateClientUserRequest) SetDescription(v string) *UpdateClientUserRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateClientUserRequest) SetEmail(v string) *UpdateClientUserRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateClientUserRequest) SetId(v string) *UpdateClientUserRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateClientUserRequest) SetMobileNumber(v string) *UpdateClientUserRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+type UpdateClientUserResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateClientUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserResponseBody) SetRequestId(v string) *UpdateClientUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateClientUserResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClientUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateClientUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserResponse) SetHeaders(v map[string]*string) *UpdateClientUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClientUserResponse) SetStatusCode(v int32) *UpdateClientUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClientUserResponse) SetBody(v *UpdateClientUserResponseBody) *UpdateClientUserResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateClientUserPasswordRequest struct {
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s UpdateClientUserPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserPasswordRequest) SetId(v string) *UpdateClientUserPasswordRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateClientUserPasswordRequest) SetPassword(v string) *UpdateClientUserPasswordRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateClientUserPasswordRequest) SetUsername(v string) *UpdateClientUserPasswordRequest {
+	s.Username = &v
+	return s
+}
+
+type UpdateClientUserPasswordResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateClientUserPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserPasswordResponseBody) SetRequestId(v string) *UpdateClientUserPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateClientUserPasswordResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClientUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateClientUserPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserPasswordResponse) SetHeaders(v map[string]*string) *UpdateClientUserPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClientUserPasswordResponse) SetStatusCode(v int32) *UpdateClientUserPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClientUserPasswordResponse) SetBody(v *UpdateClientUserPasswordResponseBody) *UpdateClientUserPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateClientUserStatusRequest struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateClientUserStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserStatusRequest) SetId(v string) *UpdateClientUserStatusRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateClientUserStatusRequest) SetStatus(v string) *UpdateClientUserStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateClientUserStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateClientUserStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserStatusResponseBody) SetRequestId(v string) *UpdateClientUserStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateClientUserStatusResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClientUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateClientUserStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClientUserStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClientUserStatusResponse) SetHeaders(v map[string]*string) *UpdateClientUserStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClientUserStatusResponse) SetStatusCode(v int32) *UpdateClientUserStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClientUserStatusResponse) SetBody(v *UpdateClientUserStatusResponseBody) *UpdateClientUserStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDynamicRouteRequest struct {
 	ApplicationIds   []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 	ApplicationType  *string   `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
@@ -7578,6 +9109,81 @@ func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse) SetStatusC
 }
 
 func (s *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse) SetBody(v *UpdateExcessiveDeviceRegistrationApplicationsStatusResponseBody) *UpdateExcessiveDeviceRegistrationApplicationsStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIdpDepartmentRequest struct {
+	DepartmentId   *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	IdpConfigId    *string `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+}
+
+func (s UpdateIdpDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdpDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdpDepartmentRequest) SetDepartmentId(v string) *UpdateIdpDepartmentRequest {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *UpdateIdpDepartmentRequest) SetDepartmentName(v string) *UpdateIdpDepartmentRequest {
+	s.DepartmentName = &v
+	return s
+}
+
+func (s *UpdateIdpDepartmentRequest) SetIdpConfigId(v string) *UpdateIdpDepartmentRequest {
+	s.IdpConfigId = &v
+	return s
+}
+
+type UpdateIdpDepartmentResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIdpDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdpDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdpDepartmentResponseBody) SetRequestId(v string) *UpdateIdpDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIdpDepartmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIdpDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIdpDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdpDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdpDepartmentResponse) SetHeaders(v map[string]*string) *UpdateIdpDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIdpDepartmentResponse) SetStatusCode(v int32) *UpdateIdpDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIdpDepartmentResponse) SetBody(v *UpdateIdpDepartmentResponseBody) *UpdateIdpDepartmentResponse {
 	s.Body = v
 	return s
 }
@@ -9047,6 +10653,74 @@ func (client *Client) AttachApplication2Connector(request *AttachApplication2Con
 	return _result, _err
 }
 
+func (client *Client) CreateClientUserWithOptions(request *CreateClientUserRequest, runtime *util.RuntimeOptions) (_result *CreateClientUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DepartmentId)) {
+		query["DepartmentId"] = request.DepartmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdpConfigId)) {
+		query["IdpConfigId"] = request.IdpConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		query["MobileNumber"] = request.MobileNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClientUser"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClientUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClientUser(request *CreateClientUserRequest) (_result *CreateClientUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClientUserResponse{}
+	_body, _err := client.CreateClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDynamicRouteWithOptions(request *CreateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *CreateDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9123,6 +10797,54 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDynamicRouteResponse{}
 	_body, _err := client.CreateDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIdpDepartmentWithOptions(request *CreateIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *CreateIdpDepartmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DepartmentName)) {
+		query["DepartmentName"] = request.DepartmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdpConfigId)) {
+		query["IdpConfigId"] = request.IdpConfigId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIdpDepartment"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIdpDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (_result *CreateIdpDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIdpDepartmentResponse{}
+	_body, _err := client.CreateIdpDepartmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9492,6 +11214,50 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteClientUserWithOptions(request *DeleteClientUserRequest, runtime *util.RuntimeOptions) (_result *DeleteClientUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClientUser"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteClientUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteClientUser(request *DeleteClientUserRequest) (_result *DeleteClientUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClientUserResponse{}
+	_body, _err := client.DeleteClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDynamicRouteWithOptions(request *DeleteDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9529,6 +11295,54 @@ func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDynamicRouteResponse{}
 	_body, _err := client.DeleteDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIdpDepartmentWithOptions(request *DeleteIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *DeleteIdpDepartmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DepartmentId)) {
+		query["DepartmentId"] = request.DepartmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdpConfigId)) {
+		query["IdpConfigId"] = request.IdpConfigId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIdpDepartment"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIdpDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIdpDepartment(request *DeleteIdpDepartmentRequest) (_result *DeleteIdpDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIdpDepartmentResponse{}
+	_body, _err := client.DeleteIdpDepartmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9813,6 +11627,79 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 	return _result, _err
 }
 
+func (client *Client) GetActiveIdpConfigWithOptions(runtime *util.RuntimeOptions) (_result *GetActiveIdpConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetActiveIdpConfig"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetActiveIdpConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetActiveIdpConfig() (_result *GetActiveIdpConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetActiveIdpConfigResponse{}
+	_body, _err := client.GetActiveIdpConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetClientUserWithOptions(request *GetClientUserRequest, runtime *util.RuntimeOptions) (_result *GetClientUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientUser"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClientUser(request *GetClientUserRequest) (_result *GetClientUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientUserResponse{}
+	_body, _err := client.GetClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDynamicRouteWithOptions(request *GetDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *GetDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9846,6 +11733,46 @@ func (client *Client) GetDynamicRoute(request *GetDynamicRouteRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDynamicRouteResponse{}
 	_body, _err := client.GetDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetIdpConfigWithOptions(request *GetIdpConfigRequest, runtime *util.RuntimeOptions) (_result *GetIdpConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIdpConfig"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIdpConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetIdpConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIdpConfigResponse{}
+	_body, _err := client.GetIdpConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10133,6 +12060,46 @@ func (client *Client) ListApplicationsForPrivateAccessTag(request *ListApplicati
 	return _result, _err
 }
 
+func (client *Client) ListClientUsersWithOptions(request *ListClientUsersRequest, runtime *util.RuntimeOptions) (_result *ListClientUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClientUsers"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClientUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result *ListClientUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClientUsersResponse{}
+	_body, _err := client.ListClientUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, runtime *util.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10279,6 +12246,86 @@ func (client *Client) ListExcessiveDeviceRegistrationApplications(request *ListE
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExcessiveDeviceRegistrationApplicationsResponse{}
 	_body, _err := client.ListExcessiveDeviceRegistrationApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIdpConfigsWithOptions(request *ListIdpConfigsRequest, runtime *util.RuntimeOptions) (_result *ListIdpConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIdpConfigs"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIdpConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIdpConfigs(request *ListIdpConfigsRequest) (_result *ListIdpConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIdpConfigsResponse{}
+	_body, _err := client.ListIdpConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIdpDepartmentsWithOptions(request *ListIdpDepartmentsRequest, runtime *util.RuntimeOptions) (_result *ListIdpDepartmentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIdpDepartments"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIdpDepartmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIdpDepartments(request *ListIdpDepartmentsRequest) (_result *ListIdpDepartmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIdpDepartmentsResponse{}
+	_body, _err := client.ListIdpDepartmentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11046,6 +13093,166 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+func (client *Client) UpdateClientUserWithOptions(request *UpdateClientUserRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DepartmentId)) {
+		query["DepartmentId"] = request.DepartmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		query["MobileNumber"] = request.MobileNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClientUser"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClientUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateClientUser(request *UpdateClientUserRequest) (_result *UpdateClientUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClientUserResponse{}
+	_body, _err := client.UpdateClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateClientUserPasswordWithOptions(request *UpdateClientUserPasswordRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClientUserPassword"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClientUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateClientUserPassword(request *UpdateClientUserPasswordRequest) (_result *UpdateClientUserPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClientUserPasswordResponse{}
+	_body, _err := client.UpdateClientUserPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateClientUserStatusWithOptions(request *UpdateClientUserStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateClientUserStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClientUserStatus"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClientUserStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateClientUserStatus(request *UpdateClientUserStatusRequest) (_result *UpdateClientUserStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClientUserStatusResponse{}
+	_body, _err := client.UpdateClientUserStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateDynamicRouteWithOptions(request *UpdateDynamicRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateDynamicRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11181,6 +13388,58 @@ func (client *Client) UpdateExcessiveDeviceRegistrationApplicationsStatus(reques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateExcessiveDeviceRegistrationApplicationsStatusResponse{}
 	_body, _err := client.UpdateExcessiveDeviceRegistrationApplicationsStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIdpDepartmentWithOptions(request *UpdateIdpDepartmentRequest, runtime *util.RuntimeOptions) (_result *UpdateIdpDepartmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DepartmentId)) {
+		query["DepartmentId"] = request.DepartmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepartmentName)) {
+		query["DepartmentName"] = request.DepartmentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdpConfigId)) {
+		query["IdpConfigId"] = request.IdpConfigId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIdpDepartment"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIdpDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIdpDepartment(request *UpdateIdpDepartmentRequest) (_result *UpdateIdpDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIdpDepartmentResponse{}
+	_body, _err := client.UpdateIdpDepartmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
