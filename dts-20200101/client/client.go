@@ -4891,6 +4891,8 @@ func (s *CreateMigrationJobResponse) SetBody(v *CreateMigrationJobResponseBody) 
 type CreateReverseDtsJobRequest struct {
 	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShardPassword   *string `json:"ShardPassword,omitempty" xml:"ShardPassword,omitempty"`
+	ShardUsername   *string `json:"ShardUsername,omitempty" xml:"ShardUsername,omitempty"`
 }
 
 func (s CreateReverseDtsJobRequest) String() string {
@@ -4908,6 +4910,16 @@ func (s *CreateReverseDtsJobRequest) SetDtsJobId(v string) *CreateReverseDtsJobR
 
 func (s *CreateReverseDtsJobRequest) SetResourceGroupId(v string) *CreateReverseDtsJobRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobRequest) SetShardPassword(v string) *CreateReverseDtsJobRequest {
+	s.ShardPassword = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobRequest) SetShardUsername(v string) *CreateReverseDtsJobRequest {
+	s.ShardUsername = &v
 	return s
 }
 
@@ -29657,6 +29669,7 @@ type ModifyDtsJobEndpointRequest struct {
 	EndpointInstanceType     *string `json:"EndpointInstanceType,omitempty" xml:"EndpointInstanceType,omitempty"`
 	EndpointIp               *string `json:"EndpointIp,omitempty" xml:"EndpointIp,omitempty"`
 	EndpointPort             *string `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	EndpointRegionId         *string `json:"EndpointRegionId,omitempty" xml:"EndpointRegionId,omitempty"`
 	Password                 *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -29722,6 +29735,11 @@ func (s *ModifyDtsJobEndpointRequest) SetEndpointIp(v string) *ModifyDtsJobEndpo
 
 func (s *ModifyDtsJobEndpointRequest) SetEndpointPort(v string) *ModifyDtsJobEndpointRequest {
 	s.EndpointPort = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointRegionId(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointRegionId = &v
 	return s
 }
 
@@ -36814,6 +36832,14 @@ func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJo
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShardPassword)) {
+		query["ShardPassword"] = request.ShardPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardUsername)) {
+		query["ShardUsername"] = request.ShardUsername
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41438,6 +41464,10 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 
 	if !tea.BoolValue(util.IsUnset(request.EndpointPort)) {
 		query["EndpointPort"] = request.EndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointRegionId)) {
+		query["EndpointRegionId"] = request.EndpointRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
