@@ -3772,7 +3772,8 @@ type CreateDBInstanceRequest struct {
 	//
 	// *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
 	// *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	WhitelistTemplateList *string `json:"WhitelistTemplateList,omitempty" xml:"WhitelistTemplateList,omitempty"`
 	// The zone ID of the primary instance.
 	//
 	// *   If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ID of the zone to which the specified vSwitch belongs. Otherwise, the instance cannot be created.
@@ -4055,6 +4056,11 @@ func (s *CreateDBInstanceRequest) SetVPCId(v string) *CreateDBInstanceRequest {
 
 func (s *CreateDBInstanceRequest) SetVSwitchId(v string) *CreateDBInstanceRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetWhitelistTemplateList(v string) *CreateDBInstanceRequest {
+	s.WhitelistTemplateList = &v
 	return s
 }
 
@@ -4499,7 +4505,8 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
 	// *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	WhitelistTemplateList *string `json:"WhitelistTemplateList,omitempty" xml:"WhitelistTemplateList,omitempty"`
 	// The zone ID of the primary instance.
 	//
 	// *   If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ID of the zone to which the specified vSwitch belongs. Otherwise, the instance cannot be created.
@@ -4782,6 +4789,11 @@ func (s *CreateDBInstanceShrinkRequest) SetVPCId(v string) *CreateDBInstanceShri
 
 func (s *CreateDBInstanceShrinkRequest) SetVSwitchId(v string) *CreateDBInstanceShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetWhitelistTemplateList(v string) *CreateDBInstanceShrinkRequest {
+	s.WhitelistTemplateList = &v
 	return s
 }
 
@@ -49944,6 +49956,7 @@ type ModifyDBProxyInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 }
 
 func (s ModifyDBProxyInstanceRequest) String() string {
@@ -50001,6 +50014,11 @@ func (s *ModifyDBProxyInstanceRequest) SetResourceOwnerAccount(v string) *Modify
 
 func (s *ModifyDBProxyInstanceRequest) SetResourceOwnerId(v int64) *ModifyDBProxyInstanceRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyInstanceRequest) SetVSwitchIds(v string) *ModifyDBProxyInstanceRequest {
+	s.VSwitchIds = &v
 	return s
 }
 
@@ -60526,6 +60544,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhitelistTemplateList)) {
+		query["WhitelistTemplateList"] = request.WhitelistTemplateList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
@@ -80024,6 +80046,10 @@ func (client *Client) ModifyDBProxyInstanceWithOptions(request *ModifyDBProxyIns
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
 	}
 
 	req := &openapi.OpenApiRequest{
