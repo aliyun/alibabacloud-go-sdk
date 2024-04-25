@@ -25013,6 +25013,250 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	return s
 }
 
+type GetUserLatestPlanHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetUserLatestPlanHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetUserLatestPlanHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanHeaders) SetCommonHeaders(v map[string]*string) *GetUserLatestPlanHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserLatestPlanHeaders) SetAccountContext(v *GetUserLatestPlanHeadersAccountContext) *GetUserLatestPlanHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetUserLatestPlanHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetUserLatestPlanHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanHeadersAccountContext) SetAccountId(v string) *GetUserLatestPlanHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetUserLatestPlanShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetUserLatestPlanShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetUserLatestPlanShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetUserLatestPlanShrinkHeaders) SetAccountContextShrink(v string) *GetUserLatestPlanShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetUserLatestPlanRequest struct {
+	TenantContext *GetUserLatestPlanRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetUserLatestPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanRequest) SetTenantContext(v *GetUserLatestPlanRequestTenantContext) *GetUserLatestPlanRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetUserLatestPlanRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetUserLatestPlanRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanRequestTenantContext) SetTenantId(v string) *GetUserLatestPlanRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetUserLatestPlanShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetUserLatestPlanShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanShrinkRequest) SetTenantContextShrink(v string) *GetUserLatestPlanShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetUserLatestPlanResponseBody struct {
+	AccountHandleStatus    *int32  `json:"accountHandleStatus,omitempty" xml:"accountHandleStatus,omitempty"`
+	AccountHandleTime      *string `json:"accountHandleTime,omitempty" xml:"accountHandleTime,omitempty"`
+	AccountType            *int32  `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	AgreementFirstSignTime *string `json:"agreementFirstSignTime,omitempty" xml:"agreementFirstSignTime,omitempty"`
+	AgreementLastSignTime  *string `json:"agreementLastSignTime,omitempty" xml:"agreementLastSignTime,omitempty"`
+	AgreementStatus        *int32  `json:"agreementStatus,omitempty" xml:"agreementStatus,omitempty"`
+	DataHandleEndTime      *string `json:"dataHandleEndTime,omitempty" xml:"dataHandleEndTime,omitempty"`
+	DataHandleStartTime    *string `json:"dataHandleStartTime,omitempty" xml:"dataHandleStartTime,omitempty"`
+	DataHandleStatus       *int32  `json:"dataHandleStatus,omitempty" xml:"dataHandleStatus,omitempty"`
+	ExclusivePlan          *int32  `json:"exclusivePlan,omitempty" xml:"exclusivePlan,omitempty"`
+	NewAccountUid          *int64  `json:"newAccountUid,omitempty" xml:"newAccountUid,omitempty"`
+	RequestId              *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Status                 *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	VendorRequestId        *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType             *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetUserLatestPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAccountHandleStatus(v int32) *GetUserLatestPlanResponseBody {
+	s.AccountHandleStatus = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAccountHandleTime(v string) *GetUserLatestPlanResponseBody {
+	s.AccountHandleTime = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAccountType(v int32) *GetUserLatestPlanResponseBody {
+	s.AccountType = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAgreementFirstSignTime(v string) *GetUserLatestPlanResponseBody {
+	s.AgreementFirstSignTime = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAgreementLastSignTime(v string) *GetUserLatestPlanResponseBody {
+	s.AgreementLastSignTime = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetAgreementStatus(v int32) *GetUserLatestPlanResponseBody {
+	s.AgreementStatus = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetDataHandleEndTime(v string) *GetUserLatestPlanResponseBody {
+	s.DataHandleEndTime = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetDataHandleStartTime(v string) *GetUserLatestPlanResponseBody {
+	s.DataHandleStartTime = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetDataHandleStatus(v int32) *GetUserLatestPlanResponseBody {
+	s.DataHandleStatus = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetExclusivePlan(v int32) *GetUserLatestPlanResponseBody {
+	s.ExclusivePlan = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetNewAccountUid(v int64) *GetUserLatestPlanResponseBody {
+	s.NewAccountUid = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetRequestId(v string) *GetUserLatestPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetStatus(v int32) *GetUserLatestPlanResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetVendorRequestId(v string) *GetUserLatestPlanResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponseBody) SetVendorType(v string) *GetUserLatestPlanResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetUserLatestPlanResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserLatestPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserLatestPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserLatestPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserLatestPlanResponse) SetHeaders(v map[string]*string) *GetUserLatestPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserLatestPlanResponse) SetStatusCode(v int32) *GetUserLatestPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserLatestPlanResponse) SetBody(v *GetUserLatestPlanResponseBody) *GetUserLatestPlanResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkspaceHeaders struct {
 	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetWorkspaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -43135,6 +43379,220 @@ func (s *SubscribeCalendarResponse) SetBody(v *SubscribeCalendarResponseBody) *S
 	return s
 }
 
+type SyncDingTypeHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SyncDingTypeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SyncDingTypeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeHeaders) SetCommonHeaders(v map[string]*string) *SyncDingTypeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SyncDingTypeHeaders) SetAccountContext(v *SyncDingTypeHeadersAccountContext) *SyncDingTypeHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SyncDingTypeHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SyncDingTypeHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeHeadersAccountContext) SetAccountId(v string) *SyncDingTypeHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SyncDingTypeShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SyncDingTypeShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeShrinkHeaders) SetCommonHeaders(v map[string]*string) *SyncDingTypeShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SyncDingTypeShrinkHeaders) SetAccountContextShrink(v string) *SyncDingTypeShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SyncDingTypeRequest struct {
+	DingType      *string                           `json:"DingType,omitempty" xml:"DingType,omitempty"`
+	Source        *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	TenantContext *SyncDingTypeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	WorkNo        *string                           `json:"WorkNo,omitempty" xml:"WorkNo,omitempty"`
+}
+
+func (s SyncDingTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeRequest) SetDingType(v string) *SyncDingTypeRequest {
+	s.DingType = &v
+	return s
+}
+
+func (s *SyncDingTypeRequest) SetSource(v string) *SyncDingTypeRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *SyncDingTypeRequest) SetTenantContext(v *SyncDingTypeRequestTenantContext) *SyncDingTypeRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *SyncDingTypeRequest) SetWorkNo(v string) *SyncDingTypeRequest {
+	s.WorkNo = &v
+	return s
+}
+
+type SyncDingTypeRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SyncDingTypeRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeRequestTenantContext) SetTenantId(v string) *SyncDingTypeRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type SyncDingTypeShrinkRequest struct {
+	DingType            *string `json:"DingType,omitempty" xml:"DingType,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	WorkNo              *string `json:"WorkNo,omitempty" xml:"WorkNo,omitempty"`
+}
+
+func (s SyncDingTypeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeShrinkRequest) SetDingType(v string) *SyncDingTypeShrinkRequest {
+	s.DingType = &v
+	return s
+}
+
+func (s *SyncDingTypeShrinkRequest) SetSource(v string) *SyncDingTypeShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *SyncDingTypeShrinkRequest) SetTenantContextShrink(v string) *SyncDingTypeShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *SyncDingTypeShrinkRequest) SetWorkNo(v string) *SyncDingTypeShrinkRequest {
+	s.WorkNo = &v
+	return s
+}
+
+type SyncDingTypeResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success         *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SyncDingTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeResponseBody) SetRequestId(v string) *SyncDingTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncDingTypeResponseBody) SetSuccess(v bool) *SyncDingTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SyncDingTypeResponseBody) SetVendorRequestId(v string) *SyncDingTypeResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SyncDingTypeResponseBody) SetVendorType(v string) *SyncDingTypeResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SyncDingTypeResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncDingTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDingTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDingTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDingTypeResponse) SetHeaders(v map[string]*string) *SyncDingTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDingTypeResponse) SetStatusCode(v int32) *SyncDingTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDingTypeResponse) SetBody(v *SyncDingTypeResponseBody) *SyncDingTypeResponse {
+	s.Body = v
+	return s
+}
+
 type TerminateInstanceHeaders struct {
 	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *TerminateInstanceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -55090,6 +55548,73 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+func (client *Client) GetUserLatestPlanWithOptions(tmpReq *GetUserLatestPlanRequest, tmpHeader *GetUserLatestPlanHeaders, runtime *util.RuntimeOptions) (_result *GetUserLatestPlanResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetUserLatestPlanShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetUserLatestPlanShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserLatestPlan"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/aliding/v1/indepding/getUserLatestPlan"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserLatestPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserLatestPlan(request *GetUserLatestPlanRequest) (_result *GetUserLatestPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetUserLatestPlanHeaders{}
+	_result = &GetUserLatestPlanResponse{}
+	_body, _err := client.GetUserLatestPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetWorkspaceWithOptions(tmpReq *GetWorkspaceRequest, tmpHeader *GetWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60211,6 +60736,85 @@ func (client *Client) SubscribeCalendar(request *SubscribeCalendarRequest) (_res
 	headers := &SubscribeCalendarHeaders{}
 	_result = &SubscribeCalendarResponse{}
 	_body, _err := client.SubscribeCalendarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SyncDingTypeWithOptions(tmpReq *SyncDingTypeRequest, tmpHeader *SyncDingTypeHeaders, runtime *util.RuntimeOptions) (_result *SyncDingTypeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SyncDingTypeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &SyncDingTypeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DingType)) {
+		body["DingType"] = request.DingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkNo)) {
+		body["WorkNo"] = request.WorkNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDingType"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/aliding/v1/indepding/syncDingType"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncDingTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SyncDingType(request *SyncDingTypeRequest) (_result *SyncDingTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SyncDingTypeHeaders{}
+	_result = &SyncDingTypeResponse{}
+	_body, _err := client.SyncDingTypeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
