@@ -591,7 +591,8 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 
 type AttachWhitelistTemplateToInstanceRequest struct {
 	// The name of the instance.
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group. For more information about resource groups, see Resource groups.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -610,6 +611,11 @@ func (s AttachWhitelistTemplateToInstanceRequest) GoString() string {
 
 func (s *AttachWhitelistTemplateToInstanceRequest) SetInsName(v string) *AttachWhitelistTemplateToInstanceRequest {
 	s.InsName = &v
+	return s
+}
+
+func (s *AttachWhitelistTemplateToInstanceRequest) SetRegionId(v string) *AttachWhitelistTemplateToInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -3591,11 +3597,11 @@ type CreateDBInstanceRequest struct {
 	// *   **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the key that is used to encrypt data on standard SSDs or ESSDs in the region of the instance. If you specify the EncryptionKey parameter, cloud disk encryption is automatically enabled. In this case, you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled.
+	// The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
 	//
-	// You can obtain the ID of the key from the Key Management Service (KMS) console. You can also create a key. For more information, see [Create a CMK](~~181610~~).
+	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](~~181610~~).
 	//
-	// >  This parameter is optional when you create an ApsaraDB RDS for PostgreSQL instance. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+	// >  This parameter is optional when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
@@ -4318,11 +4324,11 @@ type CreateDBInstanceShrinkRequest struct {
 	// *   **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the key that is used to encrypt data on standard SSDs or ESSDs in the region of the instance. If you specify the EncryptionKey parameter, cloud disk encryption is automatically enabled. In this case, you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled.
+	// The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
 	//
-	// You can obtain the ID of the key from the Key Management Service (KMS) console. You can also create a key. For more information, see [Create a CMK](~~181610~~).
+	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](~~181610~~).
 	//
-	// >  This parameter is optional when you create an ApsaraDB RDS for PostgreSQL instance. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+	// >  This parameter is optional when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
@@ -5781,7 +5787,7 @@ func (s *CreateDBNodesRequest) SetResourceOwnerId(v int64) *CreateDBNodesRequest
 type CreateDBNodesRequestDBNode struct {
 	// The specification information of the node.
 	ClassCode *string `json:"classCode,omitempty" xml:"classCode,omitempty"`
-	VswId     *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 	// The zone ID of the node.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
@@ -5799,8 +5805,8 @@ func (s *CreateDBNodesRequestDBNode) SetClassCode(v string) *CreateDBNodesReques
 	return s
 }
 
-func (s *CreateDBNodesRequestDBNode) SetVswId(v string) *CreateDBNodesRequestDBNode {
-	s.VswId = &v
+func (s *CreateDBNodesRequestDBNode) SetVswitchId(v string) *CreateDBNodesRequestDBNode {
+	s.VswitchId = &v
 	return s
 }
 
@@ -6664,16 +6670,16 @@ func (s *CreateDiagnosticReportResponse) SetBody(v *CreateDiagnosticReportRespon
 }
 
 type CreateGADInstanceRequest struct {
-	// The ID of the primary instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID. The primary instance serves as the central node of the global active database cluster.
+	// The ID of the primary instance. You can call the DescribeDBInstances operation to query the instance ID. The primary instance serves as the central node of the global active database cluster.
 	//
-	// > *   A primary instance can serve as the central node only of a single global active database cluster.
-	// > *   Only a primary instance that is created in one of the following regions can serve as the central node of a global active database cluster: China (Hangzhou), China (Shanghai), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Shenzhen), and China (Chengdu).
+	// > *   A primary instance can serve only as the central node of a single global active database cluster.
+	// > *   The primary instance can serve as the central node of the global active database cluster only in the following regions: China (Hangzhou), China (Shanghai), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Shenzhen), and China (Chengdu).
 	CentralDBInstanceId *string `json:"CentralDBInstanceId,omitempty" xml:"CentralDBInstanceId,omitempty"`
-	// The username of the privileged account of the central node. You can call the [DescribeAccounts](~~26265~~) operation to query the privileged account of the central node.
+	// The username of the privileged account of the central node. You can call the DescribeAccounts operation to query the privileged account of the central node.
 	CentralRdsDtsAdminAccount *string `json:"CentralRdsDtsAdminAccount,omitempty" xml:"CentralRdsDtsAdminAccount,omitempty"`
 	// The password of the privileged account of the central node.
 	CentralRdsDtsAdminPassword *string `json:"CentralRdsDtsAdminPassword,omitempty" xml:"CentralRdsDtsAdminPassword,omitempty"`
-	// The region ID of the central node. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the central node. You can call the DescribeRegions operation to query the most recent region list.
 	CentralRegionId *string `json:"CentralRegionId,omitempty" xml:"CentralRegionId,omitempty"`
 	// A JSON array that consists of the information about a specified database on the central node. All database information that you specify in this array is synchronized to the unit nodes of the global active database cluster. The JSON array contains the following fields:
 	//
@@ -6778,18 +6784,18 @@ type CreateGADInstanceRequestUnitNode struct {
 	// *   The name can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
 	// *   The name cannot start with `http://` or `https://`.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage capacity of the unit node that you want to create. Unit: GB. The storage capacity increases at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the [DescribeAvailableResource](~~134039~~) operation to query the storage capacity range that is supported for a specified instance type in a region.
+	// The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
 	// *   **local_ssd**: local SSD. This is the recommended storage type.
 	// *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
 	// *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-	// *   **cloud_essd2**: ESSD of PL2
+	// *   **cloud_essd2**: ESSD of PL2.
 	// *   **cloud_essd3**: ESSD of PL3.
 	//
 	// The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
@@ -6797,9 +6803,9 @@ type CreateGADInstanceRequestUnitNode struct {
 	// *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
 	// *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the [DescribeAvailableResource](~~134039~~) operation to query the available instance types in a region.
+	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the DescribeAvailableResource operation to query the available instance types in a region.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DbInstanceClass *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
 	// The conflict resolution policy based on which Data Transmission Service (DTS) responds to primary key conflicts during data synchronization to the unit node that you want to create. Valid values:
 	//
@@ -6807,7 +6813,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	// *   **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
 	// *   **ignore**: DTS hides the conflicting primary key on the node.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DtsConflict *string `json:"DtsConflict,omitempty" xml:"DtsConflict,omitempty"`
 	// The specifications of the data synchronization task for the unit node that you want to create. Valid values:
 	//
@@ -6818,11 +6824,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// >  For more information, see [Specifications of data synchronization tasks](~~26605~~).
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DtsInstanceClass *string `json:"DtsInstanceClass,omitempty" xml:"DtsInstanceClass,omitempty"`
 	// The database engine of the unit node that you want to create. Set the value to **MySQL**.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version of the unit node that you want to create. Valid values:
 	//
@@ -6831,7 +6837,7 @@ type CreateGADInstanceRequestUnitNode struct {
 	// *   **5.6**
 	// *   **5.5**
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The billing method of the unit node that you want to create. Valid values:
 	//
@@ -6840,44 +6846,44 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// >  The system automatically generates a purchase order and completes the payment. You do not need to manually confirm the purchase order or complete the payment.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The IP address whitelist of the unit node that you want to create. For more information, see [IP address whitelist](~~43185~~). If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+	// The [IP address whitelist](~~43185~~) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
 	//
 	// *   IP addresses, such as `10.10.10.10`.
-	// *   CIDR blocks, such as `10.10.10.10/24`. In this example, **24** indicates that the prefix of the IP address is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
+	// *   CIDR blocks, such as `10.10.10.10/24`. In this example, **24** indicates that the prefix of the IP address in the whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The vSwitch ID of the unit node that you want to create.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
 	// The virtual private cloud (VPC) ID of the unit node that you want to create.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
-	// The zone ID of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	ZoneID *string `json:"ZoneID,omitempty" xml:"ZoneID,omitempty"`
-	// The zone ID of the secondary node of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
 	//
 	// *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
 	// *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	ZoneIDSlave1 *string `json:"ZoneIDSlave1,omitempty" xml:"ZoneIDSlave1,omitempty"`
-	// The zone ID of the logger node of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
 	//
 	// *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
 	// *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
 	//
-	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	ZoneIDSlave2 *string `json:"ZoneIDSlave2,omitempty" xml:"ZoneIDSlave2,omitempty"`
 }
 
@@ -12360,7 +12366,8 @@ type DescribeAllWhitelistTemplateRequest struct {
 	// The number of entries to return on each page. Enumerated valid values: 10, 30, and 50.
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
 	// The page number.
-	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	PageNumbers *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID. For more information about resource groups, see related documentation.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -12389,6 +12396,11 @@ func (s *DescribeAllWhitelistTemplateRequest) SetMaxRecordsPerPage(v int32) *Des
 
 func (s *DescribeAllWhitelistTemplateRequest) SetPageNumbers(v int32) *DescribeAllWhitelistTemplateRequest {
 	s.PageNumbers = &v
+	return s
+}
+
+func (s *DescribeAllWhitelistTemplateRequest) SetRegionId(v string) *DescribeAllWhitelistTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -12750,7 +12762,7 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// > If you want to query the price of a read-only instance, you must specify this parameter.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
@@ -12796,12 +12808,12 @@ type DescribeAvailableClassesRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The type of the order. Set the value to **BUY**
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the region ID of the instance.
+	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the zone ID of the instance.
+	// The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID of the instance.
 	//
-	// >  If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones. For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or `cn-hangzhou-h`.
+	// > If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones.`` For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or cn-hangzhou-h.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -13470,10 +13482,10 @@ type DescribeAvailableZonesRequest struct {
 	//
 	//     **Note**ApsaraDB RDS for MariaDB does not support serverless instances.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the instance. If the instance spans more than one zone, the value of this parameter contains an `MAZ` part, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call the [DescribeRegions](~~26243~~) operation to query the most recent zone list.
+	// The zone ID. If the instance spans more than one zone, the value of this parameter contains an `MAZ` part, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call the DescribeRegions operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -28553,7 +28565,7 @@ func (s *DescribeGadInstancesResponseBody) SetRequestId(v string) *DescribeGadIn
 type DescribeGadInstancesResponseBodyGadInstances struct {
 	// The time when the global active database cluster was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cluster name.
+	// The name of the cluster.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The information about each node in the cluster.
 	GadInstanceMembers []*DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers `json:"GadInstanceMembers,omitempty" xml:"GadInstanceMembers,omitempty" type:"Repeated"`
@@ -28565,7 +28577,7 @@ type DescribeGadInstancesResponseBodyGadInstances struct {
 	//
 	// >  The value of this parameter is fixed as **mysql**.
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The cluster status. Valid values:
+	// The status of the cluster. Valid values:
 	//
 	// *   **activation**: The cluster is running.
 	// *   **creating**: The cluster is being created.
@@ -28617,7 +28629,7 @@ func (s *DescribeGadInstancesResponseBodyGadInstances) SetStatus(v string) *Desc
 }
 
 type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
-	// The node ID.
+	// The ID of the node.
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	// A JSON array that consists of the details about the Data Transmission Service (DTS) synchronization task.
 	//
@@ -28629,13 +28641,13 @@ type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version that is run by the node.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the region in which the node resides.
+	// The ID of the region where the node resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The node type. Valid values:
+	// The type of the node. Valid values:
 	//
-	// *   **CENTRAL**: The node is the central node. Each global active database cluster has only one central node. All unit nodes synchronize data from the central node.
+	// *   **CENTRAL**: The node is a central node. Each global active database cluster has only one central node. All unit nodes synchronize data from the central node.
 	// *   **UNIT**: The node is a unit node. Each global active database cluster can have up to 10 unit nodes. All unit nodes synchronize data from the central node.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The node status. Valid values:
@@ -30921,7 +30933,8 @@ func (s *DescribeInstanceKeywordsResponse) SetBody(v *DescribeInstanceKeywordsRe
 
 type DescribeInstanceLinkedWhitelistTemplateRequest struct {
 	// The instance name.
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID. You can leave this parameter empty.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -30938,6 +30951,11 @@ func (s DescribeInstanceLinkedWhitelistTemplateRequest) GoString() string {
 
 func (s *DescribeInstanceLinkedWhitelistTemplateRequest) SetInsName(v string) *DescribeInstanceLinkedWhitelistTemplateRequest {
 	s.InsName = &v
+	return s
+}
+
+func (s *DescribeInstanceLinkedWhitelistTemplateRequest) SetRegionId(v string) *DescribeInstanceLinkedWhitelistTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -31123,14 +31141,23 @@ func (s *DescribeInstanceLinkedWhitelistTemplateResponse) SetBody(v *DescribeIns
 }
 
 type DescribeKmsAssociateResourcesRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	KmsResourceId        *string `json:"KmsResourceId,omitempty" xml:"KmsResourceId,omitempty"`
-	KmsResourceRegionId  *string `json:"KmsResourceRegionId,omitempty" xml:"KmsResourceRegionId,omitempty"`
-	KmsResourceType      *string `json:"KmsResourceType,omitempty" xml:"KmsResourceType,omitempty"`
-	KmsResourceUser      *string `json:"KmsResourceUser,omitempty" xml:"KmsResourceUser,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the KMS resource. Only key IDs are supported.
+	KmsResourceId *string `json:"KmsResourceId,omitempty" xml:"KmsResourceId,omitempty"`
+	// The ID of the region to which the KMS resource belongs.
+	KmsResourceRegionId *string `json:"KmsResourceRegionId,omitempty" xml:"KmsResourceRegionId,omitempty"`
+	// The type of the KMS resource. Only key is supported.
+	KmsResourceType *string `json:"KmsResourceType,omitempty" xml:"KmsResourceType,omitempty"`
+	// The ID of the Alibaba Cloud account to which the KMS resource belongs.
+	KmsResourceUser *string `json:"KmsResourceUser,omitempty" xml:"KmsResourceUser,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -31200,9 +31227,15 @@ func (s *DescribeKmsAssociateResourcesRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribeKmsAssociateResourcesResponseBody struct {
+	// The information about the associated ApsaraDB RDS instance.
 	AssociateDBInstances []*DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances `json:"AssociateDBInstances,omitempty" xml:"AssociateDBInstances,omitempty" type:"Repeated"`
-	AssociateStatus      *bool                                                            `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
-	RequestId            *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an associated RDS instance exists.
+	//
+	// - **true**: Yes
+	// - **false**: No
+	AssociateStatus *bool `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeKmsAssociateResourcesResponseBody) String() string {
@@ -31229,10 +31262,30 @@ func (s *DescribeKmsAssociateResourcesResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances struct {
+	// The instance ID.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	KeyUsedBy      *string `json:"KeyUsedBy,omitempty" xml:"KeyUsedBy,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The database engine. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQLServer**
+	// *   **PostgreSQL**
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The way in which the key is used. Return values:
+	//
+	// *   **DiskEncryption**: cloud disk encryption
+	// *   **TDE**: transparent data encryption
+	KeyUsedBy *string `json:"KeyUsedBy,omitempty" xml:"KeyUsedBy,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// *   **CREATING**: The instance is being created.
+	// *   **ACTIVATION**: The instance is running.
+	// *   **DELETING**: The instance is being deleted.
+	// *   **RESTARTING**: The instance is being restarted.
+	// *   **INS_MAINTAINING**: The configuration of the instance is being changed.
+	// *   **INS_MAINTAINING**: The instance is being maintained.
+	// *   **BACKUP_RECOVERING**: The instance is being restored.
+	// *   **NET_MODIFYING**: The network type of the instance is being changed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances) String() string {
@@ -38768,7 +38821,7 @@ type DescribeSecretsRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group where the instance is located.
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -41622,6 +41675,7 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 }
 
 type DescribeWhitelistTemplateRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -41636,6 +41690,11 @@ func (s DescribeWhitelistTemplateRequest) String() string {
 
 func (s DescribeWhitelistTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateRequest) SetRegionId(v string) *DescribeWhitelistTemplateRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *DescribeWhitelistTemplateRequest) SetResourceGroupId(v string) *DescribeWhitelistTemplateRequest {
@@ -41818,6 +41877,7 @@ func (s *DescribeWhitelistTemplateResponse) SetBody(v *DescribeWhitelistTemplate
 }
 
 type DescribeWhitelistTemplateLinkedInstanceRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -41832,6 +41892,11 @@ func (s DescribeWhitelistTemplateLinkedInstanceRequest) String() string {
 
 func (s DescribeWhitelistTemplateLinkedInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeWhitelistTemplateLinkedInstanceRequest) SetRegionId(v string) *DescribeWhitelistTemplateLinkedInstanceRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *DescribeWhitelistTemplateLinkedInstanceRequest) SetResourceGroupId(v string) *DescribeWhitelistTemplateLinkedInstanceRequest {
@@ -42160,7 +42225,8 @@ func (s *DetachGadInstanceMemberResponse) SetBody(v *DetachGadInstanceMemberResp
 
 type DetachWhitelistTemplateToInstanceRequest struct {
 	// The instance name.
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID. For more information about resource groups, see Resource groups.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -42179,6 +42245,11 @@ func (s DetachWhitelistTemplateToInstanceRequest) GoString() string {
 
 func (s *DetachWhitelistTemplateToInstanceRequest) SetInsName(v string) *DetachWhitelistTemplateToInstanceRequest {
 	s.InsName = &v
+	return s
+}
+
+func (s *DetachWhitelistTemplateToInstanceRequest) SetRegionId(v string) *DetachWhitelistTemplateToInstanceRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -43348,11 +43419,8 @@ type ListClassesResponseBodyItems struct {
 	//
 	// *   Unit: cents (USD).
 	//
-	// >
-	//
-	// *   If you set **CommodityCode** to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
-	//
-	// *   If you set **CommodityCode** to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
+	// > *   If you set **CommodityCode** to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
+	// > *   If you set **CommodityCode** to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
 	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
 }
 
@@ -49516,7 +49584,7 @@ func (s *ModifyDBProxyResponse) SetBody(v *ModifyDBProxyResponseBody) *ModifyDBP
 }
 
 type ModifyDBProxyEndpointRequest struct {
-	// The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end of the last value.
+	// The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end of the value.
 	//
 	// Valid feature values:
 	//
@@ -49529,16 +49597,16 @@ type ModifyDBProxyEndpointRequest struct {
 	// *   **1**: enabled
 	// *   **0**: disabled
 	//
-	// > If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by **ReadWriteSpliting**.
+	// >  If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by **ReadWriteSpliting**.
 	ConfigDBProxyFeatures *string `json:"ConfigDBProxyFeatures,omitempty" xml:"ConfigDBProxyFeatures,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
+	// The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
 	//
 	// > *   If the instance runs MySQL and you set **DbEndpointOperator** to **Delete** or **Modify**, you must specify DBProxyEndpointId.
 	// > *   If the instance runs PostgreSQL and you set **DbEndpointOperator** to **Delete**, **Modify**, or **Create**, you must specify DBProxyEndpointId.
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
 	// The description of the proxy terminal.
 	DbEndpointAliases *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
@@ -52696,6 +52764,7 @@ type ModifyWhitelistTemplateRequest struct {
 	//
 	// > : A maximum of 1,000 IP addresses or CIDR blocks can be added for each instance. If you want to add a large number of IP addresses, we recommend that you merge them into CIDR blocks, such as 10.23.XX.XX/24.
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID. For more information about resource groups, see related documentation.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -52716,6 +52785,11 @@ func (s ModifyWhitelistTemplateRequest) GoString() string {
 
 func (s *ModifyWhitelistTemplateRequest) SetIpWhitelist(v string) *ModifyWhitelistTemplateRequest {
 	s.IpWhitelist = &v
+	return s
+}
+
+func (s *ModifyWhitelistTemplateRequest) SetRegionId(v string) *ModifyWhitelistTemplateRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -53960,11 +54034,8 @@ type RecoveryDBInstanceRequest struct {
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The ID of the original instance.
 	//
-	// >
-	//
-	// *   If you specify BackupId, you do not need to specify this parameter.
-	//
-	// *   If you specify RestoreTime, you must also specify this parameter.
+	// > *   If you specify BackupId, you do not need to specify this parameter.
+	// > *   If you specify RestoreTime, you must also specify this parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The storage capacity of the new instance. Unit: GB. For more information, see [Instance types](~~26312~~).
 	//
@@ -57487,9 +57558,9 @@ type UpgradeDBInstanceMajorVersionRequest struct {
 	//
 	// If the original instance resides in the classic network, you must migrate the instance to a VPC before you call this operation. For more information about how to view or change the network type of an instance, see [Change the network type of an ApsaraDB RDS for PostgreSQL instance](~~96761~~).
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The billing method of the new instance. Set the value to Postpaid.
+	// The billing method. Set the value to Postpaid.
 	//
-	// > For more information about how to change the billing method of an instance after the upgrade, see [Change the billing method of an instance from pay-as-you-go to subscription](~~96743~~).
+	// >  For more information about how to change the billing method of an instance after the upgrade, see [Change the billing method of an instance from pay-as-you-go to subscription](~~96743~~).
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
@@ -57503,18 +57574,13 @@ type UpgradeDBInstanceMajorVersionRequest struct {
 	// *   true
 	// *   false Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads.
 	//
-	// >
-	//
-	// *   If you set this parameter to true, you must take note of the following information:
-	//
-	//     *   After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	//     *   During the switchover, the original instance processes only read requests. We recommend that you perform the switchover during off-peak hours.
-	//     *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
-	//
-	// *   If you set this parameter to false, you must take note of the following information:
-	//
-	//     *   The data migration does not interrupt your workloads on the original instance.
-	//     *   After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](~~96788~~).
+	// > *   If you set this parameter to true, you must take note of the following information:
+	// > *   After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	// > *   During the switchover, the original instance processes only read requests. We recommend that you perform the switchover during off-peak hours.
+	// > *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	// > *   If you set this parameter to false, you must take note of the following information:
+	// > *   The data migration does not interrupt your workloads on the original instance.
+	// > *   After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](~~96788~~).
 	SwitchOver *string `json:"SwitchOver,omitempty" xml:"SwitchOver,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
@@ -58502,6 +58568,10 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *Atta
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InsName)) {
 		query["InsName"] = request.InsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -64685,6 +64755,10 @@ func (client *Client) DescribeAllWhitelistTemplateWithOptions(request *DescribeA
 		query["PageNumbers"] = request.PageNumbers
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -65178,11 +65252,12 @@ func (client *Client) DescribeAvailableRecoveryTime(request *DescribeAvailableRe
 }
 
 /**
- * ### Supported database engines
- * *   MySQL
- * *   PostgreSQL
- * *   SQL Server
- * *   MariaDB
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
+ * *   RDS MariaDB
+ * > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
  *
  * @param request DescribeAvailableZonesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -65254,11 +65329,12 @@ func (client *Client) DescribeAvailableZonesWithOptions(request *DescribeAvailab
 }
 
 /**
- * ### Supported database engines
- * *   MySQL
- * *   PostgreSQL
- * *   SQL Server
- * *   MariaDB
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * *   RDS PostgreSQL
+ * *   RDS SQL Server
+ * *   RDS MariaDB
+ * > You can call this operation to query the available zones for an instance. The query result may be different from the zones available on the buy page of the ApsaraDB RDS console. The values of some parameters on the buy page vary based on the actual sales policy. The actual information on the [buy page](https://rdsbuy.console.aliyun.com/create/rds/PostgreSQL) prevails.
  *
  * @param request DescribeAvailableZonesRequest
  * @return DescribeAvailableZonesResponse
@@ -71079,6 +71155,10 @@ func (client *Client) DescribeInstanceLinkedWhitelistTemplateWithOptions(request
 		query["InsName"] = request.InsName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -71134,6 +71214,16 @@ func (client *Client) DescribeInstanceLinkedWhitelistTemplate(request *DescribeI
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ *
+ * @param request DescribeKmsAssociateResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeKmsAssociateResourcesResponse
+ */
 func (client *Client) DescribeKmsAssociateResourcesWithOptions(request *DescribeKmsAssociateResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeKmsAssociateResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71207,6 +71297,15 @@ func (client *Client) DescribeKmsAssociateResourcesWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ *
+ * @param request DescribeKmsAssociateResourcesRequest
+ * @return DescribeKmsAssociateResourcesResponse
+ */
 func (client *Client) DescribeKmsAssociateResources(request *DescribeKmsAssociateResourcesRequest) (_result *DescribeKmsAssociateResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeKmsAssociateResourcesResponse{}
@@ -74941,6 +75040,10 @@ func (client *Client) DescribeWhitelistTemplateWithOptions(request *DescribeWhit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -75016,6 +75119,10 @@ func (client *Client) DescribeWhitelistTemplateLinkedInstanceWithOptions(request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -75247,6 +75354,10 @@ func (client *Client) DetachWhitelistTemplateToInstanceWithOptions(request *Deta
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InsName)) {
 		query["InsName"] = request.InsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -79627,9 +79738,9 @@ func (client *Client) ModifyDBProxy(request *ModifyDBProxyRequest) (_result *Mod
  * *   RDS MySQL
  * *   RDS PostgreSQL
  * ### [](#)References
- * > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
- * *   [Enable and configure the dedicated proxy feature](~~197456~~)
- * *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+ * *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
  *
  * @param request ModifyDBProxyEndpointRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -79733,9 +79844,9 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
  * *   RDS MySQL
  * *   RDS PostgreSQL
  * ### [](#)References
- * > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
- * *   [Enable and configure the dedicated proxy feature](~~197456~~)
- * *   [Create a database proxy terminal for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
+ * >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for MySQL instance](~~2621331~~)
+ * *   [Configure the connection settings for a database proxy endpoint for an ApsaraDB RDS for PostgreSQL instance](~~418273~~)
  *
  * @param request ModifyDBProxyEndpointRequest
  * @return ModifyDBProxyEndpointResponse
@@ -81893,6 +82004,10 @@ func (client *Client) ModifyWhitelistTemplateWithOptions(request *ModifyWhitelis
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
 		query["IpWhitelist"] = request.IpWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
