@@ -2228,7 +2228,8 @@ type GetLoginTokenResponseBody struct {
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
 	QrCodePng *string `json:"QrCodePng,omitempty" xml:"QrCodePng,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskVerifyInfo *GetLoginTokenResponseBodyRiskVerifyInfo `json:"RiskVerifyInfo,omitempty" xml:"RiskVerifyInfo,omitempty" type:"Struct"`
 	// The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
 	//
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
@@ -2306,6 +2307,11 @@ func (s *GetLoginTokenResponseBody) SetRequestId(v string) *GetLoginTokenRespons
 	return s
 }
 
+func (s *GetLoginTokenResponseBody) SetRiskVerifyInfo(v *GetLoginTokenResponseBodyRiskVerifyInfo) *GetLoginTokenResponseBody {
+	s.RiskVerifyInfo = v
+	return s
+}
+
 func (s *GetLoginTokenResponseBody) SetSecret(v string) *GetLoginTokenResponseBody {
 	s.Secret = &v
 	return s
@@ -2323,6 +2329,41 @@ func (s *GetLoginTokenResponseBody) SetTenantId(v int64) *GetLoginTokenResponseB
 
 func (s *GetLoginTokenResponseBody) SetWindowDisplayMode(v string) *GetLoginTokenResponseBody {
 	s.WindowDisplayMode = &v
+	return s
+}
+
+type GetLoginTokenResponseBodyRiskVerifyInfo struct {
+	Email            *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	LastLockDuration *int64  `json:"LastLockDuration,omitempty" xml:"LastLockDuration,omitempty"`
+	Locked           *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	Phone            *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+}
+
+func (s GetLoginTokenResponseBodyRiskVerifyInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginTokenResponseBodyRiskVerifyInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginTokenResponseBodyRiskVerifyInfo) SetEmail(v string) *GetLoginTokenResponseBodyRiskVerifyInfo {
+	s.Email = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBodyRiskVerifyInfo) SetLastLockDuration(v int64) *GetLoginTokenResponseBodyRiskVerifyInfo {
+	s.LastLockDuration = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBodyRiskVerifyInfo) SetLocked(v string) *GetLoginTokenResponseBodyRiskVerifyInfo {
+	s.Locked = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBodyRiskVerifyInfo) SetPhone(v string) *GetLoginTokenResponseBodyRiskVerifyInfo {
+	s.Phone = &v
 	return s
 }
 
@@ -2549,22 +2590,23 @@ func (s *QueryEdsAgentReportConfigResponse) SetBody(v *QueryEdsAgentReportConfig
 type RebootDesktopsRequest struct {
 	// The client ID. The system generates a unique ID for each client.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client OS.
+	// The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client version.
+	// The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The cloud desktop IDs. You can specify 1 to 20 IDs.
+	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The logon token.
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The session ID.
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The logon token.
 	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s RebootDesktopsRequest) String() string {
@@ -2617,6 +2659,11 @@ func (s *RebootDesktopsRequest) SetSessionId(v string) *RebootDesktopsRequest {
 
 func (s *RebootDesktopsRequest) SetSessionToken(v string) *RebootDesktopsRequest {
 	s.SessionToken = &v
+	return s
+}
+
+func (s *RebootDesktopsRequest) SetUuid(v string) *RebootDesktopsRequest {
+	s.Uuid = &v
 	return s
 }
 
@@ -3466,20 +3513,23 @@ func (s *SetFingerPrintTemplateDescriptionResponse) SetBody(v *SetFingerPrintTem
 }
 
 type StartDesktopsRequest struct {
-	// The ID of the request.
+	// The ID of the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client). The system generates a unique ID for each client.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The OS used by the client.
-	ClientOS    *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The operating system (OS) of the device that run the client.
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// StartDesktops
-	ClientVersion *string   `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	DesktopId     []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of cloud desktop N. You can specify one or more IDs of cloud desktops. Valid values of N: 1 to 20.
+	// The client version. If you use a WUYING client, you can click **About** on the client logon page to view the version of the client.
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// The logon token.
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The logon credential.
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The operation that you want to perform. Set the value to StartDesktops.
+	// The session ID.
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s StartDesktopsRequest) String() string {
@@ -3530,7 +3580,13 @@ func (s *StartDesktopsRequest) SetSessionId(v string) *StartDesktopsRequest {
 	return s
 }
 
+func (s *StartDesktopsRequest) SetUuid(v string) *StartDesktopsRequest {
+	s.Uuid = &v
+	return s
+}
+
 type StartDesktopsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3684,17 +3740,17 @@ func (s *StartRecordContentResponse) SetBody(v *StartRecordContentResponseBody) 
 type StopDesktopsRequest struct {
 	// The client ID. The system generates a unique ID for each client.
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client OS.
+	// The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client version.
+	// The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The cloud desktop IDs. You can specify 1 to 20 IDs.
+	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The logon token.
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The session ID.
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -5235,6 +5291,10 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		query["SessionToken"] = request.SessionToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5806,7 +5866,7 @@ func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintT
 }
 
 /**
- * The ID of the client.
+ * The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
  *
  * @param request StartDesktopsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5850,6 +5910,10 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 		query["SessionId"] = request.SessionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5874,7 +5938,7 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 }
 
 /**
- * The ID of the client.
+ * The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
  *
  * @param request StartDesktopsRequest
  * @return StartDesktopsResponse
@@ -5963,7 +6027,7 @@ func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_r
 }
 
 /**
- * The cloud desktops that you want to stop by calling this operation must be in the Running state. If the call is successful, the cloud desktops enter the Stopped state.
+ * The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
  *
  * @param request StopDesktopsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6035,7 +6099,7 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 }
 
 /**
- * The cloud desktops that you want to stop by calling this operation must be in the Running state. If the call is successful, the cloud desktops enter the Stopped state.
+ * The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
  *
  * @param request StopDesktopsRequest
  * @return StopDesktopsResponse
