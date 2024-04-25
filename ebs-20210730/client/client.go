@@ -5692,6 +5692,315 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 	return s
 }
 
+type DescribeLensMonitorDisksRequest struct {
+	// The type of the disk. Valid values:
+	// - cloud
+	// - cloud_efficiency
+	// - cloud_ssd
+	// - cloud_essd
+	// - cloud_auto
+	// - cloud_essd_entry
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The list of disks.
+	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
+	// Lens event tag list to filter cloud disks that have experienced these event types within 24 hours. Valid values:
+	//
+	// - NoSnapshot
+	// - BurstIOTriggered
+	// - CostOptimizationNeeded
+	// - DiskSpecNotMatchedWithInstance
+	// - DiskIONo4kAligned
+	// - DiskIOHang
+	// - InstanceIOPSExceedInstanceMaxLimit
+	// - InstanceBPSExceedInstanceMaxLimit
+	// - DiskIOPSExceedInstanceMaxLimit
+	// - DiskBPSExceedInstanceMaxLimit
+	// - DiskIOPSExceedDiskMaxLimit
+	// - DiskBPSExceedDiskMaxLimit
+	// - DiskSlowIOTriggerred
+	LensTags []*string `json:"LensTags,omitempty" xml:"LensTags,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to start the next query to retrieve more results.
+	//
+	// >  This parameter is not required in the first query. If not all results are returned in one query, you can pass in the NextToken value returned in the previous query to perform the query again.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeLensMonitorDisksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensMonitorDisksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetDiskCategory(v string) *DescribeLensMonitorDisksRequest {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetDiskIds(v []*string) *DescribeLensMonitorDisksRequest {
+	s.DiskIds = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetLensTags(v []*string) *DescribeLensMonitorDisksRequest {
+	s.LensTags = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetMaxResults(v int32) *DescribeLensMonitorDisksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetNextToken(v string) *DescribeLensMonitorDisksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetRegionId(v string) *DescribeLensMonitorDisksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeLensMonitorDisksResponseBody struct {
+	// Cloud disk information list.
+	DiskInfos []*DescribeLensMonitorDisksResponseBodyDiskInfos `json:"DiskInfos,omitempty" xml:"DiskInfos,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeLensMonitorDisksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensMonitorDisksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensMonitorDisksResponseBody) SetDiskInfos(v []*DescribeLensMonitorDisksResponseBodyDiskInfos) *DescribeLensMonitorDisksResponseBody {
+	s.DiskInfos = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBody) SetNextToken(v string) *DescribeLensMonitorDisksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBody) SetRequestId(v string) *DescribeLensMonitorDisksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBody) SetTotalCount(v int64) *DescribeLensMonitorDisksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeLensMonitorDisksResponseBodyDiskInfos struct {
+	// The BPS.
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// Indicates whether the performance burst feature is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// The type of the disk. Valid values:
+	// - cloud
+	// - cloud_efficiency
+	// - cloud_ssd
+	// - cloud_essd
+	// - cloud_auto
+	// - cloud_essd_entry
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The disk status. Valid values:
+	//
+	// - Available
+	// - Deleted
+	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
+	// The disk type. Valid values:
+	// *   system: system disk
+	// *   data: data disk
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The IOPS.
+	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
+	// Lens tags of the disk.
+	LensTags []*string `json:"LensTags,omitempty" xml:"LensTags,omitempty" type:"Repeated"`
+	// The new performance level of the ESSD. Valid values:
+	//
+	// *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
+	// *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
+	// *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
+	// *   PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+	//
+	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+	//
+	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://www.alibabacloud.com/help/en/ecs/user-guide/essd-autopl-disks)
+	ProvisionedIops *int32 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// The region ID of the disk.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The size of the disk. Unit: GiB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Tags of the disk.
+	Tags []*DescribeLensMonitorDisksResponseBodyDiskInfosTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeLensMonitorDisksResponseBodyDiskInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensMonitorDisksResponseBodyDiskInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetBps(v int32) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.Bps = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetBurstingEnabled(v bool) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.BurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetDiskCategory(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.DiskCategory = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetDiskId(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetDiskName(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetDiskStatus(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.DiskStatus = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetDiskType(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.DiskType = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetIops(v int32) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.Iops = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetLensTags(v []*string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.LensTags = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetPerformanceLevel(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetProvisionedIops(v int32) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetRegionId(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetSize(v int32) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetTags(v []*DescribeLensMonitorDisksResponseBodyDiskInfosTags) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfos) SetZoneId(v string) *DescribeLensMonitorDisksResponseBodyDiskInfos {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeLensMonitorDisksResponseBodyDiskInfosTags struct {
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeLensMonitorDisksResponseBodyDiskInfosTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensMonitorDisksResponseBodyDiskInfosTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfosTags) SetTagKey(v string) *DescribeLensMonitorDisksResponseBodyDiskInfosTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponseBodyDiskInfosTags) SetTagValue(v string) *DescribeLensMonitorDisksResponseBodyDiskInfosTags {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeLensMonitorDisksResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLensMonitorDisksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLensMonitorDisksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLensMonitorDisksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLensMonitorDisksResponse) SetHeaders(v map[string]*string) *DescribeLensMonitorDisksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponse) SetStatusCode(v int32) *DescribeLensMonitorDisksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksResponse) SetBody(v *DescribeLensMonitorDisksResponseBody) *DescribeLensMonitorDisksResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLensServiceStatusResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -11793,6 +12102,70 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventsResponse{}
 	_body, _err := client.DescribeEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLensMonitorDisksWithOptions(request *DescribeLensMonitorDisksRequest, runtime *util.RuntimeOptions) (_result *DescribeLensMonitorDisksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskCategory)) {
+		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
+		query["DiskIds"] = request.DiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LensTags)) {
+		query["LensTags"] = request.LensTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLensMonitorDisks"),
+		Version:     tea.String("2021-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLensMonitorDisksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLensMonitorDisks(request *DescribeLensMonitorDisksRequest) (_result *DescribeLensMonitorDisksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLensMonitorDisksResponse{}
+	_body, _err := client.DescribeLensMonitorDisksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
