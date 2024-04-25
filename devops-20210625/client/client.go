@@ -11801,11 +11801,13 @@ func (s *GetApplicationRequest) SetOrganizationId(v string) *GetApplicationReque
 }
 
 type GetApplicationResponseBody struct {
-	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
-	GmtCreate        *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	RequestId        *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	AppTemplateDisplayName *string `json:"appTemplateDisplayName,omitempty" xml:"appTemplateDisplayName,omitempty"`
+	AppTemplateName        *string `json:"appTemplateName,omitempty" xml:"appTemplateName,omitempty"`
+	CreatorAccountId       *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate              *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
+	RequestId              *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetApplicationResponseBody) String() string {
@@ -11814,6 +11816,16 @@ func (s GetApplicationResponseBody) String() string {
 
 func (s GetApplicationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetApplicationResponseBody) SetAppTemplateDisplayName(v string) *GetApplicationResponseBody {
+	s.AppTemplateDisplayName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBody) SetAppTemplateName(v string) *GetApplicationResponseBody {
+	s.AppTemplateName = &v
+	return s
 }
 
 func (s *GetApplicationResponseBody) SetCreatorAccountId(v string) *GetApplicationResponseBody {
