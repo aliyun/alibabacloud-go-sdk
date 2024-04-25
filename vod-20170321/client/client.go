@@ -6895,6 +6895,123 @@ func (s *DescribeVodDomainRealTimeByteHitRateDataResponse) SetBody(v *DescribeVo
 	return s
 }
 
+type DescribeVodDomainRealTimeDetailDataRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Field          *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	Merge          *string `json:"Merge,omitempty" xml:"Merge,omitempty"`
+	MergeLocIsp    *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeDetailDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeDetailDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetDomainName(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetEndTime(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetField(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.Field = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetIspNameEn(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetLocationNameEn(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetMerge(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.Merge = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetMergeLocIsp(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.MergeLocIsp = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetOwnerId(v int64) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataRequest) SetStartTime(v string) *DescribeVodDomainRealTimeDetailDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeDetailDataResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeDetailDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeDetailDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataResponseBody) SetData(v string) *DescribeVodDomainRealTimeDetailDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataResponseBody) SetRequestId(v string) *DescribeVodDomainRealTimeDetailDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeVodDomainRealTimeDetailDataResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodDomainRealTimeDetailDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodDomainRealTimeDetailDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodDomainRealTimeDetailDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealTimeDetailDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataResponse) SetStatusCode(v int32) *DescribeVodDomainRealTimeDetailDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodDomainRealTimeDetailDataResponse) SetBody(v *DescribeVodDomainRealTimeDetailDataResponseBody) *DescribeVodDomainRealTimeDetailDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodDomainRealTimeHttpCodeDataRequest struct {
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -32844,6 +32961,46 @@ func (client *Client) DescribeVodDomainRealTimeByteHitRateData(request *Describe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
 	_body, _err := client.DescribeVodDomainRealTimeByteHitRateDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeDetailDataWithOptions(request *DescribeVodDomainRealTimeDetailDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealTimeDetailDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodDomainRealTimeDetailData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVodDomainRealTimeDetailDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVodDomainRealTimeDetailData(request *DescribeVodDomainRealTimeDetailDataRequest) (_result *DescribeVodDomainRealTimeDetailDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodDomainRealTimeDetailDataResponse{}
+	_body, _err := client.DescribeVodDomainRealTimeDetailDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
