@@ -342,117 +342,6 @@ func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultRe
 	return s
 }
 
-type DeletePictureRequest struct {
-	DeletePicAfterQuery *string `json:"DeletePicAfterQuery,omitempty" xml:"DeletePicAfterQuery,omitempty"`
-	TransactionId       *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
-}
-
-func (s DeletePictureRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePictureRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePictureRequest) SetDeletePicAfterQuery(v string) *DeletePictureRequest {
-	s.DeletePicAfterQuery = &v
-	return s
-}
-
-func (s *DeletePictureRequest) SetTransactionId(v string) *DeletePictureRequest {
-	s.TransactionId = &v
-	return s
-}
-
-type DeletePictureResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DeletePictureResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s DeletePictureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePictureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePictureResponseBody) SetCode(v string) *DeletePictureResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeletePictureResponseBody) SetMessage(v string) *DeletePictureResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeletePictureResponseBody) SetRequestId(v string) *DeletePictureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeletePictureResponseBody) SetResult(v *DeletePictureResponseBodyResult) *DeletePictureResponseBody {
-	s.Result = v
-	return s
-}
-
-type DeletePictureResponseBodyResult struct {
-	DeleteResult  *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
-	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
-}
-
-func (s DeletePictureResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePictureResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePictureResponseBodyResult) SetDeleteResult(v string) *DeletePictureResponseBodyResult {
-	s.DeleteResult = &v
-	return s
-}
-
-func (s *DeletePictureResponseBodyResult) SetTransactionId(v string) *DeletePictureResponseBodyResult {
-	s.TransactionId = &v
-	return s
-}
-
-type DeletePictureResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeletePictureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeletePictureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePictureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePictureResponse) SetHeaders(v map[string]*string) *DeletePictureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeletePictureResponse) SetStatusCode(v int32) *DeletePictureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeletePictureResponse) SetBody(v *DeletePictureResponseBody) *DeletePictureResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteVerifyResultRequest struct {
 	DeleteAfterQuery *string `json:"DeleteAfterQuery,omitempty" xml:"DeleteAfterQuery,omitempty"`
 	DeleteType       *string `json:"DeleteType,omitempty" xml:"DeleteType,omitempty"`
@@ -3180,7 +3069,6 @@ type InitializeRequest struct {
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	FacePictureUrl    *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-	FlowType          *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
 	IdFaceQuality     *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
 	IdSpoof           *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
 	LanguageConfig    *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
@@ -3189,15 +3077,12 @@ type InitializeRequest struct {
 	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 	// OCR。
 	Ocr           *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
-	OperationMode *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	Pages         *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductConfig *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
 	ProductFlow   *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
 	ReturnUrl     *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	ServiceLevel  *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
+	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
 }
 
 func (s InitializeRequest) String() string {
@@ -3248,11 +3133,6 @@ func (s *InitializeRequest) SetFacePictureUrl(v string) *InitializeRequest {
 	return s
 }
 
-func (s *InitializeRequest) SetFlowType(v string) *InitializeRequest {
-	s.FlowType = &v
-	return s
-}
-
 func (s *InitializeRequest) SetIdFaceQuality(v string) *InitializeRequest {
 	s.IdFaceQuality = &v
 	return s
@@ -3288,23 +3168,8 @@ func (s *InitializeRequest) SetOcr(v string) *InitializeRequest {
 	return s
 }
 
-func (s *InitializeRequest) SetOperationMode(v string) *InitializeRequest {
-	s.OperationMode = &v
-	return s
-}
-
-func (s *InitializeRequest) SetPages(v string) *InitializeRequest {
-	s.Pages = &v
-	return s
-}
-
 func (s *InitializeRequest) SetProductCode(v string) *InitializeRequest {
 	s.ProductCode = &v
-	return s
-}
-
-func (s *InitializeRequest) SetProductConfig(v string) *InitializeRequest {
-	s.ProductConfig = &v
 	return s
 }
 
@@ -3328,8 +3193,8 @@ func (s *InitializeRequest) SetSecurityLevel(v string) *InitializeRequest {
 	return s
 }
 
-func (s *InitializeRequest) SetServiceLevel(v string) *InitializeRequest {
-	s.ServiceLevel = &v
+func (s *InitializeRequest) SetStyleConfig(v string) *InitializeRequest {
+	s.StyleConfig = &v
 	return s
 }
 
@@ -3754,54 +3619,6 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckResultResponse{}
 	_body, _err := client.CheckResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeletePictureWithOptions(request *DeletePictureRequest, runtime *util.RuntimeOptions) (_result *DeletePictureResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeletePicAfterQuery)) {
-		query["DeletePicAfterQuery"] = request.DeletePicAfterQuery
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
-		query["TransactionId"] = request.TransactionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeletePicture"),
-		Version:     tea.String("2022-08-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeletePictureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeletePicture(request *DeletePictureRequest) (_result *DeletePictureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeletePictureResponse{}
-	_body, _err := client.DeletePictureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4755,10 +4572,6 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["FacePictureUrl"] = request.FacePictureUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FlowType)) {
-		query["FlowType"] = request.FlowType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.IdFaceQuality)) {
 		query["IdFaceQuality"] = request.IdFaceQuality
 	}
@@ -4787,20 +4600,8 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["Ocr"] = request.Ocr
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OperationMode)) {
-		query["OperationMode"] = request.OperationMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Pages)) {
-		query["Pages"] = request.Pages
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductConfig)) {
-		query["ProductConfig"] = request.ProductConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductFlow)) {
@@ -4819,8 +4620,8 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["SecurityLevel"] = request.SecurityLevel
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ServiceLevel)) {
-		query["ServiceLevel"] = request.ServiceLevel
+	if !tea.BoolValue(util.IsUnset(request.StyleConfig)) {
+		query["StyleConfig"] = request.StyleConfig
 	}
 
 	body := map[string]interface{}{}
