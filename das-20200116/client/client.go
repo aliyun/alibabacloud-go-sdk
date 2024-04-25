@@ -1848,6 +1848,212 @@ func (s *CreateRequestDiagnosisResponse) SetBody(v *CreateRequestDiagnosisRespon
 	return s
 }
 
+type CreateSqlLogTaskRequest struct {
+	EndTime    *int64                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Filters    []*CreateSqlLogTaskRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	InstanceId *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId     *string                           `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Role       *string                           `json:"Role,omitempty" xml:"Role,omitempty"`
+	StartTime  *int64                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type       *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateSqlLogTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlLogTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlLogTaskRequest) SetEndTime(v int64) *CreateSqlLogTaskRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetFilters(v []*CreateSqlLogTaskRequestFilters) *CreateSqlLogTaskRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetInstanceId(v string) *CreateSqlLogTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetName(v string) *CreateSqlLogTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetNodeId(v string) *CreateSqlLogTaskRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetRole(v string) *CreateSqlLogTaskRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetStartTime(v int64) *CreateSqlLogTaskRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequest) SetType(v string) *CreateSqlLogTaskRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateSqlLogTaskRequestFilters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSqlLogTaskRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlLogTaskRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlLogTaskRequestFilters) SetKey(v string) *CreateSqlLogTaskRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskRequestFilters) SetValue(v string) *CreateSqlLogTaskRequestFilters {
+	s.Value = &v
+	return s
+}
+
+type CreateSqlLogTaskResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogTask
+	Data      *CreateSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSqlLogTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlLogTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlLogTaskResponseBody) SetCode(v string) *CreateSqlLogTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBody) SetData(v *CreateSqlLogTaskResponseBodyData) *CreateSqlLogTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBody) SetMessage(v string) *CreateSqlLogTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBody) SetRequestId(v string) *CreateSqlLogTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBody) SetSuccess(v string) *CreateSqlLogTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSqlLogTaskResponseBodyData struct {
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateSqlLogTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlLogTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetCreateTime(v int64) *CreateSqlLogTaskResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetEnd(v int64) *CreateSqlLogTaskResponseBodyData {
+	s.End = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetInstanceId(v string) *CreateSqlLogTaskResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetName(v string) *CreateSqlLogTaskResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetStart(v int64) *CreateSqlLogTaskResponseBodyData {
+	s.Start = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetStatus(v string) *CreateSqlLogTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponseBodyData) SetTaskId(v string) *CreateSqlLogTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateSqlLogTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSqlLogTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSqlLogTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlLogTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlLogTaskResponse) SetHeaders(v map[string]*string) *CreateSqlLogTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponse) SetStatusCode(v int32) *CreateSqlLogTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSqlLogTaskResponse) SetBody(v *CreateSqlLogTaskResponseBody) *CreateSqlLogTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStorageAnalysisTaskRequest struct {
 	// The database name. If you specify a database, the operation analyzes the storage usage of the specified database.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
@@ -4088,7 +4294,7 @@ type DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks struct {
 	// * **WAIT_INSTALL_JDK**: Install the Java Development Kit (JDK).
 	// * **WAIT_INSTALL_DBGATEWAY**: Install the database gateway (DBGateway).
 	// * **ADD_SECURITY_IPS_STEP**: Configure the whitelist of the security group.
-	// * **ARCHIVIE**: Archive the file that stores the analysis results of full SQL statistics.
+	// * **ARCHIVE**: Archive the file that stores the analysis results of full SQL statistics.
 	// * **DOWNLOAD**: Download the file that stores the analysis result of full SQL statistics.
 	// * **PROCEED**: Preprocess the file that stores the analysis result of full SQL statistics.
 	// * **PRE_LOAD**: Preload the file that stores the analysis result of full SQL statistics.
@@ -5811,7 +6017,7 @@ func (s *DescribeInstanceDasProRequest) SetInstanceId(v string) *DescribeInstanc
 type DescribeInstanceDasProResponseBody struct {
 	// The HTTP status code returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether DAS Professional Edition is enabled for the database instance.
+	// Indicates whether DAS Enterprise Edition is enabled for the database instance. Valid values:
 	//
 	// *   **true**
 	// *   **false**
@@ -5887,6 +6093,1497 @@ func (s *DescribeInstanceDasProResponse) SetStatusCode(v int32) *DescribeInstanc
 }
 
 func (s *DescribeInstanceDasProResponse) SetBody(v *DescribeInstanceDasProResponseBody) *DescribeInstanceDasProResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogConfigRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeSqlLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogConfigRequest) SetInstanceId(v string) *DescribeSqlLogConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeSqlLogConfigResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogConfig
+	Data      *DescribeSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogConfigResponseBody) SetCode(v string) *DescribeSqlLogConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBody) SetData(v *DescribeSqlLogConfigResponseBodyData) *DescribeSqlLogConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBody) SetMessage(v string) *DescribeSqlLogConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBody) SetRequestId(v string) *DescribeSqlLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBody) SetSuccess(v string) *DescribeSqlLogConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogConfigResponseBodyData struct {
+	ColdEnable        *bool   `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
+	ColdRetention     *int32  `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
+	ColdStartTime     *int64  `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
+	CollectorVersion  *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
+	HotEnable         *bool   `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
+	HotRetention      *int32  `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	HotStartTime      *int64  `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
+	LogFilter         *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
+	RequestEnable     *bool   `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	RequestStartTime  *int64  `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
+	RequestStopTime   *int64  `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
+	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SqlLogEnable      *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogState       *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
+	SqlLogVisibleTime *int64  `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
+	SupportVersion    *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
+	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeSqlLogConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetColdEnable(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.ColdEnable = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetColdRetention(v int32) *DescribeSqlLogConfigResponseBodyData {
+	s.ColdRetention = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetColdStartTime(v int64) *DescribeSqlLogConfigResponseBodyData {
+	s.ColdStartTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetCollectorVersion(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.CollectorVersion = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetHotEnable(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.HotEnable = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetHotRetention(v int32) *DescribeSqlLogConfigResponseBodyData {
+	s.HotRetention = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetHotStartTime(v int64) *DescribeSqlLogConfigResponseBodyData {
+	s.HotStartTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetLogFilter(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.LogFilter = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetRequestEnable(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.RequestEnable = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetRequestStartTime(v int64) *DescribeSqlLogConfigResponseBodyData {
+	s.RequestStartTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetRequestStopTime(v int64) *DescribeSqlLogConfigResponseBodyData {
+	s.RequestStopTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetRetention(v int32) *DescribeSqlLogConfigResponseBodyData {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogEnable(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.SqlLogEnable = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogState(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.SqlLogState = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogVisibleTime(v int64) *DescribeSqlLogConfigResponseBodyData {
+	s.SqlLogVisibleTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSupportVersion(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.SupportVersion = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetVersion(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type DescribeSqlLogConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogConfigResponse) SetHeaders(v map[string]*string) *DescribeSqlLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponse) SetStatusCode(v int32) *DescribeSqlLogConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponse) SetBody(v *DescribeSqlLogConfigResponseBody) *DescribeSqlLogConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogRecordsRequest struct {
+	EndTime    *int64                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Filters    []*DescribeSqlLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string                                `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Role       *string                                `json:"Role,omitempty" xml:"Role,omitempty"`
+	StartTime  *int64                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetEndTime(v int64) *DescribeSqlLogRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetFilters(v []*DescribeSqlLogRecordsRequestFilters) *DescribeSqlLogRecordsRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetInstanceId(v string) *DescribeSqlLogRecordsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetNodeId(v string) *DescribeSqlLogRecordsRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetPageNo(v int32) *DescribeSqlLogRecordsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetPageSize(v int32) *DescribeSqlLogRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetRole(v string) *DescribeSqlLogRecordsRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequest) SetStartTime(v int64) *DescribeSqlLogRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSqlLogRecordsRequestFilters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsRequestFilters) SetKey(v string) *DescribeSqlLogRecordsRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsRequestFilters) SetValue(v string) *DescribeSqlLogRecordsRequestFilters {
+	s.Value = &v
+	return s
+}
+
+type DescribeSqlLogRecordsResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogDetailResult
+	Data      *DescribeSqlLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsResponseBody) SetCode(v string) *DescribeSqlLogRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBody) SetData(v *DescribeSqlLogRecordsResponseBodyData) *DescribeSqlLogRecordsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBody) SetMessage(v string) *DescribeSqlLogRecordsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBody) SetRequestId(v string) *DescribeSqlLogRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBody) SetSuccess(v string) *DescribeSqlLogRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogRecordsResponseBodyData struct {
+	EndTime      *int64                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Finish       *string                                     `json:"Finish,omitempty" xml:"Finish,omitempty"`
+	Items        *DescribeSqlLogRecordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	JobId        *string                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	StartTime    *int64                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalRecords *int64                                      `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetEndTime(v int64) *DescribeSqlLogRecordsResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetFinish(v string) *DescribeSqlLogRecordsResponseBodyData {
+	s.Finish = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetItems(v *DescribeSqlLogRecordsResponseBodyDataItems) *DescribeSqlLogRecordsResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetJobId(v string) *DescribeSqlLogRecordsResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetStartTime(v int64) *DescribeSqlLogRecordsResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyData) SetTotalRecords(v int64) *DescribeSqlLogRecordsResponseBodyData {
+	s.TotalRecords = &v
+	return s
+}
+
+type DescribeSqlLogRecordsResponseBodyDataItems struct {
+	SQLLogRecord []*DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord `json:"SQLLogRecord,omitempty" xml:"SQLLogRecord,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSqlLogRecordsResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItems) SetSQLLogRecord(v []*DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) *DescribeSqlLogRecordsResponseBodyDataItems {
+	s.SQLLogRecord = v
+	return s
+}
+
+type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Consume           *int64  `json:"Consume,omitempty" xml:"Consume,omitempty"`
+	CpuTime           *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DBName            *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExecuteTime       *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Ext               *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Frows             *int64  `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	HostAddress       *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	LockTime          *int64  `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
+	LogicRead         *int64  `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
+	NodeId            *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OriginTime        *int64  `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
+	ParallelDegree    *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
+	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
+	PhysicAsyncRead   *int64  `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
+	PhysicRead        *int64  `json:"PhysicRead,omitempty" xml:"PhysicRead,omitempty"`
+	PhysicSyncRead    *int64  `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	ReturnRows        *int64  `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	Rows              *int64  `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	ScanRows          *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	Scnt              *int64  `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	SqlId             *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlText           *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	State             *string `json:"State,omitempty" xml:"State,omitempty"`
+	ThreadId          *int64  `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TrxId             *int64  `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
+	UpdateRows        *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+	UseImciEngine     *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
+	Vip               *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	Writes            *int64  `json:"Writes,omitempty" xml:"Writes,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetAccountName(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetCollection(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetConsume(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Consume = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetCpuTime(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetDBName(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetExecuteTime(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetExt(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Ext = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetFrows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Frows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetHostAddress(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetLockTime(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.LockTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetLogicRead(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.LogicRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetNodeId(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetOriginTime(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.OriginTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetParallelDegree(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ParallelDegree = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetParallelQueueTime(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ParallelQueueTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetPhysicAsyncRead(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.PhysicAsyncRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetPhysicRead(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.PhysicRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetPhysicSyncRead(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.PhysicSyncRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetReturnRows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetRows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Rows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetScanRows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetScnt(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Scnt = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetSqlId(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetSqlText(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.SqlText = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetSqlType(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetState(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetThreadId(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.ThreadId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetTraceId(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetTrxId(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.TrxId = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetUpdateRows(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.UpdateRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetUseImciEngine(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.UseImciEngine = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetVip(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Vip = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetWrites(v int64) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.Writes = &v
+	return s
+}
+
+type DescribeSqlLogRecordsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlLogRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlLogRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeSqlLogRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponse) SetStatusCode(v int32) *DescribeSqlLogRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponse) SetBody(v *DescribeSqlLogRecordsResponseBody) *DescribeSqlLogRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogStatisticRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeSqlLogStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogStatisticRequest) SetInstanceId(v string) *DescribeSqlLogStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeSqlLogStatisticResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogStatistic
+	Data      *DescribeSqlLogStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogStatisticResponseBody) SetCode(v string) *DescribeSqlLogStatisticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBody) SetData(v *DescribeSqlLogStatisticResponseBodyData) *DescribeSqlLogStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBody) SetMessage(v string) *DescribeSqlLogStatisticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBody) SetRequestId(v string) *DescribeSqlLogStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBody) SetSuccess(v string) *DescribeSqlLogStatisticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogStatisticResponseBodyData struct {
+	ColdSqlSize     *int64 `json:"ColdSqlSize,omitempty" xml:"ColdSqlSize,omitempty"`
+	FreeColdSqlSize *int64 `json:"FreeColdSqlSize,omitempty" xml:"FreeColdSqlSize,omitempty"`
+	FreeHotSqlSize  *int64 `json:"FreeHotSqlSize,omitempty" xml:"FreeHotSqlSize,omitempty"`
+	HotSqlSize      *int64 `json:"HotSqlSize,omitempty" xml:"HotSqlSize,omitempty"`
+	ImportSqlSize   *int64 `json:"ImportSqlSize,omitempty" xml:"ImportSqlSize,omitempty"`
+	Timestamp       *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeSqlLogStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetColdSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.ColdSqlSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetFreeColdSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.FreeColdSqlSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetFreeHotSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.FreeHotSqlSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetHotSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.HotSqlSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetImportSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.ImportSqlSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetTimestamp(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeSqlLogStatisticResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlLogStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlLogStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogStatisticResponse) SetHeaders(v map[string]*string) *DescribeSqlLogStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponse) SetStatusCode(v int32) *DescribeSqlLogStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponse) SetBody(v *DescribeSqlLogStatisticResponseBody) *DescribeSqlLogStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogTaskRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeSqlLogTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskRequest) SetInstanceId(v string) *DescribeSqlLogTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskRequest) SetPageNo(v int32) *DescribeSqlLogTaskRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskRequest) SetPageSize(v int32) *DescribeSqlLogTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskRequest) SetTaskId(v string) *DescribeSqlLogTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeSqlLogTaskResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogTaskDetail
+	Data      *DescribeSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskResponseBody) SetCode(v string) *DescribeSqlLogTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBody) SetData(v *DescribeSqlLogTaskResponseBodyData) *DescribeSqlLogTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBody) SetMessage(v string) *DescribeSqlLogTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBody) SetRequestId(v string) *DescribeSqlLogTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBody) SetSuccess(v string) *DescribeSqlLogTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogTaskResponseBodyData struct {
+	CreateTime *int64                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	End        *int64                                       `json:"End,omitempty" xml:"End,omitempty"`
+	Expire     *bool                                        `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Export     *string                                      `json:"Export,omitempty" xml:"Export,omitempty"`
+	Filters    []*DescribeSqlLogTaskResponseBodyDataFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Name       *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Queries    []*DescribeSqlLogTaskResponseBodyDataQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
+	Start      *int64                                       `json:"Start,omitempty" xml:"Start,omitempty"`
+	Status     *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType   *string                                      `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Total      *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeSqlLogTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetCreateTime(v int64) *DescribeSqlLogTaskResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetEnd(v int64) *DescribeSqlLogTaskResponseBodyData {
+	s.End = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetExpire(v bool) *DescribeSqlLogTaskResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetExport(v string) *DescribeSqlLogTaskResponseBodyData {
+	s.Export = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetFilters(v []*DescribeSqlLogTaskResponseBodyDataFilters) *DescribeSqlLogTaskResponseBodyData {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetName(v string) *DescribeSqlLogTaskResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetQueries(v []*DescribeSqlLogTaskResponseBodyDataQueries) *DescribeSqlLogTaskResponseBodyData {
+	s.Queries = v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetStart(v int64) *DescribeSqlLogTaskResponseBodyData {
+	s.Start = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetStatus(v string) *DescribeSqlLogTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetTaskId(v string) *DescribeSqlLogTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetTaskType(v string) *DescribeSqlLogTaskResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyData) SetTotal(v int64) *DescribeSqlLogTaskResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type DescribeSqlLogTaskResponseBodyDataFilters struct {
+	Key   *string     `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSqlLogTaskResponseBodyDataFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskResponseBodyDataFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataFilters) SetKey(v string) *DescribeSqlLogTaskResponseBodyDataFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataFilters) SetValue(v interface{}) *DescribeSqlLogTaskResponseBodyDataFilters {
+	s.Value = v
+	return s
+}
+
+type DescribeSqlLogTaskResponseBodyDataQueries struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Consume     *int64  `json:"Consume,omitempty" xml:"Consume,omitempty"`
+	CpuTime     *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DBName      *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"
+	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Ext         *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Frows       *int64  `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	LockTime    *int64  `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
+	LogicRead   *int64  `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// ts unix
+	OriginTime        *int64  `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
+	ParallelDegree    *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
+	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
+	PhysicAsyncRead   *int64  `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
+	PhysicRead        *int64  `json:"PhysicRead,omitempty" xml:"PhysicRead,omitempty"`
+	PhysicSyncRead    *int64  `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	ReturnRows        *int64  `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	Rows              *int64  `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	ScanRows          *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	Scnt              *int64  `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	SqlId             *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlText           *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	SqlType           *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	State             *string `json:"State,omitempty" xml:"State,omitempty"`
+	ThreadId          *int64  `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	TraceId           *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TrxId             *int64  `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
+	UpdateRows        *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+	UseImciEngine     *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
+	Vip               *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
+	Writes            *int64  `json:"Writes,omitempty" xml:"Writes,omitempty"`
+}
+
+func (s DescribeSqlLogTaskResponseBodyDataQueries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskResponseBodyDataQueries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetAccountName(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetConsume(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Consume = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetCpuTime(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetDBName(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetExecuteTime(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetExt(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Ext = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetFrows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Frows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetHostAddress(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetLockTime(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.LockTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetLogicRead(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.LogicRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetNodeId(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetOriginTime(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.OriginTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetParallelDegree(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ParallelDegree = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetParallelQueueTime(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ParallelQueueTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetPhysicAsyncRead(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.PhysicAsyncRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetPhysicRead(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.PhysicRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetPhysicSyncRead(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.PhysicSyncRead = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetReturnRows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetRows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Rows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetScanRows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetScnt(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Scnt = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetSqlId(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetSqlText(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.SqlText = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetSqlType(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetState(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetThreadId(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.ThreadId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetTraceId(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetTrxId(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.TrxId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetUpdateRows(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.UpdateRows = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetUseImciEngine(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.UseImciEngine = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetVip(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Vip = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetWrites(v int64) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Writes = &v
+	return s
+}
+
+type DescribeSqlLogTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlLogTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlLogTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTaskResponse) SetHeaders(v map[string]*string) *DescribeSqlLogTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponse) SetStatusCode(v int32) *DescribeSqlLogTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponse) SetBody(v *DescribeSqlLogTaskResponseBody) *DescribeSqlLogTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSqlLogTasksRequest struct {
+	EndTime    *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Filters    []*DescribeSqlLogTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string                              `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PageNo     *int32                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSqlLogTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksRequest) SetEndTime(v int64) *DescribeSqlLogTasksRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetFilters(v []*DescribeSqlLogTasksRequestFilters) *DescribeSqlLogTasksRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetInstanceId(v string) *DescribeSqlLogTasksRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetNodeId(v string) *DescribeSqlLogTasksRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetPageNo(v int32) *DescribeSqlLogTasksRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetPageSize(v int32) *DescribeSqlLogTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequest) SetStartTime(v int64) *DescribeSqlLogTasksRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSqlLogTasksRequestFilters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSqlLogTasksRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksRequestFilters) SetKey(v string) *DescribeSqlLogTasksRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksRequestFilters) SetValue(v string) *DescribeSqlLogTasksRequestFilters {
+	s.Value = &v
+	return s
+}
+
+type DescribeSqlLogTasksResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ListResult<SqlLogTask>
+	Data      *DescribeSqlLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSqlLogTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksResponseBody) SetCode(v string) *DescribeSqlLogTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBody) SetData(v *DescribeSqlLogTasksResponseBodyData) *DescribeSqlLogTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBody) SetMessage(v string) *DescribeSqlLogTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBody) SetRequestId(v string) *DescribeSqlLogTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBody) SetSuccess(v string) *DescribeSqlLogTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSqlLogTasksResponseBodyData struct {
+	List     []*DescribeSqlLogTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeSqlLogTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksResponseBodyData) SetList(v []*DescribeSqlLogTasksResponseBodyDataList) *DescribeSqlLogTasksResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyData) SetPageNo(v int64) *DescribeSqlLogTasksResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyData) SetPageSize(v int64) *DescribeSqlLogTasksResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyData) SetTotal(v int64) *DescribeSqlLogTasksResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type DescribeSqlLogTasksResponseBodyDataList struct {
+	AnalysisTaskFinishTime *int64                                            `json:"AnalysisTaskFinishTime,omitempty" xml:"AnalysisTaskFinishTime,omitempty"`
+	AnalysisTaskStatus     *string                                           `json:"AnalysisTaskStatus,omitempty" xml:"AnalysisTaskStatus,omitempty"`
+	CreateTime             *int64                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	End                    *int64                                            `json:"End,omitempty" xml:"End,omitempty"`
+	Expire                 *bool                                             `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	Filters                []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	InstanceId             *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LogCount               *int64                                            `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	Name                   *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress               *int32                                            `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Result                 *string                                           `json:"Result,omitempty" xml:"Result,omitempty"`
+	ScanFileSize           *int64                                            `json:"ScanFileSize,omitempty" xml:"ScanFileSize,omitempty"`
+	Start                  *int64                                            `json:"Start,omitempty" xml:"Start,omitempty"`
+	Status                 *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId                 *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType               *string                                           `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeSqlLogTasksResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetAnalysisTaskFinishTime(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.AnalysisTaskFinishTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetAnalysisTaskStatus(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.AnalysisTaskStatus = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetCreateTime(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetEnd(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.End = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetExpire(v bool) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Expire = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetFilters(v []*DescribeSqlLogTasksResponseBodyDataListFilters) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetInstanceId(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetLogCount(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.LogCount = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetName(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetProgress(v int32) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetResult(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Result = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetScanFileSize(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.ScanFileSize = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetStart(v int64) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Start = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetStatus(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetTaskId(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetTaskType(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeSqlLogTasksResponseBodyDataListFilters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSqlLogTasksResponseBodyDataListFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksResponseBodyDataListFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataListFilters) SetKey(v string) *DescribeSqlLogTasksResponseBodyDataListFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataListFilters) SetValue(v string) *DescribeSqlLogTasksResponseBodyDataListFilters {
+	s.Value = &v
+	return s
+}
+
+type DescribeSqlLogTasksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlLogTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlLogTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlLogTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlLogTasksResponse) SetHeaders(v map[string]*string) *DescribeSqlLogTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponse) SetStatusCode(v int32) *DescribeSqlLogTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponse) SetBody(v *DescribeSqlLogTasksResponseBody) *DescribeSqlLogTasksResponse {
 	s.Body = v
 	return s
 }
@@ -8364,12 +10061,12 @@ type GetAutoResourceOptimizeRulesRequest struct {
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The database instance IDs.
 	//
-	// *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+	// *   Specify the parameter value as a JSON array, such as `[\"Database account 1\",\"Database account 2\"]`. Separate database instance IDs with commas (,).
 	//
 	// *   By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
 	//
 	//     *   Database instances for which the automatic fragment recycling feature is currently enabled.
-	//     *   Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Professional Edition has been disabled but excluding those that have been released.
+	//     *   Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Enterprise Edition has been disabled but excluding those that have been released.
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -8447,11 +10144,11 @@ type GetAutoResourceOptimizeRulesResponseBodyData struct {
 	EnableAutoResourceOptimizeCount *int64 `json:"EnableAutoResourceOptimizeCount,omitempty" xml:"EnableAutoResourceOptimizeCount,omitempty"`
 	// The database instances for which the automatic fragment recycling feature is currently enabled.
 	EnableAutoResourceOptimizeList []*GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList `json:"EnableAutoResourceOptimizeList,omitempty" xml:"EnableAutoResourceOptimizeList,omitempty" type:"Repeated"`
-	// The number of database instances for which the automatic fragment recycling feature is enabled and DAS Professional Edition is disabled.
+	// The number of database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
 	HasEnableRuleButNotDasProCount *int64 `json:"HasEnableRuleButNotDasProCount,omitempty" xml:"HasEnableRuleButNotDasProCount,omitempty"`
-	// The database instances for which the automatic fragment recycling feature is enabled and DAS Professional Edition is disabled.
+	// The database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
 	//
-	// > This type of database instance does not perform automatic fragment recycling tasks until DAS Professional Edition is enabled for the instances again.
+	// >  Automatic fragment recycling tasks are run on this type of database instances only if DAS Enterprise Edition is enabled for the database instances again.
 	HasEnableRuleButNotDasProList []*GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList `json:"HasEnableRuleButNotDasProList,omitempty" xml:"HasEnableRuleButNotDasProList,omitempty" type:"Repeated"`
 	// The number of database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
 	//
@@ -8523,13 +10220,13 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyData) SetTurnOffAutoResourceOpt
 type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**
+	// *   **false**
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
-	// Indicates whether DAS Professional Edition is enabled. Valid values:
+	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**
+	// *   **false**
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -8582,13 +10279,13 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeL
 type GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**
+	// *   **false**
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
-	// Indicates whether DAS Professional Edition is enabled. Valid values:
+	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**
+	// *   **false**
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -8641,22 +10338,19 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProLi
 type GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**:
+	// *   **false**
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
-	// Indicates whether DAS Professional Edition is enabled. Valid values:
+	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// * **true**
-	// * **false**
+	// *   **true**
+	// *   **false**
 	DasProOn *bool `json:"DasProOn,omitempty" xml:"DasProOn,omitempty"`
 	// The database instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The fragmentation rate of a single physical table for which the automatic fragment recycling feature is enabled.
 	TableFragmentationRatio *float64 `json:"TableFragmentationRatio,omitempty" xml:"TableFragmentationRatio,omitempty"`
-	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
-	//
-	// true
-	// false
+	// The minimum storage usage of a single physical table for which the automatic fragment recycling feature is enabled. Unit: GB.
 	TableSpaceSize *float64 `json:"TableSpaceSize,omitempty" xml:"TableSpaceSize,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -9977,11 +11671,11 @@ func (s *GetDasProServiceUsageResponseBody) SetSuccess(v bool) *GetDasProService
 }
 
 type GetDasProServiceUsageResponseBodyData struct {
-	// The ID of the DAS Professional Edition instance.
+	// The ID of the DAS Enterprise Edition instance.
 	CommodityInstanceId *string `json:"commodityInstanceId,omitempty" xml:"commodityInstanceId,omitempty"`
 	// The type of the database engine.
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
-	// The point of time when DAS Professional Edition for the database instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The point of time when DAS Enterprise Edition for the database instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	// The name of the database instance.
 	InstanceAlias *string `json:"instanceAlias,omitempty" xml:"instanceAlias,omitempty"`
@@ -9989,7 +11683,7 @@ type GetDasProServiceUsageResponseBodyData struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The endpoint of the database instance.
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// Indicates whether DAS Professional Edition for the database instance has expired. Valid values:
+	// Indicates whether DAS Enterprise Edition for the database instance has expired. Valid values:
 	//
 	// *   **true**
 	// *   **false**
@@ -10006,7 +11700,7 @@ type GetDasProServiceUsageResponseBodyData struct {
 	ServiceUnitId *string `json:"serviceUnitId,omitempty" xml:"serviceUnitId,omitempty"`
 	// The storage duration of SQL Explorer data. Unit: days.
 	SqlRetention *string `json:"sqlRetention,omitempty" xml:"sqlRetention,omitempty"`
-	// The time when DAS Professional Edition was enabled for the database instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when DAS Enterprise Edition was enabled for the database instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The SQL Explorer storage space that is offered free-of-charge. Unit: MB.
 	StorageFreeQuotaInMB *float64 `json:"storageFreeQuotaInMB,omitempty" xml:"storageFreeQuotaInMB,omitempty"`
@@ -12611,10 +14305,10 @@ type GetFullRequestStatResultByInstanceIdRequest struct {
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 20.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The role of the PolarDB-X 2.0 node. Valid values:
+	// The role of the node in the PolarDB-X 2.0 instance. Valid values:
 	//
-	// *   **polarx_cn**: compute node
-	// *   **polarx_en**: data node
+	// *   **polarx_cn**: compute node.
+	// *   **polarx_dn**: data node.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The SQL ID.
 	//
@@ -13650,7 +15344,7 @@ func (s *GetInstanceInspectionsRequest) SetStartTime(v string) *GetInstanceInspe
 type GetInstanceInspectionsResponseBody struct {
 	// The HTTP status code returned.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The inspection and scoring results.
+	// The details.
 	Data *GetInstanceInspectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -13699,10 +15393,7 @@ func (s *GetInstanceInspectionsResponseBody) SetSuccess(v string) *GetInstanceIn
 }
 
 type GetInstanceInspectionsResponseBodyData struct {
-	// The mode in which the inspection and scoring task was initiated. Valid values:
-	//
-	// *   **0**: automatic mode
-	// *   **1**: manual mode
+	// The detailed information.
 	List []*GetInstanceInspectionsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number. The value returned is a positive integer. Default value: 1.
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -13743,38 +15434,38 @@ func (s *GetInstanceInspectionsResponseBodyData) SetTotal(v int64) *GetInstanceI
 type GetInstanceInspectionsResponseBodyDataList struct {
 	// Indicates whether the autonomy service is enabled.
 	AutoFunction *GetInstanceInspectionsResponseBodyDataListAutoFunction `json:"AutoFunction,omitempty" xml:"AutoFunction,omitempty" type:"Struct"`
-	// The returned data.
+	// The data returned.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Indicates whether DAS Professional Edition is enabled. Valid values:
+	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	EnableDasPro *int32 `json:"EnableDasPro,omitempty" xml:"EnableDasPro,omitempty"`
 	// The end time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// > The end time must be later than the start time.
+	// >  The end time must be later than the start time.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The details of the instance.
+	// The information about the instance.
 	Instance *GetInstanceInspectionsResponseBodyDataListInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// The inspection scores of the instance.
+	// The inspection score of the instance.
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The scores that are deducted for the instance.
 	ScoreMap map[string]interface{} `json:"ScoreMap,omitempty" xml:"ScoreMap,omitempty"`
-	// The start time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the inspection and scoring task. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the inspection and scoring task. Valid values:
 	//
-	// * **0**: The task is waiting for execution.
-	// * **1**: The task is in progress.
-	// * **2**: The task is complete.
+	// *   **0**: The task is waiting for execution.
+	// *   **1**: The task is in progress.
+	// *   **2**: The task is complete.
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 	// The mode in which the inspection and scoring task was initiated. Valid values:
 	//
-	// * **0**: automatic mode
-	// * **1**: manual mode
+	// *   **0**: automatic mode.
+	// *   **1**: manual mode.
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -13844,33 +15535,33 @@ func (s *GetInstanceInspectionsResponseBodyDataList) SetTaskType(v int32) *GetIn
 type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	// Indicates whether the feature of automatically creating and deleting indexes is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	AutoIndex *int32 `json:"AutoIndex,omitempty" xml:"AutoIndex,omitempty"`
 	// Indicates whether the automatic throttling feature is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	AutoLimitedSql *int32 `json:"AutoLimitedSql,omitempty" xml:"AutoLimitedSql,omitempty"`
-	// Indicates whether automatic reclamation of fragments is enabled. Valid values:
+	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	AutoResourceOptimize *int32 `json:"AutoResourceOptimize,omitempty" xml:"AutoResourceOptimize,omitempty"`
 	// Indicates whether the auto scaling feature is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	AutoScale *int32 `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// * **0**: disabled.
-	// * **1**: enabled.
-	// * **2**: not supported.
+	// *   **0**: disabled.
+	// *   **1**: enabled.
+	// *   **2**: not supported.
 	EventSubscription *int32 `json:"EventSubscription,omitempty" xml:"EventSubscription,omitempty"`
 }
 
@@ -13908,32 +15599,32 @@ func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetEventSubscri
 }
 
 type GetInstanceInspectionsResponseBodyDataListInstance struct {
-	// The account ID. You can obtain the account ID on the **Security Settings** page in the Alibaba Cloud **account management center**.
+	// The account ID. You can view the ID of the logon account by moving the pointer over the profile in the Alibaba Cloud management console.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
-	// * **standard**: standard mode.
-	// * **safe**: database proxy mode.
+	// *   **standard**: standard mode.
+	// *   **safe**: database proxy mode.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The CPU specification of the instance. For example, if a value of 8 is returned, the instance has eight CPU cores.
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The database engine. Valid values:
 	//
-	// * **MySQL**
-	// * **Redis**
-	// * **PolarDBMySQL**
+	// *   **MySQL**
+	// *   **Redis**
+	// *   **PolarDBMySQL**
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version number of the database engine.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// * **RDS**: an Alibaba Cloud database instance.
-	// * **ECS**: an ECS instance on which a self-managed database is deployed.
-	// * **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// *   **RDS**: an Alibaba Cloud database instance.
+	// *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+	// *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
-	// > The value IDC indicates that the instance is deployed in a data center.
+	// >  The value IDC indicates that the instance is deployed in a data center.
 	InstanceArea *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
 	// The instance type.
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
@@ -13945,7 +15636,7 @@ type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the node on the instance.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID of the instance.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The storage space of the instance. Unit: GB.
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
@@ -14454,12 +16145,12 @@ func (s *GetInstanceMissingIndexListResponse) SetBody(v *GetInstanceMissingIndex
 type GetInstanceSqlOptimizeStatisticRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to filter instances for which DAS Professional Edition is enabled. Valid values:
+	// Specifies whether to filter instances for which DAS Enterprise Edition is enabled. Valid values:
 	//
-	// *   **true**: filters instances for which DAS Professional Edition is enabled.
-	// *   **false**: does not filter instances for which DAS Professional Edition is enabled.
+	// *   **true**
+	// *   **false**
 	//
-	// >  If you set the value to **true**, only database instances for which DAS Professional Edition is disabled are queried. If you set the value to **false**, all database instances are queried.
+	// >  If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
 	FilterEnable *string `json:"FilterEnable,omitempty" xml:"FilterEnable,omitempty"`
 	// The database instance ID.
 	//
@@ -14467,7 +16158,7 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter must be specified if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -16049,21 +17740,21 @@ func (s *GetPfsMetricTrendsResponse) SetBody(v *GetPfsMetricTrendsResponseBody) 
 }
 
 type GetPfsSqlSampleRequest struct {
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. You can query the data of up to seven days within the last month.
+	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
-	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter must be specified for ApsaraDB RDS for MySQL Cluster Edition instances and PolarDB for MySQL clusters.
+	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The SQL ID.
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16103,7 +17794,7 @@ func (s *GetPfsSqlSampleRequest) SetStartTime(v int64) *GetPfsSqlSampleRequest {
 type GetPfsSqlSampleResponseBody struct {
 	// The HTTP status code returned.
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried SQL sample data.
+	// The SQL sample data.
 	Data []*GetPfsSqlSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
@@ -16172,21 +17863,21 @@ type GetPfsSqlSampleResponseBodyData struct {
 	Latency *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	// The lock wait duration. Unit: millisecond.
 	LockLatency *float64 `json:"LockLatency,omitempty" xml:"LockLatency,omitempty"`
-	// The logical database ID.
+	// The ID of the logical database.
 	LogicId *string `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
 	// Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
 	//
-	// * **1:** yes.
-	// * **0:** no.
+	// *   **1**: yes.
+	// *   **0**: no.
 	NoGoodIndexUsed *int32 `json:"NoGoodIndexUsed,omitempty" xml:"NoGoodIndexUsed,omitempty"`
 	// Indicates whether table scans were performed when indexes were not used. Valid values:
 	//
-	// * **1:** yes.
-	// * **0:** no.
+	// *   **1**: yes.
+	// *   **0**: no.
 	NoIndexUsed *int32 `json:"NoIndexUsed,omitempty" xml:"NoIndexUsed,omitempty"`
 	// The node ID.
 	//
-	// > This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances and PolarDB for MySQL clusters.
+	// >  This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The number of rows affected by the SQL statement.
 	RowsAffected *int32 `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
@@ -16196,7 +17887,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	RowsSent *int32 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
 	// The number of joins that are used to perform table scans without using indexes.
 	//
-	// > This parameter is used to count the number of joins that did not use indexes. If the value of this parameter is not 0, check the table indexes.
+	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
 	SelectFullJoin *int32 `json:"SelectFullJoin,omitempty" xml:"SelectFullJoin,omitempty"`
 	// The number of joins that used ranges on referenced tables.
 	SelectFullRangeJoin *int32 `json:"SelectFullRangeJoin,omitempty" xml:"SelectFullRangeJoin,omitempty"`
@@ -16204,7 +17895,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	SelectRange *int32 `json:"SelectRange,omitempty" xml:"SelectRange,omitempty"`
 	// The number of joins that did not have key values. The keys and values were checked for each row of data.
 	//
-	// >  This parameter is used to count the number of joins that did not use indexes. If the value of this parameter is not 0, check the table indexes.
+	// > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
 	SelectRangeCheck *int32 `json:"SelectRangeCheck,omitempty" xml:"SelectRangeCheck,omitempty"`
 	// The number of scans.
 	SelectScan *int32 `json:"SelectScan,omitempty" xml:"SelectScan,omitempty"`
@@ -16216,9 +17907,9 @@ type GetPfsSqlSampleResponseBodyData struct {
 	SortRows *int32 `json:"SortRows,omitempty" xml:"SortRows,omitempty"`
 	// The number of sorts that were performed during table scans.
 	SortScan *int32 `json:"SortScan,omitempty" xml:"SortScan,omitempty"`
-	// The SQL sample.
+	// The sample SQL statement.
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The SQL ID.
+	// The SQL statement ID.
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The thread ID.
 	ThreadId *int32 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
@@ -21755,7 +23446,7 @@ type ModifyAutoScalingConfigRequestBandwidth struct {
 	// *   **true**
 	// *   **false**
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
-	// The observation window of the automatic bandwidth upgrade feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
+	// The observation window of the automatic bandwidth adjustment feature. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute. Valid values:
 	//
 	// *   **1m**
 	// *   **5m**
@@ -21884,7 +23575,7 @@ type ModifyAutoScalingConfigRequestShard struct {
 	// *   **true**
 	// *   **false**
 	//
-	// >  The auto scaling feature for shards is available only for ApsaraDB for Redis Community Edition instances that use cloud disks on the China site (aliyun.com).
+	// > The auto scaling feature for shards is available only for ApsaraDB for Redis Community Edition cloud-native instances on the China site (aliyun.com).
 	Apply *bool `json:"Apply,omitempty" xml:"Apply,omitempty"`
 	// Specifies whether to enable the feature of automatically removing shards. Valid values:
 	//
@@ -22005,23 +23696,23 @@ type ModifyAutoScalingConfigRequestSpec struct {
 	// *   **80**
 	// *   **90**
 	//
-	// >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// Specifies whether to enable the automatic specification scale-down feature. Valid values:
 	//
 	// *   **true**
 	// *   **false**
 	//
-	// >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
+	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance or an ApsaraDB RDS for MySQL High-availability Edition instance that uses standard SSDs or ESSDs.
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The maximum number of read-only nodes of the instance.
 	//
-	// >  This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
+	// > This parameter must be specified if the database instance is a PolarDB for MySQL Cluster Edition instance.
 	MaxReadOnlyNodes *int32 `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
-	// The maximum specifications to which the database instance can be upgraded. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, refer to the following topics:
+	// The maximum specifications to which the database instance can be scaled up. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, see the following topics:
 	//
-	// *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~).
-	// *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](~~276974~~).
+	// *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~)
+	// *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](~~276974~~)
 	MaxSpec *string `json:"MaxSpec,omitempty" xml:"MaxSpec,omitempty"`
 	// The average memory usage threshold that triggers automatic specification scale-up. Unit: %. Valid values:
 	//
@@ -22031,13 +23722,13 @@ type ModifyAutoScalingConfigRequestSpec struct {
 	// *   **80**
 	// *   **90**
 	//
-	// >  This parameter must be specified if the database instance is an ApsaraDB for Redis Community Edition instance that uses cloud disks on the China site (aliyun.com).
+	// > This parameter must be specified if the database instance is an ApsaraDB for Redis Community Edition cloud-native instance on the China site (aliyun.com).
 	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
 	// The observation window. The value of this parameter consists of a numeric value and a time unit suffix. The **m** time unit suffix specifies the minute and the **h** time unit suffix specifies the hour.
 	//
 	// *   Valid values for PolarDB for MySQL Cluster Edition instances: **5m**, **10m**, **15m**, and **30m**.
 	// *   Valid values for ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: **5m**, **20m**, **30m**, **40m**, and **1h**.
-	// *   Valid values for ApsaraDB for Redis Community Edition instances that use cloud disks: **5m**, **10m**, **15m**, and **30m**.
+	// *   Valid values for ApsaraDB for Redis Community Edition cloud-native instances: **5m**, **10m**, **15m**, and **30m**.
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Specifies whether to enable the automatic specification scale-up feature. Valid values:
 	//
@@ -22224,6 +23915,260 @@ func (s *ModifyAutoScalingConfigResponse) SetStatusCode(v int32) *ModifyAutoScal
 }
 
 func (s *ModifyAutoScalingConfigResponse) SetBody(v *ModifyAutoScalingConfigResponseBody) *ModifyAutoScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifySqlLogConfigRequest struct {
+	Enable        *bool                               `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Filters       []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	HotRetention  *int32                              `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	InstanceId    *string                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestEnable *bool                               `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	Retention     *int32                              `json:"Retention,omitempty" xml:"Retention,omitempty"`
+}
+
+func (s ModifySqlLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySqlLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySqlLogConfigRequest) SetEnable(v bool) *ModifySqlLogConfigRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetFilters(v []*ModifySqlLogConfigRequestFilters) *ModifySqlLogConfigRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetHotRetention(v int32) *ModifySqlLogConfigRequest {
+	s.HotRetention = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetInstanceId(v string) *ModifySqlLogConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetRequestEnable(v bool) *ModifySqlLogConfigRequest {
+	s.RequestEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetRetention(v int32) *ModifySqlLogConfigRequest {
+	s.Retention = &v
+	return s
+}
+
+type ModifySqlLogConfigRequestFilters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifySqlLogConfigRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySqlLogConfigRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySqlLogConfigRequestFilters) SetKey(v string) *ModifySqlLogConfigRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequestFilters) SetValue(v string) *ModifySqlLogConfigRequestFilters {
+	s.Value = &v
+	return s
+}
+
+type ModifySqlLogConfigResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// SqlLogConfig
+	Data      *ModifySqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifySqlLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySqlLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySqlLogConfigResponseBody) SetCode(v string) *ModifySqlLogConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBody) SetData(v *ModifySqlLogConfigResponseBodyData) *ModifySqlLogConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBody) SetMessage(v string) *ModifySqlLogConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBody) SetRequestId(v string) *ModifySqlLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBody) SetSuccess(v string) *ModifySqlLogConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifySqlLogConfigResponseBodyData struct {
+	ColdEnable        *bool   `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
+	ColdRetention     *int32  `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
+	ColdStartTime     *int64  `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
+	CollectorVersion  *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
+	HotEnable         *bool   `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
+	HotRetention      *int32  `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
+	HotStartTime      *int64  `json:"HotStartTime,omitempty" xml:"HotStartTime,omitempty"`
+	LogFilter         *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
+	RequestEnable     *bool   `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
+	RequestStartTime  *int64  `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
+	RequestStopTime   *int64  `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
+	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SqlLogEnable      *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogState       *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
+	SqlLogVisibleTime *int64  `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
+	SupportVersion    *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
+	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ModifySqlLogConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySqlLogConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetColdEnable(v bool) *ModifySqlLogConfigResponseBodyData {
+	s.ColdEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetColdRetention(v int32) *ModifySqlLogConfigResponseBodyData {
+	s.ColdRetention = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetColdStartTime(v int64) *ModifySqlLogConfigResponseBodyData {
+	s.ColdStartTime = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetCollectorVersion(v string) *ModifySqlLogConfigResponseBodyData {
+	s.CollectorVersion = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetHotEnable(v bool) *ModifySqlLogConfigResponseBodyData {
+	s.HotEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetHotRetention(v int32) *ModifySqlLogConfigResponseBodyData {
+	s.HotRetention = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetHotStartTime(v int64) *ModifySqlLogConfigResponseBodyData {
+	s.HotStartTime = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetLogFilter(v string) *ModifySqlLogConfigResponseBodyData {
+	s.LogFilter = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetRequestEnable(v bool) *ModifySqlLogConfigResponseBodyData {
+	s.RequestEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetRequestStartTime(v int64) *ModifySqlLogConfigResponseBodyData {
+	s.RequestStartTime = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetRequestStopTime(v int64) *ModifySqlLogConfigResponseBodyData {
+	s.RequestStopTime = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetRetention(v int32) *ModifySqlLogConfigResponseBodyData {
+	s.Retention = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetSqlLogEnable(v bool) *ModifySqlLogConfigResponseBodyData {
+	s.SqlLogEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetSqlLogState(v string) *ModifySqlLogConfigResponseBodyData {
+	s.SqlLogState = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetSqlLogVisibleTime(v int64) *ModifySqlLogConfigResponseBodyData {
+	s.SqlLogVisibleTime = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetSupportVersion(v string) *ModifySqlLogConfigResponseBodyData {
+	s.SupportVersion = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetVersion(v string) *ModifySqlLogConfigResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type ModifySqlLogConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySqlLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifySqlLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySqlLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySqlLogConfigResponse) SetHeaders(v map[string]*string) *ModifySqlLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponse) SetStatusCode(v int32) *ModifySqlLogConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponse) SetBody(v *ModifySqlLogConfigResponseBody) *ModifySqlLogConfigResponse {
 	s.Body = v
 	return s
 }
@@ -22455,7 +24400,7 @@ type SetEventSubscriptionRequest struct {
 	// *   **Notice**: events that trigger notifications, including events at the **Notice**, **Optimization**, **Warn**, and **Critical** levels.
 	// *   **Optimization**: events that trigger optimizations, including events at the **Optimization**, **Warn**, and **Critical** levels.
 	// *   **Warn**: events that trigger warnings, including events at the **Warn** and **Critical** levels.
-	// *   **Critical**: events that trigger critical warnings.****
+	// *   **Critical**: events that trigger critical warnings.
 	//
 	// The following content describes the events at each level in detail:
 	//
@@ -23963,12 +25908,12 @@ func (client *Client) AddHDMInstance(request *AddHDMInstanceRequest) (_result *A
 }
 
 /**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You use an ADAM stress testing task to check whether you need to scale up or scale out your database instance to handle workloads during peak hours. For more information, see [Intelligent Stress Testing](~~155068~~).
+ * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
  * Make sure that your database instances meet the following requirements:
- * *   The source instance supports the following database engines: ApsaraDB RDS for MySQL on High-availability Edition or Enterprise Edition, and PolarDB for MySQL on Cluster Edition or X-Engine.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The database instance is connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Professional Edition is activated for the source and destination database instances. For more information, see [DAS Professional Edition](~~190912~~).
+ * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+ * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+ * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
+ * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
  *
  * @param request CreateAdamBenchTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24052,12 +25997,12 @@ func (client *Client) CreateAdamBenchTaskWithOptions(request *CreateAdamBenchTas
 }
 
 /**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You use an ADAM stress testing task to check whether you need to scale up or scale out your database instance to handle workloads during peak hours. For more information, see [Intelligent Stress Testing](~~155068~~).
+ * Database Autonomy Service (DAS) provides the intelligent stress testing feature. You can create an Advanced Database & Application Migration (ADAM) stress testing task to check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](~~155068~~).
  * Make sure that your database instances meet the following requirements:
- * *   The source instance supports the following database engines: ApsaraDB RDS for MySQL on High-availability Edition or Enterprise Edition, and PolarDB for MySQL on Cluster Edition or X-Engine.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The database instance is connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Professional Edition is activated for the source and destination database instances. For more information, see [DAS Professional Edition](~~190912~~).
+ * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+ * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+ * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
+ * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
  *
  * @param request CreateAdamBenchTaskRequest
  * @return CreateAdamBenchTaskResponse
@@ -24151,11 +26096,11 @@ func (client *Client) CreateCacheAnalysisJob(request *CreateCacheAnalysisJobRequ
 }
 
 /**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
- * *   The source database instance must be an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition instance.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The source instance and the destination instance are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Professional Edition is enabled for the source instance and the destination instance. For more information, see [DAS Professional Edition](~~190912~~).
+ * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
+ * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+ * *   The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+ * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
+ * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
  *
  * @param request CreateCloudBenchTasksRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24299,11 +26244,11 @@ func (client *Client) CreateCloudBenchTasksWithOptions(request *CreateCloudBench
 }
 
 /**
- * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
- * *   The source database instance must be an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition instance.
- * *   The destination instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
- * *   The source instance and the destination instance are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
- * *   DAS Professional Edition is enabled for the source instance and the destination instance. For more information, see [DAS Professional Edition](~~190912~~).
+ * Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](~~155068~~). Before you call this API operation, make sure that your database instances meet the following requirements:
+ * *   The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition or X-Engine Edition cluster.
+ * *   The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+ * *   The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](~~65405~~).
+ * *   DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](~~190912~~).
  *
  * @param request CreateCloudBenchTasksRequest
  * @return CreateCloudBenchTasksResponse
@@ -24717,6 +26662,80 @@ func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequ
 	return _result, _err
 }
 
+func (client *Client) CreateSqlLogTaskWithOptions(request *CreateSqlLogTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSqlLogTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSqlLogTask"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSqlLogTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSqlLogTask(request *CreateSqlLogTaskRequest) (_result *CreateSqlLogTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSqlLogTaskResponse{}
+	_body, _err := client.CreateSqlLogTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
@@ -24970,9 +26989,9 @@ func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConf
 }
 
 /**
- * *   You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+ * *   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DescribeAutoScalingHistoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25008,9 +27027,9 @@ func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAut
 }
 
 /**
- * *   You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+ * *   You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DescribeAutoScalingHistoryRequest
  * @return DescribeAutoScalingHistoryResponse
@@ -25603,8 +27622,8 @@ func (client *Client) DescribeHotKeys(request *DescribeHotKeysRequest) (_result 
 }
 
 /**
- * *   For more information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DescribeInstanceDasProRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25644,8 +27663,8 @@ func (client *Client) DescribeInstanceDasProWithOptions(request *DescribeInstanc
 }
 
 /**
- * *   For more information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DescribeInstanceDasProRequest
  * @return DescribeInstanceDasProResponse
@@ -25654,6 +27673,292 @@ func (client *Client) DescribeInstanceDasPro(request *DescribeInstanceDasProRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDasProResponse{}
 	_body, _err := client.DescribeInstanceDasProWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogConfigWithOptions(request *DescribeSqlLogConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogConfig"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogConfig(request *DescribeSqlLogConfigRequest) (_result *DescribeSqlLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogConfigResponse{}
+	_body, _err := client.DescribeSqlLogConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogRecordsWithOptions(request *DescribeSqlLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogRecords"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogRecords(request *DescribeSqlLogRecordsRequest) (_result *DescribeSqlLogRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogRecordsResponse{}
+	_body, _err := client.DescribeSqlLogRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogStatisticWithOptions(request *DescribeSqlLogStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogStatistic"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogStatistic(request *DescribeSqlLogStatisticRequest) (_result *DescribeSqlLogStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogStatisticResponse{}
+	_body, _err := client.DescribeSqlLogStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogTaskWithOptions(request *DescribeSqlLogTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogTask"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogTask(request *DescribeSqlLogTaskRequest) (_result *DescribeSqlLogTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogTaskResponse{}
+	_body, _err := client.DescribeSqlLogTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogTasksWithOptions(request *DescribeSqlLogTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlLogTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		body["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlLogTasks"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlLogTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlLogTasks(request *DescribeSqlLogTasksRequest) (_result *DescribeSqlLogTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlLogTasksResponse{}
+	_body, _err := client.DescribeSqlLogTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26023,8 +28328,8 @@ func (client *Client) DisableAutoThrottleRules(request *DisableAutoThrottleRules
 }
 
 /**
- * *   For information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DisableDasProRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26068,8 +28373,8 @@ func (client *Client) DisableDasProWithOptions(request *DisableDasProRequest, ru
 }
 
 /**
- * *   For information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request DisableDasProRequest
  * @return DisableDasProResponse
@@ -26226,8 +28531,8 @@ func (client *Client) DisableSqlConcurrencyControl(request *DisableSqlConcurrenc
 }
 
 /**
- * *   For more information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request EnableDasProRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26275,8 +28580,8 @@ func (client *Client) EnableDasProWithOptions(request *EnableDasProRequest, runt
 }
 
 /**
- * *   For more information about database instances that support DAS Professional Edition, see [Overview](~~190912~~).
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support DAS Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request EnableDasProRequest
  * @return EnableDasProResponse
@@ -26374,9 +28679,9 @@ func (client *Client) EnableSqlConcurrencyControl(request *EnableSqlConcurrencyC
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which DAS Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestListByCodeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26432,9 +28737,9 @@ func (client *Client) GetAsyncErrorRequestListByCodeWithOptions(request *GetAsyn
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not immediately returned. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which DAS Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestListByCodeRequest
  * @return GetAsyncErrorRequestListByCodeResponse
@@ -26451,8 +28756,8 @@ func (client *Client) GetAsyncErrorRequestListByCode(request *GetAsyncErrorReque
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
+ * >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
  * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestStatByCodeRequest
@@ -26509,8 +28814,8 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyn
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
+ * >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
  * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestStatByCodeRequest
@@ -26528,8 +28833,8 @@ func (client *Client) GetAsyncErrorRequestStatByCode(request *GetAsyncErrorReque
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
+ * >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
  * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestStatResultRequest
@@ -26590,8 +28895,8 @@ func (client *Client) GetAsyncErrorRequestStatResultWithOptions(request *GetAsyn
 }
 
 /**
- * >  When an asynchronous call is made, the complete query results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
+ * >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
  * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetAsyncErrorRequestStatResultRequest
@@ -27144,8 +29449,8 @@ func (client *Client) GetDBInstanceConnectivityDiagnosis(request *GetDBInstanceC
 }
 
 /**
- * *   For information about databases that are supported, see [Overview](~~190912~~).
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   For information about database instances that support Database Autonomy Service (DAS) Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
  * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetDasProServiceUsageRequest
@@ -27190,8 +29495,8 @@ func (client *Client) GetDasProServiceUsageWithOptions(request *GetDasProService
 }
 
 /**
- * *   For information about databases that are supported, see [Overview](~~190912~~).
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   For information about database instances that support Database Autonomy Service (DAS) Enterprise Edition, see [Overview](~~190912~~).
+ * *   If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
  * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetDasProServiceUsageRequest
@@ -27537,9 +29842,9 @@ func (client *Client) GetEndpointSwitchTask(request *GetEndpointSwitchTaskReques
 }
 
 /**
- * >  The complete query results are not immediately returned after an asynchronous request is sent. If the value of **isFinish** is **false** in the response, wait for 1 second and send the request again. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetErrorRequestSampleRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27599,9 +29904,9 @@ func (client *Client) GetErrorRequestSampleWithOptions(request *GetErrorRequestS
 }
 
 /**
- * >  The complete query results are not immediately returned after an asynchronous request is sent. If the value of **isFinish** is **false** in the response, wait for 1 second and send the request again. The complete query results are returned until the value of **isFinish** is **true**.
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Professional Edition is enabled. For more information, see [Purchase DAS Professional Edition](~~163298~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
+ * *   This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](~~163298~~).
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetErrorRequestSampleRequest
  * @return GetErrorRequestSampleResponse
@@ -27682,8 +29987,8 @@ func (client *Client) GetEventSubscription(request *GetEventSubscriptionRequest)
 
 /**
  * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For information about database instances that support SQL Explorer, see [Overview](~~190912~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support this feature, see [Overview](~~190912~~).
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
  *
  * @param request GetFullRequestOriginStatByInstanceIdRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27764,8 +30069,8 @@ func (client *Client) GetFullRequestOriginStatByInstanceIdWithOptions(request *G
 
 /**
  * The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](~~204096~~).
- * *   For information about database instances that support SQL Explorer, see [Overview](~~190912~~).
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * *   For more information about database instances that support this feature, see [Overview](~~190912~~).
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
  *
  * @param request GetFullRequestOriginStatByInstanceIdRequest
  * @return GetFullRequestOriginStatByInstanceIdResponse
@@ -30243,7 +32548,7 @@ func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequ
  * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
  *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request ModifyAutoScalingConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30314,7 +32619,7 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
  * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
  *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request ModifyAutoScalingConfigRequest
  * @return ModifyAutoScalingConfigResponse
@@ -30323,6 +32628,72 @@ func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAutoScalingConfigResponse{}
 	_body, _err := client.ModifyAutoScalingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifySqlLogConfigWithOptions(request *ModifySqlLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifySqlLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotRetention)) {
+		body["HotRetention"] = request.HotRetention
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestEnable)) {
+		body["RequestEnable"] = request.RequestEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Retention)) {
+		body["Retention"] = request.Retention
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySqlLogConfig"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySqlLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifySqlLogConfig(request *ModifySqlLogConfigRequest) (_result *ModifySqlLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySqlLogConfigResponse{}
+	_body, _err := client.ModifySqlLogConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30628,12 +32999,12 @@ func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceReques
 }
 
 /**
- * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
+ * >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
- * *   DAS Professional Edition is enabled for the database instance. You can call the [DescribeInstanceDasPro](~~413866~~) operation to check whether DAS Professional Edition is enabled for a database instance.
- * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
+ * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](~~413866~~) operation to query whether DAS Enterprise Edition is enabled.
+ * *   The database instance has four or more CPU cores, and **innodb_file_per_table** is set to **ON**.
  *
  * @param request UpdateAutoResourceOptimizeRulesAsyncRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30689,12 +33060,12 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithOptions(request *U
 }
 
 /**
- * >  An asynchronous call does not immediately return complete results. If the value of **isFinish** is **false** in the response, wait for 1 second and then re-initiate the call. If the value of **isFinish** is **true**, the complete results are returned.
+ * >  UpdateAutoResourceOptimizeRulesAsync is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish** is **false** in the response, wait for 1 second and then send a request again. If the value of **isFinish** is **true**, the complete results are returned.
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
- * *   DAS Professional Edition is enabled for the database instance. You can call the [DescribeInstanceDasPro](~~413866~~) operation to check whether DAS Professional Edition is enabled for a database instance.
- * *   The database instance has four or more cores, and **innodb_file_per_table** is set to **ON**.
+ * *   If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
+ * *   DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](~~413866~~) operation to query whether DAS Enterprise Edition is enabled.
+ * *   The database instance has four or more CPU cores, and **innodb_file_per_table** is set to **ON**.
  *
  * @param request UpdateAutoResourceOptimizeRulesAsyncRequest
  * @return UpdateAutoResourceOptimizeRulesAsyncResponse
@@ -30712,12 +33083,12 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsync(request *UpdateAutoRe
 
 /**
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   DAS Professional Edition is enabled for the database instance that you want to manage. To enable DAS Professional Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
- * *   The autonomy service is enabled for the database instance. For more information, see [Autonomy center](~~152139~~).
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
+ * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
  * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL High-availability Edition and Enterprise Edition
- *     *   PolarDB for MySQL Cluster Edition and X-Engine Edition
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
+ *     *   PolarDB for MySQL Cluster Edition or X-Engine Edition
  *
  * @param request UpdateAutoSqlOptimizeStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30762,12 +33133,12 @@ func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAuto
 
 /**
  * Before you call this operation, take note of the following items:
- * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
- * *   DAS Professional Edition is enabled for the database instance that you want to manage. To enable DAS Professional Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
- * *   The autonomy service is enabled for the database instance. For more information, see [Autonomy center](~~152139~~).
+ * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+ * *   DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](~~411645~~) operation.
+ * *   The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](~~152139~~).
  * *   This operation supports the following database engines:
- *     *   ApsaraDB RDS for MySQL High-availability Edition and Enterprise Edition
- *     *   PolarDB for MySQL Cluster Edition and X-Engine Edition
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
+ *     *   PolarDB for MySQL Cluster Edition or X-Engine Edition
  *
  * @param request UpdateAutoSqlOptimizeStatusRequest
  * @return UpdateAutoSqlOptimizeStatusResponse
