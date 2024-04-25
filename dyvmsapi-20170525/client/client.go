@@ -1416,6 +1416,117 @@ func (s *ExecuteCallTaskResponse) SetBody(v *ExecuteCallTaskResponseBody) *Execu
 	return s
 }
 
+type GetCallMediaTypeRequest struct {
+	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetCallMediaTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallMediaTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallMediaTypeRequest) SetCallId(v string) *GetCallMediaTypeRequest {
+	s.CallId = &v
+	return s
+}
+
+func (s *GetCallMediaTypeRequest) SetCalledNumber(v string) *GetCallMediaTypeRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *GetCallMediaTypeRequest) SetOwnerId(v int64) *GetCallMediaTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetCallMediaTypeRequest) SetResourceOwnerAccount(v string) *GetCallMediaTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetCallMediaTypeRequest) SetResourceOwnerId(v int64) *GetCallMediaTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetCallMediaTypeResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCallMediaTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallMediaTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallMediaTypeResponseBody) SetAccessDeniedDetail(v string) *GetCallMediaTypeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetCallMediaTypeResponseBody) SetCode(v string) *GetCallMediaTypeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCallMediaTypeResponseBody) SetData(v map[string]interface{}) *GetCallMediaTypeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCallMediaTypeResponseBody) SetMessage(v string) *GetCallMediaTypeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCallMediaTypeResponseBody) SetSuccess(v bool) *GetCallMediaTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCallMediaTypeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCallMediaTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCallMediaTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCallMediaTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCallMediaTypeResponse) SetHeaders(v map[string]*string) *GetCallMediaTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCallMediaTypeResponse) SetStatusCode(v int32) *GetCallMediaTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCallMediaTypeResponse) SetBody(v *GetCallMediaTypeResponseBody) *GetCallMediaTypeResponse {
+	s.Body = v
+	return s
+}
+
 type GetCallProgressRequest struct {
 	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	CalledNum            *string `json:"CalledNum,omitempty" xml:"CalledNum,omitempty"`
@@ -1667,6 +1778,117 @@ func (s *GetHotlineQualificationByOrderResponse) SetStatusCode(v int32) *GetHotl
 }
 
 func (s *GetHotlineQualificationByOrderResponse) SetBody(v *GetHotlineQualificationByOrderResponseBody) *GetHotlineQualificationByOrderResponse {
+	s.Body = v
+	return s
+}
+
+type GetTemporaryFileUrlRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VideoId              *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s GetTemporaryFileUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemporaryFileUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemporaryFileUrlRequest) SetOwnerId(v int64) *GetTemporaryFileUrlRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlRequest) SetResourceOwnerAccount(v string) *GetTemporaryFileUrlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlRequest) SetResourceOwnerId(v int64) *GetTemporaryFileUrlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlRequest) SetVideoId(v string) *GetTemporaryFileUrlRequest {
+	s.VideoId = &v
+	return s
+}
+
+type GetTemporaryFileUrlResponseBody struct {
+	AccessDeniedDetail *string                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message            *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTemporaryFileUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemporaryFileUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetAccessDeniedDetail(v string) *GetTemporaryFileUrlResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetCode(v string) *GetTemporaryFileUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetData(v map[string]interface{}) *GetTemporaryFileUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetMessage(v string) *GetTemporaryFileUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetRequestId(v string) *GetTemporaryFileUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponseBody) SetSuccess(v bool) *GetTemporaryFileUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTemporaryFileUrlResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemporaryFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTemporaryFileUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemporaryFileUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemporaryFileUrlResponse) SetHeaders(v map[string]*string) *GetTemporaryFileUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponse) SetStatusCode(v int32) *GetTemporaryFileUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTemporaryFileUrlResponse) SetBody(v *GetTemporaryFileUrlResponseBody) *GetTemporaryFileUrlResponse {
 	s.Body = v
 	return s
 }
@@ -8937,6 +9159,66 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetCallMediaTypeWithOptions(request *GetCallMediaTypeRequest, runtime *util.RuntimeOptions) (_result *GetCallMediaTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCallMediaType"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCallMediaTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCallMediaType(request *GetCallMediaTypeRequest) (_result *GetCallMediaTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCallMediaTypeResponse{}
+	_body, _err := client.GetCallMediaTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest, runtime *util.RuntimeOptions) (_result *GetCallProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9061,6 +9343,62 @@ func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualific
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineQualificationByOrderResponse{}
 	_body, _err := client.GetHotlineQualificationByOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTemporaryFileUrlWithOptions(request *GetTemporaryFileUrlRequest, runtime *util.RuntimeOptions) (_result *GetTemporaryFileUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
+		query["VideoId"] = request.VideoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemporaryFileUrl"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTemporaryFileUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTemporaryFileUrl(request *GetTemporaryFileUrlRequest) (_result *GetTemporaryFileUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemporaryFileUrlResponse{}
+	_body, _err := client.GetTemporaryFileUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
