@@ -17461,6 +17461,8 @@ type ListUserProdLogsRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The log code.
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
 	// The code of the cloud service.
@@ -17477,6 +17479,16 @@ func (s ListUserProdLogsRequest) GoString() string {
 
 func (s *ListUserProdLogsRequest) SetRegionId(v string) *ListUserProdLogsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListUserProdLogsRequest) SetRoleFor(v int64) *ListUserProdLogsRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListUserProdLogsRequest) SetRoleType(v int32) *ListUserProdLogsRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -17640,6 +17652,8 @@ type ListUsersByProdRequest struct {
 	// *   cn-hangzhou: Your assets reside in regions in China.
 	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The code of the cloud service.
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
 }
@@ -17654,6 +17668,16 @@ func (s ListUsersByProdRequest) GoString() string {
 
 func (s *ListUsersByProdRequest) SetRegionId(v string) *ListUsersByProdRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListUsersByProdRequest) SetRoleFor(v int64) *ListUsersByProdRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListUsersByProdRequest) SetRoleType(v int32) *ListUsersByProdRequest {
+	s.RoleType = &v
 	return s
 }
 
@@ -25751,6 +25775,14 @@ func (client *Client) ListUserProdLogsWithOptions(request *ListUserProdLogsReque
 		body["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceLogCode)) {
 		body["SourceLogCode"] = request.SourceLogCode
 	}
@@ -25801,6 +25833,14 @@ func (client *Client) ListUsersByProdWithOptions(request *ListUsersByProdRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
