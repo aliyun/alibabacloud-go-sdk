@@ -1178,6 +1178,182 @@ func (s *CreateVerifySettingResponse) SetBody(v *CreateVerifySettingResponseBody
 	return s
 }
 
+type CredentialVerifyRequest struct {
+	CertNum      *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
+	CredName     *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	CredType     *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	IdentifyNum  *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
+	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	IsCheck      *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
+	IsOCR        *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CredentialVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyRequest) SetCertNum(v string) *CredentialVerifyRequest {
+	s.CertNum = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetCredName(v string) *CredentialVerifyRequest {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetCredType(v string) *CredentialVerifyRequest {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetIdentifyNum(v string) *CredentialVerifyRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetImageContext(v string) *CredentialVerifyRequest {
+	s.ImageContext = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetImageUrl(v string) *CredentialVerifyRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetIsCheck(v string) *CredentialVerifyRequest {
+	s.IsCheck = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetIsOCR(v string) *CredentialVerifyRequest {
+	s.IsOCR = &v
+	return s
+}
+
+func (s *CredentialVerifyRequest) SetUserName(v string) *CredentialVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type CredentialVerifyResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *CredentialVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s CredentialVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyResponseBody) SetCode(v string) *CredentialVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBody) SetMessage(v string) *CredentialVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBody) SetRequestId(v string) *CredentialVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBody) SetResultObject(v *CredentialVerifyResponseBodyResultObject) *CredentialVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type CredentialVerifyResponseBodyResultObject struct {
+	OcrInfo      *string            `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
+	Result       *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	RiskScore    map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	RiskTag      *string            `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	VerifyDetail *string            `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
+	VerifyResult *string            `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s CredentialVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetOcrInfo(v string) *CredentialVerifyResponseBodyResultObject {
+	s.OcrInfo = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetResult(v string) *CredentialVerifyResponseBodyResultObject {
+	s.Result = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetRiskScore(v map[string]*string) *CredentialVerifyResponseBodyResultObject {
+	s.RiskScore = v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetRiskTag(v string) *CredentialVerifyResponseBodyResultObject {
+	s.RiskTag = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetVerifyDetail(v string) *CredentialVerifyResponseBodyResultObject {
+	s.VerifyDetail = &v
+	return s
+}
+
+func (s *CredentialVerifyResponseBodyResultObject) SetVerifyResult(v string) *CredentialVerifyResponseBodyResultObject {
+	s.VerifyResult = &v
+	return s
+}
+
+type CredentialVerifyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CredentialVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CredentialVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyResponse) SetHeaders(v map[string]*string) *CredentialVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CredentialVerifyResponse) SetStatusCode(v int32) *CredentialVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CredentialVerifyResponse) SetBody(v *CredentialVerifyResponseBody) *CredentialVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeviceInfoRequest struct {
 	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -5087,6 +5263,84 @@ func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVerifySettingResponse{}
 	_body, _err := client.CreateVerifySettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CredentialVerifyWithOptions(request *CredentialVerifyRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertNum)) {
+		query["CertNum"] = request.CertNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredName)) {
+		query["CredName"] = request.CredName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredType)) {
+		query["CredType"] = request.CredType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCheck)) {
+		query["IsCheck"] = request.IsCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOCR)) {
+		query["IsOCR"] = request.IsOCR
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageContext)) {
+		body["ImageContext"] = request.ImageContext
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CredentialVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CredentialVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CredentialVerify(request *CredentialVerifyRequest) (_result *CredentialVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CredentialVerifyResponse{}
+	_body, _err := client.CredentialVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
