@@ -22126,6 +22126,398 @@ func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) 
 	return s
 }
 
+type GetTableDesignProjectFlowRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTableDesignProjectFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectFlowRequest) SetOrderId(v int64) *GetTableDesignProjectFlowRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowRequest) SetTid(v int64) *GetTableDesignProjectFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTableDesignProjectFlowResponseBody struct {
+	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ProjectFlow  *GetTableDesignProjectFlowResponseBodyProjectFlow `json:"ProjectFlow,omitempty" xml:"ProjectFlow,omitempty" type:"Struct"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTableDesignProjectFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectFlowResponseBody) SetErrorCode(v string) *GetTableDesignProjectFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBody) SetErrorMessage(v string) *GetTableDesignProjectFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBody) SetProjectFlow(v *GetTableDesignProjectFlowResponseBodyProjectFlow) *GetTableDesignProjectFlowResponseBody {
+	s.ProjectFlow = v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBody) SetRequestId(v string) *GetTableDesignProjectFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBody) SetSuccess(v bool) *GetTableDesignProjectFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTableDesignProjectFlowResponseBodyProjectFlow struct {
+	CurrentPosition *int32                                                           `json:"CurrentPosition,omitempty" xml:"CurrentPosition,omitempty"`
+	FlowNodeArray   []*GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray `json:"FlowNodeArray,omitempty" xml:"FlowNodeArray,omitempty" type:"Repeated"`
+	RuleComment     *string                                                          `json:"RuleComment,omitempty" xml:"RuleComment,omitempty"`
+	RuleName        *string                                                          `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s GetTableDesignProjectFlowResponseBodyProjectFlow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectFlowResponseBodyProjectFlow) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetCurrentPosition(v int32) *GetTableDesignProjectFlowResponseBodyProjectFlow {
+	s.CurrentPosition = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetFlowNodeArray(v []*GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) *GetTableDesignProjectFlowResponseBodyProjectFlow {
+	s.FlowNodeArray = v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetRuleComment(v string) *GetTableDesignProjectFlowResponseBodyProjectFlow {
+	s.RuleComment = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetRuleName(v string) *GetTableDesignProjectFlowResponseBodyProjectFlow {
+	s.RuleName = &v
+	return s
+}
+
+type GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray struct {
+	BackToDesign      *bool     `json:"BackToDesign,omitempty" xml:"BackToDesign,omitempty"`
+	CanSkip           *bool     `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
+	NodeRole          *string   `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	NodeTitle         *string   `json:"NodeTitle,omitempty" xml:"NodeTitle,omitempty"`
+	Position          *int32    `json:"Position,omitempty" xml:"Position,omitempty"`
+	PublishAnchor     *bool     `json:"PublishAnchor,omitempty" xml:"PublishAnchor,omitempty"`
+	PublishStrategies []*string `json:"PublishStrategies,omitempty" xml:"PublishStrategies,omitempty" type:"Repeated"`
+}
+
+func (s GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetBackToDesign(v bool) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.BackToDesign = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetCanSkip(v bool) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.CanSkip = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetNodeRole(v string) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.NodeRole = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetNodeTitle(v string) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.NodeTitle = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetPosition(v int32) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.Position = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetPublishAnchor(v bool) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.PublishAnchor = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray) SetPublishStrategies(v []*string) *GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray {
+	s.PublishStrategies = v
+	return s
+}
+
+type GetTableDesignProjectFlowResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableDesignProjectFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableDesignProjectFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectFlowResponse) SetHeaders(v map[string]*string) *GetTableDesignProjectFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponse) SetStatusCode(v int32) *GetTableDesignProjectFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableDesignProjectFlowResponse) SetBody(v *GetTableDesignProjectFlowResponseBody) *GetTableDesignProjectFlowResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableDesignProjectInfoRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTableDesignProjectInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectInfoRequest) SetOrderId(v int64) *GetTableDesignProjectInfoRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoRequest) SetTid(v int64) *GetTableDesignProjectInfoRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTableDesignProjectInfoResponseBody struct {
+	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ProjectInfo  *GetTableDesignProjectInfoResponseBodyProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTableDesignProjectInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectInfoResponseBody) SetErrorCode(v string) *GetTableDesignProjectInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBody) SetErrorMessage(v string) *GetTableDesignProjectInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBody) SetProjectInfo(v *GetTableDesignProjectInfoResponseBodyProjectInfo) *GetTableDesignProjectInfoResponseBody {
+	s.ProjectInfo = v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBody) SetRequestId(v string) *GetTableDesignProjectInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBody) SetSuccess(v bool) *GetTableDesignProjectInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTableDesignProjectInfoResponseBodyProjectInfo struct {
+	BaseDatabase *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase `json:"BaseDatabase,omitempty" xml:"BaseDatabase,omitempty" type:"Struct"`
+	CreatorId    *int64                                                        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description  *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate    *string                                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string                                                       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	OrderId      *int64                                                        `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ProjectId    *int64                                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title        *string                                                       `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetTableDesignProjectInfoResponseBodyProjectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectInfoResponseBodyProjectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetBaseDatabase(v *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.BaseDatabase = v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetCreatorId(v int64) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetDescription(v string) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetGmtCreate(v string) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetGmtModified(v string) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetOrderId(v int64) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetProjectId(v int64) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetStatus(v string) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetTitle(v string) *GetTableDesignProjectInfoResponseBodyProjectInfo {
+	s.Title = &v
+	return s
+}
+
+type GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DbId       *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetAlias(v string) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.Alias = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetDbId(v int32) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetDbType(v string) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetEnvType(v string) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.EnvType = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetLogic(v bool) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.Logic = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetSchemaName(v string) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase) SetSearchName(v string) *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase {
+	s.SearchName = &v
+	return s
+}
+
+type GetTableDesignProjectInfoResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableDesignProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableDesignProjectInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDesignProjectInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDesignProjectInfoResponse) SetHeaders(v map[string]*string) *GetTableDesignProjectInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponse) SetStatusCode(v int32) *GetTableDesignProjectInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableDesignProjectInfoResponse) SetBody(v *GetTableDesignProjectInfoResponseBody) *GetTableDesignProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetTableTopologyRequest struct {
 	// The GUID of the table in Data Management (DMS).
 	//
@@ -51186,6 +51578,102 @@ func (client *Client) GetTableDBTopology(request *GetTableDBTopologyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableDBTopologyResponse{}
 	_body, _err := client.GetTableDBTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTableDesignProjectFlowWithOptions(request *GetTableDesignProjectFlowRequest, runtime *util.RuntimeOptions) (_result *GetTableDesignProjectFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableDesignProjectFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableDesignProjectFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableDesignProjectFlow(request *GetTableDesignProjectFlowRequest) (_result *GetTableDesignProjectFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableDesignProjectFlowResponse{}
+	_body, _err := client.GetTableDesignProjectFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTableDesignProjectInfoWithOptions(request *GetTableDesignProjectInfoRequest, runtime *util.RuntimeOptions) (_result *GetTableDesignProjectInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableDesignProjectInfo"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableDesignProjectInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableDesignProjectInfo(request *GetTableDesignProjectInfoRequest) (_result *GetTableDesignProjectInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableDesignProjectInfoResponse{}
+	_body, _err := client.GetTableDesignProjectInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
