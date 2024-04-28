@@ -6590,10 +6590,14 @@ func (s *GetBatchMediaProducingJobResponseBody) SetRequestId(v string) *GetBatch
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
+	CompleteTime  *string                                                           `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreateTime    *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EditingConfig *string                                                           `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
 	Extend        *string                                                           `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	InputConfig   *string                                                           `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	JobId         *string                                                           `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType       *string                                                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ModifiedTime  *string                                                           `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	OutputConfig  *string                                                           `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	Status        *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubJobList    []*GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList `json:"SubJobList,omitempty" xml:"SubJobList,omitempty" type:"Repeated"`
@@ -6606,6 +6610,16 @@ func (s GetBatchMediaProducingJobResponseBodyEditingBatchJob) String() string {
 
 func (s GetBatchMediaProducingJobResponseBodyEditingBatchJob) GoString() string {
 	return s.String()
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetCompleteTime(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetCreateTime(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetEditingConfig(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
@@ -6625,6 +6639,16 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetInputConfig(v 
 
 func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetJobId(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetJobType(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetModifiedTime(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.ModifiedTime = &v
 	return s
 }
 
@@ -10083,9 +10107,10 @@ func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateRe
 }
 
 type GetMediaInfoRequest struct {
-	InputURL   *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	InputURL           *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaId            *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	OutputType         *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	ReturnDetailedInfo *string `json:"ReturnDetailedInfo,omitempty" xml:"ReturnDetailedInfo,omitempty"`
 }
 
 func (s GetMediaInfoRequest) String() string {
@@ -10108,6 +10133,11 @@ func (s *GetMediaInfoRequest) SetMediaId(v string) *GetMediaInfoRequest {
 
 func (s *GetMediaInfoRequest) SetOutputType(v string) *GetMediaInfoRequest {
 	s.OutputType = &v
+	return s
+}
+
+func (s *GetMediaInfoRequest) SetReturnDetailedInfo(v string) *GetMediaInfoRequest {
+	s.ReturnDetailedInfo = &v
 	return s
 }
 
@@ -10171,11 +10201,12 @@ func (s *GetMediaInfoResponseBodyMediaInfo) SetMediaId(v string) *GetMediaInfoRe
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
-	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
-	AiJobId    *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AiCategory          *string                                                          `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
+	AiJobId             *string                                                          `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	Result              *string                                                          `json:"Result,omitempty" xml:"Result,omitempty"`
+	SaveType            *string                                                          `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	StandardSmartTagJob *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob `json:"StandardSmartTagJob,omitempty" xml:"StandardSmartTagJob,omitempty" type:"Struct"`
+	Status              *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetMediaInfoResponseBodyMediaInfoAiRoughData) String() string {
@@ -10206,8 +10237,71 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetSaveType(v string) *Ge
 	return s
 }
 
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetStandardSmartTagJob(v *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
+	s.StandardSmartTagJob = v
+	return s
+}
+
 func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) SetStatus(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughData {
 	s.Status = &v
+	return s
+}
+
+type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob struct {
+	AiJobId   *string                                                                   `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
+	ResultUrl *string                                                                   `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	Results   []*GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	Status    *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetAiJobId(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob {
+	s.AiJobId = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetResultUrl(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob {
+	s.ResultUrl = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetResults(v []*GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob {
+	s.Results = v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) SetStatus(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob {
+	s.Status = &v
+	return s
+}
+
+type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults) SetData(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults {
+	s.Data = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults) SetType(v string) *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults {
+	s.Type = &v
 	return s
 }
 
@@ -17735,6 +17829,207 @@ func (s *ListAvatarsResponse) SetBody(v *ListAvatarsResponseBody) *ListAvatarsRe
 	return s
 }
 
+type ListBatchMediaProducingJobsRequest struct {
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType    *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListBatchMediaProducingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBatchMediaProducingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetEndTime(v string) *ListBatchMediaProducingJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetJobId(v string) *ListBatchMediaProducingJobsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetJobType(v string) *ListBatchMediaProducingJobsRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetMaxResults(v int32) *ListBatchMediaProducingJobsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetNextToken(v string) *ListBatchMediaProducingJobsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetSortBy(v string) *ListBatchMediaProducingJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetStartTime(v string) *ListBatchMediaProducingJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsRequest) SetStatus(v string) *ListBatchMediaProducingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListBatchMediaProducingJobsResponseBody struct {
+	EditingBatchJobList []*ListBatchMediaProducingJobsResponseBodyEditingBatchJobList `json:"EditingBatchJobList,omitempty" xml:"EditingBatchJobList,omitempty" type:"Repeated"`
+	MaxResults          *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBatchMediaProducingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBatchMediaProducingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBatchMediaProducingJobsResponseBody) SetEditingBatchJobList(v []*ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) *ListBatchMediaProducingJobsResponseBody {
+	s.EditingBatchJobList = v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBody) SetMaxResults(v int32) *ListBatchMediaProducingJobsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBody) SetNextToken(v string) *ListBatchMediaProducingJobsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBody) SetRequestId(v string) *ListBatchMediaProducingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {
+	CompleteTime  *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType       *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetCompleteTime(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetCreateTime(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetEditingConfig(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetExtend(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.Extend = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetInputConfig(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetJobId(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetJobType(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetModifiedTime(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetOutputConfig(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetStatus(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList) SetUserData(v string) *ListBatchMediaProducingJobsResponseBodyEditingBatchJobList {
+	s.UserData = &v
+	return s
+}
+
+type ListBatchMediaProducingJobsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBatchMediaProducingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBatchMediaProducingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBatchMediaProducingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBatchMediaProducingJobsResponse) SetHeaders(v map[string]*string) *ListBatchMediaProducingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponse) SetStatusCode(v int32) *ListBatchMediaProducingJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBatchMediaProducingJobsResponse) SetBody(v *ListBatchMediaProducingJobsResponseBody) *ListBatchMediaProducingJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListCustomTemplatesRequest struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
@@ -21659,6 +21954,231 @@ func (s *ListMediaMarksResponse) SetStatusCode(v int32) *ListMediaMarksResponse 
 }
 
 func (s *ListMediaMarksResponse) SetBody(v *ListMediaMarksResponseBody) *ListMediaMarksResponse {
+	s.Body = v
+	return s
+}
+
+type ListMediaProducingJobsRequest struct {
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobType     *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	MasterJobId *string `json:"MasterJobId,omitempty" xml:"MasterJobId,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListMediaProducingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsRequest) SetEndTime(v string) *ListMediaProducingJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetJobType(v string) *ListMediaProducingJobsRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetKeyword(v string) *ListMediaProducingJobsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetMasterJobId(v string) *ListMediaProducingJobsRequest {
+	s.MasterJobId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetMaxResults(v int32) *ListMediaProducingJobsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetNextToken(v string) *ListMediaProducingJobsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetSortBy(v string) *ListMediaProducingJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetStartTime(v string) *ListMediaProducingJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsRequest) SetStatus(v string) *ListMediaProducingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListMediaProducingJobsResponseBody struct {
+	MaxResults            *string                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaProducingJobList []*ListMediaProducingJobsResponseBodyMediaProducingJobList `json:"MediaProducingJobList,omitempty" xml:"MediaProducingJobList,omitempty" type:"Repeated"`
+	NextToken             *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMediaProducingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetMaxResults(v string) *ListMediaProducingJobsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetMediaProducingJobList(v []*ListMediaProducingJobsResponseBodyMediaProducingJobList) *ListMediaProducingJobsResponseBody {
+	s.MediaProducingJobList = v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetNextToken(v string) *ListMediaProducingJobsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBody) SetRequestId(v string) *ListMediaProducingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMediaProducingJobsResponseBodyMediaProducingJobList struct {
+	ClipsParam   *string  `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
+	Code         *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CompleteTime *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration     *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	JobId        *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId      *string  `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaURL     *string  `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
+	Message      *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	ModifiedTime *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId    *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateId   *string  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UserData     *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponseBodyMediaProducingJobList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetClipsParam(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ClipsParam = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCode(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCompleteTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetCreateTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetDuration(v float32) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetJobId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMediaURL(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.MediaURL = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetMessage(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetModifiedTime(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetProjectId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetStatus(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetTemplateId(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponseBodyMediaProducingJobList) SetUserData(v string) *ListMediaProducingJobsResponseBodyMediaProducingJobList {
+	s.UserData = &v
+	return s
+}
+
+type ListMediaProducingJobsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMediaProducingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMediaProducingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaProducingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaProducingJobsResponse) SetHeaders(v map[string]*string) *ListMediaProducingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponse) SetStatusCode(v int32) *ListMediaProducingJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaProducingJobsResponse) SetBody(v *ListMediaProducingJobsResponseBody) *ListMediaProducingJobsResponse {
 	s.Body = v
 	return s
 }
@@ -27039,20 +27559,21 @@ func (s *RefreshUploadMediaResponse) SetBody(v *RefreshUploadMediaResponseBody) 
 }
 
 type RegisterMediaInfoRequest struct {
-	BusinessType   *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CateId         *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CoverURL       *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InputURL       *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	MediaTags      *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	MediaType      *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	Overwrite      *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	ReferenceId    *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	WorkflowId     *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	BusinessType       *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CateId             *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CoverURL           *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputURL           *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	MediaTags          *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	MediaType          *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Overwrite          *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	ReferenceId        *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	RegisterConfig     *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
+	SmartTagTemplateId *string `json:"SmartTagTemplateId,omitempty" xml:"SmartTagTemplateId,omitempty"`
+	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WorkflowId         *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s RegisterMediaInfoRequest) String() string {
@@ -27115,6 +27636,11 @@ func (s *RegisterMediaInfoRequest) SetReferenceId(v string) *RegisterMediaInfoRe
 
 func (s *RegisterMediaInfoRequest) SetRegisterConfig(v string) *RegisterMediaInfoRequest {
 	s.RegisterConfig = &v
+	return s
+}
+
+func (s *RegisterMediaInfoRequest) SetSmartTagTemplateId(v string) *RegisterMediaInfoRequest {
+	s.SmartTagTemplateId = &v
 	return s
 }
 
@@ -44409,6 +44935,10 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 		query["OutputType"] = request.OutputType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReturnDetailedInfo)) {
+		query["ReturnDetailedInfo"] = request.ReturnDetailedInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -45499,6 +46029,78 @@ func (client *Client) ListAvatars(request *ListAvatarsRequest) (_result *ListAva
 	return _result, _err
 }
 
+func (client *Client) ListBatchMediaProducingJobsWithOptions(request *ListBatchMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *ListBatchMediaProducingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBatchMediaProducingJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBatchMediaProducingJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBatchMediaProducingJobs(request *ListBatchMediaProducingJobsRequest) (_result *ListBatchMediaProducingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBatchMediaProducingJobsResponse{}
+	_body, _err := client.ListBatchMediaProducingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCustomTemplatesWithOptions(request *ListCustomTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListCustomTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46436,6 +47038,82 @@ func (client *Client) ListMediaMarks(request *ListMediaMarksRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMediaMarksResponse{}
 	_body, _err := client.ListMediaMarksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMediaProducingJobsWithOptions(request *ListMediaProducingJobsRequest, runtime *util.RuntimeOptions) (_result *ListMediaProducingJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterJobId)) {
+		query["MasterJobId"] = request.MasterJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaProducingJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMediaProducingJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMediaProducingJobs(request *ListMediaProducingJobsRequest) (_result *ListMediaProducingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaProducingJobsResponse{}
+	_body, _err := client.ListMediaProducingJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47560,6 +48238,10 @@ func (client *Client) RegisterMediaInfoWithOptions(request *RegisterMediaInfoReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegisterConfig)) {
 		query["RegisterConfig"] = request.RegisterConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmartTagTemplateId)) {
+		query["SmartTagTemplateId"] = request.SmartTagTemplateId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
