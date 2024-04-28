@@ -1,3 +1,6 @@
+2024-04-28 Version: v1.3.3
+- Generated golang 2022-12-13 for PaiRecService.
+
 2024-03-22 Version: v1.3.2
 - Generated golang 2022-12-13 for PaiRecService.
 
