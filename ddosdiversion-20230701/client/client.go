@@ -13,10 +13,20 @@ import (
 )
 
 type ConfigNetStatusRequest struct {
-	Net     *string   `json:"Net,omitempty" xml:"Net,omitempty"`
+	// The CIDR block of the anti-DDoS diversion instance.
+	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// The regions in which the CIDR block needs to be advertised or withdrawn from advertising. If you leave this parameter empty, the CIDR blocks in all regions are configured.
+	//
+	// >  You can call the [QueryNetList](~~2639086~~) operation to obtain the regions of the CIDR blocks.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	SaleId  *string   `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
-	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the anti-DDoS diversion instance.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The status of the CIDR block. Valid values:
+	//
+	// *   enable: advertises the CIDR block.
+	// *   disable: withdraws the advertising of the CIDR block.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subnet CIDR blocks of the CIDR block.
 	SubNets []*string `json:"SubNets,omitempty" xml:"SubNets,omitempty" type:"Repeated"`
 }
 
@@ -54,8 +64,14 @@ func (s *ConfigNetStatusRequest) SetSubNets(v []*string) *ConfigNetStatusRequest
 }
 
 type ConfigNetStatusResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code.
+	//
+	// *   **200**: The request was successful.
+	// *   Other codes: The request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -83,9 +99,9 @@ func (s *ConfigNetStatusResponseBody) SetRequestId(v string) *ConfigNetStatusRes
 }
 
 type ConfigNetStatusResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigNetStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigNetStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigNetStatusResponse) String() string {
@@ -112,10 +128,20 @@ func (s *ConfigNetStatusResponse) SetBody(v *ConfigNetStatusResponseBody) *Confi
 }
 
 type ListInstanceRequest struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Num    *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
-	Page   *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The name of the instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries per page. Default value: 100.
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The page number. Default value: 1
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The ID of the anti-DDoS diversion instance.
 	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   normal
+	// *   expired
+	// *   deleting
+	// *   stopped
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -153,10 +179,17 @@ func (s *ListInstanceRequest) SetStatus(v string) *ListInstanceRequest {
 }
 
 type ListInstanceResponseBody struct {
-	Code      *int64                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
+	// *   **200**: The request was successful.
+	// *   Other codes: The request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	Data *ListInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInstanceResponseBody) String() string {
@@ -172,7 +205,7 @@ func (s *ListInstanceResponseBody) SetCode(v int64) *ListInstanceResponseBody {
 	return s
 }
 
-func (s *ListInstanceResponseBody) SetData(v []*ListInstanceResponseBodyData) *ListInstanceResponseBody {
+func (s *ListInstanceResponseBody) SetData(v *ListInstanceResponseBodyData) *ListInstanceResponseBody {
 	s.Data = v
 	return s
 }
@@ -383,9 +416,9 @@ func (s *ListInstanceResponseBodyDataInstancesSpec) SetNormalBandwidth(v string)
 }
 
 type ListInstanceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListInstanceResponse) String() string {
@@ -412,12 +445,23 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 }
 
 type QueryNetListRequest struct {
+	// The primary CIDR block of the anti-DDoS diversion instance for which an extended CIDR block is configured. If no extended CIDR blocks are configured for the anti-DDoS diversion instance, leave this parameter empty.
 	MainNet *string `json:"MainNet,omitempty" xml:"MainNet,omitempty"`
-	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Net     *string `json:"Net,omitempty" xml:"Net,omitempty"`
-	Num     *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
-	Page    *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
-	SaleId  *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	// The scheduling mode. Valid values:
+	//
+	// *   manual: manual scheduling
+	// *   netflow-auto: automatic scheduling
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The CIDR block of the anti-DDoS diversion instance.
+	//
+	// >  If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
+	Net *string `json:"Net,omitempty" xml:"Net,omitempty"`
+	// The number of entries per page. Default value: 100.
+	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// The page number. Default value: 1
+	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The ID of the anti-DDoS diversion instance.
+	SaleId *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 }
 
 func (s QueryNetListRequest) String() string {
@@ -459,10 +503,17 @@ func (s *QueryNetListRequest) SetSaleId(v string) *QueryNetListRequest {
 }
 
 type QueryNetListResponseBody struct {
-	Code      *int64                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*QueryNetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status code.
+	//
+	// *   **200**: The request was successful.
+	// *   Other codes: The request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The CIDR blocks.
+	Data *QueryNetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryNetListResponseBody) String() string {
@@ -478,7 +529,7 @@ func (s *QueryNetListResponseBody) SetCode(v int64) *QueryNetListResponseBody {
 	return s
 }
 
-func (s *QueryNetListResponseBody) SetData(v []*QueryNetListResponseBodyData) *QueryNetListResponseBody {
+func (s *QueryNetListResponseBody) SetData(v *QueryNetListResponseBodyData) *QueryNetListResponseBody {
 	s.Data = v
 	return s
 }
@@ -537,8 +588,8 @@ type QueryNetListResponseBodyDataNets struct {
 	GmtModify     *string                                      `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
 	Mode          *string                                      `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Net           *string                                      `json:"Net,omitempty" xml:"Net,omitempty"`
-	NetExtend     *int64                                       `json:"NetExtend,omitempty" xml:"NetExtend,omitempty"`
-	NetMain       *string                                      `json:"NetMain,omitempty" xml:"NetMain,omitempty"`
+	NetExtend     *string                                      `json:"NetExtend,omitempty" xml:"NetExtend,omitempty"`
+	NetMain       *int64                                       `json:"NetMain,omitempty" xml:"NetMain,omitempty"`
 	NetType       *string                                      `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	SaleId        *string                                      `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
 	UpstreamType  *string                                      `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
@@ -593,12 +644,12 @@ func (s *QueryNetListResponseBodyDataNets) SetNet(v string) *QueryNetListRespons
 	return s
 }
 
-func (s *QueryNetListResponseBodyDataNets) SetNetExtend(v int64) *QueryNetListResponseBodyDataNets {
+func (s *QueryNetListResponseBodyDataNets) SetNetExtend(v string) *QueryNetListResponseBodyDataNets {
 	s.NetExtend = &v
 	return s
 }
 
-func (s *QueryNetListResponseBodyDataNets) SetNetMain(v string) *QueryNetListResponseBodyDataNets {
+func (s *QueryNetListResponseBodyDataNets) SetNetMain(v int64) *QueryNetListResponseBodyDataNets {
 	s.NetMain = &v
 	return s
 }
@@ -653,10 +704,8 @@ func (s *QueryNetListResponseBodyDataNetsDDoSDefense) SetHoleTh(v *QueryNetListR
 }
 
 type QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh struct {
-	// Mbps。
 	Mbps *int32 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
-	// Pps。
-	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	Pps  *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
 func (s QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh) String() string {
@@ -735,9 +784,9 @@ func (s *QueryNetListResponseBodyDataNetsDeclared) SetRegion(v string) *QueryNet
 }
 
 type QueryNetListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryNetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryNetListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryNetListResponse) String() string {
