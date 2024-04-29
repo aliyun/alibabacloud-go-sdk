@@ -1,3 +1,9 @@
+2024-04-29 Version: v3.0.0
+- Support API DescribeBackupDataList.
+- Support API DescribeBackupPolicy.
+- Delete API CreateSandboxInstance.
+
+
 2023-12-22 Version: v2.0.5
 - Generated golang 2021-01-01 for Dbs.
 
