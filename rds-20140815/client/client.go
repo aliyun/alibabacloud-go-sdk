@@ -7399,6 +7399,217 @@ func (s *CreateGadInstanceMemberResponse) SetBody(v *CreateGadInstanceMemberResp
 	return s
 }
 
+type CreateMaskingRulesRequest struct {
+	DBInstanceName       *string                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DefaultAlgo          *string                              `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	MaskingAlgo          *string                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	OwnerId              *string                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleConfig           *CreateMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	RuleName             *string                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateMaskingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaskingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaskingRulesRequest) SetDBInstanceName(v string) *CreateMaskingRulesRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetDefaultAlgo(v string) *CreateMaskingRulesRequest {
+	s.DefaultAlgo = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetMaskingAlgo(v string) *CreateMaskingRulesRequest {
+	s.MaskingAlgo = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetOwnerId(v string) *CreateMaskingRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetResourceOwnerAccount(v string) *CreateMaskingRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetResourceOwnerId(v int64) *CreateMaskingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetRuleConfig(v *CreateMaskingRulesRequestRuleConfig) *CreateMaskingRulesRequest {
+	s.RuleConfig = v
+	return s
+}
+
+func (s *CreateMaskingRulesRequest) SetRuleName(v string) *CreateMaskingRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+type CreateMaskingRulesRequestRuleConfig struct {
+	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s CreateMaskingRulesRequestRuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaskingRulesRequestRuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaskingRulesRequestRuleConfig) SetColumns(v []*string) *CreateMaskingRulesRequestRuleConfig {
+	s.Columns = v
+	return s
+}
+
+func (s *CreateMaskingRulesRequestRuleConfig) SetDatabases(v []*string) *CreateMaskingRulesRequestRuleConfig {
+	s.Databases = v
+	return s
+}
+
+func (s *CreateMaskingRulesRequestRuleConfig) SetTables(v []*string) *CreateMaskingRulesRequestRuleConfig {
+	s.Tables = v
+	return s
+}
+
+type CreateMaskingRulesShrinkRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DefaultAlgo          *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	MaskingAlgo          *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateMaskingRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaskingRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetDBInstanceName(v string) *CreateMaskingRulesShrinkRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetDefaultAlgo(v string) *CreateMaskingRulesShrinkRequest {
+	s.DefaultAlgo = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetMaskingAlgo(v string) *CreateMaskingRulesShrinkRequest {
+	s.MaskingAlgo = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetOwnerId(v string) *CreateMaskingRulesShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetResourceOwnerAccount(v string) *CreateMaskingRulesShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetResourceOwnerId(v int64) *CreateMaskingRulesShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetRuleConfigShrink(v string) *CreateMaskingRulesShrinkRequest {
+	s.RuleConfigShrink = &v
+	return s
+}
+
+func (s *CreateMaskingRulesShrinkRequest) SetRuleName(v string) *CreateMaskingRulesShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+type CreateMaskingRulesResponseBody struct {
+	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateMaskingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaskingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaskingRulesResponseBody) SetData(v map[string]*string) *CreateMaskingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateMaskingRulesResponseBody) SetMessage(v string) *CreateMaskingRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMaskingRulesResponseBody) SetRequestId(v string) *CreateMaskingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMaskingRulesResponseBody) SetSuccess(v string) *CreateMaskingRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMaskingRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMaskingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMaskingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaskingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaskingRulesResponse) SetHeaders(v map[string]*string) *CreateMaskingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMaskingRulesResponse) SetStatusCode(v int32) *CreateMaskingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMaskingRulesResponse) SetBody(v *CreateMaskingRulesResponseBody) *CreateMaskingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMigrateTaskRequest struct {
 	// The type of the migration task. Valid values:
 	//
@@ -9014,7 +9225,7 @@ type CreateTempDBInstanceRequest struct {
 	// The backup set ID. You can call the DescribeBackups operation to query the backup set ID.
 	//
 	// >  You must specify at least one of the **BackupId** or **RestoreTime** parameters.
-	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -9038,7 +9249,7 @@ func (s CreateTempDBInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTempDBInstanceRequest) SetBackupId(v int32) *CreateTempDBInstanceRequest {
+func (s *CreateTempDBInstanceRequest) SetBackupId(v int64) *CreateTempDBInstanceRequest {
 	s.BackupId = &v
 	return s
 }
@@ -10476,6 +10687,111 @@ func (s *DeleteGadInstanceResponse) SetBody(v *DeleteGadInstanceResponseBody) *D
 	return s
 }
 
+type DeleteMaskingRulesRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DeleteMaskingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMaskingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMaskingRulesRequest) SetDBInstanceName(v string) *DeleteMaskingRulesRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetOwnerId(v string) *DeleteMaskingRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetResourceOwnerAccount(v string) *DeleteMaskingRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetResourceOwnerId(v int64) *DeleteMaskingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetRuleName(v string) *DeleteMaskingRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+type DeleteMaskingRulesResponseBody struct {
+	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteMaskingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMaskingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMaskingRulesResponseBody) SetData(v map[string]*string) *DeleteMaskingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteMaskingRulesResponseBody) SetMessage(v string) *DeleteMaskingRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesResponseBody) SetRequestId(v string) *DeleteMaskingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesResponseBody) SetSuccess(v string) *DeleteMaskingRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMaskingRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMaskingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMaskingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMaskingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMaskingRulesResponse) SetHeaders(v map[string]*string) *DeleteMaskingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMaskingRulesResponse) SetStatusCode(v int32) *DeleteMaskingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesResponse) SetBody(v *DeleteMaskingRulesResponseBody) *DeleteMaskingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteParameterGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
@@ -11478,6 +11794,145 @@ func (s *DescribeADInfoResponse) SetStatusCode(v int32) *DescribeADInfoResponse 
 }
 
 func (s *DescribeADInfoResponse) SetBody(v *DescribeADInfoResponseBody) *DescribeADInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccountMaskingPrivilegeRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	UserName             *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeAccountMaskingPrivilegeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccountMaskingPrivilegeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetDBInstanceName(v string) *DescribeAccountMaskingPrivilegeRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetOwnerId(v string) *DescribeAccountMaskingPrivilegeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetResourceOwnerAccount(v string) *DescribeAccountMaskingPrivilegeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetResourceOwnerId(v int64) *DescribeAccountMaskingPrivilegeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeRequest) SetUserName(v string) *DescribeAccountMaskingPrivilegeRequest {
+	s.UserName = &v
+	return s
+}
+
+type DescribeAccountMaskingPrivilegeResponseBody struct {
+	Data      *DescribeAccountMaskingPrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBody) SetData(v *DescribeAccountMaskingPrivilegeResponseBodyData) *DescribeAccountMaskingPrivilegeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBody) SetRequestId(v string) *DescribeAccountMaskingPrivilegeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAccountMaskingPrivilegeResponseBodyData struct {
+	UserPrivilege []*DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege `json:"UserPrivilege,omitempty" xml:"UserPrivilege,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBodyData) SetUserPrivilege(v []*DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) *DescribeAccountMaskingPrivilegeResponseBodyData {
+	s.UserPrivilege = v
+	return s
+}
+
+type DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege struct {
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Privilege  *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) SetExpireTime(v string) *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) SetPrivilege(v string) *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege {
+	s.Privilege = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege) SetUserName(v string) *DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege {
+	s.UserName = &v
+	return s
+}
+
+type DescribeAccountMaskingPrivilegeResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAccountMaskingPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAccountMaskingPrivilegeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccountMaskingPrivilegeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponse) SetHeaders(v map[string]*string) *DescribeAccountMaskingPrivilegeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponse) SetStatusCode(v int32) *DescribeAccountMaskingPrivilegeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccountMaskingPrivilegeResponse) SetBody(v *DescribeAccountMaskingPrivilegeResponseBody) *DescribeAccountMaskingPrivilegeResponse {
 	s.Body = v
 	return s
 }
@@ -32067,11 +32522,191 @@ func (s *DescribeMarketingActivityResponse) SetBody(v *DescribeMarketingActivity
 	return s
 }
 
+type DescribeMaskingRulesRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeMaskingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesRequest) SetDBInstanceName(v string) *DescribeMaskingRulesRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetOwnerId(v string) *DescribeMaskingRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetResourceOwnerAccount(v string) *DescribeMaskingRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetResourceOwnerId(v int64) *DescribeMaskingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetRuleName(v string) *DescribeMaskingRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeMaskingRulesResponseBody struct {
+	Data      *DescribeMaskingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMaskingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesResponseBody) SetData(v *DescribeMaskingRulesResponseBodyData) *DescribeMaskingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBody) SetRequestId(v string) *DescribeMaskingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMaskingRulesResponseBodyData struct {
+	Rules []*DescribeMaskingRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMaskingRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesResponseBodyData) SetRules(v []*DescribeMaskingRulesResponseBodyDataRules) *DescribeMaskingRulesResponseBodyData {
+	s.Rules = v
+	return s
+}
+
+type DescribeMaskingRulesResponseBodyDataRules struct {
+	DefaultAlgo *string                                              `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	Enabled     *string                                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaskingAlgo *string                                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	RuleConfig  *DescribeMaskingRulesResponseBodyDataRulesRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	RuleName    *string                                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeMaskingRulesResponseBodyDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesResponseBodyDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRules) SetDefaultAlgo(v string) *DescribeMaskingRulesResponseBodyDataRules {
+	s.DefaultAlgo = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRules) SetEnabled(v string) *DescribeMaskingRulesResponseBodyDataRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRules) SetMaskingAlgo(v string) *DescribeMaskingRulesResponseBodyDataRules {
+	s.MaskingAlgo = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRules) SetRuleConfig(v *DescribeMaskingRulesResponseBodyDataRulesRuleConfig) *DescribeMaskingRulesResponseBodyDataRules {
+	s.RuleConfig = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRules) SetRuleName(v string) *DescribeMaskingRulesResponseBodyDataRules {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeMaskingRulesResponseBodyDataRulesRuleConfig struct {
+	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMaskingRulesResponseBodyDataRulesRuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesResponseBodyDataRulesRuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRulesRuleConfig) SetColumns(v []*string) *DescribeMaskingRulesResponseBodyDataRulesRuleConfig {
+	s.Columns = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRulesRuleConfig) SetDatabases(v []*string) *DescribeMaskingRulesResponseBodyDataRulesRuleConfig {
+	s.Databases = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponseBodyDataRulesRuleConfig) SetTables(v []*string) *DescribeMaskingRulesResponseBodyDataRulesRuleConfig {
+	s.Tables = v
+	return s
+}
+
+type DescribeMaskingRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMaskingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeMaskingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaskingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaskingRulesResponse) SetHeaders(v map[string]*string) *DescribeMaskingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponse) SetStatusCode(v int32) *DescribeMaskingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesResponse) SetBody(v *DescribeMaskingRulesResponseBody) *DescribeMaskingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeMetaListRequest struct {
 	// The ID of the backup set from which you want to restore data. You can call the DescribeBackups operation to query the backup set ID.
 	//
 	// >  This parameter must be specified when the **RestoreType** parameter is set to **BackupSetID**.
-	BackupSetID *int32 `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
+	BackupSetID *int64 `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
@@ -32118,7 +32753,7 @@ func (s DescribeMetaListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMetaListRequest) SetBackupSetID(v int32) *DescribeMetaListRequest {
+func (s *DescribeMetaListRequest) SetBackupSetID(v int64) *DescribeMetaListRequest {
 	s.BackupSetID = &v
 	return s
 }
@@ -36843,9 +37478,9 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// An array that consists of the available regions and zones.
+	// The available regions and zones.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -36885,21 +37520,21 @@ func (s *DescribeRegionsResponseBodyRegions) SetRDSRegion(v []*DescribeRegionsRe
 }
 
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
-	// The name of the region. The return value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
+	// The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value China (Hangzhou)  is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value  1（）is returned for the LocalName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Request structure](~~26223~~).
+	// The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](~~610370~~).
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone. The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou-h, the following values are returned for the LocalName parameter:
+	// The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-h, the following values are returned for the ZoneName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value Hangzhou Zone H is returned for the LocalName parameter.
-	// *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value   H is returned for the ZoneName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the ZoneName parameter.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
@@ -44938,6 +45573,123 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 	return s
 }
 
+type ModifyAccountMaskingPrivilegeRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Privilege            *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	UserName             *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ModifyAccountMaskingPrivilegeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountMaskingPrivilegeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetDBInstanceName(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetExpireTime(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetOwnerId(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetPrivilege(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.Privilege = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetResourceOwnerAccount(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetResourceOwnerId(v int64) *ModifyAccountMaskingPrivilegeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeRequest) SetUserName(v string) *ModifyAccountMaskingPrivilegeRequest {
+	s.UserName = &v
+	return s
+}
+
+type ModifyAccountMaskingPrivilegeResponseBody struct {
+	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyAccountMaskingPrivilegeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountMaskingPrivilegeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponseBody) SetData(v map[string]*string) *ModifyAccountMaskingPrivilegeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponseBody) SetMessage(v string) *ModifyAccountMaskingPrivilegeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponseBody) SetRequestId(v string) *ModifyAccountMaskingPrivilegeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponseBody) SetSuccess(v string) *ModifyAccountMaskingPrivilegeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyAccountMaskingPrivilegeResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccountMaskingPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAccountMaskingPrivilegeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAccountMaskingPrivilegeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponse) SetHeaders(v map[string]*string) *ModifyAccountMaskingPrivilegeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponse) SetStatusCode(v int32) *ModifyAccountMaskingPrivilegeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAccountMaskingPrivilegeResponse) SetBody(v *ModifyAccountMaskingPrivilegeResponseBody) *ModifyAccountMaskingPrivilegeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyActionEventPolicyRequest struct {
 	// Specifies whether to enable the event history feature. Valid values:
 	//
@@ -51229,6 +51981,229 @@ func (s *ModifyInstanceCrossBackupPolicyResponse) SetBody(v *ModifyInstanceCross
 	return s
 }
 
+type ModifyMaskingRulesRequest struct {
+	DBInstanceName       *string                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DefaultAlgo          *string                              `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	Enabled              *string                              `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaskingAlgo          *string                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	OwnerId              *string                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleConfig           *ModifyMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	RuleName             *string                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ModifyMaskingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMaskingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMaskingRulesRequest) SetDBInstanceName(v string) *ModifyMaskingRulesRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetDefaultAlgo(v string) *ModifyMaskingRulesRequest {
+	s.DefaultAlgo = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetEnabled(v string) *ModifyMaskingRulesRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetMaskingAlgo(v string) *ModifyMaskingRulesRequest {
+	s.MaskingAlgo = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetOwnerId(v string) *ModifyMaskingRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetResourceOwnerAccount(v string) *ModifyMaskingRulesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetResourceOwnerId(v int64) *ModifyMaskingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetRuleConfig(v *ModifyMaskingRulesRequestRuleConfig) *ModifyMaskingRulesRequest {
+	s.RuleConfig = v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetRuleName(v string) *ModifyMaskingRulesRequest {
+	s.RuleName = &v
+	return s
+}
+
+type ModifyMaskingRulesRequestRuleConfig struct {
+	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s ModifyMaskingRulesRequestRuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMaskingRulesRequestRuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMaskingRulesRequestRuleConfig) SetColumns(v []*string) *ModifyMaskingRulesRequestRuleConfig {
+	s.Columns = v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequestRuleConfig) SetDatabases(v []*string) *ModifyMaskingRulesRequestRuleConfig {
+	s.Databases = v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequestRuleConfig) SetTables(v []*string) *ModifyMaskingRulesRequestRuleConfig {
+	s.Tables = v
+	return s
+}
+
+type ModifyMaskingRulesShrinkRequest struct {
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DefaultAlgo          *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	Enabled              *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaskingAlgo          *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ModifyMaskingRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMaskingRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetDBInstanceName(v string) *ModifyMaskingRulesShrinkRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetDefaultAlgo(v string) *ModifyMaskingRulesShrinkRequest {
+	s.DefaultAlgo = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetEnabled(v string) *ModifyMaskingRulesShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetMaskingAlgo(v string) *ModifyMaskingRulesShrinkRequest {
+	s.MaskingAlgo = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetOwnerId(v string) *ModifyMaskingRulesShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetResourceOwnerAccount(v string) *ModifyMaskingRulesShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetResourceOwnerId(v int64) *ModifyMaskingRulesShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetRuleConfigShrink(v string) *ModifyMaskingRulesShrinkRequest {
+	s.RuleConfigShrink = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesShrinkRequest) SetRuleName(v string) *ModifyMaskingRulesShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+type ModifyMaskingRulesResponseBody struct {
+	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyMaskingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMaskingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMaskingRulesResponseBody) SetData(v map[string]*string) *ModifyMaskingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyMaskingRulesResponseBody) SetMessage(v string) *ModifyMaskingRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesResponseBody) SetRequestId(v string) *ModifyMaskingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesResponseBody) SetSuccess(v string) *ModifyMaskingRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyMaskingRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyMaskingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyMaskingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyMaskingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyMaskingRulesResponse) SetHeaders(v map[string]*string) *ModifyMaskingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyMaskingRulesResponse) SetStatusCode(v int32) *ModifyMaskingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesResponse) SetBody(v *ModifyMaskingRulesResponseBody) *ModifyMaskingRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyPGHbaConfigRequest struct {
 	// A reserved parameter. You do not need to specify this parameter.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -52525,8 +53500,11 @@ type ModifySecurityIpsRequest struct {
 	//
 	// Default value: **MIX**.
 	//
-	// > *   In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
-	// > *   If your RDS instance runs PostgreSQL and uses cloud disks, set this parameter to MIX. If you set it to another value, the system automatically changes the value to MIX.
+	// >
+	//
+	// *   In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
+	//
+	// *   If your RDS instance runs PostgreSQL and uses cloud disks, set this parameter to MIX. If you set it to another value, the system automatically changes the value to MIX.
 	WhitelistNetworkType *string `json:"WhitelistNetworkType,omitempty" xml:"WhitelistNetworkType,omitempty"`
 }
 
@@ -61742,6 +62720,84 @@ func (client *Client) CreateGadInstanceMember(request *CreateGadInstanceMemberRe
 	return _result, _err
 }
 
+func (client *Client) CreateMaskingRulesWithOptions(tmpReq *CreateMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *CreateMaskingRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMaskingRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuleConfig)) {
+		request.RuleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuleConfig, tea.String("RuleConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultAlgo)) {
+		query["DefaultAlgo"] = request.DefaultAlgo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskingAlgo)) {
+		query["MaskingAlgo"] = request.MaskingAlgo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfigShrink)) {
+		query["RuleConfig"] = request.RuleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMaskingRules"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMaskingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMaskingRules(request *CreateMaskingRulesRequest) (_result *CreateMaskingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMaskingRulesResponse{}
+	_body, _err := client.CreateMaskingRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Supported database engine
  * SQL Server
@@ -63826,6 +64882,66 @@ func (client *Client) DeleteGadInstance(request *DeleteGadInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteMaskingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMaskingRules"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMaskingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMaskingRules(request *DeleteMaskingRulesRequest) (_result *DeleteMaskingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMaskingRulesResponse{}
+	_body, _err := client.DeleteMaskingRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Supported database engines
  * *   MySQL
@@ -64451,6 +65567,66 @@ func (client *Client) DescribeADInfo(request *DescribeADInfoRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeADInfoResponse{}
 	_body, _err := client.DescribeADInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccountMaskingPrivilegeWithOptions(request *DescribeAccountMaskingPrivilegeRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountMaskingPrivilegeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccountMaskingPrivilege"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccountMaskingPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccountMaskingPrivilege(request *DescribeAccountMaskingPrivilegeRequest) (_result *DescribeAccountMaskingPrivilegeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccountMaskingPrivilegeResponse{}
+	_body, _err := client.DescribeAccountMaskingPrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71591,6 +72767,66 @@ func (client *Client) DescribeMarketingActivity(request *DescribeMarketingActivi
 	return _result, _err
 }
 
+func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeMaskingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMaskingRules"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMaskingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMaskingRules(request *DescribeMaskingRulesRequest) (_result *DescribeMaskingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMaskingRulesResponse{}
+	_body, _err := client.DescribeMaskingRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### [](#)Supported database engines
  * MySQL
@@ -73144,8 +74380,11 @@ func (client *Client) DescribeRegionInfos(request *DescribeRegionInfosRequest) (
 }
 
 /**
- * Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
- * >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
  *
  * @param request DescribeRegionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -73189,8 +74428,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 }
 
 /**
- * Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
- * >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
  *
  * @param request DescribeRegionsRequest
  * @return DescribeRegionsResponse
@@ -76899,6 +78141,74 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
 	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountMaskingPrivilegeWithOptions(request *ModifyAccountMaskingPrivilegeRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountMaskingPrivilegeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Privilege)) {
+		query["Privilege"] = request.Privilege
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountMaskingPrivilege"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAccountMaskingPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyAccountMaskingPrivilege(request *ModifyAccountMaskingPrivilegeRequest) (_result *ModifyAccountMaskingPrivilegeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAccountMaskingPrivilegeResponse{}
+	_body, _err := client.ModifyAccountMaskingPrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -80931,6 +82241,88 @@ func (client *Client) ModifyInstanceCrossBackupPolicy(request *ModifyInstanceCro
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceCrossBackupPolicyResponse{}
 	_body, _err := client.ModifyInstanceCrossBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyMaskingRulesWithOptions(tmpReq *ModifyMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *ModifyMaskingRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyMaskingRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuleConfig)) {
+		request.RuleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuleConfig, tea.String("RuleConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultAlgo)) {
+		query["DefaultAlgo"] = request.DefaultAlgo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskingAlgo)) {
+		query["MaskingAlgo"] = request.MaskingAlgo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfigShrink)) {
+		query["RuleConfig"] = request.RuleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMaskingRules"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyMaskingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyMaskingRules(request *ModifyMaskingRulesRequest) (_result *ModifyMaskingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyMaskingRulesResponse{}
+	_body, _err := client.ModifyMaskingRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
