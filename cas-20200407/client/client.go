@@ -1637,6 +1637,310 @@ func (s *DescribeCertificateStateResponse) SetBody(v *DescribeCertificateStateRe
 	return s
 }
 
+type DescribeCloudResourceStatusRequest struct {
+	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+}
+
+func (s DescribeCloudResourceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceStatusRequest) SetSecretId(v string) *DescribeCloudResourceStatusRequest {
+	s.SecretId = &v
+	return s
+}
+
+type DescribeCloudResourceStatusResponseBody struct {
+	Data      []*DescribeCloudResourceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudResourceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceStatusResponseBody) SetData(v []*DescribeCloudResourceStatusResponseBodyData) *DescribeCloudResourceStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCloudResourceStatusResponseBody) SetRequestId(v string) *DescribeCloudResourceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudResourceStatusResponseBodyData struct {
+	CloudName    *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCloudResourceStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceStatusResponseBodyData) SetCloudName(v string) *DescribeCloudResourceStatusResponseBodyData {
+	s.CloudName = &v
+	return s
+}
+
+func (s *DescribeCloudResourceStatusResponseBodyData) SetCloudProduct(v string) *DescribeCloudResourceStatusResponseBodyData {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *DescribeCloudResourceStatusResponseBodyData) SetTotalCount(v int64) *DescribeCloudResourceStatusResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCloudResourceStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudResourceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudResourceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceStatusResponse) SetHeaders(v map[string]*string) *DescribeCloudResourceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudResourceStatusResponse) SetStatusCode(v int32) *DescribeCloudResourceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudResourceStatusResponse) SetBody(v *DescribeCloudResourceStatusResponseBody) *DescribeCloudResourceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDeploymentJobRequest struct {
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DescribeDeploymentJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobRequest) SetJobId(v int64) *DescribeDeploymentJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DescribeDeploymentJobResponseBody struct {
+	CasContacts  []*DescribeDeploymentJobResponseBodyCasContacts `json:"CasContacts,omitempty" xml:"CasContacts,omitempty" type:"Repeated"`
+	CertDomain   *string                                         `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
+	CertType     *string                                         `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	Config       *string                                         `json:"Config,omitempty" xml:"Config,omitempty"`
+	Del          *int32                                          `json:"Del,omitempty" xml:"Del,omitempty"`
+	EndTime      *string                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate    *string                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId   *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobType      *string                                         `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Name         *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductName  *string                                         `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rollback     *int32                                          `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
+	ScheduleTime *string                                         `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	StartTime    *string                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId       *int64                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDeploymentJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetCasContacts(v []*DescribeDeploymentJobResponseBodyCasContacts) *DescribeDeploymentJobResponseBody {
+	s.CasContacts = v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetCertDomain(v string) *DescribeDeploymentJobResponseBody {
+	s.CertDomain = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetCertType(v string) *DescribeDeploymentJobResponseBody {
+	s.CertType = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetConfig(v string) *DescribeDeploymentJobResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetDel(v int32) *DescribeDeploymentJobResponseBody {
+	s.Del = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetEndTime(v string) *DescribeDeploymentJobResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetGmtCreate(v string) *DescribeDeploymentJobResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetGmtModified(v string) *DescribeDeploymentJobResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetId(v int64) *DescribeDeploymentJobResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetInstanceId(v string) *DescribeDeploymentJobResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetJobType(v string) *DescribeDeploymentJobResponseBody {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetName(v string) *DescribeDeploymentJobResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetProductName(v string) *DescribeDeploymentJobResponseBody {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetRequestId(v string) *DescribeDeploymentJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetRollback(v int32) *DescribeDeploymentJobResponseBody {
+	s.Rollback = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetScheduleTime(v string) *DescribeDeploymentJobResponseBody {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetStartTime(v string) *DescribeDeploymentJobResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetStatus(v string) *DescribeDeploymentJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBody) SetUserId(v int64) *DescribeDeploymentJobResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDeploymentJobResponseBodyCasContacts struct {
+	Email  *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDeploymentJobResponseBodyCasContacts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobResponseBodyCasContacts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobResponseBodyCasContacts) SetEmail(v string) *DescribeDeploymentJobResponseBodyCasContacts {
+	s.Email = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBodyCasContacts) SetId(v string) *DescribeDeploymentJobResponseBodyCasContacts {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBodyCasContacts) SetMobile(v string) *DescribeDeploymentJobResponseBodyCasContacts {
+	s.Mobile = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponseBodyCasContacts) SetName(v string) *DescribeDeploymentJobResponseBodyCasContacts {
+	s.Name = &v
+	return s
+}
+
+type DescribeDeploymentJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDeploymentJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDeploymentJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeploymentJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeploymentJobResponse) SetHeaders(v map[string]*string) *DescribeDeploymentJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponse) SetStatusCode(v int32) *DescribeDeploymentJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDeploymentJobResponse) SetBody(v *DescribeDeploymentJobResponseBody) *DescribeDeploymentJobResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeploymentJobStatusRequest struct {
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
@@ -2809,6 +3113,146 @@ func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *L
 	return s
 }
 
+type ListCloudAccessRequest struct {
+	CloudName   *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	SecretId    *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	ShowSize    *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+}
+
+func (s ListCloudAccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudAccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAccessRequest) SetCloudName(v string) *ListCloudAccessRequest {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListCloudAccessRequest) SetCurrentPage(v int32) *ListCloudAccessRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCloudAccessRequest) SetSecretId(v string) *ListCloudAccessRequest {
+	s.SecretId = &v
+	return s
+}
+
+func (s *ListCloudAccessRequest) SetShowSize(v int32) *ListCloudAccessRequest {
+	s.ShowSize = &v
+	return s
+}
+
+type ListCloudAccessResponseBody struct {
+	CloudAccessList []*ListCloudAccessResponseBodyCloudAccessList `json:"CloudAccessList,omitempty" xml:"CloudAccessList,omitempty" type:"Repeated"`
+	CurrentPage     *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize        *int32                                        `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount      *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCloudAccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudAccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAccessResponseBody) SetCloudAccessList(v []*ListCloudAccessResponseBodyCloudAccessList) *ListCloudAccessResponseBody {
+	s.CloudAccessList = v
+	return s
+}
+
+func (s *ListCloudAccessResponseBody) SetCurrentPage(v int32) *ListCloudAccessResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBody) SetRequestId(v string) *ListCloudAccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBody) SetShowSize(v int32) *ListCloudAccessResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBody) SetTotalCount(v int32) *ListCloudAccessResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCloudAccessResponseBodyCloudAccessList struct {
+	AccessId      *int64  `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	CloudName     *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	SecretId      *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+}
+
+func (s ListCloudAccessResponseBodyCloudAccessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudAccessResponseBodyCloudAccessList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAccessResponseBodyCloudAccessList) SetAccessId(v int64) *ListCloudAccessResponseBodyCloudAccessList {
+	s.AccessId = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBodyCloudAccessList) SetCloudName(v string) *ListCloudAccessResponseBodyCloudAccessList {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBodyCloudAccessList) SetSecretId(v string) *ListCloudAccessResponseBodyCloudAccessList {
+	s.SecretId = &v
+	return s
+}
+
+func (s *ListCloudAccessResponseBodyCloudAccessList) SetServiceStatus(v string) *ListCloudAccessResponseBodyCloudAccessList {
+	s.ServiceStatus = &v
+	return s
+}
+
+type ListCloudAccessResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCloudAccessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCloudAccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCloudAccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCloudAccessResponse) SetHeaders(v map[string]*string) *ListCloudAccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCloudAccessResponse) SetStatusCode(v int32) *ListCloudAccessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCloudAccessResponse) SetBody(v *ListCloudAccessResponseBody) *ListCloudAccessResponse {
+	s.Body = v
+	return s
+}
+
 type ListCloudResourcesRequest struct {
 	CloudName    *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
 	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
@@ -3059,6 +3503,164 @@ func (s *ListCloudResourcesResponse) SetStatusCode(v int32) *ListCloudResourcesR
 }
 
 func (s *ListCloudResourcesResponse) SetBody(v *ListCloudResourcesResponseBody) *ListCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListContactRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ShowSize    *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+}
+
+func (s ListContactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListContactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListContactRequest) SetCurrentPage(v int32) *ListContactRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListContactRequest) SetKeyword(v string) *ListContactRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListContactRequest) SetShowSize(v int32) *ListContactRequest {
+	s.ShowSize = &v
+	return s
+}
+
+type ListContactResponseBody struct {
+	ContactList []*ListContactResponseBodyContactList `json:"ContactList,omitempty" xml:"ContactList,omitempty" type:"Repeated"`
+	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Keyword     *string                               `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int32                                `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListContactResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListContactResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListContactResponseBody) SetContactList(v []*ListContactResponseBodyContactList) *ListContactResponseBody {
+	s.ContactList = v
+	return s
+}
+
+func (s *ListContactResponseBody) SetCurrentPage(v int32) *ListContactResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListContactResponseBody) SetKeyword(v string) *ListContactResponseBody {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListContactResponseBody) SetRequestId(v string) *ListContactResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListContactResponseBody) SetShowSize(v int32) *ListContactResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListContactResponseBody) SetTotalCount(v int64) *ListContactResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListContactResponseBodyContactList struct {
+	ContactId    *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	EmailStatus  *int32  `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	MobileStatus *int32  `json:"MobileStatus,omitempty" xml:"MobileStatus,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Webhooks     *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
+}
+
+func (s ListContactResponseBodyContactList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListContactResponseBodyContactList) GoString() string {
+	return s.String()
+}
+
+func (s *ListContactResponseBodyContactList) SetContactId(v int64) *ListContactResponseBodyContactList {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetEmail(v string) *ListContactResponseBodyContactList {
+	s.Email = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetEmailStatus(v int32) *ListContactResponseBodyContactList {
+	s.EmailStatus = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetMobile(v string) *ListContactResponseBodyContactList {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetMobileStatus(v int32) *ListContactResponseBodyContactList {
+	s.MobileStatus = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetName(v string) *ListContactResponseBodyContactList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListContactResponseBodyContactList) SetWebhooks(v string) *ListContactResponseBodyContactList {
+	s.Webhooks = &v
+	return s
+}
+
+type ListContactResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListContactResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListContactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListContactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListContactResponse) SetHeaders(v map[string]*string) *ListContactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListContactResponse) SetStatusCode(v int32) *ListContactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListContactResponse) SetBody(v *ListContactResponseBody) *ListContactResponse {
 	s.Body = v
 	return s
 }
@@ -4273,6 +4875,266 @@ func (s *ListUserCertificateOrderResponse) SetStatusCode(v int32) *ListUserCerti
 }
 
 func (s *ListUserCertificateOrderResponse) SetBody(v *ListUserCertificateOrderResponseBody) *ListUserCertificateOrderResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkerResourceRequest struct {
+	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	JobId        *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ShowSize     *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListWorkerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerResourceRequest) SetCloudProduct(v string) *ListWorkerResourceRequest {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *ListWorkerResourceRequest) SetCurrentPage(v int32) *ListWorkerResourceRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListWorkerResourceRequest) SetJobId(v int64) *ListWorkerResourceRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListWorkerResourceRequest) SetShowSize(v int32) *ListWorkerResourceRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListWorkerResourceRequest) SetStatus(v string) *ListWorkerResourceRequest {
+	s.Status = &v
+	return s
+}
+
+type ListWorkerResourceResponseBody struct {
+	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListWorkerResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize    *int32                                `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Total       *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListWorkerResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerResourceResponseBody) SetCurrentPage(v int32) *ListWorkerResourceResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBody) SetData(v []*ListWorkerResourceResponseBodyData) *ListWorkerResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBody) SetRequestId(v string) *ListWorkerResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBody) SetShowSize(v int32) *ListWorkerResourceResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBody) SetTotal(v int64) *ListWorkerResourceResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListWorkerResourceResponseBodyData struct {
+	CertDomain      *string `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
+	CertId          *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertInstanceId  *string `json:"CertInstanceId,omitempty" xml:"CertInstanceId,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CloudName       *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
+	CloudProduct    *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
+	CloudRegion     *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
+	DefaultResource *bool   `json:"DefaultResource,omitempty" xml:"DefaultResource,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceCertId  *int64  `json:"ResourceCertId,omitempty" xml:"ResourceCertId,omitempty"`
+	ResourceDomain  *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
+	ResourceId      *int64  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId          *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListWorkerResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCertDomain(v string) *ListWorkerResourceResponseBodyData {
+	s.CertDomain = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCertId(v int64) *ListWorkerResourceResponseBodyData {
+	s.CertId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCertInstanceId(v string) *ListWorkerResourceResponseBodyData {
+	s.CertInstanceId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCertName(v string) *ListWorkerResourceResponseBodyData {
+	s.CertName = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCloudName(v string) *ListWorkerResourceResponseBodyData {
+	s.CloudName = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCloudProduct(v string) *ListWorkerResourceResponseBodyData {
+	s.CloudProduct = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetCloudRegion(v string) *ListWorkerResourceResponseBodyData {
+	s.CloudRegion = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetDefaultResource(v bool) *ListWorkerResourceResponseBodyData {
+	s.DefaultResource = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetGmtCreate(v string) *ListWorkerResourceResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetGmtModified(v string) *ListWorkerResourceResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetId(v int64) *ListWorkerResourceResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetInstanceId(v string) *ListWorkerResourceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetJobId(v int64) *ListWorkerResourceResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetListenerId(v string) *ListWorkerResourceResponseBodyData {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetNamespaceId(v string) *ListWorkerResourceResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetOrderId(v int64) *ListWorkerResourceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetPort(v int32) *ListWorkerResourceResponseBodyData {
+	s.Port = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetRegionId(v string) *ListWorkerResourceResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetResourceCertId(v int64) *ListWorkerResourceResponseBodyData {
+	s.ResourceCertId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetResourceDomain(v string) *ListWorkerResourceResponseBodyData {
+	s.ResourceDomain = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetResourceId(v int64) *ListWorkerResourceResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetStatus(v string) *ListWorkerResourceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponseBodyData) SetUserId(v int64) *ListWorkerResourceResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListWorkerResourceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWorkerResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWorkerResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerResourceResponse) SetHeaders(v map[string]*string) *ListWorkerResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkerResourceResponse) SetStatusCode(v int32) *ListWorkerResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkerResourceResponse) SetBody(v *ListWorkerResourceResponseBody) *ListWorkerResourceResponse {
 	s.Body = v
 	return s
 }
@@ -6368,6 +7230,94 @@ func (client *Client) DescribeCertificateState(request *DescribeCertificateState
 	return _result, _err
 }
 
+func (client *Client) DescribeCloudResourceStatusWithOptions(request *DescribeCloudResourceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudResourceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudResourceStatus"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudResourceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudResourceStatus(request *DescribeCloudResourceStatusRequest) (_result *DescribeCloudResourceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudResourceStatusResponse{}
+	_body, _err := client.DescribeCloudResourceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDeploymentJobWithOptions(request *DescribeDeploymentJobRequest, runtime *util.RuntimeOptions) (_result *DescribeDeploymentJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeploymentJob"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDeploymentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeploymentJob(request *DescribeDeploymentJobRequest) (_result *DescribeDeploymentJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDeploymentJobResponse{}
+	_body, _err := client.DescribeDeploymentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDeploymentJobStatusWithOptions(request *DescribeDeploymentJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDeploymentJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6791,6 +7741,62 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListCloudAccessWithOptions(request *ListCloudAccessRequest, runtime *util.RuntimeOptions) (_result *ListCloudAccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudName)) {
+		query["CloudName"] = request.CloudName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretId)) {
+		query["SecretId"] = request.SecretId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCloudAccess"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCloudAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCloudAccess(request *ListCloudAccessRequest) (_result *ListCloudAccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCloudAccessResponse{}
+	_body, _err := client.ListCloudAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCloudResourcesWithOptions(request *ListCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *ListCloudResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6848,6 +7854,58 @@ func (client *Client) ListCloudResources(request *ListCloudResourcesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCloudResourcesResponse{}
 	_body, _err := client.ListCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListContactWithOptions(request *ListContactRequest, runtime *util.RuntimeOptions) (_result *ListContactResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListContact"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListContact(request *ListContactRequest) (_result *ListContactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListContactResponse{}
+	_body, _err := client.ListContactWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7129,6 +8187,66 @@ func (client *Client) ListUserCertificateOrder(request *ListUserCertificateOrder
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserCertificateOrderResponse{}
 	_body, _err := client.ListUserCertificateOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkerResourceWithOptions(request *ListWorkerResourceRequest, runtime *util.RuntimeOptions) (_result *ListWorkerResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudProduct)) {
+		query["CloudProduct"] = request.CloudProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkerResource"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkerResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkerResource(request *ListWorkerResourceRequest) (_result *ListWorkerResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkerResourceResponse{}
+	_body, _err := client.ListWorkerResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
