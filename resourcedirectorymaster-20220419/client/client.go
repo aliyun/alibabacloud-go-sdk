@@ -1418,7 +1418,11 @@ type CreateResourceAccountRequest struct {
 	//
 	// The name must be unique in the resource directory.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   true: performs only a dry run. The system checks whether an identity type can be specified for the member. If the request does not pass the dry run, an error code is returned.
+	// *   false (default): performs a dry run and performs the actual request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the parent folder.
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	// The ID of the billing account. If you leave this parameter empty, the member is used as its own billing account.
@@ -2793,7 +2797,8 @@ type GetAccountResponseBodyAccount struct {
 	// *   EXPIRED: The modification expires.
 	EmailStatus *string `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
 	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId             *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	HasSecureMobilePhone *bool   `json:"HasSecureMobilePhone,omitempty" xml:"HasSecureMobilePhone,omitempty"`
 	// The real-name verification information.
 	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
 	// The way in which the member joins the resource directory. Valid values:
@@ -2860,6 +2865,11 @@ func (s *GetAccountResponseBodyAccount) SetEmailStatus(v string) *GetAccountResp
 
 func (s *GetAccountResponseBodyAccount) SetFolderId(v string) *GetAccountResponseBodyAccount {
 	s.FolderId = &v
+	return s
+}
+
+func (s *GetAccountResponseBodyAccount) SetHasSecureMobilePhone(v bool) *GetAccountResponseBodyAccount {
+	s.HasSecureMobilePhone = &v
 	return s
 }
 
@@ -4540,9 +4550,10 @@ func (s *InviteAccountToResourceDirectoryResponse) SetBody(v *InviteAccountToRes
 }
 
 type ListAccountsRequest struct {
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return information about tags. Valid values:
 	//
-	// false (default value) true
+	// *   false (default value)
+	// *   true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
 	// The number of the page to return.
 	//
@@ -4619,7 +4630,7 @@ func (s *ListAccountsRequestTag) SetValue(v string) *ListAccountsRequestTag {
 }
 
 type ListAccountsResponseBody struct {
-	// The members returned.
+	// The information about the members.
 	Accounts *ListAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -4685,7 +4696,15 @@ type ListAccountsResponseBodyAccountsAccount struct {
 	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The Alibaba Cloud account name of the member.
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The deletion status of the member. Valid values:
+	//
+	// *   Checking: A deletion check is being performed for the member.
+	// *   Deleting: The member is being deleted.
+	// *   CheckFailed: The deletion check for the member fails.
+	// *   DeleteFailed: The member fails to be deleted.
+	//
+	// >  If deletion is not performed for the member, the value of this parameter is empty.
 	DeletionStatus *string `json:"DeletionStatus,omitempty" xml:"DeletionStatus,omitempty"`
 	// The display name of the member.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
@@ -4702,12 +4721,12 @@ type ListAccountsResponseBodyAccountsAccount struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The ID of the resource directory.
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The path of the member in the resource directory.
+	// The RDPath of the member.
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 	// The status of the member. Valid values:
 	//
 	// *   CreateSuccess: The member is created.
-	// *   PromoteVerifying: The upgrade of the member is being confirmed.
+	// *   PromoteVerifying: The upgrade of the member is under confirmation.
 	// *   PromoteFailed: The upgrade of the member fails.
 	// *   PromoteExpired: The upgrade of the member expires.
 	// *   PromoteCancelled: The upgrade of the member is canceled.
@@ -4814,9 +4833,9 @@ func (s *ListAccountsResponseBodyAccountsAccountTags) SetTag(v []*ListAccountsRe
 }
 
 type ListAccountsResponseBodyAccountsAccountTagsTag struct {
-	// The tag key.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4868,9 +4887,10 @@ func (s *ListAccountsResponse) SetBody(v *ListAccountsResponseBody) *ListAccount
 }
 
 type ListAccountsForParentRequest struct {
-	// Specifies whether to return the information of tags. Valid values:
+	// Specifies whether to return information about tags. Valid values:
 	//
-	// false (default value) true
+	// *   false (default value)
+	// *   true
 	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
 	// The number of the page to return.
 	//
@@ -4954,7 +4974,7 @@ func (s *ListAccountsForParentRequestTag) SetValue(v string) *ListAccountsForPar
 }
 
 type ListAccountsForParentResponseBody struct {
-	// The information of the members.
+	// The information about the members.
 	Accounts *ListAccountsForParentResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5020,13 +5040,21 @@ type ListAccountsForParentResponseBodyAccountsAccount struct {
 	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The Alibaba Cloud account name of the member.
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The deletion status of the member. Valid values:
+	//
+	// *   Checking: A deletion check is being performed for the member.
+	// *   Deleting: The member is being deleted.
+	// *   CheckFailed: The deletion check for the member fails.
+	// *   DeleteFailed: The member fails to be deleted.
+	//
+	// >  If deletion is not performed for the member, the value of this parameter is empty.
 	DeletionStatus *string `json:"DeletionStatus,omitempty" xml:"DeletionStatus,omitempty"`
 	// The display name of the member.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the folder.
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
+	// The way in which the member joins the resource directory.
 	//
 	// *   invited: The member is invited to join the resource directory.
 	// *   created: The member is directly created in the resource directory.
@@ -5040,7 +5068,7 @@ type ListAccountsForParentResponseBodyAccountsAccount struct {
 	// The status of the member. Valid values:
 	//
 	// *   CreateSuccess: The member is created.
-	// *   PromoteVerifying: The upgrade of the member is being confirmed.
+	// *   PromoteVerifying: The upgrade of the member is under confirmation.
 	// *   PromoteFailed: The upgrade of the member fails.
 	// *   PromoteExpired: The upgrade of the member expires.
 	// *   PromoteCancelled: The upgrade of the member is canceled.
@@ -8709,7 +8737,11 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpdateAccountRequest struct {
 	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	DryRun    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   true: performs only a dry run. The system checks items such as whether the member status can be modified and whether security information is configured for the member. If the request does not pass the dry run, an error code is returned.
+	// *   false (default): performs a dry run and performs the actual request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The new type of the member. Valid values:
 	//
 	// *   ResourceAccount: resource account
@@ -9364,6 +9396,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
