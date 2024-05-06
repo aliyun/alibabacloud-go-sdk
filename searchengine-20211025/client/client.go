@@ -584,22 +584,19 @@ func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *Cre
 type CreateIndexRequest struct {
 	// The content of the index.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The data source type. Valid values: odps, mns, flink, and streaming. This parameter can be ignored.
+	// Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	// 数据源相关信息 （向量检索版新版本必填）
+	// The information about the data source, which is required for the new version of OpenSearch Vector Search Edition.
 	DataSourceInfo *CreateIndexRequestDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// The data center where the data source is deployed.
+	// The data center in which the data source resides.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 字段配置的扩展的内容
-	// key: 向量字段(vector)、
-	// 需embeding字段(embeding)
+	// The extended configurations of the field. Keys such as vector and embedding are included. Vector indicates the vector field. Embedding indicates the field that requires embedding.
 	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The name of the index.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The data partition.
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	// 是否dryRun创建（仅校验数据源是否合法）。取值：-true 是 -false 否
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun    *bool  `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -651,21 +648,19 @@ func (s *CreateIndexRequest) SetDryRun(v bool) *CreateIndexRequest {
 }
 
 type CreateIndexRequestDataSourceInfo struct {
-	// 是否开启自动全量
+	// Specifies whether to enable the automatic full indexing feature.
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	// odps相关
+	// The information about the MaxCompute data source.
 	Config      *CreateIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	DataTimeSec *int32                                  `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	Domain      *string                                 `json:"domain,omitempty" xml:"domain,omitempty"`
-	Name        *string                                 `json:"name,omitempty" xml:"name,omitempty"`
-	// 数据更新资源数
+	// The data center where the data source is deployed.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The name of the index.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of resources used for data update.
 	ProcessPartitionCount *int32                                      `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
 	SaroConfig            *CreateIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
-	// 数据源类型
-	// odps
-	// swift
-	// saro
-	// oss
+	// The type of the data source. Valid values: odps, swift, saro, and oss.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -718,21 +713,22 @@ func (s *CreateIndexRequestDataSourceInfo) SetType(v string) *CreateIndexRequest
 }
 
 type CreateIndexRequestDataSourceInfoConfig struct {
-	// odps数据源ak
+	// The AccessKey ID of the MaxCompute data source.
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// odps数据源ak secret
+	// The AccessKey secret of the MaxCompute data source.
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// odps数据源的endpoint, oss数据源的endpoint
+	// oss bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
 	Endpoint  *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	OssPath   *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	// 数据源为odps时必填
+	// The data partition. This parameter is required if type is set to odps.
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 	Path      *string `json:"path,omitempty" xml:"path,omitempty"`
-	// odps数据源项目名称
+	// The name of the MaxCompute project that is used as the data source.
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// 表名称
+	// The name of the table.
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
@@ -7919,8 +7915,7 @@ func (s *UpdateInstanceRequest) SetOrderType(v string) *UpdateInstanceRequest {
 
 type UpdateInstanceRequestComponents struct {
 	// The specification code, which must be consistent with the values of the corresponding module parameters.
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The value of the specification.
+	Code  *string `json:"code,omitempty" xml:"code,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
