@@ -13,10 +13,13 @@ import (
 )
 
 type AddressInfo struct {
-	AddressDetail    *string `json:"addressDetail,omitempty" xml:"addressDetail,omitempty"`
-	AddressId        *int64  `json:"addressId,omitempty" xml:"addressId,omitempty"`
-	DivisionCode     *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	Receiver         *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
+	// This parameter is required.
+	AddressDetail *string `json:"addressDetail,omitempty" xml:"addressDetail,omitempty"`
+	AddressId     *int64  `json:"addressId,omitempty" xml:"addressId,omitempty"`
+	DivisionCode  *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// This parameter is required.
+	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
+	// This parameter is required.
 	ReceiverPhone    *string `json:"receiverPhone,omitempty" xml:"receiverPhone,omitempty"`
 	TownDivisionCode *string `json:"townDivisionCode,omitempty" xml:"townDivisionCode,omitempty"`
 }
@@ -367,6 +370,7 @@ func (s *DivisionPageResult) SetRequestId(v string) *DivisionPageResult {
 }
 
 type DivisionQuery struct {
+	// This parameter is required.
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
 
@@ -596,8 +600,11 @@ func (s *Good) SetQuantity(v int32) *Good {
 }
 
 type GoodsShippingNoticeCreateCmd struct {
-	CpCode      *string `json:"cpCode,omitempty" xml:"cpCode,omitempty"`
-	DisputeId   *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// This parameter is required.
+	CpCode *string `json:"cpCode,omitempty" xml:"cpCode,omitempty"`
+	// This parameter is required.
+	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// This parameter is required.
 	LogisticsNo *string `json:"logisticsNo,omitempty" xml:"logisticsNo,omitempty"`
 }
 
@@ -970,10 +977,12 @@ func (s *OrderListResult) SetTotal(v int32) *OrderListResult {
 }
 
 type OrderPageQuery struct {
-	OrderIdList     []*string `json:"orderIdList,omitempty" xml:"orderIdList,omitempty" type:"Repeated"`
-	PageNumber      *int32    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PurchaseOrderId *string   `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
+	OrderIdList []*string `json:"orderIdList,omitempty" xml:"orderIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PurchaseOrderId *string `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
 }
 
 func (s OrderPageQuery) String() string {
@@ -1082,10 +1091,14 @@ func (s *OrderProductResult) SetSkuTitle(v string) *OrderProductResult {
 }
 
 type OrderRenderProductDTO struct {
-	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// This parameter is required.
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// This parameter is required.
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	Quantity    *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	SkuId       *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// This parameter is required.
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// This parameter is required.
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
 func (s OrderRenderProductDTO) String() string {
@@ -1360,11 +1373,15 @@ func (s *Product) SetTitle(v string) *Product {
 }
 
 type ProductDTO struct {
-	Price       *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// This parameter is required.
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// This parameter is required.
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
-	Quantity    *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	SkuId       *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// This parameter is required.
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// This parameter is required.
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
 func (s ProductDTO) String() string {
@@ -1401,11 +1418,14 @@ func (s *ProductDTO) SetSkuId(v string) *ProductDTO {
 }
 
 type ProductPageResult struct {
-	PageNumber *int32     `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Products   []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
-	RequestId  *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total      *int32     `json:"total,omitempty" xml:"total,omitempty"`
+	// This parameter is required.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	PageSize  *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Products  []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// This parameter is required.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ProductPageResult) String() string {
@@ -1482,6 +1502,7 @@ func (s *ProductProperty) SetValues(v []*string) *ProductProperty {
 }
 
 type ProductQuery struct {
+	// This parameter is required.
 	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
 	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
@@ -1576,9 +1597,11 @@ func (s *ProductSaleInfo) SetTitle(v string) *ProductSaleInfo {
 }
 
 type ProductSaleInfoListQuery struct {
-	DivisionCode *string   `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	ProductIds   []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
-	PurchaserId  *string   `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// This parameter is required.
+	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
 func (s ProductSaleInfoListQuery) String() string {
@@ -1628,6 +1651,7 @@ func (s *ProductSaleInfoListResult) SetRequestId(v string) *ProductSaleInfoListR
 }
 
 type ProductSaleInfoQuery struct {
+	// This parameter is required.
 	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
 	DivisionCode      *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 }
@@ -1703,11 +1727,15 @@ func (s *ProductSpecValue) SetValueId(v int64) *ProductSpecValue {
 }
 
 type PurchaseOrderCreateCmd struct {
-	BuyerId              *string                `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
-	DeliveryAddress      *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	ExtInfo              map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	OuterPurchaseOrderId *string                `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
-	ProductList          []*ProductDTO          `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
+	// This parameter is required.
+	DeliveryAddress *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
+	ExtInfo         map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// This parameter is required.
+	OuterPurchaseOrderId *string `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
+	// This parameter is required.
+	ProductList []*ProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
 
 func (s PurchaseOrderCreateCmd) String() string {
@@ -1767,10 +1795,13 @@ func (s *PurchaseOrderCreateResult) SetRequestId(v string) *PurchaseOrderCreateR
 }
 
 type PurchaseOrderRenderQuery struct {
-	BuyerId         *string                  `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
-	DeliveryAddress *AddressInfo             `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	ExtInfo         map[string]interface{}   `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	ProductList     []*OrderRenderProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
+	// This parameter is required.
+	DeliveryAddress *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
+	ExtInfo         map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// This parameter is required.
+	ProductList []*OrderRenderProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
 
 func (s PurchaseOrderRenderQuery) String() string {
@@ -1901,15 +1932,21 @@ func (s *RefundFeeData) SetMinRefundFee(v int64) *RefundFeeData {
 }
 
 type RefundOrderCmd struct {
-	ApplyReasonTextId *int64              `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
-	ApplyReasonTips   *string             `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
-	ApplyRefundCount  *int32              `json:"applyRefundCount,omitempty" xml:"applyRefundCount,omitempty"`
-	ApplyRefundFee    *int64              `json:"applyRefundFee,omitempty" xml:"applyRefundFee,omitempty"`
-	BizClaimType      *int32              `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// This parameter is required.
+	ApplyReasonTextId *int64  `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
+	ApplyReasonTips   *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
+	// This parameter is required.
+	ApplyRefundCount *int32 `json:"applyRefundCount,omitempty" xml:"applyRefundCount,omitempty"`
+	// This parameter is required.
+	ApplyRefundFee *int64 `json:"applyRefundFee,omitempty" xml:"applyRefundFee,omitempty"`
+	// This parameter is required.
+	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// This parameter is required.
 	GoodsStatus       *int32              `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
 	LeaveMessage      *string             `json:"leaveMessage,omitempty" xml:"leaveMessage,omitempty"`
 	LeavePictureLists []*LeavePictureList `json:"leavePictureLists,omitempty" xml:"leavePictureLists,omitempty" type:"Repeated"`
-	OrderLineId       *string             `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// This parameter is required.
+	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 }
 
 func (s RefundOrderCmd) String() string {
@@ -2036,9 +2073,12 @@ func (s *RefundReason) SetRefundDescRequired(v bool) *RefundReason {
 }
 
 type RefundRenderCmd struct {
-	BizClaimType *int32  `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
-	GoodsStatus  *int32  `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
-	OrderLineId  *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// This parameter is required.
+	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// This parameter is required.
+	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
+	// This parameter is required.
+	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
 }
 
 func (s RefundRenderCmd) String() string {
@@ -2521,8 +2561,10 @@ func (s *Sku) SetTitle(v string) *Sku {
 }
 
 type SkuQueryParam struct {
+	// This parameter is required.
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	SkuId     *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// This parameter is required.
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
 }
 
 func (s SkuQueryParam) String() string {
@@ -2621,8 +2663,10 @@ func (s *SkuSaleInfo) SetTitle(v string) *SkuSaleInfo {
 }
 
 type SkuSaleInfoListQuery struct {
-	DivisionCode   *string          `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	PurchaserId    *string          `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// This parameter is required.
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// This parameter is required.
 	SkuQueryParams []*SkuQueryParam `json:"skuQueryParams,omitempty" xml:"skuQueryParams,omitempty" type:"Repeated"`
 }
 
@@ -2737,6 +2781,7 @@ func (s *CancelRefundOrderResponse) SetBody(v *RefundOrderResult) *CancelRefundO
 }
 
 type ConfirmDisburseRequest struct {
+	// This parameter is required.
 	Body *ConfirmDisburseCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2783,6 +2828,7 @@ func (s *ConfirmDisburseResponse) SetBody(v *ConfirmDisburseResult) *ConfirmDisb
 }
 
 type CreateGoodsShippingNoticeRequest struct {
+	// This parameter is required.
 	Body *GoodsShippingNoticeCreateCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2829,6 +2875,7 @@ func (s *CreateGoodsShippingNoticeResponse) SetBody(v *GoodsShippingNoticeCreate
 }
 
 type CreatePurchaseOrderRequest struct {
+	// This parameter is required.
 	Body *PurchaseOrderCreateCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -2875,6 +2922,7 @@ func (s *CreatePurchaseOrderResponse) SetBody(v *PurchaseOrderCreateResult) *Cre
 }
 
 type CreateRefundOrderRequest struct {
+	// This parameter is required.
 	Body *RefundOrderCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3038,7 +3086,8 @@ func (s *GetRefundOrderResponse) SetBody(v *RefundResult) *GetRefundOrderRespons
 
 type GetSelectionProductRequest struct {
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	PurchaserId  *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// This parameter is required.
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
 func (s GetSelectionProductRequest) String() string {
@@ -3090,7 +3139,8 @@ func (s *GetSelectionProductResponse) SetBody(v *Product) *GetSelectionProductRe
 
 type GetSelectionProductSaleInfoRequest struct {
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	PurchaserId  *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// This parameter is required.
+	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
 func (s GetSelectionProductSaleInfoRequest) String() string {
@@ -3268,6 +3318,7 @@ func (s *ListPurchaserShopsResponse) SetBody(v *ShopPageResult) *ListPurchaserSh
 }
 
 type ListSelectionProductSaleInfosRequest struct {
+	// This parameter is required.
 	Body *ProductSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3314,8 +3365,11 @@ func (s *ListSelectionProductSaleInfosResponse) SetBody(v *ProductSaleInfoListRe
 }
 
 type ListSelectionProductsRequest struct {
-	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 
@@ -3372,6 +3426,7 @@ func (s *ListSelectionProductsResponse) SetBody(v *ProductPageResult) *ListSelec
 }
 
 type ListSelectionSkuSaleInfosRequest struct {
+	// This parameter is required.
 	Body *SkuSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3418,6 +3473,7 @@ func (s *ListSelectionSkuSaleInfosResponse) SetBody(v *SkuSaleInfoListResult) *L
 }
 
 type QueryChildDivisionCodeRequest struct {
+	// This parameter is required.
 	Body *DivisionQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3464,6 +3520,7 @@ func (s *QueryChildDivisionCodeResponse) SetBody(v *DivisionPageResult) *QueryCh
 }
 
 type QueryOrdersRequest struct {
+	// This parameter is required.
 	Body *OrderPageQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3510,6 +3567,7 @@ func (s *QueryOrdersResponse) SetBody(v *OrderListResult) *QueryOrdersResponse {
 }
 
 type RenderPurchaseOrderRequest struct {
+	// This parameter is required.
 	Body *PurchaseOrderRenderQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3556,6 +3614,7 @@ func (s *RenderPurchaseOrderResponse) SetBody(v *PurchaseOrderRenderResult) *Ren
 }
 
 type RenderRefundOrderRequest struct {
+	// This parameter is required.
 	Body *RefundRenderCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3750,6 +3809,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * @summary 取消逆向单
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelRefundOrderResponse
+ */
 func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelRefundOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3774,6 +3840,11 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 	return _result, _err
 }
 
+/**
+ * @summary 取消逆向单
+ *
+ * @return CancelRefundOrderResponse
+ */
 func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3786,6 +3857,14 @@ func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefun
 	return _result, _err
 }
 
+/**
+ * @summary 确认收货（订单）
+ *
+ * @param request ConfirmDisburseRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ConfirmDisburseResponse
+ */
 func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmDisburseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3815,6 +3894,12 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 	return _result, _err
 }
 
+/**
+ * @summary 确认收货（订单）
+ *
+ * @param request ConfirmDisburseRequest
+ * @return ConfirmDisburseResponse
+ */
 func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result *ConfirmDisburseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3827,6 +3912,14 @@ func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * @summary 提交运单信息
+ *
+ * @param request CreateGoodsShippingNoticeRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateGoodsShippingNoticeResponse
+ */
 func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsShippingNoticeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGoodsShippingNoticeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3856,6 +3949,12 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 	return _result, _err
 }
 
+/**
+ * @summary 提交运单信息
+ *
+ * @param request CreateGoodsShippingNoticeRequest
+ * @return CreateGoodsShippingNoticeResponse
+ */
 func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoticeRequest) (_result *CreateGoodsShippingNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3868,6 +3967,14 @@ func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoti
 	return _result, _err
 }
 
+/**
+ * @summary 创建采购单
+ *
+ * @param request CreatePurchaseOrderRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreatePurchaseOrderResponse
+ */
 func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3897,6 +4004,12 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 	return _result, _err
 }
 
+/**
+ * @summary 创建采购单
+ *
+ * @param request CreatePurchaseOrderRequest
+ * @return CreatePurchaseOrderResponse
+ */
 func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (_result *CreatePurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3909,6 +4022,14 @@ func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (
 	return _result, _err
 }
 
+/**
+ * @summary 创建逆向单
+ *
+ * @param request CreateRefundOrderRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRefundOrderResponse
+ */
 func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRefundOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3938,6 +4059,12 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 	return _result, _err
 }
 
+/**
+ * @summary 创建逆向单
+ *
+ * @param request CreateRefundOrderRequest
+ * @return CreateRefundOrderResponse
+ */
 func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_result *CreateRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3950,6 +4077,13 @@ func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_res
 	return _result, _err
 }
 
+/**
+ * @summary 查询主单详情
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetOrderResponse
+ */
 func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -3974,6 +4108,11 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 	return _result, _err
 }
 
+/**
+ * @summary 查询主单详情
+ *
+ * @return GetOrderResponse
+ */
 func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3986,6 +4125,13 @@ func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err
 	return _result, _err
 }
 
+/**
+ * @summary 查询采购单状态
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPurchaseOrderStatusResponse
+ */
 func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4010,6 +4156,11 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 	return _result, _err
 }
 
+/**
+ * @summary 查询采购单状态
+ *
+ * @return GetPurchaseOrderStatusResponse
+ */
 func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *GetPurchaseOrderStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4022,6 +4173,13 @@ func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *
 	return _result, _err
 }
 
+/**
+ * @summary 查询分销商店铺
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPurchaserShopResponse
+ */
 func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPurchaserShopResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4046,6 +4204,11 @@ func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers m
 	return _result, _err
 }
 
+/**
+ * @summary 查询分销商店铺
+ *
+ * @return GetPurchaserShopResponse
+ */
 func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchaserShopResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4058,6 +4221,13 @@ func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchas
 	return _result, _err
 }
 
+/**
+ * @summary 查询逆向单详情
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetRefundOrderResponse
+ */
 func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRefundOrderResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4082,6 +4252,11 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 	return _result, _err
 }
 
+/**
+ * @summary 查询逆向单详情
+ *
+ * @return GetRefundOrderResponse
+ */
 func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4094,6 +4269,14 @@ func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrder
 	return _result, _err
 }
 
+/**
+ * @summary 查询选品池商品详情
+ *
+ * @param request GetSelectionProductRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSelectionProductResponse
+ */
 func (client *Client) GetSelectionProductWithOptions(productId *string, request *GetSelectionProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4132,6 +4315,12 @@ func (client *Client) GetSelectionProductWithOptions(productId *string, request 
 	return _result, _err
 }
 
+/**
+ * @summary 查询选品池商品详情
+ *
+ * @param request GetSelectionProductRequest
+ * @return GetSelectionProductResponse
+ */
 func (client *Client) GetSelectionProduct(productId *string, request *GetSelectionProductRequest) (_result *GetSelectionProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4144,6 +4333,14 @@ func (client *Client) GetSelectionProduct(productId *string, request *GetSelecti
 	return _result, _err
 }
 
+/**
+ * @summary 查询选品池商品库存
+ *
+ * @param request GetSelectionProductSaleInfoRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSelectionProductSaleInfoResponse
+ */
 func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, request *GetSelectionProductSaleInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSelectionProductSaleInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4182,6 +4379,12 @@ func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, 
 	return _result, _err
 }
 
+/**
+ * @summary 查询选品池商品库存
+ *
+ * @param request GetSelectionProductSaleInfoRequest
+ * @return GetSelectionProductSaleInfoResponse
+ */
 func (client *Client) GetSelectionProductSaleInfo(productId *string, request *GetSelectionProductSaleInfoRequest) (_result *GetSelectionProductSaleInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4194,6 +4397,14 @@ func (client *Client) GetSelectionProductSaleInfo(productId *string, request *Ge
 	return _result, _err
 }
 
+/**
+ * @summary 查询类目
+ *
+ * @param request ListCategoriesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCategoriesResponse
+ */
 func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4223,6 +4434,12 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 	return _result, _err
 }
 
+/**
+ * @summary 查询类目
+ *
+ * @param request ListCategoriesRequest
+ * @return ListCategoriesResponse
+ */
 func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4235,6 +4452,13 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 	return _result, _err
 }
 
+/**
+ * @summary 查询物流信息（订单）
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListLogisticsOrdersResponse
+ */
 func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogisticsOrdersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -4259,6 +4483,11 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 	return _result, _err
 }
 
+/**
+ * @summary 查询物流信息（订单）
+ *
+ * @return ListLogisticsOrdersResponse
+ */
 func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisticsOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4271,6 +4500,14 @@ func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisti
 	return _result, _err
 }
 
+/**
+ * @summary 采购方店铺列表查询
+ *
+ * @param request ListPurchaserShopsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPurchaserShopsResponse
+ */
 func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPurchaserShopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4309,6 +4546,12 @@ func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsR
 	return _result, _err
 }
 
+/**
+ * @summary 采购方店铺列表查询
+ *
+ * @param request ListPurchaserShopsRequest
+ * @return ListPurchaserShopsResponse
+ */
 func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_result *ListPurchaserShopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4321,6 +4564,14 @@ func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * @summary 批量查询选品池商品库存
+ *
+ * @param request ListSelectionProductSaleInfosRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSelectionProductSaleInfosResponse
+ */
 func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSelectionProductSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4350,6 +4601,12 @@ func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSele
 	return _result, _err
 }
 
+/**
+ * @summary 批量查询选品池商品库存
+ *
+ * @param request ListSelectionProductSaleInfosRequest
+ * @return ListSelectionProductSaleInfosResponse
+ */
 func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProductSaleInfosRequest) (_result *ListSelectionProductSaleInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4362,6 +4619,14 @@ func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProduc
 	return _result, _err
 }
 
+/**
+ * @summary 查询商品列表
+ *
+ * @param request ListSelectionProductsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSelectionProductsResponse
+ */
 func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4404,6 +4669,12 @@ func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionPro
 	return _result, _err
 }
 
+/**
+ * @summary 查询商品列表
+ *
+ * @param request ListSelectionProductsRequest
+ * @return ListSelectionProductsResponse
+ */
 func (client *Client) ListSelectionProducts(request *ListSelectionProductsRequest) (_result *ListSelectionProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4416,6 +4687,14 @@ func (client *Client) ListSelectionProducts(request *ListSelectionProductsReques
 	return _result, _err
 }
 
+/**
+ * @summary 批量查询选品池商品SKU库存
+ *
+ * @param request ListSelectionSkuSaleInfosRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSelectionSkuSaleInfosResponse
+ */
 func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectionSkuSaleInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4445,6 +4724,12 @@ func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectio
 	return _result, _err
 }
 
+/**
+ * @summary 批量查询选品池商品SKU库存
+ *
+ * @param request ListSelectionSkuSaleInfosRequest
+ * @return ListSelectionSkuSaleInfosResponse
+ */
 func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInfosRequest) (_result *ListSelectionSkuSaleInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4457,6 +4742,14 @@ func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInf
 	return _result, _err
 }
 
+/**
+ * @summary 查询地址divisionCode
+ *
+ * @param request QueryChildDivisionCodeRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryChildDivisionCodeResponse
+ */
 func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivisionCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryChildDivisionCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4486,6 +4779,12 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 	return _result, _err
 }
 
+/**
+ * @summary 查询地址divisionCode
+ *
+ * @param request QueryChildDivisionCodeRequest
+ * @return QueryChildDivisionCodeResponse
+ */
 func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequest) (_result *QueryChildDivisionCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4498,6 +4797,14 @@ func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequ
 	return _result, _err
 }
 
+/**
+ * @summary 查询主单列表
+ *
+ * @param request QueryOrdersRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryOrdersResponse
+ */
 func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4527,6 +4834,12 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 	return _result, _err
 }
 
+/**
+ * @summary 查询主单列表
+ *
+ * @param request QueryOrdersRequest
+ * @return QueryOrdersResponse
+ */
 func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4539,6 +4852,14 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 	return _result, _err
 }
 
+/**
+ * @summary 渲染采购单
+ *
+ * @param request RenderPurchaseOrderRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenderPurchaseOrderResponse
+ */
 func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenderPurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4568,6 +4889,12 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 	return _result, _err
 }
 
+/**
+ * @summary 渲染采购单
+ *
+ * @param request RenderPurchaseOrderRequest
+ * @return RenderPurchaseOrderResponse
+ */
 func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (_result *RenderPurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4580,6 +4907,14 @@ func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (
 	return _result, _err
 }
 
+/**
+ * @summary 逆向单渲染
+ *
+ * @param request RenderRefundOrderRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenderRefundOrderResponse
+ */
 func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenderRefundOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4609,6 +4944,12 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 	return _result, _err
 }
 
+/**
+ * @summary 逆向单渲染
+ *
+ * @param request RenderRefundOrderRequest
+ * @return RenderRefundOrderResponse
+ */
 func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_result *RenderRefundOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4621,6 +4962,14 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 	return _result, _err
 }
 
+/**
+ * @summary 渲染拆分采购单
+ *
+ * @param request SplitPurchaseOrderRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SplitPurchaseOrderResponse
+ */
 func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitPurchaseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4650,6 +4999,12 @@ func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderR
 	return _result, _err
 }
 
+/**
+ * @summary 渲染拆分采购单
+ *
+ * @param request SplitPurchaseOrderRequest
+ * @return SplitPurchaseOrderResponse
+ */
 func (client *Client) SplitPurchaseOrder(request *SplitPurchaseOrderRequest) (_result *SplitPurchaseOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
