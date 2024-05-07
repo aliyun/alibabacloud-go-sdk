@@ -2005,6 +2005,257 @@ func (s *CreateParamResponse) SetBody(v *CreateParamResponseBody) *CreateParamRe
 	return s
 }
 
+type CreateResourceRuleRequest struct {
+	Description             *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId              *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricOperationType     *string                               `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo          *string                               `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod        *string                               `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	Name                    *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleComputingDefinition *string                               `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+	RuleItems               []*CreateResourceRuleRequestRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleRequest) SetDescription(v string) *CreateResourceRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetInstanceId(v string) *CreateResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetMetricOperationType(v string) *CreateResourceRuleRequest {
+	s.MetricOperationType = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetMetricPullInfo(v string) *CreateResourceRuleRequest {
+	s.MetricPullInfo = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetMetricPullPeriod(v string) *CreateResourceRuleRequest {
+	s.MetricPullPeriod = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetName(v string) *CreateResourceRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetRuleComputingDefinition(v string) *CreateResourceRuleRequest {
+	s.RuleComputingDefinition = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequest) SetRuleItems(v []*CreateResourceRuleRequestRuleItems) *CreateResourceRuleRequest {
+	s.RuleItems = v
+	return s
+}
+
+type CreateResourceRuleRequestRuleItems struct {
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateResourceRuleRequestRuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleRequestRuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleRequestRuleItems) SetDescription(v string) *CreateResourceRuleRequestRuleItems {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequestRuleItems) SetMaxValue(v float64) *CreateResourceRuleRequestRuleItems {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequestRuleItems) SetMinValue(v float64) *CreateResourceRuleRequestRuleItems {
+	s.MinValue = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequestRuleItems) SetName(v string) *CreateResourceRuleRequestRuleItems {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceRuleRequestRuleItems) SetValue(v float64) *CreateResourceRuleRequestRuleItems {
+	s.Value = &v
+	return s
+}
+
+type CreateResourceRuleResponseBody struct {
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRuleId *string `json:"ResourceRuleId,omitempty" xml:"ResourceRuleId,omitempty"`
+}
+
+func (s CreateResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleResponseBody) SetRequestId(v string) *CreateResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateResourceRuleResponseBody) SetResourceRuleId(v string) *CreateResourceRuleResponseBody {
+	s.ResourceRuleId = &v
+	return s
+}
+
+type CreateResourceRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleResponse) SetHeaders(v map[string]*string) *CreateResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceRuleResponse) SetStatusCode(v int32) *CreateResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceRuleResponse) SetBody(v *CreateResourceRuleResponseBody) *CreateResourceRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateResourceRuleItemRequest struct {
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateResourceRuleItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleItemRequest) SetDescription(v string) *CreateResourceRuleItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemRequest) SetInstanceId(v string) *CreateResourceRuleItemRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemRequest) SetMaxValue(v float64) *CreateResourceRuleItemRequest {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemRequest) SetMinValue(v float64) *CreateResourceRuleItemRequest {
+	s.MinValue = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemRequest) SetName(v string) *CreateResourceRuleItemRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemRequest) SetValue(v float64) *CreateResourceRuleItemRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateResourceRuleItemResponseBody struct {
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRuleItemId *string `json:"ResourceRuleItemId,omitempty" xml:"ResourceRuleItemId,omitempty"`
+}
+
+func (s CreateResourceRuleItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleItemResponseBody) SetRequestId(v string) *CreateResourceRuleItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemResponseBody) SetResourceRuleItemId(v string) *CreateResourceRuleItemResponseBody {
+	s.ResourceRuleItemId = &v
+	return s
+}
+
+type CreateResourceRuleItemResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceRuleItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceRuleItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRuleItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRuleItemResponse) SetHeaders(v map[string]*string) *CreateResourceRuleItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceRuleItemResponse) SetStatusCode(v int32) *CreateResourceRuleItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceRuleItemResponse) SetBody(v *CreateResourceRuleItemResponseBody) *CreateResourceRuleItemResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSceneRequest struct {
 	Description *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	Flows       []*CreateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
@@ -2346,6 +2597,122 @@ func (s *CreateTableMetaResponse) SetStatusCode(v int32) *CreateTableMetaRespons
 }
 
 func (s *CreateTableMetaResponse) SetBody(v *CreateTableMetaResponseBody) *CreateTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type DebugResourceRuleRequest struct {
+	InstanceId *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricInfo map[string]interface{} `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
+	RegionId   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DebugResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DebugResourceRuleRequest) SetInstanceId(v string) *DebugResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DebugResourceRuleRequest) SetMetricInfo(v map[string]interface{}) *DebugResourceRuleRequest {
+	s.MetricInfo = v
+	return s
+}
+
+func (s *DebugResourceRuleRequest) SetRegionId(v string) *DebugResourceRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DebugResourceRuleShrinkRequest struct {
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricInfoShrink *string `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DebugResourceRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugResourceRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DebugResourceRuleShrinkRequest) SetInstanceId(v string) *DebugResourceRuleShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DebugResourceRuleShrinkRequest) SetMetricInfoShrink(v string) *DebugResourceRuleShrinkRequest {
+	s.MetricInfoShrink = &v
+	return s
+}
+
+func (s *DebugResourceRuleShrinkRequest) SetRegionId(v string) *DebugResourceRuleShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DebugResourceRuleResponseBody struct {
+	CurrentValues map[string]interface{} `json:"CurrentValues,omitempty" xml:"CurrentValues,omitempty"`
+	OutputValues  map[string]interface{} `json:"OutputValues,omitempty" xml:"OutputValues,omitempty"`
+	RequestId     *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DebugResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DebugResourceRuleResponseBody) SetCurrentValues(v map[string]interface{}) *DebugResourceRuleResponseBody {
+	s.CurrentValues = v
+	return s
+}
+
+func (s *DebugResourceRuleResponseBody) SetOutputValues(v map[string]interface{}) *DebugResourceRuleResponseBody {
+	s.OutputValues = v
+	return s
+}
+
+func (s *DebugResourceRuleResponseBody) SetRequestId(v string) *DebugResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DebugResourceRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DebugResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DebugResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DebugResourceRuleResponse) SetHeaders(v map[string]*string) *DebugResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DebugResourceRuleResponse) SetStatusCode(v int32) *DebugResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DebugResourceRuleResponse) SetBody(v *DebugResourceRuleResponseBody) *DebugResourceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2902,6 +3269,132 @@ func (s *DeleteParamResponse) SetStatusCode(v int32) *DeleteParamResponse {
 }
 
 func (s *DeleteParamResponse) SetBody(v *DeleteParamResponseBody) *DeleteParamResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteResourceRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleRequest) SetInstanceId(v string) *DeleteResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteResourceRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleResponseBody) SetRequestId(v string) *DeleteResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteResourceRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleResponse) SetHeaders(v map[string]*string) *DeleteResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceRuleResponse) SetStatusCode(v int32) *DeleteResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteResourceRuleResponse) SetBody(v *DeleteResourceRuleResponseBody) *DeleteResourceRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteResourceRuleItemRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteResourceRuleItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleItemRequest) SetInstanceId(v string) *DeleteResourceRuleItemRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteResourceRuleItemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteResourceRuleItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleItemResponseBody) SetRequestId(v string) *DeleteResourceRuleItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteResourceRuleItemResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceRuleItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteResourceRuleItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRuleItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRuleItemResponse) SetHeaders(v map[string]*string) *DeleteResourceRuleItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceRuleItemResponse) SetStatusCode(v int32) *DeleteResourceRuleItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteResourceRuleItemResponse) SetBody(v *DeleteResourceRuleItemResponseBody) *DeleteResourceRuleItemResponse {
 	s.Body = v
 	return s
 }
@@ -4865,6 +5358,158 @@ func (s *GetLayerResponse) SetStatusCode(v int32) *GetLayerResponse {
 }
 
 func (s *GetLayerResponse) SetBody(v *GetLayerResponseBody) *GetLayerResponse {
+	s.Body = v
+	return s
+}
+
+type GetResourceRuleRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRuleRequest) SetInstanceId(v string) *GetResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetResourceRuleResponseBody struct {
+	Description             *string                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricOperationType     *string                                 `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo          *string                                 `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod        *string                                 `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	Name                    *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId               *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRuleId          *string                                 `json:"ResourceRuleId,omitempty" xml:"ResourceRuleId,omitempty"`
+	RuleComputingDefinition *string                                 `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+	RuleItems               []*GetResourceRuleResponseBodyRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
+}
+
+func (s GetResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRuleResponseBody) SetDescription(v string) *GetResourceRuleResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetMetricOperationType(v string) *GetResourceRuleResponseBody {
+	s.MetricOperationType = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetMetricPullInfo(v string) *GetResourceRuleResponseBody {
+	s.MetricPullInfo = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetMetricPullPeriod(v string) *GetResourceRuleResponseBody {
+	s.MetricPullPeriod = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetName(v string) *GetResourceRuleResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetRequestId(v string) *GetResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetResourceRuleId(v string) *GetResourceRuleResponseBody {
+	s.ResourceRuleId = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetRuleComputingDefinition(v string) *GetResourceRuleResponseBody {
+	s.RuleComputingDefinition = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBody) SetRuleItems(v []*GetResourceRuleResponseBodyRuleItems) *GetResourceRuleResponseBody {
+	s.RuleItems = v
+	return s
+}
+
+type GetResourceRuleResponseBodyRuleItems struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxValue    *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetResourceRuleResponseBodyRuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRuleResponseBodyRuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRuleResponseBodyRuleItems) SetDescription(v string) *GetResourceRuleResponseBodyRuleItems {
+	s.Description = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBodyRuleItems) SetMaxValue(v string) *GetResourceRuleResponseBodyRuleItems {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBodyRuleItems) SetMinValue(v string) *GetResourceRuleResponseBodyRuleItems {
+	s.MinValue = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBodyRuleItems) SetName(v string) *GetResourceRuleResponseBodyRuleItems {
+	s.Name = &v
+	return s
+}
+
+func (s *GetResourceRuleResponseBodyRuleItems) SetValue(v string) *GetResourceRuleResponseBodyRuleItems {
+	s.Value = &v
+	return s
+}
+
+type GetResourceRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRuleResponse) SetHeaders(v map[string]*string) *GetResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceRuleResponse) SetStatusCode(v int32) *GetResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceRuleResponse) SetBody(v *GetResourceRuleResponseBody) *GetResourceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -8165,6 +8810,223 @@ func (s *ListParamsResponse) SetBody(v *ListParamsResponseBody) *ListParamsRespo
 	return s
 }
 
+type ListResourceRulesRequest struct {
+	All              *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Order            *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber       *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceRuleId   *string `json:"ResourceRuleId,omitempty" xml:"ResourceRuleId,omitempty"`
+	ResourceRuleName *string `json:"ResourceRuleName,omitempty" xml:"ResourceRuleName,omitempty"`
+	SortBy           *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListResourceRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRulesRequest) SetAll(v bool) *ListResourceRulesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetInstanceId(v string) *ListResourceRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetOrder(v string) *ListResourceRulesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetPageNumber(v int64) *ListResourceRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetPageSize(v int64) *ListResourceRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetResourceRuleId(v string) *ListResourceRulesRequest {
+	s.ResourceRuleId = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetResourceRuleName(v string) *ListResourceRulesRequest {
+	s.ResourceRuleName = &v
+	return s
+}
+
+func (s *ListResourceRulesRequest) SetSortBy(v string) *ListResourceRulesRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListResourceRulesResponseBody struct {
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRules []*ListResourceRulesResponseBodyResourceRules `json:"ResourceRules,omitempty" xml:"ResourceRules,omitempty" type:"Repeated"`
+	TotalCount    *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResourceRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRulesResponseBody) SetRequestId(v string) *ListResourceRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBody) SetResourceRules(v []*ListResourceRulesResponseBodyResourceRules) *ListResourceRulesResponseBody {
+	s.ResourceRules = v
+	return s
+}
+
+func (s *ListResourceRulesResponseBody) SetTotalCount(v int64) *ListResourceRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResourceRulesResponseBodyResourceRules struct {
+	Description             *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricOperationType     *string                                                `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo          *string                                                `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod        *string                                                `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	Name                    *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceRuleId          *string                                                `json:"ResourceRuleId,omitempty" xml:"ResourceRuleId,omitempty"`
+	RuleComputingDefinition *string                                                `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+	RuleItems               []*ListResourceRulesResponseBodyResourceRulesRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
+}
+
+func (s ListResourceRulesResponseBodyResourceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRulesResponseBodyResourceRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetDescription(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.Description = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetMetricOperationType(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.MetricOperationType = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetMetricPullInfo(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.MetricPullInfo = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetMetricPullPeriod(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.MetricPullPeriod = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetName(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetResourceRuleId(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.ResourceRuleId = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetRuleComputingDefinition(v string) *ListResourceRulesResponseBodyResourceRules {
+	s.RuleComputingDefinition = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRules) SetRuleItems(v []*ListResourceRulesResponseBodyResourceRulesRuleItems) *ListResourceRulesResponseBodyResourceRules {
+	s.RuleItems = v
+	return s
+}
+
+type ListResourceRulesResponseBodyResourceRulesRuleItems struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxValue    *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourceRulesResponseBodyResourceRulesRuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRulesResponseBodyResourceRulesRuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRulesResponseBodyResourceRulesRuleItems) SetDescription(v string) *ListResourceRulesResponseBodyResourceRulesRuleItems {
+	s.Description = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRulesRuleItems) SetMaxValue(v string) *ListResourceRulesResponseBodyResourceRulesRuleItems {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRulesRuleItems) SetMinValue(v string) *ListResourceRulesResponseBodyResourceRulesRuleItems {
+	s.MinValue = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRulesRuleItems) SetName(v string) *ListResourceRulesResponseBodyResourceRulesRuleItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListResourceRulesResponseBodyResourceRulesRuleItems) SetValue(v string) *ListResourceRulesResponseBodyResourceRulesRuleItems {
+	s.Value = &v
+	return s
+}
+
+type ListResourceRulesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResourceRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRulesResponse) SetHeaders(v map[string]*string) *ListResourceRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceRulesResponse) SetStatusCode(v int32) *ListResourceRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceRulesResponse) SetBody(v *ListResourceRulesResponseBody) *ListResourceRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListScenesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -9101,6 +9963,187 @@ func (s *PushAllExperimentResponse) SetStatusCode(v int32) *PushAllExperimentRes
 }
 
 func (s *PushAllExperimentResponse) SetBody(v *PushAllExperimentResponseBody) *PushAllExperimentResponse {
+	s.Body = v
+	return s
+}
+
+type PushResourceRuleRequest struct {
+	InstanceId *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricInfo map[string]interface{} `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
+}
+
+func (s PushResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushResourceRuleRequest) SetInstanceId(v string) *PushResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PushResourceRuleRequest) SetMetricInfo(v map[string]interface{}) *PushResourceRuleRequest {
+	s.MetricInfo = v
+	return s
+}
+
+type PushResourceRuleShrinkRequest struct {
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricInfoShrink *string `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
+}
+
+func (s PushResourceRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushResourceRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushResourceRuleShrinkRequest) SetInstanceId(v string) *PushResourceRuleShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PushResourceRuleShrinkRequest) SetMetricInfoShrink(v string) *PushResourceRuleShrinkRequest {
+	s.MetricInfoShrink = &v
+	return s
+}
+
+type PushResourceRuleResponseBody struct {
+	Description             *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricOperationType     *string                                  `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo          *string                                  `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod        *string                                  `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	Name                    *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId               *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRuleId          *string                                  `json:"ResourceRuleId,omitempty" xml:"ResourceRuleId,omitempty"`
+	RuleComputingDefinition *string                                  `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+	RuleItems               []*PushResourceRuleResponseBodyRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
+}
+
+func (s PushResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PushResourceRuleResponseBody) SetDescription(v string) *PushResourceRuleResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetMetricOperationType(v string) *PushResourceRuleResponseBody {
+	s.MetricOperationType = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetMetricPullInfo(v string) *PushResourceRuleResponseBody {
+	s.MetricPullInfo = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetMetricPullPeriod(v string) *PushResourceRuleResponseBody {
+	s.MetricPullPeriod = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetName(v string) *PushResourceRuleResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetRequestId(v string) *PushResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetResourceRuleId(v string) *PushResourceRuleResponseBody {
+	s.ResourceRuleId = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetRuleComputingDefinition(v string) *PushResourceRuleResponseBody {
+	s.RuleComputingDefinition = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBody) SetRuleItems(v []*PushResourceRuleResponseBodyRuleItems) *PushResourceRuleResponseBody {
+	s.RuleItems = v
+	return s
+}
+
+type PushResourceRuleResponseBodyRuleItems struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxValue    *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PushResourceRuleResponseBodyRuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushResourceRuleResponseBodyRuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *PushResourceRuleResponseBodyRuleItems) SetDescription(v string) *PushResourceRuleResponseBodyRuleItems {
+	s.Description = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBodyRuleItems) SetMaxValue(v string) *PushResourceRuleResponseBodyRuleItems {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBodyRuleItems) SetMinValue(v string) *PushResourceRuleResponseBodyRuleItems {
+	s.MinValue = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBodyRuleItems) SetName(v string) *PushResourceRuleResponseBodyRuleItems {
+	s.Name = &v
+	return s
+}
+
+func (s *PushResourceRuleResponseBodyRuleItems) SetValue(v string) *PushResourceRuleResponseBodyRuleItems {
+	s.Value = &v
+	return s
+}
+
+type PushResourceRuleResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PushResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushResourceRuleResponse) SetHeaders(v map[string]*string) *PushResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PushResourceRuleResponse) SetStatusCode(v int32) *PushResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PushResourceRuleResponse) SetBody(v *PushResourceRuleResponseBody) *PushResourceRuleResponse {
 	s.Body = v
 	return s
 }
@@ -10556,6 +11599,198 @@ func (s *UpdateParamResponse) SetStatusCode(v int32) *UpdateParamResponse {
 }
 
 func (s *UpdateParamResponse) SetBody(v *UpdateParamResponseBody) *UpdateParamResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateResourceRuleRequest struct {
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MetricOperationType     *string `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo          *string `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod        *string `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleComputingDefinition *string `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+}
+
+func (s UpdateResourceRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleRequest) SetDescription(v string) *UpdateResourceRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetInstanceId(v string) *UpdateResourceRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetMetricOperationType(v string) *UpdateResourceRuleRequest {
+	s.MetricOperationType = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetMetricPullInfo(v string) *UpdateResourceRuleRequest {
+	s.MetricPullInfo = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetMetricPullPeriod(v string) *UpdateResourceRuleRequest {
+	s.MetricPullPeriod = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetName(v string) *UpdateResourceRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateResourceRuleRequest) SetRuleComputingDefinition(v string) *UpdateResourceRuleRequest {
+	s.RuleComputingDefinition = &v
+	return s
+}
+
+type UpdateResourceRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateResourceRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleResponseBody) SetRequestId(v string) *UpdateResourceRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateResourceRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateResourceRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleResponse) SetHeaders(v map[string]*string) *UpdateResourceRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceRuleResponse) SetStatusCode(v int32) *UpdateResourceRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourceRuleResponse) SetBody(v *UpdateResourceRuleResponseBody) *UpdateResourceRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateResourceRuleItemRequest struct {
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateResourceRuleItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleItemRequest) SetDescription(v string) *UpdateResourceRuleItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemRequest) SetInstanceId(v string) *UpdateResourceRuleItemRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemRequest) SetMaxValue(v float64) *UpdateResourceRuleItemRequest {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemRequest) SetMinValue(v float64) *UpdateResourceRuleItemRequest {
+	s.MinValue = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemRequest) SetName(v string) *UpdateResourceRuleItemRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemRequest) SetValue(v float64) *UpdateResourceRuleItemRequest {
+	s.Value = &v
+	return s
+}
+
+type UpdateResourceRuleItemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateResourceRuleItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleItemResponseBody) SetRequestId(v string) *UpdateResourceRuleItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateResourceRuleItemResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourceRuleItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateResourceRuleItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRuleItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRuleItemResponse) SetHeaders(v map[string]*string) *UpdateResourceRuleItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceRuleItemResponse) SetStatusCode(v int32) *UpdateResourceRuleItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourceRuleItemResponse) SetBody(v *UpdateResourceRuleItemResponseBody) *UpdateResourceRuleItemResponse {
 	s.Body = v
 	return s
 }
@@ -12254,6 +13489,146 @@ func (client *Client) CreateParam(request *CreateParamRequest) (_result *CreateP
 	return _result, _err
 }
 
+func (client *Client) CreateResourceRuleWithOptions(request *CreateResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricOperationType)) {
+		body["MetricOperationType"] = request.MetricOperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricPullInfo)) {
+		body["MetricPullInfo"] = request.MetricPullInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricPullPeriod)) {
+		body["MetricPullPeriod"] = request.MetricPullPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleComputingDefinition)) {
+		body["RuleComputingDefinition"] = request.RuleComputingDefinition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleItems)) {
+		body["RuleItems"] = request.RuleItems
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateResourceRule(request *CreateResourceRuleRequest) (_result *CreateResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateResourceRuleResponse{}
+	_body, _err := client.CreateResourceRuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateResourceRuleItemWithOptions(ResourceRuleId *string, request *CreateResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceRuleItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxValue)) {
+		body["MaxValue"] = request.MaxValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinValue)) {
+		body["MinValue"] = request.MinValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceRuleItem"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId)) + "/items"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceRuleItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateResourceRuleItem(ResourceRuleId *string, request *CreateResourceRuleItemRequest) (_result *CreateResourceRuleItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateResourceRuleItemResponse{}
+	_body, _err := client.CreateResourceRuleItemWithOptions(ResourceRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12429,6 +13804,66 @@ func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &CreateTableMetaResponse{}
 	_body, _err := client.CreateTableMetaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DebugResourceRuleWithOptions(ResourceRuleId *string, tmpReq *DebugResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DebugResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DebugResourceRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricInfo)) {
+		request.MetricInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricInfo, tea.String("MetricInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricInfoShrink)) {
+		query["MetricInfo"] = request.MetricInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DebugResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId)) + "/action/debug"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DebugResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DebugResourceRule(ResourceRuleId *string, request *DebugResourceRuleRequest) (_result *DebugResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DebugResourceRuleResponse{}
+	_body, _err := client.DebugResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12833,6 +14268,98 @@ func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) 
 	headers := make(map[string]*string)
 	_result = &DeleteParamResponse{}
 	_body, _err := client.DeleteParamWithOptions(ParamId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteResourceRuleWithOptions(ResourceRuleId *string, request *DeleteResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteResourceRule(ResourceRuleId *string, request *DeleteResourceRuleRequest) (_result *DeleteResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteResourceRuleResponse{}
+	_body, _err := client.DeleteResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *DeleteResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceRuleItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceRuleItem"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleItemId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteResourceRuleItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteResourceRuleItem(ResourceRuleId *string, ResourceRuleItemId *string, request *DeleteResourceRuleItemRequest) (_result *DeleteResourceRuleItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteResourceRuleItemResponse{}
+	_body, _err := client.DeleteResourceRuleItemWithOptions(ResourceRuleId, ResourceRuleItemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13493,6 +15020,52 @@ func (client *Client) GetLayer(LayerId *string, request *GetLayerRequest) (_resu
 	headers := make(map[string]*string)
 	_result = &GetLayerResponse{}
 	_body, _err := client.GetLayerWithOptions(LayerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceRuleWithOptions(ResourceRuleId *string, request *GetResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceRule(ResourceRuleId *string, request *GetResourceRuleRequest) (_result *GetResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceRuleResponse{}
+	_body, _err := client.GetResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14588,6 +16161,80 @@ func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParam
 	return _result, _err
 }
 
+func (client *Client) ListResourceRulesWithOptions(request *ListResourceRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRuleId)) {
+		query["ResourceRuleId"] = request.ResourceRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRuleName)) {
+		query["ResourceRuleName"] = request.ResourceRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceRules"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourceRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListResourceRules(request *ListResourceRulesRequest) (_result *ListResourceRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListResourceRulesResponse{}
+	_body, _err := client.ListResourceRulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListScenesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15065,6 +16712,62 @@ func (client *Client) PushAllExperiment(ExperimentId *string, request *PushAllEx
 	headers := make(map[string]*string)
 	_result = &PushAllExperimentResponse{}
 	_body, _err := client.PushAllExperimentWithOptions(ExperimentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PushResourceRuleWithOptions(ResourceRuleId *string, tmpReq *PushResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PushResourceRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MetricInfo)) {
+		request.MetricInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricInfo, tea.String("MetricInfo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricInfoShrink)) {
+		query["MetricInfo"] = request.MetricInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId)) + "/action/push"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PushResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushResourceRuleRequest) (_result *PushResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushResourceRuleResponse{}
+	_body, _err := client.PushResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16075,6 +17778,142 @@ func (client *Client) UpdateParam(ParamId *string, request *UpdateParamRequest) 
 	headers := make(map[string]*string)
 	_result = &UpdateParamResponse{}
 	_body, _err := client.UpdateParamWithOptions(ParamId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceRuleWithOptions(ResourceRuleId *string, request *UpdateResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricOperationType)) {
+		body["MetricOperationType"] = request.MetricOperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricPullInfo)) {
+		body["MetricPullInfo"] = request.MetricPullInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricPullPeriod)) {
+		body["MetricPullPeriod"] = request.MetricPullPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleComputingDefinition)) {
+		body["RuleComputingDefinition"] = request.RuleComputingDefinition
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceRule"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateResourceRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceRule(ResourceRuleId *string, request *UpdateResourceRuleRequest) (_result *UpdateResourceRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceRuleResponse{}
+	_body, _err := client.UpdateResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *UpdateResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceRuleItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxValue)) {
+		body["MaxValue"] = request.MaxValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinValue)) {
+		body["MinValue"] = request.MinValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceRuleItem"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resourcerules/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceRuleItemId))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateResourceRuleItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceRuleItem(ResourceRuleId *string, ResourceRuleItemId *string, request *UpdateResourceRuleItemRequest) (_result *UpdateResourceRuleItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceRuleItemResponse{}
+	_body, _err := client.UpdateResourceRuleItemWithOptions(ResourceRuleId, ResourceRuleItemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
