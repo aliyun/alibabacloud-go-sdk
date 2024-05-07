@@ -944,6 +944,111 @@ func (s *AddUsersToSkillGroupResponse) SetBody(v *AddUsersToSkillGroupResponseBo
 	return s
 }
 
+type AnalyzeConversationRequest struct {
+	ContactId     *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	FieldListJson *string `json:"FieldListJson,omitempty" xml:"FieldListJson,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TaskListJson  *string `json:"TaskListJson,omitempty" xml:"TaskListJson,omitempty"`
+}
+
+func (s AnalyzeConversationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationRequest) SetContactId(v string) *AnalyzeConversationRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetFieldListJson(v string) *AnalyzeConversationRequest {
+	s.FieldListJson = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetInstanceId(v string) *AnalyzeConversationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetTaskListJson(v string) *AnalyzeConversationRequest {
+	s.TaskListJson = &v
+	return s
+}
+
+type AnalyzeConversationResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AnalyzeConversationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationResponseBody) SetCode(v string) *AnalyzeConversationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetData(v string) *AnalyzeConversationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetHttpStatusCode(v int32) *AnalyzeConversationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetMessage(v string) *AnalyzeConversationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetRequestId(v string) *AnalyzeConversationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AnalyzeConversationResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeConversationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeConversationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeConversationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeConversationResponse) SetHeaders(v map[string]*string) *AnalyzeConversationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeConversationResponse) SetStatusCode(v int32) *AnalyzeConversationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponse) SetBody(v *AnalyzeConversationResponseBody) *AnalyzeConversationResponse {
+	s.Body = v
+	return s
+}
+
 type AnswerCallRequest struct {
 	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -42009,6 +42114,62 @@ func (client *Client) AddUsersToSkillGroup(request *AddUsersToSkillGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUsersToSkillGroupResponse{}
 	_body, _err := client.AddUsersToSkillGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AnalyzeConversationWithOptions(request *AnalyzeConversationRequest, runtime *util.RuntimeOptions) (_result *AnalyzeConversationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldListJson)) {
+		query["FieldListJson"] = request.FieldListJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskListJson)) {
+		query["TaskListJson"] = request.TaskListJson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AnalyzeConversation"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AnalyzeConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AnalyzeConversation(request *AnalyzeConversationRequest) (_result *AnalyzeConversationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AnalyzeConversationResponse{}
+	_body, _err := client.AnalyzeConversationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
