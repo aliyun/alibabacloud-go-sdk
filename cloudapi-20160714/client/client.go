@@ -5292,8 +5292,6 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The name of the access control policy.
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// Indicates whether the policy was used.
-	IsUsed *string `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5318,11 +5316,6 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetAclId(v string) *Des
 
 func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *DescribeAccessControlListAttributeResponseBody {
 	s.AclName = &v
-	return s
-}
-
-func (s *DescribeAccessControlListAttributeResponseBody) SetIsUsed(v string) *DescribeAccessControlListAttributeResponseBody {
-	s.IsUsed = &v
 	return s
 }
 
@@ -13300,6 +13293,224 @@ func (s *DescribeApisByTrafficControlResponse) SetBody(v *DescribeApisByTrafficC
 	return s
 }
 
+type DescribeApisByVpcAccessRequest struct {
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcName       *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeApisByVpcAccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByVpcAccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByVpcAccessRequest) SetPageNumber(v int32) *DescribeApisByVpcAccessRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessRequest) SetPageSize(v int32) *DescribeApisByVpcAccessRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessRequest) SetSecurityToken(v string) *DescribeApisByVpcAccessRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessRequest) SetVpcName(v string) *DescribeApisByVpcAccessRequest {
+	s.VpcName = &v
+	return s
+}
+
+type DescribeApisByVpcAccessResponseBody struct {
+	ApiVpcAccessInfos *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos `json:"ApiVpcAccessInfos,omitempty" xml:"ApiVpcAccessInfos,omitempty" type:"Struct"`
+	PageNumber        *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisByVpcAccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByVpcAccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByVpcAccessResponseBody) SetApiVpcAccessInfos(v *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) *DescribeApisByVpcAccessResponseBody {
+	s.ApiVpcAccessInfos = v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBody) SetPageNumber(v int32) *DescribeApisByVpcAccessResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBody) SetPageSize(v int32) *DescribeApisByVpcAccessResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBody) SetRequestId(v string) *DescribeApisByVpcAccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBody) SetTotalCount(v int32) *DescribeApisByVpcAccessResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos struct {
+	ApiVpcAccessInfo []*DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo `json:"ApiVpcAccessInfo,omitempty" xml:"ApiVpcAccessInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) SetApiVpcAccessInfo(v []*DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos {
+	s.ApiVpcAccessInfo = v
+	return s
+}
+
+type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo struct {
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageId     *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// vpc id
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetApiId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetApiName(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.ApiName = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetDescription(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetGroupId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetGroupName(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetInstanceId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetMethod(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.Method = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetPath(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetPort(v int32) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetRegionId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetStageId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.StageId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetStageName(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetVpcId(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) SetVpcName(v string) *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo {
+	s.VpcName = &v
+	return s
+}
+
+type DescribeApisByVpcAccessResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisByVpcAccessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisByVpcAccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisByVpcAccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisByVpcAccessResponse) SetHeaders(v map[string]*string) *DescribeApisByVpcAccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponse) SetStatusCode(v int32) *DescribeApisByVpcAccessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisByVpcAccessResponse) SetBody(v *DescribeApisByVpcAccessResponseBody) *DescribeApisByVpcAccessResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisWithStageNameIntegratedByAppRequest struct {
 	// The API name.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
@@ -14853,6 +15064,7 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedApps) SetAuthorizedApp(v []
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	// The ID, which is generated by the system and globally unique.
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the app.
@@ -14887,6 +15099,11 @@ func (s DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) String() 
 
 func (s DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) SetAppDescription(v string) *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp {
+	s.AppDescription = &v
+	return s
 }
 
 func (s *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) SetAppId(v int64) *DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp {
@@ -20935,6 +21152,7 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	RegionId                   *string                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status                     *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupportIpv6                *bool                                                                              `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	Tags                       *DescribeInstancesResponseBodyInstancesInstanceAttributeTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	UserVpcId                  *string                                                                            `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
 	UserVswitchId              *string                                                                            `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
 	VpcEgressAddress           *string                                                                            `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
@@ -21123,6 +21341,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetSupportIpv6
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetTags(v *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetUserVpcId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.UserVpcId = &v
 	return s
@@ -21273,6 +21496,46 @@ func (s DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList) G
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList) SetPrivateDns(v []*string) *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList {
 	s.PrivateDns = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeTags struct {
+	TagInfo []*DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo `json:"TagInfo,omitempty" xml:"TagInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) SetTagInfo(v []*DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo) *DescribeInstancesResponseBodyInstancesInstanceAttributeTags {
+	s.TagInfo = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo) SetKey(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo) SetValue(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo {
+	s.Value = &v
 	return s
 }
 
@@ -39449,6 +39712,62 @@ func (client *Client) DescribeApisByTrafficControl(request *DescribeApisByTraffi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisByTrafficControlResponse{}
 	_body, _err := client.DescribeApisByTrafficControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeApisByVpcAccessWithOptions(request *DescribeApisByVpcAccessRequest, runtime *util.RuntimeOptions) (_result *DescribeApisByVpcAccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcName)) {
+		query["VpcName"] = request.VpcName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisByVpcAccess"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisByVpcAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApisByVpcAccess(request *DescribeApisByVpcAccessRequest) (_result *DescribeApisByVpcAccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisByVpcAccessResponse{}
+	_body, _err := client.DescribeApisByVpcAccessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
