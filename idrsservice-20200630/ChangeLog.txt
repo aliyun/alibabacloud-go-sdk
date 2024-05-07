@@ -1,3 +1,8 @@
+2024-05-07 Version: v2.0.1
+- Update API UploadReport: add param Role.
+- Update API UploadReport: add param VideoType.
+
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2020-06-30 for idrsservice.
 
