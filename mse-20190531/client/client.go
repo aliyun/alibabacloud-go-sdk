@@ -19646,7 +19646,8 @@ type GetGatewayServiceDetailResponseBodyData struct {
 	// The traffic policy of service ports.
 	PortTrafficPolicyList []*GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList `json:"PortTrafficPolicyList,omitempty" xml:"PortTrafficPolicyList,omitempty" type:"Repeated"`
 	// The array of service ports.
-	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	Ports       []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	ServiceFQDN *string  `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
 	// The name of the service registered with the service registry.
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
 	// The protocol of the service.
@@ -19746,6 +19747,11 @@ func (s *GetGatewayServiceDetailResponseBodyData) SetPortTrafficPolicyList(v []*
 
 func (s *GetGatewayServiceDetailResponseBodyData) SetPorts(v []*int32) *GetGatewayServiceDetailResponseBodyData {
 	s.Ports = v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyData) SetServiceFQDN(v string) *GetGatewayServiceDetailResponseBodyData {
+	s.ServiceFQDN = &v
 	return s
 }
 
@@ -21010,7 +21016,8 @@ type GetMseSourceRequest struct {
 	//
 	// *   NACOS
 	// *   ZOOKEEPER
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetMseSourceRequest) String() string {
@@ -21033,6 +21040,11 @@ func (s *GetMseSourceRequest) SetGatewayUniqueId(v string) *GetMseSourceRequest 
 
 func (s *GetMseSourceRequest) SetType(v string) *GetMseSourceRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *GetMseSourceRequest) SetVpcId(v string) *GetMseSourceRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -34381,7 +34393,8 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The port array.
-	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	Ports       []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	ServiceFQDN *string  `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
 	// The name of the service that is registered with the service registry.
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
 	// The service port.
@@ -34483,6 +34496,11 @@ func (s *ListGatewayServiceResponseBodyDataResult) SetNamespace(v string) *ListG
 
 func (s *ListGatewayServiceResponseBodyDataResult) SetPorts(v []*int32) *ListGatewayServiceResponseBodyDataResult {
 	s.Ports = v
+	return s
+}
+
+func (s *ListGatewayServiceResponseBodyDataResult) SetServiceFQDN(v string) *ListGatewayServiceResponseBodyDataResult {
+	s.ServiceFQDN = &v
 	return s
 }
 
@@ -60768,6 +60786,10 @@ func (client *Client) GetMseSourceWithOptions(request *GetMseSourceRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
