@@ -1,12 +1,9 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pds/client"
-	
+	spi "github.com/alibabacloud-go/alibabacloud-gateway-spi/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -287,10 +284,25 @@ func (s *Activity) SetUserId(v string) *Activity {
 }
 
 type Address struct {
-	City     *string `json:"city,omitempty" xml:"city,omitempty"`
-	Country  *string `json:"country,omitempty" xml:"country,omitempty"`
+	// example:
+	//
+	// 杭州市
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
+	// example:
+	//
+	// 中国
+	Country *string `json:"country,omitempty" xml:"country,omitempty"`
+	// example:
+	//
+	// 余杭区
 	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	// example:
+	//
+	// 浙江省
 	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// 文一西路
 	Township *string `json:"township,omitempty" xml:"township,omitempty"`
 }
 
@@ -429,6 +441,310 @@ func (s *AggregationsGroup) SetCount(v int64) *AggregationsGroup {
 
 func (s *AggregationsGroup) SetValue(v []byte) *AggregationsGroup {
 	s.Value = v
+	return s
+}
+
+type Album struct {
+	AlbumId         *string            `json:"album_id,omitempty" xml:"album_id,omitempty"`
+	BaseFaceFile    *File              `json:"base_face_file,omitempty" xml:"base_face_file,omitempty"`
+	BaseFaceGroupId *string            `json:"base_face_group_id,omitempty" xml:"base_face_group_id,omitempty"`
+	CoverFile       *File              `json:"cover_file,omitempty" xml:"cover_file,omitempty"`
+	CreatedAt       *string            `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description     *string            `json:"description,omitempty" xml:"description,omitempty"`
+	FileCount       *int64             `json:"file_count,omitempty" xml:"file_count,omitempty"`
+	Name            *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Owner           *string            `json:"owner,omitempty" xml:"owner,omitempty"`
+	UpdatedAt       *string            `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserTags        map[string]*string `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
+}
+
+func (s Album) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Album) GoString() string {
+	return s.String()
+}
+
+func (s *Album) SetAlbumId(v string) *Album {
+	s.AlbumId = &v
+	return s
+}
+
+func (s *Album) SetBaseFaceFile(v *File) *Album {
+	s.BaseFaceFile = v
+	return s
+}
+
+func (s *Album) SetBaseFaceGroupId(v string) *Album {
+	s.BaseFaceGroupId = &v
+	return s
+}
+
+func (s *Album) SetCoverFile(v *File) *Album {
+	s.CoverFile = v
+	return s
+}
+
+func (s *Album) SetCreatedAt(v string) *Album {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Album) SetDescription(v string) *Album {
+	s.Description = &v
+	return s
+}
+
+func (s *Album) SetFileCount(v int64) *Album {
+	s.FileCount = &v
+	return s
+}
+
+func (s *Album) SetName(v string) *Album {
+	s.Name = &v
+	return s
+}
+
+func (s *Album) SetOwner(v string) *Album {
+	s.Owner = &v
+	return s
+}
+
+func (s *Album) SetUpdatedAt(v string) *Album {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Album) SetUserTags(v map[string]*string) *Album {
+	s.UserTags = v
+	return s
+}
+
+type AlbumFile struct {
+	AlbumId            *string                `json:"album_id,omitempty" xml:"album_id,omitempty"`
+	Category           *string                `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash        *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName    *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType        *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash          *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt          *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description        *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId           *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl        *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId            *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	ExFieldsInfo       map[string]interface{} `json:"ex_fields_info,omitempty" xml:"ex_fields_info,omitempty"`
+	FileExtension      *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId             *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden             *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	ImageMediaMetadata *ImageMediaMetadata    `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+	InvestigationInfo  *InvestigationInfo     `json:"investigation_info,omitempty" xml:"investigation_info,omitempty"`
+	JoinedAt           *int64                 `json:"joined_at,omitempty" xml:"joined_at,omitempty"`
+	Labels             []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt     *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt    *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	MimeType           *string                `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
+	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
+	ObjectUri          *string                `json:"object_uri,omitempty" xml:"object_uri,omitempty"`
+	ParentFileId       *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId         *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size               *int64                 `json:"size,omitempty" xml:"size,omitempty"`
+	Starred            *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status             *string                `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail          *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls      map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TranshedAt         *string                `json:"transhed_at,omitempty" xml:"transhed_at,omitempty"`
+	Type               *string                `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt          *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId           *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	UserMeta           *string                `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+}
+
+func (s AlbumFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlbumFile) GoString() string {
+	return s.String()
+}
+
+func (s *AlbumFile) SetAlbumId(v string) *AlbumFile {
+	s.AlbumId = &v
+	return s
+}
+
+func (s *AlbumFile) SetCategory(v string) *AlbumFile {
+	s.Category = &v
+	return s
+}
+
+func (s *AlbumFile) SetContentHash(v string) *AlbumFile {
+	s.ContentHash = &v
+	return s
+}
+
+func (s *AlbumFile) SetContentHashName(v string) *AlbumFile {
+	s.ContentHashName = &v
+	return s
+}
+
+func (s *AlbumFile) SetContentType(v string) *AlbumFile {
+	s.ContentType = &v
+	return s
+}
+
+func (s *AlbumFile) SetCrc64Hash(v string) *AlbumFile {
+	s.Crc64Hash = &v
+	return s
+}
+
+func (s *AlbumFile) SetCreatedAt(v string) *AlbumFile {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetDescription(v string) *AlbumFile {
+	s.Description = &v
+	return s
+}
+
+func (s *AlbumFile) SetDomainId(v string) *AlbumFile {
+	s.DomainId = &v
+	return s
+}
+
+func (s *AlbumFile) SetDownloadUrl(v string) *AlbumFile {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *AlbumFile) SetDriveId(v string) *AlbumFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *AlbumFile) SetExFieldsInfo(v map[string]interface{}) *AlbumFile {
+	s.ExFieldsInfo = v
+	return s
+}
+
+func (s *AlbumFile) SetFileExtension(v string) *AlbumFile {
+	s.FileExtension = &v
+	return s
+}
+
+func (s *AlbumFile) SetFileId(v string) *AlbumFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *AlbumFile) SetHidden(v bool) *AlbumFile {
+	s.Hidden = &v
+	return s
+}
+
+func (s *AlbumFile) SetImageMediaMetadata(v *ImageMediaMetadata) *AlbumFile {
+	s.ImageMediaMetadata = v
+	return s
+}
+
+func (s *AlbumFile) SetInvestigationInfo(v *InvestigationInfo) *AlbumFile {
+	s.InvestigationInfo = v
+	return s
+}
+
+func (s *AlbumFile) SetJoinedAt(v int64) *AlbumFile {
+	s.JoinedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetLabels(v []*string) *AlbumFile {
+	s.Labels = v
+	return s
+}
+
+func (s *AlbumFile) SetLocalCreatedAt(v string) *AlbumFile {
+	s.LocalCreatedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetLocalModifiedAt(v string) *AlbumFile {
+	s.LocalModifiedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetMimeType(v string) *AlbumFile {
+	s.MimeType = &v
+	return s
+}
+
+func (s *AlbumFile) SetName(v string) *AlbumFile {
+	s.Name = &v
+	return s
+}
+
+func (s *AlbumFile) SetObjectUri(v string) *AlbumFile {
+	s.ObjectUri = &v
+	return s
+}
+
+func (s *AlbumFile) SetParentFileId(v string) *AlbumFile {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *AlbumFile) SetRevisionId(v string) *AlbumFile {
+	s.RevisionId = &v
+	return s
+}
+
+func (s *AlbumFile) SetSize(v int64) *AlbumFile {
+	s.Size = &v
+	return s
+}
+
+func (s *AlbumFile) SetStarred(v bool) *AlbumFile {
+	s.Starred = &v
+	return s
+}
+
+func (s *AlbumFile) SetStatus(v string) *AlbumFile {
+	s.Status = &v
+	return s
+}
+
+func (s *AlbumFile) SetThumbnail(v string) *AlbumFile {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *AlbumFile) SetThumbnailUrls(v map[string]*string) *AlbumFile {
+	s.ThumbnailUrls = v
+	return s
+}
+
+func (s *AlbumFile) SetTranshedAt(v string) *AlbumFile {
+	s.TranshedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetType(v string) *AlbumFile {
+	s.Type = &v
+	return s
+}
+
+func (s *AlbumFile) SetUpdatedAt(v string) *AlbumFile {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *AlbumFile) SetUploadId(v string) *AlbumFile {
+	s.UploadId = &v
+	return s
+}
+
+func (s *AlbumFile) SetUserMeta(v string) *AlbumFile {
+	s.UserMeta = &v
 	return s
 }
 
@@ -901,6 +1217,41 @@ func (s *AuthenticationInfo) SetIdentity(v string) *AuthenticationInfo {
 	return s
 }
 
+type BaseAlbumFileOperationResult struct {
+	ErrorCode    *string         `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	ErrorMessage *string         `json:"error_message,omitempty" xml:"error_message,omitempty"`
+	File         *CommonFileItem `json:"file,omitempty" xml:"file,omitempty"`
+	IsSucceed    *bool           `json:"is_succeed,omitempty" xml:"is_succeed,omitempty"`
+}
+
+func (s BaseAlbumFileOperationResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseAlbumFileOperationResult) GoString() string {
+	return s.String()
+}
+
+func (s *BaseAlbumFileOperationResult) SetErrorCode(v string) *BaseAlbumFileOperationResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *BaseAlbumFileOperationResult) SetErrorMessage(v string) *BaseAlbumFileOperationResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BaseAlbumFileOperationResult) SetFile(v *CommonFileItem) *BaseAlbumFileOperationResult {
+	s.File = v
+	return s
+}
+
+func (s *BaseAlbumFileOperationResult) SetIsSucceed(v bool) *BaseAlbumFileOperationResult {
+	s.IsSucceed = &v
+	return s
+}
+
 type BaseAssignmentResponse struct {
 	AssociatedRoleTagId *string   `json:"associated_role_tag_id,omitempty" xml:"associated_role_tag_id,omitempty"`
 	CreatedAt           *string   `json:"created_at,omitempty" xml:"created_at,omitempty"`
@@ -1068,29 +1419,65 @@ func (s *BaseDomainResponse) SetUsedSize(v int64) *BaseDomainResponse {
 }
 
 type BaseDriveResponse struct {
-	ActionList        []*string                `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
-	Category          *string                  `json:"category,omitempty" xml:"category,omitempty"`
-	CreatedAt         *string                  `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator           *string                  `json:"creator,omitempty" xml:"creator,omitempty"`
-	DeltaEnabled      *bool                    `json:"delta_enabled,omitempty" xml:"delta_enabled,omitempty"`
-	Description       *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId          *string                  `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DriveId           *string                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	DriveName         *string                  `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
-	DriveType         *string                  `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
-	EncryptDataAccess *bool                    `json:"encrypt_data_access,omitempty" xml:"encrypt_data_access,omitempty"`
-	EncryptMode       *string                  `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	IsHandover        *bool                    `json:"is_handover,omitempty" xml:"is_handover,omitempty"`
-	Owner             *string                  `json:"owner,omitempty" xml:"owner,omitempty"`
-	OwnerType         *string                  `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
-	PathStatus        *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
-	Permission        map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
-	RelativePath      *string                  `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
-	Status            *string                  `json:"status,omitempty" xml:"status,omitempty"`
-	StoreId           *string                  `json:"store_id,omitempty" xml:"store_id,omitempty"`
-	TotalSize         *int64                   `json:"total_size,omitempty" xml:"total_size,omitempty"`
-	UpdatedAt         *string                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UsedSize          *int64                   `json:"used_size,omitempty" xml:"used_size,omitempty"`
+	ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	Category   *string   `json:"category,omitempty" xml:"category,omitempty"`
+	CreatedAt  *string   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// example:
+	//
+	// ccp
+	Creator      *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	DeltaEnabled *bool   `json:"delta_enabled,omitempty" xml:"delta_enabled,omitempty"`
+	// example:
+	//
+	// ccp team drive
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// hz999
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	// example:
+	//
+	// 123
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// ccpdrive
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
+	// example:
+	//
+	// normal
+	DriveType         *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
+	EncryptDataAccess *bool   `json:"encrypt_data_access,omitempty" xml:"encrypt_data_access,omitempty"`
+	EncryptMode       *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	IsHandover        *bool   `json:"is_handover,omitempty" xml:"is_handover,omitempty"`
+	// example:
+	//
+	// ccp
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// user
+	OwnerType    *string                  `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	PathStatus   *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
+	Permission   map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
+	RelativePath *string                  `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
+	// example:
+	//
+	// enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 123
+	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+	// example:
+	//
+	// 102400
+	TotalSize *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// example:
+	//
+	// 1024
+	UsedSize *int64 `json:"used_size,omitempty" xml:"used_size,omitempty"`
 }
 
 func (s BaseDriveResponse) String() string {
@@ -1217,15 +1604,36 @@ func (s *BaseDriveResponse) SetUsedSize(v int64) *BaseDriveResponse {
 }
 
 type BaseGroupResponse struct {
-	CreatedAt   *int64                   `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator     *string                  `json:"creator,omitempty" xml:"creator,omitempty"`
-	Description *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId    *string                  `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	GroupId     *string                  `json:"group_id,omitempty" xml:"group_id,omitempty"`
-	GroupName   *string                  `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	IsSync      *bool                    `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
-	Permission  map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
-	UpdatedAt   *string                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// example:
+	//
+	// 111111
+	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// example:
+	//
+	// system
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// desc-111
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// bj123
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	// example:
+	//
+	// b38b5681bd964950ad8bc0f8ea504793
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	// example:
+	//
+	// name-111
+	GroupName  *string                  `json:"group_name,omitempty" xml:"group_name,omitempty"`
+	IsSync     *bool                    `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
+	Permission map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
+	// example:
+	//
+	// 111111
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
 }
 
 func (s BaseGroupResponse) String() string {
@@ -1569,30 +1977,75 @@ func (s *BaseUserPunishRuleResponseResults) SetUserId(v string) *BaseUserPunishR
 }
 
 type BaseUserResponse struct {
-	Avatar                      *string                  `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	CreatedAt                   *string                  `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator                     *string                  `json:"creator,omitempty" xml:"creator,omitempty"`
-	DefaultDriveId              *string                  `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
-	DefaultLocation             *string                  `json:"default_location,omitempty" xml:"default_location,omitempty"`
-	DenyChangePasswordBySelf    *bool                    `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
-	Description                 *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId                    *string                  `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	Email                       *string                  `json:"email,omitempty" xml:"email,omitempty"`
-	ExpiredAt                   *int64                   `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
-	IsSync                      *bool                    `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
-	LastLoginTime               *int64                   `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
-	NeedChangePasswordNextLogin *bool                    `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
-	NickName                    *string                  `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
-	PathStatus                  *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
-	Permission                  map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
-	Phone                       *string                  `json:"phone,omitempty" xml:"phone,omitempty"`
-	PhoneRegion                 *string                  `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-	Role                        *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Status                      *string                  `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt                   *string                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UserData                    map[string]interface{}   `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	UserId                      *string                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                    *string                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// example:
+	//
+	// http://a.b.c/ccp.jpg
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// example:
+	//
+	// 1567407718386
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// example:
+	//
+	// system
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// 123
+	DefaultDriveId           *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+	DefaultLocation          *string `json:"default_location,omitempty" xml:"default_location,omitempty"`
+	DenyChangePasswordBySelf *bool   `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
+	// example:
+	//
+	// ccp team user
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// hz999
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	// example:
+	//
+	// 123@ccp.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 0
+	ExpiredAt                   *int64 `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
+	IsSync                      *bool  `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
+	LastLoginTime               *int64 `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	NeedChangePasswordNextLogin *bool  `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
+	// example:
+	//
+	// abc
+	NickName   *string                  `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
+	PathStatus *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
+	Permission map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
+	// example:
+	//
+	// 13700000000
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1567407718386
+	UpdatedAt *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserData  map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// example:
+	//
+	// ccpuserid
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// name
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s BaseUserResponse) String() string {
@@ -1788,9 +2241,18 @@ func (s *BenefitPkgDeliveryInfo) SetIsPermanent(v bool) *BenefitPkgDeliveryInfo 
 }
 
 type CNameStatus struct {
+	// example:
+	//
+	// BINDING/BOUND
 	BingdingState *string `json:"bingding_state,omitempty" xml:"bingding_state,omitempty"`
-	LegalState    *string `json:"legal_state,omitempty" xml:"legal_state,omitempty"`
-	Remark        *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// example:
+	//
+	// NORMAL/ABNORMAL
+	LegalState *string `json:"legal_state,omitempty" xml:"legal_state,omitempty"`
+	// example:
+	//
+	// beian
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s CNameStatus) String() string {
@@ -1817,14 +2279,20 @@ func (s *CNameStatus) SetRemark(v string) *CNameStatus {
 }
 
 type CdnFileDownloadCallbackInfo struct {
+	// example:
+	//
+	// ccp-bj1-bj-1234
 	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Expire   *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
 	FileId   *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
-	Token    *string `json:"token,omitempty" xml:"token,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// md5.Sum([]byte(fmt.Sprintf("%v%v%v%v%v%v...%v", 		req.Object, req.Range, req.DomainID, req.DriveID, req.UserID, req.FileID, req.Expire)))
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CdnFileDownloadCallbackInfo) String() string {
@@ -1876,8 +2344,17 @@ func (s *CdnFileDownloadCallbackInfo) SetUserId(v string) *CdnFileDownloadCallba
 }
 
 type CertInfo struct {
-	CertBody       *string `json:"cert_body,omitempty" xml:"cert_body,omitempty"`
-	CertName       *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	// example:
+	//
+	// xxx
+	CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty"`
+	// example:
+	//
+	// xxx
+	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	// example:
+	//
+	// xxx
 	CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty"`
 }
 
@@ -1936,6 +2413,35 @@ func (s *ClearRecycleBinItem) SetDriveId(v string) *ClearRecycleBinItem {
 
 func (s *ClearRecycleBinItem) SetTaskId(v string) *ClearRecycleBinItem {
 	s.TaskId = &v
+	return s
+}
+
+type CommonFileItem struct {
+	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s CommonFileItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommonFileItem) GoString() string {
+	return s.String()
+}
+
+func (s *CommonFileItem) SetDriveId(v string) *CommonFileItem {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CommonFileItem) SetFileId(v string) *CommonFileItem {
+	s.FileId = &v
+	return s
+}
+
+func (s *CommonFileItem) SetRevisionId(v string) *CommonFileItem {
+	s.RevisionId = &v
 	return s
 }
 
@@ -2585,8 +3091,12 @@ func (s *CustomSideLinkConfig) SetText(v string) *CustomSideLinkConfig {
 }
 
 type DataCName struct {
-	DataCname *string `json:"data_cname,omitempty" xml:"data_cname,omitempty"`
-	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
+	CertExpireTime *int64  `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
+	CertName       *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
+	Cname          *string `json:"cname,omitempty" xml:"cname,omitempty"`
+	CnameType      *string `json:"cname_type,omitempty" xml:"cname_type,omitempty"`
+	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
+	StoreId        *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
 }
 
 func (s DataCName) String() string {
@@ -2597,8 +3107,23 @@ func (s DataCName) GoString() string {
 	return s.String()
 }
 
-func (s *DataCName) SetDataCname(v string) *DataCName {
-	s.DataCname = &v
+func (s *DataCName) SetCertExpireTime(v int64) *DataCName {
+	s.CertExpireTime = &v
+	return s
+}
+
+func (s *DataCName) SetCertName(v string) *DataCName {
+	s.CertName = &v
+	return s
+}
+
+func (s *DataCName) SetCname(v string) *DataCName {
+	s.Cname = &v
+	return s
+}
+
+func (s *DataCName) SetCnameType(v string) *DataCName {
+	s.CnameType = &v
 	return s
 }
 
@@ -2607,8 +3132,14 @@ func (s *DataCName) SetLocation(v string) *DataCName {
 	return s
 }
 
+func (s *DataCName) SetStoreId(v string) *DataCName {
+	s.StoreId = &v
+	return s
+}
+
 type Domain struct {
 	CreatedAt                  *string            `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	DataHashName               *string            `json:"data_hash_name,omitempty" xml:"data_hash_name,omitempty"`
 	Description                *string            `json:"description,omitempty" xml:"description,omitempty"`
 	DomainId                   *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DomainName                 *string            `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
@@ -2635,6 +3166,11 @@ func (s Domain) GoString() string {
 
 func (s *Domain) SetCreatedAt(v string) *Domain {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *Domain) SetDataHashName(v string) *Domain {
+	s.DataHashName = &v
 	return s
 }
 
@@ -2770,6 +3306,17 @@ func (s *DomainBuildClientConfig) SetCopyright(v string) *DomainBuildClientConfi
 func (s *DomainBuildClientConfig) SetName(v string) *DomainBuildClientConfig {
 	s.Name = &v
 	return s
+}
+
+type DomainEndpoints struct {
+}
+
+func (s DomainEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainEndpoints) GoString() string {
+	return s.String()
 }
 
 type DomainSeniorConfig struct {
@@ -3068,17 +3615,44 @@ func (s *ExternalMultiFileRevisionConfig) SetRevisionRecyclePeriod(v int64) *Ext
 }
 
 type FaceGroup struct {
+	// example:
+	//
+	// 2022-01-14T10:10:52.83948013+08:00
 	CreatedAt              *string                          `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	GroupCoverFaceBoundary *FaceGroupGroupCoverFaceBoundary `json:"group_cover_face_boundary,omitempty" xml:"group_cover_face_boundary,omitempty" type:"Struct"`
-	GroupCoverFileId       *string                          `json:"group_cover_file_id,omitempty" xml:"group_cover_file_id,omitempty"`
-	GroupCoverHeight       *int64                           `json:"group_cover_height,omitempty" xml:"group_cover_height,omitempty"`
-	GroupCoverUrl          *string                          `json:"group_cover_url,omitempty" xml:"group_cover_url,omitempty"`
-	GroupCoverWidth        *int64                           `json:"group_cover_width,omitempty" xml:"group_cover_width,omitempty"`
-	GroupId                *string                          `json:"group_id,omitempty" xml:"group_id,omitempty"`
-	GroupName              *string                          `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	ImageCount             *int64                           `json:"image_count,omitempty" xml:"image_count,omitempty"`
-	Remarks                *string                          `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	UpdatedAt              *string                          `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// example:
+	//
+	// 6549c959640fbd517c9b4d93b3b36aecc45xxxxx
+	GroupCoverFileId *string `json:"group_cover_file_id,omitempty" xml:"group_cover_file_id,omitempty"`
+	// example:
+	//
+	// 1080
+	GroupCoverHeight *int64 `json:"group_cover_height,omitempty" xml:"group_cover_height,omitempty"`
+	// example:
+	//
+	// https://xxx
+	GroupCoverUrl *string `json:"group_cover_url,omitempty" xml:"group_cover_url,omitempty"`
+	// example:
+	//
+	// 1920
+	GroupCoverWidth *int64 `json:"group_cover_width,omitempty" xml:"group_cover_width,omitempty"`
+	// example:
+	//
+	// Cluster-ae6e3472-999e-410b-b54e-cd5dba****
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	// example:
+	//
+	// name
+	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+	// example:
+	//
+	// 10
+	ImageCount *int64  `json:"image_count,omitempty" xml:"image_count,omitempty"`
+	Remarks    *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	// example:
+	//
+	// 2022-01-14T10:10:52.83948013+08:00
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
 }
 
 func (s FaceGroup) String() string {
@@ -3145,10 +3719,22 @@ func (s *FaceGroup) SetUpdatedAt(v string) *FaceGroup {
 }
 
 type FaceGroupGroupCoverFaceBoundary struct {
+	// example:
+	//
+	// 300
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	Left *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	// example:
+	//
+	// 30
+	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	// example:
+	//
+	// 200
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s FaceGroupGroupCoverFaceBoundary) String() string {
@@ -3180,9 +3766,19 @@ func (s *FaceGroupGroupCoverFaceBoundary) SetWidth(v int32) *FaceGroupGroupCover
 }
 
 type FaceThumbnail struct {
+	// example:
+	//
+	// Cluster-e3b7fb52-22b3-44f2-9746-8c1804bd6af0
 	FaceGroupId *string `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
-	FaceId      *string `json:"face_id,omitempty" xml:"face_id,omitempty"`
+	// example:
+	//
+	// a9a66a86-73dd-4c95-8b79-1d8a49db5226
+	FaceId *string `json:"face_id,omitempty" xml:"face_id,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// https://pds-domain.region.aliyuncs.com/QieGeH98%2F1001%2F63e5e551ee621482ab934a0687c6cda75fc07864%2F642a8a40c00f1ad379df421694713ee65170f09b?security-token=CAIS%2BgF1q6Ft5B2yfSjIr5bjHPCNnrdR8aSaSW7woVlmVd1Bt5HorDz2IHpPfHdoBe0btvU%2BlWxX6fwZlq5rR4QAXlDfNSyFeX20qFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41En1DIlt%2FXuk5DCtkqB12eXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLsUMSqv8q0fEcqGaW4o7CWQJLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABPMvZ8rSESUEP96Vbf%2Bk0JRg9Qb1MnaIJqWAgo8K6K0UP1CtqL2zrUtugpKKDHOYiKbq2O0S5yLUPVX5vBHqEi%2FFc7i6ZnHCMcXLJs4rKDKwRBEhovUXXlklq2q43OSVtLrXkBy9Xs1ers%2FhJhcxpNA0Vl3EWfJxa2BTylEdnLOQ%3D&x-oss-access-key-id=STS.NUVWJ9shpFfqKHAEY3YRmXTCN&x-oss-expires=1686455451&x-oss-process=image%2Fcrop%2Cx_1128%2Cy_1211%2Cw_914%2Ch_914%2Fformat%2Cjpg&x-oss-signature=jmhOz91Tww1ciMEwadDiioU7d93FDiBNr8s8mHyMqW0%3D&x-oss-signature-version=OSS2
 	FaceThumbnail *string `json:"face_thumbnail,omitempty" xml:"face_thumbnail,omitempty"`
 }
 
@@ -3210,37 +3806,37 @@ func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
 }
 
 type File struct {
-	Category           *string                `json:"category,omitempty" xml:"category,omitempty"`
-	ContentHash        *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	ContentHashName    *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	ContentType        *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	Crc64Hash          *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	CreatedAt          *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description        *string                `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId           *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DownloadUrl        *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	DriveId            *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileExtension      *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
-	FileId             *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Hidden             *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	InvestigationInfo  *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
-	Labels             []*string              `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	LocalCreatedAt     *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	LocalModifiedAt    *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	Name               *string                `json:"name,omitempty" xml:"name,omitempty"`
-	ParentFileId       *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	RevisionId         *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	Size               *int64                 `json:"size,omitempty" xml:"size,omitempty"`
-	Starred            *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
-	Status             *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Thumbnail          *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	ThumbnailUrls      map[string]*string     `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
-	TrashedAt          *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
-	Type               *string                `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt          *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UploadId           *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-	UserTags           map[string]*string     `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
-	VideoMediaMetadata *VideoMediaMetadata    `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
+	Category           *string             `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash        *string             `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName    *string             `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType        *string             `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash          *string             `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt          *string             `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description        *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId           *string             `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl        *string             `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId            *string             `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileExtension      *string             `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId             *string             `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden             *bool               `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+	Labels             []*string           `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	LocalCreatedAt     *string             `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt    *string             `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name               *string             `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId       *string             `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId         *string             `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size               *int64              `json:"size,omitempty" xml:"size,omitempty"`
+	Starred            *bool               `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status             *string             `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail          *string             `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	ThumbnailUrls      map[string]*string  `json:"thumbnail_urls,omitempty" xml:"thumbnail_urls,omitempty"`
+	TrashedAt          *string             `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type               *string             `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt          *string             `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId           *string             `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	UserTags           map[string]*string  `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
+	VideoMediaMetadata *VideoMediaMetadata `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
 }
 
 func (s File) String() string {
@@ -3316,8 +3912,8 @@ func (s *File) SetHidden(v bool) *File {
 	return s
 }
 
-func (s *File) SetInvestigationInfo(v *FileInvestigationInfo) *File {
-	s.InvestigationInfo = v
+func (s *File) SetImageMediaMetadata(v *ImageMediaMetadata) *File {
+	s.ImageMediaMetadata = v
 	return s
 }
 
@@ -3406,30 +4002,10 @@ func (s *File) SetVideoMediaMetadata(v *VideoMediaMetadata) *File {
 	return s
 }
 
-type FileInvestigationInfo struct {
-	Status     *int64  `json:"status,omitempty" xml:"status,omitempty"`
-	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
-}
-
-func (s FileInvestigationInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FileInvestigationInfo) GoString() string {
-	return s.String()
-}
-
-func (s *FileInvestigationInfo) SetStatus(v int64) *FileInvestigationInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *FileInvestigationInfo) SetSuggestion(v string) *FileInvestigationInfo {
-	s.Suggestion = &v
-	return s
-}
-
 type FileDownloadCallbackInfo struct {
+	// example:
+	//
+	// ccp-bj1-bj-1234
 	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
@@ -3835,7 +4411,10 @@ func (s *IDPermission) SetRoles(v []*string) *IDPermission {
 }
 
 type Identity struct {
-	IdentityId   *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	// example:
+	//
+	// IT_User
 	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
 }
 
@@ -3958,20 +4537,53 @@ func (s *IdentityToBenefitPkgMapping) SetUpdatedAt(v string) *IdentityToBenefitP
 }
 
 type ImageMediaMetadata struct {
-	AddressLine    *string          `json:"address_line,omitempty" xml:"address_line,omitempty"`
-	City           *string          `json:"city,omitempty" xml:"city,omitempty"`
-	Country        *string          `json:"country,omitempty" xml:"country,omitempty"`
-	District       *string          `json:"district,omitempty" xml:"district,omitempty"`
+	// example:
+	//
+	// 浙江省杭州市滨江区西兴街道江陵路
+	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
+	// example:
+	//
+	// 杭州市
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
+	// example:
+	//
+	// 中国
+	Country *string `json:"country,omitempty" xml:"country,omitempty"`
+	// example:
+	//
+	// 滨江区
+	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	// example:
+	//
+	// {"Compression":{"value":"6"},"DateTime":{"value":"2020:08:19 17:11:11"}}
 	Exif           *string          `json:"exif,omitempty" xml:"exif,omitempty"`
 	FacesThumbnail []*FaceThumbnail `json:"faces_thumbnail,omitempty" xml:"faces_thumbnail,omitempty" type:"Repeated"`
-	Height         *int64           `json:"height,omitempty" xml:"height,omitempty"`
-	ImageQuality   *ImageQuality    `json:"image_quality,omitempty" xml:"image_quality,omitempty"`
-	ImageTags      []*SystemTag     `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
-	Location       *string          `json:"location,omitempty" xml:"location,omitempty"`
-	Province       *string          `json:"province,omitempty" xml:"province,omitempty"`
-	Time           *string          `json:"time,omitempty" xml:"time,omitempty"`
-	Township       *string          `json:"township,omitempty" xml:"township,omitempty"`
-	Width          *int64           `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1080
+	Height       *int64        `json:"height,omitempty" xml:"height,omitempty"`
+	ImageQuality *ImageQuality `json:"image_quality,omitempty" xml:"image_quality,omitempty"`
+	ImageTags    []*SystemTag  `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30.185453,120.218522
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// 浙江省
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05.000Z07:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// 西兴街道
+	Township *string `json:"township,omitempty" xml:"township,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s ImageMediaMetadata) String() string {
@@ -4082,6 +4694,9 @@ func (s *ImageProcess) SetVideoThumbnailProcess(v string) *ImageProcess {
 }
 
 type ImageQuality struct {
+	// example:
+	//
+	// 0.736
 	OverallScore *float64 `json:"overall_score,omitempty" xml:"overall_score,omitempty"`
 }
 
@@ -4099,13 +4714,34 @@ func (s *ImageQuality) SetOverallScore(v float64) *ImageQuality {
 }
 
 type ImageTag struct {
-	Count              *int64   `json:"count,omitempty" xml:"count,omitempty"`
-	CoverFileCategory  *string  `json:"cover_file_category,omitempty" xml:"cover_file_category,omitempty"`
-	CoverFileId        *string  `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
-	CoverOverallScore  *float32 `json:"cover_overall_score,omitempty" xml:"cover_overall_score,omitempty"`
+	// example:
+	//
+	// 10
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// image
+	CoverFileCategory *string `json:"cover_file_category,omitempty" xml:"cover_file_category,omitempty"`
+	// example:
+	//
+	// 5d79206586bb5dd69fb34c349282718146c55da7
+	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	// example:
+	//
+	// 0.736
+	CoverOverallScore *float32 `json:"cover_overall_score,omitempty" xml:"cover_overall_score,omitempty"`
+	// example:
+	//
+	// 1
 	CoverTagConfidence *float32 `json:"cover_tag_confidence,omitempty" xml:"cover_tag_confidence,omitempty"`
-	CoverUrl           *string  `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
-	Name               *string  `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// https://data.aliyunpds.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+	CoverUrl *string `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
+	// example:
+	//
+	// 动物
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ImageTag) String() string {
@@ -5117,6 +5753,7 @@ type ShareLink struct {
 	PreviewLimit      *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	ReportCount       *int64    `json:"report_count,omitempty" xml:"report_count,omitempty"`
 	SaveCount         *int64    `json:"save_count,omitempty" xml:"save_count,omitempty"`
+	SaveDownloadLimit *int64    `json:"save_download_limit,omitempty" xml:"save_download_limit,omitempty"`
 	SaveLimit         *int64    `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	ShareAllFiles     *bool     `json:"share_all_files,omitempty" xml:"share_all_files,omitempty"`
 	ShareId           *string   `json:"share_id,omitempty" xml:"share_id,omitempty"`
@@ -5217,6 +5854,11 @@ func (s *ShareLink) SetReportCount(v int64) *ShareLink {
 
 func (s *ShareLink) SetSaveCount(v int64) *ShareLink {
 	s.SaveCount = &v
+	return s
+}
+
+func (s *ShareLink) SetSaveDownloadLimit(v int64) *ShareLink {
+	s.SaveDownloadLimit = &v
 	return s
 }
 
@@ -5531,11 +6173,23 @@ func (s *Story) SetUpdatedAt(v string) *Story {
 }
 
 type StreamUploadInfo struct {
-	Location       *string           `json:"location,omitempty" xml:"location,omitempty"`
-	PartInfoList   []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	PreRapidUpload *bool             `json:"pre_rapid_upload,omitempty" xml:"pre_rapid_upload,omitempty"`
-	RapidUpload    *bool             `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
-	UploadId       *string           `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Location     *string           `json:"location,omitempty" xml:"location,omitempty"`
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	PreRapidUpload *bool `json:"pre_rapid_upload,omitempty" xml:"pre_rapid_upload,omitempty"`
+	// example:
+	//
+	// false
+	RapidUpload *bool `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
+	// example:
+	//
+	// abcd
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
 func (s StreamUploadInfo) String() string {
@@ -5572,11 +6226,26 @@ func (s *StreamUploadInfo) SetUploadId(v string) *StreamUploadInfo {
 }
 
 type SystemTag struct {
+	// example:
+	//
+	// 0.877
 	CentricScore *float32 `json:"centric_score,omitempty" xml:"centric_score,omitempty"`
-	Confidence   *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
-	ParentName   *string  `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
-	TagLevel     *int32   `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
+	// example:
+	//
+	// 0.98
+	Confidence *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	// example:
+	//
+	// 篮球
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 运动
+	ParentName *string `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
+	// example:
+	//
+	// 3
+	TagLevel *int32 `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
 }
 
 func (s SystemTag) String() string {
@@ -5742,6 +6411,82 @@ func (s *Token) SetUserName(v string) *Token {
 	return s
 }
 
+type UCDataRefFileInfo struct {
+	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s UCDataRefFileInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UCDataRefFileInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UCDataRefFileInfo) SetDriveId(v string) *UCDataRefFileInfo {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UCDataRefFileInfo) SetFileId(v string) *UCDataRefFileInfo {
+	s.FileId = &v
+	return s
+}
+
+func (s *UCDataRefFileInfo) SetRevisionId(v string) *UCDataRefFileInfo {
+	s.RevisionId = &v
+	return s
+}
+
+type UCObjectInfo struct {
+	Bucket    *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Md5       *string `json:"md5,omitempty" xml:"md5,omitempty"`
+	ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+	Region    *string `json:"region,omitempty" xml:"region,omitempty"`
+	Sha1      *string `json:"sha1,omitempty" xml:"sha1,omitempty"`
+	Size      *int64  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s UCObjectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UCObjectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UCObjectInfo) SetBucket(v string) *UCObjectInfo {
+	s.Bucket = &v
+	return s
+}
+
+func (s *UCObjectInfo) SetMd5(v string) *UCObjectInfo {
+	s.Md5 = &v
+	return s
+}
+
+func (s *UCObjectInfo) SetObjectKey(v string) *UCObjectInfo {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *UCObjectInfo) SetRegion(v string) *UCObjectInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *UCObjectInfo) SetSha1(v string) *UCObjectInfo {
+	s.Sha1 = &v
+	return s
+}
+
+func (s *UCObjectInfo) SetSize(v int64) *UCObjectInfo {
+	s.Size = &v
+	return s
+}
+
 type UncompressConfig struct {
 	Enable  *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
@@ -5842,13 +6587,15 @@ func (s *UncompressedFileInfo) SetUpdatedAt(v int64) *UncompressedFileInfo {
 }
 
 type UploadFormInfo struct {
-	BucketName       *string `json:"bucket_name,omitempty" xml:"bucket_name,omitempty"`
-	ObjectKey        *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
-	OssAccessKeyId   *string `json:"oss_access_key_id,omitempty" xml:"oss_access_key_id,omitempty"`
-	OssEndPoint      *string `json:"oss_end_point,omitempty" xml:"oss_end_point,omitempty"`
-	OssSecurityToken *string `json:"oss_security_token,omitempty" xml:"oss_security_token,omitempty"`
-	Policy           *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	Signature        *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	BucketName       *string            `json:"bucket_name,omitempty" xml:"bucket_name,omitempty"`
+	Endpoint         *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	FormData         map[string]*string `json:"form_data,omitempty" xml:"form_data,omitempty"`
+	ObjectKey        *string            `json:"object_key,omitempty" xml:"object_key,omitempty"`
+	OssAccessKeyId   *string            `json:"oss_access_key_id,omitempty" xml:"oss_access_key_id,omitempty"`
+	OssEndPoint      *string            `json:"oss_end_point,omitempty" xml:"oss_end_point,omitempty"`
+	OssSecurityToken *string            `json:"oss_security_token,omitempty" xml:"oss_security_token,omitempty"`
+	Policy           *string            `json:"policy,omitempty" xml:"policy,omitempty"`
+	Signature        *string            `json:"signature,omitempty" xml:"signature,omitempty"`
 }
 
 func (s UploadFormInfo) String() string {
@@ -5861,6 +6608,16 @@ func (s UploadFormInfo) GoString() string {
 
 func (s *UploadFormInfo) SetBucketName(v string) *UploadFormInfo {
 	s.BucketName = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetEndpoint(v string) *UploadFormInfo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UploadFormInfo) SetFormData(v map[string]*string) *UploadFormInfo {
+	s.FormData = v
 	return s
 }
 
@@ -5895,13 +6652,22 @@ func (s *UploadFormInfo) SetSignature(v string) *UploadFormInfo {
 }
 
 type UploadPartInfo struct {
+	// example:
+	//
+	// 0CC175B9C0F1B6A831C399E269772661
 	Etag              *string                          `json:"etag,omitempty" xml:"etag,omitempty"`
 	InternalUploadUrl *string                          `json:"internal_upload_url,omitempty" xml:"internal_upload_url,omitempty"`
 	ParallelSha1Ctx   *UploadPartInfoParallelSha1Ctx   `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
 	ParallelSha256Ctx *UploadPartInfoParallelSha256Ctx `json:"parallel_sha256_ctx,omitempty" xml:"parallel_sha256_ctx,omitempty" type:"Struct"`
-	PartNumber        *int32                           `json:"part_number,omitempty" xml:"part_number,omitempty"`
-	PartSize          *int64                           `json:"part_size,omitempty" xml:"part_size,omitempty"`
-	UploadUrl         *string                          `json:"upload_url,omitempty" xml:"upload_url,omitempty"`
+	// example:
+	//
+	// 1
+	PartNumber *int32 `json:"part_number,omitempty" xml:"part_number,omitempty"`
+	// example:
+	//
+	// 1024
+	PartSize  *int64  `json:"part_size,omitempty" xml:"part_size,omitempty"`
+	UploadUrl *string `json:"upload_url,omitempty" xml:"upload_url,omitempty"`
 }
 
 func (s UploadPartInfo) String() string {
@@ -6095,33 +6861,78 @@ func (s *User) SetUserName(v string) *User {
 }
 
 type UserExtraItem struct {
-	Account                     []*AccountLinkInfo       `json:"account,omitempty" xml:"account,omitempty" type:"Repeated"`
-	Avatar                      *string                  `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	CreatedAt                   *string                  `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator                     *string                  `json:"creator,omitempty" xml:"creator,omitempty"`
-	DefaultDrive                *BaseDriveResponse       `json:"default_drive,omitempty" xml:"default_drive,omitempty"`
-	DefaultDriveId              *string                  `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
-	DefaultLocation             *string                  `json:"default_location,omitempty" xml:"default_location,omitempty"`
-	DenyChangePasswordBySelf    *bool                    `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
-	Description                 *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId                    *string                  `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	Email                       *string                  `json:"email,omitempty" xml:"email,omitempty"`
-	ExpiredAt                   *int64                   `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
-	IsSync                      *bool                    `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
-	LastLoginTime               *int64                   `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
-	NeedChangePasswordNextLogin *bool                    `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
-	NickName                    *string                  `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
-	ParentGroup                 []*BaseDriveResponse     `json:"parent_group,omitempty" xml:"parent_group,omitempty" type:"Repeated"`
-	PathStatus                  *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
-	Permission                  map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
-	Phone                       *string                  `json:"phone,omitempty" xml:"phone,omitempty"`
-	PhoneRegion                 *string                  `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-	Role                        *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Status                      *string                  `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt                   *string                  `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UserData                    map[string]interface{}   `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	UserId                      *string                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                    *string                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	Account []*AccountLinkInfo `json:"account,omitempty" xml:"account,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://a.b.c/ccp.jpg
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// example:
+	//
+	// 1567407718386
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// example:
+	//
+	// system
+	Creator      *string            `json:"creator,omitempty" xml:"creator,omitempty"`
+	DefaultDrive *BaseDriveResponse `json:"default_drive,omitempty" xml:"default_drive,omitempty"`
+	// example:
+	//
+	// 123
+	DefaultDriveId           *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+	DefaultLocation          *string `json:"default_location,omitempty" xml:"default_location,omitempty"`
+	DenyChangePasswordBySelf *bool   `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
+	// example:
+	//
+	// ccp team user
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// hz999
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	// example:
+	//
+	// 123@ccp.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 0
+	ExpiredAt                   *int64 `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
+	IsSync                      *bool  `json:"is_sync,omitempty" xml:"is_sync,omitempty"`
+	LastLoginTime               *int64 `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	NeedChangePasswordNextLogin *bool  `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
+	// example:
+	//
+	// abc
+	NickName    *string                  `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
+	ParentGroup []*BaseDriveResponse     `json:"parent_group,omitempty" xml:"parent_group,omitempty" type:"Repeated"`
+	PathStatus  *string                  `json:"path_status,omitempty" xml:"path_status,omitempty"`
+	Permission  map[string]*IDPermission `json:"permission,omitempty" xml:"permission,omitempty"`
+	// example:
+	//
+	// 13700000000
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1567407718386
+	UpdatedAt *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UserData  map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	// example:
+	//
+	// ccpuserid
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// name
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s UserExtraItem) String() string {
@@ -6379,8 +7190,17 @@ func (s *UserTag) SetKey(v string) *UserTag {
 }
 
 type VideoMediaAudioStream struct {
-	BitRate  *string `json:"bit_rate,omitempty" xml:"bit_rate,omitempty"`
+	// example:
+	//
+	// 129280
+	BitRate *string `json:"bit_rate,omitempty" xml:"bit_rate,omitempty"`
+	// example:
+	//
+	// aac
 	CodeName *string `json:"code_name,omitempty" xml:"code_name,omitempty"`
+	// example:
+	//
+	// 7704.573000
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
 }
 
@@ -6408,10 +7228,16 @@ func (s *VideoMediaAudioStream) SetDuration(v string) *VideoMediaAudioStream {
 }
 
 type VideoMediaMetadata struct {
+	// example:
+	//
+	// 1080
 	Height                *int64                   `json:"height,omitempty" xml:"height,omitempty"`
 	VideoMediaAudioStream []*VideoMediaAudioStream `json:"video_media_audio_stream,omitempty" xml:"video_media_audio_stream,omitempty" type:"Repeated"`
 	VideoMediaVideoStream []*VideoMediaVideoStream `json:"video_media_video_stream,omitempty" xml:"video_media_video_stream,omitempty" type:"Repeated"`
-	Width                 *int64                   `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s VideoMediaMetadata) String() string {
@@ -6443,9 +7269,21 @@ func (s *VideoMediaMetadata) SetWidth(v int64) *VideoMediaMetadata {
 }
 
 type VideoMediaVideoStream struct {
-	Bitrate    *string `json:"bitrate,omitempty" xml:"bitrate,omitempty"`
-	CodeName   *string `json:"code_name,omitempty" xml:"code_name,omitempty"`
-	Duration   *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 108420
+	Bitrate *string `json:"bitrate,omitempty" xml:"bitrate,omitempty"`
+	// example:
+	//
+	// h264
+	CodeName *string `json:"code_name,omitempty" xml:"code_name,omitempty"`
+	// example:
+	//
+	// 22.88
+	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	// example:
+	//
+	// 90
 	FrameCount *string `json:"frame_count,omitempty" xml:"frame_count,omitempty"`
 }
 
@@ -6478,9 +7316,13 @@ func (s *VideoMediaVideoStream) SetFrameCount(v string) *VideoMediaVideoStream {
 }
 
 type VideoPreviewPlayInfo struct {
-	Category                *string                                        `json:"category,omitempty" xml:"category,omitempty"`
-	LiveTranscodingTaskList []*VideoPreviewPlayInfoLiveTranscodingTaskList `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
-	Meta                    *VideoPreviewPlayInfoMeta                      `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	// example:
+	//
+	// live_transcoding
+	Category                    *string                                            `json:"category,omitempty" xml:"category,omitempty"`
+	LiveTranscodingTaskList     []*VideoPreviewPlayInfoLiveTranscodingTaskList     `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
+	Meta                        *VideoPreviewPlayInfoMeta                          `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+	OfflineVideoTranscodingList []*VideoPreviewPlayInfoOfflineVideoTranscodingList `json:"offline_video_transcoding_list,omitempty" xml:"offline_video_transcoding_list,omitempty" type:"Repeated"`
 }
 
 func (s VideoPreviewPlayInfo) String() string {
@@ -6503,6 +7345,11 @@ func (s *VideoPreviewPlayInfo) SetLiveTranscodingTaskList(v []*VideoPreviewPlayI
 
 func (s *VideoPreviewPlayInfo) SetMeta(v *VideoPreviewPlayInfoMeta) *VideoPreviewPlayInfo {
 	s.Meta = v
+	return s
+}
+
+func (s *VideoPreviewPlayInfo) SetOfflineVideoTranscodingList(v []*VideoPreviewPlayInfoOfflineVideoTranscodingList) *VideoPreviewPlayInfo {
+	s.OfflineVideoTranscodingList = v
 	return s
 }
 
@@ -6570,7 +7417,45 @@ func (s *VideoPreviewPlayInfoMeta) SetWidth(v int64) *VideoPreviewPlayInfoMeta {
 	return s
 }
 
+type VideoPreviewPlayInfoOfflineVideoTranscodingList struct {
+	KeepOriginalResolution *bool   `json:"keep_original_resolution,omitempty" xml:"keep_original_resolution,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
+	TemplateId             *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	Url                    *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s VideoPreviewPlayInfoOfflineVideoTranscodingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoPreviewPlayInfoOfflineVideoTranscodingList) GoString() string {
+	return s.String()
+}
+
+func (s *VideoPreviewPlayInfoOfflineVideoTranscodingList) SetKeepOriginalResolution(v bool) *VideoPreviewPlayInfoOfflineVideoTranscodingList {
+	s.KeepOriginalResolution = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfoOfflineVideoTranscodingList) SetStatus(v string) *VideoPreviewPlayInfoOfflineVideoTranscodingList {
+	s.Status = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfoOfflineVideoTranscodingList) SetTemplateId(v string) *VideoPreviewPlayInfoOfflineVideoTranscodingList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *VideoPreviewPlayInfoOfflineVideoTranscodingList) SetUrl(v string) *VideoPreviewPlayInfoOfflineVideoTranscodingList {
+	s.Url = &v
+	return s
+}
+
 type VideoPreviewPlayMeta struct {
+	// example:
+	//
+	// live_transcoding
 	Category                *string                                        `json:"category,omitempty" xml:"category,omitempty"`
 	LiveTranscodingTaskList []*VideoPreviewPlayMetaLiveTranscodingTaskList `json:"live_transcoding_task_list,omitempty" xml:"live_transcoding_task_list,omitempty" type:"Repeated"`
 	Meta                    *VideoPreviewPlayMetaMeta                      `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
@@ -6602,7 +7487,10 @@ func (s *VideoPreviewPlayMeta) SetMeta(v *VideoPreviewPlayMetaMeta) *VideoPrevie
 type VideoPreviewPlayMetaLiveTranscodingTaskList struct {
 	KeepOriginalResolution *bool   `json:"keep_original_resolution,omitempty" xml:"keep_original_resolution,omitempty"`
 	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
-	TemplateId             *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	// example:
+	//
+	// 264_720p
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
 }
 
 func (s VideoPreviewPlayMetaLiveTranscodingTaskList) String() string {
@@ -6629,9 +7517,18 @@ func (s *VideoPreviewPlayMetaLiveTranscodingTaskList) SetTemplateId(v string) *V
 }
 
 type VideoPreviewPlayMetaMeta struct {
+	// example:
+	//
+	// 10
 	Duration *float64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	Height   *int64   `json:"height,omitempty" xml:"height,omitempty"`
-	Width    *int64   `json:"width,omitempty" xml:"width,omitempty"`
+	// example:
+	//
+	// 720
+	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+	// example:
+	//
+	// 1280
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 }
 
 func (s VideoPreviewPlayMetaMeta) String() string {
@@ -7055,14 +7952,26 @@ func (s *WxTrustedDomainConfig) SetShow(v bool) *WxTrustedDomainConfig {
 
 type AddGroupMemberRequest struct {
 	// The ID of the destination group to which the member is added.
+	//
+	// example:
+	//
+	// 3e5***2c2
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The member ID. If member_type is set to user, set this parameter to a user ID.
+	//
+	// example:
+	//
+	// 2e4***1b1
 	MemberId *string `json:"member_id,omitempty" xml:"member_id,omitempty"`
 	// The type of the member. Set the value to user. When you create a group, you can directly add the group to a parent group.
 	//
-	// *
+	// 	- user
 	//
 	// Note: A group can be added to only one group. A user can be added to multiple groups.
+	//
+	// example:
+	//
+	// user
 	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
 }
 
@@ -7090,8 +7999,8 @@ func (s *AddGroupMemberRequest) SetMemberType(v string) *AddGroupMemberRequest {
 }
 
 type AddGroupMemberResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddGroupMemberResponse) String() string {
@@ -7113,9 +8022,15 @@ func (s *AddGroupMemberResponse) SetStatusCode(v int32) *AddGroupMemberResponse 
 }
 
 type AddStoryFilesRequest struct {
+	// example:
+	//
+	// 1
 	DriveId *string                      `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Files   []*AddStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	StoryId *string                      `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
 func (s AddStoryFilesRequest) String() string {
@@ -7142,7 +8057,13 @@ func (s *AddStoryFilesRequest) SetStoryId(v string) *AddStoryFilesRequest {
 }
 
 type AddStoryFilesRequestFiles struct {
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88dd06e49d9c0a14411ebae606f70edd9a59
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -7165,7 +8086,13 @@ func (s *AddStoryFilesRequestFiles) SetRevisionId(v string) *AddStoryFilesReques
 }
 
 type AddStoryFilesResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
@@ -7188,9 +8115,9 @@ func (s *AddStoryFilesResponseBody) SetStoryId(v string) *AddStoryFilesResponseB
 }
 
 type AddStoryFilesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddStoryFilesResponse) String() string {
@@ -7220,10 +8147,22 @@ type AssignRoleRequest struct {
 	// The unique identifier of a user. The group administrator role can only be assigned to a user.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The ID of the resource that the role can manage. You can only set this parameter to the ID of a group.
+	//
+	// example:
+	//
+	// 105***b82
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the resource that the role can manage. Valid value: RT_Group.
+	//
+	// example:
+	//
+	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The ID of the role that is assigned to a user. Valid value: SystemGroupAdmin.
+	//
+	// example:
+	//
+	// SystemGroupAdmin
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 
@@ -7256,8 +8195,8 @@ func (s *AssignRoleRequest) SetRoleId(v string) *AssignRoleRequest {
 }
 
 type AssignRoleResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AssignRoleResponse) String() string {
@@ -7280,25 +8219,54 @@ func (s *AssignRoleResponse) SetStatusCode(v int32) *AssignRoleResponse {
 
 type AuthorizeRequest struct {
 	// The application ID returned when the application was created.
+	//
+	// example:
+	//
+	// 47eUHhrzgWBvlLWj
 	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	// Specifies whether to hide the consent page.
+	//
+	// example:
+	//
+	// true
 	HideConsent *bool `json:"hide_consent,omitempty" xml:"hide_consent,omitempty"`
 	// The authentication method. Valid values:
 	//
-	// *   default: all logon methods that are integrated on the default logon page provided by Drive and Photo Service.
-	// *   ding: logs on by scanning a DingTalk QR code.
-	// *   ding_sns: logs on by entering a DingTalk account and its password.
-	// *   ram: logs on as an Alibaba Cloud Resource Access Management (RAM) user.
-	// *   wechat: logs on by scanning a WeCom QR code.
-	// *   wechat_app: logs on without authentication in WeCom.
+	// 	- default: all logon methods that are integrated on the default logon page provided by Drive and Photo Service.
+	//
+	// 	- ding: logs on by scanning a DingTalk QR code.
+	//
+	// 	- ding_sns: logs on by entering a DingTalk account and its password.
+	//
+	// 	- ram: logs on as an Alibaba Cloud Resource Access Management (RAM) user.
+	//
+	// 	- wechat: logs on by scanning a WeCom QR code.
+	//
+	// 	- wechat_app: logs on without authentication in WeCom.
+	//
+	// example:
+	//
+	// default
 	LoginType *string `json:"login_type,omitempty" xml:"login_type,omitempty"`
 	// The callback URL specified when the application was created.
+	//
+	// example:
+	//
+	// https://www.aliyunpds.com/sign/callback
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	// The format in which to return the response. Set the value to code.
+	//
+	// example:
+	//
+	// code
 	ResponseType *string `json:"response_type,omitempty" xml:"response_type,omitempty"`
 	// The requested permissions. By default, all permissions are requested.
 	Scope []*string `json:"scope,omitempty" xml:"scope,omitempty" type:"Repeated"`
 	// The user-defined parameter to return in the callback URL after the requested permissions are granted.
+	//
+	// example:
+	//
+	// customdata
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
@@ -7347,25 +8315,54 @@ func (s *AuthorizeRequest) SetState(v string) *AuthorizeRequest {
 
 type AuthorizeShrinkRequest struct {
 	// The application ID returned when the application was created.
+	//
+	// example:
+	//
+	// 47eUHhrzgWBvlLWj
 	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	// Specifies whether to hide the consent page.
+	//
+	// example:
+	//
+	// true
 	HideConsent *bool `json:"hide_consent,omitempty" xml:"hide_consent,omitempty"`
 	// The authentication method. Valid values:
 	//
-	// *   default: all logon methods that are integrated on the default logon page provided by Drive and Photo Service.
-	// *   ding: logs on by scanning a DingTalk QR code.
-	// *   ding_sns: logs on by entering a DingTalk account and its password.
-	// *   ram: logs on as an Alibaba Cloud Resource Access Management (RAM) user.
-	// *   wechat: logs on by scanning a WeCom QR code.
-	// *   wechat_app: logs on without authentication in WeCom.
+	// 	- default: all logon methods that are integrated on the default logon page provided by Drive and Photo Service.
+	//
+	// 	- ding: logs on by scanning a DingTalk QR code.
+	//
+	// 	- ding_sns: logs on by entering a DingTalk account and its password.
+	//
+	// 	- ram: logs on as an Alibaba Cloud Resource Access Management (RAM) user.
+	//
+	// 	- wechat: logs on by scanning a WeCom QR code.
+	//
+	// 	- wechat_app: logs on without authentication in WeCom.
+	//
+	// example:
+	//
+	// default
 	LoginType *string `json:"login_type,omitempty" xml:"login_type,omitempty"`
 	// The callback URL specified when the application was created.
+	//
+	// example:
+	//
+	// https://www.aliyunpds.com/sign/callback
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	// The format in which to return the response. Set the value to code.
+	//
+	// example:
+	//
+	// code
 	ResponseType *string `json:"response_type,omitempty" xml:"response_type,omitempty"`
 	// The requested permissions. By default, all permissions are requested.
 	ScopeShrink *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	// The user-defined parameter to return in the callback URL after the requested permissions are granted.
+	//
+	// example:
+	//
+	// customdata
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
@@ -7413,8 +8410,8 @@ func (s *AuthorizeShrinkRequest) SetState(v string) *AuthorizeShrinkRequest {
 }
 
 type AuthorizeResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AuthorizeResponse) String() string {
@@ -7442,57 +8439,67 @@ type BatchRequest struct {
 	Requests []*BatchRequestRequests `json:"requests,omitempty" xml:"requests,omitempty" type:"Repeated"`
 	// The type of the resource that you want to manage. Valid values:
 	//
-	// *   file: a file.
-	// *   drive: an individual drive or a team drive.
-	// *   user: a user.
-	// *   group: a group.
-	// *   membership: a group member.
-	// *   share_link: a share.
-	// *   async_task: an asynchronous task.
+	// 	- file: a file.
+	//
+	// 	- drive: an individual drive or a team drive.
+	//
+	// 	- user: a user.
+	//
+	// 	- group: a group.
+	//
+	// 	- membership: a group member.
+	//
+	// 	- share_link: a share.
+	//
+	// 	- async_task: an asynchronous task.
 	//
 	// <!---->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
-	// *   <!-- -->
+	// 	- <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// file
 	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
 }
 
@@ -7518,43 +8525,80 @@ type BatchRequestRequests struct {
 	// The request parameters of a child request. The parameter value must be a JSON string. For more information, see the topic of the corresponding child request.
 	//
 	// Before you specify the request body, you must specify a header by using Content-Type. Content-Type can only be set to application/json.
-	Body map[string]*string `json:"body,omitempty" xml:"body,omitempty"`
+	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 	// The header of a child request, which indicates the type of the data specified in the request body.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The ID of the child request. The ID is used to associate a child request with a response. The ID of a child request must be unique.
+	//
+	// example:
+	//
+	// 93433894994ad2e1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The method of a child request. Valid values:
 	//
-	// *   POST
-	// *   GET
-	// *   PUT
-	// *   DELETE
-	// *   HEAD
+	// 	- POST
+	//
+	// 	- GET
+	//
+	// 	- PUT
+	//
+	// 	- DELETE
+	//
+	// 	- HEAD
+	//
+	// example:
+	//
+	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
 	// The API path of a child request. Valid values:
 	//
-	// *   /file/get: queries the information about a file.
-	// *   /file/update: modifies the information about a file.
-	// *   /file/search: searches for a file.
-	// *   /file/copy: copies a file or folder.
-	// *   /file/move: moves a file or folder.
-	// *   /file/delete: deletes a file or folder.
-	// *   /file/get_download_url: queries the download URL of a file.
-	// *   /file/get_share_link_download_url: queries the download URL of a file in a share.
-	// *   /recyclebin/trash: moves a file or folder to the recycle bin.
-	// *   /recyclebin/restore: restores a file or folder.
-	// *   /file/put_usertags: adds tags to a user.
-	// *   /file/delete_usertags: removes tags from a user.
-	// *   /drive/get: queries the information about a drive.
-	// *   /user/get: queries the information about a user.
-	// *   /group/get: queries the information about a group.
-	// *   /share_link/create: creates a share.
-	// *   /share_link/update: modifies a share.
-	// *   /share_link/cancel: cancels a share.
-	// *   /share_link/list: queries shares.
-	// *   /share_link/get: queries the information about a share.
-	// *   /share_link/get_share_token: queries an access token of a share.
-	// *   /async_task/get: queries the information about an asynchronous task.
+	// 	- /file/get: queries the information about a file.
+	//
+	// 	- /file/update: modifies the information about a file.
+	//
+	// 	- /file/search: searches for a file.
+	//
+	// 	- /file/copy: copies a file or folder.
+	//
+	// 	- /file/move: moves a file or folder.
+	//
+	// 	- /file/delete: deletes a file or folder.
+	//
+	// 	- /file/get_download_url: queries the download URL of a file.
+	//
+	// 	- /file/get_share_link_download_url: queries the download URL of a file in a share.
+	//
+	// 	- /recyclebin/trash: moves a file or folder to the recycle bin.
+	//
+	// 	- /recyclebin/restore: restores a file or folder.
+	//
+	// 	- /file/put_usertags: adds tags to a user.
+	//
+	// 	- /file/delete_usertags: removes tags from a user.
+	//
+	// 	- /drive/get: queries the information about a drive.
+	//
+	// 	- /user/get: queries the information about a user.
+	//
+	// 	- /group/get: queries the information about a group.
+	//
+	// 	- /share_link/create: creates a share.
+	//
+	// 	- /share_link/update: modifies a share.
+	//
+	// 	- /share_link/cancel: cancels a share.
+	//
+	// 	- /share_link/list: queries shares.
+	//
+	// 	- /share_link/get: queries the information about a share.
+	//
+	// 	- /share_link/get_share_token: queries an access token of a share.
+	//
+	// 	- /async_task/get: queries the information about an asynchronous task.
+	//
+	// example:
+	//
+	// /file/get
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -7566,7 +8610,7 @@ func (s BatchRequestRequests) GoString() string {
 	return s.String()
 }
 
-func (s *BatchRequestRequests) SetBody(v map[string]*string) *BatchRequestRequests {
+func (s *BatchRequestRequests) SetBody(v map[string]interface{}) *BatchRequestRequests {
 	s.Body = v
 	return s
 }
@@ -7611,10 +8655,18 @@ func (s *BatchResponseBody) SetResponses(v []*BatchResponseBodyResponses) *Batch
 
 type BatchResponseBodyResponses struct {
 	// The response parameters of a child request. For more information, see the topic of the corresponding child request.
-	Body map[string]*string `json:"body,omitempty" xml:"body,omitempty"`
+	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the child request. The ID is used to associate a child request with a response.
+	//
+	// example:
+	//
+	// 93433894994ad2e1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The returned HTTP status code of a child request. For more information, see the topic of the corresponding child request.
+	//
+	// example:
+	//
+	// 200
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -7626,7 +8678,7 @@ func (s BatchResponseBodyResponses) GoString() string {
 	return s.String()
 }
 
-func (s *BatchResponseBodyResponses) SetBody(v map[string]*string) *BatchResponseBodyResponses {
+func (s *BatchResponseBodyResponses) SetBody(v map[string]interface{}) *BatchResponseBodyResponses {
 	s.Body = v
 	return s
 }
@@ -7642,9 +8694,9 @@ func (s *BatchResponseBodyResponses) SetStatus(v int32) *BatchResponseBodyRespon
 }
 
 type BatchResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchResponse) String() string {
@@ -7674,10 +8726,22 @@ type CancelAssignRoleRequest struct {
 	// The unique identifier. You can cancel only the role assigned to a user.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The ID of the resource that the role manages. Set the value to a group ID.
+	//
+	// example:
+	//
+	// 105***b82
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the resource that the role manages. Set the value to RT_Group, which specifies group.
+	//
+	// example:
+	//
+	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The ID of the role to be canceled. Set the value to SystemGroupAdmin, which is the ID of the group administrator role.
+	//
+	// example:
+	//
+	// SystemGroupAdmin
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 
@@ -7710,8 +8774,8 @@ func (s *CancelAssignRoleRequest) SetRoleId(v string) *CancelAssignRoleRequest {
 }
 
 type CancelAssignRoleResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CancelAssignRoleResponse) String() string {
@@ -7734,6 +8798,10 @@ func (s *CancelAssignRoleResponse) SetStatusCode(v int32) *CancelAssignRoleRespo
 
 type CancelShareLinkRequest struct {
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
@@ -7751,8 +8819,8 @@ func (s *CancelShareLinkRequest) SetShareId(v string) *CancelShareLinkRequest {
 }
 
 type CancelShareLinkResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CancelShareLinkResponse) String() string {
@@ -7775,6 +8843,10 @@ func (s *CancelShareLinkResponse) SetStatusCode(v int32) *CancelShareLinkRespons
 
 type ClearRecyclebinRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -7795,10 +8867,22 @@ type ClearRecyclebinResponseBody struct {
 	// The ID of the asynchronous task.
 	//
 	// You can call the GetAsyncTask operation to query the information about the asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 13ebd3a24dba4166b1527add676ef2866051b4d5dele16
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -7826,9 +8910,9 @@ func (s *ClearRecyclebinResponseBody) SetDriveId(v string) *ClearRecyclebinRespo
 }
 
 type ClearRecyclebinResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearRecyclebinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearRecyclebinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearRecyclebinResponse) String() string {
@@ -7856,10 +8940,22 @@ func (s *ClearRecyclebinResponse) SetBody(v *ClearRecyclebinResponseBody) *Clear
 
 type CompleteFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The upload ID.
+	//
+	// example:
+	//
+	// C9DCFE5A82644AC7A02DB74C30C934A6
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
@@ -7887,9 +8983,9 @@ func (s *CompleteFileRequest) SetUploadId(v string) *CompleteFileRequest {
 }
 
 type CompleteFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *File              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *File              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompleteFileResponse) String() string {
@@ -7917,16 +9013,40 @@ func (s *CompleteFileResponse) SetBody(v *File) *CompleteFileResponse {
 
 type CopyFileRequest struct {
 	// Specifies whether to automatically rename the file if the file name already exists in the destination folder. Default value: false.
+	//
+	// example:
+	//
+	// true
 	AutoRename *bool `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID or folder ID.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the drive to which you want to copy the file or folder. Default value: the value of drive_id.
+	//
+	// example:
+	//
+	// 1
 	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty"`
 	// The ID of the destination parent folder. If you want to copy the file or folder to a root directory, set this parameter to root.
+	//
+	// example:
+	//
+	// 6520943DC261
 	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty"`
 }
 
@@ -7972,12 +9092,28 @@ type CopyFileResponseBody struct {
 	// The ID of the asynchronous task.
 	//
 	// If a file is copied, this parameter is not returned. If a folder is copied, the folder is asynchronously copied in the background and this parameter is returned. You can call the GetAsyncTask operation to query the information about the asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 000e89fb-cf8f-11e9-8ab4-b6e980803a3b
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the copied file or folder.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43a255edc4463bffa6f5f5d317401
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -8010,9 +9146,9 @@ func (s *CopyFileResponseBody) SetFileId(v string) *CopyFileResponseBody {
 }
 
 type CopyFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyFileResponse) String() string {
@@ -8040,13 +9176,25 @@ func (s *CopyFileResponse) SetBody(v *CopyFileResponseBody) *CopyFileResponse {
 
 type CreateCustomizedStoryRequest struct {
 	// Deprecated
-	CustomLabels map[string]*string                        `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
-	DriveId      *string                                   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	StoryCover   *CreateCustomizedStoryRequestStoryCover   `json:"story_cover,omitempty" xml:"story_cover,omitempty" type:"Struct"`
-	StoryFiles   []*CreateCustomizedStoryRequestStoryFiles `json:"story_files,omitempty" xml:"story_files,omitempty" type:"Repeated"`
-	StoryName    *string                                   `json:"story_name,omitempty" xml:"story_name,omitempty"`
-	StorySubType *string                                   `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
-	StoryType    *string                                   `json:"story_type,omitempty" xml:"story_type,omitempty"`
+	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId    *string                                   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	StoryCover *CreateCustomizedStoryRequestStoryCover   `json:"story_cover,omitempty" xml:"story_cover,omitempty" type:"Struct"`
+	StoryFiles []*CreateCustomizedStoryRequestStoryFiles `json:"story_files,omitempty" xml:"story_files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_name
+	StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	// example:
+	//
+	// user_created
+	StorySubType *string `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	// example:
+	//
+	// user_created
+	StoryType *string `json:"story_type,omitempty" xml:"story_type,omitempty"`
 }
 
 func (s CreateCustomizedStoryRequest) String() string {
@@ -8093,7 +9241,13 @@ func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedS
 }
 
 type CreateCustomizedStoryRequestStoryCover struct {
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88d4aff041ee68fd4fc89beb80e1119da343
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -8116,7 +9270,13 @@ func (s *CreateCustomizedStoryRequestStoryCover) SetRevisionId(v string) *Create
 }
 
 type CreateCustomizedStoryRequestStoryFiles struct {
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88d4aff041ee68fd4fc89beb80e1119da343
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -8139,7 +9299,13 @@ func (s *CreateCustomizedStoryRequestStoryFiles) SetRevisionId(v string) *Create
 }
 
 type CreateCustomizedStoryResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
@@ -8162,9 +9328,9 @@ func (s *CreateCustomizedStoryResponseBody) SetStoryId(v string) *CreateCustomiz
 }
 
 type CreateCustomizedStoryResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCustomizedStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCustomizedStoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCustomizedStoryResponse) String() string {
@@ -8192,18 +9358,46 @@ func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponse
 
 type CreateDomainRequest struct {
 	// The description of the domain.
+	//
+	// example:
+	//
+	// domain for test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the domain.
+	//
+	// example:
+	//
+	// test_domain
 	DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
 	// Specifies whether to enable the default drive feature. A value of true specifies that all users are assigned a drive by default on the first logon. Default value: false.
+	//
+	// example:
+	//
+	// true
 	InitDriveEnable *bool `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
 	// The size of the default drive. Unit: bytes. You must specify init_drive_size if you set init_drive_enable to true. Default value: 0. A value of 0 specifies that the size of the default drive is 0 bytes and you cannot upload files to the drive. To initialize the default drive, set init_drive_size to 0. A value of -1 specifies that the size is unlimited.
+	//
+	// example:
+	//
+	// 1073741824
 	InitDriveSize *int64 `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
 	// The ID of the parent domain. If you want to create a child domain, specify parent_domain_id. In most cases, you do not need to create a child domain. If you want to perform secondary operations based on Drive and Photo Service, contact the customer service.
+	//
+	// example:
+	//
+	// bj1
 	ParentDomainId *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
 	// The total storage quota for all drives in the domain. A value of 0 specifies that the quota is unlimited.
+	//
+	// example:
+	//
+	// 1099511627776
 	SizeQuota *int64 `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
 	// The largest number of users that can be created in the domain. A value of 0 specifies that the number is unlimited.
+	//
+	// example:
+	//
+	// 50
 	UserCountQuota *int64 `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
 }
 
@@ -8251,9 +9445,9 @@ func (s *CreateDomainRequest) SetUserCountQuota(v int64) *CreateDomainRequest {
 }
 
 type CreateDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDomainResponse) String() string {
@@ -8281,26 +9475,58 @@ func (s *CreateDomainResponse) SetBody(v *Domain) *CreateDomainResponse {
 
 type CreateDriveRequest struct {
 	// Specifies whether the drive is the default drive. Default value: false.
+	//
+	// example:
+	//
+	// true
 	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
 	// The description of the drive. The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// drive for test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the drive. The name can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// test_drive
 	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
 	// The type of the drive. Set the value to normal.
+	//
+	// example:
+	//
+	// normal
 	DriveType *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
 	// The owner of the drive.
+	//
+	// example:
+	//
+	// 3b3d7245c159488da17d081ad6c64687
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The type of the owner. Valid values:
 	//
 	// user and group.
+	//
+	// example:
+	//
+	// user
 	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
 	// The state of the drive. Valid values:
 	//
 	// enabled and disabled.
 	//
 	// Default value: enabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The total size of the drive. Unit: bytes. By default, the size is unlimited.
+	//
+	// example:
+	//
+	// 1024
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
@@ -8354,8 +9580,16 @@ func (s *CreateDriveRequest) SetTotalSize(v int64) *CreateDriveRequest {
 
 type CreateDriveResponseBody struct {
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -8378,9 +9612,9 @@ func (s *CreateDriveResponseBody) SetDriveId(v string) *CreateDriveResponseBody 
 }
 
 type CreateDriveResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDriveResponse) String() string {
@@ -8407,53 +9641,121 @@ func (s *CreateDriveResponse) SetBody(v *CreateDriveResponseBody) *CreateDriveRe
 }
 
 type CreateFileRequest struct {
-	// The processing method that is used if the file that you want to create has the same name as an existing file on the cloud. Valid values:
+	// The processing method that is used if the file that you want to create has the same name as an existing file in the cloud. Valid values:
 	//
-	// ignore: allows you to create the file by using the same name as an existing file on the cloud.
+	// ignore: allows you to create the file by using the same name as an existing file in the cloud.
 	//
-	// auto_rename: automatically renames the file that has the same name on the cloud. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405.
+	// auto_rename: automatically renames the file that you want to create. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405.
 	//
-	// refuse: does not create the file that you want to create but returns the information about the file that has the same name on the cloud.
+	// refuse: does not create the file that you want to create but returns the information about the file that has the same name in the cloud.
 	//
 	// Default value: ignore.
+	//
+	// example:
+	//
+	// ignore
 	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
 	// The hash value of the file content. The value is calculated based on the algorithm specified by content_hash_name.
+	//
+	// example:
+	//
+	// 7C4A8D09CA3762AF61E59520943DC26494F8941B
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	// The name of the algorithm that is used to calculate the hash value of the file content. Only SHA1 is supported.
+	//
+	// example:
+	//
+	// sha1
 	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	// The type of the file content. Default value: application/oct-stream. For more information about common content types, see [How do I configure the Content-Type header?](https://help.aliyun.com/document_detail/39522.htm?spm=a2c4g.11186623.0.0.5a0b7dbb1TPnWF#concept-5041)
+	// The type of the file content. Default value: application/oct-stream.
+	//
+	// example:
+	//
+	// application/json
 	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
 	// The description of the file. The description can be up to 1,024 characters in length. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// 重要文件
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The drive ID. This parameter is required if the file is not uploaded by using the share URL of the file.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID. This parameter is required if check_name_mode is set to ignore.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// Specifies whether to hide the file or folder. By default, the file or folder is not hidden.
+	//
+	// example:
+	//
+	// false
 	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
 	// The information about the image specified by the client.
 	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
-	// The local time when the file was created. By default, this parameter is left empty. The time is specified in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	// The time when the local file was created. By default, this parameter is left empty. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	//
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
 	LocalCreatedAt *string `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	// The local time when the file was modified. By default, this parameter is left empty. The time is specified in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	// The time when the local file was modified. By default, this parameter is left empty. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	//
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
 	LocalModifiedAt *string `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
 	// The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot end with a forward slash (/).
+	//
+	// example:
+	//
+	// a.txt
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Specifies whether to enable the parallel upload feature.
+	//
+	// example:
+	//
+	// true
 	ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
 	// The ID of the parent directory. If you want to create a file or folder in the root directory, set this parameter to root.
+	//
+	// example:
+	//
+	// fileid1
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
 	// The information about the file parts. You can specify up to 10,000 parts. By default, if you do not specify this parameter, only one part is returned.
 	PartInfoList []*CreateFileRequestPartInfoList `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// The SHA-1 hash value of the first 1 KB data of the file. This parameter is required if you perform instant file upload by using the pre-hashing feature. If the SHA-1 hash value is not matched on the cloud, the client does not need to calculate the SHA-1 hash value of the entire file.
+	//
+	// example:
+	//
+	// 7C4A8D09CA3762AF61E59520943DC26494F89411
 	PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
 	// The share ID. This parameter is required if the file is uploaded by using the share URL of the file.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// The file size. Unit: bytes.
+	// The size of the file. Unit: bytes.
+	//
+	// example:
+	//
+	// 1024
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The type of the file. Valid values:
 	//
 	// file folder
+	//
+	// example:
+	//
+	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The custom tags. You can specify up to 1,000 tags.
 	UserTags []*UserTag `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
@@ -8575,10 +9877,19 @@ func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *Create
 }
 
 type CreateFileRequestPartInfoList struct {
+	// The MD5 hash value of the file part. This parameter is required when the MD5 hash value of the file part needs to be verified during part upload.
+	//
+	// example:
+	//
+	// ASKJDJSKDJJSJDJS
 	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
-	// 该分片前所有数据的SHA1上下文，该字段只在多分片并发上传的模式下有效
+	// The SHA-1 hash value of the file content before the file part. This parameter takes effect only if the parallel upload feature is enabled.
 	ParallelSha1Ctx *CreateFileRequestPartInfoListParallelSha1Ctx `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
-	// The serial number of a part. The number starts from 1.
+	// The serial number of a file part. The number starts from 1.
+	//
+	// example:
+	//
+	// 1
 	PartNumber *int32 `json:"part_number,omitempty" xml:"part_number,omitempty"`
 }
 
@@ -8606,9 +9917,13 @@ func (s *CreateFileRequestPartInfoList) SetPartNumber(v int32) *CreateFileReques
 }
 
 type CreateFileRequestPartInfoListParallelSha1Ctx struct {
-	// 该分片前所有数据的SHA1上下文的第1-5个32位变量，该字段只在多分片并发上传的模式下有效
+	// The first to fifth 32-bit variables of the SHA-1 hash value of the file content before the file part. This parameter takes effect only if the parallel upload feature is enabled.
 	H []*int64 `json:"h,omitempty" xml:"h,omitempty" type:"Repeated"`
-	// 到上一个数据块为止的总长度，字节，需要为64的倍数，该字段只在多分片并发上传的模式下有效
+	// The size of the file content before the file part. Unit: bytes. The value must be a multiple of 64. This parameter takes effect only if the parallel upload feature is enabled.
+	//
+	// example:
+	//
+	// 10240
 	PartOffset *int64 `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
 }
 
@@ -8632,26 +9947,66 @@ func (s *CreateFileRequestPartInfoListParallelSha1Ctx) SetPartOffset(v int64) *C
 
 type CreateFileResponseBody struct {
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Indicates whether the file exists.
+	//
+	// example:
+	//
+	// false
 	Exist *bool `json:"exist,omitempty" xml:"exist,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// fileid1
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The file name.
+	//
+	// example:
+	//
+	// a.txt
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// The ID of the parent directory.
+	//
+	// example:
+	//
+	// fileid5
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
 	// The information about the file parts.
 	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// Indicates whether the file is instantly uploaded.
+	//
+	// example:
+	//
+	// true
 	RapidUpload *bool `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
 	// The state of the file.
+	//
+	// example:
+	//
+	// uploading
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The type of the file.
+	//
+	// example:
+	//
+	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The ID of the upload task.
+	//
+	// example:
+	//
+	// uploadid1
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
@@ -8719,9 +10074,9 @@ func (s *CreateFileResponseBody) SetUploadId(v string) *CreateFileResponseBody {
 }
 
 type CreateFileResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFileResponse) String() string {
@@ -8749,12 +10104,28 @@ func (s *CreateFileResponse) SetBody(v *CreateFileResponseBody) *CreateFileRespo
 
 type CreateGroupRequest struct {
 	// The description of the group. The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// test group description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the group. The name must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// test group
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
 	// Specifies whether the group is a root group. A root group cannot be added to any other group. In most cases, a root group is the top-level organization in the organizational structure.
+	//
+	// example:
+	//
+	// false
 	IsRoot *bool `json:"is_root,omitempty" xml:"is_root,omitempty"`
 	// The ID of the parent group to which the group is added. If this parameter is specified, the system automatically adds the group to the specified parent group after the group is created.
+	//
+	// example:
+	//
+	// 2e43ec8427dd45f19431b7504649a1b3
 	ParentGroupId *string `json:"parent_group_id,omitempty" xml:"parent_group_id,omitempty"`
 }
 
@@ -8787,9 +10158,9 @@ func (s *CreateGroupRequest) SetParentGroupId(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Group             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Group             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGroupResponse) String() string {
@@ -8819,20 +10190,40 @@ type CreateIdentityToBenefitPkgMappingRequest struct {
 	// The number of benefit packages.
 	//
 	// This parameter takes effect only for the benefit packages of the resource type. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The unique identifier of the benefit package.
+	//
+	// example:
+	//
+	// 40cb7794c9294
 	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
 	// The time when the benefit package expires. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// By default, the benefit package never expires.
+	//
+	// example:
+	//
+	// 1633167071000
 	ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
 	// The unique identifier of the entity.
 	//
 	// If you want to manage the benefits of a user, set this parameter to a user ID.
+	//
+	// example:
+	//
+	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity.
 	//
 	// If you want to manage the benefits of a user, set this parameter to user.
+	//
+	// example:
+	//
+	// user
 	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
 }
 
@@ -8870,8 +10261,8 @@ func (s *CreateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *Cr
 }
 
 type CreateIdentityToBenefitPkgMappingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s CreateIdentityToBenefitPkgMappingResponse) String() string {
@@ -8987,9 +10378,9 @@ func (s *CreateOrderResponseBody) SetOrderId(v string) *CreateOrderResponseBody 
 }
 
 type CreateOrderResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOrderResponse) String() string {
@@ -9019,31 +10410,80 @@ type CreateShareLinkRequest struct {
 	// The description of the share. The description must be 0 to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to disable the download feature.
+	//
+	// example:
+	//
+	// false
 	DisableDownload *bool `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
 	// Specifies whether to disable the preview feature.
+	//
+	// example:
+	//
+	// false
 	DisablePreview *bool `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
 	// Specifies whether to disable the dump feature.
+	//
+	// example:
+	//
+	// false
 	DisableSave *bool `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
 	// The limit on the number of times that the shared files can be downloaded. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
+	//
+	// example:
+	//
+	// 100
 	DownloadLimit *int64 `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The time when the share URL expires. The value of this parameter follows the RFC 3339 standard. Example: "2020-06-28T11:33:00.000+08:00". If expiration is set to "", the share URL never expires.
+	//
+	// example:
+	//
+	// 2020-06-28T11:33:00.000+08:00
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	// The IDs of the files to share in the parent path. The number of files in the parent path ranges from 1 to 100. If share_all_files is set to true, this parameter does not take effect. Otherwise, you must specify this parameter.``
+	//
+	// example:
+	//
+	// ["520b217f13adf4fc24f2191991b1664ce045b393"]
 	FileIdList     []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
 	OfficeEditable *bool     `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
-	PreviewLimit *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PreviewLimit      *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
+	SaveDownloadLimit *int64 `json:"save_download_limit,omitempty" xml:"save_download_limit,omitempty"`
 	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
+	//
+	// example:
+	//
+	// 100
 	SaveLimit *int64 `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	// Specifies whether to share all files in the drive.
+	//
+	// example:
+	//
+	// true
 	ShareAllFiles *bool `json:"share_all_files,omitempty" xml:"share_all_files,omitempty"`
 	// The name of the share. If you leave this parameter empty, the file name that corresponds to the first ID in the file ID list is used. The name must be 0 to 128 characters in length.
 	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
 	// The access code. An access code must be 0 to 64 bytes in length. If you do not specify this parameter or leave this parameter empty, the files can be accessed without an access code. In this case, you do not need to specify the share_pwd parameter when you call an operation to query the share URL. The access code can contain only visible ASCII characters.
+	//
+	// example:
+	//
+	// abcF123x
 	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// u123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -9105,6 +10545,11 @@ func (s *CreateShareLinkRequest) SetPreviewLimit(v int64) *CreateShareLinkReques
 	return s
 }
 
+func (s *CreateShareLinkRequest) SetSaveDownloadLimit(v int64) *CreateShareLinkRequest {
+	s.SaveDownloadLimit = &v
+	return s
+}
+
 func (s *CreateShareLinkRequest) SetSaveLimit(v int64) *CreateShareLinkRequest {
 	s.SaveLimit = &v
 	return s
@@ -9131,9 +10576,9 @@ func (s *CreateShareLinkRequest) SetUserId(v string) *CreateShareLinkRequest {
 }
 
 type CreateShareLinkResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateShareLinkResponse) String() string {
@@ -9160,6 +10605,9 @@ func (s *CreateShareLinkResponse) SetBody(v *ShareLink) *CreateShareLinkResponse
 }
 
 type CreateSimilarImageClusterTaskRequest struct {
+	// example:
+	//
+	// 123
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -9177,6 +10625,9 @@ func (s *CreateSimilarImageClusterTaskRequest) SetDriveId(v string) *CreateSimil
 }
 
 type CreateSimilarImageClusterTaskResponseBody struct {
+	// example:
+	//
+	// i:SimilarImageClustering-b67d53e7-2fe8-460f-9b95-1e93636923eb
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
@@ -9194,9 +10645,9 @@ func (s *CreateSimilarImageClusterTaskResponseBody) SetTaskId(v string) *CreateS
 }
 
 type CreateSimilarImageClusterTaskResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSimilarImageClusterTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSimilarImageClusterTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSimilarImageClusterTaskResponse) String() string {
@@ -9225,16 +10676,40 @@ func (s *CreateSimilarImageClusterTaskResponse) SetBody(v *CreateSimilarImageClu
 type CreateStoryRequest struct {
 	Address *Address `json:"address,omitempty" xml:"address,omitempty"`
 	// Deprecated
-	CustomLabels   map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
-	DriveId        *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	MaxImageCount  *int64             `json:"max_image_count,omitempty" xml:"max_image_count,omitempty"`
-	MinImageCount  *int64             `json:"min_image_count,omitempty" xml:"min_image_count,omitempty"`
-	StoryEndTime   *string            `json:"story_end_time,omitempty" xml:"story_end_time,omitempty"`
-	StoryId        *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	StoryName      *string            `json:"story_name,omitempty" xml:"story_name,omitempty"`
-	StoryStartTime *string            `json:"story_start_time,omitempty" xml:"story_start_time,omitempty"`
-	StorySubType   *string            `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
-	StoryType      *string            `json:"story_type,omitempty" xml:"story_type,omitempty"`
+	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 30
+	MaxImageCount *int64 `json:"max_image_count,omitempty" xml:"max_image_count,omitempty"`
+	// example:
+	//
+	// 1
+	MinImageCount *int64 `json:"min_image_count,omitempty" xml:"min_image_count,omitempty"`
+	// example:
+	//
+	// 2022-12-30T16:00:00Z
+	StoryEndTime *string `json:"story_end_time,omitempty" xml:"story_end_time,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
+	StoryId   *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	// example:
+	//
+	// 2016-12-30T16:00:00Z
+	StoryStartTime *string `json:"story_start_time,omitempty" xml:"story_start_time,omitempty"`
+	// example:
+	//
+	// Food
+	StorySubType *string `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	// example:
+	//
+	// TagMemory
+	StoryType *string `json:"story_type,omitempty" xml:"story_type,omitempty"`
 }
 
 func (s CreateStoryRequest) String() string {
@@ -9301,6 +10776,9 @@ func (s *CreateStoryRequest) SetStoryType(v string) *CreateStoryRequest {
 }
 
 type CreateStoryResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -9318,9 +10796,9 @@ func (s *CreateStoryResponseBody) SetDriveId(v string) *CreateStoryResponseBody 
 }
 
 type CreateStoryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateStoryResponse) String() string {
@@ -9352,28 +10830,50 @@ type CreateUserRequest struct {
 	// If you specify the parameter in the HTTP URL format, the URL must start with http:// or https:// and can be up to 4 KB in size.
 	//
 	// If you specify the parameter in the data URL format, the URL must start with data:// and be encoded in Base64. The URL can be up to 300 KB in size.
+	//
+	// example:
+	//
+	// http://a.b.c/pds.jpg
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	// The description of the user. The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// The VIP user
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The email address.
+	//
+	// example:
+	//
+	// 123@pds.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The information about the group.
 	GroupInfoList []*CreateUserRequestGroupInfoList `json:"group_info_list,omitempty" xml:"group_info_list,omitempty" type:"Repeated"`
 	// The nickname of the user. The nickname can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// pdsuer
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// The phone number.
+	//
+	// example:
+	//
+	// 13900001111
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// The role of the user. Default value: user. Valid values:
 	//
-	// *   superadmin
-	// *   admin
-	// *   user
+	// 	- superadmin
+	//
+	// 	- admin
+	//
+	// 	- user
 	//
 	// If the domain can be divided into subdomains, the subdomain_super_admin and subdomain_admin roles are also supported.
 	//
 	// Valid values:
 	//
-	// *   subdomain_super_admin
+	// 	- subdomain_super_admin
 	//
 	//     <!-- -->
 	//
@@ -9381,7 +10881,7 @@ type CreateUserRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   subdomain_admin
+	// 	- subdomain_admin
 	//
 	//     <!-- -->
 	//
@@ -9389,7 +10889,7 @@ type CreateUserRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   superadmin
+	// 	- superadmin
 	//
 	//     <!-- -->
 	//
@@ -9397,7 +10897,7 @@ type CreateUserRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   admin
+	// 	- admin
 	//
 	//     <!-- -->
 	//
@@ -9405,24 +10905,45 @@ type CreateUserRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   user
+	// 	- user
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// The state of the user. Default value: enabled. Valid values:
 	//
-	// *   enabled: The user is in a normal state.
-	// *   disabled: The user is prohibited from logon.
+	// 	- enabled: The user is in a normal state.
+	//
+	// 	- disabled: The user is prohibited from logon.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The custom data. The data can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// md
 	UserData map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// The user ID. The ID can be up to 64 characters in length and cannot contain number signs (#).
+	//
+	// example:
+	//
+	// pdsuserid1
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// The username. The username can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// pdsusername
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -9491,6 +11012,10 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 
 type CreateUserRequestGroupInfoList struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// g123
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
@@ -9509,41 +11034,100 @@ func (s *CreateUserRequestGroupInfoList) SetGroupId(v string) *CreateUserRequest
 
 type CreateUserResponseBody struct {
 	// The URL of the profile picture.
+	//
+	// example:
+	//
+	// http://aa.com/1.jpg
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	// The time when the user was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1639762579768
 	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	// The user who created the user.
+	//
+	// example:
+	//
+	// user1
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The ID of the default drive.
+	//
+	// example:
+	//
+	// 1
 	DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
 	// The description of the user.
+	//
+	// example:
+	//
+	// vipuser
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The email address.
+	//
+	// example:
+	//
+	// a@a.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The nickname of the user.
+	//
+	// example:
+	//
+	// 001
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// The phone number.
+	//
+	// example:
+	//
+	// 13900001111
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// The role of the user. Valid values:
 	//
-	// *   superadmin
-	// *   admin
-	// *   user
+	// 	- superadmin
+	//
+	// 	- admin
+	//
+	// 	- user
+	//
+	// example:
+	//
+	// admin
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// The state of the user. Valid values:
 	//
-	// *   disabled: The user is prohibited from logon.
-	// *   enabled: The user is in a normal state.
+	// 	- disabled: The user is prohibited from logon.
+	//
+	// 	- enabled: The user is in a normal state.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The time when the user was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1639762579768
 	UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
 	// The custom data.
 	UserData map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// dingding_abc001
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// The username.
+	//
+	// example:
+	//
+	// pds
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -9631,9 +11215,9 @@ func (s *CreateUserResponseBody) SetUserName(v string) *CreateUserResponseBody {
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -9660,9 +11244,18 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CsiGetFileInfoRequest struct {
-	DriveId      *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	UrlExpireSec *int32  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9520943DC264
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 100
+	UrlExpireSec *int32 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
 func (s CsiGetFileInfoRequest) String() string {
@@ -9690,7 +11283,10 @@ func (s *CsiGetFileInfoRequest) SetUrlExpireSec(v int32) *CsiGetFileInfoRequest 
 
 type CsiGetFileInfoResponseBody struct {
 	InvestigationInfo *InvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty"`
-	Url               *string            `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// https://data.aliyunpds.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s CsiGetFileInfoResponseBody) String() string {
@@ -9712,9 +11308,9 @@ func (s *CsiGetFileInfoResponseBody) SetUrl(v string) *CsiGetFileInfoResponseBod
 }
 
 type CsiGetFileInfoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CsiGetFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CsiGetFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CsiGetFileInfoResponse) String() string {
@@ -9742,6 +11338,10 @@ func (s *CsiGetFileInfoResponse) SetBody(v *CsiGetFileInfoResponseBody) *CsiGetF
 
 type DeleteDomainRequest struct {
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 }
 
@@ -9759,8 +11359,8 @@ func (s *DeleteDomainRequest) SetDomainId(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteDomainResponse) String() string {
@@ -9783,6 +11383,10 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 
 type DeleteDriveRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -9800,8 +11404,8 @@ func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
 }
 
 type DeleteDriveResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteDriveResponse) String() string {
@@ -9824,8 +11428,16 @@ func (s *DeleteDriveResponse) SetStatusCode(v int32) *DeleteDriveResponse {
 
 type DeleteFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID or folder ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -9849,12 +11461,28 @@ func (s *DeleteFileRequest) SetFileId(v string) *DeleteFileRequest {
 
 type DeleteFileResponseBody struct {
 	// The ID of the asynchronous task. This parameter is returned only in asynchronous processing scenarios. You can call the [GetAsyncTask](~~440456~~) operation to query the information about the asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 000e89fb-cf8f-11e9-8ab4-b6e980803a3b
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -9887,9 +11515,9 @@ func (s *DeleteFileResponseBody) SetFileId(v string) *DeleteFileResponseBody {
 }
 
 type DeleteFileResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFileResponse) String() string {
@@ -9917,6 +11545,10 @@ func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileRespo
 
 type DeleteGroupRequest struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// g123
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
@@ -9934,8 +11566,8 @@ func (s *DeleteGroupRequest) SetGroupId(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteGroupResponse) String() string {
@@ -9958,10 +11590,22 @@ func (s *DeleteGroupResponse) SetStatusCode(v int32) *DeleteGroupResponse {
 
 type DeleteRevisionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// example:
+	//
+	// 40CB7794C929
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -9989,8 +11633,8 @@ func (s *DeleteRevisionRequest) SetRevisionId(v string) *DeleteRevisionRequest {
 }
 
 type DeleteRevisionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteRevisionResponse) String() string {
@@ -10012,7 +11656,13 @@ func (s *DeleteRevisionResponse) SetStatusCode(v int32) *DeleteRevisionResponse 
 }
 
 type DeleteStoryRequest struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
@@ -10035,6 +11685,9 @@ func (s *DeleteStoryRequest) SetStoryId(v string) *DeleteStoryRequest {
 }
 
 type DeleteStoryResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -10052,9 +11705,9 @@ func (s *DeleteStoryResponseBody) SetDriveId(v string) *DeleteStoryResponseBody 
 }
 
 type DeleteStoryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteStoryResponse) String() string {
@@ -10082,6 +11735,10 @@ func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryRe
 
 type DeleteUserRequest struct {
 	// The user ID.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -10099,8 +11756,8 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -10123,8 +11780,16 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 
 type DeltaGetLastCursorRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the root file of the synced folder.
+	//
+	// example:
+	//
+	// 622fb09598ae66777c7040109a16f49381f6abe1
 	SyncRootId *string `json:"sync_root_id,omitempty" xml:"sync_root_id,omitempty"`
 }
 
@@ -10148,6 +11813,10 @@ func (s *DeltaGetLastCursorRequest) SetSyncRootId(v string) *DeltaGetLastCursorR
 
 type DeltaGetLastCursorResponseBody struct {
 	// The latest cursor of incremental information in the specified drive or synced folder.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 }
 
@@ -10165,9 +11834,9 @@ func (s *DeltaGetLastCursorResponseBody) SetCursor(v string) *DeltaGetLastCursor
 }
 
 type DeltaGetLastCursorResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeltaGetLastCursorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeltaGetLastCursorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeltaGetLastCursorResponse) String() string {
@@ -10195,16 +11864,40 @@ func (s *DeltaGetLastCursorResponse) SetBody(v *DeltaGetLastCursorResponseBody) 
 
 type DownloadFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The method used to generate the thumbnail of an image. If this parameter is specified, you are redirected to the URL of the generated thumbnail.
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	// The method used to generate the thumbnail of a document. If this parameter is specified, you are redirected to the URL of the generated thumbnail.
+	//
+	// example:
+	//
+	// image/resize,w_200
 	OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
 	// The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The method used to generate the thumbnail of a video. If this parameter is specified, you are redirected to the URL of the generated thumbnail.
+	//
+	// example:
+	//
+	// video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast
 	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -10247,8 +11940,8 @@ func (s *DownloadFileRequest) SetVideoThumbnailProcess(v string) *DownloadFileRe
 }
 
 type DownloadFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DownloadFileResponse) String() string {
@@ -10271,8 +11964,16 @@ func (s *DownloadFileResponse) SetStatusCode(v int32) *DownloadFileResponse {
 
 type FileAddPermissionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the folder. If you want to authorize a user or group to access a team drive, set this parameter to root. If you want to authorize a user or group to access an individual drive, you cannot set this parameter to root.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The members that are authorized to access files.
 	MemberList []*FilePermissionMember `json:"member_list,omitempty" xml:"member_list,omitempty" type:"Repeated"`
@@ -10302,8 +12003,8 @@ func (s *FileAddPermissionRequest) SetMemberList(v []*FilePermissionMember) *Fil
 }
 
 type FileAddPermissionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s FileAddPermissionResponse) String() string {
@@ -10326,8 +12027,16 @@ func (s *FileAddPermissionResponse) SetStatusCode(v int32) *FileAddPermissionRes
 
 type FileDeleteUserTagsRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The tags that you want to remove from a file. You cannot leave this parameter empty. You can specify up to 1,000 tags.
 	KeyList []*string `json:"key_list,omitempty" xml:"key_list,omitempty" type:"Repeated"`
@@ -10357,8 +12066,8 @@ func (s *FileDeleteUserTagsRequest) SetKeyList(v []*string) *FileDeleteUserTagsR
 }
 
 type FileDeleteUserTagsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s FileDeleteUserTagsResponse) String() string {
@@ -10381,8 +12090,16 @@ func (s *FileDeleteUserTagsResponse) SetStatusCode(v int32) *FileDeleteUserTagsR
 
 type FileListPermissionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43a255edc4463bffa6f5f5d317401
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -10405,9 +12122,9 @@ func (s *FileListPermissionRequest) SetFileId(v string) *FileListPermissionReque
 }
 
 type FileListPermissionResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*FilePermissionMember `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*FilePermissionMember `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s FileListPermissionResponse) String() string {
@@ -10435,8 +12152,16 @@ func (s *FileListPermissionResponse) SetBody(v []*FilePermissionMember) *FileLis
 
 type FilePutUserTagsRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The tags to be added to the file. You cannot leave this parameter empty. You can specify up to 1,000 tags. You cannot specify tags that have the same name.
 	UserTags []*FilePutUserTagsRequestUserTags `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
@@ -10467,8 +12192,16 @@ func (s *FilePutUserTagsRequest) SetUserTags(v []*FilePutUserTagsRequestUserTags
 
 type FilePutUserTagsRequestUserTags struct {
 	// The name of the tag. The tag name cannot be empty and cannot contain number signs (#).
+	//
+	// example:
+	//
+	// tag
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// The value of the tag. The tag value cannot contain number signs (#).
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -10492,6 +12225,10 @@ func (s *FilePutUserTagsRequestUserTags) SetValue(v string) *FilePutUserTagsRequ
 
 type FilePutUserTagsResponseBody struct {
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -10509,9 +12246,9 @@ func (s *FilePutUserTagsResponseBody) SetFileId(v string) *FilePutUserTagsRespon
 }
 
 type FilePutUserTagsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FilePutUserTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FilePutUserTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FilePutUserTagsResponse) String() string {
@@ -10539,8 +12276,16 @@ func (s *FilePutUserTagsResponse) SetBody(v *FilePutUserTagsResponseBody) *FileP
 
 type FileRemovePermissionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The identities with whom the file is shared.
 	MemberList []*FileRemovePermissionRequestMemberList `json:"member_list,omitempty" xml:"member_list,omitempty" type:"Repeated"`
@@ -10599,6 +12344,10 @@ type FileRemovePermissionRequestMemberList struct {
 	// SystemFileUploaderWithShareLink: uploader and sharer.
 	//
 	// SystemFileViewer: viewer.
+	//
+	// example:
+	//
+	// SystemFileDownloader
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 
@@ -10621,8 +12370,8 @@ func (s *FileRemovePermissionRequestMemberList) SetRoleId(v string) *FileRemoveP
 }
 
 type FileRemovePermissionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s FileRemovePermissionResponse) String() string {
@@ -10645,6 +12394,10 @@ func (s *FileRemovePermissionResponse) SetStatusCode(v int32) *FileRemovePermiss
 
 type GetAsyncTaskRequest struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 000e89fb-cf8f-11e9-8ab4-b6e980803a3b
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 }
 
@@ -10663,58 +12416,114 @@ func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
 
 type GetAsyncTaskResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 000e89fb-cf8f-11e9-8ab4-b6e980803a3b
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The custom category of the task.
+	//
+	// example:
+	//
+	// album
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The total amount of work that is done in the asynchronous task, such as the number of files that are packaged for package download on the server.
+	//
+	// example:
+	//
+	// 100
 	ConsumedProcess *int64 `json:"consumed_process,omitempty" xml:"consumed_process,omitempty"`
 	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2019-03-28T13:03:29.298Z.
-	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// **
 	//
-	// **Warning **This parameter is no longer used. We recommend that you use error_code instead.
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// <warning>This parameter is no longer used. We recommend that you use error_code instead.</warning>
 	//
 	// The error code returned if the asynchronous task failed.
+	//
+	// example:
+	//
+	// InternalError
 	ErrCode *int64 `json:"err_code,omitempty" xml:"err_code,omitempty"`
 	// The error code returned if the asynchronous task failed.
+	//
+	// example:
+	//
+	// InternalError
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
 	// The error message returned if the asynchronous task failed.
+	//
+	// example:
+	//
+	// The request has been failed due to some unknown error. Please try again later.
 	ErrorMessage  *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
 	FailedProcess *int64  `json:"failed_process,omitempty" xml:"failed_process,omitempty"`
 	// The time when the task was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2019-03-28T13:03:29.298Z.
-	FinishedAt *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
-	// **
 	//
-	// **Warning **This parameter is no longer used. We recommend that you use error_message instead.
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
+	FinishedAt *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
+	// <warning>This parameter is no longer used. We recommend that you use error_message instead.</warning>
 	//
 	// The error message returned if the asynchronous task failed.
+	//
+	// example:
+	//
+	// The request has been failed due to some unknown error. Please try again later.
 	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
 	SkippedProcess *int64  `json:"skipped_process,omitempty" xml:"skipped_process,omitempty"`
 	// The time when the task was started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2019-03-28T13:03:29.298Z.
+	//
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
 	StartedAt *string `json:"started_at,omitempty" xml:"started_at,omitempty"`
 	// The state of the task. Valid values:
 	//
-	// *   Failed
-	// *   Running
-	// *   PartialSucceed
-	// *   Succeed
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// **
+	// 	- Failed
 	//
-	// **Warning **This parameter is no longer used. We recommend that you use state instead.
+	// 	- Running
+	//
+	// 	- PartialSucceed
+	//
+	// 	- Succeed
+	//
+	// example:
+	//
+	// Succeed
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// <warning>This parameter is no longer used. We recommend that you use state instead.</warning>
 	//
 	// The state of the task. Valid values:
 	//
-	// *   Failed
-	// *   Running
-	// *   PartialSucceed
-	// *   Succeed
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- PartialSucceed
+	//
+	// 	- Succeed
+	//
+	// example:
+	//
+	// Succeed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The total amount of work to be done in the asynchronous task, such as the number of files to be packaged for package download on the server.
+	//
+	// example:
+	//
+	// 1000
 	TotalProcess *int64 `json:"total_process,omitempty" xml:"total_process,omitempty"`
 	// The extracted files.
 	UncompressFileList []*UncompressedFileInfo `json:"uncompress_file_list,omitempty" xml:"uncompress_file_list,omitempty" type:"Repeated"`
 	// The download URL of the data generated by the asynchronous task, such as the download URL of the packaged files generated by the task of package download on the server.
+	//
+	// example:
+	//
+	// https://data.aliyunpds.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -10812,9 +12621,9 @@ func (s *GetAsyncTaskResponseBody) SetUrl(v string) *GetAsyncTaskResponseBody {
 }
 
 type GetAsyncTaskResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncTaskResponse) String() string {
@@ -10842,6 +12651,10 @@ func (s *GetAsyncTaskResponse) SetBody(v *GetAsyncTaskResponseBody) *GetAsyncTas
 
 type GetDefaultDriveRequest struct {
 	// The user ID. If you use an AccessKey pair for authentication, you must specify this parameter. If you use an access token for authentication, this parameter is optional. By default, the user ID associated with the access token is used.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -10859,9 +12672,9 @@ func (s *GetDefaultDriveRequest) SetUserId(v string) *GetDefaultDriveRequest {
 }
 
 type GetDefaultDriveResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDefaultDriveResponse) String() string {
@@ -10889,8 +12702,17 @@ func (s *GetDefaultDriveResponse) SetBody(v *Drive) *GetDefaultDriveResponse {
 
 type GetDomainRequest struct {
 	// The ID of the domain.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	Fields   *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// Specifies whether to return the used quota of the domain. Default value: false. If the quota of the domain is greater than 0 and you set this parameter to true, the used quota of the domain is returned.
+	//
+	// example:
+	//
+	// true
 	GetQuotaUsed *bool `json:"get_quota_used,omitempty" xml:"get_quota_used,omitempty"`
 }
 
@@ -10907,15 +12729,20 @@ func (s *GetDomainRequest) SetDomainId(v string) *GetDomainRequest {
 	return s
 }
 
+func (s *GetDomainRequest) SetFields(v string) *GetDomainRequest {
+	s.Fields = &v
+	return s
+}
+
 func (s *GetDomainRequest) SetGetQuotaUsed(v bool) *GetDomainRequest {
 	s.GetQuotaUsed = &v
 	return s
 }
 
 type GetDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDomainResponse) String() string {
@@ -10977,9 +12804,9 @@ func (s *GetDomainQuotaResponseBody) SetUserCountUsed(v int64) *GetDomainQuotaRe
 }
 
 type GetDomainQuotaResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDomainQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDomainQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDomainQuotaResponse) String() string {
@@ -11007,14 +12834,34 @@ func (s *GetDomainQuotaResponse) SetBody(v *GetDomainQuotaResponseBody) *GetDoma
 
 type GetDownloadUrlRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The validity period of the download URL. Maximum value: 115200. Default value: 900. Unit: seconds.
+	//
+	// example:
+	//
+	// 100
 	ExpireSec *int32 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The name of the file. The name can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// 1.txt
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
 	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
@@ -11053,20 +12900,52 @@ func (s *GetDownloadUrlRequest) SetShareId(v string) *GetDownloadUrlRequest {
 
 type GetDownloadUrlResponseBody struct {
 	// The download URL of a file that is downloaded by using Alibaba Cloud CDN.
+	//
+	// example:
+	//
+	// https://data-cdn.aliyunpds.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt
 	CdnUrl *string `json:"cdn_url,omitempty" xml:"cdn_url,omitempty"`
 	// The hash value of the file content.
+	//
+	// example:
+	//
+	// EA4942AA8761213890A5C386F88E6464D2C31CA1
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	// The name of the algorithm that is used to calculate the hash value of the file content.
+	//
+	// example:
+	//
+	// sha1
 	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
 	// The hash value calculated by using 64-bit cyclic redundancy check (CRC-64).
+	//
+	// example:
+	//
+	// 5498595269368962671
 	Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
 	// The time when the download URL expires.
+	//
+	// example:
+	//
+	// 2022-01-02T15:04:05.999Z07:00
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	// The download URL of a file that is downloaded over a virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// https://data-vpc.aliyunpds.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt
 	InternalUrl *string `json:"internal_url,omitempty" xml:"internal_url,omitempty"`
 	// The size of the file. Unit: bytes.
+	//
+	// example:
+	//
+	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The download URL of a file that is downloaded over the Internet.
+	//
+	// example:
+	//
+	// https://data.aliyunpds.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -11119,9 +12998,9 @@ func (s *GetDownloadUrlResponseBody) SetUrl(v string) *GetDownloadUrlResponseBod
 }
 
 type GetDownloadUrlResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDownloadUrlResponse) String() string {
@@ -11149,6 +13028,10 @@ func (s *GetDownloadUrlResponse) SetBody(v *GetDownloadUrlResponseBody) *GetDown
 
 type GetDriveRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
 
@@ -11166,9 +13049,9 @@ func (s *GetDriveRequest) SetDriveId(v string) *GetDriveRequest {
 }
 
 type GetDriveResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDriveResponse) String() string {
@@ -11196,22 +13079,44 @@ func (s *GetDriveResponse) SetBody(v *Drive) *GetDriveResponse {
 
 type GetFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The fields to return.
 	//
 	// 1.  If this parameter is set to \*, all fields of the file except the fields that must be specified are returned.
+	//
 	// 2.  If only specific fields are required, you can specify the following fields: url, thumbnail, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,thumbnail.
+	//
 	// 3.  The investigation_info field is returned only if you specify this field.
 	//
 	// By default, all fields except the fields that must be specified are returned.
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// 缩略图配置，可一次性返回最多5个缩略图，map的key可以自定义，返回时按key返回对应的缩略图链接
 	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
 	// The time when the file expires. Unit: seconds. Valid values: 10 to 14400.
+	//
+	// example:
+	//
+	// 100
 	UrlExpireSec *int32 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
@@ -11254,9 +13159,9 @@ func (s *GetFileRequest) SetUrlExpireSec(v int32) *GetFileRequest {
 }
 
 type GetFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *File              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *File              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFileResponse) String() string {
@@ -11284,6 +13189,10 @@ func (s *GetFileResponse) SetBody(v *File) *GetFileResponse {
 
 type GetGroupRequest struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// 2e43ec8427dd45f19431b7504649a1b1
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
@@ -11301,9 +13210,9 @@ func (s *GetGroupRequest) SetGroupId(v string) *GetGroupRequest {
 }
 
 type GetGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Group             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Group             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGroupResponse) String() string {
@@ -11331,12 +13240,24 @@ func (s *GetGroupResponse) SetBody(v *Group) *GetGroupResponse {
 
 type GetIdentityToBenefitPkgMappingRequest struct {
 	// The unique identifier of the benefit package.
+	//
+	// example:
+	//
+	// 40cb7794c9294
 	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
 	// The unique identifier of the entity.
 	//
 	// If you want to manage the benefits of a user, set this parameter to a user ID.
+	//
+	// example:
+	//
+	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you want to manage the benefits of a user, set this parameter to user.
+	//
+	// example:
+	//
+	// user
 	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
 }
 
@@ -11364,9 +13285,9 @@ func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *GetId
 }
 
 type GetIdentityToBenefitPkgMappingResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *IdentityToBenefitPkgMapping `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *IdentityToBenefitPkgMapping `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIdentityToBenefitPkgMappingResponse) String() string {
@@ -11393,9 +13314,15 @@ func (s *GetIdentityToBenefitPkgMappingResponse) SetBody(v *IdentityToBenefitPkg
 }
 
 type GetLinkInfoRequest struct {
-	Extra    *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// example:
+	//
+	// 130***
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// mobile
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetLinkInfoRequest) String() string {
@@ -11422,9 +13349,9 @@ func (s *GetLinkInfoRequest) SetType(v string) *GetLinkInfoRequest {
 }
 
 type GetLinkInfoResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AccountLinkInfo   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AccountLinkInfo   `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLinkInfoResponse) String() string {
@@ -11452,6 +13379,10 @@ func (s *GetLinkInfoResponse) SetBody(v *AccountLinkInfo) *GetLinkInfoResponse {
 
 type GetLinkInfoByUserIdRequest struct {
 	// The user ID.
+	//
+	// example:
+	//
+	// xxx
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -11487,9 +13418,9 @@ func (s *GetLinkInfoByUserIdResponseBody) SetItems(v []*AccountLinkInfo) *GetLin
 }
 
 type GetLinkInfoByUserIdResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLinkInfoByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLinkInfoByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLinkInfoByUserIdResponse) String() string {
@@ -11517,18 +13448,38 @@ func (s *GetLinkInfoByUserIdResponse) SetBody(v *GetLinkInfoByUserIdResponseBody
 
 type GetRevisionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
 	// By default, this parameter is left empty. If you set this parameter to \*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// example:
+	//
+	// 40CB7794C929
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 	// The validity period of the file download or preview. Valid values: 10 to 86400.
 	//
 	// Default value: 900. Unit: seconds.
+	//
+	// example:
+	//
+	// 900
 	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
@@ -11566,9 +13517,9 @@ func (s *GetRevisionRequest) SetUrlExpireSec(v int64) *GetRevisionRequest {
 }
 
 type GetRevisionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRevisionResponse) String() string {
@@ -11596,6 +13547,10 @@ func (s *GetRevisionResponse) SetBody(v *Revision) *GetRevisionResponse {
 
 type GetShareLinkRequest struct {
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
@@ -11613,9 +13568,9 @@ func (s *GetShareLinkRequest) SetShareId(v string) *GetShareLinkRequest {
 }
 
 type GetShareLinkResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetShareLinkResponse) String() string {
@@ -11643,6 +13598,10 @@ func (s *GetShareLinkResponse) SetBody(v *ShareLink) *GetShareLinkResponse {
 
 type GetShareLinkByAnonymousRequest struct {
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
@@ -11661,44 +13620,120 @@ func (s *GetShareLinkByAnonymousRequest) SetShareId(v string) *GetShareLinkByAno
 
 type GetShareLinkByAnonymousResponseBody struct {
 	// The number of times that the shared files are visited.
+	//
+	// example:
+	//
+	// 30
 	AccessCount *int64 `json:"access_count,omitempty" xml:"access_count,omitempty"`
 	// The profile picture of the user who created the share link.
+	//
+	// example:
+	//
+	// https://aliyunpds.com/a.jpg
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	// The ID of the user who created the share link.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	CreatorId *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
 	// The name of the user who created the share link. The value is masked.
+	//
+	// example:
+	//
+	// AB***CD
 	CreatorName *string `json:"creator_name,omitempty" xml:"creator_name,omitempty"`
 	// The mobile number of the user who created the share link. The value is masked.
+	//
+	// example:
+	//
+	// 136****00
 	CreatorPhone *string `json:"creator_phone,omitempty" xml:"creator_phone,omitempty"`
 	// Indicates whether the downloads of the shared files are prohibited.
+	//
+	// example:
+	//
+	// false
 	DisableDownload *bool `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
 	// Indicates whether the previews of the shared files are prohibited.
+	//
+	// example:
+	//
+	// false
 	DisablePreview *bool `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
 	// Indicates whether the saves of the shared files are prohibited.
+	//
+	// example:
+	//
+	// false
 	DisableSave *bool `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
 	// The number of times that the shared files are downloaded.
+	//
+	// example:
+	//
+	// 50
 	DownloadCount *int64 `json:"download_count,omitempty" xml:"download_count,omitempty"`
 	// The maximum number of times that the shared files can be downloaded.
+	//
+	// example:
+	//
+	// 100
 	DownloadLimit *int64 `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
 	// The time when the share link expires.
+	//
+	// example:
+	//
+	// 2020-08-20T06:51:27.292Z
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	// The number of times that the shared files are previewed.
+	//
+	// example:
+	//
+	// 80
 	PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
 	// The maximum number of times that the shared files can be previewed.
+	//
+	// example:
+	//
+	// 100
 	PreviewLimit *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	// The number of times that the shared files are reported.
+	//
+	// example:
+	//
+	// 0
 	ReportCount *int64 `json:"report_count,omitempty" xml:"report_count,omitempty"`
 	// The number of times that the shared files are saved.
+	//
+	// example:
+	//
+	// 2
 	SaveCount *int64 `json:"save_count,omitempty" xml:"save_count,omitempty"`
 	// The maximum number of times that the shared files can be saved and downloaded.
+	//
+	// example:
+	//
+	// 200
 	SaveDownloadLimit *int64 `json:"save_download_limit,omitempty" xml:"save_download_limit,omitempty"`
 	// The maximum number of times that the shared files can be saved.
+	//
+	// example:
+	//
+	// 100
 	SaveLimit *int64 `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	// The name of the share link.
 	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
 	// The time when the share link was last modified.
+	//
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
 	// The number of times that the videos are previewed in the shared files.
+	//
+	// example:
+	//
+	// 5
 	VideoPreviewCount *int64 `json:"video_preview_count,omitempty" xml:"video_preview_count,omitempty"`
 }
 
@@ -11811,9 +13846,9 @@ func (s *GetShareLinkByAnonymousResponseBody) SetVideoPreviewCount(v int64) *Get
 }
 
 type GetShareLinkByAnonymousResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetShareLinkByAnonymousResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetShareLinkByAnonymousResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetShareLinkByAnonymousResponse) String() string {
@@ -11841,10 +13876,22 @@ func (s *GetShareLinkByAnonymousResponse) SetBody(v *GetShareLinkByAnonymousResp
 
 type GetShareLinkTokenRequest struct {
 	// The validity period of the token. Valid values: (0,7200]. Default value: 7200. Unit: seconds.
+	//
+	// example:
+	//
+	// 7200
 	ExpireSec *int32 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The access code.
+	//
+	// example:
+	//
+	// abcF123x
 	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
 }
 
@@ -11873,8 +13920,16 @@ func (s *GetShareLinkTokenRequest) SetSharePwd(v string) *GetShareLinkTokenReque
 
 type GetShareLinkTokenResponseBody struct {
 	// The validity period of the token. Unit: seconds. For example, a value of 7200 indicates two hours.
+	//
+	// example:
+	//
+	// 7200
 	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
 	// The JSON Web Token (JWT).
+	//
+	// example:
+	//
+	// eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjOWI3YTVhYTA0ZDE0YWUzODY3ZmRjODg2ZmEwMWRhNCIsImN1c3RvbUpzb24iOiJ7XCJjbGllbnRJZFwiOlwiMjVkelgzdmJZcWt0Vnh5WFwiLFwiZG9tYWluSWRcIjpcImJqMjlcIixcInNjb3BlXCI6W1wiRFJJVkUuQUxMXCIsXCJTSEFSRS5BTExcIixcIkZJTEUuQUxMXCIsXCJVU0VSLkFMTFwiLFwiVklFVy5BTExcIixcIlNUT1JBR0UuQUxMXCIsXCJTVE9SQUdFRklMRS5MSVNUXCIsXCJCQVRDSFwiLFwiT0FVVEguQUxMXCIsXCJJTUFHRS5BTExcIixcIklOVklURS5BTExcIixcIkFDQ09VTlQuQUxMXCJdLFwicm9sZVwiOlwidXNlclwiLFwicmVmXCI6XCJodHRwczovL3d3dy5hbGl5dW5kcml2ZS5jb20vXCIsXCJkZXZpY2VfaWRcIjpcImIyODIwNWU1YzU5NzRjY2JiODI3MDNiNjhkYjhjNDUxXCJ9IiwiZXhwIjoxNjQ4NjE0NDkzLCJpYXQiOjE2NDg2MDcyMzN9.d3HVLvv_LFw2QhPrhvjH_kICWQJX9sKKt7NjQEqI_xE2JO_b7D8rPsFTZz93PLvZ7MhCmudTjGImUpd-ehFnI4Go-1S7BGaKaHFILvP-sWy18Wpikowjxx9mSbzBM_cO6D1LI-kyYhXKWHgVdADfVIPniTDA7-ffhUpi7cAebEs
 	ShareToken *string `json:"share_token,omitempty" xml:"share_token,omitempty"`
 }
 
@@ -11897,9 +13952,9 @@ func (s *GetShareLinkTokenResponseBody) SetShareToken(v string) *GetShareLinkTok
 }
 
 type GetShareLinkTokenResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetShareLinkTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetShareLinkTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetShareLinkTokenResponse) String() string {
@@ -11927,18 +13982,48 @@ func (s *GetShareLinkTokenResponse) SetBody(v *GetShareLinkTokenResponseBody) *G
 
 type GetStoryRequest struct {
 	// Deprecated
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	CoverImageThumbnailProcess *string `json:"cover_image_thumbnail_process,omitempty" xml:"cover_image_thumbnail_process,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// video/snapshot,t_1000,f_jpg,w_0,h_0,m_fast,ar_auto
 	CoverVideoThumbnailProcess *string `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
-	DriveId                    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	StoryId         *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// 900
 	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// video/snapshot,t_1000,f_jpg,w_0,h_0,m_fast,ar_auto
 	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -11991,9 +14076,9 @@ func (s *GetStoryRequest) SetVideoThumbnailProcess(v string) *GetStoryRequest {
 }
 
 type GetStoryResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Story             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Story             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetStoryResponse) String() string {
@@ -12021,8 +14106,16 @@ func (s *GetStoryResponse) SetBody(v *Story) *GetStoryResponse {
 
 type GetTaskStatusRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// i:SimilarImageClustering-b67d53e7-2fe8-460f-9b95-1e93636923eb
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
@@ -12049,7 +14142,7 @@ type GetTaskStatusResponseBody struct {
 	//
 	// Valid values:
 	//
-	// *   running
+	// 	- running
 	//
 	//     <!-- -->
 	//
@@ -12063,7 +14156,7 @@ type GetTaskStatusResponseBody struct {
 	//
 	//     .
 	//
-	// *   failed
+	// 	- failed
 	//
 	//     <!-- -->
 	//
@@ -12077,7 +14170,7 @@ type GetTaskStatusResponseBody struct {
 	//
 	//     .
 	//
-	// *   succeeded
+	// 	- succeeded
 	//
 	//     <!-- -->
 	//
@@ -12090,6 +14183,10 @@ type GetTaskStatusResponseBody struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -12107,9 +14204,9 @@ func (s *GetTaskStatusResponseBody) SetStatus(v string) *GetTaskStatusResponseBo
 }
 
 type GetTaskStatusResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTaskStatusResponse) String() string {
@@ -12137,14 +14234,30 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 
 type GetUploadUrlRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 5d5b846942cf94fa72324c14a4bda34e81da635d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The information about the file parts.
 	PartInfoList []*GetUploadUrlRequestPartInfoList `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the upload task.
+	//
+	// example:
+	//
+	// 10166D06127B413BA1EC8ABB1144D111
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
@@ -12185,8 +14298,13 @@ type GetUploadUrlRequestPartInfoList struct {
 	ContentMd5  *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
 	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
 	// The SHA-1 hash value of the file content before the file part. This parameter takes effect only if the parallel upload feature is enabled.
-	ParallelSha1Ctx *GetUploadUrlRequestPartInfoListParallelSha1Ctx `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
+	ParallelSha1Ctx   *GetUploadUrlRequestPartInfoListParallelSha1Ctx   `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
+	ParallelSha256Ctx *GetUploadUrlRequestPartInfoListParallelSha256Ctx `json:"parallel_sha256_ctx,omitempty" xml:"parallel_sha256_ctx,omitempty" type:"Struct"`
 	// The serial number of a part.
+	//
+	// example:
+	//
+	// 1
 	PartNumber *int32 `json:"part_number,omitempty" xml:"part_number,omitempty"`
 }
 
@@ -12213,6 +14331,11 @@ func (s *GetUploadUrlRequestPartInfoList) SetParallelSha1Ctx(v *GetUploadUrlRequ
 	return s
 }
 
+func (s *GetUploadUrlRequestPartInfoList) SetParallelSha256Ctx(v *GetUploadUrlRequestPartInfoListParallelSha256Ctx) *GetUploadUrlRequestPartInfoList {
+	s.ParallelSha256Ctx = v
+	return s
+}
+
 func (s *GetUploadUrlRequestPartInfoList) SetPartNumber(v int32) *GetUploadUrlRequestPartInfoList {
 	s.PartNumber = &v
 	return s
@@ -12222,6 +14345,10 @@ type GetUploadUrlRequestPartInfoListParallelSha1Ctx struct {
 	// The first to fifth 32-bit variables of the SHA-1 hash value of the file content before the file part. This parameter takes effect only if the parallel upload feature is enabled.
 	H []*int64 `json:"h,omitempty" xml:"h,omitempty" type:"Repeated"`
 	// The size of the file part. Unit: bytes. The value must be a multiple of 64. This parameter takes effect only if the parallel upload feature is enabled.
+	//
+	// example:
+	//
+	// 10240
 	PartOffset *int64 `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
 }
 
@@ -12243,18 +14370,61 @@ func (s *GetUploadUrlRequestPartInfoListParallelSha1Ctx) SetPartOffset(v int64) 
 	return s
 }
 
+type GetUploadUrlRequestPartInfoListParallelSha256Ctx struct {
+	H          []*int64 `json:"h,omitempty" xml:"h,omitempty" type:"Repeated"`
+	PartOffset *int64   `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
+}
+
+func (s GetUploadUrlRequestPartInfoListParallelSha256Ctx) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadUrlRequestPartInfoListParallelSha256Ctx) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadUrlRequestPartInfoListParallelSha256Ctx) SetH(v []*int64) *GetUploadUrlRequestPartInfoListParallelSha256Ctx {
+	s.H = v
+	return s
+}
+
+func (s *GetUploadUrlRequestPartInfoListParallelSha256Ctx) SetPartOffset(v int64) *GetUploadUrlRequestPartInfoListParallelSha256Ctx {
+	s.PartOffset = &v
+	return s
+}
+
 type GetUploadUrlResponseBody struct {
 	// The time when the upload task was created.
+	//
+	// example:
+	//
+	// 2019-09-11T16:34:36.977Z
 	CreateAt *string `json:"create_at,omitempty" xml:"create_at,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 5d5b846942cf94fa72324c14a4bda34e81da635d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The information about the file parts.
 	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// The ID of the upload task.
+	//
+	// example:
+	//
+	// 10166D06127B413BA1EC8ABB1144D111
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
@@ -12297,9 +14467,9 @@ func (s *GetUploadUrlResponseBody) SetUploadId(v string) *GetUploadUrlResponseBo
 }
 
 type GetUploadUrlResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUploadUrlResponse) String() string {
@@ -12327,6 +14497,10 @@ func (s *GetUploadUrlResponse) SetBody(v *GetUploadUrlResponseBody) *GetUploadUr
 
 type GetUserRequest struct {
 	// The user ID. If you use an AccessKey pair to access Drive and Photo Service, you must specify this parameter. If you use an access token to access Drive and Photo Service, you do not need to specify this parameter, and Drive and Photo Service automatically finds the user ID contained in the access token.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -12344,9 +14518,9 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *User              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *User              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -12375,23 +14549,54 @@ func (s *GetUserResponse) SetBody(v *User) *GetUserResponse {
 type GetVideoPreviewPlayInfoRequest struct {
 	// The preview type. You must enable the corresponding video transcoding feature. Valid values:
 	//
-	// *   live_transcoding: previews a live stream while transcoding is in progress.
-	// *   quick_video: previews a video while transcoding is in progress.
-	// *   offline_audio: previews a piece of audio after the audio is transcoded offline.
-	// *   offline_video: previews a video after the video is transcoded offline.
+	// 	- live_transcoding: previews a live stream while transcoding is in progress.
+	//
+	// 	- quick_video: previews a video while transcoding is in progress.
+	//
+	// 	- offline_audio: previews a piece of audio after the audio is transcoded offline.
+	//
+	// 	- offline_video: previews a video after the video is transcoded offline.
+	//
+	// example:
+	//
+	// live_transcoding
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	GetMasterUrl *bool   `json:"get_master_url,omitempty" xml:"get_master_url,omitempty"`
 	// Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged for the value-added service fees generated for transcoding.
+	//
+	// example:
+	//
+	// true
 	GetWithoutUrl *bool `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
 	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the definition template. If you leave this parameter empty, all definition templates are available.
+	//
+	// example:
+	//
+	// 264_480p
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
 	// The validity period of the video preview. Unit: seconds. Default value: 900. Maximum value: 14400.
+	//
+	// example:
+	//
+	// 3600
 	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
@@ -12444,16 +14649,38 @@ func (s *GetVideoPreviewPlayInfoRequest) SetUrlExpireSec(v int64) *GetVideoPrevi
 }
 
 type GetVideoPreviewPlayInfoResponseBody struct {
+	// example:
+	//
+	// VideoPreviewWaitAndRetry
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// fileid1
 	FileId    *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// media is transcoding, please wait and retry.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The information about video playback.
 	VideoPreviewPlayInfo *VideoPreviewPlayInfo `json:"video_preview_play_info,omitempty" xml:"video_preview_play_info,omitempty"`
@@ -12508,9 +14735,9 @@ func (s *GetVideoPreviewPlayInfoResponseBody) SetVideoPreviewPlayInfo(v *VideoPr
 }
 
 type GetVideoPreviewPlayInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoPreviewPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoPreviewPlayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoPreviewPlayInfoResponse) String() string {
@@ -12539,16 +14766,35 @@ func (s *GetVideoPreviewPlayInfoResponse) SetBody(v *GetVideoPreviewPlayInfoResp
 type GetVideoPreviewPlayMetaRequest struct {
 	// The preview type. You must enable the corresponding video transcoding feature. Valid values:
 	//
-	// *   live_transcoding: previews a live stream while transcoding is in progress.
-	// *   quick_video: previews a video while transcoding is in progress.
-	// *   offline_audio: previews a piece of audio after the audio is transcoded offline.
-	// *   offline_video: previews a video after the video is transcoded offline.
+	// 	- live_transcoding: previews a live stream while transcoding is in progress.
+	//
+	// 	- quick_video: previews a video while transcoding is in progress.
+	//
+	// 	- offline_audio: previews a piece of audio after the audio is transcoded offline.
+	//
+	// 	- offline_video: previews a video after the video is transcoded offline.
+	//
+	// example:
+	//
+	// live_transcoding
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
@@ -12582,12 +14828,28 @@ func (s *GetVideoPreviewPlayMetaRequest) SetShareId(v string) *GetVideoPreviewPl
 
 type GetVideoPreviewPlayMetaResponseBody struct {
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// fileid1
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The preview metadata of the video.
 	VideoPreviewPlayMeta *VideoPreviewPlayMeta `json:"video_preview_play_meta,omitempty" xml:"video_preview_play_meta,omitempty"`
@@ -12627,9 +14889,9 @@ func (s *GetVideoPreviewPlayMetaResponseBody) SetVideoPreviewPlayMeta(v *VideoPr
 }
 
 type GetVideoPreviewPlayMetaResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetVideoPreviewPlayMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoPreviewPlayMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetVideoPreviewPlayMetaResponse) String() string {
@@ -12679,8 +14941,8 @@ func (s *GroupUpdateNameRequest) SetName(v string) *GroupUpdateNameRequest {
 }
 
 type GroupUpdateNameResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s GroupUpdateNameResponse) String() string {
@@ -12703,30 +14965,68 @@ func (s *GroupUpdateNameResponse) SetStatusCode(v int32) *GroupUpdateNameRespons
 
 type ImportUserRequest struct {
 	// The display name of the authentication type.
+	//
+	// example:
+	//
+	// 10000
 	AuthenticationDisplayName *string `json:"authentication_display_name,omitempty" xml:"authentication_display_name,omitempty"`
 	// The authentication type. Valid values:
 	//
-	// *   mobile: mobile number.
-	// *   email: email address.
-	// *   ding: DingTalk account.
-	// *   ram: Alibaba Cloud Resource Access Management (RAM) user.
-	// *   wechat: WeCom account.
-	// *   ldap: Lightweight Directory Access Protocol (LDAP) account.
-	// *   custom: custom account.
+	// 	- mobile: mobile number.
+	//
+	// 	- email: email address.
+	//
+	// 	- ding: DingTalk account.
+	//
+	// 	- ram: Alibaba Cloud Resource Access Management (RAM) user.
+	//
+	// 	- wechat: WeCom account.
+	//
+	// 	- ldap: Lightweight Directory Access Protocol (LDAP) account.
+	//
+	// 	- custom: custom account.
+	//
+	// example:
+	//
+	// mobile
 	AuthenticationType *string `json:"authentication_type,omitempty" xml:"authentication_type,omitempty"`
 	// Specifies whether to automatically create a drive.
+	//
+	// example:
+	//
+	// false
 	AutoCreateDrive *bool `json:"auto_create_drive,omitempty" xml:"auto_create_drive,omitempty"`
 	// The size of the drive. The value cannot be smaller than -1. A value of -1 specifies that the size is unlimited.
+	//
+	// example:
+	//
+	// 10240
 	DriveTotalSize *int64 `json:"drive_total_size,omitempty" xml:"drive_total_size,omitempty"`
 	// The additional information.
 	//
 	// If authentication_type is set to mobile, set this parameter to a country code. If you do not specify this parameter, 86 is used by default.
+	//
+	// example:
+	//
+	// 1
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The unique identifier.
+	//
+	// example:
+	//
+	// 130****
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The nickname of the user.
+	//
+	// example:
+	//
+	// pdsuer
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// The ID of the group to which the user is added.
+	//
+	// example:
+	//
+	// g12
 	ParentGroupId *string `json:"parent_group_id,omitempty" xml:"parent_group_id,omitempty"`
 }
 
@@ -12779,9 +15079,9 @@ func (s *ImportUserRequest) SetParentGroupId(v string) *ImportUserRequest {
 }
 
 type ImportUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *User              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *User              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportUserResponse) String() string {
@@ -12809,6 +15109,9 @@ func (s *ImportUserResponse) SetBody(v *User) *ImportUserResponse {
 
 type InvestigateFileRequest struct {
 	DriveFileIds []*InvestigateFileRequestDriveFileIds `json:"drive_file_ids,omitempty" xml:"drive_file_ids,omitempty" type:"Repeated"`
+	Policy       *InvestigateFileRequestPolicy         `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
+	Recursive    *bool                                 `json:"recursive,omitempty" xml:"recursive,omitempty"`
+	UserData     *string                               `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
 
 func (s InvestigateFileRequest) String() string {
@@ -12824,9 +15127,30 @@ func (s *InvestigateFileRequest) SetDriveFileIds(v []*InvestigateFileRequestDriv
 	return s
 }
 
+func (s *InvestigateFileRequest) SetPolicy(v *InvestigateFileRequestPolicy) *InvestigateFileRequest {
+	s.Policy = v
+	return s
+}
+
+func (s *InvestigateFileRequest) SetRecursive(v bool) *InvestigateFileRequest {
+	s.Recursive = &v
+	return s
+}
+
+func (s *InvestigateFileRequest) SetUserData(v string) *InvestigateFileRequest {
+	s.UserData = &v
+	return s
+}
+
 type InvestigateFileRequestDriveFileIds struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 9520943DC264
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
 func (s InvestigateFileRequestDriveFileIds) String() string {
@@ -12847,9 +15171,38 @@ func (s *InvestigateFileRequestDriveFileIds) SetFileId(v string) *InvestigateFil
 	return s
 }
 
+type InvestigateFileRequestPolicy struct {
+	FirstProductName *string `json:"first_product_name,omitempty" xml:"first_product_name,omitempty"`
+	MteeCode         *string `json:"mtee_code,omitempty" xml:"mtee_code,omitempty"`
+	Provider         *string `json:"provider,omitempty" xml:"provider,omitempty"`
+}
+
+func (s InvestigateFileRequestPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigateFileRequestPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigateFileRequestPolicy) SetFirstProductName(v string) *InvestigateFileRequestPolicy {
+	s.FirstProductName = &v
+	return s
+}
+
+func (s *InvestigateFileRequestPolicy) SetMteeCode(v string) *InvestigateFileRequestPolicy {
+	s.MteeCode = &v
+	return s
+}
+
+func (s *InvestigateFileRequestPolicy) SetProvider(v string) *InvestigateFileRequestPolicy {
+	s.Provider = &v
+	return s
+}
+
 type InvestigateFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s InvestigateFileResponse) String() string {
@@ -12872,20 +15225,42 @@ func (s *InvestigateFileResponse) SetStatusCode(v int32) *InvestigateFileRespons
 
 type LinkAccountRequest struct {
 	// The additional information about the unique identifier of the account. For example, if type is set to mobile, set the value of extra to a country code. For example, a value of 86 specifies a mobile number in the Chinese mainland. If you do not specify this parameter, 86 is used by default.
+	//
+	// example:
+	//
+	// 86
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The unique identifier of the account, such as a mobile number.
+	//
+	// example:
+	//
+	// eyy***
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The account type. Valid values:
 	//
-	// *   mobile: a mobile number.
-	// *   email: an email address.
-	// *   ding: a DingTalk account.
-	// *   ram: an Alibaba Cloud Resource Access Management (RAM) user.
-	// *   wechat: a WeCom account.
-	// *   ldap: a Lightweight Directory Access Protocol (LDAP) account.
-	// *   custom: a custom account.
+	// 	- mobile: a mobile number.
+	//
+	// 	- email: an email address.
+	//
+	// 	- ding: a DingTalk account.
+	//
+	// 	- ram: an Alibaba Cloud Resource Access Management (RAM) user.
+	//
+	// 	- wechat: a WeCom account.
+	//
+	// 	- ldap: a Lightweight Directory Access Protocol (LDAP) account.
+	//
+	// 	- custom: a custom account.
+	//
+	// example:
+	//
+	// ding
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The ID of the user with which you want to associate an account.
+	//
+	// example:
+	//
+	// xxx
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -12918,9 +15293,9 @@ func (s *LinkAccountRequest) SetUserId(v string) *LinkAccountRequest {
 }
 
 type LinkAccountResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Token             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Token             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LinkAccountResponse) String() string {
@@ -12948,14 +15323,34 @@ func (s *LinkAccountResponse) SetBody(v *Token) *LinkAccountResponse {
 
 type ListAddressGroupsRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The method that is used to generate a thumbnail of an image.
+	//
+	// example:
+	//
+	// image/resize,w_200
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The method that is used to generate a thumbnail of a video.
+	//
+	// example:
+	//
+	// video_thumbnail_process
 	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -12996,6 +15391,10 @@ type ListAddressGroupsResponseBody struct {
 	// The information about the location-based groups.
 	Items []*AddressGroup `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13018,9 +15417,9 @@ func (s *ListAddressGroupsResponseBody) SetNextMarker(v string) *ListAddressGrou
 }
 
 type ListAddressGroupsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAddressGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAddressGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAddressGroupsResponse) String() string {
@@ -13050,12 +15449,28 @@ type ListAssignmentRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The ID of the managed resource, such as a group ID.
+	//
+	// example:
+	//
+	// 105***b82
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the managed resource. Set the value to RT_Group, which specifies that the administrators of a group are queried.
+	//
+	// example:
+	//
+	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -13091,6 +15506,10 @@ type ListAssignmentResponseBody struct {
 	// The assigned roles.
 	AssignmentList []*ListAssignmentResponseBodyAssignmentList `json:"assignment_list,omitempty" xml:"assignment_list,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13114,18 +15533,42 @@ func (s *ListAssignmentResponseBody) SetNextMarker(v string) *ListAssignmentResp
 
 type ListAssignmentResponseBodyAssignmentList struct {
 	// The time when the role was assigned. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1622682267564
 	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	// The ID of the user who assigned the role.
+	//
+	// example:
+	//
+	// 216***c83
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// hz1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The identity to whom the role is assigned, which is a user or a group.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The ID of the managed resource, such as a group ID.
+	//
+	// example:
+	//
+	// 105***b82
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the managed resource. For example, a value of RT_Group indicates group.
+	//
+	// example:
+	//
+	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The ID of the role assigned to the identity.
+	//
+	// example:
+	//
+	// SystemGroupAdmin
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 
@@ -13173,9 +15616,9 @@ func (s *ListAssignmentResponseBodyAssignmentList) SetRoleId(v string) *ListAssi
 }
 
 type ListAssignmentResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAssignmentResponse) String() string {
@@ -13203,14 +15646,30 @@ func (s *ListAssignmentResponse) SetBody(v *ListAssignmentResponseBody) *ListAss
 
 type ListDeltaRequest struct {
 	// The cursor of the incremental information.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The maximum number of results to return. Valid values: 0 to 100. Default value: 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The ID of the root file of the synced folder.
+	//
+	// example:
+	//
+	// 622fb09598ae66777c7040109a16f49381f6abe1
 	SyncRootId *string `json:"sync_root_id,omitempty" xml:"sync_root_id,omitempty"`
 }
 
@@ -13244,8 +15703,16 @@ func (s *ListDeltaRequest) SetSyncRootId(v string) *ListDeltaRequest {
 
 type ListDeltaResponseBody struct {
 	// The cursor of the incremental information.
+	//
+	// example:
+	//
+	// 1WQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 	// Indicates whether more information is returned.
+	//
+	// example:
+	//
+	// true
 	HasMore *bool `json:"has_more,omitempty" xml:"has_more,omitempty"`
 	// The incremental information returned.
 	Items []*ListDeltaResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
@@ -13278,17 +15745,32 @@ type ListDeltaResponseBodyItems struct {
 	// The information about the file.
 	File *File `json:"file,omitempty" xml:"file,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 122fb09598ae66777c7040109a16f49381f6abe2
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The operation that is performed. Valid values: Valid values:
 	//
-	// *   create
-	// *   overwrite
-	// *   delete
-	// *   update
-	// *   move
-	// *   trash
-	// *   restore
-	// *   rename
+	// 	- create
+	//
+	// 	- overwrite
+	//
+	// 	- delete
+	//
+	// 	- update
+	//
+	// 	- move
+	//
+	// 	- trash
+	//
+	// 	- restore
+	//
+	// 	- rename
+	//
+	// example:
+	//
+	// create
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
 }
 
@@ -13316,9 +15798,9 @@ func (s *ListDeltaResponseBodyItems) SetOp(v string) *ListDeltaResponseBodyItems
 }
 
 type ListDeltaResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDeltaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeltaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDeltaResponse) String() string {
@@ -13346,11 +15828,24 @@ func (s *ListDeltaResponse) SetBody(v *ListDeltaResponseBody) *ListDeltaResponse
 
 type ListDomainsRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 60
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The ID of the parent domain.
+	//
+	// example:
+	//
+	// bj1
 	ParentDomainId *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+	ServiceCode    *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
 }
 
 func (s ListDomainsRequest) String() string {
@@ -13376,10 +15871,19 @@ func (s *ListDomainsRequest) SetParentDomainId(v string) *ListDomainsRequest {
 	return s
 }
 
+func (s *ListDomainsRequest) SetServiceCode(v string) *ListDomainsRequest {
+	s.ServiceCode = &v
+	return s
+}
+
 type ListDomainsResponseBody struct {
 	// The information about the domains.
 	Items []*Domain `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13402,9 +15906,9 @@ func (s *ListDomainsResponseBody) SetNextMarker(v string) *ListDomainsResponseBo
 }
 
 type ListDomainsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDomainsResponse) String() string {
@@ -13432,16 +15936,32 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 
 type ListDriveRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The owner of the drive. If this parameter is not specified, all drives are returned.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The type of the owner. Valid values:
 	//
 	// user and group.
 	//
 	// By default, drives of all owner types are returned.
+	//
+	// example:
+	//
+	// user
 	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
 }
 
@@ -13477,6 +15997,10 @@ type ListDriveResponseBody struct {
 	// The queried drives.
 	Items []*Drive `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13499,9 +16023,9 @@ func (s *ListDriveResponseBody) SetNextMarker(v string) *ListDriveResponseBody {
 }
 
 type ListDriveResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDriveResponse) String() string {
@@ -13529,10 +16053,22 @@ func (s *ListDriveResponse) SetBody(v *ListDriveResponseBody) *ListDriveResponse
 
 type ListFacegroupsRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The filter condition that is used to query groups. The value can be up to 128 characters in length. An exact match is used.
 	Remarks          *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
@@ -13576,6 +16112,10 @@ type ListFacegroupsResponseBody struct {
 	// The information about the face-based groups.
 	Items []*FaceGroup `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 	TotalCount *int64  `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
@@ -13604,9 +16144,9 @@ func (s *ListFacegroupsResponseBody) SetTotalCount(v int64) *ListFacegroupsRespo
 }
 
 type ListFacegroupsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFacegroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFacegroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFacegroupsResponse) String() string {
@@ -13638,23 +16178,46 @@ type ListFileRequest struct {
 	// app: installation package. zip: compressed package. image: image. doc: document. video: video. audio: audio. others: other files.
 	//
 	// By default, files of all categories are returned.
+	//
+	// example:
+	//
+	// image
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The fields to return.
 	//
 	// 1.  If this parameter is set to \*, all fields of the file except the fields that must be specified are returned.
+	//
 	// 2.  If only specific fields are required, you can specify the following fields: url, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,exif.
+	//
 	// 3.  The investigation_info field is returned only if you specify this field.
 	//
 	// By default, all fields except the fields that must be specified are returned.
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The sorting field.
 	//
@@ -13662,7 +16225,7 @@ type ListFileRequest struct {
 	//
 	// Valid values:
 	//
-	// *   updated_at
+	// 	- updated_at
 	//
 	//     <!-- -->
 	//
@@ -13676,7 +16239,7 @@ type ListFileRequest struct {
 	//
 	//     .
 	//
-	// *   size
+	// 	- size
 	//
 	//     <!-- -->
 	//
@@ -13690,7 +16253,7 @@ type ListFileRequest struct {
 	//
 	//     .
 	//
-	// *   name
+	// 	- name
 	//
 	//     <!-- -->
 	//
@@ -13704,7 +16267,7 @@ type ListFileRequest struct {
 	//
 	//     .
 	//
-	// *   created_at
+	// 	- created_at
 	//
 	//     <!-- -->
 	//
@@ -13717,22 +16280,42 @@ type ListFileRequest struct {
 	//     <!-- -->
 	//
 	//     .
+	//
+	// example:
+	//
+	// updated_at
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The sorting direction. Valid values:
 	//
 	// ASC: ascending order. DESC: descending order.
 	//
 	// Default value: ASC.
+	//
+	// example:
+	//
+	// ASC
 	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 	// The ID of the parent folder. If the parent folder is a root directory, set this parameter to root.
+	//
+	// example:
+	//
+	// root
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
 	// The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The state of the file. Valid values:
 	//
 	// available: Only normal files are returned. uploading: Only files that are being uploaded are returned.
 	//
 	// By default, only files in the available state are returned.
+	//
+	// example:
+	//
+	// available
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
 	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
@@ -13741,6 +16324,10 @@ type ListFileRequest struct {
 	// file: Only files are returned. folder: Only folders are returned.
 	//
 	// By default, files of all types are returned.
+	//
+	// example:
+	//
+	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -13816,6 +16403,10 @@ type ListFileResponseBody struct {
 	// The queried files.
 	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13838,9 +16429,9 @@ func (s *ListFileResponseBody) SetNextMarker(v string) *ListFileResponseBody {
 }
 
 type ListFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFileResponse) String() string {
@@ -13868,8 +16459,16 @@ func (s *ListFileResponse) SetBody(v *ListFileResponseBody) *ListFileResponse {
 
 type ListGroupRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -13895,6 +16494,10 @@ type ListGroupResponseBody struct {
 	// The information about the groups.
 	Items []*Group `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -13917,9 +16520,9 @@ func (s *ListGroupResponseBody) SetNextMarker(v string) *ListGroupResponseBody {
 }
 
 type ListGroupResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupResponse) String() string {
@@ -13947,18 +16550,36 @@ func (s *ListGroupResponse) SetBody(v *ListGroupResponseBody) *ListGroupResponse
 
 type ListGroupMemberRequest struct {
 	// The ID of the group of which you want to query members.
+	//
+	// example:
+	//
+	// 3e5***2c2
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
-	// The total number of returned entries.
+	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The member type. If you do not specify this parameter, both types of members are returned. Valid values:
 	//
-	// *   user
-	// *   group
+	// 	- user
+	//
+	// 	- group
 	//
 	// Note: A group can be a member of only one group. It cannot be a member of multiple groups. A user can be a member of multiple groups.
+	//
+	// example:
+	//
+	// user
 	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
 }
 
@@ -13994,6 +16615,10 @@ type ListGroupMemberResponseBody struct {
 	// The information about the groups.
 	GroupItems []*Group `json:"group_items,omitempty" xml:"group_items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhM1
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 	// The information about the users.
 	UserItems []*User `json:"user_items,omitempty" xml:"user_items,omitempty" type:"Repeated"`
@@ -14023,9 +16648,9 @@ func (s *ListGroupMemberResponseBody) SetUserItems(v []*User) *ListGroupMemberRe
 }
 
 type ListGroupMemberResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupMemberResponse) String() string {
@@ -14069,9 +16694,9 @@ func (s *ListIdentityRoleRequest) SetIdentity(v *Identity) *ListIdentityRoleRequ
 }
 
 type ListIdentityRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BaseRoleMemberResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BaseRoleMemberResponse `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIdentityRoleResponse) String() string {
@@ -14101,10 +16726,22 @@ type ListIdentityToBenefitPkgMappingRequest struct {
 	// The unique identifier of the entity.
 	//
 	// If you call this operation to manage the benefits of a user, set this parameter to the ID of the user.
+	//
+	// example:
+	//
+	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you call this operation to manage the benefits of a user, set this parameter to user.
+	//
+	// example:
+	//
+	// user
 	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
 	// Specifies whether to return the benefit packages that expire. Default value: false.
+	//
+	// example:
+	//
+	// false
 	IncludeExpired *bool `json:"include_expired,omitempty" xml:"include_expired,omitempty"`
 }
 
@@ -14150,9 +16787,9 @@ func (s *ListIdentityToBenefitPkgMappingResponseBody) SetItems(v []*IdentityToBe
 }
 
 type ListIdentityToBenefitPkgMappingResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIdentityToBenefitPkgMappingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIdentityToBenefitPkgMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListIdentityToBenefitPkgMappingResponse) String() string {
@@ -14180,8 +16817,16 @@ func (s *ListIdentityToBenefitPkgMappingResponse) SetBody(v *ListIdentityToBenef
 
 type ListMyDrivesRequest struct {
 	// The maximum number of results to return. Default value: 100. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14207,6 +16852,10 @@ type ListMyDrivesResponseBody struct {
 	// The queried drives.
 	Items []*Drive `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -14229,9 +16878,9 @@ func (s *ListMyDrivesResponseBody) SetNextMarker(v string) *ListMyDrivesResponse
 }
 
 type ListMyDrivesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMyDrivesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMyDrivesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMyDrivesResponse) String() string {
@@ -14259,8 +16908,16 @@ func (s *ListMyDrivesResponse) SetBody(v *ListMyDrivesResponseBody) *ListMyDrive
 
 type ListMyGroupDriveRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14286,7 +16943,12 @@ type ListMyGroupDriveResponseBody struct {
 	// The information about the team drives.
 	Items []*Drive `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
-	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
+	NextMarker     *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	RootGroupDrive *Drive  `json:"root_group_drive,omitempty" xml:"root_group_drive,omitempty"`
 }
 
 func (s ListMyGroupDriveResponseBody) String() string {
@@ -14307,10 +16969,15 @@ func (s *ListMyGroupDriveResponseBody) SetNextMarker(v string) *ListMyGroupDrive
 	return s
 }
 
+func (s *ListMyGroupDriveResponseBody) SetRootGroupDrive(v *Drive) *ListMyGroupDriveResponseBody {
+	s.RootGroupDrive = v
+	return s
+}
+
 type ListMyGroupDriveResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListMyGroupDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMyGroupDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListMyGroupDriveResponse) String() string {
@@ -14338,8 +17005,16 @@ func (s *ListMyGroupDriveResponse) SetBody(v *ListMyGroupDriveResponseBody) *Lis
 
 type ListReceivedFileRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is empty.
+	//
+	// example:
+	//
+	// eym***
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14365,6 +17040,10 @@ type ListReceivedFileResponseBody struct {
 	// The queried files.
 	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// eym***
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -14387,9 +17066,9 @@ func (s *ListReceivedFileResponseBody) SetNextMarker(v string) *ListReceivedFile
 }
 
 type ListReceivedFileResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListReceivedFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReceivedFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListReceivedFileResponse) String() string {
@@ -14417,6 +17096,10 @@ func (s *ListReceivedFileResponse) SetBody(v *ListReceivedFileResponseBody) *Lis
 
 type ListRecyclebinRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
@@ -14425,12 +17108,24 @@ type ListRecyclebinRequest struct {
 	// 2\. If you set this parameter to a null value or leave this parameter empty, the fields, such as file creator, file modifier, and custom tags, are not returned.
 	//
 	// The default value is a null value, which indicates that only some fields are returned.
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 200. Default value: 50.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14466,6 +17161,10 @@ type ListRecyclebinResponseBody struct {
 	// The information about the files and folders in the recycle bin.
 	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhM1
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -14488,9 +17187,9 @@ func (s *ListRecyclebinResponseBody) SetNextMarker(v string) *ListRecyclebinResp
 }
 
 type ListRecyclebinResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRecyclebinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRecyclebinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRecyclebinResponse) String() string {
@@ -14518,22 +17217,42 @@ func (s *ListRecyclebinResponse) SetBody(v *ListRecyclebinResponseBody) *ListRec
 
 type ListRevisionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
 	// By default, this parameter is left empty. If you set this parameter to \*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
 	// Default value: 50.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 100
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.
 	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// 40CB7794C929
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14574,6 +17293,10 @@ type ListRevisionResponseBody struct {
 	// The information about the versions.
 	Items []*Revision `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -14596,9 +17319,9 @@ func (s *ListRevisionResponseBody) SetNextMarker(v string) *ListRevisionResponse
 }
 
 type ListRevisionResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRevisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRevisionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRevisionResponse) String() string {
@@ -14626,27 +17349,56 @@ func (s *ListRevisionResponse) SetBody(v *ListRevisionResponseBody) *ListRevisio
 
 type ListShareLinkRequest struct {
 	// The creator of the share.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// Specifies whether to return the shares that are canceled.
+	//
+	// example:
+	//
+	// true
 	IncludeCancelled *bool `json:"include_cancelled,omitempty" xml:"include_cancelled,omitempty"`
 	// The maximum number of results to return. Valid values: 0 to 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The field by which to sort the returned results. Default value: created_at. Valid values:
 	//
-	// *   share_name: sorts the results by the name of the share.
-	// *   updated_at: sorts the results by the time when the share was modified.
-	// *   description: sorts the results by the description of the share.
-	// *   created_at: sorts the results by the time when the share was created.
+	// 	- share_name: sorts the results by the name of the share.
+	//
+	// 	- updated_at: sorts the results by the time when the share was modified.
+	//
+	// 	- description: sorts the results by the description of the share.
+	//
+	// 	- created_at: sorts the results by the time when the share was created.
+	//
+	// example:
+	//
+	// share_name
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The order in which you want to sort the returned results. By default, order_direction is set to DESC if order_by is set to created_at or updated_at, and is set to ASC if order_by is set to other values. Valid values:
 	//
-	// *   ASC: sorts the results in ascending order.
-	// *   DESC: sorts the results in descending order.
+	// 	- ASC: sorts the results in ascending order.
+	//
+	// 	- DESC: sorts the results in descending order.
+	//
+	// example:
+	//
+	// ASC
 	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 }
 
@@ -14692,6 +17444,10 @@ type ListShareLinkResponseBody struct {
 	// The information about the shares.
 	Items []*ShareLink `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -14714,9 +17470,9 @@ func (s *ListShareLinkResponseBody) SetNextMarker(v string) *ListShareLinkRespon
 }
 
 type ListShareLinkResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListShareLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListShareLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListShareLinkResponse) String() string {
@@ -14744,10 +17500,22 @@ func (s *ListShareLinkResponse) SetBody(v *ListShareLinkResponseBody) *ListShare
 
 type ListTagsRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The method that is used to generate the thumbnail of an image.
+	//
+	// example:
+	//
+	// image/resize,w_200
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	// The method that is used to generate the thumbnail of a video.
+	//
+	// example:
+	//
+	// video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast
 	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -14793,9 +17561,9 @@ func (s *ListTagsResponseBody) SetTags(v []*ImageTag) *ListTagsResponseBody {
 }
 
 type ListTagsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagsResponse) String() string {
@@ -14823,16 +17591,40 @@ func (s *ListTagsResponse) SetBody(v *ListTagsResponseBody) *ListTagsResponse {
 
 type ListUploadedPartsRequest struct {
 	// The drive ID. This parameter is required if the file is not uploaded by using the share URL of the file.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 322fb07b975f4b0ae1b543fe8475eee4c19eb2b2
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	PartNumberMarker *int32 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty"`
 	// The share ID. This parameter is required if the file is uploaded by using the share URL of the file.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the upload task.
+	//
+	// example:
+	//
+	// 00166D06127B413BA1EC8ABB1144D101
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
@@ -14876,12 +17668,28 @@ func (s *ListUploadedPartsRequest) SetUploadId(v string) *ListUploadedPartsReque
 
 type ListUploadedPartsResponseBody struct {
 	// The file ID.
+	//
+	// example:
+	//
+	// 322fb07b975f4b0ae1b543fe8475eee4c19eb2b2
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextPartNumberMarker *string `json:"next_part_number_marker,omitempty" xml:"next_part_number_marker,omitempty"`
 	// Indicates whether the parallel upload feature is enabled.
+	//
+	// example:
+	//
+	// false
 	ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
 	// The ID of the upload task.
+	//
+	// example:
+	//
+	// 00166D06127B413BA1EC8ABB1144D101
 	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 	// The information about the file parts.
 	UploadedParts []*UploadPartInfo `json:"uploaded_parts,omitempty" xml:"uploaded_parts,omitempty" type:"Repeated"`
@@ -14921,9 +17729,9 @@ func (s *ListUploadedPartsResponseBody) SetUploadedParts(v []*UploadPartInfo) *L
 }
 
 type ListUploadedPartsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUploadedPartsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUploadedPartsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUploadedPartsResponse) String() string {
@@ -14950,9 +17758,17 @@ func (s *ListUploadedPartsResponse) SetBody(v *ListUploadedPartsResponseBody) *L
 }
 
 type ListUserRequest struct {
-	// The maximum number of results to return. Valid values: 1 to 100.
+	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -14978,6 +17794,10 @@ type ListUserResponseBody struct {
 	// The information about the users.
 	Items []*User `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -15000,9 +17820,9 @@ func (s *ListUserResponseBody) SetNextMarker(v string) *ListUserResponseBody {
 }
 
 type ListUserResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserResponse) String() string {
@@ -15038,12 +17858,28 @@ type MoveFileRequest struct {
 	// refuse: does not move the file that you want to move but returns the information about the file that has the same name in the destination directory.
 	//
 	// Default value: ignore.
+	//
+	// example:
+	//
+	// ignore
 	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The ID of the destination parent directory to which you want to move a file or folder. If you want to move a file or folder to the root directory, set this parameter to root.
+	//
+	// example:
+	//
+	// 6520943DC261
 	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty"`
 }
 
@@ -15081,14 +17917,34 @@ type MoveFileResponseBody struct {
 	// If an empty string is returned, the file is moved.
 	//
 	// If a non-empty string is returned, an asynchronous task is required. You can call the GetAsyncTask operation to obtain the information about an asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 23ebd1a24dba4166b1527add476ef2866051b4d5del106
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Indicates whether the file already exists in the destination directory.
+	//
+	// example:
+	//
+	// false
 	Exist *bool `json:"exist,omitempty" xml:"exist,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// fileid1
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -15126,9 +17982,9 @@ func (s *MoveFileResponseBody) SetFileId(v string) *MoveFileResponseBody {
 }
 
 type MoveFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MoveFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MoveFileResponse) String() string {
@@ -15243,9 +18099,9 @@ func (s *QueryOrderPriceResponseBody) SetTradePrice(v float64) *QueryOrderPriceR
 }
 
 type QueryOrderPriceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOrderPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOrderPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOrderPriceResponse) String() string {
@@ -15272,9 +18128,18 @@ func (s *QueryOrderPriceResponse) SetBody(v *QueryOrderPriceResponseBody) *Query
 }
 
 type RemoveFaceGroupFileRequest struct {
-	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 123
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// Cluster-abc
 	FaceGroupId *string `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
-	FileId      *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// abcd
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
 func (s RemoveFaceGroupFileRequest) String() string {
@@ -15301,8 +18166,8 @@ func (s *RemoveFaceGroupFileRequest) SetFileId(v string) *RemoveFaceGroupFileReq
 }
 
 type RemoveFaceGroupFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s RemoveFaceGroupFileResponse) String() string {
@@ -15325,14 +18190,26 @@ func (s *RemoveFaceGroupFileResponse) SetStatusCode(v int32) *RemoveFaceGroupFil
 
 type RemoveGroupMemberRequest struct {
 	// The ID of the group from which you want to remove a member.
+	//
+	// example:
+	//
+	// 3e5***2c2
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The ID of the member. If member_type is set to user, set this parameter to the ID of the corresponding user.
+	//
+	// example:
+	//
+	// 2e4***1b1
 	MemberId *string `json:"member_id,omitempty" xml:"member_id,omitempty"`
 	// The type of the member that you want to remove from the group. Only common users can be removed. If you want to remove all members from a group, you can directly delete the group. Valid value:
 	//
-	// *   user
+	// 	- user
 	//
 	// Note: A group can be a member of only one group. It cannot be a member of multiple groups. A user can be a member of multiple groups.
+	//
+	// example:
+	//
+	// user
 	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
 }
 
@@ -15360,8 +18237,8 @@ func (s *RemoveGroupMemberRequest) SetMemberType(v string) *RemoveGroupMemberReq
 }
 
 type RemoveGroupMemberResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s RemoveGroupMemberResponse) String() string {
@@ -15383,9 +18260,15 @@ func (s *RemoveGroupMemberResponse) SetStatusCode(v int32) *RemoveGroupMemberRes
 }
 
 type RemoveStoryFilesRequest struct {
+	// example:
+	//
+	// 1
 	DriveId *string                         `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Files   []*RemoveStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	StoryId *string                         `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
 func (s RemoveStoryFilesRequest) String() string {
@@ -15412,7 +18295,13 @@ func (s *RemoveStoryFilesRequest) SetStoryId(v string) *RemoveStoryFilesRequest 
 }
 
 type RemoveStoryFilesRequestFiles struct {
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88dd06e49d9c0a14411ebae606f70edd9a59
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -15435,7 +18324,13 @@ func (s *RemoveStoryFilesRequestFiles) SetRevisionId(v string) *RemoveStoryFiles
 }
 
 type RemoveStoryFilesResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
@@ -15458,9 +18353,9 @@ func (s *RemoveStoryFilesResponseBody) SetStoryId(v string) *RemoveStoryFilesRes
 }
 
 type RemoveStoryFilesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveStoryFilesResponse) String() string {
@@ -15488,8 +18383,16 @@ func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *Rem
 
 type RestoreFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43a255edc4463bffa6f5f5d317401
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -15517,12 +18420,28 @@ type RestoreFileResponseBody struct {
 	// If an empty string is returned, the file or folder is restored.
 	//
 	// If a non-empty string is returned, an asynchronous task is required. You can call the GetAsyncTask operation to obtain the information about an asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43a255edc4463bffa6f5f5d317401
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -15555,9 +18474,9 @@ func (s *RestoreFileResponseBody) SetFileId(v string) *RestoreFileResponseBody {
 }
 
 type RestoreFileResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestoreFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestoreFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestoreFileResponse) String() string {
@@ -15585,10 +18504,22 @@ func (s *RestoreFileResponse) SetBody(v *RestoreFileResponseBody) *RestoreFileRe
 
 type RestoreRevisionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// example:
+	//
+	// 40CB7794C929
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -15616,9 +18547,9 @@ func (s *RestoreRevisionRequest) SetRevisionId(v string) *RestoreRevisionRequest
 }
 
 type RestoreRevisionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestoreRevisionResponse) String() string {
@@ -15646,19 +18577,38 @@ func (s *RestoreRevisionResponse) SetBody(v *Revision) *RestoreRevisionResponse 
 
 type ScanFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file properties to return.
 	//
-	// *   If you want to return all file properties, set this parameter to \*.
-	// *   By default, if you do not specify this parameter, the following properties of a file are returned: - file_id, - drive_id, - parent_file_id, - type, - created_at, - updated_at, - file_extention, - size, - starred, - status, - category, and - permissions.
-	// *   You can also specify properties to return. Separate multiple properties with commas (,).
+	// 	- If you want to return all file properties, set this parameter to \*.
+	//
+	// 	- By default, if you do not specify this parameter, the following properties of a file are returned: - file_id, - drive_id, - parent_file_id, - type, - created_at, - updated_at, - file_extention, - size, - starred, - status, - category, and - permissions.
+	//
+	// 	- You can also specify properties to return. Separate multiple properties with commas (,).
+	//
+	// example:
+	//
+	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -15694,6 +18644,10 @@ type ScanFileResponseBody struct {
 	// The information about the files.
 	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -15716,9 +18670,9 @@ func (s *ScanFileResponseBody) SetNextMarker(v string) *ScanFileResponseBody {
 }
 
 type ScanFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ScanFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ScanFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ScanFileResponse) String() string {
@@ -15749,7 +18703,7 @@ type SearchAddressGroupsRequest struct {
 	//
 	// Valid values:
 	//
-	// *   country
+	// 	- country
 	//
 	//     <!-- -->
 	//
@@ -15757,7 +18711,7 @@ type SearchAddressGroupsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   province
+	// 	- province
 	//
 	//     <!-- -->
 	//
@@ -15765,7 +18719,7 @@ type SearchAddressGroupsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   city
+	// 	- city
 	//
 	//     <!-- -->
 	//
@@ -15773,7 +18727,7 @@ type SearchAddressGroupsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   district
+	// 	- district
 	//
 	//     <!-- -->
 	//
@@ -15781,7 +18735,7 @@ type SearchAddressGroupsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   township
+	// 	- township
 	//
 	//     <!-- -->
 	//
@@ -15792,14 +18746,34 @@ type SearchAddressGroupsRequest struct {
 	// The locations.
 	AddressNames []*string `json:"address_names,omitempty" xml:"address_names,omitempty" type:"Repeated"`
 	// The coordinates of the bottom right vertex of the rectangle. Set the value in the format of latitude,longitude.
+	//
+	// example:
+	//
+	// 40.121,105.2121
 	BrGeoPoint *string `json:"br_geo_point,omitempty" xml:"br_geo_point,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The method used to generate the thumbnail of an image.
+	//
+	// example:
+	//
+	// image/resize,w_200
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	// The coordinates of the top left vertex of the rectangle. Set the value in the format of latitude,longitude.
+	//
+	// example:
+	//
+	// 39.121,101.2121
 	TlGeoPoint *string `json:"tl_geo_point,omitempty" xml:"tl_geo_point,omitempty"`
 	// The method used to generate the thumbnail of a video.
+	//
+	// example:
+	//
+	// video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast
 	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -15865,9 +18839,9 @@ func (s *SearchAddressGroupsResponseBody) SetItems(v []*AddressGroup) *SearchAdd
 }
 
 type SearchAddressGroupsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchAddressGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchAddressGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchAddressGroupsResponse) String() string {
@@ -15894,18 +18868,29 @@ func (s *SearchAddressGroupsResponse) SetBody(v *SearchAddressGroupsResponseBody
 }
 
 type SearchDomainsRequest struct {
-	// 预付费domain支持按订单实例ID搜索，通过下单接口获取对应的实例ID
-	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The name of the domain. Fuzzy search is supported.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The sorting rule. Set the value to created_at, which specifies that the results are sorted based on the time when the domain was created.
+	//
+	// example:
+	//
+	// created_at
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 }
 
@@ -15915,11 +18900,6 @@ func (s SearchDomainsRequest) String() string {
 
 func (s SearchDomainsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SearchDomainsRequest) SetInstanceId(v string) *SearchDomainsRequest {
-	s.InstanceId = &v
-	return s
 }
 
 func (s *SearchDomainsRequest) SetLimit(v int64) *SearchDomainsRequest {
@@ -15946,6 +18926,10 @@ type SearchDomainsResponseBody struct {
 	// The queried domains.
 	Items []*Domain `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -15968,9 +18952,9 @@ func (s *SearchDomainsResponseBody) SetNextMarker(v string) *SearchDomainsRespon
 }
 
 type SearchDomainsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchDomainsResponse) String() string {
@@ -16000,15 +18984,32 @@ type SearchDriveRequest struct {
 	// The drive name.
 	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
 	// The maximum number of asynchronous tasks to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The owner of the drive.
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The type of the owner. Valid values:
 	//
 	// user group
+	//
+	// example:
+	//
+	// user
 	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
 }
 
@@ -16049,6 +19050,10 @@ type SearchDriveResponseBody struct {
 	// The information about the drives.
 	Items []*Drive `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -16071,9 +19076,9 @@ func (s *SearchDriveResponseBody) SetNextMarker(v string) *SearchDriveResponseBo
 }
 
 type SearchDriveResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchDriveResponse) String() string {
@@ -16101,36 +19106,72 @@ func (s *SearchDriveResponse) SetBody(v *SearchDriveResponseBody) *SearchDriveRe
 
 type SearchFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Fields  *string `json:"fields,omitempty" xml:"fields,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// url,thumbnail
+	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The field by which to sort the returned results. Default value: created_at. Valid values:
 	//
-	// *   created_at: sorts the results by the time when the file was created.
-	// *   updated_at: sorts the results by the time when the file was modified.
-	// *   size: sorts the results by the size of the file.
-	// *   name: sorts the results by the name of the file.
+	// 	- created_at: sorts the results by the time when the file was created.
+	//
+	// 	- updated_at: sorts the results by the time when the file was modified.
+	//
+	// 	- size: sorts the results by the size of the file.
+	//
+	// 	- name: sorts the results by the name of the file.
 	//
 	// The order in which you want to sort the returned results. Valid values:
 	//
-	// *   ASC: sorts the results in ascending order.
-	// *   DESC: sorts the results in descending order.
+	// 	- ASC: sorts the results in ascending order.
+	//
+	// 	- DESC: sorts the results in descending order.
 	//
 	// You must specify this parameter in the \<field name> \<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
 	//
-	// *   If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
-	// *   If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
-	// *   If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
+	// 	- If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
+	//
+	// 	- If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
+	//
+	// 	- If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
+	//
+	// example:
+	//
+	// name
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
+	//
+	// example:
+	//
+	// not name=123
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// Specifies whether to return the total number of retrieved files.
+	//
+	// example:
+	//
+	// true
 	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
 }
 
@@ -16181,8 +19222,16 @@ type SearchFileResponseBody struct {
 	// The information about the files.
 	Items []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 	// The total number of retrieved files.
+	//
+	// example:
+	//
+	// 1022
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 
@@ -16210,9 +19259,9 @@ func (s *SearchFileResponseBody) SetTotalCount(v int64) *SearchFileResponseBody 
 }
 
 type SearchFileResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchFileResponse) String() string {
@@ -16246,25 +19295,54 @@ type SearchShareLinkRequest struct {
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
 	//
 	// The number of returned results must be less than or equal to the specified number.
+	//
+	// example:
+	//
+	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The field by which to sort the returned results. Default value: created_at. Valid values:
 	//
-	// *   share_name: sorts the results by the name of the share.
-	// *   updated_at: sorts the results by the time when the share was modified.
-	// *   description: sorts the results by the description of the share.
-	// *   created_at: sorts the results by the time when the share was created.
+	// 	- share_name: sorts the results by the name of the share.
+	//
+	// 	- updated_at: sorts the results by the time when the share was modified.
+	//
+	// 	- description: sorts the results by the description of the share.
+	//
+	// 	- created_at: sorts the results by the time when the share was created.
+	//
+	// example:
+	//
+	// created_at
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The order in which you want to sort the returned results. By default, order_direction is set to DESC if order_by is set to created_at or updated_at, and is set to ASC if order_by is set to other values. Valid values:
 	//
-	// *   ASC: sorts the results in ascending order.
-	// *   DESC: sorts the results in descending order.
+	// 	- ASC: sorts the results in ascending order.
+	//
+	// 	- DESC: sorts the results in descending order.
+	//
+	// example:
+	//
+	// ASC
 	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 	// The query condition that is used to search for share URLs. You can use the following fields to specify query conditions: created_at: queries a share URL based on the time when the share URL was created. updated_at: queries a share URL based on the time when the share URL was modified. share_name_for_fuzzy: queries a share URL based on the name of the share. A fuzzy match is supported. status: queries a share URL based on the status of the share. Valid values: enabled and disabled. A value of enabled indicates that the share is valid. A value of disabled indicates that the share is canceled. expired_time: queries a share URL based on the expiration time of the share. If the share never expires, set this field to 1970-01-01T00:00:00. Otherwise, set this field to 1970-01-02T00:00:00.
+	//
+	// example:
+	//
+	// created_at>=\"2022-01-18T02:50:00\" and created_at<\"2022-01-19T09:45:28\" and share_name_for_fuzzy match \"HD.mp4\" and status in [\"enabled\", \"disabled\"] and expired_time=\"1970-01-01T00:00:00\"
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// Specifies whether to return the total number of returned results.
+	//
+	// example:
+	//
+	// false
 	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
 }
 
@@ -16315,8 +19393,16 @@ type SearchShareLinkResponseBody struct {
 	// The share URLs.
 	Items []*ShareLink `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 101
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 
@@ -16344,9 +19430,9 @@ func (s *SearchShareLinkResponseBody) SetTotalCount(v int64) *SearchShareLinkRes
 }
 
 type SearchShareLinkResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchShareLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchShareLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchShareLinkResponse) String() string {
@@ -16373,12 +19459,28 @@ func (s *SearchShareLinkResponse) SetBody(v *SearchShareLinkResponseBody) *Searc
 }
 
 type SearchSimilarImageClustersRequest struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	Limit                 *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker                *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	Order                 *string `json:"order,omitempty" xml:"order,omitempty"`
+	// example:
+	//
+	// 50
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// YWRzX3VzZXJfcHJvZmlsZV9je1bnQh***
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"order,omitempty" xml:"order,omitempty"`
 }
 
 func (s SearchSimilarImageClustersRequest) String() string {
@@ -16415,6 +19517,9 @@ func (s *SearchSimilarImageClustersRequest) SetOrder(v string) *SearchSimilarIma
 }
 
 type SearchSimilarImageClustersResponseBody struct {
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0***
 	NextMarker           *string                                                       `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 	SimilarImageClusters []*SearchSimilarImageClustersResponseBodySimilarImageClusters `json:"similar_image_clusters,omitempty" xml:"similar_image_clusters,omitempty" type:"Repeated"`
 }
@@ -16455,9 +19560,9 @@ func (s *SearchSimilarImageClustersResponseBodySimilarImageClusters) SetFiles(v 
 }
 
 type SearchSimilarImageClustersResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchSimilarImageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchSimilarImageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchSimilarImageClustersResponse) String() string {
@@ -16485,26 +19590,66 @@ func (s *SearchSimilarImageClustersResponse) SetBody(v *SearchSimilarImageCluste
 
 type SearchStoriesRequest struct {
 	// Deprecated
+	//
+	// example:
+	//
+	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	CoverImageThumbnailProcess *string `json:"cover_image_thumbnail_process,omitempty" xml:"cover_image_thumbnail_process,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// video/snapshot,t_1000,f_jpg,w_0,h_0,m_fast,ar_auto
 	CoverVideoThumbnailProcess *string                              `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
 	CreateTimeRange            *SearchStoriesRequestCreateTimeRange `json:"create_time_range,omitempty" xml:"create_time_range,omitempty" type:"Struct"`
 	// Deprecated
-	CustomLabels        *string                                  `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
-	DriveId             *string                                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FaceGroupIds        []*string                                `json:"face_group_ids,omitempty" xml:"face_group_ids,omitempty" type:"Repeated"`
-	Limit               *int64                                   `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker              *string                                  `json:"marker,omitempty" xml:"marker,omitempty"`
-	Order               *string                                  `json:"order,omitempty" xml:"order,omitempty"`
-	Sort                *string                                  `json:"sort,omitempty" xml:"sort,omitempty"`
-	StoryEndTimeRange   *SearchStoriesRequestStoryEndTimeRange   `json:"story_end_time_range,omitempty" xml:"story_end_time_range,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// key1=value1,key2!=value2
+	CustomLabels *string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId      *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FaceGroupIds []*string `json:"face_group_ids,omitempty" xml:"face_group_ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDODBhNDQ2Nzhl***
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"order,omitempty" xml:"order,omitempty"`
+	// example:
+	//
+	// CreateTime
+	Sort              *string                                `json:"sort,omitempty" xml:"sort,omitempty"`
+	StoryEndTimeRange *SearchStoriesRequestStoryEndTimeRange `json:"story_end_time_range,omitempty" xml:"story_end_time_range,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId             *string                                  `json:"story_id,omitempty" xml:"story_id,omitempty"`
 	StoryName           *string                                  `json:"story_name,omitempty" xml:"story_name,omitempty"`
 	StoryStartTimeRange *SearchStoriesRequestStoryStartTimeRange `json:"story_start_time_range,omitempty" xml:"story_start_time_range,omitempty" type:"Struct"`
-	StoryType           *string                                  `json:"story_type,omitempty" xml:"story_type,omitempty"`
+	// example:
+	//
+	// PeopleMemory
+	StoryType *string `json:"story_type,omitempty" xml:"story_type,omitempty"`
 	// Deprecated
-	UrlExpireSec     *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
-	WithEmptyStories *bool  `json:"with_empty_stories,omitempty" xml:"with_empty_stories,omitempty"`
+	//
+	// example:
+	//
+	// 900
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	// example:
+	//
+	// false
+	WithEmptyStories *bool `json:"with_empty_stories,omitempty" xml:"with_empty_stories,omitempty"`
 }
 
 func (s SearchStoriesRequest) String() string {
@@ -16601,7 +19746,13 @@ func (s *SearchStoriesRequest) SetWithEmptyStories(v bool) *SearchStoriesRequest
 }
 
 type SearchStoriesRequestCreateTimeRange struct {
-	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2022-12-31T00:00:00+08:00
+	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2016-12-31T00:00:00+08:00
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -16624,7 +19775,13 @@ func (s *SearchStoriesRequestCreateTimeRange) SetStart(v string) *SearchStoriesR
 }
 
 type SearchStoriesRequestStoryEndTimeRange struct {
-	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2022-12-31T00:00:00+08:00
+	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2016-12-31T00:00:00+08:00
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -16647,7 +19804,13 @@ func (s *SearchStoriesRequestStoryEndTimeRange) SetStart(v string) *SearchStorie
 }
 
 type SearchStoriesRequestStoryStartTimeRange struct {
-	End   *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2022-12-31T00:00:00+08:00
+	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// example:
+	//
+	// 2016-12-31T00:00:00+08:00
 	Start *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -16670,8 +19833,11 @@ func (s *SearchStoriesRequestStoryStartTimeRange) SetStart(v string) *SearchStor
 }
 
 type SearchStoriesResponseBody struct {
-	Items      []*Story `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	NextMarker *string  `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	Items []*Story `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJ***
+	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
 func (s SearchStoriesResponseBody) String() string {
@@ -16693,9 +19859,9 @@ func (s *SearchStoriesResponseBody) SetNextMarker(v string) *SearchStoriesRespon
 }
 
 type SearchStoriesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchStoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchStoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchStoriesResponse) String() string {
@@ -16723,30 +19889,70 @@ func (s *SearchStoriesResponse) SetBody(v *SearchStoriesResponseBody) *SearchSto
 
 type SearchUserRequest struct {
 	// The email address of the user.
+	//
+	// example:
+	//
+	// 123@pds.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	//
 	// By default, this parameter is left empty.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The nickname of the user. The nickname can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// pdsuer
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// The nickname used for fuzzy searches. The nickname can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// la
 	NickNameForFuzzy *string `json:"nick_name_for_fuzzy,omitempty" xml:"nick_name_for_fuzzy,omitempty"`
 	// The mobile number of the user.
+	//
+	// example:
+	//
+	// 13900001111
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// The role of the user. Valid values:
 	//
-	// *   superadmin
-	// *   admin
-	// *   user
+	// 	- superadmin
+	//
+	// 	- admin
+	//
+	// 	- user
+	//
+	// example:
+	//
+	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// The state of the user. Valid values:
 	//
-	// *   disabled: The user is prohibited from logon.
-	// *   enabled: The user is in a normal state.
+	// 	- disabled: The user is prohibited from logon.
+	//
+	// 	- enabled: The user is in a normal state.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The name of the user. The name can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// pds
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -16807,6 +20013,10 @@ type SearchUserResponseBody struct {
 	// The information about the users.
 	Items []*User `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
+	//
+	// example:
+	//
+	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
 }
 
@@ -16829,9 +20039,9 @@ func (s *SearchUserResponseBody) SetNextMarker(v string) *SearchUserResponseBody
 }
 
 type SearchUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchUserResponse) String() string {
@@ -16859,12 +20069,28 @@ func (s *SearchUserResponse) SetBody(v *SearchUserResponseBody) *SearchUserRespo
 
 type TokenRequest struct {
 	// The JWT assertion that is signed by using the JWT private key. The JWT assertion contains the information about the user to be authorized and the authorization parameters. For more information about the structure of the JWT assertion, see JWTPayload. This parameter is required if grant_type is set to urn:ietf:params:oauth:grant-type:jwt-bearer.
+	//
+	// example:
+	//
+	// ey***asd
 	Assertion *string `json:"assertion,omitempty" xml:"assertion,omitempty"`
 	// The AppId of the application that is created in the Drive and Photo Service console.
+	//
+	// example:
+	//
+	// 1Zu***flH
 	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	// The AppSecret of the application that is created in the Drive and Photo Service console. This parameter is required if the application is of the WebServer type.
+	//
+	// example:
+	//
+	// 80D***3i5
 	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
 	// The authorization code in the redirect URI that is specified after the authorization process is complete. This parameter is required if grant_type is set to authorization_code.
+	//
+	// example:
+	//
+	// 0045157fa8e24f4f9a0d9e3ff158c1e0
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The method that is used to generate an access token. Valid values:
 	//
@@ -16873,10 +20099,22 @@ type TokenRequest struct {
 	// refresh_token: generates an access token by using the refresh token that is returned after the authorization process is complete.
 	//
 	// urn:ietf:params:oauth:grant-type:jwt-bearer: generates an access token by using a JWT assertion.
+	//
+	// example:
+	//
+	// refresh_token
 	GrantType *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
 	// The redirect URI that is specified when you initiate the authorization request. This parameter is required if grant_type is set to authorization_code.
+	//
+	// example:
+	//
+	// https://aliyun.com/pds
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	// The refresh token that is used to refresh the access token. This parameter is required if grant_type is set to refresh_token.
+	//
+	// example:
+	//
+	// 399623e13353490391266c7d48a13ed1
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
 }
 
@@ -16924,9 +20162,9 @@ func (s *TokenRequest) SetRefreshToken(v string) *TokenRequest {
 }
 
 type TokenResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Token             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Token             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TokenResponse) String() string {
@@ -16954,8 +20192,16 @@ func (s *TokenResponse) SetBody(v *Token) *TokenResponse {
 
 type TrashFileRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -16983,12 +20229,28 @@ type TrashFileResponseBody struct {
 	// If an empty string is returned, the file or folder is moved to the recycle bin.
 	//
 	// If a non-empty string is returned, an asynchronous task is required. You can call the GetAsyncTask operation to obtain the information about an asynchronous task based on the task ID.
+	//
+	// example:
+	//
+	// 13ebd3a24dba4166b1527add676ef2866051b4d5dele16
 	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -17021,9 +20283,9 @@ func (s *TrashFileResponseBody) SetFileId(v string) *TrashFileResponseBody {
 }
 
 type TrashFileResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TrashFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TrashFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TrashFileResponse) String() string {
@@ -17050,10 +20312,22 @@ func (s *TrashFileResponse) SetBody(v *TrashFileResponseBody) *TrashFileResponse
 }
 
 type UnLinkAccountRequest struct {
-	Extra    *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// example:
+	//
+	// 1
+	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// example:
+	//
+	// 139****
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// example:
+	//
+	// mobile
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// uid1
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s UnLinkAccountRequest) String() string {
@@ -17085,8 +20359,8 @@ func (s *UnLinkAccountRequest) SetUserId(v string) *UnLinkAccountRequest {
 }
 
 type UnLinkAccountResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UnLinkAccountResponse) String() string {
@@ -17111,18 +20385,38 @@ type UpdateDomainRequest struct {
 	// The description of the domain.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain ID.
+	//
+	// example:
+	//
+	// bj1
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	// The name of the domain.
 	DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
 	// Specifies whether to enable the default drive feature. A value of true specifies that all users are assigned a drive by default on the first logon. Default value: false.
+	//
+	// example:
+	//
+	// true
 	InitDriveEnable *bool `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
 	// The size of the default drive. Unit: bytes. You must specify init_drive_size if you set init_drive_enable to true. Default value: 0. A value of 0 specifies that the size of the default drive is 0 bytes and you cannot upload files to the drive. To initialize the default drive, set init_drive_size to 0. A value of -1 specifies that the size is unlimited.
+	//
+	// example:
+	//
+	// 1073741824
 	InitDriveSize *int64 `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
 	// The access policy of the application.
 	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
 	// The total storage quota for all drives in the domain. A value of 0 specifies that the quota is unlimited.
+	//
+	// example:
+	//
+	// 1099511627776
 	SizeQuota *int64 `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
 	// The maximum number of users that can be created in the domain.
+	//
+	// example:
+	//
+	// 50
 	UserCountQuota *int64 `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
 }
 
@@ -17175,9 +20469,9 @@ func (s *UpdateDomainRequest) SetUserCountQuota(v int64) *UpdateDomainRequest {
 }
 
 type UpdateDomainResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDomainResponse) String() string {
@@ -17207,16 +20501,36 @@ type UpdateDriveRequest struct {
 	// The description of the drive. The description can be up to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The name of the drive. The name can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// my_drive
 	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
 	// The owner of the drive. Note: You can modify the owner of a personal drive only by using an AccessKey pair.
+	//
+	// example:
+	//
+	// user1
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The state of the drive. Valid values:
 	//
 	// enabled and disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The total size of the drive. Unit: bytes. A value of -1 specifies that the size is unlimited.
+	//
+	// example:
+	//
+	// 10240
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
@@ -17259,9 +20573,9 @@ func (s *UpdateDriveRequest) SetTotalSize(v int64) *UpdateDriveRequest {
 }
 
 type UpdateDriveResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Drive             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDriveResponse) String() string {
@@ -17289,10 +20603,22 @@ func (s *UpdateDriveResponse) SetBody(v *Drive) *UpdateDriveResponse {
 
 type UpdateFacegroupRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// The face ID of the thumbnail of the face-based group. You can obtain the face ID from the **image_media_metadata** parameter in the returned results of the GetFile, ListFile, or SearchFile operation.
+	// The face ID of the thumbnail of the face-based group. You can obtain the face ID from the **image_media_metadata*	- parameter in the returned results of the GetFile, ListFile, or SearchFile operation.
+	//
+	// example:
+	//
+	// face1
 	GroupCoverFaceId *string `json:"group_cover_face_id,omitempty" xml:"group_cover_face_id,omitempty"`
 	// The ID of the face-based group. You can call the ListFacegroups operation to query the group ID.
+	//
+	// example:
+	//
+	// group-abc
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The name of the face-based group. The name can be up to 128 characters in length.
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
@@ -17335,8 +20661,16 @@ func (s *UpdateFacegroupRequest) SetRemarks(v string) *UpdateFacegroupRequest {
 
 type UpdateFacegroupResponseBody struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The group ID.
+	//
+	// example:
+	//
+	// group-abc
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
@@ -17359,9 +20693,9 @@ func (s *UpdateFacegroupResponseBody) SetGroupId(v string) *UpdateFacegroupRespo
 }
 
 type UpdateFacegroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFacegroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFacegroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFacegroupResponse) String() string {
@@ -17397,22 +20731,50 @@ type UpdateFileRequest struct {
 	// refuse: does not modify the file that you want to modify but returns the information about the file that has the same name on the cloud.
 	//
 	// Default value: ignore.
+	//
+	// example:
+	//
+	// ignore
 	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
 	// The description of the file. The description can be up to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// Specifies whether to hide the file.
+	//
+	// example:
+	//
+	// true
 	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
 	// The tags of the file. You can specify up to 100 tags.
 	Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// The local time when the file was modified. The time is in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	//
+	// example:
+	//
+	// 2019-08-20T06:51:27.292Z
 	LocalModifiedAt *string `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
 	// The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule.
+	//
+	// example:
+	//
+	// a.jpg
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Specifies whether to add the file to favorites.
+	//
+	// example:
+	//
+	// true
 	Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
 }
 
@@ -17470,9 +20832,9 @@ func (s *UpdateFileRequest) SetStarred(v bool) *UpdateFileRequest {
 }
 
 type UpdateFileResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *File              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *File              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFileResponse) String() string {
@@ -17500,10 +20862,22 @@ func (s *UpdateFileResponse) SetBody(v *File) *UpdateFileResponse {
 
 type UpdateGroupRequest struct {
 	// The description of the group after modification.
+	//
+	// example:
+	//
+	// test group description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the group that you want to modify.
+	//
+	// example:
+	//
+	// 2e43ec8427dd45f19431b7504649a1b4
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The name of the group after modification.
+	//
+	// example:
+	//
+	// test group
 	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
 }
 
@@ -17531,9 +20905,9 @@ func (s *UpdateGroupRequest) SetGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Group             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Group             `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateGroupResponse) String() string {
@@ -17563,18 +20937,38 @@ type UpdateIdentityToBenefitPkgMappingRequest struct {
 	// The number of benefit packages.
 	//
 	// This parameter specifies the number of benefit packages of the resource type. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The unique identifier of the benefit package.
+	//
+	// example:
+	//
+	// 40cb7794c9294
 	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
 	// The expiration time of the benefit package. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// By default, the benefit package never expires.
+	//
+	// example:
+	//
+	// 1633167071000
 	ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
 	// The unique identifier of the entity.
 	//
 	// If you call this operation to manage the benefits of a user, set this parameter to the ID of the user.
+	//
+	// example:
+	//
+	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you call this operation to manage the benefits of a user, set this parameter to user.
+	//
+	// example:
+	//
+	// user
 	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
 }
 
@@ -17612,8 +21006,8 @@ func (s *UpdateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *Up
 }
 
 type UpdateIdentityToBenefitPkgMappingResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateIdentityToBenefitPkgMappingResponse) String() string {
@@ -17636,18 +21030,38 @@ func (s *UpdateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *Upda
 
 type UpdateRevisionRequest struct {
 	// The drive ID.
+	//
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// example:
+	//
+	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// Specifies whether to permanently retain a version.
 	//
 	// By default, this parameter is not specified, which indicates that you do not modify the permanent retention configuration of the version.
+	//
+	// example:
+	//
+	// true
 	KeepForever *bool `json:"keep_forever,omitempty" xml:"keep_forever,omitempty"`
 	// The description of the version. The description can be up to 1,024 characters in length.
 	//
 	// By default, this parameter is not specified, which indicates that you do not modify the description of the version.
+	//
+	// example:
+	//
+	// aaa
 	RevisionDescription *string `json:"revision_description,omitempty" xml:"revision_description,omitempty"`
 	// The version ID.
+	//
+	// example:
+	//
+	// 40CB7794C929
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -17685,9 +21099,9 @@ func (s *UpdateRevisionRequest) SetRevisionId(v string) *UpdateRevisionRequest {
 }
 
 type UpdateRevisionResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Revision          `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRevisionResponse) String() string {
@@ -17717,39 +21131,100 @@ type UpdateShareLinkRequest struct {
 	// The description of the share link. The description can be up to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to prohibit the downloads of the shared files.
+	//
+	// example:
+	//
+	// false
 	DisableDownload *bool `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
 	// Specifies whether to prohibit the previews of the shared files.
+	//
+	// example:
+	//
+	// false
 	DisablePreview *bool `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
 	// Specifies whether to prohibit the saves of the shared files.
+	//
+	// example:
+	//
+	// false
 	DisableSave *bool `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
 	// The number of times that the shared files are downloaded. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 30
 	DownloadCount *int64 `json:"download_count,omitempty" xml:"download_count,omitempty"`
 	// The maximum number of times that the shared files can be downloaded. The value must be greater than or equal to 0. A value of 0 specifies that the number is unlimited.
+	//
+	// example:
+	//
+	// 100
 	DownloadLimit *int64 `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
 	// The time when the share link expires. The time follows the RFC 3339 standard. Example: 2020-06-28T11:33:00.000+08:00. If you leave this parameter empty, the share link never expires.
+	//
+	// example:
+	//
+	// 2020-06-28T11:33:00.000+08:00
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	// The number of times that the shared files are previewed. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 3
 	PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
 	// The maximum number of times that the shared files can be previewed. The value must be greater than or equal to 0. A value of 0 specifies that the number is unlimited.
+	//
+	// example:
+	//
+	// 100
 	PreviewLimit *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	// The number of times that the shared files are reported. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 1
 	ReportCount *int64 `json:"report_count,omitempty" xml:"report_count,omitempty"`
 	// The number of times that the shared files are saved. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 5
 	SaveCount *int64 `json:"save_count,omitempty" xml:"save_count,omitempty"`
 	// The maximum number of times that the shared files can be saved. The value must be greater than or equal to 0. A value of 0 specifies that the number is unlimited.
+	//
+	// example:
+	//
+	// 100
 	SaveLimit *int64 `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	// The share ID.
+	//
+	// example:
+	//
+	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The name of the share link. By default, the name of the first file is used. The name can be up to 128 characters in length.
 	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
 	// The access code. The access code can be up to 64 characters in length. A value of 0 specifies an empty string.
+	//
+	// example:
+	//
+	// abcF123x
 	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
 	// The state of the share link. Valid values:
 	//
-	// *   disabled: The share link is canceled.
-	// *   enabled: The share link is effective.
+	// 	- disabled: The share link is canceled.
+	//
+	// 	- enabled: The share link is effective.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The number of times that the videos are previewed in the shared files. The value must be greater than or equal to 0.
+	//
+	// example:
+	//
+	// 100
 	VideoPreviewCount *int64 `json:"video_preview_count,omitempty" xml:"video_preview_count,omitempty"`
 }
 
@@ -17847,9 +21322,9 @@ func (s *UpdateShareLinkRequest) SetVideoPreviewCount(v int64) *UpdateShareLinkR
 }
 
 type UpdateShareLinkResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ShareLink         `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateShareLinkResponse) String() string {
@@ -17879,9 +21354,18 @@ type UpdateStoryRequest struct {
 	Cover *UpdateStoryRequestCover `json:"cover,omitempty" xml:"cover,omitempty" type:"Struct"`
 	// Deprecated
 	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
-	DriveId      *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	StoryId      *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	StoryName    *string            `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// example:
+	//
+	// name1
+	StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
 }
 
 func (s UpdateStoryRequest) String() string {
@@ -17918,7 +21402,13 @@ func (s *UpdateStoryRequest) SetStoryName(v string) *UpdateStoryRequest {
 }
 
 type UpdateStoryRequestCover struct {
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88dd06e49d9c0a14411ebae606f70edd9a59
 	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 }
 
@@ -17941,7 +21431,13 @@ func (s *UpdateStoryRequestCover) SetRevisionId(v string) *UpdateStoryRequestCov
 }
 
 type UpdateStoryResponseBody struct {
+	// example:
+	//
+	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
 }
 
@@ -17964,9 +21460,9 @@ func (s *UpdateStoryResponseBody) SetStoryId(v string) *UpdateStoryResponseBody 
 }
 
 type UpdateStoryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateStoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateStoryResponse) String() string {
@@ -17998,31 +21494,62 @@ type UpdateUserRequest struct {
 	// If you specify the parameter in the HTTP URL format, the URL must start with http:// or https:// and can be up to 4 KB in size.
 	//
 	// If you specify the parameter in the DATA URL format, the URL must start with data:// and be encoded in Base64. The URL can be up to 300 KB in size.
+	//
+	// example:
+	//
+	// http://a.b.c/pds.jpg
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
 	// The description of the user. The description can be up to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// a@aliyunpds.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The information about the group.
 	GroupInfoList []*UpdateUserRequestGroupInfoList `json:"group_info_list,omitempty" xml:"group_info_list,omitempty" type:"Repeated"`
 	// The nickname of the user. The nickname can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// pdsuer
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// The mobile number of the user.
+	//
+	// example:
+	//
+	// 13900001111
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	// The role of the user. Valid values:
 	//
-	// *   superadmin
-	// *   admin
-	// *   user
+	// 	- superadmin
+	//
+	// 	- admin
+	//
+	// 	- user
+	//
+	// example:
+	//
+	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// The state of the user. Valid values:
 	//
-	// *   disabled: The user is prohibited from logon.
-	// *   enabled: The user is in a normal state.
+	// 	- disabled: The user is prohibited from logon.
+	//
+	// 	- enabled: The user is in a normal state.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The custom data. The data can be up to 1,024 characters in length.
 	UserData map[string]*string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// The user ID. The ID can be up to 64 characters in length and cannot contain a number sign (#).
+	//
+	// example:
+	//
+	// c9b7a5aa04d14ae3867fdc886fa01da4
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -18086,6 +21613,10 @@ func (s *UpdateUserRequest) SetUserId(v string) *UpdateUserRequest {
 
 type UpdateUserRequestGroupInfoList struct {
 	// The group ID.
+	//
+	// example:
+	//
+	// g123
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 }
 
@@ -18103,9 +21634,9 @@ func (s *UpdateUserRequestGroupInfoList) SetGroupId(v string) *UpdateUserRequest
 }
 
 type UpdateUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *User              `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *User              `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -18133,6 +21664,7 @@ func (s *UpdateUserResponse) SetBody(v *User) *UpdateUserResponse {
 
 type Client struct {
 	openapi.Client
+	Client_ spi.Client
 }
 
 func NewClient(config *openapi.Config) (*Client, error) {
@@ -18153,6 +21685,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 	client.Spi = interfaceSPI
 	client.SignatureAlgorithm = tea.String("v2")
+	
 	client.EndpointRule = tea.String("")
 	return nil
 }
@@ -18265,14 +21798,17 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 	return _result, _err
 }
 
-/**
- * You can call this operation to assign a group administrator role to a user.
- *
- * @param request AssignRoleRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssignRoleResponse
- */
+// Description:
+//
+// You can call this operation to assign a group administrator role to a user.
+//
+// @param request - AssignRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssignRoleResponse
 func (client *Client) AssignRoleWithOptions(request *AssignRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AssignRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18319,12 +21855,13 @@ func (client *Client) AssignRoleWithOptions(request *AssignRoleRequest, headers 
 	return _result, _err
 }
 
-/**
- * You can call this operation to assign a group administrator role to a user.
- *
- * @param request AssignRoleRequest
- * @return AssignRoleResponse
- */
+// Description:
+//
+// You can call this operation to assign a group administrator role to a user.
+//
+// @param request - AssignRoleRequest
+//
+// @return AssignRoleResponse
 func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18337,14 +21874,17 @@ func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRol
 	return _result, _err
 }
 
-/**
- * For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
- *
- * @param tmpReq AuthorizeRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return AuthorizeResponse
- */
+// Description:
+//
+// For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+//
+// @param tmpReq - AuthorizeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeResponse
 func (client *Client) AuthorizeWithOptions(tmpReq *AuthorizeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuthorizeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18409,12 +21949,13 @@ func (client *Client) AuthorizeWithOptions(tmpReq *AuthorizeRequest, headers map
 	return _result, _err
 }
 
-/**
- * For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
- *
- * @param request AuthorizeRequest
- * @return AuthorizeResponse
- */
+// Description:
+//
+// For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+//
+// @param request - AuthorizeRequest
+//
+// @return AuthorizeResponse
 func (client *Client) Authorize(request *AuthorizeRequest) (_result *AuthorizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18477,14 +22018,17 @@ func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err
 	return _result, _err
 }
 
-/**
- * You can cancel only the group administrator role.
- *
- * @param request CancelAssignRoleRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelAssignRoleResponse
- */
+// Description:
+//
+// You can cancel only the group administrator role.
+//
+// @param request - CancelAssignRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAssignRoleResponse
 func (client *Client) CancelAssignRoleWithOptions(request *CancelAssignRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelAssignRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18531,12 +22075,13 @@ func (client *Client) CancelAssignRoleWithOptions(request *CancelAssignRoleReque
 	return _result, _err
 }
 
-/**
- * You can cancel only the group administrator role.
- *
- * @param request CancelAssignRoleRequest
- * @return CancelAssignRoleResponse
- */
+// Description:
+//
+// You can cancel only the group administrator role.
+//
+// @param request - CancelAssignRoleRequest
+//
+// @return CancelAssignRoleResponse
 func (client *Client) CancelAssignRole(request *CancelAssignRoleRequest) (_result *CancelAssignRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18831,14 +22376,17 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 	return _result, _err
 }
 
-/**
- * If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
- *
- * @param request CreateDomainRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDomainResponse
- */
+// Description:
+//
+// If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+//
+// @param request - CreateDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18897,12 +22445,13 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 	return _result, _err
 }
 
-/**
- * If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
- *
- * @param request CreateDomainRequest
- * @return CreateDomainResponse
- */
+// Description:
+//
+// If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+//
+// @param request - CreateDomainRequest
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19173,14 +22722,17 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
-/**
- * If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
- *
- * @param request CreateIdentityToBenefitPkgMappingRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateIdentityToBenefitPkgMappingResponse
- */
+// Description:
+//
+// If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+//
+// @param request - CreateIdentityToBenefitPkgMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdentityToBenefitPkgMappingResponse
 func (client *Client) CreateIdentityToBenefitPkgMappingWithOptions(request *CreateIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdentityToBenefitPkgMappingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19231,12 +22783,13 @@ func (client *Client) CreateIdentityToBenefitPkgMappingWithOptions(request *Crea
 	return _result, _err
 }
 
-/**
- * If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
- *
- * @param request CreateIdentityToBenefitPkgMappingRequest
- * @return CreateIdentityToBenefitPkgMappingResponse
- */
+// Description:
+//
+// If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+//
+// @param request - CreateIdentityToBenefitPkgMappingRequest
+//
+// @return CreateIdentityToBenefitPkgMappingResponse
 func (client *Client) CreateIdentityToBenefitPkgMapping(request *CreateIdentityToBenefitPkgMappingRequest) (_result *CreateIdentityToBenefitPkgMappingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19331,14 +22884,17 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	return _result, _err
 }
 
-/**
- * A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
- *
- * @param request CreateShareLinkRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateShareLinkResponse
- */
+// Description:
+//
+// A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+//
+// @param request - CreateShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateShareLinkResponse
 func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19385,6 +22941,10 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 		body["preview_limit"] = request.PreviewLimit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SaveDownloadLimit)) {
+		body["save_download_limit"] = request.SaveDownloadLimit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SaveLimit)) {
 		body["save_limit"] = request.SaveLimit
 	}
@@ -19429,12 +22989,13 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 	return _result, _err
 }
 
-/**
- * A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
- *
- * @param request CreateShareLinkRequest
- * @return CreateShareLinkResponse
- */
+// Description:
+//
+// A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+//
+// @param request - CreateShareLinkRequest
+//
+// @return CreateShareLinkResponse
 func (client *Client) CreateShareLink(request *CreateShareLinkRequest) (_result *CreateShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20107,14 +23668,17 @@ func (client *Client) DeltaGetLastCursor(request *DeltaGetLastCursorRequest) (_r
 	return _result, _err
 }
 
-/**
- * For information about best practices for downloading a file.
- *
- * @param request DownloadFileRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return DownloadFileResponse
- */
+// Description:
+//
+// For information about best practices for downloading a file.
+//
+// @param request - DownloadFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadFileResponse
 func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DownloadFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20169,12 +23733,13 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 	return _result, _err
 }
 
-/**
- * For information about best practices for downloading a file.
- *
- * @param request DownloadFileRequest
- * @return DownloadFileResponse
- */
+// Description:
+//
+// For information about best practices for downloading a file.
+//
+// @param request - DownloadFileRequest
+//
+// @return DownloadFileResponse
 func (client *Client) DownloadFile(request *DownloadFileRequest) (_result *DownloadFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20345,17 +23910,23 @@ func (client *Client) FileListPermission(request *FileListPermissionRequest) (_r
 	return _result, _err
 }
 
-/**
- * This operation is an incremental update operation. Take note of the following items:
- * *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
- * *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
- * *   The existing tags with unique names are not affected.
- *
- * @param request FilePutUserTagsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return FilePutUserTagsResponse
- */
+// Description:
+//
+// This operation is an incremental update operation. Take note of the following items:
+//
+// 	- If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+//
+// 	- If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+//
+// 	- The existing tags with unique names are not affected.
+//
+// @param request - FilePutUserTagsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FilePutUserTagsResponse
 func (client *Client) FilePutUserTagsWithOptions(request *FilePutUserTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FilePutUserTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20398,15 +23969,19 @@ func (client *Client) FilePutUserTagsWithOptions(request *FilePutUserTagsRequest
 	return _result, _err
 }
 
-/**
- * This operation is an incremental update operation. Take note of the following items:
- * *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
- * *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
- * *   The existing tags with unique names are not affected.
- *
- * @param request FilePutUserTagsRequest
- * @return FilePutUserTagsResponse
- */
+// Description:
+//
+// This operation is an incremental update operation. Take note of the following items:
+//
+// 	- If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+//
+// 	- If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+//
+// 	- The existing tags with unique names are not affected.
+//
+// @param request - FilePutUserTagsRequest
+//
+// @return FilePutUserTagsResponse
 func (client *Client) FilePutUserTags(request *FilePutUserTagsRequest) (_result *FilePutUserTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20573,6 +24148,10 @@ func (client *Client) GetDomainWithOptions(request *GetDomainRequest, headers ma
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
 		body["domain_id"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["fields"] = request.Fields
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GetQuotaUsed)) {
@@ -21179,14 +24758,17 @@ func (client *Client) GetShareLinkByAnonymous(request *GetShareLinkByAnonymousRe
 	return _result, _err
 }
 
-/**
- * To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
- *
- * @param request GetShareLinkTokenRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetShareLinkTokenResponse
- */
+// Description:
+//
+// To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+//
+// @param request - GetShareLinkTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetShareLinkTokenResponse
 func (client *Client) GetShareLinkTokenWithOptions(request *GetShareLinkTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShareLinkTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21229,12 +24811,13 @@ func (client *Client) GetShareLinkTokenWithOptions(request *GetShareLinkTokenReq
 	return _result, _err
 }
 
-/**
- * To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
- *
- * @param request GetShareLinkTokenRequest
- * @return GetShareLinkTokenResponse
- */
+// Description:
+//
+// To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+//
+// @param request - GetShareLinkTokenRequest
+//
+// @return GetShareLinkTokenResponse
 func (client *Client) GetShareLinkToken(request *GetShareLinkTokenRequest) (_result *GetShareLinkTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21321,16 +24904,21 @@ func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryRespo
 	return _result, _err
 }
 
-/**
- * **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
- * To call this operation, make sure that the value-added image processing feature is enabled.
- * Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
- *
- * @param request GetTaskStatusRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTaskStatusResponse
- */
+// Description:
+//
+// **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+//
+// To call this operation, make sure that the value-added image processing feature is enabled.
+//
+// Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+//
+// @param request - GetTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21369,14 +24957,17 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, he
 	return _result, _err
 }
 
-/**
- * **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
- * To call this operation, make sure that the value-added image processing feature is enabled.
- * Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
- *
- * @param request GetTaskStatusRequest
- * @return GetTaskStatusResponse
- */
+// Description:
+//
+// **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+//
+// To call this operation, make sure that the value-added image processing feature is enabled.
+//
+// Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+//
+// @param request - GetTaskStatusRequest
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21497,14 +25088,17 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
-/**
- * For more information about best practices, see [Preview videos online](~~427477~~).
- *
- * @param request GetVideoPreviewPlayInfoRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetVideoPreviewPlayInfoResponse
- */
+// Description:
+//
+// For more information about best practices, see [Preview videos online](~~427477~~).
+//
+// @param request - GetVideoPreviewPlayInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoPreviewPlayInfoResponse
 func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPreviewPlayInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoPreviewPlayInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21567,12 +25161,13 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
-/**
- * For more information about best practices, see [Preview videos online](~~427477~~).
- *
- * @param request GetVideoPreviewPlayInfoRequest
- * @return GetVideoPreviewPlayInfoResponse
- */
+// Description:
+//
+// For more information about best practices, see [Preview videos online](~~427477~~).
+//
+// @param request - GetVideoPreviewPlayInfoRequest
+//
+// @return GetVideoPreviewPlayInfoResponse
 func (client *Client) GetVideoPreviewPlayInfo(request *GetVideoPreviewPlayInfoRequest) (_result *GetVideoPreviewPlayInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21585,14 +25180,17 @@ func (client *Client) GetVideoPreviewPlayInfo(request *GetVideoPreviewPlayInfoRe
 	return _result, _err
 }
 
-/**
- * For more information about best practices, see [Preview videos online](~~427477~~).
- *
- * @param request GetVideoPreviewPlayMetaRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetVideoPreviewPlayMetaResponse
- */
+// Description:
+//
+// For more information about best practices, see [Preview videos online](~~427477~~).
+//
+// @param request - GetVideoPreviewPlayMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoPreviewPlayMetaResponse
 func (client *Client) GetVideoPreviewPlayMetaWithOptions(request *GetVideoPreviewPlayMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21639,12 +25237,13 @@ func (client *Client) GetVideoPreviewPlayMetaWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
-/**
- * For more information about best practices, see [Preview videos online](~~427477~~).
- *
- * @param request GetVideoPreviewPlayMetaRequest
- * @return GetVideoPreviewPlayMetaResponse
- */
+// Description:
+//
+// For more information about best practices, see [Preview videos online](~~427477~~).
+//
+// @param request - GetVideoPreviewPlayMetaRequest
+//
+// @return GetVideoPreviewPlayMetaResponse
 func (client *Client) GetVideoPreviewPlayMeta(request *GetVideoPreviewPlayMetaRequest) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21789,6 +25388,18 @@ func (client *Client) InvestigateFileWithOptions(request *InvestigateFileRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DriveFileIds)) {
 		body["drive_file_ids"] = request.DriveFileIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		body["policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recursive)) {
+		body["recursive"] = request.Recursive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["user_data"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22079,6 +25690,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.ParentDomainId)) {
 		body["parent_domain_id"] = request.ParentDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["service_code"] = request.ServiceCode
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22805,14 +26420,17 @@ func (client *Client) ListRevision(request *ListRevisionRequest) (_result *ListR
 	return _result, _err
 }
 
-/**
- * This operation is discontinued. To query shares, you can call the SearchShareLink operation.
- *
- * @param request ListShareLinkRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListShareLinkResponse
- */
+// Description:
+//
+// This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+//
+// @param request - ListShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListShareLinkResponse
 func (client *Client) ListShareLinkWithOptions(request *ListShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22867,12 +26485,13 @@ func (client *Client) ListShareLinkWithOptions(request *ListShareLinkRequest, he
 	return _result, _err
 }
 
-/**
- * This operation is discontinued. To query shares, you can call the SearchShareLink operation.
- *
- * @param request ListShareLinkRequest
- * @return ListShareLinkResponse
- */
+// Description:
+//
+// This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+//
+// @param request - ListShareLinkRequest
+//
+// @return ListShareLinkResponse
 func (client *Client) ListShareLink(request *ListShareLinkRequest) (_result *ListShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22885,14 +26504,17 @@ func (client *Client) ListShareLink(request *ListShareLinkRequest) (_result *Lis
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
- *
- * @param request ListTagsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagsResponse
- */
+// Description:
+//
+// You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+//
+// @param request - ListTagsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagsResponse
 func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22935,12 +26557,13 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
- *
- * @param request ListTagsRequest
- * @return ListTagsResponse
- */
+// Description:
+//
+// You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+//
+// @param request - ListTagsRequest
+//
+// @return ListTagsResponse
 func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23601,10 +27224,6 @@ func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		body["instance_id"] = request.InstanceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		body["limit"] = request.Limit
 	}
@@ -24109,15 +27728,19 @@ func (client *Client) SearchUser(request *SearchUserRequest) (_result *SearchUse
 	return _result, _err
 }
 
-/**
- * For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
- * For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
- *
- * @param request TokenRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return TokenResponse
- */
+// Description:
+//
+// For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+//
+// For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
+//
+// @param request - TokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TokenResponse
 func (client *Client) TokenWithOptions(request *TokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24176,13 +27799,15 @@ func (client *Client) TokenWithOptions(request *TokenRequest, headers map[string
 	return _result, _err
 }
 
-/**
- * For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
- * For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
- *
- * @param request TokenRequest
- * @return TokenResponse
- */
+// Description:
+//
+// For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+//
+// For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
+//
+// @param request - TokenRequest
+//
+// @return TokenResponse
 func (client *Client) Token(request *TokenRequest) (_result *TokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
