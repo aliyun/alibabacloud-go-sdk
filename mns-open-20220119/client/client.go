@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,13 +10,34 @@ import (
 )
 
 type CreateQueueRequest struct {
-	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	EnableLogging          *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	MaximumMessageSize     *int64  `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	PollingWaitSeconds     *int64  `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
-	QueueName              *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	VisibilityTimeout      *int64  `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+	// example:
+	//
+	// 0
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// true
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// example:
+	//
+	// 65536
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// example:
+	//
+	// 345600
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
 }
 
 func (s CreateQueueRequest) String() string {
@@ -66,12 +84,27 @@ func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 }
 
 type CreateQueueResponseBody struct {
-	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123E62C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateQueueResponseBody) String() string {
@@ -113,9 +146,15 @@ func (s *CreateQueueResponseBody) SetSuccess(v bool) *CreateQueueResponseBody {
 }
 
 type CreateQueueResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateQueueResponseBodyData) String() string {
@@ -171,9 +210,18 @@ func (s *CreateQueueResponse) SetBody(v *CreateQueueResponseBody) *CreateQueueRe
 }
 
 type CreateTopicRequest struct {
-	EnableLogging  *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	MaxMessageSize *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	TopicName      *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// true
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// example:
+	//
+	// 10240
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -200,12 +248,27 @@ func (s *CreateTopicRequest) SetTopicName(v string) *CreateTopicRequest {
 }
 
 type CreateTopicResponseBody struct {
-	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123E62C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTopicResponseBody) String() string {
@@ -247,9 +310,15 @@ func (s *CreateTopicResponseBody) SetSuccess(v bool) *CreateTopicResponseBody {
 }
 
 type CreateTopicResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTopicResponseBodyData) String() string {
@@ -305,6 +374,9 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteQueueRequest struct {
+	// example:
+	//
+	// tf-testAccMNSQueue-525478433321945943
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 }
 
@@ -322,12 +394,27 @@ func (s *DeleteQueueRequest) SetQueueName(v string) *DeleteQueueRequest {
 }
 
 type DeleteQueueResponseBody struct {
-	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DeleteQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteQueueResponseBody) String() string {
@@ -369,9 +456,15 @@ func (s *DeleteQueueResponseBody) SetSuccess(v bool) *DeleteQueueResponseBody {
 }
 
 type DeleteQueueResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteQueueResponseBodyData) String() string {
@@ -427,6 +520,9 @@ func (s *DeleteQueueResponse) SetBody(v *DeleteQueueResponseBody) *DeleteQueueRe
 }
 
 type DeleteTopicRequest struct {
+	// example:
+	//
+	// tf-testAccMNSTopic-112965059402264645
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
@@ -444,12 +540,27 @@ func (s *DeleteTopicRequest) SetTopicName(v string) *DeleteTopicRequest {
 }
 
 type DeleteTopicResponseBody struct {
-	Code      *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTopicResponseBody) String() string {
@@ -520,6 +631,9 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type GetQueueAttributesRequest struct {
+	// example:
+	//
+	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 }
 
@@ -537,12 +651,27 @@ func (s *GetQueueAttributesRequest) SetQueueName(v string) *GetQueueAttributesRe
 }
 
 type GetQueueAttributesResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQueueAttributesResponseBody) String() string {
@@ -584,18 +713,54 @@ func (s *GetQueueAttributesResponseBody) SetSuccess(v bool) *GetQueueAttributesR
 }
 
 type GetQueueAttributesResponseBodyData struct {
-	ActiveMessages         *int64  `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
-	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DelayMessages          *int64  `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
-	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	InactiveMessages       *int64  `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
-	LastModifyTime         *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LoggingEnabled         *bool   `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	MaximumMessageSize     *int64  `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	PollingWaitSeconds     *int64  `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
-	QueueName              *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	VisibilityTimeout      *int64  `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+	// example:
+	//
+	// 20
+	ActiveMessages *int64 `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
+	// example:
+	//
+	// 1250700999
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 0
+	DelayMessages *int64 `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
+	// example:
+	//
+	// 30
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// 0
+	InactiveMessages *int64 `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
+	// example:
+	//
+	// 1250700999
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// True
+	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// example:
+	//
+	// 65536
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// example:
+	//
+	// 65536
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// example:
+	//
+	// demo-queue
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
 }
 
 func (s GetQueueAttributesResponseBodyData) String() string {
@@ -696,8 +861,14 @@ func (s *GetQueueAttributesResponse) SetBody(v *GetQueueAttributesResponseBody) 
 }
 
 type GetSubscriptionAttributesRequest struct {
+	// example:
+	//
+	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName        *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// MyTopic
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s GetSubscriptionAttributesRequest) String() string {
@@ -719,12 +890,27 @@ func (s *GetSubscriptionAttributesRequest) SetTopicName(v string) *GetSubscripti
 }
 
 type GetSubscriptionAttributesResponseBody struct {
-	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSubscriptionAttributesResponseBody) String() string {
@@ -766,15 +952,42 @@ func (s *GetSubscriptionAttributesResponseBody) SetSuccess(v bool) *GetSubscript
 }
 
 type GetSubscriptionAttributesResponseBodyData struct {
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Endpoint            *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	FilterTag           *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	LastModifyTime      *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// 1449554806
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://example.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// important
+	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
+	// example:
+	//
+	// 1449554962
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	NotifyStrategy      *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	SubscriptionName    *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName           *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	TopicOwner          *string `json:"TopicOwner,omitempty" xml:"TopicOwner,omitempty"`
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// MySubscription
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// example:
+	//
+	// MyTopic
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// 123456789098****
+	TopicOwner *string `json:"TopicOwner,omitempty" xml:"TopicOwner,omitempty"`
 }
 
 func (s GetSubscriptionAttributesResponseBodyData) String() string {
@@ -860,6 +1073,9 @@ func (s *GetSubscriptionAttributesResponse) SetBody(v *GetSubscriptionAttributes
 }
 
 type GetTopicAttributesRequest struct {
+	// example:
+	//
+	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
@@ -877,12 +1093,27 @@ func (s *GetTopicAttributesRequest) SetTopicName(v string) *GetTopicAttributesRe
 }
 
 type GetTopicAttributesResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTopicAttributesResponseBody) String() string {
@@ -924,13 +1155,34 @@ func (s *GetTopicAttributesResponseBody) SetSuccess(v bool) *GetTopicAttributesR
 }
 
 type GetTopicAttributesResponseBodyData struct {
-	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastModifyTime         *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LoggingEnabled         *bool   `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	MaxMessageSize         *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	MessageCount           *int64  `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	TopicName              *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// 1449554277
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1449554460
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// True
+	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// example:
+	//
+	// 65536
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// example:
+	//
+	// 0
+	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// example:
+	//
+	// 86400
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// example:
+	//
+	// demo-topic
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s GetTopicAttributesResponseBodyData) String() string {
@@ -1006,8 +1258,17 @@ func (s *GetTopicAttributesResponse) SetBody(v *GetTopicAttributesResponseBody) 
 }
 
 type ListQueueRequest struct {
-	PageNum   *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 }
 
@@ -1035,12 +1296,27 @@ func (s *ListQueueRequest) SetQueueName(v string) *ListQueueRequest {
 }
 
 type ListQueueResponseBody struct {
-	Code      *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListQueueResponseBody) String() string {
@@ -1083,11 +1359,26 @@ func (s *ListQueueResponseBody) SetSuccess(v bool) *ListQueueResponseBody {
 
 type ListQueueResponseBodyData struct {
 	PageData []*ListQueueResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	PageNum  *int64                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Pages    *int64                               `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	Size     *int64                               `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total    *int64                               `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3
+	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// 20
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 130
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListQueueResponseBodyData) String() string {
@@ -1129,18 +1420,54 @@ func (s *ListQueueResponseBodyData) SetTotal(v int64) *ListQueueResponseBodyData
 }
 
 type ListQueueResponseBodyDataPageData struct {
-	ActiveMessages         *int64  `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
-	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DelayMessages          *int64  `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
-	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	InactiveMessages       *int64  `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
-	LastModifyTime         *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LoggingEnabled         *bool   `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	MaximumMessageSize     *int64  `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	PollingWaitSeconds     *int64  `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
-	QueueName              *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	VisibilityTimeout      *int64  `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+	// example:
+	//
+	// 20
+	ActiveMessages *int64 `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
+	// example:
+	//
+	// 1250700999
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 0
+	DelayMessages *int64 `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
+	// example:
+	//
+	// 30
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// 0
+	InactiveMessages *int64 `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
+	// example:
+	//
+	// 1250700999
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// True
+	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// example:
+	//
+	// 65536
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// example:
+	//
+	// 65536
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// example:
+	//
+	// demo-queue
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
 }
 
 func (s ListQueueResponseBodyDataPageData) String() string {
@@ -1241,10 +1568,22 @@ func (s *ListQueueResponse) SetBody(v *ListQueueResponseBody) *ListQueueResponse
 }
 
 type ListSubscriptionByTopicRequest struct {
-	PageNum          *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// demo-subscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName        *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s ListSubscriptionByTopicRequest) String() string {
@@ -1276,12 +1615,27 @@ func (s *ListSubscriptionByTopicRequest) SetTopicName(v string) *ListSubscriptio
 }
 
 type ListSubscriptionByTopicResponseBody struct {
-	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListSubscriptionByTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListSubscriptionByTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSubscriptionByTopicResponseBody) String() string {
@@ -1324,11 +1678,26 @@ func (s *ListSubscriptionByTopicResponseBody) SetSuccess(v bool) *ListSubscripti
 
 type ListSubscriptionByTopicResponseBodyData struct {
 	PageData []*ListSubscriptionByTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	PageNum  *int64                                             `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Pages    *int64                                             `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	Size     *int64                                             `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3
+	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// 20
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 130
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSubscriptionByTopicResponseBodyData) String() string {
@@ -1370,15 +1739,42 @@ func (s *ListSubscriptionByTopicResponseBodyData) SetTotal(v int64) *ListSubscri
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageData struct {
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Endpoint            *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	FilterTag           *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
-	LastModifyTime      *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// 1449554806
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://example.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// important
+	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
+	// example:
+	//
+	// 1449554806
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	NotifyStrategy      *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	SubscriptionName    *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName           *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	TopicOwner          *string `json:"TopicOwner,omitempty" xml:"TopicOwner,omitempty"`
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// MySubscription
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// example:
+	//
+	// MyTopic
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// 123456789098****
+	TopicOwner *string `json:"TopicOwner,omitempty" xml:"TopicOwner,omitempty"`
 }
 
 func (s ListSubscriptionByTopicResponseBodyDataPageData) String() string {
@@ -1464,8 +1860,17 @@ func (s *ListSubscriptionByTopicResponse) SetBody(v *ListSubscriptionByTopicResp
 }
 
 type ListTopicRequest struct {
-	PageNum   *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
@@ -1493,12 +1898,27 @@ func (s *ListTopicRequest) SetTopicName(v string) *ListTopicRequest {
 }
 
 type ListTopicResponseBody struct {
-	Code      *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListTopicResponseBody) String() string {
@@ -1541,9 +1961,18 @@ func (s *ListTopicResponseBody) SetSuccess(v bool) *ListTopicResponseBody {
 
 type ListTopicResponseBodyData struct {
 	PageData []*ListTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
-	PageNum  *int64                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Total    *int64                               `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 130
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTopicResponseBodyData) String() string {
@@ -1575,13 +2004,36 @@ func (s *ListTopicResponseBodyData) SetTotal(v int64) *ListTopicResponseBodyData
 }
 
 type ListTopicResponseBodyDataPageData struct {
-	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastModifyTime         *int64  `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LoggingEnabled         *bool   `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
-	MaxMessageSize         *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	MessageCount           *int64  `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// example:
+	//
+	// 1449554962
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1449554962
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// True
+	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// example:
+	//
+	// 65536
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// example:
+	//
+	// 0
+	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// example:
+	//
+	// 86400
 	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	TopicName              *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicInnerUrl          *string `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
+	// example:
+	//
+	// demo-topic
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicUrl  *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
 }
 
 func (s ListTopicResponseBodyDataPageData) String() string {
@@ -1622,8 +2074,18 @@ func (s *ListTopicResponseBodyDataPageData) SetMessageRetentionPeriod(v int64) *
 	return s
 }
 
+func (s *ListTopicResponseBodyDataPageData) SetTopicInnerUrl(v string) *ListTopicResponseBodyDataPageData {
+	s.TopicInnerUrl = &v
+	return s
+}
+
 func (s *ListTopicResponseBodyDataPageData) SetTopicName(v string) *ListTopicResponseBodyDataPageData {
 	s.TopicName = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetTopicUrl(v string) *ListTopicResponseBodyDataPageData {
+	s.TopicUrl = &v
 	return s
 }
 
@@ -1657,13 +2119,34 @@ func (s *ListTopicResponse) SetBody(v *ListTopicResponseBody) *ListTopicResponse
 }
 
 type SetQueueAttributesRequest struct {
-	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	EnableLogging          *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	MaximumMessageSize     *int64  `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	MessageRetentionPeriod *int64  `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
-	PollingWaitSeconds     *int64  `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
-	QueueName              *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	VisibilityTimeout      *int64  `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
+	// example:
+	//
+	// 0
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// example:
+	//
+	// True
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// example:
+	//
+	// 1024
+	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// example:
+	//
+	// 120
+	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 0
+	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// example:
+	//
+	// testqueue
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// 60
+	VisibilityTimeout *int64 `json:"VisibilityTimeout,omitempty" xml:"VisibilityTimeout,omitempty"`
 }
 
 func (s SetQueueAttributesRequest) String() string {
@@ -1710,12 +2193,27 @@ func (s *SetQueueAttributesRequest) SetVisibilityTimeout(v int64) *SetQueueAttri
 }
 
 type SetQueueAttributesResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetQueueAttributesResponseBody) String() string {
@@ -1757,9 +2255,15 @@ func (s *SetQueueAttributesResponseBody) SetSuccess(v bool) *SetQueueAttributesR
 }
 
 type SetQueueAttributesResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetQueueAttributesResponseBodyData) String() string {
@@ -1815,9 +2319,18 @@ func (s *SetQueueAttributesResponse) SetBody(v *SetQueueAttributesResponseBody) 
 }
 
 type SetSubscriptionAttributesRequest struct {
-	NotifyStrategy   *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName        *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s SetSubscriptionAttributesRequest) String() string {
@@ -1844,12 +2357,27 @@ func (s *SetSubscriptionAttributesRequest) SetTopicName(v string) *SetSubscripti
 }
 
 type SetSubscriptionAttributesResponseBody struct {
-	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetSubscriptionAttributesResponseBody) String() string {
@@ -1891,9 +2419,15 @@ func (s *SetSubscriptionAttributesResponseBody) SetSuccess(v bool) *SetSubscript
 }
 
 type SetSubscriptionAttributesResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetSubscriptionAttributesResponseBodyData) String() string {
@@ -1949,9 +2483,18 @@ func (s *SetSubscriptionAttributesResponse) SetBody(v *SetSubscriptionAttributes
 }
 
 type SetTopicAttributesRequest struct {
-	EnableLogging  *bool   `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
-	MaxMessageSize *int64  `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	TopicName      *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// True
+	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// example:
+	//
+	// 65536
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s SetTopicAttributesRequest) String() string {
@@ -1978,12 +2521,27 @@ func (s *SetTopicAttributesRequest) SetTopicName(v string) *SetTopicAttributesRe
 }
 
 type SetTopicAttributesResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetTopicAttributesResponseBody) String() string {
@@ -2025,9 +2583,15 @@ func (s *SetTopicAttributesResponseBody) SetSuccess(v bool) *SetTopicAttributesR
 }
 
 type SetTopicAttributesResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetTopicAttributesResponseBodyData) String() string {
@@ -2083,13 +2647,34 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 }
 
 type SubscribeRequest struct {
-	Endpoint            *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	MessageTag          *string `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
+	// example:
+	//
+	// http://example.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// important
+	MessageTag *string `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
+	// example:
+	//
+	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
-	NotifyStrategy      *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	PushType            *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SubscriptionName    *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName           *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// queue
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// example:
+	//
+	// testSubscription
+	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s SubscribeRequest) String() string {
@@ -2136,12 +2721,30 @@ func (s *SubscribeRequest) SetTopicName(v string) *SubscribeRequest {
 }
 
 type SubscribeResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {\"Code\": 200, \"Success\": True}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubscribeResponseBody) String() string {
@@ -2212,8 +2815,14 @@ func (s *SubscribeResponse) SetBody(v *SubscribeResponseBody) *SubscribeResponse
 }
 
 type UnsubscribeRequest struct {
+	// example:
+	//
+	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	TopicName        *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// example:
+	//
+	// test
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s UnsubscribeRequest) String() string {
@@ -2235,12 +2844,27 @@ func (s *UnsubscribeRequest) SetTopicName(v string) *UnsubscribeRequest {
 }
 
 type UnsubscribeResponseBody struct {
-	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UnsubscribeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UnsubscribeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UnsubscribeResponseBody) String() string {
@@ -2282,9 +2906,15 @@ func (s *UnsubscribeResponseBody) SetSuccess(v bool) *UnsubscribeResponseBody {
 }
 
 type UnsubscribeResponseBodyData struct {
+	// example:
+	//
+	// 200
 	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UnsubscribeResponseBodyData) String() string {
