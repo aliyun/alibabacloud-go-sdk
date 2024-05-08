@@ -3,7 +3,6 @@ module github.com/alibabacloud-go/kms-20160120/v3
 go 1.15
 
 require (
-	github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.4
 	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.6
 	github.com/alibabacloud-go/endpoint-util v1.1.0
 	github.com/alibabacloud-go/openapi-util v0.1.0
