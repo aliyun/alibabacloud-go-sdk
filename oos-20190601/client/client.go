@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,8 +11,16 @@ import (
 
 type CancelExecutionRequest struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -39,6 +44,10 @@ func (s *CancelExecutionRequest) SetRegionId(v string) *CancelExecutionRequest {
 
 type CancelExecutionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -86,24 +95,48 @@ func (s *CancelExecutionResponse) SetBody(v *CancelExecutionResponseBody) *Cance
 
 type ChangeResourceGroupRequest struct {
 	// The ID of the resource group to which the cloud resource is to be moved. You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+	//
+	// example:
+	//
+	// rg-acfm3peow3k****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the cloud resource that you want to move to another resource group.
 	//
-	// *   If the ResourceType parameter is set to template, set the ResourceId parameter to the name of the template.
-	// *   If the ResourceType parameter is set to parameter, set the ResourceId parameter to the name of the parameter.
-	// *   If the ResourceType parameter is set to secretparameter, set the ResourceId parameter to the name of the encryption parameter.
-	// *   If the ResourceType parameter is set to stateconfiguration, set the ResourceId parameter to the ID of the desired-state configuration.
-	// *   If the ResourceType parameter is set to application, set the ResourceId parameter to the name of the application.
+	// 	- If the ResourceType parameter is set to template, set the ResourceId parameter to the name of the template.
+	//
+	// 	- If the ResourceType parameter is set to parameter, set the ResourceId parameter to the name of the parameter.
+	//
+	// 	- If the ResourceType parameter is set to secretparameter, set the ResourceId parameter to the name of the encryption parameter.
+	//
+	// 	- If the ResourceType parameter is set to stateconfiguration, set the ResourceId parameter to the ID of the desired-state configuration.
+	//
+	// 	- If the ResourceType parameter is set to application, set the ResourceId parameter to the name of the application.
+	//
+	// example:
+	//
+	// TemplateName
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the cloud resource. Valid values:
 	//
-	// *   template: template
-	// *   parameter: parameter
-	// *   secretparameter: encryption parameter
-	// *   stateconfiguration: desired-state configuration
-	// *   application: application
+	// 	- template: template
+	//
+	// 	- parameter: parameter
+	//
+	// 	- secretparameter: encryption parameter
+	//
+	// 	- stateconfiguration: desired-state configuration
+	//
+	// 	- application: application
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -137,6 +170,10 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 
 type ChangeResourceGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0620E49F-B884-5F98-A834-69D72922E5CF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -184,12 +221,28 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 
 type ContinueDeployApplicationGroupRequest struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The deployment information about the application group.
+	//
+	// example:
+	//
+	// {       "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",       "Parameters": {         "ZoneId": "cn-hangzhou-k",         "ProjectName": "test",         "SystemDiskSize": 40,         "InstanceChargeType": "PostPaid",         "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",         "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",         "SystemDiskCategory": "cloud_essd",         "InstancePassword": "******",         "InternetChargeType": "PayByTraffic",         "InstanceCount": 1,         "InternetMaxBandwidthOut": 0,         "VpcId": "vpc-bp1i99boyas8i8m9t3skp",         "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",         "DataDiskSize": 100,         "EcsInstanceType": "ecs.s6-c1m4.small",         "DataDiskCategory": "cloud_efficiency",         "EnvironmentCommandId": "c-hz028fc3g031gcg"       }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -223,6 +276,10 @@ func (s *ContinueDeployApplicationGroupRequest) SetRegionId(v string) *ContinueD
 
 type ContinueDeployApplicationGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8AF4800A-A316-589A-90C4-313B1FEEB084
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -272,18 +329,46 @@ type CreateApplicationRequest struct {
 	// The configurations of application alerts.
 	AlarmConfig *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// TF-CreateApplication-1647587475-84104b89-eba5-47a8-b2fd-807b8b7d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the service.
+	//
+	// example:
+	//
+	// service-79538e30e44541b699d8
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -339,6 +424,10 @@ type CreateApplicationRequestAlarmConfig struct {
 	// The alert contact groups.
 	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
 	// The health check URL of the application.
+	//
+	// example:
+	//
+	// /healthcheck/tcp50122
 	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
 	// The alert templates.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
@@ -371,18 +460,46 @@ type CreateApplicationShrinkRequest struct {
 	// The configurations of application alerts.
 	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// TF-CreateApplication-1647587475-84104b89-eba5-47a8-b2fd-807b8b7d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the service.
+	//
+	// example:
+	//
+	// service-79538e30e44541b699d8
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -438,6 +555,10 @@ type CreateApplicationResponseBody struct {
 	// The information about the application.
 	Application *CreateApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 274917E8-8E74-5928-A82F-4940F52F7ACB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -461,14 +582,34 @@ func (s *CreateApplicationResponseBody) SetRequestId(v string) *CreateApplicatio
 
 type CreateApplicationResponseBodyApplication struct {
 	// The time when the application was created.
+	//
+	// example:
+	//
+	// 2021-09-07T09:17:46Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// Myapplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
+	//
+	// example:
+	//
+	// 2021-09-07T09:17:46Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -536,22 +677,58 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 
 type CreateApplicationGroupRequest struct {
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// -
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the application group in CloudMonitor.
+	//
+	// example:
+	//
+	// 218026174
 	CmsGroupId *string `json:"CmsGroupId,omitempty" xml:"CmsGroupId,omitempty"`
 	// The ID of the region in which the related sources reside.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The description of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key of the tag. You must set both the ImportTagKey and the ImportTagValue parameters, or leave both of them empty. If you do not set the ImportTagKey and ImportTagValue parameters, the application name is used for this parameter by default.
+	//
+	// example:
+	//
+	// k1
 	ImportTagKey *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	// The value of the tag. You must set both the ImportTagKey and the ImportTagValue parameters, or leave both of them empty. If you do not set the ImportTagKey and ImportTagValue parameters, the application group name is used for this parameter by default.
+	//
+	// example:
+	//
+	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -612,6 +789,10 @@ type CreateApplicationGroupResponseBody struct {
 	// The information about the application group.
 	ApplicationGroup *CreateApplicationGroupResponseBodyApplicationGroup `json:"ApplicationGroup,omitempty" xml:"ApplicationGroup,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0E6BEBD3-7F9E-5878-834B-097633AB5F33
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -635,22 +816,58 @@ func (s *CreateApplicationGroupResponseBody) SetRequestId(v string) *CreateAppli
 
 type CreateApplicationGroupResponseBodyApplicationGroup struct {
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The ID of the application group in CloudMonitor.
+	//
+	// example:
+	//
+	// 1245768
 	CmsGroupId *string `json:"CmsGroupId,omitempty" xml:"CmsGroupId,omitempty"`
 	// The time when the application group was created.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The ID of the region in which the related sources reside.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The description of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// k1
 	ImportTagKey *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The time when the application group was updated.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -741,7 +958,7 @@ type CreateOpsItemRequest struct {
 	//
 	// Valid values:
 	//
-	// *   Availability
+	// 	- Availability
 	//
 	//     <!-- -->
 	//
@@ -749,7 +966,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Performance
+	// 	- Performance
 	//
 	//     <!-- -->
 	//
@@ -757,7 +974,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Security
+	// 	- Security
 	//
 	//     <!-- -->
 	//
@@ -765,7 +982,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Cost
+	// 	- Cost
 	//
 	//     <!-- -->
 	//
@@ -773,33 +990,65 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Recovery
+	// 	- Recovery
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 123e56767-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The string to be deduplicated.
+	//
+	// example:
+	//
+	// ecs_instance_Sys
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description of the operation.
+	//
+	// example:
+	//
+	// OpsItem
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The priority. Valid values: 1 to 5. 1 indicates the highest priority.
+	//
+	// example:
+	//
+	// 4
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
+	//
+	// example:
+	//
+	// [\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
 	// Valid values:
 	//
-	// *   High
+	// 	- High
 	//
 	//     <!-- -->
 	//
@@ -807,7 +1056,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Low
+	// 	- Low
 	//
 	//     <!-- -->
 	//
@@ -815,7 +1064,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Medium
+	// 	- Medium
 	//
 	//     <!-- -->
 	//
@@ -823,21 +1072,47 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Critical
+	// 	- Critical
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
+	//
+	// example:
+	//
+	// \[{\n \\"priority\\":3,\n \\"type\\":\\"SingleAZEcs\\",\n \\"url\\":\\"http://ecs.consle.aliyuncs.com\\",\n \\"description\\":\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\"\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// ECS reboot is scheduled
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -919,7 +1194,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// *   Availability
+	// 	- Availability
 	//
 	//     <!-- -->
 	//
@@ -927,7 +1202,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Performance
+	// 	- Performance
 	//
 	//     <!-- -->
 	//
@@ -935,7 +1210,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Security
+	// 	- Security
 	//
 	//     <!-- -->
 	//
@@ -943,7 +1218,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Cost
+	// 	- Cost
 	//
 	//     <!-- -->
 	//
@@ -951,33 +1226,65 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Recovery
+	// 	- Recovery
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 123e56767-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The string to be deduplicated.
+	//
+	// example:
+	//
+	// ecs_instance_Sys
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description of the operation.
+	//
+	// example:
+	//
+	// OpsItem
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The priority. Valid values: 1 to 5. 1 indicates the highest priority.
+	//
+	// example:
+	//
+	// 4
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
+	//
+	// example:
+	//
+	// [\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
 	// Valid values:
 	//
-	// *   High
+	// 	- High
 	//
 	//     <!-- -->
 	//
@@ -985,7 +1292,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Low
+	// 	- Low
 	//
 	//     <!-- -->
 	//
@@ -993,7 +1300,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Medium
+	// 	- Medium
 	//
 	//     <!-- -->
 	//
@@ -1001,21 +1308,47 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Critical
+	// 	- Critical
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
+	//
+	// example:
+	//
+	// \[{\n \\"priority\\":3,\n \\"type\\":\\"SingleAZEcs\\",\n \\"url\\":\\"http://ecs.consle.aliyuncs.com\\",\n \\"description\\":\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\"\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// ECS reboot is scheduled
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1096,6 +1429,10 @@ type CreateOpsItemResponseBody struct {
 	// The information about the O\&M item.
 	OpsItem *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// DA4F08D4-DA54-5407-84B9-108C71D75B17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1119,38 +1456,106 @@ func (s *CreateOpsItemResponseBody) SetRequestId(v string) *CreateOpsItemRespons
 
 type CreateOpsItemResponseBodyOpsItem struct {
 	// The attributes of the O\&M item.
+	//
+	// example:
+	//
+	// {\"regionId\":\"cn-zhangjiakou\",\"appId\":\"992BKO1X75GRQ4E8\",\"instanceId\":\"i-8vbcymxagqsyyyjppbr4\",\"instance_name\":\"cdae\"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The category of the O\&M item.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the O\&M item was created.
+	//
+	// example:
+	//
+	// 2023-03-24T03:55Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The user who created the O\&M item.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The description of the O\&M item.
+	//
+	// example:
+	//
+	// OpsItem
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The user who last modified the O\&M item.
+	//
+	// example:
+	//
+	// root(130900000)
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
 	// The ID of the O\&M item.
+	//
+	// example:
+	//
+	// oi-dba9c6eec9254a4d87c1
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority of the O\&M item.
+	//
+	// example:
+	//
+	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ARNs of the associated resources.
+	//
+	// example:
+	//
+	// [\"acs:oos:cn-hangzhou:1563457855438522:application/dingTest/applicationgroup/fltest\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level of the O\&M item.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
+	//
+	// example:
+	//
+	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example..com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business of the O\&M item.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The state of the O\&M item.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags of the O\&M item.
+	//
+	// example:
+	//
+	// {"k1": "v1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// ECS reboot is scheduled
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time when the O\&M item was updated.
+	//
+	// example:
+	//
+	// 2023-03-24T03:55Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -1278,27 +1683,80 @@ func (s *CreateOpsItemResponse) SetBody(v *CreateOpsItemResponseBody) *CreateOps
 
 type CreateParameterRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The constraints of the common parameter. By default, this parameter is null. Valid values:
 	//
-	// *   AllowedValues: The value that is allowed for the common parameter. It must be an array string.
-	// *   AllowedPattern: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// *   MinLength: The minimum length of the common parameter.
-	// *   MaxLength: The maximum length of the common parameter.
+	// 	- AllowedValues: The value that is allowed for the common parameter. It must be an array string.
+	//
+	// 	- AllowedPattern: The pattern that is allowed for the common parameter. It must be a regular expression.
+	//
+	// 	- MinLength: The minimum length of the common parameter.
+	//
+	// 	- MaxLength: The maximum length of the common parameter.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "AllowedValues": [
+	//
+	//         "parameter"
+	//
+	//     ],
+	//
+	//     "AllowedPattern": "parameter",
+	//
+	//     "MinLength": 0,
+	//
+	//     "MaxLength": 20
+	//
+	// }
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The description of the common parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the parameter. Valid values: String and StringList.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// parameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1357,27 +1815,80 @@ func (s *CreateParameterRequest) SetValue(v string) *CreateParameterRequest {
 
 type CreateParameterShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The constraints of the common parameter. By default, this parameter is null. Valid values:
 	//
-	// *   AllowedValues: The value that is allowed for the common parameter. It must be an array string.
-	// *   AllowedPattern: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// *   MinLength: The minimum length of the common parameter.
-	// *   MaxLength: The maximum length of the common parameter.
+	// 	- AllowedValues: The value that is allowed for the common parameter. It must be an array string.
+	//
+	// 	- AllowedPattern: The pattern that is allowed for the common parameter. It must be a regular expression.
+	//
+	// 	- MinLength: The minimum length of the common parameter.
+	//
+	// 	- MaxLength: The maximum length of the common parameter.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "AllowedValues": [
+	//
+	//         "parameter"
+	//
+	//     ],
+	//
+	//     "AllowedPattern": "parameter",
+	//
+	//     "MinLength": 0,
+	//
+	//     "MaxLength": 20
+	//
+	// }
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The description of the common parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the parameter. Valid values: String and StringList.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// parameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1438,6 +1949,10 @@ type CreateParameterResponseBody struct {
 	// The information about the common parameter.
 	Parameter *CreateParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B419FF3-ABC6-4DF0-95E5-636DC8CBB8AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1461,30 +1976,82 @@ func (s *CreateParameterResponseBody) SetRequestId(v string) *CreateParameterRes
 
 type CreateParameterResponseBodyParameter struct {
 	// The constraints of the common parameter.
+	//
+	// example:
+	//
+	// "{\"AllowedValues\":[\"parameter\"],\"AllowedPattern\":\"parameter\",\"MinLength\":0,\"MaxLength\":20}"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the common parameter.
+	//
+	// example:
+	//
+	// p-4c4b401cab6747xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -1592,35 +2159,78 @@ func (s *CreateParameterResponse) SetBody(v *CreateParameterResponseBody) *Creat
 
 type CreatePatchBaselineRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Specifies whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// -
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// PatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   Windows
-	// *   Ubuntu
-	// *   CentOS
-	// *   Debian
-	// *   AliyunLinux
-	// *   RedhatEnterpriseLinux
-	// *   Anolis
-	// *   AlmaLinux
+	// 	- Windows
+	//
+	// 	- Ubuntu
+	//
+	// 	- CentOS
+	//
+	// 	- Debian
+	//
+	// 	- AliyunLinux
+	//
+	// 	- RedhatEnterpriseLinux
+	//
+	// 	- Anolis
+	//
+	// 	- AlmaLinux
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region in which you want to create a patch baseline.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rejected patches.
 	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -1703,8 +2313,16 @@ func (s *CreatePatchBaselineRequest) SetTags(v []*CreatePatchBaselineRequestTags
 
 type CreatePatchBaselineRequestTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1728,35 +2346,78 @@ func (s *CreatePatchBaselineRequestTags) SetValue(v string) *CreatePatchBaseline
 
 type CreatePatchBaselineShrinkRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
 	// Specifies whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// -
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// PatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   Windows
-	// *   Ubuntu
-	// *   CentOS
-	// *   Debian
-	// *   AliyunLinux
-	// *   RedhatEnterpriseLinux
-	// *   Anolis
-	// *   AlmaLinux
+	// 	- Windows
+	//
+	// 	- Ubuntu
+	//
+	// 	- CentOS
+	//
+	// 	- Debian
+	//
+	// 	- AliyunLinux
+	//
+	// 	- RedhatEnterpriseLinux
+	//
+	// 	- Anolis
+	//
+	// 	- AlmaLinux
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region in which you want to create a patch baseline.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rejected patches.
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The patch source configurations.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -1841,6 +2502,10 @@ type CreatePatchBaselineResponseBody struct {
 	// The details of the patch baseline.
 	PatchBaseline *CreatePatchBaselineResponseBodyPatchBaseline `json:"PatchBaseline,omitempty" xml:"PatchBaseline,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A5173FF6-D10D-5E8C-8F71-943C2A3E25C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1864,38 +2529,90 @@ func (s *CreatePatchBaselineResponseBody) SetRequestId(v string) *CreatePatchBas
 
 type CreatePatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
+	//
+	// example:
+	//
+	// 2021-09-08T06:25:41Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// PatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-0a0aeda72ed147eb97ea
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The rejected patches.
 	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// "ALLOW_AS_DEPENDENCY"
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm3comlufxpva
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The tags.
 	Tags []*CreatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The Alibaba Cloud account that last modified the information about the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the information about the patch baseline was last modified.
+	//
+	// example:
+	//
+	// 2021-09-08T06:25:41Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -1994,8 +2711,16 @@ func (s *CreatePatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) 
 
 type CreatePatchBaselineResponseBodyPatchBaselineTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2048,30 +2773,73 @@ func (s *CreatePatchBaselineResponse) SetBody(v *CreatePatchBaselineResponseBody
 
 type CreateSecretParameterRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
 	//
-	// *   AllowedValues: The value that is allowed for the encryption parameter. It must be an array string.
-	// *   AllowedPattern: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// *   MinLength: The minimum length of the encryption parameter.
-	// *   MaxLength: The maximum length of the encryption parameter.
+	// 	- AllowedValues: The value that is allowed for the encryption parameter. It must be an array string.
+	//
+	// 	- AllowedPattern: The pattern that is allowed for the encryption parameter. It must be a regular expression.
+	//
+	// 	- MinLength: The minimum length of the encryption parameter.
+	//
+	// 	- MaxLength: The maximum length of the encryption parameter.
+	//
+	// example:
+	//
+	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\"
 	Constraints    *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter. Set the value to Secret.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2140,30 +2908,73 @@ func (s *CreateSecretParameterRequest) SetValue(v string) *CreateSecretParameter
 
 type CreateSecretParameterShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
 	//
-	// *   AllowedValues: The value that is allowed for the encryption parameter. It must be an array string.
-	// *   AllowedPattern: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// *   MinLength: The minimum length of the encryption parameter.
-	// *   MaxLength: The maximum length of the encryption parameter.
+	// 	- AllowedValues: The value that is allowed for the encryption parameter. It must be an array string.
+	//
+	// 	- AllowedPattern: The pattern that is allowed for the encryption parameter. It must be a regular expression.
+	//
+	// 	- MinLength: The minimum length of the encryption parameter.
+	//
+	// 	- MaxLength: The maximum length of the encryption parameter.
+	//
+	// example:
+	//
+	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\"
 	Constraints    *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter. Set the value to Secret.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2234,6 +3045,10 @@ type CreateSecretParameterResponseBody struct {
 	// The information about the encryption parameter.
 	Parameter *CreateSecretParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B419FF3-ABC6-4DF0-95E5-636DC8CBB8AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2257,33 +3072,89 @@ func (s *CreateSecretParameterResponseBody) SetRequestId(v string) *CreateSecret
 
 type CreateSecretParameterResponseBodyParameter struct {
 	// The constraints of the encryption parameter.
+	//
+	// example:
+	//
+	// \"{ 	"AllowedValues": ["secretparameter"], 	"AllowedPattern": "secretparameter", 	"MinLength": 0, 	"MaxLength": 20 }\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the encryption parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T09:30:36Z
 	CreatedDate    *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
+	//
+	// example:
+	//
+	// p-0b0fff9919c946xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The key ID of KMS that is used to encrypt the parameter.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the encryption parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the encryption parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T09:30:36Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -2401,28 +3272,76 @@ func (s *CreateSecretParameterResponse) SetBody(v *CreateSecretParameterResponse
 
 type CreateStateConfigurationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
+	//
+	// example:
+	//
+	// ApplyOnce
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The description of the desired-state configuration.
+	//
+	// example:
+	//
+	// The region ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {     "policy": {       "ACS:Application": {         "Collection": "Enabled"       },       "ACS:Network": {         "Collection": "Enabled"       }     }   }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+	//
+	// example:
+	//
+	// The ID of the resource group.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type. Set the value to rate.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
+	//
+	// example:
+	//
+	// {     "ResourceType": "ALIYUN::ECS::Instance",     "Filters": [       {         "Type": "All",         "RegionId": "cn-hangzhou",         "Parameters": {           "RegionId": "cn-hangzhou",           "Status": "Running"         }       }     ]   }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2496,28 +3415,76 @@ func (s *CreateStateConfigurationRequest) SetTemplateVersion(v string) *CreateSt
 
 type CreateStateConfigurationShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
+	//
+	// example:
+	//
+	// ApplyOnce
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The description of the desired-state configuration.
+	//
+	// example:
+	//
+	// The region ID.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {     "policy": {       "ACS:Application": {         "Collection": "Enabled"       },       "ACS:Network": {         "Collection": "Enabled"       }     }   }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+	//
+	// example:
+	//
+	// The ID of the resource group.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type. Set the value to rate.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
+	//
+	// example:
+	//
+	// {     "ResourceType": "ALIYUN::ECS::Instance",     "Filters": [       {         "Type": "All",         "RegionId": "cn-hangzhou",         "Parameters": {           "RegionId": "cn-hangzhou",           "Status": "Running"         }       }     ]   }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2591,6 +3558,10 @@ func (s *CreateStateConfigurationShrinkRequest) SetTemplateVersion(v string) *Cr
 
 type CreateStateConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 1306108F-610C-40FD-AAD5-DA13E8B00BE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the desired-state configuration.
 	StateConfiguration *CreateStateConfigurationResponseBodyStateConfiguration `json:"StateConfiguration,omitempty" xml:"StateConfiguration,omitempty" type:"Struct"`
@@ -2616,30 +3587,82 @@ func (s *CreateStateConfigurationResponseBody) SetStateConfiguration(v *CreateSt
 
 type CreateStateConfigurationResponseBodyStateConfiguration struct {
 	// The configuration mode. Valid values:
+	//
+	// example:
+	//
+	// ApplyAndAutoCorrect
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The time when the desired-state configuration was created.
+	//
+	// example:
+	//
+	// 2021-03-22T03:13:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// collect inventory data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"policy": {"ACS:Network": {"Collection": "Enabled"}, "ACS:Application": {"Collection": "Enabled"}}}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression.
+	//
+	// example:
+	//
+	// 1 hour
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// sc-a538febe18fabcdef
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
 	// The tags added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The queried resources.
+	//
+	// example:
+	//
+	// {     "ResourceType": "ALIYUN::ECS::Instance",     "Filters": [       {         "Type": "All",         "RegionId": "cn-hangzhou",         "Parameters": {           "RegionId": "cn-hangzhou",           "Status": "Running"         }       }     ]   }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The template ID.
+	//
+	// example:
+	//
+	// t-1234asadf
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the template version.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -2747,16 +3770,40 @@ func (s *CreateStateConfigurationResponse) SetBody(v *CreateStateConfigurationRe
 
 type CreateTemplateRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+	//
+	// example:
+	//
+	// {"FormatVersion": "OOS-2019-06-01", "Description": "Describe instances of given status", "Parameters": {"Status": {"Type": "String", "Description": "(Required) The status of the Ecs instance."}}, "Tasks": [{"Properties": {"Parameters": {"Status": "{{ Status }}"}, "API": "DescribeInstances", "Service": "Ecs"}, "Name": "foo", "Action": "ACS::ExecuteApi"}]}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag keys and tag values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the version of the template.
+	//
+	// example:
+	//
+	// v2
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -2800,16 +3847,40 @@ func (s *CreateTemplateRequest) SetVersionName(v string) *CreateTemplateRequest 
 
 type CreateTemplateShrinkRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+	//
+	// example:
+	//
+	// {"FormatVersion": "OOS-2019-06-01", "Description": "Describe instances of given status", "Parameters": {"Status": {"Type": "String", "Description": "(Required) The status of the Ecs instance."}}, "Tasks": [{"Properties": {"Parameters": {"Status": "{{ Status }}"}, "API": "DescribeInstances", "Service": "Ecs"}, "Name": "foo", "Action": "ACS::ExecuteApi"}]}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag keys and tag values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the version of the template.
+	//
+	// example:
+	//
+	// v2
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -2853,10 +3924,18 @@ func (s *CreateTemplateShrinkRequest) SetVersionName(v string) *CreateTemplateSh
 
 type CreateTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 20758A-585D-4A41-A9B2-28DA8F4F534F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the template.
 	Template *CreateTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 	// The type of the template.
+	//
+	// example:
+	//
+	// Private
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -2885,32 +3964,88 @@ func (s *CreateTemplateResponseBody) SetTemplateType(v string) *CreateTemplateRe
 
 type CreateTemplateResponseBodyTemplate struct {
 	// The creator of the template.
+	//
+	// example:
+	//
+	// root(13090000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// Describe instances of given status
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the template was configured with a trigger.
+	//
+	// example:
+	//
+	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
+	//
+	// example:
+	//
+	// 4bc7d7a21b3e003434b9c223f6e6d2578b5ebfeb5be28c1fcf8a8a1b11907bb4
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of the template that you create is Private.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags of the resources.
+	//
+	// example:
+	//
+	// {     "k1":"v1",     "k2":"v2" }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. The system automatically determines whether the format is JSON or YAML.
+	//
+	// example:
+	//
+	// JSON
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// t-94753d38
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The Alibaba Cloud account that last modified the information about the template.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the template was last updated.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -3024,16 +4159,35 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 type DeleteApplicationRequest struct {
 	// Specifies whether to forcibly delete the application. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// False
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to retain resources created by application manager when deleting the application. Valid values:
+	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// false
 	RetainResource *bool `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
@@ -3067,6 +4221,10 @@ func (s *DeleteApplicationRequest) SetRetainResource(v bool) *DeleteApplicationR
 
 type DeleteApplicationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 37A9F0FD-51D0-58D5-B91F-DF570281556B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3114,14 +4272,32 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 
 type DeleteApplicationGroupRequest struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to retain resources created by application manager when deleting the application. Valid values:
+	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// false
 	RetainResource *bool `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
@@ -3155,6 +4331,10 @@ func (s *DeleteApplicationGroupRequest) SetRetainResource(v bool) *DeleteApplica
 
 type DeleteApplicationGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9E011F98-4EE5-5E3A-8FA3-D38F2C531C1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3204,8 +4384,16 @@ type DeleteExecutionsRequest struct {
 	// The execution IDs.
 	//
 	// You can specify multiple execution IDs in a JSON array in the format of `["xxxxxxxxx", "yyyyyyyyy", ... "zzzzzzzzz"]`. You can specify up to 100 execution IDs at a time. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// ["exec-xxx"]
 	ExecutionIds *string `json:"ExecutionIds,omitempty" xml:"ExecutionIds,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3229,6 +4417,10 @@ func (s *DeleteExecutionsRequest) SetRegionId(v string) *DeleteExecutionsRequest
 
 type DeleteExecutionsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 491DF8C2-34C9-4679-9DB3-4C0F49B129AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3276,8 +4468,16 @@ func (s *DeleteExecutionsResponse) SetBody(v *DeleteExecutionsResponseBody) *Del
 
 type DeleteParameterRequest struct {
 	// The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3301,6 +4501,10 @@ func (s *DeleteParameterRequest) SetRegionId(v string) *DeleteParameterRequest {
 
 type DeleteParameterResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// C0D02BDF-77F6-49F2-95C9-8E87121D2979
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3348,8 +4552,16 @@ func (s *DeleteParameterResponse) SetBody(v *DeleteParameterResponseBody) *Delet
 
 type DeletePatchBaselineRequest struct {
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3373,6 +4585,10 @@ func (s *DeletePatchBaselineRequest) SetRegionId(v string) *DeletePatchBaselineR
 
 type DeletePatchBaselineResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 85197066-0209-5775-BBED-99DF9DA44E48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3420,8 +4636,16 @@ func (s *DeletePatchBaselineResponse) SetBody(v *DeletePatchBaselineResponseBody
 
 type DeleteSecretParameterRequest struct {
 	// The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3445,6 +4669,10 @@ func (s *DeleteSecretParameterRequest) SetRegionId(v string) *DeleteSecretParame
 
 type DeleteSecretParameterResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// C0D02BDF-77F6-49F2-95C9-8E87121D1944
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3492,10 +4720,22 @@ func (s *DeleteSecretParameterResponse) SetBody(v *DeleteSecretParameterResponse
 
 type DeleteStateConfigurationsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// abcde3OARpx77No54nv6
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of desired-state configurations.
+	//
+	// example:
+	//
+	// ["sc-asfgdhj12345"]
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
 }
 
@@ -3524,6 +4764,10 @@ func (s *DeleteStateConfigurationsRequest) SetStateConfigurationIds(v string) *D
 
 type DeleteStateConfigurationsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 12345B731-0FCE-48BA-8D42-605abcde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3571,10 +4815,22 @@ func (s *DeleteStateConfigurationsResponse) SetBody(v *DeleteStateConfigurations
 
 type DeleteTemplateRequest struct {
 	// Specifies whether to delete the related executions when a template is deleted.
+	//
+	// example:
+	//
+	// false
 	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -3603,6 +4859,10 @@ func (s *DeleteTemplateRequest) SetTemplateName(v string) *DeleteTemplateRequest
 
 type DeleteTemplateResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2075899A-585D-4A41-A9B2-28DA8534F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3650,10 +4910,22 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 
 type DeleteTemplatesRequest struct {
 	// Specifies whether to delete the related executions when a template is deleted.
+	//
+	// example:
+	//
+	// false
 	AutoDeleteExecutions *bool `json:"AutoDeleteExecutions,omitempty" xml:"AutoDeleteExecutions,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The names of the templates to be deleted.
+	//
+	// example:
+	//
+	// ["t1","t2"]
 	TemplateNames *string `json:"TemplateNames,omitempty" xml:"TemplateNames,omitempty"`
 }
 
@@ -3682,6 +4954,10 @@ func (s *DeleteTemplatesRequest) SetTemplateNames(v string) *DeleteTemplatesRequ
 
 type DeleteTemplatesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2075899A-585D-4A41-A9B2-28DA8534
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3729,12 +5005,28 @@ func (s *DeleteTemplatesResponse) SetBody(v *DeleteTemplatesResponseBody) *Delet
 
 type DeployApplicationGroupRequest struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The deployment information about the application group.
+	//
+	// example:
+	//
+	// {       "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",       "Parameters": {         "ZoneId": "cn-hangzhou-k",         "ProjectName": "test",         "SystemDiskSize": 40,         "InstanceChargeType": "PostPaid",         "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",         "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",         "SystemDiskCategory": "cloud_essd",         "InstancePassword": "******",         "InternetChargeType": "PayByTraffic",         "InstanceCount": 1,         "InternetMaxBandwidthOut": 0,         "VpcId": "vpc-bp1i99boyas8i8m9t3skp",         "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",         "DataDiskSize": 100,         "EcsInstanceType": "ecs.s6-c1m4.small",         "DataDiskCategory": "cloud_efficiency",         "EnvironmentCommandId": "c-hz028fc3g031gcg"       }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region in which you want to deploy the application group.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3768,6 +5060,10 @@ func (s *DeployApplicationGroupRequest) SetRegionId(v string) *DeployApplication
 
 type DeployApplicationGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8AF4800A-A316-589A-90C4-313B1FEEB084
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3815,18 +5111,46 @@ func (s *DeployApplicationGroupResponse) SetBody(v *DeployApplicationGroupRespon
 
 type DescribeApplicationGroupBillRequest struct {
 	// The application name.
+	//
+	// example:
+	//
+	// test_application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2023-06
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The application group name.
+	//
+	// example:
+	//
+	// test_application_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the cloud resource.
+	//
+	// example:
+	//
+	// ALIYUN::ECS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3877,10 +5201,22 @@ type DescribeApplicationGroupBillResponseBody struct {
 	// The consume of application group.
 	ApplicationGroupConsume []*DescribeApplicationGroupBillResponseBodyApplicationGroupConsume `json:"ApplicationGroupConsume,omitempty" xml:"ApplicationGroupConsume,omitempty" type:"Repeated"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// E897A1AB-4701-5B71-93AD-38FD703763A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3914,24 +5250,64 @@ func (s *DescribeApplicationGroupBillResponseBody) SetRequestId(v string) *Descr
 
 type DescribeApplicationGroupBillResponseBodyApplicationGroupConsume struct {
 	// The amount consumed by the instance.
+	//
+	// example:
+	//
+	// 18.88
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2023-06-10T06:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The currency unit.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-0jl781czrhqey0s5zpsj
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test-
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type.
+	//
+	// example:
+	//
+	// ALIYUN::ECS::INSTANCE
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Optimization suggestions.
+	//
+	// example:
+	//
+	// 1
 	Optimization *string `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
 	// The peak type.
+	//
+	// example:
+	//
+	// WHITE
 	PeakType *string `json:"PeakType,omitempty" xml:"PeakType,omitempty"`
 	// The performance of the data synchronization instance.
+	//
+	// example:
+	//
+	// "{\"mem\":\"6.82\",\"cpu\":\"0.55\"}"
 	Performance *string `json:"Performance,omitempty" xml:"Performance,omitempty"`
 	// The status of instance.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -4025,10 +5401,19 @@ func (s *DescribeApplicationGroupBillResponse) SetBody(v *DescribeApplicationGro
 type DescribeRegionsRequest struct {
 	// The supported natural language. Valid values:
 	//
-	// *   zh-CN: Chinese
-	// *   en-US: English
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4054,6 +5439,10 @@ type DescribeRegionsResponseBody struct {
 	// The details of the regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 469E79B1-90A3-4A57-B7C4-2FE0C8B5175E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4077,10 +5466,22 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 
 type DescribeRegionsResponseBodyRegions struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Shenzhen)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
+	//
+	// example:
+	//
+	// oos.cn-shenzhen.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4138,14 +5539,34 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 
 type GenerateExecutionPolicyRequest struct {
 	// The RAM role.
+	//
+	// example:
+	//
+	// AliyunServiceRoleForOOSBandwidthScheduler
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// {   "Description": "Example template, describe instances in some status",   "FormatVersion": "OOS-2019-06-01",   "Parameters": {},   "Tasks": [     {       "Name": "describeInstances",       "Action": "ACS::ExecuteAPI",       "Description": "desc-en",       "Properties": {         "Service": "ECS",         "API": "DescribeInstances",         "Parameters": {           "Status": "Running"         }       }     }   ] }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// vmeixme
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The default value is the latest version of the template.
+	//
+	// example:
+	//
+	// v2
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -4184,10 +5605,22 @@ func (s *GenerateExecutionPolicyRequest) SetTemplateVersion(v string) *GenerateE
 
 type GenerateExecutionPolicyResponseBody struct {
 	// The policies that are missing.
+	//
+	// example:
+	//
+	// [{\"Action\": [\"ecs:DescribeInvocationResults\", \"ecs:DescribeInstances\", \"ecs:RunCommand\", \"ecs:DescribeInvocations\"], \"ServiceName\": \"ecs\", \"Resources\": \"*\"}]
 	MissingPolicy *string `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty"`
 	// The RAM policy.
+	//
+	// example:
+	//
+	// {}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4245,8 +5678,16 @@ func (s *GenerateExecutionPolicyResponse) SetBody(v *GenerateExecutionPolicyResp
 
 type GetApplicationRequest struct {
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4272,6 +5713,10 @@ type GetApplicationResponseBody struct {
 	// The information about the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 51004B8A-6D9A-5ACB-9158-6C6794496AD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4300,7 +5745,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// Valid values:
 	//
-	// *   ComputeNest
+	// 	- ComputeNest
 	//
 	//     <!-- -->
 	//
@@ -4308,7 +5753,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	//     <!-- -->
 	//
-	// *   Custom
+	// 	- Custom
 	//
 	//     <!-- -->
 	//
@@ -4316,27 +5761,59 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	//     <!-- -->
 	//
-	// *   DingTalk
+	// 	- DingTalk
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// DingTalk
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The time when the application was created.
+	//
+	// example:
+	//
+	// 2021-09-07T09:17:46Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// Application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the service.
+	//
+	// example:
+	//
+	// service-79538e30e44541b699d8
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
+	//
+	// example:
+	//
+	// 2021-09-07T09:17:46Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -4397,6 +5874,10 @@ type GetApplicationResponseBodyApplicationAlarmConfig struct {
 	// The alert contact list.
 	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
 	// The health check URL of the application.
+	//
+	// example:
+	//
+	// /api/health/
 	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
 	// The ID of the alert template.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
@@ -4456,10 +5937,22 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 
 type GetApplicationGroupRequest struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4490,6 +5983,10 @@ type GetApplicationGroupResponseBody struct {
 	// The details of the application group.
 	ApplicationGroup *GetApplicationGroupResponseBodyApplicationGroup `json:"ApplicationGroup,omitempty" xml:"ApplicationGroup,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 92EA60ED-544D-55E9-93D9-237BE9976C0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4513,32 +6010,88 @@ func (s *GetApplicationGroupResponseBody) SetRequestId(v string) *GetApplication
 
 type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The ID of the application group in CloudMonitor.
+	//
+	// example:
+	//
+	// 12345678
 	CmsGroupId *string `json:"CmsGroupId,omitempty" xml:"CmsGroupId,omitempty"`
 	// The time when the application group was created.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The output of the deployment result.
+	//
+	// example:
+	//
+	// {       "Outputs": [         {           "Description": "No description given",           "OutputKey": "InstanceIds"         }       ],       "StackId": "6ef4b860-f6e7-4145-8d22-f4a2a32363e1"     }   }
 	DeployOutputs *string `json:"DeployOutputs,omitempty" xml:"DeployOutputs,omitempty"`
 	// The configuration information of the application group.
+	//
+	// example:
+	//
+	// {       "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",       "Parameters": {         "ZoneId": "cn-hangzhou-k",         "ProjectName": "test",         "SystemDiskSize": 40,         "InstanceChargeType": "PostPaid",         "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",         "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",         "SystemDiskCategory": "cloud_essd",         "InstancePassword": "******",         "InternetChargeType": "PayByTraffic",         "InstanceCount": 1,         "InternetMaxBandwidthOut": 0,         "VpcId": "vpc-bp1i99boyas8i8m9t3skp",         "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",         "DataDiskSize": 100,         "EcsInstanceType": "ecs.s6-c1m4.small",         "DataDiskCategory": "cloud_efficiency",         "EnvironmentCommandId": "c-hz028fc3g031gcg"       }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The ID of the region in which you deploy the application group.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The description of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// k1
 	ImportTagKey *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The creation progress of the application instance.
+	//
+	// example:
+	//
+	// 100
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The state of the application group.
+	//
+	// example:
+	//
+	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The state information of the application group.
+	//
+	// example:
+	//
+	// Stack CREATE completed successfully
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	// The time when the application group was last modified.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -4651,8 +6204,16 @@ func (s *GetApplicationGroupResponse) SetBody(v *GetApplicationGroupResponseBody
 
 type GetExecutionTemplateRequest struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-046490ff88f242
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4676,8 +6237,16 @@ func (s *GetExecutionTemplateRequest) SetRegionId(v string) *GetExecutionTemplat
 
 type GetExecutionTemplateResponseBody struct {
 	// The content of the template.
+	//
+	// example:
+	//
+	// "{\n \"FormatVersion\": \"OOS-2019-06-01\",\n \"Parameters\": {\n \"Status\": {\n \"Type\": \"String\",\n \"Description\": \"(Required) The ID of the ECS instance.\"\n }\n },\n \"Tasks\": [\n {\n \"Name\": \"bar\",\n \"Properties\": {\n \"Parameters\": {\n \"Status\": \"{{ Status }}\"\n },\n \"API\": \"DescribeInstances\",\n \"Service\": \"Ecs\"\n },\n \"Action\": \"acs::ExecuteAPI\",\n \"Outputs\": {\n \"InstanceIds\", {\n \"ValueSelector\": \".Instances.Instance[].InstanceId\",\n \"Type\": \"List\"\n }\n }\n }\n ],\n \"Outputs\": {\n \"InstanceIds\": {\n \"Value\": \" {{ bar.InstanceIds }} \",\n \"Type\": \"List\"\n }\n }\n}\n"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14A60-EBE7-47CA-9757-12C1D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the template.
 	Template *GetExecutionTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
@@ -4708,28 +6277,76 @@ func (s *GetExecutionTemplateResponseBody) SetTemplate(v *GetExecutionTemplateRe
 
 type GetExecutionTemplateResponseBodyTemplate struct {
 	// The creator of the template.
+	//
+	// example:
+	//
+	// root(13090000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// Get status of instances
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The SHA-256 value of the template content.
+	//
+	// example:
+	//
+	// 4bc7d7a21b3e003434b9c223f6e6d2578b5ebfeb5be28c1fcf8a8a1b11907bb4
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The share type of the template. The share type of a user-created template is **Private**.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. The system automatically determines whether the format is JSON or YAML.
+	//
+	// example:
+	//
+	// JSON
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// t-94753d4d828d38
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The user who last updated the template.
+	//
+	// example:
+	//
+	// root(13090000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the template was last updated.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -4833,25 +6450,53 @@ func (s *GetExecutionTemplateResponse) SetBody(v *GetExecutionTemplateResponseBo
 type GetInventorySchemaRequest struct {
 	// Specifies whether to return only properties that support the aggregate feature in the configuration list. Valid values:
 	//
-	// *   true: only returns properties that support the aggregate feature in the configuration list.
-	// *   false: returns all properties in the configuration list.
+	// 	- true: only returns properties that support the aggregate feature in the configuration list.
+	//
+	// 	- false: returns all properties in the configuration list.
+	//
+	// example:
+	//
+	// false
 	Aggregator *bool `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfh8MVLQI9AuKGACLgjbsXbWs-Mna47IDM6tr6wK7TZ1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The configuration list type name. Valid values:
 	//
-	// *   ACS:InstanceInformation
-	// *   ACS:Application
-	// *   ACS:File
-	// *   ACS:Network
-	// *   ACS:WindowsRole
-	// *   ACS:Service
-	// *   ACS:WindowsUpdate
-	// *   ACS:WindowsRegistry
+	// 	- ACS:InstanceInformation
+	//
+	// 	- ACS:Application
+	//
+	// 	- ACS:File
+	//
+	// 	- ACS:Network
+	//
+	// 	- ACS:WindowsRole
+	//
+	// 	- ACS:Service
+	//
+	// 	- ACS:WindowsUpdate
+	//
+	// 	- ACS:WindowsRegistry
+	//
+	// example:
+	//
+	// ACS:Application
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
@@ -4890,10 +6535,22 @@ func (s *GetInventorySchemaRequest) SetTypeName(v string) *GetInventorySchemaReq
 
 type GetInventorySchemaResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that was used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfh8MVLQI9AuKGACLgjbsXbWs-Mna47IDM6tr6wK7TZ1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 89117642-7167-4F4D-B7F1-876582279E3E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The detailed configurations of the configuration list.
 	Schemas []*GetInventorySchemaResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
@@ -4931,8 +6588,16 @@ type GetInventorySchemaResponseBodySchemas struct {
 	// The properties of the configuration list.
 	Attributes []*GetInventorySchemaResponseBodySchemasAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The name of the configuration list.
+	//
+	// example:
+	//
+	// ACS:Application
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 	// The version of the configuration list.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -4961,8 +6626,16 @@ func (s *GetInventorySchemaResponseBodySchemas) SetVersion(v string) *GetInvento
 
 type GetInventorySchemaResponseBodySchemasAttributes struct {
 	// The data type of the property.
+	//
+	// example:
+	//
+	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The name of the property.
+	//
+	// example:
+	//
+	// ApplicationType
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -5015,8 +6688,16 @@ func (s *GetInventorySchemaResponse) SetBody(v *GetInventorySchemaResponseBody) 
 
 type GetOpsItemRequest struct {
 	// The O\&M item ID.
+	//
+	// example:
+	//
+	// oi-d52b08695e2b46ae8413
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5042,6 +6723,10 @@ type GetOpsItemResponseBody struct {
 	// The information about the O\&M item.
 	OpsItem *GetOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8BED4C16-BD30-5E27-94D4-7EBCCECF70C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5067,36 +6752,92 @@ type GetOpsItemResponseBodyOpsItem struct {
 	// The information about the attributes of the O\&M item.
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The category of the O\&M item.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The user who created the O\&M item.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreateBy *string `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
 	// The time when the O\&M item was created.
+	//
+	// example:
+	//
+	// 2023-04-10T06:15Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The user who last modified the O\&M item.
+	//
+	// example:
+	//
+	// modifiedBy
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
 	// The O\&M item ID.
+	//
+	// example:
+	//
+	// oi-d52b08695e2b46ae8413
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority of the O\&M item.
+	//
+	// example:
+	//
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzxkofnlxtn2i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The severity level of the O\&M item.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions to the O\&M item.
 	Solutions []map[string]interface{} `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 	// The source business of the O\&M item.
+	//
+	// example:
+	//
+	// /aliyun/appManager
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the O\&M item.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags attached to the O\&M item.
+	//
+	// example:
+	//
+	// {"K1":"V1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time when the O\&M item was updated.
+	//
+	// example:
+	//
+	// 2023-04-10T06:15Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -5224,12 +6965,28 @@ func (s *GetOpsItemResponse) SetBody(v *GetOpsItemResponseBody) *GetOpsItemRespo
 
 type GetParameterRequest struct {
 	// The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -5265,6 +7022,10 @@ type GetParameterResponseBody struct {
 	// The information about the common parameter.
 	Parameter *GetParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// BA326372-2A10-4C3B-BE3E-6439DB7557CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5288,32 +7049,88 @@ func (s *GetParameterResponseBody) SetRequestId(v string) *GetParameterResponseB
 
 type GetParameterResponseBodyParameter struct {
 	// The constraints of the common parameter.
+	//
+	// example:
+	//
+	// \"{\"\"AllowedValues":["parameter"],"AllowedPattern":"parameter","MinLength":0,"MaxLength":20}\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the common parameter.
+	//
+	// example:
+	//
+	// p-4c4b401cab6747xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags added to the common parameter.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5426,8 +7243,16 @@ func (s *GetParameterResponse) SetBody(v *GetParameterResponseBody) *GetParamete
 
 type GetParametersRequest struct {
 	// The names of the common parameters.
+	//
+	// example:
+	//
+	// ["parameter1","parameter2"]
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5455,6 +7280,10 @@ type GetParametersResponseBody struct {
 	// The information about the common parameters.
 	Parameters []*GetParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2597E94B-5346-42D1-BB58-D3333EDD0975
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5483,32 +7312,88 @@ func (s *GetParametersResponseBody) SetRequestId(v string) *GetParametersRespons
 
 type GetParametersResponseBodyParameters struct {
 	// The constraints of the common parameter.
+	//
+	// example:
+	//
+	// {\"MaxLength\": 2}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-10-22T03:30:45Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the common parameter.
+	//
+	// example:
+	//
+	// p-7cdc0000000000000000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter.
+	//
+	// example:
+	//
+	// StringList
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the parameter was updated.
+	//
+	// example:
+	//
+	// 2020-10-22T03:30:45Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the common parameter.
+	//
+	// example:
+	//
+	// parameter,parameter1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5621,17 +7506,38 @@ func (s *GetParametersResponse) SetBody(v *GetParametersResponseBody) *GetParame
 
 type GetParametersByPathRequest struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	//
+	// example:
+	//
+	// /parameter
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
 	//
-	// *   true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
-	// *   false: returns only the /secretParameter/mySecretParameter parameter.
+	// 	- true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
+	//
+	// 	- false: returns only the /secretParameter/mySecretParameter parameter.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5670,14 +7576,30 @@ func (s *GetParametersByPathRequest) SetRegionId(v string) *GetParametersByPathR
 
 type GetParametersByPathResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the common parameters.
 	Parameters []*GetParametersByPathResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 25156E99-7437-4590-AA58-2ACA17DE405C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5716,30 +7638,82 @@ func (s *GetParametersByPathResponseBody) SetTotalCount(v int32) *GetParametersB
 
 type GetParametersByPathResponseBodyParameters struct {
 	// The constraints of the common parameter.
+	//
+	// example:
+	//
+	// {\"MaxLength\": 2}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-10-21T04:03:12Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the common parameter.
+	//
+	// example:
+	//
+	// p-7cdc0000000000000000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// myParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags added to the common parameters.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the common parameter.
+	//
+	// example:
+	//
+	// StringList
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was last updated.
+	//
+	// example:
+	//
+	// 2020-10-21T04:03:12Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the common parameter.
+	//
+	// example:
+	//
+	// "parameter1,parameter2"
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5847,8 +7821,16 @@ func (s *GetParametersByPathResponse) SetBody(v *GetParametersByPathResponseBody
 
 type GetPatchBaselineRequest struct {
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region in which the patch baseline whose details you want to query resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5874,6 +7856,10 @@ type GetPatchBaselineResponseBody struct {
 	// The details of the patch baseline.
 	PatchBaseline *GetPatchBaselineResponseBodyPatchBaseline `json:"PatchBaseline,omitempty" xml:"PatchBaseline,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2C630E64-7273-57AC-A598-1B2B8B35CEA5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5897,40 +7883,96 @@ func (s *GetPatchBaselineResponseBody) SetRequestId(v string) *GetPatchBaselineR
 
 type GetPatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
+	//
+	// example:
+	//
+	// 2021-09-07T03:42:56Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// UpdatePatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-445340b5c6504a85a300
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the patch baseline is set as the default patch baseline.
+	//
+	// example:
+	//
+	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MypatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The rejected patches.
 	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmzmhzoaad5oq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The tags.
 	Tags []*GetPatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who last modified the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was last modified.
+	//
+	// example:
+	//
+	// 2021-09-08T07:26:38Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -6034,8 +8076,16 @@ func (s *GetPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) *Ge
 
 type GetPatchBaselineResponseBodyPatchBaselineTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6088,12 +8138,28 @@ func (s *GetPatchBaselineResponse) SetBody(v *GetPatchBaselineResponseBody) *Get
 
 type GetSecretParameterRequest struct {
 	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to decrypt the parameter value. The decrypted parameter value is returned only if this parameter is set to true. Otherwise, null is returned.
+	//
+	// example:
+	//
+	// false
 	WithDecryption *bool `json:"WithDecryption,omitempty" xml:"WithDecryption,omitempty"`
 }
 
@@ -6129,6 +8195,10 @@ type GetSecretParameterResponseBody struct {
 	// The information about the encryption parameter.
 	Parameter *GetSecretParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7F14FB7C-C9BE-44AE-92ED-21ACC02FBFD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6152,35 +8222,95 @@ func (s *GetSecretParameterResponseBody) SetRequestId(v string) *GetSecretParame
 
 type GetSecretParameterResponseBodyParameter struct {
 	// The constraints of the encryption parameter.
+	//
+	// example:
+	//
+	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the encryption parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T09:28:47Z
 	CreatedDate    *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
+	//
+	// example:
+	//
+	// p-14ed150fdcd048xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the key of Key Management Service (KMS) that is used for encryption.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the encryption parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the encryption parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T09:35:17Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the encryption parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6303,13 +8433,26 @@ func (s *GetSecretParameterResponse) SetBody(v *GetSecretParameterResponseBody) 
 
 type GetSecretParametersRequest struct {
 	// The name of the encryption parameter. Multiple encryption parameters can form a JSON array in the format of \["xxxxxxxxx", "yyyyyyyyy", … "zzzzzzzzz"]. Each JSON array can contain a maximum of 10 encryption parameters. Multiple encryption parameters in the array are separated by commas (,).
+	//
+	// example:
+	//
+	// ["secretParameter","secretParameter1"]
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to decrypt the parameter value. Default value: false. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	WithDecryption *bool `json:"WithDecryption,omitempty" xml:"WithDecryption,omitempty"`
 }
 
@@ -6342,6 +8485,10 @@ type GetSecretParametersResponseBody struct {
 	// The information about the encryption parameter.
 	Parameters []*GetSecretParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A5320F1D-92D9-44BB-A416-5FC525ED6D57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6370,34 +8517,94 @@ func (s *GetSecretParametersResponseBody) SetRequestId(v string) *GetSecretParam
 
 type GetSecretParametersResponseBodyParameters struct {
 	// The constraints of the encryption parameter.
+	//
+	// example:
+	//
+	// {\"AllowedValues\": [\"test\"]}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the encryption parameter was created.
+	//
+	// example:
+	//
+	// 2020-10-22T03:11:13Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the encryption parameter.
+	//
+	// example:
+	//
+	// secretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
+	//
+	// example:
+	//
+	// p-7cdc0000000000000000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the key.
+	//
+	// example:
+	//
+	// ssh-bp67acfmxazb4p****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the encryption parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the encryption parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the encryption parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-10-22T03:11:13Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the encryption parameter.
+	//
+	// example:
+	//
+	// secretParameter,secretParameter1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6515,22 +8722,48 @@ func (s *GetSecretParametersResponse) SetBody(v *GetSecretParametersResponseBody
 
 type GetSecretParametersByPathRequest struct {
 	// The number of entries per page. Valid values: 1 to 10. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the encryption parameter. The path must be 1 to 200 characters in length. For example, if the name of an encryption parameter is /secretParameter/mySecretParameter, the path of the encryption parameter is /secretParameter.
+	//
+	// example:
+	//
+	// /secretParameter
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
 	//
-	// *   true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
-	// *   false: returns only the /secretParameter/mySecretParameter parameter.
+	// 	- true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
+	//
+	// 	- false: returns only the /secretParameter/mySecretParameter parameter.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to decrypt the parameter value. Default value: false. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	WithDecryption *bool `json:"WithDecryption,omitempty" xml:"WithDecryption,omitempty"`
 }
 
@@ -6574,14 +8807,30 @@ func (s *GetSecretParametersByPathRequest) SetWithDecryption(v bool) *GetSecretP
 
 type GetSecretParametersByPathResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the encryption parameters.
 	Parameters []*GetSecretParametersByPathResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 25156E99-7437-4590-AA58-2ACA17DE405C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6620,30 +8869,82 @@ func (s *GetSecretParametersByPathResponseBody) SetTotalCount(v int32) *GetSecre
 
 type GetSecretParametersByPathResponseBodyParameters struct {
 	// The constraints of the encryption parameter.
+	//
+	// example:
+	//
+	// {\"AllowedPattern\": \"^[a-g]*$\"}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-10-21T06:22:48Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the encryption parameter.
+	//
+	// example:
+	//
+	// secretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
+	//
+	// example:
+	//
+	// p-7cdc0000000000000000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the key.
+	//
+	// example:
+	//
+	// 090xxbex-xexx-xxxx-axfc-ddxxcxxxxcex
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// mySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the encryption parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The share type of the encryption parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The data type of the encryption parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-10-21T06:22:48Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the encryption parameter.
+	//
+	// example:
+	//
+	// secretParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6751,6 +9052,10 @@ func (s *GetSecretParametersByPathResponse) SetBody(v *GetSecretParametersByPath
 
 type GetServiceSettingsRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6769,6 +9074,10 @@ func (s *GetServiceSettingsRequest) SetRegionId(v string) *GetServiceSettingsReq
 
 type GetServiceSettingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9F755DC9-C0CF-4598-B2E3-2CC763F18CB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of service settings.
 	ServiceSettings []*GetServiceSettingsResponseBodyServiceSettings `json:"ServiceSettings,omitempty" xml:"ServiceSettings,omitempty" type:"Repeated"`
@@ -6794,16 +9103,40 @@ func (s *GetServiceSettingsResponseBody) SetServiceSettings(v []*GetServiceSetti
 
 type GetServiceSettingsResponseBodyServiceSettings struct {
 	// The name of OSS bucket to deliver.
+	//
+	// example:
+	//
+	// OssBucketName
 	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
 	// Whether to enable OSS delivery.
+	//
+	// example:
+	//
+	// false
 	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
 	// The key prefix of OSS to deliver.
+	//
+	// example:
+	//
+	// oos/execution
 	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
 	// Whether to enable SLS delivery.
+	//
+	// example:
+	//
+	// false
 	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
 	// The name of SLS project to deliver.
+	//
+	// example:
+	//
+	// SlsProjectName
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
 	// The id of RDC Enterprise.
+	//
+	// example:
+	//
+	// RdcEnterpriseId
 	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
 }
 
@@ -6876,10 +9209,22 @@ func (s *GetServiceSettingsResponse) SetBody(v *GetServiceSettingsResponseBody) 
 
 type GetTemplateRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The default value is the latest version of the template.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -6908,8 +9253,16 @@ func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
 
 type GetTemplateResponseBody struct {
 	// The content of the template.
+	//
+	// example:
+	//
+	// "FormatVersion: OOS-2019-06-01\nDescription:\n  en:  Creates an ECS image\n  zh-cn: 创建一个ECS镜像\n  name-en: Create Image\n  name-zh-cn: 创建镜像\n  categories:\n    - image_manage\n    - application_manage\nParameters:\n  regionId:\n    Type: String\n    Label:\n      en: RegionId\n      zh-cn: 地域ID\n    AssociationProperty: RegionId\n    Default: \"{{ ACS::RegionId }}\"\n  instanceId:\n    Label:\n      en: InstanceId\n      zh-cn: ECS实例ID\n    Type: String\n    AssociationProperty: ALIYUN::ECS::Instance::InstanceId\n    AssociationPropertyMetadata:\n      RegionId: regionId\n  imageName:\n    Label:\n      en: ImageName\n      zh-cn: 新镜像的名称\n    Type: String\n    Description:\n      en: <p class=\"p\"	Note:</p> <ul class=\"ul\"> <li class=\"li\">Length is 2~128 English or Chinese characters</li> <li class=\"li\"><font color=\"red\">must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class=\"li\">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>\n      zh-cn: <p class=\"p\">注意：</p> <ul class=\"ul\"> <li class=\"li\">长度为2~128个英文或中文字符</li> <li class=\"li\"><font color=\"red\">必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class=\"li\">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>\n  tags:\n    Label:\n      en: Tags\n      zh-cn: 镜像标签\n    Type: Json\n    AssociationProperty: Tags\n    AssociationPropertyMetadata:\n      ShowSystem: false\n    Default: []\n  OOSAssumeRole:\n    Label:\n      en: OOSAssumeRole\n      zh-cn: OOS扮演的RAM角色\n    Type: String\n    Default: OOSServiceRole\nRamRole: \"{{ OOSAssumeRole }}\"\nTasks:\n- Name: createImage\n  Action: ACS::ECS::CreateImage\n  Description:\n    en: Create new image with the specified image name and instance ID\n    zh-cn: 通过指定实例ID和镜像名称创建新的镜像\n  Properties:\n    regionId: \"{{ regionId }}\"\n    imageName: \"{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}\"\n    instanceId: \"{{ instanceId }}\"\n    tags: \"{{tags}}\"\n  Outputs:\n    imageId:\n      ValueSelector: imageId\n      Type: String\nOutputs:\n  imageId:\n    Type: String\n    Value: \"{{ createImage.imageId }}\"\nMetadata:\n  ALIYUN::OOS::Interface:\n    ParameterGroups:\n      - Parameters:\n          - regionId\n          - instanceId\n        Label:\n          default:\n            zh-cn: 选择实例\n            en: Select Ecs Instances\n      - Parameters:\n          - imageName\n          - tags\n        Label:\n          default:\n            zh-cn: 镜像设置\n            en: Image Configure\n      - Parameters:\n          - OOSAssumeRole\n        Label:\n          default:\n            zh-cn: 高级选项\n            en: Control Options"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5BBE2663-A18E-5261-9BBB-F4832F5294D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the template.
 	Template *GetTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
@@ -6940,36 +9293,100 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 
 type GetTemplateResponseBodyTemplate struct {
 	// The creator of the template.
+	//
+	// example:
+	//
+	// ACS
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the template was configured with a trigger.
+	//
+	// example:
+	//
+	// false
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
+	//
+	// example:
+	//
+	// 40fb5e3e08ef6c8a499ff7cd8441194f518028ad08338a84cb70c023a64576f1
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of a user-created template is **Private**.
+	//
+	// example:
+	//
+	// Public
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. The system automatically determines whether the format is JSON or YAML.
+	//
+	// example:
+	//
+	// YAML
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// t-4bdb1745c171401883a2
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// ACS-ECS-CreateImage
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the template.
+	//
+	// example:
+	//
+	// Automation
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+	//
+	// example:
+	//
+	// v15
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The user who last updated the template.
+	//
+	// example:
+	//
+	// ACS
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the template was last updated.
+	//
+	// example:
+	//
+	// 2022-04-26T08:37:07Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The name of the version of the template.
+	//
+	// example:
+	//
+	// version15
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -7092,12 +9509,28 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 
 type ListActionsRequest struct {
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The name of the action. All actions whose names contain the specified action name are returned.
+	//
+	// example:
+	//
+	// MyTemplate
 	OOSActionName *string `json:"OOSActionName,omitempty" xml:"OOSActionName,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7133,10 +9566,22 @@ type ListActionsResponseBody struct {
 	// The details of the actions.
 	Actions []*ListActionsResponseBodyActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F9154C02-F847-4563-BB6A-6DD01A4F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7173,32 +9618,67 @@ type ListActionsResponseBodyActions struct {
 	//
 	// 1.  Atomic actions
 	//
-	//     *   Atomic.API
-	//     *   Atomic.Trigger
-	//     *   Atomic.Control
-	//     *   Atomic.Embedded
+	//     	- Atomic.API
+	//
+	//     	- Atomic.Trigger
+	//
+	//     	- Atomic.Control
+	//
+	//     	- Atomic.Embedded
 	//
 	// 2.  Cloud product actions
 	//
-	//     *   Product.ECS
-	//     *   Product.RDS
-	//     *   Product.VPC
-	//     *   Product.FC
-	//     *   ...
+	//     	- Product.ECS
+	//
+	//     	- Product.RDS
+	//
+	//     	- Product.VPC
+	//
+	//     	- Product.FC
+	//
+	//     	- ...
+	//
+	// example:
+	//
+	// ACS::Template
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	// The time when the action was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the action.
+	//
+	// example:
+	//
+	// ReplaceSystemDisk
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the action.
+	//
+	// example:
+	//
+	// ACS::ECS::ReplaceSystemDisk
 	OOSActionName *string `json:"OOSActionName,omitempty" xml:"OOSActionName,omitempty"`
 	// The number of times that the action is used.
+	//
+	// example:
+	//
+	// 5
 	Popularity *int32 `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
 	// The parameters of the action.
+	//
+	// example:
+	//
+	// { "ImageId": { "Description": "The mirror ID you will use when resetting the system", "Type": "String" }, "InstanceId": { "Description": "the instance id that you will handle .", "Type": "String" } }
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// The version of the template that corresponds to the action.
 	//
 	// >  For atomic actions, this parameter is not returned.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -7276,20 +9756,52 @@ func (s *ListActionsResponse) SetBody(v *ListActionsResponseBody) *ListActionsRe
 
 type ListApplicationGroupsRequest struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The ID of the region in which the related resources reside.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the cloud resource.
+	//
+	// example:
+	//
+	// i-2vcj9raxrhxb48zz3whw
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The code of the product to which the cloud resource belongs.
+	//
+	// example:
+	//
+	// ecs
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The type of the cloud resource.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -7345,10 +9857,22 @@ type ListApplicationGroupsResponseBody struct {
 	// The details of the application group.
 	ApplicationGroups []*ListApplicationGroupsResponseBodyApplicationGroups `json:"ApplicationGroups,omitempty" xml:"ApplicationGroups,omitempty" type:"Repeated"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 69D97BF2-5DF2-544C-A650-36A474E17BC3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7382,28 +9906,76 @@ func (s *ListApplicationGroupsResponseBody) SetRequestId(v string) *ListApplicat
 
 type ListApplicationGroupsResponseBodyApplicationGroups struct {
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The ID of the application group in CloudMonitor.
+	//
+	// example:
+	//
+	// 12345678
 	CmsGroupId *string `json:"CmsGroupId,omitempty" xml:"CmsGroupId,omitempty"`
 	// The time when the application group was created.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The configuration information of the application group.
+	//
+	// example:
+	//
+	// {   "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",   "Parameters": {     "ZoneId": "cn-hangzhou-k",     "ProjectName": "test",     "SystemDiskSize": 40,     "InstanceChargeType": "PostPaid",     "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",     "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",     "SystemDiskCategory": "cloud_essd",     "InstancePassword": "******",     "InternetChargeType": "PayByTraffic",     "InstanceCount": 1,     "InternetMaxBandwidthOut": 0,     "VpcId": "vpc-bp1i99boyas8i8m9t3skp",     "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",     "DataDiskSize": 100,     "EcsInstanceType": "ecs.s6-c1m4.small",     "DataDiskCategory": "cloud_efficiency",     "EnvironmentCommandId": "c-hz028fc3g031gcg"   },   "RegionId": "cn-hangzhou",   "StackName": "stack-1645688523068-3no_AKhOJ",   "DisableRollback": true }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The ID of the region in which the related resources reside.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The description of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// k1
 	ImportTagKey *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// UpdateMyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The state of the application group.
+	//
+	// example:
+	//
+	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The state information of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup is Created.
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	// The time when the application group was updated.
+	//
+	// example:
+	//
+	// 2021-09-08T03:01:53Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -7509,7 +10081,7 @@ type ListApplicationsRequest struct {
 	//
 	// Valid values:
 	//
-	// *   ComputeNest
+	// 	- ComputeNest
 	//
 	//     <!-- -->
 	//
@@ -7517,7 +10089,7 @@ type ListApplicationsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Custom
+	// 	- Custom
 	//
 	//     <!-- -->
 	//
@@ -7525,25 +10097,53 @@ type ListApplicationsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   DingTalk
+	// 	- DingTalk
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// DingTalk
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// "MyApplications"
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The names of the applications.
+	//
+	// example:
+	//
+	// ["MyApplication"]
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1","k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -7595,7 +10195,7 @@ type ListApplicationsShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// *   ComputeNest
+	// 	- ComputeNest
 	//
 	//     <!-- -->
 	//
@@ -7603,7 +10203,7 @@ type ListApplicationsShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   Custom
+	// 	- Custom
 	//
 	//     <!-- -->
 	//
@@ -7611,25 +10211,53 @@ type ListApplicationsShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   DingTalk
+	// 	- DingTalk
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// DingTalk
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// "MyApplications"
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The names of the applications.
+	//
+	// example:
+	//
+	// ["MyApplication"]
 	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1","k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -7680,10 +10308,22 @@ type ListApplicationsResponseBody struct {
 	// The details of the application.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 12067D53-56A9-561B-ADD6-61429D207117
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7717,18 +10357,46 @@ func (s *ListApplicationsResponseBody) SetRequestId(v string) *ListApplicationsR
 
 type ListApplicationsResponseBodyApplications struct {
 	// The type of the application.
+	//
+	// example:
+	//
+	// DingTalk
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The time when the application was created.
+	//
+	// example:
+	//
+	// 2021-09-07T09:09:59Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// Application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// MyApplication
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags added to the application.
+	//
+	// example:
+	//
+	// {"k1": "v1","k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
+	//
+	// example:
+	//
+	// 2021-09-07T09:09:59Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -7806,16 +10474,40 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 
 type ListExecutionLogsRequest struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The type of the log.
+	//
+	// example:
+	//
+	// System
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which you want to query the logs of the execution.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The execution ID of the task.
+	//
+	// example:
+	//
+	// exec-1234567zxcvb.t0010
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 }
 
@@ -7861,12 +10553,28 @@ type ListExecutionLogsResponseBody struct {
 	// The logs of the execution.
 	ExecutionLogs []*ListExecutionLogsResponseBodyExecutionLogs `json:"ExecutionLogs,omitempty" xml:"ExecutionLogs,omitempty" type:"Repeated"`
 	// Indicates whether the log is truncated.
+	//
+	// example:
+	//
+	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABdpsGWjX8dJ-a6dl_pvoS7AFxNHSNJKHLCAJJ0ylgA53nWW5V4HTEZKCYTaEPNOrxFir4z43UTOjE150cFr8AGTifA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7905,12 +10613,28 @@ func (s *ListExecutionLogsResponseBody) SetRequestId(v string) *ListExecutionLog
 
 type ListExecutionLogsResponseBodyExecutionLogs struct {
 	// The log type.
+	//
+	// example:
+	//
+	// System
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	// The details of the task execution.
+	//
+	// example:
+	//
+	// The task CheckDiskCategory completed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The task execution ID.
+	//
+	// example:
+	//
+	// exec-1234567zxcvb.t0010
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The timestamp when the task was run.
+	//
+	// example:
+	//
+	// 2019-05-24T:02:29:07Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -7973,8 +10697,16 @@ func (s *ListExecutionLogsResponse) SetBody(v *ListExecutionLogsResponseBody) *L
 
 type ListExecutionRiskyTasksRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// myTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -7998,6 +10730,10 @@ func (s *ListExecutionRiskyTasksRequest) SetTemplateName(v string) *ListExecutio
 
 type ListExecutionRiskyTasksResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C04B668D-D2DD-4B40-B6E9-0E3C4F53D5B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about high-risk tasks.
 	RiskyTasks []*ListExecutionRiskyTasksResponseBodyRiskyTasks `json:"RiskyTasks,omitempty" xml:"RiskyTasks,omitempty" type:"Repeated"`
@@ -8023,8 +10759,16 @@ func (s *ListExecutionRiskyTasksResponseBody) SetRiskyTasks(v []*ListExecutionRi
 
 type ListExecutionRiskyTasksResponseBodyRiskyTasks struct {
 	// The name of the operation that the high-risk task calls.
+	//
+	// example:
+	//
+	// DeleteInstance
 	API *string `json:"API,omitempty" xml:"API,omitempty"`
 	// The cloud service in which the high-risk task runs.
+	//
+	// example:
+	//
+	// ECS
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The details of the high-risk task.
 	Task []*string `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
@@ -8091,64 +10835,168 @@ func (s *ListExecutionRiskyTasksResponse) SetBody(v *ListExecutionRiskyTasksResp
 
 type ListExecutionsRequest struct {
 	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
+	//
+	// example:
+	//
+	// ["TimerTrigger"、"EventTrigger"]
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
+	//
+	// example:
+	//
+	// Other
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
+	//
+	// example:
+	//
+	// RootDepth
 	Depth *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// MyDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateAfter *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
 	// The latest end time. The executions that stop running at or earlier than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateBefore *string `json:"EndDateBefore,omitempty" xml:"EndDateBefore,omitempty"`
 	// The executor.
+	//
+	// example:
+	//
+	// vme
 	ExecutedBy *string `json:"ExecutedBy,omitempty" xml:"ExecutedBy,omitempty"`
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// Specifies whether to include child executions. Default value: False.
+	//
+	// example:
+	//
+	// true
 	IncludeChildExecution *bool `json:"IncludeChildExecution,omitempty" xml:"IncludeChildExecution,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The execution mode. Valid values:
 	//
-	// *   **Automatic**
-	// *   **Debug**
+	// 	- **Automatic**
+	//
+	// 	- **Debug**
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The RAM role.
+	//
+	// example:
+	//
+	// OOSServiceRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instances you want to query belong.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the Elastic Compute Service (ECS) resource.
+	//
+	// example:
+	//
+	// i-xxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource template.
+	//
+	// example:
+	//
+	// ACS-ECS-TEST
 	ResourceTemplateName *string `json:"ResourceTemplateName,omitempty" xml:"ResourceTemplateName,omitempty"`
 	// The field that is used to sort the executions to query. Valid values:
 	//
-	// *   **StartDate**: specifies that the executions are sorted based on the time when they are created. This is the default value.
-	// *   **EndDate**: specifies that the executions are sorted based on the time when they stop running.
-	// *   **Status**: specifies that the executions are sorted based on their states.
+	// 	- **StartDate**: specifies that the executions are sorted based on the time when they are created. This is the default value.
+	//
+	// 	- **EndDate**: specifies that the executions are sorted based on the time when they stop running.
+	//
+	// 	- **Status**: specifies that the executions are sorted based on their states.
+	//
+	// example:
+	//
+	// StartDate
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
-	// *   **Ascending**: ascending order.
-	// *   **Descending**: descending order. This is the default value.
+	// 	- **Ascending**: ascending order.
+	//
+	// 	- **Descending**: descending order. This is the default value.
+	//
+	// example:
+	//
+	// Ascending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The earliest start time. The executions that start to run at or later than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateAfter *string `json:"StartDateAfter,omitempty" xml:"StartDateAfter,omitempty"`
 	// The latest start time. The executions that start to run at or earlier than the specified point in time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateBefore *string `json:"StartDateBefore,omitempty" xml:"StartDateBefore,omitempty"`
 	// The status of the execution. Valid values: Running, Started, Success, Failed, Waiting, Cancelled, Pending, and Skipped.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags for the execution.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are queried.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -8287,64 +11135,168 @@ func (s *ListExecutionsRequest) SetTemplateName(v string) *ListExecutionsRequest
 
 type ListExecutionsShrinkRequest struct {
 	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
+	//
+	// example:
+	//
+	// ["TimerTrigger"、"EventTrigger"]
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
+	//
+	// example:
+	//
+	// Other
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
+	//
+	// example:
+	//
+	// RootDepth
 	Depth *string `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// MyDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The earliest end time. The executions that stop running at or later than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateAfter *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
 	// The latest end time. The executions that stop running at or earlier than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateBefore *string `json:"EndDateBefore,omitempty" xml:"EndDateBefore,omitempty"`
 	// The executor.
+	//
+	// example:
+	//
+	// vme
 	ExecutedBy *string `json:"ExecutedBy,omitempty" xml:"ExecutedBy,omitempty"`
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// Specifies whether to include child executions. Default value: False.
+	//
+	// example:
+	//
+	// true
 	IncludeChildExecution *bool `json:"IncludeChildExecution,omitempty" xml:"IncludeChildExecution,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The execution mode. Valid values:
 	//
-	// *   **Automatic**
-	// *   **Debug**
+	// 	- **Automatic**
+	//
+	// 	- **Debug**
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The RAM role.
+	//
+	// example:
+	//
+	// OOSServiceRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instances you want to query belong.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the Elastic Compute Service (ECS) resource.
+	//
+	// example:
+	//
+	// i-xxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource template.
+	//
+	// example:
+	//
+	// ACS-ECS-TEST
 	ResourceTemplateName *string `json:"ResourceTemplateName,omitempty" xml:"ResourceTemplateName,omitempty"`
 	// The field that is used to sort the executions to query. Valid values:
 	//
-	// *   **StartDate**: specifies that the executions are sorted based on the time when they are created. This is the default value.
-	// *   **EndDate**: specifies that the executions are sorted based on the time when they stop running.
-	// *   **Status**: specifies that the executions are sorted based on their states.
+	// 	- **StartDate**: specifies that the executions are sorted based on the time when they are created. This is the default value.
+	//
+	// 	- **EndDate**: specifies that the executions are sorted based on the time when they stop running.
+	//
+	// 	- **Status**: specifies that the executions are sorted based on their states.
+	//
+	// example:
+	//
+	// StartDate
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
-	// *   **Ascending**: ascending order.
-	// *   **Descending**: descending order. This is the default value.
+	// 	- **Ascending**: ascending order.
+	//
+	// 	- **Descending**: descending order. This is the default value.
+	//
+	// example:
+	//
+	// Ascending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The earliest start time. The executions that start to run at or later than the specified time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateAfter *string `json:"StartDateAfter,omitempty" xml:"StartDateAfter,omitempty"`
 	// The latest start time. The executions that start to run at or earlier than the specified point in time are queried.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateBefore *string `json:"StartDateBefore,omitempty" xml:"StartDateBefore,omitempty"`
 	// The status of the execution. Valid values: Running, Started, Success, Failed, Waiting, Cancelled, Pending, and Skipped.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags for the execution.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are queried.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -8485,10 +11437,22 @@ type ListExecutionsResponseBody struct {
 	// The details of the task executions.
 	Executions []*ListExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14A074-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8522,70 +11486,202 @@ func (s *ListExecutionsResponseBody) SetRequestId(v string) *ListExecutionsRespo
 
 type ListExecutionsResponseBodyExecutions struct {
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
+	//
+	// example:
+	//
+	// Other
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The number of tasks that are counted by execution status.
+	//
+	// example:
+	//
+	// {"Failed": 0,"Success": 1,"Total": 2}
 	Counters map[string]interface{} `json:"Counters,omitempty" xml:"Counters,omitempty"`
 	// The time when the execution was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The information about the tasks that are running.
 	CurrentTasks []*ListExecutionsResponseBodyExecutionsCurrentTasks `json:"CurrentTasks,omitempty" xml:"CurrentTasks,omitempty" type:"Repeated"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// test execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the execution stops running.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The account ID of the user who started the execution of the template.
+	//
+	// example:
+	//
+	// 1309252800
 	ExecutedBy *string `json:"ExecutedBy,omitempty" xml:"ExecutedBy,omitempty"`
 	// The unique ID of the execution.
+	//
+	// example:
+	//
+	// exec-44d32b45d2a449e
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// Indicates whether the execution contains child executions.
+	//
+	// example:
+	//
+	// false
 	IsParent *bool `json:"IsParent,omitempty" xml:"IsParent,omitempty"`
 	// The time when the template was last successfully triggered.
+	//
+	// example:
+	//
+	// 2019-05-27T09:29:18Z
 	LastSuccessfulTriggerTime *string `json:"LastSuccessfulTriggerTime,omitempty" xml:"LastSuccessfulTriggerTime,omitempty"`
 	// The outputs of last trigger.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "InstanceId": "i-xxx"
+	//
+	// }
 	LastTriggerOutputs *string `json:"LastTriggerOutputs,omitempty" xml:"LastTriggerOutputs,omitempty"`
 	// The status of the execution after the template was last triggered.
+	//
+	// example:
+	//
+	// Success
 	LastTriggerStatus *string `json:"LastTriggerStatus,omitempty" xml:"LastTriggerStatus,omitempty"`
 	// The status message of last trigger.
+	//
+	// example:
+	//
+	// ""
 	LastTriggerStatusMessage *string `json:"LastTriggerStatusMessage,omitempty" xml:"LastTriggerStatusMessage,omitempty"`
 	// The time when the template was last successfully triggered.
+	//
+	// example:
+	//
+	// 2019-05-27T09:29:18Z
 	LastTriggerTime *string `json:"LastTriggerTime,omitempty" xml:"LastTriggerTime,omitempty"`
 	// The execution mode.
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The output of the execution.
+	//
+	// example:
+	//
+	// { "InstanceId":"i-xxx" }
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The input parameters of the execution.
+	//
+	// example:
+	//
+	// { "Status":"Running" }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The role that started the execution of the template.
+	//
+	// example:
+	//
+	// OOSServiceRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// { 			"Success": 1 		}
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The security check mode. Valid values: Skip, and ConfirmEveryHighRiskAction.
+	//
+	// example:
+	//
+	// Skip
 	SafetyCheck *string `json:"SafetyCheck,omitempty" xml:"SafetyCheck,omitempty"`
 	// The time when the execution was started.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The status of the execution. Valid values: Started, Queued, Running, Waiting, Success, Failed, and Cancelled.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status of the task execution.
+	//
+	// example:
+	//
+	// “”
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The reason for which the status occurs.
+	//
+	// example:
+	//
+	// ""
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 	// The tags of the execution.
+	//
+	// example:
+	//
+	// {}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The target resource.
+	//
+	// example:
+	//
+	// "{"ResourceType": "ALIYUN::ECS::Instance", "Filters": [{"ResourceIds": ["i-bp14z07dg3464980x72o"], "RegionId": "cn-hangzhou", "Type": "ResourceIds"}]}"
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// 123
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The time when the execution was updated.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 	// The Waiting state.
+	//
+	// example:
+	//
+	// ""
 	WaitingStatus *string `json:"WaitingStatus,omitempty" xml:"WaitingStatus,omitempty"`
 }
 
@@ -8764,10 +11860,22 @@ func (s *ListExecutionsResponseBodyExecutions) SetWaitingStatus(v string) *ListE
 
 type ListExecutionsResponseBodyExecutionsCurrentTasks struct {
 	// The execution template of the task.
+	//
+	// example:
+	//
+	// acs::Template
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 	// The ID of the task execution.
+	//
+	// example:
+	//
+	// task-exec-44d32b45d2a49899#1
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// installSLSILogtail
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -8965,12 +12073,28 @@ func (s *ListGitRepositoriesResponse) SetBody(v *ListGitRepositoriesResponseBody
 
 type ListInstancePatchStatesRequest struct {
 	// The ID of the Elastic Compute Service (ECS) instance. The value can be a JSON array that consists of up to 100 instance IDs. Separate the instance IDs with commas (,).
+	//
+	// example:
+	//
+	// ["i-bp1jaxa2bs4bps7*****", "i-bp67acfmxazb4p****", … "i-bp67acfmxazb4p****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the instance whose patches you want to query resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9006,10 +12130,22 @@ type ListInstancePatchStatesResponseBody struct {
 	// The details of patches of the instance.
 	InstancePatchStates []*ListInstancePatchStatesResponseBodyInstancePatchStates `json:"InstancePatchStates,omitempty" xml:"InstancePatchStates,omitempty" type:"Repeated"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9A47C086-E64D-52EE-8B2C-EFD23877C55E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9043,30 +12179,82 @@ func (s *ListInstancePatchStatesResponseBody) SetRequestId(v string) *ListInstan
 
 type ListInstancePatchStatesResponseBodyInstancePatchStates struct {
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-f9393021b7a049e1b34e
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The number of patches that failed to be installed.
+	//
+	// example:
+	//
+	// 0
 	FailedCount *string `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	// The number of installed patches.
+	//
+	// example:
+	//
+	// 0
 	InstalledCount *string `json:"InstalledCount,omitempty" xml:"InstalledCount,omitempty"`
 	// The number of patches that do not meet the baseline.
+	//
+	// example:
+	//
+	// 0
 	InstalledOtherCount *string `json:"InstalledOtherCount,omitempty" xml:"InstalledOtherCount,omitempty"`
 	// The number of patches that have been installed but require a restart to take effect.
+	//
+	// example:
+	//
+	// 0
 	InstalledPendingRebootCount *string `json:"InstalledPendingRebootCount,omitempty" xml:"InstalledPendingRebootCount,omitempty"`
 	// The number of patches that are rejected by the user.
+	//
+	// example:
+	//
+	// 0
 	InstalledRejectedCount *string `json:"InstalledRejectedCount,omitempty" xml:"InstalledRejectedCount,omitempty"`
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-bp1jaxa2bs4bps7*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of patches that are not installed.
+	//
+	// example:
+	//
+	// 0
 	MissingCount *string `json:"MissingCount,omitempty" xml:"MissingCount,omitempty"`
 	// The time when the operation ended.
+	//
+	// example:
+	//
+	// 2021-09-10T11:42:22Z
 	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
 	// The time when the operation was initiated.
+	//
+	// example:
+	//
+	// 2021-09-10T11:42:22Z
 	OperationStartTime *string `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
 	// The operation type.
+	//
+	// example:
+	//
+	// scan
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The information about the user.
+	//
+	// example:
+	//
+	// “”
 	OwnerInformation *string `json:"OwnerInformation,omitempty" xml:"OwnerInformation,omitempty"`
 	// The patch group.
+	//
+	// example:
+	//
+	// null
 	PatchGroup *string `json:"PatchGroup,omitempty" xml:"PatchGroup,omitempty"`
 }
 
@@ -9174,14 +12362,34 @@ func (s *ListInstancePatchStatesResponse) SetBody(v *ListInstancePatchStatesResp
 
 type ListInstancePatchesRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1jaxa2bs4bps7*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC6KPDUL0FIIb
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The status of the patches that you want to query. If you do not set this parameter, patches are not filtered.
+	//
+	// example:
+	//
+	// Installed
 	PatchStatuses *string `json:"PatchStatuses,omitempty" xml:"PatchStatuses,omitempty"`
 	// The ID of the region in which the instance whose patches you want to query resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9220,12 +12428,24 @@ func (s *ListInstancePatchesRequest) SetRegionId(v string) *ListInstancePatchesR
 
 type ListInstancePatchesResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the patch.
 	Patches []*ListInstancePatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0A615755-9C86-5EA6-BF9E-6E8F1AFF9403
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9259,16 +12479,40 @@ func (s *ListInstancePatchesResponseBody) SetRequestId(v string) *ListInstancePa
 
 type ListInstancePatchesResponseBodyPatches struct {
 	// The classification of the patch.
+	//
+	// example:
+	//
+	// “”
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	// The time when the patch was installed.
+	//
+	// example:
+	//
+	// 2021-01-28T07:07:20Z
 	InstalledTime *string `json:"InstalledTime,omitempty" xml:"InstalledTime,omitempty"`
 	// The Id of KBId.
+	//
+	// example:
+	//
+	// apt-utils.amd64
 	KBId *string `json:"KBId,omitempty" xml:"KBId,omitempty"`
 	// The level of the severity.
+	//
+	// example:
+	//
+	// important
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The status of the installation.
+	//
+	// example:
+	//
+	// Installed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the patch.
+	//
+	// example:
+	//
+	// isc-dhcp-common.amd64:4.3.5-3ubuntu7.3
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -9343,23 +12587,50 @@ type ListInventoryEntriesRequest struct {
 	// The filter rules for the component.
 	Filter []*ListInventoryEntriesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1cpoxxxwxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the component. Valid values:
 	//
-	// *   ACS:InstanceInformation
-	// *   ACS:Application
-	// *   ACS:File
-	// *   ACS:Network
-	// *   ACS:WindowsRole
-	// *   ACS:Service
-	// *   ACS:WindowsRegistry
-	// *   ACS:WindowsUpdate
+	// 	- ACS:InstanceInformation
+	//
+	// 	- ACS:Application
+	//
+	// 	- ACS:File
+	//
+	// 	- ACS:Network
+	//
+	// 	- ACS:WindowsRole
+	//
+	// 	- ACS:Service
+	//
+	// 	- ACS:WindowsRegistry
+	//
+	// 	- ACS:WindowsUpdate
+	//
+	// example:
+	//
+	// ACS:InstanceInformation
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
@@ -9403,16 +12674,32 @@ func (s *ListInventoryEntriesRequest) SetTypeName(v string) *ListInventoryEntrie
 
 type ListInventoryEntriesRequestFilter struct {
 	// The name of the component property. Valid values of N: 1 to 5.
+	//
+	// example:
+	//
+	// PlatformName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The comparison operator that is used to filter property values. Valid values of N: 1 to 5. Valid values:
 	//
-	// *   Equal
-	// *   NotEqual
-	// *   BeginWith
-	// *   LessThan
-	// *   GreaterThan
+	// 	- Equal
+	//
+	// 	- NotEqual
+	//
+	// 	- BeginWith
+	//
+	// 	- LessThan
+	//
+	// 	- GreaterThan
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The values of properties. Valid values of the first N: 1 to 5. Valid values of the second N: 1 to 20.
+	//
+	// example:
+	//
+	// test
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -9441,20 +12728,48 @@ func (s *ListInventoryEntriesRequestFilter) SetValue(v []*string) *ListInventory
 
 type ListInventoryEntriesResponseBody struct {
 	// The time when the request was sent.
+	//
+	// example:
+	//
+	// 2020-09-17T12:28:13Z
 	CaptureTime *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
 	// The configurations of the component.
 	Entries []map[string]interface{} `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-bp1cpoxxxwxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A81E4B2E-6B33-4BAE-9856-55DB7C893E01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The version number of the component.
+	//
+	// example:
+	//
+	// 1.0
 	SchemaVersion *string `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
 	// The name of the component.
+	//
+	// example:
+	//
+	// ACS:InstanceInformation
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
@@ -9539,14 +12854,40 @@ type ListOpsItemsRequest struct {
 	// The filter rules for the component.
 	Filter []*ListOpsItemsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The information about resource tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	ResourceTags map[string]interface{} `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -9590,8 +12931,16 @@ func (s *ListOpsItemsRequest) SetTags(v map[string]interface{}) *ListOpsItemsReq
 
 type ListOpsItemsRequestFilter struct {
 	// The parameter name of the filter.
+	//
+	// example:
+	//
+	// Status
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The comparison operator that is used to filter property values.
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The parameter values of the filter.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -9624,14 +12973,40 @@ type ListOpsItemsShrinkRequest struct {
 	// The filter rules for the component.
 	Filter []*ListOpsItemsShrinkRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The information about resource tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	ResourceTagsShrink *string `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -9675,8 +13050,16 @@ func (s *ListOpsItemsShrinkRequest) SetTagsShrink(v string) *ListOpsItemsShrinkR
 
 type ListOpsItemsShrinkRequestFilter struct {
 	// The parameter name of the filter.
+	//
+	// example:
+	//
+	// Status
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The comparison operator that is used to filter property values.
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The parameter values of the filter.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -9707,14 +13090,30 @@ func (s *ListOpsItemsShrinkRequestFilter) SetValue(v []*string) *ListOpsItemsShr
 
 type ListOpsItemsResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC6KPDUL0FIIb
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of O\&M items.
 	OpsItems []*ListOpsItemsResponseBodyOpsItems `json:"OpsItems,omitempty" xml:"OpsItems,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 113DD533-389C-5F83-9C69-F64D5BAB10B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9753,26 +13152,66 @@ func (s *ListOpsItemsResponseBody) SetTotalCount(v int32) *ListOpsItemsResponseB
 
 type ListOpsItemsResponseBodyOpsItems struct {
 	// The category.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the O\&M item was created.
+	//
+	// example:
+	//
+	// 2023-07-09T10:01Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The ID of the O\&M item.
+	//
+	// example:
+	//
+	// oi-d52b08695e2b46ae8413
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority.
+	//
+	// example:
+	//
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The Alibaba Resource Names (ARNs) of the associated resources.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The severity level.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the O\&M item.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time when the O\&M item was updated.
+	//
+	// example:
+	//
+	// 2023-07-09T10:01Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -9870,14 +13309,34 @@ func (s *ListOpsItemsResponse) SetBody(v *ListOpsItemsResponseBody) *ListOpsItem
 
 type ListParameterVersionsRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 }
 
@@ -9916,26 +13375,66 @@ func (s *ListParameterVersionsRequest) SetShareType(v string) *ListParameterVers
 
 type ListParameterVersionsResponseBody struct {
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-07T11:37:29Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter-description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the common parameter.
+	//
+	// example:
+	//
+	// p-a483b520e0axxxxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that was used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the version of the common parameter.
 	ParameterVersions []*ListParameterVersionsResponseBodyParameterVersions `json:"ParameterVersions,omitempty" xml:"ParameterVersions,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FD08D89D-B6C8-4AA2-A2B4-521D3F4A39FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10004,12 +13503,28 @@ func (s *ListParameterVersionsResponseBody) SetType(v string) *ListParameterVers
 
 type ListParameterVersionsResponseBodyParameterVersions struct {
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was last updated.
+	//
+	// example:
+	//
+	// 2020-09-07T11:37:29Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10072,39 +13587,90 @@ func (s *ListParameterVersionsResponse) SetBody(v *ListParameterVersionsResponse
 
 type ListParametersRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	//
+	// example:
+	//
+	// /path1/path2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter. Valid values:
 	//
-	// *   Public
-	// *   Private
+	// 	- Public
+	//
+	// 	- Private
 	//
 	// Default value: Private.
+	//
+	// example:
+	//
+	// ‘Private’
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The field used to sort the query results. Valid values:
 	//
-	// *   Name
-	// *   CreatedDate
+	// 	- Name
+	//
+	// 	- CreatedDate
+	//
+	// example:
+	//
+	// Name
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   Ascending
-	// *   Descending (Default)
+	// 	- Ascending
+	//
+	// 	- Descending (Default)
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10178,39 +13744,90 @@ func (s *ListParametersRequest) SetType(v string) *ListParametersRequest {
 
 type ListParametersShrinkRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	//
+	// example:
+	//
+	// /path1/path2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter. Valid values:
 	//
-	// *   Public
-	// *   Private
+	// 	- Public
+	//
+	// 	- Private
 	//
 	// Default value: Private.
+	//
+	// example:
+	//
+	// ‘Private’
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The field used to sort the query results. Valid values:
 	//
-	// *   Name
-	// *   CreatedDate
+	// 	- Name
+	//
+	// 	- CreatedDate
+	//
+	// example:
+	//
+	// Name
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   Ascending
-	// *   Descending (Default)
+	// 	- Ascending
+	//
+	// 	- Descending (Default)
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10284,14 +13901,30 @@ func (s *ListParametersShrinkRequest) SetType(v string) *ListParametersShrinkReq
 
 type ListParametersResponseBody struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC6KPDUL0FIIb
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the common parameter.
 	Parameters []*ListParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A81E4B2E-6B33-4BAE-9856-55DB7C893E01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10330,28 +13963,76 @@ func (s *ListParametersResponseBody) SetTotalCount(v int32) *ListParametersRespo
 
 type ListParametersResponseBodyParameters struct {
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The common parameter ID.
+	//
+	// example:
+	//
+	// p-4c4b401cab6747xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *string `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags added to the common parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -10456,32 +14137,72 @@ type ListPatchBaselinesRequest struct {
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Specifies whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   Windows
-	// *   Ubuntu
-	// *   CentOS
-	// *   Debian
-	// *   AliyunLinux
-	// *   RedhatEnterpriseLinux
-	// *   Anolis
-	// *   AlmaLinux
+	// 	- Windows
+	//
+	// 	- Ubuntu
+	//
+	// 	- CentOS
+	//
+	// 	- Debian
+	//
+	// 	- AliyunLinux
+	//
+	// 	- RedhatEnterpriseLinux
+	//
+	// 	- Anolis
+	//
+	// 	- AlmaLinux
+	//
+	// example:
+	//
+	// AliyunLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -10554,8 +14275,16 @@ func (s *ListPatchBaselinesRequest) SetTags(v []*ListPatchBaselinesRequestTags) 
 
 type ListPatchBaselinesRequestTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10581,32 +14310,72 @@ type ListPatchBaselinesShrinkRequest struct {
 	// The approved patches.
 	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
 	// Specifies whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// -
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// *   Windows
-	// *   Ubuntu
-	// *   CentOS
-	// *   Debian
-	// *   AliyunLinux
-	// *   RedhatEnterpriseLinux
-	// *   Anolis
-	// *   AlmaLinux
+	// 	- Windows
+	//
+	// 	- Ubuntu
+	//
+	// 	- CentOS
+	//
+	// 	- Debian
+	//
+	// 	- AliyunLinux
+	//
+	// 	- RedhatEnterpriseLinux
+	//
+	// 	- Anolis
+	//
+	// 	- AlmaLinux
+	//
+	// example:
+	//
+	// AliyunLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The patch source configurations.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -10679,12 +14448,24 @@ func (s *ListPatchBaselinesShrinkRequest) SetTagsShrink(v string) *ListPatchBase
 
 type ListPatchBaselinesResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// The number of entries returned on each page.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The patch baselines.
 	PatchBaselines []*ListPatchBaselinesResponseBodyPatchBaselines `json:"PatchBaselines,omitempty" xml:"PatchBaselines,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 432996A1-03C0-5C4C-A8E6-66C4110765B8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10720,32 +14501,80 @@ type ListPatchBaselinesResponseBodyPatchBaselines struct {
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The user who created the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
+	//
+	// example:
+	//
+	// 2021-09-08T03:41:23Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// ListPatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-c2838b5d89b540e19ee6
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates whether the patch baseline is set as the default patch baseline.
+	//
+	// example:
+	//
+	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
+	//
+	// example:
+	//
+	// AliyunLinux
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek256ia6vhsndy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The configurations of patch sources.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The tags of the patch baseline.
 	Tags []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who last updated the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was updated.
+	//
+	// example:
+	//
+	// 2021-09-08T03:44:34Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -10834,8 +14663,16 @@ func (s *ListPatchBaselinesResponseBodyPatchBaselines) SetUpdatedDate(v string) 
 
 type ListPatchBaselinesResponseBodyPatchBaselinesTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -10888,12 +14725,28 @@ func (s *ListPatchBaselinesResponse) SetBody(v *ListPatchBaselinesResponseBody) 
 
 type ListResourceExecutionStatusRequest struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxxxxxxxxxxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10927,10 +14780,22 @@ func (s *ListResourceExecutionStatusRequest) SetRegionId(v string) *ListResource
 
 type ListResourceExecutionStatusResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ED571CBD-9F96-419D-B919-CF340BBCA157
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution information of the resource.
 	ResourceExecutionStatus []*ListResourceExecutionStatusResponseBodyResourceExecutionStatus `json:"ResourceExecutionStatus,omitempty" xml:"ResourceExecutionStatus,omitempty" type:"Repeated"`
@@ -10966,14 +14831,34 @@ func (s *ListResourceExecutionStatusResponseBody) SetResourceExecutionStatus(v [
 
 type ListResourceExecutionStatusResponseBodyResourceExecutionStatus struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-6be6d6ff805349d9ac13
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The time when the execution started running.
+	//
+	// example:
+	//
+	// 2020-11-13T08:48:34Z
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
 	// The output of the template.
+	//
+	// example:
+	//
+	// { 				"commandOutput": "hello\n" 			}
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// i-bp1e1bxxxxxxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The status of the execution.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11041,16 +14926,40 @@ func (s *ListResourceExecutionStatusResponse) SetBody(v *ListResourceExecutionSt
 
 type ListSecretParameterVersionsRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The share type of the encryption parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// Specifies whether to decrypt the parameter value. The decrypted parameter value is returned only if this parameter is set to true. Otherwise, null is returned.
+	//
+	// example:
+	//
+	// false
 	WithDecryption *bool `json:"WithDecryption,omitempty" xml:"WithDecryption,omitempty"`
 }
 
@@ -11094,26 +15003,66 @@ func (s *ListSecretParameterVersionsRequest) SetWithDecryption(v bool) *ListSecr
 
 type ListSecretParameterVersionsResponseBody struct {
 	// The user who created the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the encryption parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the encryption parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the encryption parameter.
+	//
+	// example:
+	//
+	// p-4c4b401cab6747xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the version of the encryption parameter.
 	ParameterVersions []*ListSecretParameterVersionsResponseBodyParameterVersions `json:"ParameterVersions,omitempty" xml:"ParameterVersions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DBA6E6C8-F75D-41DE-AFF5-1FA03F551CA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The type of the encryption parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -11182,12 +15131,28 @@ func (s *ListSecretParameterVersionsResponseBody) SetType(v string) *ListSecretP
 
 type ListSecretParameterVersionsResponseBodyParameterVersions struct {
 	// The version number of the encryption parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The user who updated the encryption parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the encryption parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The value of the encryption parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11250,30 +15215,72 @@ func (s *ListSecretParameterVersionsResponse) SetBody(v *ListSecretParameterVers
 
 type ListSecretParametersRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the parameter. **You can enter a keyword to query parameter names in fuzzy match mode.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// sPH90GZOVGC6KPDUL0FIIbEtMQHq_19S6_4O_XqA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	//
+	// example:
+	//
+	// /path1/path2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The field used to sort the query results. Valid values:
 	//
-	// *   Name
-	// *   CreatedDate
+	// 	- Name
+	//
+	// 	- CreatedDate
+	//
+	// example:
+	//
+	// Name
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   Ascending
-	// *   Descending (Default)
+	// 	- Ascending
+	//
+	// 	- Descending (Default)
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -11337,30 +15344,72 @@ func (s *ListSecretParametersRequest) SetTags(v map[string]interface{}) *ListSec
 
 type ListSecretParametersShrinkRequest struct {
 	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the parameter. **You can enter a keyword to query parameter names in fuzzy match mode.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// sPH90GZOVGC6KPDUL0FIIbEtMQHq_19S6_4O_XqA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+	//
+	// example:
+	//
+	// /path1/path2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
+	//
+	// example:
+	//
+	// false
 	Recursive *bool `json:"Recursive,omitempty" xml:"Recursive,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The field used to sort the query results. Valid values:
 	//
-	// *   Name
-	// *   CreatedDate
+	// 	- Name
+	//
+	// 	- CreatedDate
+	//
+	// example:
+	//
+	// Name
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which the entries are sorted. Valid values:
 	//
-	// *   Ascending
-	// *   Descending (Default)
+	// 	- Ascending
+	//
+	// 	- Descending (Default)
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -11424,12 +15473,24 @@ func (s *ListSecretParametersShrinkRequest) SetTagsShrink(v string) *ListSecretP
 
 type ListSecretParametersResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// sPH90GZOVGC6KPDUL0FIIbEtMQHq_19S6_4O_XqA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The information about the parameters.
 	Parameters []*ListSecretParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CA9C6248-AF2A-4AE9-A166-88FD901BBB90
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11463,30 +15524,82 @@ func (s *ListSecretParametersResponseBody) SetRequestId(v string) *ListSecretPar
 
 type ListSecretParametersResponseBodyParameters struct {
 	// The user who created the parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T09:28:47Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the parameter.
+	//
+	// example:
+	//
+	// p-14ed150fdcd048xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the KMS customer master key (CMK) that is used for encryption.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the parameter.
+	//
+	// example:
+	//
+	// 1
 	ParameterVersion *string `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T09:35:17Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -11594,20 +15707,52 @@ func (s *ListSecretParametersResponse) SetBody(v *ListSecretParametersResponseBo
 
 type ListStateConfigurationsRequest struct {
 	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AHJKH-AHKJHDJK-AKHDIOWJL
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// ["sc-asfgdhj12345"]
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -11661,20 +15806,52 @@ func (s *ListStateConfigurationsRequest) SetTemplateVersion(v string) *ListState
 
 type ListStateConfigurationsShrinkRequest struct {
 	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AHJKH-AHKJHDJK-AKHDIOWJL
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// ["sc-asfgdhj12345"]
 	StateConfigurationIds *string `json:"StateConfigurationIds,omitempty" xml:"StateConfigurationIds,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the latest version of the template is used.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -11728,8 +15905,16 @@ func (s *ListStateConfigurationsShrinkRequest) SetTemplateVersion(v string) *Lis
 
 type ListStateConfigurationsResponseBody struct {
 	// The pagination token that was used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAASO3cL82+b5iji7bfPNpMh8=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 1306108F-610C-40FD-AAD5-DA13E8B00BE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the desired-state configurations.
 	StateConfigurations []*ListStateConfigurationsResponseBodyStateConfigurations `json:"StateConfigurations,omitempty" xml:"StateConfigurations,omitempty" type:"Repeated"`
@@ -11760,32 +15945,88 @@ func (s *ListStateConfigurationsResponseBody) SetStateConfigurations(v []*ListSt
 
 type ListStateConfigurationsResponseBodyStateConfigurations struct {
 	// The configuration mode. Valid values:
+	//
+	// example:
+	//
+	// ApplyAndAutoCorrect
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The time when the desired-state configuration was created.
+	//
+	// example:
+	//
+	// 2021-03-22T03:13:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// Collect inventory data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"policy": {"ACS:Network": {"Collection": "Enabled"}, "ACS:Application": {"Collection": "Enabled"}}}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression.
+	//
+	// example:
+	//
+	// 1 hour
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// sc-a538febe18fabcdef
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
 	// The tags added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The queried resources.
+	//
+	// example:
+	//
+	// { "ResourceType": "ALIYUN::ECS::Instance", "Filters": [ { "Type": "All", "RegionId": "cn-hangzhou", "Parameters": { "RegionId": "cn-hangzhou", "Status": "Running" } } ] }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The template ID.
+	//
+	// example:
+	//
+	// t-ajshjalscfhjk2214
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template.
+	//
+	// example:
+	//
+	// v2
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The time when the configuration was updated.
+	//
+	// example:
+	//
+	// 2021-04-22T03:13:32Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -11898,12 +16139,28 @@ func (s *ListStateConfigurationsResponse) SetBody(v *ListStateConfigurationsResp
 
 type ListTagKeysRequest struct {
 	// The maximum number of entries to return on each page. Valid value: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page.
+	//
+	// example:
+	//
+	// djsdlkasd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource to which the tag is added.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -11939,10 +16196,22 @@ type ListTagKeysResponseBody struct {
 	// The tag keys.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page.
+	//
+	// example:
+	//
+	// 87y29h80h20h3f2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 36210B73-8262-4D08-9D3A-7F96789733C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12005,14 +16274,34 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 
 type ListTagResourcesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of resources. The number of resource IDs ranges from 1 to 50.
+	//
+	// example:
+	//
+	// ["templateNam1","templateName2"]
 	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource. Valid values: template execution
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -12051,14 +16340,34 @@ func (s *ListTagResourcesRequest) SetTags(v map[string]interface{}) *ListTagReso
 
 type ListTagResourcesShrinkRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of resources. The number of resource IDs ranges from 1 to 50.
+	//
+	// example:
+	//
+	// ["templateNam1","templateName2"]
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource. Valid values: template execution
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -12097,8 +16406,16 @@ func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResource
 
 type ListTagResourcesResponseBody struct {
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the return value of the NextToken parameter is empty, the next page does not exist.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A5EF78C1-67FC-4E36-A6A8-7DF9C51726DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The set of resources and the tags that are added to the resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -12146,12 +16463,28 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// TagTest2
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// k1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -12214,14 +16547,34 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListTagValuesRequest struct {
 	// The tag key to query.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The maximum number of results on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// 3272h923879hsaksad
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the tagged resource.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -12260,10 +16613,22 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 
 type ListTagValuesResponseBody struct {
 	// The maximum number of results on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// 83u29j2dj3dskds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 65591133-1188-4935-B78F-20F72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag values returned.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -12328,43 +16693,110 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 
 type ListTaskExecutionsRequest struct {
 	// The execution ID of the task.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateAfter *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
 	// Specifies to query task executions that stop running at or later than the specified time.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDateBefore *string `json:"EndDateBefore,omitempty" xml:"EndDateBefore,omitempty"`
 	// The status of the execution. Valid values: Running, Started, Success, Failed, Waiting, Cancelled, Pending, and Skipped.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// false
 	IncludeChildTaskExecution *bool `json:"IncludeChildTaskExecution,omitempty" xml:"IncludeChildTaskExecution,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// Sorts the task executions to query. Valid values:
 	//
-	// *   **StartDate**: specifies that the task executions are sorted based on the time when they are created. This is the default value.
-	// *   **EndDate**: specifies that the task executions are sorted based on the time when the time when they stop running.
-	// *   **Status**: specifies that the task executions are sorted based on their statuses.
+	// 	- **StartDate**: specifies that the task executions are sorted based on the time when they are created. This is the default value.
+	//
+	// 	- **EndDate**: specifies that the task executions are sorted based on the time when the time when they stop running.
+	//
+	// 	- **Status**: specifies that the task executions are sorted based on their statuses.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Specifies whether to show the child nodes in the loop task. Default value: False.
+	//
+	// example:
+	//
+	// task-exec-xxx
 	ParentTaskExecutionId *string `json:"ParentTaskExecutionId,omitempty" xml:"ParentTaskExecutionId,omitempty"`
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The order in which you want to sort the task executions to query. Valid values:
 	//
-	// *   **Ascending**: ascending order.
-	// *   **Descending**: descending order. This is the default value.
+	// 	- **Ascending**: ascending order.
+	//
+	// 	- **Descending**: descending order. This is the default value.
+	//
+	// example:
+	//
+	// StartDate
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// Ascending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// Specifies to query task executions that stop running at or before the specified time.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateAfter *string `json:"StartDateAfter,omitempty" xml:"StartDateAfter,omitempty"`
 	// Specifies to query task executions that start to run at or later than the specified time.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDateBefore *string `json:"StartDateBefore,omitempty" xml:"StartDateBefore,omitempty"`
 	// Specifies to query task executions that start to run at or before the specified time.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The execution ID of the parent node. In a loop task, set this parameter to the execution ID of the parent node.
+	//
+	// example:
+	//
+	// ACS::Sleep
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// task-exec-xxx
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The action of the task.
+	//
+	// example:
+	//
+	// describeInstance
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -12458,10 +16890,22 @@ func (s *ListTaskExecutionsRequest) SetTaskName(v string) *ListTaskExecutionsReq
 
 type ListTaskExecutionsResponseBody struct {
 	// The details of the task executions.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJDQzQ3NjFENDdB
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// CDABABABAB-FC28-4D9C-8FB5-68DC6F0486FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution ID of the child node.
 	TaskExecutions []*ListTaskExecutionsResponseBodyTaskExecutions `json:"TaskExecutions,omitempty" xml:"TaskExecutions,omitempty" type:"Repeated"`
@@ -12497,42 +16941,118 @@ func (s *ListTaskExecutionsResponseBody) SetTaskExecutions(v []*ListTaskExecutio
 
 type ListTaskExecutionsResponseBodyTaskExecutions struct {
 	// The output of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ChildExecutionId *string `json:"ChildExecutionId,omitempty" xml:"ChildExecutionId,omitempty"`
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The execution ID of the parent node.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The action of the task.
+	//
+	// example:
+	//
+	// exec-44d32b45d2a449e49899
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The Input parameters of the task execution.
+	//
+	// example:
+	//
+	// {                     "NotifyNote":""                 }
 	ExtraData map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// {}
 	Loop map[string]interface{} `json:"Loop,omitempty" xml:"Loop,omitempty"`
 	// The status information of the task execution.
+	//
+	// example:
+	//
+	// 2
 	LoopBatchNumber *int32 `json:"LoopBatchNumber,omitempty" xml:"LoopBatchNumber,omitempty"`
 	// The time when the execution was created.
+	//
+	// example:
+	//
+	// i-1234566zxcvvb
 	LoopItem *string `json:"LoopItem,omitempty" xml:"LoopItem,omitempty"`
 	// The status of the task.
+	//
+	// example:
+	//
+	// { "InstanceId":"i-xxx" }
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// task-exec-xxx
 	ParentTaskExecutionId *string `json:"ParentTaskExecutionId,omitempty" xml:"ParentTaskExecutionId,omitempty"`
 	// Queries task executions. Multiple methods are supported to filter task executions.
+	//
+	// example:
+	//
+	// { "Status":"Running" }
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// The elements in the loop task.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The time when the task execution stopped running.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// ""
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The execution ID of the task.
+	//
+	// example:
+	//
+	// ACS::Sleep
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 	// The time when the execution was last updated.
+	//
+	// example:
+	//
+	// task-exec-xxx
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The time when the execution started.
+	//
+	// example:
+	//
+	// describeInstance
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The number of times for which the loop task is run.
+	//
+	// example:
+	//
+	// xxx
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The configuration and statistics information of the loop task. This parameter is returned only for the parent node of the loop task.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -12670,14 +17190,34 @@ func (s *ListTaskExecutionsResponse) SetBody(v *ListTaskExecutionsResponseBody) 
 
 type ListTemplateVersionsRequest struct {
 	// The number of entries per page. Valid values: 10 to 100
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// H8xj9c-398djs9-39ajd9asdjjJ
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the template. Valid values: Private and Public.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// describeinstances
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -12716,10 +17256,22 @@ func (s *ListTemplateVersionsRequest) SetTemplateName(v string) *ListTemplateVer
 
 type ListTemplateVersionsResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// NJSNDKLJS-SJKJDO090k30-JSDK232
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// E6CD612B-5889-4F1A-823F-8A4029E46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The versions of the template.
 	TemplateVersions []*ListTemplateVersionsResponseBodyTemplateVersions `json:"TemplateVersions,omitempty" xml:"TemplateVersions,omitempty" type:"Repeated"`
@@ -12755,16 +17307,40 @@ func (s *ListTemplateVersionsResponseBody) SetTemplateVersions(v []*ListTemplate
 
 type ListTemplateVersionsResponseBodyTemplateVersions struct {
 	// The description of the version.
+	//
+	// example:
+	//
+	// Detach the eip from the special instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The format of the template content. Valid values: YAML and JSON.
+	//
+	// example:
+	//
+	// YAML
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The number of the version.
+	//
+	// example:
+	//
+	// v2
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The user who last updated the version.
+	//
+	// example:
+	//
+	// foo
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the version was last updated.
+	//
+	// example:
+	//
+	// 2020-05-19T06:05:41Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 	// The name of the version.
+	//
+	// example:
+	//
+	// baz
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -12837,64 +17413,142 @@ func (s *ListTemplateVersionsResponse) SetBody(v *ListTemplateVersionsResponseBo
 
 type ListTemplatesRequest struct {
 	// The type of the template. Valid values include TimerTrigger, EventTrigger, AlarmTrigger, and Other.
+	//
+	// example:
+	//
+	// TimerTrigger
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The creator of the template.
 	//
-	// *   To query the template provided by Alibaba Cloud, set this parameter to **ACS**.
-	// *   To query the template created by a user, set this parameter to the **ID** of the template or the **name of the user** who creates the template.
+	// 	- To query the template provided by Alibaba Cloud, set this parameter to **ACS**.
+	//
+	// 	- To query the template created by a user, set this parameter to the **ID*	- of the template or the **name of the user*	- who creates the template.
+	//
+	// example:
+	//
+	// ACS
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// Specifies to query the template that is created at or later than the specified time.
 	//
 	// The value must be in the YYYY-MM-DDThh:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDateAfter *string `json:"CreatedDateAfter,omitempty" xml:"CreatedDateAfter,omitempty"`
 	// Specifies to query the template that is created at or before the specified time.
 	//
 	// The value must be in the YYYY-MM-DDThh:mm::ssZ format.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
+	//
+	// example:
+	//
+	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The template is favorite or not.
+	//
+	// example:
+	//
+	// true
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which you want to query templates.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The field that is used to sort the templates to be queried. Valid values:
 	//
-	// *   **TotalExecutionCount** (default): The system sorts the returned templates based on the total number of times that the templates are used.
-	// *   **Popularity**: The system sorts the returned templates based on the popularity of the templates.
-	// *   **TemplateName**: The system sorts the returned templates based on the names of the templates.
-	// *   **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
-	// *   **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
+	// 	- **TotalExecutionCount*	- (default): The system sorts the returned templates based on the total number of times that the templates are used.
+	//
+	// 	- **Popularity**: The system sorts the returned templates based on the popularity of the templates.
+	//
+	// 	- **TemplateName**: The system sorts the returned templates based on the names of the templates.
+	//
+	// 	- **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
+	//
+	// 	- **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
+	//
+	// example:
+	//
+	// Popularity
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
-	// *   **Ascending**: ascending order.
-	// *   **Descending**: descending order. This is the default value.
+	// 	- **Ascending**: ascending order.
+	//
+	// 	- **Descending**: descending order. This is the default value.
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. Valid values:
 	//
-	// *   **JSON**
-	// *   **YAML**
+	// 	- **JSON**
+	//
+	// 	- **YAML**
+	//
+	// example:
+	//
+	// YAML
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the template. Valid values:
 	//
-	// *   Automation: the template for automated tasks.
-	// *   State: the template for configuration inventories.
-	// *   Package: the template for software packages.
+	// 	- Automation: the template for automated tasks.
+	//
+	// 	- State: the template for configuration inventories.
+	//
+	// 	- Package: the template for software packages.
+	//
+	// example:
+	//
+	// private
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -12993,64 +17647,142 @@ func (s *ListTemplatesRequest) SetTemplateType(v string) *ListTemplatesRequest {
 
 type ListTemplatesShrinkRequest struct {
 	// The type of the template. Valid values include TimerTrigger, EventTrigger, AlarmTrigger, and Other.
+	//
+	// example:
+	//
+	// TimerTrigger
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The creator of the template.
 	//
-	// *   To query the template provided by Alibaba Cloud, set this parameter to **ACS**.
-	// *   To query the template created by a user, set this parameter to the **ID** of the template or the **name of the user** who creates the template.
+	// 	- To query the template provided by Alibaba Cloud, set this parameter to **ACS**.
+	//
+	// 	- To query the template created by a user, set this parameter to the **ID*	- of the template or the **name of the user*	- who creates the template.
+	//
+	// example:
+	//
+	// ACS
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// Specifies to query the template that is created at or later than the specified time.
 	//
 	// The value must be in the YYYY-MM-DDThh:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDateAfter *string `json:"CreatedDateAfter,omitempty" xml:"CreatedDateAfter,omitempty"`
 	// Specifies to query the template that is created at or before the specified time.
 	//
 	// The value must be in the YYYY-MM-DDThh:mm::ssZ format.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
+	//
+	// example:
+	//
+	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The template is favorite or not.
+	//
+	// example:
+	//
+	// true
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which you want to query templates.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The field that is used to sort the templates to be queried. Valid values:
 	//
-	// *   **TotalExecutionCount** (default): The system sorts the returned templates based on the total number of times that the templates are used.
-	// *   **Popularity**: The system sorts the returned templates based on the popularity of the templates.
-	// *   **TemplateName**: The system sorts the returned templates based on the names of the templates.
-	// *   **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
-	// *   **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
+	// 	- **TotalExecutionCount*	- (default): The system sorts the returned templates based on the total number of times that the templates are used.
+	//
+	// 	- **Popularity**: The system sorts the returned templates based on the popularity of the templates.
+	//
+	// 	- **TemplateName**: The system sorts the returned templates based on the names of the templates.
+	//
+	// 	- **CreatedDate**: The system sorts the returned templates based on the points in time when the templates are created.
+	//
+	// 	- **UpdatedDate**: The system sorts the returned templates based on the points in time when the templates are updated.
+	//
+	// example:
+	//
+	// Popularity
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
-	// *   **Ascending**: ascending order.
-	// *   **Descending**: descending order. This is the default value.
+	// 	- **Ascending**: ascending order.
+	//
+	// 	- **Descending**: descending order. This is the default value.
+	//
+	// example:
+	//
+	// Descending
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. Valid values:
 	//
-	// *   **JSON**
-	// *   **YAML**
+	// 	- **JSON**
+	//
+	// 	- **YAML**
+	//
+	// example:
+	//
+	// YAML
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The name of the template. All templates whose names contain the specified template name are to be returned.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the template. Valid values:
 	//
-	// *   Automation: the template for automated tasks.
-	// *   State: the template for configuration inventories.
-	// *   Package: the template for software packages.
+	// 	- Automation: the template for automated tasks.
+	//
+	// 	- State: the template for configuration inventories.
+	//
+	// 	- Package: the template for software packages.
+	//
+	// example:
+	//
+	// private
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -13149,10 +17881,22 @@ func (s *ListTemplatesShrinkRequest) SetTemplateType(v string) *ListTemplatesShr
 
 type ListTemplatesResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BEF54BA-17B6-449F-A219-49ACB157E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The template metadata.
 	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
@@ -13188,53 +17932,148 @@ func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyT
 
 type ListTemplatesResponseBodyTemplates struct {
 	// The template type.
+	//
+	// example:
+	//
+	// TimerTrigger
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The constraints of template
+	//
+	// example:
+	//
+	// {
+	//
+	//   "InstanceTypeFamilies": ["ecs.g8y", "ecs.c8y"],
+	//
+	//   "ImageTypes": ["system"],
+	//
+	//   "OSPlatforms": ["CentOS", "Ubuntu"],
+	//
+	//   "OSVersions": ["CentOS7.9 64bit"]
+	//
+	// }
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the template.
+	//
+	// example:
+	//
+	// root(1309200)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The template description.
+	//
+	// example:
+	//
+	// Describe instances of given status
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the template was configured with a trigger.
+	//
+	// example:
+	//
+	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
+	//
+	// example:
+	//
+	// 4bc7d7a21b3e003434b9c223f6e6d2578b5ebfeb5be28c1fcf8a8a1b11907bb4
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The template is favorite or not.
-	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	// The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If **ShareType** is set to **Private**, the value of this parameter is `-1`.
 	//
-	// >  This parameter is valid only if the value of **ShareType** is set to **Public**.
+	// example:
+	//
+	// true
+	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
+	// The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If **ShareType*	- is set to **Private**, the value of this parameter is `-1`.
+	//
+	// >  This parameter is valid only if the value of **ShareType*	- is set to **Public**.
+	//
+	// example:
+	//
+	// 8
 	Popularity *int32 `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
 	// The publisher of template.
+	//
+	// example:
+	//
+	// aliyun
 	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of a template created by a user is **Private**. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Public
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The template format. The system automatically determines whether the format is JSON or YAML.
+	//
+	// example:
+	//
+	// JSON
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The template ID.
+	//
+	// example:
+	//
+	// t-94753deed38
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The template type.
+	//
+	// example:
+	//
+	// private
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// The template version. The name of the version consists of the letter v and a number. The number starts from 1.
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The number of times for which the private template is executed. If **ShareType** is set to **Public**, the value of this parameter is `-1`.
 	//
-	// >  This parameter is valid only if the value of **ShareType** is **Private**.
+	// example:
+	//
+	// v1
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// The number of times for which the private template is executed. If **ShareType*	- is set to **Public**, the value of this parameter is `-1`.
+	//
+	// >  This parameter is valid only if the value of **ShareType*	- is **Private**.
+	//
+	// example:
+	//
+	// 5
 	TotalExecutionCount *int32 `json:"TotalExecutionCount,omitempty" xml:"TotalExecutionCount,omitempty"`
 	// The user who last updated the template.
+	//
+	// example:
+	//
+	// root(13092000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the template was last updated.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -13382,32 +18221,78 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 
 type NotifyExecutionRequest struct {
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The state of the terminated execution. This parameter is valid if you set the NotifyType parameter to CompleteExecution.
+	//
+	// example:
+	//
+	// Success
 	ExecutionStatus *string `json:"ExecutionStatus,omitempty" xml:"ExecutionStatus,omitempty"`
 	// The items of the child node in the loop task.
+	//
+	// example:
+	//
+	// i-xxx
 	LoopItem *string `json:"LoopItem,omitempty" xml:"LoopItem,omitempty"`
 	// The description for the notification.
+	//
+	// example:
+	//
+	// Note
 	NotifyNote *string `json:"NotifyNote,omitempty" xml:"NotifyNote,omitempty"`
 	// The type of the notification. Valid values:
 	//
-	// *   **ExecuteTask**: starts to run a specific task. This value is used if you perform debugging in the Debug mode. If you set this parameter to ExecuteTask, you also need to set the Parameters parameter.
-	// *   **CancelTask**: cancels a current task. This value is used if you perform debugging in the Debug mode.
-	// *   **CompleteExecution**: manually terminates an execution if you perform debugging in the Debug mode. You can specify the state of the terminated execution by using the **ExecutionStatus** parameter.
-	// *   **Approve**: approves an execution. For example, you are aware of the risks of an operation task and agree to approve the execution.
-	// *   **Reject**: rejects an execution. For example, you want to reject the execution of a high-risk operation task.
-	// *   **RetryTask**: retries a failed task whose execution mode is Suspend upon Failure.
-	// *   **SkipTask**: skips a failed task whose execution mode is Suspend upon Failure.
+	// 	- **ExecuteTask**: starts to run a specific task. This value is used if you perform debugging in the Debug mode. If you set this parameter to ExecuteTask, you also need to set the Parameters parameter.
+	//
+	// 	- **CancelTask**: cancels a current task. This value is used if you perform debugging in the Debug mode.
+	//
+	// 	- **CompleteExecution**: manually terminates an execution if you perform debugging in the Debug mode. You can specify the state of the terminated execution by using the **ExecutionStatus*	- parameter.
+	//
+	// 	- **Approve**: approves an execution. For example, you are aware of the risks of an operation task and agree to approve the execution.
+	//
+	// 	- **Reject**: rejects an execution. For example, you want to reject the execution of a high-risk operation task.
+	//
+	// 	- **RetryTask**: retries a failed task whose execution mode is Suspend upon Failure.
+	//
+	// 	- **SkipTask**: skips a failed task whose execution mode is Suspend upon Failure.
+	//
+	// example:
+	//
+	// Approve
 	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
 	// The parameters of the subsequent task. This parameter is valid if you set the NotifyType parameter to ExecuteTask.
+	//
+	// example:
+	//
+	// {}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the region in which the execution resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The execution ID of the task.
+	//
+	// example:
+	//
+	// task-exec-xxx
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The execution IDs of the tasks.
+	//
+	// example:
+	//
+	// ["exec-79c321c11003a97c","exec-79c321c11003aqw97cz"]
 	TaskExecutionIds *string `json:"TaskExecutionIds,omitempty" xml:"TaskExecutionIds,omitempty"`
 	// The name of the subsequent task.
+	//
+	// example:
+	//
+	// describeInstance
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -13471,6 +18356,10 @@ func (s *NotifyExecutionRequest) SetTaskName(v string) *NotifyExecutionRequest {
 
 type NotifyExecutionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 491DF8C2-34C9-4679-9DB3-4C0F49B129AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13518,8 +18407,16 @@ func (s *NotifyExecutionResponse) SetBody(v *NotifyExecutionResponseBody) *Notif
 
 type RegisterDefaultPatchBaselineRequest struct {
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13545,6 +18442,10 @@ type RegisterDefaultPatchBaselineResponseBody struct {
 	// The details of the patch baseline.
 	PatchBaseline *RegisterDefaultPatchBaselineResponseBodyPatchBaseline `json:"PatchBaseline,omitempty" xml:"PatchBaseline,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D6850689-348D-59FC-AE13-BB0EDB7C4BE8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13568,26 +18469,70 @@ func (s *RegisterDefaultPatchBaselineResponseBody) SetRequestId(v string) *Regis
 
 type RegisterDefaultPatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The user who created the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
+	//
+	// example:
+	//
+	// 2021-09-07T03:42:56Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// RegisterPatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-445340b5c6504a85a300
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operating system.
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm4dpaq2yox6q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The user who last updated the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was last updated.
+	//
+	// example:
+	//
+	// 2021-09-07T03:42:56Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -13686,16 +18631,33 @@ func (s *RegisterDefaultPatchBaselineResponse) SetBody(v *RegisterDefaultPatchBa
 type SearchInventoryRequest struct {
 	// The information about aggregators. You can use one or more aggregators to query the aggregate information of an instance. Valid values:
 	//
-	// *   ACS:Application.Name
-	// *   ACS:Application.Version
+	// 	- ACS:Application.Name
+	//
+	// 	- ACS:Application.Version
+	//
+	// example:
+	//
+	// ACS:Application.Name
 	Aggregator []*string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty" type:"Repeated"`
 	// The filter rules for the component.
 	Filter []*SearchInventoryRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13734,16 +18696,32 @@ func (s *SearchInventoryRequest) SetRegionId(v string) *SearchInventoryRequest {
 
 type SearchInventoryRequestFilter struct {
 	// The name of the component property. Valid values of N: 1 to 5. Different components have different property names. You can call the [GetInventorySchema](https://api.aliyun.com/#/?product=oos\&version=2019-06-01\&api=GetInventorySchema) operation to query the property names of different components. For example, the ACS:InstanceInformation component has the InstanceId property. Therefore, you can set this parameter to ACS:InstanceInformation.InstanceId.
+	//
+	// example:
+	//
+	// ACS:InstanceInformation.InstanceId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The comparison operator that is used to filter property values. Valid values of N: 1 to 5. Valid values:
 	//
-	// *   Equal
-	// *   NotEqual
-	// *   BeginWith
-	// *   LessThan
-	// *   GreaterThan
+	// 	- Equal
+	//
+	// 	- NotEqual
+	//
+	// 	- BeginWith
+	//
+	// 	- LessThan
+	//
+	// 	- GreaterThan
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The property values to query.
+	//
+	// example:
+	//
+	// i-bp1cpoxxxxxxxxxxxxxx
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -13773,10 +18751,22 @@ func (s *SearchInventoryRequestFilter) SetValue(v []*string) *SearchInventoryReq
 type SearchInventoryResponseBody struct {
 	Entities []map[string]interface{} `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
+	//
+	// example:
+	//
+	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A81E4B2E-6B33-4BAE-9856-55DB7C893E01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13839,18 +18829,46 @@ func (s *SearchInventoryResponse) SetBody(v *SearchInventoryResponseBody) *Searc
 
 type SetServiceSettingsRequest struct {
 	// The name of OSS bucket to deliver.
+	//
+	// example:
+	//
+	// OssBucketName
 	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
 	// Whether to enable OSS delivery.
+	//
+	// example:
+	//
+	// false
 	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
 	// The key prefix of OSS to deliver.
+	//
+	// example:
+	//
+	// oos/execution
 	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
 	// Whether to enable SLS delivery.
+	//
+	// example:
+	//
+	// false
 	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
 	// The name of SLS project to deliver.
+	//
+	// example:
+	//
+	// SlsProjectName
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
 	// The id of RDC Enterprise.
+	//
+	// example:
+	//
+	// RdcEnterpriseId
 	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13899,6 +18917,10 @@ func (s *SetServiceSettingsRequest) SetRegionId(v string) *SetServiceSettingsReq
 
 type SetServiceSettingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CBEC8072-BEC2-478E-8EAE-E723BA79CF19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information of service settings.
 	ServiceSettings []*SetServiceSettingsResponseBodyServiceSettings `json:"ServiceSettings,omitempty" xml:"ServiceSettings,omitempty" type:"Repeated"`
@@ -13924,16 +18946,40 @@ func (s *SetServiceSettingsResponseBody) SetServiceSettings(v []*SetServiceSetti
 
 type SetServiceSettingsResponseBodyServiceSettings struct {
 	// The name of OSS bucket to deliver.
+	//
+	// example:
+	//
+	// OssBucketName
 	DeliveryOssBucketName *string `json:"DeliveryOssBucketName,omitempty" xml:"DeliveryOssBucketName,omitempty"`
 	// Whether to enable OSS delivery.
+	//
+	// example:
+	//
+	// true
 	DeliveryOssEnabled *bool `json:"DeliveryOssEnabled,omitempty" xml:"DeliveryOssEnabled,omitempty"`
 	// The key prefix of OSS to deliver.
+	//
+	// example:
+	//
+	// oos/execution
 	DeliveryOssKeyPrefix *string `json:"DeliveryOssKeyPrefix,omitempty" xml:"DeliveryOssKeyPrefix,omitempty"`
 	// Whether to enable SLS delivery.
+	//
+	// example:
+	//
+	// false
 	DeliverySlsEnabled *bool `json:"DeliverySlsEnabled,omitempty" xml:"DeliverySlsEnabled,omitempty"`
 	// The name of SLS project to deliver.
+	//
+	// example:
+	//
+	// SlsProjectName
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
 	// The id of RDC Enterprise.
+	//
+	// example:
+	//
+	// RdcEnterpriseId
 	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
 }
 
@@ -14006,43 +19052,104 @@ func (s *SetServiceSettingsResponse) SetBody(v *SetServiceSettingsResponseBody) 
 
 type StartExecutionRequest struct {
 	// The access token.
+	//
+	// example:
+	//
+	// 123e56767-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// test execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The loop mode. Valid values:
 	//
-	// *   Automatic: does not suspend the execution of the template. This is the default value.
-	// *   FirstBatchPause: suspends the execution of the template after the first batch is complete.
-	// *   EveryBatchPause: suspends the execution of the template after each batch is complete.
+	// 	- Automatic: does not suspend the execution of the template. This is the default value.
+	//
+	// 	- FirstBatchPause: suspends the execution of the template after the first batch is complete.
+	//
+	// 	- EveryBatchPause: suspends the execution of the template after each batch is complete.
+	//
+	// example:
+	//
+	// Automatic
 	LoopMode *string `json:"LoopMode,omitempty" xml:"LoopMode,omitempty"`
 	// The execution mode. Valid values:
 	//
-	// *   Automatic: automatically starts the execution of the template. This is the default value.
-	// *   FailurePause: suspends the execution of the template upon a failure.
-	// *   Debug: manually starts the execution of the template.
+	// 	- Automatic: automatically starts the execution of the template. This is the default value.
+	//
+	// 	- FailurePause: suspends the execution of the template upon a failure.
+	//
+	// 	- Debug: manually starts the execution of the template.
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The JSON string that consists of a set of parameters. Default value: {}.
+	//
+	// example:
+	//
+	// {"Status":"Running"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The ID of the region in which the execution resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security check mode. Valid values:
 	//
-	// *   Skip: specifies that you are aware of the risks. The system performs all actions in the execution without manual confirmation, regardless of the risk level. This parameter is valid only if the `Mode` parameter is set to Automatic.
-	// *   ConfirmEveryHighRiskAction: requires you to confirm each high-risk action. This is the default value. You can call the **NotifyExecution** operation to confirm or cancel an action.
+	// 	- Skip: specifies that you are aware of the risks. The system performs all actions in the execution without manual confirmation, regardless of the risk level. This parameter is valid only if the `Mode` parameter is set to Automatic.
+	//
+	// 	- ConfirmEveryHighRiskAction: requires you to confirm each high-risk action. This is the default value. You can call the **NotifyExecution*	- operation to confirm or cancel an action.
+	//
+	// example:
+	//
+	// Skip
 	SafetyCheck *string `json:"SafetyCheck,omitempty" xml:"SafetyCheck,omitempty"`
 	// The tags for the execution.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// {   "Description": "Example template, describe instances in some status",   "FormatVersion": "OOS-2019-06-01",   "Parameters": {},   "Tasks": [     {       "Name": "describeInstances",       "Action": "ACS::ExecuteAPI",       "Description": "desc-en",       "Properties": {         "Service": "ECS",         "API": "DescribeInstances",         "Parameters": {           "Status": "Running"         }       }     }   ] }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// vmeixme
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The Object Storage Service (OSS) URL of the object that stores the content of the Operation Orchestration Service (OOS) template. The access control list (ACL) of the object must be public-read. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// http://oos-template.cn-hangzhou.oss.aliyun-inc.com/oos-test-template.json
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the system uses the latest version.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -14126,43 +19233,104 @@ func (s *StartExecutionRequest) SetTemplateVersion(v string) *StartExecutionRequ
 
 type StartExecutionShrinkRequest struct {
 	// The access token.
+	//
+	// example:
+	//
+	// 123e56767-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// test execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The loop mode. Valid values:
 	//
-	// *   Automatic: does not suspend the execution of the template. This is the default value.
-	// *   FirstBatchPause: suspends the execution of the template after the first batch is complete.
-	// *   EveryBatchPause: suspends the execution of the template after each batch is complete.
+	// 	- Automatic: does not suspend the execution of the template. This is the default value.
+	//
+	// 	- FirstBatchPause: suspends the execution of the template after the first batch is complete.
+	//
+	// 	- EveryBatchPause: suspends the execution of the template after each batch is complete.
+	//
+	// example:
+	//
+	// Automatic
 	LoopMode *string `json:"LoopMode,omitempty" xml:"LoopMode,omitempty"`
 	// The execution mode. Valid values:
 	//
-	// *   Automatic: automatically starts the execution of the template. This is the default value.
-	// *   FailurePause: suspends the execution of the template upon a failure.
-	// *   Debug: manually starts the execution of the template.
+	// 	- Automatic: automatically starts the execution of the template. This is the default value.
+	//
+	// 	- FailurePause: suspends the execution of the template upon a failure.
+	//
+	// 	- Debug: manually starts the execution of the template.
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The JSON string that consists of a set of parameters. Default value: {}.
+	//
+	// example:
+	//
+	// {"Status":"Running"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The ID of the region in which the execution resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security check mode. Valid values:
 	//
-	// *   Skip: specifies that you are aware of the risks. The system performs all actions in the execution without manual confirmation, regardless of the risk level. This parameter is valid only if the `Mode` parameter is set to Automatic.
-	// *   ConfirmEveryHighRiskAction: requires you to confirm each high-risk action. This is the default value. You can call the **NotifyExecution** operation to confirm or cancel an action.
+	// 	- Skip: specifies that you are aware of the risks. The system performs all actions in the execution without manual confirmation, regardless of the risk level. This parameter is valid only if the `Mode` parameter is set to Automatic.
+	//
+	// 	- ConfirmEveryHighRiskAction: requires you to confirm each high-risk action. This is the default value. You can call the **NotifyExecution*	- operation to confirm or cancel an action.
+	//
+	// example:
+	//
+	// Skip
 	SafetyCheck *string `json:"SafetyCheck,omitempty" xml:"SafetyCheck,omitempty"`
 	// The tags for the execution.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// {   "Description": "Example template, describe instances in some status",   "FormatVersion": "OOS-2019-06-01",   "Parameters": {},   "Tasks": [     {       "Name": "describeInstances",       "Action": "ACS::ExecuteAPI",       "Description": "desc-en",       "Properties": {         "Service": "ECS",         "API": "DescribeInstances",         "Parameters": {           "Status": "Running"         }       }     }   ] }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	//
+	// example:
+	//
+	// vmeixme
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The Object Storage Service (OSS) URL of the object that stores the content of the Operation Orchestration Service (OOS) template. The access control list (ACL) of the object must be public-read. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// http://oos-template.cn-hangzhou.oss.aliyun-inc.com/oos-test-template.json
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	// The version number of the template. If you do not specify this parameter, the system uses the latest version.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -14248,6 +19416,10 @@ type StartExecutionResponseBody struct {
 	// The details of the execution.
 	Execution *StartExecutionResponseBodyExecution `json:"Execution,omitempty" xml:"Execution,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14271,52 +19443,144 @@ func (s *StartExecutionResponseBody) SetRequestId(v string) *StartExecutionRespo
 
 type StartExecutionResponseBodyExecution struct {
 	// The number of executions.
+	//
+	// example:
+	//
+	// 1
 	Counters map[string]interface{} `json:"Counters,omitempty" xml:"Counters,omitempty"`
 	// The time when the execution was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The information about in-progress tasks.
 	CurrentTasks []*StartExecutionResponseBodyExecutionCurrentTasks `json:"CurrentTasks,omitempty" xml:"CurrentTasks,omitempty" type:"Repeated"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// test execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the execution stopped.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The account ID of the user who started the execution of the template.
+	//
+	// example:
+	//
+	// root(13092080xx12344)
 	ExecutedBy *string `json:"ExecutedBy,omitempty" xml:"ExecutedBy,omitempty"`
 	// The GUID of the execution.
+	//
+	// example:
+	//
+	// exec-xxxyyy
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// Indicates whether the execution is a parent execution.
+	//
+	// example:
+	//
+	// false
 	IsParent *bool `json:"IsParent,omitempty" xml:"IsParent,omitempty"`
 	// The loop mode.
+	//
+	// example:
+	//
+	// Automatic
 	LoopMode *string `json:"LoopMode,omitempty" xml:"LoopMode,omitempty"`
 	// The execution mode.
+	//
+	// example:
+	//
+	// Automatic
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The output of the execution.
+	//
+	// example:
+	//
+	// { "InstanceId":"i-xxx" }
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The input parameters of the execution.
+	//
+	// example:
+	//
+	// { "Status":"Running" }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the parent execution.
+	//
+	// example:
+	//
+	// exec-xxxx
 	ParentExecutionId *string `json:"ParentExecutionId,omitempty" xml:"ParentExecutionId,omitempty"`
 	// The role that started the execution of the template.
+	//
+	// example:
+	//
+	// OOSServiceRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security check mode.
+	//
+	// example:
+	//
+	// Skip
 	SafetyCheck *string `json:"SafetyCheck,omitempty" xml:"SafetyCheck,omitempty"`
 	// The time when the execution was started.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The status of the execution.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status information of the execution.
+	//
+	// example:
+	//
+	// ""
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The tags of the execution.
+	//
+	// example:
+	//
+	// {"k1":"v2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// t-1bd341007f
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version number of the template.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The time when the execution was last updated.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -14450,10 +19714,22 @@ func (s *StartExecutionResponseBodyExecution) SetUpdateDate(v string) *StartExec
 
 type StartExecutionResponseBodyExecutionCurrentTasks struct {
 	// The action of the task.
+	//
+	// example:
+	//
+	// ACS::TimerTrigger
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 	// The execution ID of the task.
+	//
+	// example:
+	//
+	// exec-dsadasdawq
 	TaskExecutionId *string `json:"TaskExecutionId,omitempty" xml:"TaskExecutionId,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// testTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -14511,24 +19787,48 @@ func (s *StartExecutionResponse) SetBody(v *StartExecutionResponseBody) *StartEx
 
 type TagResourcesRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	//
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	//
+	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// example:
+	//
+	// ["templateName1","templateName2"]
 	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource for which you want to modify the resource group. Valid values:
 	//
-	// *   template: template.
-	// *   parameter: parameter.
-	// *   secretparameter: encryption parameter.
-	// *   stateconfiguration: desired-state configuration.
-	// *   application: application.
+	// 	- template: template.
+	//
+	// 	- parameter: parameter.
+	//
+	// 	- secretparameter: encryption parameter.
+	//
+	// 	- stateconfiguration: desired-state configuration.
+	//
+	// 	- application: application.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -14562,24 +19862,48 @@ func (s *TagResourcesRequest) SetTags(v map[string]interface{}) *TagResourcesReq
 
 type TagResourcesShrinkRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	//
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	//
+	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// example:
+	//
+	// ["templateName1","templateName2"]
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource for which you want to modify the resource group. Valid values:
 	//
-	// *   template: template.
-	// *   parameter: parameter.
-	// *   secretparameter: encryption parameter.
-	// *   stateconfiguration: desired-state configuration.
-	// *   application: application.
+	// 	- template: template.
+	//
+	// 	- parameter: parameter.
+	//
+	// 	- secretparameter: encryption parameter.
+	//
+	// 	- stateconfiguration: desired-state configuration.
+	//
+	// 	- application: application.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -14613,6 +19937,10 @@ func (s *TagResourcesShrinkRequest) SetTagsShrink(v string) *TagResourcesShrinkR
 
 type TagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// B19AE203-FD99-49C7-9253-FAAACAD46F4A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14660,18 +19988,40 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type TriggerExecutionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// dswe2-3i0-029
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The message body to be sent to the trigger task.
+	//
+	// example:
+	//
+	// {"eventTime": "20181226T220114.058+0800", "id": "9435EAD6-3CF6-4494-8F7A-3A********77","level": "INFO","name": "Instance:StateChange","product": "ECS","regionId":"cn-hangzhou","resourceId": "acs:ecs:cn-hangzhou:169070********30:instance/i-bp1ecr********5go2go","userId": "169070********30","ver": "1.0","content": {"resourceId": "i-bp1ecr********5go2go", "resourceType": "ALIYUN::ECS::Instance","state": "Stopping"} }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the event-, alert-, or timer-triggered execution.
+	//
+	// example:
+	//
+	// exec-sadw3f23rsad
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the trigger. Valid values:
 	//
-	// *   Event
-	// *   Alarm
-	// *   Timer
+	// 	- Event
+	//
+	// 	- Alarm
+	//
+	// 	- Timer
+	//
+	// example:
+	//
+	// Event
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -14710,6 +20060,10 @@ func (s *TriggerExecutionRequest) SetType(v string) *TriggerExecutionRequest {
 
 type TriggerExecutionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14757,26 +20111,54 @@ func (s *TriggerExecutionResponse) SetBody(v *TriggerExecutionResponseBody) *Tri
 
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	//
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	//
+	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// example:
+	//
+	// ["templateName1","templateName2"]
 	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource for which you want to modify the resource group. Valid values:
 	//
-	// *   template: template.
-	// *   parameter: parameter.
-	// *   secretparameter: encryption parameter.
-	// *   stateconfiguration: desired-state configuration.
-	// *   application: application.
+	// 	- template: template.
+	//
+	// 	- parameter: parameter.
+	//
+	// 	- secretparameter: encryption parameter.
+	//
+	// 	- stateconfiguration: desired-state configuration.
+	//
+	// 	- application: application.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. The number of keys ranges from 1 to 20.
+	//
+	// example:
+	//
+	// ["k1","k2"]
 	TagKeys map[string]interface{} `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
@@ -14815,26 +20197,54 @@ func (s *UntagResourcesRequest) SetTagKeys(v map[string]interface{}) *UntagResou
 
 type UntagResourcesShrinkRequest struct {
 	// Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-	// *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-	// *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-	// *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	//
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	//
+	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	//
+	// example:
+	//
+	// ["templateName1","templateName2"]
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource for which you want to modify the resource group. Valid values:
 	//
-	// *   template: template.
-	// *   parameter: parameter.
-	// *   secretparameter: encryption parameter.
-	// *   stateconfiguration: desired-state configuration.
-	// *   application: application.
+	// 	- template: template.
+	//
+	// 	- parameter: parameter.
+	//
+	// 	- secretparameter: encryption parameter.
+	//
+	// 	- stateconfiguration: desired-state configuration.
+	//
+	// 	- application: application.
+	//
+	// example:
+	//
+	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. The number of keys ranges from 1 to 20.
+	//
+	// example:
+	//
+	// ["k1","k2"]
 	TagKeysShrink *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
@@ -14873,6 +20283,10 @@ func (s *UntagResourcesShrinkRequest) SetTagKeysShrink(v string) *UntagResources
 
 type UntagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 491DF8C2-34C9-4679-9DB3-4C0F49B129AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14922,14 +20336,34 @@ type UpdateApplicationRequest struct {
 	// The configurations of application alerts.
 	AlarmConfig *UpdateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
 	// Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
+	//
+	// example:
+	//
+	// false
 	DeleteAlarmRulesBeforeUpdate *bool `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
 	// The description to be updated for the application.
+	//
+	// example:
+	//
+	// test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// My-Application
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -14975,6 +20409,10 @@ type UpdateApplicationRequestAlarmConfig struct {
 	// The alert contact groups.
 	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
 	// The health check URL of the application.
+	//
+	// example:
+	//
+	// /healthcheck/tcp50122
 	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
 	// The alert templates.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
@@ -15007,14 +20445,34 @@ type UpdateApplicationShrinkRequest struct {
 	// The configurations of application alerts.
 	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
 	// Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
+	//
+	// example:
+	//
+	// false
 	DeleteAlarmRulesBeforeUpdate *bool `json:"DeleteAlarmRulesBeforeUpdate,omitempty" xml:"DeleteAlarmRulesBeforeUpdate,omitempty"`
 	// The description to be updated for the application.
+	//
+	// example:
+	//
+	// test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// My-Application
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -15060,6 +20518,10 @@ type UpdateApplicationResponseBody struct {
 	// The information about the application.
 	Application *UpdateApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F1F00F41-D24C-5377-831B-C97F739CE1AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15083,16 +20545,40 @@ func (s *UpdateApplicationResponseBody) SetRequestId(v string) *UpdateApplicatio
 
 type UpdateApplicationResponseBodyApplication struct {
 	// The time when the application was created.
+	//
+	// example:
+	//
+	// 2021-09-07T09:17:46Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the application.
+	//
+	// example:
+	//
+	// test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// My-Application
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
+	//
+	// example:
+	//
+	// 2021-09-07T10:17:46Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -15165,12 +20651,28 @@ func (s *UpdateApplicationResponse) SetBody(v *UpdateApplicationResponseBody) *U
 
 type UpdateApplicationGroupRequest struct {
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The new name of the application group.
+	//
+	// example:
+	//
+	// UpdateMyApplicationGroup
 	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15206,6 +20708,10 @@ type UpdateApplicationGroupResponseBody struct {
 	// The information about the application group.
 	ApplicationGroup *UpdateApplicationGroupResponseBodyApplicationGroup `json:"ApplicationGroup,omitempty" xml:"ApplicationGroup,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AA9FA778-AE4B-55EC-81CC-C46BAF08A166
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15229,20 +20735,52 @@ func (s *UpdateApplicationGroupResponseBody) SetRequestId(v string) *UpdateAppli
 
 type UpdateApplicationGroupResponseBodyApplicationGroup struct {
 	// The application name.
+	//
+	// example:
+	//
+	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The time when the application group was created.
+	//
+	// example:
+	//
+	// 2021-09-07T10:28:25Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The ID of the region in which the related resources reside.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
 	// The description of the application group.
+	//
+	// example:
+	//
+	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// k1
 	ImportTagKey *string `json:"ImportTagKey,omitempty" xml:"ImportTagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// example:
+	//
+	// UpdateMyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The time when the application group was updated.
+	//
+	// example:
+	//
+	// 2021-09-08T03:01:53Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -15325,18 +20863,46 @@ func (s *UpdateApplicationGroupResponse) SetBody(v *UpdateApplicationGroupRespon
 
 type UpdateExecutionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the execution.
+	//
+	// example:
+	//
+	// Execution description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the execution.
+	//
+	// example:
+	//
+	// exec-c223xxxxxxxxxxxxxxxx
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The information about the parameters.
+	//
+	// example:
+	//
+	// {"Status":"Running"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the execution.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -15385,6 +20951,10 @@ func (s *UpdateExecutionRequest) SetTags(v string) *UpdateExecutionRequest {
 
 type UpdateExecutionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C8345E88-5334-469E-901D-F912C8CB9C55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15432,34 +21002,100 @@ func (s *UpdateExecutionResponse) SetBody(v *UpdateExecutionResponseBody) *Updat
 
 type UpdateOpsItemRequest struct {
 	// The category.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The string to be deduplicated.
+	//
+	// example:
+	//
+	// ecs_instance_SystemMaintenance.Reboot
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description of the O\&M item.
+	//
+	// example:
+	//
+	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the O\&M item.
+	//
+	// example:
+	//
+	// oi-e2264dcf040c472598e9
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority.
+	//
+	// example:
+	//
+	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Resource Names (ARNs) of the associated resources.
+	//
+	// example:
+	//
+	// [\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
+	//
+	// example:
+	//
+	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example.com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -15548,34 +21184,100 @@ func (s *UpdateOpsItemRequest) SetTitle(v string) *UpdateOpsItemRequest {
 
 type UpdateOpsItemShrinkRequest struct {
 	// The category.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The string to be deduplicated.
+	//
+	// example:
+	//
+	// ecs_instance_SystemMaintenance.Reboot
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description of the O\&M item.
+	//
+	// example:
+	//
+	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the O\&M item.
+	//
+	// example:
+	//
+	// oi-e2264dcf040c472598e9
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority.
+	//
+	// example:
+	//
+	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Resource Names (ARNs) of the associated resources.
+	//
+	// example:
+	//
+	// [\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
+	//
+	// example:
+	//
+	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example.com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -15666,6 +21368,10 @@ type UpdateOpsItemResponseBody struct {
 	// The information about the O\&M item.
 	OpsItem *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C996DECB-3D2B-5321-B359-BE7031B6399E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15689,38 +21395,104 @@ func (s *UpdateOpsItemResponseBody) SetRequestId(v string) *UpdateOpsItemRespons
 
 type UpdateOpsItemResponseBodyOpsItem struct {
 	// The attributes of the O\&M item.
+	//
+	// example:
+	//
+	// [{\"Attribute\": {\"Weight\": 100}, \"RealServer\": \"uaejc8hnqzqz5valyh8dibolpvza48ik.yundunwaf5.com\"}]
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The category.
+	//
+	// example:
+	//
+	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the O\&M item was created.
+	//
+	// example:
+	//
+	// 2023-03-16T07:04Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The user who created the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The user who modified the O\&M item.
+	//
+	// example:
+	//
+	// root(130900000)
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
 	// The ID of the O\&M item.
+	//
+	// example:
+	//
+	// oi-e2264dcf040c472598e9
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	// The priority.
+	//
+	// example:
+	//
+	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ARNs of the associated resources.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The severity level.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The solutions.
 	Solutions []*string `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 	// The source business.
+	//
+	// example:
+	//
+	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
+	//
+	// example:
+	//
+	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "k1": "v1",
+	//
+	//       "k2": "v2"
+	//
+	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
+	//
+	// example:
+	//
+	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The time when the O\&M item was updated.
+	//
+	// example:
+	//
+	// 2023-03-16T08:04Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -15848,16 +21620,40 @@ func (s *UpdateOpsItemResponse) SetBody(v *UpdateOpsItemResponseBody) *UpdateOps
 
 type UpdateParameterRequest struct {
 	// The description of the common parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags to be added to common parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4,096 characters in length.
+	//
+	// example:
+	//
+	// update
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15903,6 +21699,10 @@ type UpdateParameterResponseBody struct {
 	// The information about the common parameter.
 	Parameter *UpdateParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// AF1AE6DE-61C4-435E-8687-072CFACCCEC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15926,30 +21726,82 @@ func (s *UpdateParameterResponseBody) SetRequestId(v string) *UpdateParameterRes
 
 type UpdateParameterResponseBodyParameter struct {
 	// The constraints of the common parameter.
+	//
+	// example:
+	//
+	// "{\"AllowedValues\":[\"parameter\"],\"AllowedPattern\":\"parameter\",\"MinLength\":0,\"MaxLength\":20}"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the common parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T08:01:43Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the common parameter.
+	//
+	// example:
+	//
+	// update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter ID.
+	//
+	// example:
+	//
+	// p-4c4b401cab6747xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the common parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the common parameter.
+	//
+	// example:
+	//
+	// 2
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the common parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tag added to the common parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the common parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the common parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T08:04:23Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -16057,24 +21909,56 @@ func (s *UpdateParameterResponse) SetBody(v *UpdateParameterResponseBody) *Updat
 
 type UpdatePatchBaselineRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// -
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// UpdatePatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rejected patches.
 	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -16152,8 +22036,16 @@ func (s *UpdatePatchBaselineRequest) SetTags(v []*UpdatePatchBaselineRequestTags
 
 type UpdatePatchBaselineRequestTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16177,24 +22069,56 @@ func (s *UpdatePatchBaselineRequestTags) SetValue(v string) *UpdatePatchBaseline
 
 type UpdatePatchBaselineShrinkRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatchesShrink *string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// -
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// UpdatePatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The rejected patches.
 	RejectedPatchesShrink *string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The patch source configurations.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -16274,6 +22198,10 @@ type UpdatePatchBaselineResponseBody struct {
 	// The details of the patch baseline.
 	PatchBaseline *UpdatePatchBaselineResponseBodyPatchBaseline `json:"PatchBaseline,omitempty" xml:"PatchBaseline,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1457F46C-7AAE-59FA-BD12-0BDB3751E6F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16297,38 +22225,90 @@ func (s *UpdatePatchBaselineResponseBody) SetRequestId(v string) *UpdatePatchBas
 
 type UpdatePatchBaselineResponseBodyPatchBaseline struct {
 	// The rules of scanning and installing patches for the specified operating system.
+	//
+	// example:
+	//
+	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	// The approved patches.
 	ApprovedPatches []*string `json:"ApprovedPatches,omitempty" xml:"ApprovedPatches,omitempty" type:"Repeated"`
 	// Indicates whether the approved patch involves updates other than security-related updates.
+	//
+	// example:
+	//
+	// true
 	ApprovedPatchesEnableNonSecurity *bool `json:"ApprovedPatchesEnableNonSecurity,omitempty" xml:"ApprovedPatchesEnableNonSecurity,omitempty"`
 	// The creator of the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the patch baseline was created.
+	//
+	// example:
+	//
+	// 2021-09-07T03:42:56Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the patch baseline.
+	//
+	// example:
+	//
+	// UpdatePatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the patch baseline.
+	//
+	// example:
+	//
+	// pb-445340b5c6504a85a300
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the patch baseline.
+	//
+	// example:
+	//
+	// MyPatchBaseline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operating system.
+	//
+	// example:
+	//
+	// Windows
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The rejected patches.
 	RejectedPatches []*string `json:"RejectedPatches,omitempty" xml:"RejectedPatches,omitempty" type:"Repeated"`
 	// The action of the rejected patch.
+	//
+	// example:
+	//
+	// ALLOW_AS_DEPENDENCY
 	RejectedPatchesAction *string `json:"RejectedPatchesAction,omitempty" xml:"RejectedPatchesAction,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy2zdbbjplii
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The patch source configurations.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The tags.
 	Tags []*UpdatePatchBaselineResponseBodyPatchBaselineTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who updated the patch baseline.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the patch baseline was updated.
+	//
+	// example:
+	//
+	// 2021-09-08T07:26:37Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -16427,8 +22407,16 @@ func (s *UpdatePatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v string) 
 
 type UpdatePatchBaselineResponseBodyPatchBaselineTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -16481,16 +22469,40 @@ func (s *UpdatePatchBaselineResponse) SetBody(v *UpdatePatchBaselineResponseBody
 
 type UpdateSecretParameterRequest struct {
 	// The description of the parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// update
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16534,16 +22546,40 @@ func (s *UpdateSecretParameterRequest) SetValue(v string) *UpdateSecretParameter
 
 type UpdateSecretParameterShrinkRequest struct {
 	// The description of the parameter. The description must be 1 to 200 characters in length.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// example:
+	//
+	// MySecretParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the parameter. The value must be 1 to 4096 characters in length.
+	//
+	// example:
+	//
+	// update
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16589,6 +22625,10 @@ type UpdateSecretParameterResponseBody struct {
 	// The information about the parameter.
 	Parameter *UpdateSecretParameterResponseBodyParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B419FF3-ABC6-4DF0-95E5-636DC8CBB8AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16612,32 +22652,88 @@ func (s *UpdateSecretParameterResponseBody) SetRequestId(v string) *UpdateSecret
 
 type UpdateSecretParameterResponseBodyParameter struct {
 	// The constraints of the parameter.
+	//
+	// example:
+	//
+	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the parameter was created.
+	//
+	// example:
+	//
+	// 2020-09-01T09:30:36Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the parameter.
+	//
+	// example:
+	//
+	// p-0b0fff9919c946xxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of customer master key (CMK) of Key Management Service (KMS) that is used for encryption.
+	//
+	// example:
+	//
+	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// MyParameter
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version number of the parameter.
+	//
+	// example:
+	//
+	// 2
 	ParameterVersion *int32 `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the parameter.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tags of the parameter.
+	//
+	// example:
+	//
+	// {"k1": "v1", "k2": "v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the parameter.
+	//
+	// example:
+	//
+	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The user who updated the parameter.
+	//
+	// example:
+	//
+	// root(130900000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the parameter was updated.
+	//
+	// example:
+	//
+	// 2020-09-01T09:33:11Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -16750,26 +22846,70 @@ func (s *UpdateSecretParameterResponse) SetBody(v *UpdateSecretParameterResponse
 
 type UpdateStateConfigurationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
+	//
+	// example:
+	//
+	// ApplyOnce
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// { "policy": { "ACS:Application": { "Collection": "Enabled" }, "ACS:Network": { "Collection": "Enabled" } } }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression.
+	//
+	// example:
+	//
+	// 1 hour
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// sc-asfgdhj12345
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "sc"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
+	//
+	// example:
+	//
+	// { "ResourceType": "ALIYUN::ECS::Instance", "Filters": [ { "Type": "All", "RegionId": "cn-hangzhou", "Parameters": { "RegionId": "cn-hangzhou", "Status": "Running" } } ] }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
 
@@ -16838,26 +22978,70 @@ func (s *UpdateStateConfigurationRequest) SetTargets(v string) *UpdateStateConfi
 
 type UpdateStateConfigurationShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// DASKJJLKADS-AHKLJHJSAKL-AJK
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration mode. Valid values: ApplyOnce: The configuration is applied only once. After a configuration is updated, the new configuration is applied. ApplyAndMonitor: The configuration is applied only once. After the configuration is applied, the system only checks whether the configuration is migrated in the future. ApplyAndAutoCorrect: The configuration is always applied.
+	//
+	// example:
+	//
+	// ApplyOnce
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// { "policy": { "ACS:Application": { "Collection": "Enabled" }, "ACS:Network": { "Collection": "Enabled" } } }
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression.
+	//
+	// example:
+	//
+	// 1 hour
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// sc-asfgdhj12345
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
 	// The tags to be added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "sc"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
+	//
+	// example:
+	//
+	// { "ResourceType": "ALIYUN::ECS::Instance", "Filters": [ { "Type": "All", "RegionId": "cn-hangzhou", "Parameters": { "RegionId": "cn-hangzhou", "Status": "Running" } } ] }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
 
@@ -16926,6 +23110,10 @@ func (s *UpdateStateConfigurationShrinkRequest) SetTargets(v string) *UpdateStat
 
 type UpdateStateConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 1306108F-610C-40FD-AAD5-DA13E8B00BE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the configuration.
 	StateConfiguration []*UpdateStateConfigurationResponseBodyStateConfiguration `json:"StateConfiguration,omitempty" xml:"StateConfiguration,omitempty" type:"Repeated"`
@@ -16951,32 +23139,88 @@ func (s *UpdateStateConfigurationResponseBody) SetStateConfiguration(v []*Update
 
 type UpdateStateConfigurationResponseBodyStateConfiguration struct {
 	// The configuration mode. Valid values:
+	//
+	// example:
+	//
+	// ApplyAndAutoCorrect
 	ConfigureMode *string `json:"ConfigureMode,omitempty" xml:"ConfigureMode,omitempty"`
 	// The time when the configuration was created.
+	//
+	// example:
+	//
+	// 2021-03-22T03:13:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the desired-state configuration.
+	//
+	// example:
+	//
+	// collect inventory data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"policy": {"ACS:Network": {"Collection": "Enabled"}, "ACS:Application": {"Collection": "Enabled"}}}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The CRON expression.
+	//
+	// example:
+	//
+	// 1 hour
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type.
+	//
+	// example:
+	//
+	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// example:
+	//
+	// StateConfigurationId
 	StateConfigurationId *string `json:"StateConfigurationId,omitempty" xml:"StateConfigurationId,omitempty"`
 	// The tags added to the configuration.
+	//
+	// example:
+	//
+	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The queried resources.
+	//
+	// example:
+	//
+	// { "ResourceType": "ALIYUN::ECS::Instance", "Filters": [ { "Type": "All", "RegionId": "cn-hangzhou", "Parameters": { "RegionId": "cn-hangzhou", "Status": "Running" } } ] }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// The template ID.
+	//
+	// example:
+	//
+	// t-1234asadf
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the template version.
+	//
+	// example:
+	//
+	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The time when the configuration was updated.
+	//
+	// example:
+	//
+	// 2021-03-22T03:13:32Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -17089,16 +23333,40 @@ func (s *UpdateStateConfigurationResponse) SetBody(v *UpdateStateConfigurationRe
 
 type UpdateTemplateRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+	//
+	// example:
+	//
+	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": \[ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": \[ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance\[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the template version.
+	//
+	// example:
+	//
+	// v2
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -17142,16 +23410,40 @@ func (s *UpdateTemplateRequest) SetVersionName(v string) *UpdateTemplateRequest 
 
 type UpdateTemplateShrinkRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+	//
+	// example:
+	//
+	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": \[ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": \[ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance\[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The name of the template version.
+	//
+	// example:
+	//
+	// v2
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -17195,6 +23487,10 @@ func (s *UpdateTemplateShrinkRequest) SetVersionName(v string) *UpdateTemplateSh
 
 type UpdateTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2075899A-585D-4A41-A9B2-28DF4F534F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the template.
 	Template *UpdateTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
@@ -17220,32 +23516,88 @@ func (s *UpdateTemplateResponseBody) SetTemplate(v *UpdateTemplateResponseBodyTe
 
 type UpdateTemplateResponseBodyTemplate struct {
 	// The user who created the template.
+	//
+	// example:
+	//
+	// root(130920000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
 	// The description of the template.
+	//
+	// example:
+	//
+	// Describe instances of given status
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the template is configured with a trigger.
+	//
+	// example:
+	//
+	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
+	//
+	// example:
+	//
+	// 4bc7d7a21b3e003434b9c223f6e6d2578b5ebfeb5be28c1fcf8a8a1b11907bb4
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxsn4m4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of a user-created template is **Private**.
+	//
+	// example:
+	//
+	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// example:
+	//
+	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the template. The system automatically determines whether the format is JSON or YAML.
+	//
+	// example:
+	//
+	// JSON
 	TemplateFormat *string `json:"TemplateFormat,omitempty" xml:"TemplateFormat,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// t-94753deed38
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
+	//
+	// example:
+	//
+	// v2
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The user who last modified the information about the template.
+	//
+	// example:
+	//
+	// root(1309000)
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
 	// The time when the information about the template was last modified.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
 }
 
@@ -17358,10 +23710,22 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 
 type ValidateTemplateContentRequest struct {
 	// The content of the template.
+	//
+	// example:
+	//
+	// {"FormatVersion": "OOS-2019-06-01", "Description": "Describe instances of given status", "Parameters": {"Status": {"Type": "String", "Description": "(Required) The status of the Ecs instance."}}, "Tasks": [{"Properties": {"Parameters": {"Status": "{{ Status }}"}, "API": "DescribeInstances", "Service": "Ecs"}, "Name": "foo", "Action": "ACS::ExecuteApi"}]}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The URL that is used to store the content of the Operation Orchestration Service (OOS) template in the Alibaba Cloud Object Storage Service (OSS). Only the public-read URL is supported. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
+	// example:
+	//
+	// http:/oos-template.cn-hangzhou.oss.aliyun-inc.com/oos-template.json
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
@@ -17390,12 +23754,28 @@ func (s *ValidateTemplateContentRequest) SetTemplateURL(v string) *ValidateTempl
 
 type ValidateTemplateContentResponseBody struct {
 	// The outputs of the template.
+	//
+	// example:
+	//
+	// {}
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The parameters of the template.
+	//
+	// example:
+	//
+	// { "Status": { "Description": "(Required) The status of the Ecs instance.", "Type": "String" } }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The RAM role.
+	//
+	// example:
+	//
+	// OOSServiceRole
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D5EE9591-1F2D-573E-8751-7F08BBB388D4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task defined in the template.
 	Tasks []*ValidateTemplateContentResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -17436,14 +23816,34 @@ func (s *ValidateTemplateContentResponseBody) SetTasks(v []*ValidateTemplateCont
 
 type ValidateTemplateContentResponseBodyTasks struct {
 	// The description of the task.
+	//
+	// example:
+	//
+	// (Required) The status of the Ecs instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// foo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The outputs of the task.
+	//
+	// example:
+	//
+	// .instanceId
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The properties of the task.
+	//
+	// example:
+	//
+	// {"API": "DescribeInstances","Parameters": {"Status": "{{ Status }}"},"Service": "Ecs"}
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// The type of the task.
+	//
+	// example:
+	//
+	// ACS::ExecuteAPI
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -20048,13 +26448,15 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request ListExecutionLogsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListExecutionLogsResponse
- */
+// Description:
+//
+// ****
+//
+// @param request - ListExecutionLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutionLogsResponse
 func (client *Client) ListExecutionLogsWithOptions(request *ListExecutionLogsRequest, runtime *util.RuntimeOptions) (_result *ListExecutionLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20108,12 +26510,13 @@ func (client *Client) ListExecutionLogsWithOptions(request *ListExecutionLogsReq
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request ListExecutionLogsRequest
- * @return ListExecutionLogsResponse
- */
+// Description:
+//
+// ****
+//
+// @param request - ListExecutionLogsRequest
+//
+// @return ListExecutionLogsResponse
 func (client *Client) ListExecutionLogs(request *ListExecutionLogsRequest) (_result *ListExecutionLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExecutionLogsResponse{}
@@ -21009,13 +27412,15 @@ func (client *Client) ListSecretParameterVersions(request *ListSecretParameterVe
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
- *
- * @param tmpReq ListSecretParametersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSecretParametersResponse
- */
+// Description:
+//
+// Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+//
+// @param tmpReq - ListSecretParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecretParametersResponse
 func (client *Client) ListSecretParametersWithOptions(tmpReq *ListSecretParametersRequest, runtime *util.RuntimeOptions) (_result *ListSecretParametersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21091,12 +27496,13 @@ func (client *Client) ListSecretParametersWithOptions(tmpReq *ListSecretParamete
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
- *
- * @param request ListSecretParametersRequest
- * @return ListSecretParametersResponse
- */
+// Description:
+//
+// Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+//
+// @param request - ListSecretParametersRequest
+//
+// @return ListSecretParametersResponse
 func (client *Client) ListSecretParameters(request *ListSecretParametersRequest) (_result *ListSecretParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecretParametersResponse{}
@@ -21650,16 +28056,21 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 	return _result, _err
 }
 
-/**
- * You can call this operation to notify an execution in the following scenarios:
- * *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
- * *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
- * *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
- *
- * @param request NotifyExecutionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return NotifyExecutionResponse
- */
+// Description:
+//
+// You can call this operation to notify an execution in the following scenarios:
+//
+// 	- If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+//
+// 	- If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+//
+// 	- If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+//
+// @param request - NotifyExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return NotifyExecutionResponse
 func (client *Client) NotifyExecutionWithOptions(request *NotifyExecutionRequest, runtime *util.RuntimeOptions) (_result *NotifyExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21729,15 +28140,19 @@ func (client *Client) NotifyExecutionWithOptions(request *NotifyExecutionRequest
 	return _result, _err
 }
 
-/**
- * You can call this operation to notify an execution in the following scenarios:
- * *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
- * *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
- * *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
- *
- * @param request NotifyExecutionRequest
- * @return NotifyExecutionResponse
- */
+// Description:
+//
+// You can call this operation to notify an execution in the following scenarios:
+//
+// 	- If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+//
+// 	- If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+//
+// 	- If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+//
+// @param request - NotifyExecutionRequest
+//
+// @return NotifyExecutionResponse
 func (client *Client) NotifyExecution(request *NotifyExecutionRequest) (_result *NotifyExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &NotifyExecutionResponse{}
