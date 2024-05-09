@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -20,21 +17,38 @@ import (
 type AllocateInstancePublicConnectionRequest struct {
 	// The network type of the endpoint. Valid values:
 	//
-	// *   **primary**: primary endpoint
-	// *   **cluster**: instance endpoint. This value is supported only for an instance that contains multiple coordinator nodes.
+	// 	- **primary**: primary endpoint
+	//
+	// 	- **cluster**: instance endpoint. This value is supported only for an instance that contains multiple coordinator nodes.
 	//
 	// >  The default value is primary.
+	//
+	// example:
+	//
+	// primary
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The prefix of the endpoint.
 	//
 	// Specify a prefix for the endpoint. Example: `gp-bp12ga6v69h86****`. In this example, the endpoint is `gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com`.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port number. Example: 5432.
+	//
+	// example:
+	//
+	// 5432
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -85,6 +99,10 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 
 type AllocateInstancePublicConnectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADD6EA90-EECB-4C12-9F26-0B6DB587****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -131,13 +149,31 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CancelUploadDocumentJobRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelUploadDocumentJobRequest) String() string {
@@ -184,9 +220,18 @@ func (s *CancelUploadDocumentJobRequest) SetRegionId(v string) *CancelUploadDocu
 }
 
 type CancelUploadDocumentJobResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelUploadDocumentJobResponseBody) String() string {
@@ -242,13 +287,31 @@ func (s *CancelUploadDocumentJobResponse) SetBody(v *CancelUploadDocumentJobResp
 }
 
 type CancelUpsertCollectionDataJobRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// bf8f7bc4-9276-44f7-9c22-1d06edc8dfd1
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CancelUpsertCollectionDataJobRequest) String() string {
@@ -295,9 +358,18 @@ func (s *CancelUpsertCollectionDataJobRequest) SetRegionId(v string) *CancelUpse
 }
 
 type CancelUpsertCollectionDataJobResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelUpsertCollectionDataJobResponseBody) String() string {
@@ -354,6 +426,10 @@ func (s *CancelUpsertCollectionDataJobResponse) SetBody(v *CancelUpsertCollectio
 
 type CheckServiceLinkedRoleRequest struct {
 	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -372,10 +448,22 @@ func (s *CheckServiceLinkedRoleRequest) SetRegionId(v string) *CheckServiceLinke
 
 type CheckServiceLinkedRoleResponseBody struct {
 	// Indicates whether an SLR is created.
+	//
+	// example:
+	//
+	// true
 	HasServiceLinkedRole *string `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -433,28 +521,57 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 
 type CreateAccountRequest struct {
 	// The description of the privileged account.
+	//
+	// example:
+	//
+	// testacc02
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the privileged account.
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
-	// *   The name cannot start with gp.
-	// *   The name must be 2 to 16 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	//
+	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	//
+	// 	- The name cannot start with gp.
+	//
+	// 	- The name must be 2 to 16 characters in length.
+	//
+	// example:
+	//
+	// testacc02
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the privileged account.
 	//
-	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-	// *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
-	// *   The password must be 8 to 32 characters in length.
+	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// 	- The password must be 8 to 32 characters in length.
+	//
+	// example:
+	//
+	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// test01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -503,6 +620,10 @@ func (s *CreateAccountRequest) SetResourceGroupId(v string) *CreateAccountReques
 
 type CreateAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D4D4BE8A-DD46-440A-BFCD-EE**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -549,21 +670,51 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateCollectionRequest struct {
-	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Dimension               *int64  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	ExternalStorage         *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1024
+	Dimension       *int64 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// example:
+	//
+	// title,content
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	ManagerAccountPassword  *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	PqEnable                *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// testaccount
+	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// example:
+	//
+	// testpassword
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	// example:
+	//
+	// {"title":"text","content":"text","response":"int"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metrics  *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// zh_cn
+	Parser   *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	PqEnable *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateCollectionRequest) String() string {
@@ -650,9 +801,18 @@ func (s *CreateCollectionRequest) SetRegionId(v string) *CreateCollectionRequest
 }
 
 type CreateCollectionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// create successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateCollectionResponseBody) String() string {
@@ -711,216 +871,387 @@ type CreateDBInstanceRequest struct {
 	// The ID of the backup set.
 	//
 	// >  You can call the [DescribeDataBackups](~~210093~~) operation to query the IDs of all backup sets in the instance.
+	//
+	// example:
+	//
+	// 1111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to load a sample dataset after the instance is created. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  If you do not specify this parameter, no sample dataset is loaded.
+	//
+	// example:
+	//
+	// false
 	CreateSampleData *bool `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
 	// The edition of the instance. Valid values:
 	//
 	// - **HighAvailability**: High-availability Edition.
+	//
 	// - **Basic**: Basic Edition.
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode.
+	//
+	// example:
+	//
+	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	// The instance type of the instance. For information, see [Instance types](~~86942~~).
 	//
 	// > This parameter must be specified when you create an instance in reserved storage mode.
+	//
+	// example:
+	//
+	// gpdb.group.segsdx1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The number of compute groups. Valid values: 2, 4, 8, 12, 16, 24, 32, 64, 96, and 128.
 	//
 	// > This parameter must be specified when you create an instance in reserved storage mode.
+	//
+	// example:
+	//
+	// 2
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
 	// - **StorageElastic**: elastic storage mode.
+	//
 	// - **Serverless**: Serverless mode.
+	//
 	// - **Classic**: reserved storage mode.
 	//
 	// > This parameter must be specified.
+	//
+	// example:
+	//
+	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	EnableSSL      *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// The ID of the encryption key.
 	//
 	// > If EncryptionType is set to CloudDisk, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	//
+	// example:
+	//
+	// 0d2470df-da7b-4786-b981-88888888****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The encryption type. Valid values:
 	//
-	// - **NULL** (default): Encryption is disabled.
+	// - **NULL*	- (default): Encryption is disabled.
+	//
 	// - **CloudDisk**: Encryption is enabled on cloud disks, and EncryptionKey is used to specify an encryption key.
 	//
 	// > Disk encryption cannot be disabled after it is enabled.
+	//
+	// example:
+	//
+	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The database engine of the instance. Set the value to gpdb.
+	//
+	// example:
+	//
+	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the database engine. Valid values:
 	//
 	// - 6.0
+	//
 	// - 7.0
+	//
+	// example:
+	//
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The wait time for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
 	//
 	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	//
+	// example:
+	//
+	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	// The network type of the instance. Set the value to **VPC**.
 	//
 	// >
 	//
-	// *   Only the Virtual Private Cloud (VPC) type is supported in Alibaba Cloud public cloud.
+	// 	- Only the Virtual Private Cloud (VPC) type is supported in Alibaba Cloud public cloud.
 	//
-	// *   If you do not specify this parameter, VPC is used.
+	// 	- If you do not specify this parameter, VPC is used.
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The specifications of compute nodes.
 	//
 	// Valid values for High-availability Edition instances in elastic storage mode:
 	//
 	// - **2C16G**
+	//
 	// - **4C32G**
+	//
 	// - **16C128G**
 	//
 	// Valid values for Basic Edition instances in elastic storage mode:
 	//
 	// - **2C8G**
+	//
 	// - **4C16G**
+	//
 	// - **8C32G**
+	//
 	// - **16C64G**
 	//
 	// Valid values for instances in Serverless mode:
 	//
 	// - **4C16G**
+	//
 	// - **8C32G**
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	//
+	// example:
+	//
+	// 2C16G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The amount of coordinator node resources. Valid values:
 	//
-	// *   2 CU
-	// *   4 CU
-	// *   8 CU
-	// *   16 CU
-	// *   32 CU
+	// 	- 2 CU
+	//
+	// 	- 4 CU
+	//
+	// 	- 8 CU
+	//
+	// 	- 16 CU
+	//
+	// 	- 32 CU
 	//
 	// >  You are charged for coordinator node resources of more than 8 CUs.
+	//
+	// example:
+	//
+	// 8 CU
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// 1
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
 	//
 	// >
 	//
-	// *   If you do not specify this parameter, Postpaid is used.
+	// 	- If you do not specify this parameter, Postpaid is used.
 	//
-	// *   You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+	// 	- You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+	//
+	// example:
+	//
+	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
 	// - **Month**
+	//
 	// - **Year**
+	//
 	// > This parameter must be specified when PayType is set to Prepaid.
+	//
+	// example:
+	//
+	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// 1.1.1.*
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ProdType         *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IP address whitelist of the instance.
 	//
 	// A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](~~86928~~) operation to modify the IP address whitelist after you create an instance.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The performance level of ESSDs. Valid values:
 	//
-	// *   **pl0**
-	// *   **pl1**
-	// *   **pl2**
+	// 	- **pl0**
+	//
+	// 	- **pl1**
+	//
+	// 	- **pl2**
 	//
 	// >
 	//
-	// *   This parameter takes effect only when SegStorageType is set to cloud_essd.
+	// 	- This parameter takes effect only when SegStorageType is set to cloud_essd.
 	//
-	// *   If you do not specify this parameter, pl1 is used.
+	// 	- If you do not specify this parameter, pl1 is used.
+	//
+	// example:
+	//
+	// pl1
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
 	// The number of compute nodes.
 	//
 	// - Valid values for High-availability Edition instances in elastic storage mode: multiples of 4 in the range of 4 to 512.
+	//
 	// - Valid values for Basic Edition instances in elastic storage mode: multiples of 2 in the range of 2 to 512.
+	//
 	// - Valid values for instances in Serverless mode: multiples of 2 in the range of 2 to 512.
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	//
+	// example:
+	//
+	// 4
 	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The disk storage type of the instance. Only enhanced SSDs (ESSDs) are supported. Set the value to cloud_essd.
 	//
 	// > This parameter must be specified when you create an instance in elastic storage mode.
+	//
+	// example:
+	//
+	// cloud_essd
 	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
 	// The type of the Serverless mode. Valid values:
 	//
-	// - **Manual** (default): manual scheduling.
+	// - **Manual*	- (default): manual scheduling.
+	//
 	// - **Auto**: automatic scheduling.
 	//
 	// > This parameter must be specified only when you create an instance in Serverless mode.
+	//
+	// example:
+	//
+	// Auto
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU). Valid values: 8 to 32. The value must be in increments of 8 ACUs. Default value: 32.
 	//
 	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	//
+	// example:
+	//
+	// 32
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	// The ID of the source instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	SrcDbInstanceName *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
 	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 6000.
 	//
 	// >  This parameter must be specified when you create an instance in elastic storage mode.
+	//
+	// example:
+	//
+	// 200
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// null
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The list of tags.
 	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The subscription duration.
 	//
 	// - Valid values when Period is set to Month: 1 to 9.
+	//
 	// - Valid values when Period is set to Year: 1 to 3.
+	//
 	// > This parameter must be specified when PayType is set to Prepaid.
+	//
+	// example:
+	//
+	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The VPC ID of the instance.
 	//
 	// >
 	//
-	// *   **This parameter** must be specified.
+	// 	- **This parameter*	- must be specified.
 	//
-	// *   The region where the **VPC** resides must be the same as the region that is specified by **RegionId**.
+	// 	- The region where the **VPC*	- resides must be the same as the region that is specified by **RegionId**.
+	//
+	// example:
+	//
+	// vpc-bp*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the instance.
 	//
 	// >
 	//
-	// *   **This parameter** must be specified.
+	// 	- **This parameter*	- must be specified.
 	//
-	// *   The zone where the **vSwitch** resides must be the same as the zone that is specified by **ZoneId**.
+	// 	- The zone where the **vSwitch*	- resides must be the same as the zone that is specified by **ZoneId**.
+	//
+	// example:
+	//
+	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Specifies whether to enable vector search engine optimization. Valid values:
 	//
-	// *   **enabled**
-	// *   **disabled** (default)
+	// 	- **enabled**
+	//
+	// 	- **disabled*	- (default)
 	//
 	// >
 	//
-	// *   We recommend that you **do not enable** vector search engine optimization in mainstream analysis, data warehousing, and real-time data warehousing scenarios.
+	// 	- We recommend that you **do not enable*	- vector search engine optimization in mainstream analysis, data warehousing, and real-time data warehousing scenarios.
 	//
-	// *   We recommend that you **enable** vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	// 	- We recommend that you **enable*	- vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	//
+	// example:
+	//
+	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
 	// The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1136,14 +1467,26 @@ type CreateDBInstanceRequestTag struct {
 	// The key of tag N. Take note of the following requirements:
 	//
 	// - The tag key cannot be an empty string.
+	//
 	// - The tag key can be up to 128 characters in length.
+	//
 	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N. Take note of the following requirements:
 	//
 	// - The tag key cannot be an empty string.
+	//
 	// - The tag key can be up to 128 characters in length.
+	//
 	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1169,16 +1512,36 @@ type CreateDBInstanceResponseBody struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
 	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the endpoint that is used to connect to the instance.
+	//
+	// example:
+	//
+	// gp-bp***************.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 111111111111
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
 	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the port number that is used to connect to the instance.
+	//
+	// example:
+	//
+	// 5432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5414A4E5-4C36-4461-95FC-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1248,46 +1611,81 @@ type CreateDBInstancePlanRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType*	- and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	//
+	// example:
+	//
+	// {"pause":{"planCronTime":"0 0 12 1/1 	- ? "},"resume":{"planCronTime":"0 0 0 1/1 	- ? "}}
 	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
 	// The description of the plan.
+	//
+	// example:
+	//
+	// this is a test plan
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
 	// >
 	//
-	// *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+	// 	- This parameter must be specified only when **PlanScheduleType*	- is set to **Regular**.
 	//
-	// *   If you do not specify this parameter, the plan does not end.
+	// 	- If you do not specify this parameter, the plan does not end.
+	//
+	// example:
+	//
+	// 2023-04-17T23:00Z
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The name of the plan.
+	//
+	// example:
+	//
+	// test-plan
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 	// The execution mode of the plan. Valid values:
 	//
-	// *   **Postpone**: The plan is executed later.
-	// *   **Regular**: The plan is executed periodically.
+	// 	- **Postpone**: The plan is executed later.
+	//
+	// 	- **Regular**: The plan is executed periodically.
+	//
+	// example:
+	//
+	// Regular
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
 	// The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+	// 	- This parameter must be specified only when **PlanScheduleType*	- is set to **Regular**.
 	//
-	// *   If you do not specify this parameter, the plan is executed immediately.
+	// 	- If you do not specify this parameter, the plan is executed immediately.
+	//
+	// example:
+	//
+	// 2022-04-17T23:00Z
 	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
 	// The type of the plan. Valid values:
 	//
-	// *   **PauseResume**: pauses and resumes an instance.
-	// *   **Resize**: changes the number of compute nodes.
-	// *   **ModifySpec**: changes compute node specifications.
+	// 	- **PauseResume**: pauses and resumes an instance.
+	//
+	// 	- **Resize**: changes the number of compute nodes.
+	//
+	// 	- **ModifySpec**: changes compute node specifications.
 	//
 	// >
 	//
-	// *   You can specify the value to Resize only for instances in Serverless mode.
+	// 	- You can specify the value to Resize only for instances in Serverless mode.
 	//
-	// *   You can specify the value to ModifySpec only for instances in elastic storage mode.
+	// 	- You can specify the value to ModifySpec only for instances in elastic storage mode.
+	//
+	// example:
+	//
+	// PauseResume
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
@@ -1346,18 +1744,38 @@ func (s *CreateDBInstancePlanRequest) SetPlanType(v string) *CreateDBInstancePla
 
 type CreateDBInstancePlanResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message.
 	//
 	// This parameter is returned only if the request fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The plan ID.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd9f56fc3ad
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
-	// If the request was successful, **success** is returned. If the request failed, this parameter is not returned.
+	// If the request was successful, **success*	- is returned. If the request failed, this parameter is not returned.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1424,21 +1842,60 @@ func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBo
 }
 
 type CreateDocumentCollectionRequest struct {
-	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	ExternalStorage         *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// text-embedding-v1
+	EmbeddingModel  *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	ExternalStorage *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// example:
+	//
+	// title,page
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	ManagerAccountPassword  *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	PqEnable                *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 64
+	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// example:
+	//
+	// testaccount
+	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// example:
+	//
+	// testpassword
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	// example:
+	//
+	// {"title":"text","page":"int"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// zh_cn
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// example:
+	//
+	// 0
+	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateDocumentCollectionRequest) String() string {
@@ -1525,9 +1982,18 @@ func (s *CreateDocumentCollectionRequest) SetRegionId(v string) *CreateDocumentC
 }
 
 type CreateDocumentCollectionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// successs
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateDocumentCollectionResponseBody) String() string {
@@ -1586,19 +2052,43 @@ type CreateNamespaceRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword2
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1647,13 +2137,26 @@ func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
 
 type CreateNamespaceResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1713,6 +2216,10 @@ type CreateSampleDataRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -1737,15 +2244,32 @@ func (s *CreateSampleDataRequest) SetOwnerId(v int64) *CreateSampleDataRequest {
 
 type CreateSampleDataResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned if an error occurs. This message does not affect the execution of the operation.
+	//
+	// example:
+	//
+	// *********
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 15A6881F-AAAB-5E4D-9B3F-6DCC1BDF4F2E_99
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution state of the operation. Valid values:
 	//
-	// *   **false**: The operation fails.
-	// *   **true**: The operation is successful.
+	// 	- **false**: The operation fails.
+	//
+	// 	- **true**: The operation is successful.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1809,6 +2333,10 @@ func (s *CreateSampleDataResponse) SetBody(v *CreateSampleDataResponseBody) *Cre
 type CreateServiceLinkedRoleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1832,6 +2360,10 @@ func (s *CreateServiceLinkedRoleRequest) SetRegionId(v string) *CreateServiceLin
 
 type CreateServiceLinkedRoleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1878,19 +2410,44 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 }
 
 type CreateVectorIndexRequest struct {
-	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Dimension              *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	ExternalStorage        *int32  `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	HnswM                  *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 1024
+	Dimension       *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	HnswM           *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// example:
+	//
+	// testaccount
+	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// Distance Metrics。
-	Metrics   *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	//
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PqEnable  *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateVectorIndexRequest) String() string {
@@ -1962,9 +2519,18 @@ func (s *CreateVectorIndexRequest) SetRegionId(v string) *CreateVectorIndexReque
 }
 
 type CreateVectorIndexResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateVectorIndexResponseBody) String() string {
@@ -2021,19 +2587,39 @@ func (s *CreateVectorIndexResponse) SetBody(v *CreateVectorIndexResponseBody) *C
 
 type DeleteCollectionRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2077,13 +2663,26 @@ func (s *DeleteCollectionRequest) SetRegionId(v string) *DeleteCollectionRequest
 
 type DeleteCollectionResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2141,23 +2740,51 @@ func (s *DeleteCollectionResponse) SetBody(v *DeleteCollectionResponseBody) *Del
 
 type DeleteCollectionDataRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The data that you want to delete.
+	//
+	// example:
+	//
+	// {"title":["a","b"]}
 	CollectionData *string `json:"CollectionData,omitempty" xml:"CollectionData,omitempty"`
 	// The data filter to delete.
+	//
+	// example:
+	//
+	// a < 10
 	CollectionDataFilter *string `json:"CollectionDataFilter,omitempty" xml:"CollectionDataFilter,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2211,15 +2838,32 @@ func (s *DeleteCollectionDataRequest) SetRegionId(v string) *DeleteCollectionDat
 
 type DeleteCollectionDataResponseBody struct {
 	// The number of rows that are affected by the request.
+	//
+	// example:
+	//
+	// 10
 	AppliedRows *int64 `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2282,13 +2926,25 @@ func (s *DeleteCollectionDataResponse) SetBody(v *DeleteCollectionDataResponseBo
 
 type DeleteDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2322,6 +2978,10 @@ func (s *DeleteDBInstanceRequest) SetResourceGroupId(v string) *DeleteDBInstance
 
 type DeleteDBInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 65BDA532-28AF-4122-AA39-B3**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2371,11 +3031,19 @@ type DeleteDBInstancePlanRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the plan.
 	//
 	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 }
 
@@ -2404,18 +3072,38 @@ func (s *DeleteDBInstancePlanRequest) SetPlanId(v string) *DeleteDBInstancePlanR
 
 type DeleteDBInstancePlanResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned.
 	//
 	// This parameter is returned only when the operation fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the plan.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd988888888
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the operation.
 	//
-	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	// If the operation is successful, **success*	- is returned. If the operation fails, this parameter is not returned.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2482,13 +3170,31 @@ func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBo
 }
 
 type DeleteDocumentRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// music.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDocumentRequest) String() string {
@@ -2535,9 +3241,18 @@ func (s *DeleteDocumentRequest) SetRegionId(v string) *DeleteDocumentRequest {
 }
 
 type DeleteDocumentResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteDocumentResponseBody) String() string {
@@ -2593,12 +3308,27 @@ func (s *DeleteDocumentResponse) SetBody(v *DeleteDocumentResponseBody) *DeleteD
 }
 
 type DeleteDocumentCollectionRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDocumentCollectionRequest) String() string {
@@ -2640,9 +3370,18 @@ func (s *DeleteDocumentCollectionRequest) SetRegionId(v string) *DeleteDocumentC
 }
 
 type DeleteDocumentCollectionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteDocumentCollectionResponseBody) String() string {
@@ -2701,17 +3440,37 @@ type DeleteNamespaceRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2755,13 +3514,26 @@ func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
 
 type DeleteNamespaceResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2819,21 +3591,45 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 
 type DeleteVectorIndexRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2882,13 +3678,26 @@ func (s *DeleteVectorIndexRequest) SetRegionId(v string) *DeleteVectorIndexReque
 
 type DeleteVectorIndexResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2946,10 +3755,18 @@ func (s *DeleteVectorIndexResponse) SetBody(v *DeleteVectorIndexResponseBody) *D
 
 type DescribeAccountsRequest struct {
 	// The name of the database account.
+	//
+	// example:
+	//
+	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -2975,6 +3792,10 @@ type DescribeAccountsResponseBody struct {
 	// The name of the database account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2CAD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3015,16 +3836,34 @@ func (s *DescribeAccountsResponseBodyAccounts) SetDBInstanceAccount(v []*Describ
 
 type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	// The description of the account.
+	//
+	// example:
+	//
+	// testuser
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The state of the account.
 	//
-	// *   **0**: The account is being created.
-	// *   **1**: The account is in use.
-	// *   **3**: The account is being deleted.
+	// 	- **0**: The account is being created.
+	//
+	// 	- **1**: The account is in use.
+	//
+	// 	- **3**: The account is being deleted.
+	//
+	// example:
+	//
+	// 1
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -3086,15 +3925,42 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeActiveSQLRecordsRequest struct {
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	MaxDuration  *string `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
-	MinDuration  *string `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// testdb
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 2022-05-07T07:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// SELECT
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 600
+	MaxDuration *string `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
+	// example:
+	//
+	// 300
+	MinDuration *string `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
+	// example:
+	//
+	// {"Field":"StartTime","Type":"Desc"}
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 2021-08-03T09:30Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// testuser
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeActiveSQLRecordsRequest) String() string {
@@ -3151,9 +4017,15 @@ func (s *DescribeActiveSQLRecordsRequest) SetUser(v string) *DescribeActiveSQLRe
 }
 
 type DescribeActiveSQLRecordsResponseBody struct {
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Queries      []*DescribeActiveSQLRecordsResponseBodyQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeActiveSQLRecordsResponseBody) String() string {
@@ -3180,17 +4052,44 @@ func (s *DescribeActiveSQLRecordsResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeActiveSQLRecordsResponseBodyQueries struct {
-	ClientAddr            *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	Database              *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	PID                   *string `json:"PID,omitempty" xml:"PID,omitempty"`
-	Query                 *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	QueryDuration         *string `json:"QueryDuration,omitempty" xml:"QueryDuration,omitempty"`
-	QueryStart            *string `json:"QueryStart,omitempty" xml:"QueryStart,omitempty"`
-	SessionID             *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
-	SqlTruncated          *string `json:"SqlTruncated,omitempty" xml:"SqlTruncated,omitempty"`
+	// example:
+	//
+	// 0.0.0.0
+	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
+	// example:
+	//
+	// xg_analyse
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 6164
+	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	// example:
+	//
+	// Select 	- from t1,t2 where t1.id=t2.id;
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// 60s
+	QueryDuration *string `json:"QueryDuration,omitempty" xml:"QueryDuration,omitempty"`
+	// example:
+	//
+	// 2022-05-07T06:59Z
+	QueryStart *string `json:"QueryStart,omitempty" xml:"QueryStart,omitempty"`
+	SessionID  *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	// example:
+	//
+	// false
+	SqlTruncated *string `json:"SqlTruncated,omitempty" xml:"SqlTruncated,omitempty"`
+	// example:
+	//
+	// 1024
 	SqlTruncatedThreshold *string `json:"SqlTruncatedThreshold,omitempty" xml:"SqlTruncatedThreshold,omitempty"`
 	State                 *string `json:"State,omitempty" xml:"State,omitempty"`
-	User                  *string `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// testuser
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeActiveSQLRecordsResponseBodyQueries) String() string {
@@ -3288,16 +4187,29 @@ func (s *DescribeActiveSQLRecordsResponse) SetBody(v *DescribeActiveSQLRecordsRe
 type DescribeAvailableResourcesRequest struct {
 	// The billing method. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The region ID.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The zone ID.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3326,8 +4238,16 @@ func (s *DescribeAvailableResourcesRequest) SetZoneId(v string) *DescribeAvailab
 
 type DescribeAvailableResourcesResponseBody struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 61DC563C-F8E4-593A-8D27-CE**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The zone ID.
 	Resources []*DescribeAvailableResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -3360,6 +4280,10 @@ type DescribeAvailableResourcesResponseBodyResources struct {
 	// The available engine version and specifications.
 	SupportedEngines []*DescribeAvailableResourcesResponseBodyResourcesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3384,10 +4308,19 @@ func (s *DescribeAvailableResourcesResponseBodyResources) SetZoneId(v string) *D
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEngines struct {
 	// The instance resource type. Valid values:
 	//
-	// *   **ecs**: elastic storage mode
-	// *   **serverless**: Serverless mode
+	// 	- **ecs**: elastic storage mode
+	//
+	// 	- **serverless**: Serverless mode
+	//
+	// example:
+	//
+	// ecs
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The available engine version.
+	//
+	// example:
+	//
+	// 6.0
 	SupportedEngineVersion *string `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty"`
 	// The available specifications.
 	SupportedInstanceClasses []*DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses `json:"SupportedInstanceClasses,omitempty" xml:"SupportedInstanceClasses,omitempty" type:"Repeated"`
@@ -3419,14 +4352,27 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) SetSup
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses struct {
 	// The instance edition. Valid values:
 	//
-	// *   **HighAvailability**: High-availability Edition
-	// *   **Basic**: Basic Edition
+	// 	- **HighAvailability**: High-availability Edition
+	//
+	// 	- **Basic**: Basic Edition
+	//
+	// example:
+	//
+	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of compute node specifications.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The specifications of each compute node.
+	//
+	// example:
+	//
+	// 2C16G
 	DisplayClass *string `json:"DisplayClass,omitempty" xml:"DisplayClass,omitempty"`
 	// The specifications of each compute node.
+	//
+	// example:
+	//
+	// 2C16G
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// Details about the compute nodes.
 	NodeCount *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
@@ -3434,9 +4380,15 @@ type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIns
 	StorageSize *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize `json:"StorageSize,omitempty" xml:"StorageSize,omitempty" type:"Struct"`
 	// The storage type. Valid values:
 	//
-	// *   **cloud_essd**: enhanced SSD (ESSD)
-	// *   **cloud_efficiency**: ultra disk
-	// *   **oss**: Object Storage Service (OSS)
+	// 	- **cloud_essd**: enhanced SSD (ESSD)
+	//
+	// 	- **cloud_efficiency**: ultra disk
+	//
+	// 	- **oss**: Object Storage Service (OSS)
+	//
+	// example:
+	//
+	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
@@ -3485,12 +4437,24 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount struct {
 	// The maximum number of compute nodes.
+	//
+	// example:
+	//
+	// 256
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 	// The minimum number of compute nodes.
+	//
+	// example:
+	//
+	// 4
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
 	// The step size for adding compute nodes.
 	//
 	// For example, if the value of this parameter is 4, compute nodes must be added by multiples of 4.
+	//
+	// example:
+	//
+	// 4
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 
@@ -3519,10 +4483,22 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize struct {
 	// The maximum storage capacity of each compute node.
+	//
+	// example:
+	//
+	// 1000
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
 	// The minimum storage capacity of each compute node.
+	//
+	// example:
+	//
+	// 50
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
 	// The step size for adding storage capacity for compute nodes.
+	//
+	// example:
+	//
+	// 50
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 
@@ -3582,6 +4558,10 @@ type DescribeBackupPolicyRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -3600,32 +4580,66 @@ func (s *DescribeBackupPolicyRequest) SetDBInstanceId(v string) *DescribeBackupP
 
 type DescribeBackupPolicyResponseBody struct {
 	// The number of days for which data backup files are retained.
+	//
+	// example:
+	//
+	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Indicates whether automatic point-in-time backup is enabled. Valid values:
 	//
-	// *   **true**: Automatic point-in-time backup is enabled.
-	// *   **false**: Automatic point-in-time backup is disabled.
+	// 	- **true**: Automatic point-in-time backup is enabled.
+	//
+	// 	- **false**: Automatic point-in-time backup is disabled.
+	//
+	// example:
+	//
+	// true
 	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
 	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
+	//
+	// example:
+	//
+	// Wednesday,Friday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The backup time. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 12:00Z-13:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	// The frequency of the point-in-time backup. Valid values:
 	//
-	// *   **1**: per hour
-	// *   **2**: per 2 hours
-	// *   **4**: per 4 hours
-	// *   **8**: per 8 hours
+	// 	- **1**: per hour
+	//
+	// 	- **2**: per 2 hours
+	//
+	// 	- **4**: per 4 hours
+	//
+	// 	- **8**: per 8 hours
+	//
+	// example:
+	//
+	// 1
 	RecoveryPointPeriod *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9E6B3287-A3E2-5A87-B8D8-E9**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3698,19 +4712,39 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 
 type DescribeCollectionRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3754,33 +4788,74 @@ func (s *DescribeCollectionRequest) SetRegionId(v string) *DescribeCollectionReq
 
 type DescribeCollectionResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The number of vector dimensions.
+	//
+	// example:
+	//
+	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The fields that are used for full-text search. Multiple fields are separated by commas (,).
+	//
+	// example:
+	//
+	// title,content
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The metadata of vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
 	//
 	// **
 	//
-	// **Warning** Reserved fields such as id, vector, and to_tsvector cannot be used.
+	// **Warning*	- Reserved fields such as id, vector, and to_tsvector cannot be used.
 	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The distance metrics.
+	//
+	// example:
+	//
+	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The analyzer that is used for full-text search.
+	//
+	// example:
+	//
+	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3880,13 +4955,22 @@ type DescribeDBClusterNodeRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The node type. Valid values:
 	//
-	// *   **master**: coordinator node.
-	// *   **segment**: compute node.
+	// 	- **master**: coordinator node.
+	//
+	// 	- **segment**: compute node.
 	//
 	// > If you do not specify this parameter, the information about all nodes is returned.
+	//
+	// example:
+	//
+	// master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -3910,10 +4994,18 @@ func (s *DescribeDBClusterNodeRequest) SetNodeType(v string) *DescribeDBClusterN
 
 type DescribeDBClusterNodeResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the node.
 	Nodes []*DescribeDBClusterNodeResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 87E44B48-B306-4AD3-A63B-C8**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3942,6 +5034,10 @@ func (s *DescribeDBClusterNodeResponseBody) SetRequestId(v string) *DescribeDBCl
 
 type DescribeDBClusterNodeResponseBodyNodes struct {
 	// The name of the node.
+	//
+	// example:
+	//
+	// master-10*******
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3991,33 +5087,61 @@ type DescribeDBClusterPerformanceRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	//
+	// example:
+	//
+	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	//
+	// example:
+	//
+	// adbpg_conn_count
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The node type. Valid values:
 	//
-	// *   **master**: coordinator node.
-	// *   **segment**: compute node.
+	// 	- **master**: coordinator node.
+	//
+	// 	- **segment**: compute node.
 	//
 	// > If you do not specify this parameter, the performance metrics of all nodes are returned.
+	//
+	// example:
+	//
+	// master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](~~390136~~) operation to query the names of nodes.
 	//
 	// You can also filter the nodes based on their metric values. Valid values:
 	//
-	// *   **top10**: the 10 nodes that have the highest metric values.
-	// *   **top20**: the 20 nodes that have the highest metric values.
-	// *   **bottom10**: the 10 nodes that have the lowest metric values.
-	// *   **bottom20**: the 20 nodes that have the lowest metric values.
+	// 	- **top10**: the 10 nodes that have the highest metric values.
+	//
+	// 	- **top20**: the 20 nodes that have the highest metric values.
+	//
+	// 	- **bottom10**: the 10 nodes that have the lowest metric values.
+	//
+	// 	- **bottom20**: the 20 nodes that have the lowest metric values.
+	//
+	// example:
+	//
+	// top10
 	Nodes             *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// > You can query monitoring information only within the last 30 days.
+	//
+	// example:
+	//
+	// 2021-11-03T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4066,14 +5190,30 @@ func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDB
 
 type DescribeDBClusterPerformanceResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
 	PerformanceKeys []*DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8E8990F0-C81E-4C94-8F51-5F**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-11-03T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4112,10 +5252,18 @@ func (s *DescribeDBClusterPerformanceResponseBody) SetStartTime(v string) *Descr
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeys struct {
 	// The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+	//
+	// example:
+	//
+	// adbpg_group_cpu_used_percent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Details of the performance metric of a node.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 	// The unit of the performance metric.
+	//
+	// example:
+	//
+	// %
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
@@ -4144,12 +5292,22 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries struct {
 	// The name of the compute node or compute group.
+	//
+	// example:
+	//
+	// standby-********-cpu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// *   **master**: primary coordinator node
-	// *   **standby**: standby coordinator node
-	// *   **segment**: compute node
+	// 	- **master**: primary coordinator node
+	//
+	// 	- **standby**: standby coordinator node
+	//
+	// 	- **segment**: compute node
+	//
+	// example:
+	//
+	// standby
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The value of the performance metric collected at a point in time.
 	Values []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -4229,9 +5387,17 @@ type DescribeDBInstanceAttributeRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-bp13ue79qk8y1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4262,6 +5428,10 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// The queried instance.
 	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5E6EDEB8-D73E-5F2D-B948-86C8AEB05A68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4304,220 +5474,485 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// The service availability of the instance. Unit: %.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 100.0%
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	// The access mode of the instance. Valid values:
 	//
-	// *   **Performance**: standard mode.
-	// *   **Safety**: safe mode.
-	// *   **LVS**: Linux Virtual Server (LVS) mode.
+	// 	- **Performance**: standard mode.
+	//
+	// 	- **Safety**: safe mode.
+	//
+	// 	- **LVS**: Linux Virtual Server (LVS) mode.
+	//
+	// example:
+	//
+	// LVS
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	// The endpoint that is used to connect to the instance.
+	//
+	// example:
+	//
+	// gp-bp13ue79qk8y1****-master.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The number of the minor version.
+	//
+	// example:
+	//
+	// mm.v6.3.10.1-202207141918
 	CoreVersion *string `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
 	// The number of CPU cores per compute node.
+	//
+	// example:
+	//
+	// 2
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The number of CPU cores per node.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	CpuCoresPerNode *int32 `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
 	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2022-08-11T09:16:26Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The edition of the instance. Valid values:
 	//
-	// *   **Basic**: Basic Edition.
-	// *   **HighAvailability**: High-availability Edition.
+	// 	- **Basic**: Basic Edition.
+	//
+	// 	- **HighAvailability**: High-availability Edition.
+	//
+	// example:
+	//
+	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	// The instance type of the instance.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// gpdb.group.segsdx1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The instance family of the instance. Valid values:
 	//
-	// *   **s**: shared.
-	// *   **x**: general-purpose.
-	// *   **d**: dedicated.
-	// *   **h**: dedicated host.
+	// 	- **s**: shared.
+	//
+	// 	- **x**: general-purpose.
+	//
+	// 	- **d**: dedicated.
+	//
+	// 	- **h**: dedicated host.
+	//
+	// example:
+	//
+	// x
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
 	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 2
 	DBInstanceCpuCores *int32 `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp13ue79qk8y1****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The maximum disk throughput of the compute group. Unit: Mbit/s.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	DBInstanceDiskMBPS *int64 `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
 	// The number of compute groups.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp13ue79qk8y1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The memory capacity per compute node.
 	//
 	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
+	//
+	// example:
+	//
+	// 16
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **Serverless**: Serverless mode.
-	// *   **StorageElastic**: elastic storage mode.
-	// *   **Classic**: reserved storage mode.
+	// 	- **Serverless**: Serverless mode.
+	//
+	// 	- **StorageElastic**: elastic storage mode.
+	//
+	// 	- **Classic**: reserved storage mode.
+	//
+	// example:
+	//
+	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// 2
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The state of the instance. For more information, see the "Additional description of DBInstanceStatus" section of this topic.
+	//
+	// example:
+	//
+	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The maximum storage capacity per node. Unit: GB.
+	//
+	// example:
+	//
+	// 50
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The encryption key.
 	//
 	// >  This parameter is returned only for instances that have disk encryption enabled.
+	//
+	// example:
+	//
+	// 0d2470df-da7b-4786-b981-************
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The encryption type. Valid values:
 	//
-	// *   **CloudDisk**: disk encryption.
+	// 	- **CloudDisk**: disk encryption.
 	//
 	// >  This parameter is returned only for instances that have disk encryption enabled.
+	//
+	// example:
+	//
+	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The database engine of the instance.
+	//
+	// example:
+	//
+	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time of the instance. The time is displayed in UTC.
 	//
 	// >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+	//
+	// example:
+	//
+	// 2999-09-08T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The disk type of the compute group. Valid values:
 	//
-	// *   **0**: SSD.
-	// *   **1**: HDD.
+	// 	- **0**: SSD.
+	//
+	// 	- **1**: HDD.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
 	// The wait period for the instance that has no traffic to become idle. Unit: seconds.
 	//
 	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
+	//
+	// example:
+	//
+	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**: classic network.
-	// *   **VPC**: VPC.
+	// 	- **Classic**: classic network.
+	//
+	// 	- **VPC**: VPC.
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// *   **Unlock**: The instance is not locked.
-	// *   **ManualLock**: The instance is manually locked.
-	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	// *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
-	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+	// 	- **Unlock**: The instance is not locked.
+	//
+	// 	- **ManualLock**: The instance is manually locked.
+	//
+	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	//
+	// 	- **LockByRestoration**: The instance is automatically locked due to instance restoration.
+	//
+	// 	- **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The end time of the maintenance window of the instance.
+	//
+	// example:
+	//
+	// 22:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
 	// The start time of the maintenance window of the instance.
+	//
+	// example:
+	//
+	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// The amount of coordinator node resources.
+	//
+	// example:
+	//
+	// 4
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
 	// The number of coordinator nodes.
+	//
+	// example:
+	//
+	// 1
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	// The maximum number of concurrent connections to the instance.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 500
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The memory capacity per node. The unit of this parameter can be one of the valid values of **MemoryUnit**.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	MemoryPerNode *int32 `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
 	// The memory capacity per compute node.
 	//
 	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
+	//
+	// example:
+	//
+	// 16
 	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// The unit of the memory capacity.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// GB
 	MemoryUnit *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
 	// The minor version of the instance.
+	//
+	// example:
+	//
+	// 6.3.10.1-202207141918
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port number that is used to connect to the instance.
+	//
+	// example:
+	//
+	// 5432
 	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The running duration of the instance.
+	//
+	// example:
+	//
+	// 4 days 22:58:55
 	RunningTime *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The performance level of ESSDs. Only **PL1** is supported.
+	// The performance level of ESSDs. Only **PL1*	- is supported.
+	//
+	// example:
+	//
+	// PL1
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
 	// The number of compute nodes.
 	//
 	// >  This parameter is returned only for instances in elastic storage mode or Serverless manual scheduling mode.
+	//
+	// example:
+	//
+	// 4
 	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The number of compute groups.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	SegmentCounts *int32 `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
 	// The type of the Serverless mode. Valid values:
 	//
-	// *   **Manual**: manual scheduling.
-	// *   **Auto**: automatic scheduling.
+	// 	- **Manual**: manual scheduling.
+	//
+	// 	- **Auto**: automatic scheduling.
 	//
 	// >  This parameter is returned only for instances in Serverless mode.
+	//
+	// example:
+	//
+	// Auto
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	// The threshold of computing resources. Unit: AnalyticDB compute units (ACUs).
 	//
 	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
+	//
+	// example:
+	//
+	// 32
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	// The time when the instance started to run.
+	//
+	// example:
+	//
+	// 2022-08-11T09:26:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The storage capacity per node. The unit of this parameter can be one of the valid values of **StorageUnit**.
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// 0
 	StoragePerNode *int32 `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
 	// The storage capacity of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 50
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_essd**: enhanced SSD (ESSD).
-	// *   **cloud_efficiency**: ultra disk.
+	// 	- **cloud_essd**: enhanced SSD (ESSD).
+	//
+	// 	- **cloud_efficiency**: ultra disk.
 	//
 	// >  This parameter is returned only for instances in elastic storage mode.
+	//
+	// example:
+	//
+	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The unit of the storage capacity. Valid values:
 	//
-	// *   **GB SSD**
-	// *   **TB SSD**
-	// *   **GB HDD**
+	// 	- **GB SSD**
+	//
+	// 	- **TB SSD**
+	//
+	// 	- **GB HDD**
 	//
 	// >  This parameter is returned only for instances in reserved storage mode.
+	//
+	// example:
+	//
+	// GB SSD
 	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
 	// Indicates whether the instance supports backup and restoration. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	SupportRestore *bool `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
 	// The tags of the instance. Each tag is a key-value pair.
 	Tags *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID of the instance.
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Indicates whether vector search engine optimization is enabled. Valid values:
 	//
-	// *   **enabled**
-	// *   **disabled**
+	// 	- **enabled**
+	//
+	// 	- **disabled**
+	//
+	// example:
+	//
+	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
 	// The virtual private cloud (VPC) ID of the instance.
+	//
+	// example:
+	//
+	// vpc-bp19ame5m1r3oejns****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4863,8 +6298,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Se
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4919,16 +6362,30 @@ type DescribeDBInstanceDataBloatRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -4959,10 +6416,22 @@ type DescribeDBInstanceDataBloatResponseBody struct {
 	// Details of data bloat.
 	Items []*DescribeDBInstanceDataBloatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4998,34 +6467,84 @@ type DescribeDBInstanceDataBloatResponseBodyItems struct {
 	// The coefficient of data bloat. It is calculated by using the following formula:
 	//
 	// Bloat coefficient = Number of dead rows/Number of active rows.
+	//
+	// example:
+	//
+	// 1.03
 	BloatCeoff *string `json:"BloatCeoff,omitempty" xml:"BloatCeoff,omitempty"`
 	// The bloat size of the table. It indicates the amount of space that can be released.
+	//
+	// example:
+	//
+	// 0.2MB
 	BloatSize *string `json:"BloatSize,omitempty" xml:"BloatSize,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The expected size of the table.
 	//
 	// It indicates the size of the table that has no data bloat.
+	//
+	// example:
+	//
+	// 1MB
 	ExpectTableSize *string `json:"ExpectTableSize,omitempty" xml:"ExpectTableSize,omitempty"`
 	// The actual size of the table.
+	//
+	// example:
+	//
+	// 1.2MB
 	RealTableSize *string `json:"RealTableSize,omitempty" xml:"RealTableSize,omitempty"`
 	// The name of the schema.
+	//
+	// example:
+	//
+	// schema1
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The sequence number.
+	//
+	// example:
+	//
+	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// The storage type of the table. Valid values:
 	//
-	// *   **Heap Table**
-	// *   **Append-Only Heap Table**
-	// *   **Append-Only Columnar Table**
+	// 	- **Heap Table**
+	//
+	// 	- **Append-Only Heap Table**
+	//
+	// 	- **Append-Only Columnar Table**
+	//
+	// example:
+	//
+	// Heap Table
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// This parameter is not returned.
+	//
+	// example:
+	//
+	// null
 	SuggestedAction *string `json:"SuggestedAction,omitempty" xml:"SuggestedAction,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// tab1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The time when the table was last deleted, inserted, or updated.
+	//
+	// example:
+	//
+	// 2022-08-08T20:00:00Z
 	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
 	// The time when the table was last vacuumed. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-08-08T16:00:00Z
 	TimeLastVacuumed *string `json:"TimeLastVacuumed,omitempty" xml:"TimeLastVacuumed,omitempty"`
 }
 
@@ -5130,16 +6649,30 @@ type DescribeDBInstanceDataSkewRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **20**
-	// *   **50**
-	// *   **100**
+	// 	- **20**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5170,10 +6703,22 @@ type DescribeDBInstanceDataSkewResponseBody struct {
 	// Details about data skew.
 	Items []*DescribeDBInstanceDataSkewResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5207,22 +6752,58 @@ func (s *DescribeDBInstanceDataSkewResponseBody) SetTotalCount(v int32) *Describ
 
 type DescribeDBInstanceDataSkewResponseBodyItems struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The distribution key of the table.
+	//
+	// example:
+	//
+	// ItemId
 	DistributeKey *string `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
 	// The owner of the table.
+	//
+	// example:
+	//
+	// adbpguser
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The name of the schema.
+	//
+	// example:
+	//
+	// schema1
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The sequence number of the data skew case. All data skew cases are sorted by severity in descending order.
+	//
+	// example:
+	//
+	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// tab1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The total number of rows in the table.
+	//
+	// example:
+	//
+	// 100000
 	TableSize *string `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
 	// The skew ratio of the table. Valid values: 0 to 100. Unit: %. A greater value indicates that the table is more severely skewed. A smaller value indicates less impact on query performance. A value of 0 indicates no data skew.
+	//
+	// example:
+	//
+	// 10.23
 	TableSkew *string `json:"TableSkew,omitempty" xml:"TableSkew,omitempty"`
 	// The time when the table was last deleted, inserted, or updated.
+	//
+	// example:
+	//
+	// 2020-09-08T20:00:00Z
 	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
 }
 
@@ -5312,35 +6893,64 @@ type DescribeDBInstanceDiagnosisSummaryRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **20**
-	// *   **50**
-	// *   **100**
+	// 	- **20**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role state of the node. It specifies whether a primary/secondary switchover occurs. Valid values:
 	//
-	// *   **normal**: The node role is normal. No primary/secondary switchover occurs.
-	// *   **reverse**: The node role is reversed. A primary/secondary switchover occurs.
+	// 	- **normal**: The node role is normal. No primary/secondary switchover occurs.
+	//
+	// 	- **reverse**: The node role is reversed. A primary/secondary switchover occurs.
+	//
+	// example:
+	//
+	// normal
 	RolePreferd *string `json:"RolePreferd,omitempty" xml:"RolePreferd,omitempty"`
 	// The running state of the node. Valid values:
 	//
-	// *   **UP**: The node is running.
-	// *   **DOWN**: The node is faulty.
+	// 	- **UP**: The node is running.
+	//
+	// 	- **DOWN**: The node is faulty.
 	//
 	// If you do not specify this parameter, the information about nodes in all running states is returned.
+	//
+	// example:
+	//
+	// UP
 	StartStatus *string `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
 	// The data synchronization state of the node. Valid values:
 	//
-	// *   **synced**: The node data is synchronized.
-	// *   **notSyncing**: The node data is not synchronized.
+	// 	- **synced**: The node data is synchronized.
+	//
+	// 	- **notSyncing**: The node data is not synchronized.
 	//
 	// If you do not specify this parameter, the information about nodes in all synchronization states is returned.
+	//
+	// example:
+	//
+	// synced
 	SyncMode *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
 }
 
@@ -5388,12 +6998,24 @@ type DescribeDBInstanceDiagnosisSummaryResponseBody struct {
 	// The state information about the coordinator node.
 	MasterStatusInfo *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo `json:"MasterStatusInfo,omitempty" xml:"MasterStatusInfo,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 070534EC-78D5-5519-83CC-E7B1A9213483
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state information about compute nodes.
 	SegmentStatusInfo *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo `json:"SegmentStatusInfo,omitempty" xml:"SegmentStatusInfo,omitempty" type:"Struct"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 6
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5437,45 +7059,96 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetTotalCount(v string)
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
 	// The name of the node.
+	//
+	// example:
+	//
+	// gp-t4np568qe9710****-master-100984919
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The IP address of the node.
+	//
+	// example:
+	//
+	// 192.168.XX.XX
 	NodeAddress *string `json:"NodeAddress,omitempty" xml:"NodeAddress,omitempty"`
 	// The node group ID.
+	//
+	// example:
+	//
+	// -1
 	NodeCID *string `json:"NodeCID,omitempty" xml:"NodeCID,omitempty"`
 	// The node ID.
+	//
+	// example:
+	//
+	// 1
 	NodeID *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
 	// The name of the host where the node resides.
+	//
+	// example:
+	//
+	// ap-southeast-1.i-t4n4c4ryr0yr441d****
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The port number of the node.
+	//
+	// example:
+	//
+	// 3000
 	NodePort *string `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
 	// The initial role of the node. Valid values:
 	//
-	// *   **primary**: primary node.
-	// *   **mirror**: secondary node.
+	// 	- **primary**: primary node.
+	//
+	// 	- **mirror**: secondary node.
 	//
 	// If the value of this parameter is the same as that of **NodeRole**, no primary/secondary switchover occurs. If the value of this parameter is different from that of **NodeRole**, a primary/secondary switchover occurs.
+	//
+	// example:
+	//
+	// primary
 	NodePreferredRole *string `json:"NodePreferredRole,omitempty" xml:"NodePreferredRole,omitempty"`
 	// The data synchronization state of the node. Valid values:
 	//
-	// *   **Synced**: The node data is synchronized.
-	// *   **Not Syncing**: The node data is not synchronized.
-	// *   **No sync required**: Data synchronization is not required. This value may be returned only for the coordinator node.
+	// 	- **Synced**: The node data is synchronized.
+	//
+	// 	- **Not Syncing**: The node data is not synchronized.
+	//
+	// 	- **No sync required**: Data synchronization is not required. This value may be returned only for the coordinator node.
+	//
+	// example:
+	//
+	// Synced
 	NodeReplicationMode *string `json:"NodeReplicationMode,omitempty" xml:"NodeReplicationMode,omitempty"`
 	// The current role of the node. Valid values:
 	//
-	// *   **primary**: primary node.
-	// *   **mirror**: secondary node.
+	// 	- **primary**: primary node.
+	//
+	// 	- **mirror**: secondary node.
+	//
+	// example:
+	//
+	// primary
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
 	// The running state of the node. Valid values:
 	//
-	// *   **UP**: The node is running.
-	// *   **DOWN**: The node is faulty.
+	// 	- **UP**: The node is running.
+	//
+	// 	- **DOWN**: The node is faulty.
+	//
+	// example:
+	//
+	// UP
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
 	// The type of the node. Valid values:
 	//
-	// *   **master**: primary coordinator node.
-	// *   **slave**: standby coordinator node.
-	// *   **segment**: compute node.
+	// 	- **master**: primary coordinator node.
+	//
+	// 	- **slave**: standby coordinator node.
+	//
+	// 	- **segment**: compute node.
+	//
+	// example:
+	//
+	// master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -5544,16 +7217,40 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeType(v stri
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo struct {
 	// The number of abnormal nodes.
+	//
+	// example:
+	//
+	// 0
 	ExceptionNodeNum *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
 	// The number of normal nodes.
+	//
+	// example:
+	//
+	// 2
 	NormalNodeNum *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
 	// The number of nodes whose roles are reversed.
+	//
+	// example:
+	//
+	// 0
 	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
 	// The number of unsynchronized nodes.
+	//
+	// example:
+	//
+	// 0
 	NotSyncingNodeNum *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
 	// The number of nodes whose roles are normal.
+	//
+	// example:
+	//
+	// 2
 	PreferredNodeNum *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
 	// The number of synchronized nodes.
+	//
+	// example:
+	//
+	// 1
 	SyncedNodeNum *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
 }
 
@@ -5597,16 +7294,40 @@ func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetSync
 
 type DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo struct {
 	// The number of abnormal nodes.
+	//
+	// example:
+	//
+	// 0
 	ExceptionNodeNum *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
 	// The number of normal nodes.
+	//
+	// example:
+	//
+	// 4
 	NormalNodeNum *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
 	// The number of nodes whose roles are reversed.
+	//
+	// example:
+	//
+	// 0
 	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
 	// The number of unsynchronized nodes.
+	//
+	// example:
+	//
+	// 4
 	NotSyncingNodeNum *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
 	// The number of nodes whose roles are normal.
+	//
+	// example:
+	//
+	// 4
 	PreferredNodeNum *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
 	// The number of synchronized nodes.
+	//
+	// example:
+	//
+	// 0
 	SyncedNodeNum *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
 }
 
@@ -5681,35 +7402,80 @@ type DescribeDBInstanceErrorLogRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2022-04-25T06:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is not supported in Alibaba Cloud public cloud.
+	//
+	// example:
+	//
+	// null
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// One or more keywords that are used to query error logs.
+	//
+	// example:
+	//
+	// error
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The level of the logs to query. Valid values:
 	//
-	// *   **ALL**: queries all error logs.
-	// *   **PANIC**: queries only abnormal logs.
-	// *   **FATAL**: queries only critical logs.
-	// *   **ERROR**: queries only error logs.
+	// 	- **ALL**: queries all error logs.
+	//
+	// 	- **PANIC**: queries only abnormal logs.
+	//
+	// 	- **FATAL**: queries only critical logs.
+	//
+	// 	- **ERROR**: queries only error logs.
+	//
+	// example:
+	//
+	// ALL
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **20**
-	// *   **50**
-	// *   **100**
+	// 	- **20**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The username.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -5775,10 +7541,22 @@ type DescribeDBInstanceErrorLogResponseBody struct {
 	// The content of the error log.
 	Items []*DescribeDBInstanceErrorLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5812,16 +7590,40 @@ func (s *DescribeDBInstanceErrorLogResponseBody) SetTotalCount(v int32) *Describ
 
 type DescribeDBInstanceErrorLogResponseBodyItems struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// This parameter is not supported.
+	//
+	// example:
+	//
+	// null
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The content of the error log.
+	//
+	// example:
+	//
+	// unsupported frontend protocol 2689.28208: server supports 1.0 to 3.0
 	LogContext *string `json:"LogContext,omitempty" xml:"LogContext,omitempty"`
 	// The level of the queried log.
+	//
+	// example:
+	//
+	// FATAL
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 	// The time when the log was generated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-24 11:28:14
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -5896,12 +7698,24 @@ type DescribeDBInstanceIPArrayListRequest struct {
 	// The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
 	//
 	// >  Each instance supports up to 50 IP address whitelists.
+	//
+	// example:
+	//
+	// Default
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -5932,6 +7746,10 @@ type DescribeDBInstanceIPArrayListResponseBody struct {
 	// The queried IP address whitelists.
 	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CB7AA0BF-BE41-480E-A3DC-C97BF85A391B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5972,14 +7790,28 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v 
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
 	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute is not displayed in the console.
+	//
+	// example:
+	//
+	// hidden
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 	// The name of the IP address whitelist.
+	//
+	// example:
+	//
+	// default
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The IP addresses listed in the whitelist. Up to 1,000 IP addresses are contained in a whitelist and separated by commas (,). The IP addresses must use one of the following formats:
 	//
-	// *   0.0.0.0/0
-	// *   10.23.12.24. This is a standard IP address.
-	// *   10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	// 	- 0.0.0.0/0
+	//
+	// 	- 10.23.12.24. This is a standard IP address.
+	//
+	// 	- 10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -6039,16 +7871,30 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -6079,10 +7925,22 @@ type DescribeDBInstanceIndexUsageResponseBody struct {
 	// The time when the table was last deleted, inserted, or updated.
 	Items []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6116,27 +7974,68 @@ func (s *DescribeDBInstanceIndexUsageResponseBody) SetTotalCount(v int32) *Descr
 
 type DescribeDBInstanceIndexUsageResponseBodyItems struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The definition of the index.
+	//
+	// example:
+	//
+	// CREATE INDEX idx1 ON schema1.tab1_ptr_2010
 	IndexDef *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
 	// The name of the index.
+	//
+	// example:
+	//
+	// idx1
 	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
 	// The number of index scans.
+	//
+	// example:
+	//
+	// 50000
 	IndexScanTimes *int32 `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
 	// The size of the index. Unit: bytes.
+	//
+	// example:
+	//
+	// 10000
 	IndexSize *string `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
 	// Indicates whether the table is a partitioned table. Valid values:
 	//
-	// *   **true**: The table is a partitioned table.
-	// *   **false**: The table is not a partitioned table.
+	// 	- **true**: The table is a partitioned table.
+	//
+	// 	- **false**: The table is not a partitioned table.
+	//
+	// example:
+	//
+	// true
 	IsPartitionTable *bool `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
 	// The name of the parent table.
+	//
+	// example:
+	//
+	// tab1
 	ParentTableName *string `json:"ParentTableName,omitempty" xml:"ParentTableName,omitempty"`
 	// The name of the schema.
+	//
+	// example:
+	//
+	// schema1
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// tab1_ptr_2010
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The time when the table was last deleted, inserted, or updated.
+	//
+	// example:
+	//
+	// 2022-08-08T20:00:00Z
 	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
 }
 
@@ -6231,10 +8130,18 @@ type DescribeDBInstanceNetInfoRequest struct {
 	// The endpoint that is used to connect to the instance.
 	//
 	// >  If you do not specify this parameter, the information about all endpoints of the instance is returned.
+	//
+	// example:
+	//
+	// gp-0xin9q82c33xc****-master.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -6261,10 +8168,19 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
-	// *   Classic: classic network.
-	// *   VPC: VPC.
+	// 	- Classic: classic network.
+	//
+	// 	- VPC: VPC.
+	//
+	// example:
+	//
+	// Classic
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2CAD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6310,23 +8226,56 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) SetDBInstanceN
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo struct {
 	// The type of the endpoint.
+	//
+	// example:
+	//
+	// Intranet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The endpoint that is used to connect to the instance.
+	//
+	// example:
+	//
+	// gp-xxxxxxx.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The IP address.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The type of the IP address.
 	//
-	// *   Valid values for instances in the classic network: Inner and Public.
-	// *   Valid values for instances in a virtual private cloud (VPC): Private and Public.
+	// 	- Valid values for instances in the classic network: Inner and Public.
+	//
+	// 	- Valid values for instances in a virtual private cloud (VPC): Private and Public.
+	//
+	// example:
+	//
+	// Inner
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
 	// The port number.
+	//
+	// example:
+	//
+	// 3432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The VPC ID of the instance.
+	//
+	// example:
+	//
+	// vpc-xxxxxxx
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID. Multiple IDs are separated by commas (,).
+	//
+	// example:
+	//
+	// vsw-xxxxxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the instance that is deployed in a VPC.
+	//
+	// example:
+	//
+	// vpc-xxxxxxx
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -6411,14 +8360,34 @@ type DescribeDBInstancePerformanceRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2022-07-09T03:47Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	//
+	// example:
+	//
+	// CpuUsage,MemoryUsage,Gpdb_SpaceUsage,Gpdb_IOPS,Gpdb_session
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-07-08T03:47Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6457,16 +8426,36 @@ func (s *DescribeDBInstancePerformanceRequest) SetStartTime(v string) *DescribeD
 
 type DescribeDBInstancePerformanceResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the query.
+	//
+	// example:
+	//
+	// 2022-07-09T03:47Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The database engine of the instance.
+	//
+	// example:
+	//
+	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The queried performance metrics.
 	PerformanceKeys []*string `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5E85244A-AB47-46A3-A3AD-5F307DCB407E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
+	//
+	// example:
+	//
+	// 2022-07-08T03:47Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6541,25 +8530,51 @@ type DescribeDBInstancePlansRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The time used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format, the plans created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
+	//
+	// example:
+	//
+	// 2022-04-17T23:00Z
 	PlanCreateDate *string `json:"PlanCreateDate,omitempty" xml:"PlanCreateDate,omitempty"`
 	// The description of the plan.
+	//
+	// example:
+	//
+	// this is a test plan
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The plan ID.
 	//
 	// > You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the information about plans, including plan IDs.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The execution mode of the plan. Valid values:
 	//
-	// *   **Postpone**: The plan is executed later.
-	// *   **Regular**: The plan is executed periodically.
+	// 	- **Postpone**: The plan is executed later.
+	//
+	// 	- **Regular**: The plan is executed periodically.
+	//
+	// example:
+	//
+	// Regular
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
 	// The type of the plan. Valid values:
 	//
-	// *   **PauseResume**: pauses and resumes an instance.
-	// *   **Resize**: scales an instance.
+	// 	- **PauseResume**: pauses and resumes an instance.
+	//
+	// 	- **Resize**: scales an instance.
+	//
+	// example:
+	//
+	// PauseResume
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
@@ -6610,20 +8625,44 @@ type DescribeDBInstancePlansResponseBody struct {
 	// The error message.
 	//
 	// This parameter is returned only if the request fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The instance ID.
 	Items *DescribeDBInstancePlansResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd988888888
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
-	// If the request was successful, **success** is returned. If the request failed, this parameter is not returned.
+	// If the request was successful, **success*	- is returned. If the request failed, this parameter is not returned.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -6689,39 +8728,84 @@ func (s *DescribeDBInstancePlansResponseBodyItems) SetPlanList(v []*DescribeDBIn
 
 type DescribeDBInstancePlansResponseBodyItemsPlanList struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The execution information of the plan.
+	//
+	// example:
+	//
+	// {"pause":{"planCronTime":"0 22 	- 	- 5"},"resume":{"planCronTime":"0 23 	- 	- 5"}}
 	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
 	// The description of the plan.
+	//
+	// example:
+	//
+	// this is a test plan
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
 	// >  This parameter is returned only for periodically executed plans.
+	//
+	// example:
+	//
+	// 2023-04-17T23:00Z
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The ID of the plan.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the plan.
+	//
+	// example:
+	//
+	// test-plan
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 	// The execution mode of the plan. Valid values:
 	//
-	// *   **Postpone**: The plan is executed later.
-	// *   **Regular**: The plan is executed periodically.
+	// 	- **Postpone**: The plan is executed later.
+	//
+	// 	- **Regular**: The plan is executed periodically.
+	//
+	// example:
+	//
+	// Regular
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
 	// The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
 	// >  This parameter is returned only for periodically executed plans.
+	//
+	// example:
+	//
+	// 2022-04-17T23:00Z
 	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
 	// The state of the plan. Valid values:
 	//
-	// *   **active**: The plan is running.
-	// *   **cancel**: The plan is canceled.
-	// *   **deleted**: The plan is deleted.
-	// *   **finished**: The plan execution is complete.
+	// 	- **active**: The plan is running.
+	//
+	// 	- **cancel**: The plan is canceled.
+	//
+	// 	- **deleted**: The plan is deleted.
+	//
+	// 	- **finished**: The plan execution is complete.
+	//
+	// example:
+	//
+	// active
 	PlanStatus *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
 	// The type of the plan. Valid values:
 	//
-	// *   **PauseResume**: pauses and resumes an instance.
-	// *   **Resize**: scales an instance.
+	// 	- **PauseResume**: pauses and resumes an instance.
+	//
+	// 	- **Resize**: scales an instance.
+	//
+	// example:
+	//
+	// PauseResume
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 }
 
@@ -6814,6 +8898,10 @@ func (s *DescribeDBInstancePlansResponse) SetBody(v *DescribeDBInstancePlansResp
 
 type DescribeDBInstanceSSLRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -6832,16 +8920,40 @@ func (s *DescribeDBInstanceSSLRequest) SetDBInstanceId(v string) *DescribeDBInst
 
 type DescribeDBInstanceSSLResponseBody struct {
 	// The name of the SSL certificate.
+	//
+	// example:
+	//
+	// *.gpdbmaster.xxx.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D5FF8636-37F6-4CE0-8002-F8734C62C686
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether SSL encryption is enabled.
+	//
+	// example:
+	//
+	// true
 	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	// The expiration time of the SSL certificate.
+	//
+	// example:
+	//
+	// 2023-08-05T09:05:53Z
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
@@ -6913,6 +9025,9 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 }
 
 type DescribeDBInstanceSupportMaxPerformanceRequest struct {
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -6936,9 +9051,15 @@ func (s *DescribeDBInstanceSupportMaxPerformanceRequest) SetOwnerId(v int64) *De
 }
 
 type DescribeDBInstanceSupportMaxPerformanceResponseBody struct {
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string                                                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Performances *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Struct"`
-	RequestId    *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceSupportMaxPerformanceResponseBody) String() string {
@@ -6982,10 +9103,16 @@ func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) SetPer
 }
 
 type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance struct {
+	// example:
+	//
+	// ecs or disk
 	Bottleneck *string `json:"Bottleneck,omitempty" xml:"Bottleneck,omitempty"`
 	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Unit       *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 90
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) String() string {
@@ -7049,8 +9176,16 @@ type DescribeDBInstancesRequest struct {
 	// The edition of the instance. Separate multiple values with commas (,).
 	DBInstanceCategories []*string `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty" type:"Repeated"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID. Separate multiple values with commas (,).
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	// The resource type of the instance. Separate multiple values with commas (,).
 	DBInstanceModes []*string `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty" type:"Repeated"`
@@ -7060,27 +9195,50 @@ type DescribeDBInstancesRequest struct {
 	InstanceDeployTypes []*string `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty" type:"Repeated"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **VPC**: virtual private cloud (VPC).
-	// *   **Classic**: classic network.
+	// 	- **VPC**: virtual private cloud (VPC).
+	//
+	// 	- **Classic**: classic network.
 	//
 	// > If you do not specify this parameter, instances of all network types are returned.
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag value.
 	Tag   []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -7167,8 +9325,16 @@ func (s *DescribeDBInstancesRequest) SetVpcId(v string) *DescribeDBInstancesRequ
 
 type DescribeDBInstancesRequestTag struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7194,8 +9360,16 @@ type DescribeDBInstancesShrinkRequest struct {
 	// The edition of the instance. Separate multiple values with commas (,).
 	DBInstanceCategoriesShrink *string `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID. Separate multiple values with commas (,).
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	// The resource type of the instance. Separate multiple values with commas (,).
 	DBInstanceModesShrink *string `json:"DBInstanceModes,omitempty" xml:"DBInstanceModes,omitempty"`
@@ -7205,27 +9379,50 @@ type DescribeDBInstancesShrinkRequest struct {
 	InstanceDeployTypesShrink *string `json:"InstanceDeployTypes,omitempty" xml:"InstanceDeployTypes,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **VPC**: virtual private cloud (VPC).
-	// *   **Classic**: classic network.
+	// 	- **VPC**: virtual private cloud (VPC).
+	//
+	// 	- **Classic**: classic network.
 	//
 	// > If you do not specify this parameter, instances of all network types are returned.
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag value.
 	Tag   []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -7312,8 +9509,16 @@ func (s *DescribeDBInstancesShrinkRequest) SetVpcId(v string) *DescribeDBInstanc
 
 type DescribeDBInstancesShrinkRequestTag struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7339,12 +9544,28 @@ type DescribeDBInstancesResponseBody struct {
 	// The queried instances.
 	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 53EA07B7-FC2A-521B-AB7C-27**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -7402,105 +9623,229 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
 	//
 	// You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the access mode of an instance.
+	//
+	// example:
+	//
+	// null
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	// The time when the instance was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The edition of the instance. Valid values:
 	//
-	// *   **Basic**: Basic Edition.
-	// *   **HighAvailability**: High-availability Edition.
-	// *   **Finance**: Enterprise Edition.
+	// 	- **Basic**: Basic Edition.
+	//
+	// 	- **HighAvailability**: High-availability Edition.
+	//
+	// 	- **Finance**: Enterprise Edition.
+	//
+	// example:
+	//
+	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **Serverless**: Serverless mode.
-	// *   **StorageElastic**: elastic storage mode.
-	// *   **Classic**: reserved storage mode.
+	// 	- **Serverless**: Serverless mode.
+	//
+	// 	- **StorageElastic**: elastic storage mode.
+	//
+	// 	- **Classic**: reserved storage mode.
+	//
+	// example:
+	//
+	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	// The type of the network interface card (NIC) that is used by the instance. Valid values:
 	//
-	// *   **0**: Internet.
-	// *   **1**: internal network.
-	// *   **2**: VPC.
+	// 	- **0**: Internet.
+	//
+	// 	- **1**: internal network.
+	//
+	// 	- **2**: VPC.
+	//
+	// example:
+	//
+	// 2
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The state of the instance. For more information, see [Instance statuses](~~86944~~).
+	//
+	// example:
+	//
+	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The database engine of the instance.
+	//
+	// example:
+	//
+	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time of the instance. The time is displayed in UTC.
 	//
 	// > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+	//
+	// example:
+	//
+	// 2999-09-08T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **cluster**: Serverless mode or elastic storage mode.
-	// *   **replicaSet**: reserved storage mode.
+	// 	- **cluster**: Serverless mode or elastic storage mode.
+	//
+	// 	- **replicaSet**: reserved storage mode.
+	//
+	// example:
+	//
+	// cluster
 	InstanceDeployType *string `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**: classic network.
-	// *   **VPC**: VPC.
+	// 	- **Classic**: classic network.
+	//
+	// 	- **VPC**: VPC.
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// *   **Unlock**: The instance is not locked.
-	// *   **ManualLock**: The instance is manually locked.
-	// *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	// *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
-	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-	// *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
+	// 	- **Unlock**: The instance is not locked.
+	//
+	// 	- **ManualLock**: The instance is manually locked.
+	//
+	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	//
+	// 	- **LockByRestoration**: The instance is automatically locked due to instance restoration.
+	//
+	// 	- **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+	//
+	// 	- **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the instance is locked. Valid values:
 	//
-	// *   **0**: The instance is not locked.
-	// *   **1**: The instance is manually locked.
-	// *   **2**: The instance is automatically locked due to instance expiration.
-	// *   **3**: The instance is automatically locked due to instance restoration.
-	// *   **4**: The instance is automatically locked due to exhausted storage.
+	// 	- **0**: The instance is not locked.
+	//
+	// 	- **1**: The instance is manually locked.
+	//
+	// 	- **2**: The instance is automatically locked due to instance expiration.
+	//
+	// 	- **3**: The instance is automatically locked due to instance restoration.
+	//
+	// 	- **4**: The instance is automatically locked due to exhausted storage.
 	//
 	// > If the instance is in reserved storage mode and unlocked, null is returned.
+	//
+	// example:
+	//
+	// 0
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The number of coordinator nodes.
+	//
+	// example:
+	//
+	// 1
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The number of compute nodes.
+	//
+	// example:
+	//
+	// 4
 	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The type of the Serverless mode. Valid values:
 	//
-	// *   **Manual**: manual scheduling.
-	// *   **Auto**: automatic scheduling.
+	// 	- **Manual**: manual scheduling.
+	//
+	// 	- **Auto**: automatic scheduling.
 	//
 	// > This parameter is returned only for instances in Serverless mode.
+	//
+	// example:
+	//
+	// Manual
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	// The storage capacity of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 50
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_essd**: enhanced SSD (ESSD).
-	// *   **cloud_efficiency**: ultra disk.
+	// 	- **cloud_essd**: enhanced SSD (ESSD).
+	//
+	// 	- **cloud_efficiency**: ultra disk.
+	//
+	// example:
+	//
+	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The tags that are added to the instance.
 	Tags *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp19ame5m1r3oejns****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7671,8 +10016,16 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) SetTag(v []*Describ
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag struct {
 	// The key of tag N.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7723,20 +10076,121 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 	return s
 }
 
+type DescribeDBResourceManagementModeRequest struct {
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDBResourceManagementModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceManagementModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceManagementModeRequest) SetDBInstanceId(v string) *DescribeDBResourceManagementModeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBResourceManagementModeRequest) SetOwnerId(v int64) *DescribeDBResourceManagementModeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDBResourceManagementModeResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// resourceGroup
+	ResourceManagementMode *string `json:"ResourceManagementMode,omitempty" xml:"ResourceManagementMode,omitempty"`
+}
+
+func (s DescribeDBResourceManagementModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceManagementModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceManagementModeResponseBody) SetRequestId(v string) *DescribeDBResourceManagementModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBResourceManagementModeResponseBody) SetResourceManagementMode(v string) *DescribeDBResourceManagementModeResponseBody {
+	s.ResourceManagementMode = &v
+	return s
+}
+
+type DescribeDBResourceManagementModeResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBResourceManagementModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBResourceManagementModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceManagementModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceManagementModeResponse) SetHeaders(v map[string]*string) *DescribeDBResourceManagementModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBResourceManagementModeResponse) SetStatusCode(v int32) *DescribeDBResourceManagementModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBResourceManagementModeResponse) SetBody(v *DescribeDBResourceManagementModeResponseBody) *DescribeDBResourceManagementModeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBVersionInfosRequest struct {
 	// The resource type of the instance. Valid values:
 	//
-	// *   **StorageElastic**: elastic storage mode.
-	// *   **Serverless**: Serverless mode.
+	// 	- **StorageElastic**: elastic storage mode.
+	//
+	// 	- **Serverless**: Serverless mode.
+	//
+	// example:
+	//
+	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	// The minor version number that does not include the prefix.
+	//
+	// example:
+	//
+	// 6.3.10.20
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -7775,6 +10229,10 @@ func (s *DescribeDBVersionInfosRequest) SetResourceGroupId(v string) *DescribeDB
 
 type DescribeDBVersionInfosResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried minor versions.
 	VersionDetails *DescribeDBVersionInfosResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Struct"`
@@ -7800,8 +10258,108 @@ func (s *DescribeDBVersionInfosResponseBody) SetVersionDetails(v *DescribeDBVers
 
 type DescribeDBVersionInfosResponseBodyVersionDetails struct {
 	// The queried minor version information about the instance in Serverless mode.
+	//
+	// example:
+	//
+	// "Serverless": [
+	//
+	//                 {
+	//
+	//                     "engineVersion": "6.0",
+	//
+	//                     "versionInfos": [
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v2.0.0.5",
+	//
+	//                             "releaseDate": "2023-05-28T07:48Z",
+	//
+	//                             "expirationDate": "2026-05-28T07:48Z"
+	//
+	//                         },
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v2.0.0.1",
+	//
+	//                             "releaseDate": "2023-03-27T12:44Z",
+	//
+	//                             "expirationDate": "2026-03-27T12:44Z"
+	//
+	//                         },
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v1.0.5.1",
+	//
+	//                             "releaseDate": "2023-02-22T11:39Z",
+	//
+	//                             "expirationDate": "2026-02-22T11:39Z"
+	//
+	//                         }
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	// ]
 	Serverless interface{} `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
 	// The queried minor version information about the instance in elastic storage mode.
+	//
+	// example:
+	//
+	// "StorageElasic": [
+	//
+	//                 {
+	//
+	//                     "engineVersion": "6.0",
+	//
+	//                     "versionInfos": [
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v6.3.11.2",
+	//
+	//                             "releaseDate": "2023-08-17T09:14Z",
+	//
+	//                             "expirationDate": "2026-08-17T09:14Z"
+	//
+	//                         }
+	//
+	//           },
+	//
+	//                 {
+	//
+	//                     "engineVersion": "7.0",
+	//
+	//                     "versionInfos": [
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v7.0.2.0",
+	//
+	//                             "releaseDate": "2023-08-09T06:47Z",
+	//
+	//                             "expirationDate": "2026-08-09T06:47Z"
+	//
+	//                         },
+	//
+	//                         {
+	//
+	//                             "kernelVersion": "v7.0.1.8",
+	//
+	//                             "releaseDate": "2023-05-25T06:56Z",
+	//
+	//                             "expirationDate": "2026-05-25T06:56Z"
+	//
+	//                         }
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	// ]
 	StorageElastic interface{} `json:"StorageElastic,omitempty" xml:"StorageElastic,omitempty"`
 }
 
@@ -7856,45 +10414,86 @@ type DescribeDataBackupsRequest struct {
 	// The ID of the backup set. If you specify BackupId, the details of the backup set are returned.
 	//
 	// > You can call the [DescribeDataBackups](~~210093~~) operation to query the information about all backup sets of an instance, including backup set IDs.
+	//
+	// example:
+	//
+	// 327329803
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   Automated
-	// *   Manual
+	// 	- Automated
+	//
+	// 	- Manual
 	//
 	// If you do not specify this parameter, all backup sets are returned.
+	//
+	// example:
+	//
+	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The state of the backup set. Valid values:
 	//
-	// *   Success
-	// *   Failed
+	// 	- Success
+	//
+	// 	- Failed
 	//
 	// If you do not specify this parameter, all backup sets are returned.
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The backup type. Valid values:
 	//
-	// *   **DATA**: full backup.
-	// *   **RESTOREPOI**: point-in-time recovery backup.
+	// 	- **DATA**: full backup.
+	//
+	// 	- **RESTOREPOI**: point-in-time recovery backup.
 	//
 	// If you do not specify this parameter, the backup sets of full backup are returned.
+	//
+	// example:
+	//
+	// DATA
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2011-06-01T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   30
-	// *   50
-	// *   100
+	// 	- 30
+	//
+	// 	- 50
+	//
+	// 	- 100
 	//
 	// Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2011-06-01T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7955,14 +10554,34 @@ type DescribeDataBackupsResponseBody struct {
 	// The instance ID.
 	Items []*DescribeDataBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 3E387971-33A5-5019-AD7F-DC**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total backup set size. Unit: Byte.
+	//
+	// example:
+	//
+	// 1111111111
 	TotalBackupSize *int64 `json:"TotalBackupSize,omitempty" xml:"TotalBackupSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8006,52 +10625,112 @@ func (s *DescribeDataBackupsResponseBody) SetTotalCount(v int32) *DescribeDataBa
 
 type DescribeDataBackupsResponseBodyItems struct {
 	// The UTC time when the backup ended. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-12-22T12:01:43Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The local time when the backup ended. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
+	//
+	// example:
+	//
+	// 2021-12-22 20:00:25
 	BackupEndTimeLocal *string `json:"BackupEndTimeLocal,omitempty" xml:"BackupEndTimeLocal,omitempty"`
 	// The method that is used to generate the backup set. Valid values:
 	//
-	// *   **Logical**: logical backup
-	// *   **Physical**: physical backup
-	// *   **Snapshot**: snapshot backup
+	// 	- **Logical**: logical backup
+	//
+	// 	- **Physical**: physical backup
+	//
+	// 	- **Snapshot**: snapshot backup
+	//
+	// example:
+	//
+	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup mode.
 	//
 	// Valid values for full backup:
 	//
-	// *   Automated: automatic backup
-	// *   Manual: manual backup
+	// 	- Automated: automatic backup
+	//
+	// 	- Manual: manual backup
 	//
 	// Valid values for point-in-time backup:
 	//
-	// *   Automated: point-in-time backup after full backup
-	// *   Manual: manual point-in-time backup
-	// *   Period: point-in-time backup that is triggered by a backup policy
+	// 	- Automated: point-in-time backup after full backup
+	//
+	// 	- Manual: manual point-in-time backup
+	//
+	// 	- Period: point-in-time backup that is triggered by a backup policy
+	//
+	// example:
+	//
+	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 1111111111
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The size of the backup file. Unit: bytes.
+	//
+	// example:
+	//
+	// 2167808
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
 	// The UTC time when the backup started. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-12-22T12:00:25Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The local time when the backup started. The time is in the yyyy-MM-dd HH:mm:ss format. The time is your local time.
+	//
+	// example:
+	//
+	// 2011-05-30 03:29:00
 	BackupStartTimeLocal *string `json:"BackupStartTimeLocal,omitempty" xml:"BackupStartTimeLocal,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// *   Success
-	// *   Failure
+	// 	- Success
+	//
+	// 	- Failure
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The name of a point-in-time backup set or the full backup set.
+	//
+	// example:
+	//
+	// adbpgbackup_555*****_20211222200019
 	BaksetName *string `json:"BaksetName,omitempty" xml:"BaksetName,omitempty"`
-	// *   For full backup, this parameter indicates the point in time at which the data in the data backup file is consistent.
-	// *   For point-in-time backup, this parameter indicates that the returned point in time is a timestamp.
+	// 	- For full backup, this parameter indicates the point in time at which the data in the data backup file is consistent.
+	//
+	// 	- For point-in-time backup, this parameter indicates that the returned point in time is a timestamp.
+	//
+	// example:
+	//
+	// 1576506856
 	ConsistentTime *int64 `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp**************-master
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The type of the backup. Valid values:
 	//
-	// *   DATA: full backup
-	// *   RESTOREPOI: point-in-time backup
+	// 	- DATA: full backup
+	//
+	// 	- RESTOREPOI: point-in-time backup
+	//
+	// example:
+	//
+	// DATA
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 }
 
@@ -8161,6 +10840,10 @@ type DescribeDataReDistributeInfoRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -8187,6 +10870,10 @@ type DescribeDataReDistributeInfoResponseBody struct {
 	// The data redistribution information.
 	DataReDistributeInfo *DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo `json:"DataReDistributeInfo,omitempty" xml:"DataReDistributeInfo,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 04836A02-ADC9-1AA7-AC36-DE5E048BF505
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8210,16 +10897,40 @@ func (s *DescribeDataReDistributeInfoResponseBody) SetRequestId(v string) *Descr
 
 type DescribeDataReDistributeInfoResponseBodyDataReDistributeInfo struct {
 	// The execution information. If an error occurs, the error message is returned.
+	//
+	// example:
+	//
+	// redistributing
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The progress of data redistribution. Unit: %.
+	//
+	// example:
+	//
+	// 33
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The estimated remaining time for data redistribution.
+	//
+	// example:
+	//
+	// 00:01:28
 	RemainTime *string `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
 	// This parameter is not supported.
+	//
+	// example:
+	//
+	// null
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of data redistribution.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The execution type. The value **immediate** is returned, indicating immediate execution.
+	// The execution type. The value **immediate*	- is returned, indicating immediate execution.
+	//
+	// example:
+	//
+	// immediate
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -8293,24 +11004,46 @@ func (s *DescribeDataReDistributeInfoResponse) SetBody(v *DescribeDataReDistribu
 type DescribeDataShareInstancesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The keyword used to filter instances, which can be an instance ID or instance description.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
+	//
+	// example:
+	//
+	// gp-bp***************
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
@@ -8355,18 +11088,37 @@ func (s *DescribeDataShareInstancesRequest) SetSearchValue(v string) *DescribeDa
 type DescribeDataShareInstancesResponseBody struct {
 	// The state of data sharing. Valid values:
 	//
-	// *   **opening**
-	// *   **opened**
-	// *   **closing**
-	// *   **closed**
+	// 	- **opening**
+	//
+	// 	- **opened**
+	//
+	// 	- **closing**
+	//
+	// 	- **closed**
 	Items *DescribeDataShareInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D5**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -8422,25 +11174,54 @@ func (s *DescribeDataShareInstancesResponseBodyItems) SetDBInstance(v []*Describ
 
 type DescribeDataShareInstancesResponseBodyItemsDBInstance struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **Serverless**: Serverless mode
-	// *   **StorageElasic**: elastic storage mode
-	// *   **Classic**: reserved storage mode
+	// 	- **Serverless**: Serverless mode
+	//
+	// 	- **StorageElasic**: elastic storage mode
+	//
+	// 	- **Classic**: reserved storage mode
+	//
+	// example:
+	//
+	// Serverless
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	// The state of data sharing. Valid values:
 	//
-	// *   **opening**: Data sharing is being enabled.
-	// *   **opened**: Data sharing is enabled.
-	// *   **closing**: Data sharing is being disabled.
-	// *   **closed**: Data sharing is disabled.
+	// 	- **opening**: Data sharing is being enabled.
+	//
+	// 	- **opened**: Data sharing is enabled.
+	//
+	// 	- **closing**: Data sharing is being disabled.
+	//
+	// 	- **closed**: Data sharing is disabled.
+	//
+	// example:
+	//
+	// opened
 	DataShareStatus *string `json:"DataShareStatus,omitempty" xml:"DataShareStatus,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp***************
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The zone ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -8513,19 +11294,40 @@ func (s *DescribeDataShareInstancesResponse) SetBody(v *DescribeDataShareInstanc
 
 type DescribeDataSharePerformanceRequest struct {
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-08-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the performance metric. Separate multiple values with commas (,). Valid values:
 	//
-	// *   **adbpg_datashare_topic_count**: the number of shared topics.
-	// *   **adbpg_datashare_data_size_mb**: the amount of data shared.
+	// 	- **adbpg_datashare_topic_count**: the number of shared topics.
+	//
+	// 	- **adbpg_datashare_data_size_mb**: the amount of data shared.
+	//
+	// example:
+	//
+	// adbpg_datashare_topic_count
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The region ID of the instance.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-08-03T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8564,14 +11366,30 @@ func (s *DescribeDataSharePerformanceRequest) SetStartTime(v string) *DescribeDa
 
 type DescribeDataSharePerformanceResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time of the query.
+	//
+	// example:
+	//
+	// 2022-08-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Details of data sharing performance metrics.
 	PerformanceKeys []*DescribeDataSharePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BBE00C04-A3E8-4114-881D-0480A72CB92E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
+	//
+	// example:
+	//
+	// 2022-08-03T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8610,10 +11428,18 @@ func (s *DescribeDataSharePerformanceResponseBody) SetStartTime(v string) *Descr
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeys struct {
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// adbpg_datashare_topic_count
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Details of the performance metric.
 	Series []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 	// The unit of the performance metric.
+	//
+	// example:
+	//
+	// int
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
@@ -8642,6 +11468,10 @@ func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetUnit(v stri
 
 type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries struct {
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// adbpg_datashare_topic_count
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// One or more values of the performance metric.
 	Values []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -8716,6 +11546,10 @@ type DescribeDiagnosisDimensionsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -8736,6 +11570,10 @@ type DescribeDiagnosisDimensionsResponseBody struct {
 	// The names of the databases.
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9ADCAACA-E0E8-5319-AE3B-E260E957BDF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The names of the database accounts.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
@@ -8797,28 +11635,54 @@ type DescribeDiagnosisMonitorPerformanceRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2022-05-07T07:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter condition on queries. Specify the value in the JSON format. Valid values:
 	//
-	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	// 	- `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
 	//
-	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
+	// 	- `{"Type":"status","Value":"finished"}`: filters completed queries.
 	//
-	// *   `{"Type":"status","Value":"running"}`: filters running queries.
+	// 	- `{"Type":"status","Value":"running"}`: filters running queries.
 	//
-	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	// 	- `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min*	- and **Max**.
 	//
-	//     *   If only **Min** is specified, the queries that consume a period of time that is greater than or equal to the Min value are filtered.
-	//     *   If only **Max** is specified, the queries that consume a period of time that is less than the Max value are filtered.
-	//     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than the **Max** value are filtered.
+	//     	- If only **Min*	- is specified, the queries that consume a period of time that is greater than or equal to the Min value are filtered.
+	//
+	//     	- If only **Max*	- is specified, the queries that consume a period of time that is less than the Max value are filtered.
+	//
+	//     	- If both **Min*	- and **Max*	- are specified, the queries that consume a period of time that is greater than or equal to the **Min*	- value and less than the **Max*	- value are filtered.
+	//
+	// example:
+	//
+	// {"Type":"maxCost", "Value":"100"}
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-05-07T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -8864,13 +11728,26 @@ type DescribeDiagnosisMonitorPerformanceResponseBody struct {
 	// Details of query execution.
 	Performances []*DescribeDiagnosisMonitorPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
 	// The threshold for the number of queries.
+	//
+	// example:
+	//
+	// 10000
 	PerformancesThreshold *int32 `json:"PerformancesThreshold,omitempty" xml:"PerformancesThreshold,omitempty"`
 	// Indicates whether the queries are truncated when the number of queries exceeds the threshold. Valid values:
 	//
-	// *   **true**: The queries are truncated.
-	// *   **false**: The queries are not truncated.
+	// 	- **true**: The queries are truncated.
+	//
+	// 	- **false**: The queries are not truncated.
+	//
+	// example:
+	//
+	// false
 	PerformancesTruncated *bool `json:"PerformancesTruncated,omitempty" xml:"PerformancesTruncated,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8904,19 +11781,44 @@ func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetRequestId(v string)
 
 type DescribeDiagnosisMonitorPerformanceResponseBodyPerformances struct {
 	// The execution duration of the query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1
 	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The ID of the query. It is a unique identifier of the query.
+	//
+	// example:
+	//
+	// 2022042612465401000000012903151998970
 	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
 	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1651877940000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The execution state of the query. Valid values:
 	//
-	// *   **running**: The query is being executed.
-	// *   **finished**: The query is complete.
+	// 	- **running**: The query is being executed.
+	//
+	// 	- **finished**: The query is complete.
+	//
+	// example:
+	//
+	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -8991,42 +11893,86 @@ type DescribeDiagnosisRecordsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2022-05-07T07:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The keyword of the SQL statement.
+	//
+	// example:
+	//
+	// SELECT
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The order of fields in the console. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// null
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The filter condition on queries. Specify the value in the JSON format. Valid values:
 	//
-	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	// 	- `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
 	//
-	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
+	// 	- `{"Type":"status","Value":"finished"}`: filters completed queries.
 	//
-	// *   `{"Type":"status","Value":"running"}`: filters running queries.
+	// 	- `{"Type":"status","Value":"running"}`: filters running queries.
 	//
-	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume a period of 30 milliseconds to less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	// 	- `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume a period of 30 milliseconds to less than 50 milliseconds. You can customize a filter condition by setting **Min*	- and **Max**.
 	//
-	//     *   If only **Min** is specified, the queries that consume a period of time that is greater than the Min value are filtered.
-	//     *   If only **Max** is specified, the queries that consume a period of time that is less than the Max value are filtered.
-	//     *   If both **Min** and **Max** are specified, the queries that consume a period of time that is greater than or equal to the **Min** value and less than or equal to the **Max** value are filtered.
+	//     	- If only **Min*	- is specified, the queries that consume a period of time that is greater than the Min value are filtered.
+	//
+	//     	- If only **Max*	- is specified, the queries that consume a period of time that is less than the Max value are filtered.
+	//
+	//     	- If both **Min*	- and **Max*	- are specified, the queries that consume a period of time that is greater than or equal to the **Min*	- value and less than or equal to the **Max*	- value are filtered.
+	//
+	// example:
+	//
+	// { "Type":"maxCost", "Value":"100" }
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-05-07T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -9092,10 +12038,22 @@ type DescribeDiagnosisRecordsResponseBody struct {
 	// The threshold that determines whether the SQL statement must be truncated. The value is the number of characters.
 	Items []*DescribeDiagnosisRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9129,30 +12087,72 @@ func (s *DescribeDiagnosisRecordsResponseBody) SetTotalCount(v int32) *DescribeD
 
 type DescribeDiagnosisRecordsResponseBodyItems struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The execution duration of the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the query. It is a unique identifier of the query.
+	//
+	// example:
+	//
+	// 2022042612465401000000012903151998970
 	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// SELECT 	- FROM t1,t2 WHERE t1.id=t2.id;
 	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
 	// Indicates whether the SQL statement needs to be truncated. Valid values:
 	//
-	// *   **true**: The SQL statement needs to be truncated.
-	// *   **false**: The SQL statement does not need to be truncated.
+	// 	- **true**: The SQL statement needs to be truncated.
+	//
+	// 	- **false**: The SQL statement does not need to be truncated.
+	//
+	// example:
+	//
+	// false
 	SQLTruncated *bool `json:"SQLTruncated,omitempty" xml:"SQLTruncated,omitempty"`
 	// The threshold used to determine whether an SQL statement must be truncated. The value is the number of characters.
+	//
+	// example:
+	//
+	// 5120
 	SQLTruncatedThreshold *int32 `json:"SQLTruncatedThreshold,omitempty" xml:"SQLTruncatedThreshold,omitempty"`
 	// The ID of the session that contains the query.
+	//
+	// example:
+	//
+	// 50
 	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
 	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1651877940000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The execution state of the query. Valid values:
 	//
-	// *   **running**: The query is being executed.
-	// *   **finished**: The query is complete.
+	// 	- **running**: The query is being executed.
+	//
+	// 	- **finished**: The query is complete.
+	//
+	// example:
+	//
+	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -9247,12 +12247,24 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The query ID. It is a unique identifier of the query.
 	//
 	// > You can call the [DescribeDiagnosisRecords](~~450511~~) operation to obtain query IDs.
+	//
+	// example:
+	//
+	// 71403480878****
 	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
 }
 
@@ -9281,33 +12293,86 @@ func (s *DescribeDiagnosisSQLInfoRequest) SetQueryID(v string) *DescribeDiagnosi
 
 type DescribeDiagnosisSQLInfoResponseBody struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The execution duration of the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 16
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The maximum number of output rows.
+	//
+	// example:
+	//
+	// 10
 	MaxOutputRows *string `json:"MaxOutputRows,omitempty" xml:"MaxOutputRows,omitempty"`
 	// The query ID.
+	//
+	// example:
+	//
+	// 71403480878****
 	QueryID *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
 	// The information about the operator.
+	//
+	// example:
+	//
+	// {\"children\":********\"startTime\":1660719602199}
 	QueryPlan *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 425AAA6A-63E0-1929-A1CE-3D9036CBC463
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// select n_live_tup, n_live_tup + n_dead_tup, pg_relation_size(table_name), last_vacuum from pg_stat_user_tables where relid = table_name::regclass
 	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
 	// The ID of the session that contains the query.
+	//
+	// example:
+	//
+	// 658****
 	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
 	// The sequence of metrics.
+	//
+	// example:
+	//
+	// {\"costSort\":******:\"Seq Scan-9\",\"value\":0.0}]}
 	SortedMetrics *string `json:"SortedMetrics,omitempty" xml:"SortedMetrics,omitempty"`
 	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1660719602199
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The execution state of the query. Valid values:
 	//
-	// *   **running**
-	// *   **finished**
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// example:
+	//
+	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The information about the execution plan.
+	//
+	// example:
+	//
+	// ******
 	TextPlan *string `json:"TextPlan,omitempty" xml:"TextPlan,omitempty"`
 	// The username.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -9414,13 +12479,31 @@ func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoRe
 }
 
 type DescribeDocumentRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// music.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDocumentRequest) String() string {
@@ -9467,19 +12550,58 @@ func (s *DescribeDocumentRequest) SetRegionId(v string) *DescribeDocumentRequest
 }
 
 type DescribeDocumentResponseBody struct {
-	DocsCount      *int32  `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// example:
+	//
+	// 100
+	DocsCount *int32 `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// example:
+	//
+	// RapidOCRPDFLoader
 	DocumentLoader *string `json:"DocumentLoader,omitempty" xml:"DocumentLoader,omitempty"`
-	FileExt        *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
-	FileMd5        *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	FileMtime      *string `json:"FileMtime,omitempty" xml:"FileMtime,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileSize       *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileVersion    *int32  `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TextSplitter   *string `json:"TextSplitter,omitempty" xml:"TextSplitter,omitempty"`
+	// example:
+	//
+	// txt
+	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// example:
+	//
+	// b8078c9591413550f8963e37e24abcea
+	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	// example:
+	//
+	// 2023-11-01 10:01:01.123456
+	FileMtime *string `json:"FileMtime,omitempty" xml:"FileMtime,omitempty"`
+	// example:
+	//
+	// music.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10000
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 1
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// http://oss.xxx/music.txt
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ChineseRecursiveTextSplitter
+	TextSplitter *string `json:"TextSplitter,omitempty" xml:"TextSplitter,omitempty"`
 }
 
 func (s DescribeDocumentResponseBody) String() string {
@@ -9588,6 +12710,10 @@ type DescribeDownloadRecordsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -9608,6 +12734,10 @@ type DescribeDownloadRecordsResponseBody struct {
 	// The URL that is used to download the file.
 	Records []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9631,18 +12761,40 @@ func (s *DescribeDownloadRecordsResponseBody) SetRequestId(v string) *DescribeDo
 
 type DescribeDownloadRecordsResponseBodyRecords struct {
 	// The ID of the download record.
+	//
+	// example:
+	//
+	// 1150
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
 	// The URL that can be used to download the file.
+	//
+	// example:
+	//
+	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/*****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Error message
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
 	// The name of the file.
+	//
+	// example:
+	//
+	// 20220509113448-20220509173448.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The state of the upload task. After you call the DownloadDiagnosisRecords operation, query diagnostic information is first uploaded to Object Storage Service (OSS). After the upload task is complete, the query diagnostic information can be downloaded. Valid values:
 	//
-	// *   **running**: uploading
-	// *   **finished**: uploaded
-	// *   **failed**: failed
+	// 	- **running**: uploading
+	//
+	// 	- **finished**: uploaded
+	//
+	// 	- **failed**: failed
+	//
+	// example:
+	//
+	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9712,6 +12864,10 @@ type DescribeDownloadSQLLogsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -9732,6 +12888,10 @@ type DescribeDownloadSQLLogsResponseBody struct {
 	// The URL that is used to download the file.
 	Records []*DescribeDownloadSQLLogsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FDE9942A-D919-527B-B559-5D0F6F20CCEC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9754,11 +12914,26 @@ func (s *DescribeDownloadSQLLogsResponseBody) SetRequestId(v string) *DescribeDo
 }
 
 type DescribeDownloadSQLLogsResponseBodyRecords struct {
-	DownloadId   *int64  `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	DownloadUrl  *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// example:
+	//
+	// 1150
+	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	// example:
+	//
+	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/*****
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// example:
+	//
+	// Error message
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 20220509113448-20220509173448.csv
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDownloadSQLLogsResponseBodyRecords) String() string {
@@ -9827,8 +13002,16 @@ type DescribeHealthStatusRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+	//
+	// example:
+	//
+	// node_master_status,node_master_connection_status,node_segment_connection_status,node_segment_disk_status
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -9852,12 +13035,24 @@ func (s *DescribeHealthStatusRequest) SetKey(v string) *DescribeHealthStatusRequ
 
 type DescribeHealthStatusResponseBody struct {
 	// The ID of instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D97B4191-104D-10CE-8BC5-53**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key** to **adbpg_status**, only the metric information of **adbpg_status** is returned.
+	// The queried performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key*	- to **adbpg_status**, only the metric information of **adbpg_status*	- is returned.
 	//
 	// For more information about performance parameters, see [Performance parameters](~~86943~~).
+	//
+	// example:
+	//
+	// {"node_master_connection_status":{"Status":"healthy","Value":1.6}}
 	Status *DescribeHealthStatusResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
@@ -10010,13 +13205,23 @@ func (s *DescribeHealthStatusResponseBodyStatus) SetNodeSegmentDiskStatus(v *Des
 type DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax struct {
 	// The status corresponding to the maximum storage usage among all compute nodes. Valid values:
 	//
-	// *   **critical**: The compute node storage usage is greater than or equal to 90%. In this case, the instance is locked.
-	// *   **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%.
-	// *   **healthy**: The compute node storage usage is less than 80%.
+	// 	- **critical**: The compute node storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	//
+	// 	- **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%.
+	//
+	// 	- **healthy**: The compute node storage usage is less than 80%.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of maximum compute node storage usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.52
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10041,15 +13246,25 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbgpSegmentDiskUsagePercentMax) 
 type DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus struct {
 	// The connection health status of the instance. Valid values:
 	//
-	// *   **critical**: The instance connection usage is greater than 95%. In this case, this metric is marked in red in the console.
-	// *   **warning**: The instance connection usage is greater than 90% and less than or equal to 95%. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: The instance connection usage is less than or equal to 90%. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The instance connection usage is greater than 95%. In this case, this metric is marked in red in the console.
+	//
+	// 	- **warning**: The instance connection usage is greater than 90% and less than or equal to 95%. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: The instance connection usage is less than or equal to 90%. In this case, this metric is marked in green in the console.
 	//
 	// >  The instance connection usage is the maximum connection usage among all the coordinator and compute nodes.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of instance connection usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.71
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10074,15 +13289,25 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgConnectionStatus) SetValue(v
 type DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus struct {
 	// The storage status of the instance. Valid values:
 	//
-	// *   **critical**: The instance storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
-	// *   **warning**: The instance storage usage is greater than or equal to 70% and less than 90%. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: The instance storage usage is less than 70%. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The instance storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
+	//
+	// 	- **warning**: The instance storage usage is greater than or equal to 70% and less than 90%. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: The instance storage usage is less than 70%. In this case, this metric is marked in green in the console.
 	//
 	// >  The instance storage usage is the average storage usage of all compute nodes.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of instance storage usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.52
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10107,15 +13332,25 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus) SetValue(v float
 type DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent struct {
 	// The status corresponding to the storage usage of the instance. Valid values:
 	//
-	// *   **critical**: The instance storage usage is greater than or equal to 90%. In this case, the instance is locked.
-	// *   **warning**: The instance storage usage is greater than or equal to 70% and less than 90%.
-	// *   **healthy**: The instance storage usage is less than 70%.
+	// 	- **critical**: The instance storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	//
+	// 	- **warning**: The instance storage usage is greater than or equal to 70% and less than 90%.
+	//
+	// 	- **healthy**: The instance storage usage is less than 70%.
 	//
 	// >  The instance storage usage is the average storage usage of all compute nodes.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of instance storage usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.52
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10191,13 +13426,23 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb) SetValu
 type DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax struct {
 	// The status corresponding to the maximum storage usage of the coordinator node. Valid values:
 	//
-	// *   **critical**: The coordinator node storage usage is greater than or equal to 90%. In this case, the instance is locked.
-	// *   **warning**: The coordinator node storage usage is greater than or equal to 70% and less than 90%.
-	// *   **healthy**: The coordinator node storage usage is less than 70%.
+	// 	- **critical**: The coordinator node storage usage is greater than or equal to 90%. In this case, the instance is locked.
+	//
+	// 	- **warning**: The coordinator node storage usage is greater than or equal to 70% and less than 90%.
+	//
+	// 	- **healthy**: The coordinator node storage usage is less than 70%.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of maximum coordinator node storage usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.34
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10222,11 +13467,21 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) S
 type DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus struct {
 	// The availability status of the coordinator node. Valid values:
 	//
-	// *   **critical**: Both the primary and standby coordinator nodes are unavailable. In this case, this metric is marked in red in the console.
-	// *   **warning**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	// 	- **critical**: Both the primary and standby coordinator nodes are unavailable. In this case, this metric is marked in red in the console.
+	//
+	// 	- **warning**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of coordinator node availability status. Valid values:
+	//
+	// example:
+	//
+	// 1
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10251,11 +13506,21 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) SetValue(v flo
 type DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus struct {
 	// The availability status of compute nodes. Valid values:
 	//
-	// *   **critical**: All the primary and secondary compute nodes are unavailable. In this case, this metric is marked in red in the console.
-	// *   **warning**: Fifty percent or more than fifty percent of compute nodes are unavailable. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: All compute nodes are available. In this case, this metric is marked in green in the console.
+	// 	- **critical**: All the primary and secondary compute nodes are unavailable. In this case, this metric is marked in red in the console.
+	//
+	// 	- **warning**: Fifty percent or more than fifty percent of compute nodes are unavailable. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: All compute nodes are available. In this case, this metric is marked in green in the console.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of compute node availability status.
+	//
+	// example:
+	//
+	// 1
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10280,13 +13545,23 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) SetValue(v fl
 type DescribeHealthStatusResponseBodyStatusAdbpgStatus struct {
 	// The health status of the instance. Valid values:
 	//
-	// *   **critical**: The coordinator node or a compute node is unavailable. In this case, this metric is marked in red in the console.
-	// *   **healthy**: All nodes are available. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The coordinator node or a compute node is unavailable. In this case, this metric is marked in red in the console.
+	//
+	// 	- **healthy**: All nodes are available. In this case, this metric is marked in green in the console.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of instance health status. Valid values:
 	//
-	// *   **1**: healthy
-	// *   **0**: critical
+	// 	- **1**: healthy
+	//
+	// 	- **0**: critical
+	//
+	// example:
+	//
+	// 1
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10311,15 +13586,25 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgStatus) SetValue(v float32) 
 type DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus struct {
 	// The connection health status of the coordinator node. Valid values:
 	//
-	// *   **critical**: The coordinator node connection usage is greater than 95%. In this case, this metric is marked in red in the console.
-	// *   **warning**: The coordinator node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: The coordinator node connection usage is less than 90%. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The coordinator node connection usage is greater than 95%. In this case, this metric is marked in red in the console.
+	//
+	// 	- **warning**: The coordinator node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: The coordinator node connection usage is less than 90%. In this case, this metric is marked in green in the console.
 	//
 	// >  The coordinator node connection usage is the maximum connection usage of the coordinator node.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of coordinator node connection usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.71
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10344,13 +13629,23 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus) SetVa
 type DescribeHealthStatusResponseBodyStatusNodeMasterStatus struct {
 	// The health status of the coordinator node. Valid values:
 	//
-	// *   **critical**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in red in the console.
-	// *   **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The primary or standby coordinator node is unavailable. In this case, this metric is marked in red in the console.
+	//
+	// 	- **healthy**: Both the primary and standby coordinator nodes are available. In this case, this metric is marked in green in the console.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of coordinator node health status. Valid values:
 	//
-	// *   **1**: healthy
-	// *   **0**: critical
+	// 	- **1**: healthy
+	//
+	// 	- **0**: critical
+	//
+	// example:
+	//
+	// 1
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10375,15 +13670,25 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeMasterStatus) SetValue(v floa
 type DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus struct {
 	// The connection health status of compute nodes. Valid values:
 	//
-	// *   **critical**: The compute node connection usage is greater than or equal to 95%. In this case, this metric is marked in red in the console.
-	// *   **warning**: The compute node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: The compute node connection usage is less than 90%. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The compute node connection usage is greater than or equal to 95%. In this case, this metric is marked in red in the console.
+	//
+	// 	- **warning**: The compute node connection usage is greater than or equal to 90% and less than 95%. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: The compute node connection usage is less than 90%. In this case, this metric is marked in green in the console.
 	//
 	// >  The compute node connection usage is the maximum connection usage among all compute nodes.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of maximum compute node connection usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 0.48
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10408,15 +13713,25 @@ func (s *DescribeHealthStatusResponseBodyStatusNodeSegmentConnectionStatus) SetV
 type DescribeHealthStatusResponseBodyStatusNodeSegmentDiskStatus struct {
 	// The storage status of compute nodes. Valid values:
 	//
-	// *   **critical**: The compute node storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
-	// *   **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%. In this case, this metric is marked in yellow in the console.
-	// *   **healthy**: The compute node storage usage is less than 80%. In this case, this metric is marked in green in the console.
+	// 	- **critical**: The compute node storage usage is greater than or equal to 90%. In this case, this metric is marked in red in the console and the instance is locked.
+	//
+	// 	- **warning**: The compute node storage usage is greater than or equal to 80% and less than 90%. In this case, this metric is marked in yellow in the console.
+	//
+	// 	- **healthy**: The compute node storage usage is less than 80%. In this case, this metric is marked in green in the console.
 	//
 	// >  The compute node storage usage is the maximum storage usage among all compute nodes.
+	//
+	// example:
+	//
+	// healthy
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The metric value of maximum compute node storage usage.
 	//
 	// Unit: %.
+	//
+	// example:
+	//
+	// 1.52
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10468,9 +13783,18 @@ func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBo
 }
 
 type DescribeIMVInfosRequest struct {
+	// example:
+	//
+	// gp-xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	MVName       *string `json:"MVName,omitempty" xml:"MVName,omitempty"`
+	// example:
+	//
+	// testdb
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// public."mv1"
+	MVName *string `json:"MVName,omitempty" xml:"MVName,omitempty"`
 }
 
 func (s DescribeIMVInfosRequest) String() string {
@@ -10497,9 +13821,15 @@ func (s *DescribeIMVInfosRequest) SetMVName(v string) *DescribeIMVInfosRequest {
 }
 
 type DescribeIMVInfosResponseBody struct {
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ImvInfos     []*DescribeIMVInfosResponseBodyImvInfos `json:"ImvInfos,omitempty" xml:"ImvInfos,omitempty" type:"Repeated"`
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIMVInfosResponseBody) String() string {
@@ -10526,9 +13856,18 @@ func (s *DescribeIMVInfosResponseBody) SetRequestId(v string) *DescribeIMVInfosR
 }
 
 type DescribeIMVInfosResponseBodyImvInfos struct {
-	Base       *string `json:"Base,omitempty" xml:"Base,omitempty"`
+	// example:
+	//
+	// "public."t2"
+	Base *string `json:"Base,omitempty" xml:"Base,omitempty"`
+	// example:
+	//
+	// {\"maintenance_calls\" : 1, \"avg_apply_time\" : 2, \"avg_calc_rows\" : 1, \"avg_calc_time\" : 11, \"avg_delta_rows\" : 1, \"avg_maintenance_total_time\" : 14, \"avg_maintenance_total_time_total\" : 14, \"max_apply_time\" : 2, \"max_calc_rows\" : 1, \"max_calc_time\" : 11, \"max_delta_rows\" : 1, \"max_maintenance_total_time\" : 14, \"max_maintenance_total_time_total\" : 14, \"min_apply_time\" : 2, \"min_calc_rows\" : 1, \"min_calc_time\" : 11, \"min_delta_rows\" : 1, \"min_maintenance_total_time\" : 14, \"min_maintenance_total_time_total\" : 14, \"max_outerjoin_apply_time\" : null, \"max_outerjoin_calc_rows\" : null, \"max_outerjoin_calc_time\" : null, \"max_outerjoin_delta_rows\" : null, \"avg_outerjoin_apply_time\" : null, \"avg_outerjoin_calc_rows\" : null, \"avg_outerjoin_calc_time\" : null, \"avg_outerjoin_delta_rows\" : null, \"min_outerjoin_apply_time\" : null, \"min_outerjoin_calc_rows\" : null, \"min_outerjoin_calc_time\" : null, \"min_outerjoin_delta_rows\" : null, \"create_rows\" : null, \"create_time\" : null, \"direct_visited\" : null, \"indirect_visited\" : null, \"max_refresh_rows\" : null, \"max_refresh_time\" : null, \"avg_refresh_rows\" : null, \"avg_refresh_time\" : null, \"min_refresh_rows\" : null, \"min_refresh_time\" : null, \"refresh_calls\" : null, \"avg_wait_lock_time\" : null, \"max_wait_lock_time\" : null, \"min_wait_lock_time\" : null, \"latest_maintenance_time\" : \"2023-08-09T07:39:14.753252+00:00\"}
 	DetailInfo *string `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
-	MV         *string `json:"MV,omitempty" xml:"MV,omitempty"`
+	// example:
+	//
+	// public."mv1"
+	MV *string `json:"MV,omitempty" xml:"MV,omitempty"`
 }
 
 func (s DescribeIMVInfosResponseBodyImvInfos) String() string {
@@ -10587,20 +13926,42 @@ type DescribeLogBackupsRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-12-12T03:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-12-12T02:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10641,14 +14002,34 @@ type DescribeLogBackupsResponseBody struct {
 	// Details of the backup sets.
 	Items []*DescribeLogBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of backup sets on the current page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 24B9FCAF-2CBC-51C3-B563-F1C70D750187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The total size of logs in the time range. Unit: bytes.
+	//
+	// example:
+	//
+	// 386748
 	TotalLogSize *int64 `json:"TotalLogSize,omitempty" xml:"TotalLogSize,omitempty"`
 }
 
@@ -10692,16 +14073,40 @@ func (s *DescribeLogBackupsResponseBody) SetTotalLogSize(v int64) *DescribeLogBa
 
 type DescribeLogBackupsResponseBodyItems struct {
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 12413721782
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the coordinator node.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****-master
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the log backup set that is stored in Object Storage Service (OSS).
+	//
+	// example:
+	//
+	// 000000010000000400000012
 	LogFileName *string `json:"LogFileName,omitempty" xml:"LogFileName,omitempty"`
 	// The size of the log backup set. Unit: bytes.
+	//
+	// example:
+	//
+	// 77350
 	LogFileSize *int64 `json:"LogFileSize,omitempty" xml:"LogFileSize,omitempty"`
 	// The timestamp of the log.
+	//
+	// example:
+	//
+	// 2022-12-12T02:14:26Z
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 	// The name of the compute node.
+	//
+	// example:
+	//
+	// segment-0
 	SegmentName *string `json:"SegmentName,omitempty" xml:"SegmentName,omitempty"`
 }
 
@@ -10776,10 +14181,22 @@ type DescribeModifyParameterLogRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC. The end time must be later than the start time.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2020-05-05T11:22:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-02T11:22:22Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10810,6 +14227,10 @@ type DescribeModifyParameterLogResponseBody struct {
 	// The queried parameter modification logs.
 	Changelogs []*DescribeModifyParameterLogResponseBodyChangelogs `json:"Changelogs,omitempty" xml:"Changelogs,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2CAD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10833,14 +14254,34 @@ func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *Describ
 
 type DescribeModifyParameterLogResponseBodyChangelogs struct {
 	// The effective time.
+	//
+	// example:
+	//
+	// 2020-05-05T11:22:22Z
 	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// testkey
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// Indicates whether the modification takes effect.
+	//
+	// example:
+	//
+	// true
 	ParameterValid *string `json:"ParameterValid,omitempty" xml:"ParameterValid,omitempty"`
 	// The original value of the parameter.
+	//
+	// example:
+	//
+	// 100
 	ParameterValueAfter *string `json:"ParameterValueAfter,omitempty" xml:"ParameterValueAfter,omitempty"`
 	// The new value of the parameter.
+	//
+	// example:
+	//
+	// 200
 	ParameterValueBefore *string `json:"ParameterValueBefore,omitempty" xml:"ParameterValueBefore,omitempty"`
 }
 
@@ -10910,17 +14351,37 @@ type DescribeNamespaceRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10964,21 +14425,46 @@ func (s *DescribeNamespaceRequest) SetRegionId(v string) *DescribeNamespaceReque
 
 type DescribeNamespaceResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The queried namespace.
 	NamespaceInfo map[string]*string `json:"NamespaceInfo,omitempty" xml:"NamespaceInfo,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11058,6 +14544,10 @@ type DescribeParametersRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -11078,6 +14568,10 @@ type DescribeParametersResponseBody struct {
 	// The queried configuration parameters.
 	Parameters []*DescribeParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 62506167-D284-562A-B7C2-0A**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11101,24 +14595,54 @@ func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParamet
 
 type DescribeParametersResponseBodyParameters struct {
 	// The current value of the configuration parameter.
+	//
+	// example:
+	//
+	// 10800000
 	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
 	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ForceRestartInstance *string `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
 	// Indicates whether the configuration parameter can be modified. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsChangeableConfig *string `json:"IsChangeableConfig,omitempty" xml:"IsChangeableConfig,omitempty"`
 	// The valid values of the configuration parameter.
+	//
+	// example:
+	//
+	// [0-2147483647]
 	OptionalRange *string `json:"OptionalRange,omitempty" xml:"OptionalRange,omitempty"`
 	// The description of the configuration parameter.
+	//
+	// example:
+	//
+	// Sets the maximum allowed duration of any statement, A value of 0 turns off the timeout.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the configuration parameter.
+	//
+	// example:
+	//
+	// statement_timeout
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The default value of the configuration parameter.
+	//
+	// example:
+	//
+	// 10800000
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -11200,8 +14724,16 @@ type DescribeRdsVSwitchsRequest struct {
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11210,13 +14742,21 @@ type DescribeRdsVSwitchsRequest struct {
 	//
 	// >
 	//
-	// *   You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPC IDs.
+	// 	- You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPC IDs.
 	//
-	// *   This parameter must be specified.
+	// 	- This parameter must be specified.
+	//
+	// example:
+	//
+	// vpc-bp*******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11275,6 +14815,10 @@ func (s *DescribeRdsVSwitchsRequest) SetZoneId(v string) *DescribeRdsVSwitchsReq
 
 type DescribeRdsVSwitchsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B0BA251D-6854-5A99-A964-3C**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details of the vSwitches.
 	VSwitches *DescribeRdsVSwitchsResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
@@ -11318,29 +14862,74 @@ func (s *DescribeRdsVSwitchsResponseBodyVSwitches) SetVSwitch(v []*DescribeRdsVS
 
 type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	// The CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 192.**.**.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The state of the vSwitch. If **Available** is returned, the vSwitch is available.
+	// The state of the vSwitch. If **Available*	- is returned, the vSwitch is available.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-name
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -11442,13 +15031,25 @@ type DescribeRdsVpcsRequest struct {
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11502,6 +15103,10 @@ func (s *DescribeRdsVpcsRequest) SetZoneId(v string) *DescribeRdsVpcsRequest {
 
 type DescribeRdsVpcsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 53924AF0-1628-5AA2-9C95-D4**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details of the VPCs.
 	Vpcs *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
@@ -11545,29 +15150,70 @@ func (s *DescribeRdsVpcsResponseBodyVpcs) SetVpc(v []*DescribeRdsVpcsResponseBod
 
 type DescribeRdsVpcsResponseBodyVpcsVpc struct {
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
 	// The CIDR block of the VPC.
+	//
+	// example:
+	//
+	// 10.**.**.0/8
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the VPC is the default VPC. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The state of the VPC. If **Available** is returned, the VPC is available.
+	// The state of the VPC. If **Available*	- is returned, the VPC is available.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Details of the vSwitches.
 	VSwitchs []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 	// The ID of VPC.
+	//
+	// example:
+	//
+	// vpc-bp*******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The name of the VPC.
+	//
+	// example:
+	//
+	// vpc-name
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
@@ -11636,23 +15282,56 @@ func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetVpcName(v string) *DescribeRdsVp
 
 type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
 	// The CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 10.**.**.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// An invalid parameter. It is no longer returned when you call this operation.
+	//
+	// example:
+	//
+	// null
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the zone to which the vSwitch belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The state of the vSwitch. If **Available** is returned, the vSwitch is available.
+	// The state of the vSwitch. If **Available*	- is returned, the vSwitch is available.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-name
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -11737,6 +15416,10 @@ type DescribeRegionsRequest struct {
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -11757,6 +15440,10 @@ type DescribeRegionsResponseBody struct {
 	// Details of the regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FF8EB261-5447-4B1B-9F14-294CEA008A9F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11797,6 +15484,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Details of the zones.
 	Zones *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
@@ -11840,10 +15531,19 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
 	// Indicates whether Virtual Private Cloud (VPC) is available.
 	//
-	// *   **true**: VPC is available.
-	// *   **false**: VPC is unavailable.
+	// 	- **true**: VPC is available.
+	//
+	// 	- **false**: VPC is unavailable.
+	//
+	// example:
+	//
+	// true
 	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-c
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11898,48 +15598,106 @@ type DescribeSQLLogCountRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	//
+	// example:
+	//
+	// 2020-12-14T11:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The execution duration of the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 100
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution state of the SQL statement. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 1000
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
 	// The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 10
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
 	// The type of the query language. Valid values:
 	//
-	// *   **DQL**
-	// *   **DML**
-	// *   **DDL**
-	// *   **DCL**
-	// *   **TCL**
+	// 	- **DQL**
+	//
+	// 	- **DML**
+	//
+	// 	- **DDL**
+	//
+	// 	- **DCL**
+	//
+	// 	- **TCL**
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The type of the SQL statement.
 	//
 	// >
 	//
-	// *   If **OperationClass** is specified, the value of **OperationType** must belong to the corresponding query language. For example, if **OperationClass** is set to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
+	// 	- If **OperationClass*	- is specified, the value of **OperationType*	- must belong to the corresponding query language. For example, if **OperationClass*	- is set to **DQL**, the value of **OperationType*	- must be a **DQL*	- statement such as **SELECT**.
 	//
-	// *   If **OperationClass** is not specified, the value of **OperationType** can be an SQL statement of any query language.
-	// *   If **OperationClass** and **OperationType** are not specified, all types of SQL statements are returned.
+	// 	- If **OperationClass*	- is not specified, the value of **OperationType*	- can be an SQL statement of any query language.
+	//
+	// 	- If **OperationClass*	- and **OperationType*	- are not specified, all types of SQL statements are returned.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The keywords that are used to query audit logs.
+	//
+	// example:
+	//
+	// test
 	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 10.**.**.13
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-12-12T11:22Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account that is used to connect to the database.
+	//
+	// example:
+	//
+	// adbpgadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -12018,14 +15776,30 @@ func (s *DescribeSQLLogCountRequest) SetUser(v string) *DescribeSQLLogCountReque
 
 type DescribeSQLLogCountResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time of the query.
+	//
+	// example:
+	//
+	// 2020-12-14T11:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the instance.
 	Items []*DescribeSQLLogCountResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
+	//
+	// example:
+	//
+	// 2020-12-12T11:22Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12064,6 +15838,10 @@ func (s *DescribeSQLLogCountResponseBody) SetStartTime(v string) *DescribeSQLLog
 
 type DescribeSQLLogCountResponseBodyItems struct {
 	// The name of the table.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Details of the audit logs.
 	Series []*DescribeSQLLogCountResponseBodyItemsSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
@@ -12156,58 +15934,126 @@ type DescribeSQLLogsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbpgadmin
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	//
+	// example:
+	//
+	// 2021-03-17T06:30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The execution duration of the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **1**: successful.
-	// *   **0**: failed.
+	// 	- **1**: successful.
+	//
+	// 	- **0**: failed.
+	//
+	// example:
+	//
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 1000
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
 	// The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 1
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
 	// The type of the query language. Valid values:
 	//
-	// *   **DQL**
-	// *   **DML**
-	// *   **DDL**
-	// *   **DCL**
-	// *   **TCL**
+	// 	- **DQL**
+	//
+	// 	- **DML**
+	//
+	// 	- **DDL**
+	//
+	// 	- **DCL**
+	//
+	// 	- **TCL**
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The type of the SQL statement.
 	//
 	// >
 	//
-	// *   If **OperationClass** is specified, the value of **OperationType** must belong to the corresponding query language. For example, if **OperationClass** is set to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
+	// 	- If **OperationClass*	- is specified, the value of **OperationType*	- must belong to the corresponding query language. For example, if **OperationClass*	- is set to **DQL**, the value of **OperationType*	- must be a **DQL*	- statement such as **SELECT**.
 	//
-	// *   If **OperationClass** is not specified, the value of **OperationType** can be an SQL statement of any query language.
-	// *   If **OperationClass** and **OperationType** are not specified, all types of SQL statements are returned.
+	// 	- If **OperationClass*	- is not specified, the value of **OperationType*	- can be an SQL statement of any query language.
+	//
+	// 	- If **OperationClass*	- and **OperationType*	- are not specified, all types of SQL statements are returned.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The keywords of the SQL statement.
+	//
+	// example:
+	//
+	// select 1
 	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 100.**.**.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-03-10T06:30Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// testadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -12298,10 +16144,22 @@ type DescribeSQLLogsResponseBody struct {
 	// The queried SQL execution logs.
 	Items []*DescribeSQLLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A7941C94-B92F-46A0-BD3E-2D**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12335,35 +16193,92 @@ func (s *DescribeSQLLogsResponseBody) SetRequestId(v string) *DescribeSQLLogsRes
 
 type DescribeSQLLogsResponseBodyItems struct {
 	// The database account that executes the SQL statement.
+	//
+	// example:
+	//
+	// testadmin
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbpgadmin
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The role of the database.
+	//
+	// example:
+	//
+	// master
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
 	// The execution duration of the SQL statement.
+	//
+	// example:
+	//
+	// 2
 	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The type of the query language.
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The time when the SQL statement was executed.
+	//
+	// example:
+	//
+	// 2021-03-15T17:02:32Z
 	OperationExecuteTime *string `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
 	// The type of the SQL statement.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
 	// The SQL execution plan.
+	//
+	// example:
+	//
+	// ""
 	SQLPlan *string `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// select 1
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 	// The number of entries scanned.
+	//
+	// example:
+	//
+	// 1
 	ScanRowCounts *int64 `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 100.**.**.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The number of the source port.
+	//
+	// example:
+	//
+	// 50514
 	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
 }
 
@@ -12478,55 +16393,130 @@ type DescribeSQLLogsV2Request struct {
 	// The ID of instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbpgadmin
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
 	//
 	// >  The end time must be later than the start time. The interval cannot be more than 24 hours.
+	//
+	// example:
+	//
+	// 2022-03-17T06:30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The execution duration of the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **1**: successful.
-	// *   **0**: failed.
+	// 	- **1**: successful.
+	//
+	// 	- **0**: failed.
+	//
+	// example:
+	//
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+	//
+	// example:
+	//
+	// 1000
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
 	// The minimum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
 	// The type of the query language. Valid values:
 	//
-	// *   **DQL**
-	// *   **DML**
-	// *   **DDL**
-	// *   **DCL**
-	// *   **TCL**
+	// 	- **DQL**
+	//
+	// 	- **DML**
+	//
+	// 	- **DDL**
+	//
+	// 	- **DCL**
+	//
+	// 	- **TCL**
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The type of the SQL statement.
 	//
-	// > *   If the **OperationClass** parameter is specified, the **OperationType** value must belong to the corresponding query language. For example, if the **OperationClass** value is **DQL**, the **OperationType** value must be a **DQL** SQL statement such as **SELECT**.
-	// >*   If the **OperationClass** parameter is not specified, the **OperationType** value can be an SQL statement of all query languages.
-	// >*   If neither of the **OperationClass** and **OperationType** parameters is specified, all types of SQL statements are returned.
+	// > 	- If the **OperationClass*	- parameter is specified, the **OperationType*	- value must belong to the corresponding query language. For example, if the **OperationClass*	- value is **DQL**, the **OperationType*	- value must be a **DQL*	- SQL statement such as **SELECT**.
+	//
+	// >	- If the **OperationClass*	- parameter is not specified, the **OperationType*	- value can be an SQL statement of all query languages.
+	//
+	// >	- If neither of the **OperationClass*	- and **OperationType*	- parameters is specified, all types of SQL statements are returned.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of the page to return. The maximum value is 200.
+	//
+	// example:
+	//
+	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The keywords of the SQL statement.
+	//
+	// example:
+	//
+	// select 1
 	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 100.XX.XX.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	// The beginning of the time range. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	// The beginning of the time range. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-03-10T06:30Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// testadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -12627,10 +16617,22 @@ type DescribeSQLLogsV2ResponseBody struct {
 	// Details of the SQL logs.
 	Items []*DescribeSQLLogsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A7941C94-B92F-46A0-BD3E-2D**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12664,33 +16666,86 @@ func (s *DescribeSQLLogsV2ResponseBody) SetRequestId(v string) *DescribeSQLLogsV
 
 type DescribeSQLLogsV2ResponseBodyItems struct {
 	// The database account that executes the SQL statement.
+	//
+	// example:
+	//
+	// testadmin
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbpgadmin
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The role of the database.
+	//
+	// example:
+	//
+	// master
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
 	// The execution duration of the SQL statement.
+	//
+	// example:
+	//
+	// 2
 	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution status of the SQL statement. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The type of the query language.
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The time when the SQL statement was executed.
+	//
+	// example:
+	//
+	// 2021-03-15T17:02:32Z
 	OperationExecuteTime *string `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
 	// The type of the SQL statement.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
 	// The SQL statement.
+	//
+	// example:
+	//
+	// select 1
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 	// The number of entries scanned.
+	//
+	// example:
+	//
+	// 1
 	ScanRowCounts *int64 `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 100.**.**.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The number of the source port.
+	//
+	// example:
+	//
+	// 50514
 	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
 }
 
@@ -12800,6 +16855,10 @@ type DescribeSampleDataRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -12824,15 +16883,32 @@ func (s *DescribeSampleDataRequest) SetOwnerId(v int64) *DescribeSampleDataReque
 
 type DescribeSampleDataResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned if an error occurs. This message does not affect the execution of the operation.
+	//
+	// example:
+	//
+	// ******
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// Indicates whether a sample dataset is loaded to the instance. Valid values:
 	//
-	// *   **true**: A sample dataset is loaded.
-	// *   **false**: No sample dataset is loaded.
+	// 	- **true**: A sample dataset is loaded.
+	//
+	// 	- **false**: No sample dataset is loaded.
+	//
+	// example:
+	//
+	// true
 	HasSampleData *bool `json:"HasSampleData,omitempty" xml:"HasSampleData,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 84CD7CAF-FA7B-5178-B19F-D8CDE307D5FA_8111
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SampleDataStatus *string `json:"SampleDataStatus,omitempty" xml:"SampleDataStatus,omitempty"`
 }
@@ -12903,6 +16979,10 @@ type DescribeSupportFeaturesRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -12927,13 +17007,26 @@ func (s *DescribeSupportFeaturesRequest) SetOwnerId(v int64) *DescribeSupportFea
 
 type DescribeSupportFeaturesResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 63E5BE60-91FF-57F1-B873-7F1EB734B93D_2724
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The features supported by the instance. Valid values:
 	//
-	// *   sample_data: sample dataset. For more information, see [Sample dataset](~~452278~~).
-	// *   diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](~~323453~~).
+	// 	- sample_data: sample dataset. For more information, see [Sample dataset](~~452278~~).
+	//
+	// 	- diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](~~323453~~).
+	//
+	// example:
+	//
+	// [ "sample_data", "diagnose_and_optimize" ]
 	SupportFeatureList *string `json:"SupportFeatureList,omitempty" xml:"SupportFeatureList,omitempty"`
 }
 
@@ -12995,12 +17088,24 @@ type DescribeTagsRequest struct {
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Set the value to **instance**.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -13049,6 +17154,10 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 
 type DescribeTagsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A29EC547-B392-4340-AA4F-7C0A7B626E74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried tags.
 	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -13074,8 +17183,16 @@ func (s *DescribeTagsResponseBody) SetTags(v []*DescribeTagsResponseBodyTags) *D
 
 type DescribeTagsResponseBodyTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// user
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -13128,10 +17245,22 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 
 type DescribeUserEncryptionKeyListRequest struct {
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of KMS keys to return on each page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13162,6 +17291,10 @@ type DescribeUserEncryptionKeyListResponseBody struct {
 	// Details about the KMS keys.
 	KmsKeys []*DescribeUserEncryptionKeyListResponseBodyKmsKeys `json:"KmsKeys,omitempty" xml:"KmsKeys,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13185,6 +17318,10 @@ func (s *DescribeUserEncryptionKeyListResponseBody) SetRequestId(v string) *Desc
 
 type DescribeUserEncryptionKeyListResponseBodyKmsKeys struct {
 	// The ID of the KMS key.
+	//
+	// example:
+	//
+	// 0b8b1825-fd99-418f-875e-e4dec1dd8715
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
@@ -13234,12 +17371,24 @@ type DescribeWaitingSQLInfoRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The ID of the process that uniquely identifies the query.
 	//
 	// >  You can call the [DescribeWaitingSQLRecords](~~461735~~) operation to obtain the process IDs of lock-waiting queries.
+	//
+	// example:
+	//
+	// 100
 	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
 }
 
@@ -13268,10 +17417,18 @@ func (s *DescribeWaitingSQLInfoRequest) SetPID(v string) *DescribeWaitingSQLInfo
 
 type DescribeWaitingSQLInfoResponseBody struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The queried lock-waiting query.
 	Items []*DescribeWaitingSQLInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13300,24 +17457,64 @@ func (s *DescribeWaitingSQLInfoResponseBody) SetRequestId(v string) *DescribeWai
 
 type DescribeWaitingSQLInfoResponseBodyItems struct {
 	// The application that sent the query.
+	//
+	// example:
+	//
+	// DataGrip 2022.1.5
 	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
 	// The application that sent the blocking query.
+	//
+	// example:
+	//
+	// DataGrip 2022.1.5
 	BlockedByApplication *string `json:"BlockedByApplication,omitempty" xml:"BlockedByApplication,omitempty"`
 	// The process ID of the blocking query.
+	//
+	// example:
+	//
+	// 110
 	BlockedByPID *string `json:"BlockedByPID,omitempty" xml:"BlockedByPID,omitempty"`
 	// The SQL statement of the blocking query.
+	//
+	// example:
+	//
+	// Select 	- from t1;
 	BlockedBySQLStmt *string `json:"BlockedBySQLStmt,omitempty" xml:"BlockedBySQLStmt,omitempty"`
 	// The database account that is used to perform the blocking query.
+	//
+	// example:
+	//
+	// testUser1
 	BlockedByUser *string `json:"BlockedByUser,omitempty" xml:"BlockedByUser,omitempty"`
 	// The authorized locks.
+	//
+	// example:
+	//
+	// ShareLock,AccessExclusiveLock
 	GrantLocks *string `json:"GrantLocks,omitempty" xml:"GrantLocks,omitempty"`
 	// The unauthorized locks.
+	//
+	// example:
+	//
+	// AccessShareLock
 	NotGrantLocks *string `json:"NotGrantLocks,omitempty" xml:"NotGrantLocks,omitempty"`
 	// The ID of the process that uniquely identifies the query.
+	//
+	// example:
+	//
+	// 100
 	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
 	// The SQL statement of the query.
+	//
+	// example:
+	//
+	// Select 	- from t1,t2 where t1.id=t2.id;
 	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
 	// The database account that is used to perform the query.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -13412,40 +17609,84 @@ type DescribeWaitingSQLRecordsRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
 	// If this parameter is not specified, all lock diagnostics records that are generated after the query start time are returned. If the query start time is not specified either, all lock diagnostics records are returned.
+	//
+	// example:
+	//
+	// 2022-08-20T07:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The keyword used to filter queries.
+	//
+	// example:
+	//
+	// table
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The field used to sort lock diagnostics records and the sorting order.
 	//
 	// Default value: `{"Field":"StartTime","Type":"Desc"}`, which indicates that lock diagnostics records are sorted by the start time in descending order. No other values are supported.
+	//
+	// example:
+	//
+	// {"Field":"StartTime","Type":"Desc"}
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The filter condition on queries. Valid values:
 	//
-	// *   `{"Type":"maxCost","Value":"10"}`: filters the top 10 longest-waiting queries.
-	// *   `{"Type":"status","Value":"LockWaiting"}`: filters lock-waiting queries.
-	// *   `{"Type":"status","Value":"ResourceWaiting"}`: filters resource-waiting queries.
+	// 	- `{"Type":"maxCost","Value":"10"}`: filters the top 10 longest-waiting queries.
+	//
+	// 	- `{"Type":"status","Value":"LockWaiting"}`: filters lock-waiting queries.
+	//
+	// 	- `{"Type":"status","Value":"ResourceWaiting"}`: filters resource-waiting queries.
+	//
+	// example:
+	//
+	// {"Type":"maxCost","Value":"10"}
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
 	// If this parameter is not specified, all lock diagnostics records that are generated before the query end time are returned. If the query end time is not specified either, all lock diagnostics records are returned.
+	//
+	// example:
+	//
+	// 2022-08-15T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account. If this parameter is not specified, the lock diagnostics records of all database accounts are queried.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -13511,10 +17752,22 @@ type DescribeWaitingSQLRecordsResponseBody struct {
 	// The list of lock diagnostics records.
 	Items []*DescribeWaitingSQLRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13548,23 +17801,56 @@ func (s *DescribeWaitingSQLRecordsResponseBody) SetTotalCount(v int32) *Describe
 
 type DescribeWaitingSQLRecordsResponseBodyItems struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The ID of the process that uniquely identifies the query.
+	//
+	// example:
+	//
+	// 100
 	PID *string `json:"PID,omitempty" xml:"PID,omitempty"`
 	// The SQL statement of the query.
+	//
+	// example:
+	//
+	// Select 	- from t1,t2 where t1.id=t2.id;
 	SQLStmt *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
 	// The ID of the session that contains the query.
+	//
+	// example:
+	//
+	// 50
 	SessionID *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
 	// The start time of the query. This value is in the timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1660902033374
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The waiting state of the query. Valid values:
 	//
-	// *   **LockWaiting**
-	// *   **ResourceWaiting**
+	// 	- **LockWaiting**
+	//
+	// 	- **ResourceWaiting**
+	//
+	// example:
+	//
+	// LockWaiting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The database account that is used to perform the query.
+	//
+	// example:
+	//
+	// testUser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 	// The waiting period of the query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 26911000
 	WaitingTime *int64 `json:"WaitingTime,omitempty" xml:"WaitingTime,omitempty"`
 }
 
@@ -13649,33 +17935,74 @@ type DownloadDiagnosisRecordsRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-05-07T07:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the file that contains the query diagnostic information. Valid values:
 	//
-	// *   **zh**: simplified Chinese
-	// *   **en**: English
-	// *   **ja**: Japanese
-	// *   **zh-tw**: traditional Chinese
+	// 	- **zh**: simplified Chinese
+	//
+	// 	- **en**: English
+	//
+	// 	- **ja**: Japanese
+	//
+	// 	- **zh-tw**: traditional Chinese
+	//
+	// example:
+	//
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The filter condition on queries. The value is in the JSON format. Valid values:
 	//
-	// *   `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
-	// *   `{"Type":"status","Value":"finished"}`: filters completed queries.
-	// *   `{"Type":"status","Value":"running"}`: filters running queries.
-	// *   `{"Type":"cost","Max":"200"}`: filters the queries that consume less than 200 milliseconds.
-	// *   `{"Type":"cost","Min":"200","Max":"60000"}`: filters the queries that consume 200 milliseconds or more and less than 1 minute.
-	// *   `{"Type":"cost","Min":"60000"}`: filters the queries that consume 1 minute or more.
-	// *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
+	// 	- `{"Type":"maxCost", "Value":"100"}`: filters the top 100 queries that are the most time-consuming.
+	//
+	// 	- `{"Type":"status","Value":"finished"}`: filters completed queries.
+	//
+	// 	- `{"Type":"status","Value":"running"}`: filters running queries.
+	//
+	// 	- `{"Type":"cost","Max":"200"}`: filters the queries that consume less than 200 milliseconds.
+	//
+	// 	- `{"Type":"cost","Min":"200","Max":"60000"}`: filters the queries that consume 200 milliseconds or more and less than 1 minute.
+	//
+	// 	- `{"Type":"cost","Min":"60000"}`: filters the queries that consume 1 minute or more.
+	//
+	// 	- `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min*	- and **Max**.
+	//
+	// example:
+	//
+	// { "Type":"maxCost", "Value":"100" }
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
 	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-05-07T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// adbpguser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -13729,10 +18056,22 @@ func (s *DownloadDiagnosisRecordsRequest) SetUser(v string) *DownloadDiagnosisRe
 
 type DownloadDiagnosisRecordsResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the download task.
+	//
+	// example:
+	//
+	// 11
 	DownloadId *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13792,50 +18131,120 @@ type DownloadSQLLogsRecordsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2023-05-08T06:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The execution duration of the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
 	// The execution status of the SQL statement.
 	//
-	// *   **1**: successful.
-	// *   **0**: failed.
+	// 	- **1**: successful.
+	//
+	// 	- **0**: failed.
+	//
+	// example:
+	//
+	// 1
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The language of the file that contains the query diagnostic information. Valid values:
 	//
-	// *   **zh**: simplified Chinese.
-	// *   **en**: English.
-	// *   **ja**: Japanese.
-	// *   **zh-tw**: traditional Chinese.
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 999
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
 	// The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	//
+	// example:
+	//
+	// 1
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
 	// The type of the query language. Example: DQL, DML, or DDL.
+	//
+	// example:
+	//
+	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
 	// The type of the SQL statement. Example: SELECT.
+	//
+	// example:
+	//
+	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The keywords that are used for query.
+	//
+	// example:
+	//
+	// select 1
 	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	// The source IP address.
+	//
+	// example:
+	//
+	// 100.XX.XX.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2023-05-07T06:59Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// testuser
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
@@ -13929,8 +18338,16 @@ func (s *DownloadSQLLogsRecordsRequest) SetUser(v string) *DownloadSQLLogsRecord
 
 type DownloadSQLLogsRecordsResponseBody struct {
 	// The ID of the download task.
+	//
+	// example:
+	//
+	// 11
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7565770E-7C45-462D-BA4A-8A5396F2CAD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13982,13 +18399,31 @@ func (s *DownloadSQLLogsRecordsResponse) SetBody(v *DownloadSQLLogsRecordsRespon
 }
 
 type GetUploadDocumentJobRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// bf8f7bc4-9276-44f7-9c22-1d06edc8dfd1
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetUploadDocumentJobRequest) String() string {
@@ -14037,10 +18472,19 @@ func (s *GetUploadDocumentJobRequest) SetRegionId(v string) *GetUploadDocumentJo
 type GetUploadDocumentJobResponseBody struct {
 	ChunkResult *GetUploadDocumentJobResponseBodyChunkResult `json:"ChunkResult,omitempty" xml:"ChunkResult,omitempty" type:"Struct"`
 	Job         *GetUploadDocumentJobResponseBodyJob         `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage       *GetUploadDocumentJobResponseBodyUsage       `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage  *GetUploadDocumentJobResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s GetUploadDocumentJobResponseBody) String() string {
@@ -14082,7 +18526,13 @@ func (s *GetUploadDocumentJobResponseBody) SetUsage(v *GetUploadDocumentJobRespo
 }
 
 type GetUploadDocumentJobResponseBodyChunkResult struct {
-	ChunkFileUrl      *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	// example:
+	//
+	// http://xxx/test.jsonl
+	ChunkFileUrl *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	// example:
+	//
+	// http://xxx/test.txt
 	PlainChunkFileUrl *string `json:"PlainChunkFileUrl,omitempty" xml:"PlainChunkFileUrl,omitempty"`
 }
 
@@ -14105,13 +18555,35 @@ func (s *GetUploadDocumentJobResponseBodyChunkResult) SetPlainChunkFileUrl(v str
 }
 
 type GetUploadDocumentJobResponseBodyJob struct {
-	Completed  *bool   `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// false
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:52:04.864664
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// Failed to connect database.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// Job ID。
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Progress   *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	//
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 20
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:53:04.864664
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -14160,7 +18632,10 @@ func (s *GetUploadDocumentJobResponseBodyJob) SetUpdateTime(v string) *GetUpload
 
 type GetUploadDocumentJobResponseBodyUsage struct {
 	EmbeddingEntries *int32 `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
-	EmbeddingTokens  *int32 `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	// example:
+	//
+	// 475
+	EmbeddingTokens *int32 `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
 }
 
 func (s GetUploadDocumentJobResponseBodyUsage) String() string {
@@ -14211,13 +18686,31 @@ func (s *GetUploadDocumentJobResponse) SetBody(v *GetUploadDocumentJobResponseBo
 }
 
 type GetUpsertCollectionDataJobRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetUpsertCollectionDataJobRequest) String() string {
@@ -14264,10 +18757,19 @@ func (s *GetUpsertCollectionDataJobRequest) SetRegionId(v string) *GetUpsertColl
 }
 
 type GetUpsertCollectionDataJobResponseBody struct {
-	Job       *GetUpsertCollectionDataJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Job *GetUpsertCollectionDataJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUpsertCollectionDataJobResponseBody) String() string {
@@ -14299,13 +18801,35 @@ func (s *GetUpsertCollectionDataJobResponseBody) SetStatus(v string) *GetUpsertC
 }
 
 type GetUpsertCollectionDataJobResponseBodyJob struct {
-	Completed  *bool   `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// false
+	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:52:04.864664
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Error      *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// Failed to connect database.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// Job ID。
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Progress   *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	//
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1600
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-01-08 16:53:04.864664
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -14383,29 +18907,63 @@ func (s *GetUpsertCollectionDataJobResponse) SetBody(v *GetUpsertCollectionDataJ
 
 type GrantCollectionRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The ID of the instance in reserved storage mode.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace to which you want to grant the vector collection permissions.
+	//
+	// example:
+	//
+	// othernamespace
 	GrantToNamespace *string `json:"GrantToNamespace,omitempty" xml:"GrantToNamespace,omitempty"`
 	// The type of the permissions that you want to grant. Valid values:
 	//
-	// *   rw: the read and write permissions.
-	// *   ro: the read-only permission.
-	// *   none: the delete permission.
+	// 	- rw: the read and write permissions.
+	//
+	// 	- ro: the read-only permission.
+	//
+	// 	- none: the delete permission.
+	//
+	// example:
+	//
+	// rw
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14464,13 +19022,26 @@ func (s *GrantCollectionRequest) SetRegionId(v string) *GrantCollectionRequest {
 
 type GrantCollectionResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14527,9 +19098,18 @@ func (s *GrantCollectionResponse) SetBody(v *GrantCollectionResponseBody) *Grant
 }
 
 type HandleActiveSQLRecordRequest struct {
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OperateType  *int32  `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Pids         *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
+	// example:
+	//
+	// 0
+	OperateType *int32 `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// example:
+	//
+	// "3003925,3003928"
+	Pids *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
 }
 
 func (s HandleActiveSQLRecordRequest) String() string {
@@ -14556,10 +19136,19 @@ func (s *HandleActiveSQLRecordRequest) SetPids(v string) *HandleActiveSQLRecordR
 }
 
 type HandleActiveSQLRecordResponseBody struct {
-	DBInstanceId *string                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results      []*HandleActiveSQLRecordResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	Status       *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// gp-bp***************
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*HandleActiveSQLRecordResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s HandleActiveSQLRecordResponseBody) String() string {
@@ -14591,7 +19180,13 @@ func (s *HandleActiveSQLRecordResponseBody) SetStatus(v string) *HandleActiveSQL
 }
 
 type HandleActiveSQLRecordResponseBodyResults struct {
-	Pid    *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// example:
+	//
+	// 3003925
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// example:
+	//
+	// true
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14646,15 +19241,31 @@ type InitVectorDatabaseRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the database account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14693,13 +19304,26 @@ func (s *InitVectorDatabaseRequest) SetRegionId(v string) *InitVectorDatabaseReq
 
 type InitVectorDatabaseResponseBody struct {
 	// The error message returned if the request fails.
+	//
+	// example:
+	//
+	// failed to connect database, detailMsg: getConnection fail::SQL State: 28P01, Error Code: 0, Error Message: FATAL: password
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **Success**
-	// *   **fail**
+	// 	- **Success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14759,15 +19383,31 @@ type ListCollectionsRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14808,21 +19448,50 @@ type ListCollectionsResponseBody struct {
 	// The queried vector collections.
 	Collections *ListCollectionsResponseBodyCollections `json:"Collections,omitempty" xml:"Collections,omitempty" type:"Struct"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14921,11 +19590,23 @@ func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListC
 }
 
 type ListDocumentCollectionsRequest struct {
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDocumentCollectionsRequest) String() string {
@@ -14962,11 +19643,23 @@ func (s *ListDocumentCollectionsRequest) SetRegionId(v string) *ListDocumentColl
 }
 
 type ListDocumentCollectionsResponseBody struct {
-	Count     *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
-	Items     *ListDocumentCollectionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	Count *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Items *ListDocumentCollectionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDocumentCollectionsResponseBody) String() string {
@@ -15020,13 +19713,34 @@ func (s *ListDocumentCollectionsResponseBodyItems) SetCollectionList(v []*ListDo
 }
 
 type ListDocumentCollectionsResponseBodyItemsCollectionList struct {
-	CollectionName          *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
-	Dimension               *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	// example:
+	//
+	// document
+	CollectionName *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	// example:
+	//
+	// 1536
+	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// example:
+	//
+	// text-embeddding-v1
+	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	// example:
+	//
+	// title
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// example:
+	//
+	// {\"page\": \"int\", \"title\": \"text\"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// zh_cn
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
 }
 
 func (s ListDocumentCollectionsResponseBodyItemsCollectionList) String() string {
@@ -15102,12 +19816,27 @@ func (s *ListDocumentCollectionsResponse) SetBody(v *ListDocumentCollectionsResp
 }
 
 type ListDocumentsRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListDocumentsRequest) String() string {
@@ -15149,10 +19878,19 @@ func (s *ListDocumentsRequest) SetRegionId(v string) *ListDocumentsRequest {
 }
 
 type ListDocumentsResponseBody struct {
-	Items     *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Items *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDocumentsResponseBody) String() string {
@@ -15201,8 +19939,14 @@ func (s *ListDocumentsResponseBodyItems) SetDocumentList(v []*ListDocumentsRespo
 }
 
 type ListDocumentsResponseBodyItemsDocumentList struct {
+	// example:
+	//
+	// music.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// http://oss.xxx/music.txt
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListDocumentsResponseBodyItemsDocumentList) String() string {
@@ -15256,15 +20000,31 @@ type ListNamespacesRequest struct {
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the manager account that has the rds_superuser permission.
+	//
+	// example:
+	//
+	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
 	// The password of the manager account.
+	//
+	// example:
+	//
+	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15303,21 +20063,46 @@ func (s *ListNamespacesRequest) SetRegionId(v string) *ListNamespacesRequest {
 
 type ListNamespacesResponseBody struct {
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The queried namespaces.
 	Namespaces *ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Struct"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -15412,19 +20197,36 @@ func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNam
 
 type ListTagResourcesRequest struct {
 	// The token used to perform the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of instance N. Valid values of N: 1 to 50.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxx
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage mode of the instance. Valid values:
 	//
-	// *   `instance`: reserved storage mode
-	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	// 	- `instance`: reserved storage mode
+	//
+	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The queried tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -15490,13 +20292,23 @@ type ListTagResourcesRequestTag struct {
 	//
 	// Valid values of N: 1 to 20.
 	//
-	// *   If you specify only `Tag.N.Key`, all instances that have the tag key added are returned.
-	// *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
-	// *   If you specify multiple tag key-value pairs at a time, the instances that match all the specified tag key-value pairs are returned.
+	// 	- If you specify only `Tag.N.Key`, all instances that have the tag key added are returned.
+	//
+	// 	- If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
+	//
+	// 	- If you specify multiple tag key-value pairs at a time, the instances that match all the specified tag key-value pairs are returned.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N. The value must be 1 to 128 characters in length.
 	//
 	// Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15520,8 +20332,16 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The token used to perform the next query.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5414A4E5-4C36-4461-95FC-23757A20B5F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details about the instances and tags, including the instance IDs, instance modes, and tag key-value pairs.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -15569,12 +20389,28 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The storage mode of the instance.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -15638,16 +20474,31 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ModifyAccountDescriptionRequest struct {
 	// The new description of the database account.
 	//
-	// *   The description must start with a letter.
-	// *   The description cannot start with `http://` or `https://`.
-	// *   The description can contain letters, underscores (\_), hyphens (-), and digits.
-	// *   The description must be 2 to 256 characters in length.
+	// 	- The description must start with a letter.
+	//
+	// 	- The description cannot start with `http://` or `https://`.
+	//
+	// 	- The description can contain letters, underscores (\_), hyphens (-), and digits.
+	//
+	// 	- The description must be 2 to 256 characters in length.
+	//
+	// example:
+	//
+	// testAccoutdescribe
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
+	//
+	// example:
+	//
+	// testAccout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -15676,6 +20527,10 @@ func (s *ModifyAccountDescriptionRequest) SetDBInstanceId(v string) *ModifyAccou
 
 type ModifyAccountDescriptionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 99BBBD5E-B5D8-4FC8-B8BF-FB1A0A38BBA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15723,36 +20578,70 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 
 type ModifyBackupPolicyRequest struct {
 	// The number of days for which data backup files are retained. Default value: 7. Maximum value: 7. Valid values: 1 to 7.
+	//
+	// example:
+	//
+	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to enable automatic point-in-time backup.
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: true.
+	//
+	// example:
+	//
+	// true
 	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
 	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
 	//
-	// *   Monday
-	// *   Tuesday
-	// *   Wednesday
-	// *   Thursday
-	// *   Friday
-	// *   Saturday
-	// *   Sunday
+	// 	- Monday
+	//
+	// 	- Tuesday
+	//
+	// 	- Wednesday
+	//
+	// 	- Thursday
+	//
+	// 	- Friday
+	//
+	// 	- Saturday
+	//
+	// 	- Sunday
+	//
+	// example:
+	//
+	// Tuesday, Thursday, Saturday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
+	//
+	// example:
+	//
+	// 15:00Z-16:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	// The frequency of point-in-time backup.
 	//
-	// *   1: per hour
-	// *   2: per 2 hours
-	// *   4: per 4 hours
-	// *   8: per 8 hours
+	// 	- 1: per hour
+	//
+	// 	- 2: per 2 hours
+	//
+	// 	- 4: per 4 hours
+	//
+	// 	- 8: per 8 hours
 	//
 	// Default value: 8.
+	//
+	// example:
+	//
+	// 8
 	RecoveryPointPeriod *string `json:"RecoveryPointPeriod,omitempty" xml:"RecoveryPointPeriod,omitempty"`
 }
 
@@ -15796,6 +20685,10 @@ func (s *ModifyBackupPolicyRequest) SetRecoveryPointPeriod(v string) *ModifyBack
 
 type ModifyBackupPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DA147739-AEAD-4417-9089-65**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15843,16 +20736,36 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 
 type ModifyDBInstanceConfigRequest struct {
 	// The description of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The wait period for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
+	//
+	// example:
+	//
+	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The threshold of computing resources. Valid values: 8 to 32. Unit: AnalyticDB Compute Units (ACUs).
+	//
+	// example:
+	//
+	// 32
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 }
 
@@ -15891,15 +20804,32 @@ func (s *ModifyDBInstanceConfigRequest) SetServerlessResource(v int32) *ModifyDB
 
 type ModifyDBInstanceConfigResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The error message returned if the operation fails.
+	//
+	// example:
+	//
+	// \"error message\"
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34B32A0A-08EF-4A87-B6BE-CDD9F56FC3AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the operation. Valid values:
 	//
-	// *   **0**: The operation failed.
-	// *   **1**: The operation is successful.
+	// 	- **0**: The operation failed.
+	//
+	// 	- **1**: The operation is successful.
+	//
+	// example:
+	//
+	// 1
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -15962,12 +20892,28 @@ func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigRespon
 
 type ModifyDBInstanceConnectionStringRequest struct {
 	// The endpoint prefix of the instance.
+	//
+	// example:
+	//
+	// gp-test
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The current endpoint of the instance.
+	//
+	// example:
+	//
+	// gp-t4n2qg19bnn98****-master.gpdb.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-t4n2qg19bnn98****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The port number. Example: 5432.
+	//
+	// example:
+	//
+	// 5432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -16001,6 +20947,10 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetPort(v string) *ModifyDBIns
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 29B0BF34-D069-4495-92C7-FA6D94528A9E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16050,12 +21000,24 @@ type ModifyDBInstanceDescriptionRequest struct {
 	// The description of the instance.
 	//
 	// The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -16084,6 +21046,10 @@ func (s *ModifyDBInstanceDescriptionRequest) SetResourceGroupId(v string) *Modif
 
 type ModifyDBInstanceDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 107BE202-D1A2-479E-98E0-A8**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16133,12 +21099,28 @@ type ModifyDBInstanceMaintainTimeRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the maintenance window. The end time must be later than the start time. Specify the time in the HH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 03:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 02:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16172,6 +21154,10 @@ func (s *ModifyDBInstanceMaintainTimeRequest) SetStartTime(v string) *ModifyDBIn
 
 type ModifyDBInstanceMaintainTimeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CA9A34C8-AC95-413B-AC6A-CE**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16221,12 +21207,24 @@ type ModifyDBInstanceResourceGroupRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4b****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16277,6 +21275,10 @@ func (s *ModifyDBInstanceResourceGroupRequest) SetResourceOwnerId(v int64) *Modi
 
 type ModifyDBInstanceResourceGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 65BDA532-28AF-4122-AA39-B382721EEE64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16324,14 +21326,28 @@ func (s *ModifyDBInstanceResourceGroupResponse) SetBody(v *ModifyDBInstanceResou
 
 type ModifyDBInstanceSSLRequest struct {
 	// The encrypted endpoint. By default, the wildcards are used for instances that are hosted on ECS instances. This way, the endpoints that can be resolved to the same IP address are encrypted.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxxx-master.gpdbmaster.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The status of SSL encryption. Valid values:
 	//
-	// *   0: disables SSL encryption.
-	// *   1: enables SSL encryption.
-	// *   2: updates SSL encryption.
+	// 	- 0: disables SSL encryption.
+	//
+	// 	- 1: enables SSL encryption.
+	//
+	// 	- 2: updates SSL encryption.
+	//
+	// example:
+	//
+	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 }
 
@@ -16360,6 +21376,10 @@ func (s *ModifyDBInstanceSSLRequest) SetSSLEnabled(v int32) *ModifyDBInstanceSSL
 
 type ModifyDBInstanceSSLResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADD6EA90-EECB-4C12-9F26-0B6DB58710EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16406,10 +21426,22 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 }
 
 type ModifyMasterSpecRequest struct {
+	// example:
+	//
+	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	MasterCU              *int32  `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 8 CU
+	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ModifyMasterSpecRequest) String() string {
@@ -16441,10 +21473,22 @@ func (s *ModifyMasterSpecRequest) SetResourceGroupId(v string) *ModifyMasterSpec
 }
 
 type ModifyMasterSpecResponseBody struct {
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// ******
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyMasterSpecResponseBody) String() string {
@@ -16508,15 +21552,28 @@ type ModifyParametersRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to forcibly restart the instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ForceRestartInstance *bool `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
 	// The name and value of the parameter to be modified. Specify the parameter in the `<Parameter name>:<Parameter value>` format.
 	//
 	// You can call the [DescribeParameters](~~208310~~) operation to query the parameters that can be modified.
+	//
+	// example:
+	//
+	// {"statement_timeout":"11800010"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
@@ -16545,6 +21602,10 @@ func (s *ModifyParametersRequest) SetParameters(v string) *ModifyParametersReque
 
 type ModifyParametersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3FE698B6-6579-547C-A403-07**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16592,11 +21653,20 @@ func (s *ModifyParametersResponse) SetBody(v *ModifyParametersResponseBody) *Mod
 
 type ModifySQLCollectorPolicyRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-xxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to enable or disable SQL collection.
 	//
-	// *   Enable: enables SQL collection.
-	// *   Disabled: disables SQL collection.
+	// 	- Enable: enables SQL collection.
+	//
+	// 	- Disabled: disables SQL collection.
+	//
+	// example:
+	//
+	// Enable
 	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
 }
 
@@ -16620,6 +21690,10 @@ func (s *ModifySQLCollectorPolicyRequest) SetSQLCollectorStatus(v string) *Modif
 
 type ModifySQLCollectorPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4FA1F1D1-50A6-4F60-9A78-5752F2076A53
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16667,28 +21741,56 @@ func (s *ModifySQLCollectorPolicyResponse) SetBody(v *ModifySQLCollectorPolicyRe
 
 type ModifySecurityIpsRequest struct {
 	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
+	//
+	// example:
+	//
+	// hidden
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 	// The name of the whitelist. If you do not enter a name, IP addresses are added to the default whitelist.
 	//
 	// >  You can create up to 50 whitelists for an instance.
+	//
+	// example:
+	//
+	// default
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The method of modification. Valid values:
 	//
-	// *   **Cover**: overwrites the whitelist.
-	// *   **Append**: appends data to the whitelist.
-	// *   **Delete**: deletes the whitelist.
+	// 	- **Cover**: overwrites the whitelist.
+	//
+	// 	- **Append**: appends data to the whitelist.
+	//
+	// 	- **Delete**: deletes the whitelist.
+	//
+	// example:
+	//
+	// 0
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats:
 	//
-	// *   0.0.0.0/0
-	// *   10.23.12.24. This is a standard IP address.
-	// *   10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	// 	- 0.0.0.0/0
+	//
+	// 	- 10.23.12.24. This is a standard IP address.
+	//
+	// 	- 10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+	//
+	// example:
+	//
+	// 10.10.**.**
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -16732,6 +21834,10 @@ func (s *ModifySecurityIpsRequest) SetSecurityIPList(v string) *ModifySecurityIp
 
 type ModifySecurityIpsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 871C698F-B43D-4D1D-ACD6-DF56B0F89978
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16781,15 +21887,25 @@ type ModifyVectorConfigurationRequest struct {
 	// The instance ID.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable vector engine optimization. Valid values:
 	//
-	// *   **enabled**
-	// *   **disabled**
+	// 	- **enabled**
 	//
-	// > *   We recommend that you **do not enable** vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
-	// > *   We recommend that you **enable** vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	// 	- **disabled**
+	//
+	// > 	- We recommend that you **do not enable*	- vector engine optimization in mainstream analysis and real-time data warehousing scenarios.
+	//
+	// > 	- We recommend that you **enable*	- vector engine optimization in AI Generated Content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	//
+	// example:
+	//
+	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
 }
 
@@ -16818,17 +21934,34 @@ func (s *ModifyVectorConfigurationRequest) SetVectorConfigurationStatus(v string
 
 type ModifyVectorConfigurationResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message that is returned.
 	//
 	// This parameter is returned only if the request fails.
+	//
+	// example:
+	//
+	// Failed to modify vector configuration.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 107BE202-D1A2-479E-98E0-A8**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16893,6 +22026,10 @@ type PauseInstanceRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -16917,17 +22054,34 @@ func (s *PauseInstanceRequest) SetOwnerId(v int64) *PauseInstanceRequest {
 
 type PauseInstanceResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned.
 	//
-	// This parameter is returned only if **false** is returned for the **Status** parameter.
+	// This parameter is returned only if **false*	- is returned for the **Status*	- parameter.
+	//
+	// example:
+	//
+	// *******
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd9********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **false**: The request failed.
-	// *   **true**: The request was successful.
+	// 	- **false**: The request failed.
+	//
+	// 	- **true**: The request was successful.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -16989,20 +22143,47 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 }
 
 type QueryCollectionDataRequest struct {
-	Collection        *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content           *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId      *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter            *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HybridSearch      *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	HybridSearchArgs  map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeValues     *bool                             `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	Metrics           *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace         *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TopK              *int64                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	Vector            []*float64                        `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// hello_world
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// response > 200
+	Filter                *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch          *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs      map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeMetadataFields *string                           `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	IncludeValues         *bool                             `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
+	Metrics               *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	Offset            *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 10
+	TopK   *int64     `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
 }
 
 func (s QueryCollectionDataRequest) String() string {
@@ -17043,6 +22224,11 @@ func (s *QueryCollectionDataRequest) SetHybridSearchArgs(v map[string]map[string
 	return s
 }
 
+func (s *QueryCollectionDataRequest) SetIncludeMetadataFields(v string) *QueryCollectionDataRequest {
+	s.IncludeMetadataFields = &v
+	return s
+}
+
 func (s *QueryCollectionDataRequest) SetIncludeValues(v bool) *QueryCollectionDataRequest {
 	s.IncludeValues = &v
 	return s
@@ -17060,6 +22246,16 @@ func (s *QueryCollectionDataRequest) SetNamespace(v string) *QueryCollectionData
 
 func (s *QueryCollectionDataRequest) SetNamespacePassword(v string) *QueryCollectionDataRequest {
 	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetOffset(v int32) *QueryCollectionDataRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetOrderBy(v string) *QueryCollectionDataRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -17084,20 +22280,47 @@ func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDat
 }
 
 type QueryCollectionDataShrinkRequest struct {
-	Collection             *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content                *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// hello_world
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// response > 200
 	Filter                 *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	HybridSearch           *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
 	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeMetadataFields  *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
 	IncludeValues          *bool   `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
 	Metrics                *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword      *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TopK                   *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	VectorShrink           *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	Offset            *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 10
+	TopK         *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	VectorShrink *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
 }
 
 func (s QueryCollectionDataShrinkRequest) String() string {
@@ -17138,6 +22361,11 @@ func (s *QueryCollectionDataShrinkRequest) SetHybridSearchArgsShrink(v string) *
 	return s
 }
 
+func (s *QueryCollectionDataShrinkRequest) SetIncludeMetadataFields(v string) *QueryCollectionDataShrinkRequest {
+	s.IncludeMetadataFields = &v
+	return s
+}
+
 func (s *QueryCollectionDataShrinkRequest) SetIncludeValues(v bool) *QueryCollectionDataShrinkRequest {
 	s.IncludeValues = &v
 	return s
@@ -17155,6 +22383,16 @@ func (s *QueryCollectionDataShrinkRequest) SetNamespace(v string) *QueryCollecti
 
 func (s *QueryCollectionDataShrinkRequest) SetNamespacePassword(v string) *QueryCollectionDataShrinkRequest {
 	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetOffset(v int32) *QueryCollectionDataShrinkRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetOrderBy(v string) *QueryCollectionDataShrinkRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -17179,10 +22417,17 @@ func (s *QueryCollectionDataShrinkRequest) SetVectorShrink(v string) *QueryColle
 }
 
 type QueryCollectionDataResponseBody struct {
-	Matches   *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Matches *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Total  *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryCollectionDataResponseBody) String() string {
@@ -17213,6 +22458,11 @@ func (s *QueryCollectionDataResponseBody) SetStatus(v string) *QueryCollectionDa
 	return s
 }
 
+func (s *QueryCollectionDataResponseBody) SetTotal(v int32) *QueryCollectionDataResponseBody {
+	s.Total = &v
+	return s
+}
+
 type QueryCollectionDataResponseBodyMatches struct {
 	Match []*QueryCollectionDataResponseBodyMatchesMatch `json:"match,omitempty" xml:"match,omitempty" type:"Repeated"`
 }
@@ -17231,6 +22481,9 @@ func (s *QueryCollectionDataResponseBodyMatches) SetMatch(v []*QueryCollectionDa
 }
 
 type QueryCollectionDataResponseBodyMatchesMatch struct {
+	// example:
+	//
+	// doca-1234
 	Id       *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
 	Metadata map[string]*string                                 `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	Score    *float64                                           `json:"Score,omitempty" xml:"Score,omitempty"`
@@ -17312,24 +22565,52 @@ func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody
 }
 
 type QueryContentRequest struct {
-	Collection           *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content              *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId         *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName             *string                           `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl              *string                           `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter               *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HybridSearch         *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	HybridSearchArgs     map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeVector        *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics              *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace            *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindow         []*int32                          `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
-	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor         *float64                          `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                 *int32                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval *bool                             `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// title = \"test\"
+	Filter                *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch          *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs      map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeMetadataFields *string                           `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	IncludeVector         *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindow      []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// example:
+	//
+	// 10
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// example:
+	//
+	// true
+	UseFullTextRetrieval *bool `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentRequest) String() string {
@@ -17377,6 +22658,11 @@ func (s *QueryContentRequest) SetHybridSearch(v string) *QueryContentRequest {
 
 func (s *QueryContentRequest) SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentRequest {
 	s.HybridSearchArgs = v
+	return s
+}
+
+func (s *QueryContentRequest) SetIncludeMetadataFields(v string) *QueryContentRequest {
+	s.IncludeMetadataFields = &v
 	return s
 }
 
@@ -17431,24 +22717,52 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 type QueryContentAdvanceRequest struct {
-	Collection           *string                           `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content              *string                           `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId         *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName             *string                           `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject        io.Reader                         `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter               *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HybridSearch         *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	HybridSearchArgs     map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeVector        *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics              *string                           `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace            *string                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string                           `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindow         []*int32                          `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
-	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor         *float64                          `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                 *int32                            `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval *bool                             `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId  *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// title = \"test\"
+	Filter                *string                           `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch          *string                           `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgs      map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeMetadataFields *string                           `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	IncludeVector         *bool                             `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindow      []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// example:
+	//
+	// 10
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// example:
+	//
+	// true
+	UseFullTextRetrieval *bool `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentAdvanceRequest) String() string {
@@ -17496,6 +22810,11 @@ func (s *QueryContentAdvanceRequest) SetHybridSearch(v string) *QueryContentAdva
 
 func (s *QueryContentAdvanceRequest) SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentAdvanceRequest {
 	s.HybridSearchArgs = v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetIncludeMetadataFields(v string) *QueryContentAdvanceRequest {
+	s.IncludeMetadataFields = &v
 	return s
 }
 
@@ -17550,24 +22869,52 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 type QueryContentShrinkRequest struct {
-	Collection             *string  `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content                *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	DBInstanceId           *string  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName               *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl                *string  `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Filter                 *string  `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HybridSearch           *string  `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	HybridSearchArgsShrink *string  `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeVector          *bool    `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
-	Metrics                *string  `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Namespace              *string  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword      *string  `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId                *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecallWindowShrink     *string  `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
-	RegionId               *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RerankFactor           *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	TopK                   *int32   `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UseFullTextRetrieval   *bool    `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// title = \"test\"
+	Filter                 *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HybridSearch           *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
+	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
+	IncludeMetadataFields  *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	IncludeVector          *bool   `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword  *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RecallWindowShrink *string `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// example:
+	//
+	// 10
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// example:
+	//
+	// true
+	UseFullTextRetrieval *bool `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
 }
 
 func (s QueryContentShrinkRequest) String() string {
@@ -17615,6 +22962,11 @@ func (s *QueryContentShrinkRequest) SetHybridSearch(v string) *QueryContentShrin
 
 func (s *QueryContentShrinkRequest) SetHybridSearchArgsShrink(v string) *QueryContentShrinkRequest {
 	s.HybridSearchArgsShrink = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetIncludeMetadataFields(v string) *QueryContentShrinkRequest {
+	s.IncludeMetadataFields = &v
 	return s
 }
 
@@ -17669,13 +23021,25 @@ func (s *QueryContentShrinkRequest) SetUseFullTextRetrieval(v bool) *QueryConten
 }
 
 type QueryContentResponseBody struct {
-	EmbeddingTokens *string                                `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	Matches         *QueryContentResponseBodyMatches       `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
-	Message         *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage           *QueryContentResponseBodyUsage         `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
-	WindowMatches   *QueryContentResponseBodyWindowMatches `json:"WindowMatches,omitempty" xml:"WindowMatches,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100
+	EmbeddingTokens *string                          `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Matches         *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status        *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage         *QueryContentResponseBodyUsage         `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	WindowMatches *QueryContentResponseBodyWindowMatches `json:"WindowMatches,omitempty" xml:"WindowMatches,omitempty" type:"Struct"`
 }
 
 func (s QueryContentResponseBody) String() string {
@@ -17739,16 +23103,31 @@ func (s *QueryContentResponseBodyMatches) SetMatchList(v []*QueryContentResponse
 }
 
 type QueryContentResponseBodyMatchesMatchList struct {
-	Content         *string                                         `json:"Content,omitempty" xml:"Content,omitempty"`
-	FileName        *string                                         `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileURL         *string                                         `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	Id              *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	LoaderMetadata  *string                                         `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	Metadata        map[string]*string                              `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	RerankScore     *float64                                        `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
-	RetrievalSource *int32                                          `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
-	Score           *float64                                        `json:"Score,omitempty" xml:"Score,omitempty"`
-	Vector          *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// my_doc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileURL  *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// example:
+	//
+	// doca-1234
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// {"page_pos": 1}
+	LoaderMetadata *string            `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	Metadata       map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	RerankScore    *float64           `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
+	// example:
+	//
+	// 1
+	RetrievalSource *int32 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
+	// example:
+	//
+	// 0.12345
+	Score  *float64                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Vector *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
 }
 
 func (s QueryContentResponseBodyMatchesMatchList) String() string {
@@ -17976,8 +23355,16 @@ type RebalanceDBInstanceRequest struct {
 	// The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
 	//
 	// For more information, see [How to ensure idempotence](~~134212~~).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -18001,6 +23388,10 @@ func (s *RebalanceDBInstanceRequest) SetDBInstanceId(v string) *RebalanceDBInsta
 
 type RebalanceDBInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5414A4E5-4C36-4461-95FC-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18049,16 +23440,29 @@ func (s *RebalanceDBInstanceResponse) SetBody(v *RebalanceDBInstanceResponseBody
 type ReleaseInstancePublicConnectionRequest struct {
 	// The type of the endpoint. Default value: primary. Valid values:
 	//
-	// *   **primary**: primary endpoint.
-	// *   **cluster**: cluster endpoint. This type of endpoints can be created only for instances that have multiple coordinator nodes.
+	// 	- **primary**: primary endpoint.
+	//
+	// 	- **cluster**: cluster endpoint. This type of endpoints can be created only for instances that have multiple coordinator nodes.
+	//
+	// example:
+	//
+	// Intranet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The public endpoint of the instance.
 	//
-	// You can log on to the AnalyticDB for PostgreSQL console and go to the **Basic Information** page of the instance to view the **public endpoint** in the **Database Connection** section.
+	// You can log on to the AnalyticDB for PostgreSQL console and go to the **Basic Information*	- page of the instance to view the **public endpoint*	- in the **Database Connection*	- section.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -18087,6 +23491,10 @@ func (s *ReleaseInstancePublicConnectionRequest) SetDBInstanceId(v string) *Rele
 
 type ReleaseInstancePublicConnectionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9CEF7037-4158-4A65-BEC7-2A**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18134,13 +23542,26 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 
 type ResetAccountPasswordRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// testaccount_1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// Testaccount_1
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// Before you call this operation, make sure that the following requirements are met:
 	//
-	// *   The instance is in the running state.
-	// *   The instance is not locked.
+	// 	- The instance is in the running state.
+	//
+	// 	- The instance is not locked.
+	//
+	// example:
+	//
+	// gp-t4nf48vf15713****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -18168,7 +23589,11 @@ func (s *ResetAccountPasswordRequest) SetDBInstanceId(v string) *ResetAccountPas
 }
 
 type ResetAccountPasswordResponseBody struct {
-	// The new password for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// The new password for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// example:
+	//
+	// 187C80FC-75C4-477C-BBF2-A368A36D041C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18215,8 +23640,14 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type ResetIMVMonitorDataRequest struct {
+	// example:
+	//
+	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// testdb
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 }
 
 func (s ResetIMVMonitorDataRequest) String() string {
@@ -18238,8 +23669,14 @@ func (s *ResetIMVMonitorDataRequest) SetDatabase(v string) *ResetIMVMonitorDataR
 }
 
 type ResetIMVMonitorDataResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResetIMVMonitorDataResponseBody) String() string {
@@ -18291,10 +23728,18 @@ func (s *ResetIMVMonitorDataResponse) SetBody(v *ResetIMVMonitorDataResponseBody
 
 type RestartDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
@@ -18318,6 +23763,10 @@ func (s *RestartDBInstanceRequest) SetDBInstanceId(v string) *RestartDBInstanceR
 
 type RestartDBInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A7356493-7141-4393-8951-CDA8AB5D67EC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18367,6 +23816,10 @@ type ResumeInstanceRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -18391,17 +23844,34 @@ func (s *ResumeInstanceRequest) SetOwnerId(v int64) *ResumeInstanceRequest {
 
 type ResumeInstanceResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned.
 	//
-	// This parameter is returned only if **false** is returned for the **Status** parameter.
+	// This parameter is returned only if **false*	- is returned for the **Status*	- parameter.
+	//
+	// example:
+	//
+	// ******
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd9********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **false**: The request failed.
-	// *   **true**: The request was successful.
+	// 	- **false**: The request failed.
+	//
+	// 	- **true**: The request was successful.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -18466,16 +23936,29 @@ type SetDBInstancePlanStatusRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the plan.
 	//
 	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// Specifies whether to enable or disable the plan. Valid values:
 	//
-	// *   **disable**: disables the plan.
-	// *   **enable**: enables the plan.
+	// 	- **disable**: disables the plan.
+	//
+	// 	- **enable**: enables the plan.
+	//
+	// example:
+	//
+	// disable
 	PlanStatus *string `json:"PlanStatus,omitempty" xml:"PlanStatus,omitempty"`
 }
 
@@ -18511,14 +23994,30 @@ type SetDBInstancePlanStatusResponseBody struct {
 	// The error message returned.
 	//
 	// This parameter is returned only when the operation fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the plan.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd988888888
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the operation.
 	//
-	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	// If the operation is successful, **success*	- is returned. If the operation fails, this parameter is not returned.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -18586,13 +24085,22 @@ type SetDataShareInstanceRequest struct {
 	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// Specifies whether to enable or disable data sharing. Valid values:
 	//
-	// *   **add**: enables data sharing.
-	// *   **remove**: disables data sharing.
+	// 	- **add**: enables data sharing.
+	//
+	// 	- **remove**: disables data sharing.
+	//
+	// example:
+	//
+	// add
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -18631,13 +24139,22 @@ type SetDataShareInstanceShrinkRequest struct {
 	InstanceListShrink *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
 	// Specifies whether to enable or disable data sharing. Valid values:
 	//
-	// *   **add**: enables data sharing.
-	// *   **remove**: disables data sharing.
+	// 	- **add**: enables data sharing.
+	//
+	// 	- **remove**: disables data sharing.
+	//
+	// example:
+	//
+	// add
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -18671,13 +24188,26 @@ func (s *SetDataShareInstanceShrinkRequest) SetRegionId(v string) *SetDataShareI
 
 type SetDataShareInstanceResponseBody struct {
 	// The error message returned if the operation fails.
+	//
+	// example:
+	//
+	// error message
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4CAF581-2AC7-41AD-8940-D5**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the operation. Valid values:
 	//
-	// *   **success**: The operation is successful.
-	// *   **failed**: The operation fails.
+	// 	- **success**: The operation is successful.
+	//
+	// 	- **failed**: The operation fails.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -18736,14 +24266,27 @@ func (s *SetDataShareInstanceResponse) SetBody(v *SetDataShareInstanceResponseBo
 type SwitchDBInstanceNetTypeRequest struct {
 	// The prefix of the custom endpoint.
 	//
-	// *   The prefix can contain lowercase letters, digits, and hyphens (-) and must start with a lowercase letter.
-	// *   The prefix can be up to 30 characters in length.
+	// 	- The prefix can contain lowercase letters, digits, and hyphens (-) and must start with a lowercase letter.
+	//
+	// 	- The prefix can be up to 30 characters in length.
+	//
+	// example:
+	//
+	// test1234
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The port number.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -18772,6 +24315,10 @@ func (s *SwitchDBInstanceNetTypeRequest) SetPort(v string) *SwitchDBInstanceNetT
 
 type SwitchDBInstanceNetTypeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// FA67B751-2A2D-470C-850B-D6B93699D35C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18821,15 +24368,28 @@ type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query region IDs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of an instance. Valid values of N: 1 to 50.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxxx
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The mode of the instance. Valid values:
 	//
-	// *   `instance`: reserved storage mode
-	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	// 	- `instance`: reserved storage mode
+	//
+	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The list of tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -18885,8 +24445,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The key of a tag. Valid values of N: 1 to 20. This parameter value cannot be an empty string. A tag key can contain a maximum of 128 characters. It cannot start with `aliyun` or`  acs: ` and cannot contain `http://` or`  https:// `.
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of a tag. Valid values of N: 1 to 20. This parameter value can be an empty string. A tag value can contain a maximum of 128 characters. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18910,6 +24478,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5414A4E5-4C36-4461-95FC-23**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18959,6 +24531,10 @@ type UnloadSampleDataRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -18983,15 +24559,32 @@ func (s *UnloadSampleDataRequest) SetOwnerId(v int64) *UnloadSampleDataRequest {
 
 type UnloadSampleDataResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned if an error occurs. This message does not affect the execution of the operation.
+	//
+	// example:
+	//
+	// ********
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4E42ABC3-4DBD-5343-9BCA-66B7D091311F_6914
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution state of the operation. Valid values:
 	//
-	// *   **false**: The operation fails.
-	// *   **true**: The operation is successful.
+	// 	- **false**: The operation fails.
+	//
+	// 	- **true**: The operation is successful.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -19055,22 +24648,36 @@ func (s *UnloadSampleDataResponse) SetBody(v *UnloadSampleDataResponseBody) *Unl
 type UntagResourcesRequest struct {
 	// Specifies whether to unbind all tags from an instance. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage mode of the instance. Valid values:
 	//
-	// *   `instance`: reserved storage mode
-	// *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	// 	- `instance`: reserved storage mode
+	//
+	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -19130,6 +24737,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5414A4E5-4C36-4461-95FC-23757A20B5F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19176,17 +24787,46 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCollectionDataMetadataRequest struct {
-	Collection   *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// business_value = \"chat_file_1\"
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
-	Metadata          map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Namespace         *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	//
+	// example:
+	//
+	// {
+	//
+	//       "title": "new title",
+	//
+	//       "content": "new content"
+	//
+	// }
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19244,17 +24884,46 @@ func (s *UpdateCollectionDataMetadataRequest) SetRegionId(v string) *UpdateColle
 }
 
 type UpdateCollectionDataMetadataShrinkRequest struct {
-	Collection   *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// business_value = \"chat_file_1\"
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
-	MetadataShrink    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	//
+	// example:
+	//
+	// {
+	//
+	//       "title": "new title",
+	//
+	//       "content": "new content"
+	//
+	// }
+	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19312,10 +24981,22 @@ func (s *UpdateCollectionDataMetadataShrinkRequest) SetRegionId(v string) *Updat
 }
 
 type UpdateCollectionDataMetadataResponseBody struct {
-	AppliedRows *int64  `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	AppliedRows *int64 `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
+	// example:
+	//
+	// failed to connect database, detailMsg: getConnection fail::SQL State: 28P01, Error Code: 0, Error Message: FATAL: password
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateCollectionDataMetadataResponseBody) String() string {
@@ -19379,25 +25060,53 @@ type UpdateDBInstancePlanRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	// The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType*	- and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+	//
+	// example:
+	//
+	// {"pause":{"executeTime":"2022-08-30T16:00:00Z"}}
 	PlanConfig *string `json:"PlanConfig,omitempty" xml:"PlanConfig,omitempty"`
 	// The description of the plan.
+	//
+	// example:
+	//
+	// this is a test plan
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
-	// >  This parameter is required only for **periodically executed** plans.
+	// >  This parameter is required only for **periodically executed*	- plans.
+	//
+	// example:
+	//
+	// 2023-04-17T23:00Z
 	PlanEndDate *string `json:"PlanEndDate,omitempty" xml:"PlanEndDate,omitempty"`
 	// The ID of the plan.
 	//
 	// >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The name of the plan.
+	//
+	// example:
+	//
+	// test-plan
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 	// The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
 	//
-	// >  This parameter is required only for **periodically executed** plans.
+	// >  This parameter is required only for **periodically executed*	- plans.
+	//
+	// example:
+	//
+	// 2022-04-17T23:00Z
 	PlanStartDate *string `json:"PlanStartDate,omitempty" xml:"PlanStartDate,omitempty"`
 }
 
@@ -19451,18 +25160,38 @@ func (s *UpdateDBInstancePlanRequest) SetPlanStartDate(v string) *UpdateDBInstan
 
 type UpdateDBInstancePlanResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The error message returned.
 	//
 	// This parameter is returned only when the operation fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the plan.
+	//
+	// example:
+	//
+	// 1234
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34b32a0a-08ef-4a87-b6be-cdd9f56fc3ad
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the operation.
 	//
-	// If the operation is successful, **success** is returned. If the operation fails, this parameter is not returned.
+	// If the operation is successful, **success*	- is returned. If the operation fails, this parameter is not returned.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -19530,60 +25259,121 @@ func (s *UpdateDBInstancePlanResponse) SetBody(v *UpdateDBInstancePlanResponseBo
 
 type UpgradeDBInstanceRequest struct {
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// null
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// null
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	//
+	// example:
+	//
+	// gp-rj***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The specifications of each compute node. For information about the supported specifications, see [Instance specifications](~~35406~~).
 	//
 	// > This parameter is available only for instances in elastic storage mode.
+	//
+	// example:
+	//
+	// 4C16G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// 2
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is no longer used.
+	//
+	// example:
+	//
+	// null
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The performance level of enhanced SSDs (ESSDs). Valid values:
 	//
-	// *   **pl0**
-	// *   **pl1**
-	// *   **pl2**
+	// 	- **pl0**
+	//
+	// 	- **pl1**
+	//
+	// 	- **pl2**
+	//
+	// example:
+	//
+	// pl1
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
 	// The number of compute nodes. The number of compute nodes varies based on the instance resource type and edition.
 	//
-	// *   Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments.
-	// *   Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments.
-	// *   Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments.
+	// 	- Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments.
+	//
+	// 	- Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments.
+	//
+	// 	- Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments.
+	//
+	// example:
+	//
+	// 2
 	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The disk storage type of the instance after the change. The disk storage type can be changed only to ESSD. Set the value to **cloud_essd**.
+	//
+	// example:
+	//
+	// cloud_essd
 	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
 	// The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
 	//
 	// > This parameter is available only for instances in elastic storage mode.
+	//
+	// example:
+	//
+	// 100
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// The type of the instance configuration change. Valid values:
 	//
-	// *   **0** (default): changes the number of compute nodes.
-	// *   **1**: changes the specifications and storage capacity of each compute node.
-	// *   **2**: changes the number of coordinator nodes.
-	// *   **3**: changes the disk storage type and ESSD performance level of the instance.
+	// 	- **0*	- (default): changes the number of compute nodes.
+	//
+	// 	- **1**: changes the specifications and storage capacity of each compute node.
+	//
+	// 	- **2**: changes the number of coordinator nodes.
+	//
+	// 	- **3**: changes the disk storage type and ESSD performance level of the instance.
 	//
 	// >
 	//
-	// *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](~~50956~~)" section of the Change compute node configurations topic.
+	// 	- The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](~~50956~~)" section of the Change compute node configurations topic.
 	//
-	// *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
-	// *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
-	// *   The disk storage type can be changed only from ultra disks to ESSDs.
+	// 	- After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType*	- to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
+	//
+	// 	- The number of coordinator nodes can be changed only on the China site (aliyun.com).
+	//
+	// 	- The disk storage type can be changed only from ultra disks to ESSDs.
+	//
+	// example:
+	//
+	// 0
 	UpgradeType *int64 `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
@@ -19667,10 +25457,22 @@ func (s *UpgradeDBInstanceRequest) SetUpgradeType(v int64) *UpgradeDBInstanceReq
 
 type UpgradeDBInstanceResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// gp-rj***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// *********
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 25C11EE5-B7E8-481A-A07C-BD**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19728,17 +25530,41 @@ func (s *UpgradeDBInstanceResponse) SetBody(v *UpgradeDBInstanceResponseBody) *U
 
 type UpgradeDBVersionRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// gp-wz9kmr708m155j***
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// This parameter is no longer used and does not need to be specified.
+	//
+	// example:
+	//
+	// null
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	// The minor version of the instance.
+	//
+	// example:
+	//
+	// 6.3.6.1-202112012048
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is no longer used and does not need to be specified.
+	//
+	// example:
+	//
+	// null
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// This parameter is no longer used and does not need to be specified.
+	//
+	// example:
+	//
+	// null
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
@@ -19787,12 +25613,28 @@ func (s *UpgradeDBVersionRequest) SetSwitchTimeMode(v string) *UpgradeDBVersionR
 
 type UpgradeDBVersionResponseBody struct {
 	// This parameter is no longer returned.
+	//
+	// example:
+	//
+	// gp-wz9kmr708m155j***
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// gp-wz9kmr708m155j***
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 25C11EE5-B7E8-481A-A07C-BD619971A570
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 101450956
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -19854,22 +25696,61 @@ func (s *UpgradeDBVersionResponse) SetBody(v *UpgradeDBVersionResponseBody) *Upg
 }
 
 type UploadDocumentAsyncRequest struct {
-	ChunkOverlap       *int32                 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
-	ChunkSize          *int32                 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Collection         *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId       *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DocumentLoaderName *string                `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
-	DryRun             *bool                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	FileName           *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl            *string                `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Metadata           map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Namespace          *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword  *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId            *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Separators         []*string              `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
-	TextSplitterName   *string                `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
-	ZhTitleEnhance     *bool                  `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+	// example:
+	//
+	// 50
+	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// example:
+	//
+	// 250
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-bp12ga6v69h86****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// PyMuPDFLoader
+	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// mydoc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://xx/mydoc.txt
+	FileUrl  *string                `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Separators []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ChineseRecursiveTextSplitter
+	TextSplitterName *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	// example:
+	//
+	// false
+	ZhTitleEnhance *bool `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
 }
 
 func (s UploadDocumentAsyncRequest) String() string {
@@ -19961,22 +25842,61 @@ func (s *UploadDocumentAsyncRequest) SetZhTitleEnhance(v bool) *UploadDocumentAs
 }
 
 type UploadDocumentAsyncAdvanceRequest struct {
-	ChunkOverlap       *int32                 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
-	ChunkSize          *int32                 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Collection         *string                `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId       *string                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DocumentLoaderName *string                `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
-	DryRun             *bool                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	FileName           *string                `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject      io.Reader              `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Metadata           map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Namespace          *string                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword  *string                `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId            *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Separators         []*string              `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
-	TextSplitterName   *string                `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
-	ZhTitleEnhance     *bool                  `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+	// example:
+	//
+	// 50
+	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// example:
+	//
+	// 250
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-bp12ga6v69h86****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// PyMuPDFLoader
+	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// mydoc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://xx/mydoc.txt
+	FileUrlObject io.Reader              `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Metadata      map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Separators []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ChineseRecursiveTextSplitter
+	TextSplitterName *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	// example:
+	//
+	// false
+	ZhTitleEnhance *bool `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
 }
 
 func (s UploadDocumentAsyncAdvanceRequest) String() string {
@@ -20068,22 +25988,61 @@ func (s *UploadDocumentAsyncAdvanceRequest) SetZhTitleEnhance(v bool) *UploadDoc
 }
 
 type UploadDocumentAsyncShrinkRequest struct {
-	ChunkOverlap       *int32  `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
-	ChunkSize          *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Collection         *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 50
+	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// example:
+	//
+	// 250
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-bp12ga6v69h86****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// PyMuPDFLoader
 	DocumentLoaderName *string `json:"DocumentLoaderName,omitempty" xml:"DocumentLoaderName,omitempty"`
-	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	MetadataShrink     *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword  *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SeparatorsShrink   *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
-	TextSplitterName   *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
-	ZhTitleEnhance     *bool   `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// mydoc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://xx/mydoc.txt
+	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SeparatorsShrink *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
+	// example:
+	//
+	// ChineseRecursiveTextSplitter
+	TextSplitterName *string `json:"TextSplitterName,omitempty" xml:"TextSplitterName,omitempty"`
+	// example:
+	//
+	// false
+	ZhTitleEnhance *bool `json:"ZhTitleEnhance,omitempty" xml:"ZhTitleEnhance,omitempty"`
 }
 
 func (s UploadDocumentAsyncShrinkRequest) String() string {
@@ -20175,10 +26134,22 @@ func (s *UploadDocumentAsyncShrinkRequest) SetZhTitleEnhance(v bool) *UploadDocu
 }
 
 type UploadDocumentAsyncResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UploadDocumentAsyncResponseBody) String() string {
@@ -20239,14 +26210,32 @@ func (s *UploadDocumentAsyncResponse) SetBody(v *UploadDocumentAsyncResponseBody
 }
 
 type UpsertChunksRequest struct {
-	Collection        *string                          `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName          *string                          `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Namespace         *string                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string                          `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TextChunks        []*UpsertChunksRequestTextChunks `json:"TextChunks,omitempty" xml:"TextChunks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// mydoc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TextChunks []*UpsertChunksRequestTextChunks `json:"TextChunks,omitempty" xml:"TextChunks,omitempty" type:"Repeated"`
 }
 
 func (s UpsertChunksRequest) String() string {
@@ -20298,7 +26287,10 @@ func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) 
 }
 
 type UpsertChunksRequestTextChunks struct {
-	Content  *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// {"title":"test"}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 }
 
@@ -20321,14 +26313,32 @@ func (s *UpsertChunksRequestTextChunks) SetMetadata(v map[string]interface{}) *U
 }
 
 type UpsertChunksShrinkRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// mydoc.txt
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TextChunksShrink  *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TextChunksShrink *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
 }
 
 func (s UpsertChunksShrinkRequest) String() string {
@@ -20380,10 +26390,22 @@ func (s *UpsertChunksShrinkRequest) SetTextChunksShrink(v string) *UpsertChunksS
 }
 
 type UpsertChunksResponseBody struct {
+	// example:
+	//
+	// 100
 	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpsertChunksResponseBody) String() string {
@@ -20445,19 +26467,39 @@ func (s *UpsertChunksResponse) SetBody(v *UpsertChunksResponseBody) *UpsertChunk
 
 type UpsertCollectionDataRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Rows     []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
@@ -20536,19 +26578,39 @@ func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollect
 
 type UpsertCollectionDataShrinkRequest struct {
 	// The name of the collection.
+	//
+	// example:
+	//
+	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password of the namespace.
+	//
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RowsShrink *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
 }
@@ -20598,13 +26660,26 @@ func (s *UpsertCollectionDataShrinkRequest) SetRowsShrink(v string) *UpsertColle
 
 type UpsertCollectionDataResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **success**
-	// *   **fail**
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -20661,13 +26736,31 @@ func (s *UpsertCollectionDataResponse) SetBody(v *UpsertCollectionDataResponseBo
 }
 
 type UpsertCollectionDataAsyncRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// https://xx/vectors.jsonl
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpsertCollectionDataAsyncRequest) String() string {
@@ -20714,13 +26807,31 @@ func (s *UpsertCollectionDataAsyncRequest) SetRegionId(v string) *UpsertCollecti
 }
 
 type UpsertCollectionDataAsyncAdvanceRequest struct {
-	Collection        *string   `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Namespace         *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string   `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// https://xx/vectors.jsonl
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpsertCollectionDataAsyncAdvanceRequest) String() string {
@@ -20767,10 +26878,22 @@ func (s *UpsertCollectionDataAsyncAdvanceRequest) SetRegionId(v string) *UpsertC
 }
 
 type UpsertCollectionDataAsyncResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 231460f8-75dc-405e-a669-0c5204887e91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpsertCollectionDataAsyncResponseBody) String() string {
@@ -20892,15 +27015,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AllocateInstancePublicConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AllocateInstancePublicConnectionResponse
- */
+// Description:
+//
+// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithOptions(request *AllocateInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20958,14 +27085,17 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
-/**
- * You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AllocateInstancePublicConnectionRequest
- * @return AllocateInstancePublicConnectionResponse
- */
+// Description:
+//
+// You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnection(request *AllocateInstancePublicConnectionRequest) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
@@ -21161,16 +27291,21 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 	return _result, _err
 }
 
-/**
- * *   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
- * *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAccountResponse
- */
+// Description:
+//
+// 	- Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//
+// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21228,15 +27363,19 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
-/**
- * *   Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
- * *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateAccountRequest
- * @return CreateAccountResponse
- */
+// Description:
+//
+// 	- Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+//
+// 	- You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateAccountRequest
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -21348,16 +27487,21 @@ func (client *Client) CreateCollection(request *CreateCollectionRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @param request CreateDBInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDBInstanceResponse
- */
+// Description:
+//
+// You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+//
+// @param request - CreateDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21547,15 +27691,19 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 	return _result, _err
 }
 
-/**
- * You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @param request CreateDBInstanceRequest
- * @return CreateDBInstanceResponse
- */
+// Description:
+//
+// You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+//
+// @param request - CreateDBInstanceRequest
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_result *CreateDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
@@ -21567,15 +27715,19 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	return _result, _err
 }
 
-/**
- * *   The plan management feature is supported only for pay-as-you-go instances.
- * *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- *
- * @param request CreateDBInstancePlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDBInstancePlanResponse
- */
+// Description:
+//
+// 	- The plan management feature is supported only for pay-as-you-go instances.
+//
+// 	- When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// @param request - CreateDBInstancePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstancePlanResponse
 func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21641,14 +27793,17 @@ func (client *Client) CreateDBInstancePlanWithOptions(request *CreateDBInstanceP
 	return _result, _err
 }
 
-/**
- * *   The plan management feature is supported only for pay-as-you-go instances.
- * *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- *
- * @param request CreateDBInstancePlanRequest
- * @return CreateDBInstancePlanResponse
- */
+// Description:
+//
+// 	- The plan management feature is supported only for pay-as-you-go instances.
+//
+// 	- When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// @param request - CreateDBInstancePlanRequest
+//
+// @return CreateDBInstancePlanResponse
 func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest) (_result *CreateDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstancePlanResponse{}
@@ -21828,20 +27983,29 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
- * ## Precautions
- * - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
- * - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
- * - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
- * - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateSampleDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateSampleDataResponse
- */
+// Description:
+//
+// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+//
+// ## Precautions
+//
+// - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
+//
+// - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
+//
+// - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
+//
+// - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateSampleDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSampleDataResponse
 func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataRequest, runtime *util.RuntimeOptions) (_result *CreateSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21879,19 +28043,27 @@ func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataReque
 	return _result, _err
 }
 
-/**
- * You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
- * ## Precautions
- * - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
- * - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
- * - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
- * - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateSampleDataRequest
- * @return CreateSampleDataResponse
- */
+// Description:
+//
+// You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+//
+// ## Precautions
+//
+// - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
+//
+// - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
+//
+// - The sample dataset contains a database named `ADB_SampleData_TPCH`. Make sure that your instance does not have a database with the same name. Otherwise, the dataset may fail to be loaded.
+//
+// - It may take 6 to 8 minutes to load the sample dataset. During this period, operations on your instance such as adding nodes or changing node specifications may be affected.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateSampleDataRequest
+//
+// @return CreateSampleDataResponse
 func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_result *CreateSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSampleDataResponse{}
@@ -22175,16 +28347,21 @@ func (client *Client) DeleteCollectionData(request *DeleteCollectionDataRequest)
 	return _result, _err
 }
 
-/**
- * *   Subscription instances cannot be manually released. They are automatically released when they expire.
- * *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteDBInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDBInstanceResponse
- */
+// Description:
+//
+// 	- Subscription instances cannot be manually released. They are automatically released when they expire.
+//
+// 	- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22230,15 +28407,19 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
-/**
- * *   Subscription instances cannot be manually released. They are automatically released when they expire.
- * *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteDBInstanceRequest
- * @return DeleteDBInstanceResponse
- */
+// Description:
+//
+// 	- Subscription instances cannot be manually released. They are automatically released when they expire.
+//
+// 	- You can call this operation to release pay-as-you-go instances only when they are in the **Running*	- state.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteDBInstanceRequest
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceResponse{}
@@ -22250,15 +28431,19 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 	return _result, _err
 }
 
-/**
- * If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteDBInstancePlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDBInstancePlanResponse
- */
+// Description:
+//
+// If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteDBInstancePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstancePlanResponse
 func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22300,14 +28485,17 @@ func (client *Client) DeleteDBInstancePlanWithOptions(request *DeleteDBInstanceP
 	return _result, _err
 }
 
-/**
- * If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteDBInstancePlanRequest
- * @return DeleteDBInstancePlanResponse
- */
+// Description:
+//
+// If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteDBInstancePlanRequest
+//
+// @return DeleteDBInstancePlanResponse
 func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest) (_result *DeleteDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstancePlanResponse{}
@@ -22583,15 +28771,19 @@ func (client *Client) DeleteVectorIndex(request *DeleteVectorIndexRequest) (_res
 	return _result, _err
 }
 
-/**
- * This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeAccountsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAccountsResponse
- */
+// Description:
+//
+// This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22629,14 +28821,17 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
-/**
- * This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeAccountsRequest
- * @return DescribeAccountsResponse
- */
+// Description:
+//
+// This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeAccountsRequest
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_result *DescribeAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
@@ -22724,13 +28919,15 @@ func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecords
 	return _result, _err
 }
 
-/**
- * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
- *
- * @param request DescribeAvailableResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAvailableResourcesResponse
- */
+// Description:
+//
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+//
+// @param request - DescribeAvailableResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableResourcesResponse
 func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAvailableResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22772,12 +28969,13 @@ func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAva
 	return _result, _err
 }
 
-/**
- * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
- *
- * @param request DescribeAvailableResourcesRequest
- * @return DescribeAvailableResourcesResponse
- */
+// Description:
+//
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+//
+// @param request - DescribeAvailableResourcesRequest
+//
+// @return DescribeAvailableResourcesResponse
 func (client *Client) DescribeAvailableResources(request *DescribeAvailableResourcesRequest) (_result *DescribeAvailableResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourcesResponse{}
@@ -22789,15 +28987,19 @@ func (client *Client) DescribeAvailableResources(request *DescribeAvailableResou
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBackupPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeBackupPolicyResponse
- */
+// Description:
+//
+// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22831,14 +29033,17 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBackupPolicyRequest
- * @return DescribeBackupPolicyResponse
- */
+// Description:
+//
+// You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -22914,16 +29119,21 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBClusterNodeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBClusterNodeResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBClusterNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterNodeResponse
 func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBClusterNodeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22961,15 +29171,19 @@ func (client *Client) DescribeDBClusterNodeWithOptions(request *DescribeDBCluste
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBClusterNodeRequest
- * @return DescribeDBClusterNodeResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBClusterNodeRequest
+//
+// @return DescribeDBClusterNodeResponse
 func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeRequest) (_result *DescribeDBClusterNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterNodeResponse{}
@@ -22981,13 +29195,15 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 	return _result, _err
 }
 
-/**
- * You can query monitoring information only within the last 30 days.
- *
- * @param request DescribeDBClusterPerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBClusterPerformanceResponse
- */
+// Description:
+//
+// You can query monitoring information only within the last 30 days.
+//
+// @param request - DescribeDBClusterPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterPerformanceResponse
 func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeDBClusterPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23045,12 +29261,13 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * You can query monitoring information only within the last 30 days.
- *
- * @param request DescribeDBClusterPerformanceRequest
- * @return DescribeDBClusterPerformanceResponse
- */
+// Description:
+//
+// You can query monitoring information only within the last 30 days.
+//
+// @param request - DescribeDBClusterPerformanceRequest
+//
+// @return DescribeDBClusterPerformanceResponse
 func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPerformanceRequest) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterPerformanceResponse{}
@@ -23062,16 +29279,21 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceAttributeResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23113,15 +29335,19 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceAttributeRequest
- * @return DescribeDBInstanceAttributeResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttributeRequest) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceAttributeResponse{}
@@ -23133,15 +29359,19 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceDataBloatRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceDataBloatResponse
- */
+// Description:
+//
+// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceDataBloatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceDataBloatResponse
 func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDBInstanceDataBloatRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23183,14 +29413,17 @@ func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDB
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceDataBloatRequest
- * @return DescribeDBInstanceDataBloatResponse
- */
+// Description:
+//
+// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceDataBloatRequest
+//
+// @return DescribeDBInstanceDataBloatResponse
 func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDataBloatRequest) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDataBloatResponse{}
@@ -23202,15 +29435,19 @@ func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDat
 	return _result, _err
 }
 
-/**
- * To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceDataSkewRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceDataSkewResponse
- */
+// Description:
+//
+// To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceDataSkewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceDataSkewResponse
 func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBInstanceDataSkewRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23252,14 +29489,17 @@ func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
-/**
- * To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceDataSkewRequest
- * @return DescribeDBInstanceDataSkewResponse
- */
+// Description:
+//
+// To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceDataSkewRequest
+//
+// @return DescribeDBInstanceDataSkewResponse
 func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceDataSkewRequest) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDataSkewResponse{}
@@ -23271,13 +29511,15 @@ func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceData
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
- *
- * @param request DescribeDBInstanceDiagnosisSummaryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceDiagnosisSummaryResponse
- */
+// Description:
+//
+// You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDBInstanceDiagnosisSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceDiagnosisSummaryResponse
 func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *DescribeDBInstanceDiagnosisSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23331,12 +29573,13 @@ func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *Des
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
- *
- * @param request DescribeDBInstanceDiagnosisSummaryRequest
- * @return DescribeDBInstanceDiagnosisSummaryResponse
- */
+// Description:
+//
+// You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+//
+// @param request - DescribeDBInstanceDiagnosisSummaryRequest
+//
+// @return DescribeDBInstanceDiagnosisSummaryResponse
 func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInstanceDiagnosisSummaryRequest) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceDiagnosisSummaryResponse{}
@@ -23348,15 +29591,19 @@ func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInst
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceErrorLogRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceErrorLogResponse
- */
+// Description:
+//
+// You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceErrorLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceErrorLogResponse
 func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBInstanceErrorLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23426,14 +29673,17 @@ func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceErrorLogRequest
- * @return DescribeDBInstanceErrorLogResponse
- */
+// Description:
+//
+// You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceErrorLogRequest
+//
+// @return DescribeDBInstanceErrorLogResponse
 func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErrorLogRequest) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceErrorLogResponse{}
@@ -23445,15 +29695,19 @@ func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErro
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceIPArrayListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceIPArrayListResponse
- */
+// Description:
+//
+// You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceIPArrayListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceIPArrayListResponse
 func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *DescribeDBInstanceIPArrayListRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23495,14 +29749,17 @@ func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *Describe
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstanceIPArrayListRequest
- * @return DescribeDBInstanceIPArrayListResponse
- */
+// Description:
+//
+// You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstanceIPArrayListRequest
+//
+// @return DescribeDBInstanceIPArrayListResponse
 func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceIPArrayListRequest) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceIPArrayListResponse{}
@@ -23514,14 +29771,17 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 	return _result, _err
 }
 
-/**
- * Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDBInstanceIndexUsageRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstanceIndexUsageResponse
- */
+// Description:
+//
+// Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDBInstanceIndexUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceIndexUsageResponse
 func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeDBInstanceIndexUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23563,13 +29823,15 @@ func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDBInstanceIndexUsageRequest
- * @return DescribeDBInstanceIndexUsageResponse
- */
+// Description:
+//
+// Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDBInstanceIndexUsageRequest
+//
+// @return DescribeDBInstanceIndexUsageResponse
 func (client *Client) DescribeDBInstanceIndexUsage(request *DescribeDBInstanceIndexUsageRequest) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceIndexUsageResponse{}
@@ -23689,15 +29951,19 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstancePlansRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstancePlansResponse
- */
+// Description:
+//
+// You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstancePlansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancePlansResponse
 func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInstancePlansRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancePlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23755,14 +30021,17 @@ func (client *Client) DescribeDBInstancePlansWithOptions(request *DescribeDBInst
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstancePlansRequest
- * @return DescribeDBInstancePlansResponse
- */
+// Description:
+//
+// You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstancePlansRequest
+//
+// @return DescribeDBInstancePlansResponse
 func (client *Client) DescribeDBInstancePlans(request *DescribeDBInstancePlansRequest) (_result *DescribeDBInstancePlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancePlansResponse{}
@@ -23866,16 +30135,21 @@ func (client *Client) DescribeDBInstanceSupportMaxPerformance(request *DescribeD
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param tmpReq DescribeDBInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBInstancesResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param tmpReq - DescribeDBInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23979,19 +30253,63 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 	return _result, _err
 }
 
-/**
- * ##
- * You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDBInstancesRequest
- * @return DescribeDBInstancesResponse
- */
+// Description:
+//
+// ##
+//
+// You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDBInstancesRequest
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesResponse{}
 	_body, _err := client.DescribeDBInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBResourceManagementModeWithOptions(request *DescribeDBResourceManagementModeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBResourceManagementModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBResourceManagementMode"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBResourceManagementModeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBResourceManagementMode(request *DescribeDBResourceManagementModeRequest) (_result *DescribeDBResourceManagementModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBResourceManagementModeResponse{}
+	_body, _err := client.DescribeDBResourceManagementModeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24059,13 +30377,15 @@ func (client *Client) DescribeDBVersionInfos(request *DescribeDBVersionInfosRequ
 	return _result, _err
 }
 
-/**
- * You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
- *
- * @param request DescribeDataBackupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDataBackupsResponse
- */
+// Description:
+//
+// You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+//
+// @param request - DescribeDataBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataBackupsResponse
 func (client *Client) DescribeDataBackupsWithOptions(request *DescribeDataBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDataBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24131,12 +30451,13 @@ func (client *Client) DescribeDataBackupsWithOptions(request *DescribeDataBackup
 	return _result, _err
 }
 
-/**
- * You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
- *
- * @param request DescribeDataBackupsRequest
- * @return DescribeDataBackupsResponse
- */
+// Description:
+//
+// You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+//
+// @param request - DescribeDataBackupsRequest
+//
+// @return DescribeDataBackupsResponse
 func (client *Client) DescribeDataBackups(request *DescribeDataBackupsRequest) (_result *DescribeDataBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataBackupsResponse{}
@@ -24196,13 +30517,15 @@ func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistri
 	return _result, _err
 }
 
-/**
- * Data sharing is supported only for instances in Serverless mode.
- *
- * @param request DescribeDataShareInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDataShareInstancesResponse
- */
+// Description:
+//
+// Data sharing is supported only for instances in Serverless mode.
+//
+// @param request - DescribeDataShareInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataShareInstancesResponse
 func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDataShareInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDataShareInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24256,12 +30579,13 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 	return _result, _err
 }
 
-/**
- * Data sharing is supported only for instances in Serverless mode.
- *
- * @param request DescribeDataShareInstancesRequest
- * @return DescribeDataShareInstancesResponse
- */
+// Description:
+//
+// Data sharing is supported only for instances in Serverless mode.
+//
+// @param request - DescribeDataShareInstancesRequest
+//
+// @return DescribeDataShareInstancesResponse
 func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInstancesRequest) (_result *DescribeDataShareInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataShareInstancesResponse{}
@@ -24273,15 +30597,19 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDataSharePerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDataSharePerformanceResponse
- */
+// Description:
+//
+// You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDataSharePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataSharePerformanceResponse
 func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeDataSharePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSharePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24331,14 +30659,17 @@ func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDataSharePerformanceRequest
- * @return DescribeDataSharePerformanceResponse
- */
+// Description:
+//
+// You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDataSharePerformanceRequest
+//
+// @return DescribeDataSharePerformanceResponse
 func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePerformanceRequest) (_result *DescribeDataSharePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataSharePerformanceResponse{}
@@ -24350,15 +30681,19 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 	return _result, _err
 }
 
-/**
- * To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisDimensionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDiagnosisDimensionsResponse
- */
+// Description:
+//
+// To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisDimensionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosisDimensionsResponse
 func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDiagnosisDimensionsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24392,14 +30727,17 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 	return _result, _err
 }
 
-/**
- * To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisDimensionsRequest
- * @return DescribeDiagnosisDimensionsResponse
- */
+// Description:
+//
+// To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisDimensionsRequest
+//
+// @return DescribeDiagnosisDimensionsResponse
 func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDimensionsRequest) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisDimensionsResponse{}
@@ -24411,15 +30749,19 @@ func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDime
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisMonitorPerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDiagnosisMonitorPerformanceResponse
- */
+// Description:
+//
+// You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisMonitorPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosisMonitorPerformanceResponse
 func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *DescribeDiagnosisMonitorPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24473,14 +30815,17 @@ func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *De
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisMonitorPerformanceRequest
- * @return DescribeDiagnosisMonitorPerformanceResponse
- */
+// Description:
+//
+// You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisMonitorPerformanceRequest
+//
+// @return DescribeDiagnosisMonitorPerformanceResponse
 func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagnosisMonitorPerformanceRequest) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisMonitorPerformanceResponse{}
@@ -24492,15 +30837,19 @@ func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagn
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDiagnosisRecordsResponse
- */
+// Description:
+//
+// You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosisRecordsResponse
 func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24570,14 +30919,17 @@ func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDiagnosisRecordsRequest
- * @return DescribeDiagnosisRecordsResponse
- */
+// Description:
+//
+// You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDiagnosisRecordsRequest
+//
+// @return DescribeDiagnosisRecordsResponse
 func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecordsRequest) (_result *DescribeDiagnosisRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisRecordsResponse{}
@@ -24589,14 +30941,17 @@ func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecords
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDiagnosisSQLInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDiagnosisSQLInfoResponse
- */
+// Description:
+//
+// You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDiagnosisSQLInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosisSQLInfoResponse
 func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagnosisSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24638,13 +30993,15 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDiagnosisSQLInfoRequest
- * @return DescribeDiagnosisSQLInfoResponse
- */
+// Description:
+//
+// You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDiagnosisSQLInfoRequest
+//
+// @return DescribeDiagnosisSQLInfoResponse
 func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfoRequest) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiagnosisSQLInfoResponse{}
@@ -24724,14 +31081,17 @@ func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDownloadRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDownloadRecordsResponse
- */
+// Description:
+//
+// You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDownloadRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDownloadRecordsResponse
 func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownloadRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24765,13 +31125,15 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 	return _result, _err
 }
 
-/**
- * You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- *
- * @param request DescribeDownloadRecordsRequest
- * @return DescribeDownloadRecordsResponse
- */
+// Description:
+//
+// You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// @param request - DescribeDownloadRecordsRequest
+//
+// @return DescribeDownloadRecordsResponse
 func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRequest) (_result *DescribeDownloadRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDownloadRecordsResponse{}
@@ -24827,15 +31189,19 @@ func (client *Client) DescribeDownloadSQLLogs(request *DescribeDownloadSQLLogsRe
 	return _result, _err
 }
 
-/**
- * This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeHealthStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeHealthStatusResponse
- */
+// Description:
+//
+// This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeHealthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHealthStatusResponse
 func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24873,14 +31239,17 @@ func (client *Client) DescribeHealthStatusWithOptions(request *DescribeHealthSta
 	return _result, _err
 }
 
-/**
- * This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeHealthStatusRequest
- * @return DescribeHealthStatusResponse
- */
+// Description:
+//
+// This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeHealthStatusRequest
+//
+// @return DescribeHealthStatusResponse
 func (client *Client) DescribeHealthStatus(request *DescribeHealthStatusRequest) (_result *DescribeHealthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthStatusResponse{}
@@ -25120,15 +31489,19 @@ func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_res
 	return _result, _err
 }
 
-/**
- * This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeParametersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeParametersResponse
- */
+// Description:
+//
+// This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParametersResponse
 func (client *Client) DescribeParametersWithOptions(request *DescribeParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25162,14 +31535,17 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
-/**
- * This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeParametersRequest
- * @return DescribeParametersResponse
- */
+// Description:
+//
+// This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeParametersRequest
+//
+// @return DescribeParametersResponse
 func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_result *DescribeParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParametersResponse{}
@@ -25181,15 +31557,19 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	return _result, _err
 }
 
-/**
- * When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRdsVSwitchsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRdsVSwitchsResponse
- */
+// Description:
+//
+// When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRdsVSwitchsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsVSwitchsResponse
 func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitchsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVSwitchsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25255,14 +31635,17 @@ func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitch
 	return _result, _err
 }
 
-/**
- * When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRdsVSwitchsRequest
- * @return DescribeRdsVSwitchsResponse
- */
+// Description:
+//
+// When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRdsVSwitchsRequest
+//
+// @return DescribeRdsVSwitchsResponse
 func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (_result *DescribeRdsVSwitchsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsVSwitchsResponse{}
@@ -25274,15 +31657,19 @@ func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (
 	return _result, _err
 }
 
-/**
- * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRdsVpcsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRdsVpcsResponse
- */
+// Description:
+//
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRdsVpcsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsVpcsResponse
 func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVpcsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25344,14 +31731,17 @@ func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest
 	return _result, _err
 }
 
-/**
- * When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRdsVpcsRequest
- * @return DescribeRdsVpcsResponse
- */
+// Description:
+//
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRdsVpcsRequest
+//
+// @return DescribeRdsVpcsResponse
 func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result *DescribeRdsVpcsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsVpcsResponse{}
@@ -25363,15 +31753,19 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRegionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRegionsResponse
- */
+// Description:
+//
+// Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25405,14 +31799,17 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
-/**
- * Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeRegionsRequest
- * @return DescribeRegionsResponse
- */
+// Description:
+//
+// Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -25424,13 +31821,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * This operation is not available for instances in reserved storage mode.
- *
- * @param request DescribeSQLLogCountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSQLLogCountResponse
- */
+// Description:
+//
+// This operation is not available for instances in reserved storage mode.
+//
+// @param request - DescribeSQLLogCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLLogCountResponse
 func (client *Client) DescribeSQLLogCountWithOptions(request *DescribeSQLLogCountRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25512,12 +31911,13 @@ func (client *Client) DescribeSQLLogCountWithOptions(request *DescribeSQLLogCoun
 	return _result, _err
 }
 
-/**
- * This operation is not available for instances in reserved storage mode.
- *
- * @param request DescribeSQLLogCountRequest
- * @return DescribeSQLLogCountResponse
- */
+// Description:
+//
+// This operation is not available for instances in reserved storage mode.
+//
+// @param request - DescribeSQLLogCountRequest
+//
+// @return DescribeSQLLogCountResponse
 func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (_result *DescribeSQLLogCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogCountResponse{}
@@ -25529,13 +31929,15 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 	return _result, _err
 }
 
-/**
- * > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
- *
- * @param request DescribeSQLLogsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSQLLogsResponse
- */
+// Description:
+//
+// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+//
+// @param request - DescribeSQLLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLLogsResponse
 func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25625,12 +32027,13 @@ func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest
 	return _result, _err
 }
 
-/**
- * > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
- *
- * @param request DescribeSQLLogsRequest
- * @return DescribeSQLLogsResponse
- */
+// Description:
+//
+// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+//
+// @param request - DescribeSQLLogsRequest
+//
+// @return DescribeSQLLogsResponse
 func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result *DescribeSQLLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogsResponse{}
@@ -25642,15 +32045,19 @@ func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSQLLogsV2Request
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSQLLogsV2Response
- */
+// Description:
+//
+// You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSQLLogsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLLogsV2Response
 func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Request, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25748,14 +32155,17 @@ func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Req
 	return _result, _err
 }
 
-/**
- * You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSQLLogsV2Request
- * @return DescribeSQLLogsV2Response
- */
+// Description:
+//
+// You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSQLLogsV2Request
+//
+// @return DescribeSQLLogsV2Response
 func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_result *DescribeSQLLogsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogsV2Response{}
@@ -25767,13 +32177,15 @@ func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_res
 	return _result, _err
 }
 
-/**
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSampleDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSampleDataResponse
- */
+// Description:
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSampleDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSampleDataResponse
 func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25811,12 +32223,13 @@ func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataR
 	return _result, _err
 }
 
-/**
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSampleDataRequest
- * @return DescribeSampleDataResponse
- */
+// Description:
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSampleDataRequest
+//
+// @return DescribeSampleDataResponse
 func (client *Client) DescribeSampleData(request *DescribeSampleDataRequest) (_result *DescribeSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSampleDataResponse{}
@@ -25996,15 +32409,19 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWaitingSQLInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeWaitingSQLInfoResponse
- */
+// Description:
+//
+// You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWaitingSQLInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWaitingSQLInfoResponse
 func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaitingSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26046,14 +32463,17 @@ func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaiting
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWaitingSQLInfoRequest
- * @return DescribeWaitingSQLInfoResponse
- */
+// Description:
+//
+// You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWaitingSQLInfoRequest
+//
+// @return DescribeWaitingSQLInfoResponse
 func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequest) (_result *DescribeWaitingSQLInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWaitingSQLInfoResponse{}
@@ -26065,15 +32485,19 @@ func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequ
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWaitingSQLRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeWaitingSQLRecordsResponse
- */
+// Description:
+//
+// You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWaitingSQLRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWaitingSQLRecordsResponse
 func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWaitingSQLRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26143,14 +32567,17 @@ func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWait
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWaitingSQLRecordsRequest
- * @return DescribeWaitingSQLRecordsResponse
- */
+// Description:
+//
+// You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWaitingSQLRecordsRequest
+//
+// @return DescribeWaitingSQLRecordsResponse
 func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecordsRequest) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWaitingSQLRecordsResponse{}
@@ -26162,16 +32589,21 @@ func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecor
 	return _result, _err
 }
 
-/**
- * You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DownloadDiagnosisRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DownloadDiagnosisRecordsResponse
- */
+// Description:
+//
+// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DownloadDiagnosisRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadDiagnosisRecordsResponse
 func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DownloadDiagnosisRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26233,15 +32665,19 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 	return _result, _err
 }
 
-/**
- * You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
- * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DownloadDiagnosisRecordsRequest
- * @return DownloadDiagnosisRecordsResponse
- */
+// Description:
+//
+// You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
+//
+// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DownloadDiagnosisRecordsRequest
+//
+// @return DownloadDiagnosisRecordsResponse
 func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecordsRequest) (_result *DownloadDiagnosisRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadDiagnosisRecordsResponse{}
@@ -27237,15 +33673,19 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
-/**
- * To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDBInstanceDescriptionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBInstanceDescriptionResponse
- */
+// Description:
+//
+// To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27287,14 +33727,17 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 	return _result, _err
 }
 
-/**
- * To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDBInstanceDescriptionRequest
- * @return ModifyDBInstanceDescriptionResponse
- */
+// Description:
+//
+// To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceDescriptionRequest
+//
+// @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescriptionRequest) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
@@ -27306,15 +33749,19 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	return _result, _err
 }
 
-/**
- * The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDBInstanceMaintainTimeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBInstanceMaintainTimeResponse
- */
+// Description:
+//
+// The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceMaintainTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceMaintainTimeResponse
 func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27360,14 +33807,17 @@ func (client *Client) ModifyDBInstanceMaintainTimeWithOptions(request *ModifyDBI
 	return _result, _err
 }
 
-/**
- * The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyDBInstanceMaintainTimeRequest
- * @return ModifyDBInstanceMaintainTimeResponse
- */
+// Description:
+//
+// The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceMaintainTimeRequest
+//
+// @return ModifyDBInstanceMaintainTimeResponse
 func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMaintainTimeRequest) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceMaintainTimeResponse{}
@@ -27379,13 +33829,15 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 	return _result, _err
 }
 
-/**
- * Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
- *
- * @param request ModifyDBInstanceResourceGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBInstanceResourceGroupResponse
- */
+// Description:
+//
+// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+//
+// @param request - ModifyDBInstanceResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceResourceGroupResponse
 func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDBInstanceResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27443,12 +33895,13 @@ func (client *Client) ModifyDBInstanceResourceGroupWithOptions(request *ModifyDB
 	return _result, _err
 }
 
-/**
- * Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
- *
- * @param request ModifyDBInstanceResourceGroupRequest
- * @return ModifyDBInstanceResourceGroupResponse
- */
+// Description:
+//
+// Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+//
+// @param request - ModifyDBInstanceResourceGroupRequest
+//
+// @return ModifyDBInstanceResourceGroupResponse
 func (client *Client) ModifyDBInstanceResourceGroup(request *ModifyDBInstanceResourceGroupRequest) (_result *ModifyDBInstanceResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceResourceGroupResponse{}
@@ -27568,15 +34021,19 @@ func (client *Client) ModifyMasterSpec(request *ModifyMasterSpecRequest) (_resul
 	return _result, _err
 }
 
-/**
- * This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyParametersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyParametersResponse
- */
+// Description:
+//
+// This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyParametersResponse
 func (client *Client) ModifyParametersWithOptions(request *ModifyParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27618,14 +34075,17 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 	return _result, _err
 }
 
-/**
- * This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyParametersRequest
- * @return ModifyParametersResponse
- */
+// Description:
+//
+// This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyParametersRequest
+//
+// @return ModifyParametersResponse
 func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_result *ModifyParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyParametersResponse{}
@@ -27685,15 +34145,19 @@ func (client *Client) ModifySQLCollectorPolicy(request *ModifySQLCollectorPolicy
 	return _result, _err
 }
 
-/**
- * To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifySecurityIpsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifySecurityIpsResponse
- */
+// Description:
+//
+// To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifySecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27747,14 +34211,17 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
-/**
- * To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifySecurityIpsRequest
- * @return ModifySecurityIpsResponse
- */
+// Description:
+//
+// To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifySecurityIpsRequest
+//
+// @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_result *ModifySecurityIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
@@ -27818,17 +34285,23 @@ func (client *Client) ModifyVectorConfiguration(request *ModifyVectorConfigurati
 	return _result, _err
 }
 
-/**
- * You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running** state.
- * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request PauseInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return PauseInstanceResponse
- */
+// Description:
+//
+// You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running*	- state.
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - PauseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseInstanceResponse
 func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, runtime *util.RuntimeOptions) (_result *PauseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27866,16 +34339,21 @@ func (client *Client) PauseInstanceWithOptions(request *PauseInstanceRequest, ru
 	return _result, _err
 }
 
-/**
- * You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running** state.
- * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request PauseInstanceRequest
- * @return PauseInstanceResponse
- */
+// Description:
+//
+// You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the **Running*	- state.
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - PauseInstanceRequest
+//
+// @return PauseInstanceResponse
 func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *PauseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseInstanceResponse{}
@@ -27927,6 +34405,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 		query["HybridSearchArgs"] = request.HybridSearchArgsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncludeMetadataFields)) {
+		query["IncludeMetadataFields"] = request.IncludeMetadataFields
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IncludeValues)) {
 		query["IncludeValues"] = request.IncludeValues
 	}
@@ -27941,6 +34423,14 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
 		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -28039,6 +34529,10 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.HybridSearchArgsShrink)) {
 		query["HybridSearchArgs"] = request.HybridSearchArgsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeMetadataFields)) {
+		query["IncludeMetadataFields"] = request.IncludeMetadataFields
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeVector)) {
@@ -28421,15 +34915,19 @@ func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (
 	return _result, _err
 }
 
-/**
- * A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request RestartDBInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RestartDBInstanceResponse
- */
+// Description:
+//
+// A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - RestartDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28467,14 +34965,17 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 	return _result, _err
 }
 
-/**
- * A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
- * ## Limit
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
- *
- * @param request RestartDBInstanceRequest
- * @return RestartDBInstanceResponse
- */
+// Description:
+//
+// A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+//
+// ## Limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - RestartDBInstanceRequest
+//
+// @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_result *RestartDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBInstanceResponse{}
@@ -28486,17 +34987,23 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused** state.
- * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ResumeInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ResumeInstanceResponse
- */
+// Description:
+//
+// You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused*	- state.
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ResumeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeInstanceResponse
 func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, runtime *util.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28534,16 +35041,21 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 	return _result, _err
 }
 
-/**
- * You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused** state.
- * This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
- * >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ResumeInstanceRequest
- * @return ResumeInstanceResponse
- */
+// Description:
+//
+// You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the **Paused*	- state.
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+//
+// >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ResumeInstanceRequest
+//
+// @return ResumeInstanceResponse
 func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *ResumeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeInstanceResponse{}
@@ -28555,15 +35067,19 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 	return _result, _err
 }
 
-/**
- * You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request SetDBInstancePlanStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetDBInstancePlanStatusResponse
- */
+// Description:
+//
+// You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SetDBInstancePlanStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDBInstancePlanStatusResponse
 func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstancePlanStatusRequest, runtime *util.RuntimeOptions) (_result *SetDBInstancePlanStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28609,14 +35125,17 @@ func (client *Client) SetDBInstancePlanStatusWithOptions(request *SetDBInstanceP
 	return _result, _err
 }
 
-/**
- * You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request SetDBInstancePlanStatusRequest
- * @return SetDBInstancePlanStatusResponse
- */
+// Description:
+//
+// You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SetDBInstancePlanStatusRequest
+//
+// @return SetDBInstancePlanStatusResponse
 func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRequest) (_result *SetDBInstancePlanStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDBInstancePlanStatusResponse{}
@@ -28628,15 +35147,19 @@ func (client *Client) SetDBInstancePlanStatus(request *SetDBInstancePlanStatusRe
 	return _result, _err
 }
 
-/**
- * This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
- *
- * @param tmpReq SetDataShareInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetDataShareInstanceResponse
- */
+// Description:
+//
+// This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - SetDataShareInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDataShareInstanceResponse
 func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstanceRequest, runtime *util.RuntimeOptions) (_result *SetDataShareInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28688,14 +35211,17 @@ func (client *Client) SetDataShareInstanceWithOptions(tmpReq *SetDataShareInstan
 	return _result, _err
 }
 
-/**
- * This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
- *
- * @param request SetDataShareInstanceRequest
- * @return SetDataShareInstanceResponse
- */
+// Description:
+//
+// This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - SetDataShareInstanceRequest
+//
+// @return SetDataShareInstanceResponse
 func (client *Client) SetDataShareInstance(request *SetDataShareInstanceRequest) (_result *SetDataShareInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataShareInstanceResponse{}
@@ -28831,15 +35357,19 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
-/**
- * You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request UnloadSampleDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UnloadSampleDataResponse
- */
+// Description:
+//
+// You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UnloadSampleDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnloadSampleDataResponse
 func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataRequest, runtime *util.RuntimeOptions) (_result *UnloadSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28877,14 +35407,17 @@ func (client *Client) UnloadSampleDataWithOptions(request *UnloadSampleDataReque
 	return _result, _err
 }
 
-/**
- * You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request UnloadSampleDataRequest
- * @return UnloadSampleDataResponse
- */
+// Description:
+//
+// You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UnloadSampleDataRequest
+//
+// @return UnloadSampleDataResponse
 func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_result *UnloadSampleDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnloadSampleDataResponse{}
@@ -29058,15 +35591,19 @@ func (client *Client) UpdateCollectionDataMetadata(request *UpdateCollectionData
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request UpdateDBInstancePlanRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateDBInstancePlanResponse
- */
+// Description:
+//
+// You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UpdateDBInstancePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDBInstancePlanResponse
 func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstancePlanRequest, runtime *util.RuntimeOptions) (_result *UpdateDBInstancePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29128,14 +35665,17 @@ func (client *Client) UpdateDBInstancePlanWithOptions(request *UpdateDBInstanceP
 	return _result, _err
 }
 
-/**
- * You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
- * ## Limits
- * You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request UpdateDBInstancePlanRequest
- * @return UpdateDBInstancePlanResponse
- */
+// Description:
+//
+// You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+//
+// ## Limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UpdateDBInstancePlanRequest
+//
+// @return UpdateDBInstancePlanResponse
 func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest) (_result *UpdateDBInstancePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDBInstancePlanResponse{}
@@ -29147,14 +35687,17 @@ func (client *Client) UpdateDBInstancePlan(request *UpdateDBInstancePlanRequest)
 	return _result, _err
 }
 
-/**
- * This operation is not available for instances in reserved storage mode.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- *
- * @param request UpgradeDBInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeDBInstanceResponse
- */
+// Description:
+//
+// This operation is not available for instances in reserved storage mode.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// @param request - UpgradeDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeDBInstanceResponse
 func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29240,13 +35783,15 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 	return _result, _err
 }
 
-/**
- * This operation is not available for instances in reserved storage mode.
- * Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
- *
- * @param request UpgradeDBInstanceRequest
- * @return UpgradeDBInstanceResponse
- */
+// Description:
+//
+// This operation is not available for instances in reserved storage mode.
+//
+// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+//
+// @param request - UpgradeDBInstanceRequest
+//
+// @return UpgradeDBInstanceResponse
 func (client *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (_result *UpgradeDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBInstanceResponse{}
