@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -103,9 +100,12 @@ type AyncTradeDocumentPackageExtractSmartAppResponseBody struct {
 	Completed  *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	CreateTime *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Data       interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success    *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AyncTradeDocumentPackageExtractSmartAppResponseBody) String() string {
@@ -147,9 +147,9 @@ func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetSuccess(v bool)
 }
 
 type AyncTradeDocumentPackageExtractSmartAppResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AyncTradeDocumentPackageExtractSmartAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AyncTradeDocumentPackageExtractSmartAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AyncTradeDocumentPackageExtractSmartAppResponse) String() string {
@@ -176,6 +176,9 @@ func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetBody(v *AyncTradeDo
 }
 
 type GetDocStructureResultRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ImageStrategy  *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
 	RevealMarkdown *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
@@ -205,12 +208,24 @@ func (s *GetDocStructureResultRequest) SetRevealMarkdown(v bool) *GetDocStructur
 }
 
 type GetDocStructureResultResponseBody struct {
+	// example:
+	//
+	// noPermission
 	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocStructureResultResponseBody) String() string {
@@ -252,9 +267,9 @@ func (s *GetDocStructureResultResponseBody) SetStatus(v string) *GetDocStructure
 }
 
 type GetDocStructureResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDocStructureResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocStructureResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDocStructureResultResponse) String() string {
@@ -298,12 +313,24 @@ func (s *GetDocumentCompareResultRequest) SetId(v string) *GetDocumentCompareRes
 }
 
 type GetDocumentCompareResultResponseBody struct {
+	// example:
+	//
+	// noPermission
 	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Completed *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocumentCompareResultResponseBody) String() string {
@@ -345,9 +372,9 @@ func (s *GetDocumentCompareResultResponseBody) SetStatus(v string) *GetDocumentC
 }
 
 type GetDocumentCompareResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDocumentCompareResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocumentCompareResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDocumentCompareResultResponse) String() string {
@@ -374,6 +401,9 @@ func (s *GetDocumentCompareResultResponse) SetBody(v *GetDocumentCompareResultRe
 }
 
 type GetDocumentConvertResultRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -391,12 +421,24 @@ func (s *GetDocumentConvertResultRequest) SetId(v string) *GetDocumentConvertRes
 }
 
 type GetDocumentConvertResultResponseBody struct {
+	// example:
+	//
+	// noPermission
 	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Completed *bool                                       `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      []*GetDocumentConvertResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocumentConvertResultResponseBody) String() string {
@@ -438,10 +480,22 @@ func (s *GetDocumentConvertResultResponseBody) SetStatus(v string) *GetDocumentC
 }
 
 type GetDocumentConvertResultResponseBodyData struct {
-	Md5  *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Size *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// e6d83e55df218650b9a296bfbc300076
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// example:
+	//
+	// 2355965
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// pdf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/convert/docmind-20220816-15bc7965/0.pdf?Expires=1660722412&OSSAccessKeyId=LTAI5tFEK2uEApeeYzxNMEci&Signature=f%2FKluINWMuuVyA5w22Z1wkoRjEg%3D
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetDocumentConvertResultResponseBodyData) String() string {
@@ -473,9 +527,9 @@ func (s *GetDocumentConvertResultResponseBodyData) SetUrl(v string) *GetDocument
 }
 
 type GetDocumentConvertResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDocumentConvertResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocumentConvertResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDocumentConvertResultResponse) String() string {
@@ -502,6 +556,9 @@ func (s *GetDocumentConvertResultResponse) SetBody(v *GetDocumentConvertResultRe
 }
 
 type GetDocumentExtractResultRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -519,12 +576,24 @@ func (s *GetDocumentExtractResultRequest) SetId(v string) *GetDocumentExtractRes
 }
 
 type GetDocumentExtractResultResponseBody struct {
+	// example:
+	//
+	// noPermission
 	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDocumentExtractResultResponseBody) String() string {
@@ -566,9 +635,9 @@ func (s *GetDocumentExtractResultResponseBody) SetStatus(v string) *GetDocumentE
 }
 
 type GetDocumentExtractResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDocumentExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocumentExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDocumentExtractResultResponse) String() string {
@@ -676,9 +745,9 @@ func (s *GetPageNumResponseBodyData) SetPageNum(v int32) *GetPageNumResponseBody
 }
 
 type GetPageNumResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPageNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPageNumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPageNumResponse) String() string {
@@ -705,6 +774,9 @@ func (s *GetPageNumResponse) SetBody(v *GetPageNumResponseBody) *GetPageNumRespo
 }
 
 type GetTableUnderstandingResultRequest struct {
+	// example:
+	//
+	// docmind-20220816-1e89d65c
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -722,12 +794,24 @@ func (s *GetTableUnderstandingResultRequest) SetId(v string) *GetTableUnderstand
 }
 
 type GetTableUnderstandingResultResponseBody struct {
+	// example:
+	//
+	// noPermission
 	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTableUnderstandingResultResponseBody) String() string {
@@ -769,9 +853,9 @@ func (s *GetTableUnderstandingResultResponseBody) SetStatus(v string) *GetTableU
 }
 
 type GetTableUnderstandingResultResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTableUnderstandingResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableUnderstandingResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTableUnderstandingResultResponse) String() string {
@@ -798,7 +882,10 @@ func (s *GetTableUnderstandingResultResponse) SetBody(v *GetTableUnderstandingRe
 }
 
 type SubmitConvertImageToExcelJobRequest struct {
-	ForceMergeExcel    *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	// example:
+	//
+	// jpg
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
@@ -833,7 +920,10 @@ func (s *SubmitConvertImageToExcelJobRequest) SetImageUrls(v []*string) *SubmitC
 }
 
 type SubmitConvertImageToExcelJobShrinkRequest struct {
-	ForceMergeExcel    *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	// example:
+	//
+	// jpg
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
@@ -868,10 +958,19 @@ func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageUrlsShrink(v string)
 }
 
 type SubmitConvertImageToExcelJobResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertImageToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertImageToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertImageToExcelJobResponseBody) String() string {
@@ -903,6 +1002,9 @@ func (s *SubmitConvertImageToExcelJobResponseBody) SetRequestId(v string) *Submi
 }
 
 type SubmitConvertImageToExcelJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220810-7c5f9dd4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -920,9 +1022,9 @@ func (s *SubmitConvertImageToExcelJobResponseBodyData) SetId(v string) *SubmitCo
 }
 
 type SubmitConvertImageToExcelJobResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertImageToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertImageToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertImageToExcelJobResponse) String() string {
@@ -948,7 +1050,167 @@ func (s *SubmitConvertImageToExcelJobResponse) SetBody(v *SubmitConvertImageToEx
 	return s
 }
 
+type SubmitConvertImageToMarkdownJobRequest struct {
+	// example:
+	//
+	// jpg
+	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
+	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
+	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+}
+
+func (s SubmitConvertImageToMarkdownJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertImageToMarkdownJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertImageToMarkdownJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToMarkdownJobRequest {
+	s.ImageNameExtension = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobRequest) SetImageNames(v []*string) *SubmitConvertImageToMarkdownJobRequest {
+	s.ImageNames = v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobRequest) SetImageUrls(v []*string) *SubmitConvertImageToMarkdownJobRequest {
+	s.ImageUrls = v
+	return s
+}
+
+type SubmitConvertImageToMarkdownJobShrinkRequest struct {
+	// example:
+	//
+	// jpg
+	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
+	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
+	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+}
+
+func (s SubmitConvertImageToMarkdownJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertImageToMarkdownJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
+	s.ImageNameExtension = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageNamesShrink(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
+	s.ImageNamesShrink = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
+	s.ImageUrlsShrink = &v
+	return s
+}
+
+type SubmitConvertImageToMarkdownJobResponseBody struct {
+	// example:
+	//
+	// noPermission
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertImageToMarkdownJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitConvertImageToMarkdownJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertImageToMarkdownJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponseBody) SetCode(v string) *SubmitConvertImageToMarkdownJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponseBody) SetData(v *SubmitConvertImageToMarkdownJobResponseBodyData) *SubmitConvertImageToMarkdownJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponseBody) SetMessage(v string) *SubmitConvertImageToMarkdownJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponseBody) SetRequestId(v string) *SubmitConvertImageToMarkdownJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitConvertImageToMarkdownJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220810-7c5f9dd4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitConvertImageToMarkdownJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertImageToMarkdownJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponseBodyData) SetId(v string) *SubmitConvertImageToMarkdownJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitConvertImageToMarkdownJobResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertImageToMarkdownJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitConvertImageToMarkdownJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertImageToMarkdownJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponse) SetHeaders(v map[string]*string) *SubmitConvertImageToMarkdownJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponse) SetStatusCode(v int32) *SubmitConvertImageToMarkdownJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitConvertImageToMarkdownJobResponse) SetBody(v *SubmitConvertImageToMarkdownJobResponseBody) *SubmitConvertImageToMarkdownJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitConvertImageToPdfJobRequest struct {
+	// example:
+	//
+	// JPG
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
@@ -978,6 +1240,9 @@ func (s *SubmitConvertImageToPdfJobRequest) SetImageUrls(v []*string) *SubmitCon
 }
 
 type SubmitConvertImageToPdfJobShrinkRequest struct {
+	// example:
+	//
+	// JPG
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
@@ -1007,10 +1272,19 @@ func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageUrlsShrink(v string) *
 }
 
 type SubmitConvertImageToPdfJobResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertImageToPdfJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertImageToPdfJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertImageToPdfJobResponseBody) String() string {
@@ -1042,6 +1316,9 @@ func (s *SubmitConvertImageToPdfJobResponseBody) SetRequestId(v string) *SubmitC
 }
 
 type SubmitConvertImageToPdfJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220810-7c5f9dd4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1059,9 +1336,9 @@ func (s *SubmitConvertImageToPdfJobResponseBodyData) SetId(v string) *SubmitConv
 }
 
 type SubmitConvertImageToPdfJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertImageToPdfJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertImageToPdfJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertImageToPdfJobResponse) String() string {
@@ -1088,6 +1365,9 @@ func (s *SubmitConvertImageToPdfJobResponse) SetBody(v *SubmitConvertImageToPdfJ
 }
 
 type SubmitConvertImageToWordJobRequest struct {
+	// example:
+	//
+	// jpg
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
@@ -1117,6 +1397,9 @@ func (s *SubmitConvertImageToWordJobRequest) SetImageUrls(v []*string) *SubmitCo
 }
 
 type SubmitConvertImageToWordJobShrinkRequest struct {
+	// example:
+	//
+	// jpg
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
@@ -1146,10 +1429,19 @@ func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageUrlsShrink(v string) 
 }
 
 type SubmitConvertImageToWordJobResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertImageToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertImageToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertImageToWordJobResponseBody) String() string {
@@ -1181,6 +1473,9 @@ func (s *SubmitConvertImageToWordJobResponseBody) SetRequestId(v string) *Submit
 }
 
 type SubmitConvertImageToWordJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220810-7c5f9dd4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1198,9 +1493,9 @@ func (s *SubmitConvertImageToWordJobResponseBodyData) SetId(v string) *SubmitCon
 }
 
 type SubmitConvertImageToWordJobResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertImageToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertImageToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertImageToWordJobResponse) String() string {
@@ -1227,7 +1522,13 @@ func (s *SubmitConvertImageToWordJobResponse) SetBody(v *SubmitConvertImageToWor
 }
 
 type SubmitConvertPdfToExcelJobRequest struct {
-	FileName              *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// convertPdfToExcel.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 	ForceMergeExcel       *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
@@ -1262,7 +1563,13 @@ func (s *SubmitConvertPdfToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitCo
 }
 
 type SubmitConvertPdfToExcelJobAdvanceRequest struct {
-	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// convertPdfToExcel.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 	ForceMergeExcel       *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
@@ -1297,10 +1604,19 @@ func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceMergeExcel(v bool) *S
 }
 
 type SubmitConvertPdfToExcelJobResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertPdfToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertPdfToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobResponseBody) String() string {
@@ -1332,6 +1648,9 @@ func (s *SubmitConvertPdfToExcelJobResponseBody) SetRequestId(v string) *SubmitC
 }
 
 type SubmitConvertPdfToExcelJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1349,9 +1668,9 @@ func (s *SubmitConvertPdfToExcelJobResponseBodyData) SetId(v string) *SubmitConv
 }
 
 type SubmitConvertPdfToExcelJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertPdfToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertPdfToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobResponse) String() string {
@@ -1378,8 +1697,14 @@ func (s *SubmitConvertPdfToExcelJobResponse) SetBody(v *SubmitConvertPdfToExcelJ
 }
 
 type SubmitConvertPdfToImageJobRequest struct {
+	// example:
+	//
+	// convertPdfToImage.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s SubmitConvertPdfToImageJobRequest) String() string {
@@ -1401,7 +1726,13 @@ func (s *SubmitConvertPdfToImageJobRequest) SetFileUrl(v string) *SubmitConvertP
 }
 
 type SubmitConvertPdfToImageJobAdvanceRequest struct {
-	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// convertPdfToImage.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
@@ -1424,10 +1755,19 @@ func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileUrlObject(v io.Reader)
 }
 
 type SubmitConvertPdfToImageJobResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertPdfToImageJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertPdfToImageJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertPdfToImageJobResponseBody) String() string {
@@ -1459,6 +1799,9 @@ func (s *SubmitConvertPdfToImageJobResponseBody) SetRequestId(v string) *SubmitC
 }
 
 type SubmitConvertPdfToImageJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220810-7c5f9dd4
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1476,9 +1819,9 @@ func (s *SubmitConvertPdfToImageJobResponseBodyData) SetId(v string) *SubmitConv
 }
 
 type SubmitConvertPdfToImageJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertPdfToImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertPdfToImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertPdfToImageJobResponse) String() string {
@@ -1504,8 +1847,165 @@ func (s *SubmitConvertPdfToImageJobResponse) SetBody(v *SubmitConvertPdfToImageJ
 	return s
 }
 
+type SubmitConvertPdfToMarkdownJobRequest struct {
+	// example:
+	//
+	// convertPdfToExcel.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitConvertPdfToMarkdownJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertPdfToMarkdownJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertPdfToMarkdownJobRequest) SetFileName(v string) *SubmitConvertPdfToMarkdownJobRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobRequest) SetFileUrl(v string) *SubmitConvertPdfToMarkdownJobRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type SubmitConvertPdfToMarkdownJobAdvanceRequest struct {
+	// example:
+	//
+	// convertPdfToExcel.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s SubmitConvertPdfToMarkdownJobAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertPdfToMarkdownJobAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+type SubmitConvertPdfToMarkdownJobResponseBody struct {
+	// example:
+	//
+	// noPermission
+	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertPdfToMarkdownJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetCode(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetData(v *SubmitConvertPdfToMarkdownJobResponseBodyData) *SubmitConvertPdfToMarkdownJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetMessage(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetRequestId(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitConvertPdfToMarkdownJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponseBodyData) SetId(v string) *SubmitConvertPdfToMarkdownJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitConvertPdfToMarkdownJobResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertPdfToMarkdownJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitConvertPdfToMarkdownJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponse) SetHeaders(v map[string]*string) *SubmitConvertPdfToMarkdownJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponse) SetStatusCode(v int32) *SubmitConvertPdfToMarkdownJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToMarkdownJobResponse) SetBody(v *SubmitConvertPdfToMarkdownJobResponseBody) *SubmitConvertPdfToMarkdownJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitConvertPdfToWordJobRequest struct {
-	FileName              *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// covertPdfToWord.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 }
@@ -1534,7 +2034,13 @@ func (s *SubmitConvertPdfToWordJobRequest) SetForceExportInnerImage(v bool) *Sub
 }
 
 type SubmitConvertPdfToWordJobAdvanceRequest struct {
-	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// covertPdfToWord.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 }
@@ -1563,10 +2069,19 @@ func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetForceExportInnerImage(v boo
 }
 
 type SubmitConvertPdfToWordJobResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitConvertPdfToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitConvertPdfToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobResponseBody) String() string {
@@ -1598,6 +2113,9 @@ func (s *SubmitConvertPdfToWordJobResponseBody) SetRequestId(v string) *SubmitCo
 }
 
 type SubmitConvertPdfToWordJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1615,9 +2133,9 @@ func (s *SubmitConvertPdfToWordJobResponseBodyData) SetId(v string) *SubmitConve
 }
 
 type SubmitConvertPdfToWordJobResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitConvertPdfToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitConvertPdfToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobResponse) String() string {
@@ -1644,11 +2162,20 @@ func (s *SubmitConvertPdfToWordJobResponse) SetBody(v *SubmitConvertPdfToWordJob
 }
 
 type SubmitDigitalDocStructureJobRequest struct {
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy     *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown    *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy  *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobRequest) String() string {
@@ -1685,11 +2212,20 @@ func (s *SubmitDigitalDocStructureJobRequest) SetRevealMarkdown(v bool) *SubmitD
 }
 
 type SubmitDigitalDocStructureJobAdvanceRequest struct {
-	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy     *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown    *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject  io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ImageStrategy  *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
+	RevealMarkdown *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobAdvanceRequest) String() string {
@@ -1726,12 +2262,21 @@ func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetRevealMarkdown(v bool) *
 }
 
 type SubmitDigitalDocStructureJobResponseBody struct {
-	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Id        *string     `json:"Id,omitempty" xml:"Id,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Id   *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobResponseBody) String() string {
@@ -1773,9 +2318,9 @@ func (s *SubmitDigitalDocStructureJobResponseBody) SetStatus(v string) *SubmitDi
 }
 
 type SubmitDigitalDocStructureJobResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDigitalDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDigitalDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDigitalDocStructureJobResponse) String() string {
@@ -1802,10 +2347,20 @@ func (s *SubmitDigitalDocStructureJobResponse) SetBody(v *SubmitDigitalDocStruct
 }
 
 type SubmitDocStructureJobRequest struct {
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	StructureType     *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	StructureType      *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
 func (s SubmitDocStructureJobRequest) String() string {
@@ -1831,16 +2386,31 @@ func (s *SubmitDocStructureJobRequest) SetFileUrl(v string) *SubmitDocStructureJ
 	return s
 }
 
+func (s *SubmitDocStructureJobRequest) SetFormulaEnhancement(v bool) *SubmitDocStructureJobRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
 func (s *SubmitDocStructureJobRequest) SetStructureType(v string) *SubmitDocStructureJobRequest {
 	s.StructureType = &v
 	return s
 }
 
 type SubmitDocStructureJobAdvanceRequest struct {
-	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	StructureType     *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	// example:
+	//
+	// docStructure.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	StructureType      *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
 func (s SubmitDocStructureJobAdvanceRequest) String() string {
@@ -1866,16 +2436,30 @@ func (s *SubmitDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *Sub
 	return s
 }
 
+func (s *SubmitDocStructureJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocStructureJobAdvanceRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
 func (s *SubmitDocStructureJobAdvanceRequest) SetStructureType(v string) *SubmitDocStructureJobAdvanceRequest {
 	s.StructureType = &v
 	return s
 }
 
 type SubmitDocStructureJobResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitDocStructureJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitDocStructureJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitDocStructureJobResponseBody) String() string {
@@ -1907,6 +2491,9 @@ func (s *SubmitDocStructureJobResponseBody) SetRequestId(v string) *SubmitDocStr
 }
 
 type SubmitDocStructureJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -1924,9 +2511,9 @@ func (s *SubmitDocStructureJobResponseBodyData) SetId(v string) *SubmitDocStruct
 }
 
 type SubmitDocStructureJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDocStructureJobResponse) String() string {
@@ -1988,10 +2575,19 @@ func (s *SubmitDocumentCompareJobRequest) SetOriginFileUrl(v string) *SubmitDocu
 }
 
 type SubmitDocumentCompareJobResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitDocumentCompareJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitDocumentCompareJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitDocumentCompareJobResponseBody) String() string {
@@ -2023,6 +2619,9 @@ func (s *SubmitDocumentCompareJobResponseBody) SetRequestId(v string) *SubmitDoc
 }
 
 type SubmitDocumentCompareJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2040,9 +2639,9 @@ func (s *SubmitDocumentCompareJobResponseBodyData) SetId(v string) *SubmitDocume
 }
 
 type SubmitDocumentCompareJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDocumentCompareJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocumentCompareJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDocumentCompareJobResponse) String() string {
@@ -2069,9 +2668,15 @@ func (s *SubmitDocumentCompareJobResponse) SetBody(v *SubmitDocumentCompareJobRe
 }
 
 type SubmitDocumentExtractJobRequest struct {
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobRequest) String() string {
@@ -2098,9 +2703,15 @@ func (s *SubmitDocumentExtractJobRequest) SetFileUrl(v string) *SubmitDocumentEx
 }
 
 type SubmitDocumentExtractJobAdvanceRequest struct {
-	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobAdvanceRequest) String() string {
@@ -2127,10 +2738,19 @@ func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *
 }
 
 type SubmitDocumentExtractJobResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitDocumentExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitDocumentExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobResponseBody) String() string {
@@ -2162,6 +2782,9 @@ func (s *SubmitDocumentExtractJobResponseBody) SetRequestId(v string) *SubmitDoc
 }
 
 type SubmitDocumentExtractJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2179,9 +2802,9 @@ func (s *SubmitDocumentExtractJobResponseBodyData) SetId(v string) *SubmitDocume
 }
 
 type SubmitDocumentExtractJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitDocumentExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocumentExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitDocumentExtractJobResponse) String() string {
@@ -2208,9 +2831,15 @@ func (s *SubmitDocumentExtractJobResponse) SetBody(v *SubmitDocumentExtractJobRe
 }
 
 type SubmitTableUnderstandingJobRequest struct {
-	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
 	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrl           *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobRequest) String() string {
@@ -2237,9 +2866,15 @@ func (s *SubmitTableUnderstandingJobRequest) SetFileUrl(v string) *SubmitTableUn
 }
 
 type SubmitTableUnderstandingJobAdvanceRequest struct {
-	FileName          *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileNameExtension *string   `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	FileUrlObject     io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// pdf
+	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
+	// example:
+	//
+	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobAdvanceRequest) String() string {
@@ -2266,10 +2901,19 @@ func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileUrlObject(v io.Reader
 }
 
 type SubmitTableUnderstandingJobResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitTableUnderstandingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitTableUnderstandingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobResponseBody) String() string {
@@ -2301,6 +2945,9 @@ func (s *SubmitTableUnderstandingJobResponseBody) SetRequestId(v string) *Submit
 }
 
 type SubmitTableUnderstandingJobResponseBodyData struct {
+	// example:
+	//
+	// docmind-20220816-15bc7965
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2318,9 +2965,9 @@ func (s *SubmitTableUnderstandingJobResponseBodyData) SetId(v string) *SubmitTab
 }
 
 type SubmitTableUnderstandingJobResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitTableUnderstandingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTableUnderstandingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitTableUnderstandingJobResponse) String() string {
@@ -2855,6 +3502,68 @@ func (client *Client) SubmitConvertImageToExcelJob(request *SubmitConvertImageTo
 	return _result, _err
 }
 
+func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitConvertImageToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitConvertImageToMarkdownJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImageNames)) {
+		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, tea.String("ImageNames"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImageUrls)) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, tea.String("ImageUrls"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
+		query["ImageNameExtension"] = request.ImageNameExtension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
+		query["ImageNames"] = request.ImageNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlsShrink)) {
+		query["ImageUrls"] = request.ImageUrlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitConvertImageToMarkdownJob"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitConvertImageToMarkdownJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitConvertImageToMarkdownJob(request *SubmitConvertImageToMarkdownJobRequest) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitConvertImageToMarkdownJobResponse{}
+	_body, _err := client.SubmitConvertImageToMarkdownJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConvertImageToPdfJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3295,6 +4004,160 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 	return _result, _err
 }
 
+func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitConvertPdfToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitConvertPdfToMarkdownJob"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitConvertPdfToMarkdownJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitConvertPdfToMarkdownJob(request *SubmitConvertPdfToMarkdownJobRequest) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitConvertPdfToMarkdownJobResponse{}
+	_body, _err := client.SubmitConvertPdfToMarkdownJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConvertPdfToMarkdownJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("docmind-api"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitConvertPdfToMarkdownJobReq := &SubmitConvertPdfToMarkdownJobRequest{}
+	openapiutil.Convert(request, submitConvertPdfToMarkdownJobReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitConvertPdfToMarkdownJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitConvertPdfToMarkdownJobResp, _err := client.SubmitConvertPdfToMarkdownJobWithOptions(submitConvertPdfToMarkdownJobReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitConvertPdfToMarkdownJobResp
+	return _result, _err
+}
+
 func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConvertPdfToWordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3635,6 +4498,10 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+		query["FormulaEnhancement"] = request.FormulaEnhancement
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StructureType)) {
