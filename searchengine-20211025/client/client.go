@@ -3723,8 +3723,14 @@ func (s *GetDataSourceResponse) SetBody(v *GetDataSourceResponseBody) *GetDataSo
 }
 
 type GetDataSourceDeployResponseBody struct {
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetDataSourceDeployResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// 2AE63638-5420-56DC-BF59-37D8174039A0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Deploy
+	Result *GetDataSourceDeployResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetDataSourceDeployResponseBody) String() string {
@@ -3746,6 +3752,9 @@ func (s *GetDataSourceDeployResponseBody) SetResult(v *GetDataSourceDeployRespon
 }
 
 type GetDataSourceDeployResponseBodyResult struct {
+	// example:
+	//
+	// true
 	AutoBuildIndex *bool                                           `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
 	Extend         *GetDataSourceDeployResponseBodyResultExtend    `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
 	Processor      *GetDataSourceDeployResponseBodyResultProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
@@ -3822,6 +3831,9 @@ func (s *GetDataSourceDeployResponseBodyResultExtend) SetSaro(v *GetDataSourceDe
 }
 
 type GetDataSourceDeployResponseBodyResultExtendHdfs struct {
+	// example:
+	//
+	// dist-dmj-job/src/main/java
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
@@ -3856,6 +3868,9 @@ func (s *GetDataSourceDeployResponseBodyResultExtendOdps) SetPartitions(v map[st
 }
 
 type GetDataSourceDeployResponseBodyResultExtendOss struct {
+	// example:
+	//
+	// oss://opensearch
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 }
 
@@ -3873,7 +3888,13 @@ func (s *GetDataSourceDeployResponseBodyResultExtendOss) SetPath(v string) *GetD
 }
 
 type GetDataSourceDeployResponseBodyResultExtendSaro struct {
-	Path    *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// dist-dmj-job/src/main/java
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// 0.6.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -3896,7 +3917,13 @@ func (s *GetDataSourceDeployResponseBodyResultExtendSaro) SetVersion(v string) *
 }
 
 type GetDataSourceDeployResponseBodyResultProcessor struct {
-	Args     *string `json:"args,omitempty" xml:"args,omitempty"`
+	// example:
+	//
+	// {}
+	Args *string `json:"args,omitempty" xml:"args,omitempty"`
+	// example:
+	//
+	// {}
 	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
 }
 
@@ -3919,16 +3946,54 @@ func (s *GetDataSourceDeployResponseBodyResultProcessor) SetResource(v string) *
 }
 
 type GetDataSourceDeployResponseBodyResultStorage struct {
-	AccessKey    *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// AK
+	//
+	// example:
+	//
+	// ak
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// AS
+	//
+	// example:
+	//
+	// as
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Namespace    *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OssPath      *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	Partition    *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	Path         *string `json:"path,omitempty" xml:"path,omitempty"`
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
-	Table        *string `json:"table,omitempty" xml:"table,omitempty"`
+	// oss bucket
+	//
+	// example:
+	//
+	// antsys-miniapp-chongwen-static
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// odps endpoint
+	//
+	// example:
+	//
+	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// lazada-campaign-flink
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// oss://opensearch
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// example:
+	//
+	// ds=20220926
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// example:
+	//
+	// /beiming_xobject/dwd_xobjectsandbox__list_create_action_by_new/
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// wireless_1688_personal_rec
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// behavior
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s GetDataSourceDeployResponseBodyResultStorage) String() string {
@@ -3990,8 +4055,18 @@ func (s *GetDataSourceDeployResponseBodyResultStorage) SetTable(v string) *GetDa
 }
 
 type GetDataSourceDeployResponseBodyResultSwift struct {
+	// topic
+	//
+	// example:
+	//
+	// topic
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
-	Zk    *string `json:"zk,omitempty" xml:"zk,omitempty"`
+	// zk
+	//
+	// example:
+	//
+	// zk
+	Zk *string `json:"zk,omitempty" xml:"zk,omitempty"`
 }
 
 func (s GetDataSourceDeployResponseBodyResultSwift) String() string {
@@ -5542,6 +5617,7 @@ type GetTableResponseBodyResult struct {
 	//
 	// {}
 	RawSchema   *string                                  `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	Status      *string                                  `json:"status,omitempty" xml:"status,omitempty"`
 	VectorIndex []*GetTableResponseBodyResultVectorIndex `json:"vectorIndex,omitempty" xml:"vectorIndex,omitempty" type:"Repeated"`
 }
 
@@ -5590,6 +5666,11 @@ func (s *GetTableResponseBodyResult) SetPrimaryKey(v string) *GetTableResponseBo
 
 func (s *GetTableResponseBodyResult) SetRawSchema(v string) *GetTableResponseBodyResult {
 	s.RawSchema = &v
+	return s
+}
+
+func (s *GetTableResponseBodyResult) SetStatus(v string) *GetTableResponseBodyResult {
+	s.Status = &v
 	return s
 }
 
@@ -9440,7 +9521,8 @@ type ListTablesResponseBodyResult struct {
 	// example:
 	//
 	// es_test_1b
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListTablesResponseBodyResult) String() string {
@@ -9458,6 +9540,11 @@ func (s *ListTablesResponseBodyResult) SetIndexStatus(v string) *ListTablesRespo
 
 func (s *ListTablesResponseBodyResult) SetName(v string) *ListTablesResponseBodyResult {
 	s.Name = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyResult) SetStatus(v string) *ListTablesResponseBodyResult {
+	s.Status = &v
 	return s
 }
 
