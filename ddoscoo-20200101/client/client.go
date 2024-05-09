@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,17 @@ import (
 )
 
 type AddAutoCcBlacklistRequest struct {
-	Blacklist  *string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
-	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// [{"src":"198.51.XX.XX"},{"src":"198.52.XX.XX"}]
+	Blacklist *string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
+	// example:
+	//
+	// 300
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -42,6 +48,9 @@ func (s *AddAutoCcBlacklistRequest) SetInstanceId(v string) *AddAutoCcBlacklistR
 }
 
 type AddAutoCcBlacklistResponseBody struct {
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -91,14 +100,26 @@ type AddAutoCcWhitelistRequest struct {
 	// This parameter is deprecated.
 	//
 	// > This parameter indicates the validity period of the IP address blacklist. By default, the traffic from the IP addresses that you add to the whitelist is always allowed. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// 0
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configuration of the IP addresses that you want to add to the whitelist. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// *   **src**: the IP address that you want to add. This parameter is required. Data type: string.
+	// 	- **src**: the IP address that you want to add. This parameter is required. Data type: string.
+	//
+	// example:
+	//
+	// [{"src":"192.XX.XX.1"},{"src":"192.XX.XX.2"}]
 	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
 }
 
@@ -127,6 +148,10 @@ func (s *AddAutoCcWhitelistRequest) SetWhitelist(v string) *AddAutoCcWhitelistRe
 
 type AddAutoCcWhitelistResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AB5025DA-5C52-5207-B6AC-3F198758B678
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -173,29 +198,53 @@ func (s *AddAutoCcWhitelistResponse) SetBody(v *AddAutoCcWhitelistResponseBody) 
 }
 
 type AssociateWebCertRequest struct {
-	// The public key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Key**.
+	// The public key of the certificate that you want to associate. This parameter must be used together with **CertName*	- and **Key**.
 	//
 	// > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- 62EcYPWd2Oy1vs6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02SIDNggIEeg== -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
 	// The ID of the certificate that you want to associate. If the certificate that you want to associate has been issued in Certificate Management Service, you can specify the certificate ID to associate the certificate.
 	//
-	// > If you specify the certificate ID, you do not need to specify a value for the **CertName**, **Cert**, and **Key** parameters.
+	// > If you specify the certificate ID, you do not need to specify a value for the **CertName**, **Cert**, and **Key*	- parameters.
+	//
+	// example:
+	//
+	// 2404693
 	CertId         *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate that you want to associate. This parameter must be used together with the **Cert** and **Key** parameters.
+	// The name of the certificate that you want to associate. This parameter must be used together with the **Cert*	- and **Key*	- parameters.
 	//
-	// > If you specify a value for the **CertName**, **Cert**, and **Key** parameters, you do not need to specify a value for the **CertId** parameter.
+	// > If you specify a value for the **CertName**, **Cert**, and **Key*	- parameters, you do not need to specify a value for the **CertId*	- parameter.
+	//
+	// example:
+	//
+	// example-cert
 	CertName   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The private key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Cert**.
+	// The private key of the certificate that you want to associate. This parameter must be used together with **CertName*	- and **Cert**.
 	//
 	// > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3UKHJTRgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8bv5UK5G04RtKadOw== -----END RSA PRIVATE KEY-----
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -249,6 +298,10 @@ func (s *AssociateWebCertRequest) SetResourceGroupId(v string) *AssociateWebCert
 
 type AssociateWebCertResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 40F11005-A75C-4644-95F2-52A4E7D43E91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -296,12 +349,24 @@ func (s *AssociateWebCertResponse) SetBody(v *AssociateWebCertResponseBody) *Ass
 
 type AttachSceneDefenseObjectRequest struct {
 	// The type of the object. Set the value to **Domain**, which indicates a domain name.
+	//
+	// example:
+	//
+	// Domain
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The object that you want to add to the policy. Separate multiple objects with commas (,).
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	// The ID of the policy.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -330,11 +395,20 @@ func (s *AttachSceneDefenseObjectRequest) SetPolicyId(v string) *AttachSceneDefe
 
 type AttachSceneDefenseObjectResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -389,27 +463,42 @@ type ConfigL7RsPolicyRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The back-to-origin policy. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **ProxyMode**: The load balancing algorithm for back-to-origin traffic. This field is required and must be a string. Valid values:
+	// 	- **ProxyMode**: The load balancing algorithm for back-to-origin traffic. This field is required and must be a string. Valid values:
 	//
-	//     *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
-	//     *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn. If you use this algorithm, you can specify a weight for each server based on server performance.
-	//     *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	//     	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
 	//
-	// *   **Attributes**: the parameters for back-to-origin. This field is optional and must be a JSON array. Each element in the array contains the following fields:
+	//     	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn. If you use this algorithm, you can specify a weight for each server based on server performance.
 	//
-	//     *   **RealServer**: the address of the origin server. This field is optional and must be a string.
+	//     	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
 	//
-	//     *   **Attribute**: the parameter for back-to-origin. This field is optional and must be a JSON object. The value contains the following field:
+	// 	- **Attributes**: the parameters for back-to-origin. This field is optional and must be a JSON array. Each element in the array contains the following fields:
 	//
-	//         *   **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode** is set to **rr**. Valid values: **1** to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
+	//     	- **RealServer**: the address of the origin server. This field is optional and must be a string.
+	//
+	//     	- **Attribute**: the parameter for back-to-origin. This field is optional and must be a JSON object. The value contains the following field:
+	//
+	//         	- **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode*	- is set to **rr**. Valid values: **1*	- to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
+	//
+	// example:
+	//
+	// {"ProxyMode":"rr","Attributes":[{"RealServer":"1.***.***.1","Attribute":{"Weight":100}},{"RealServer":"2.***.***.2","Attribute":{"Weight":100}}]}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	UpstreamRetry   *int32  `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
 }
 
 func (s ConfigL7RsPolicyRequest) String() string {
@@ -435,8 +524,17 @@ func (s *ConfigL7RsPolicyRequest) SetResourceGroupId(v string) *ConfigL7RsPolicy
 	return s
 }
 
+func (s *ConfigL7RsPolicyRequest) SetUpstreamRetry(v int32) *ConfigL7RsPolicyRequest {
+	s.UpstreamRetry = &v
+	return s
+}
+
 type ConfigL7RsPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -486,8 +584,16 @@ type ConfigLayer4RealLimitRequest struct {
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies the threshold of the clean bandwidth. Valid values: 0 to 15360. The value 0 indicates that rate limiting is never triggered. Unit: Mbit/s
+	//
+	// example:
+	//
+	// 0
 	LimitValue *int64 `json:"LimitValue,omitempty" xml:"LimitValue,omitempty"`
 }
 
@@ -511,6 +617,10 @@ func (s *ConfigLayer4RealLimitRequest) SetLimitValue(v int64) *ConfigLayer4RealL
 
 type ConfigLayer4RealLimitResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CFCF71BD-680E-5A20-8847-174CEC62E67D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -565,10 +675,17 @@ type ConfigLayer4RemarkRequest struct {
 	//
 	// Each port forwarding rule contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
-	// *   **Remark**: the remarks of the port forwarding rule. This field is required and must be of the STRING type. The value can contain letters, digits, and some special characters, such as `, . + - * / _`. The value can be up to 200 characters in length.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// 	- **Remark**: the remarks of the port forwarding rule. This field is required and must be of the STRING type. The value can contain letters, digits, and some special characters, such as `, . + - 	- / _`. The value can be up to 200 characters in length.
+	//
+	// example:
+	//
+	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\",\"Remark\":\"test\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -587,6 +704,10 @@ func (s *ConfigLayer4RemarkRequest) SetListeners(v string) *ConfigLayer4RemarkRe
 
 type ConfigLayer4RemarkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6E46CC51-36BE-1100-B14C-DAF8381B8F73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -635,8 +756,13 @@ func (s *ConfigLayer4RemarkResponse) SetBody(v *ConfigLayer4RemarkResponseBody) 
 type ConfigLayer4RuleBakModeRequest struct {
 	// The mode that you want to use to forward service traffic. Valid values:
 	//
-	// *   **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
-	// *   **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	// 	- **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+	//
+	// 	- **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	//
+	// example:
+	//
+	// 1
 	BakMode *string `json:"BakMode,omitempty" xml:"BakMode,omitempty"`
 	// The port forwarding rule that you want to manage.
 	//
@@ -646,9 +772,15 @@ type ConfigLayer4RuleBakModeRequest struct {
 	//
 	// Each port forwarding rule contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// example:
+	//
+	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -672,6 +804,10 @@ func (s *ConfigLayer4RuleBakModeRequest) SetListeners(v string) *ConfigLayer4Rul
 
 type ConfigLayer4RuleBakModeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CC042262-15A3-4A49-ADF0-130968EA47BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -726,30 +862,35 @@ type ConfigLayer4RulePolicyRequest struct {
 	//
 	// Each port forwarding rule contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
 	//
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
 	//
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
 	//
-	// *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
 	//
-	// *   **PriRealServers**: the IP addresses of the primary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the primary origin server. You can configure a maximum of 20 IP addresses.
-	//
-	//     Each element in the JSON array contains the following field:
-	//
-	//     *   **RealServer**: the IP address of the primary origin server. This field is required and must be of the STRING type.
-	//
-	// *   **SecRealServers**: the IP addresses of the secondary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the secondary origin server. You can configure a maximum of 20 IP addresses.
+	// 	- **PriRealServers**: the IP addresses of the primary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the primary origin server. You can configure a maximum of 20 IP addresses.
 	//
 	//     Each element in the JSON array contains the following field:
 	//
-	//     *   **RealServer**: the IP address of the secondary origin server. This field is required and must be of the STRING type.
+	//     	- **RealServer**: the IP address of the primary origin server. This field is required and must be of the STRING type.
 	//
-	// *   **CurrentRsIndex**: the origin server that you want to use to receive service traffic. This field is required and must be of the INTEGER type. Valid values:
+	// 	- **SecRealServers**: the IP addresses of the secondary origin server. This field is required and must be a JSON array. Each element in a JSON array indicates an IP address of the secondary origin server. You can configure a maximum of 20 IP addresses.
 	//
-	//     *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
-	//     *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//     Each element in the JSON array contains the following field:
+	//
+	//     	- **RealServer**: the IP address of the secondary origin server. This field is required and must be of the STRING type.
+	//
+	// 	- **CurrentRsIndex**: the origin server that you want to use to receive service traffic. This field is required and must be of the INTEGER type. Valid values:
+	//
+	//     	- **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+	//
+	//     	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//
+	// example:
+	//
+	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"Protocol\":\"udp\",\"FrontendPort\":2020,\"BackendPort\":2022,\"PriRealServers\":[{\"RealServer\":\"192.0.2.1\"},{\"RealServer\":\"192.0.2.2\"}],\"SecRealServers\":[{\"RealServer\":\"192.0.2.3\"},{\"RealServer\":\"192.0.2.4\"}],\"CurrentRsIndex\":1}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -768,6 +909,10 @@ func (s *ConfigLayer4RulePolicyRequest) SetListeners(v string) *ConfigLayer4Rule
 
 type ConfigLayer4RulePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CC042262-15A3-4A49-ADF0-130968EA47BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -816,29 +961,38 @@ func (s *ConfigLayer4RulePolicyResponse) SetBody(v *ConfigLayer4RulePolicyRespon
 type ConfigNetworkRegionBlockRequest struct {
 	// The details of the configurations of blocked locations. This parameter is a JSON string. The value consists of the following fields:
 	//
-	// *   **RegionBlockSwitch**: the status of the Location Blacklist policy. This field is required and must be of the string type. Valid values:
+	// 	- **RegionBlockSwitch**: the status of the Location Blacklist policy. This field is required and must be of the string type. Valid values:
 	//
-	//     *   **on**: enables the policy.
-	//     *   **off**: disables the policy.
+	//     	- **on**: enables the policy.
 	//
-	// *   **Countries**: the codes of the countries or areas from which you want to block requests. This field is optional and must be of the array type.
+	//     	- **off**: disables the policy.
 	//
-	//     **
-	//
-	//     **Note**For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
-	//
-	//
-	// *   **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
+	// 	- **Countries**: the codes of the countries or areas from which you want to block requests. This field is optional and must be of the array type.
 	//
 	//     **
 	//
-	//     **Note**For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+	//     **Note**For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+	//
+	//
+	// 	- **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
+	//
+	//     **
+	//
+	//     **Note**For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
 	//
 	//     For example, `[11,12]` specifies Beijing and Tianjin.
+	//
+	// example:
+	//
+	// {"RegionBlockSwitch":"off","Countries":[],"Provinces":[11,12,13,14,15,21,22,23,31,32,33,34,35,36,37,41,42,43,44,45,46,50,51,52,53,54,61,62,63,64,65,71,81,82]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -862,6 +1016,10 @@ func (s *ConfigNetworkRegionBlockRequest) SetInstanceId(v string) *ConfigNetwork
 
 type ConfigNetworkRegionBlockResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -910,13 +1068,21 @@ func (s *ConfigNetworkRegionBlockResponse) SetBody(v *ConfigNetworkRegionBlockRe
 type ConfigNetworkRulesRequest struct {
 	// The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
-	// *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
-	// *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
 	//
-	// > You can modify only the value of **RealServers** when you modify a port forwarding rule.
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	//
+	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	//
+	// > You can modify only the value of **RealServers*	- when you modify a port forwarding rule.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080,"BackendPort":8080,"RealServers":["1.1.1.1","2.2.2.2","3.3.3.3"]}]
 	NetworkRules *string `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty"`
 }
 
@@ -935,6 +1101,10 @@ func (s *ConfigNetworkRulesRequest) SetNetworkRules(v string) *ConfigNetworkRule
 
 type ConfigNetworkRulesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CC042262-15A3-4A49-ADF0-130968EA47BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -985,31 +1155,55 @@ type ConfigUdpReflectRequest struct {
 	//
 	// The value is a string that consists of a JSON struct. The JSON struct contains the following field:
 	//
-	// *   **UdpSports**: the source ports of the UDP traffic that you want to block. This field is required and must be of the ARRAY type. Example: `[17,19]`.
+	// 	- **UdpSports**: the source ports of the UDP traffic that you want to block. This field is required and must be of the ARRAY type. Example: `[17,19]`.
 	//
 	//     We recommend that you block the following source ports of UDP traffic:
 	//
-	//     *   UDP 17: QOTD reflection attacks
-	//     *   UDP 19: CharGEN reflection attacks
-	//     *   UDP 69: TFTP reflection attacks
-	//     *   UDP 111: Portmap reflection attacks
-	//     *   UDP 123: NTP reflection attacks
-	//     *   UDP 137: NetBIOS reflection attacks
-	//     *   UDP 161: SNMPv2 reflection attacks
-	//     *   UDP 389: CLDAP reflection attacks
-	//     *   UDP 1194: OpenVPN reflection attacks
-	//     *   UDP 1900: SSDP reflection attacks
-	//     *   UDP 3389: RDP reflection attacks
-	//     *   UDP 11211: memcached reflection attacks
+	//     	- UDP 17: QOTD reflection attacks
+	//
+	//     	- UDP 19: CharGEN reflection attacks
+	//
+	//     	- UDP 69: TFTP reflection attacks
+	//
+	//     	- UDP 111: Portmap reflection attacks
+	//
+	//     	- UDP 123: NTP reflection attacks
+	//
+	//     	- UDP 137: NetBIOS reflection attacks
+	//
+	//     	- UDP 161: SNMPv2 reflection attacks
+	//
+	//     	- UDP 389: CLDAP reflection attacks
+	//
+	//     	- UDP 1194: OpenVPN reflection attacks
+	//
+	//     	- UDP 1900: SSDP reflection attacks
+	//
+	//     	- UDP 3389: RDP reflection attacks
+	//
+	//     	- UDP 11211: memcached reflection attacks
+	//
+	// example:
+	//
+	// {\"UdpSports\":[17,19]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-i7m25564****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland, which indicates Anti-DDoS Pro instances. This is the default value.
-	// *   **ap-southeast-1**: outside the Chinese mainland, which indicates Anti-DDoS Premium instances.
+	// 	- **cn-hangzhou**: Chinese mainland, which indicates Anti-DDoS Pro instances. This is the default value.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland, which indicates Anti-DDoS Premium instances.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1038,6 +1232,10 @@ func (s *ConfigUdpReflectRequest) SetRegionId(v string) *ConfigUdpReflectRequest
 
 type ConfigUdpReflectResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9EC62E89-BD30-4FCD-9CB8-FA53865FF0D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1087,15 +1285,30 @@ type ConfigWebCCTemplateRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The mode of the Frequency Control policy. Valid values:
 	//
-	// *   **default**: Normal
-	// *   **gf_under_attack**: Emergency
-	// *   **gf_sos_verify**: Strict
-	// *   **gf_sos_enhance**: Super Strict
+	// 	- **default**: Normal
+	//
+	// 	- **gf_under_attack**: Emergency
+	//
+	// 	- **gf_sos_verify**: Strict
+	//
+	// 	- **gf_sos_enhance**: Super Strict
+	//
+	// example:
+	//
+	// default
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
@@ -1124,6 +1337,10 @@ func (s *ConfigWebCCTemplateRequest) SetTemplate(v string) *ConfigWebCCTemplateR
 
 type ConfigWebCCTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1171,14 +1388,30 @@ func (s *ConfigWebCCTemplateResponse) SetBody(v *ConfigWebCCTemplateResponseBody
 
 type ConfigWebIpSetRequest struct {
 	// IP address N or CIDR block N that you want to add to the blacklist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the blacklist.
+	//
+	// example:
+	//
+	// 1.1.1.1
 	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// IP address N or CIDR block N that you want to add to the whitelist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the whitelist.
+	//
+	// example:
+	//
+	// 2.2.2.2/24
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -1212,6 +1445,10 @@ func (s *ConfigWebIpSetRequest) SetWhiteList(v []*string) *ConfigWebIpSetRequest
 
 type ConfigWebIpSetResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1259,25 +1496,42 @@ func (s *ConfigWebIpSetResponse) SetBody(v *ConfigWebIpSetResponseBody) *ConfigW
 
 type CreateAsyncTaskRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The details of the asynchronous export task. The value is a JSON string. The field in the value varies with **TaskType**.
 	//
-	// If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
+	// If **TaskType*	- is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
 	//
-	// *   **instanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	// 	- **instanceId**: the ID of the instance. This field is required and must be of the STRING type.
 	//
-	// If **TaskType** is set to **2**, the following field is returned:
+	// If **TaskType*	- is set to **2**, the following field is returned:
 	//
-	// *   **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
+	// 	- **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
+	//
+	// example:
+	//
+	// {"instanceId": "ddoscoo-cn-mp91j1ao****"}
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
 	// The type of the asynchronous export task that you want to create. Valid values:
 	//
-	// *   **1**: the task to export the port forwarding rules of an instance
-	// *   **2**: the task to export the forwarding rules of a website protected by an instance
-	// *   **3**: the task to export the session persistence and health check settings of an instance
-	// *   **4**: the task to export the anti-DDoS mitigation policies of an instance
-	// *   **5**: the task to download the blacklist for destination IP addresses of an instance
-	// *   **6**: the task to download the whitelist for destination IP addresses of an instance
+	// 	- **1**: the task to export the port forwarding rules of an instance
+	//
+	// 	- **2**: the task to export the forwarding rules of a website protected by an instance
+	//
+	// 	- **3**: the task to export the session persistence and health check settings of an instance
+	//
+	// 	- **4**: the task to export the anti-DDoS mitigation policies of an instance
+	//
+	// 	- **5**: the task to download the blacklist for destination IP addresses of an instance
+	//
+	// 	- **6**: the task to download the whitelist for destination IP addresses of an instance
+	//
+	// example:
+	//
+	// 5
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -1306,6 +1560,10 @@ func (s *CreateAsyncTaskRequest) SetTaskType(v int32) *CreateAsyncTaskRequest {
 
 type CreateAsyncTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1353,20 +1611,28 @@ func (s *CreateAsyncTaskResponse) SetBody(v *CreateAsyncTaskResponseBody) *Creat
 
 type CreateDomainResourceRequest struct {
 	// The domain name of the website that you want to add to the Anti-DDoS Pro or Anti-DDoS Premium instance.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
 	//
 	//     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
 	//
-	// *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	// 	- **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
 	//
 	//     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
 	//
-	// *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	// 	- **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
 	//
 	//     After you turn on the switch, HTTP/2 is used.
+	//
+	// example:
+	//
+	// {"Http2":1,"Http2https":1,"Https2http":1}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// An array consisting of the IDs of instances that you want to associate.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -1376,11 +1642,15 @@ type CreateDomainResourceRequest struct {
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
-	// *   **0**: IP address
+	// 	- **0**: IP address
 	//
-	// *   **1**: domain name
+	// 	- **1**: domain name
 	//
 	//     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//
+	// example:
+	//
+	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
@@ -1427,10 +1697,17 @@ type CreateDomainResourceRequestProxyTypes struct {
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **http**
-	// *   **https**
-	// *   **websocket**
-	// *   **websockets**
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// 	- **websocket**
+	//
+	// 	- **websockets**
+	//
+	// example:
+	//
+	// http
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
@@ -1454,6 +1731,10 @@ func (s *CreateDomainResourceRequestProxyTypes) SetProxyType(v string) *CreateDo
 
 type CreateDomainResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1502,11 +1783,19 @@ func (s *CreateDomainResourceResponse) SetBody(v *CreateDomainResourceResponseBo
 type CreateNetworkRulesRequest struct {
 	// The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
-	// *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
-	// *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// 	- **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
+	//
+	// 	- **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080,"BackendPort":8080,"RealServers":["1.1.1.1","2.2.2.2"]}]
 	NetworkRules *string `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty"`
 }
 
@@ -1525,6 +1814,10 @@ func (s *CreateNetworkRulesRequest) SetNetworkRules(v string) *CreateNetworkRule
 
 type CreateNetworkRulesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADCA45A5-D15C-4B7D-9F81-138B0B36D0BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1571,18 +1864,35 @@ func (s *CreateNetworkRulesResponse) SetBody(v *CreateNetworkRulesResponseBody) 
 }
 
 type CreatePortRequest struct {
-	// The port of the origin server. Valid values: **0** to **65535**.
+	// The port of the origin server. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The forwarding port. Valid values: **0** to **65535**.
+	// The forwarding port. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-st21zbyq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -1623,6 +1933,10 @@ func (s *CreatePortRequest) SetRealServers(v []*string) *CreatePortRequest {
 
 type CreatePortResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 4787A9A6-8230-4B4A-8211-AFBF7C416B4D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1670,15 +1984,32 @@ func (s *CreatePortResponse) SetBody(v *CreatePortResponseBody) *CreatePortRespo
 
 type CreateSceneDefensePolicyRequest struct {
 	// The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+	//
+	// example:
+	//
+	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+	//
+	// example:
+	//
+	// 1585670400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The template of the policy. Valid values:
 	//
-	// *   **promotion**: important activity
-	// *   **bypass**: all traffic forwarded
+	// 	- **promotion**: important activity
+	//
+	// 	- **bypass**: all traffic forwarded
+	//
+	// example:
+	//
+	// promotion
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
@@ -1712,11 +2043,20 @@ func (s *CreateSceneDefensePolicyRequest) SetTemplate(v string) *CreateSceneDefe
 
 type CreateSceneDefensePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1770,46 +2110,77 @@ func (s *CreateSceneDefensePolicyResponse) SetBody(v *CreateSceneDefensePolicyRe
 type CreateSchedulerRuleRequest struct {
 	// The details of the CDN interaction rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
 	//
-	// *   **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
+	// 	- **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
 	//
-	// *   **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. ParamData contains the following parameters:
+	// 	- **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. ParamData contains the following parameters:
 	//
-	//     *   **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
-	//     *   **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
-	//     *   **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
-	//     *   **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
+	//     	- **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
+	//
+	//     	- **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
+	//
+	//     	- **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
+	//
+	//     	- **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
+	//
+	// example:
+	//
+	// {"ParamType":"cdn","ParamData":{"Domain":"example.aliyundoc.com","Cname":"demo.aliyundoc.com","AccessQps":100,"UpstreamQps":100}}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the custom defense rule. Valid values:
 	//
-	// *   **2**: tiered protection
-	// *   **3**: network acceleration
-	// *   **5**: CDN interaction
-	// *   **6**: cloud service interaction
+	// 	- **2**: tiered protection
+	//
+	// 	- **3**: network acceleration
+	//
+	// 	- **5**: CDN interaction
+	//
+	// 	- **6**: cloud service interaction
+	//
+	// example:
+	//
+	// 2
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The details of the scheduling rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
 	//
-	// *   **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
+	// 	- **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
 	//
-	//     *   **A**: IP address
-	//     *   **CNAME**: domain name
+	//     	- **A**: IP address
 	//
-	// *   **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
+	//     	- **CNAME**: domain name
 	//
-	// *   **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0** to **100**. A larger value indicates a higher priority.
+	// 	- **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
 	//
-	// *   **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
+	// 	- **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0*	- to **100**. A larger value indicates a higher priority.
 	//
-	//     *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-	//     *   **2**: the IP address of the interaction resource in the tiered protection scenario
-	//     *   **3**: the IP address that is used to accelerate access in the network acceleration scenario
-	//     *   **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
-	//     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
+	// 	- **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
 	//
-	// *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
+	//     	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	//
+	//     	- **2**: the IP address of the interaction resource in the tiered protection scenario
+	//
+	//     	- **3**: the IP address that is used to accelerate access in the network acceleration scenario
+	//
+	//     	- **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
+	//
+	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
+	//
+	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
+	//
+	// example:
+	//
+	// [{"Type":"A", "Value":"1.1.XX.XX", "Priority":80,"ValueType":2, "RegionId":"cn-hangzhou" },{"Type":"A", "Value":"203.199.XX.XX", "Priority":80,"ValueType":1}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -1850,10 +2221,22 @@ type CreateSchedulerRuleResponseBody struct {
 	// The CNAME that is assigned by Sec-Traffic Manager for the scheduling rule.
 	//
 	// > To enable the scheduling rule, you must map the domain name of the service to the CNAME.
+	//
+	// example:
+	//
+	// 48k7b372gpl4****.aliyunddos0001.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 8DFB602D-1AAC-46C4-90F2-C84086E7A6E4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -1911,14 +2294,30 @@ func (s *CreateSchedulerRuleResponse) SetBody(v *CreateSchedulerRuleResponseBody
 
 type CreateTagResourcesRequest struct {
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the IDs of the Anti-DDoS Pro instances to which you want to add the tag.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// An array that consists of the tags to add.
 	Tags []*CreateTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -1959,8 +2358,16 @@ func (s *CreateTagResourcesRequest) SetTags(v []*CreateTagResourcesRequestTags) 
 
 type CreateTagResourcesRequestTags struct {
 	// The key of the tag to add.
+	//
+	// example:
+	//
+	// testkey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to add.
+	//
+	// example:
+	//
+	// testvalue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1984,6 +2391,10 @@ func (s *CreateTagResourcesRequestTags) SetValue(v string) *CreateTagResourcesRe
 
 type CreateTagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2030,15 +2441,36 @@ func (s *CreateTagResourcesResponse) SetBody(v *CreateTagResourcesResponseBody) 
 }
 
 type CreateWebCCRuleRequest struct {
-	Act             *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// close
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// example:
+	//
+	// 60
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 20
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// prefix
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// testrule
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// /abc/a.php
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateWebCCRuleRequest) String() string {
@@ -2095,6 +2527,9 @@ func (s *CreateWebCCRuleRequest) SetUri(v string) *CreateWebCCRuleRequest {
 }
 
 type CreateWebCCRuleResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2147,43 +2582,73 @@ type CreateWebRuleRequest struct {
 	//
 	// For example, if you integrate OSS with Anti-DDoS Pro or Anti-DDoS Premium, Anti-DDoS Pro or Anti-DDoS Premium allocates an IP address pool for the OSS production account. Each IP address corresponds to a unique defense ID. A defense ID is a CNAME, which is automatically resolved to the IP address of the required Anti-DDoS Pro or Anti-DDoS Premium instance. A defense ID can be resolved to the same IP address to facilitate scheduling.
 	//
-	// > You can specify only one of the following parameters: **InstanceIds** and **DefenseId**.
+	// > You can specify only one of the following parameters: **InstanceIds*	- and **DefenseId**.
+	//
+	// example:
+	//
+	// testid
 	DefenseId *string `json:"DefenseId,omitempty" xml:"DefenseId,omitempty"`
 	// The domain name of the website that you want to add to the instance.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
 	//
 	//     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
 	//
-	// *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	// 	- **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
 	//
 	//     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
 	//
-	// *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	// 	- **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
 	//
 	//     After you turn on Enable HTTP/2, the protocol type is HTTP/2.
+	//
+	// example:
+	//
+	// {"Http2":1,"Http2https":1,"Https2http":1}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// An array consisting of the IDs of instances that you want to associate.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The address type of the origin server. Valid values:
 	//
-	// *   **0**: IP address
-	// *   **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
+	// 	- **0**: IP address
+	//
+	// 	- **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
+	//
+	// example:
+	//
+	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 	// The details of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// *   **ProxyRules**: the information about the origin server. The information includes the port number and IP address. This field is required and must be a JSON array. Each element in a JSON array is a JSON struct that contains the following fields:
+	// 	- **ProxyRules**: the information about the origin server. The information includes the port number and IP address. This field is required and must be a JSON array. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	//     *   **ProxyPort**: the port number. This field is required and must be an integer.
-	//     *   **RealServers**: the IP address. This field is required and must be a string array.
+	//     	- **ProxyPort**: the port number. This field is required and must be an integer.
 	//
-	// *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+	//     	- **RealServers**: the IP address. This field is required and must be a string array.
+	//
+	// 	- **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+	//
+	// example:
+	//
+	// [{"ProxyRules":[{"ProxyPort":443,"RealServers":["192.1.XX.XX"]}],"ProxyType":"https"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -2232,6 +2697,10 @@ func (s *CreateWebRuleRequest) SetRules(v string) *CreateWebRuleRequest {
 
 type CreateWebRuleResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 9EC62E89-BD30-4FCD-9CB8-FA53865FF0D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2279,10 +2748,18 @@ func (s *CreateWebRuleResponse) SetBody(v *CreateWebRuleResponseBody) *CreateWeb
 
 type DeleteAsyncTaskRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the task that you want to delete.
 	//
 	// > You can call the [DescribeAsyncTasks](~~159405~~) operation to query the IDs of all asynchronous export tasks.
+	//
+	// example:
+	//
+	// 1
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2306,6 +2783,10 @@ func (s *DeleteAsyncTaskRequest) SetTaskId(v int32) *DeleteAsyncTaskRequest {
 
 type DeleteAsyncTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2354,11 +2835,19 @@ func (s *DeleteAsyncTaskResponse) SetBody(v *DeleteAsyncTaskResponseBody) *Delet
 type DeleteAutoCcBlacklistRequest struct {
 	// The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **src**: the IP address. This field is required and must be of the STRING type.
+	// 	- **src**: the IP address. This field is required and must be of the STRING type.
+	//
+	// example:
+	//
+	// [{"src":"198.51.XX.XX"},{"src":"198.52.XX.XX"}]
 	Blacklist *string `json:"Blacklist,omitempty" xml:"Blacklist,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2382,6 +2871,10 @@ func (s *DeleteAutoCcBlacklistRequest) SetInstanceId(v string) *DeleteAutoCcBlac
 
 type DeleteAutoCcBlacklistResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2431,10 +2924,18 @@ type DeleteAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP addresses that you want to manage. This parameter is a JSON string. This parameter is a JSON string. The string contains the following field:
 	//
-	// *   **src**: the IP address. This field is required and must be of the string type.
+	// 	- **src**: the IP address. This field is required and must be of the string type.
+	//
+	// example:
+	//
+	// [{"src":"1.1.1.1"},{"src":"2.2.2.2"}]
 	Whitelist *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
 }
 
@@ -2458,6 +2959,10 @@ func (s *DeleteAutoCcWhitelistRequest) SetWhitelist(v string) *DeleteAutoCcWhite
 
 type DeleteAutoCcWhitelistResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2505,6 +3010,10 @@ func (s *DeleteAutoCcWhitelistResponse) SetBody(v *DeleteAutoCcWhitelistResponse
 
 type DeleteDomainResourceRequest struct {
 	// The domain name for which the forwarding rule is configured.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -2523,6 +3032,10 @@ func (s *DeleteDomainResourceRequest) SetDomain(v string) *DeleteDomainResourceR
 
 type DeleteDomainResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2571,9 +3084,15 @@ func (s *DeleteDomainResourceResponse) SetBody(v *DeleteDomainResourceResponseBo
 type DeleteNetworkRuleRequest struct {
 	// An array that consists of the information about the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
 	NetworkRule *string `json:"NetworkRule,omitempty" xml:"NetworkRule,omitempty"`
 }
 
@@ -2592,6 +3111,10 @@ func (s *DeleteNetworkRuleRequest) SetNetworkRule(v string) *DeleteNetworkRuleRe
 
 type DeleteNetworkRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 49AD2F34-694A-4024-9B0E-DDCFC59CCC13
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2638,18 +3161,35 @@ func (s *DeleteNetworkRuleResponse) SetBody(v *DeleteNetworkRuleResponseBody) *D
 }
 
 type DeletePortRequest struct {
-	// The port of the origin server. Valid values: **0** to **65535**.
+	// The port of the origin server. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The forwarding port. Valid values: **0** to **65535**.
+	// The forwarding port. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-st21zbyq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -2690,6 +3230,10 @@ func (s *DeletePortRequest) SetRealServers(v []*string) *DeletePortRequest {
 
 type DeletePortResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2739,6 +3283,10 @@ type DeleteSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to delete.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -2757,11 +3305,20 @@ func (s *DeleteSceneDefensePolicyRequest) SetPolicyId(v string) *DeleteSceneDefe
 
 type DeleteSceneDefensePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2814,8 +3371,16 @@ func (s *DeleteSceneDefensePolicyResponse) SetBody(v *DeleteSceneDefensePolicyRe
 
 type DeleteSchedulerRuleRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the scheduling rule that you want to delete.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -2839,6 +3404,10 @@ func (s *DeleteSchedulerRuleRequest) SetRuleName(v string) *DeleteSchedulerRuleR
 
 type DeleteSchedulerRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2887,20 +3456,45 @@ func (s *DeleteSchedulerRuleResponse) SetBody(v *DeleteSchedulerRuleResponseBody
 type DeleteTagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified resource. Valid values:
 	//
-	// *   **true**: yes.
-	// *   **false** no. This is the default value.
+	// 	- **true**: yes.
+	//
+	// 	- **false*	- no. This is the default value.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the IDs of instances from which you want to remove tags.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// An array consisting of the keys of the tags that you want to remove.
+	//
+	// example:
+	//
+	// testkey
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -2944,6 +3538,10 @@ func (s *DeleteTagResourcesRequest) SetTagKey(v []*string) *DeleteTagResourcesRe
 
 type DeleteTagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2993,10 +3591,22 @@ type DeleteWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The name of the custom frequency control rule that you want to delete.
+	//
+	// example:
+	//
+	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3025,6 +3635,10 @@ func (s *DeleteWebCCRuleRequest) SetResourceGroupId(v string) *DeleteWebCCRuleRe
 
 type DeleteWebCCRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3074,12 +3688,24 @@ type DeleteWebCacheCustomRuleRequest struct {
 	// The domain name for which you want to delete the custom rules of the Static Page Caching policy.
 	//
 	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of the names of the rules that you want to delete.
+	//
+	// example:
+	//
+	// test
 	RuleNames []*string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 
@@ -3108,6 +3734,10 @@ func (s *DeleteWebCacheCustomRuleRequest) SetRuleNames(v []*string) *DeleteWebCa
 
 type DeleteWebCacheCustomRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3157,10 +3787,22 @@ type DeleteWebPreciseAccessRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array that consists of the names of rules to delete.
+	//
+	// example:
+	//
+	// testrule
 	RuleNames []*string `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 
@@ -3189,6 +3831,10 @@ func (s *DeleteWebPreciseAccessRuleRequest) SetRuleNames(v []*string) *DeleteWeb
 
 type DeleteWebPreciseAccessRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3238,10 +3884,18 @@ type DeleteWebRuleRequest struct {
 	// The domain name of the website from which you want to delete the forwarding rule.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3265,6 +3919,10 @@ func (s *DeleteWebRuleRequest) SetResourceGroupId(v string) *DeleteWebRuleReques
 
 type DeleteWebRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9EC62E89-BD30-4FCD-9CB8-FA53865FF0D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3312,12 +3970,24 @@ func (s *DeleteWebRuleResponse) SetBody(v *DeleteWebRuleResponseBody) *DeleteWeb
 
 type DescribeAsyncTasksRequest struct {
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3348,8 +4018,16 @@ type DescribeAsyncTasksResponseBody struct {
 	// An array that consists of the details of the asynchronous export tasks.
 	AsyncTasks []*DescribeAsyncTasksResponseBodyAsyncTasks `json:"AsyncTasks,omitempty" xml:"AsyncTasks,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of asynchronous export tasks that are returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3378,48 +4056,86 @@ func (s *DescribeAsyncTasksResponseBody) SetTotalCount(v int32) *DescribeAsyncTa
 
 type DescribeAsyncTasksResponseBodyAsyncTasks struct {
 	// The end time of the task. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 157927362000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The start time of the task. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 156927362000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the job.
+	//
+	// example:
+	//
+	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task parameter. The value is a JSON string. The returned field in the value varies based on the value of **TaskType**.
 	//
-	// If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
+	// If **TaskType*	- is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
 	//
-	// *   **instanceId**: the ID of the instance. Data type: string.
+	// 	- **instanceId**: the ID of the instance. Data type: string.
 	//
-	// If **TaskType** is set to **2**, the following field is returned:
+	// If **TaskType*	- is set to **2**, the following field is returned:
 	//
-	// *   **domain**: the domain name of the website. Data type: string.
+	// 	- **domain**: the domain name of the website. Data type: string.
+	//
+	// example:
+	//
+	// {"instanceId": "ddoscoo-cn-mp91j1ao****"}
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
 	// The execution result of the task. The value is a JSON string. The returned fields in the value vary based on the value of **TaskType**.
 	//
-	// If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following fields are returned:
+	// If **TaskType*	- is set to **1**, **3**, **4**, **5**, or **6**, the following fields are returned:
 	//
-	// *   **instanceId**: the ID of the instance. Data type: string.
-	// *   **url**: the URL to download the exported file from Object Storage Service (OSS). Data type: string.
+	// 	- **instanceId**: the ID of the instance. Data type: string.
 	//
-	// If **TaskType** is set to **2**, the following fields are returned:
+	// 	- **url**: the URL to download the exported file from Object Storage Service (OSS). Data type: string.
 	//
-	// *   **domain**: the domain name of the website. Data type: string.
-	// *   **url**: the URL to download the exported file from OSS. Data type: string.
+	// If **TaskType*	- is set to **2**, the following fields are returned:
+	//
+	// 	- **domain**: the domain name of the website. Data type: string.
+	//
+	// 	- **url**: the URL to download the exported file from OSS. Data type: string.
+	//
+	// example:
+	//
+	// {"instanceId": "ddoscoo-cn-mp91j1ao****","url": "https://****.oss-cn-beijing.aliyuncs.com/heap.bin?Expires=1584785140&OSSAccessKeyId=TMP.3KfzD82FyRJevJdEkRX6JEFHhbvRBBb75PZJnyJmksA2QkMm47xFAFDgMhEV8Nm6Vxr8xExMfiy9LsUFAcLcTBrN3r****&Signature=Sj8BNcsxJLE8l5qm4cjNlDt8gv****"}
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   **0**: indicates that the task is being initialized.
-	// *   **1**: indicates that the task is in progress.
-	// *   **2**: indicates that the task is successful.
-	// *   **3**: indicates that the task failed.
+	// 	- **0**: indicates that the task is being initialized.
+	//
+	// 	- **1**: indicates that the task is in progress.
+	//
+	// 	- **2**: indicates that the task is successful.
+	//
+	// 	- **3**: indicates that the task failed.
+	//
+	// example:
+	//
+	// 2
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   **1**: the task to export the port forwarding rules of an instance
-	// *   **2**: the task to export the forwarding rules of a website protected by an instance
-	// *   **3**: the task to export the sessions and health check settings of an instance
-	// *   **4**: the task to export the mitigation policies of an instance
-	// *   **5**: the task to download the blacklist for destination IP addresses of an instance
-	// *   **6**: the task to download the whitelist for destination IP addresses of an instance
+	// 	- **1**: the task to export the port forwarding rules of an instance
+	//
+	// 	- **2**: the task to export the forwarding rules of a website protected by an instance
+	//
+	// 	- **3**: the task to export the sessions and health check settings of an instance
+	//
+	// 	- **4**: the task to export the mitigation policies of an instance
+	//
+	// 	- **5**: the task to download the blacklist for destination IP addresses of an instance
+	//
+	// 	- **6**: the task to download the whitelist for destination IP addresses of an instance
+	//
+	// example:
+	//
+	// 5
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -3497,8 +4213,16 @@ func (s *DescribeAsyncTasksResponse) SetBody(v *DescribeAsyncTasksResponseBody) 
 
 type DescribeAttackAnalysisMaxQpsRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1619798400
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1622476799
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3522,8 +4246,16 @@ func (s *DescribeAttackAnalysisMaxQpsRequest) SetStartTime(v int64) *DescribeAtt
 
 type DescribeAttackAnalysisMaxQpsResponseBody struct {
 	// The peak queries per second (QPS) of DDoS attacks. Units: QPS.
+	//
+	// example:
+	//
+	// 41652
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8DFB602D-1AAC-46C4-90F2-C84086E7A6E4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3578,14 +4310,30 @@ type DescribeAutoCcBlacklistRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
 	//
 	// > The keyword must be greater than three characters in length.
+	//
+	// example:
+	//
+	// 138
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -3621,8 +4369,16 @@ type DescribeAutoCcBlacklistResponseBody struct {
 	// An array that consists of the details of the IP addresses in the blacklist of the instance.
 	AutoCcBlacklist []*DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist `json:"AutoCcBlacklist,omitempty" xml:"AutoCcBlacklist,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// E78C8472-0B15-42D5-AF22-A32A78818AB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned IP addresses in the blacklist.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3651,15 +4407,32 @@ func (s *DescribeAutoCcBlacklistResponseBody) SetTotalCount(v int64) *DescribeAu
 
 type DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist struct {
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	DestIp *string `json:"DestIp,omitempty" xml:"DestIp,omitempty"`
 	// The validity period of the IP address in the blacklist. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1584093569
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address in the blacklist.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The mode of how the IP address is added to the blacklist. Valid values:
 	//
-	// *   **manual**: manually added
-	// *   **auto**: automatically added
+	// 	- **manual**: manually added
+	//
+	// 	- **auto**: automatically added
+	//
+	// example:
+	//
+	// manual
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3723,12 +4496,21 @@ func (s *DescribeAutoCcBlacklistResponse) SetBody(v *DescribeAutoCcBlacklistResp
 type DescribeAutoCcListCountRequest struct {
 	// The ID of the instance.
 	//
-	// > You can call the **DescribeInstanceIds** operation to query the IDs of all instances.
+	// > You can call the **DescribeInstanceIds*	- operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The mode of how an IP address is added to the whitelist or blacklist. Valid values:
 	//
-	// *   **manual**: manually added
-	// *   **auto**: automatically added
+	// 	- **manual**: manually added
+	//
+	// 	- **auto**: automatically added
+	//
+	// example:
+	//
+	// manual
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 }
 
@@ -3752,10 +4534,22 @@ func (s *DescribeAutoCcListCountRequest) SetQueryType(v string) *DescribeAutoCcL
 
 type DescribeAutoCcListCountResponseBody struct {
 	// The total number of IP addresses in the blacklist.
+	//
+	// example:
+	//
+	// 0
 	BlackCount *int32 `json:"BlackCount,omitempty" xml:"BlackCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5AC3785F-C789-4622-87A4-F58BE7F6B184
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of IP addresses in the whitelist.
+	//
+	// example:
+	//
+	// 2
 	WhiteCount *int32 `json:"WhiteCount,omitempty" xml:"WhiteCount,omitempty"`
 }
 
@@ -3815,14 +4609,30 @@ type DescribeAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
 	//
 	// > The keyword must be greater than three characters in length.
+	//
+	// example:
+	//
+	// 138
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -3858,8 +4668,16 @@ type DescribeAutoCcWhitelistResponseBody struct {
 	// An array that consists of details of the IP address in the whitelist of the instance.
 	AutoCcWhitelist []*DescribeAutoCcWhitelistResponseBodyAutoCcWhitelist `json:"AutoCcWhitelist,omitempty" xml:"AutoCcWhitelist,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F09D085E-5E0F-4FF2-B32E-F4A644049162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned IP addresses in the whitelist.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3888,15 +4706,32 @@ func (s *DescribeAutoCcWhitelistResponseBody) SetTotalCount(v int64) *DescribeAu
 
 type DescribeAutoCcWhitelistResponseBodyAutoCcWhitelist struct {
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.***.***.117
 	DestIp *string `json:"DestIp,omitempty" xml:"DestIp,omitempty"`
-	// The validity period of the IP address in the whitelist. Unit: seconds. **0** indicates that the IP address in the whitelist never expires.
+	// The validity period of the IP address in the whitelist. Unit: seconds. **0*	- indicates that the IP address in the whitelist never expires.
+	//
+	// example:
+	//
+	// 0
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP addresses that is contained in the IP address whitelist.
+	//
+	// example:
+	//
+	// 2.2.2.2
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The mode of how an IP address is added to the whitelist. Valid values:
 	//
-	// *   **manual**: manually added
-	// *   **auto**: automatically added
+	// 	- **manual**: manually added
+	//
+	// 	- **auto**: automatically added
+	//
+	// example:
+	//
+	// manual
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3960,12 +4795,25 @@ func (s *DescribeAutoCcWhitelistResponse) SetBody(v *DescribeAutoCcWhitelistResp
 type DescribeBackSourceCidrRequest struct {
 	// The IP version of the back-to-origin CIDR block.
 	//
-	// *   **Ipv4**
-	// *   **Ipv6**
+	// 	- **Ipv4**
+	//
+	// 	- **Ipv6**
+	//
+	// example:
+	//
+	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The Internet service provider (ISP) line that you want to query.
+	//
+	// example:
+	//
+	// coop-line-001
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3996,6 +4844,10 @@ type DescribeBackSourceCidrResponseBody struct {
 	// An array that consists of the back-to-origin CIDR blocks of the instance.
 	Cidrs []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4050,6 +4902,10 @@ type DescribeBlackholeStatusRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -4070,6 +4926,10 @@ type DescribeBlackholeStatusResponseBody struct {
 	// An array that consists of the blackhole filtering status of the instance.
 	BlackholeStatus []*DescribeBlackholeStatusResponseBodyBlackholeStatus `json:"BlackholeStatus,omitempty" xml:"BlackholeStatus,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4094,14 +4954,31 @@ func (s *DescribeBlackholeStatusResponseBody) SetRequestId(v string) *DescribeBl
 type DescribeBlackholeStatusResponseBodyBlackholeStatus struct {
 	// Indicates whether blackhole filtering is triggered for the instance. Valid values:
 	//
-	// *   **blackhole**: yes
-	// *   **normal**: no
+	// 	- **blackhole**: yes
+	//
+	// 	- **normal**: no
+	//
+	// example:
+	//
+	// blackhole
 	BlackStatus *string `json:"BlackStatus,omitempty" xml:"BlackStatus,omitempty"`
 	// The end time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1540196323
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.***.***.132
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The start time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1540195323
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4166,10 +5043,18 @@ type DescribeBlockStatusRequest struct {
 	// An array consisting of information about the IDs of the instances that you want to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4193,6 +5078,10 @@ func (s *DescribeBlockStatusRequest) SetResourceGroupId(v string) *DescribeBlock
 
 type DescribeBlockStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of details of the Diversion from Origin Server configurations of the instance.
 	StatusList []*DescribeBlockStatusResponseBodyStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
@@ -4220,6 +5109,10 @@ type DescribeBlockStatusResponseBodyStatusList struct {
 	// An array that consists of details of the Diversion from Origin Server configuration.
 	BlockStatusList []*DescribeBlockStatusResponseBodyStatusListBlockStatusList `json:"BlockStatusList,omitempty" xml:"BlockStatusList,omitempty" type:"Repeated"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.XX.XX.88
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -4244,17 +5137,35 @@ func (s *DescribeBlockStatusResponseBodyStatusList) SetIp(v string) *DescribeBlo
 type DescribeBlockStatusResponseBodyStatusListBlockStatusList struct {
 	// The blocking status of the network traffic. Valid values:
 	//
-	// *   **areablock**: Network traffic is blocked.
-	// *   **normal**: Network traffic is not blocked.
+	// 	- **areablock**: Network traffic is blocked.
+	//
+	// 	- **normal**: Network traffic is not blocked.
+	//
+	// example:
+	//
+	// areablock
 	BlockStatus *string `json:"BlockStatus,omitempty" xml:"BlockStatus,omitempty"`
 	// The end time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1540196323
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
 	//
-	// *   **ct**: China Telecom (International)
-	// *   **cut**: China Unicom (International)
+	// 	- **ct**: China Telecom (International)
+	//
+	// 	- **cut**: China Unicom (International)
+	//
+	// example:
+	//
+	// cut
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	// The start time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1540195323
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4319,8 +5230,16 @@ type DescribeCertsRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4346,6 +5265,10 @@ type DescribeCertsResponseBody struct {
 	// The certificate information about the website.
 	Certs []*DescribeCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4370,21 +5293,50 @@ func (s *DescribeCertsResponseBody) SetRequestId(v string) *DescribeCertsRespons
 type DescribeCertsResponseBodyCerts struct {
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The domain name that is associated with the certificate.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
 	// Indicates whether the certificate is associated with the domain name. Valid values:
 	//
-	// *   **true**: The certificate is associated with the domain name.
-	// *   **false**: The certificate is not associated with the domain name.
+	// 	- **true**: The certificate is associated with the domain name.
+	//
+	// 	- **false**: The certificate is not associated with the domain name.
+	//
+	// example:
+	//
+	// true
 	DomainRelated *bool `json:"DomainRelated,omitempty" xml:"DomainRelated,omitempty"`
 	// The expiration date of the certificate. string
+	//
+	// example:
+	//
+	// 2021-09-12
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 81
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// Symantec
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The name of the certificate.
+	//
+	// example:
+	//
+	// testcert
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The issuance date of the certificate. string
+	//
+	// example:
+	//
+	// 2019-09-12
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -4466,8 +5418,14 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 }
 
 type DescribeCnameReusesRequest struct {
-	Domains         []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeCnameReusesRequest) String() string {
@@ -4490,7 +5448,10 @@ func (s *DescribeCnameReusesRequest) SetResourceGroupId(v string) *DescribeCname
 
 type DescribeCnameReusesResponseBody struct {
 	CnameReuses []*DescribeCnameReusesResponseBodyCnameReuses `json:"CnameReuses,omitempty" xml:"CnameReuses,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCnameReusesResponseBody) String() string {
@@ -4512,9 +5473,18 @@ func (s *DescribeCnameReusesResponseBody) SetRequestId(v string) *DescribeCnameR
 }
 
 type DescribeCnameReusesResponseBodyCnameReuses struct {
-	Cname  *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// 4o6ep6q217k9****.aliyunddos0004.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Enable *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 1
+	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
 func (s DescribeCnameReusesResponseBodyCnameReuses) String() string {
@@ -4573,20 +5543,44 @@ type DescribeDDoSEventsRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4632,8 +5626,16 @@ type DescribeDDoSEventsResponseBody struct {
 	// The DDoS attack events.
 	DDoSEvents []*DescribeDDoSEventsResponseBodyDDoSEvents `json:"DDoSEvents,omitempty" xml:"DDoSEvents,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0CA72AF5-1795-4350-8C77-50A448A2F334
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned attack events.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -4662,32 +5664,70 @@ func (s *DescribeDDoSEventsResponseBody) SetTotal(v int64) *DescribeDDoSEventsRe
 
 type DescribeDDoSEventsResponseBodyDDoSEvents struct {
 	// The bandwidth of attack traffic. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1583933330
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the attack event. Valid values:
 	//
-	// *   **defense**: traffic scrubbing events
-	// *   **blackhole**: blackhole filtering events
+	// 	- **defense**: traffic scrubbing events
+	//
+	// 	- **blackhole**: blackhole filtering events
+	//
+	// example:
+	//
+	// blackhole
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The attacked IP address.
+	//
+	// example:
+	//
+	// 203.***.***.132
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The attacked port.
+	//
+	// example:
+	//
+	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The packet forwarding rate of attack traffic. Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 0
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The region from which the attack was launched. Valid values:
 	//
-	// *   **cn**: a region in the Chinese mainland
-	// *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
-	// *   **alb-ap-southeast-gf-x**: Singapore
-	// *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
-	// *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
-	// *   **alb-us-west-1-gf-x**: US (Silicon Valley)
+	// 	- **cn**: a region in the Chinese mainland
 	//
-	// > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
+	// 	- **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+	//
+	// 	- **alb-ap-southeast-gf-x**: Singapore
+	//
+	// 	- **alb-cn-hongkong-gf-x**: Hong Kong (China)
+	//
+	// 	- **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+	//
+	// 	- **alb-us-west-1-gf-x**: US (Silicon Valley)
+	//
+	// > The values except **cn*	- are returned only when **RegionId*	- is set to **ap-southeast-1**.
+	//
+	// example:
+	//
+	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1583933277
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4769,24 +5809,47 @@ func (s *DescribeDDoSEventsResponse) SetBody(v *DescribeDDoSEventsResponseBody) 
 }
 
 type DescribeDDosAllEventListRequest struct {
-	// The end of the time range to query. The DDoS attack events occur before **EndTime** are queried. This value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. The DDoS attack events occur before **EndTime*	- are queried. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1640966399
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the DDoS attack events you want to query. Valid values:
 	//
-	// *   **web-cc**: resource exhaustion attacks
-	// *   **cc**: connection flood attacks
-	// *   **defense**: DDoS attacks that trigger traffic scrubbing
-	// *   **blackhole**: DDoS attacks that trigger blackhole filtering
+	// 	- **web-cc**: resource exhaustion attacks
+	//
+	// 	- **cc**: connection flood attacks
+	//
+	// 	- **defense**: DDoS attacks that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: DDoS attacks that trigger blackhole filtering
 	//
 	// If you want to query multiple types of DDoS attack events, separate them with commas (,).
 	//
 	// If you do not configure this parameter, DDoS attack events of all types are queried.
+	//
+	// example:
+	//
+	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. The DDoS attack events occur after **StartTime** are queried. This value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. The DDoS attack events occur after **StartTime*	- are queried. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1609430400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4827,8 +5890,16 @@ type DescribeDDosAllEventListResponseBody struct {
 	// An array that consists of attack events.
 	AttackEvents []*DescribeDDosAllEventListResponseBodyAttackEvents `json:"AttackEvents,omitempty" xml:"AttackEvents,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 25D83ED5-28CB-5683-9CF7-AECE521F3005
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of DDoS attack events.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -4858,40 +5929,85 @@ func (s *DescribeDDosAllEventListResponseBody) SetTotal(v int64) *DescribeDDosAl
 type DescribeDDosAllEventListResponseBodyAttackEvents struct {
 	// The source location or region from which the attack was initiated. Valid values:
 	//
-	// *   **cn**: Chinese mainland
-	// *   **alb-cn-hongkong-gf-2**: China (Hongkong)
-	// *   **alb-us-west-1-gf-2**: US (Silicon Valley)
-	// *   **alb-ap-northeast-1-gf-1**: Japan (Tokyo)
-	// *   **alb-ap-southeast-gf-1**: Singapore
-	// *   **alb-eu-central-1-gf-1**: Germany (Frankfurt)
-	// *   **alb-eu-central-1-gf-1** or **selb-eu-west-1-gf-1a**: UK (London)
-	// *   **alb-us-east-gf-1**: US (Virginia)
-	// *   **CT-yundi**: China (Hongkong) This value is returned only for Anti-DDoS Premium instances of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
+	// 	- **cn**: Chinese mainland
+	//
+	// 	- **alb-cn-hongkong-gf-2**: China (Hongkong)
+	//
+	// 	- **alb-us-west-1-gf-2**: US (Silicon Valley)
+	//
+	// 	- **alb-ap-northeast-1-gf-1**: Japan (Tokyo)
+	//
+	// 	- **alb-ap-southeast-gf-1**: Singapore
+	//
+	// 	- **alb-eu-central-1-gf-1**: Germany (Frankfurt)
+	//
+	// 	- **alb-eu-central-1-gf-1*	- or **selb-eu-west-1-gf-1a**: UK (London)
+	//
+	// 	- **alb-us-east-gf-1**: US (Virginia)
+	//
+	// 	- **CT-yundi**: China (Hongkong) This value is returned only for Anti-DDoS Premium instances of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
+	//
+	// example:
+	//
+	// cn
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1634546030
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the DDoS attack event. Valid values:
 	//
-	// *   **web-cc**: resource exhaustion attacks
-	// *   **cc**: connection flood attacks
-	// *   **defense**: DDoS attacks that trigger traffic scrubbing
-	// *   **blackhole**: DDoS attacks that trigger blackhole filtering
+	// 	- **web-cc**: resource exhaustion attacks
+	//
+	// 	- **cc**: connection flood attacks
+	//
+	// 	- **defense**: DDoS attacks that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: DDoS attacks that trigger blackhole filtering
+	//
+	// example:
+	//
+	// cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The attacked object. The attacked object varies based on the attack event type. The following list describes different attacked objects of different attack event types:
 	//
-	// *   If **EventType** is set to **web-cc**, the value of this parameter indicates the domain name of the attacked website.
-	// *   If **EventType** is set to **cc**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
-	// *   If **EventType** is set to **defense** or **blackhole**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	// 	- If **EventType*	- is set to **web-cc**, the value of this parameter indicates the domain name of the attacked website.
+	//
+	// 	- If **EventType*	- is set to **cc**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// 	- If **EventType*	- is set to **defense*	- or **blackhole**, the value of this parameter indicates the IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The peak bandwidth of the attack traffic. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 101899
 	Mbps *int64 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
 	// The attacked port.
 	//
-	// > If **EventType** is set to **web-cc**, this parameter is not returned.
+	// > If **EventType*	- is set to **web-cc**, this parameter is not returned.
+	//
+	// example:
+	//
+	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The peak packet forwarding rate of attack traffic. Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 9664270
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1634543764
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4975,14 +6091,27 @@ func (s *DescribeDDosAllEventListResponse) SetBody(v *DescribeDDosAllEventListRe
 type DescribeDDosEventAreaRequest struct {
 	// The type of the attack event that you want to query. Valid values:
 	//
-	// *   **defense**: attack events that trigger traffic scrubbing
-	// *   **blackhole**: attack events that trigger blackhole filtering
+	// 	- **defense**: attack events that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: attack events that trigger blackhole filtering
+	//
+	// example:
+	//
+	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	//
+	// example:
+	//
+	// 1598948471
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5013,6 +6142,10 @@ type DescribeDDosEventAreaResponseBody struct {
 	// The information about the source region from which the volumetric attack was initiated.
 	Areas []*DescribeDDosEventAreaResponseBodyAreas `json:"Areas,omitempty" xml:"Areas,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 11710C9F-BC5E-481A-BEC5-C6D8FBFCA827
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5035,9 +6168,17 @@ func (s *DescribeDDosEventAreaResponseBody) SetRequestId(v string) *DescribeDDos
 }
 
 type DescribeDDosEventAreaResponseBodyAreas struct {
-	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	//
+	// example:
+	//
+	// 110000
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The number of request packets that were sent from the source region.
+	//
+	// example:
+	//
+	// 228
 	InPkts *int64 `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
 }
 
@@ -5091,14 +6232,27 @@ func (s *DescribeDDosEventAreaResponse) SetBody(v *DescribeDDosEventAreaResponse
 type DescribeDDosEventAttackTypeRequest struct {
 	// The type of the attack event that you want to query. Valid values:
 	//
-	// *   **defense**: attack events that trigger traffic scrubbing
-	// *   **blackhole**: attack events that trigger blackhole filtering
+	// 	- **defense**: attack events that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: attack events that trigger blackhole filtering
+	//
+	// example:
+	//
+	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	//
+	// example:
+	//
+	// 1598948471
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5129,6 +6283,10 @@ type DescribeDDosEventAttackTypeResponseBody struct {
 	// The information about the attack types.
 	AttackTypes []*DescribeDDosEventAttackTypeResponseBodyAttackTypes `json:"AttackTypes,omitempty" xml:"AttackTypes,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6F644A6E-40E7-483F-9DBB-CC27E16BB555
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5153,49 +6311,97 @@ func (s *DescribeDDosEventAttackTypeResponseBody) SetRequestId(v string) *Descri
 type DescribeDDosEventAttackTypeResponseBodyAttackTypes struct {
 	// The type of the attack Valid values:
 	//
-	// *   **QOTD-Reflect-Flood**: QOTD reflection attacks
-	// *   **CharGEN-Reflect-Flood**: CHARGEN reflection attacks
-	// *   **DNS-Reflect-Flood**: DNS reflection attacks
-	// *   **TFTP-Reflect-Flood**: TFTP reflection attacks
-	// *   **Portmap-Reflect-Flood**: Portmap reflection attacks
-	// *   **NTP-Reflect-Flood**: NTP reflection attacks
-	// *   **NetBIOS-Reflect-Flood**: NetBIOS reflection attacks
-	// *   **SNMPv2-Reflect-Flood**: SNMPv2 reflection attacks
-	// *   **CLDAP-Reflect-Flood**: CLDAP reflection attacks
-	// *   **Ripv1-Reflect-Flood**: RIPv1 reflection attacks
-	// *   **OpenVPN-Reflect-Flood**: OpenVPN reflection attacks
-	// *   **SSDP-Reflect-Flood**: SSDP reflection attacks
-	// *   **NetAssistant-Reflect-Flood**: NetAssistant reflection attacks
-	// *   **WSDiscovery-Reflect-Flood**: WS-Discovery reflection attacks
-	// *   **Kad-Reflect-Flood**: Kad reflection attacks
-	// *   **mDNS-Reflect-Flood**: mDNS reflection attacks
-	// *   **10001-Reflect-Flood**: reflection attacks over port 10001
-	// *   **Memcached-Reflect-Flood**: Memcached reflection attacks
-	// *   **QNP-Reflect-Flood**: QNP reflection attacks
-	// *   **DVR-Reflect-Flood**: DVR reflection attacks
-	// *   **CoAP-Reflect-Flood**: CoAP reflection attacks
-	// *   **ADDP-Reflect-Flood**: ADDP reflection attacks
-	// *   **Tcp-Syn**: TCP SYN flood attacks
-	// *   **Tcp-Fin**: TCP FIN flood attacks
-	// *   **Tcp-Ack**: TCP ACK flood attacks
-	// *   **Tcp-Rst**: TCP RST flood attacks
-	// *   **Tcp-Pushack**: TCP PSH-ACK flood attacks
-	// *   **Tcp-Synack**: TCP SYN-ACK flood attacks
-	// *   **Udp-None**: UDP attacks
-	// *   **Udp-Ssh**: UDP-based SSH attacks
-	// *   **Udp-Dns**: UDP-based DNS attacks
-	// *   **Udp-Http**: UDP-based HTTP attacks
-	// *   **Udp-Https**: UDP-based HTTPS attacks
-	// *   **Udp-Ntp**: UDP-based NTP attacks
-	// *   **Udp-Ldap**: UDP-based LDAP attacks
-	// *   **Udp-Ssdp**: UDP-based SSDP attacks
-	// *   **Udp-Memcached**: Memcached UDP reflection attacks
-	// *   **Tcp-Other**: other TCP attacks
-	// *   **Icmp**: ICMP flood attacks
-	// *   **Igmp**: IGMP flood attacks
-	// *   **Ipv6**: IPv6 attacks
+	// 	- **QOTD-Reflect-Flood**: QOTD reflection attacks
+	//
+	// 	- **CharGEN-Reflect-Flood**: CHARGEN reflection attacks
+	//
+	// 	- **DNS-Reflect-Flood**: DNS reflection attacks
+	//
+	// 	- **TFTP-Reflect-Flood**: TFTP reflection attacks
+	//
+	// 	- **Portmap-Reflect-Flood**: Portmap reflection attacks
+	//
+	// 	- **NTP-Reflect-Flood**: NTP reflection attacks
+	//
+	// 	- **NetBIOS-Reflect-Flood**: NetBIOS reflection attacks
+	//
+	// 	- **SNMPv2-Reflect-Flood**: SNMPv2 reflection attacks
+	//
+	// 	- **CLDAP-Reflect-Flood**: CLDAP reflection attacks
+	//
+	// 	- **Ripv1-Reflect-Flood**: RIPv1 reflection attacks
+	//
+	// 	- **OpenVPN-Reflect-Flood**: OpenVPN reflection attacks
+	//
+	// 	- **SSDP-Reflect-Flood**: SSDP reflection attacks
+	//
+	// 	- **NetAssistant-Reflect-Flood**: NetAssistant reflection attacks
+	//
+	// 	- **WSDiscovery-Reflect-Flood**: WS-Discovery reflection attacks
+	//
+	// 	- **Kad-Reflect-Flood**: Kad reflection attacks
+	//
+	// 	- **mDNS-Reflect-Flood**: mDNS reflection attacks
+	//
+	// 	- **10001-Reflect-Flood**: reflection attacks over port 10001
+	//
+	// 	- **Memcached-Reflect-Flood**: Memcached reflection attacks
+	//
+	// 	- **QNP-Reflect-Flood**: QNP reflection attacks
+	//
+	// 	- **DVR-Reflect-Flood**: DVR reflection attacks
+	//
+	// 	- **CoAP-Reflect-Flood**: CoAP reflection attacks
+	//
+	// 	- **ADDP-Reflect-Flood**: ADDP reflection attacks
+	//
+	// 	- **Tcp-Syn**: TCP SYN flood attacks
+	//
+	// 	- **Tcp-Fin**: TCP FIN flood attacks
+	//
+	// 	- **Tcp-Ack**: TCP ACK flood attacks
+	//
+	// 	- **Tcp-Rst**: TCP RST flood attacks
+	//
+	// 	- **Tcp-Pushack**: TCP PSH-ACK flood attacks
+	//
+	// 	- **Tcp-Synack**: TCP SYN-ACK flood attacks
+	//
+	// 	- **Udp-None**: UDP attacks
+	//
+	// 	- **Udp-Ssh**: UDP-based SSH attacks
+	//
+	// 	- **Udp-Dns**: UDP-based DNS attacks
+	//
+	// 	- **Udp-Http**: UDP-based HTTP attacks
+	//
+	// 	- **Udp-Https**: UDP-based HTTPS attacks
+	//
+	// 	- **Udp-Ntp**: UDP-based NTP attacks
+	//
+	// 	- **Udp-Ldap**: UDP-based LDAP attacks
+	//
+	// 	- **Udp-Ssdp**: UDP-based SSDP attacks
+	//
+	// 	- **Udp-Memcached**: Memcached UDP reflection attacks
+	//
+	// 	- **Tcp-Other**: other TCP attacks
+	//
+	// 	- **Icmp**: ICMP flood attacks
+	//
+	// 	- **Igmp**: IGMP flood attacks
+	//
+	// 	- **Ipv6**: IPv6 attacks
+	//
+	// example:
+	//
+	// Tcp-Syn
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The number of request packets of the attack type.
+	//
+	// example:
+	//
+	// 145902
 	InPkts *int64 `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
 }
 
@@ -5249,14 +6455,27 @@ func (s *DescribeDDosEventAttackTypeResponse) SetBody(v *DescribeDDosEventAttack
 type DescribeDDosEventIspRequest struct {
 	// The type of the attack event that you want to query. Valid values:
 	//
-	// *   **defense**: attack events that trigger traffic scrubbing
-	// *   **blackhole**: attack events that trigger blackhole filtering
+	// 	- **defense**: attack events that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: attack events that trigger blackhole filtering
+	//
+	// example:
+	//
+	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	//
+	// example:
+	//
+	// 1598948471
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5287,6 +6506,10 @@ type DescribeDDosEventIspResponseBody struct {
 	// An array that consists of the ISPs for the volumetric attack.
 	Isps []*DescribeDDosEventIspResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C4A3BCD1-4A32-4342-941A-4745AE69508C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5310,27 +6533,52 @@ func (s *DescribeDDosEventIspResponseBody) SetRequestId(v string) *DescribeDDosE
 
 type DescribeDDosEventIspResponseBodyIsps struct {
 	// The number of request packets that were sent from the ISP.
+	//
+	// example:
+	//
+	// 230
 	InPkts *int64 `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
 	// The code of the ISP. Valid values:
 	//
-	// *   **100017**: China Telecom
-	// *   **100026**: China Unicom
-	// *   **100025**: China Mobile
-	// *   **100027**: China Education and Research Network
-	// *   **100020**: China Mobile Tietong
-	// *   **1000143**: Dr.Peng Telecom & Media Group
-	// *   **100080**: Beijing Gehua CATV Network
-	// *   **1000139**: National Radio and Television Administration
-	// *   **100023**: Oriental Cable Network
-	// *   **100063**: Founder Broadband
-	// *   **1000337**: China Internet Exchange
-	// *   **100021**: 21Vianet Group
-	// *   **1000333**: Wasu Media Holding
-	// *   **100093**: Wangsu Science & Technology
-	// *   **1000401**: Tencent
-	// *   **100099**: Baidu
-	// *   **1000323**: Alibaba Cloud
-	// *   **100098**: Alibaba
+	// 	- **100017**: China Telecom
+	//
+	// 	- **100026**: China Unicom
+	//
+	// 	- **100025**: China Mobile
+	//
+	// 	- **100027**: China Education and Research Network
+	//
+	// 	- **100020**: China Mobile Tietong
+	//
+	// 	- **1000143**: Dr.Peng Telecom & Media Group
+	//
+	// 	- **100080**: Beijing Gehua CATV Network
+	//
+	// 	- **1000139**: National Radio and Television Administration
+	//
+	// 	- **100023**: Oriental Cable Network
+	//
+	// 	- **100063**: Founder Broadband
+	//
+	// 	- **1000337**: China Internet Exchange
+	//
+	// 	- **100021**: 21Vianet Group
+	//
+	// 	- **1000333**: Wasu Media Holding
+	//
+	// 	- **100093**: Wangsu Science & Technology
+	//
+	// 	- **1000401**: Tencent
+	//
+	// 	- **100099**: Baidu
+	//
+	// 	- **1000323**: Alibaba Cloud
+	//
+	// 	- **100098**: Alibaba
+	//
+	// example:
+	//
+	// 1000323
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
@@ -5383,8 +6631,16 @@ func (s *DescribeDDosEventIspResponse) SetBody(v *DescribeDDosEventIspResponseBo
 
 type DescribeDDosEventMaxRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1604073600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1598889600
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5408,12 +6664,28 @@ func (s *DescribeDDosEventMaxRequest) SetStartTime(v int64) *DescribeDDosEventMa
 
 type DescribeDDosEventMaxResponseBody struct {
 	// The peak of connection flood attacks. Unit: connections per seconds (CPS).
+	//
+	// example:
+	//
+	// 1302
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The peak of volumetric attacks. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 6809
 	Mbps *int64 `json:"Mbps,omitempty" xml:"Mbps,omitempty"`
 	// The peak of resource exhaustion attacks. Unit: queries per second (QPS).
+	//
+	// example:
+	//
+	// 26314
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5AE2FC86-C840-41AE-9F1A-3A2747C7C1DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5477,16 +6749,33 @@ func (s *DescribeDDosEventMaxResponse) SetBody(v *DescribeDDosEventMaxResponseBo
 type DescribeDDosEventSrcIpRequest struct {
 	// The type of the attack event that you want to query. Valid values:
 	//
-	// *   **defense**: attack events that trigger traffic scrubbing
-	// *   **blackhole**: attack events that trigger blackhole filtering
+	// 	- **defense**: attack events that trigger traffic scrubbing
+	//
+	// 	- **blackhole**: attack events that trigger blackhole filtering
+	//
+	// example:
+	//
+	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five** source IP addresses are returned.
+	// The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five*	- source IP addresses are returned.
+	//
+	// example:
+	//
+	// 2
 	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+	//
+	// example:
+	//
+	// 1598948471
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5522,6 +6811,10 @@ type DescribeDDosEventSrcIpResponseBody struct {
 	// An array that consists of information about the source IP address of the volumetric attack.
 	Ips []*DescribeDDosEventSrcIpResponseBodyIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 38A0224E-FDBC-4733-A362-B391827FC1E9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5544,30 +6837,59 @@ func (s *DescribeDDosEventSrcIpResponseBody) SetRequestId(v string) *DescribeDDo
 }
 
 type DescribeDDosEventSrcIpResponseBodyIps struct {
-	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+	// The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	//
+	// example:
+	//
+	// 110000
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The Internet service provider (ISP) for the volumetric attack. Valid values:
 	//
-	// *   **100017**: China Telecom
-	// *   **100026**: China Unicom
-	// *   **100025**: China Mobile
-	// *   **100027**: China Education and Research Network
-	// *   **100020**: China Mobile Tietong
-	// *   **1000143**: Dr.Peng Telecom & Media Group
-	// *   **100080**: Beijing Gehua CATV Network
-	// *   **1000139**: National Radio and Television Administration
-	// *   **100023**: Oriental Cable Network
-	// *   **100063**: Founder Broadband
-	// *   **1000337**: China Internet Exchange
-	// *   **100021**: 21Vianet Group
-	// *   **1000333**: Wasu Media Holding
-	// *   **100093**: Wangsu Science & Technology
-	// *   **1000401**: Tencent
-	// *   **100099**: Baidu
-	// *   **1000323**: Alibaba Cloud
-	// *   **100098**: Alibaba
+	// 	- **100017**: China Telecom
+	//
+	// 	- **100026**: China Unicom
+	//
+	// 	- **100025**: China Mobile
+	//
+	// 	- **100027**: China Education and Research Network
+	//
+	// 	- **100020**: China Mobile Tietong
+	//
+	// 	- **1000143**: Dr.Peng Telecom & Media Group
+	//
+	// 	- **100080**: Beijing Gehua CATV Network
+	//
+	// 	- **1000139**: National Radio and Television Administration
+	//
+	// 	- **100023**: Oriental Cable Network
+	//
+	// 	- **100063**: Founder Broadband
+	//
+	// 	- **1000337**: China Internet Exchange
+	//
+	// 	- **100021**: 21Vianet Group
+	//
+	// 	- **1000333**: Wasu Media Holding
+	//
+	// 	- **100093**: Wangsu Science & Technology
+	//
+	// 	- **1000401**: Tencent
+	//
+	// 	- **100099**: Baidu
+	//
+	// 	- **1000323**: Alibaba Cloud
+	//
+	// 	- **100098**: Alibaba
+	//
+	// example:
+	//
+	// 100026
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	// The source IP address of the volumetric attack.
+	//
+	// example:
+	//
+	// 218.***.***.24
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 
@@ -5627,6 +6949,10 @@ type DescribeDefenseCountStatisticsRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -5647,6 +6973,10 @@ type DescribeDefenseCountStatisticsResponseBody struct {
 	// The statistics on the number of advanced mitigation sessions.
 	DefenseCountStatistics *DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics `json:"DefenseCountStatistics,omitempty" xml:"DefenseCountStatistics,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 310A41FD-0990-5610-92E0-A6A55D7C6444
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5670,12 +7000,28 @@ func (s *DescribeDefenseCountStatisticsResponseBody) SetRequestId(v string) *Des
 
 type DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics struct {
 	// The number of advanced mitigation sessions that are used within the current calendar month.
+	//
+	// example:
+	//
+	// 0
 	DefenseCountTotalUsageOfCurrentMonth *int32 `json:"DefenseCountTotalUsageOfCurrentMonth,omitempty" xml:"DefenseCountTotalUsageOfCurrentMonth,omitempty"`
 	// The number of available global advanced mitigation sessions for the Insurance mitigation plan.
+	//
+	// example:
+	//
+	// 0
 	FlowPackCountRemain *int32 `json:"FlowPackCountRemain,omitempty" xml:"FlowPackCountRemain,omitempty"`
 	// The maximum number of advanced mitigation sessions available for the current calendar month. The advanced mitigation sessions include the advanced mitigation sessions that are provided free of charge and the global advanced mitigation sessions that you purchase.
+	//
+	// example:
+	//
+	// 20
 	MaxUsableDefenseCountCurrentMonth *int32 `json:"MaxUsableDefenseCountCurrentMonth,omitempty" xml:"MaxUsableDefenseCountCurrentMonth,omitempty"`
 	// The number of available global advanced mitigation sessions for the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan.
+	//
+	// example:
+	//
+	// 0
 	SecHighSpeedCountRemain *int32 `json:"SecHighSpeedCountRemain,omitempty" xml:"SecHighSpeedCountRemain,omitempty"`
 }
 
@@ -5740,20 +7086,44 @@ type DescribeDefenseRecordsRequest struct {
 	// The end of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
 	//
 	// > The time must be in the latest 90 days.
+	//
+	// example:
+	//
+	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **50**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
 	//
 	// > The time must be in the latest 90 days.
+	//
+	// example:
+	//
+	// 1582992000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5799,8 +7169,16 @@ type DescribeDefenseRecordsResponseBody struct {
 	// An array that consists of details of the log of an advanced mitigation session.
 	DefenseRecords []*DescribeDefenseRecordsResponseBodyDefenseRecords `json:"DefenseRecords,omitempty" xml:"DefenseRecords,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of advanced mitigation sessions.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5829,19 +7207,44 @@ func (s *DescribeDefenseRecordsResponseBody) SetTotalCount(v int64) *DescribeDef
 
 type DescribeDefenseRecordsResponseBodyDefenseRecords struct {
 	// The peak attack traffic. Unit: bit/s.
+	//
+	// example:
+	//
+	// 6584186000
 	AttackPeak *int64 `json:"AttackPeak,omitempty" xml:"AttackPeak,omitempty"`
 	// The end time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+	//
+	// example:
+	//
+	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of attacks.
+	//
+	// example:
+	//
+	// 2
 	EventCount *int32 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The start time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+	//
+	// example:
+	//
+	// 1582992000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the advanced mitigation session. Valid values:
 	//
-	// *   **0**: The advanced mitigation session is being used.
-	// *   **1**: The advanced mitigation session is used.
+	// 	- **0**: The advanced mitigation session is being used.
+	//
+	// 	- **1**: The advanced mitigation session is used.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5916,20 +7319,44 @@ type DescribeDomainAttackEventsRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5975,8 +7402,16 @@ type DescribeDomainAttackEventsResponseBody struct {
 	// An array that consists of the details of the DDoS attack event.
 	DomainAttackEvents []*DescribeDomainAttackEventsResponseBodyDomainAttackEvents `json:"DomainAttackEvents,omitempty" xml:"DomainAttackEvents,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned DDoS attack events.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6005,12 +7440,28 @@ func (s *DescribeDomainAttackEventsResponseBody) SetTotalCount(v int64) *Describ
 
 type DescribeDomainAttackEventsResponseBodyDomainAttackEvents struct {
 	// The attacked domain name.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1560320160
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The peak attack QPS.
+	//
+	// example:
+	//
+	// 1000
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
 	// The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1560312900
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6075,18 +7526,34 @@ type DescribeDomainOverviewRequest struct {
 	// The domain name of the website that you want to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
 	//
 	// > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter unspecified, the current system time is used as the end time.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1623427200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1619798400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6120,10 +7587,22 @@ func (s *DescribeDomainOverviewRequest) SetStartTime(v int64) *DescribeDomainOve
 
 type DescribeDomainOverviewResponseBody struct {
 	// The peak queries per second (QPS) during HTTP traffic scrubbing. Unit: QPS.
+	//
+	// example:
+	//
+	// 41652
 	MaxHttp *int64 `json:"MaxHttp,omitempty" xml:"MaxHttp,omitempty"`
 	// The peak QPS during HTTPS traffic scrubbing. Unit: QPS.
+	//
+	// example:
+	//
+	// 0
 	MaxHttps *int64 `json:"MaxHttps,omitempty" xml:"MaxHttps,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6183,18 +7662,38 @@ type DescribeDomainQPSListRequest struct {
 	// The domain name of the website. If you do not specify this parameter, the statistics on the QPS of all domain names are queried.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The interval for returning data. Unit: seconds.
+	//
+	// example:
+	//
+	// 1000
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6235,6 +7734,10 @@ type DescribeDomainQPSListResponseBody struct {
 	// An array that consists of the statistics on the QPS of the website.
 	DomainQPSList []*DescribeDomainQPSListResponseBodyDomainQPSList `json:"DomainQPSList,omitempty" xml:"DomainQPSList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 327F2ABB-104D-437A-AAB5-D633E29A8C51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6258,22 +7761,58 @@ func (s *DescribeDomainQPSListResponseBody) SetRequestId(v string) *DescribeDoma
 
 type DescribeDomainQPSListResponseBodyDomainQPSList struct {
 	// The attack QPS.
+	//
+	// example:
+	//
+	// 1
 	AttackQps *int64 `json:"AttackQps,omitempty" xml:"AttackQps,omitempty"`
 	// The number of cache hits.
+	//
+	// example:
+	//
+	// 0
 	CacheHits *int64 `json:"CacheHits,omitempty" xml:"CacheHits,omitempty"`
 	// The index number of the returned data.
+	//
+	// example:
+	//
+	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The peak attack QPS.
+	//
+	// example:
+	//
+	// 37
 	MaxAttackQps *int64 `json:"MaxAttackQps,omitempty" xml:"MaxAttackQps,omitempty"`
 	// The peak of normal QPS.
+	//
+	// example:
+	//
+	// 93
 	MaxNormalQps *int64 `json:"MaxNormalQps,omitempty" xml:"MaxNormalQps,omitempty"`
 	// The peak of total QPS.
+	//
+	// example:
+	//
+	// 130
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
 	// The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1582992000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 20008
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The total QPS.
+	//
+	// example:
+	//
+	// 1
 	TotalQps *int64 `json:"TotalQps,omitempty" xml:"TotalQps,omitempty"`
 }
 
@@ -6361,17 +7900,34 @@ func (s *DescribeDomainQPSListResponse) SetBody(v *DescribeDomainQPSListResponse
 
 type DescribeDomainResourceRequest struct {
 	// The domain name of the website that you want to query.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// An array that consists of the IDs of instances to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The match mode. Valid values:
 	//
-	// *   **fuzzy**: fuzzy match. This is the default value.
-	// *   **exact**: exact match.
+	// 	- **fuzzy**: fuzzy match. This is the default value.
+	//
+	// 	- **exact**: exact match.
+	//
+	// example:
+	//
+	// fuzzy
 	QueryDomainPattern *string `json:"QueryDomainPattern,omitempty" xml:"QueryDomainPattern,omitempty"`
 }
 
@@ -6410,8 +7966,16 @@ func (s *DescribeDomainResourceRequest) SetQueryDomainPattern(v string) *Describ
 
 type DescribeDomainResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of forwarding rules.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The configurations of the forwarding rule.
 	WebRules []*DescribeDomainResourceResponseBodyWebRules `json:"WebRules,omitempty" xml:"WebRules,omitempty" type:"Repeated"`
@@ -6445,104 +8009,203 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
 	// Indicates whether the Frequency Control policy is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	CcEnabled *bool `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
 	// Indicates whether the Custom Rule switch of the Frequency Control policy is turned on. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	CcRuleEnabled *bool `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
 	// The mode of the Frequency Control policy. Valid values:
 	//
-	// *   **default**: the Normal mode
-	// *   **gf_under_attack**: the Emergency mode
-	// *   **gf_sos_verify**: the Strict mode
-	// *   **gf_sos_verify**: the Super Strict mode
+	// 	- **default**: the Normal mode
+	//
+	// 	- **gf_under_attack**: the Emergency mode
+	//
+	// 	- **gf_sos_verify**: the Strict mode
+	//
+	// 	- **gf_sos_verify**: the Super Strict mode
+	//
+	// example:
+	//
+	// default
 	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
 	// The name of the SSL certificate used by the domain name.
+	//
+	// example:
+	//
+	// 49944XX.pem
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The CNAME provided by the instance to which the domain name is added.
+	//
+	// example:
+	//
+	// 0ekb69x3j9wvXXXX.aliyunddosXXXX.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether Enable HTTP/2 is turned on. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Http2Enable *bool `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
 	// Indicates whether Enforce HTTPS Routing is turned on. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Http2HttpsEnable *bool `json:"Http2HttpsEnable,omitempty" xml:"Http2HttpsEnable,omitempty"`
 	// Indicates whether Enable HTTP is turned on. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	Https2HttpEnable *bool `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	// 	- **true**
 	//
-	// *   **Http2https**: indicates whether the feature of redirecting HTTP requests to HTTPS requests is enabled. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
-	// *   **Https2http**: indicates whether the feature of redirecting HTTPS requests to HTTP requests is enabled. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
-	// *   **Http2**: indicates whether HTTP/2 is supported. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that HTTP/2 is not supported. The value 1 indicates that HTTP/2 is supported.
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	Https2HttpEnable *bool `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **Http2https**: indicates whether the feature of redirecting HTTP requests to HTTPS requests is enabled. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	//
+	// 	- **Https2http**: indicates whether the feature of redirecting HTTPS requests to HTTP requests is enabled. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	//
+	// 	- **Http2**: indicates whether HTTP/2 is supported. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that HTTP/2 is not supported. The value 1 indicates that HTTP/2 is supported.
+	//
+	// example:
+	//
+	// {"Https2http":0,"Http2":0,"Http2https":0}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// The IDs of the instances to which the domain name is added.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// Indicates whether the Online Certificate Status Protocol (OCSP) feature is enabled. Valid values:
+	//
 	// - **true**: yes
+	//
 	// - **false**: no
+	//
+	// example:
+	//
+	// false
 	OcspEnabled *bool `json:"OcspEnabled,omitempty" xml:"OcspEnabled,omitempty"`
 	// The load balancing algorithm for back-to-origin traffic. Valid values:
 	//
-	// *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
-	// *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
-	// *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	// 	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+	//
+	// 	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+	//
+	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	//
+	// example:
+	//
+	// ip_hash
 	PolicyMode *string `json:"PolicyMode,omitempty" xml:"PolicyMode,omitempty"`
 	// Indicates whether the instance forwards the traffic that is destined for the website. Valid values:
 	//
-	// *   **true**: Anti-DDoS Pro or Anti-DDoS Premium forwards the traffic that is destined for the website.
-	// *   **false**: no
+	// 	- **true**: Anti-DDoS Pro or Anti-DDoS Premium forwards the traffic that is destined for the website.
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	ProxyEnabled *bool `json:"ProxyEnabled,omitempty" xml:"ProxyEnabled,omitempty"`
 	// The details about the protocol type and port number.
 	ProxyTypes []*DescribeDomainResourceResponseBodyWebRulesProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
 	// The reason why the domain name is invalid. Valid values:
 	//
-	// *   **1**: No Content Provider (ICP) filing is completed for the domain name.
-	// *   **2**: The business for which you registered the domain name does not meet regulatory requirements.
+	// 	- **1**: No Content Provider (ICP) filing is completed for the domain name.
 	//
-	// If the two reasons are both involved, the value **2** is returned.
+	// 	- **2**: The business for which you registered the domain name does not meet regulatory requirements.
+	//
+	// If the two reasons are both involved, the value **2*	- is returned.
+	//
+	// example:
+	//
+	// 1
 	PunishReason *int32 `json:"PunishReason,omitempty" xml:"PunishReason,omitempty"`
 	// Indicates whether the domain name is invalid. Valid values:
 	//
-	// *   **true**: The domain name is invalid. You can view the specific reasons from the **PunishReason** parameter.
-	// *   **false**: The domain name is valid.
+	// 	- **true**: The domain name is invalid. You can view the specific reasons from the **PunishReason*	- parameter.
+	//
+	// 	- **false**: The domain name is valid.
+	//
+	// example:
+	//
+	// false
 	PunishStatus *bool `json:"PunishStatus,omitempty" xml:"PunishStatus,omitempty"`
 	// The addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
-	// *   **0**: IP address
-	// *   **1**: domain name
+	// 	- **0**: IP address
+	//
+	// 	- **1**: domain name
+	//
+	// example:
+	//
+	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 	// Indicates whether TLS 1.3 is supported. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Ssl13Enabled *bool `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
 	// The type of the cipher suite. Valid values:
 	//
-	// *   **default**: custom cipher suite
-	// *   **all**: all cipher suites
-	// *   **strong**: strong cipher suites
+	// 	- **default**: custom cipher suite
+	//
+	// 	- **all**: all cipher suites
+	//
+	// 	- **strong**: strong cipher suites
+	//
+	// example:
+	//
+	// default
 	SslCiphers *string `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
 	// The version of the TLS protocol. Valid values:
 	//
-	// *   **tls1.0**: TLS 1.0 or later
-	// *   **tls1.1**: TLS 1.1 or later
-	// *   **tls1.2**: TLS 1.2 or later
+	// 	- **tls1.0**: TLS 1.0 or later
+	//
+	// 	- **tls1.1**: TLS 1.1 or later
+	//
+	// 	- **tls1.2**: TLS 1.2 or later
+	//
+	// example:
+	//
+	// tls1.0
 	SslProtocols *string `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
 	// The IP addresses that are included in the whitelist of the domain name.
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
@@ -6686,10 +8349,17 @@ type DescribeDomainResourceResponseBodyWebRulesProxyTypes struct {
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **http**
-	// *   **https**
-	// *   **websocket**
-	// *   **websockets**
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// 	- **websocket**
+	//
+	// 	- **websockets**
+	//
+	// example:
+	//
+	// http
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
@@ -6744,6 +8414,10 @@ type DescribeDomainSecurityProfileRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -6788,14 +8462,25 @@ func (s *DescribeDomainSecurityProfileResponseBody) SetResult(v []*DescribeDomai
 type DescribeDomainSecurityProfileResponseBodyResult struct {
 	// Indicates whether the global mitigation policy is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	GlobalEnable *bool `json:"GlobalEnable,omitempty" xml:"GlobalEnable,omitempty"`
 	// The mode of the global mitigation policy. Valid values:
 	//
-	// *   **weak**: the Low mode
-	// *   **default**: the Normal mode
-	// *   **hard**: the Strict mode
+	// 	- **weak**: the Low mode
+	//
+	// 	- **default**: the Normal mode
+	//
+	// 	- **hard**: the Strict mode
+	//
+	// example:
+	//
+	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
 }
 
@@ -6850,16 +8535,32 @@ type DescribeDomainStatusCodeCountRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6893,30 +8594,82 @@ func (s *DescribeDomainStatusCodeCountRequest) SetStartTime(v int64) *DescribeDo
 
 type DescribeDomainStatusCodeCountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of 200 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 951159
 	Status200 *int64 `json:"Status200,omitempty" xml:"Status200,omitempty"`
 	// The number of 2xx status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 951472
 	Status2XX *int64 `json:"Status2XX,omitempty" xml:"Status2XX,omitempty"`
 	// The number of 3xx status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 133209
 	Status3XX *int64 `json:"Status3XX,omitempty" xml:"Status3XX,omitempty"`
 	// The number of 403 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status403 *int64 `json:"Status403,omitempty" xml:"Status403,omitempty"`
 	// The number of 404 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 897
 	Status404 *int64 `json:"Status404,omitempty" xml:"Status404,omitempty"`
 	// The number of 405 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status405 *int64 `json:"Status405,omitempty" xml:"Status405,omitempty"`
 	// The number of 4xx status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 5653
 	Status4XX *int64 `json:"Status4XX,omitempty" xml:"Status4XX,omitempty"`
 	// The number of 501 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status501 *int64 `json:"Status501,omitempty" xml:"Status501,omitempty"`
 	// The number of 502 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status502 *int64 `json:"Status502,omitempty" xml:"Status502,omitempty"`
 	// The number of 503 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status503 *int64 `json:"Status503,omitempty" xml:"Status503,omitempty"`
 	// The number of 504 status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 0
 	Status504 *int64 `json:"Status504,omitempty" xml:"Status504,omitempty"`
 	// The number of 5xx status codes within the specified period of time.
+	//
+	// example:
+	//
+	// 14
 	Status5XX *int64 `json:"Status5XX,omitempty" xml:"Status5XX,omitempty"`
 }
 
@@ -7026,23 +8779,48 @@ type DescribeDomainStatusCodeListRequest struct {
 	// The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The interval for returning data. Unit: seconds.
+	//
+	// example:
+	//
+	// 1000
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The source of the statistics. Valid values:
 	//
-	// *   **gf**: Anti-DDoS Pro or Anti-DDoS Premium
-	// *   **upstrem**: origin server
+	// 	- **gf**: Anti-DDoS Pro or Anti-DDoS Premium
+	//
+	// 	- **upstrem**: origin server
+	//
+	// example:
+	//
+	// gf
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the event. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7086,6 +8864,10 @@ func (s *DescribeDomainStatusCodeListRequest) SetStartTime(v int64) *DescribeDom
 
 type DescribeDomainStatusCodeListResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3B63C0DD-8AC5-44B2-95D6-064CA9296B9C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The statistics on response status codes.
 	StatusCodeList []*DescribeDomainStatusCodeListResponseBodyStatusCodeList `json:"StatusCodeList,omitempty" xml:"StatusCodeList,omitempty" type:"Repeated"`
@@ -7111,32 +8893,88 @@ func (s *DescribeDomainStatusCodeListResponseBody) SetStatusCodeList(v []*Descri
 
 type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {
 	// The index number of the returned data.
+	//
+	// example:
+	//
+	// 0
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The number of 200 status codes.
+	//
+	// example:
+	//
+	// 15520
 	Status200 *int64 `json:"Status200,omitempty" xml:"Status200,omitempty"`
 	// The number of 2xx status codes.
+	//
+	// example:
+	//
+	// 15520
 	Status2XX *int64 `json:"Status2XX,omitempty" xml:"Status2XX,omitempty"`
 	// The number of 3xx status codes.
+	//
+	// example:
+	//
+	// 0
 	Status3XX *int64 `json:"Status3XX,omitempty" xml:"Status3XX,omitempty"`
 	// The number of 403 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status403 *int64 `json:"Status403,omitempty" xml:"Status403,omitempty"`
 	// The number of 404 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status404 *int64 `json:"Status404,omitempty" xml:"Status404,omitempty"`
 	// The number of 405 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status405 *int64 `json:"Status405,omitempty" xml:"Status405,omitempty"`
 	// The number of 4xx status codes.
+	//
+	// example:
+	//
+	// 4486
 	Status4XX *int64 `json:"Status4XX,omitempty" xml:"Status4XX,omitempty"`
 	// The number of 501 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status501 *int64 `json:"Status501,omitempty" xml:"Status501,omitempty"`
 	// The number of 502 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status502 *int64 `json:"Status502,omitempty" xml:"Status502,omitempty"`
 	// The number of 503 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status503 *int64 `json:"Status503,omitempty" xml:"Status503,omitempty"`
 	// The number of 504 status codes.
+	//
+	// example:
+	//
+	// 0
 	Status504 *int64 `json:"Status504,omitempty" xml:"Status504,omitempty"`
 	// The number of 5xx status codes.
+	//
+	// example:
+	//
+	// 0
 	Status5XX *int64 `json:"Status5XX,omitempty" xml:"Status5XX,omitempty"`
 	// The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1582992000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -7251,12 +9089,24 @@ type DescribeDomainTopAttackListRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7287,6 +9137,10 @@ type DescribeDomainTopAttackListResponseBody struct {
 	// The peak QPS of the website.
 	AttackList []*DescribeDomainTopAttackListResponseBodyAttackList `json:"AttackList,omitempty" xml:"AttackList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7310,10 +9164,22 @@ func (s *DescribeDomainTopAttackListResponseBody) SetRequestId(v string) *Descri
 
 type DescribeDomainTopAttackListResponseBodyAttackList struct {
 	// The attack QPS. Unit: QPS
+	//
+	// example:
+	//
+	// 0
 	Attack *int64 `json:"Attack,omitempty" xml:"Attack,omitempty"`
 	// The number of all QPS, which includes normal and attack QPS. Unit: QPS.
+	//
+	// example:
+	//
+	// 294
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -7373,16 +9239,32 @@ type DescribeDomainViewSourceCountriesRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7416,6 +9298,10 @@ func (s *DescribeDomainViewSourceCountriesRequest) SetStartTime(v int64) *Descri
 
 type DescribeDomainViewSourceCountriesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of the country or area from which the requests are sent.
 	SourceCountrys []*DescribeDomainViewSourceCountriesResponseBodySourceCountrys `json:"SourceCountrys,omitempty" xml:"SourceCountrys,omitempty" type:"Repeated"`
@@ -7441,8 +9327,16 @@ func (s *DescribeDomainViewSourceCountriesResponseBody) SetSourceCountrys(v []*D
 
 type DescribeDomainViewSourceCountriesResponseBodySourceCountrys struct {
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The abbreviation of the country or area. For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **cn** indicates China, and **us** indicates the United States.
+	// The abbreviation of the country or area. For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **cn*	- indicates China, and **us*	- indicates the United States.
+	//
+	// example:
+	//
+	// cn
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
 }
 
@@ -7497,16 +9391,32 @@ type DescribeDomainViewSourceProvincesRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7540,6 +9450,10 @@ func (s *DescribeDomainViewSourceProvincesRequest) SetStartTime(v int64) *Descri
 
 type DescribeDomainViewSourceProvincesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of the details of the administrative region in China from which the requests are sent.
 	SourceProvinces []*DescribeDomainViewSourceProvincesResponseBodySourceProvinces `json:"SourceProvinces,omitempty" xml:"SourceProvinces,omitempty" type:"Repeated"`
@@ -7565,8 +9479,16 @@ func (s *DescribeDomainViewSourceProvincesResponseBody) SetSourceProvinces(v []*
 
 type DescribeDomainViewSourceProvincesResponseBodySourceProvinces struct {
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the region inside China. For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
+	// The ID of the region inside China. For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
+	//
+	// example:
+	//
+	// 440000
 	ProvinceId *string `json:"ProvinceId,omitempty" xml:"ProvinceId,omitempty"`
 }
 
@@ -7621,18 +9543,38 @@ type DescribeDomainViewTopCostTimeRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of URLs to query. Valid values: **1** to **100**.
+	// The number of URLs to query. Valid values: **1*	- to **100**.
+	//
+	// example:
+	//
+	// 5
 	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
@@ -7671,6 +9613,10 @@ func (s *DescribeDomainViewTopCostTimeRequest) SetTop(v int32) *DescribeDomainVi
 
 type DescribeDomainViewTopCostTimeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The URLs which require the longest time to respond to requests.
 	UrlList []*DescribeDomainViewTopCostTimeResponseBodyUrlList `json:"UrlList,omitempty" xml:"UrlList,omitempty" type:"Repeated"`
@@ -7696,10 +9642,22 @@ func (s *DescribeDomainViewTopCostTimeResponseBody) SetUrlList(v []*DescribeDoma
 
 type DescribeDomainViewTopCostTimeResponseBodyUrlList struct {
 	// The response duration. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 3000
 	CostTime *float32 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The URL that is Base64-encoded.
+	//
+	// example:
+	//
+	// Lw==
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -7759,18 +9717,38 @@ type DescribeDomainViewTopUrlRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of URLs to query. Valid values: **1** to **100**.
+	// The number of URLs to query. Valid values: **1*	- to **100**.
+	//
+	// example:
+	//
+	// 5
 	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
@@ -7809,6 +9787,10 @@ func (s *DescribeDomainViewTopUrlRequest) SetTop(v int32) *DescribeDomainViewTop
 
 type DescribeDomainViewTopUrlResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of the URLs that receive the most requests.
 	UrlList []*DescribeDomainViewTopUrlResponseBodyUrlList `json:"UrlList,omitempty" xml:"UrlList,omitempty" type:"Repeated"`
@@ -7834,10 +9816,22 @@ func (s *DescribeDomainViewTopUrlResponseBody) SetUrlList(v []*DescribeDomainVie
 
 type DescribeDomainViewTopUrlResponseBodyUrlList struct {
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The URL that is Base64-encoded.
+	//
+	// example:
+	//
+	// Lw==
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -7897,10 +9891,18 @@ type DescribeDomainsRequest struct {
 	// The ID of the instance that you want to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -7926,6 +9928,10 @@ type DescribeDomainsResponseBody struct {
 	// An array consisting of details of the domain name for which the forwarding rules are configured.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F908E959-ADA8-4D7B-8A05-FF2F67F50964
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7980,6 +9986,10 @@ type DescribeElasticBandwidthSpecRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8000,6 +10010,10 @@ type DescribeElasticBandwidthSpecResponseBody struct {
 	// An array that consists of the available burstable protection bandwidths. Unit: Gbit/s.
 	ElasticBandwidthSpec []*string `json:"ElasticBandwidthSpec,omitempty" xml:"ElasticBandwidthSpec,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8051,11 +10065,26 @@ func (s *DescribeElasticBandwidthSpecResponse) SetBody(v *DescribeElasticBandwid
 }
 
 type DescribeElasticQpsRequest struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval  *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1684339200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 203.107.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1684252800
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeElasticQpsRequest) String() string {
@@ -8093,7 +10122,10 @@ func (s *DescribeElasticQpsRequest) SetStartTime(v int64) *DescribeElasticQpsReq
 
 type DescribeElasticQpsResponseBody struct {
 	ElasticQps []*DescribeElasticQpsResponseBodyElasticQps `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2E7F7F7B-39A8-5D92-BAB4-D89D9DCE7D4F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeElasticQpsResponseBody) String() string {
@@ -8115,15 +10147,42 @@ func (s *DescribeElasticQpsResponseBody) SetRequestId(v string) *DescribeElastic
 }
 
 type DescribeElasticQpsResponseBodyElasticQps struct {
-	Index        *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 23
 	MaxNormalQps *int64 `json:"MaxNormalQps,omitempty" xml:"MaxNormalQps,omitempty"`
-	MaxQps       *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	Pv           *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	Status2      *int64 `json:"Status2,omitempty" xml:"Status2,omitempty"`
-	Status3      *int64 `json:"Status3,omitempty" xml:"Status3,omitempty"`
-	Status4      *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
-	Status5      *int64 `json:"Status5,omitempty" xml:"Status5,omitempty"`
-	Ups          *int64 `json:"Ups,omitempty" xml:"Ups,omitempty"`
+	// example:
+	//
+	// 100
+	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
+	// example:
+	//
+	// 15104
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// example:
+	//
+	// 455
+	Status2 *int64 `json:"Status2,omitempty" xml:"Status2,omitempty"`
+	// example:
+	//
+	// 100
+	Status3 *int64 `json:"Status3,omitempty" xml:"Status3,omitempty"`
+	// example:
+	//
+	// 34
+	Status4 *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	// example:
+	//
+	// 0
+	Status5 *int64 `json:"Status5,omitempty" xml:"Status5,omitempty"`
+	// example:
+	//
+	// 1223
+	Ups *int64 `json:"Ups,omitempty" xml:"Ups,omitempty"`
 }
 
 func (s DescribeElasticQpsResponseBodyElasticQps) String() string {
@@ -8209,9 +10268,18 @@ func (s *DescribeElasticQpsResponse) SetBody(v *DescribeElasticQpsResponseBody) 
 }
 
 type DescribeElasticQpsRecordRequest struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1688140799999
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 203.107.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 1684252800000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeElasticQpsRecordRequest) String() string {
@@ -8239,7 +10307,10 @@ func (s *DescribeElasticQpsRecordRequest) SetStartTime(v int64) *DescribeElastic
 
 type DescribeElasticQpsRecordResponseBody struct {
 	ElasticQpsList []*DescribeElasticQpsRecordResponseBodyElasticQpsList `json:"ElasticQpsList,omitempty" xml:"ElasticQpsList,omitempty" type:"Repeated"`
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F68B34E2-570C-508D-95FD-DFB6611D518F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeElasticQpsRecordResponseBody) String() string {
@@ -8261,15 +10332,42 @@ func (s *DescribeElasticQpsRecordResponseBody) SetRequestId(v string) *DescribeE
 }
 
 type DescribeElasticQpsRecordResponseBodyElasticQpsList struct {
-	Date          *int64  `json:"Date,omitempty" xml:"Date,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	OpsElasticQps *int64  `json:"OpsElasticQps,omitempty" xml:"OpsElasticQps,omitempty"`
-	OpsQps        *int64  `json:"OpsQps,omitempty" xml:"OpsQps,omitempty"`
-	OriginQps     *int64  `json:"OriginQps,omitempty" xml:"OriginQps,omitempty"`
-	Qps           *int64  `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	QpsPeak       *int64  `json:"QpsPeak,omitempty" xml:"QpsPeak,omitempty"`
-	Status        *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1688140799999
+	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-7e225i41****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 203.***.***.199
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 300000
+	OpsElasticQps *int64 `json:"OpsElasticQps,omitempty" xml:"OpsElasticQps,omitempty"`
+	// example:
+	//
+	// 1345
+	OpsQps *int64 `json:"OpsQps,omitempty" xml:"OpsQps,omitempty"`
+	// example:
+	//
+	// 1345
+	OriginQps *int64 `json:"OriginQps,omitempty" xml:"OriginQps,omitempty"`
+	// example:
+	//
+	// 4367
+	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// example:
+	//
+	// 122
+	QpsPeak *int64 `json:"QpsPeak,omitempty" xml:"QpsPeak,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeElasticQpsRecordResponseBodyElasticQpsList) String() string {
@@ -8358,8 +10456,16 @@ type DescribeHeadersRequest struct {
 	// The domain name that you want to query.
 	//
 	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-aek3cmuvpia****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -8385,6 +10491,10 @@ type DescribeHeadersResponseBody struct {
 	// The information about the custom header.
 	CustomHeader *DescribeHeadersResponseBodyCustomHeader `json:"CustomHeader,omitempty" xml:"CustomHeader,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 48BC7BA5-69BE-5C31-A080-AFF2431AE48D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8408,8 +10518,16 @@ func (s *DescribeHeadersResponseBody) SetRequestId(v string) *DescribeHeadersRes
 
 type DescribeHeadersResponseBodyCustomHeader struct {
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The header of the response.
+	//
+	// example:
+	//
+	// {"X-Forwarded-ClientSrcPort":"","header1":"hLeLele"}
 	Headers *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 }
 
@@ -8463,9 +10581,15 @@ func (s *DescribeHeadersResponse) SetBody(v *DescribeHeadersResponseBody) *Descr
 type DescribeHealthCheckListRequest struct {
 	// The information about the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
 	NetworkRules *string `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty"`
 }
 
@@ -8486,6 +10610,10 @@ type DescribeHealthCheckListResponseBody struct {
 	// An array that consists of information about the health check configuration.
 	HealthCheckList []*DescribeHealthCheckListResponseBodyHealthCheckList `json:"HealthCheckList,omitempty" xml:"HealthCheckList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 83B4AF42-E8EE-4DC9-BD73-87B7733A36F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8509,15 +10637,28 @@ func (s *DescribeHealthCheckListResponseBody) SetRequestId(v string) *DescribeHe
 
 type DescribeHealthCheckListResponseBodyHealthCheckList struct {
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The health check configuration.
 	HealthCheck *DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -8553,25 +10694,58 @@ type DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck struct {
 	// The domain name.
 	//
 	// > This parameter is returned only when the Layer 7 health check configuration is queried.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of consecutive failed health checks that must occur before a port is declared unhealthy. Valid values: **1** to **10**.
+	// The number of consecutive failed health checks that must occur before a port is declared unhealthy. Valid values: **1*	- to **10**.
+	//
+	// example:
+	//
+	// 3
 	Down *int32 `json:"Down,omitempty" xml:"Down,omitempty"`
-	// The interval at which checks are performed. Valid values: **1** to **30**. Unit: seconds.
+	// The interval at which checks are performed. Valid values: **1*	- to **30**. Unit: seconds.
+	//
+	// example:
+	//
+	// 15
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The port that was checked.
+	//
+	// example:
+	//
+	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The response timeout period. Valid values: **1** to **30**. Unit: seconds.
+	// The response timeout period. Valid values: **1*	- to **30**. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **tcp**: The Layer 4 health check configuration was queried.
-	// *   **http**: The Layer 7 health check configuration was queried.
+	// 	- **tcp**: The Layer 4 health check configuration was queried.
+	//
+	// 	- **http**: The Layer 7 health check configuration was queried.
+	//
+	// example:
+	//
+	// tcp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The number of consecutive successful health checks that must occur before a port is declared healthy. Valid values: **1** to **10**.
+	// The number of consecutive successful health checks that must occur before a port is declared healthy. Valid values: **1*	- to **10**.
+	//
+	// example:
+	//
+	// 3
 	Up *int32 `json:"Up,omitempty" xml:"Up,omitempty"`
 	// The check path.
 	//
 	// > This parameter is returned only when the Layer 7 health check configuration is queried.
+	//
+	// example:
+	//
+	// /abc
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -8655,9 +10829,15 @@ func (s *DescribeHealthCheckListResponse) SetBody(v *DescribeHealthCheckListResp
 type DescribeHealthCheckStatusRequest struct {
 	// An array that consists of the details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
 	NetworkRules *string `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty"`
 }
 
@@ -8678,6 +10858,10 @@ type DescribeHealthCheckStatusResponseBody struct {
 	// An array that consists of the details of the health status of the origin server.
 	HealthCheckStatus []*DescribeHealthCheckStatusResponseBodyHealthCheckStatus `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// DE9FF9E1-569C-4B6C-AB6A-0F6D927BB27C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8701,20 +10885,38 @@ func (s *DescribeHealthCheckStatusResponseBody) SetRequestId(v string) *Describe
 
 type DescribeHealthCheckStatusResponseBodyHealthCheckStatus struct {
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// An array that consists of the health states of the IP addresses of the origin server.
 	RealServerStatusList []*DescribeHealthCheckStatusResponseBodyHealthCheckStatusRealServerStatusList `json:"RealServerStatusList,omitempty" xml:"RealServerStatusList,omitempty" type:"Repeated"`
 	// The health status of the origin server. Valid values:
 	//
-	// *   **normal**: healthy
-	// *   **abnormal**: unhealthy
+	// 	- **normal**: healthy
+	//
+	// 	- **abnormal**: unhealthy
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8753,11 +10955,20 @@ func (s *DescribeHealthCheckStatusResponseBodyHealthCheckStatus) SetStatus(v str
 
 type DescribeHealthCheckStatusResponseBodyHealthCheckStatusRealServerStatusList struct {
 	// The IP address of the origin server.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The health state of the IP address. Valid values:
 	//
-	// *   **normal**: healthy
-	// *   **abnormal**: unhealthy
+	// 	- **normal**: healthy
+	//
+	// 	- **abnormal**: unhealthy
+	//
+	// example:
+	//
+	// abnormal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8830,6 +11041,10 @@ type DescribeInstanceDetailsResponseBody struct {
 	// The IP address and ISP line information about the instance.
 	InstanceDetails []*DescribeInstanceDetailsResponseBodyInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3C814429-21A5-4673-827E-FDD19DC75681
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8855,8 +11070,16 @@ type DescribeInstanceDetailsResponseBodyInstanceDetails struct {
 	// The information about the IP address of the instance.
 	EipInfos []*DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos `json:"EipInfos,omitempty" xml:"EipInfos,omitempty" type:"Repeated"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zvp2eibz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The protection line of the instance.
+	//
+	// example:
+	//
+	// coop-line-001
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 }
 
@@ -8885,24 +11108,46 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) SetLine(v string) *
 
 type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.117.XX.XX
 	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
 	// The IP address-based forwarding mode of the instance. Valid values:
 	//
-	// *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
-	// *   **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	// 	- **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+	//
+	// 	- **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	//
+	// example:
+	//
+	// fnat
 	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
 	// The IP version of the protocol. Valid values:
 	//
-	// *   **Ipv4**: IPv4
-	// *   **Ipv6**: IPv6
+	// 	- **Ipv4**: IPv4
+	//
+	// 	- **Ipv6**: IPv6
+	//
+	// example:
+	//
+	// Ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   **normal**: indicates that the instance is normal.
-	// *   **expired**: indicates that the instance expired.
-	// *   **defense**: indicates that traffic scrubbing is performed on the asset that is protected by the instance.
-	// *   **blackhole**: indicates that blackhole filtering is triggered for the asset that is protected by the instance.
-	// *   **punished**: indicates that the instance is in penalty.
+	// 	- **normal**: indicates that the instance is normal.
+	//
+	// 	- **expired**: indicates that the instance expired.
+	//
+	// 	- **defense**: indicates that traffic scrubbing is performed on the asset that is protected by the instance.
+	//
+	// 	- **blackhole**: indicates that blackhole filtering is triggered for the asset that is protected by the instance.
+	//
+	// 	- **punished**: indicates that the instance is in penalty.
+	//
+	// example:
+	//
+	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8967,10 +11212,22 @@ type DescribeInstanceExtRequest struct {
 	// The ID of the instance.
 	//
 	// >  You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-i7m25564****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -9001,8 +11258,16 @@ type DescribeInstanceExtResponseBody struct {
 	// The information about the instance.
 	InstanceExtSpecs []*DescribeInstanceExtResponseBodyInstanceExtSpecs `json:"InstanceExtSpecs,omitempty" xml:"InstanceExtSpecs,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of queried instances.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9032,22 +11297,47 @@ func (s *DescribeInstanceExtResponseBody) SetTotalCount(v int64) *DescribeInstan
 type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
 	// The function plan. Valid values:
 	//
-	// *   **0**: Standard
-	// *   **1**: Enhanced
+	// 	- **0**: Standard
+	//
+	// 	- **1**: Enhanced
+	//
+	// example:
+	//
+	// 0
 	FunctionVersion *int64 `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	// The instance ID
+	//
+	// example:
+	//
+	// ddoscoo-cn-i7m25564****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The clean bandwidth. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
 	NormalBandwidth *int64 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
 	// The type of the instance. Valid value:
 	//
-	// *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
-	// *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
-	// *   **2**: Anti-DDoS Premium instance of the CMA mitigation plan
-	// *   **3**: Anti-DDoS Premium instance of the Secure Chinese Mainland Acceleration (Sec-CMA) plan
-	// *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	//
+	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	//
+	// 	- **2**: Anti-DDoS Premium instance of the CMA mitigation plan
+	//
+	// 	- **3**: Anti-DDoS Premium instance of the Secure Chinese Mainland Acceleration (Sec-CMA) plan
+	//
+	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	//
+	// example:
+	//
+	// 0
 	ProductPlan *int64 `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
 	// The Internet service provider (ISP) line resource of the Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// coop-line-001
 	ServicePartner *string `json:"ServicePartner,omitempty" xml:"ServicePartner,omitempty"`
 }
 
@@ -9114,9 +11404,18 @@ func (s *DescribeInstanceExtResponse) SetBody(v *DescribeInstanceExtResponseBody
 }
 
 type DescribeInstanceIdsRequest struct {
-	Edition         *int32    `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 9
+	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeInstanceIdsRequest) String() string {
@@ -9144,7 +11443,10 @@ func (s *DescribeInstanceIdsRequest) SetResourceGroupId(v string) *DescribeInsta
 
 type DescribeInstanceIdsResponseBody struct {
 	InstanceIds []*DescribeInstanceIdsResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 310A41FD-0990-5610-92E0-A6A55D7C6444
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceIdsResponseBody) String() string {
@@ -9166,11 +11468,26 @@ func (s *DescribeInstanceIdsResponseBody) SetRequestId(v string) *DescribeInstan
 }
 
 type DescribeInstanceIdsResponseBodyInstanceIds struct {
-	Edition    *int32  `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// 9
+	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-zvp2eibz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpMode     *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
-	IpVersion  *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// fnat
+	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	// example:
+	//
+	// Ipv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeInstanceIdsResponseBodyInstanceIds) String() string {
@@ -9257,6 +11574,10 @@ type DescribeInstanceSpecsResponseBody struct {
 	// An array that consists of the specifications of instances.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 4E3A9B5F-5DDB-593D-A1E6-F1F451DB5E0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9280,47 +11601,112 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	// The clean bandwidth of normal services. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
 	BandwidthMbps *int32 `json:"BandwidthMbps,omitempty" xml:"BandwidthMbps,omitempty"`
 	// The basic protection bandwidth. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 30
 	BaseBandwidth *int32 `json:"BaseBandwidth,omitempty" xml:"BaseBandwidth,omitempty"`
 	// The specification of concurrent connections of the instance.
+	//
+	// example:
+	//
+	// 100000
 	ConnLimit *int64 `json:"ConnLimit,omitempty" xml:"ConnLimit,omitempty"`
 	// The specification of new connections of the instance.
-	CpsLimit *int64 `json:"CpsLimit,omitempty" xml:"CpsLimit,omitempty"`
-	// The number of available advanced mitigation sessions for this month. If **-1** is returned, advanced mitigation capabilities are unlimited.
 	//
-	// > This parameter is returned only when **RegionId** is set to **ap-southeast-1**. If RegionId is set to ap-southeast-1, the specifications of Anti-DDoS Premium instances are queried.
+	// example:
+	//
+	// 5000
+	CpsLimit *int64 `json:"CpsLimit,omitempty" xml:"CpsLimit,omitempty"`
+	// The number of available advanced mitigation sessions for this month. If **-1*	- is returned, advanced mitigation capabilities are unlimited.
+	//
+	// > This parameter is returned only when **RegionId*	- is set to **ap-southeast-1**. If RegionId is set to ap-southeast-1, the specifications of Anti-DDoS Premium instances are queried.
+	//
+	// example:
+	//
+	// 2
 	DefenseCount *int32 `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
 	// The number of domain names that can be protected by the instance.
+	//
+	// example:
+	//
+	// 50
 	DomainLimit *int32 `json:"DomainLimit,omitempty" xml:"DomainLimit,omitempty"`
 	// The burstable protection bandwidth. Unit: Gbit/s.
+	//
+	// example:
+	//
+	// 30
 	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
 	// The burstable clean bandwidth. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 300
 	ElasticBw *int32 `json:"ElasticBw,omitempty" xml:"ElasticBw,omitempty"`
 	// The metering method of the burstable clean bandwidth. Valid values:
 	//
-	// *   **day**: the metering method of daily 95th percentile
-	// *   **month**: the metering method of monthly 95th percentile
+	// 	- **day**: the metering method of daily 95th percentile
+	//
+	// 	- **month**: the metering method of monthly 95th percentile
+	//
+	// example:
+	//
+	// day
 	ElasticBwModel *string `json:"ElasticBwModel,omitempty" xml:"ElasticBwModel,omitempty"`
 	ElasticQps     *int64  `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty"`
 	ElasticQpsMode *string `json:"ElasticQpsMode,omitempty" xml:"ElasticQpsMode,omitempty"`
 	// The function plan of the instance. Valid values:
 	//
-	// *   **default**: Standard
-	// *   **enhance**: Enhanced
-	// *   **cnhk**: Chinese Mainland Acceleration (CMA)
-	// *   **cnhk_default**: Secure Chinese Mainland Acceleration (Sec-CMA) standard function plan
-	// *   **cnhk_enhance**: Sec-CMA enhanced function plan
+	// 	- **default**: Standard
+	//
+	// 	- **enhance**: Enhanced
+	//
+	// 	- **cnhk**: Chinese Mainland Acceleration (CMA)
+	//
+	// 	- **cnhk_default**: Secure Chinese Mainland Acceleration (Sec-CMA) standard function plan
+	//
+	// 	- **cnhk_enhance**: Sec-CMA enhanced function plan
+	//
+	// example:
+	//
+	// default
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zvp2eibz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of ports that can be protected by the instance.
+	//
+	// example:
+	//
+	// 50
 	PortLimit *int32 `json:"PortLimit,omitempty" xml:"PortLimit,omitempty"`
 	// The clean queries per second (QPS) of normal services.
+	//
+	// example:
+	//
+	// 3000
 	QpsLimit *int32 `json:"QpsLimit,omitempty" xml:"QpsLimit,omitempty"`
 	// 实例业务带宽限速值。取值：0～15360，0表示不限速。单位：mbps。
+	//
+	// example:
+	//
+	// 0
 	RealLimitBw *int64 `json:"RealLimitBw,omitempty" xml:"RealLimitBw,omitempty"`
 	// The number of sites that can be protected by the instance.
+	//
+	// example:
+	//
+	// 5
 	SiteLimit *int32 `json:"SiteLimit,omitempty" xml:"SiteLimit,omitempty"`
 }
 
@@ -9450,6 +11836,10 @@ type DescribeInstanceStatisticsRequest struct {
 	// The ID of the instance that you want to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -9470,6 +11860,10 @@ type DescribeInstanceStatisticsResponseBody struct {
 	// The statistics on the instances.
 	InstanceStatistics []*DescribeInstanceStatisticsResponseBodyInstanceStatistics `json:"InstanceStatistics,omitempty" xml:"InstanceStatistics,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 642319A9-D1F2-4459-A447-E57CFC599FDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9495,14 +11889,34 @@ type DescribeInstanceStatisticsResponseBodyInstanceStatistics struct {
 	// The number of advanced mitigation sessions that are used in this month.
 	//
 	// > This parameter is returned only if Anti-DDoS Premium instances are queried.
+	//
+	// example:
+	//
+	// 1
 	DefenseCountUsage *int32 `json:"DefenseCountUsage,omitempty" xml:"DefenseCountUsage,omitempty"`
 	// The number of domain names that are protected by the instance.
+	//
+	// example:
+	//
+	// 1
 	DomainUsage *int32 `json:"DomainUsage,omitempty" xml:"DomainUsage,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of ports that are protected by the instance.
+	//
+	// example:
+	//
+	// 2
 	PortUsage *int32 `json:"PortUsage,omitempty" xml:"PortUsage,omitempty"`
 	// The number of websites that are protected by the instance.
+	//
+	// example:
+	//
+	// 1
 	SiteUsage *int32 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
 }
 
@@ -9572,11 +11986,20 @@ type DescribeInstanceStatusRequest struct {
 	// The ID of the instance to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance to query. Valid values:
 	//
-	// *   **1**: an Anti-DDoS Pro instance
-	// *   **2**: an Anti-DDoS Premium instance
+	// 	- **1**: an Anti-DDoS Pro instance
+	//
+	// 	- **2**: an Anti-DDoS Premium instance
+	//
+	// example:
+	//
+	// 1
 	ProductType *int32 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -9600,15 +12023,30 @@ func (s *DescribeInstanceStatusRequest) SetProductType(v int32) *DescribeInstanc
 
 type DescribeInstanceStatusResponseBody struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   **1**: normal
-	// *   **2**: expired
-	// *   **3**: overdue
-	// *   **4**: released
+	// 	- **1**: normal
+	//
+	// 	- **2**: expired
+	//
+	// 	- **3**: overdue
+	//
+	// 	- **4**: released
+	//
+	// example:
+	//
+	// 1
 	InstanceStatus *int32 `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 112777CC-2AD6-46FC-A263-00B931406FCD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9667,32 +12105,72 @@ func (s *DescribeInstanceStatusResponse) SetBody(v *DescribeInstanceStatusRespon
 type DescribeInstancesRequest struct {
 	// The mitigation plan of the instance to query. Valid values:
 	//
-	// *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
-	// *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
-	// *   **2**: Anti-DDoS Premium instance of the Mainland China Acceleration (MCA) mitigation plan
-	// *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	//
+	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	//
+	// 	- **2**: Anti-DDoS Premium instance of the Mainland China Acceleration (MCA) mitigation plan
+	//
+	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	//
+	// example:
+	//
+	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The traffic forwarding status of the instance to query. Valid values:
 	//
-	// *   **0**: The instance no longer forwards service traffic.
-	// *   **1**: The instance forwards service traffic as expected.
+	// 	- **0**: The instance no longer forwards service traffic.
+	//
+	// 	- **1**: The instance forwards service traffic as expected.
+	//
+	// example:
+	//
+	// 1
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The end of the time range to query. Instances whose expiration time is earlier than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640361700000
 	ExpireEndTime *int64 `json:"ExpireEndTime,omitempty" xml:"ExpireEndTime,omitempty"`
 	// The beginning of the time range to query. Instances whose expiration time is later than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640361500000
 	ExpireStartTime *int64    `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
 	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The IP address of the instance to query.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The remarks of the instance to query. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// doc-test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not specify this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status          []*int32                       `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -9769,17 +12247,27 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 type DescribeInstancesRequestTag struct {
 	// The key of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
 	//
-	// *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
-	// *   Separate multiple tags with commas (,).
+	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+	//
+	// 	- Separate multiple tags with commas (,).
 	//
 	// >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+	//
+	// example:
+	//
+	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
 	//
-	// *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
-	// *   Separate multiple tags with commas (,).
+	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+	//
+	// 	- Separate multiple tags with commas (,).
 	//
 	// >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+	//
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9805,8 +12293,16 @@ type DescribeInstancesResponseBody struct {
 	// An array that consists of the details of the instances.
 	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// A0AF40CC-814A-5A86-AEAA-6F19E88B8A39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of the instances.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9835,53 +12331,114 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstance
 
 type DescribeInstancesResponseBodyInstances struct {
 	// The time when the instance is created. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1637751953000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The overdue status of the instance. The value is fixed as **0**, which indicates that your Alibaba Cloud account does not have overdue payments. The instance supports only the subscription billing method.
+	//
+	// example:
+	//
+	// 0
 	DebtStatus *int32 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
 	// The mitigation plan of the instance. Valid values:
 	//
-	// *   **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
-	// *   **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
-	// *   **2**: Anti-DDoS Premium instance of the MCA mitigation plan
-	// *   **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	//
+	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	//
+	// 	- **2**: Anti-DDoS Premium instance of the MCA mitigation plan
+	//
+	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	//
+	// example:
+	//
+	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The forwarding status of the instance. Valid values:
 	//
-	// *   **0**: The instance no longer forwards service traffic.
-	// *   **1**: The instance forwards service traffic as expected.
+	// 	- **0**: The instance no longer forwards service traffic.
+	//
+	// 	- **1**: The instance forwards service traffic as expected.
+	//
+	// example:
+	//
+	// 1
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640361600000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-7pp2g9ed****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.199.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The IP address-based forwarding mode of the instance. Valid values:
 	//
-	// *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
-	// *   **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	// 	- **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+	//
+	// 	- **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	//
+	// example:
+	//
+	// fnat
 	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
 	// The IP version of the instance. Valid values:
 	//
-	// *   **Ipv4**: IPv4
-	// *   **Ipv6**: IPv6
+	// 	- **Ipv4**: IPv4
+	//
+	// 	- **Ipv6**: IPv6
+	//
+	// example:
+	//
+	// Ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// Indicates whether the 95th percentile metering method has been enabled for the instance. Valid values:
 	//
-	// *   0: The 95th percentile metering method has not been enabled for the instance.
-	// *   1: The 95th percentile metering method has been enabled for the instance.
+	// 	- 0: The 95th percentile metering method has not been enabled for the instance.
+	//
+	// 	- 1: The 95th percentile metering method has been enabled for the instance.
+	//
+	// example:
+	//
+	// 0
 	IsFirstOpenBw *int64 `json:"IsFirstOpenBw,omitempty" xml:"IsFirstOpenBw,omitempty"`
 	// Indicates whether the metering method of the 95th percentile burstable QPS is enabled for the instance. Valid values:
 	//
 	// - 0: no
+	//
 	// - 1: yes
+	//
+	// example:
+	//
+	// 0
 	IsFirstOpenQps *int64 `json:"IsFirstOpenQps,omitempty" xml:"IsFirstOpenQps,omitempty"`
 	// The remarks of the instance.
+	//
+	// example:
+	//
+	// doc-test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   **1**: normal
-	// *   **2**: expired
+	// 	- **1**: normal
+	//
+	// 	- **2**: expired
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9991,12 +12548,24 @@ type DescribeL7RsPolicyRequest struct {
 	// The domain name of the website to query.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+	//
+	// example:
+	//
+	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// An array that consists of N addresses of origin servers to query. The maximum value of N is 200. You can specify up to 200 addresses.
+	//
+	// example:
+	//
+	// 1.***.***.1
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -10028,12 +12597,23 @@ type DescribeL7RsPolicyResponseBody struct {
 	Attributes []*DescribeL7RsPolicyResponseBodyAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The scheduling algorithm for back-to-origin traffic. Valid values:
 	//
-	// *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
-	// *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
-	// *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	// 	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+	//
+	// 	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+	//
+	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	//
+	// example:
+	//
+	// rr
 	ProxyMode *string `json:"ProxyMode,omitempty" xml:"ProxyMode,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 9E7F6B2C-03F2-462F-9076-B782CF0DD502
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpstreamRetry *int32  `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
 }
 
 func (s DescribeL7RsPolicyResponseBody) String() string {
@@ -10059,15 +12639,29 @@ func (s *DescribeL7RsPolicyResponseBody) SetRequestId(v string) *DescribeL7RsPol
 	return s
 }
 
+func (s *DescribeL7RsPolicyResponseBody) SetUpstreamRetry(v int32) *DescribeL7RsPolicyResponseBody {
+	s.UpstreamRetry = &v
+	return s
+}
+
 type DescribeL7RsPolicyResponseBodyAttributes struct {
 	// The parameter for back-to-origin.
 	Attribute *DescribeL7RsPolicyResponseBodyAttributesAttribute `json:"Attribute,omitempty" xml:"Attribute,omitempty" type:"Struct"`
 	// The address of the origin server.
+	//
+	// example:
+	//
+	// 1.***.***.1
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
 	// The address type of the origin server. Valid values:
 	//
-	// *   **0**: IP address
-	// *   **1**: domain name
+	// 	- **0**: IP address
+	//
+	// 	- **1**: domain name
+	//
+	// example:
+	//
+	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
@@ -10095,9 +12689,19 @@ func (s *DescribeL7RsPolicyResponseBodyAttributes) SetRsType(v int32) *DescribeL
 }
 
 type DescribeL7RsPolicyResponseBodyAttributesAttribute struct {
-	// The weight of the origin server. This parameter takes effect only when **ProxyMode** is set to **rr**.
+	ConnectTimeout *int32  `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	FailTimeout    *int32  `json:"FailTimeout,omitempty" xml:"FailTimeout,omitempty"`
+	MaxFails       *int32  `json:"MaxFails,omitempty" xml:"MaxFails,omitempty"`
+	Mode           *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ReadTimeout    *int32  `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	SendTimeout    *int32  `json:"SendTimeout,omitempty" xml:"SendTimeout,omitempty"`
+	// The weight of the origin server. This parameter takes effect only when **ProxyMode*	- is set to **rr**.
 	//
-	// Valid values: **1** to **100**. Default value: **100**. A server with a higher weight receives more requests.
+	// Valid values: **1*	- to **100**. Default value: **100**. A server with a higher weight receives more requests.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -10107,6 +12711,36 @@ func (s DescribeL7RsPolicyResponseBodyAttributesAttribute) String() string {
 
 func (s DescribeL7RsPolicyResponseBodyAttributesAttribute) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetConnectTimeout(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetFailTimeout(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.FailTimeout = &v
+	return s
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetMaxFails(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.MaxFails = &v
+	return s
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetMode(v string) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetReadTimeout(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.ReadTimeout = &v
+	return s
+}
+
+func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetSendTimeout(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
+	s.SendTimeout = &v
+	return s
 }
 
 func (s *DescribeL7RsPolicyResponseBodyAttributesAttribute) SetWeight(v int32) *DescribeL7RsPolicyResponseBodyAttributesAttribute {
@@ -10152,9 +12786,15 @@ type DescribeLayer4RulePolicyRequest struct {
 	//
 	// Each port forwarding rule contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the string type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the string type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the integer type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the string type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the string type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the integer type.
+	//
+	// example:
+	//
+	// [{\"InstanceId\":\"ddosDip-sg-4hr2b3l****\",\"FrontendPort\":2020,\"Protocol\":\"udp\"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -10173,26 +12813,56 @@ func (s *DescribeLayer4RulePolicyRequest) SetListeners(v string) *DescribeLayer4
 
 type DescribeLayer4RulePolicyResponseBody struct {
 	// The port of the origin server.
+	//
+	// example:
+	//
+	// 2022
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The mode that is used to forward service traffic. Valid values:
 	//
-	// *   0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
-	// *   1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	// 	- 0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
+	//
+	// 	- 1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+	//
+	// example:
+	//
+	// 1
 	BakMode *string `json:"BakMode,omitempty" xml:"BakMode,omitempty"`
 	// The origin server that is used to receive service traffic. Valid values:
 	//
-	// *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
-	// *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	// 	- **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+	//
+	// 	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//
+	// example:
+	//
+	// 1
 	CurrentIndex *int32 `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
 	// The type of the protocol.
+	//
+	// example:
+	//
+	// udp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 2020
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddosDip-sg-4hr2b3l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the information about the primary origin server, including the IP addresses, forwarding protocol, and forwarding port.
 	PriRealServers []*DescribeLayer4RulePolicyResponseBodyPriRealServers `json:"PriRealServers,omitempty" xml:"PriRealServers,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6E46CC51-36BE-1100-B14C-DAF8381B8F73
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the information about the secondary origin server, including the IP addresses, forwarding protocol, and forwarding port.
 	SecRealServers []*DescribeLayer4RulePolicyResponseBodySecRealServers `json:"SecRealServers,omitempty" xml:"SecRealServers,omitempty" type:"Repeated"`
@@ -10254,18 +12924,43 @@ func (s *DescribeLayer4RulePolicyResponseBody) SetSecRealServers(v []*DescribeLa
 type DescribeLayer4RulePolicyResponseBodyPriRealServers struct {
 	// The origin server that is used to receive service traffic. Valid values:
 	//
-	// *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
-	// *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	// 	- **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+	//
+	// 	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//
+	// example:
+	//
+	// 1
 	CurrentIndex *int32 `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 2020
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddosDip-sg-4hr2b3l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the protocol.
+	//
+	// example:
+	//
+	// udp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The IP address of the primary origin server.
+	//
+	// example:
+	//
+	// 192.0.2.1
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
 }
 
@@ -10310,18 +13005,43 @@ func (s *DescribeLayer4RulePolicyResponseBodyPriRealServers) SetRealServer(v str
 type DescribeLayer4RulePolicyResponseBodySecRealServers struct {
 	// The origin server that is used to receive service traffic. Valid values:
 	//
-	// *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
-	// *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	// 	- **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
+	//
+	// 	- **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+	//
+	// example:
+	//
+	// 1
 	CurrentIndex *int32 `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 2020
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddosDip-sg-4hr2b3l****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the protocol.
+	//
+	// example:
+	//
+	// udp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The IP address of the secondary origin server.
+	//
+	// example:
+	//
+	// 192.0.2.3
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
 }
 
@@ -10394,6 +13114,10 @@ func (s *DescribeLayer4RulePolicyResponse) SetBody(v *DescribeLayer4RulePolicyRe
 
 type DescribeLogStoreExistStatusRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -10413,10 +13137,19 @@ func (s *DescribeLogStoreExistStatusRequest) SetResourceGroupId(v string) *Descr
 type DescribeLogStoreExistStatusResponseBody struct {
 	// Indicates whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	ExistStatus *bool `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10471,6 +13204,10 @@ type DescribeNetworkRegionBlockRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10491,6 +13228,10 @@ type DescribeNetworkRegionBlockResponseBody struct {
 	// The configuration of blocked locations.
 	Config *DescribeNetworkRegionBlockResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10519,8 +13260,13 @@ type DescribeNetworkRegionBlockResponseBodyConfig struct {
 	Provinces []*string `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
 	// The status of the Location Blacklist policy. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// example:
+	//
+	// on
 	RegionBlockSwitch *string `json:"RegionBlockSwitch,omitempty" xml:"RegionBlockSwitch,omitempty"`
 }
 
@@ -10579,9 +13325,15 @@ func (s *DescribeNetworkRegionBlockResponse) SetBody(v *DescribeNetworkRegionBlo
 type DescribeNetworkRuleAttributesRequest struct {
 	// The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-	// *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-	// *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	// 	- **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
+	//
+	// 	- **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp*	- and **udp**.
+	//
+	// 	- **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-mp91j1ao****","Protocol":"tcp","FrontendPort":8080}]
 	NetworkRules *string `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty"`
 }
 
@@ -10602,6 +13354,10 @@ type DescribeNetworkRuleAttributesResponseBody struct {
 	// An array that consists of the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
 	NetworkRuleAttributes []*DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes `json:"NetworkRuleAttributes,omitempty" xml:"NetworkRuleAttributes,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F9F2F77D-307C-4F15-8D02-AB5957EEBF97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10627,13 +13383,26 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes struct {
 	// The mitigation settings of the port forwarding rule.
 	Config *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10670,12 +13439,21 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig struct
 	Cc *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc `json:"Cc,omitempty" xml:"Cc,omitempty" type:"Struct"`
 	// The status of the Empty Connection switch. Valid values:
 	//
-	// *   **on**: The switch is turned on.
-	// *   **off**: The switch is turned off.
+	// 	- **on**: The switch is turned on.
+	//
+	// 	- **off**: The switch is turned off.
+	//
+	// example:
+	//
+	// off
 	NodataConn *string `json:"NodataConn,omitempty" xml:"NodataConn,omitempty"`
 	// The settings of the Packet Length Limit policy.
 	PayloadLen *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloadLen `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty" type:"Struct"`
-	// The timeout period of session persistence. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
+	// The timeout period of session persistence. Valid values: **30*	- to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
+	//
+	// example:
+	//
+	// 0
 	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
 	// The settings of the Speed Limit for Destination policy.
 	Sla *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla `json:"Sla,omitempty" xml:"Sla,omitempty" type:"Struct"`
@@ -10683,8 +13461,13 @@ type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig struct
 	Slimit *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit `json:"Slimit,omitempty" xml:"Slimit,omitempty" type:"Struct"`
 	// The status of the False Source switch. Valid values:
 	//
-	// *   **on**: The switch is turned on.
-	// *   **off**: The switch is turned off.
+	// 	- **on**: The switch is turned on.
+	//
+	// 	- **off**: The switch is turned off.
+	//
+	// example:
+	//
+	// off
 	Synproxy *string `json:"Synproxy,omitempty" xml:"Synproxy,omitempty"`
 }
 
@@ -10751,17 +13534,36 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc)
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack struct {
 	// The threshold that the number of connections initiated from a source IP address can exceed the limit. Set the value to **5**. If the number of connections initiated from a source IP address exceeds the limit five times during the check, the source IP address is added to the blacklist.
+	//
+	// example:
+	//
+	// 5
 	Cnt *int32 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
 	// The interval at which checks are performed. Set the value to **60**. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	During *int32 `json:"During,omitempty" xml:"During,omitempty"`
-	// The validity period of the IP address in the blacklist. Valid values: **60** to **604800**. Unit: seconds.
+	// The validity period of the IP address in the blacklist. Valid values: **60*	- to **604800**. Unit: seconds.
+	//
+	// example:
+	//
+	// 600
 	Expires *int32 `json:"Expires,omitempty" xml:"Expires,omitempty"`
 	// The type of the limit that causes a source IP address to be added to the blacklist. Valid values:
 	//
-	// *   **1**: Source New Connection Rate Limit
-	// *   **2**: Source Concurrent Connection Rate Limit
-	// *   **3**: PPS Limit for Source
-	// *   **4**: Bandwidth Limit for Source
+	// 	- **1**: Source New Connection Rate Limit
+	//
+	// 	- **2**: Source Concurrent Connection Rate Limit
+	//
+	// 	- **3**: PPS Limit for Source
+	//
+	// 	- **4**: Bandwidth Limit for Source
+	//
+	// example:
+	//
+	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10794,9 +13596,17 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcS
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloadLen struct {
-	// The maximum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
+	// The maximum length of a packet. Valid values: **0*	- to **6000**. Unit: bytes.
+	//
+	// example:
+	//
+	// 6000
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
+	// The minimum length of a packet. Valid values: **0*	- to **6000**. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -10819,19 +13629,37 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPay
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla struct {
-	// The maximum number of new connections per second that can be established over the port of the destination instance. Valid values: **100** to **100000**.
+	// The maximum number of new connections per second that can be established over the port of the destination instance. Valid values: **100*	- to **100000**.
+	//
+	// example:
+	//
+	// 100000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The status of the Destination New Connection Rate Limit switch. Valid values:
 	//
-	// *   **0**: The switch is turned off.
-	// *   **1**: The switch is turned on.
+	// 	- **0**: The switch is turned off.
+	//
+	// 	- **1**: The switch is turned on.
+	//
+	// example:
+	//
+	// 1
 	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
-	// The maximum number of concurrent connections that can be established over the port of the destination instance. Valid values: **1000** to **1000000**.
+	// The maximum number of concurrent connections that can be established over the port of the destination instance. Valid values: **1000*	- to **1000000**.
+	//
+	// example:
+	//
+	// 1000000
 	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
 	// The status of the Destination Concurrent Connection Rate Limit switch. Valid values:
 	//
-	// *   **0**: The switch is turned off.
-	// *   **1**: The switch is turned on.
+	// 	- **0**: The switch is turned off.
+	//
+	// 	- **1**: The switch is turned on.
+	//
+	// example:
+	//
+	// 0
 	MaxconnEnable *int32 `json:"MaxconnEnable,omitempty" xml:"MaxconnEnable,omitempty"`
 }
 
@@ -10864,28 +13692,59 @@ func (s *DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla
 }
 
 type DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit struct {
-	// The bandwidth limit for a source IP address. Valid values: **1024** to **268435456**. Unit: bytes/s. Default value: **0**, which indicates that the bandwidth for a source IP address is unlimited.
+	// The bandwidth limit for a source IP address. Valid values: **1024*	- to **268435456**. Unit: bytes/s. Default value: **0**, which indicates that the bandwidth for a source IP address is unlimited.
+	//
+	// example:
+	//
+	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The maximum number of new connections per second that can be initiated from a source IP address. Valid values: **1** to **500000**.
+	// The maximum number of new connections per second that can be initiated from a source IP address. Valid values: **1*	- to **500000**.
+	//
+	// example:
+	//
+	// 0
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The status of the Source New Connection Rate Limit switch. Valid values:
 	//
-	// *   **0**: The switch is turned off.
-	// *   **1**: The switch is turned on.
+	// 	- **0**: The switch is turned off.
+	//
+	// 	- **1**: The switch is turned on.
+	//
+	// example:
+	//
+	// 0
 	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
 	// The mode of the Source New Connection Rate Limit switch. Valid values:
 	//
-	// *   **1**: the manual mode
-	// *   **2**: the automatic mode
+	// 	- **1**: the manual mode
+	//
+	// 	- **2**: the automatic mode
+	//
+	// example:
+	//
+	// 1
 	CpsMode *int32 `json:"CpsMode,omitempty" xml:"CpsMode,omitempty"`
-	// The maximum number of concurrent connections initiated from a source IP address. Valid values: **1** to **500000**.
+	// The maximum number of concurrent connections initiated from a source IP address. Valid values: **1*	- to **500000**.
+	//
+	// example:
+	//
+	// 0
 	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
 	// The status of the Source Concurrent Connection Rate Limit switch. Valid values:
 	//
-	// *   **0**: The switch is turned off.
-	// *   **1**: The switch is turned on.
+	// 	- **0**: The switch is turned off.
+	//
+	// 	- **1**: The switch is turned on.
+	//
+	// example:
+	//
+	// 0
 	MaxconnEnable *int32 `json:"MaxconnEnable,omitempty" xml:"MaxconnEnable,omitempty"`
-	// The packets per second (pps) limit for a source IP address. Valid values: **1** to **100000**. Unit: packets/s. Default value: **0**, which indicates that the pps for a source IP address is unlimited.
+	// The packets per second (pps) limit for a source IP address. Valid values: **1*	- to **100000**. Unit: packets/s. Default value: **0**, which indicates that the pps for a source IP address is unlimited.
+	//
+	// example:
+	//
+	// 0
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
@@ -10964,18 +13823,39 @@ func (s *DescribeNetworkRuleAttributesResponse) SetBody(v *DescribeNetworkRuleAt
 type DescribeNetworkRulesRequest struct {
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 80
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -11016,8 +13896,16 @@ type DescribeNetworkRulesResponseBody struct {
 	// An array that consists of the details of a port forwarding rule.
 	NetworkRules []*DescribeNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 8597F235-FA5E-4FC7-BAD9-E4C0B01BC771
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned port forwarding rules.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11046,20 +13934,42 @@ func (s *DescribeNetworkRulesResponseBody) SetTotalCount(v int64) *DescribeNetwo
 
 type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	// The port of the origin server.
+	//
+	// example:
+	//
+	// 80
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 80
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the port forwarding rule is automatically created. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// An array that consists of IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -11142,25 +14052,56 @@ type DescribeOpEntitiesRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// > The time must be in the latest 30 days.
+	//
+	// example:
+	//
+	// 1583683200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The operation object that you want to query.
+	//
+	// example:
+	//
+	// 203.***.***.132
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
 	// The type of the operation object that you want to query. Valid values:
 	//
-	// *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-	// *   **2**: Anti-DDoS plans
-	// *   **3**: ECS instances
-	// *   **4**: all logs
+	// 	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	//
+	// 	- **2**: Anti-DDoS plans
+	//
+	// 	- **3**: ECS instances
+	//
+	// 	- **4**: all logs
+	//
+	// example:
+	//
+	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **50**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// > The time must be in the latest 30 days.
+	//
+	// example:
+	//
+	// 1582992000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11211,8 +14152,16 @@ type DescribeOpEntitiesResponseBody struct {
 	// An array that consists of the details of the operation log.
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FB24D70C-71F5-4000-8CD8-22CDA0C53CD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned operation records.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11241,85 +14190,122 @@ func (s *DescribeOpEntitiesResponseBody) SetTotalCount(v int64) *DescribeOpEntit
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {
 	// The operation object.
+	//
+	// example:
+	//
+	// 203.***.***.132
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
 	// The type of the operation object. Valid values:
 	//
-	// *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-	// *   **2**: Anti-DDoS plans
-	// *   **3**: ECS instances
-	// *   **4**: all logs
+	// 	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	//
+	// 	- **2**: Anti-DDoS plans
+	//
+	// 	- **3**: ECS instances
+	//
+	// 	- **4**: all logs
+	//
+	// example:
+	//
+	// 1
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The time when the operation was performed. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1584451769000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to call the API operation.
+	//
+	// example:
+	//
+	// 128965410602****
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
 	// The type of the operation. Valid values:
 	//
-	// *   **1**: configuring burstable protection bandwidth.
-	// *   **5**: using Anti-DDoS plans.
-	// *   **8**: changing IP addresses of ECS instances.
-	// *   **9**: deactivating blackhole filtering.
-	// *   **10**: configuring the Diversion from Origin Server policy.
-	// *   **11**: clearing all logs.
-	// *   **12**: downgrading the specifications of instances. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
-	// *   **13**: restoring the specifications of instances. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
+	// 	- **1**: configuring burstable protection bandwidth.
+	//
+	// 	- **5**: using Anti-DDoS plans.
+	//
+	// 	- **8**: changing IP addresses of ECS instances.
+	//
+	// 	- **9**: deactivating blackhole filtering.
+	//
+	// 	- **10**: configuring the Diversion from Origin Server policy.
+	//
+	// 	- **11**: clearing all logs.
+	//
+	// 	- **12**: downgrading the specifications of instances. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
+	//
+	// 	- **13**: restoring the specifications of instances. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
+	//
+	// example:
+	//
+	// 9
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
 	// The details of the operation. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **newEntity**: the values of the parameters after the operation. This field must be of the STRING type.
-	// *   **oldEntity**: the values of the parameters before the operation. This field must be of the STRING type.
+	// 	- **newEntity**: the values of the parameters after the operation. This field must be of the STRING type.
 	//
-	// Both **newEntity** and **oldEntity** are JSON strings. The returned parameters vary with **OpAtion**.
+	// 	- **oldEntity**: the values of the parameters before the operation. This field must be of the STRING type.
 	//
-	// If **OpAction** is **1**, **12**, or **13**, the following parameter is returned:
+	// Both **newEntity*	- and **oldEntity*	- are JSON strings. The returned parameters vary with **OpAtion**.
 	//
-	// *   **elasticBandwidth**: the burstable protection bandwidth. The value is of the INTEGER type.
+	// If **OpAction*	- is **1**, **12**, or **13**, the following parameter is returned:
+	//
+	// 	- **elasticBandwidth**: the burstable protection bandwidth. The value is of the INTEGER type.
 	//
 	//     For example: `{"newEntity":{"elasticBandwidth":300},"oldEntity":{"elasticBandwidth":300}}`
 	//
-	// If **OpAction** is **5**, the following parameters are returned:
+	// If **OpAction*	- is **5**, the following parameters are returned:
 	//
-	// *   **bandwidth**: the burstable protection bandwidth. The value is of the INTEGER type. Unit: Gbit/s.
+	// 	- **bandwidth**: the burstable protection bandwidth. The value is of the INTEGER type. Unit: Gbit/s.
 	//
-	// *   **count**: the number of Anti-DDoS plans. The value is of the INTEGER type.
+	// 	- **count**: the number of Anti-DDoS plans. The value is of the INTEGER type.
 	//
-	// *   **deductCount**: the number of used Anti-DDoS plans. The value is of the INTEGER type.
+	// 	- **deductCount**: the number of used Anti-DDoS plans. The value is of the INTEGER type.
 	//
-	// *   **expireTime**: the expiration time of the Anti-DDoS plans. The value is of the LONG type. The value is a UNIX timestamp. Unit: milliseconds.
+	// 	- **expireTime**: the expiration time of the Anti-DDoS plans. The value is of the LONG type. The value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// *   **instanceId**: the ID of the instance. The value is of the STRING type.
+	// 	- **instanceId**: the ID of the instance. The value is of the STRING type.
 	//
-	// *   **peakFlow**: the peak throughput on the instance. The value is of the INTEGER type. Unit: bit/s.
+	// 	- **peakFlow**: the peak throughput on the instance. The value is of the INTEGER type. Unit: bit/s.
 	//
 	//     For example: `{"newEntity":{"bandwidth":100,"count":4,"deductCount":1,"expireTime":1616299196000,"instanceId":"ddoscoo-cn-v641kpmq****","peakFlow":751427000}}`
 	//
-	// If **OpAction** is **8**, the following parameter is returned:
+	// If **OpAction*	- is **8**, the following parameter is returned:
 	//
-	// *   **instanceId**: the ID of the ECS instance whose IP address is changed. The value is of the STRING type.
+	// 	- **instanceId**: the ID of the ECS instance whose IP address is changed. The value is of the STRING type.
 	//
 	//     For example: `{"newEntity":{"instanceId":"i-wz9h6nc313zptbqn****"}}`
 	//
-	// If **OpAction** is **9**, the following parameter is returned:
+	// If **OpAction*	- is **9**, the following parameter is returned:
 	//
-	// *   **actionMethod**: the operation method. The value is of the STRING type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
+	// 	- **actionMethod**: the operation method. The value is of the STRING type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
 	//
 	//     For example: `{"newEntity":{"actionMethod":"undo"}}`
 	//
-	// If **OpAction** is **10**, the following parameters are returned:
+	// If **OpAction*	- is **10**, the following parameters are returned:
 	//
-	// *   **actionMethod**: the operation method. The value is of the STRING type. Valid values:
+	// 	- **actionMethod**: the operation method. The value is of the STRING type. Valid values:
 	//
-	//     *   **do**: The Diversion from Origin Server policy is enabled.
-	//     *   **undo**: The Diversion from Origin Server policy is disabled.
+	//     	- **do**: The Diversion from Origin Server policy is enabled.
 	//
-	// *   **lines**: The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+	//     	- **undo**: The Diversion from Origin Server policy is disabled.
 	//
-	//     *   **ct**: China Telecom (International)
-	//     *   **cut**: China Unicom (International)
+	// 	- **lines**: The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+	//
+	//     	- **ct**: China Telecom (International)
+	//
+	//     	- **cut**: China Unicom (International)
 	//
 	//     For example: `{"newEntity":{"actionMethod":"undo","lines":["ct"]}}`
 	//
-	// If **OpAction** is **11**, no parameter is returned, and the description is empty.
+	// If **OpAction*	- is **11**, no parameter is returned, and the description is empty.
+	//
+	// example:
+	//
+	// {"newEntity":{"actionMethod":"undo"}}
 	OpDesc *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 }
 
@@ -11391,20 +14377,41 @@ func (s *DescribeOpEntitiesResponse) SetBody(v *DescribeOpEntitiesResponseBody) 
 }
 
 type DescribePortRequest struct {
-	// The forwarding port to query. Valid values: **0** to **65535**.
+	// The forwarding port to query. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the forwarding protocol to query. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the instance to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. For example, if you want to obtain results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -11445,8 +14452,16 @@ type DescribePortResponseBody struct {
 	// An array that consists of port forwarding rules.
 	NetworkRules []*DescribePortResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of port forwarding rules returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11475,20 +14490,42 @@ func (s *DescribePortResponseBody) SetTotalCount(v int64) *DescribePortResponseB
 
 type DescribePortResponseBodyNetworkRules struct {
 	// The port of the origin server.
+	//
+	// example:
+	//
+	// 55
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 55
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the instance to which the port forwarding rule is applied.
+	//
+	// example:
+	//
+	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the port forwarding rule is automatically created by the instance. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// false
 	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
 	// An array that consists of IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -11565,16 +14602,32 @@ type DescribePortAttackMaxFlowRequest struct {
 	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11608,10 +14661,22 @@ func (s *DescribePortAttackMaxFlowRequest) SetStartTime(v int64) *DescribePortAt
 
 type DescribePortAttackMaxFlowResponseBody struct {
 	// The peak bandwidth of attack traffic. Unit: bit/s.
+	//
+	// example:
+	//
+	// 149559
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The peak packet rate of attack traffic . Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 23
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11671,6 +14736,10 @@ type DescribePortAutoCcStatusRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -11691,6 +14760,10 @@ type DescribePortAutoCcStatusResponseBody struct {
 	// An array that consists of the configurations of the Intelligent Protection policy.
 	PortAutoCcStatus []*DescribePortAutoCcStatusResponseBodyPortAutoCcStatus `json:"PortAutoCcStatus,omitempty" xml:"PortAutoCcStatus,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BC3C6403-F248-4125-B2C9-8733ED94EA85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11715,25 +14788,47 @@ func (s *DescribePortAutoCcStatusResponseBody) SetRequestId(v string) *DescribeP
 type DescribePortAutoCcStatusResponseBodyPortAutoCcStatus struct {
 	// The mode of the Intelligent Protection policy. Valid values:
 	//
-	// *   **normal**
-	// *   **loose**
-	// *   **strict**
+	// 	- **normal**
+	//
+	// 	- **loose**
+	//
+	// 	- **strict**
+	//
+	// example:
+	//
+	// normal
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The status of the Intelligent Protection policy. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// example:
+	//
+	// on
 	Switch *string `json:"Switch,omitempty" xml:"Switch,omitempty"`
 	// The protection mode for ports 80 and 443. Valid values:
 	//
-	// *   **normal**
-	// *   **loose**
-	// *   **strict**
+	// 	- **normal**
+	//
+	// 	- **loose**
+	//
+	// 	- **strict**
+	//
+	// example:
+	//
+	// normal
 	WebMode *string `json:"WebMode,omitempty" xml:"WebMode,omitempty"`
 	// The status of the Intelligent Protection policy for ports 80 and 443. Valid values:
 	//
-	// *   **on**: enabled
-	// *   **off**: disabled
+	// 	- **on**: enabled
+	//
+	// 	- **off**: disabled
+	//
+	// example:
+	//
+	// off
 	WebSwitch *string `json:"WebSwitch,omitempty" xml:"WebSwitch,omitempty"`
 }
 
@@ -11795,10 +14890,22 @@ func (s *DescribePortAutoCcStatusResponse) SetBody(v *DescribePortAutoCcStatusRe
 }
 
 type DescribePortCcAttackTopIPRequest struct {
-	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Limit          *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// example:
+	//
+	// 203.107.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// 6663
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 1678017453
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
 func (s DescribePortCcAttackTopIPRequest) String() string {
@@ -11830,6 +14937,9 @@ func (s *DescribePortCcAttackTopIPRequest) SetStartTimestamp(v int64) *DescribeP
 }
 
 type DescribePortCcAttackTopIPResponseBody struct {
+	// example:
+	//
+	// 24F36D81-5E2D-52E5-9DB6-A3ED23CF271A
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TopIp     []*DescribePortCcAttackTopIPResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
 }
@@ -11853,9 +14963,18 @@ func (s *DescribePortCcAttackTopIPResponseBody) SetTopIp(v []*DescribePortCcAtta
 }
 
 type DescribePortCcAttackTopIPResponseBodyTopIp struct {
+	// example:
+	//
+	// cn-shanghai
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	Pv     *int64  `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	SrcIp  *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// example:
+	//
+	// 33971
+	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// example:
+	//
+	// 172.18.XX.XX
+	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 
 func (s DescribePortCcAttackTopIPResponseBodyTopIp) String() string {
@@ -11914,18 +15033,38 @@ type DescribePortConnsCountRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of port that you want to query. If you do not specify this parameter, all ports are queried.
+	//
+	// example:
+	//
+	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11964,14 +15103,34 @@ func (s *DescribePortConnsCountRequest) SetStartTime(v int64) *DescribePortConns
 
 type DescribePortConnsCountResponseBody struct {
 	// The number of active connections.
+	//
+	// example:
+	//
+	// 159
 	ActConns *int64 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
 	// The number of concurrent connections.
+	//
+	// example:
+	//
+	// 46340
 	Conns *int64 `json:"Conns,omitempty" xml:"Conns,omitempty"`
 	// The number of new connections.
+	//
+	// example:
+	//
+	// 0
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The number of inactive connections.
+	//
+	// example:
+	//
+	// 121
 	InActConns *int64 `json:"InActConns,omitempty" xml:"InActConns,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 48859E14-A9FB-4100-99FF-AAB75CA46776
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12041,20 +15200,44 @@ type DescribePortConnsListRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The interval for returning data. Unit: seconds.
+	//
+	// example:
+	//
+	// 1000
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The number of port that you want to query. If you do not specify this parameter, all ports are queried.
+	//
+	// example:
+	//
+	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12100,6 +15283,10 @@ type DescribePortConnsListResponseBody struct {
 	// An array that consists of the connections established over the port.
 	ConnsList []*DescribePortConnsListResponseBodyConnsList `json:"ConnsList,omitempty" xml:"ConnsList,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12123,14 +15310,34 @@ func (s *DescribePortConnsListResponseBody) SetRequestId(v string) *DescribePort
 
 type DescribePortConnsListResponseBodyConnsList struct {
 	// The number of active connections.
+	//
+	// example:
+	//
+	// 3
 	ActConns *int64 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
 	// The number of concurrent connections.
+	//
+	// example:
+	//
+	// 8
 	Conns *int64 `json:"Conns,omitempty" xml:"Conns,omitempty"`
 	// The new connection creation rate.
+	//
+	// example:
+	//
+	// 0
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The number of inactive connections.
+	//
+	// example:
+	//
+	// 2
 	InActConns *int64 `json:"InActConns,omitempty" xml:"InActConns,omitempty"`
 	// The index number of the returned data.
+	//
+	// example:
+	//
+	// 16506
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
@@ -12202,27 +15409,52 @@ type DescribePortFlowListRequest struct {
 	// **
 	//
 	// **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The interval for returning data. Unit: seconds. The interval that you can specify varies based on the time range to query. The time range to query is determined by the values of **StartTime** and **EndTime**.
 	//
-	// *   If the time range to query is no greater than 1 hour, we recommend that you specify the interval from 60 seconds to the time range to query.
-	// *   If the time range to query is greater than 1 hour but no greater than 6 hours, we recommend that you specify the interval from 600 seconds to the time range to query.
-	// *   If the time range to query is greater than 6 hours but no greater than 24 hours, we recommend that you specify the interval from 1,800 seconds to the time range to query.
-	// *   If the time range to query is greater than 24 hours but no greater than 7 days, we recommend that you specify the interval from 3,600 seconds to the time range to query.
-	// *   If the time range to query is greater than 7 days but no greater than 15 days, we recommend that you specify the interval from 14,400 seconds to the time range to query.
-	// *   If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The interval for returning data. Unit: seconds. The interval that you can specify varies based on the time range to query. The time range to query is determined by the values of **StartTime*	- and **EndTime**.
+	//
+	// 	- If the time range to query is no greater than 1 hour, we recommend that you specify the interval from 60 seconds to the time range to query.
+	//
+	// 	- If the time range to query is greater than 1 hour but no greater than 6 hours, we recommend that you specify the interval from 600 seconds to the time range to query.
+	//
+	// 	- If the time range to query is greater than 6 hours but no greater than 24 hours, we recommend that you specify the interval from 1,800 seconds to the time range to query.
+	//
+	// 	- If the time range to query is greater than 24 hours but no greater than 7 days, we recommend that you specify the interval from 3,600 seconds to the time range to query.
+	//
+	// 	- If the time range to query is greater than 7 days but no greater than 15 days, we recommend that you specify the interval from 14,400 seconds to the time range to query.
+	//
+	// 	- If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
+	//
+	// example:
+	//
+	// 1000
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// **
 	//
 	// **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12263,6 +15495,10 @@ type DescribePortFlowListResponseBody struct {
 	// The returned traffic data.
 	PortFlowList []*DescribePortFlowListResponseBodyPortFlowList `json:"PortFlowList,omitempty" xml:"PortFlowList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FFC77501-BDF8-4BC8-9BF5-B295FBC3189B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12286,29 +15522,66 @@ func (s *DescribePortFlowListResponseBody) SetRequestId(v string) *DescribePortF
 
 type DescribePortFlowListResponseBodyPortFlowList struct {
 	// The bandwidth of attack traffic. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
 	AttackBps *int64 `json:"AttackBps,omitempty" xml:"AttackBps,omitempty"`
 	// The packet forwarding rate of attack traffic. Unit: pps.
+	//
+	// example:
+	//
+	// 0
 	AttackPps *int64 `json:"AttackPps,omitempty" xml:"AttackPps,omitempty"`
 	// The inbound bandwidth. Unit: bit/s.
+	//
+	// example:
+	//
+	// 2176000
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
 	// The packet forwarding rate of inbound traffic. Unit: packets per second.
+	//
+	// example:
+	//
+	// 2934
 	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
 	// The index number of the returned data.
+	//
+	// example:
+	//
+	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The outbound bandwidth. Unit: bit/s.
+	//
+	// example:
+	//
+	// 4389
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
 	// The packet forwarding rate of outbound traffic. Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 5
 	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
 	// The source region of the traffic. Valid values:
 	//
-	// *   **cn**: mainland China
-	// *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
-	// *   **alb-ap-southeast-gf-x**: Singapore
-	// *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
-	// *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
-	// *   **alb-us-west-1-gf-x**: US (Silicon Valley)
+	// 	- **cn**: mainland China
 	//
-	// > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
+	// 	- **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
+	//
+	// 	- **alb-ap-southeast-gf-x**: Singapore
+	//
+	// 	- **alb-cn-hongkong-gf-x**: Hong Kong (China)
+	//
+	// 	- **alb-eu-central-1-gf-x**: Germany (Frankfurt)
+	//
+	// 	- **alb-us-west-1-gf-x**: US (Silicon Valley)
+	//
+	// > The values except **cn*	- are returned only when **RegionId*	- is set to **ap-southeast-1**.
+	//
+	// example:
+	//
+	// cn
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SlaBpsDropBps  *int64  `json:"SlaBpsDropBps,omitempty" xml:"SlaBpsDropBps,omitempty"`
 	SlaBpsDropPps  *int64  `json:"SlaBpsDropPps,omitempty" xml:"SlaBpsDropPps,omitempty"`
@@ -12319,6 +15592,10 @@ type DescribePortFlowListResponseBodyPortFlowList struct {
 	SlaPpsDropBps  *int64  `json:"SlaPpsDropBps,omitempty" xml:"SlaPpsDropBps,omitempty"`
 	SlaPpsDropPps  *int64  `json:"SlaPpsDropPps,omitempty" xml:"SlaPpsDropPps,omitempty"`
 	// The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1582992000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
@@ -12448,16 +15725,32 @@ type DescribePortMaxConnsRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12493,6 +15786,10 @@ type DescribePortMaxConnsResponseBody struct {
 	// An array consisting of the details of the maximum number of connections that are established over a port of the instance.
 	PortMaxConns []*DescribePortMaxConnsResponseBodyPortMaxConns `json:"PortMaxConns,omitempty" xml:"PortMaxConns,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 08F79110-2AF5-4FA7-998E-7C5E75EACF9C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12516,10 +15813,22 @@ func (s *DescribePortMaxConnsResponseBody) SetRequestId(v string) *DescribePortM
 
 type DescribePortMaxConnsResponseBodyPortMaxConns struct {
 	// The maximum number of connections per second (CPS).
+	//
+	// example:
+	//
+	// 100
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.***.***.117
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The port of the instance.
+	//
+	// example:
+	//
+	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -12579,16 +15888,32 @@ type DescribePortViewSourceCountriesRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12622,6 +15947,10 @@ func (s *DescribePortViewSourceCountriesRequest) SetStartTime(v int64) *Describe
 
 type DescribePortViewSourceCountriesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of countries or areas from which the requests are sent.
 	SourceCountrys []*DescribePortViewSourceCountriesResponseBodySourceCountrys `json:"SourceCountrys,omitempty" xml:"SourceCountrys,omitempty" type:"Repeated"`
@@ -12647,10 +15976,18 @@ func (s *DescribePortViewSourceCountriesResponseBody) SetSourceCountrys(v []*Des
 
 type DescribePortViewSourceCountriesResponseBodySourceCountrys struct {
 	// The number of requests.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The abbreviation of the country or area. For example, **cn** indicates China and **us** indicates the United States.
+	// The abbreviation of the country or area. For example, **cn*	- indicates China and **us*	- indicates the United States.
 	//
 	// > For more information, see [Location parameters](~~167926~~).
+	//
+	// example:
+	//
+	// cn
 	CountryId *string `json:"CountryId,omitempty" xml:"CountryId,omitempty"`
 }
 
@@ -12705,16 +16042,32 @@ type DescribePortViewSourceIspsRequest struct {
 	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// An array that consists of the IDs of instances to query.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12750,6 +16103,10 @@ type DescribePortViewSourceIspsResponseBody struct {
 	// An array that consists of the details of the ISP.
 	Isps []*DescribePortViewSourceIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12775,8 +16132,16 @@ type DescribePortViewSourceIspsResponseBodyIsps struct {
 	// The total number of requests that are sent from the ISP.
 	//
 	// > This parameter does not indicate the accurate number of requests. You can use this parameter to calculate the proportion of requests from different ISPs.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The ID of the ISP. For more information, see the ISP codes table.
+	//
+	// example:
+	//
+	// 100017
 	IspId *string `json:"IspId,omitempty" xml:"IspId,omitempty"`
 }
 
@@ -12831,16 +16196,32 @@ type DescribePortViewSourceProvincesRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not configure this parameter, the current system time is used as the end time.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of instances to query.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1582992000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12874,6 +16255,10 @@ func (s *DescribePortViewSourceProvincesRequest) SetStartTime(v int64) *Describe
 
 type DescribePortViewSourceProvincesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details about the administrative region in China from which the requests are sent.
 	SourceProvinces []*DescribePortViewSourceProvincesResponseBodySourceProvinces `json:"SourceProvinces,omitempty" xml:"SourceProvinces,omitempty" type:"Repeated"`
@@ -12901,10 +16286,18 @@ type DescribePortViewSourceProvincesResponseBodySourceProvinces struct {
 	// The total number of requests that are sent from the ISP.
 	//
 	// > This parameter does not indicate the accurate number of requests. You can use this parameter to calculate the proportion of requests from different administrative regions in China.
+	//
+	// example:
+	//
+	// 3390671
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the administrative region in China from which the requests are sent. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
+	// The ID of the administrative region in China from which the requests are sent. For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
 	//
 	// > For more information, see [Location parameters](~~167926~~).
+	//
+	// example:
+	//
+	// 440000
 	ProvinceId *string `json:"ProvinceId,omitempty" xml:"ProvinceId,omitempty"`
 }
 
@@ -12959,10 +16352,18 @@ type DescribeSceneDefenseObjectsRequest struct {
 	// The ID of the policy that you want to query.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 47e07ebd-0ba5-4afc-957b-59d15b90****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -12988,11 +16389,20 @@ type DescribeSceneDefenseObjectsResponseBody struct {
 	// The information about the protected assets.
 	Objects []*DescribeSceneDefenseObjectsResponseBodyObjects `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FE07E73F-F19E-4A51-B62F-AC59E3B962D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13021,10 +16431,22 @@ func (s *DescribeSceneDefenseObjectsResponseBody) SetSuccess(v bool) *DescribeSc
 
 type DescribeSceneDefenseObjectsResponseBodyObjects struct {
 	// The domain name that is protected by the policy.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the policy.
+	//
+	// example:
+	//
+	// 47e07ebd-0ba5-4afc-957b-59d15b90****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance that is protected by the policy.
+	//
+	// example:
+	//
+	// 203.XX.XX.119
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
 }
 
@@ -13084,18 +16506,34 @@ type DescribeSceneDefensePoliciesRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: pending enabling
-	// *   **2**: enabled
-	// *   **3**: expired
+	// 	- **0**: disabled
+	//
+	// 	- **1**: pending enabling
+	//
+	// 	- **2**: enabled
+	//
+	// 	- **3**: expired
+	//
+	// example:
+	//
+	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the template that is used to create the policy. Valid values:
 	//
-	// *   **promotion**: the Important Activity template
-	// *   **bypass**: the Forward All template
+	// 	- **promotion**: the Important Activity template
+	//
+	// 	- **bypass**: the Forward All template
+	//
+	// example:
+	//
+	// promotion
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
@@ -13126,11 +16564,20 @@ type DescribeSceneDefensePoliciesResponseBody struct {
 	// An array that consists of the configurations of the scenario-specific custom policy.
 	Policies []*DescribeSceneDefensePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13160,33 +16607,71 @@ func (s *DescribeSceneDefensePoliciesResponseBody) SetSuccess(v bool) *DescribeS
 type DescribeSceneDefensePoliciesResponseBodyPolicies struct {
 	// The execution status of the policy. Valid values:
 	//
-	// *   **1**: not executed or execution completed
-	// *   **0**: being executed
-	// *   **-1**: execution failed
+	// 	- **1**: not executed or execution completed
+	//
+	// 	- **0**: being executed
+	//
+	// 	- **-1**: execution failed
+	//
+	// example:
+	//
+	// 1
 	Done *int32 `json:"Done,omitempty" xml:"Done,omitempty"`
 	// The time at which the policy expires. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of objects that are protected by the policy.
+	//
+	// example:
+	//
+	// 1
 	ObjectCount *int32 `json:"ObjectCount,omitempty" xml:"ObjectCount,omitempty"`
 	// The ID of the policy.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The running rules of the policy.
 	RuntimePolicies []*DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies `json:"RuntimePolicies,omitempty" xml:"RuntimePolicies,omitempty" type:"Repeated"`
 	// The time at which the policy takes effect. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1585670400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: pending enabling
-	// *   **2**: enabled
-	// *   **3**: expired
+	// 	- **0**: disabled
+	//
+	// 	- **1**: pending enabling
+	//
+	// 	- **2**: enabled
+	//
+	// 	- **3**: expired
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the template that is used to create the policy. Valid values:
 	//
-	// *   **promotion**: the Important Activity template
-	// *   **bypass**: the Forward All template
+	// 	- **promotion**: the Important Activity template
+	//
+	// 	- **bypass**: the Forward All template
+	//
+	// example:
+	//
+	// promotion
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
@@ -13246,30 +16731,53 @@ func (s *DescribeSceneDefensePoliciesResponseBodyPolicies) SetTemplate(v string)
 type DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies struct {
 	// The protection rule that is applied when the policy takes effect.
 	//
-	// If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": false }**. The value indicates that the Frequency Control policy is disabled.
+	// If you set **PolicyType*	- to **1**, the value is **{"cc_rule_enable": false }**. The value indicates that the Frequency Control policy is disabled.
 	//
-	// If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 0}**. The value indicates that the Intelligent Protection policy is disabled.
+	// If you set **PolicyType*	- to **2**, the value is **{"ai_rule_enable": 0}**. The value indicates that the Intelligent Protection policy is disabled.
+	//
+	// example:
+	//
+	// {"cc_rule_enable": false }
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
 	// The protection policy whose status is changed when the policy takes effect. Valid values:
 	//
-	// *   **1**: indicates that the Frequency Control policy is changed.
-	// *   **2**: indicates that the Intelligent Protection policy is changed.
+	// 	- **1**: indicates that the Frequency Control policy is changed.
+	//
+	// 	- **2**: indicates that the Intelligent Protection policy is changed.
+	//
+	// example:
+	//
+	// 1
 	PolicyType *int32 `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The running status of the policy. Valid values:
 	//
-	// *   **0**: The policy has not been issued or is restored.
-	// *   **1**: The policy is pending.
-	// *   **2**: The policy is being restored.
-	// *   **3**: The policy takes effect.
-	// *   **4**: The policy fails to take effect.
-	// *   **5**:The policy fails to be restored.
-	// *   **6**: The configurations of the protected objects for the policy does not exist because the configurations may be deleted.
+	// 	- **0**: The policy has not been issued or is restored.
+	//
+	// 	- **1**: The policy is pending.
+	//
+	// 	- **2**: The policy is being restored.
+	//
+	// 	- **3**: The policy takes effect.
+	//
+	// 	- **4**: The policy fails to take effect.
+	//
+	// 	- **5**:The policy fails to be restored.
+	//
+	// 	- **6**: The configurations of the protected objects for the policy does not exist because the configurations may be deleted.
+	//
+	// example:
+	//
+	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The protection rule that is applied before the policy takes effect.
 	//
-	// If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": true}**. The value indicates that the Frequency Control policy is enabled.
+	// If you set **PolicyType*	- to **1**, the value is **{"cc_rule_enable": true}**. The value indicates that the Frequency Control policy is enabled.
 	//
-	// If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 1}**. The value indicates that the Intelligent Protection policy is enabled.
+	// If you set **PolicyType*	- to **2**, the value is **{"ai_rule_enable": 1}**. The value indicates that the Intelligent Protection policy is enabled.
+	//
+	// example:
+	//
+	// {"cc_rule_enable": true}
 	OldValue *string `json:"oldValue,omitempty" xml:"oldValue,omitempty"`
 }
 
@@ -13331,10 +16839,22 @@ func (s *DescribeSceneDefensePoliciesResponse) SetBody(v *DescribeSceneDefensePo
 }
 
 type DescribeSchedulerRulesRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// testrule
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DescribeSchedulerRulesRequest) String() string {
@@ -13366,9 +16886,15 @@ func (s *DescribeSchedulerRulesRequest) SetRuleName(v string) *DescribeScheduler
 }
 
 type DescribeSchedulerRulesResponseBody struct {
+	// example:
+	//
+	// 11C55595-1757-4B17-9ACE-4ACB68C2D989
 	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SchedulerRules []*DescribeSchedulerRulesResponseBodySchedulerRules `json:"SchedulerRules,omitempty" xml:"SchedulerRules,omitempty" type:"Repeated"`
-	TotalCount     *string                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSchedulerRulesResponseBody) String() string {
@@ -13395,8 +16921,14 @@ func (s *DescribeSchedulerRulesResponseBody) SetTotalCount(v string) *DescribeSc
 }
 
 type DescribeSchedulerRulesResponseBodySchedulerRules struct {
-	Cname    *string                                                  `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	Param    *DescribeSchedulerRulesResponseBodySchedulerRulesParam   `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4eru5229a843****.aliyunddos0001.com
+	Cname *string                                                `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Param *DescribeSchedulerRulesResponseBodySchedulerRulesParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// example:
+	//
+	// doctest
 	RuleName *string                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	RuleType *string                                                  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	Rules    []*DescribeSchedulerRulesResponseBodySchedulerRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -13437,7 +16969,10 @@ func (s *DescribeSchedulerRulesResponseBodySchedulerRules) SetRules(v []*Describ
 
 type DescribeSchedulerRulesResponseBodySchedulerRulesParam struct {
 	ParamData *DescribeSchedulerRulesResponseBodySchedulerRulesParamParamData `json:"ParamData,omitempty" xml:"ParamData,omitempty" type:"Struct"`
-	ParamType *string                                                         `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// GA
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
 func (s DescribeSchedulerRulesResponseBodySchedulerRulesParam) String() string {
@@ -13459,6 +16994,9 @@ func (s *DescribeSchedulerRulesResponseBodySchedulerRulesParam) SetParamType(v s
 }
 
 type DescribeSchedulerRulesResponseBodySchedulerRulesParamParamData struct {
+	// example:
+	//
+	// ga-bp1htlajy5509rc99****
 	CloudInstanceId *string `json:"CloudInstanceId,omitempty" xml:"CloudInstanceId,omitempty"`
 }
 
@@ -13476,14 +17014,35 @@ func (s *DescribeSchedulerRulesResponseBodySchedulerRulesParamParamData) SetClou
 }
 
 type DescribeSchedulerRulesResponseBodySchedulerRulesRules struct {
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RestoreDelay *int32  `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	ValueType    *int32  `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// 100
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 60
+	RestoreDelay *int32 `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 203.***.***.39
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1
+	ValueType *int32 `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s DescribeSchedulerRulesResponseBodySchedulerRulesRules) String() string {
@@ -13567,21 +17126,46 @@ type DescribeSlaEventListRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 3289457398
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the service Valid values:
 	//
-	// *   **cn**: Anti-DDoS Pro
-	// *   **cn-hongkong**: Anti-DDoS Premium
+	// 	- **cn**: Anti-DDoS Pro
+	//
+	// 	- **cn-hongkong**: Anti-DDoS Premium
+	//
+	// example:
+	//
+	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 3289457398
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -13625,10 +17209,18 @@ func (s *DescribeSlaEventListRequest) SetStartTime(v int64) *DescribeSlaEventLis
 
 type DescribeSlaEventListResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The destination rate limit events.
 	SlaEvent []*DescribeSlaEventListResponseBodySlaEvent `json:"SlaEvent,omitempty" xml:"SlaEvent,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -13657,15 +17249,32 @@ func (s *DescribeSlaEventListResponseBody) SetTotal(v int64) *DescribeSlaEventLi
 
 type DescribeSlaEventListResponseBodySlaEvent struct {
 	// The end of the time range. Unit: seconds.
+	//
+	// example:
+	//
+	// 1671886740
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The region to which the destination IP address belongs. Valid values:
 	//
-	// *   **cn**: a region in the Chinese mainland
-	// *   **cn-hongkong**: China (Hong Kong)
+	// 	- **cn**: a region in the Chinese mainland
+	//
+	// 	- **cn-hongkong**: China (Hong Kong)
+	//
+	// example:
+	//
+	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The beginning of the time range. Unit: seconds.
+	//
+	// example:
+	//
+	// 1678080840
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -13728,6 +17337,10 @@ func (s *DescribeSlaEventListResponse) SetBody(v *DescribeSlaEventListResponseBo
 
 type DescribeSlsAuthStatusRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13746,11 +17359,20 @@ func (s *DescribeSlsAuthStatusRequest) SetResourceGroupId(v string) *DescribeSls
 
 type DescribeSlsAuthStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	SlsAuthStatus *bool `json:"SlsAuthStatus,omitempty" xml:"SlsAuthStatus,omitempty"`
 }
 
@@ -13803,6 +17425,10 @@ func (s *DescribeSlsAuthStatusResponse) SetBody(v *DescribeSlsAuthStatusResponse
 
 type DescribeSlsLogstoreInfoRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13821,18 +17447,42 @@ func (s *DescribeSlsLogstoreInfoRequest) SetResourceGroupId(v string) *DescribeS
 
 type DescribeSlsLogstoreInfoResponseBody struct {
 	// The Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// ddoscoo-logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	// The Logstore project of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// ddoscoo-project-181071506993****-cn-hangzhou
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The available log storage capacity. Unit: bytes.
+	//
+	// example:
+	//
+	// 3298534883328
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The log storage duration. Unit: days.
+	//
+	// example:
+	//
+	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	// The used log storage capacity. Unit: bytes.
 	//
 	// > The statistics on Log Service are delayed for about two hours.
+	//
+	// example:
+	//
+	// 0
 	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
@@ -13905,6 +17555,10 @@ func (s *DescribeSlsLogstoreInfoResponse) SetBody(v *DescribeSlsLogstoreInfoResp
 
 type DescribeSlsOpenStatusRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13923,11 +17577,20 @@ func (s *DescribeSlsOpenStatusRequest) SetResourceGroupId(v string) *DescribeSls
 
 type DescribeSlsOpenStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether Log Service is activated. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	SlsOpenStatus *bool `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
 }
 
@@ -13982,10 +17645,18 @@ type DescribeStsGrantStatusRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the RAM role to query. Set the value to **AliyunDDoSCOODefaultRole**, which indicates the default role of Anti-DDoS Pro or Anti-DDoS Premium.
 	//
 	// > Anti-DDoS Pro or Anti-DDoS Premium uses the default role to access other cloud services.
+	//
+	// example:
+	//
+	// AliyunDDoSCOODefaultRole
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
@@ -14009,6 +17680,10 @@ func (s *DescribeStsGrantStatusRequest) SetRole(v string) *DescribeStsGrantStatu
 
 type DescribeStsGrantStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The authorization status of Anti-DDoS Pro or Anti-DDoS Premium.
 	StsGrant *DescribeStsGrantStatusResponseBodyStsGrant `json:"StsGrant,omitempty" xml:"StsGrant,omitempty" type:"Struct"`
@@ -14035,8 +17710,13 @@ func (s *DescribeStsGrantStatusResponseBody) SetStsGrant(v *DescribeStsGrantStat
 type DescribeStsGrantStatusResponseBodyStsGrant struct {
 	// The authorization status. Valid values:
 	//
-	// *   **0**: Anti-DDoS Pro or Anti-DDoS Premium is not authorized to access other cloud services.
-	// *   **1**: Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+	// 	- **0**: Anti-DDoS Pro or Anti-DDoS Premium is not authorized to access other cloud services.
+	//
+	// 	- **1**: Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14084,20 +17764,44 @@ func (s *DescribeStsGrantStatusResponse) SetBody(v *DescribeStsGrantStatusRespon
 
 type DescribeSystemLogRequest struct {
 	// The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1640966400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address of the instance.
 	//
 	// > You can call the [DescribeInstanceDetails](~~91490~~) operation to query the IP addresses of all instances.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
 	// The type of the system log. Set the value to **20**, which indicates the billing logs for the burstable clean bandwidth.
 	//
 	// > You must specify this parameter. Otherwise, the call fails.
+	//
+	// example:
+	//
+	// 20
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1609430400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14141,10 +17845,18 @@ func (s *DescribeSystemLogRequest) SetStartTime(v int64) *DescribeSystemLogReque
 
 type DescribeSystemLogResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8BC3A33A-F832-58DB-952F-7682A25AD14C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of details of the billing logs for the burstable clean bandwidth.
 	SystemLog []*DescribeSystemLogResponseBodySystemLog `json:"SystemLog,omitempty" xml:"SystemLog,omitempty" type:"Repeated"`
 	// The total number of billing logs for the burstable clean bandwidth.
+	//
+	// example:
+	//
+	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -14173,35 +17885,76 @@ func (s *DescribeSystemLogResponseBody) SetTotal(v int64) *DescribeSystemLogResp
 
 type DescribeSystemLogResponseBodySystemLog struct {
 	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
 	// The type of the system log. The value is fixed as **20**, which indicates the billing logs for burstable clean bandwidth.
+	//
+	// example:
+	//
+	// 20
 	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The time when the bill was generated. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1631793531000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the bill was last modified. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1635425407000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the Alibaba Cloud account to which the bill belongs.
+	//
+	// example:
+	//
+	// 171986973287****
 	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
 	// The operation type. The value is fixed as **100**, which indicates the billing logs for the burstable clean bandwidth that you increased.
+	//
+	// example:
+	//
+	// 100
 	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
 	// The details of the bill. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **newEntity**: the bill record, which contains the following fields. Data type: object.
+	// 	- **newEntity**: the bill record, which contains the following fields. Data type: object.
 	//
-	//     *   **billValue**: the usage of the burstable clean bandwidth within a month. Unit: Mbit/s. Data type: integer.
-	//     *   **instanceId**: the ID of the instance. Data type: string.
-	//     *   **ip**: the IP address of the instance. Data type: string.
-	//     *   **maxBw**: the peak service traffic (monthly 95th percentile bandwidth) within a month. Unit: Mbit/s. Data type: string.
-	//     *   **month**: the month in which the bill of the previous calendar month is issued. This value is a UNIX timestamp. Unit: milliseconds. Data type: long.
-	//     *   **overBandwidth**: the peak service traffic minus the clean bandwidth of the instance. Unit: Mbit/s. Data type: integer.
-	//     *   **peakTime**: the time in point of the peak service traffic that is measured for billing. This value is a UNIX timestamp. Unit: seconds. Data type: long.
-	//     *   **startTimestamp**: the beginning of the time range for the peak service traffic range. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+	//     	- **billValue**: the usage of the burstable clean bandwidth within a month. Unit: Mbit/s. Data type: integer.
+	//
+	//     	- **instanceId**: the ID of the instance. Data type: string.
+	//
+	//     	- **ip**: the IP address of the instance. Data type: string.
+	//
+	//     	- **maxBw**: the peak service traffic (monthly 95th percentile bandwidth) within a month. Unit: Mbit/s. Data type: string.
+	//
+	//     	- **month**: the month in which the bill of the previous calendar month is issued. This value is a UNIX timestamp. Unit: milliseconds. Data type: long.
+	//
+	//     	- **overBandwidth**: the peak service traffic minus the clean bandwidth of the instance. Unit: Mbit/s. Data type: integer.
+	//
+	//     	- **peakTime**: the time in point of the peak service traffic that is measured for billing. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+	//
+	//     	- **startTimestamp**: the beginning of the time range for the peak service traffic range. This value is a UNIX timestamp. Unit: seconds. Data type: long.
+	//
+	// example:
+	//
+	// {"newEntity":{"billValue":"60","instanceId":"ddoscoo-cn-zz121ogz****","ip":"203.107.XX.XX","maxBw":"300","month":1627747200000,"overBandwidth":"120","peakTime":1629871200,"startTimestamp":1629871200}}
 	OpDesc *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 	// The status of the bill. Valid values:
 	//
-	// *   **0**: to be billed
-	// *   **1**: billed
-	// *   **2**: terminated
+	// 	- **0**: to be billed
+	//
+	// 	- **1**: billed
+	//
+	// 	- **2**: terminated
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14284,16 +18037,36 @@ func (s *DescribeSystemLogResponse) SetBody(v *DescribeSystemLogResponseBody) *D
 
 type DescribeTagKeysRequest struct {
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -14332,14 +18105,30 @@ func (s *DescribeTagKeysRequest) SetResourceType(v string) *DescribeTagKeysReque
 
 type DescribeTagKeysResponseBody struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array that consists of the details of the tag key.
 	TagKeys []*DescribeTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14378,8 +18167,16 @@ func (s *DescribeTagKeysResponseBody) SetTotalCount(v int32) *DescribeTagKeysRes
 
 type DescribeTagKeysResponseBodyTagKeys struct {
 	// The number of Anti-DDoS Pro instances to which the tag key is added.
+	//
+	// example:
+	//
+	// 2
 	TagCount *int32 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// aa1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -14431,21 +18228,41 @@ func (s *DescribeTagKeysResponse) SetBody(v *DescribeTagKeysResponseBody) *Descr
 }
 
 type DescribeTagResourcesRequest struct {
-	// The query token. Set the value to the value of **NextToken** that is returned in the last call.
+	// The query token. Set the value to the value of **NextToken*	- that is returned in the last call.
 	//
 	// > You do not need to configure this parameter if you call this operation for the first time.
+	//
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// An array consisting of IDs of the Anti-DDoS Pro instances that you want to query.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// An array consisting of tags that you want to query. Each tag consists of a tag **key** and a tag **value**.
+	// An array consisting of tags that you want to query. Each tag consists of a tag **key*	- and a tag **value**.
 	Tags []*DescribeTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -14492,11 +18309,19 @@ type DescribeTagResourcesRequestTags struct {
 	//
 	// >
 	//
-	// *   You must specify at least one of the **ResourceIds.N** and **Tags.N.Key** parameters.
+	// 	- You must specify at least one of the **ResourceIds.N*	- and **Tags.N.Key*	- parameters.
 	//
-	// *   You can call the [DescribeTagKeys](~~159785~~) operation to query all tag keys.
+	// 	- You can call the [DescribeTagKeys](~~159785~~) operation to query all tag keys.
+	//
+	// example:
+	//
+	// testkey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that you want to query.
+	//
+	// example:
+	//
+	// testvalue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14520,8 +18345,16 @@ func (s *DescribeTagResourcesRequestTags) SetValue(v string) *DescribeTagResourc
 
 type DescribeTagResourcesResponseBody struct {
 	// The query token that is returned in this call.
+	//
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 36E698F7-48A4-48D0-9554-0BB4BAAB99B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of the details of the tags that are added to the Anti-DDoS Pro instance.
 	TagResources *DescribeTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -14569,12 +18402,28 @@ func (s *DescribeTagResourcesResponseBodyTagResources) SetTagResource(v []*Descr
 
 type DescribeTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The ID of the Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zz121ogz****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag that is added to the Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// testvalue
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag that is added to the Anti-DDoS Pro instance.
+	//
+	// example:
+	//
+	// testkey
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -14639,14 +18488,26 @@ type DescribeTotalAttackMaxFlowRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1659697200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
+	// example:
+	//
+	// 1669240800
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14680,10 +18541,22 @@ func (s *DescribeTotalAttackMaxFlowRequest) SetStartTime(v int64) *DescribeTotal
 
 type DescribeTotalAttackMaxFlowResponseBody struct {
 	// The peak bandwidth of attack traffic. Unit: bit/s.
+	//
+	// example:
+	//
+	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	// The peak packet rate of attack traffic . Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 0
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 9173A3CB-C40B-559B-96B7-2373830BD06A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14743,11 +18616,20 @@ type DescribeUdpReflectRequest struct {
 	// The ID of the instance to query.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-i7m25564****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland, which indicates an Anti-DDoS Pro instance. This is the default value.
-	// *   **ap-southeast-1**: outside the Chinese mainland, which indicates an Anti-DDoS Premium instance.
+	// 	- **cn-hangzhou**: Chinese mainland, which indicates an Anti-DDoS Pro instance. This is the default value.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland, which indicates an Anti-DDoS Premium instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14771,6 +18653,10 @@ func (s *DescribeUdpReflectRequest) SetRegionId(v string) *DescribeUdpReflectReq
 
 type DescribeUdpReflectResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F97A8766-FB4D-411A-9CD5-2CFF701B592F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of the source ports of the UDP traffic that are filtered out by the filtering policies for UDP reflection attacks.
 	UdpSports []*string `json:"UdpSports,omitempty" xml:"UdpSports,omitempty" type:"Repeated"`
@@ -14825,6 +18711,10 @@ func (s *DescribeUdpReflectResponse) SetBody(v *DescribeUdpReflectResponseBody) 
 
 type DescribeUnBlackholeCountRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -14843,10 +18733,22 @@ func (s *DescribeUnBlackholeCountRequest) SetResourceGroupId(v string) *Describe
 
 type DescribeUnBlackholeCountResponseBody struct {
 	// The remaining quota that you can deactivate blackhole filtering.
+	//
+	// example:
+	//
+	// 5
 	RemainCount *int32 `json:"RemainCount,omitempty" xml:"RemainCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 232929FA-40B6-4C53-9476-EE335ABA44CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total quota that you can deactivate blackhole filtering.
+	//
+	// example:
+	//
+	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14904,6 +18806,10 @@ func (s *DescribeUnBlackholeCountResponse) SetBody(v *DescribeUnBlackholeCountRe
 
 type DescribeUnBlockCountRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -14922,10 +18828,22 @@ func (s *DescribeUnBlockCountRequest) SetResourceGroupId(v string) *DescribeUnBl
 
 type DescribeUnBlockCountResponseBody struct {
 	// The remaining quota that you can use the Diversion from Origin Server policy.
+	//
+	// example:
+	//
+	// 7
 	RemainCount *int32 `json:"RemainCount,omitempty" xml:"RemainCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total quota that you can use the Diversion from Origin Server policy.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14983,12 +18901,24 @@ func (s *DescribeUnBlockCountResponse) SetBody(v *DescribeUnBlockCountResponseBo
 
 type DescribeWebAccessLogDispatchStatusRequest struct {
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15017,10 +18947,18 @@ func (s *DescribeWebAccessLogDispatchStatusRequest) SetResourceGroupId(v string)
 
 type DescribeWebAccessLogDispatchStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the log analysis feature is enabled for domain names.
 	SlsConfigStatus []*DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus `json:"SlsConfigStatus,omitempty" xml:"SlsConfigStatus,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15049,11 +18987,20 @@ func (s *DescribeWebAccessLogDispatchStatusResponseBody) SetTotalCount(v int32) 
 
 type DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus struct {
 	// The domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether the log analysis feature is enabled. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -15106,6 +19053,10 @@ func (s *DescribeWebAccessLogDispatchStatusResponse) SetBody(v *DescribeWebAcces
 
 type DescribeWebAccessLogEmptyCountRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15124,8 +19075,16 @@ func (s *DescribeWebAccessLogEmptyCountRequest) SetResourceGroupId(v string) *De
 
 type DescribeWebAccessLogEmptyCountResponseBody struct {
 	// The remaining quota that you can clear the Logstore.
+	//
+	// example:
+	//
+	// 10
 	AvailableCount *int32 `json:"AvailableCount,omitempty" xml:"AvailableCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15180,8 +19139,16 @@ type DescribeWebAccessLogStatusRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15205,15 +19172,32 @@ func (s *DescribeWebAccessLogStatusRequest) SetResourceGroupId(v string) *Descri
 
 type DescribeWebAccessLogStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The Logstore of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-logstore
 	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
 	// The Log Service project of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-project-128965410602****-cn-hangzhou
 	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 	// Indicates whether the Log Analysis feature is enabled for the website. Valid values:
 	//
-	// *   **true**: enabled
-	// *   **false**: disabled
+	// 	- **true**: enabled
+	//
+	// 	- **false**: disabled
+	//
+	// example:
+	//
+	// true
 	SlsStatus *bool `json:"SlsStatus,omitempty" xml:"SlsStatus,omitempty"`
 }
 
@@ -15278,6 +19262,10 @@ type DescribeWebAccessModeRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 }
 
@@ -15298,6 +19286,10 @@ type DescribeWebAccessModeResponseBody struct {
 	// An array consisting of the modes in which the website service is added.
 	DomainModes []*DescribeWebAccessModeResponseBodyDomainModes `json:"DomainModes,omitempty" xml:"DomainModes,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15322,11 +19314,21 @@ func (s *DescribeWebAccessModeResponseBody) SetRequestId(v string) *DescribeWebA
 type DescribeWebAccessModeResponseBodyDomainModes struct {
 	// The mode in which the website service is added. Valid values:
 	//
-	// *   **0**: A record
-	// *   **1**: anti-DDoS mode
-	// *   **2**: origin redundancy mode
+	// 	- **0**: A record
+	//
+	// 	- **1**: anti-DDoS mode
+	//
+	// 	- **2**: origin redundancy mode
+	//
+	// example:
+	//
+	// 0
 	AccessMode *int32 `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -15381,8 +19383,16 @@ type DescribeWebAreaBlockConfigsRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15408,6 +19418,10 @@ type DescribeWebAreaBlockConfigsResponseBody struct {
 	// An array that consists of the configurations of the Location Blacklist (Domain Names) policy.
 	AreaBlockConfigs []*DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs `json:"AreaBlockConfigs,omitempty" xml:"AreaBlockConfigs,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15431,6 +19445,10 @@ func (s *DescribeWebAreaBlockConfigsResponseBody) SetRequestId(v string) *Descri
 
 type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs struct {
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The configuration of the blocked locations.
 	RegionList []*DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
@@ -15457,10 +19475,19 @@ func (s *DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs) SetRegionList(
 type DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList struct {
 	// Indicates whether the location is blocked. Valid values:
 	//
-	// *   **0**: yes
-	// *   **1**: no
+	// 	- **0**: yes
+	//
+	// 	- **1**: no
+	//
+	// example:
+	//
+	// 0
 	Block *int32 `json:"Block,omitempty" xml:"Block,omitempty"`
 	// The name of the location.
+	//
+	// example:
+	//
+	// CN-SHANGHAI
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -15515,12 +19542,28 @@ type DescribeWebCCRulesRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15554,8 +19597,16 @@ func (s *DescribeWebCCRulesRequest) SetResourceGroupId(v string) *DescribeWebCCR
 
 type DescribeWebCCRulesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EAED912D-909E-45F0-AF74-AC0CCDCAE314
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned custom frequency control rules.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// An array that consists of the details of the custom frequency control rule.
 	WebCCRules []*DescribeWebCCRulesResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
@@ -15587,23 +19638,53 @@ func (s *DescribeWebCCRulesResponseBody) SetWebCCRules(v []*DescribeWebCCRulesRe
 type DescribeWebCCRulesResponseBodyWebCCRules struct {
 	// The blocking type. Valid values:
 	//
-	// *   **close**: blocks requests.
-	// *   **captcha**: enables Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification.
+	// 	- **close**: blocks requests.
+	//
+	// 	- **captcha**: enables Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification.
+	//
+	// example:
+	//
+	// close
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	// The number of requests that are allowed from an individual IP address. Valid values: **2** to **2000**.
+	// The number of requests that are allowed from an individual IP address. Valid values: **2*	- to **2000**.
+	//
+	// example:
+	//
+	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The check intervals. Valid values: **5** to **10800**. Unit: seconds.
+	// The check intervals. Valid values: **5*	- to **10800**. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The match mode. Valid values:
 	//
-	// *   **prefix**: prefix match
-	// *   **match**: exact match
+	// 	- **prefix**: prefix match
+	//
+	// 	- **match**: exact match
+	//
+	// example:
+	//
+	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The blocking duration. Valid values: **1** to **1440**. Unit: minutes.
+	// The blocking duration. Valid values: **1*	- to **1440**. Unit: minutes.
+	//
+	// example:
+	//
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	// The check path.
+	//
+	// example:
+	//
+	// /hello
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -15681,10 +19762,18 @@ func (s *DescribeWebCCRulesResponse) SetBody(v *DescribeWebCCRulesResponseBody) 
 
 type DescribeWebCacheConfigsRequest struct {
 	// An array consisting of domain names for which you want to query the Static Page Caching configurations.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15710,6 +19799,10 @@ type DescribeWebCacheConfigsResponseBody struct {
 	// An array that consists of Static Page Caching configurations.
 	DomainCacheConfigs []*DescribeWebCacheConfigsResponseBodyDomainCacheConfigs `json:"DomainCacheConfigs,omitempty" xml:"DomainCacheConfigs,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15735,17 +19828,32 @@ type DescribeWebCacheConfigsResponseBodyDomainCacheConfigs struct {
 	// An array that consists of custom caching rules.
 	CustomRules []*DescribeWebCacheConfigsResponseBodyDomainCacheConfigsCustomRules `json:"CustomRules,omitempty" xml:"CustomRules,omitempty" type:"Repeated"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The status of the Static Page Caching policy. Valid values:
 	//
-	// *   **1**: enabled
-	// *   **0**: disabled
+	// 	- **1**: enabled
+	//
+	// 	- **0**: disabled
+	//
+	// example:
+	//
+	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The cache mode. Valid values:
 	//
-	// *   **standard**: The standard cache mode is used.
-	// *   **aggressive**: The enhanced cache mode is used.
-	// *   **bypass**: No data is cached.
+	// 	- **standard**: The standard cache mode is used.
+	//
+	// 	- **aggressive**: The enhanced cache mode is used.
+	//
+	// 	- **bypass**: No data is cached.
+	//
+	// example:
+	//
+	// bypass
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -15779,16 +19887,34 @@ func (s *DescribeWebCacheConfigsResponseBodyDomainCacheConfigs) SetMode(v string
 
 type DescribeWebCacheConfigsResponseBodyDomainCacheConfigsCustomRules struct {
 	// The expiration time of the page cache. Unit: seconds.
+	//
+	// example:
+	//
+	// 86400
 	CacheTtl *int64 `json:"CacheTtl,omitempty" xml:"CacheTtl,omitempty"`
 	// The cache mode. Valid values:
 	//
-	// *   **standard**: The standard cache mode is used.
-	// *   **aggressive**: The enhanced cache mode is used.
-	// *   **bypass**: No data is cached.
+	// 	- **standard**: The standard cache mode is used.
+	//
+	// 	- **aggressive**: The enhanced cache mode is used.
+	//
+	// 	- **bypass**: No data is cached.
+	//
+	// example:
+	//
+	// standard
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// c1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The path to the cached page.
+	//
+	// example:
+	//
+	// /blog/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -15853,8 +19979,16 @@ type DescribeWebCcProtectSwitchRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15880,6 +20014,10 @@ type DescribeWebCcProtectSwitchResponseBody struct {
 	// The status of each protection policy for a website.
 	ProtectSwitchList []*DescribeWebCcProtectSwitchResponseBodyProtectSwitchList `json:"ProtectSwitchList,omitempty" xml:"ProtectSwitchList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3ADD9EED-CA4B-488C-BC82-01B0B899363D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15904,54 +20042,106 @@ func (s *DescribeWebCcProtectSwitchResponseBody) SetRequestId(v string) *Describ
 type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
 	// The mode of the Intelligent Protection policy. Valid values:
 	//
-	// *   **watch**: the Warning mode
-	// *   **defense**: the Defense mode
+	// 	- **watch**: the Warning mode
+	//
+	// 	- **defense**: the Defense mode
+	//
+	// example:
+	//
+	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
 	// The status of the Intelligent Protection policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 1
 	AiRuleEnable *int32 `json:"AiRuleEnable,omitempty" xml:"AiRuleEnable,omitempty"`
 	// The level of the Intelligent Protection policy. Valid values:
 	//
-	// *   **level30**: the Low level
-	// *   **level60**: the Normal level
-	// *   **level90**: the Strict level
+	// 	- **level30**: the Low level
+	//
+	// 	- **level60**: the Normal level
+	//
+	// 	- **level90**: the Strict level
+	//
+	// example:
+	//
+	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
 	// The status of the Black Lists and White Lists (Domain Names) policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 1
 	BlackWhiteListEnable *int32 `json:"BlackWhiteListEnable,omitempty" xml:"BlackWhiteListEnable,omitempty"`
 	// The status of the Custom Rule switch for the Frequency Control policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 0
 	CcCustomRuleEnable *int32 `json:"CcCustomRuleEnable,omitempty" xml:"CcCustomRuleEnable,omitempty"`
 	// The status of the Frequency Control policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 1
 	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
 	// The mode of the Frequency Control policy. Valid values:
 	//
-	// *   **default**: Normal
-	// *   **gf_under_attack**: Emergency
-	// *   **gf_sos_verify**: Strict
-	// *   **gf_sos_enhance**: Super Strict
+	// 	- **default**: Normal
+	//
+	// 	- **gf_under_attack**: Emergency
+	//
+	// 	- **gf_sos_verify**: Strict
+	//
+	// 	- **gf_sos_enhance**: Super Strict
+	//
+	// example:
+	//
+	// default
 	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The status of the Accurate Access Control policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 0
 	PreciseRuleEnable *int32 `json:"PreciseRuleEnable,omitempty" xml:"PreciseRuleEnable,omitempty"`
 	// The status of the Location Blacklist (Domain Names) policy. Valid values:
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled
+	//
+	// example:
+	//
+	// 0
 	RegionBlockEnable *int32 `json:"RegionBlockEnable,omitempty" xml:"RegionBlockEnable,omitempty"`
 }
 
@@ -16049,6 +20239,10 @@ func (s *DescribeWebCcProtectSwitchResponse) SetBody(v *DescribeWebCcProtectSwit
 
 type DescribeWebCustomPortsRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -16067,6 +20261,10 @@ func (s *DescribeWebCustomPortsRequest) SetResourceGroupId(v string) *DescribeWe
 
 type DescribeWebCustomPortsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array consisting of information about supported custom ports that are used by a website.
 	WebCustomPorts []*DescribeWebCustomPortsResponseBodyWebCustomPorts `json:"WebCustomPorts,omitempty" xml:"WebCustomPorts,omitempty" type:"Repeated"`
@@ -16095,8 +20293,13 @@ type DescribeWebCustomPortsResponseBodyWebCustomPorts struct {
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **http**
-	// *   **https**
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// example:
+	//
+	// http
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
@@ -16151,8 +20354,16 @@ type DescribeWebInstanceRelationsRequest struct {
 	// The domain names of the website. list
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -16176,6 +20387,10 @@ func (s *DescribeWebInstanceRelationsRequest) SetResourceGroupId(v string) *Desc
 
 type DescribeWebInstanceRelationsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0222382B-5FE5-4FF7-BC9B-97EE31D58818
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the instances to which a website service is added.
 	WebInstanceRelations []*DescribeWebInstanceRelationsResponseBodyWebInstanceRelations `json:"WebInstanceRelations,omitempty" xml:"WebInstanceRelations,omitempty" type:"Repeated"`
@@ -16201,6 +20416,10 @@ func (s *DescribeWebInstanceRelationsResponseBody) SetWebInstanceRelations(v []*
 
 type DescribeWebInstanceRelationsResponseBodyWebInstanceRelations struct {
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The information about the instance to which a website service is added.
 	InstanceDetails []*DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
@@ -16229,10 +20448,19 @@ type DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetails
 	EipList []*string `json:"EipList,omitempty" xml:"EipList,omitempty" type:"Repeated"`
 	// The function plan of the instance. Valid values:
 	//
-	// *   **default**: Standard function plan
-	// *   **enhance**: Enhanced function plan
+	// 	- **default**: Standard function plan
+	//
+	// 	- **enhance**: Enhanced function plan
+	//
+	// example:
+	//
+	// enhance
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-0pp163pd****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -16292,8 +20520,16 @@ type DescribeWebPreciseAccessRuleRequest struct {
 	// An array that consists of the domain names of websites.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -16319,6 +20555,10 @@ type DescribeWebPreciseAccessRuleResponseBody struct {
 	// An array consisting of the configuration of the accurate access control rule that is created for the website.
 	PreciseAccessConfigList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList `json:"PreciseAccessConfigList,omitempty" xml:"PreciseAccessConfigList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 209EEFBF-B0C7-441E-8C28-D0945A57A638
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16342,6 +20582,10 @@ func (s *DescribeWebPreciseAccessRuleResponseBody) SetRequestId(v string) *Descr
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList struct {
 	// The domain name of the website.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// An array that consists of the rules.
 	RuleList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
@@ -16368,20 +20612,39 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList) SetRul
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList struct {
 	// The action triggered if the rule is matched. Valid values:
 	//
-	// *   **accept**: allows the requests that match the rule.
-	// *   **block**: blocks the requests that match the rule.
-	// *   **challenge**: implements Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule.
+	// 	- **accept**: allows the requests that match the rule.
+	//
+	// 	- **block**: blocks the requests that match the rule.
+	//
+	// 	- **challenge**: implements Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule.
+	//
+	// example:
+	//
+	// accept
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The match conditions.
 	ConditionList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
-	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. **0** indicates that the rule takes effect all the time.
+	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. **0*	- indicates that the rule takes effect all the time.
+	//
+	// example:
+	//
+	// 0
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// testrule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source of the rule. Valid values:
 	//
-	// *   **manual**: manually created. This is the default value.
-	// *   **auto**: automatically generated.
+	// 	- **manual**: manually created. This is the default value.
+	//
+	// 	- **auto**: automatically generated.
+	//
+	// example:
+	//
+	// manual
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 }
 
@@ -16420,15 +20683,31 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList
 
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList struct {
 	// The match content.
+	//
+	// example:
+	//
+	// 1.1.1.1
 	Content     *string   `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentList []*string `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
 	// The match field.
+	//
+	// example:
+	//
+	// ip
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
 	// The custom HTTP header.
 	//
-	// > This parameter takes effect only when **Field** is set to **header**.
+	// > This parameter takes effect only when **Field*	- is set to **header**.
+	//
+	// example:
+	//
+	// null
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
 	// The logical operator.
+	//
+	// example:
+	//
+	// belong
 	MatchMethod *string `json:"MatchMethod,omitempty" xml:"MatchMethod,omitempty"`
 }
 
@@ -16495,12 +20774,30 @@ func (s *DescribeWebPreciseAccessRuleResponse) SetBody(v *DescribeWebPreciseAcce
 }
 
 type DescribeWebReportTopIpRequest struct {
-	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// app.bmjqxvb.cn
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1687228200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 300
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// block
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Top       *int32  `json:"Top,omitempty" xml:"Top,omitempty"`
+	// example:
+	//
+	// 1680424200
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 5
+	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
 }
 
 func (s DescribeWebReportTopIpRequest) String() string {
@@ -16542,8 +20839,11 @@ func (s *DescribeWebReportTopIpRequest) SetTop(v int32) *DescribeWebReportTopIpR
 }
 
 type DescribeWebReportTopIpResponseBody struct {
-	DataList  []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DataList []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D21BE0C4-8E83-5E32-86C6-AA6BE9B1B5BD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeWebReportTopIpResponseBody) String() string {
@@ -16565,9 +20865,21 @@ func (s *DescribeWebReportTopIpResponseBody) SetRequestId(v string) *DescribeWeb
 }
 
 type DescribeWebReportTopIpResponseBodyDataList struct {
-	AreaId   *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Isp      *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// 90998690
+	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// example:
+	//
+	// 5
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 100017
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// 117.186.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -16629,13 +20941,34 @@ func (s *DescribeWebReportTopIpResponse) SetBody(v *DescribeWebReportTopIpRespon
 }
 
 type DescribeWebRulesRequest struct {
-	Cname              *string   `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	Domain             *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceIds        []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryDomainPattern *string   `json:"QueryDomainPattern,omitempty" xml:"QueryDomainPattern,omitempty"`
-	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// kzmk7b8tt351****.aliyunddos1014****
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// exact
+	QueryDomainPattern *string `json:"QueryDomainPattern,omitempty" xml:"QueryDomainPattern,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeWebRulesRequest) String() string {
@@ -16682,7 +21015,13 @@ func (s *DescribeWebRulesRequest) SetResourceGroupId(v string) *DescribeWebRules
 }
 
 type DescribeWebRulesResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0F5B72DD-96F4-423A-B12B-A5151DD746B8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	WebRules   []*DescribeWebRulesResponseBodyWebRules `json:"WebRules,omitempty" xml:"WebRules,omitempty" type:"Repeated"`
 }
@@ -16711,30 +21050,81 @@ func (s *DescribeWebRulesResponseBody) SetWebRules(v []*DescribeWebRulesResponse
 }
 
 type DescribeWebRulesResponseBodyWebRules struct {
-	BlackList        []*string                                          `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
-	CcEnabled        *bool                                              `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
-	CcRuleEnabled    *bool                                              `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
-	CcTemplate       *string                                            `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
-	CertName         *string                                            `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertRegion       *string                                            `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	Cname            *string                                            `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	CustomCiphers    []*string                                          `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	Domain           *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	GmCert           *DescribeWebRulesResponseBodyWebRulesGmCert        `json:"GmCert,omitempty" xml:"GmCert,omitempty" type:"Struct"`
-	Http2Enable      *bool                                              `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
-	Http2HttpsEnable *bool                                              `json:"Http2HttpsEnable,omitempty" xml:"Http2HttpsEnable,omitempty"`
-	Https2HttpEnable *bool                                              `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
-	OcspEnabled      *bool                                              `json:"OcspEnabled,omitempty" xml:"OcspEnabled,omitempty"`
-	PolicyMode       *string                                            `json:"PolicyMode,omitempty" xml:"PolicyMode,omitempty"`
-	ProxyEnabled     *bool                                              `json:"ProxyEnabled,omitempty" xml:"ProxyEnabled,omitempty"`
-	ProxyTypes       []*DescribeWebRulesResponseBodyWebRulesProxyTypes  `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
-	PunishReason     *int32                                             `json:"PunishReason,omitempty" xml:"PunishReason,omitempty"`
-	PunishStatus     *bool                                              `json:"PunishStatus,omitempty" xml:"PunishStatus,omitempty"`
-	RealServers      []*DescribeWebRulesResponseBodyWebRulesRealServers `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	Ssl13Enabled     *bool                                              `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
-	SslCiphers       *string                                            `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
-	SslProtocols     *string                                            `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
-	WhiteList        []*string                                          `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
+	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CcEnabled *bool `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
+	// example:
+	//
+	// false
+	CcRuleEnabled *bool `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
+	// example:
+	//
+	// default
+	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
+	// example:
+	//
+	// testcert
+	CertName   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// example:
+	//
+	// kzmk7b8tt351****.aliyunddos1014****
+	Cname         *string   `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// example.com
+	Domain *string                                     `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	GmCert *DescribeWebRulesResponseBodyWebRulesGmCert `json:"GmCert,omitempty" xml:"GmCert,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Http2Enable *bool `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
+	// example:
+	//
+	// true
+	Http2HttpsEnable *bool `json:"Http2HttpsEnable,omitempty" xml:"Http2HttpsEnable,omitempty"`
+	// example:
+	//
+	// true
+	Https2HttpEnable *bool `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
+	// example:
+	//
+	// false
+	OcspEnabled *bool `json:"OcspEnabled,omitempty" xml:"OcspEnabled,omitempty"`
+	// example:
+	//
+	// ip_hash
+	PolicyMode *string `json:"PolicyMode,omitempty" xml:"PolicyMode,omitempty"`
+	// example:
+	//
+	// true
+	ProxyEnabled *bool                                             `json:"ProxyEnabled,omitempty" xml:"ProxyEnabled,omitempty"`
+	ProxyTypes   []*DescribeWebRulesResponseBodyWebRulesProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PunishReason *int32 `json:"PunishReason,omitempty" xml:"PunishReason,omitempty"`
+	// example:
+	//
+	// true
+	PunishStatus *bool                                              `json:"PunishStatus,omitempty" xml:"PunishStatus,omitempty"`
+	RealServers  []*DescribeWebRulesResponseBodyWebRulesRealServers `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	Ssl13Enabled *bool `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
+	// example:
+	//
+	// default
+	SslCiphers *string `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
+	// example:
+	//
+	// tls1.1
+	SslProtocols *string   `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
+	WhiteList    []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeWebRulesResponseBodyWebRules) String() string {
@@ -16866,9 +21256,18 @@ func (s *DescribeWebRulesResponseBodyWebRules) SetWhiteList(v []*string) *Descri
 }
 
 type DescribeWebRulesResponseBodyWebRulesGmCert struct {
-	CertId   *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	GmEnable *int64  `json:"GmEnable,omitempty" xml:"GmEnable,omitempty"`
-	GmOnly   *int64  `json:"GmOnly,omitempty" xml:"GmOnly,omitempty"`
+	// example:
+	//
+	// 725****
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// 1
+	GmEnable *int64 `json:"GmEnable,omitempty" xml:"GmEnable,omitempty"`
+	// example:
+	//
+	// 1
+	GmOnly *int64 `json:"GmOnly,omitempty" xml:"GmOnly,omitempty"`
 }
 
 func (s DescribeWebRulesResponseBodyWebRulesGmCert) String() string {
@@ -16896,7 +21295,10 @@ func (s *DescribeWebRulesResponseBodyWebRulesGmCert) SetGmOnly(v int64) *Describ
 
 type DescribeWebRulesResponseBodyWebRulesProxyTypes struct {
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
-	ProxyType  *string   `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// example:
+	//
+	// https
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
 func (s DescribeWebRulesResponseBodyWebRulesProxyTypes) String() string {
@@ -16918,8 +21320,14 @@ func (s *DescribeWebRulesResponseBodyWebRulesProxyTypes) SetProxyType(v string) 
 }
 
 type DescribeWebRulesResponseBodyWebRulesRealServers struct {
+	// example:
+	//
+	// 192.0.XX.XX
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
-	RsType     *int32  `json:"RsType,omitempty" xml:"RsType,omitempty"`
+	// example:
+	//
+	// 0
+	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
 func (s DescribeWebRulesResponseBodyWebRulesRealServers) String() string {
@@ -16971,12 +21379,24 @@ func (s *DescribeWebRulesResponse) SetBody(v *DescribeWebRulesResponseBody) *Des
 
 type DetachSceneDefenseObjectRequest struct {
 	// The type of the object. Set the value to **Domain**, which indicates a domain name.
+	//
+	// example:
+	//
+	// Domain
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The protection asset that you want to remove from a policy. Separate multiple protection assets with commas (,).
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
 	// The ID of the policy.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -17005,11 +21425,20 @@ func (s *DetachSceneDefenseObjectRequest) SetPolicyId(v string) *DetachSceneDefe
 
 type DetachSceneDefenseObjectResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17064,6 +21493,10 @@ type DisableSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to disable.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -17082,11 +21515,20 @@ func (s *DisableSceneDefensePolicyRequest) SetPolicyId(v string) *DisableSceneDe
 
 type DisableSceneDefensePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17141,8 +21583,16 @@ type DisableWebAccessLogConfigRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17166,6 +21616,10 @@ func (s *DisableWebAccessLogConfigRequest) SetResourceGroupId(v string) *Disable
 
 type DisableWebAccessLogConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17215,8 +21669,16 @@ type DisableWebCCRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17240,6 +21702,10 @@ func (s *DisableWebCCRequest) SetResourceGroupId(v string) *DisableWebCCRequest 
 
 type DisableWebCCResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17289,8 +21755,16 @@ type DisableWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17314,6 +21788,10 @@ func (s *DisableWebCCRuleRequest) SetResourceGroupId(v string) *DisableWebCCRule
 
 type DisableWebCCRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17363,6 +21841,10 @@ type EmptyAutoCcBlacklistRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -17381,6 +21863,10 @@ func (s *EmptyAutoCcBlacklistRequest) SetInstanceId(v string) *EmptyAutoCcBlackl
 
 type EmptyAutoCcBlacklistResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17430,6 +21916,10 @@ type EmptyAutoCcWhitelistRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -17448,6 +21938,10 @@ func (s *EmptyAutoCcWhitelistRequest) SetInstanceId(v string) *EmptyAutoCcWhitel
 
 type EmptyAutoCcWhitelistResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17495,6 +21989,10 @@ func (s *EmptyAutoCcWhitelistResponse) SetBody(v *EmptyAutoCcWhitelistResponseBo
 
 type EmptySlsLogstoreRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17513,6 +22011,10 @@ func (s *EmptySlsLogstoreRequest) SetResourceGroupId(v string) *EmptySlsLogstore
 
 type EmptySlsLogstoreResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17562,6 +22064,10 @@ type EnableSceneDefensePolicyRequest struct {
 	// The ID of the policy that you want to enable.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -17580,11 +22086,20 @@ func (s *EnableSceneDefensePolicyRequest) SetPolicyId(v string) *EnableSceneDefe
 
 type EnableSceneDefensePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17639,8 +22154,16 @@ type EnableWebAccessLogConfigRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17664,6 +22187,10 @@ func (s *EnableWebAccessLogConfigRequest) SetResourceGroupId(v string) *EnableWe
 
 type EnableWebAccessLogConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17713,8 +22240,16 @@ type EnableWebCCRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17738,6 +22273,10 @@ func (s *EnableWebCCRequest) SetResourceGroupId(v string) *EnableWebCCRequest {
 
 type EnableWebCCResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17787,8 +22326,16 @@ type EnableWebCCRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -17812,6 +22359,10 @@ func (s *EnableWebCCRuleRequest) SetResourceGroupId(v string) *EnableWebCCRuleRe
 
 type EnableWebCCRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17861,11 +22412,20 @@ type ModifyBizBandWidthModeRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zvp2ay9b****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metering method of the burstable clean bandwidth feature. Valid values:
 	//
-	// *   **month**: the metering method of monthly 95th percentile
-	// *   **day**: the metering method of daily 95th percentile
+	// 	- **month**: the metering method of monthly 95th percentile
+	//
+	// 	- **day**: the metering method of daily 95th percentile
+	//
+	// example:
+	//
+	// month
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -17889,6 +22449,10 @@ func (s *ModifyBizBandWidthModeRequest) SetMode(v string) *ModifyBizBandWidthMod
 
 type ModifyBizBandWidthModeResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17936,10 +22500,18 @@ func (s *ModifyBizBandWidthModeResponse) SetBody(v *ModifyBizBandWidthModeRespon
 
 type ModifyBlackholeStatusRequest struct {
 	// The action that you want to perform on the instance. Set the value to **undo**, which indicates that you want to deactivate blackhole filtering.
+	//
+	// example:
+	//
+	// undo
 	BlackholeStatus *string `json:"BlackholeStatus,omitempty" xml:"BlackholeStatus,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -17963,6 +22535,10 @@ func (s *ModifyBlackholeStatusRequest) SetInstanceId(v string) *ModifyBlackholeS
 
 type ModifyBlackholeStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18009,20 +22585,37 @@ func (s *ModifyBlackholeStatusResponse) SetBody(v *ModifyBlackholeStatusResponse
 }
 
 type ModifyBlockStatusRequest struct {
-	// The blocking period. Valid values: **15** to **43200**. Unit: minutes.
+	// The blocking period. Valid values: **15*	- to **43200**. Unit: minutes.
 	//
-	// > If you set **Status** to **do**, you must also specify this parameter.
+	// > If you set **Status*	- to **do**, you must also specify this parameter.
+	//
+	// example:
+	//
+	// 60
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The ID of the Anti-DDoS Pro instance to manage.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array consisting of the Internet service provider (ISP) lines from which traffic is blocked.
+	//
+	// example:
+	//
+	// ct
 	Lines []*string `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
 	// Specifies the status of the Diversion from Origin Server policy. Valid values:
 	//
-	// *   **do**: enables the policy.
-	// *   **undo**: disables the policy.
+	// 	- **do**: enables the policy.
+	//
+	// 	- **undo**: disables the policy.
+	//
+	// example:
+	//
+	// do
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -18056,6 +22649,10 @@ func (s *ModifyBlockStatusRequest) SetStatus(v string) *ModifyBlockStatusRequest
 
 type ModifyBlockStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18103,17 +22700,34 @@ func (s *ModifyBlockStatusResponse) SetBody(v *ModifyBlockStatusResponseBody) *M
 
 type ModifyCnameReuseRequest struct {
 	// The CNAME record that you want to reuse for the website.
+	//
+	// example:
+	//
+	// 4o6ep6q217k9****.aliyunddos0004.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable CNAME reuse. Valid values:
 	//
-	// *   **1**: enables CNAME reuse.
-	// *   **2**: disables CNAME reuse.
+	// 	- **1**: enables CNAME reuse.
+	//
+	// 	- **2**: disables CNAME reuse.
+	//
+	// example:
+	//
+	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -18147,6 +22761,10 @@ func (s *ModifyCnameReuseRequest) SetResourceGroupId(v string) *ModifyCnameReuse
 
 type ModifyCnameReuseResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18194,20 +22812,28 @@ func (s *ModifyCnameReuseResponse) SetBody(v *ModifyCnameReuseResponseBody) *Mod
 
 type ModifyDomainResourceRequest struct {
 	// The domain name that is added to the Anti-DDoS Pro or Anti-DDoS Premium instance.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
 	//
 	//     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
 	//
-	// *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	// 	- **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
 	//
 	//     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
 	//
-	// *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	// 	- **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
 	//
 	//     After you turn on the switch, HTTP/2 is used.
+	//
+	// example:
+	//
+	// {"Http2":1,"Http2https":1,"Https2http":1}
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// An array consisting of the IDs of instances that you want to associate.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -18217,11 +22843,15 @@ type ModifyDomainResourceRequest struct {
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
 	// The address type of the origin server. Valid values:
 	//
-	// *   **0**: IP address
+	// 	- **0**: IP address
 	//
-	// *   **1**: domain name
+	// 	- **1**: domain name
 	//
 	//     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//
+	// example:
+	//
+	// 0
 	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
@@ -18268,10 +22898,17 @@ type ModifyDomainResourceRequestProxyTypes struct {
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **http**
-	// *   **https**
-	// *   **websocket**
-	// *   **websockets**
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// 	- **websocket**
+	//
+	// 	- **websockets**
+	//
+	// example:
+	//
+	// https
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
@@ -18295,6 +22932,10 @@ func (s *ModifyDomainResourceRequestProxyTypes) SetProxyType(v string) *ModifyDo
 
 type ModifyDomainResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18344,10 +22985,18 @@ type ModifyElasticBandWidthRequest struct {
 	// The new burstable protection bandwidth that you want to use. Unit: Gbit/s.
 	//
 	// > You can call the [DescribeElasticBandwidthSpec](~~91502~~) operation to query the available burstable protection bandwidth of the instance.
+	//
+	// example:
+	//
+	// 50
 	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
 	// The ID of the instance.
 	//
 	// >  The instance must be in a normal state. You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -18371,6 +23020,10 @@ func (s *ModifyElasticBandWidthRequest) SetInstanceId(v string) *ModifyElasticBa
 
 type ModifyElasticBandWidthResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18418,15 +23071,28 @@ func (s *ModifyElasticBandWidthResponse) SetBody(v *ModifyElasticBandWidthRespon
 
 type ModifyElasticBizBandWidthRequest struct {
 	// The burstable clean bandwidth. Unit: Mbit/s. The burstable clean bandwidth cannot exceed nine times the clean bandwidth of your Anti-DDoS Pro or Anti-DDoS Premium instance, and the sum of the clean bandwidth and the burstable clean bandwidth cannot exceed the maximum clean bandwidth that is supported by your instance. The value 0 indicates that the burstable clean bandwidth feature is disabled. You can disable the burstable clean bandwidth feature once a month.
+	//
+	// example:
+	//
+	// 0
 	ElasticBizBandwidth *int32 `json:"ElasticBizBandwidth,omitempty" xml:"ElasticBizBandwidth,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-tl32morr****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metering method of the burstable clean bandwidth feature. Valid values:
 	//
-	// *   **month**: the metering method of monthly 95th percentile
-	// *   **day**: the metering method of daily 95th percentile
+	// 	- **month**: the metering method of monthly 95th percentile
+	//
+	// 	- **day**: the metering method of daily 95th percentile
+	//
+	// example:
+	//
+	// month
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -18455,6 +23121,10 @@ func (s *ModifyElasticBizBandWidthRequest) SetMode(v string) *ModifyElasticBizBa
 
 type ModifyElasticBizBandWidthResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C566BA3A-192F-5D32-8A33-21422F975145
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18501,9 +23171,18 @@ func (s *ModifyElasticBizBandWidthResponse) SetBody(v *ModifyElasticBizBandWidth
 }
 
 type ModifyElasticBizQpsRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	OpsElasticQps *int64  `json:"OpsElasticQps,omitempty" xml:"OpsElasticQps,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// month
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 300000
+	OpsElasticQps *int64 `json:"OpsElasticQps,omitempty" xml:"OpsElasticQps,omitempty"`
 }
 
 func (s ModifyElasticBizQpsRequest) String() string {
@@ -18530,6 +23209,9 @@ func (s *ModifyElasticBizQpsRequest) SetOpsElasticQps(v int64) *ModifyElasticBiz
 }
 
 type ModifyElasticBizQpsResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18577,8 +23259,16 @@ func (s *ModifyElasticBizQpsResponse) SetBody(v *ModifyElasticBizQpsResponseBody
 
 type ModifyFullLogTtlRequest struct {
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The log storage duration of a website. Valid values: **30** to **180**. Unit: days.
+	// The log storage duration of a website. Valid values: **30*	- to **180**. Unit: days.
+	//
+	// example:
+	//
+	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
@@ -18602,6 +23292,10 @@ func (s *ModifyFullLogTtlRequest) SetTtl(v int32) *ModifyFullLogTtlRequest {
 
 type ModifyFullLogTtlResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18652,22 +23346,35 @@ type ModifyHeadersRequest struct {
 	//
 	// Take note of the following items:
 	//
-	// *   Do not use X-Forwarded-ClientSrcPort as a custom header.
-	// *   Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
+	// 	- Do not use X-Forwarded-ClientSrcPort as a custom header.
+	//
+	// 	- Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
 	//
 	// > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
+	//
+	// example:
+	//
+	// {\"X-Forwarded-ClientSrcPort\":\"\"}
 	CustomHeaders *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	//
 	// >
 	//
-	// *   You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// 	- You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
 	//
-	// *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+	//
+	// example:
+	//
+	// rg-acfmz6jbof5****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -18696,6 +23403,10 @@ func (s *ModifyHeadersRequest) SetResourceGroupId(v string) *ModifyHeadersReques
 
 type ModifyHeadersResponseBody struct {
 	// The unique ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// DC38A1D3-C042-5670-8394-8F6B1FA97B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18744,40 +23455,57 @@ func (s *ModifyHeadersResponse) SetBody(v *ModifyHeadersResponseBody) *ModifyHea
 type ModifyHealthCheckConfigRequest struct {
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The details of the health check configuration. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **Type**: the protocol type. This field is required and must be of the STRING type. Valid values: **tcp** (Layer 4) and **http** (Layer 7).
+	// 	- **Type**: the protocol type. This field is required and must be of the STRING type. Valid values: **tcp*	- (Layer 4) and **http*	- (Layer 7).
 	//
-	// *   **Domain**: the domain name, which must be of the STRING type.
-	//
-	//     **
-	//
-	//     **Note**This parameter is returned only when the Layer 7 health check configuration is queried.
-	//
-	// *   **Uri**: the check path, which must be of the STRING type.
+	// 	- **Domain**: the domain name, which must be of the STRING type.
 	//
 	//     **
 	//
 	//     **Note**This parameter is returned only when the Layer 7 health check configuration is queried.
 	//
-	// *   **Timeout**: the response timeout period, which must be of the INTEGER type. Valid values: **1** to **30**. Unit: seconds.
+	// 	- **Uri**: the check path, which must be of the STRING type.
 	//
-	// *   **Port**: the port on which you want to perform the health check, which must be of the INTEGER type.
+	//     **
 	//
-	// *   **Interval**: the health check interval, which must be of the INTEGER type. Valid values: **1** to **30**. Unit: seconds.
+	//     **Note**This parameter is returned only when the Layer 7 health check configuration is queried.
 	//
-	// *   **Up**: the number of consecutive successful health checks that must occur before declaring a port healthy, which must be of the INTEGER type. Valid values: **1** to **10**.
+	// 	- **Timeout**: the response timeout period, which must be of the INTEGER type. Valid values: **1*	- to **30**. Unit: seconds.
 	//
-	// *   **Down**: the number of consecutive failed health checks that must occur before declaring a port unhealthy, which must be of the INTEGER type. Valid values: **1** to **10**.
+	// 	- **Port**: the port on which you want to perform the health check, which must be of the INTEGER type.
+	//
+	// 	- **Interval**: the health check interval, which must be of the INTEGER type. Valid values: **1*	- to **30**. Unit: seconds.
+	//
+	// 	- **Up**: the number of consecutive successful health checks that must occur before declaring a port healthy, which must be of the INTEGER type. Valid values: **1*	- to **10**.
+	//
+	// 	- **Down**: the number of consecutive failed health checks that must occur before declaring a port unhealthy, which must be of the INTEGER type. Valid values: **1*	- to **10**.
+	//
+	// example:
+	//
+	// {"Type":"tcp","Timeout":10,"Port":8080,"Interval":10,"Up":10,"Down":40}
 	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -18811,6 +23539,10 @@ func (s *ModifyHealthCheckConfigRequest) SetInstanceId(v string) *ModifyHealthCh
 
 type ModifyHealthCheckConfigResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18860,13 +23592,26 @@ type ModifyHttp2EnableRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable HTTP/2. Valid values:
 	//
-	// *   **0**: disables HTTP/2.
-	// *   **1**: enables HTTP/2.
+	// 	- **0**: disables HTTP/2.
+	//
+	// 	- **1**: enables HTTP/2.
+	//
+	// example:
+	//
+	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -18895,6 +23640,10 @@ func (s *ModifyHttp2EnableRequest) SetResourceGroupId(v string) *ModifyHttp2Enab
 
 type ModifyHttp2EnableResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18944,10 +23693,18 @@ type ModifyInstanceRemarkRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The description of the instance.
 	//
-	// The value can contain letters, digits, and some special characters, such as`, . + - * / _` The value can be up to 500 characters in length.
+	// The value can contain letters, digits, and some special characters, such as`, . + - 	- / _` The value can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// new-remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -18971,6 +23728,10 @@ func (s *ModifyInstanceRemarkRequest) SetRemark(v string) *ModifyInstanceRemarkR
 
 type ModifyInstanceRemarkResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 7EFA2BA6-9C0A-4410-B735-FC337EB634A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19019,18 +23780,35 @@ func (s *ModifyInstanceRemarkResponse) SetBody(v *ModifyInstanceRemarkResponseBo
 type ModifyNetworkRuleAttributeRequest struct {
 	// The session persistence settings of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
+	// 	- **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30*	- to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
+	//
+	// example:
+	//
+	// {"PersistenceTimeout":900}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
 	// The forwarding port.
+	//
+	// example:
+	//
+	// 8080
 	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -19064,6 +23842,10 @@ func (s *ModifyNetworkRuleAttributeRequest) SetInstanceId(v string) *ModifyNetwo
 
 type ModifyNetworkRuleAttributeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19113,11 +23895,16 @@ type ModifyOcspStatusRequest struct {
 	// The domain name for which you want to configure the Static Page Caching policy.
 	//
 	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// click.linktech.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable the OCSP feature. Valid values:
 	//
-	// *   **1**: yes
-	// *   **0**: no
+	// 	- **1**: yes
+	//
+	// 	- **0**: no
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -19141,6 +23928,10 @@ func (s *ModifyOcspStatusRequest) SetEnable(v int32) *ModifyOcspStatusRequest {
 
 type ModifyOcspStatusResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// D8DDBA8E-8182-5C85-AA41-F17EACFCAE0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19187,18 +23978,35 @@ func (s *ModifyOcspStatusResponse) SetBody(v *ModifyOcspStatusResponseBody) *Mod
 }
 
 type ModifyPortRequest struct {
-	// The port of the origin server. Valid values: **0** to **65535**.
+	// The port of the origin server. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	BackendPort *string `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The forwarding port. Valid values: **0** to **65535**.
+	// The forwarding port. Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 55
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	// The type of the protocol. Valid values:
 	//
-	// *   **tcp**
-	// *   **udp**
+	// 	- **tcp**
+	//
+	// 	- **udp**
+	//
+	// example:
+	//
+	// tcp
 	FrontendProtocol *string `json:"FrontendProtocol,omitempty" xml:"FrontendProtocol,omitempty"`
 	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-st21zbyq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// An array that consists of the IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -19239,6 +24047,10 @@ func (s *ModifyPortRequest) SetRealServers(v []*string) *ModifyPortRequest {
 
 type ModifyPortResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19288,17 +24100,32 @@ type ModifyPortAutoCcStatusRequest struct {
 	// The ID of the instance.
 	//
 	// > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+	//
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The mode of the Intelligent Protection policy. Valid values:
 	//
-	// *   **normal**
-	// *   **loose**
-	// *   **strict**
+	// 	- **normal**
+	//
+	// 	- **loose**
+	//
+	// 	- **strict**
+	//
+	// example:
+	//
+	// normal
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// Specifies the status of the Intelligent Protection policy. Valid values:
 	//
-	// *   **on**: enables the policy.
-	// *   **off**: disables the policy.
+	// 	- **on**: enables the policy.
+	//
+	// 	- **off**: disables the policy.
+	//
+	// example:
+	//
+	// on
 	Switch *string `json:"Switch,omitempty" xml:"Switch,omitempty"`
 }
 
@@ -19327,6 +24154,10 @@ func (s *ModifyPortAutoCcStatusRequest) SetSwitch(v string) *ModifyPortAutoCcSta
 
 type ModifyPortAutoCcStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19373,8 +24204,14 @@ func (s *ModifyPortAutoCcStatusResponse) SetBody(v *ModifyPortAutoCcStatusRespon
 }
 
 type ModifyQpsModeRequest struct {
+	// example:
+	//
+	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// month
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s ModifyQpsModeRequest) String() string {
@@ -19396,6 +24233,9 @@ func (s *ModifyQpsModeRequest) SetMode(v string) *ModifyQpsModeRequest {
 }
 
 type ModifyQpsModeResponseBody struct {
+	// example:
+	//
+	// 48859E14-A9FB-4100-99FF-AAB75CA46776
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19443,19 +24283,40 @@ func (s *ModifyQpsModeResponse) SetBody(v *ModifyQpsModeResponseBody) *ModifyQps
 
 type ModifySceneDefensePolicyRequest struct {
 	// The end time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1586016000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// testpolicy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the policy that you want to modify.
 	//
 	// > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+	//
+	// example:
+	//
+	// 321a-fd31-df51-****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The start time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1585670400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The template of the policy. Valid values:
 	//
-	// *   **promotion**: important activity
-	// *   **bypass**: all traffic forwarded
+	// 	- **promotion**: important activity
+	//
+	// 	- **bypass**: all traffic forwarded
+	//
+	// example:
+	//
+	// promotion
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
@@ -19494,11 +24355,20 @@ func (s *ModifySceneDefensePolicyRequest) SetTemplate(v string) *ModifySceneDefe
 
 type ModifySceneDefensePolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F65DF043-E0EB-4796-9467-23DDCDF92C1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// 	- **true**: yes
+	//
+	// 	- **false**: no
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19552,46 +24422,77 @@ func (s *ModifySceneDefensePolicyResponse) SetBody(v *ModifySceneDefensePolicyRe
 type ModifySchedulerRuleRequest struct {
 	// The details of the CDN interaction rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
+	// 	- **ParamType**: the type of the scheduling rule. This field is required and must be of the string type. Set the value to **cdn**. This indicates that you want to modify a CDN interaction rule.
 	//
-	// *   **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. The ParamData parameter contains the following parameters:
+	// 	- **ParamData**: the values of parameters that you want to modify for the CDN interaction rule. This field is required and must be of the map type. The ParamData parameter contains the following parameters:
 	//
-	//     *   **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
-	//     *   **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
-	//     *   **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
-	//     *   **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
+	//     	- **Domain**: the accelerated domain in CDN. This parameter is required and must be of the string type.
+	//
+	//     	- **Cname**: the CNAME that is assigned to the accelerated domain. This parameter is required and must be of the string type.
+	//
+	//     	- **AccessQps**: the queries per second (QPS) threshold that is used to switch service traffic to Anti-DDoS Pro or Anti-DDoS Premium. This parameter is required and must be of the integer type.
+	//
+	//     	- **UpstreamQps**: the QPS threshold that is used to switch service traffic to CDN. This parameter is optional and must be of the integer type.
+	//
+	// example:
+	//
+	// {"ParamType":"cdn","ParamData":"Domain":"example.aliyundoc.com","Cname":"demo.aliyundoc.com","AccessQps":100,"UpstreamQps":100}}
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the rule that you want to modify.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// *   **2**: tiered protection
-	// *   **3**: network acceleration
-	// *   **5**: Alibaba Cloud CDN (CDN) interaction
-	// *   **6**: cloud service interaction
+	// 	- **2**: tiered protection
+	//
+	// 	- **3**: network acceleration
+	//
+	// 	- **5**: Alibaba Cloud CDN (CDN) interaction
+	//
+	// 	- **6**: cloud service interaction
+	//
+	// example:
+	//
+	// 2
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The details of the scheduling rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
+	// 	- **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
 	//
-	//     *   **A**: IP address
-	//     *   **CNAME**: domain name
+	//     	- **A**: IP address
 	//
-	// *   **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
+	//     	- **CNAME**: domain name
 	//
-	// *   **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0** to **100**. A larger value indicates a higher priority.
+	// 	- **Value**: the address of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type.
 	//
-	// *   **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
+	// 	- **Priority**: the priority of the scheduling rule. This field is required and must be of the integer type. Valid values: **0*	- to **100**. A larger value indicates a higher priority.
 	//
-	//     *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-	//     *   **2**: the IP address of the interaction resource in the tiered protection scenario
-	//     *   **3**: the IP address that is used to accelerate access in the network acceleration scenario
-	//     *   **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
-	//     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
+	// 	- **ValueType**: the type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the integer type. Valid values:
 	//
-	// *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
+	//     	- **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
+	//
+	//     	- **2**: the IP address of the interaction resource in the tiered protection scenario
+	//
+	//     	- **3**: the IP address that is used to accelerate access in the network acceleration scenario
+	//
+	//     	- **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
+	//
+	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
+	//
+	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
+	//
+	// example:
+	//
+	// [{"Type":"A", "Value":"1.1.XX.XX", "Priority":80,"ValueType":2, "RegionId":"cn-hangzhou" },{"Type":"A", "Value":"203.199.XX.XX", "Priority":80,"ValueType":1}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -19632,10 +24533,22 @@ type ModifySchedulerRuleResponseBody struct {
 	// The CNAME that is assigned by Sec-Traffic Manager for the scheduling rule.
 	//
 	// > To enable the scheduling rule, you must map the domain name of the service to the CNAME.
+	//
+	// example:
+	//
+	// 48k7b372gpl4****.aliyunddos0001.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// FFC77501-BDF8-4BC8-9BF5-B295FBC3189B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the rule.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -19694,24 +24607,41 @@ func (s *ModifySchedulerRuleResponse) SetBody(v *ModifySchedulerRuleResponseBody
 type ModifyTlsConfigRequest struct {
 	// The details of the TLS policy. The value is a JSON string that contains the following fields:
 	//
-	// *   **ssl_protocols**: the version of TLS. This field is required. Data type: string. Valid values:
+	// 	- **ssl_protocols**: the version of TLS. This field is required. Data type: string. Valid values:
 	//
-	//     *   **tls1.0**: TLS 1.0 and later
-	//     *   **tls1.1**: TLS 1.1 and later
-	//     *   **tls1.2**: TLS 1.2 and later
+	//     	- **tls1.0**: TLS 1.0 and later
 	//
-	// *   **ssl_ciphers**: the type of the cipher suite. This field is required. Data type: string. Valid values:
+	//     	- **tls1.1**: TLS 1.1 and later
 	//
-	//     *   **all**: all cipher suites, which include strong and weak cipher suites
-	//     *   **improved**: enhanced cipher suites
-	//     *   **strong**: strong cipher suites
-	//     *   **default**: default cipher suites, which include only strong cipher suites
+	//     	- **tls1.2**: TLS 1.2 and later
+	//
+	// 	- **ssl_ciphers**: the type of the cipher suite. This field is required. Data type: string. Valid values:
+	//
+	//     	- **all**: all cipher suites, which include strong and weak cipher suites
+	//
+	//     	- **improved**: enhanced cipher suites
+	//
+	//     	- **strong**: strong cipher suites
+	//
+	//     	- **default**: default cipher suites, which include only strong cipher suites
+	//
+	// example:
+	//
+	// {"ssl_protocols":"tls1.0","ssl_ciphers":"all"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -19740,6 +24670,10 @@ func (s *ModifyTlsConfigRequest) SetResourceGroupId(v string) *ModifyTlsConfigRe
 
 type ModifyTlsConfigResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19788,22 +24722,37 @@ func (s *ModifyTlsConfigResponse) SetBody(v *ModifyTlsConfigResponseBody) *Modif
 type ModifyWebAIProtectModeRequest struct {
 	// The details of the Intelligent Protection policy. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **AiTemplate**: the level of the Intelligent Protection policy. This field is required and must be of the STRING type. Valid values:
+	// 	- **AiTemplate**: the level of the Intelligent Protection policy. This field is required and must be of the STRING type. Valid values:
 	//
-	//     *   **level30**: the Low level
-	//     *   **level60**: the Normal level
-	//     *   **level90**: the Strict level
+	//     	- **level30**: the Low level
 	//
-	// *   **AiMode**: the mode of the Intelligent Protection policy. This field is required and must be of the string type. Valid values:
+	//     	- **level60**: the Normal level
 	//
-	//     *   **watch**: the Warning mode
-	//     *   **defense**: the Defense mode
+	//     	- **level90**: the Strict level
+	//
+	// 	- **AiMode**: the mode of the Intelligent Protection policy. This field is required and must be of the string type. Valid values:
+	//
+	//     	- **watch**: the Warning mode
+	//
+	//     	- **defense**: the Defense mode
+	//
+	// example:
+	//
+	// {"AiTemplate":"level60","AiMode":"defense"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -19832,6 +24781,10 @@ func (s *ModifyWebAIProtectModeRequest) SetResourceGroupId(v string) *ModifyWebA
 
 type ModifyWebAIProtectModeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19880,16 +24833,29 @@ func (s *ModifyWebAIProtectModeResponse) SetBody(v *ModifyWebAIProtectModeRespon
 type ModifyWebAIProtectSwitchRequest struct {
 	// The details of the Intelligent Protection policy. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **AiRuleEnable**: the status of the Intelligent Protection policy. This field is required and must be of the integer type. Valid values:
+	// 	- **AiRuleEnable**: the status of the Intelligent Protection policy. This field is required and must be of the integer type. Valid values:
 	//
-	//     *   **0**: disabled
-	//     *   **1**: enabled
+	//     	- **0**: disabled
+	//
+	//     	- **1**: enabled
+	//
+	// example:
+	//
+	// {"AiRuleEnable": 1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -19918,6 +24884,10 @@ func (s *ModifyWebAIProtectSwitchRequest) SetResourceGroupId(v string) *ModifyWe
 
 type ModifyWebAIProtectSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19966,13 +24936,23 @@ func (s *ModifyWebAIProtectSwitchResponse) SetBody(v *ModifyWebAIProtectSwitchRe
 type ModifyWebAccessModeRequest struct {
 	// The mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
 	//
-	// *   **0**: A record mode
-	// *   **1**: anti-DDoS mode
-	// *   **2**: origin redundancy mode
+	// 	- **0**: A record mode
+	//
+	// 	- **1**: anti-DDoS mode
+	//
+	// 	- **2**: origin redundancy mode
+	//
+	// example:
+	//
+	// 2
 	AccessMode *int32 `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -19996,6 +24976,10 @@ func (s *ModifyWebAccessModeRequest) SetDomain(v string) *ModifyWebAccessModeReq
 
 type ModifyWebAccessModeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20045,14 +25029,26 @@ type ModifyWebAreaBlockRequest struct {
 	// The domain name whose configurations you want to modify.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The regions from which you block requests.
 	//
 	// > If you do not configure this parameter, the Blocked Regions (Domain Names) policy is disabled.
+	//
+	// example:
+	//
+	// CN-SHANGHAI
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// For more information about resource groups, see [Create a resource group](~~94485~~).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20081,6 +25077,10 @@ func (s *ModifyWebAreaBlockRequest) SetResourceGroupId(v string) *ModifyWebAreaB
 
 type ModifyWebAreaBlockResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5AA2BD65-E289-4E91-9DD9-3E1FB2140D17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20129,18 +25129,31 @@ func (s *ModifyWebAreaBlockResponse) SetBody(v *ModifyWebAreaBlockResponseBody) 
 type ModifyWebAreaBlockSwitchRequest struct {
 	// Specifies whether to enable or disable the Location Blacklist (Domain Names) policy for a domain name. The value is a string that consists of a JSON struct. The JSON struct contains the following parameters:
 	//
-	// *   **RegionblockEnable**: the status of the Location Blacklist (Domain Names) policy. This parameter is required and must be of the INTEGER type. Valid values:
+	// 	- **RegionblockEnable**: the status of the Location Blacklist (Domain Names) policy. This parameter is required and must be of the INTEGER type. Valid values:
 	//
-	//     *   **1**: enables the policy.
-	//     *   **0**: disables the policy.
+	//     	- **1**: enables the policy.
+	//
+	//     	- **0**: disables the policy.
+	//
+	// example:
+	//
+	// {"RegionblockEnable": 1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name for which you want to enable or disable the Location Blacklist policy.
 	//
 	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20169,6 +25182,10 @@ func (s *ModifyWebAreaBlockSwitchRequest) SetResourceGroupId(v string) *ModifyWe
 
 type ModifyWebAreaBlockSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20215,15 +25232,39 @@ func (s *ModifyWebAreaBlockSwitchResponse) SetBody(v *ModifyWebAreaBlockSwitchRe
 }
 
 type ModifyWebCCRuleRequest struct {
-	Act             *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// close
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// example:
+	//
+	// 3
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 30
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// prefix
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// testrule
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// /abc
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ModifyWebCCRuleRequest) String() string {
@@ -20280,6 +25321,9 @@ func (s *ModifyWebCCRuleRequest) SetUri(v string) *ModifyWebCCRuleRequest {
 }
 
 type ModifyWebCCRuleResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20329,22 +25373,36 @@ type ModifyWebCacheCustomRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The details of the custom rule. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **Name**: the name of the rule. This field is required and must be of the string type.
+	// 	- **Name**: the name of the rule. This field is required and must be of the string type.
 	//
-	// *   **Uri**: the path to the cached page. This field is required and must be of the STRING type.
+	// 	- **Uri**: the path to the cached page. This field is required and must be of the STRING type.
 	//
-	// *   **Mode**: the cache mode. This field is required and must be of the STRING type. Valid values:
+	// 	- **Mode**: the cache mode. This field is required and must be of the STRING type. Valid values:
 	//
-	//     *   **standard**: uses the standard mode.
-	//     *   **aggressive**: uses the enhanced mode.
-	//     *   **bypass**: No data is cached.
+	//     	- **standard**: uses the standard mode.
 	//
-	// *   **CacheTtl**: the expiration time of the page cache. This field is required and must be of the INTEGER type. Unit: seconds.
+	//     	- **aggressive**: uses the enhanced mode.
+	//
+	//     	- **bypass**: No data is cached.
+	//
+	// 	- **CacheTtl**: the expiration time of the page cache. This field is required and must be of the INTEGER type. Unit: seconds.
+	//
+	// example:
+	//
+	// [{"Name": "test","Uri": "/a","Mode": "standard","CacheTtl": 3600}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -20373,6 +25431,10 @@ func (s *ModifyWebCacheCustomRuleRequest) SetRules(v string) *ModifyWebCacheCust
 
 type ModifyWebCacheCustomRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20422,14 +25484,28 @@ type ModifyWebCacheModeRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The cache mode of the Static Page Caching policy. Valid values:
 	//
-	// *   **standard**: uses the standard cache mode.
-	// *   **aggressive**: uses the enhanced cache mode.
-	// *   **bypass**: caches no data.
+	// 	- **standard**: uses the standard cache mode.
+	//
+	// 	- **aggressive**: uses the enhanced cache mode.
+	//
+	// 	- **bypass**: caches no data.
+	//
+	// example:
+	//
+	// standard
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20458,6 +25534,10 @@ func (s *ModifyWebCacheModeRequest) SetResourceGroupId(v string) *ModifyWebCache
 
 type ModifyWebCacheModeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20507,15 +25587,28 @@ type ModifyWebCacheSwitchRequest struct {
 	// The domain name for which you want to configure the Static Page Caching policy.
 	//
 	// > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable or disable the Static Page Caching policy for a website. Valid values:
 	//
-	// *   **1**: enables the policy.
-	// *   **0**: disables the policy.
+	// 	- **1**: enables the policy.
+	//
+	// 	- **0**: disables the policy.
+	//
+	// example:
+	//
+	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management.
 	//
 	// If you do not configure this parameter, the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20544,6 +25637,10 @@ func (s *ModifyWebCacheSwitchRequest) SetResourceGroupId(v string) *ModifyWebCac
 
 type ModifyWebCacheSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20592,16 +25689,29 @@ func (s *ModifyWebCacheSwitchResponse) SetBody(v *ModifyWebCacheSwitchResponseBo
 type ModifyWebIpSetSwitchRequest struct {
 	// The details of the Black Lists and White Lists (Domain Names) policy. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **Bwlist_Enable**: the status of the Black Lists and White Lists (Domain Names) policy. This field is required and must be of the integer type. Valid values:
+	// 	- **Bwlist_Enable**: the status of the Black Lists and White Lists (Domain Names) policy. This field is required and must be of the integer type. Valid values:
 	//
-	//     *   **0**: disabled
-	//     *   **1**: enabled
+	//     	- **0**: disabled
+	//
+	//     	- **1**: enabled
+	//
+	// example:
+	//
+	// {"BwlistEnable":1}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20630,6 +25740,10 @@ func (s *ModifyWebIpSetSwitchRequest) SetResourceGroupId(v string) *ModifyWebIpS
 
 type ModifyWebIpSetSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20679,38 +25793,56 @@ type ModifyWebPreciseAccessRuleRequest struct {
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// example.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. If you do not specify this parameter, this rule takes effect all the time.
+	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. If you do not specify this parameter, this rule takes effect all the time.
+	//
+	// example:
+	//
+	// 600
 	Expires *int32 `json:"Expires,omitempty" xml:"Expires,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The settings of the accurate access control rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
 	//
-	// *   **action**: the action that is performed if the rule is matched. This field is required and must be of the string type. Valid values:
+	// 	- **action**: the action that is performed if the rule is matched. This field is required and must be of the string type. Valid values:
 	//
-	//     *   **accept**: allows the requests that match the rule.
-	//     *   **block**: blocks the requests that match the rule.
-	//     *   **challenge**: implements a CAPTCHA for the requests that match the rule.
+	//     	- **accept**: allows the requests that match the rule.
 	//
-	// *   **name**: the name of the rule. This field is required and must be of the string type.
+	//     	- **block**: blocks the requests that match the rule.
 	//
-	// *   **condition**: the match conditions. This field is required and must be of the map type. A match condition contains the following parameters.
+	//     	- **challenge**: implements a CAPTCHA for the requests that match the rule.
+	//
+	// 	- **name**: the name of the rule. This field is required and must be of the string type.
+	//
+	// 	- **condition**: the match conditions. This field is required and must be of the map type. A match condition contains the following parameters.
 	//
 	//     **
 	//
 	//     **Note**The AND logical operator is used to define the relationship among multiple match conditions.
 	//
-	//     *   **field**: the match field. This parameter is required and must be of the string type.
+	//     	- **field**: the match field. This parameter is required and must be of the string type.
 	//
-	//     *   **match_method**: the logical relation. This parameter is required and must be of the string type.
+	//     	- **match_method**: the logical relation. This parameter is required and must be of the string type.
 	//
 	//         **
 	//
-	//         **Note**For information about the mappings between the **field** and **match_method** parameters, see the Mappings between the field and match_method parameters table in this topic.
+	//         **Note**For information about the mappings between the **field*	- and **match_method*	- parameters, see the Mappings between the field and match_method parameters table in this topic.
 	//
-	//     *   **content**: the match content. This parameter is required and must be of the string type.
+	//     	- **content**: the match content. This parameter is required and must be of the string type.
 	//
-	// *   **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field** is **header**.
+	// 	- **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field*	- is **header**.
+	//
+	// example:
+	//
+	// [{"action":"block","name":"testrule","condition":[{"field":"uri","match_method":"contain","content":"/test/123"}]}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
@@ -20744,6 +25876,10 @@ func (s *ModifyWebPreciseAccessRuleRequest) SetRules(v string) *ModifyWebPrecise
 
 type ModifyWebPreciseAccessRuleResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// F908E959-ADA8-4D7B-8A05-FF2F67F50964
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20792,16 +25928,29 @@ func (s *ModifyWebPreciseAccessRuleResponse) SetBody(v *ModifyWebPreciseAccessRu
 type ModifyWebPreciseAccessSwitchRequest struct {
 	// The configuration of the Accurate Access Control policy. This parameter is a JSON string. The string contains the following fields:
 	//
-	// *   **PreciseRuleEnable**: the status of the Accurate Access Control policy. This field is required and must be of the INTEGER type. Valid values:
+	// 	- **PreciseRuleEnable**: the status of the Accurate Access Control policy. This field is required and must be of the INTEGER type. Valid values:
 	//
-	//     *   **0**: disables the policy.
-	//     *   **1**: enables the policy.
+	//     	- **0**: disables the policy.
+	//
+	//     	- **1**: enables the policy.
+	//
+	// example:
+	//
+	// {"PreciseRuleEnable":0}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
 	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -20830,6 +25979,10 @@ func (s *ModifyWebPreciseAccessSwitchRequest) SetResourceGroupId(v string) *Modi
 
 type ModifyWebPreciseAccessSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20876,13 +26029,34 @@ func (s *ModifyWebPreciseAccessSwitchResponse) SetBody(v *ModifyWebPreciseAccess
 }
 
 type ModifyWebRuleRequest struct {
-	Domain          *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	HttpsExt        *string   `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ProxyTypes      *string   `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty"`
-	RealServers     []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RsType          *int32    `json:"RsType,omitempty" xml:"RsType,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// {"Http2":1,"Http2https":1,"Https2http":1}
+	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [{"ProxyType":"https","ProxyPorts":[443]}]
+	ProxyTypes *string `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty"`
+	// example:
+	//
+	// 1.xxx.xxx.1
+	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 0
+	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
 func (s ModifyWebRuleRequest) String() string {
@@ -20929,6 +26103,9 @@ func (s *ModifyWebRuleRequest) SetRsType(v int32) *ModifyWebRuleRequest {
 }
 
 type ModifyWebRuleResponseBody struct {
+	// example:
+	//
+	// CB3261D2-7D1B-4ADA-9E98-A200B2CDA2DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20975,6 +26152,9 @@ func (s *ModifyWebRuleResponse) SetBody(v *ModifyWebRuleResponseBody) *ModifyWeb
 }
 
 type ReleaseInstanceRequest struct {
+	// example:
+	//
+	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -20992,6 +26172,9 @@ func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest
 }
 
 type ReleaseInstanceResponseBody struct {
+	// example:
+	//
+	// 06FFAF5F-CD3E-4886-A849-AAB40DFF6515
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21041,27 +26224,44 @@ type SwitchSchedulerRuleRequest struct {
 	// The name of the scheduling rule to manage.
 	//
 	// > You can call the [DescribeSchedulerRules](~~157481~~) operation to query the names of all scheduling rules.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the scheduling rule. Valid values:
 	//
-	// *   **2**: tiered protection rule
-	// *   **3**: network acceleration rule
-	// *   **5**: Alibaba Cloud CDN (CDN) interaction rule
-	// *   **6**: cloud service interaction rule
+	// 	- **2**: tiered protection rule
+	//
+	// 	- **3**: network acceleration rule
+	//
+	// 	- **5**: Alibaba Cloud CDN (CDN) interaction rule
+	//
+	// 	- **6**: cloud service interaction rule
+	//
+	// example:
+	//
+	// 6
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The configuration that is used to switch service traffic. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following parameters:
 	//
-	// *   **Value**: required. The IP address of the associated resource. Data type: string.
+	// 	- **Value**: required. The IP address of the associated resource. Data type: string.
 	//
-	// *   **State**: required. The operation type. Data type: integer. Valid values:
+	// 	- **State**: required. The operation type. Data type: integer. Valid values:
 	//
-	//     *   **0**: switches service traffic from the associated resource to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing.
-	//     *   **1**: switches service traffic back to the associated cloud resource.
+	//     	- **0**: switches service traffic from the associated resource to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing.
 	//
-	// *   **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
+	//     	- **1**: switches service traffic back to the associated cloud resource.
 	//
-	//     *   If the **State** parameter is set to **0**, you must set this parameter to \*\*-1\*\*. Otherwise, the call fails.
-	//     *   If the **State** parameter is set to **1**, you do not need to set this parameter.
+	// 	- **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
+	//
+	//     	- If the **State*	- parameter is set to **0**, you must set this parameter to \*\*-1\*\*. Otherwise, the call fails.
+	//
+	//     	- If the **State*	- parameter is set to **1**, you do not need to set this parameter.
+	//
+	// example:
+	//
+	// [{"Value":"39.104.XX.XX","State":0,"Interval":-1}]
 	SwitchData *string `json:"SwitchData,omitempty" xml:"SwitchData,omitempty"`
 }
 
@@ -21090,6 +26290,10 @@ func (s *SwitchSchedulerRuleRequest) SetSwitchData(v string) *SwitchSchedulerRul
 
 type SwitchSchedulerRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7E3C301F-84BB-50E4-9DB9-2937B2429C1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21234,16 +26438,21 @@ func (client *Client) AddAutoCcBlacklist(request *AddAutoCcBlacklistRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
- * By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AddAutoCcWhitelistRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddAutoCcWhitelistResponse
- */
+// Description:
+//
+// You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
+//
+// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddAutoCcWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAutoCcWhitelistResponse
 func (client *Client) AddAutoCcWhitelistWithOptions(request *AddAutoCcWhitelistRequest, runtime *util.RuntimeOptions) (_result *AddAutoCcWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21285,15 +26494,19 @@ func (client *Client) AddAutoCcWhitelistWithOptions(request *AddAutoCcWhitelistR
 	return _result, _err
 }
 
-/**
- * You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
- * By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request AddAutoCcWhitelistRequest
- * @return AddAutoCcWhitelistResponse
- */
+// Description:
+//
+// You can call the AddAutoCcWhitelist operation to add IP addresses to the whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance. This way, the Anti-DDoS Pro or Anti-DDoS Premium instance allows traffic from the IP addresses.
+//
+// By default, the traffic from the IP addresses that you add to the whitelist is always allowed. If you no longer use the whitelist, you can call the [EmptyAutoCcWhitelist](~~157505~~) operation to remove the IP addresses from the whitelist.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddAutoCcWhitelistRequest
+//
+// @return AddAutoCcWhitelistResponse
 func (client *Client) AddAutoCcWhitelist(request *AddAutoCcWhitelistRequest) (_result *AddAutoCcWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAutoCcWhitelistResponse{}
@@ -21429,13 +26642,15 @@ func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObject
 	return _result, _err
 }
 
-/**
- * If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy** parameter in the "Request parameters" section of this topic.
- *
- * @param request ConfigL7RsPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ConfigL7RsPolicyResponse
- */
+// Description:
+//
+// If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
+//
+// @param request - ConfigL7RsPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigL7RsPolicyResponse
 func (client *Client) ConfigL7RsPolicyWithOptions(request *ConfigL7RsPolicyRequest, runtime *util.RuntimeOptions) (_result *ConfigL7RsPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21452,6 +26667,10 @@ func (client *Client) ConfigL7RsPolicyWithOptions(request *ConfigL7RsPolicyReque
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamRetry)) {
+		query["UpstreamRetry"] = request.UpstreamRetry
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21477,12 +26696,13 @@ func (client *Client) ConfigL7RsPolicyWithOptions(request *ConfigL7RsPolicyReque
 	return _result, _err
 }
 
-/**
- * If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy** parameter in the "Request parameters" section of this topic.
- *
- * @param request ConfigL7RsPolicyRequest
- * @return ConfigL7RsPolicyResponse
- */
+// Description:
+//
+// If multiple origin servers are configured for a website that is added to Anti-DDoS Pro or Anti-DDoS Premium, you can modify the load balancing algorithms for back-to-origin traffic based on back-to-origin policies. The IP hash algorithm is used by default. You can change the algorithm to the round-robin or least response time algorithm. For more information, see the description of the **Policy*	- parameter in the "Request parameters" section of this topic.
+//
+// @param request - ConfigL7RsPolicyRequest
+//
+// @return ConfigL7RsPolicyResponse
 func (client *Client) ConfigL7RsPolicy(request *ConfigL7RsPolicyRequest) (_result *ConfigL7RsPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigL7RsPolicyResponse{}
@@ -21770,15 +26990,19 @@ func (client *Client) ConfigNetworkRules(request *ConfigNetworkRulesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ConfigUdpReflectRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ConfigUdpReflectResponse
- */
+// Description:
+//
+// You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ConfigUdpReflectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigUdpReflectResponse
 func (client *Client) ConfigUdpReflectWithOptions(request *ConfigUdpReflectRequest, runtime *util.RuntimeOptions) (_result *ConfigUdpReflectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21820,14 +27044,17 @@ func (client *Client) ConfigUdpReflectWithOptions(request *ConfigUdpReflectReque
 	return _result, _err
 }
 
-/**
- * You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ConfigUdpReflectRequest
- * @return ConfigUdpReflectResponse
- */
+// Description:
+//
+// You can call this operation to configure filtering policies to filter out UDP traffic from specific ports. This helps defend against UDP reflection attacks.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ConfigUdpReflectRequest
+//
+// @return ConfigUdpReflectResponse
 func (client *Client) ConfigUdpReflect(request *ConfigUdpReflectRequest) (_result *ConfigUdpReflectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigUdpReflectResponse{}
@@ -22107,13 +27334,15 @@ func (client *Client) CreateNetworkRules(request *CreateNetworkRulesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request CreatePortRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePortResponse
- */
+// Description:
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - CreatePortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePortResponse
 func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime *util.RuntimeOptions) (_result *CreatePortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22163,12 +27392,13 @@ func (client *Client) CreatePortWithOptions(request *CreatePortRequest, runtime 
 	return _result, _err
 }
 
-/**
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request CreatePortRequest
- * @return CreatePortResponse
- */
+// Description:
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - CreatePortRequest
+//
+// @return CreatePortResponse
 func (client *Client) CreatePort(request *CreatePortRequest) (_result *CreatePortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePortResponse{}
@@ -22296,16 +27526,21 @@ func (client *Client) CreateSchedulerRule(request *CreateSchedulerRuleRequest) (
 	return _result, _err
 }
 
-/**
- * You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
- * > Anti-DDoS Premium does not support the tag feature.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateTagResourcesResponse
- */
+// Description:
+//
+// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
+//
+// > Anti-DDoS Premium does not support the tag feature.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagResourcesResponse
 func (client *Client) CreateTagResourcesWithOptions(request *CreateTagResourcesRequest, runtime *util.RuntimeOptions) (_result *CreateTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22355,15 +27590,19 @@ func (client *Client) CreateTagResourcesWithOptions(request *CreateTagResourcesR
 	return _result, _err
 }
 
-/**
- * You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
- * > Anti-DDoS Premium does not support the tag feature.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request CreateTagResourcesRequest
- * @return CreateTagResourcesResponse
- */
+// Description:
+//
+// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
+//
+// > Anti-DDoS Premium does not support the tag feature.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateTagResourcesRequest
+//
+// @return CreateTagResourcesResponse
 func (client *Client) CreateTagResources(request *CreateTagResourcesRequest) (_result *CreateTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTagResourcesResponse{}
@@ -22751,14 +27990,17 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 	return _result, _err
 }
 
-/**
- * After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
- * > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request DeletePortRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeletePortResponse
- */
+// Description:
+//
+// After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
+//
+// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - DeletePortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePortResponse
 func (client *Client) DeletePortWithOptions(request *DeletePortRequest, runtime *util.RuntimeOptions) (_result *DeletePortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22808,13 +28050,15 @@ func (client *Client) DeletePortWithOptions(request *DeletePortRequest, runtime 
 	return _result, _err
 }
 
-/**
- * After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
- * > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request DeletePortRequest
- * @return DeletePortResponse
- */
+// Description:
+//
+// After you delete a port forwarding rule, the Anti-DDoS Pro or Anti-DDoS Premium instance no longer forwards service traffic on the Layer 4 port. Before you delete a specific port forwarding rule, make sure that the service traffic destined for the Layer 4 port is redirected to the origin server. This can prevent negative impacts on your services.
+//
+// > You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - DeletePortRequest
+//
+// @return DeletePortResponse
 func (client *Client) DeletePort(request *DeletePortRequest) (_result *DeletePortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePortResponse{}
@@ -22918,16 +28162,21 @@ func (client *Client) DeleteSchedulerRule(request *DeleteSchedulerRuleRequest) (
 	return _result, _err
 }
 
-/**
- * You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
- * > Only Anti-DDoS Pro supports tags.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteTagResourcesResponse
- */
+// Description:
+//
+// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
+//
+// > Only Anti-DDoS Pro supports tags.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResourcesResponse
 func (client *Client) DeleteTagResourcesWithOptions(request *DeleteTagResourcesRequest, runtime *util.RuntimeOptions) (_result *DeleteTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22981,15 +28230,19 @@ func (client *Client) DeleteTagResourcesWithOptions(request *DeleteTagResourcesR
 	return _result, _err
 }
 
-/**
- * You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
- * > Only Anti-DDoS Pro supports tags.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteTagResourcesRequest
- * @return DeleteTagResourcesResponse
- */
+// Description:
+//
+// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
+//
+// > Only Anti-DDoS Pro supports tags.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteTagResourcesRequest
+//
+// @return DeleteTagResourcesResponse
 func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_result *DeleteTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTagResourcesResponse{}
@@ -23053,15 +28306,19 @@ func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteWebCacheCustomRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteWebCacheCustomRuleResponse
- */
+// Description:
+//
+// You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteWebCacheCustomRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebCacheCustomRuleResponse
 func (client *Client) DeleteWebCacheCustomRuleWithOptions(request *DeleteWebCacheCustomRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWebCacheCustomRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23103,14 +28360,17 @@ func (client *Client) DeleteWebCacheCustomRuleWithOptions(request *DeleteWebCach
 	return _result, _err
 }
 
-/**
- * You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DeleteWebCacheCustomRuleRequest
- * @return DeleteWebCacheCustomRuleResponse
- */
+// Description:
+//
+// You can call the DeleteWebCacheCustomRule operation to delete the custom rules of the Static Page Caching policy for a website.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteWebCacheCustomRuleRequest
+//
+// @return DeleteWebCacheCustomRuleResponse
 func (client *Client) DeleteWebCacheCustomRule(request *DeleteWebCacheCustomRuleRequest) (_result *DeleteWebCacheCustomRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebCacheCustomRuleResponse{}
@@ -23222,15 +28482,19 @@ func (client *Client) DeleteWebRule(request *DeleteWebRuleRequest) (_result *Del
 	return _result, _err
 }
 
-/**
- * You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeAsyncTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAsyncTasksResponse
- */
+// Description:
+//
+// You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeAsyncTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAsyncTasksResponse
 func (client *Client) DescribeAsyncTasksWithOptions(request *DescribeAsyncTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeAsyncTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23272,14 +28536,17 @@ func (client *Client) DescribeAsyncTasksWithOptions(request *DescribeAsyncTasksR
 	return _result, _err
 }
 
-/**
- * You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeAsyncTasksRequest
- * @return DescribeAsyncTasksResponse
- */
+// Description:
+//
+// You can call the DescribeAsyncTasks operation to query the details of asynchronous export tasks, such as the IDs, start time, end time, status, parameters, and results.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeAsyncTasksRequest
+//
+// @return DescribeAsyncTasksResponse
 func (client *Client) DescribeAsyncTasks(request *DescribeAsyncTasksRequest) (_result *DescribeAsyncTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAsyncTasksResponse{}
@@ -23595,16 +28862,21 @@ func (client *Client) DescribeBlackholeStatus(request *DescribeBlackholeStatusRe
 	return _result, _err
 }
 
-/**
- * This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
- * > This operation is suitable only for Anti-DDoS Pro.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBlockStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeBlockStatusResponse
- */
+// Description:
+//
+// This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBlockStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBlockStatusResponse
 func (client *Client) DescribeBlockStatusWithOptions(request *DescribeBlockStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBlockStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23642,15 +28914,19 @@ func (client *Client) DescribeBlockStatusWithOptions(request *DescribeBlockStatu
 	return _result, _err
 }
 
-/**
- * This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
- * > This operation is suitable only for Anti-DDoS Pro.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeBlockStatusRequest
- * @return DescribeBlockStatusResponse
- */
+// Description:
+//
+// This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeBlockStatusRequest
+//
+// @return DescribeBlockStatusResponse
 func (client *Client) DescribeBlockStatus(request *DescribeBlockStatusRequest) (_result *DescribeBlockStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBlockStatusResponse{}
@@ -23822,15 +29098,19 @@ func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDDosAllEventListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDDosAllEventListResponse
- */
+// Description:
+//
+// You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDDosAllEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosAllEventListResponse
 func (client *Client) DescribeDDosAllEventListWithOptions(request *DescribeDDosAllEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosAllEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23880,14 +29160,17 @@ func (client *Client) DescribeDDosAllEventListWithOptions(request *DescribeDDosA
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDDosAllEventListRequest
- * @return DescribeDDosAllEventListResponse
- */
+// Description:
+//
+// You can call the DescribeDDosAllEventList operation to query DDoS attack events within a specific time range by page. The information about a DDoS attack event includes the start time and end time of the attack, attack event type, attacked object, peak bandwidth of attack traffic, and peak packet forwarding rate.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDDosAllEventListRequest
+//
+// @return DescribeDDosAllEventListResponse
 func (client *Client) DescribeDDosAllEventList(request *DescribeDDosAllEventListRequest) (_result *DescribeDDosAllEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosAllEventListResponse{}
@@ -23899,13 +29182,15 @@ func (client *Client) DescribeDDosAllEventList(request *DescribeDDosAllEventList
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventAreaRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDDosEventAreaResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventAreaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosEventAreaResponse
 func (client *Client) DescribeDDosEventAreaWithOptions(request *DescribeDDosEventAreaRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosEventAreaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23947,12 +29232,13 @@ func (client *Client) DescribeDDosEventAreaWithOptions(request *DescribeDDosEven
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventAreaRequest
- * @return DescribeDDosEventAreaResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventAreaRequest
+//
+// @return DescribeDDosEventAreaResponse
 func (client *Client) DescribeDDosEventArea(request *DescribeDDosEventAreaRequest) (_result *DescribeDDosEventAreaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosEventAreaResponse{}
@@ -23964,13 +29250,15 @@ func (client *Client) DescribeDDosEventArea(request *DescribeDDosEventAreaReques
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventAttackTypeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDDosEventAttackTypeResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventAttackTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosEventAttackTypeResponse
 func (client *Client) DescribeDDosEventAttackTypeWithOptions(request *DescribeDDosEventAttackTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosEventAttackTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24012,12 +29300,13 @@ func (client *Client) DescribeDDosEventAttackTypeWithOptions(request *DescribeDD
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventAttackTypeRequest
- * @return DescribeDDosEventAttackTypeResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventAttackTypeRequest
+//
+// @return DescribeDDosEventAttackTypeResponse
 func (client *Client) DescribeDDosEventAttackType(request *DescribeDDosEventAttackTypeRequest) (_result *DescribeDDosEventAttackTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosEventAttackTypeResponse{}
@@ -24029,13 +29318,15 @@ func (client *Client) DescribeDDosEventAttackType(request *DescribeDDosEventAtta
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventIspRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDDosEventIspResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventIspRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosEventIspResponse
 func (client *Client) DescribeDDosEventIspWithOptions(request *DescribeDDosEventIspRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosEventIspResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24077,12 +29368,13 @@ func (client *Client) DescribeDDosEventIspWithOptions(request *DescribeDDosEvent
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventIspRequest
- * @return DescribeDDosEventIspResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventIspRequest
+//
+// @return DescribeDDosEventIspResponse
 func (client *Client) DescribeDDosEventIsp(request *DescribeDDosEventIspRequest) (_result *DescribeDDosEventIspResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosEventIspResponse{}
@@ -24142,13 +29434,15 @@ func (client *Client) DescribeDDosEventMax(request *DescribeDDosEventMaxRequest)
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventSrcIpRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDDosEventSrcIpResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventSrcIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDosEventSrcIpResponse
 func (client *Client) DescribeDDosEventSrcIpWithOptions(request *DescribeDDosEventSrcIpRequest, runtime *util.RuntimeOptions) (_result *DescribeDDosEventSrcIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24194,12 +29488,13 @@ func (client *Client) DescribeDDosEventSrcIpWithOptions(request *DescribeDDosEve
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for volumetric attacks.
- *
- * @param request DescribeDDosEventSrcIpRequest
- * @return DescribeDDosEventSrcIpResponse
- */
+// Description:
+//
+// > This operation is suitable only for volumetric attacks.
+//
+// @param request - DescribeDDosEventSrcIpRequest
+//
+// @return DescribeDDosEventSrcIpResponse
 func (client *Client) DescribeDDosEventSrcIp(request *DescribeDDosEventSrcIpRequest) (_result *DescribeDDosEventSrcIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDosEventSrcIpResponse{}
@@ -24211,16 +29506,21 @@ func (client *Client) DescribeDDosEventSrcIp(request *DescribeDDosEventSrcIpRequ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
- * > This operation is suitable only for Anti-DDoS Premium.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDefenseCountStatisticsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDefenseCountStatisticsResponse
- */
+// Description:
+//
+// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDefenseCountStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseCountStatisticsResponse
 func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *DescribeDefenseCountStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseCountStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24254,15 +29554,19 @@ func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *Describ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
- * > This operation is suitable only for Anti-DDoS Premium.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDefenseCountStatisticsRequest
- * @return DescribeDefenseCountStatisticsResponse
- */
+// Description:
+//
+// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDefenseCountStatisticsRequest
+//
+// @return DescribeDefenseCountStatisticsResponse
 func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCountStatisticsRequest) (_result *DescribeDefenseCountStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseCountStatisticsResponse{}
@@ -24274,13 +29578,15 @@ func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCou
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Premium.
- *
- * @param request DescribeDefenseRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDefenseRecordsResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// @param request - DescribeDefenseRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseRecordsResponse
 func (client *Client) DescribeDefenseRecordsWithOptions(request *DescribeDefenseRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24334,12 +29640,13 @@ func (client *Client) DescribeDefenseRecordsWithOptions(request *DescribeDefense
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Premium.
- *
- * @param request DescribeDefenseRecordsRequest
- * @return DescribeDefenseRecordsResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// @param request - DescribeDefenseRecordsRequest
+//
+// @return DescribeDefenseRecordsResponse
 func (client *Client) DescribeDefenseRecords(request *DescribeDefenseRecordsRequest) (_result *DescribeDefenseRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseRecordsResponse{}
@@ -24531,16 +29838,21 @@ func (client *Client) DescribeDomainQPSList(request *DescribeDomainQPSListReques
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- * ### Limits
- * You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDomainResourceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDomainResourceResponse
- */
+// Description:
+//
+// You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// ### Limits
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDomainResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainResourceResponse
 func (client *Client) DescribeDomainResourceWithOptions(request *DescribeDomainResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24590,15 +29902,19 @@ func (client *Client) DescribeDomainResourceWithOptions(request *DescribeDomainR
 	return _result, _err
 }
 
-/**
- * You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- * ### Limits
- * You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeDomainResourceRequest
- * @return DescribeDomainResourceResponse
- */
+// Description:
+//
+// You can call the DescribeDomainResource operation to query the configurations of the forwarding rules that you create for a website by page. The configurations include the domain name-related configurations, protocol-related configurations, HTTPS-related configurations, and configurations that are used to mitigate HTTP flood attacks.
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// ### Limits
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeDomainResourceRequest
+//
+// @return DescribeDomainResourceResponse
 func (client *Client) DescribeDomainResource(request *DescribeDomainResourceRequest) (_result *DescribeDomainResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainResourceResponse{}
@@ -25106,13 +30422,15 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request DescribeElasticBandwidthSpecRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeElasticBandwidthSpecResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - DescribeElasticBandwidthSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticBandwidthSpecResponse
 func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeElasticBandwidthSpecRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticBandwidthSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25146,12 +30464,13 @@ func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeE
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request DescribeElasticBandwidthSpecRequest
- * @return DescribeElasticBandwidthSpecResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - DescribeElasticBandwidthSpecRequest
+//
+// @return DescribeElasticBandwidthSpecResponse
 func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandwidthSpecRequest) (_result *DescribeElasticBandwidthSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeElasticBandwidthSpecResponse{}
@@ -25411,15 +30730,19 @@ func (client *Client) DescribeHealthCheckStatus(request *DescribeHealthCheckStat
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceDetailsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceDetailsResponse
- */
+// Description:
+//
+// You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDetailsResponse
 func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstanceDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25453,14 +30776,17 @@ func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstan
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceDetailsRequest
- * @return DescribeInstanceDetailsResponse
- */
+// Description:
+//
+// You can call the DescribeInstanceDetails operation to query the information about the IP addresses and ISP lines of the instances. The information includes the IP address, status, and protection line.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceDetailsRequest
+//
+// @return DescribeInstanceDetailsResponse
 func (client *Client) DescribeInstanceDetails(request *DescribeInstanceDetailsRequest) (_result *DescribeInstanceDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDetailsResponse{}
@@ -25576,15 +30902,19 @@ func (client *Client) DescribeInstanceIds(request *DescribeInstanceIdsRequest) (
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceSpecsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceSpecsResponse
- */
+// Description:
+//
+// You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstanceSpecsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25618,14 +30948,17 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeInstanceSpecsRequest
- * @return DescribeInstanceSpecsResponse
- */
+// Description:
+//
+// You can call the DescribeInstanceSpecs operation to query the specifications of multiple Anti-DDoS Pro or Anti-DDoS Premium instances at a time. The specifications include the clean bandwidth, protection bandwidth, function plan, and the numbers of domain names and ports that can be protected.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeInstanceSpecsRequest
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (_result *DescribeInstanceSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSpecsResponse{}
@@ -25729,13 +31062,15 @@ func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
- *
- * @param request DescribeInstancesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstancesResponse
- */
+// Description:
+//
+// You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
+//
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25813,12 +31148,13 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
-/**
- * You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
- *
- * @param request DescribeInstancesRequest
- * @return DescribeInstancesResponse
- */
+// Description:
+//
+// You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
+//
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -26118,14 +31454,17 @@ func (client *Client) DescribeNetworkRules(request *DescribeNetworkRulesRequest)
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- * You can query operations performed on Anti-DDoS Pro, such as configuring burstable protection bandwidth, deactivating blackhole filtering, configuring the Diversion from Origin Server policy, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
- *
- * @param request DescribeOpEntitiesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeOpEntitiesResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// You can query operations performed on Anti-DDoS Pro, such as configuring burstable protection bandwidth, deactivating blackhole filtering, configuring the Diversion from Origin Server policy, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
+//
+// @param request - DescribeOpEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesRequest, runtime *util.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26183,13 +31522,15 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- * You can query operations performed on Anti-DDoS Pro, such as configuring burstable protection bandwidth, deactivating blackhole filtering, configuring the Diversion from Origin Server policy, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
- *
- * @param request DescribeOpEntitiesRequest
- * @return DescribeOpEntitiesResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// You can query operations performed on Anti-DDoS Pro, such as configuring burstable protection bandwidth, deactivating blackhole filtering, configuring the Diversion from Origin Server policy, using Anti-DDoS plans, changing the IP addresses of Elastic Compute Service (ECS) instances, and clearing all logs.
+//
+// @param request - DescribeOpEntitiesRequest
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_result *DescribeOpEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOpEntitiesResponse{}
@@ -26201,13 +31542,15 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request DescribePortRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribePortResponse
- */
+// Description:
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - DescribePortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortResponse
 func (client *Client) DescribePortWithOptions(request *DescribePortRequest, runtime *util.RuntimeOptions) (_result *DescribePortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26257,12 +31600,13 @@ func (client *Client) DescribePortWithOptions(request *DescribePortRequest, runt
 	return _result, _err
 }
 
-/**
- * You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request DescribePortRequest
- * @return DescribePortResponse
- */
+// Description:
+//
+// You can call this operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - DescribePortRequest
+//
+// @return DescribePortResponse
 func (client *Client) DescribePort(request *DescribePortRequest) (_result *DescribePortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortResponse{}
@@ -26274,15 +31618,19 @@ func (client *Client) DescribePort(request *DescribePortRequest) (_result *Descr
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePortAttackMaxFlowRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribePortAttackMaxFlowResponse
- */
+// Description:
+//
+// You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePortAttackMaxFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortAttackMaxFlowResponse
 func (client *Client) DescribePortAttackMaxFlowWithOptions(request *DescribePortAttackMaxFlowRequest, runtime *util.RuntimeOptions) (_result *DescribePortAttackMaxFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26328,14 +31676,17 @@ func (client *Client) DescribePortAttackMaxFlowWithOptions(request *DescribePort
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePortAttackMaxFlowRequest
- * @return DescribePortAttackMaxFlowResponse
- */
+// Description:
+//
+// You can call this operation to query the peak bandwidth and peak packet rate of attack traffic on one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePortAttackMaxFlowRequest
+//
+// @return DescribePortAttackMaxFlowResponse
 func (client *Client) DescribePortAttackMaxFlow(request *DescribePortAttackMaxFlowRequest) (_result *DescribePortAttackMaxFlowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortAttackMaxFlowResponse{}
@@ -26743,16 +32094,21 @@ func (client *Client) DescribePortViewSourceCountries(request *DescribePortViewS
 	return _result, _err
 }
 
-/**
- * You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
- * > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePortViewSourceIspsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribePortViewSourceIspsResponse
- */
+// Description:
+//
+// You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePortViewSourceIspsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePortViewSourceIspsResponse
 func (client *Client) DescribePortViewSourceIspsWithOptions(request *DescribePortViewSourceIspsRequest, runtime *util.RuntimeOptions) (_result *DescribePortViewSourceIspsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26798,15 +32154,19 @@ func (client *Client) DescribePortViewSourceIspsWithOptions(request *DescribePor
 	return _result, _err
 }
 
-/**
- * You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
- * > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribePortViewSourceIspsRequest
- * @return DescribePortViewSourceIspsResponse
- */
+// Description:
+//
+// You can call the DescribePortViewSourceIsps operation to query the ISPs from which requests are sent to one or more Anti-DDoS Pro or Anti-DDoS Premium instances within a specific period of time.
+//
+// > The data returned for this operation cannot reflect the actual traffic volume because Layer 4 identity authentication algorithms are updated for Anti-DDoS Pro and Anti-DDoS Premium. You can call this operation to calculate only the proportion of requests sent from different ISPs. If you want to query the request traffic volume, we recommend that you call the [DescribePortFlowList](~~157460~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribePortViewSourceIspsRequest
+//
+// @return DescribePortViewSourceIspsResponse
 func (client *Client) DescribePortViewSourceIsps(request *DescribePortViewSourceIspsRequest) (_result *DescribePortViewSourceIspsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePortViewSourceIspsResponse{}
@@ -26874,16 +32234,21 @@ func (client *Client) DescribePortViewSourceProvinces(request *DescribePortViewS
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
- * Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSceneDefenseObjectsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSceneDefenseObjectsResponse
- */
+// Description:
+//
+// You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
+//
+// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSceneDefenseObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSceneDefenseObjectsResponse
 func (client *Client) DescribeSceneDefenseObjectsWithOptions(request *DescribeSceneDefenseObjectsRequest, runtime *util.RuntimeOptions) (_result *DescribeSceneDefenseObjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26921,15 +32286,19 @@ func (client *Client) DescribeSceneDefenseObjectsWithOptions(request *DescribeSc
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
- * Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSceneDefenseObjectsRequest
- * @return DescribeSceneDefenseObjectsResponse
- */
+// Description:
+//
+// You can call the DescribeSceneDefenseObjects operation to query the protected objects of a scenario-specific custom policy.
+//
+// Before you call this operation, make sure that you have created a scenario-specific custom policy by calling the [CreateSceneDefensePolicy](~~159779~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSceneDefenseObjectsRequest
+//
+// @return DescribeSceneDefenseObjectsResponse
 func (client *Client) DescribeSceneDefenseObjects(request *DescribeSceneDefenseObjectsRequest) (_result *DescribeSceneDefenseObjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSceneDefenseObjectsResponse{}
@@ -26941,15 +32310,19 @@ func (client *Client) DescribeSceneDefenseObjects(request *DescribeSceneDefenseO
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSceneDefensePoliciesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSceneDefensePoliciesResponse
- */
+// Description:
+//
+// You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSceneDefensePoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSceneDefensePoliciesResponse
 func (client *Client) DescribeSceneDefensePoliciesWithOptions(request *DescribeSceneDefensePoliciesRequest, runtime *util.RuntimeOptions) (_result *DescribeSceneDefensePoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26991,14 +32364,17 @@ func (client *Client) DescribeSceneDefensePoliciesWithOptions(request *DescribeS
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSceneDefensePoliciesRequest
- * @return DescribeSceneDefensePoliciesResponse
- */
+// Description:
+//
+// You can call the DescribeSceneDefensePolicies operation to query the configurations of a scenario-specific custom policy that is created. For example, you can query the status, protected objects, and protection rules of the policy.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSceneDefensePoliciesRequest
+//
+// @return DescribeSceneDefensePoliciesResponse
 func (client *Client) DescribeSceneDefensePolicies(request *DescribeSceneDefensePoliciesRequest) (_result *DescribeSceneDefensePoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSceneDefensePoliciesResponse{}
@@ -27262,15 +32638,19 @@ func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusReques
 	return _result, _err
 }
 
-/**
- * You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeStsGrantStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeStsGrantStatusResponse
- */
+// Description:
+//
+// You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeStsGrantStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStsGrantStatusResponse
 func (client *Client) DescribeStsGrantStatusWithOptions(request *DescribeStsGrantStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeStsGrantStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27308,14 +32688,17 @@ func (client *Client) DescribeStsGrantStatusWithOptions(request *DescribeStsGran
 	return _result, _err
 }
 
-/**
- * You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeStsGrantStatusRequest
- * @return DescribeStsGrantStatusResponse
- */
+// Description:
+//
+// You can call the DescribeStsGrantStatus operation to query whether Anti-DDoS Pro or Anti-DDoS Premium of the current Alibaba Cloud account is authorized to access other cloud services.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeStsGrantStatusRequest
+//
+// @return DescribeStsGrantStatusResponse
 func (client *Client) DescribeStsGrantStatus(request *DescribeStsGrantStatusRequest) (_result *DescribeStsGrantStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStsGrantStatusResponse{}
@@ -27327,16 +32710,21 @@ func (client *Client) DescribeStsGrantStatus(request *DescribeStsGrantStatusRequ
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
- * If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSystemLogRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSystemLogResponse
- */
+// Description:
+//
+// You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
+//
+// If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSystemLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSystemLogResponse
 func (client *Client) DescribeSystemLogWithOptions(request *DescribeSystemLogRequest, runtime *util.RuntimeOptions) (_result *DescribeSystemLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27390,15 +32778,19 @@ func (client *Client) DescribeSystemLogWithOptions(request *DescribeSystemLogReq
 	return _result, _err
 }
 
-/**
- * You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
- * If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeSystemLogRequest
- * @return DescribeSystemLogResponse
- */
+// Description:
+//
+// You can call the DescribeSystemLog operation to query the system logs of Anti-DDoS Pro or Anti-DDoS Premium. The system logs contain only billing logs for the burstable clean bandwidth.
+//
+// If you have enabled the burstable clean bandwidth feature, you can call this operation to query the details of the bills of the burstable clean bandwidth.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeSystemLogRequest
+//
+// @return DescribeSystemLogResponse
 func (client *Client) DescribeSystemLog(request *DescribeSystemLogRequest) (_result *DescribeSystemLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSystemLogResponse{}
@@ -27410,16 +32802,21 @@ func (client *Client) DescribeSystemLog(request *DescribeSystemLogRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
- * > The tag feature is suitable only for Anti-DDoS Pro.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTagKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTagKeysResponse
- */
+// Description:
+//
+// You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
+//
+// > The tag feature is suitable only for Anti-DDoS Pro.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27469,15 +32866,19 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 	return _result, _err
 }
 
-/**
- * You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
- * > The tag feature is suitable only for Anti-DDoS Pro.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTagKeysRequest
- * @return DescribeTagKeysResponse
- */
+// Description:
+//
+// You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
+//
+// > The tag feature is suitable only for Anti-DDoS Pro.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTagKeysRequest
+//
+// @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result *DescribeTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagKeysResponse{}
@@ -27489,16 +32890,21 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
- * > Only Anti-DDoS Pro supports tags.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTagResourcesResponse
- */
+// Description:
+//
+// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
+//
+// > Only Anti-DDoS Pro supports tags.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagResourcesResponse
 func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27552,15 +32958,19 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 	return _result, _err
 }
 
-/**
- * You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
- * > Only Anti-DDoS Pro supports tags.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeTagResourcesRequest
- * @return DescribeTagResourcesResponse
- */
+// Description:
+//
+// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
+//
+// > Only Anti-DDoS Pro supports tags.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeTagResourcesRequest
+//
+// @return DescribeTagResourcesResponse
 func (client *Client) DescribeTagResources(request *DescribeTagResourcesRequest) (_result *DescribeTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagResourcesResponse{}
@@ -27720,13 +33130,15 @@ func (client *Client) DescribeUnBlackholeCount(request *DescribeUnBlackholeCount
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request DescribeUnBlockCountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeUnBlockCountResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - DescribeUnBlockCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUnBlockCountResponse
 func (client *Client) DescribeUnBlockCountWithOptions(request *DescribeUnBlockCountRequest, runtime *util.RuntimeOptions) (_result *DescribeUnBlockCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27760,12 +33172,13 @@ func (client *Client) DescribeUnBlockCountWithOptions(request *DescribeUnBlockCo
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request DescribeUnBlockCountRequest
- * @return DescribeUnBlockCountResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - DescribeUnBlockCountRequest
+//
+// @return DescribeUnBlockCountResponse
 func (client *Client) DescribeUnBlockCount(request *DescribeUnBlockCountRequest) (_result *DescribeUnBlockCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUnBlockCountResponse{}
@@ -27777,15 +33190,19 @@ func (client *Client) DescribeUnBlockCount(request *DescribeUnBlockCountRequest)
 	return _result, _err
 }
 
-/**
- * You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWebAccessLogDispatchStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeWebAccessLogDispatchStatusResponse
- */
+// Description:
+//
+// You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWebAccessLogDispatchStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebAccessLogDispatchStatusResponse
 func (client *Client) DescribeWebAccessLogDispatchStatusWithOptions(request *DescribeWebAccessLogDispatchStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeWebAccessLogDispatchStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27827,14 +33244,17 @@ func (client *Client) DescribeWebAccessLogDispatchStatusWithOptions(request *Des
 	return _result, _err
 }
 
-/**
- * You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWebAccessLogDispatchStatusRequest
- * @return DescribeWebAccessLogDispatchStatusResponse
- */
+// Description:
+//
+// You can call the DescribeWebAccessLogDispatchStatus operation to check whether the log analysis feature is enabled for all domain names that are added to your Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWebAccessLogDispatchStatusRequest
+//
+// @return DescribeWebAccessLogDispatchStatusResponse
 func (client *Client) DescribeWebAccessLogDispatchStatus(request *DescribeWebAccessLogDispatchStatusRequest) (_result *DescribeWebAccessLogDispatchStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebAccessLogDispatchStatusResponse{}
@@ -28086,15 +33506,19 @@ func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWebCacheConfigsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeWebCacheConfigsResponse
- */
+// Description:
+//
+// You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWebCacheConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCacheConfigsResponse
 func (client *Client) DescribeWebCacheConfigsWithOptions(request *DescribeWebCacheConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeWebCacheConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28132,14 +33556,17 @@ func (client *Client) DescribeWebCacheConfigsWithOptions(request *DescribeWebCac
 	return _result, _err
 }
 
-/**
- * You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request DescribeWebCacheConfigsRequest
- * @return DescribeWebCacheConfigsResponse
- */
+// Description:
+//
+// You can call the DescribeWebCacheConfigs operation to query the Static Page Caching configurations of websites. The configurations include cache modes and custom caching rules.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DescribeWebCacheConfigsRequest
+//
+// @return DescribeWebCacheConfigsResponse
 func (client *Client) DescribeWebCacheConfigs(request *DescribeWebCacheConfigsRequest) (_result *DescribeWebCacheConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCacheConfigsResponse{}
@@ -29031,13 +34458,15 @@ func (client *Client) EnableWebCCRule(request *EnableWebCCRuleRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
- *
- * @param request ModifyBizBandWidthModeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyBizBandWidthModeResponse
- */
+// Description:
+//
+// You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
+//
+// @param request - ModifyBizBandWidthModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBizBandWidthModeResponse
 func (client *Client) ModifyBizBandWidthModeWithOptions(request *ModifyBizBandWidthModeRequest, runtime *util.RuntimeOptions) (_result *ModifyBizBandWidthModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29075,12 +34504,13 @@ func (client *Client) ModifyBizBandWidthModeWithOptions(request *ModifyBizBandWi
 	return _result, _err
 }
 
-/**
- * You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
- *
- * @param request ModifyBizBandWidthModeRequest
- * @return ModifyBizBandWidthModeResponse
- */
+// Description:
+//
+// You can switch between the metering methods of the burstable clean bandwidth feature. The new metering method takes effect from 00:00 on the first day of the next month. You can change the metering method up to three times each calendar month. The most recent metering method that you select takes effect in the next month. You cannot change the metering method on the last day of each calendar month.
+//
+// @param request - ModifyBizBandWidthModeRequest
+//
+// @return ModifyBizBandWidthModeResponse
 func (client *Client) ModifyBizBandWidthMode(request *ModifyBizBandWidthModeRequest) (_result *ModifyBizBandWidthModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBizBandWidthModeResponse{}
@@ -29140,13 +34570,15 @@ func (client *Client) ModifyBlackholeStatus(request *ModifyBlackholeStatusReques
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyBlockStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyBlockStatusResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyBlockStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBlockStatusResponse
 func (client *Client) ModifyBlockStatusWithOptions(request *ModifyBlockStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyBlockStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29192,12 +34624,13 @@ func (client *Client) ModifyBlockStatusWithOptions(request *ModifyBlockStatusReq
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyBlockStatusRequest
- * @return ModifyBlockStatusResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyBlockStatusRequest
+//
+// @return ModifyBlockStatusResponse
 func (client *Client) ModifyBlockStatus(request *ModifyBlockStatusRequest) (_result *ModifyBlockStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBlockStatusResponse{}
@@ -29209,13 +34642,15 @@ func (client *Client) ModifyBlockStatus(request *ModifyBlockStatusRequest) (_res
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Premium.
- *
- * @param request ModifyCnameReuseRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyCnameReuseResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// @param request - ModifyCnameReuseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCnameReuseResponse
 func (client *Client) ModifyCnameReuseWithOptions(request *ModifyCnameReuseRequest, runtime *util.RuntimeOptions) (_result *ModifyCnameReuseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29261,12 +34696,13 @@ func (client *Client) ModifyCnameReuseWithOptions(request *ModifyCnameReuseReque
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Premium.
- *
- * @param request ModifyCnameReuseRequest
- * @return ModifyCnameReuseResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Premium.
+//
+// @param request - ModifyCnameReuseRequest
+//
+// @return ModifyCnameReuseResponse
 func (client *Client) ModifyCnameReuse(request *ModifyCnameReuseRequest) (_result *ModifyCnameReuseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCnameReuseResponse{}
@@ -29342,13 +34778,15 @@ func (client *Client) ModifyDomainResource(request *ModifyDomainResourceRequest)
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyElasticBandWidthRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyElasticBandWidthResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyElasticBandWidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticBandWidthResponse
 func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBandWidthRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticBandWidthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29386,12 +34824,13 @@ func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBa
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyElasticBandWidthRequest
- * @return ModifyElasticBandWidthResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyElasticBandWidthRequest
+//
+// @return ModifyElasticBandWidthResponse
 func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequest) (_result *ModifyElasticBandWidthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyElasticBandWidthResponse{}
@@ -29403,13 +34842,15 @@ func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequ
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
- *
- * @param request ModifyElasticBizBandWidthRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyElasticBizBandWidthResponse
- */
+// Description:
+//
+// Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
+//
+// @param request - ModifyElasticBizBandWidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticBizBandWidthResponse
 func (client *Client) ModifyElasticBizBandWidthWithOptions(request *ModifyElasticBizBandWidthRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticBizBandWidthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29451,12 +34892,13 @@ func (client *Client) ModifyElasticBizBandWidthWithOptions(request *ModifyElasti
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
- *
- * @param request ModifyElasticBizBandWidthRequest
- * @return ModifyElasticBizBandWidthResponse
- */
+// Description:
+//
+// Before you call this operation, make sure that you have fully understood the billing method and [pricing](https://help.aliyun.com/document_detail/283754.html) of the burstable clean bandwidth feature. After you call this operation for the first time, the modification immediately takes effect.
+//
+// @param request - ModifyElasticBizBandWidthRequest
+//
+// @return ModifyElasticBizBandWidthResponse
 func (client *Client) ModifyElasticBizBandWidth(request *ModifyElasticBizBandWidthRequest) (_result *ModifyElasticBizBandWidthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyElasticBizBandWidthResponse{}
@@ -29676,13 +35118,15 @@ func (client *Client) ModifyHealthCheckConfig(request *ModifyHealthCheckConfigRe
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyHttp2EnableRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyHttp2EnableResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyHttp2EnableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHttp2EnableResponse
 func (client *Client) ModifyHttp2EnableWithOptions(request *ModifyHttp2EnableRequest, runtime *util.RuntimeOptions) (_result *ModifyHttp2EnableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29724,12 +35168,13 @@ func (client *Client) ModifyHttp2EnableWithOptions(request *ModifyHttp2EnableReq
 	return _result, _err
 }
 
-/**
- * > This operation is suitable only for Anti-DDoS Pro.
- *
- * @param request ModifyHttp2EnableRequest
- * @return ModifyHttp2EnableResponse
- */
+// Description:
+//
+// > This operation is suitable only for Anti-DDoS Pro.
+//
+// @param request - ModifyHttp2EnableRequest
+//
+// @return ModifyHttp2EnableResponse
 func (client *Client) ModifyHttp2Enable(request *ModifyHttp2EnableRequest) (_result *ModifyHttp2EnableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHttp2EnableResponse{}
@@ -29845,13 +35290,15 @@ func (client *Client) ModifyNetworkRuleAttribute(request *ModifyNetworkRuleAttri
 	return _result, _err
 }
 
-/**
- * This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
- *
- * @param request ModifyOcspStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyOcspStatusResponse
- */
+// Description:
+//
+// This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
+//
+// @param request - ModifyOcspStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOcspStatusResponse
 func (client *Client) ModifyOcspStatusWithOptions(request *ModifyOcspStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyOcspStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29889,12 +35336,13 @@ func (client *Client) ModifyOcspStatusWithOptions(request *ModifyOcspStatusReque
 	return _result, _err
 }
 
-/**
- * This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
- *
- * @param request ModifyOcspStatusRequest
- * @return ModifyOcspStatusResponse
- */
+// Description:
+//
+// This feature is available only for a website that supports HTTPS. If HTTPS is selected for Protocol, we recommend that you enable this feature.
+//
+// @param request - ModifyOcspStatusRequest
+//
+// @return ModifyOcspStatusResponse
 func (client *Client) ModifyOcspStatus(request *ModifyOcspStatusRequest) (_result *ModifyOcspStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyOcspStatusResponse{}
@@ -29906,13 +35354,15 @@ func (client *Client) ModifyOcspStatus(request *ModifyOcspStatusRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request ModifyPortRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyPortResponse
- */
+// Description:
+//
+// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - ModifyPortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPortResponse
 func (client *Client) ModifyPortWithOptions(request *ModifyPortRequest, runtime *util.RuntimeOptions) (_result *ModifyPortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29962,12 +35412,13 @@ func (client *Client) ModifyPortWithOptions(request *ModifyPortRequest, runtime 
 	return _result, _err
 }
 
-/**
- * You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
- *
- * @param request ModifyPortRequest
- * @return ModifyPortResponse
- */
+// Description:
+//
+// You can call the ModifyPort operation by using Terraform. For more information about Terraform, see [What is Terraform?](~~95820~~).
+//
+// @param request - ModifyPortRequest
+//
+// @return ModifyPortResponse
 func (client *Client) ModifyPort(request *ModifyPortRequest) (_result *ModifyPortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPortResponse{}
@@ -30455,15 +35906,19 @@ func (client *Client) ModifyWebAreaBlock(request *ModifyWebAreaBlockRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyWebAreaBlockSwitchRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyWebAreaBlockSwitchResponse
- */
+// Description:
+//
+// You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyWebAreaBlockSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebAreaBlockSwitchResponse
 func (client *Client) ModifyWebAreaBlockSwitchWithOptions(request *ModifyWebAreaBlockSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebAreaBlockSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30505,14 +35960,17 @@ func (client *Client) ModifyWebAreaBlockSwitchWithOptions(request *ModifyWebArea
 	return _result, _err
 }
 
-/**
- * You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyWebAreaBlockSwitchRequest
- * @return ModifyWebAreaBlockSwitchResponse
- */
+// Description:
+//
+// You can call the ModifyWebAreaBlockSwitch operation to enable or disable the Location Blacklist (Domain Names) policy for a domain name.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyWebAreaBlockSwitchRequest
+//
+// @return ModifyWebAreaBlockSwitchResponse
 func (client *Client) ModifyWebAreaBlockSwitch(request *ModifyWebAreaBlockSwitchRequest) (_result *ModifyWebAreaBlockSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebAreaBlockSwitchResponse{}
@@ -30704,15 +36162,19 @@ func (client *Client) ModifyWebCacheMode(request *ModifyWebCacheModeRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyWebCacheSwitchRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyWebCacheSwitchResponse
- */
+// Description:
+//
+// You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyWebCacheSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyWebCacheSwitchResponse
 func (client *Client) ModifyWebCacheSwitchWithOptions(request *ModifyWebCacheSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCacheSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30754,14 +36216,17 @@ func (client *Client) ModifyWebCacheSwitchWithOptions(request *ModifyWebCacheSwi
 	return _result, _err
 }
 
-/**
- * You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request ModifyWebCacheSwitchRequest
- * @return ModifyWebCacheSwitchResponse
- */
+// Description:
+//
+// You can call the ModifyWebCacheSwitch operation to enable or disable the Static Page Caching policy for a website.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyWebCacheSwitchRequest
+//
+// @return ModifyWebCacheSwitchResponse
 func (client *Client) ModifyWebCacheSwitch(request *ModifyWebCacheSwitchRequest) (_result *ModifyWebCacheSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebCacheSwitchResponse{}
@@ -31001,13 +36466,15 @@ func (client *Client) ModifyWebRule(request *ModifyWebRuleRequest) (_result *Mod
 	return _result, _err
 }
 
-/**
- * The ID of the request, which is used to locate and troubleshoot issues.
- *
- * @param request ReleaseInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ReleaseInstanceResponse
- */
+// Description:
+//
+// The ID of the request, which is used to locate and troubleshoot issues.
+//
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31041,12 +36508,13 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
-/**
- * The ID of the request, which is used to locate and troubleshoot issues.
- *
- * @param request ReleaseInstanceRequest
- * @return ReleaseInstanceResponse
- */
+// Description:
+//
+// The ID of the request, which is used to locate and troubleshoot issues.
+//
+// @param request - ReleaseInstanceRequest
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -31058,16 +36526,21 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
- * Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request SwitchSchedulerRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SwitchSchedulerRuleResponse
- */
+// Description:
+//
+// You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
+//
+// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SwitchSchedulerRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchSchedulerRuleResponse
 func (client *Client) SwitchSchedulerRuleWithOptions(request *SwitchSchedulerRuleRequest, runtime *util.RuntimeOptions) (_result *SwitchSchedulerRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31109,15 +36582,19 @@ func (client *Client) SwitchSchedulerRuleWithOptions(request *SwitchSchedulerRul
 	return _result, _err
 }
 
-/**
- * You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
- * Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
- * ### Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
- *
- * @param request SwitchSchedulerRuleRequest
- * @return SwitchSchedulerRuleResponse
- */
+// Description:
+//
+// You can call the SwitchSchedulerRule operation to modify the resources to which service traffic is switched for a scheduling rule. For example, you can switch service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switch the service traffic back to the associated cloud resources.
+//
+// Before you call this operation, you must have created a scheduling rule by calling the [CreateSchedulerRule](~~157479~~) operation.
+//
+// ### Limits
+//
+// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SwitchSchedulerRuleRequest
+//
+// @return SwitchSchedulerRuleResponse
 func (client *Client) SwitchSchedulerRule(request *SwitchSchedulerRuleRequest) (_result *SwitchSchedulerRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchSchedulerRuleResponse{}
