@@ -5287,6 +5287,8 @@ func (s *ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValuePriceShowInf
 }
 
 type AccessTokenRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ggZADkghsadgogeDxdaD
@@ -5498,7 +5500,10 @@ func (s *AddInvoiceEntityHeaders) SetXAcsBtripCorpToken(v string) *AddInvoiceEnt
 }
 
 type AddInvoiceEntityRequest struct {
+	// This parameter is required.
 	Entities []*AddInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4854821
@@ -5524,11 +5529,16 @@ func (s *AddInvoiceEntityRequest) SetThirdPartId(v string) *AddInvoiceEntityRequ
 }
 
 type AddInvoiceEntityRequestEntities struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// This parameter is required.
 	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -5559,7 +5569,10 @@ func (s *AddInvoiceEntityRequestEntities) SetEntityType(v string) *AddInvoiceEnt
 }
 
 type AddInvoiceEntityShrinkRequest struct {
+	// This parameter is required.
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4854821
@@ -5730,6 +5743,8 @@ func (s *AddressGetHeaders) SetXAcsBtripSoCorpToken(v string) *AddressGetHeaders
 }
 
 type AddressGetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -5755,9 +5770,10 @@ type AddressGetRequest struct {
 	// example:
 	//
 	// 1
-	Type            *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UseBookingProxy *int32  `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
-	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Type            *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	UseBookingProxy *int32 `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s AddressGetRequest) String() string {
@@ -5983,6 +5999,7 @@ func (s *AirportSearchHeaders) SetXAcsBtripSoCorpToken(v string) *AirportSearchH
 }
 
 type AirportSearchRequest struct {
+	// This parameter is required.
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// example:
 	//
@@ -6451,6 +6468,8 @@ type ApplyAddRequest struct {
 	// 0
 	Status    *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
@@ -6470,11 +6489,13 @@ type ApplyAddRequest struct {
 	TrainBudget      *int64                             `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerList     []*ApplyAddRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
 	TravelerStandard []*ApplyAddRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
-	TripCause        *string                            `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	// This parameter is required.
+	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
 	// example:
 	//
 	// 1
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
 	// example:
 	//
@@ -6484,6 +6505,8 @@ type ApplyAddRequest struct {
 	//
 	// union001
 	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// thridpart12138
@@ -7008,22 +7031,27 @@ func (s *ApplyAddRequestHotelShare) SetType(v string) *ApplyAddRequestHotelShare
 }
 
 type ApplyAddRequestItineraryList struct {
+	// This parameter is required.
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrDate     *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	Attribute   *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// This parameter is required.
+	ArrDate   *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	// example:
 	//
 	// 12138
-	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepCity      *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// This parameter is required.
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2017-01-01 00:00:00
@@ -7032,6 +7060,8 @@ type ApplyAddRequestItineraryList struct {
 	//
 	// 34711
 	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -7058,10 +7088,14 @@ type ApplyAddRequestItineraryList struct {
 	//
 	// thridpart12138
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -7189,20 +7223,27 @@ func (s *ApplyAddRequestItineraryListItineraryTravelStandard) SetHotelAvailableN
 }
 
 type ApplyAddRequestItinerarySetList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2017-01-01 00:00:00
 	ArrDate   *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS,HGH
 	CityCodeSet *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet     *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	// This parameter is required.
+	CitySet *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
 	// example:
 	//
 	// 12345
 	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2017-01-01 00:00:00
@@ -7211,6 +7252,8 @@ type ApplyAddRequestItinerarySetList struct {
 	//
 	// 12345
 	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -7229,6 +7272,8 @@ type ApplyAddRequestItinerarySetList struct {
 	//
 	// thridpart12138
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -7557,7 +7602,9 @@ func (s *ApplyAddRequestTravelerStandard) SetUserId(v string) *ApplyAddRequestTr
 }
 
 type ApplyAddRequestTravelerStandardCarCitySet struct {
+	// This parameter is required.
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// This parameter is required.
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 
@@ -7694,6 +7741,8 @@ type ApplyAddShrinkRequest struct {
 	// 0
 	Status    *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
@@ -7713,11 +7762,13 @@ type ApplyAddShrinkRequest struct {
 	TrainBudget            *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerListShrink     *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
 	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
-	TripCause              *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	// This parameter is required.
+	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
 	// example:
 	//
 	// 1
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
 	// example:
 	//
@@ -7727,6 +7778,8 @@ type ApplyAddShrinkRequest struct {
 	//
 	// union001
 	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// thridpart12138
@@ -8080,15 +8133,21 @@ func (s *ApplyApproveHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyApproveHea
 }
 
 type ApplyApproveRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sdfg
 	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	Note    *string `json:"note,omitempty" xml:"note,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-12 16:12:53
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -8097,6 +8156,8 @@ type ApplyApproveRequest struct {
 	//
 	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// thirdpart12138
@@ -8267,11 +8328,15 @@ func (s *ApplyExternalNodeStatusUpdateHeaders) SetXAcsBtripCorpToken(v string) *
 }
 
 type ApplyExternalNodeStatusUpdateRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	NodeId           *string                                                 `json:"node_id,omitempty" xml:"node_id,omitempty"`
 	OperationRecords []*ApplyExternalNodeStatusUpdateRequestOperationRecords `json:"operation_records,omitempty" xml:"operation_records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PROCESS_AGREE
@@ -8352,11 +8417,15 @@ func (s *ApplyExternalNodeStatusUpdateRequestOperationRecords) SetType(v string)
 }
 
 type ApplyExternalNodeStatusUpdateShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	NodeId                 *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
 	OperationRecordsShrink *string `json:"operation_records,omitempty" xml:"operation_records,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PROCESS_AGREE
@@ -8506,10 +8575,13 @@ func (s *ApplyInvoiceTaskHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyInvoic
 }
 
 type ApplyInvoiceTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
-	BillDate        *string                                   `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// This parameter is required.
 	InvoiceTaskList []*ApplyInvoiceTaskRequestInvoiceTaskList `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty" type:"Repeated"`
 }
 
@@ -8555,6 +8627,8 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	// 0
 	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
 	InternationalHotelInvoiceFee  *string `json:"international_hotel_invoice_fee,omitempty" xml:"international_hotel_invoice_fee,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -8702,10 +8776,13 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetVehicleInvoiceFee(v string) 
 }
 
 type ApplyInvoiceTaskShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
-	BillDate              *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// This parameter is required.
 	InvoiceTaskListShrink *string `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty"`
 }
 
@@ -9827,6 +9904,8 @@ type ApplyModifyRequest struct {
 	//
 	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0001A1100000007EX08O
@@ -9846,16 +9925,20 @@ type ApplyModifyRequest struct {
 	TrainBudget      *int64                                `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerList     []*ApplyModifyRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
 	TravelerStandard []*ApplyModifyRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
-	TripCause        *string                               `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	// This parameter is required.
+	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
 	// example:
 	//
 	// 1
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
 	// example:
 	//
 	// union51415
 	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// thirdpart12138
@@ -10363,11 +10446,14 @@ func (s *ApplyModifyRequestHotelShare) SetType(v string) *ApplyModifyRequestHote
 }
 
 type ApplyModifyRequestItineraryList struct {
+	// This parameter is required.
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-12 00:00:00
@@ -10376,12 +10462,15 @@ type ApplyModifyRequestItineraryList struct {
 	// example:
 	//
 	// 2021413
-	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	DepCity      *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	// This parameter is required.
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-12 00:00:00
@@ -10390,6 +10479,8 @@ type ApplyModifyRequestItineraryList struct {
 	//
 	// 614141
 	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000131
@@ -10416,10 +10507,14 @@ type ApplyModifyRequestItineraryList struct {
 	//
 	// thirdpart5151
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -10908,7 +11003,9 @@ func (s *ApplyModifyRequestTravelerStandard) SetUserId(v string) *ApplyModifyReq
 }
 
 type ApplyModifyRequestTravelerStandardCarCitySet struct {
+	// This parameter is required.
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// This parameter is required.
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 
@@ -11052,6 +11149,8 @@ type ApplyModifyShrinkRequest struct {
 	//
 	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0001A1100000007EX08O
@@ -11071,16 +11170,20 @@ type ApplyModifyShrinkRequest struct {
 	TrainBudget            *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerListShrink     *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
 	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
-	TripCause              *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	// This parameter is required.
+	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
 	// example:
 	//
 	// 1
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
 	// example:
 	//
 	// union51415
 	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// thirdpart12138
@@ -12838,7 +12941,13 @@ func (s *BaseCityInfoSearchHeaders) SetXAcsBtripAccessToken(v string) *BaseCityI
 }
 
 type BaseCityInfoSearchRequest struct {
+	// This parameter is required.
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
 	// example:
 	//
 	// 0
@@ -13021,6 +13130,8 @@ func (s *BtripBillInfoAdjustHeaders) SetXAcsBtripCorpToken(v string) *BtripBillI
 }
 
 type BtripBillInfoAdjustRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -13194,9 +13305,13 @@ func (s *CarApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *CarApplyAddHeade
 }
 
 type CarApplyAddRequest struct {
-	Cause       *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	// This parameter is required.
+	Cause *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	// This parameter is required.
 	City        *string `json:"city,omitempty" xml:"city,omitempty"`
 	CityCodeSet *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-12 14:52:52
@@ -13210,10 +13325,14 @@ type CarApplyAddRequest struct {
 	// project1413
 	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// IRGS1413
@@ -13226,20 +13345,29 @@ type CarApplyAddRequest struct {
 	//
 	// GA15131
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	TimesTotal *int32 `json:"times_total,omitempty" xml:"times_total,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	TimesType *int32 `json:"times_type,omitempty" xml:"times_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	TimesUsed        *int32                                `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	TimesUsed *int32 `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	// This parameter is required.
 	Title            *string                               `json:"title,omitempty" xml:"title,omitempty"`
 	TravelerStandard []*CarApplyAddRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// OPEN1415614
@@ -13341,7 +13469,8 @@ func (s *CarApplyAddRequest) SetUserId(v string) *CarApplyAddRequest {
 
 type CarApplyAddRequestTravelerStandard struct {
 	CarCitySet []*CarApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	UserId     *string                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CarApplyAddRequestTravelerStandard) String() string {
@@ -13363,7 +13492,9 @@ func (s *CarApplyAddRequestTravelerStandard) SetUserId(v string) *CarApplyAddReq
 }
 
 type CarApplyAddRequestTravelerStandardCarCitySet struct {
+	// This parameter is required.
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// This parameter is required.
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
 }
 
@@ -13386,9 +13517,13 @@ func (s *CarApplyAddRequestTravelerStandardCarCitySet) SetCityName(v string) *Ca
 }
 
 type CarApplyAddShrinkRequest struct {
-	Cause       *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	// This parameter is required.
+	Cause *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	// This parameter is required.
 	City        *string `json:"city,omitempty" xml:"city,omitempty"`
 	CityCodeSet *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-12 14:52:52
@@ -13402,10 +13537,14 @@ type CarApplyAddShrinkRequest struct {
 	// project1413
 	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// IRGS1413
@@ -13418,20 +13557,29 @@ type CarApplyAddShrinkRequest struct {
 	//
 	// GA15131
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	TimesTotal *int32 `json:"times_total,omitempty" xml:"times_total,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	TimesType *int32 `json:"times_type,omitempty" xml:"times_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	TimesUsed              *int32  `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	TimesUsed *int32 `json:"times_used,omitempty" xml:"times_used,omitempty"`
+	// This parameter is required.
 	Title                  *string `json:"title,omitempty" xml:"title,omitempty"`
 	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// OPEN1415614
@@ -13654,14 +13802,20 @@ type CarApplyModifyRequest struct {
 	// 2022-07-12 16:12:53
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// IRGS1413
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// open62141
@@ -13711,7 +13865,7 @@ type CarApplyModifyResponseBody struct {
 	//
 	// example:
 	//
-	// {\"list\": [], \"pageSize\": 20, \"pageNo\": 1}
+	// {\\"list\\": [], \\"pageSize\\": 20, \\"pageNo\\": 1}
 	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
 	// example:
 	//
@@ -14355,18 +14509,26 @@ func (s *CarBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CarBi
 }
 
 type CarBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-01
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-01
@@ -16852,6 +17014,7 @@ func (s *CitySearchHeaders) SetXAcsBtripSoCorpToken(v string) *CitySearchHeaders
 }
 
 type CitySearchRequest struct {
+	// This parameter is required.
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 }
 
@@ -17036,10 +17199,14 @@ func (s *CommonApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CommonApply
 }
 
 type CommonApplyQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1003366164
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3
@@ -17286,6 +17453,8 @@ func (s *CommonApplySyncHeaders) SetXAcsBtripSoCorpToken(v string) *CommonApplyS
 }
 
 type CommonApplySyncRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1003366164
@@ -17295,6 +17464,8 @@ type CommonApplySyncRequest struct {
 	// 3
 	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
 	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -17303,7 +17474,8 @@ type CommonApplySyncRequest struct {
 	//
 	// asfa
 	ThirdpartyFlowId *string `json:"thirdparty_flow_id,omitempty" xml:"thirdparty_flow_id,omitempty"`
-	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CommonApplySyncRequest) String() string {
@@ -17354,7 +17526,7 @@ type CommonApplySyncResponseBody struct {
 	//
 	// example:
 	//
-	// {\"list\": [], \"pageSize\": 20, \"pageNo\": 1}
+	// {\\"list\\": [], \\"pageSize\\": 20, \\"pageNo\\": 1}
 	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
 	// example:
 	//
@@ -17468,18 +17640,26 @@ type CooperatorFlightBillSettlementQueryRequest struct {
 	//
 	// cooperator_alibtrip
 	CooperatorId *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -18556,14 +18736,20 @@ type CooperatorHotelBillSettlementQueryRequest struct {
 	//
 	// cooperator_alibtrip
 	CooperatorId *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
@@ -19605,10 +19791,14 @@ type CorpTokenRequest struct {
 	//
 	// Z2FyYmE1YTZjMDAwTixJU1M5LnZlLXtMO3FKbiYqJSM
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// open324dfsdafsgcxvxv
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -19830,6 +20020,8 @@ func (s *CostCenterDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterD
 }
 
 type CostCenterDeleteRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -19969,15 +20161,20 @@ type CostCenterModifyRequest struct {
 	//
 	// 12345
 	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s CostCenterModifyRequest) String() string {
@@ -20461,15 +20658,20 @@ type CostCenterSaveRequest struct {
 	//
 	// 12345
 	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s CostCenterSaveRequest) String() string {
@@ -20647,11 +20849,16 @@ func (s *CreateSubCorpHeaders) SetXAcsBtripCorpToken(v string) *CreateSubCorpHea
 }
 
 type CreateSubCorpRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// corp123
-	OuterCorpId   *string `json:"outer_corp_id,omitempty" xml:"outer_corp_id,omitempty"`
+	OuterCorpId *string `json:"outer_corp_id,omitempty" xml:"outer_corp_id,omitempty"`
+	// This parameter is required.
 	OuterCorpName *string `json:"outer_corp_name,omitempty" xml:"outer_corp_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -20821,6 +21028,8 @@ type DeleteInvoiceEntityRequest struct {
 	// false
 	DelAll   *bool                                 `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	Entities []*DeleteInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -20885,6 +21094,8 @@ type DeleteInvoiceEntityShrinkRequest struct {
 	// false
 	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -21080,7 +21291,8 @@ type DepartmentSaveRequestDepartList struct {
 	// example:
 	//
 	// 10
-	DepartId   *int64  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartId *int64 `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	// This parameter is required.
 	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	// example:
 	//
@@ -21282,6 +21494,8 @@ func (s *EntityAddHeaders) SetXAcsBtripSoCorpToken(v string) *EntityAddHeaders {
 
 type EntityAddRequest struct {
 	EntityDOList []*EntityAddRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -21337,6 +21551,8 @@ func (s *EntityAddRequestEntityDOList) SetEntityType(v string) *EntityAddRequest
 
 type EntityAddShrinkRequest struct {
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -21507,11 +21723,15 @@ func (s *EntityDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *EntityDeleteHea
 }
 
 type EntityDeleteRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
 	DelAll       *bool                              `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntityDOList []*EntityDeleteRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
@@ -21542,10 +21762,14 @@ func (s *EntityDeleteRequest) SetThirdpartId(v string) *EntityDeleteRequest {
 }
 
 type EntityDeleteRequestEntityDOList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -21571,11 +21795,15 @@ func (s *EntityDeleteRequestEntityDOList) SetEntityType(v string) *EntityDeleteR
 }
 
 type EntityDeleteShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
 	DelAll             *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
@@ -21761,6 +21989,8 @@ func (s *EntitySetHeaders) SetXAcsBtripSoCorpToken(v string) *EntitySetHeaders {
 
 type EntitySetRequest struct {
 	EntityDOList []*EntitySetRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -21786,10 +22016,14 @@ func (s *EntitySetRequest) SetThirdpartId(v string) *EntitySetRequest {
 }
 
 type EntitySetRequestEntityDOList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -21816,6 +22050,8 @@ func (s *EntitySetRequestEntityDOList) SetEntityType(v string) *EntitySetRequest
 
 type EntitySetShrinkRequest struct {
 	EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -22004,12 +22240,18 @@ func (s *EstimatedPriceQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Estimate
 }
 
 type EstimatedPriceQueryRequest struct {
+	// This parameter is required.
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// flight
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	DepCity  *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1670601600000
@@ -22018,6 +22260,8 @@ type EstimatedPriceQueryRequest struct {
 	//
 	// 1245
 	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1670428800000
@@ -22026,6 +22270,8 @@ type EstimatedPriceQueryRequest struct {
 	//
 	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345678910
@@ -22520,6 +22766,8 @@ func (s *ExceedApplySyncHeaders) SetXAcsBtripSoCorpToken(v string) *ExceedApplyS
 }
 
 type ExceedApplySyncRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 823744
@@ -22529,6 +22777,8 @@ type ExceedApplySyncRequest struct {
 	// 3
 	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
 	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -22537,6 +22787,8 @@ type ExceedApplySyncRequest struct {
 	//
 	// 123421
 	ThirdpartyFlowId *string `json:"thirdparty_flow_id,omitempty" xml:"thirdparty_flow_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// open5145141
@@ -22591,7 +22843,7 @@ type ExceedApplySyncResponseBody struct {
 	//
 	// example:
 	//
-	// {\"list\": [], \"pageSize\": 20, \"pageNo\": 1}
+	// {\\"list\\": [], \\"pageSize\\": 20, \\"pageNo\\": 1}
 	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
 	// example:
 	//
@@ -22701,18 +22953,26 @@ func (s *FlightBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Fl
 }
 
 type FlightBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -23676,6 +23936,8 @@ func (s *FlightCancelOrderHeaders) SetXAcsBtripCorpToken(v string) *FlightCancel
 }
 
 type FlightCancelOrderRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -23851,6 +24113,7 @@ func (s *FlightCancelOrderV2Headers) SetXAcsBtripCorpToken(v string) *FlightCanc
 }
 
 type FlightCancelOrderV2Request struct {
+	// This parameter is required.
 	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
@@ -24023,6 +24286,8 @@ type FlightCreateOrderRequest struct {
 	//
 	// HGH
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -24032,36 +24297,51 @@ type FlightCreateOrderRequest struct {
 	// 0
 	AutoPay   *int32  `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
-	BuyerUniqueKey *string                              `json:"buyer_unique_key,omitempty" xml:"buyer_unique_key,omitempty"`
-	ContactInfo    *FlightCreateOrderRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	BuyerUniqueKey *string `json:"buyer_unique_key,omitempty" xml:"buyer_unique_key,omitempty"`
+	// This parameter is required.
+	ContactInfo *FlightCreateOrderRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
 	// example:
 	//
 	// PEK
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string                `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	OrderAttr  map[string]interface{} `json:"order_attr,omitempty" xml:"order_attr,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000_1_0
 	OrderParams *string `json:"order_params,omitempty" xml:"order_params,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
@@ -24070,9 +24350,12 @@ type FlightCreateOrderRequest struct {
 	// example:
 	//
 	// 1
-	ReceiptTarget    *int32                                      `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
-	ReceiptTitle     *string                                     `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
+	ReceiptTarget *int32  `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
+	ReceiptTitle  *string `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
+	// This parameter is required.
 	TravelerInfoList []*FlightCreateOrderRequestTravelerInfoList `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -24187,7 +24470,10 @@ type FlightCreateOrderRequestContactInfo struct {
 	//
 	// ******@alibaba-inc.com
 	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
-	ContactName  *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// This parameter is required.
+	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12312345211
@@ -24223,10 +24509,14 @@ type FlightCreateOrderRequestTravelerInfoList struct {
 	// 2000-00-00
 	Birthday   *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1262651555151
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -24235,7 +24525,8 @@ type FlightCreateOrderRequestTravelerInfoList struct {
 	//
 	// 2000-00-00
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// 国籍
 	//
 	// example:
@@ -24248,10 +24539,14 @@ type FlightCreateOrderRequestTravelerInfoList struct {
 	//
 	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
 	OutUserId *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12341231232
@@ -24260,6 +24555,8 @@ type FlightCreateOrderRequestTravelerInfoList struct {
 	//
 	// 0
 	Sex *int32 `json:"sex,omitempty" xml:"sex,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -24339,6 +24636,8 @@ type FlightCreateOrderShrinkRequest struct {
 	//
 	// HGH
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -24348,36 +24647,51 @@ type FlightCreateOrderShrinkRequest struct {
 	// 0
 	AutoPay   *int32  `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
-	BuyerUniqueKey    *string `json:"buyer_unique_key,omitempty" xml:"buyer_unique_key,omitempty"`
+	BuyerUniqueKey *string `json:"buyer_unique_key,omitempty" xml:"buyer_unique_key,omitempty"`
+	// This parameter is required.
 	ContactInfoShrink *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
 	// example:
 	//
 	// PEK
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId      *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	OrderAttrShrink *string `json:"order_attr,omitempty" xml:"order_attr,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000_1_0
 	OrderParams *string `json:"order_params,omitempty" xml:"order_params,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
@@ -24386,9 +24700,12 @@ type FlightCreateOrderShrinkRequest struct {
 	// example:
 	//
 	// 1
-	ReceiptTarget          *int32  `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
-	ReceiptTitle           *string `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
+	ReceiptTarget *int32  `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
+	ReceiptTitle  *string `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
+	// This parameter is required.
 	TravelerInfoListShrink *string `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -24700,21 +25017,28 @@ type FlightCreateOrderV2Request struct {
 	// example:
 	//
 	// false
-	AsyncCreateOrderMode *bool                                  `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
-	BtripUserId          *string                                `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName            *string                                `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	ContactInfo          *FlightCreateOrderV2RequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
+	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	ContactInfo *FlightCreateOrderV2RequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshiapi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7fb731deeb4510b86c17e8c8c25740_11
-	OtaItemId      *string                                `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
-	OutOrderId     *string                                `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	TotalPriceCent *int64                                 `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
-	Travelers      []*FlightCreateOrderV2RequestTravelers `json:"travelers,omitempty" xml:"travelers,omitempty" type:"Repeated"`
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
+	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	TotalPriceCent *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	// This parameter is required.
+	Travelers []*FlightCreateOrderV2RequestTravelers `json:"travelers,omitempty" xml:"travelers,omitempty" type:"Repeated"`
 }
 
 func (s FlightCreateOrderV2Request) String() string {
@@ -24811,12 +25135,17 @@ func (s *FlightCreateOrderV2RequestContactInfo) SetSendMsgToPassenger(v bool) *F
 }
 
 type FlightCreateOrderV2RequestTravelers struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1991-01-22
 	Birthday   *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
-	CertNo     *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -24826,18 +25155,25 @@ type FlightCreateOrderV2RequestTravelers struct {
 	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
 	DeptId           *string `json:"dept_id,omitempty" xml:"dept_id,omitempty"`
 	DeptName         *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
-	Gender           *int32  `json:"gender,omitempty" xml:"gender,omitempty"`
-	InvoiceTitle     *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	Nationality      *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	NationalityCode  *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
-	PassengerName    *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// This parameter is required.
+	Gender          *int32  `json:"gender,omitempty" xml:"gender,omitempty"`
+	InvoiceTitle    *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	// This parameter is required.
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
-	PassengerType *int32  `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	Phone         *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	ProjectCode   *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle  *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	// This parameter is required.
+	Phone        *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 18155711459129970552412
@@ -24961,17 +25297,24 @@ type FlightCreateOrderV2ShrinkRequest struct {
 	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
 	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	ContactInfoShrink    *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
+	// This parameter is required.
+	ContactInfoShrink *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshiapi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7fb731deeb4510b86c17e8c8c25740_11
-	OtaItemId       *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
-	OutOrderId      *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	TotalPriceCent  *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
+	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	TotalPriceCent *int64  `json:"total_price_cent,omitempty" xml:"total_price_cent,omitempty"`
+	// This parameter is required.
 	TravelersShrink *string `json:"travelers,omitempty" xml:"travelers,omitempty"`
 }
 
@@ -25215,6 +25558,8 @@ func (s *FlightExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Fligh
 }
 
 type FlightExceedApplyQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 175634
@@ -25682,6 +26027,8 @@ func (s *FlightItineraryScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Fli
 }
 
 type FlightItineraryScanQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
@@ -26276,6 +26623,8 @@ type FlightListingSearchRequest struct {
 	//
 	// MU
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -26284,10 +26633,14 @@ type FlightListingSearchRequest struct {
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-26
@@ -27959,6 +28312,8 @@ type FlightListingSearchV2Request struct {
 	//
 	// true
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshi
@@ -27978,12 +28333,17 @@ type FlightListingSearchV2Request struct {
 	// example:
 	//
 	// false
-	NeedYCBestPrice *bool                                         `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
-	SearchJourneys  []*FlightListingSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	NeedYCBestPrice *bool `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	// This parameter is required.
+	SearchJourneys []*FlightListingSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -28054,14 +28414,20 @@ func (s *FlightListingSearchV2Request) SetTripType(v int32) *FlightListingSearch
 }
 
 type FlightListingSearchV2RequestSearchJourneys struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-09-01
@@ -28181,6 +28547,8 @@ type FlightListingSearchV2ShrinkRequest struct {
 	//
 	// true
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshi
@@ -28200,12 +28568,17 @@ type FlightListingSearchV2ShrinkRequest struct {
 	// example:
 	//
 	// false
-	NeedYCBestPrice      *bool   `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	NeedYCBestPrice *bool `json:"need_y_c_best_price,omitempty" xml:"need_y_c_best_price,omitempty"`
+	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -34108,6 +34481,8 @@ func (s *FlightOrderDetailInfoHeaders) SetXAcsBtripCorpToken(v string) *FlightOr
 }
 
 type FlightOrderDetailInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -34832,6 +35207,8 @@ func (s *FlightOrderDetailV2Headers) SetXAcsBtripCorpToken(v string) *FlightOrde
 }
 
 type FlightOrderDetailV2Request struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshiapi
@@ -37205,6 +37582,8 @@ func (s *FlightOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *FlightOrder
 }
 
 type FlightOrderQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 246584390
@@ -38382,10 +38761,14 @@ func (s *FlightOtaItemDetailHeaders) SetXAcsBtripCorpToken(v string) *FlightOtaI
 }
 
 type FlightOtaItemDetailRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 68cdc6b37c87484c98b479b49306ffbb_0
@@ -39239,6 +39622,8 @@ type FlightOtaSearchRequest struct {
 	//
 	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
@@ -39251,14 +39636,20 @@ type FlightOtaSearchRequest struct {
 	//
 	// CA2324
 	CarrierFlightNo *string `json:"carrier_flight_no,omitempty" xml:"carrier_flight_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-08-15 19:30:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CA2323
@@ -42171,6 +42562,8 @@ type FlightOtaSearchV2Request struct {
 	//
 	// true
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshi
@@ -42178,12 +42571,17 @@ type FlightOtaSearchV2Request struct {
 	// example:
 	//
 	// true
-	NeedShareFlight *bool                                     `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
-	SearchJourneys  []*FlightOtaSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
+	SearchJourneys []*FlightOtaSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -42234,18 +42632,25 @@ func (s *FlightOtaSearchV2Request) SetTripType(v int32) *FlightOtaSearchV2Reques
 }
 
 type FlightOtaSearchV2RequestSearchJourneys struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-09-01
-	DepDate         *string                                                  `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
 	SelectedFlights []*FlightOtaSearchV2RequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
 }
 
@@ -42298,6 +42703,8 @@ type FlightOtaSearchV2RequestSearchJourneysSelectedFlights struct {
 	//
 	// 2023-09-01 07:10:00
 	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HO3925
@@ -42357,6 +42764,8 @@ type FlightOtaSearchV2ShrinkRequest struct {
 	//
 	// true
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cheshi
@@ -42364,12 +42773,17 @@ type FlightOtaSearchV2ShrinkRequest struct {
 	// example:
 	//
 	// true
-	NeedShareFlight      *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -43292,19 +43706,27 @@ func (s *FlightPayOrderHeaders) SetXAcsBtripCorpToken(v string) *FlightPayOrderH
 }
 
 type FlightPayOrderRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string            `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	Extra      map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -43345,19 +43767,27 @@ func (s *FlightPayOrderRequest) SetTotalPayPrice(v int64) *FlightPayOrderRequest
 }
 
 type FlightPayOrderShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId  *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	ExtraShrink *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -43758,23 +44188,33 @@ type FlightRefundApplyRequest struct {
 	//
 	// 100
 	CorpRefundPrice *int64 `json:"corp_refund_price,omitempty" xml:"corp_refund_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// refu123
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	DisplayRefundMoney *string            `json:"display_refund_money,omitempty" xml:"display_refund_money,omitempty"`
 	Extra              map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	IsVoluntary *int32 `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FlightItem_9966772382
@@ -43785,11 +44225,15 @@ type FlightRefundApplyRequest struct {
 	// 100
 	PersonalRefundPrice *int64  `json:"personal_refund_price,omitempty" xml:"personal_refund_price,omitempty"`
 	ReasonDetail        *string `json:"reason_detail,omitempty" xml:"reason_detail,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	ReasonType        *int32    `json:"reason_type,omitempty" xml:"reason_type,omitempty"`
 	RefundVoucherInfo []*string `json:"refund_voucher_info,omitempty" xml:"refund_voucher_info,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0f9418cd2ce34af49ab0de16fea166d1
@@ -43915,23 +44359,33 @@ type FlightRefundApplyShrinkRequest struct {
 	//
 	// 100
 	CorpRefundPrice *int64 `json:"corp_refund_price,omitempty" xml:"corp_refund_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// refu123
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	DisplayRefundMoney *string `json:"display_refund_money,omitempty" xml:"display_refund_money,omitempty"`
 	ExtraShrink        *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	IsVoluntary *int32 `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FlightItem_9966772382
@@ -43942,11 +44396,15 @@ type FlightRefundApplyShrinkRequest struct {
 	// 100
 	PersonalRefundPrice *int64  `json:"personal_refund_price,omitempty" xml:"personal_refund_price,omitempty"`
 	ReasonDetail        *string `json:"reason_detail,omitempty" xml:"reason_detail,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	ReasonType              *int32  `json:"reason_type,omitempty" xml:"reason_type,omitempty"`
 	RefundVoucherInfoShrink *string `json:"refund_voucher_info,omitempty" xml:"refund_voucher_info,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0f9418cd2ce34af49ab0de16fea166d1
@@ -44611,10 +45069,14 @@ func (s *FlightRefundDetailHeaders) SetXAcsBtripCorpToken(v string) *FlightRefun
 }
 
 type FlightRefundDetailRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// refun123
@@ -45579,6 +46041,8 @@ func (s *FlightRefundPreCalHeaders) SetXAcsBtripCorpToken(v string) *FlightRefun
 }
 
 type FlightRefundPreCalRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -45586,7 +46050,8 @@ type FlightRefundPreCalRequest struct {
 	// example:
 	//
 	// 1
-	IsVoluntary              *string                                              `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	IsVoluntary *string `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
 	PassengerSegmentInfoList []*FlightRefundPreCalRequestPassengerSegmentInfoList `json:"passenger_segment_info_list,omitempty" xml:"passenger_segment_info_list,omitempty" type:"Repeated"`
 }
 
@@ -45614,11 +46079,16 @@ func (s *FlightRefundPreCalRequest) SetPassengerSegmentInfoList(v []*FlightRefun
 }
 
 type FlightRefundPreCalRequestPassengerSegmentInfoList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CA1982
-	FlightNo      *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// This parameter is required.
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 23112
@@ -45649,6 +46119,8 @@ func (s *FlightRefundPreCalRequestPassengerSegmentInfoList) SetUserId(v string) 
 }
 
 type FlightRefundPreCalShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -45656,7 +46128,8 @@ type FlightRefundPreCalShrinkRequest struct {
 	// example:
 	//
 	// 1
-	IsVoluntary                    *string `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	IsVoluntary *string `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
 	PassengerSegmentInfoListShrink *string `json:"passenger_segment_info_list,omitempty" xml:"passenger_segment_info_list,omitempty"`
 }
 
@@ -46398,6 +46871,8 @@ type FlightSearchListRequest struct {
 	//
 	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -46414,6 +46889,8 @@ type FlightSearchListRequest struct {
 	//
 	// Y
 	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -46422,6 +46899,8 @@ type FlightSearchListRequest struct {
 	//
 	// HGH
 	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
@@ -46446,6 +46925,8 @@ type FlightSearchListRequest struct {
 	//
 	// BJS
 	TransferLeaveDate *string `json:"transfer_leave_date,omitempty" xml:"transfer_leave_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -50667,14 +51148,20 @@ func (s *GroupCorpTokenHeaders) SetXAcsBtripAccessToken(v string) *GroupCorpToke
 }
 
 type GroupCorpTokenRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZzljczY5dnFjNDAwVlNofiwoWX5ZWCxlcjVTKnVoZS0
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// open12g9sfbmm5i07v10wDzRSK9w00
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// btripuyxmbg3cs286734u_mow6q
@@ -50858,8 +51345,11 @@ func (s *GroupDepartSaveHeaders) SetXAcsBtripCorpToken(v string) *GroupDepartSav
 }
 
 type GroupDepartSaveRequest struct {
+	// This parameter is required.
 	DeptName   *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerIds *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 001
@@ -50868,6 +51358,8 @@ type GroupDepartSaveRequest struct {
 	//
 	// 002
 	OuterDeptPid *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -50920,8 +51412,11 @@ func (s *GroupDepartSaveRequest) SetSyncGroup(v bool) *GroupDepartSaveRequest {
 }
 
 type GroupDepartSaveShrinkRequest struct {
+	// This parameter is required.
 	DeptName   *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerIds *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 001
@@ -50930,6 +51425,8 @@ type GroupDepartSaveShrinkRequest struct {
 	//
 	// 002
 	OuterDeptPid *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -51105,12 +51602,16 @@ type GroupUserSaveRequest struct {
 	// example:
 	//
 	// ce/shi
-	RealNameEn    *string                              `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
 	SubCorpIdList []*GroupUserSaveRequestSubCorpIdList `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -51216,6 +51717,8 @@ func (s *GroupUserSaveRequestCertList) SetNationality(v string) *GroupUserSaveRe
 type GroupUserSaveRequestSubCorpIdList struct {
 	DepartIds []*string `json:"depart_ids,omitempty" xml:"depart_ids,omitempty" type:"Repeated"`
 	Email     *string   `json:"email,omitempty" xml:"email,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -51228,6 +51731,8 @@ type GroupUserSaveRequestSubCorpIdList struct {
 	//
 	// 10
 	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// btrip123
@@ -51288,12 +51793,16 @@ type GroupUserSaveShrinkRequest struct {
 	// example:
 	//
 	// ce/shi
-	RealNameEn          *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -51472,10 +51981,14 @@ type HotelAskingPriceRequest struct {
 	//
 	// 1000
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22 00:00:00
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22 00:00:00
@@ -51500,8 +52013,9 @@ type HotelAskingPriceRequest struct {
 	// example:
 	//
 	// 0
-	PaymentType *int32   `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
-	Shids       []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
+	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	// This parameter is required.
+	Shids []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0
@@ -51585,10 +52099,14 @@ type HotelAskingPriceShrinkRequest struct {
 	//
 	// 1000
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22 00:00:00
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22 00:00:00
@@ -51613,7 +52131,8 @@ type HotelAskingPriceShrinkRequest struct {
 	// example:
 	//
 	// 0
-	PaymentType *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	// This parameter is required.
 	ShidsShrink *string `json:"shids,omitempty" xml:"shids,omitempty"`
 	// example:
 	//
@@ -51892,18 +52411,26 @@ func (s *HotelBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Hot
 }
 
 type HotelBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -52917,6 +53444,8 @@ func (s *HotelExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelE
 }
 
 type HotelExceedApplyQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1287123
@@ -53240,6 +53769,8 @@ type HotelGoodsQueryRequest struct {
 	//
 	// false
 	AgreementPrice *bool `json:"agreement_price,omitempty" xml:"agreement_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-27
@@ -53248,6 +53779,8 @@ type HotelGoodsQueryRequest struct {
 	//
 	// false
 	BreakfastIncluded *bool `json:"breakfast_included,omitempty" xml:"breakfast_included,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -53256,10 +53789,14 @@ type HotelGoodsQueryRequest struct {
 	//
 	// 330100
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-28
 	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 182873
@@ -54371,6 +54908,8 @@ type HotelIndexInfoRequest struct {
 	//
 	// 0
 	HotelStatus *int32 `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
@@ -54776,14 +55315,20 @@ func (s *HotelOrderCreateHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderCre
 }
 
 type HotelOrderCreateRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-10-20
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-10-20
@@ -54793,58 +55338,85 @@ type HotelOrderCreateRequest struct {
 	// demo
 	ContractEmail *string `json:"contract_email,omitempty" xml:"contract_email,omitempty"`
 	ContractName  *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 19281772123
 	ContractPhone *string `json:"contract_phone,omitempty" xml:"contract_phone,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId  *string                             `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	Extra       *string                             `json:"extra,omitempty" xml:"extra,omitempty"`
 	InvoiceInfo *HotelOrderCreateRequestInvoiceInfo `json:"invoice_info,omitempty" xml:"invoice_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 671570615157
 	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// fb5e1abf33924b6c912bd6d80deec0eb-1
-	ItineraryNo      *string                                    `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	ItineraryNo *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	// This parameter is required.
 	OccupantInfoList []*HotelOrderCreateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	PersonPayPrice *int64                                `json:"person_pay_price,omitempty" xml:"person_pay_price,omitempty"`
 	PromotionInfo  *HotelOrderCreateRequestPromotionInfo `json:"promotion_info,omitempty" xml:"promotion_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1399417428510
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 187211
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2198781
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	TotalOrderPrice *int64 `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// nonUltron_1673575241156_d91ea8ad16735752359161037bf6cf_c54d3768312a4b249b719f126377bf82
@@ -55149,7 +55721,10 @@ type HotelOrderCreateRequestOccupantInfoList struct {
 	//
 	// zhang
 	LastName *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 18277123451
@@ -55338,14 +55913,20 @@ func (s *HotelOrderCreateRequestPromotionInfoPromotionDetailInfoList) SetPromoti
 }
 
 type HotelOrderCreateShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-10-20
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-10-20
@@ -55355,58 +55936,85 @@ type HotelOrderCreateShrinkRequest struct {
 	// demo
 	ContractEmail *string `json:"contract_email,omitempty" xml:"contract_email,omitempty"`
 	ContractName  *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 19281772123
 	ContractPhone *string `json:"contract_phone,omitempty" xml:"contract_phone,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId        *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	Extra             *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	InvoiceInfoShrink *string `json:"invoice_info,omitempty" xml:"invoice_info,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 671570615157
 	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// fb5e1abf33924b6c912bd6d80deec0eb-1
-	ItineraryNo            *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	ItineraryNo *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	// This parameter is required.
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	PersonPayPrice      *int64  `json:"person_pay_price,omitempty" xml:"person_pay_price,omitempty"`
 	PromotionInfoShrink *string `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1399417428510
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 187211
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2198781
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	TotalOrderPrice *int64 `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// nonUltron_1673575241156_d91ea8ad16735752359161037bf6cf_c54d3768312a4b249b719f126377bf82
@@ -57561,18 +58169,26 @@ func (s *HotelOrderPayHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderPayHea
 type HotelOrderPayRequest struct {
 	// 供应商订单号（取自创单返回的订单号）
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002202194207077022
 	BtripOrderId *int64 `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 23918781
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	CompanyPayFee *int64 `json:"company_pay_fee,omitempty" xml:"company_pay_fee,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -57585,6 +58201,8 @@ type HotelOrderPayRequest struct {
 	//
 	// demo
 	ThirdTradeNo *string `json:"third_trade_no,omitempty" xml:"third_trade_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -57757,19 +58375,28 @@ func (s *HotelOrderPreValidateHeaders) SetXAcsBtripCorpToken(v string) *HotelOrd
 }
 
 type HotelOrderPreValidateRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 23141
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-05-15
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-05-15
-	CheckOut  *string                                  `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// This parameter is required.
 	DailyList []*HotelOrderPreValidateRequestDailyList `json:"daily_list,omitempty" xml:"daily_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 612673015638
@@ -57779,26 +58406,38 @@ type HotelOrderPreValidateRequest struct {
 	// 1
 	NumberOfAdultsPerRoom *int32                                          `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoList      []*HotelOrderPreValidateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 239872781
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 71652158
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	SearchRoomPrice *int64 `json:"search_room_price,omitempty" xml:"search_room_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 52302073
@@ -57988,19 +58627,28 @@ func (s *HotelOrderPreValidateRequestOccupantInfoList) SetUserType(v int32) *Hot
 }
 
 type HotelOrderPreValidateShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 23141
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-05-15
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-05-15
-	CheckOut        *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// This parameter is required.
 	DailyListShrink *string `json:"daily_list,omitempty" xml:"daily_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 612673015638
@@ -58010,26 +58658,38 @@ type HotelOrderPreValidateShrinkRequest struct {
 	// 1
 	NumberOfAdultsPerRoom  *int32  `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 239872781
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 71652158
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	SearchRoomPrice *int64 `json:"search_room_price,omitempty" xml:"search_room_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 52302073
@@ -58624,6 +59284,8 @@ func (s *HotelOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelOrderQu
 }
 
 type HotelOrderQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
@@ -59533,7 +60195,7 @@ type HotelPricePullResponseBodyModuleHotelPriceInfosRooms struct {
 	BedTypeString *string `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
 	// example:
 	//
-	// {\"bathtub\":true}
+	// {\\"bathtub\\":true}
 	Facility *string `json:"facility,omitempty" xml:"facility,omitempty"`
 	// example:
 	//
@@ -60010,6 +60672,7 @@ func (s *HotelRoomInfoHeaders) SetXAcsBtripCorpToken(v string) *HotelRoomInfoHea
 }
 
 type HotelRoomInfoRequest struct {
+	// This parameter is required.
 	RoomIds []*int64 `json:"room_ids,omitempty" xml:"room_ids,omitempty" type:"Repeated"`
 }
 
@@ -60027,6 +60690,7 @@ func (s *HotelRoomInfoRequest) SetRoomIds(v []*int64) *HotelRoomInfoRequest {
 }
 
 type HotelRoomInfoShrinkRequest struct {
+	// This parameter is required.
 	RoomIdsShrink *string `json:"room_ids,omitempty" xml:"room_ids,omitempty"`
 }
 
@@ -60494,10 +61158,14 @@ type HotelSearchRequest struct {
 	//
 	// 1000
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22
@@ -60539,10 +61207,14 @@ type HotelSearchRequest struct {
 	//
 	// 100
 	MinPrice *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
@@ -60556,6 +61228,8 @@ type HotelSearchRequest struct {
 	// 0
 	PaymentType *int32   `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
 	Shids       []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -60694,10 +61368,14 @@ type HotelSearchShrinkRequest struct {
 	//
 	// 1000
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-02-22
@@ -60739,10 +61417,14 @@ type HotelSearchShrinkRequest struct {
 	//
 	// 100
 	MinPrice *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
@@ -60756,6 +61438,8 @@ type HotelSearchShrinkRequest struct {
 	// 0
 	PaymentType *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
 	ShidsShrink *string `json:"shids,omitempty" xml:"shids,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -61250,6 +61934,7 @@ func (s *HotelStaticInfoHeaders) SetXAcsBtripCorpToken(v string) *HotelStaticInf
 }
 
 type HotelStaticInfoRequest struct {
+	// This parameter is required.
 	HotelIds []*string `json:"hotel_ids,omitempty" xml:"hotel_ids,omitempty" type:"Repeated"`
 }
 
@@ -61267,6 +61952,7 @@ func (s *HotelStaticInfoRequest) SetHotelIds(v []*string) *HotelStaticInfoReques
 }
 
 type HotelStaticInfoShrinkRequest struct {
+	// This parameter is required.
 	HotelIdsShrink *string `json:"hotel_ids,omitempty" xml:"hotel_ids,omitempty"`
 }
 
@@ -62099,18 +62785,26 @@ func (s *IeFlightBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *
 }
 
 type IeFlightBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -63036,6 +63730,8 @@ type IeHotelBillSettlementQueryRequest struct {
 	//
 	// 12
 	Category *int32 `json:"category,omitempty" xml:"category,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -63044,10 +63740,14 @@ type IeHotelBillSettlementQueryRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -64601,11 +65301,15 @@ func (s *InsureOrderApplyHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderAp
 }
 
 type InsureOrderApplyRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100000102
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000003000000490
@@ -64859,6 +65563,8 @@ func (s *InsureOrderCancelHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderC
 }
 
 type InsureOrderCancelRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000310301
@@ -65011,13 +65717,17 @@ func (s *InsureOrderCreateHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderC
 }
 
 type InsureOrderCreateRequest struct {
+	// This parameter is required.
 	Applicant *InsureOrderCreateRequestApplicant `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
 	// example:
 	//
 	// 20202109390122
-	BtripUserId             *string                                            `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName               *string                                            `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
 	InsPersonAndSegmentList []*InsureOrderCreateRequestInsPersonAndSegmentList `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PostalSavingsBank
@@ -65026,6 +65736,8 @@ type InsureOrderCreateRequest struct {
 	//
 	// 100000320302020
 	OutInsOrderId *string `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 202310101026030
@@ -65360,13 +66072,17 @@ func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsured) SetPhone(v stri
 }
 
 type InsureOrderCreateShrinkRequest struct {
+	// This parameter is required.
 	ApplicantShrink *string `json:"applicant,omitempty" xml:"applicant,omitempty"`
 	// example:
 	//
 	// 20202109390122
-	BtripUserId                   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName                     *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
 	InsPersonAndSegmentListShrink *string `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PostalSavingsBank
@@ -65375,6 +66091,8 @@ type InsureOrderCreateShrinkRequest struct {
 	//
 	// 100000320302020
 	OutInsOrderId *string `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 202310101026030
@@ -65648,11 +66366,15 @@ func (s *InsureOrderDetailHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderD
 }
 
 type InsureOrderDetailRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10000001
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1021000196440356901
@@ -66173,6 +66895,8 @@ func (s *InsureOrderPayHeaders) SetXAcsBtripCorpToken(v string) *InsureOrderPayH
 }
 
 type InsureOrderPayRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100000001
@@ -66190,6 +66914,8 @@ type InsureOrderPayRequest struct {
 	//
 	// 1020030003332000
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3000
@@ -67488,6 +68214,8 @@ type IntlFlightCreateOrderRequest struct {
 	//
 	// fcoid_deb6372db8194f1c94c23bc4fadc508d
 	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -67606,15 +68334,22 @@ func (s *IntlFlightCreateOrderRequest) SetUserName(v string) *IntlFlightCreateOr
 }
 
 type IntlFlightCreateOrderRequestContactInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// XXX@aliyun.com
 	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
-	ContactName  *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// This parameter is required.
+	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 13812341234
 	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -67650,7 +68385,10 @@ func (s *IntlFlightCreateOrderRequestContactInfo) SetSendMsgToPassenger(v bool) 
 }
 
 type IntlFlightCreateOrderRequestCostCenter struct {
+	// This parameter is required.
 	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 312434
@@ -67676,6 +68414,8 @@ func (s *IntlFlightCreateOrderRequestCostCenter) SetCostCenterNumber(v string) *
 }
 
 type IntlFlightCreateOrderRequestPassengerList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01
@@ -67683,10 +68423,11 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	// example:
 	//
 	// 100/12131231
-	CascadeDeptMask *string                                            `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
-	CascadeDeptName *string                                            `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
-	CertInfo        *IntlFlightCreateOrderRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
-	CostCenterName  *string                                            `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CascadeDeptMask *string `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	// This parameter is required.
+	CertInfo       *IntlFlightCreateOrderRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
+	CostCenterName *string                                            `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
 	// example:
 	//
 	// 312434
@@ -67718,10 +68459,14 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	//
 	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 18012341234
@@ -67732,6 +68477,8 @@ type IntlFlightCreateOrderRequestPassengerList struct {
 	ProjectCode            *string                                                            `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle           *string                                                            `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	SubsidiaryCertInfoList []*IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList `json:"subsidiary_cert_info_list,omitempty" xml:"subsidiary_cert_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 13123123212
@@ -67865,10 +68612,14 @@ type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
 	//
 	// CN
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// H123456
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -67877,6 +68628,8 @@ type IntlFlightCreateOrderRequestPassengerListCertInfo struct {
 	//
 	// 2030-01-01
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZHANG/SAN
@@ -67921,10 +68674,14 @@ type IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList struct {
 	//
 	// CN
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// H123456
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -67933,6 +68690,8 @@ type IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList struct {
 	//
 	// 2030-01-01
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZHANG/SAN
@@ -67977,6 +68736,8 @@ type IntlFlightCreateOrderShrinkRequest struct {
 	//
 	// fcoid_deb6372db8194f1c94c23bc4fadc508d
 	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -68304,10 +69065,13 @@ type IntlFlightInventoryPriceCheckRequest struct {
 	//
 	// 102000
 	OrderPrice *int64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 22111acaf9ea47c09ed0db6abc45be2d_0
-	OtaItemId     *string                                              `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
 	PassengerList []*IntlFlightInventoryPriceCheckRequestPassengerList `json:"passenger_list,omitempty" xml:"passenger_list,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -68360,6 +69124,8 @@ func (s *IntlFlightInventoryPriceCheckRequest) SetUserName(v string) *IntlFlight
 }
 
 type IntlFlightInventoryPriceCheckRequestPassengerList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01
@@ -68367,10 +69133,11 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	// example:
 	//
 	// 100/1001
-	CascadeDeptMask *string                                                    `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
-	CascadeDeptName *string                                                    `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
-	CertInfo        *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
-	CostCenterName  *string                                                    `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CascadeDeptMask *string `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	// This parameter is required.
+	CertInfo       *IntlFlightInventoryPriceCheckRequestPassengerListCertInfo `json:"cert_info,omitempty" xml:"cert_info,omitempty" type:"Struct"`
+	CostCenterName *string                                                    `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
 	// example:
 	//
 	// 100231
@@ -68402,10 +69169,14 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	//
 	// CN
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 18012341234
@@ -68416,6 +69187,8 @@ type IntlFlightInventoryPriceCheckRequestPassengerList struct {
 	ProjectCode            *string                                                                    `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle           *string                                                                    `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	SubsidiaryCertInfoList []*IntlFlightInventoryPriceCheckRequestPassengerListSubsidiaryCertInfoList `json:"subsidiary_cert_info_list,omitempty" xml:"subsidiary_cert_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10001
@@ -68549,10 +69322,14 @@ type IntlFlightInventoryPriceCheckRequestPassengerListCertInfo struct {
 	//
 	// CN
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// H123456
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -68561,6 +69338,8 @@ type IntlFlightInventoryPriceCheckRequestPassengerListCertInfo struct {
 	//
 	// 2033-01-09
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZHANG/SAN
@@ -68669,10 +69448,13 @@ type IntlFlightInventoryPriceCheckShrinkRequest struct {
 	//
 	// 102000
 	OrderPrice *int64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 22111acaf9ea47c09ed0db6abc45be2d_0
-	OtaItemId           *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	// This parameter is required.
 	PassengerListShrink *string `json:"passenger_list,omitempty" xml:"passenger_list,omitempty"`
 	// example:
 	//
@@ -69026,6 +69808,8 @@ type IntlFlightListingSearchRequest struct {
 	//
 	// ZHANGSAN
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -69034,6 +69818,8 @@ type IntlFlightListingSearchRequest struct {
 	//
 	// false
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TEST
@@ -69043,6 +69829,8 @@ type IntlFlightListingSearchRequest struct {
 	//
 	// true
 	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -69050,8 +69838,11 @@ type IntlFlightListingSearchRequest struct {
 	// example:
 	//
 	// 60b412-cc05-4d10-b570-
-	QueryRecordId  *string                                         `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	QueryRecordId *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	// This parameter is required.
 	SearchJourneys []*IntlFlightListingSearchRequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -69065,6 +69856,8 @@ type IntlFlightListingSearchRequest struct {
 	//
 	// 9960b412-cc05-4d10-b570-93372d816807
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -69155,14 +69948,20 @@ func (s *IntlFlightListingSearchRequest) SetTripType(v int32) *IntlFlightListing
 }
 
 type IntlFlightListingSearchRequestSearchJourneys struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MEL
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HKG
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-12-28
@@ -69203,6 +70002,8 @@ type IntlFlightListingSearchRequestSearchJourneysSelectedFlights struct {
 	//
 	// HNY
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MEL
@@ -69215,14 +70016,20 @@ type IntlFlightListingSearchRequestSearchJourneysSelectedFlights struct {
 	//
 	// SZX
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HKG
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-12-28 12:00:00
 	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// KA5809
@@ -69282,18 +70089,26 @@ func (s *IntlFlightListingSearchRequestSearchJourneysSelectedFlights) SetOperate
 }
 
 type IntlFlightListingSearchRequestSearchPassengerList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10012301201
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZHANGSAN
 	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -69337,6 +70152,8 @@ type IntlFlightListingSearchShrinkRequest struct {
 	//
 	// ZHANGSAN
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -69345,6 +70162,8 @@ type IntlFlightListingSearchShrinkRequest struct {
 	//
 	// false
 	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TEST
@@ -69354,6 +70173,8 @@ type IntlFlightListingSearchShrinkRequest struct {
 	//
 	// true
 	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -69361,8 +70182,11 @@ type IntlFlightListingSearchShrinkRequest struct {
 	// example:
 	//
 	// 60b412-cc05-4d10-b570-
-	QueryRecordId        *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	QueryRecordId *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	// This parameter is required.
 	SearchJourneysShrink *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -69376,6 +70200,8 @@ type IntlFlightListingSearchShrinkRequest struct {
 	//
 	// 9960b412-cc05-4d10-b570-93372d816807
 	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -73884,6 +74710,8 @@ type IntlFlightOtaSearchRequest struct {
 	// 10023
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -73900,13 +74728,16 @@ type IntlFlightOtaSearchRequest struct {
 	// example:
 	//
 	// true
-	NeedShareFlight     *bool                                            `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
 	SearchJourneys      []*IntlFlightOtaSearchRequestSearchJourneys      `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
 	SearchPassengerList []*IntlFlightOtaSearchRequestSearchPassengerList `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty" type:"Repeated"`
 	// example:
 	//
 	// TEST
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -73977,18 +74808,25 @@ func (s *IntlFlightOtaSearchRequest) SetTripType(v int32) *IntlFlightOtaSearchRe
 }
 
 type IntlFlightOtaSearchRequestSearchJourneys struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZQZ
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-08-15
-	DepDate         *string                                                    `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
 	SelectedFlights []*IntlFlightOtaSearchRequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
 }
 
@@ -74025,6 +74863,8 @@ type IntlFlightOtaSearchRequestSearchJourneysSelectedFlights struct {
 	//
 	// HGH
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// NNG
@@ -74037,14 +74877,20 @@ type IntlFlightOtaSearchRequestSearchJourneysSelectedFlights struct {
 	//
 	// KOW
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CTU
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-08-15 12:00:00
 	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// KA5809
@@ -74104,18 +74950,26 @@ func (s *IntlFlightOtaSearchRequestSearchJourneysSelectedFlights) SetOperateFlig
 }
 
 type IntlFlightOtaSearchRequestSearchPassengerList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 13412341234
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZHANGSAN
 	FullName *string `json:"full_name,omitempty" xml:"full_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -74156,6 +75010,8 @@ type IntlFlightOtaSearchShrinkRequest struct {
 	// 10023
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -74172,13 +75028,16 @@ type IntlFlightOtaSearchShrinkRequest struct {
 	// example:
 	//
 	// true
-	NeedShareFlight           *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	// This parameter is required.
 	SearchJourneysShrink      *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	SearchPassengerListShrink *string `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty"`
 	// example:
 	//
 	// TEST
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -75595,11 +76454,16 @@ type InvoiceAddRequest struct {
 	//
 	// 123
 	Tel *string `json:"tel,omitempty" xml:"tel,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -75771,6 +76635,8 @@ func (s *InvoiceDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceDeleteH
 }
 
 type InvoiceDeleteRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -75918,11 +76784,16 @@ type InvoiceModifyRequest struct {
 	//
 	// 12345678
 	Tel *string `json:"tel,omitempty" xml:"tel,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -76094,7 +76965,10 @@ func (s *InvoiceRuleAddHeaders) SetXAcsBtripCorpToken(v string) *InvoiceRuleAddH
 }
 
 type InvoiceRuleAddRequest struct {
+	// This parameter is required.
 	Entities []*InvoiceRuleAddRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4854821
@@ -76120,11 +76994,16 @@ func (s *InvoiceRuleAddRequest) SetThirdPartId(v string) *InvoiceRuleAddRequest 
 }
 
 type InvoiceRuleAddRequestEntities struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// This parameter is required.
 	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -76155,7 +77034,10 @@ func (s *InvoiceRuleAddRequestEntities) SetEntityType(v string) *InvoiceRuleAddR
 }
 
 type InvoiceRuleAddShrinkRequest struct {
+	// This parameter is required.
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4854821
@@ -76331,6 +77213,8 @@ type InvoiceRuleDeleteRequest struct {
 	// false
 	DelAll   *bool                               `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	Entities []*InvoiceRuleDeleteRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -76395,6 +77279,8 @@ type InvoiceRuleDeleteShrinkRequest struct {
 	// false
 	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -76576,6 +77462,8 @@ type InvoiceRuleSaveRequest struct {
 	AllEmploye *bool                             `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	Entities   []*InvoiceRuleSaveRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
 	Scope      *int32                            `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i123
@@ -76652,6 +77540,8 @@ type InvoiceRuleSaveShrinkRequest struct {
 	AllEmploye     *bool   `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
 	Scope          *int32  `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i123
@@ -77015,14 +77905,19 @@ func (s *IsvRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *IsvRuleSaveHeade
 }
 
 type IsvRuleSaveRequest struct {
-	ApplyNeed    *bool                             `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
+	ApplyNeed *bool `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
+	// This parameter is required.
 	BookType     *string                           `json:"book_type,omitempty" xml:"book_type,omitempty"`
 	BookuserList []*IsvRuleSaveRequestBookuserList `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty" type:"Repeated"`
 	RuleNeed     *bool                             `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -77068,8 +77963,10 @@ func (s *IsvRuleSaveRequest) SetUserId(v string) *IsvRuleSaveRequest {
 }
 
 type IsvRuleSaveRequestBookuserList struct {
-	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
-	EntityType *int32  `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+	// This parameter is required.
+	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	// This parameter is required.
+	EntityType *int32 `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 
 func (s IsvRuleSaveRequestBookuserList) String() string {
@@ -77091,14 +77988,19 @@ func (s *IsvRuleSaveRequestBookuserList) SetEntityType(v int32) *IsvRuleSaveRequ
 }
 
 type IsvRuleSaveShrinkRequest struct {
-	ApplyNeed          *bool   `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
+	ApplyNeed *bool `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
+	// This parameter is required.
 	BookType           *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
 	BookuserListShrink *string `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty"`
 	RuleNeed           *bool   `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -77325,10 +78227,13 @@ type IsvUserSaveRequestUserList struct {
 	// 123
 	ThirdDepartId     *string   `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
 	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
 }
@@ -77611,18 +78516,26 @@ func (s *MealBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Meal
 }
 
 type MealBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-07-01
@@ -78816,6 +79729,8 @@ func (s *MonthBillConfirmHeaders) SetXAcsBtripCorpToken(v string) *MonthBillConf
 }
 
 type MonthBillConfirmRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20221001
@@ -79248,15 +80163,20 @@ func (s *ProjectAddHeaders) SetXAcsBtripSoCorpToken(v string) *ProjectAddHeaders
 }
 
 type ProjectAddRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// pro_code
-	Code        *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	// example:
 	//
 	// 234
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -79427,6 +80347,8 @@ func (s *ProjectDeleteHeaders) SetXAcsBtripSoCorpToken(v string) *ProjectDeleteH
 }
 
 type ProjectDeleteRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
@@ -79567,12 +80489,15 @@ type ProjectModifyRequest struct {
 	// example:
 	//
 	// pro_code
-	Code        *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	// example:
 	//
 	// 234
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 340049
@@ -79734,6 +80659,8 @@ func (s *QueryReimbursementOrderHeaders) SetXAcsBtripCorpToken(v string) *QueryR
 }
 
 type QueryReimbursementOrderRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RT204396
@@ -80370,10 +81297,13 @@ type SyncSingleUserRequest struct {
 	// ce/shi
 	RealNameEn        *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 573263
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -80468,10 +81398,13 @@ type SyncSingleUserShrinkRequest struct {
 	// ce/shi
 	RealNameEn              *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	ThirdDepartIdListShrink *string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 573263
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
@@ -80656,18 +81589,26 @@ func (s *SyncThirdUserMappingHeaders) SetXAcsBtripCorpToken(v string) *SyncThird
 }
 
 type SyncThirdUserMappingRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// weCom
 	ThirdChannelType *string `json:"third_channel_type,omitempty" xml:"third_channel_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	ThirdUserId *string `json:"third_user_id,omitempty" xml:"third_user_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -81068,21 +82009,30 @@ func (s *TicketChangingApplyHeaders) SetXAcsBtripCorpToken(v string) *TicketChan
 }
 
 type TicketChangingApplyRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis1234
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mid1243
-	DisSubOrderId        *string                                           `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	IsVoluntary          *int32                                            `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	IsVoluntary   *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
 	ModifyFlightInfoList []*TicketChangingApplyRequestModifyFlightInfoList `json:"modify_flight_info_list,omitempty" xml:"modify_flight_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1s8837sh991hsj92h
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	Reason    *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// us88s2bsbin22hjusd8i
@@ -81142,6 +82092,8 @@ func (s *TicketChangingApplyRequest) SetWhetherRetry(v bool) *TicketChangingAppl
 }
 
 type TicketChangingApplyRequestModifyFlightInfoList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
@@ -81150,18 +82102,25 @@ type TicketChangingApplyRequestModifyFlightInfoList struct {
 	//
 	// Y
 	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CA1704
-	FlightNo          *string                                                            `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	// This parameter is required.
 	PassengerInfoList []*TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList `json:"passenger_info_list,omitempty" xml:"passenger_info_list,omitempty" type:"Repeated"`
 }
 
@@ -81204,14 +82163,19 @@ func (s *TicketChangingApplyRequestModifyFlightInfoList) SetPassengerInfoList(v 
 }
 
 type TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CA1703
 	OriginFlightNo *string `json:"origin_flight_no,omitempty" xml:"origin_flight_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234
-	OutUserId     *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
+	OutUserId *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
+	// This parameter is required.
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 
@@ -81239,21 +82203,30 @@ func (s *TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList) SetPas
 }
 
 type TicketChangingApplyShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis1234
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mid1243
-	DisSubOrderId              *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	IsVoluntary                *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	IsVoluntary   *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
 	ModifyFlightInfoListShrink *string `json:"modify_flight_info_list,omitempty" xml:"modify_flight_info_list,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1s8837sh991hsj92h
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	Reason    *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// us88s2bsbin22hjusd8i
@@ -82416,30 +83389,44 @@ func (s *TicketChangingEnquiryHeaders) SetXAcsBtripCorpToken(v string) *TicketCh
 }
 
 type TicketChangingEnquiryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	IsVoluntary *int32 `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
 	ModifyDepartDate *string `json:"modify_depart_date,omitempty" xml:"modify_depart_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// CA1704
 	ModifyFlightNo *string `json:"modify_flight_no,omitempty" xml:"modify_flight_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ece19e8b1047898a5a98b6487348c2
@@ -83786,10 +84773,14 @@ type TicketChangingFlightListRequest struct {
 	//
 	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -83837,10 +84828,14 @@ func (s *TicketChangingFlightListRequest) SetTravelerInfoList(v []*TicketChangin
 }
 
 type TicketChangingFlightListRequestTravelerInfoList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// HGH
@@ -83850,6 +84845,8 @@ type TicketChangingFlightListRequestTravelerInfoList struct {
 	//
 	// ADULT
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 23231
@@ -83898,10 +84895,14 @@ type TicketChangingFlightListShrinkRequest struct {
 	//
 	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
@@ -84593,10 +85594,14 @@ type TicketChangingPayRequest struct {
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// refun123
@@ -84606,6 +85611,8 @@ type TicketChangingPayRequest struct {
 	//
 	// 100
 	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -84655,10 +85662,14 @@ type TicketChangingPayShrinkRequest struct {
 	//
 	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// refun123
@@ -84668,6 +85679,8 @@ type TicketChangingPayShrinkRequest struct {
 	//
 	// 100
 	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -84883,7 +85896,8 @@ type TrainApplyChangeRequest struct {
 	// example:
 	//
 	// 0
-	AcceptNoSeat     *string                                    `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	// This parameter is required.
 	ChangeTrainInfoS []*TrainApplyChangeRequestChangeTrainInfoS `json:"change_train_info_s,omitempty" xml:"change_train_info_s,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -84893,14 +85907,20 @@ type TrainApplyChangeRequest struct {
 	//
 	// false
 	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1017028198411054446
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -84951,10 +85971,13 @@ func (s *TrainApplyChangeRequest) SetOutOrderId(v string) *TrainApplyChangeReque
 }
 
 type TrainApplyChangeRequestChangeTrainInfoS struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BTC
-	ArrStationCode    *string                                                     `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// This parameter is required.
 	ChangeTicketInfoS []*TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS `json:"change_ticket_info_s,omitempty" xml:"change_ticket_info_s,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -84964,22 +85987,32 @@ type TrainApplyChangeRequestChangeTrainInfoS struct {
 	//
 	// 1T
 	ChooseSeatS *string `json:"choose_seat_s,omitempty" xml:"choose_seat_s,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BDC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
 	OriginalDepTime *string `json:"original_dep_time,omitempty" xml:"original_dep_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K234
 	OriginalTrainNo *string `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K2345
@@ -85040,15 +86073,22 @@ func (s *TrainApplyChangeRequestChangeTrainInfoS) SetTrainNo(v string) *TrainApp
 }
 
 type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS struct {
+	// This parameter is required.
 	PassengerInfo *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	TicketPrice *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -85084,18 +86124,26 @@ func (s *TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS) SetTicketType
 }
 
 type TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
@@ -85134,7 +86182,8 @@ type TrainApplyChangeShrinkRequest struct {
 	// example:
 	//
 	// 0
-	AcceptNoSeat           *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	// This parameter is required.
 	ChangeTrainInfoSShrink *string `json:"change_train_info_s,omitempty" xml:"change_train_info_s,omitempty"`
 	// example:
 	//
@@ -85144,14 +86193,20 @@ type TrainApplyChangeShrinkRequest struct {
 	//
 	// false
 	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1017028198411054446
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -85366,18 +86421,25 @@ func (s *TrainApplyRefundHeaders) SetXAcsBtripCorpToken(v string) *TrainApplyRef
 }
 
 type TrainApplyRefundRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456778
-	OutRefundId      *string                                    `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
+	OutRefundId *string `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
+	// This parameter is required.
 	RefundTrainInfos []*TrainApplyRefundRequestRefundTrainInfos `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty" type:"Repeated"`
 }
 
@@ -85410,11 +86472,16 @@ func (s *TrainApplyRefundRequest) SetRefundTrainInfos(v []*TrainApplyRefundReque
 }
 
 type TrainApplyRefundRequestRefundTrainInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
-	DepTime              *string                                                        `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// This parameter is required.
 	RefundPassengerInfos []*TrainApplyRefundRequestRefundTrainInfosRefundPassengerInfos `json:"refund_passenger_infos,omitempty" xml:"refund_passenger_infos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K234
@@ -85445,18 +86512,26 @@ func (s *TrainApplyRefundRequestRefundTrainInfos) SetTrainNo(v string) *TrainApp
 }
 
 type TrainApplyRefundRequestRefundTrainInfosRefundPassengerInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12334
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
@@ -85492,18 +86567,25 @@ func (s *TrainApplyRefundRequestRefundTrainInfosRefundPassengerInfos) SetPasseng
 }
 
 type TrainApplyRefundShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456778
-	OutRefundId            *string `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
+	OutRefundId *string `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
+	// This parameter is required.
 	RefundTrainInfosShrink *string `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty"`
 }
 
@@ -85684,18 +86766,26 @@ func (s *TrainBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Tra
 }
 
 type TrainBillSettlementQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-02
 	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-10-01
@@ -86461,6 +87551,8 @@ func (s *TrainExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainE
 }
 
 type TrainExceedApplyQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 349720
@@ -86815,11 +87907,16 @@ func (s *TrainFeeCalculateChangeHeaders) SetXAcsBtripCorpToken(v string) *TrainF
 }
 
 type TrainFeeCalculateChangeRequest struct {
+	// This parameter is required.
 	ChangeTrainDetails []*TrainFeeCalculateChangeRequestChangeTrainDetails `json:"change_train_details,omitempty" xml:"change_train_details,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2627694109810885616
@@ -86850,31 +87947,46 @@ func (s *TrainFeeCalculateChangeRequest) SetOrderId(v string) *TrainFeeCalculate
 }
 
 type TrainFeeCalculateChangeRequestChangeTrainDetails struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BDC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
 	OriginalDepTime *string `json:"original_dep_time,omitempty" xml:"original_dep_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K234
-	OriginalTrainNo *string                                                        `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
-	PassengerInfo   *TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
+	OriginalTrainNo *string `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
+	// This parameter is required.
+	PassengerInfo *TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K2345
@@ -86930,14 +88042,20 @@ func (s *TrainFeeCalculateChangeRequestChangeTrainDetails) SetTrainNo(v string) 
 }
 
 type TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
@@ -86968,11 +88086,16 @@ func (s *TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo) SetPasse
 }
 
 type TrainFeeCalculateChangeShrinkRequest struct {
+	// This parameter is required.
 	ChangeTrainDetailsShrink *string `json:"change_train_details,omitempty" xml:"change_train_details,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2627694109810885616
@@ -87326,14 +88449,19 @@ func (s *TrainFeeCalculateRefundHeaders) SetXAcsBtripCorpToken(v string) *TrainF
 }
 
 type TrainFeeCalculateRefundRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
-	OrderId          *string                                           `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
 	RefundTrainInfos []*TrainFeeCalculateRefundRequestRefundTrainInfos `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty" type:"Repeated"`
 }
 
@@ -87361,19 +88489,28 @@ func (s *TrainFeeCalculateRefundRequest) SetRefundTrainInfos(v []*TrainFeeCalcul
 }
 
 type TrainFeeCalculateRefundRequestRefundTrainInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BDC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
-	DepTime              *string                                                               `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// This parameter is required.
 	RefundPassengerInfos []*TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos `json:"refund_passenger_infos,omitempty" xml:"refund_passenger_infos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K1234
@@ -87414,18 +88551,26 @@ func (s *TrainFeeCalculateRefundRequestRefundTrainInfos) SetTrainNo(v string) *T
 }
 
 type TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
@@ -87461,14 +88606,19 @@ func (s *TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos) Set
 }
 
 type TrainFeeCalculateRefundShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
-	OrderId                *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
 	RefundTrainInfosShrink *string `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty"`
 }
 
@@ -87810,11 +88960,15 @@ func (s *TrainNoInfoSearchHeaders) SetXAcsBtripCorpToken(v string) *TrainNoInfoS
 }
 
 type TrainNoInfoSearchRequest struct {
+	// This parameter is required.
 	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2023-08-15
-	DepDate     *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
 	DepLocation *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
 	// example:
 	//
@@ -88408,13 +89562,18 @@ func (s *TrainNoListSearchHeaders) SetXAcsBtripCorpToken(v string) *TrainNoListS
 }
 
 type TrainNoListSearchRequest struct {
+	// This parameter is required.
 	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-16
-	DepDate     *string                         `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	DepLocation *string                         `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
-	Option      *TrainNoListSearchRequestOption `json:"option,omitempty" xml:"option,omitempty" type:"Struct"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	DepLocation *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
+	// This parameter is required.
+	Option *TrainNoListSearchRequestOption `json:"option,omitempty" xml:"option,omitempty" type:"Struct"`
 	// example:
 	//
 	// null
@@ -88475,12 +89634,17 @@ func (s *TrainNoListSearchRequestOption) SetNeedTransfer(v bool) *TrainNoListSea
 }
 
 type TrainNoListSearchShrinkRequest struct {
+	// This parameter is required.
 	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-16
-	DepDate      *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	DepLocation  *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
+	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	// This parameter is required.
+	DepLocation *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
+	// This parameter is required.
 	OptionShrink *string `json:"option,omitempty" xml:"option,omitempty"`
 	// example:
 	//
@@ -89105,6 +90269,8 @@ type TrainOrderCancelRequest struct {
 	//
 	// 1234223
 	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
@@ -89113,6 +90279,8 @@ type TrainOrderCancelRequest struct {
 	//
 	// 123321245534
 	OutChangeOrderId *string `json:"out_change_order_id,omitempty" xml:"out_change_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -89318,22 +90486,32 @@ func (s *TrainOrderChangeConfirmHeaders) SetXAcsBtripCorpToken(v string) *TrainO
 }
 
 type TrainOrderChangeConfirmRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234567890
 	ChangeApplyId *string `json:"change_apply_id,omitempty" xml:"change_apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	ChangeSettleAmount *int64 `json:"change_settle_amount,omitempty" xml:"change_settle_amount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -89541,15 +90719,20 @@ type TrainOrderCreateRequest struct {
 	// example:
 	//
 	// 0
-	AcceptNoSeat   *string                                  `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	// This parameter is required.
 	BookTrainInfos []*TrainOrderCreateRequestBookTrainInfos `json:"book_train_infos,omitempty" xml:"book_train_infos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12344321
-	BtripUserId   *string                              `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
 	BtripUserName *string                              `json:"btrip_user_name,omitempty" xml:"btrip_user_name,omitempty"`
 	BusinessInfo  *TrainOrderCreateRequestBusinessInfo `json:"business_info,omitempty" xml:"business_info,omitempty" type:"Struct"`
-	ContactInfo   *TrainOrderCreateRequestContactInfo  `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	// This parameter is required.
+	ContactInfo *TrainOrderCreateRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
 	// example:
 	//
 	// 0
@@ -89558,10 +90741,13 @@ type TrainOrderCreateRequest struct {
 	//
 	// false
 	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
-	OutOrderId         *string                                      `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// This parameter is required.
 	PassengerOpenInfoS []*TrainOrderCreateRequestPassengerOpenInfoS `json:"passenger_open_info_s,omitempty" xml:"passenger_open_info_s,omitempty" type:"Repeated"`
 }
 
@@ -89624,10 +90810,13 @@ func (s *TrainOrderCreateRequest) SetPassengerOpenInfoS(v []*TrainOrderCreateReq
 }
 
 type TrainOrderCreateRequestBookTrainInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BDC
-	ArrStationCode  *string                                                 `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	// This parameter is required.
 	BookTicketInfos []*TrainOrderCreateRequestBookTrainInfosBookTicketInfos `json:"book_ticket_infos,omitempty" xml:"book_ticket_infos,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -89637,14 +90826,20 @@ type TrainOrderCreateRequestBookTrainInfos struct {
 	//
 	// 1T
 	ChooseSeats *string `json:"choose_seats,omitempty" xml:"choose_seats,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// K123456
@@ -89695,18 +90890,26 @@ func (s *TrainOrderCreateRequestBookTrainInfos) SetTrainNo(v string) *TrainOrder
 }
 
 type TrainOrderCreateRequestBookTrainInfosBookTicketInfos struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
 	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
@@ -89771,14 +90974,20 @@ func (s *TrainOrderCreateRequestBusinessInfo) SetCustomerItineraryId(v string) *
 }
 
 type TrainOrderCreateRequestContactInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b6a6fc1bdf1ba60e25c2e132b612c8819
 	PassengerMobile *string `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
@@ -89814,14 +91023,20 @@ type TrainOrderCreateRequestPassengerOpenInfoS struct {
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -89830,6 +91045,8 @@ type TrainOrderCreateRequestPassengerOpenInfoS struct {
 	//
 	// b6a6fc1bdf1ba60e25c2e132b612c8819
 	PassengerMobile *string `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 949c9f34f677a0e5d249dfc94f5e62cc7
@@ -89978,15 +91195,20 @@ type TrainOrderCreateShrinkRequest struct {
 	// example:
 	//
 	// 0
-	AcceptNoSeat         *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
+	// This parameter is required.
 	BookTrainInfosShrink *string `json:"book_train_infos,omitempty" xml:"book_train_infos,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12344321
-	BtripUserId        *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
 	BtripUserName      *string `json:"btrip_user_name,omitempty" xml:"btrip_user_name,omitempty"`
 	BusinessInfoShrink *string `json:"business_info,omitempty" xml:"business_info,omitempty"`
-	ContactInfoShrink  *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
+	// This parameter is required.
+	ContactInfoShrink *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
 	// example:
 	//
 	// 0
@@ -89995,10 +91217,13 @@ type TrainOrderCreateShrinkRequest struct {
 	//
 	// false
 	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
-	OutOrderId               *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// This parameter is required.
 	PassengerOpenInfoSShrink *string `json:"passenger_open_info_s,omitempty" xml:"passenger_open_info_s,omitempty"`
 }
 
@@ -90225,10 +91450,14 @@ func (s *TrainOrderDetailQueryHeaders) SetXAcsBtripCorpToken(v string) *TrainOrd
 }
 
 type TrainOrderDetailQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2083528200659337994
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3703190607180169216
@@ -92125,14 +93354,20 @@ func (s *TrainOrderPayHeaders) SetXAcsBtripCorpToken(v string) *TrainOrderPayHea
 }
 
 type TrainOrderPayRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1379598062646
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 100
@@ -92318,6 +93553,8 @@ func (s *TrainOrderQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainOrderQu
 }
 
 type TrainOrderQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2627694109810885616
@@ -93326,6 +94563,8 @@ func (s *TrainOrderQueryV2Headers) SetXAcsBtripCorpToken(v string) *TrainOrderQu
 }
 
 type TrainOrderQueryV2Request struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12342123212
@@ -94565,6 +95804,7 @@ func (s *TrainStationSearchHeaders) SetXAcsBtripSoCorpToken(v string) *TrainStat
 }
 
 type TrainStationSearchRequest struct {
+	// This parameter is required.
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 }
 
@@ -94740,12 +95980,18 @@ func (s *TrainStopoverSearchHeaders) SetXAcsBtripCorpToken(v string) *TrainStopo
 }
 
 type TrainStopoverSearchRequest struct {
+	// This parameter is required.
 	ArrStation *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	// This parameter is required.
 	DepStation *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2024-05-08
 	TrainDate *string `json:"train_date,omitempty" xml:"train_date,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// k2345
@@ -94960,6 +96206,8 @@ func (s *TrainTicketScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainTi
 }
 
 type TrainTicketScanQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
@@ -95354,6 +96602,8 @@ func (s *TrainTicketScanQueryResponse) SetBody(v *TrainTicketScanQueryResponseBo
 
 type TravelStandardListQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// feth00jqwls
@@ -95383,10 +96633,14 @@ type TravelStandardListQueryRequest struct {
 	//
 	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -95699,14 +96953,19 @@ func (s *TravelStandardQueryHeaders) SetXAcsBtripCorpToken(v string) *TravelStan
 }
 
 type TravelStandardQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2006523763
-	RuleCode        *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// This parameter is required.
 	ServiceTypeList []*string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty" type:"Repeated"`
 }
 
@@ -95734,14 +96993,19 @@ func (s *TravelStandardQueryRequest) SetServiceTypeList(v []*string) *TravelStan
 }
 
 type TravelStandardQueryShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2006523763
-	RuleCode              *int64  `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	// This parameter is required.
 	ServiceTypeListShrink *string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty"`
 }
 
@@ -96258,6 +97522,8 @@ func (s *VatInvoiceScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *VatInvoi
 }
 
 type VatInvoiceScanQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
@@ -96519,6 +97785,7 @@ type VatInvoiceScanQueryResponseBodyModuleItems struct {
 	// 6%
 	TaxRate            *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
 	TotalAmountInWords *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	XmlOssUrl          *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -96694,6 +97961,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v str
 	return s
 }
 
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetXmlOssUrl(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.XmlOssUrl = &v
+	return s
+}
+
 type VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
 	// example:
 	//
@@ -96838,6 +98110,8 @@ func (s *WaitApplyInvoiceTaskDetailQueryHeaders) SetXAcsBtripSoCorpToken(v strin
 }
 
 type WaitApplyInvoiceTaskDetailQueryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-12-01
@@ -97166,6 +98440,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取accessToken接口
+//
+// @param request - AccessTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AccessTokenResponse
 func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AccessTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -97200,6 +98485,13 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取accessToken接口
+//
+// @param request - AccessTokenRequest
+//
+// @return AccessTokenResponse
 func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -97212,6 +98504,17 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票抬头适用人员
+//
+// @param tmpReq - AddInvoiceEntityRequest
+//
+// @param headers - AddInvoiceEntityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddInvoiceEntityResponse
 func (client *Client) AddInvoiceEntityWithOptions(tmpReq *AddInvoiceEntityRequest, headers *AddInvoiceEntityHeaders, runtime *util.RuntimeOptions) (_result *AddInvoiceEntityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -97265,6 +98568,13 @@ func (client *Client) AddInvoiceEntityWithOptions(tmpReq *AddInvoiceEntityReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票抬头适用人员
+//
+// @param request - AddInvoiceEntityRequest
+//
+// @return AddInvoiceEntityResponse
 func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_result *AddInvoiceEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddInvoiceEntityHeaders{}
@@ -97277,6 +98587,17 @@ func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 商旅功能页跳转
+//
+// @param request - AddressGetRequest
+//
+// @param headers - AddressGetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddressGetResponse
 func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers *AddressGetHeaders, runtime *util.RuntimeOptions) (_result *AddressGetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -97380,6 +98701,13 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 商旅功能页跳转
+//
+// @param request - AddressGetRequest
+//
+// @return AddressGetResponse
 func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddressGetHeaders{}
@@ -97392,6 +98720,17 @@ func (client *Client) AddressGet(request *AddressGetRequest) (_result *AddressGe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机场数据
+//
+// @param request - AirportSearchRequest
+//
+// @param headers - AirportSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AirportSearchResponse
 func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, headers *AirportSearchHeaders, runtime *util.RuntimeOptions) (_result *AirportSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -97439,6 +98778,13 @@ func (client *Client) AirportSearchWithOptions(request *AirportSearchRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机场数据
+//
+// @param request - AirportSearchRequest
+//
+// @return AirportSearchResponse
 func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *AirportSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AirportSearchHeaders{}
@@ -97451,6 +98797,15 @@ func (client *Client) AirportSearch(request *AirportSearchRequest) (_result *Air
 	return _result, _err
 }
 
+// Summary:
+//
+// 全量查询商旅城市行政区划编码信息
+//
+// @param headers - AllBaseCityInfoQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllBaseCityInfoQueryResponse
 func (client *Client) AllBaseCityInfoQueryWithOptions(headers *AllBaseCityInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *AllBaseCityInfoQueryResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -97484,6 +98839,11 @@ func (client *Client) AllBaseCityInfoQueryWithOptions(headers *AllBaseCityInfoQu
 	return _result, _err
 }
 
+// Summary:
+//
+// 全量查询商旅城市行政区划编码信息
+//
+// @return AllBaseCityInfoQueryResponse
 func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AllBaseCityInfoQueryHeaders{}
@@ -97496,6 +98856,17 @@ func (client *Client) AllBaseCityInfoQuery() (_result *AllBaseCityInfoQueryRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建出差审批单
+//
+// @param tmpReq - ApplyAddRequest
+//
+// @param headers - ApplyAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyAddResponse
 func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *ApplyAddHeaders, runtime *util.RuntimeOptions) (_result *ApplyAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -97713,6 +99084,13 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建出差审批单
+//
+// @param request - ApplyAddRequest
+//
+// @return ApplyAddResponse
 func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyAddHeaders{}
@@ -97725,6 +99103,17 @@ func (client *Client) ApplyAdd(request *ApplyAddRequest) (_result *ApplyAddRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新出差审批单（状态）
+//
+// @param request - ApplyApproveRequest
+//
+// @param headers - ApplyApproveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyApproveResponse
 func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, headers *ApplyApproveHeaders, runtime *util.RuntimeOptions) (_result *ApplyApproveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -97792,6 +99181,13 @@ func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新出差审批单（状态）
+//
+// @param request - ApplyApproveRequest
+//
+// @return ApplyApproveResponse
 func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *ApplyApproveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyApproveHeaders{}
@@ -97804,6 +99200,17 @@ func (client *Client) ApplyApprove(request *ApplyApproveRequest) (_result *Apply
 	return _result, _err
 }
 
+// Summary:
+//
+// 外部审批节点状态同步
+//
+// @param tmpReq - ApplyExternalNodeStatusUpdateRequest
+//
+// @param headers - ApplyExternalNodeStatusUpdateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyExternalNodeStatusUpdateResponse
 func (client *Client) ApplyExternalNodeStatusUpdateWithOptions(tmpReq *ApplyExternalNodeStatusUpdateRequest, headers *ApplyExternalNodeStatusUpdateHeaders, runtime *util.RuntimeOptions) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -97861,6 +99268,13 @@ func (client *Client) ApplyExternalNodeStatusUpdateWithOptions(tmpReq *ApplyExte
 	return _result, _err
 }
 
+// Summary:
+//
+// 外部审批节点状态同步
+//
+// @param request - ApplyExternalNodeStatusUpdateRequest
+//
+// @return ApplyExternalNodeStatusUpdateResponse
 func (client *Client) ApplyExternalNodeStatusUpdate(request *ApplyExternalNodeStatusUpdateRequest) (_result *ApplyExternalNodeStatusUpdateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyExternalNodeStatusUpdateHeaders{}
@@ -97873,6 +99287,17 @@ func (client *Client) ApplyExternalNodeStatusUpdate(request *ApplyExternalNodeSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请发票
+//
+// @param tmpReq - ApplyInvoiceTaskRequest
+//
+// @param headers - ApplyInvoiceTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyInvoiceTaskResponse
 func (client *Client) ApplyInvoiceTaskWithOptions(tmpReq *ApplyInvoiceTaskRequest, headers *ApplyInvoiceTaskHeaders, runtime *util.RuntimeOptions) (_result *ApplyInvoiceTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -97926,6 +99351,13 @@ func (client *Client) ApplyInvoiceTaskWithOptions(tmpReq *ApplyInvoiceTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请发票
+//
+// @param request - ApplyInvoiceTaskRequest
+//
+// @return ApplyInvoiceTaskResponse
 func (client *Client) ApplyInvoiceTask(request *ApplyInvoiceTaskRequest) (_result *ApplyInvoiceTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyInvoiceTaskHeaders{}
@@ -97938,6 +99370,17 @@ func (client *Client) ApplyInvoiceTask(request *ApplyInvoiceTaskRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询出差审批单列表
+//
+// @param request - ApplyListQueryRequest
+//
+// @param headers - ApplyListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyListQueryResponse
 func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, headers *ApplyListQueryHeaders, runtime *util.RuntimeOptions) (_result *ApplyListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98025,6 +99468,13 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询出差审批单列表
+//
+// @param request - ApplyListQueryRequest
+//
+// @return ApplyListQueryResponse
 func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *ApplyListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyListQueryHeaders{}
@@ -98037,6 +99487,17 @@ func (client *Client) ApplyListQuery(request *ApplyListQueryRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新出差审批单
+//
+// @param tmpReq - ApplyModifyRequest
+//
+// @param headers - ApplyModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyModifyResponse
 func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers *ApplyModifyHeaders, runtime *util.RuntimeOptions) (_result *ApplyModifyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -98246,6 +99707,13 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新出差审批单
+//
+// @param request - ApplyModifyRequest
+//
+// @return ApplyModifyResponse
 func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyModifyHeaders{}
@@ -98258,6 +99726,17 @@ func (client *Client) ApplyModify(request *ApplyModifyRequest) (_result *ApplyMo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询出差审批单详情
+//
+// @param request - ApplyQueryRequest
+//
+// @param headers - ApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyQueryResponse
 func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers *ApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *ApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98317,6 +99796,13 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询出差审批单详情
+//
+// @param request - ApplyQueryRequest
+//
+// @return ApplyQueryResponse
 func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ApplyQueryHeaders{}
@@ -98329,6 +99815,17 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索国内/国际（港澳台）城市基础行政区划数据
+//
+// @param request - BaseCityInfoSearchRequest
+//
+// @param headers - BaseCityInfoSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BaseCityInfoSearchResponse
 func (client *Client) BaseCityInfoSearchWithOptions(request *BaseCityInfoSearchRequest, headers *BaseCityInfoSearchHeaders, runtime *util.RuntimeOptions) (_result *BaseCityInfoSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98376,6 +99873,13 @@ func (client *Client) BaseCityInfoSearchWithOptions(request *BaseCityInfoSearchR
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索国内/国际（港澳台）城市基础行政区划数据
+//
+// @param request - BaseCityInfoSearchRequest
+//
+// @return BaseCityInfoSearchResponse
 func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_result *BaseCityInfoSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BaseCityInfoSearchHeaders{}
@@ -98388,6 +99892,17 @@ func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 商旅账单内容修改
+//
+// @param request - BtripBillInfoAdjustRequest
+//
+// @param headers - BtripBillInfoAdjustHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BtripBillInfoAdjustResponse
 func (client *Client) BtripBillInfoAdjustWithOptions(request *BtripBillInfoAdjustRequest, headers *BtripBillInfoAdjustHeaders, runtime *util.RuntimeOptions) (_result *BtripBillInfoAdjustResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98451,6 +99966,13 @@ func (client *Client) BtripBillInfoAdjustWithOptions(request *BtripBillInfoAdjus
 	return _result, _err
 }
 
+// Summary:
+//
+// 商旅账单内容修改
+//
+// @param request - BtripBillInfoAdjustRequest
+//
+// @return BtripBillInfoAdjustResponse
 func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (_result *BtripBillInfoAdjustResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BtripBillInfoAdjustHeaders{}
@@ -98463,6 +99985,17 @@ func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步市内用车审批单
+//
+// @param tmpReq - CarApplyAddRequest
+//
+// @param headers - CarApplyAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarApplyAddResponse
 func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers *CarApplyAddHeaders, runtime *util.RuntimeOptions) (_result *CarApplyAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -98576,6 +100109,13 @@ func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步市内用车审批单
+//
+// @param request - CarApplyAddRequest
+//
+// @return CarApplyAddResponse
 func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarApplyAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarApplyAddHeaders{}
@@ -98588,6 +100128,17 @@ func (client *Client) CarApplyAdd(request *CarApplyAddRequest) (_result *CarAppl
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新市内用车审批单
+//
+// @param request - CarApplyModifyRequest
+//
+// @param headers - CarApplyModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarApplyModifyResponse
 func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, headers *CarApplyModifyHeaders, runtime *util.RuntimeOptions) (_result *CarApplyModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98647,6 +100198,13 @@ func (client *Client) CarApplyModifyWithOptions(request *CarApplyModifyRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新市内用车审批单
+//
+// @param request - CarApplyModifyRequest
+//
+// @return CarApplyModifyResponse
 func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *CarApplyModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarApplyModifyHeaders{}
@@ -98659,6 +100217,17 @@ func (client *Client) CarApplyModify(request *CarApplyModifyRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询市内用车审批单
+//
+// @param request - CarApplyQueryRequest
+//
+// @param headers - CarApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarApplyQueryResponse
 func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, headers *CarApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *CarApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98722,6 +100291,13 @@ func (client *Client) CarApplyQueryWithOptions(request *CarApplyQueryRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询市内用车审批单
+//
+// @param request - CarApplyQueryRequest
+//
+// @return CarApplyQueryResponse
 func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *CarApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarApplyQueryHeaders{}
@@ -98734,6 +100310,17 @@ func (client *Client) CarApplyQuery(request *CarApplyQueryRequest) (_result *Car
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用车记账数据
+//
+// @param request - CarBillSettlementQueryRequest
+//
+// @param headers - CarBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarBillSettlementQueryResponse
 func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettlementQueryRequest, headers *CarBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *CarBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98789,6 +100376,13 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用车记账数据
+//
+// @param request - CarBillSettlementQueryRequest
+//
+// @return CarBillSettlementQueryResponse
 func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequest) (_result *CarBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarBillSettlementQueryHeaders{}
@@ -98801,6 +100395,17 @@ func (client *Client) CarBillSettlementQuery(request *CarBillSettlementQueryRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用车订单列表
+//
+// @param request - CarOrderListQueryRequest
+//
+// @param headers - CarOrderListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarOrderListQueryResponse
 func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryRequest, headers *CarOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *CarOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98884,6 +100489,13 @@ func (client *Client) CarOrderListQueryWithOptions(request *CarOrderListQueryReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用车订单列表
+//
+// @param request - CarOrderListQueryRequest
+//
+// @return CarOrderListQueryResponse
 func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_result *CarOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarOrderListQueryHeaders{}
@@ -98896,6 +100508,17 @@ func (client *Client) CarOrderListQuery(request *CarOrderListQueryRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 用车订单查询
+//
+// @param request - CarOrderQueryRequest
+//
+// @param headers - CarOrderQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarOrderQueryResponse
 func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, headers *CarOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *CarOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -98943,6 +100566,13 @@ func (client *Client) CarOrderQueryWithOptions(request *CarOrderQueryRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 用车订单查询
+//
+// @param request - CarOrderQueryRequest
+//
+// @return CarOrderQueryResponse
 func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *CarOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarOrderQueryHeaders{}
@@ -98955,6 +100585,15 @@ func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *Car
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业用车场景
+//
+// @param headers - CarSceneQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CarSceneQueryResponse
 func (client *Client) CarSceneQueryWithOptions(headers *CarSceneQueryHeaders, runtime *util.RuntimeOptions) (_result *CarSceneQueryResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -98988,6 +100627,11 @@ func (client *Client) CarSceneQueryWithOptions(headers *CarSceneQueryHeaders, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业用车场景
+//
+// @return CarSceneQueryResponse
 func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CarSceneQueryHeaders{}
@@ -99000,6 +100644,17 @@ func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err erro
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询行政区划（市，区）基础数据
+//
+// @param request - CitySearchRequest
+//
+// @param headers - CitySearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CitySearchResponse
 func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers *CitySearchHeaders, runtime *util.RuntimeOptions) (_result *CitySearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99043,6 +100698,13 @@ func (client *Client) CitySearchWithOptions(request *CitySearchRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询行政区划（市，区）基础数据
+//
+// @param request - CitySearchRequest
+//
+// @return CitySearchResponse
 func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CitySearchHeaders{}
@@ -99055,6 +100717,17 @@ func (client *Client) CitySearch(request *CitySearchRequest) (_result *CitySearc
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询退改审批信息
+//
+// @param request - CommonApplyQueryRequest
+//
+// @param headers - CommonApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommonApplyQueryResponse
 func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryRequest, headers *CommonApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *CommonApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99106,6 +100779,13 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询退改审批信息
+//
+// @param request - CommonApplyQueryRequest
+//
+// @return CommonApplyQueryResponse
 func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_result *CommonApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CommonApplyQueryHeaders{}
@@ -99118,6 +100798,17 @@ func (client *Client) CommonApplyQuery(request *CommonApplyQueryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 退改审批结果同步
+//
+// @param request - CommonApplySyncRequest
+//
+// @param headers - CommonApplySyncHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommonApplySyncResponse
 func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest, headers *CommonApplySyncHeaders, runtime *util.RuntimeOptions) (_result *CommonApplySyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99181,6 +100872,13 @@ func (client *Client) CommonApplySyncWithOptions(request *CommonApplySyncRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 退改审批结果同步
+//
+// @param request - CommonApplySyncRequest
+//
+// @return CommonApplySyncResponse
 func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result *CommonApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CommonApplySyncHeaders{}
@@ -99193,6 +100891,17 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务商机票记账数据
+//
+// @param request - CooperatorFlightBillSettlementQueryRequest
+//
+// @param headers - CooperatorFlightBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CooperatorFlightBillSettlementQueryResponse
 func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *CooperatorFlightBillSettlementQueryRequest, headers *CooperatorFlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99252,6 +100961,13 @@ func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务商机票记账数据
+//
+// @param request - CooperatorFlightBillSettlementQueryRequest
+//
+// @return CooperatorFlightBillSettlementQueryResponse
 func (client *Client) CooperatorFlightBillSettlementQuery(request *CooperatorFlightBillSettlementQueryRequest) (_result *CooperatorFlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CooperatorFlightBillSettlementQueryHeaders{}
@@ -99264,6 +100980,17 @@ func (client *Client) CooperatorFlightBillSettlementQuery(request *CooperatorFli
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务商酒店记账数据
+//
+// @param request - CooperatorHotelBillSettlementQueryRequest
+//
+// @param headers - CooperatorHotelBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CooperatorHotelBillSettlementQueryResponse
 func (client *Client) CooperatorHotelBillSettlementQueryWithOptions(request *CooperatorHotelBillSettlementQueryRequest, headers *CooperatorHotelBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *CooperatorHotelBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99323,6 +101050,13 @@ func (client *Client) CooperatorHotelBillSettlementQueryWithOptions(request *Coo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询服务商酒店记账数据
+//
+// @param request - CooperatorHotelBillSettlementQueryRequest
+//
+// @return CooperatorHotelBillSettlementQueryResponse
 func (client *Client) CooperatorHotelBillSettlementQuery(request *CooperatorHotelBillSettlementQueryRequest) (_result *CooperatorHotelBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CooperatorHotelBillSettlementQueryHeaders{}
@@ -99335,6 +101069,15 @@ func (client *Client) CooperatorHotelBillSettlementQuery(request *CooperatorHote
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取关联可调用企业接口
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CorpAuthLinkInfoQueryResponse
 func (client *Client) CorpAuthLinkInfoQueryWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CorpAuthLinkInfoQueryResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -99359,6 +101102,11 @@ func (client *Client) CorpAuthLinkInfoQueryWithOptions(headers map[string]*strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取关联可调用企业接口
+//
+// @return CorpAuthLinkInfoQueryResponse
 func (client *Client) CorpAuthLinkInfoQuery() (_result *CorpAuthLinkInfoQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -99371,6 +101119,17 @@ func (client *Client) CorpAuthLinkInfoQuery() (_result *CorpAuthLinkInfoQueryRes
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取CorpToken接口
+//
+// @param request - CorpTokenRequest
+//
+// @param headers - CorpTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CorpTokenResponse
 func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *CorpTokenHeaders, runtime *util.RuntimeOptions) (_result *CorpTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99422,6 +101181,13 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取CorpToken接口
+//
+// @param request - CorpTokenRequest
+//
+// @return CorpTokenResponse
 func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CorpTokenHeaders{}
@@ -99434,6 +101200,17 @@ func (client *Client) CorpToken(request *CorpTokenRequest) (_result *CorpTokenRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成本中心
+//
+// @param request - CostCenterDeleteRequest
+//
+// @param headers - CostCenterDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CostCenterDeleteResponse
 func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteRequest, headers *CostCenterDeleteHeaders, runtime *util.RuntimeOptions) (_result *CostCenterDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99477,6 +101254,13 @@ func (client *Client) CostCenterDeleteWithOptions(request *CostCenterDeleteReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成本中心
+//
+// @param request - CostCenterDeleteRequest
+//
+// @return CostCenterDeleteResponse
 func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_result *CostCenterDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CostCenterDeleteHeaders{}
@@ -99489,6 +101273,17 @@ func (client *Client) CostCenterDelete(request *CostCenterDeleteRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改成本中心
+//
+// @param request - CostCenterModifyRequest
+//
+// @param headers - CostCenterModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CostCenterModifyResponse
 func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyRequest, headers *CostCenterModifyHeaders, runtime *util.RuntimeOptions) (_result *CostCenterModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99552,6 +101347,13 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改成本中心
+//
+// @param request - CostCenterModifyRequest
+//
+// @return CostCenterModifyResponse
 func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_result *CostCenterModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CostCenterModifyHeaders{}
@@ -99564,6 +101366,17 @@ func (client *Client) CostCenterModify(request *CostCenterModifyRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看成本中心
+//
+// @param request - CostCenterQueryRequest
+//
+// @param headers - CostCenterQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CostCenterQueryResponse
 func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest, headers *CostCenterQueryHeaders, runtime *util.RuntimeOptions) (_result *CostCenterQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99623,6 +101436,13 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看成本中心
+//
+// @param request - CostCenterQueryRequest
+//
+// @return CostCenterQueryResponse
 func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result *CostCenterQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CostCenterQueryHeaders{}
@@ -99635,6 +101455,17 @@ func (client *Client) CostCenterQuery(request *CostCenterQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存成本中心
+//
+// @param request - CostCenterSaveRequest
+//
+// @param headers - CostCenterSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CostCenterSaveResponse
 func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, headers *CostCenterSaveHeaders, runtime *util.RuntimeOptions) (_result *CostCenterSaveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99698,6 +101529,13 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存成本中心
+//
+// @param request - CostCenterSaveRequest
+//
+// @return CostCenterSaveResponse
 func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *CostCenterSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CostCenterSaveHeaders{}
@@ -99710,6 +101548,17 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建子企业
+//
+// @param request - CreateSubCorpRequest
+//
+// @param headers - CreateSubCorpHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubCorpResponse
 func (client *Client) CreateSubCorpWithOptions(request *CreateSubCorpRequest, headers *CreateSubCorpHeaders, runtime *util.RuntimeOptions) (_result *CreateSubCorpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -99761,6 +101610,13 @@ func (client *Client) CreateSubCorpWithOptions(request *CreateSubCorpRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建子企业
+//
+// @param request - CreateSubCorpRequest
+//
+// @return CreateSubCorpResponse
 func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *CreateSubCorpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSubCorpHeaders{}
@@ -99773,6 +101629,17 @@ func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头适用人员
+//
+// @param tmpReq - DeleteInvoiceEntityRequest
+//
+// @param headers - DeleteInvoiceEntityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInvoiceEntityResponse
 func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntityRequest, headers *DeleteInvoiceEntityHeaders, runtime *util.RuntimeOptions) (_result *DeleteInvoiceEntityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -99830,6 +101697,13 @@ func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntity
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头适用人员
+//
+// @param request - DeleteInvoiceEntityRequest
+//
+// @return DeleteInvoiceEntityResponse
 func (client *Client) DeleteInvoiceEntity(request *DeleteInvoiceEntityRequest) (_result *DeleteInvoiceEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteInvoiceEntityHeaders{}
@@ -99842,6 +101716,17 @@ func (client *Client) DeleteInvoiceEntity(request *DeleteInvoiceEntityRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步外部平台部门信息至商旅内部
+//
+// @param tmpReq - DepartmentSaveRequest
+//
+// @param headers - DepartmentSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DepartmentSaveResponse
 func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, headers *DepartmentSaveHeaders, runtime *util.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -99891,6 +101776,13 @@ func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步外部平台部门信息至商旅内部
+//
+// @param request - DepartmentSaveRequest
+//
+// @return DepartmentSaveResponse
 func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *DepartmentSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DepartmentSaveHeaders{}
@@ -99903,6 +101795,17 @@ func (client *Client) DepartmentSave(request *DepartmentSaveRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加成本中心人员信息
+//
+// @param tmpReq - EntityAddRequest
+//
+// @param headers - EntityAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EntityAddResponse
 func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *EntityAddHeaders, runtime *util.RuntimeOptions) (_result *EntityAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -99956,6 +101859,13 @@ func (client *Client) EntityAddWithOptions(tmpReq *EntityAddRequest, headers *En
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加成本中心人员信息
+//
+// @param request - EntityAddRequest
+//
+// @return EntityAddResponse
 func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &EntityAddHeaders{}
@@ -99968,6 +101878,17 @@ func (client *Client) EntityAdd(request *EntityAddRequest) (_result *EntityAddRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成本中心人员信息
+//
+// @param tmpReq - EntityDeleteRequest
+//
+// @param headers - EntityDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EntityDeleteResponse
 func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, headers *EntityDeleteHeaders, runtime *util.RuntimeOptions) (_result *EntityDeleteResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -100027,6 +101948,13 @@ func (client *Client) EntityDeleteWithOptions(tmpReq *EntityDeleteRequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成本中心人员信息
+//
+// @param request - EntityDeleteRequest
+//
+// @return EntityDeleteResponse
 func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *EntityDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &EntityDeleteHeaders{}
@@ -100039,6 +101967,17 @@ func (client *Client) EntityDelete(request *EntityDeleteRequest) (_result *Entit
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置成本中心人员信息
+//
+// @param tmpReq - EntitySetRequest
+//
+// @param headers - EntitySetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EntitySetResponse
 func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *EntitySetHeaders, runtime *util.RuntimeOptions) (_result *EntitySetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -100092,6 +102031,13 @@ func (client *Client) EntitySetWithOptions(tmpReq *EntitySetRequest, headers *En
 	return _result, _err
 }
 
+// Summary:
+//
+// 设置成本中心人员信息
+//
+// @param request - EntitySetRequest
+//
+// @return EntitySetResponse
 func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &EntitySetHeaders{}
@@ -100104,6 +102050,17 @@ func (client *Client) EntitySet(request *EntitySetRequest) (_result *EntitySetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 预估价格查询
+//
+// @param request - EstimatedPriceQueryRequest
+//
+// @param headers - EstimatedPriceQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EstimatedPriceQueryResponse
 func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQueryRequest, headers *EstimatedPriceQueryHeaders, runtime *util.RuntimeOptions) (_result *EstimatedPriceQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100175,6 +102132,13 @@ func (client *Client) EstimatedPriceQueryWithOptions(request *EstimatedPriceQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 预估价格查询
+//
+// @param request - EstimatedPriceQueryRequest
+//
+// @return EstimatedPriceQueryResponse
 func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (_result *EstimatedPriceQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &EstimatedPriceQueryHeaders{}
@@ -100187,6 +102151,17 @@ func (client *Client) EstimatedPriceQuery(request *EstimatedPriceQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 超标审批结果同步
+//
+// @param request - ExceedApplySyncRequest
+//
+// @param headers - ExceedApplySyncHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExceedApplySyncResponse
 func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest, headers *ExceedApplySyncHeaders, runtime *util.RuntimeOptions) (_result *ExceedApplySyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100250,6 +102225,13 @@ func (client *Client) ExceedApplySyncWithOptions(request *ExceedApplySyncRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 超标审批结果同步
+//
+// @param request - ExceedApplySyncRequest
+//
+// @return ExceedApplySyncResponse
 func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result *ExceedApplySyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ExceedApplySyncHeaders{}
@@ -100262,6 +102244,17 @@ func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票记账数据
+//
+// @param request - FlightBillSettlementQueryRequest
+//
+// @param headers - FlightBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightBillSettlementQueryResponse
 func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSettlementQueryRequest, headers *FlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100317,6 +102310,13 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票记账数据
+//
+// @param request - FlightBillSettlementQueryRequest
+//
+// @return FlightBillSettlementQueryResponse
 func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQueryRequest) (_result *FlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightBillSettlementQueryHeaders{}
@@ -100329,6 +102329,17 @@ func (client *Client) FlightBillSettlementQuery(request *FlightBillSettlementQue
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单取消
+//
+// @param request - FlightCancelOrderRequest
+//
+// @param headers - FlightCancelOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightCancelOrderResponse
 func (client *Client) FlightCancelOrderWithOptions(request *FlightCancelOrderRequest, headers *FlightCancelOrderHeaders, runtime *util.RuntimeOptions) (_result *FlightCancelOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100372,6 +102383,13 @@ func (client *Client) FlightCancelOrderWithOptions(request *FlightCancelOrderReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单取消
+//
+// @param request - FlightCancelOrderRequest
+//
+// @return FlightCancelOrderResponse
 func (client *Client) FlightCancelOrder(request *FlightCancelOrderRequest) (_result *FlightCancelOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightCancelOrderHeaders{}
@@ -100384,6 +102402,17 @@ func (client *Client) FlightCancelOrder(request *FlightCancelOrderRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单取消
+//
+// @param request - FlightCancelOrderV2Request
+//
+// @param headers - FlightCancelOrderV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightCancelOrderV2Response
 func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV2Request, headers *FlightCancelOrderV2Headers, runtime *util.RuntimeOptions) (_result *FlightCancelOrderV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100435,6 +102464,13 @@ func (client *Client) FlightCancelOrderV2WithOptions(request *FlightCancelOrderV
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单取消
+//
+// @param request - FlightCancelOrderV2Request
+//
+// @return FlightCancelOrderV2Response
 func (client *Client) FlightCancelOrderV2(request *FlightCancelOrderV2Request) (_result *FlightCancelOrderV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightCancelOrderV2Headers{}
@@ -100447,6 +102483,17 @@ func (client *Client) FlightCancelOrderV2(request *FlightCancelOrderV2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单创建
+//
+// @param tmpReq - FlightCreateOrderRequest
+//
+// @param headers - FlightCreateOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightCreateOrderResponse
 func (client *Client) FlightCreateOrderWithOptions(tmpReq *FlightCreateOrderRequest, headers *FlightCreateOrderHeaders, runtime *util.RuntimeOptions) (_result *FlightCreateOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -100576,6 +102623,13 @@ func (client *Client) FlightCreateOrderWithOptions(tmpReq *FlightCreateOrderRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单创建
+//
+// @param request - FlightCreateOrderRequest
+//
+// @return FlightCreateOrderResponse
 func (client *Client) FlightCreateOrder(request *FlightCreateOrderRequest) (_result *FlightCreateOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightCreateOrderHeaders{}
@@ -100588,6 +102642,17 @@ func (client *Client) FlightCreateOrder(request *FlightCreateOrderRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单创建
+//
+// @param tmpReq - FlightCreateOrderV2Request
+//
+// @param headers - FlightCreateOrderV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightCreateOrderV2Response
 func (client *Client) FlightCreateOrderV2WithOptions(tmpReq *FlightCreateOrderV2Request, headers *FlightCreateOrderV2Headers, runtime *util.RuntimeOptions) (_result *FlightCreateOrderV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -100677,6 +102742,13 @@ func (client *Client) FlightCreateOrderV2WithOptions(tmpReq *FlightCreateOrderV2
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单创建
+//
+// @param request - FlightCreateOrderV2Request
+//
+// @return FlightCreateOrderV2Response
 func (client *Client) FlightCreateOrderV2(request *FlightCreateOrderV2Request) (_result *FlightCreateOrderV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightCreateOrderV2Headers{}
@@ -100689,6 +102761,17 @@ func (client *Client) FlightCreateOrderV2(request *FlightCreateOrderV2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询飞机超标审批详情
+//
+// @param request - FlightExceedApplyQueryRequest
+//
+// @param headers - FlightExceedApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightExceedApplyQueryResponse
 func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApplyQueryRequest, headers *FlightExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100732,6 +102815,13 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询飞机超标审批详情
+//
+// @param request - FlightExceedApplyQueryRequest
+//
+// @return FlightExceedApplyQueryResponse
 func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequest) (_result *FlightExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightExceedApplyQueryHeaders{}
@@ -100744,6 +102834,17 @@ func (client *Client) FlightExceedApplyQuery(request *FlightExceedApplyQueryRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票行程单扫描件
+//
+// @param request - FlightItineraryScanQueryRequest
+//
+// @param headers - FlightItineraryScanQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightItineraryScanQueryResponse
 func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItineraryScanQueryRequest, headers *FlightItineraryScanQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightItineraryScanQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100811,6 +102912,13 @@ func (client *Client) FlightItineraryScanQueryWithOptions(request *FlightItinera
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票行程单扫描件
+//
+// @param request - FlightItineraryScanQueryRequest
+//
+// @return FlightItineraryScanQueryResponse
 func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQueryRequest) (_result *FlightItineraryScanQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightItineraryScanQueryHeaders{}
@@ -100823,6 +102931,17 @@ func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQuery
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param request - FlightListingSearchRequest
+//
+// @param headers - FlightListingSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightListingSearchResponse
 func (client *Client) FlightListingSearchWithOptions(request *FlightListingSearchRequest, headers *FlightListingSearchHeaders, runtime *util.RuntimeOptions) (_result *FlightListingSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -100882,6 +103001,13 @@ func (client *Client) FlightListingSearchWithOptions(request *FlightListingSearc
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param request - FlightListingSearchRequest
+//
+// @return FlightListingSearchResponse
 func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (_result *FlightListingSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightListingSearchHeaders{}
@@ -100894,6 +103020,17 @@ func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param tmpReq - FlightListingSearchV2Request
+//
+// @param headers - FlightListingSearchV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightListingSearchV2Response
 func (client *Client) FlightListingSearchV2WithOptions(tmpReq *FlightListingSearchV2Request, headers *FlightListingSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightListingSearchV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -100987,6 +103124,13 @@ func (client *Client) FlightListingSearchV2WithOptions(tmpReq *FlightListingSear
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param request - FlightListingSearchV2Request
+//
+// @return FlightListingSearchV2Response
 func (client *Client) FlightListingSearchV2(request *FlightListingSearchV2Request) (_result *FlightListingSearchV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightListingSearchV2Headers{}
@@ -100999,6 +103143,17 @@ func (client *Client) FlightListingSearchV2(request *FlightListingSearchV2Reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签申请
+//
+// @param tmpReq - FlightModifyApplyV2Request
+//
+// @param headers - FlightModifyApplyV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyApplyV2Response
 func (client *Client) FlightModifyApplyV2WithOptions(tmpReq *FlightModifyApplyV2Request, headers *FlightModifyApplyV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyApplyV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -101088,6 +103243,13 @@ func (client *Client) FlightModifyApplyV2WithOptions(tmpReq *FlightModifyApplyV2
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签申请
+//
+// @param request - FlightModifyApplyV2Request
+//
+// @return FlightModifyApplyV2Response
 func (client *Client) FlightModifyApplyV2(request *FlightModifyApplyV2Request) (_result *FlightModifyApplyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyApplyV2Headers{}
@@ -101100,6 +103262,17 @@ func (client *Client) FlightModifyApplyV2(request *FlightModifyApplyV2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签取消
+//
+// @param request - FlightModifyCancelV2Request
+//
+// @param headers - FlightModifyCancelV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyCancelV2Response
 func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCancelV2Request, headers *FlightModifyCancelV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyCancelV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101159,6 +103332,13 @@ func (client *Client) FlightModifyCancelV2WithOptions(request *FlightModifyCance
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签取消
+//
+// @param request - FlightModifyCancelV2Request
+//
+// @return FlightModifyCancelV2Response
 func (client *Client) FlightModifyCancelV2(request *FlightModifyCancelV2Request) (_result *FlightModifyCancelV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyCancelV2Headers{}
@@ -101171,6 +103351,17 @@ func (client *Client) FlightModifyCancelV2(request *FlightModifyCancelV2Request)
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签列表搜索
+//
+// @param tmpReq - FlightModifyListingSearchV2Request
+//
+// @param headers - FlightModifyListingSearchV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyListingSearchV2Response
 func (client *Client) FlightModifyListingSearchV2WithOptions(tmpReq *FlightModifyListingSearchV2Request, headers *FlightModifyListingSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyListingSearchV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -101276,6 +103467,13 @@ func (client *Client) FlightModifyListingSearchV2WithOptions(tmpReq *FlightModif
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签列表搜索
+//
+// @param request - FlightModifyListingSearchV2Request
+//
+// @return FlightModifyListingSearchV2Response
 func (client *Client) FlightModifyListingSearchV2(request *FlightModifyListingSearchV2Request) (_result *FlightModifyListingSearchV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyListingSearchV2Headers{}
@@ -101288,6 +103486,17 @@ func (client *Client) FlightModifyListingSearchV2(request *FlightModifyListingSe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签详情
+//
+// @param request - FlightModifyOrderDetailV2Request
+//
+// @param headers - FlightModifyOrderDetailV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyOrderDetailV2Response
 func (client *Client) FlightModifyOrderDetailV2WithOptions(request *FlightModifyOrderDetailV2Request, headers *FlightModifyOrderDetailV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyOrderDetailV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101343,6 +103552,13 @@ func (client *Client) FlightModifyOrderDetailV2WithOptions(request *FlightModify
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签详情
+//
+// @param request - FlightModifyOrderDetailV2Request
+//
+// @return FlightModifyOrderDetailV2Response
 func (client *Client) FlightModifyOrderDetailV2(request *FlightModifyOrderDetailV2Request) (_result *FlightModifyOrderDetailV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyOrderDetailV2Headers{}
@@ -101355,6 +103571,17 @@ func (client *Client) FlightModifyOrderDetailV2(request *FlightModifyOrderDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签报价搜索
+//
+// @param tmpReq - FlightModifyOtaSearchV2Request
+//
+// @param headers - FlightModifyOtaSearchV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyOtaSearchV2Response
 func (client *Client) FlightModifyOtaSearchV2WithOptions(tmpReq *FlightModifyOtaSearchV2Request, headers *FlightModifyOtaSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyOtaSearchV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -101448,6 +103675,13 @@ func (client *Client) FlightModifyOtaSearchV2WithOptions(tmpReq *FlightModifyOta
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签报价搜索
+//
+// @param request - FlightModifyOtaSearchV2Request
+//
+// @return FlightModifyOtaSearchV2Response
 func (client *Client) FlightModifyOtaSearchV2(request *FlightModifyOtaSearchV2Request) (_result *FlightModifyOtaSearchV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyOtaSearchV2Headers{}
@@ -101460,6 +103694,17 @@ func (client *Client) FlightModifyOtaSearchV2(request *FlightModifyOtaSearchV2Re
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签支付
+//
+// @param tmpReq - FlightModifyPayV2Request
+//
+// @param headers - FlightModifyPayV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightModifyPayV2Response
 func (client *Client) FlightModifyPayV2WithOptions(tmpReq *FlightModifyPayV2Request, headers *FlightModifyPayV2Headers, runtime *util.RuntimeOptions) (_result *FlightModifyPayV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -101533,6 +103778,13 @@ func (client *Client) FlightModifyPayV2WithOptions(tmpReq *FlightModifyPayV2Requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签支付
+//
+// @param request - FlightModifyPayV2Request
+//
+// @return FlightModifyPayV2Response
 func (client *Client) FlightModifyPayV2(request *FlightModifyPayV2Request) (_result *FlightModifyPayV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightModifyPayV2Headers{}
@@ -101545,6 +103797,17 @@ func (client *Client) FlightModifyPayV2(request *FlightModifyPayV2Request) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单明细信息
+//
+// @param request - FlightOrderDetailInfoRequest
+//
+// @param headers - FlightOrderDetailInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOrderDetailInfoResponse
 func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetailInfoRequest, headers *FlightOrderDetailInfoHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101588,6 +103851,13 @@ func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单明细信息
+//
+// @param request - FlightOrderDetailInfoRequest
+//
+// @return FlightOrderDetailInfoResponse
 func (client *Client) FlightOrderDetailInfo(request *FlightOrderDetailInfoRequest) (_result *FlightOrderDetailInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOrderDetailInfoHeaders{}
@@ -101600,6 +103870,17 @@ func (client *Client) FlightOrderDetailInfo(request *FlightOrderDetailInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单详情
+//
+// @param request - FlightOrderDetailV2Request
+//
+// @param headers - FlightOrderDetailV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOrderDetailV2Response
 func (client *Client) FlightOrderDetailV2WithOptions(request *FlightOrderDetailV2Request, headers *FlightOrderDetailV2Headers, runtime *util.RuntimeOptions) (_result *FlightOrderDetailV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101651,6 +103932,13 @@ func (client *Client) FlightOrderDetailV2WithOptions(request *FlightOrderDetailV
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单详情
+//
+// @param request - FlightOrderDetailV2Request
+//
+// @return FlightOrderDetailV2Response
 func (client *Client) FlightOrderDetailV2(request *FlightOrderDetailV2Request) (_result *FlightOrderDetailV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOrderDetailV2Headers{}
@@ -101663,6 +103951,17 @@ func (client *Client) FlightOrderDetailV2(request *FlightOrderDetailV2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票订单列表
+//
+// @param request - FlightOrderListQueryRequest
+//
+// @param headers - FlightOrderListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOrderListQueryResponse
 func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQueryRequest, headers *FlightOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101746,6 +104045,13 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票订单列表
+//
+// @param request - FlightOrderListQueryRequest
+//
+// @return FlightOrderListQueryResponse
 func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest) (_result *FlightOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOrderListQueryHeaders{}
@@ -101758,6 +104064,17 @@ func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票订单详情（含票信息）
+//
+// @param request - FlightOrderQueryRequest
+//
+// @param headers - FlightOrderQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOrderQueryResponse
 func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryRequest, headers *FlightOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101805,6 +104122,13 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机票订单详情（含票信息）
+//
+// @param request - FlightOrderQueryRequest
+//
+// @return FlightOrderQueryResponse
 func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_result *FlightOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOrderQueryHeaders{}
@@ -101817,6 +104141,17 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询退改规则行李额
+//
+// @param request - FlightOtaItemDetailRequest
+//
+// @param headers - FlightOtaItemDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOtaItemDetailResponse
 func (client *Client) FlightOtaItemDetailWithOptions(request *FlightOtaItemDetailRequest, headers *FlightOtaItemDetailHeaders, runtime *util.RuntimeOptions) (_result *FlightOtaItemDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101864,6 +104199,13 @@ func (client *Client) FlightOtaItemDetailWithOptions(request *FlightOtaItemDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询退改规则行李额
+//
+// @param request - FlightOtaItemDetailRequest
+//
+// @return FlightOtaItemDetailResponse
 func (client *Client) FlightOtaItemDetail(request *FlightOtaItemDetailRequest) (_result *FlightOtaItemDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOtaItemDetailHeaders{}
@@ -101876,6 +104218,17 @@ func (client *Client) FlightOtaItemDetail(request *FlightOtaItemDetailRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班最低价搜索
+//
+// @param request - FlightOtaSearchRequest
+//
+// @param headers - FlightOtaSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOtaSearchResponse
 func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest, headers *FlightOtaSearchHeaders, runtime *util.RuntimeOptions) (_result *FlightOtaSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -101943,6 +104296,13 @@ func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班最低价搜索
+//
+// @param request - FlightOtaSearchRequest
+//
+// @return FlightOtaSearchResponse
 func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result *FlightOtaSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOtaSearchHeaders{}
@@ -101955,6 +104315,17 @@ func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 单航班报价搜索
+//
+// @param tmpReq - FlightOtaSearchV2Request
+//
+// @param headers - FlightOtaSearchV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightOtaSearchV2Response
 func (client *Client) FlightOtaSearchV2WithOptions(tmpReq *FlightOtaSearchV2Request, headers *FlightOtaSearchV2Headers, runtime *util.RuntimeOptions) (_result *FlightOtaSearchV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102032,6 +104403,13 @@ func (client *Client) FlightOtaSearchV2WithOptions(tmpReq *FlightOtaSearchV2Requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 单航班报价搜索
+//
+// @param request - FlightOtaSearchV2Request
+//
+// @return FlightOtaSearchV2Response
 func (client *Client) FlightOtaSearchV2(request *FlightOtaSearchV2Request) (_result *FlightOtaSearchV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightOtaSearchV2Headers{}
@@ -102044,6 +104422,17 @@ func (client *Client) FlightOtaSearchV2(request *FlightOtaSearchV2Request) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单支付
+//
+// @param tmpReq - FlightPayOrderRequest
+//
+// @param headers - FlightPayOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightPayOrderResponse
 func (client *Client) FlightPayOrderWithOptions(tmpReq *FlightPayOrderRequest, headers *FlightPayOrderHeaders, runtime *util.RuntimeOptions) (_result *FlightPayOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102109,6 +104498,13 @@ func (client *Client) FlightPayOrderWithOptions(tmpReq *FlightPayOrderRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班订单支付
+//
+// @param request - FlightPayOrderRequest
+//
+// @return FlightPayOrderResponse
 func (client *Client) FlightPayOrder(request *FlightPayOrderRequest) (_result *FlightPayOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightPayOrderHeaders{}
@@ -102121,6 +104517,17 @@ func (client *Client) FlightPayOrder(request *FlightPayOrderRequest) (_result *F
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单支付
+//
+// @param request - FlightPayOrderV2Request
+//
+// @param headers - FlightPayOrderV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightPayOrderV2Response
 func (client *Client) FlightPayOrderV2WithOptions(request *FlightPayOrderV2Request, headers *FlightPayOrderV2Headers, runtime *util.RuntimeOptions) (_result *FlightPayOrderV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -102180,6 +104587,13 @@ func (client *Client) FlightPayOrderV2WithOptions(request *FlightPayOrderV2Reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票订单支付
+//
+// @param request - FlightPayOrderV2Request
+//
+// @return FlightPayOrderV2Response
 func (client *Client) FlightPayOrderV2(request *FlightPayOrderV2Request) (_result *FlightPayOrderV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightPayOrderV2Headers{}
@@ -102192,6 +104606,17 @@ func (client *Client) FlightPayOrderV2(request *FlightPayOrderV2Request) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班退票申请
+//
+// @param tmpReq - FlightRefundApplyRequest
+//
+// @param headers - FlightRefundApplyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundApplyResponse
 func (client *Client) FlightRefundApplyWithOptions(tmpReq *FlightRefundApplyRequest, headers *FlightRefundApplyHeaders, runtime *util.RuntimeOptions) (_result *FlightRefundApplyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102301,6 +104726,13 @@ func (client *Client) FlightRefundApplyWithOptions(tmpReq *FlightRefundApplyRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班退票申请
+//
+// @param request - FlightRefundApplyRequest
+//
+// @return FlightRefundApplyResponse
 func (client *Client) FlightRefundApply(request *FlightRefundApplyRequest) (_result *FlightRefundApplyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundApplyHeaders{}
@@ -102313,6 +104745,17 @@ func (client *Client) FlightRefundApply(request *FlightRefundApplyRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票申请
+//
+// @param tmpReq - FlightRefundApplyV2Request
+//
+// @param headers - FlightRefundApplyV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundApplyV2Response
 func (client *Client) FlightRefundApplyV2WithOptions(tmpReq *FlightRefundApplyV2Request, headers *FlightRefundApplyV2Headers, runtime *util.RuntimeOptions) (_result *FlightRefundApplyV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102410,6 +104853,13 @@ func (client *Client) FlightRefundApplyV2WithOptions(tmpReq *FlightRefundApplyV2
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票申请
+//
+// @param request - FlightRefundApplyV2Request
+//
+// @return FlightRefundApplyV2Response
 func (client *Client) FlightRefundApplyV2(request *FlightRefundApplyV2Request) (_result *FlightRefundApplyV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundApplyV2Headers{}
@@ -102422,6 +104872,17 @@ func (client *Client) FlightRefundApplyV2(request *FlightRefundApplyV2Request) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班退票详情
+//
+// @param request - FlightRefundDetailRequest
+//
+// @param headers - FlightRefundDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundDetailResponse
 func (client *Client) FlightRefundDetailWithOptions(request *FlightRefundDetailRequest, headers *FlightRefundDetailHeaders, runtime *util.RuntimeOptions) (_result *FlightRefundDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -102469,6 +104930,13 @@ func (client *Client) FlightRefundDetailWithOptions(request *FlightRefundDetailR
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班退票详情
+//
+// @param request - FlightRefundDetailRequest
+//
+// @return FlightRefundDetailResponse
 func (client *Client) FlightRefundDetail(request *FlightRefundDetailRequest) (_result *FlightRefundDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundDetailHeaders{}
@@ -102481,6 +104949,17 @@ func (client *Client) FlightRefundDetail(request *FlightRefundDetailRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票详情
+//
+// @param request - FlightRefundDetailV2Request
+//
+// @param headers - FlightRefundDetailV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundDetailV2Response
 func (client *Client) FlightRefundDetailV2WithOptions(request *FlightRefundDetailV2Request, headers *FlightRefundDetailV2Headers, runtime *util.RuntimeOptions) (_result *FlightRefundDetailV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -102532,6 +105011,13 @@ func (client *Client) FlightRefundDetailV2WithOptions(request *FlightRefundDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票详情
+//
+// @param request - FlightRefundDetailV2Request
+//
+// @return FlightRefundDetailV2Response
 func (client *Client) FlightRefundDetailV2(request *FlightRefundDetailV2Request) (_result *FlightRefundDetailV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundDetailV2Headers{}
@@ -102544,6 +105030,17 @@ func (client *Client) FlightRefundDetailV2(request *FlightRefundDetailV2Request)
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票预计算
+//
+// @param tmpReq - FlightRefundPreCalRequest
+//
+// @param headers - FlightRefundPreCalHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundPreCalResponse
 func (client *Client) FlightRefundPreCalWithOptions(tmpReq *FlightRefundPreCalRequest, headers *FlightRefundPreCalHeaders, runtime *util.RuntimeOptions) (_result *FlightRefundPreCalResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102601,6 +105098,13 @@ func (client *Client) FlightRefundPreCalWithOptions(tmpReq *FlightRefundPreCalRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票预计算
+//
+// @param request - FlightRefundPreCalRequest
+//
+// @return FlightRefundPreCalResponse
 func (client *Client) FlightRefundPreCal(request *FlightRefundPreCalRequest) (_result *FlightRefundPreCalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundPreCalHeaders{}
@@ -102613,6 +105117,17 @@ func (client *Client) FlightRefundPreCal(request *FlightRefundPreCalRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票费用预计算
+//
+// @param tmpReq - FlightRefundPreCalV2Request
+//
+// @param headers - FlightRefundPreCalV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightRefundPreCalV2Response
 func (client *Client) FlightRefundPreCalV2WithOptions(tmpReq *FlightRefundPreCalV2Request, headers *FlightRefundPreCalV2Headers, runtime *util.RuntimeOptions) (_result *FlightRefundPreCalV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102690,6 +105205,13 @@ func (client *Client) FlightRefundPreCalV2WithOptions(tmpReq *FlightRefundPreCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票退票费用预计算
+//
+// @param request - FlightRefundPreCalV2Request
+//
+// @return FlightRefundPreCalV2Response
 func (client *Client) FlightRefundPreCalV2(request *FlightRefundPreCalV2Request) (_result *FlightRefundPreCalV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightRefundPreCalV2Headers{}
@@ -102702,6 +105224,17 @@ func (client *Client) FlightRefundPreCalV2(request *FlightRefundPreCalV2Request)
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param request - FlightSearchListRequest
+//
+// @param headers - FlightSearchListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlightSearchListResponse
 func (client *Client) FlightSearchListWithOptions(request *FlightSearchListRequest, headers *FlightSearchListHeaders, runtime *util.RuntimeOptions) (_result *FlightSearchListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -102797,6 +105330,13 @@ func (client *Client) FlightSearchListWithOptions(request *FlightSearchListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 航班列表搜索
+//
+// @param request - FlightSearchListRequest
+//
+// @return FlightSearchListResponse
 func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_result *FlightSearchListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &FlightSearchListHeaders{}
@@ -102809,6 +105349,17 @@ func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取GroupCorpToken接口
+//
+// @param request - GroupCorpTokenRequest
+//
+// @param headers - GroupCorpTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GroupCorpTokenResponse
 func (client *Client) GroupCorpTokenWithOptions(request *GroupCorpTokenRequest, headers *GroupCorpTokenHeaders, runtime *util.RuntimeOptions) (_result *GroupCorpTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -102860,6 +105411,13 @@ func (client *Client) GroupCorpTokenWithOptions(request *GroupCorpTokenRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 换取GroupCorpToken接口
+//
+// @param request - GroupCorpTokenRequest
+//
+// @return GroupCorpTokenResponse
 func (client *Client) GroupCorpToken(request *GroupCorpTokenRequest) (_result *GroupCorpTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GroupCorpTokenHeaders{}
@@ -102872,6 +105430,17 @@ func (client *Client) GroupCorpToken(request *GroupCorpTokenRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 集团部门同步
+//
+// @param tmpReq - GroupDepartSaveRequest
+//
+// @param headers - GroupDepartSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GroupDepartSaveResponse
 func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest, headers *GroupDepartSaveHeaders, runtime *util.RuntimeOptions) (_result *GroupDepartSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -102945,6 +105514,13 @@ func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 集团部门同步
+//
+// @param request - GroupDepartSaveRequest
+//
+// @return GroupDepartSaveResponse
 func (client *Client) GroupDepartSave(request *GroupDepartSaveRequest) (_result *GroupDepartSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GroupDepartSaveHeaders{}
@@ -102957,6 +105533,17 @@ func (client *Client) GroupDepartSave(request *GroupDepartSaveRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 集团人员同步
+//
+// @param tmpReq - GroupUserSaveRequest
+//
+// @param headers - GroupUserSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GroupUserSaveResponse
 func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, headers *GroupUserSaveHeaders, runtime *util.RuntimeOptions) (_result *GroupUserSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -103046,6 +105633,13 @@ func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 集团人员同步
+//
+// @param request - GroupUserSaveRequest
+//
+// @return GroupUserSaveResponse
 func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *GroupUserSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GroupUserSaveHeaders{}
@@ -103058,6 +105652,17 @@ func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *Gro
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店起价
+//
+// @param tmpReq - HotelAskingPriceRequest
+//
+// @param headers - HotelAskingPriceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelAskingPriceResponse
 func (client *Client) HotelAskingPriceWithOptions(tmpReq *HotelAskingPriceRequest, headers *HotelAskingPriceHeaders, runtime *util.RuntimeOptions) (_result *HotelAskingPriceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -103151,6 +105756,13 @@ func (client *Client) HotelAskingPriceWithOptions(tmpReq *HotelAskingPriceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店起价
+//
+// @param request - HotelAskingPriceRequest
+//
+// @return HotelAskingPriceResponse
 func (client *Client) HotelAskingPrice(request *HotelAskingPriceRequest) (_result *HotelAskingPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelAskingPriceHeaders{}
@@ -103163,6 +105775,17 @@ func (client *Client) HotelAskingPrice(request *HotelAskingPriceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店记账数据
+//
+// @param request - HotelBillSettlementQueryRequest
+//
+// @param headers - HotelBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelBillSettlementQueryResponse
 func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSettlementQueryRequest, headers *HotelBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103218,6 +105841,13 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店记账数据
+//
+// @param request - HotelBillSettlementQueryRequest
+//
+// @return HotelBillSettlementQueryResponse
 func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQueryRequest) (_result *HotelBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelBillSettlementQueryHeaders{}
@@ -103230,6 +105860,17 @@ func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQuery
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店城市列表
+//
+// @param request - HotelCityCodeListRequest
+//
+// @param headers - HotelCityCodeListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelCityCodeListResponse
 func (client *Client) HotelCityCodeListWithOptions(request *HotelCityCodeListRequest, headers *HotelCityCodeListHeaders, runtime *util.RuntimeOptions) (_result *HotelCityCodeListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103273,6 +105914,13 @@ func (client *Client) HotelCityCodeListWithOptions(request *HotelCityCodeListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店城市列表
+//
+// @param request - HotelCityCodeListRequest
+//
+// @return HotelCityCodeListResponse
 func (client *Client) HotelCityCodeList(request *HotelCityCodeListRequest) (_result *HotelCityCodeListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelCityCodeListHeaders{}
@@ -103285,6 +105933,17 @@ func (client *Client) HotelCityCodeList(request *HotelCityCodeListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店超标审批详情
+//
+// @param request - HotelExceedApplyQueryRequest
+//
+// @param headers - HotelExceedApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelExceedApplyQueryResponse
 func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApplyQueryRequest, headers *HotelExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103328,6 +105987,13 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店超标审批详情
+//
+// @param request - HotelExceedApplyQueryRequest
+//
+// @return HotelExceedApplyQueryResponse
 func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryRequest) (_result *HotelExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelExceedApplyQueryHeaders{}
@@ -103340,6 +106006,17 @@ func (client *Client) HotelExceedApplyQuery(request *HotelExceedApplyQueryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店详情页报价接口(直连)
+//
+// @param request - HotelGoodsQueryRequest
+//
+// @param headers - HotelGoodsQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelGoodsQueryResponse
 func (client *Client) HotelGoodsQueryWithOptions(request *HotelGoodsQueryRequest, headers *HotelGoodsQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelGoodsQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103427,6 +106104,13 @@ func (client *Client) HotelGoodsQueryWithOptions(request *HotelGoodsQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店详情页报价接口(直连)
+//
+// @param request - HotelGoodsQueryRequest
+//
+// @return HotelGoodsQueryResponse
 func (client *Client) HotelGoodsQuery(request *HotelGoodsQueryRequest) (_result *HotelGoodsQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelGoodsQueryHeaders{}
@@ -103439,6 +106123,17 @@ func (client *Client) HotelGoodsQuery(request *HotelGoodsQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店清单
+//
+// @param request - HotelIndexInfoRequest
+//
+// @param headers - HotelIndexInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelIndexInfoResponse
 func (client *Client) HotelIndexInfoWithOptions(request *HotelIndexInfoRequest, headers *HotelIndexInfoHeaders, runtime *util.RuntimeOptions) (_result *HotelIndexInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103494,6 +106189,13 @@ func (client *Client) HotelIndexInfoWithOptions(request *HotelIndexInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店清单
+//
+// @param request - HotelIndexInfoRequest
+//
+// @return HotelIndexInfoResponse
 func (client *Client) HotelIndexInfo(request *HotelIndexInfoRequest) (_result *HotelIndexInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelIndexInfoHeaders{}
@@ -103506,6 +106208,17 @@ func (client *Client) HotelIndexInfo(request *HotelIndexInfoRequest) (_result *H
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单取消
+//
+// @param request - HotelOrderCancelRequest
+//
+// @param headers - HotelOrderCancelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderCancelResponse
 func (client *Client) HotelOrderCancelWithOptions(request *HotelOrderCancelRequest, headers *HotelOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103553,6 +106266,13 @@ func (client *Client) HotelOrderCancelWithOptions(request *HotelOrderCancelReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单取消
+//
+// @param request - HotelOrderCancelRequest
+//
+// @return HotelOrderCancelResponse
 func (client *Client) HotelOrderCancel(request *HotelOrderCancelRequest) (_result *HotelOrderCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderCancelHeaders{}
@@ -103565,6 +106285,17 @@ func (client *Client) HotelOrderCancel(request *HotelOrderCancelRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单创建
+//
+// @param tmpReq - HotelOrderCreateRequest
+//
+// @param headers - HotelOrderCreateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderCreateResponse
 func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateRequest, headers *HotelOrderCreateHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderCreateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -103706,6 +106437,13 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单创建
+//
+// @param request - HotelOrderCreateRequest
+//
+// @return HotelOrderCreateResponse
 func (client *Client) HotelOrderCreate(request *HotelOrderCreateRequest) (_result *HotelOrderCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderCreateHeaders{}
@@ -103718,6 +106456,17 @@ func (client *Client) HotelOrderCreate(request *HotelOrderCreateRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单明细信息
+//
+// @param request - HotelOrderDetailInfoRequest
+//
+// @param headers - HotelOrderDetailInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderDetailInfoResponse
 func (client *Client) HotelOrderDetailInfoWithOptions(request *HotelOrderDetailInfoRequest, headers *HotelOrderDetailInfoHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103765,6 +106514,13 @@ func (client *Client) HotelOrderDetailInfoWithOptions(request *HotelOrderDetailI
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单明细信息
+//
+// @param request - HotelOrderDetailInfoRequest
+//
+// @return HotelOrderDetailInfoResponse
 func (client *Client) HotelOrderDetailInfo(request *HotelOrderDetailInfoRequest) (_result *HotelOrderDetailInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderDetailInfoHeaders{}
@@ -103777,6 +106533,17 @@ func (client *Client) HotelOrderDetailInfo(request *HotelOrderDetailInfoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店订单列表
+//
+// @param request - HotelOrderListQueryRequest
+//
+// @param headers - HotelOrderListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderListQueryResponse
 func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQueryRequest, headers *HotelOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103860,6 +106627,13 @@ func (client *Client) HotelOrderListQueryWithOptions(request *HotelOrderListQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店订单列表
+//
+// @param request - HotelOrderListQueryRequest
+//
+// @return HotelOrderListQueryResponse
 func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (_result *HotelOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderListQueryHeaders{}
@@ -103872,6 +106646,17 @@ func (client *Client) HotelOrderListQuery(request *HotelOrderListQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单支付
+//
+// @param request - HotelOrderPayRequest
+//
+// @param headers - HotelOrderPayHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderPayResponse
 func (client *Client) HotelOrderPayWithOptions(request *HotelOrderPayRequest, headers *HotelOrderPayHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderPayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -103939,6 +106724,13 @@ func (client *Client) HotelOrderPayWithOptions(request *HotelOrderPayRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单支付
+//
+// @param request - HotelOrderPayRequest
+//
+// @return HotelOrderPayResponse
 func (client *Client) HotelOrderPay(request *HotelOrderPayRequest) (_result *HotelOrderPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderPayHeaders{}
@@ -103951,6 +106743,17 @@ func (client *Client) HotelOrderPay(request *HotelOrderPayRequest) (_result *Hot
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店下单前校验
+//
+// @param tmpReq - HotelOrderPreValidateRequest
+//
+// @param headers - HotelOrderPreValidateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderPreValidateResponse
 func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreValidateRequest, headers *HotelOrderPreValidateHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderPreValidateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104052,6 +106855,13 @@ func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreVali
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店下单前校验
+//
+// @param request - HotelOrderPreValidateRequest
+//
+// @return HotelOrderPreValidateResponse
 func (client *Client) HotelOrderPreValidate(request *HotelOrderPreValidateRequest) (_result *HotelOrderPreValidateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderPreValidateHeaders{}
@@ -104064,6 +106874,17 @@ func (client *Client) HotelOrderPreValidate(request *HotelOrderPreValidateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单查询
+//
+// @param request - HotelOrderQueryRequest
+//
+// @param headers - HotelOrderQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderQueryResponse
 func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest, headers *HotelOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104107,6 +106928,13 @@ func (client *Client) HotelOrderQueryWithOptions(request *HotelOrderQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店订单查询
+//
+// @param request - HotelOrderQueryRequest
+//
+// @return HotelOrderQueryResponse
 func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result *HotelOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelOrderQueryHeaders{}
@@ -104119,6 +106947,17 @@ func (client *Client) HotelOrderQuery(request *HotelOrderQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店拉动态拉取价格接口(落地)
+//
+// @param tmpReq - HotelPricePullRequest
+//
+// @param headers - HotelPricePullHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelPricePullResponse
 func (client *Client) HotelPricePullWithOptions(tmpReq *HotelPricePullRequest, headers *HotelPricePullHeaders, runtime *util.RuntimeOptions) (_result *HotelPricePullResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104188,6 +107027,13 @@ func (client *Client) HotelPricePullWithOptions(tmpReq *HotelPricePullRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店拉动态拉取价格接口(落地)
+//
+// @param request - HotelPricePullRequest
+//
+// @return HotelPricePullResponse
 func (client *Client) HotelPricePull(request *HotelPricePullRequest) (_result *HotelPricePullResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelPricePullHeaders{}
@@ -104200,6 +107046,17 @@ func (client *Client) HotelPricePull(request *HotelPricePullRequest) (_result *H
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店静态房型详情
+//
+// @param tmpReq - HotelRoomInfoRequest
+//
+// @param headers - HotelRoomInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelRoomInfoResponse
 func (client *Client) HotelRoomInfoWithOptions(tmpReq *HotelRoomInfoRequest, headers *HotelRoomInfoHeaders, runtime *util.RuntimeOptions) (_result *HotelRoomInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104249,6 +107106,13 @@ func (client *Client) HotelRoomInfoWithOptions(tmpReq *HotelRoomInfoRequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取酒店静态房型详情
+//
+// @param request - HotelRoomInfoRequest
+//
+// @return HotelRoomInfoResponse
 func (client *Client) HotelRoomInfo(request *HotelRoomInfoRequest) (_result *HotelRoomInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelRoomInfoHeaders{}
@@ -104261,6 +107125,17 @@ func (client *Client) HotelRoomInfo(request *HotelRoomInfoRequest) (_result *Hot
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店列表搜索接口(直连)
+//
+// @param tmpReq - HotelSearchRequest
+//
+// @param headers - HotelSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelSearchResponse
 func (client *Client) HotelSearchWithOptions(tmpReq *HotelSearchRequest, headers *HotelSearchHeaders, runtime *util.RuntimeOptions) (_result *HotelSearchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104398,6 +107273,13 @@ func (client *Client) HotelSearchWithOptions(tmpReq *HotelSearchRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店列表搜索接口(直连)
+//
+// @param request - HotelSearchRequest
+//
+// @return HotelSearchResponse
 func (client *Client) HotelSearch(request *HotelSearchRequest) (_result *HotelSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelSearchHeaders{}
@@ -104410,6 +107292,17 @@ func (client *Client) HotelSearch(request *HotelSearchRequest) (_result *HotelSe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店静态详情
+//
+// @param tmpReq - HotelStaticInfoRequest
+//
+// @param headers - HotelStaticInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelStaticInfoResponse
 func (client *Client) HotelStaticInfoWithOptions(tmpReq *HotelStaticInfoRequest, headers *HotelStaticInfoHeaders, runtime *util.RuntimeOptions) (_result *HotelStaticInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104459,6 +107352,13 @@ func (client *Client) HotelStaticInfoWithOptions(tmpReq *HotelStaticInfoRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询酒店静态详情
+//
+// @param request - HotelStaticInfoRequest
+//
+// @return HotelStaticInfoResponse
 func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result *HotelStaticInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &HotelStaticInfoHeaders{}
@@ -104471,6 +107371,17 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询国际机票记账数据
+//
+// @param request - IeFlightBillSettlementQueryRequest
+//
+// @param headers - IeFlightBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IeFlightBillSettlementQueryResponse
 func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBillSettlementQueryRequest, headers *IeFlightBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *IeFlightBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104526,6 +107437,13 @@ func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询国际机票记账数据
+//
+// @param request - IeFlightBillSettlementQueryRequest
+//
+// @return IeFlightBillSettlementQueryResponse
 func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlementQueryRequest) (_result *IeFlightBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IeFlightBillSettlementQueryHeaders{}
@@ -104538,6 +107456,17 @@ func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlemen
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询国际/中国港澳台酒店记账数据
+//
+// @param request - IeHotelBillSettlementQueryRequest
+//
+// @param headers - IeHotelBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IeHotelBillSettlementQueryResponse
 func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBillSettlementQueryRequest, headers *IeHotelBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *IeHotelBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104597,6 +107526,13 @@ func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBill
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询国际/中国港澳台酒店记账数据
+//
+// @param request - IeHotelBillSettlementQueryRequest
+//
+// @return IeHotelBillSettlementQueryResponse
 func (client *Client) IeHotelBillSettlementQuery(request *IeHotelBillSettlementQueryRequest) (_result *IeHotelBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IeHotelBillSettlementQueryHeaders{}
@@ -104609,6 +107545,17 @@ func (client *Client) IeHotelBillSettlementQuery(request *IeHotelBillSettlementQ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询保险电子发票
+//
+// @param request - InsInvoiceScanQueryRequest
+//
+// @param headers - InsInvoiceScanQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsInvoiceScanQueryResponse
 func (client *Client) InsInvoiceScanQueryWithOptions(request *InsInvoiceScanQueryRequest, headers *InsInvoiceScanQueryHeaders, runtime *util.RuntimeOptions) (_result *InsInvoiceScanQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104668,6 +107615,13 @@ func (client *Client) InsInvoiceScanQueryWithOptions(request *InsInvoiceScanQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询保险电子发票
+//
+// @param request - InsInvoiceScanQueryRequest
+//
+// @return InsInvoiceScanQueryResponse
 func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (_result *InsInvoiceScanQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsInvoiceScanQueryHeaders{}
@@ -104680,6 +107634,17 @@ func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单申请
+//
+// @param request - InsureOrderApplyRequest
+//
+// @param headers - InsureOrderApplyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderApplyResponse
 func (client *Client) InsureOrderApplyWithOptions(request *InsureOrderApplyRequest, headers *InsureOrderApplyHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderApplyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104747,6 +107712,13 @@ func (client *Client) InsureOrderApplyWithOptions(request *InsureOrderApplyReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单申请
+//
+// @param request - InsureOrderApplyRequest
+//
+// @return InsureOrderApplyResponse
 func (client *Client) InsureOrderApply(request *InsureOrderApplyRequest) (_result *InsureOrderApplyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderApplyHeaders{}
@@ -104759,6 +107731,17 @@ func (client *Client) InsureOrderApply(request *InsureOrderApplyRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单取消
+//
+// @param request - InsureOrderCancelRequest
+//
+// @param headers - InsureOrderCancelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderCancelResponse
 func (client *Client) InsureOrderCancelWithOptions(insOrderId *string, request *InsureOrderCancelRequest, headers *InsureOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104814,6 +107797,13 @@ func (client *Client) InsureOrderCancelWithOptions(insOrderId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单取消
+//
+// @param request - InsureOrderCancelRequest
+//
+// @return InsureOrderCancelResponse
 func (client *Client) InsureOrderCancel(insOrderId *string, request *InsureOrderCancelRequest) (_result *InsureOrderCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderCancelHeaders{}
@@ -104826,6 +107816,17 @@ func (client *Client) InsureOrderCancel(insOrderId *string, request *InsureOrder
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单创建
+//
+// @param tmpReq - InsureOrderCreateRequest
+//
+// @param headers - InsureOrderCreateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderCreateResponse
 func (client *Client) InsureOrderCreateWithOptions(tmpReq *InsureOrderCreateRequest, headers *InsureOrderCreateHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderCreateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -104911,6 +107912,13 @@ func (client *Client) InsureOrderCreateWithOptions(tmpReq *InsureOrderCreateRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单创建
+//
+// @param request - InsureOrderCreateRequest
+//
+// @return InsureOrderCreateResponse
 func (client *Client) InsureOrderCreate(request *InsureOrderCreateRequest) (_result *InsureOrderCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderCreateHeaders{}
@@ -104923,6 +107931,17 @@ func (client *Client) InsureOrderCreate(request *InsureOrderCreateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单查询
+//
+// @param request - InsureOrderDetailRequest
+//
+// @param headers - InsureOrderDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderDetailResponse
 func (client *Client) InsureOrderDetailWithOptions(request *InsureOrderDetailRequest, headers *InsureOrderDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -104982,6 +108001,13 @@ func (client *Client) InsureOrderDetailWithOptions(request *InsureOrderDetailReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单查询
+//
+// @param request - InsureOrderDetailRequest
+//
+// @return InsureOrderDetailResponse
 func (client *Client) InsureOrderDetail(request *InsureOrderDetailRequest) (_result *InsureOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderDetailHeaders{}
@@ -104994,6 +108020,17 @@ func (client *Client) InsureOrderDetail(request *InsureOrderDetailRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单支付
+//
+// @param request - InsureOrderPayRequest
+//
+// @param headers - InsureOrderPayHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderPayResponse
 func (client *Client) InsureOrderPayWithOptions(insOrderId *string, request *InsureOrderPayRequest, headers *InsureOrderPayHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderPayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105061,6 +108098,13 @@ func (client *Client) InsureOrderPayWithOptions(insOrderId *string, request *Ins
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单支付
+//
+// @param request - InsureOrderPayRequest
+//
+// @return InsureOrderPayResponse
 func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPayRequest) (_result *InsureOrderPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderPayHeaders{}
@@ -105073,6 +108117,17 @@ func (client *Client) InsureOrderPay(insOrderId *string, request *InsureOrderPay
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单退保
+//
+// @param tmpReq - InsureOrderRefundRequest
+//
+// @param headers - InsureOrderRefundHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderRefundResponse
 func (client *Client) InsureOrderRefundWithOptions(insOrderId *string, tmpReq *InsureOrderRefundRequest, headers *InsureOrderRefundHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderRefundResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -105150,6 +108205,13 @@ func (client *Client) InsureOrderRefundWithOptions(insOrderId *string, tmpReq *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 保险订单退保
+//
+// @param request - InsureOrderRefundRequest
+//
+// @return InsureOrderRefundResponse
 func (client *Client) InsureOrderRefund(insOrderId *string, request *InsureOrderRefundRequest) (_result *InsureOrderRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderRefundHeaders{}
@@ -105162,6 +108224,15 @@ func (client *Client) InsureOrderRefund(insOrderId *string, request *InsureOrder
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询保单详情链接
+//
+// @param headers - InsureOrderUrlDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureOrderUrlDetailResponse
 func (client *Client) InsureOrderUrlDetailWithOptions(insOrderId *string, headers *InsureOrderUrlDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureOrderUrlDetailResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -105195,6 +108266,11 @@ func (client *Client) InsureOrderUrlDetailWithOptions(insOrderId *string, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询保单详情链接
+//
+// @return InsureOrderUrlDetailResponse
 func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureOrderUrlDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureOrderUrlDetailHeaders{}
@@ -105207,6 +108283,17 @@ func (client *Client) InsureOrderUrlDetail(insOrderId *string) (_result *InsureO
 	return _result, _err
 }
 
+// Summary:
+//
+// 退保详情查询
+//
+// @param request - InsureRefundDetailRequest
+//
+// @param headers - InsureRefundDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsureRefundDetailResponse
 func (client *Client) InsureRefundDetailWithOptions(request *InsureRefundDetailRequest, headers *InsureRefundDetailHeaders, runtime *util.RuntimeOptions) (_result *InsureRefundDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105274,6 +108361,13 @@ func (client *Client) InsureRefundDetailWithOptions(request *InsureRefundDetailR
 	return _result, _err
 }
 
+// Summary:
+//
+// 退保详情查询
+//
+// @param request - InsureRefundDetailRequest
+//
+// @return InsureRefundDetailResponse
 func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_result *InsureRefundDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsureRefundDetailHeaders{}
@@ -105286,6 +108380,17 @@ func (client *Client) InsureRefundDetail(request *InsureRefundDetailRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票创建订单
+//
+// @param tmpReq - IntlFlightCreateOrderRequest
+//
+// @param headers - IntlFlightCreateOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightCreateOrderResponse
 func (client *Client) IntlFlightCreateOrderWithOptions(tmpReq *IntlFlightCreateOrderRequest, headers *IntlFlightCreateOrderHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightCreateOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -105399,6 +108504,13 @@ func (client *Client) IntlFlightCreateOrderWithOptions(tmpReq *IntlFlightCreateO
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票创建订单
+//
+// @param request - IntlFlightCreateOrderRequest
+//
+// @return IntlFlightCreateOrderResponse
 func (client *Client) IntlFlightCreateOrder(request *IntlFlightCreateOrderRequest) (_result *IntlFlightCreateOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightCreateOrderHeaders{}
@@ -105411,6 +108523,17 @@ func (client *Client) IntlFlightCreateOrder(request *IntlFlightCreateOrderReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票验舱验价
+//
+// @param tmpReq - IntlFlightInventoryPriceCheckRequest
+//
+// @param headers - IntlFlightInventoryPriceCheckHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightInventoryPriceCheckResponse
 func (client *Client) IntlFlightInventoryPriceCheckWithOptions(tmpReq *IntlFlightInventoryPriceCheckRequest, headers *IntlFlightInventoryPriceCheckHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -105484,6 +108607,13 @@ func (client *Client) IntlFlightInventoryPriceCheckWithOptions(tmpReq *IntlFligh
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票验舱验价
+//
+// @param request - IntlFlightInventoryPriceCheckRequest
+//
+// @return IntlFlightInventoryPriceCheckResponse
 func (client *Client) IntlFlightInventoryPriceCheck(request *IntlFlightInventoryPriceCheckRequest) (_result *IntlFlightInventoryPriceCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightInventoryPriceCheckHeaders{}
@@ -105496,6 +108626,17 @@ func (client *Client) IntlFlightInventoryPriceCheck(request *IntlFlightInventory
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班搜索
+//
+// @param tmpReq - IntlFlightListingSearchRequest
+//
+// @param headers - IntlFlightListingSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightListingSearchResponse
 func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListingSearchRequest, headers *IntlFlightListingSearchHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightListingSearchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -105605,6 +108746,13 @@ func (client *Client) IntlFlightListingSearchWithOptions(tmpReq *IntlFlightListi
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班搜索
+//
+// @param request - IntlFlightListingSearchRequest
+//
+// @return IntlFlightListingSearchResponse
 func (client *Client) IntlFlightListingSearch(request *IntlFlightListingSearchRequest) (_result *IntlFlightListingSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightListingSearchHeaders{}
@@ -105617,6 +108765,17 @@ func (client *Client) IntlFlightListingSearch(request *IntlFlightListingSearchRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单取消
+//
+// @param request - IntlFlightOrderCancelRequest
+//
+// @param headers - IntlFlightOrderCancelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOrderCancelResponse
 func (client *Client) IntlFlightOrderCancelWithOptions(request *IntlFlightOrderCancelRequest, headers *IntlFlightOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105672,6 +108831,13 @@ func (client *Client) IntlFlightOrderCancelWithOptions(request *IntlFlightOrderC
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单取消
+//
+// @param request - IntlFlightOrderCancelRequest
+//
+// @return IntlFlightOrderCancelResponse
 func (client *Client) IntlFlightOrderCancel(request *IntlFlightOrderCancelRequest) (_result *IntlFlightOrderCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOrderCancelHeaders{}
@@ -105684,6 +108850,17 @@ func (client *Client) IntlFlightOrderCancel(request *IntlFlightOrderCancelReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单详情
+//
+// @param request - IntlFlightOrderDetailRequest
+//
+// @param headers - IntlFlightOrderDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOrderDetailResponse
 func (client *Client) IntlFlightOrderDetailWithOptions(request *IntlFlightOrderDetailRequest, headers *IntlFlightOrderDetailHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105735,6 +108912,13 @@ func (client *Client) IntlFlightOrderDetailWithOptions(request *IntlFlightOrderD
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单详情
+//
+// @param request - IntlFlightOrderDetailRequest
+//
+// @return IntlFlightOrderDetailResponse
 func (client *Client) IntlFlightOrderDetail(request *IntlFlightOrderDetailRequest) (_result *IntlFlightOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOrderDetailHeaders{}
@@ -105747,6 +108931,17 @@ func (client *Client) IntlFlightOrderDetail(request *IntlFlightOrderDetailReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单支付
+//
+// @param tmpReq - IntlFlightOrderPayRequest
+//
+// @param headers - IntlFlightOrderPayHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOrderPayResponse
 func (client *Client) IntlFlightOrderPayWithOptions(tmpReq *IntlFlightOrderPayRequest, headers *IntlFlightOrderPayHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderPayResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -105812,6 +109007,13 @@ func (client *Client) IntlFlightOrderPayWithOptions(tmpReq *IntlFlightOrderPayRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单支付
+//
+// @param request - IntlFlightOrderPayRequest
+//
+// @return IntlFlightOrderPayResponse
 func (client *Client) IntlFlightOrderPay(request *IntlFlightOrderPayRequest) (_result *IntlFlightOrderPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOrderPayHeaders{}
@@ -105824,6 +109026,17 @@ func (client *Client) IntlFlightOrderPay(request *IntlFlightOrderPayRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单支付前校验
+//
+// @param request - IntlFlightOrderPayCheckRequest
+//
+// @param headers - IntlFlightOrderPayCheckHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOrderPayCheckResponse
 func (client *Client) IntlFlightOrderPayCheckWithOptions(request *IntlFlightOrderPayCheckRequest, headers *IntlFlightOrderPayCheckHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOrderPayCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105875,6 +109088,13 @@ func (client *Client) IntlFlightOrderPayCheckWithOptions(request *IntlFlightOrde
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票订单支付前校验
+//
+// @param request - IntlFlightOrderPayCheckRequest
+//
+// @return IntlFlightOrderPayCheckResponse
 func (client *Client) IntlFlightOrderPayCheck(request *IntlFlightOrderPayCheckRequest) (_result *IntlFlightOrderPayCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOrderPayCheckHeaders{}
@@ -105887,6 +109107,17 @@ func (client *Client) IntlFlightOrderPayCheck(request *IntlFlightOrderPayCheckRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票报价商品详情
+//
+// @param request - IntlFlightOtaItemDetailRequest
+//
+// @param headers - IntlFlightOtaItemDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOtaItemDetailResponse
 func (client *Client) IntlFlightOtaItemDetailWithOptions(otaItemId *string, request *IntlFlightOtaItemDetailRequest, headers *IntlFlightOtaItemDetailHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOtaItemDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -105946,6 +109177,13 @@ func (client *Client) IntlFlightOtaItemDetailWithOptions(otaItemId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票报价商品详情
+//
+// @param request - IntlFlightOtaItemDetailRequest
+//
+// @return IntlFlightOtaItemDetailResponse
 func (client *Client) IntlFlightOtaItemDetail(otaItemId *string, request *IntlFlightOtaItemDetailRequest) (_result *IntlFlightOtaItemDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOtaItemDetailHeaders{}
@@ -105958,6 +109196,17 @@ func (client *Client) IntlFlightOtaItemDetail(otaItemId *string, request *IntlFl
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班报价查询
+//
+// @param tmpReq - IntlFlightOtaSearchRequest
+//
+// @param headers - IntlFlightOtaSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightOtaSearchResponse
 func (client *Client) IntlFlightOtaSearchWithOptions(tmpReq *IntlFlightOtaSearchRequest, headers *IntlFlightOtaSearchHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightOtaSearchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106051,6 +109300,13 @@ func (client *Client) IntlFlightOtaSearchWithOptions(tmpReq *IntlFlightOtaSearch
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班报价查询
+//
+// @param request - IntlFlightOtaSearchRequest
+//
+// @return IntlFlightOtaSearchResponse
 func (client *Client) IntlFlightOtaSearch(request *IntlFlightOtaSearchRequest) (_result *IntlFlightOtaSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightOtaSearchHeaders{}
@@ -106063,6 +109319,17 @@ func (client *Client) IntlFlightOtaSearch(request *IntlFlightOtaSearchRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班可用证件查询
+//
+// @param request - IntlFlightSegmentAvailableCertRequest
+//
+// @param headers - IntlFlightSegmentAvailableCertHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IntlFlightSegmentAvailableCertResponse
 func (client *Client) IntlFlightSegmentAvailableCertWithOptions(otaItemId *string, request *IntlFlightSegmentAvailableCertRequest, headers *IntlFlightSegmentAvailableCertHeaders, runtime *util.RuntimeOptions) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106118,6 +109385,13 @@ func (client *Client) IntlFlightSegmentAvailableCertWithOptions(otaItemId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际机票航班可用证件查询
+//
+// @param request - IntlFlightSegmentAvailableCertRequest
+//
+// @return IntlFlightSegmentAvailableCertResponse
 func (client *Client) IntlFlightSegmentAvailableCert(otaItemId *string, request *IntlFlightSegmentAvailableCertRequest) (_result *IntlFlightSegmentAvailableCertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IntlFlightSegmentAvailableCertHeaders{}
@@ -106130,6 +109404,17 @@ func (client *Client) IntlFlightSegmentAvailableCert(otaItemId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票配置
+//
+// @param request - InvoiceAddRequest
+//
+// @param headers - InvoiceAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceAddResponse
 func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers *InvoiceAddHeaders, runtime *util.RuntimeOptions) (_result *InvoiceAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106205,6 +109490,13 @@ func (client *Client) InvoiceAddWithOptions(request *InvoiceAddRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票配置
+//
+// @param request - InvoiceAddRequest
+//
+// @return InvoiceAddResponse
 func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceAddHeaders{}
@@ -106217,6 +109509,17 @@ func (client *Client) InvoiceAdd(request *InvoiceAddRequest) (_result *InvoiceAd
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头
+//
+// @param request - InvoiceDeleteRequest
+//
+// @param headers - InvoiceDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceDeleteResponse
 func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, headers *InvoiceDeleteHeaders, runtime *util.RuntimeOptions) (_result *InvoiceDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106260,6 +109563,13 @@ func (client *Client) InvoiceDeleteWithOptions(request *InvoiceDeleteRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头
+//
+// @param request - InvoiceDeleteRequest
+//
+// @return InvoiceDeleteResponse
 func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *InvoiceDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceDeleteHeaders{}
@@ -106272,6 +109582,17 @@ func (client *Client) InvoiceDelete(request *InvoiceDeleteRequest) (_result *Inv
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改发票配置
+//
+// @param request - InvoiceModifyRequest
+//
+// @param headers - InvoiceModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceModifyResponse
 func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, headers *InvoiceModifyHeaders, runtime *util.RuntimeOptions) (_result *InvoiceModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106347,6 +109668,13 @@ func (client *Client) InvoiceModifyWithOptions(request *InvoiceModifyRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改发票配置
+//
+// @param request - InvoiceModifyRequest
+//
+// @return InvoiceModifyResponse
 func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *InvoiceModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceModifyHeaders{}
@@ -106359,6 +109687,17 @@ func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *Inv
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票抬头可用员工
+//
+// @param tmpReq - InvoiceRuleAddRequest
+//
+// @param headers - InvoiceRuleAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceRuleAddResponse
 func (client *Client) InvoiceRuleAddWithOptions(tmpReq *InvoiceRuleAddRequest, headers *InvoiceRuleAddHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleAddResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106412,6 +109751,13 @@ func (client *Client) InvoiceRuleAddWithOptions(tmpReq *InvoiceRuleAddRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增发票抬头可用员工
+//
+// @param request - InvoiceRuleAddRequest
+//
+// @return InvoiceRuleAddResponse
 func (client *Client) InvoiceRuleAdd(request *InvoiceRuleAddRequest) (_result *InvoiceRuleAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceRuleAddHeaders{}
@@ -106424,6 +109770,17 @@ func (client *Client) InvoiceRuleAdd(request *InvoiceRuleAddRequest) (_result *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头可用员工
+//
+// @param tmpReq - InvoiceRuleDeleteRequest
+//
+// @param headers - InvoiceRuleDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceRuleDeleteResponse
 func (client *Client) InvoiceRuleDeleteWithOptions(tmpReq *InvoiceRuleDeleteRequest, headers *InvoiceRuleDeleteHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleDeleteResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106481,6 +109838,13 @@ func (client *Client) InvoiceRuleDeleteWithOptions(tmpReq *InvoiceRuleDeleteRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除发票抬头可用员工
+//
+// @param request - InvoiceRuleDeleteRequest
+//
+// @return InvoiceRuleDeleteResponse
 func (client *Client) InvoiceRuleDelete(request *InvoiceRuleDeleteRequest) (_result *InvoiceRuleDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceRuleDeleteHeaders{}
@@ -106493,6 +109857,17 @@ func (client *Client) InvoiceRuleDelete(request *InvoiceRuleDeleteRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存发票规则
+//
+// @param tmpReq - InvoiceRuleSaveRequest
+//
+// @param headers - InvoiceRuleSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceRuleSaveResponse
 func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest, headers *InvoiceRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106554,6 +109929,13 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存发票规则
+//
+// @param request - InvoiceRuleSaveRequest
+//
+// @return InvoiceRuleSaveResponse
 func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result *InvoiceRuleSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceRuleSaveHeaders{}
@@ -106566,6 +109948,17 @@ func (client *Client) InvoiceRuleSave(request *InvoiceRuleSaveRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索用户可用发票抬头
+//
+// @param request - InvoiceSearchRequest
+//
+// @param headers - InvoiceSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvoiceSearchResponse
 func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, headers *InvoiceSearchHeaders, runtime *util.RuntimeOptions) (_result *InvoiceSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106617,6 +110010,13 @@ func (client *Client) InvoiceSearchWithOptions(request *InvoiceSearchRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 搜索用户可用发票抬头
+//
+// @param request - InvoiceSearchRequest
+//
+// @return InvoiceSearchResponse
 func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *InvoiceSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvoiceSearchHeaders{}
@@ -106629,6 +110029,17 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 	return _result, _err
 }
 
+// Summary:
+//
+// 员工特殊角色修改
+//
+// @param tmpReq - IsvRuleSaveRequest
+//
+// @param headers - IsvRuleSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IsvRuleSaveResponse
 func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106698,6 +110109,13 @@ func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 员工特殊角色修改
+//
+// @param request - IsvRuleSaveRequest
+//
+// @return IsvRuleSaveResponse
 func (client *Client) IsvRuleSave(request *IsvRuleSaveRequest) (_result *IsvRuleSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IsvRuleSaveHeaders{}
@@ -106710,6 +110128,17 @@ func (client *Client) IsvRuleSave(request *IsvRuleSaveRequest) (_result *IsvRule
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户同步
+//
+// @param tmpReq - IsvUserSaveRequest
+//
+// @param headers - IsvUserSaveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IsvUserSaveResponse
 func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers *IsvUserSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvUserSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -106759,6 +110188,13 @@ func (client *Client) IsvUserSaveWithOptions(tmpReq *IsvUserSaveRequest, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户同步
+//
+// @param request - IsvUserSaveRequest
+//
+// @return IsvUserSaveResponse
 func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUserSaveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &IsvUserSaveHeaders{}
@@ -106771,6 +110207,17 @@ func (client *Client) IsvUserSave(request *IsvUserSaveRequest) (_result *IsvUser
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询因公用餐记账数据
+//
+// @param request - MealBillSettlementQueryRequest
+//
+// @param headers - MealBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MealBillSettlementQueryResponse
 func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettlementQueryRequest, headers *MealBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *MealBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106826,6 +110273,13 @@ func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettle
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询因公用餐记账数据
+//
+// @param request - MealBillSettlementQueryRequest
+//
+// @return MealBillSettlementQueryResponse
 func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRequest) (_result *MealBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &MealBillSettlementQueryHeaders{}
@@ -106838,6 +110292,17 @@ func (client *Client) MealBillSettlementQuery(request *MealBillSettlementQueryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用餐订单详情
+//
+// @param request - MealOrderDetailQueryRequest
+//
+// @param headers - MealOrderDetailQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MealOrderDetailQueryResponse
 func (client *Client) MealOrderDetailQueryWithOptions(orderId *string, request *MealOrderDetailQueryRequest, headers *MealOrderDetailQueryHeaders, runtime *util.RuntimeOptions) (_result *MealOrderDetailQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106881,6 +110346,13 @@ func (client *Client) MealOrderDetailQueryWithOptions(orderId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用餐订单详情
+//
+// @param request - MealOrderDetailQueryRequest
+//
+// @return MealOrderDetailQueryResponse
 func (client *Client) MealOrderDetailQuery(orderId *string, request *MealOrderDetailQueryRequest) (_result *MealOrderDetailQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &MealOrderDetailQueryHeaders{}
@@ -106893,6 +110365,17 @@ func (client *Client) MealOrderDetailQuery(orderId *string, request *MealOrderDe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用餐订单列表
+//
+// @param request - MealOrderListQueryRequest
+//
+// @param headers - MealOrderListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MealOrderListQueryResponse
 func (client *Client) MealOrderListQueryWithOptions(request *MealOrderListQueryRequest, headers *MealOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *MealOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106936,6 +110419,13 @@ func (client *Client) MealOrderListQueryWithOptions(request *MealOrderListQueryR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用餐订单列表
+//
+// @param request - MealOrderListQueryRequest
+//
+// @return MealOrderListQueryResponse
 func (client *Client) MealOrderListQuery(request *MealOrderListQueryRequest) (_result *MealOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &MealOrderListQueryHeaders{}
@@ -106948,6 +110438,17 @@ func (client *Client) MealOrderListQuery(request *MealOrderListQueryRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 月账单确认
+//
+// @param request - MonthBillConfirmRequest
+//
+// @param headers - MonthBillConfirmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MonthBillConfirmResponse
 func (client *Client) MonthBillConfirmWithOptions(request *MonthBillConfirmRequest, headers *MonthBillConfirmHeaders, runtime *util.RuntimeOptions) (_result *MonthBillConfirmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -106995,6 +110496,13 @@ func (client *Client) MonthBillConfirmWithOptions(request *MonthBillConfirmReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 月账单确认
+//
+// @param request - MonthBillConfirmRequest
+//
+// @return MonthBillConfirmResponse
 func (client *Client) MonthBillConfirm(request *MonthBillConfirmRequest) (_result *MonthBillConfirmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &MonthBillConfirmHeaders{}
@@ -107007,6 +110515,17 @@ func (client *Client) MonthBillConfirm(request *MonthBillConfirmRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业月账单
+//
+// @param request - MonthBillGetRequest
+//
+// @param headers - MonthBillGetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MonthBillGetResponse
 func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, headers *MonthBillGetHeaders, runtime *util.RuntimeOptions) (_result *MonthBillGetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107050,6 +110569,13 @@ func (client *Client) MonthBillGetWithOptions(request *MonthBillGetRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业月账单
+//
+// @param request - MonthBillGetRequest
+//
+// @return MonthBillGetResponse
 func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *MonthBillGetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &MonthBillGetHeaders{}
@@ -107062,6 +110588,17 @@ func (client *Client) MonthBillGet(request *MonthBillGetRequest) (_result *Month
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加项目
+//
+// @param request - ProjectAddRequest
+//
+// @param headers - ProjectAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProjectAddResponse
 func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers *ProjectAddHeaders, runtime *util.RuntimeOptions) (_result *ProjectAddResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107121,6 +110658,13 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加项目
+//
+// @param request - ProjectAddRequest
+//
+// @return ProjectAddResponse
 func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAddResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ProjectAddHeaders{}
@@ -107133,6 +110677,17 @@ func (client *Client) ProjectAdd(request *ProjectAddRequest) (_result *ProjectAd
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - ProjectDeleteRequest
+//
+// @param headers - ProjectDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProjectDeleteResponse
 func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, headers *ProjectDeleteHeaders, runtime *util.RuntimeOptions) (_result *ProjectDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107176,6 +110731,13 @@ func (client *Client) ProjectDeleteWithOptions(request *ProjectDeleteRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - ProjectDeleteRequest
+//
+// @return ProjectDeleteResponse
 func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *ProjectDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ProjectDeleteHeaders{}
@@ -107188,6 +110750,17 @@ func (client *Client) ProjectDelete(request *ProjectDeleteRequest) (_result *Pro
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更项目
+//
+// @param request - ProjectModifyRequest
+//
+// @param headers - ProjectModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProjectModifyResponse
 func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, headers *ProjectModifyHeaders, runtime *util.RuntimeOptions) (_result *ProjectModifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107247,6 +110820,13 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 变更项目
+//
+// @param request - ProjectModifyRequest
+//
+// @return ProjectModifyResponse
 func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *ProjectModifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ProjectModifyHeaders{}
@@ -107259,6 +110839,17 @@ func (client *Client) ProjectModify(request *ProjectModifyRequest) (_result *Pro
 	return _result, _err
 }
 
+// Summary:
+//
+// 报销单查询
+//
+// @param request - QueryReimbursementOrderRequest
+//
+// @param headers - QueryReimbursementOrderHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReimbursementOrderResponse
 func (client *Client) QueryReimbursementOrderWithOptions(request *QueryReimbursementOrderRequest, headers *QueryReimbursementOrderHeaders, runtime *util.RuntimeOptions) (_result *QueryReimbursementOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107306,6 +110897,13 @@ func (client *Client) QueryReimbursementOrderWithOptions(request *QueryReimburse
 	return _result, _err
 }
 
+// Summary:
+//
+// 报销单查询
+//
+// @param request - QueryReimbursementOrderRequest
+//
+// @return QueryReimbursementOrderResponse
 func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRequest) (_result *QueryReimbursementOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryReimbursementOrderHeaders{}
@@ -107318,6 +110916,17 @@ func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 单个人员同步
+//
+// @param tmpReq - SyncSingleUserRequest
+//
+// @param headers - SyncSingleUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncSingleUserResponse
 func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, headers *SyncSingleUserHeaders, runtime *util.RuntimeOptions) (_result *SyncSingleUserResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -107407,6 +111016,13 @@ func (client *Client) SyncSingleUserWithOptions(tmpReq *SyncSingleUserRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 单个人员同步
+//
+// @param request - SyncSingleUserRequest
+//
+// @return SyncSingleUserResponse
 func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *SyncSingleUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SyncSingleUserHeaders{}
@@ -107419,6 +111035,17 @@ func (client *Client) SyncSingleUser(request *SyncSingleUserRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步三方用户映射关系
+//
+// @param request - SyncThirdUserMappingRequest
+//
+// @param headers - SyncThirdUserMappingHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncThirdUserMappingResponse
 func (client *Client) SyncThirdUserMappingWithOptions(request *SyncThirdUserMappingRequest, headers *SyncThirdUserMappingHeaders, runtime *util.RuntimeOptions) (_result *SyncThirdUserMappingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107474,6 +111101,13 @@ func (client *Client) SyncThirdUserMappingWithOptions(request *SyncThirdUserMapp
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步三方用户映射关系
+//
+// @param request - SyncThirdUserMappingRequest
+//
+// @return SyncThirdUserMappingResponse
 func (client *Client) SyncThirdUserMapping(request *SyncThirdUserMappingRequest) (_result *SyncThirdUserMappingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SyncThirdUserMappingHeaders{}
@@ -107486,6 +111120,15 @@ func (client *Client) SyncThirdUserMapping(request *SyncThirdUserMappingRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询淘宝账号信息
+//
+// @param headers - TBAccountInfoQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TBAccountInfoQueryResponse
 func (client *Client) TBAccountInfoQueryWithOptions(userId *string, headers *TBAccountInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *TBAccountInfoQueryResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -107519,6 +111162,11 @@ func (client *Client) TBAccountInfoQueryWithOptions(userId *string, headers *TBA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询淘宝账号信息
+//
+// @return TBAccountInfoQueryResponse
 func (client *Client) TBAccountInfoQuery(userId *string) (_result *TBAccountInfoQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TBAccountInfoQueryHeaders{}
@@ -107531,6 +111179,15 @@ func (client *Client) TBAccountInfoQuery(userId *string) (_result *TBAccountInfo
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑淘宝账号
+//
+// @param headers - TBAccountUnbindHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TBAccountUnbindResponse
 func (client *Client) TBAccountUnbindWithOptions(userId *string, headers *TBAccountUnbindHeaders, runtime *util.RuntimeOptions) (_result *TBAccountUnbindResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -107564,6 +111221,11 @@ func (client *Client) TBAccountUnbindWithOptions(userId *string, headers *TBAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑淘宝账号
+//
+// @return TBAccountUnbindResponse
 func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TBAccountUnbindHeaders{}
@@ -107576,6 +111238,17 @@ func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindR
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签申请
+//
+// @param tmpReq - TicketChangingApplyRequest
+//
+// @param headers - TicketChangingApplyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingApplyResponse
 func (client *Client) TicketChangingApplyWithOptions(tmpReq *TicketChangingApplyRequest, headers *TicketChangingApplyHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingApplyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -107653,6 +111326,13 @@ func (client *Client) TicketChangingApplyWithOptions(tmpReq *TicketChangingApply
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签申请
+//
+// @param request - TicketChangingApplyRequest
+//
+// @return TicketChangingApplyResponse
 func (client *Client) TicketChangingApply(request *TicketChangingApplyRequest) (_result *TicketChangingApplyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingApplyHeaders{}
@@ -107665,6 +111345,17 @@ func (client *Client) TicketChangingApply(request *TicketChangingApplyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签取消
+//
+// @param request - TicketChangingCancelRequest
+//
+// @param headers - TicketChangingCancelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingCancelResponse
 func (client *Client) TicketChangingCancelWithOptions(request *TicketChangingCancelRequest, headers *TicketChangingCancelHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107712,6 +111403,13 @@ func (client *Client) TicketChangingCancelWithOptions(request *TicketChangingCan
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签取消
+//
+// @param request - TicketChangingCancelRequest
+//
+// @return TicketChangingCancelResponse
 func (client *Client) TicketChangingCancel(request *TicketChangingCancelRequest) (_result *TicketChangingCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingCancelHeaders{}
@@ -107724,6 +111422,17 @@ func (client *Client) TicketChangingCancel(request *TicketChangingCancelRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签详情
+//
+// @param request - TicketChangingDetailRequest
+//
+// @param headers - TicketChangingDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingDetailResponse
 func (client *Client) TicketChangingDetailWithOptions(request *TicketChangingDetailRequest, headers *TicketChangingDetailHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107771,6 +111480,13 @@ func (client *Client) TicketChangingDetailWithOptions(request *TicketChangingDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签详情
+//
+// @param request - TicketChangingDetailRequest
+//
+// @return TicketChangingDetailResponse
 func (client *Client) TicketChangingDetail(request *TicketChangingDetailRequest) (_result *TicketChangingDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingDetailHeaders{}
@@ -107783,6 +111499,17 @@ func (client *Client) TicketChangingDetail(request *TicketChangingDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签询价
+//
+// @param request - TicketChangingEnquiryRequest
+//
+// @param headers - TicketChangingEnquiryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingEnquiryResponse
 func (client *Client) TicketChangingEnquiryWithOptions(request *TicketChangingEnquiryRequest, headers *TicketChangingEnquiryHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingEnquiryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -107850,6 +111577,13 @@ func (client *Client) TicketChangingEnquiryWithOptions(request *TicketChangingEn
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签询价
+//
+// @param request - TicketChangingEnquiryRequest
+//
+// @return TicketChangingEnquiryResponse
 func (client *Client) TicketChangingEnquiry(request *TicketChangingEnquiryRequest) (_result *TicketChangingEnquiryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingEnquiryHeaders{}
@@ -107862,6 +111596,17 @@ func (client *Client) TicketChangingEnquiry(request *TicketChangingEnquiryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签可改签航班列表
+//
+// @param tmpReq - TicketChangingFlightListRequest
+//
+// @param headers - TicketChangingFlightListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingFlightListResponse
 func (client *Client) TicketChangingFlightListWithOptions(tmpReq *TicketChangingFlightListRequest, headers *TicketChangingFlightListHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingFlightListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -107931,6 +111676,13 @@ func (client *Client) TicketChangingFlightListWithOptions(tmpReq *TicketChanging
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签可改签航班列表
+//
+// @param request - TicketChangingFlightListRequest
+//
+// @return TicketChangingFlightListResponse
 func (client *Client) TicketChangingFlightList(request *TicketChangingFlightListRequest) (_result *TicketChangingFlightListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingFlightListHeaders{}
@@ -107943,6 +111695,17 @@ func (client *Client) TicketChangingFlightList(request *TicketChangingFlightList
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签航班支付
+//
+// @param tmpReq - TicketChangingPayRequest
+//
+// @param headers - TicketChangingPayHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TicketChangingPayResponse
 func (client *Client) TicketChangingPayWithOptions(tmpReq *TicketChangingPayRequest, headers *TicketChangingPayHeaders, runtime *util.RuntimeOptions) (_result *TicketChangingPayResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108012,6 +111775,13 @@ func (client *Client) TicketChangingPayWithOptions(tmpReq *TicketChangingPayRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 机票改签航班支付
+//
+// @param request - TicketChangingPayRequest
+//
+// @return TicketChangingPayResponse
 func (client *Client) TicketChangingPay(request *TicketChangingPayRequest) (_result *TicketChangingPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TicketChangingPayHeaders{}
@@ -108024,6 +111794,17 @@ func (client *Client) TicketChangingPay(request *TicketChangingPayRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签申请
+//
+// @param tmpReq - TrainApplyChangeRequest
+//
+// @param headers - TrainApplyChangeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainApplyChangeResponse
 func (client *Client) TrainApplyChangeWithOptions(tmpReq *TrainApplyChangeRequest, headers *TrainApplyChangeHeaders, runtime *util.RuntimeOptions) (_result *TrainApplyChangeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108099,6 +111880,13 @@ func (client *Client) TrainApplyChangeWithOptions(tmpReq *TrainApplyChangeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签申请
+//
+// @param request - TrainApplyChangeRequest
+//
+// @return TrainApplyChangeResponse
 func (client *Client) TrainApplyChange(request *TrainApplyChangeRequest) (_result *TrainApplyChangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainApplyChangeHeaders{}
@@ -108111,6 +111899,17 @@ func (client *Client) TrainApplyChange(request *TrainApplyChangeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票退票申请
+//
+// @param tmpReq - TrainApplyRefundRequest
+//
+// @param headers - TrainApplyRefundHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainApplyRefundResponse
 func (client *Client) TrainApplyRefundWithOptions(tmpReq *TrainApplyRefundRequest, headers *TrainApplyRefundHeaders, runtime *util.RuntimeOptions) (_result *TrainApplyRefundResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108172,6 +111971,13 @@ func (client *Client) TrainApplyRefundWithOptions(tmpReq *TrainApplyRefundReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票退票申请
+//
+// @param request - TrainApplyRefundRequest
+//
+// @return TrainApplyRefundResponse
 func (client *Client) TrainApplyRefund(request *TrainApplyRefundRequest) (_result *TrainApplyRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainApplyRefundHeaders{}
@@ -108184,6 +111990,17 @@ func (client *Client) TrainApplyRefund(request *TrainApplyRefundRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票记账数据
+//
+// @param request - TrainBillSettlementQueryRequest
+//
+// @param headers - TrainBillSettlementQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainBillSettlementQueryResponse
 func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSettlementQueryRequest, headers *TrainBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainBillSettlementQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108239,6 +112056,13 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票记账数据
+//
+// @param request - TrainBillSettlementQueryRequest
+//
+// @return TrainBillSettlementQueryResponse
 func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQueryRequest) (_result *TrainBillSettlementQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainBillSettlementQueryHeaders{}
@@ -108251,6 +112075,17 @@ func (client *Client) TrainBillSettlementQuery(request *TrainBillSettlementQuery
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车超标审批详情
+//
+// @param request - TrainExceedApplyQueryRequest
+//
+// @param headers - TrainExceedApplyQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainExceedApplyQueryResponse
 func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApplyQueryRequest, headers *TrainExceedApplyQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainExceedApplyQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108294,6 +112129,13 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车超标审批详情
+//
+// @param request - TrainExceedApplyQueryRequest
+//
+// @return TrainExceedApplyQueryResponse
 func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryRequest) (_result *TrainExceedApplyQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainExceedApplyQueryHeaders{}
@@ -108306,6 +112148,17 @@ func (client *Client) TrainExceedApplyQuery(request *TrainExceedApplyQueryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签费用预估
+//
+// @param tmpReq - TrainFeeCalculateChangeRequest
+//
+// @param headers - TrainFeeCalculateChangeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainFeeCalculateChangeResponse
 func (client *Client) TrainFeeCalculateChangeWithOptions(tmpReq *TrainFeeCalculateChangeRequest, headers *TrainFeeCalculateChangeHeaders, runtime *util.RuntimeOptions) (_result *TrainFeeCalculateChangeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108363,6 +112216,13 @@ func (client *Client) TrainFeeCalculateChangeWithOptions(tmpReq *TrainFeeCalcula
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签费用预估
+//
+// @param request - TrainFeeCalculateChangeRequest
+//
+// @return TrainFeeCalculateChangeResponse
 func (client *Client) TrainFeeCalculateChange(request *TrainFeeCalculateChangeRequest) (_result *TrainFeeCalculateChangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainFeeCalculateChangeHeaders{}
@@ -108375,6 +112235,17 @@ func (client *Client) TrainFeeCalculateChange(request *TrainFeeCalculateChangeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票退票费用预估
+//
+// @param tmpReq - TrainFeeCalculateRefundRequest
+//
+// @param headers - TrainFeeCalculateRefundHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainFeeCalculateRefundResponse
 func (client *Client) TrainFeeCalculateRefundWithOptions(tmpReq *TrainFeeCalculateRefundRequest, headers *TrainFeeCalculateRefundHeaders, runtime *util.RuntimeOptions) (_result *TrainFeeCalculateRefundResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108432,6 +112303,13 @@ func (client *Client) TrainFeeCalculateRefundWithOptions(tmpReq *TrainFeeCalcula
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票退票费用预估
+//
+// @param request - TrainFeeCalculateRefundRequest
+//
+// @return TrainFeeCalculateRefundResponse
 func (client *Client) TrainFeeCalculateRefund(request *TrainFeeCalculateRefundRequest) (_result *TrainFeeCalculateRefundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainFeeCalculateRefundHeaders{}
@@ -108444,6 +112322,17 @@ func (client *Client) TrainFeeCalculateRefund(request *TrainFeeCalculateRefundRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票车次详情查询
+//
+// @param request - TrainNoInfoSearchRequest
+//
+// @param headers - TrainNoInfoSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainNoInfoSearchResponse
 func (client *Client) TrainNoInfoSearchWithOptions(request *TrainNoInfoSearchRequest, headers *TrainNoInfoSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainNoInfoSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108515,6 +112404,13 @@ func (client *Client) TrainNoInfoSearchWithOptions(request *TrainNoInfoSearchReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票车次详情查询
+//
+// @param request - TrainNoInfoSearchRequest
+//
+// @return TrainNoInfoSearchResponse
 func (client *Client) TrainNoInfoSearch(request *TrainNoInfoSearchRequest) (_result *TrainNoInfoSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainNoInfoSearchHeaders{}
@@ -108527,6 +112423,17 @@ func (client *Client) TrainNoInfoSearch(request *TrainNoInfoSearchRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票车次列表查询
+//
+// @param tmpReq - TrainNoListSearchRequest
+//
+// @param headers - TrainNoListSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainNoListSearchResponse
 func (client *Client) TrainNoListSearchWithOptions(tmpReq *TrainNoListSearchRequest, headers *TrainNoListSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainNoListSearchResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108592,6 +112499,13 @@ func (client *Client) TrainNoListSearchWithOptions(tmpReq *TrainNoListSearchRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票车次列表查询
+//
+// @param request - TrainNoListSearchRequest
+//
+// @return TrainNoListSearchResponse
 func (client *Client) TrainNoListSearch(request *TrainNoListSearchRequest) (_result *TrainNoListSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainNoListSearchHeaders{}
@@ -108604,6 +112518,17 @@ func (client *Client) TrainNoListSearch(request *TrainNoListSearchRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单取消
+//
+// @param request - TrainOrderCancelRequest
+//
+// @param headers - TrainOrderCancelHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderCancelResponse
 func (client *Client) TrainOrderCancelWithOptions(request *TrainOrderCancelRequest, headers *TrainOrderCancelHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderCancelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108659,6 +112584,13 @@ func (client *Client) TrainOrderCancelWithOptions(request *TrainOrderCancelReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单取消
+//
+// @param request - TrainOrderCancelRequest
+//
+// @return TrainOrderCancelResponse
 func (client *Client) TrainOrderCancel(request *TrainOrderCancelRequest) (_result *TrainOrderCancelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderCancelHeaders{}
@@ -108671,6 +112603,17 @@ func (client *Client) TrainOrderCancel(request *TrainOrderCancelRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签确认
+//
+// @param request - TrainOrderChangeConfirmRequest
+//
+// @param headers - TrainOrderChangeConfirmHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderChangeConfirmResponse
 func (client *Client) TrainOrderChangeConfirmWithOptions(request *TrainOrderChangeConfirmRequest, headers *TrainOrderChangeConfirmHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderChangeConfirmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108730,6 +112673,13 @@ func (client *Client) TrainOrderChangeConfirmWithOptions(request *TrainOrderChan
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票改签确认
+//
+// @param request - TrainOrderChangeConfirmRequest
+//
+// @return TrainOrderChangeConfirmResponse
 func (client *Client) TrainOrderChangeConfirm(request *TrainOrderChangeConfirmRequest) (_result *TrainOrderChangeConfirmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderChangeConfirmHeaders{}
@@ -108742,6 +112692,17 @@ func (client *Client) TrainOrderChangeConfirm(request *TrainOrderChangeConfirmRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票正向预订
+//
+// @param tmpReq - TrainOrderCreateRequest
+//
+// @param headers - TrainOrderCreateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderCreateResponse
 func (client *Client) TrainOrderCreateWithOptions(tmpReq *TrainOrderCreateRequest, headers *TrainOrderCreateHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderCreateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -108839,6 +112800,13 @@ func (client *Client) TrainOrderCreateWithOptions(tmpReq *TrainOrderCreateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票正向预订
+//
+// @param request - TrainOrderCreateRequest
+//
+// @return TrainOrderCreateResponse
 func (client *Client) TrainOrderCreate(request *TrainOrderCreateRequest) (_result *TrainOrderCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderCreateHeaders{}
@@ -108851,6 +112819,17 @@ func (client *Client) TrainOrderCreate(request *TrainOrderCreateRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单详情
+//
+// @param request - TrainOrderDetailQueryRequest
+//
+// @param headers - TrainOrderDetailQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderDetailQueryResponse
 func (client *Client) TrainOrderDetailQueryWithOptions(request *TrainOrderDetailQueryRequest, headers *TrainOrderDetailQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderDetailQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108898,6 +112877,13 @@ func (client *Client) TrainOrderDetailQueryWithOptions(request *TrainOrderDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单详情
+//
+// @param request - TrainOrderDetailQueryRequest
+//
+// @return TrainOrderDetailQueryResponse
 func (client *Client) TrainOrderDetailQuery(request *TrainOrderDetailQueryRequest) (_result *TrainOrderDetailQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderDetailQueryHeaders{}
@@ -108910,6 +112896,17 @@ func (client *Client) TrainOrderDetailQuery(request *TrainOrderDetailQueryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票订单列表
+//
+// @param request - TrainOrderListQueryRequest
+//
+// @param headers - TrainOrderListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderListQueryResponse
 func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQueryRequest, headers *TrainOrderListQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -108993,6 +112990,13 @@ func (client *Client) TrainOrderListQueryWithOptions(request *TrainOrderListQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票订单列表
+//
+// @param request - TrainOrderListQueryRequest
+//
+// @return TrainOrderListQueryResponse
 func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (_result *TrainOrderListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderListQueryHeaders{}
@@ -109005,6 +113009,17 @@ func (client *Client) TrainOrderListQuery(request *TrainOrderListQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单支付
+//
+// @param request - TrainOrderPayRequest
+//
+// @param headers - TrainOrderPayHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderPayResponse
 func (client *Client) TrainOrderPayWithOptions(request *TrainOrderPayRequest, headers *TrainOrderPayHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderPayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109056,6 +113071,13 @@ func (client *Client) TrainOrderPayWithOptions(request *TrainOrderPayRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单支付
+//
+// @param request - TrainOrderPayRequest
+//
+// @return TrainOrderPayResponse
 func (client *Client) TrainOrderPay(request *TrainOrderPayRequest) (_result *TrainOrderPayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderPayHeaders{}
@@ -109068,6 +113090,17 @@ func (client *Client) TrainOrderPay(request *TrainOrderPayRequest) (_result *Tra
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票订单详情（含票信息）
+//
+// @param request - TrainOrderQueryRequest
+//
+// @param headers - TrainOrderQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderQueryResponse
 func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest, headers *TrainOrderQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainOrderQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109115,6 +113148,13 @@ func (client *Client) TrainOrderQueryWithOptions(request *TrainOrderQueryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票订单详情（含票信息）
+//
+// @param request - TrainOrderQueryRequest
+//
+// @return TrainOrderQueryResponse
 func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result *TrainOrderQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderQueryHeaders{}
@@ -109127,6 +113167,17 @@ func (client *Client) TrainOrderQuery(request *TrainOrderQueryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单查询V2
+//
+// @param request - TrainOrderQueryV2Request
+//
+// @param headers - TrainOrderQueryV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainOrderQueryV2Response
 func (client *Client) TrainOrderQueryV2WithOptions(request *TrainOrderQueryV2Request, headers *TrainOrderQueryV2Headers, runtime *util.RuntimeOptions) (_result *TrainOrderQueryV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109174,6 +113225,13 @@ func (client *Client) TrainOrderQueryV2WithOptions(request *TrainOrderQueryV2Req
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票订单查询V2
+//
+// @param request - TrainOrderQueryV2Request
+//
+// @return TrainOrderQueryV2Response
 func (client *Client) TrainOrderQueryV2(request *TrainOrderQueryV2Request) (_result *TrainOrderQueryV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainOrderQueryV2Headers{}
@@ -109186,6 +113244,17 @@ func (client *Client) TrainOrderQueryV2(request *TrainOrderQueryV2Request) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车站数据
+//
+// @param request - TrainStationSearchRequest
+//
+// @param headers - TrainStationSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainStationSearchResponse
 func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchRequest, headers *TrainStationSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainStationSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109229,6 +113298,13 @@ func (client *Client) TrainStationSearchWithOptions(request *TrainStationSearchR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车站数据
+//
+// @param request - TrainStationSearchRequest
+//
+// @return TrainStationSearchResponse
 func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_result *TrainStationSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainStationSearchHeaders{}
@@ -109241,6 +113317,17 @@ func (client *Client) TrainStationSearch(request *TrainStationSearchRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票经停站查询
+//
+// @param request - TrainStopoverSearchRequest
+//
+// @param headers - TrainStopoverSearchHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainStopoverSearchResponse
 func (client *Client) TrainStopoverSearchWithOptions(request *TrainStopoverSearchRequest, headers *TrainStopoverSearchHeaders, runtime *util.RuntimeOptions) (_result *TrainStopoverSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109296,6 +113383,13 @@ func (client *Client) TrainStopoverSearchWithOptions(request *TrainStopoverSearc
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票经停站查询
+//
+// @param request - TrainStopoverSearchRequest
+//
+// @return TrainStopoverSearchResponse
 func (client *Client) TrainStopoverSearch(request *TrainStopoverSearchRequest) (_result *TrainStopoverSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainStopoverSearchHeaders{}
@@ -109308,6 +113402,17 @@ func (client *Client) TrainStopoverSearch(request *TrainStopoverSearchRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票凭证扫描件
+//
+// @param request - TrainTicketScanQueryRequest
+//
+// @param headers - TrainTicketScanQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrainTicketScanQueryResponse
 func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQueryRequest, headers *TrainTicketScanQueryHeaders, runtime *util.RuntimeOptions) (_result *TrainTicketScanQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109375,6 +113480,13 @@ func (client *Client) TrainTicketScanQueryWithOptions(request *TrainTicketScanQu
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询火车票凭证扫描件
+//
+// @param request - TrainTicketScanQueryRequest
+//
+// @return TrainTicketScanQueryResponse
 func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest) (_result *TrainTicketScanQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TrainTicketScanQueryHeaders{}
@@ -109387,6 +113499,17 @@ func (client *Client) TrainTicketScanQuery(request *TrainTicketScanQueryRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询差标列表
+//
+// @param request - TravelStandardListQueryRequest
+//
+// @param headers - TravelStandardListQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TravelStandardListQueryResponse
 func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandardListQueryRequest, headers *TravelStandardListQueryHeaders, runtime *util.RuntimeOptions) (_result *TravelStandardListQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109442,6 +113565,13 @@ func (client *Client) TravelStandardListQueryWithOptions(request *TravelStandard
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询差标列表
+//
+// @param request - TravelStandardListQueryRequest
+//
+// @return TravelStandardListQueryResponse
 func (client *Client) TravelStandardListQuery(request *TravelStandardListQueryRequest) (_result *TravelStandardListQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TravelStandardListQueryHeaders{}
@@ -109454,6 +113584,17 @@ func (client *Client) TravelStandardListQuery(request *TravelStandardListQueryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询差标详情
+//
+// @param tmpReq - TravelStandardQueryRequest
+//
+// @param headers - TravelStandardQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TravelStandardQueryResponse
 func (client *Client) TravelStandardQueryWithOptions(tmpReq *TravelStandardQueryRequest, headers *TravelStandardQueryHeaders, runtime *util.RuntimeOptions) (_result *TravelStandardQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -109511,6 +113652,13 @@ func (client *Client) TravelStandardQueryWithOptions(tmpReq *TravelStandardQuery
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询差标详情
+//
+// @param request - TravelStandardQueryRequest
+//
+// @return TravelStandardQueryResponse
 func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (_result *TravelStandardQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TravelStandardQueryHeaders{}
@@ -109523,6 +113671,17 @@ func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 人员查询
+//
+// @param request - UserQueryRequest
+//
+// @param headers - UserQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UserQueryResponse
 func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *UserQueryHeaders, runtime *util.RuntimeOptions) (_result *UserQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109578,6 +113737,13 @@ func (client *Client) UserQueryWithOptions(request *UserQueryRequest, headers *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 人员查询
+//
+// @param request - UserQueryRequest
+//
+// @return UserQueryResponse
 func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UserQueryHeaders{}
@@ -109590,6 +113756,17 @@ func (client *Client) UserQuery(request *UserQueryRequest) (_result *UserQueryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询增值税发票扫描件
+//
+// @param request - VatInvoiceScanQueryRequest
+//
+// @param headers - VatInvoiceScanQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VatInvoiceScanQueryResponse
 func (client *Client) VatInvoiceScanQueryWithOptions(request *VatInvoiceScanQueryRequest, headers *VatInvoiceScanQueryHeaders, runtime *util.RuntimeOptions) (_result *VatInvoiceScanQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109649,6 +113826,13 @@ func (client *Client) VatInvoiceScanQueryWithOptions(request *VatInvoiceScanQuer
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询增值税发票扫描件
+//
+// @param request - VatInvoiceScanQueryRequest
+//
+// @return VatInvoiceScanQueryResponse
 func (client *Client) VatInvoiceScanQuery(request *VatInvoiceScanQueryRequest) (_result *VatInvoiceScanQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &VatInvoiceScanQueryHeaders{}
@@ -109661,6 +113845,17 @@ func (client *Client) VatInvoiceScanQuery(request *VatInvoiceScanQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账期待申请的发票数据
+//
+// @param request - WaitApplyInvoiceTaskDetailQueryRequest
+//
+// @param headers - WaitApplyInvoiceTaskDetailQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WaitApplyInvoiceTaskDetailQueryResponse
 func (client *Client) WaitApplyInvoiceTaskDetailQueryWithOptions(request *WaitApplyInvoiceTaskDetailQueryRequest, headers *WaitApplyInvoiceTaskDetailQueryHeaders, runtime *util.RuntimeOptions) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -109704,6 +113899,13 @@ func (client *Client) WaitApplyInvoiceTaskDetailQueryWithOptions(request *WaitAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账期待申请的发票数据
+//
+// @param request - WaitApplyInvoiceTaskDetailQueryRequest
+//
+// @return WaitApplyInvoiceTaskDetailQueryResponse
 func (client *Client) WaitApplyInvoiceTaskDetailQuery(request *WaitApplyInvoiceTaskDetailQueryRequest) (_result *WaitApplyInvoiceTaskDetailQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &WaitApplyInvoiceTaskDetailQueryHeaders{}
