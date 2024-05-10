@@ -65,6 +65,8 @@ func (s *AddAttendeeHeaders) SetAccountContext(v *AddAttendeeHeadersAccountConte
 }
 
 type AddAttendeeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -108,11 +110,16 @@ func (s *AddAttendeeShrinkHeaders) SetAccountContextShrink(v string) *AddAttende
 }
 
 type AddAttendeeRequest struct {
+	// This parameter is required.
 	AttendeesToAdd []*AddAttendeeRequestAttendeesToAdd `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cnNTbW1YbU9sL2p6aFJZdEgvdlQrQT08
@@ -184,11 +191,16 @@ func (s *AddAttendeeRequestAttendeesToAdd) SetIsOptional(v bool) *AddAttendeeReq
 }
 
 type AddAttendeeShrinkRequest struct {
+	// This parameter is required.
 	AttendeesToAddShrink *string `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cnNTbW1YbU9sL2p6aFJZdEgvdlQrQT08
@@ -373,6 +385,8 @@ func (s *AddMeetingRoomsHeaders) SetAccountContext(v *AddMeetingRoomsHeadersAcco
 }
 
 type AddMeetingRoomsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -416,14 +430,19 @@ func (s *AddMeetingRoomsShrinkHeaders) SetAccountContextShrink(v string) *AddMee
 }
 
 type AddMeetingRoomsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// U5Kxxxxx
-	EventId           *string                                    `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
 	MeetingRoomsToAdd []*AddMeetingRoomsRequestMeetingRoomsToAdd `json:"MeetingRoomsToAdd,omitempty" xml:"MeetingRoomsToAdd,omitempty" type:"Repeated"`
 }
 
@@ -471,14 +490,19 @@ func (s *AddMeetingRoomsRequestMeetingRoomsToAdd) SetRoomId(v string) *AddMeetin
 }
 
 type AddMeetingRoomsShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// U5Kxxxxx
-	EventId                 *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
 	MeetingRoomsToAddShrink *string `json:"MeetingRoomsToAdd,omitempty" xml:"MeetingRoomsToAdd,omitempty"`
 }
 
@@ -589,6 +613,8 @@ func (s *AddScenegroupMemberHeaders) SetAccountContext(v *AddScenegroupMemberHea
 }
 
 type AddScenegroupMemberHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -632,10 +658,14 @@ func (s *AddScenegroupMemberShrinkHeaders) SetAccountContextShrink(v string) *Ad
 }
 
 type AddScenegroupMemberRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidt*****Xa4K10w==
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123xx,224xx
@@ -744,6 +774,8 @@ func (s *AddWorkspaceHeaders) SetAccountContext(v *AddWorkspaceHeadersAccountCon
 }
 
 type AddWorkspaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -787,6 +819,7 @@ func (s *AddWorkspaceShrinkHeaders) SetAccountContextShrink(v string) *AddWorksp
 }
 
 type AddWorkspaceRequest struct {
+	// This parameter is required.
 	Name          *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
 	Option        *AddWorkspaceRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *AddWorkspaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
@@ -862,6 +895,7 @@ func (s *AddWorkspaceRequestTenantContext) SetTenantId(v string) *AddWorkspaceRe
 }
 
 type AddWorkspaceShrinkRequest struct {
+	// This parameter is required.
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
@@ -1143,6 +1177,8 @@ func (s *AddWorkspaceDocMembersHeaders) SetAccountContext(v *AddWorkspaceDocMemb
 }
 
 type AddWorkspaceDocMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -1186,12 +1222,17 @@ func (s *AddWorkspaceDocMembersShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type AddWorkspaceDocMembersRequest struct {
+	// This parameter is required.
 	Members []*AddWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
 	NodeId        *string                                     `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *AddWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
@@ -1227,14 +1268,20 @@ func (s *AddWorkspaceDocMembersRequest) SetWorkspaceId(v string) *AddWorkspaceDo
 }
 
 type AddWorkspaceDocMembersRequestMembers struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// EDITOR
@@ -1285,12 +1332,17 @@ func (s *AddWorkspaceDocMembersRequestTenantContext) SetTenantId(v string) *AddW
 }
 
 type AddWorkspaceDocMembersShrinkRequest struct {
+	// This parameter is required.
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
 	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
@@ -1400,6 +1452,8 @@ func (s *AddWorkspaceMembersHeaders) SetAccountContext(v *AddWorkspaceMembersHea
 }
 
 type AddWorkspaceMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -1445,6 +1499,8 @@ func (s *AddWorkspaceMembersShrinkHeaders) SetAccountContextShrink(v string) *Ad
 type AddWorkspaceMembersRequest struct {
 	Members       []*AddWorkspaceMembersRequestMembers     `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	TenantContext *AddWorkspaceMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -1535,6 +1591,8 @@ func (s *AddWorkspaceMembersRequestTenantContext) SetTenantId(v string) *AddWork
 type AddWorkspaceMembersShrinkRequest struct {
 	MembersShrink       *string `json:"Members,omitempty" xml:"Members,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -1645,6 +1703,8 @@ func (s *BatchGetFormDataByIdListHeaders) SetAccountContext(v *BatchGetFormDataB
 }
 
 type BatchGetFormDataByIdListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -1688,14 +1748,20 @@ func (s *BatchGetFormDataByIdListShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type BatchGetFormDataByIdListRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormInstanceIdList []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -1704,6 +1770,8 @@ type BatchGetFormDataByIdListRequest struct {
 	//
 	// true
 	NeedFormInstanceValue *bool `json:"NeedFormInstanceValue,omitempty" xml:"NeedFormInstanceValue,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -1744,14 +1812,20 @@ func (s *BatchGetFormDataByIdListRequest) SetSystemToken(v string) *BatchGetForm
 }
 
 type BatchGetFormDataByIdListShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -1760,6 +1834,8 @@ type BatchGetFormDataByIdListShrinkRequest struct {
 	//
 	// true
 	NeedFormInstanceValue *bool `json:"NeedFormInstanceValue,omitempty" xml:"NeedFormInstanceValue,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -2134,6 +2210,8 @@ func (s *BatchRemovalByFormInstanceIdListHeaders) SetAccountContext(v *BatchRemo
 }
 
 type BatchRemovalByFormInstanceIdListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -2177,6 +2255,8 @@ func (s *BatchRemovalByFormInstanceIdListShrinkHeaders) SetAccountContextShrink(
 }
 
 type BatchRemovalByFormInstanceIdListRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_XCE0EVXS6DYG3YDYC5RD
@@ -2189,14 +2269,20 @@ type BatchRemovalByFormInstanceIdListRequest struct {
 	//
 	// false
 	ExecuteExpression *bool `json:"ExecuteExpression,omitempty" xml:"ExecuteExpression,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	FormInstanceIdList []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
 	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
@@ -2242,6 +2328,8 @@ func (s *BatchRemovalByFormInstanceIdListRequest) SetSystemToken(v string) *Batc
 }
 
 type BatchRemovalByFormInstanceIdListShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_XCE0EVXS6DYG3YDYC5RD
@@ -2254,14 +2342,20 @@ type BatchRemovalByFormInstanceIdListShrinkRequest struct {
 	//
 	// false
 	ExecuteExpression *bool `json:"ExecuteExpression,omitempty" xml:"ExecuteExpression,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
 	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
@@ -2397,6 +2491,8 @@ func (s *BatchSaveFormDataHeaders) SetAccountContext(v *BatchSaveFormDataHeaders
 }
 
 type BatchSaveFormDataHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -2681,6 +2777,8 @@ func (s *BatchUpdateFormDataByInstanceIdHeaders) SetAccountContext(v *BatchUpdat
 }
 
 type BatchUpdateFormDataByInstanceIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -2732,10 +2830,14 @@ type BatchUpdateFormDataByInstanceIdRequest struct {
 	//
 	// true
 	AsynchronousExecution *bool `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [ "FINST-J8766S91O2UYN87ZX3XOF1MY8MBA2912BSV0L24" ]
 	FormInstanceIdList []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
@@ -2748,10 +2850,14 @@ type BatchUpdateFormDataByInstanceIdRequest struct {
 	//
 	// false
 	NoExecuteExpression *bool `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {\"countrySelectField_l0c1cwiu\":[{\"value\":\"US\"}],\"addressField_l0c1cwiy\":{\"address\":\"111\",\"regionIds\":[460000,469027,469023401],\"regionText\":[{\"en_US\":\"hai+nan+sheng\",\"zh_CN\":\"海南省\"},{\"en_US\":\"cheng+mai+xian\",\"zh_CN\":\"澄迈县\"},{\"en_US\":\"guo+ying+hong+gang+nong+chang\",\"zh_CN\":\"国营红岗农场\"}]}}
@@ -2824,10 +2930,14 @@ type BatchUpdateFormDataByInstanceIdShrinkRequest struct {
 	//
 	// true
 	AsynchronousExecution *bool `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [ "FINST-J8766S91O2UYN87ZX3XOF1MY8MBA2912BSV0L24" ]
 	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
@@ -2840,10 +2950,14 @@ type BatchUpdateFormDataByInstanceIdShrinkRequest struct {
 	//
 	// false
 	NoExecuteExpression *bool `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {\"countrySelectField_l0c1cwiu\":[{\"value\":\"US\"}],\"addressField_l0c1cwiy\":{\"address\":\"111\",\"regionIds\":[460000,469027,469023401],\"regionText\":[{\"en_US\":\"hai+nan+sheng\",\"zh_CN\":\"海南省\"},{\"en_US\":\"cheng+mai+xian\",\"zh_CN\":\"澄迈县\"},{\"en_US\":\"guo+ying+hong+gang+nong+chang\",\"zh_CN\":\"国营红岗农场\"}]}}
@@ -3007,6 +3121,8 @@ func (s *BatchUpdateFormDataByInstanceMapHeaders) SetAccountContext(v *BatchUpda
 }
 
 type BatchUpdateFormDataByInstanceMapHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -3309,6 +3425,8 @@ func (s *CancelScheduleConferenceHeaders) SetAccountContext(v *CancelScheduleCon
 }
 
 type CancelScheduleConferenceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -3352,6 +3470,8 @@ func (s *CancelScheduleConferenceShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type CancelScheduleConferenceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -3398,6 +3518,8 @@ func (s *CancelScheduleConferenceRequestTenantContext) SetTenantId(v string) *Ca
 }
 
 type CancelScheduleConferenceShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -3507,6 +3629,8 @@ func (s *CheckUserIsGroupMemberHeaders) SetAccountContext(v *CheckUserIsGroupMem
 }
 
 type CheckUserIsGroupMemberHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -3712,15 +3836,21 @@ func (s *ClearShrinkHeaders) SetAccountContextShrink(v string) *ClearShrinkHeade
 }
 
 type ClearRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                    `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *ClearRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -3776,15 +3906,21 @@ func (s *ClearRequestTenantContext) SetTenantId(v string) *ClearRequestTenantCon
 }
 
 type ClearShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -3946,15 +4082,21 @@ func (s *ClearDataShrinkHeaders) SetAccountContextShrink(v string) *ClearDataShr
 }
 
 type ClearDataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                        `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *ClearDataRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -4010,15 +4152,21 @@ func (s *ClearDataRequestTenantContext) SetTenantId(v string) *ClearDataRequestT
 }
 
 type ClearDataShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -4137,6 +4285,8 @@ func (s *CommentListReportHeaders) SetAccountContext(v *CommentListReportHeaders
 }
 
 type CommentListReportHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -4180,14 +4330,20 @@ func (s *CommentListReportShrinkHeaders) SetAccountContextShrink(v string) *Comm
 }
 
 type CommentListReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -4244,14 +4400,20 @@ func (s *CommentListReportRequestTenantContext) SetTenantId(v string) *CommentLi
 }
 
 type CommentListReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -4704,6 +4866,8 @@ func (s *CreateEventHeaders) SetAccountContext(v *CreateEventHeadersAccountConte
 }
 
 type CreateEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 208579
@@ -4760,13 +4924,17 @@ type CreateEventRequest struct {
 	Recurrence          *CreateEventRequestRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
 	Reminders           []*CreateEventRequestReminders         `json:"Reminders,omitempty" xml:"Reminders,omitempty" type:"Repeated"`
 	RichTextDescription *CreateEventRequestRichTextDescription `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty" type:"Struct"`
-	Summary             *string                                `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	UiConfigs           []*CreateEventRequestUiConfigs         `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Summary   *string                        `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	UiConfigs []*CreateEventRequestUiConfigs `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
-	CalendarId *string                  `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
-	Start      *CreateEventRequestStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	CalendarId *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
+	// This parameter is required.
+	Start *CreateEventRequestStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
 }
 
 func (s CreateEventRequest) String() string {
@@ -5195,12 +5363,16 @@ type CreateEventShrinkRequest struct {
 	RecurrenceShrink          *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
 	RemindersShrink           *string `json:"Reminders,omitempty" xml:"Reminders,omitempty"`
 	RichTextDescriptionShrink *string `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
-	Summary                   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	UiConfigsShrink           *string `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty"`
+	// This parameter is required.
+	Summary         *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	UiConfigsShrink *string `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
-	CalendarId  *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
+	CalendarId *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
+	// This parameter is required.
 	StartShrink *string `json:"start,omitempty" xml:"start,omitempty"`
 }
 
@@ -5885,6 +6057,8 @@ func (s *CreateLiveHeaders) SetAccountContext(v *CreateLiveHeadersAccountContext
 }
 
 type CreateLiveHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -5936,10 +6110,14 @@ type CreateLiveRequest struct {
 	//
 	// 这是一个直播
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1698596800000
 	PreEndTime *int64 `json:"PreEndTime,omitempty" xml:"PreEndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1691596800000
@@ -5949,6 +6127,8 @@ type CreateLiveRequest struct {
 	// 0
 	PublicType    *int64                          `json:"PublicType,omitempty" xml:"PublicType,omitempty"`
 	TenantContext *CreateLiveRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 标题
@@ -6027,10 +6207,14 @@ type CreateLiveShrinkRequest struct {
 	//
 	// 这是一个直播
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1698596800000
 	PreEndTime *int64 `json:"PreEndTime,omitempty" xml:"PreEndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1691596800000
@@ -6040,6 +6224,8 @@ type CreateLiveShrinkRequest struct {
 	// 0
 	PublicType          *int64  `json:"PublicType,omitempty" xml:"PublicType,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 标题
@@ -6173,6 +6359,8 @@ func (s *CreateMeetingRoomHeaders) SetAccountContext(v *CreateMeetingRoomHeaders
 }
 
 type CreateMeetingRoomHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -6590,6 +6778,8 @@ func (s *CreateMeetingRoomGroupHeaders) SetAccountContext(v *CreateMeetingRoomGr
 }
 
 type CreateMeetingRoomGroupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -6637,6 +6827,8 @@ type CreateMeetingRoomGroupRequest struct {
 	//
 	// 测试分组
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172L
@@ -6692,6 +6884,8 @@ type CreateMeetingRoomGroupShrinkRequest struct {
 	//
 	// 测试分组
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172L
@@ -6806,6 +7000,8 @@ func (s *CreateOrUpdateFormDataHeaders) SetAccountContext(v *CreateOrUpdateFormD
 }
 
 type CreateOrUpdateFormDataHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -6855,7 +7051,7 @@ type CreateOrUpdateFormDataRequest struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// example:
 	//
-	// {\"countrySelectField_l0c1cwiu\":[{\"value\":\"US\"}]}
+	// {\\"countrySelectField_l0c1cwiu\\":[{\\"value\\":\\"US\\"}]}
 	FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
 	// example:
 	//
@@ -7063,24 +7259,36 @@ func (s *CreateOrgHonorTemplateShrinkHeaders) SetAccountContextShrink(v string) 
 
 type CreateOrgHonorTemplateRequest struct {
 	TenantContext *CreateOrgHonorTemplateRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// fsdfasdjf132342d
 	AvatarFrameMediaId *string `json:"avatarFrameMediaId,omitempty" xml:"avatarFrameMediaId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// #FFFBB4
 	DefaultBgColor *string `json:"defaultBgColor,omitempty" xml:"defaultBgColor,omitempty"`
-	MedalDesc      *string `json:"medalDesc,omitempty" xml:"medalDesc,omitempty"`
+	// This parameter is required.
+	MedalDesc *string `json:"medalDesc,omitempty" xml:"medalDesc,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1273adf23
 	MedalMediaId *string `json:"medalMediaId,omitempty" xml:"medalMediaId,omitempty"`
-	MedalName    *string `json:"medalName,omitempty" xml:"medalName,omitempty"`
+	// This parameter is required.
+	MedalName *string `json:"medalName,omitempty" xml:"medalName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -7157,24 +7365,36 @@ func (s *CreateOrgHonorTemplateRequestTenantContext) SetTenantId(v string) *Crea
 
 type CreateOrgHonorTemplateShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// fsdfasdjf132342d
 	AvatarFrameMediaId *string `json:"avatarFrameMediaId,omitempty" xml:"avatarFrameMediaId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// #FFFBB4
 	DefaultBgColor *string `json:"defaultBgColor,omitempty" xml:"defaultBgColor,omitempty"`
-	MedalDesc      *string `json:"medalDesc,omitempty" xml:"medalDesc,omitempty"`
+	// This parameter is required.
+	MedalDesc *string `json:"medalDesc,omitempty" xml:"medalDesc,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1273adf23
 	MedalMediaId *string `json:"medalMediaId,omitempty" xml:"medalMediaId,omitempty"`
-	MedalName    *string `json:"medalName,omitempty" xml:"medalName,omitempty"`
+	// This parameter is required.
+	MedalName *string `json:"medalName,omitempty" xml:"medalName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -7313,6 +7533,8 @@ func (s *CreatePersonalTodoTaskHeaders) SetAccountContext(v *CreatePersonalTodoT
 }
 
 type CreatePersonalTodoTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ba3a9b612345678d8fedf544ef69d19e
@@ -7364,6 +7586,8 @@ type CreatePersonalTodoTaskRequest struct {
 	//
 	// 1703750708595
 	DueTime *int64 `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [ "012345" ]
@@ -7373,6 +7597,8 @@ type CreatePersonalTodoTaskRequest struct {
 	//
 	// [ "012345" ]
 	ParticipantIds []*string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 待办标题
@@ -7472,6 +7698,8 @@ type CreatePersonalTodoTaskShrinkRequest struct {
 	//
 	// 1703750708595
 	DueTime *int64 `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [ "012345" ]
@@ -7481,6 +7709,8 @@ type CreatePersonalTodoTaskShrinkRequest struct {
 	//
 	// [ "012345" ]
 	ParticipantIdsShrink *string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 待办标题
@@ -7640,6 +7870,8 @@ func (s *CreateReportHeaders) SetAccountContext(v *CreateReportHeadersAccountCon
 }
 
 type CreateReportHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -7683,19 +7915,27 @@ func (s *CreateReportShrinkHeaders) SetAccountContextShrink(v string) *CreateRep
 }
 
 type CreateReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	Contents []*CreateReportRequestContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// client
 	DdFrom *string `json:"DdFrom,omitempty" xml:"DdFrom,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sdfafdsfsafdfsaf
 	TemplateId    *string                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TenantContext *CreateReportRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -7754,22 +7994,32 @@ func (s *CreateReportRequest) SetToUserids(v []*string) *CreateReportRequest {
 }
 
 type CreateReportRequestContents struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ### 序号1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// markdown
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 今日完成工作
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Sort *int64 `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -7830,19 +8080,27 @@ func (s *CreateReportRequestTenantContext) SetTenantId(v string) *CreateReportRe
 }
 
 type CreateReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	ContentsShrink *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// client
 	DdFrom *string `json:"DdFrom,omitempty" xml:"DdFrom,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sdfafdsfsafdfsaf
 	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -7984,6 +8242,8 @@ func (s *CreateScenegroupHeaders) SetAccountContext(v *CreateScenegroupHeadersAc
 }
 
 type CreateScenegroupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -8087,10 +8347,14 @@ type CreateScenegroupRequest struct {
 	//
 	// 072*****,013*****
 	SubadminIds *string `json:"SubadminIds,omitempty" xml:"SubadminIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c354***-***-***-b4ea-6f1ab***65
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 测试群
@@ -8301,6 +8565,8 @@ func (s *CreateScheduleConferenceHeaders) SetAccountContext(v *CreateScheduleCon
 }
 
 type CreateScheduleConferenceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -8344,15 +8610,21 @@ func (s *CreateScheduleConferenceShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type CreateScheduleConferenceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687928400000L
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687924800000L
 	StartTime     *int64                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *CreateScheduleConferenceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 预约会议标题
@@ -8408,15 +8680,21 @@ func (s *CreateScheduleConferenceRequestTenantContext) SetTenantId(v string) *Cr
 }
 
 type CreateScheduleConferenceShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687928400000L
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687924800000L
 	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 预约会议标题
@@ -9183,11 +9461,15 @@ func (s *CreateSheetShrinkHeaders) SetAccountContextShrink(v string) *CreateShee
 }
 
 type CreateSheetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	Name          *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
 	TenantContext *CreateSheetRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -9238,11 +9520,15 @@ func (s *CreateSheetRequestTenantContext) SetTenantId(v string) *CreateSheetRequ
 }
 
 type CreateSheetShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -9372,6 +9658,8 @@ func (s *CreateSubscribedCalendarHeaders) SetAccountContext(v *CreateSubscribedC
 }
 
 type CreateSubscribedCalendarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -9415,9 +9703,11 @@ func (s *CreateSubscribedCalendarShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type CreateSubscribedCalendarRequest struct {
-	Description    *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Managers       []*string                                      `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
-	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Managers    []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	SubscribeScope *CreateSubscribedCalendarRequestSubscribeScope `json:"SubscribeScope,omitempty" xml:"SubscribeScope,omitempty" type:"Struct"`
 }
 
@@ -9467,9 +9757,11 @@ func (s *CreateSubscribedCalendarRequestSubscribeScope) SetUserIds(v []*string) 
 }
 
 type CreateSubscribedCalendarShrinkRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagersShrink       *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ManagersShrink *string `json:"Managers,omitempty" xml:"Managers,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	SubscribeScopeShrink *string `json:"SubscribeScope,omitempty" xml:"SubscribeScope,omitempty"`
 }
 
@@ -9662,6 +9954,8 @@ type CreateTodoTaskRequest struct {
 	//
 	// isv_dingtalkTodo1
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 接入钉钉待办
@@ -9883,6 +10177,8 @@ type CreateTodoTaskShrinkRequest struct {
 	//
 	// isv_dingtalkTodo1
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 接入钉钉待办
@@ -10298,6 +10594,7 @@ func (s *CreateVideoConferenceHeaders) SetAccountContext(v *CreateVideoConferenc
 }
 
 type CreateVideoConferenceHeadersAccountContext struct {
+	// This parameter is required.
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 
@@ -10338,6 +10635,7 @@ func (s *CreateVideoConferenceShrinkHeaders) SetAccountContextShrink(v string) *
 }
 
 type CreateVideoConferenceRequest struct {
+	// This parameter is required.
 	ConfTitle *string `json:"ConfTitle,omitempty" xml:"ConfTitle,omitempty"`
 	// example:
 	//
@@ -10370,6 +10668,7 @@ func (s *CreateVideoConferenceRequest) SetInviteUserIds(v []*string) *CreateVide
 }
 
 type CreateVideoConferenceShrinkRequest struct {
+	// This parameter is required.
 	ConfTitle *string `json:"ConfTitle,omitempty" xml:"ConfTitle,omitempty"`
 	// example:
 	//
@@ -10527,6 +10826,8 @@ func (s *CreateWorkspaceHeaders) SetAccountContext(v *CreateWorkspaceHeadersAcco
 }
 
 type CreateWorkspaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -10570,7 +10871,8 @@ func (s *CreateWorkspaceShrinkHeaders) SetAccountContextShrink(v string) *Create
 }
 
 type CreateWorkspaceRequest struct {
-	Description   *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
 	Name          *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	TenantContext *CreateWorkspaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -10619,7 +10921,8 @@ func (s *CreateWorkspaceRequestTenantContext) SetTenantId(v string) *CreateWorks
 }
 
 type CreateWorkspaceShrinkRequest struct {
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
@@ -10758,6 +11061,8 @@ func (s *CreateWorkspaceDocHeaders) SetAccountContext(v *CreateWorkspaceDocHeade
 }
 
 type CreateWorkspaceDocHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -10801,10 +11106,14 @@ func (s *CreateWorkspaceDocShrinkHeaders) SetAccountContextShrink(v string) *Cre
 }
 
 type CreateWorkspaceDocRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// DOC
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 测试文档
@@ -10822,6 +11131,8 @@ type CreateWorkspaceDocRequest struct {
 	// team_template
 	TemplateType  *string                                 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	TenantContext *CreateWorkspaceDocRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -10892,10 +11203,14 @@ func (s *CreateWorkspaceDocRequestTenantContext) SetTenantId(v string) *CreateWo
 }
 
 type CreateWorkspaceDocShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// DOC
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 测试文档
@@ -10913,6 +11228,8 @@ type CreateWorkspaceDocShrinkRequest struct {
 	// team_template
 	TemplateType        *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -11116,19 +11433,27 @@ func (s *DeleteColumnsShrinkHeaders) SetAccountContextShrink(v string) *DeleteCo
 }
 
 type DeleteColumnsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                            `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *DeleteColumnsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -11189,19 +11514,27 @@ func (s *DeleteColumnsRequestTenantContext) SetTenantId(v string) *DeleteColumns
 }
 
 type DeleteColumnsShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -11325,6 +11658,8 @@ func (s *DeleteEventHeaders) SetAccountContext(v *DeleteEventHeadersAccountConte
 }
 
 type DeleteEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -11368,10 +11703,14 @@ func (s *DeleteEventShrinkHeaders) SetAccountContextShrink(v string) *DeleteEven
 }
 
 type DeleteEventRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iiiP35sJadba8aBSgjrwPRKgiEiF
@@ -11545,6 +11884,8 @@ func (s *DeleteFormDataHeaders) SetAccountContext(v *DeleteFormDataHeadersAccoun
 }
 
 type DeleteFormDataHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -11588,10 +11929,14 @@ func (s *DeleteFormDataShrinkHeaders) SetAccountContextShrink(v string) *DeleteF
 }
 
 type DeleteFormDataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKTxxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM_INST_12345
@@ -11600,6 +11945,8 @@ type DeleteFormDataRequest struct {
 	//
 	// zh_CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -11725,6 +12072,8 @@ func (s *DeleteInstanceHeaders) SetAccountContext(v *DeleteInstanceHeadersAccoun
 }
 
 type DeleteInstanceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -11905,6 +12254,8 @@ func (s *DeleteLiveHeaders) SetAccountContext(v *DeleteLiveHeadersAccountContext
 }
 
 type DeleteLiveHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -11948,6 +12299,8 @@ func (s *DeleteLiveShrinkHeaders) SetAccountContextShrink(v string) *DeleteLiveS
 }
 
 type DeleteLiveRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -11994,6 +12347,8 @@ func (s *DeleteLiveRequestTenantContext) SetTenantId(v string) *DeleteLiveReques
 }
 
 type DeleteLiveShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -12103,6 +12458,8 @@ func (s *DeleteMeetingRoomHeaders) SetAccountContext(v *DeleteMeetingRoomHeaders
 }
 
 type DeleteMeetingRoomHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -12146,6 +12503,8 @@ func (s *DeleteMeetingRoomShrinkHeaders) SetAccountContextShrink(v string) *Dele
 }
 
 type DeleteMeetingRoomRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0ffb7xxxxx
@@ -12192,6 +12551,8 @@ func (s *DeleteMeetingRoomRequestTenantContext) SetTenantId(v string) *DeleteMee
 }
 
 type DeleteMeetingRoomShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0ffb7xxxxx
@@ -12301,6 +12662,8 @@ func (s *DeleteMeetingRoomGroupHeaders) SetAccountContext(v *DeleteMeetingRoomGr
 }
 
 type DeleteMeetingRoomGroupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -12344,6 +12707,8 @@ func (s *DeleteMeetingRoomGroupShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type DeleteMeetingRoomGroupRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -12390,6 +12755,8 @@ func (s *DeleteMeetingRoomGroupRequestTenantContext) SetTenantId(v string) *Dele
 }
 
 type DeleteMeetingRoomGroupShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -12542,19 +12909,27 @@ func (s *DeleteRowsShrinkHeaders) SetAccountContextShrink(v string) *DeleteRowsS
 }
 
 type DeleteRowsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                         `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *DeleteRowsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -12615,19 +12990,27 @@ func (s *DeleteRowsRequestTenantContext) SetTenantId(v string) *DeleteRowsReques
 }
 
 type DeleteRowsShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -12751,6 +13134,8 @@ func (s *DeleteScenegroupMemberHeaders) SetAccountContext(v *DeleteScenegroupMem
 }
 
 type DeleteScenegroupMemberHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -12794,10 +13179,14 @@ func (s *DeleteScenegroupMemberShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type DeleteScenegroupMemberRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidvkLfbOyIiSYqjgvAiWwFow==
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123xxx,223xxx
@@ -12949,11 +13338,15 @@ func (s *DeleteSheetShrinkHeaders) SetAccountContextShrink(v string) *DeleteShee
 }
 
 type DeleteSheetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                          `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *DeleteSheetRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -13004,11 +13397,15 @@ func (s *DeleteSheetRequestTenantContext) SetTenantId(v string) *DeleteSheetRequ
 }
 
 type DeleteSheetShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -13122,6 +13519,8 @@ func (s *DeleteSubscribedCalendarHeaders) SetAccountContext(v *DeleteSubscribedC
 }
 
 type DeleteSubscribedCalendarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -13165,6 +13564,8 @@ func (s *DeleteSubscribedCalendarShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type DeleteSubscribedCalendarRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MzM5Mxxx
@@ -13316,6 +13717,8 @@ type DeleteTodoTaskRequest struct {
 	//
 	// 12345
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63edc8da7e917d6ecdaab11b
@@ -13371,6 +13774,8 @@ type DeleteTodoTaskShrinkRequest struct {
 	//
 	// 12345
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63edc8da7e917d6ecdaab11b
@@ -13484,6 +13889,8 @@ func (s *DeleteWorkspaceDocMembersHeaders) SetAccountContext(v *DeleteWorkspaceD
 }
 
 type DeleteWorkspaceDocMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -13527,12 +13934,17 @@ func (s *DeleteWorkspaceDocMembersShrinkHeaders) SetAccountContextShrink(v strin
 }
 
 type DeleteWorkspaceDocMembersRequest struct {
+	// This parameter is required.
 	Members []*DeleteWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// YRBGv0xxx
 	NodeId        *string                                        `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *DeleteWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// YRBGvyxxx
@@ -13568,10 +13980,14 @@ func (s *DeleteWorkspaceDocMembersRequest) SetWorkspaceId(v string) *DeleteWorks
 }
 
 type DeleteWorkspaceDocMembersRequestMembers struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER
@@ -13617,12 +14033,17 @@ func (s *DeleteWorkspaceDocMembersRequestTenantContext) SetTenantId(v string) *D
 }
 
 type DeleteWorkspaceDocMembersShrinkRequest struct {
+	// This parameter is required.
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// YRBGv0xxx
 	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// YRBGvyxxx
@@ -13732,6 +14153,8 @@ func (s *DeleteWorkspaceMembersHeaders) SetAccountContext(v *DeleteWorkspaceMemb
 }
 
 type DeleteWorkspaceMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -13775,8 +14198,11 @@ func (s *DeleteWorkspaceMembersShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type DeleteWorkspaceMembersRequest struct {
+	// This parameter is required.
 	Members       []*DeleteWorkspaceMembersRequestMembers     `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	TenantContext *DeleteWorkspaceMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -13807,10 +14233,14 @@ func (s *DeleteWorkspaceMembersRequest) SetWorkspaceId(v string) *DeleteWorkspac
 }
 
 type DeleteWorkspaceMembersRequestMembers struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER
@@ -13856,8 +14286,11 @@ func (s *DeleteWorkspaceMembersRequestTenantContext) SetTenantId(v string) *Dele
 }
 
 type DeleteWorkspaceMembersShrinkRequest struct {
+	// This parameter is required.
 	MembersShrink       *string `json:"Members,omitempty" xml:"Members,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -13962,6 +14395,8 @@ func (s *ExecuteBatchTaskHeaders) SetAccountContext(v *ExecuteBatchTaskHeadersAc
 }
 
 type ExecuteBatchTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -14005,10 +14440,14 @@ func (s *ExecuteBatchTaskShrinkHeaders) SetAccountContextShrink(v string) *Execu
 }
 
 type ExecuteBatchTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKTxxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// disagree
@@ -14017,10 +14456,14 @@ type ExecuteBatchTaskRequest struct {
 	//
 	// remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"taskId":"2291xxx","formInstId":"d84a79xxx"}, {"taskId":"2291xxx","formInstId":"f8035e2axxx"}]
@@ -14178,6 +14621,8 @@ func (s *ExecutePlatformTaskHeaders) SetAccountContext(v *ExecutePlatformTaskHea
 }
 
 type ExecutePlatformTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -14391,6 +14836,8 @@ func (s *ExecuteTaskHeaders) SetAccountContext(v *ExecuteTaskHeadersAccountConte
 }
 
 type ExecuteTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -14622,6 +15069,8 @@ func (s *ExpandGroupCapacityHeaders) SetAccountContext(v *ExpandGroupCapacityHea
 }
 
 type ExpandGroupCapacityHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -14665,6 +15114,8 @@ func (s *ExpandGroupCapacityShrinkHeaders) SetAccountContextShrink(v string) *Ex
 }
 
 type ExpandGroupCapacityRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidt*****Xa4K10w==
@@ -14711,6 +15162,8 @@ func (s *ExpandGroupCapacityRequestTenantContext) SetTenantId(v string) *ExpandG
 }
 
 type ExpandGroupCapacityShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidt*****Xa4K10w==
@@ -14836,6 +15289,8 @@ func (s *GetActivityListHeaders) SetAccountContext(v *GetActivityListHeadersAcco
 }
 
 type GetActivityListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -15104,6 +15559,8 @@ func (s *GetAllSheetsShrinkHeaders) SetAccountContextShrink(v string) *GetAllShe
 
 type GetAllSheetsRequest struct {
 	TenantContext *GetAllSheetsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -15150,6 +15607,8 @@ func (s *GetAllSheetsRequestTenantContext) SetTenantId(v string) *GetAllSheetsRe
 
 type GetAllSheetsShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -15287,6 +15746,8 @@ func (s *GetConversaionSpaceHeaders) SetAccountContext(v *GetConversaionSpaceHea
 }
 
 type GetConversaionSpaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -15330,6 +15791,8 @@ func (s *GetConversaionSpaceShrinkHeaders) SetAccountContextShrink(v string) *Ge
 }
 
 type GetConversaionSpaceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidB8Pzg****FIWPv2PMA==
@@ -15376,6 +15839,8 @@ func (s *GetConversaionSpaceRequestTenantContext) SetTenantId(v string) *GetConv
 }
 
 type GetConversaionSpaceShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cidB8Pzg****FIWPv2PMA==
@@ -15545,6 +16010,8 @@ func (s *GetCorpAccomplishmentTasksHeaders) SetAccountContext(v *GetCorpAccompli
 }
 
 type GetCorpAccomplishmentTasksHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -15592,6 +16059,8 @@ type GetCorpAccomplishmentTasksRequest struct {
 	//
 	// APP_PBKTxxx
 	AppTypes *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// corpIdxxx
@@ -15624,6 +16093,8 @@ type GetCorpAccomplishmentTasksRequest struct {
 	//
 	// ["xx","xxx"]
 	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -15961,6 +16432,8 @@ func (s *GetCorpTasksHeaders) SetAccountContext(v *GetCorpTasksHeadersAccountCon
 }
 
 type GetCorpTasksHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -16004,10 +16477,14 @@ func (s *GetCorpTasksShrinkHeaders) SetAccountContextShrink(v string) *GetCorpTa
 }
 
 type GetCorpTasksRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKxxx
 	AppTypes *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// corpId
@@ -16040,6 +16517,8 @@ type GetCorpTasksRequest struct {
 	//
 	// ["xx","xxx"]
 	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -16422,6 +16901,8 @@ func (s *GetDocContentHeaders) SetAccountContext(v *GetDocContentHeadersAccountC
 }
 
 type GetDocContentHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ba3a9b612345678d8fedf544ef69d19e
@@ -16465,6 +16946,8 @@ func (s *GetDocContentShrinkHeaders) SetAccountContextShrink(v string) *GetDocCo
 }
 
 type GetDocContentRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dentry_uuid
@@ -16474,7 +16957,8 @@ type GetDocContentRequest struct {
 	// markdown
 	TargetFormat  *string                            `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContext *GetDocContentRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	UserToken     *string                            `json:"userToken,omitempty" xml:"userToken,omitempty"`
+	// This parameter is required.
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
 }
 
 func (s GetDocContentRequest) String() string {
@@ -16526,6 +17010,8 @@ func (s *GetDocContentRequestTenantContext) SetTenantId(v string) *GetDocContent
 }
 
 type GetDocContentShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dentry_uuid
@@ -16535,7 +17021,8 @@ type GetDocContentShrinkRequest struct {
 	// markdown
 	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	UserToken           *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
+	// This parameter is required.
+	UserToken *string `json:"userToken,omitempty" xml:"userToken,omitempty"`
 }
 
 func (s GetDocContentShrinkRequest) String() string {
@@ -16642,6 +17129,244 @@ func (s *GetDocContentResponse) SetBody(v *GetDocContentResponseBody) *GetDocCon
 	return s
 }
 
+type GetDocContentTakIdHeaders struct {
+	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetDocContentTakIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetDocContentTakIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdHeaders) SetCommonHeaders(v map[string]*string) *GetDocContentTakIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDocContentTakIdHeaders) SetAccountContext(v *GetDocContentTakIdHeadersAccountContext) *GetDocContentTakIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetDocContentTakIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetDocContentTakIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdHeadersAccountContext) SetAccountId(v string) *GetDocContentTakIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetDocContentTakIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetDocContentTakIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetDocContentTakIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetDocContentTakIdShrinkHeaders) SetAccountContextShrink(v string) *GetDocContentTakIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetDocContentTakIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qnYMoO1rWxrkmoj2I5L2PYkoJ47Z3je9
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	// example:
+	//
+	// markdown
+	TargetFormat  *string                                 `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContext *GetDocContentTakIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetDocContentTakIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdRequest) SetDentryUuid(v string) *GetDocContentTakIdRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentTakIdRequest) SetTargetFormat(v string) *GetDocContentTakIdRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetDocContentTakIdRequest) SetTenantContext(v *GetDocContentTakIdRequestTenantContext) *GetDocContentTakIdRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetDocContentTakIdRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetDocContentTakIdRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdRequestTenantContext) SetTenantId(v string) *GetDocContentTakIdRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetDocContentTakIdShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qnYMoO1rWxrkmoj2I5L2PYkoJ47Z3je9
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	// example:
+	//
+	// markdown
+	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetDocContentTakIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdShrinkRequest) SetDentryUuid(v string) *GetDocContentTakIdShrinkRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetDocContentTakIdShrinkRequest) SetTargetFormat(v string) *GetDocContentTakIdShrinkRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetDocContentTakIdShrinkRequest) SetTenantContextShrink(v string) *GetDocContentTakIdShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetDocContentTakIdResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 72652830001
+	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetDocContentTakIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdResponseBody) SetRequestId(v string) *GetDocContentTakIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDocContentTakIdResponseBody) SetTaskId(v int64) *GetDocContentTakIdResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetDocContentTakIdResponseBody) SetVendorRequestId(v string) *GetDocContentTakIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetDocContentTakIdResponseBody) SetVendorType(v string) *GetDocContentTakIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetDocContentTakIdResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocContentTakIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocContentTakIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocContentTakIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocContentTakIdResponse) SetHeaders(v map[string]*string) *GetDocContentTakIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocContentTakIdResponse) SetStatusCode(v int32) *GetDocContentTakIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocContentTakIdResponse) SetBody(v *GetDocContentTakIdResponseBody) *GetDocContentTakIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetEventHeaders struct {
 	CommonHeaders  map[string]*string             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetEventHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -16666,6 +17391,8 @@ func (s *GetEventHeaders) SetAccountContext(v *GetEventHeadersAccountContext) *G
 }
 
 type GetEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -16709,10 +17436,14 @@ func (s *GetEventShrinkHeaders) SetAccountContextShrink(v string) *GetEventShrin
 }
 
 type GetEventRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 311525211
@@ -17502,6 +18233,8 @@ func (s *GetFieldDefByUuidHeaders) SetAccountContext(v *GetFieldDefByUuidHeaders
 }
 
 type GetFieldDefByUuidHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -17545,14 +18278,20 @@ func (s *GetFieldDefByUuidShrinkHeaders) SetAccountContextShrink(v string) *GetF
 }
 
 type GetFieldDefByUuidRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -17759,6 +18498,8 @@ func (s *GetFileDownloadInfoHeaders) SetAccountContext(v *GetFileDownloadInfoHea
 }
 
 type GetFileDownloadInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -18085,6 +18826,8 @@ func (s *GetFormComponentDefinitionListHeaders) SetAccountContext(v *GetFormComp
 }
 
 type GetFormComponentDefinitionListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -18128,10 +18871,14 @@ func (s *GetFormComponentDefinitionListShrinkHeaders) SetAccountContextShrink(v 
 }
 
 type GetFormComponentDefinitionListRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -18140,6 +18887,8 @@ type GetFormComponentDefinitionListRequest struct {
 	//
 	// zh_CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -18318,6 +19067,8 @@ func (s *GetFormDataByIDHeaders) SetAccountContext(v *GetFormDataByIDHeadersAcco
 }
 
 type GetFormDataByIDHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -18610,6 +19361,8 @@ func (s *GetFormListInAppHeaders) SetAccountContext(v *GetFormListInAppHeadersAc
 }
 
 type GetFormListInAppHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -18653,6 +19406,8 @@ func (s *GetFormListInAppShrinkHeaders) SetAccountContextShrink(v string) *GetFo
 }
 
 type GetFormListInAppRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
@@ -18669,6 +19424,8 @@ type GetFormListInAppRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -18911,6 +19668,8 @@ func (s *GetInnerGroupMembersHeaders) SetAccountContext(v *GetInnerGroupMembersH
 }
 
 type GetInnerGroupMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -19109,6 +19868,8 @@ func (s *GetInstanceByIdHeaders) SetAccountContext(v *GetInstanceByIdHeadersAcco
 }
 
 type GetInstanceByIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -19552,6 +20313,8 @@ func (s *GetInstanceIdListHeaders) SetAccountContext(v *GetInstanceIdListHeaders
 }
 
 type GetInstanceIdListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -19645,7 +20408,7 @@ type GetInstanceIdListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// {\"textField\":\"123\"}
+	// {\\"textField\\":\\"123\\"}
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
 	// example:
 	//
@@ -19858,6 +20621,8 @@ func (s *GetInstancesHeaders) SetAccountContext(v *GetInstancesHeadersAccountCon
 }
 
 type GetInstancesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -19955,7 +20720,7 @@ type GetInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// {\"textField\":\"123\"}
+	// {\\"textField\\":\\"123\\"}
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
 	// example:
 	//
@@ -20444,6 +21209,8 @@ func (s *GetInstancesByIdListHeaders) SetAccountContext(v *GetInstancesByIdListH
 }
 
 type GetInstancesByIdListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -20877,6 +21644,8 @@ func (s *GetLiveReplayUrlHeaders) SetAccountContext(v *GetLiveReplayUrlHeadersAc
 }
 
 type GetLiveReplayUrlHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -20920,6 +21689,8 @@ func (s *GetLiveReplayUrlShrinkHeaders) SetAccountContextShrink(v string) *GetLi
 }
 
 type GetLiveReplayUrlRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -20966,6 +21737,8 @@ func (s *GetLiveReplayUrlRequestTenantContext) SetTenantId(v string) *GetLiveRep
 }
 
 type GetLiveReplayUrlShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -21091,6 +21864,8 @@ func (s *GetMeCorpSubmissionHeaders) SetAccountContext(v *GetMeCorpSubmissionHea
 }
 
 type GetMeCorpSubmissionHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -21136,7 +21911,7 @@ func (s *GetMeCorpSubmissionShrinkHeaders) SetAccountContextShrink(v string) *Ge
 type GetMeCorpSubmissionRequest struct {
 	// example:
 	//
-	// [\"APP_xxx\",\"APP_xxx\"]
+	// [\\"APP_xxx\\",\\"APP_xxx\\"]
 	AppTypes *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
 	// example:
 	//
@@ -21168,7 +21943,7 @@ type GetMeCorpSubmissionRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// [\"xx\",\"xxx\"]
+	// [\\"xx\\",\\"xxx\\"]
 	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
 	// example:
 	//
@@ -21808,6 +22583,8 @@ func (s *GetMeetingRoomsScheduleHeaders) SetAccountContext(v *GetMeetingRoomsSch
 }
 
 type GetMeetingRoomsScheduleHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -21851,14 +22628,20 @@ func (s *GetMeetingRoomsScheduleShrinkHeaders) SetAccountContextShrink(v string)
 }
 
 type GetMeetingRoomsScheduleRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01T10:15:30+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["4002xxxxx"]
 	RoomIds []*string `json:"RoomIds,omitempty" xml:"RoomIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01T10:15:30+08:00
@@ -21889,14 +22672,20 @@ func (s *GetMeetingRoomsScheduleRequest) SetStartTime(v string) *GetMeetingRooms
 }
 
 type GetMeetingRoomsScheduleShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01T10:15:30+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["4002xxxxx"]
 	RoomIdsShrink *string `json:"RoomIds,omitempty" xml:"RoomIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-01-01T10:15:30+08:00
@@ -22167,6 +22956,8 @@ func (s *GetMineWorkspaceHeaders) SetAccountContext(v *GetMineWorkspaceHeadersAc
 }
 
 type GetMineWorkspaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -22528,6 +23319,8 @@ func (s *GetNewestInnerGroupsHeaders) SetAccountContext(v *GetNewestInnerGroupsH
 }
 
 type GetNewestInnerGroupsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -22751,6 +23544,8 @@ func (s *GetNodeHeaders) SetAccountContext(v *GetNodeHeadersAccountContext) *Get
 }
 
 type GetNodeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -22794,6 +23589,8 @@ func (s *GetNodeShrinkHeaders) SetAccountContextShrink(v string) *GetNodeShrinkH
 }
 
 type GetNodeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a9E05BDRVQ9K600yf1NplNDxV63zgkYA
@@ -22858,6 +23655,8 @@ func (s *GetNodeRequestTenantContext) SetTenantId(v string) *GetNodeRequestTenan
 }
 
 type GetNodeShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a9E05BDRVQ9K600yf1NplNDxV63zgkYA
@@ -23145,6 +23944,8 @@ func (s *GetNodeByUrlHeaders) SetAccountContext(v *GetNodeByUrlHeadersAccountCon
 }
 
 type GetNodeByUrlHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -23190,6 +23991,8 @@ func (s *GetNodeByUrlShrinkHeaders) SetAccountContextShrink(v string) *GetNodeBy
 type GetNodeByUrlRequest struct {
 	Option        *GetNodeByUrlRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *GetNodeByUrlRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://alidocs.dingtalk.com/i/nodes/EpGBa2L*********gN7R35y
@@ -23271,6 +24074,8 @@ func (s *GetNodeByUrlRequestTenantContext) SetTenantId(v string) *GetNodeByUrlRe
 type GetNodeByUrlShrinkRequest struct {
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://alidocs.dingtalk.com/i/nodes/EpGBa2L*********gN7R35y
@@ -23544,6 +24349,8 @@ func (s *GetNodesHeaders) SetAccountContext(v *GetNodesHeadersAccountContext) *G
 }
 
 type GetNodesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -23587,6 +24394,7 @@ func (s *GetNodesShrinkHeaders) SetAccountContextShrink(v string) *GetNodesShrin
 }
 
 type GetNodesRequest struct {
+	// This parameter is required.
 	NodeIds       []*string                     `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	Option        *GetNodesRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *GetNodesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
@@ -23665,6 +24473,7 @@ func (s *GetNodesRequestTenantContext) SetTenantId(v string) *GetNodesRequestTen
 }
 
 type GetNodesShrinkRequest struct {
+	// This parameter is required.
 	NodeIdsShrink       *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
@@ -23937,6 +24746,8 @@ func (s *GetNotifyMeHeaders) SetAccountContext(v *GetNotifyMeHeadersAccountConte
 }
 
 type GetNotifyMeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -23984,6 +24795,8 @@ type GetNotifyMeRequest struct {
 	//
 	// APP_PBKTxxx
 	AppTypes *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// corpIdxxx
@@ -24024,6 +24837,8 @@ type GetNotifyMeRequest struct {
 	//
 	// ["xx","xxx"]
 	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -24308,6 +25123,8 @@ func (s *GetOpenUrlHeaders) SetAccountContext(v *GetOpenUrlHeadersAccountContext
 }
 
 type GetOpenUrlHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -24351,10 +25168,14 @@ func (s *GetOpenUrlShrinkHeaders) SetAccountContextShrink(v string) *GetOpenUrlS
 }
 
 type GetOpenUrlRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.aliwork.com/fileHandle?appType=APP_VN7I6xxx&fileName=fileName.xlsx&instId=&type=download
@@ -24363,6 +25184,8 @@ type GetOpenUrlRequest struct {
 	//
 	// zh_CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -24490,6 +25313,8 @@ func (s *GetOperationRecordsHeaders) SetAccountContext(v *GetOperationRecordsHea
 }
 
 type GetOperationRecordsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -24903,6 +25728,8 @@ func (s *GetProcessDefinitionHeaders) SetAccountContext(v *GetProcessDefinitionH
 }
 
 type GetProcessDefinitionHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -25711,6 +26538,8 @@ func (s *GetRangeShrinkHeaders) SetAccountContextShrink(v string) *GetRangeShrin
 }
 
 type GetRangeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
@@ -25719,11 +26548,15 @@ type GetRangeRequest struct {
 	//
 	// values
 	Select *string `json:"Select,omitempty" xml:"Select,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                       `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *GetRangeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -25784,6 +26617,8 @@ func (s *GetRangeRequestTenantContext) SetTenantId(v string) *GetRangeRequestTen
 }
 
 type GetRangeShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
@@ -25792,11 +26627,15 @@ type GetRangeShrinkRequest struct {
 	//
 	// values
 	Select *string `json:"Select,omitempty" xml:"Select,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -26002,6 +26841,8 @@ func (s *GetRelatedWorkspacesHeaders) SetAccountContext(v *GetRelatedWorkspacesH
 }
 
 type GetRelatedWorkspacesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -26340,6 +27181,8 @@ func (s *GetReportTemplateByNameHeaders) SetAccountContext(v *GetReportTemplateB
 }
 
 type GetReportTemplateByNameHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -26383,6 +27226,8 @@ func (s *GetReportTemplateByNameShrinkHeaders) SetAccountContextShrink(v string)
 }
 
 type GetReportTemplateByNameRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 我管理的模版
@@ -26429,6 +27274,8 @@ func (s *GetReportTemplateByNameRequestTenantContext) SetTenantId(v string) *Get
 }
 
 type GetReportTemplateByNameShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 我管理的模版
@@ -26865,6 +27712,8 @@ func (s *GetRunningTasksHeaders) SetAccountContext(v *GetRunningTasksHeadersAcco
 }
 
 type GetRunningTasksHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -26908,6 +27757,8 @@ func (s *GetRunningTasksShrinkHeaders) SetAccountContextShrink(v string) *GetRun
 }
 
 type GetRunningTasksRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKxxx
@@ -26924,6 +27775,8 @@ type GetRunningTasksRequest struct {
 	//
 	// instxxxxx
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -27225,11 +28078,15 @@ func (s *GetSheetShrinkHeaders) SetAccountContextShrink(v string) *GetSheetShrin
 }
 
 type GetSheetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                       `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *GetSheetRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -27280,11 +28137,15 @@ func (s *GetSheetRequestTenantContext) SetTenantId(v string) *GetSheetRequestTen
 }
 
 type GetSheetShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -27452,6 +28313,8 @@ func (s *GetSpaceDirectoriesHeaders) SetAccountContext(v *GetSpaceDirectoriesHea
 }
 
 type GetSpaceDirectoriesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -27499,6 +28362,8 @@ type GetSpaceDirectoriesRequest struct {
 	//
 	// asdasd
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
@@ -27507,6 +28372,8 @@ type GetSpaceDirectoriesRequest struct {
 	//
 	// 123123
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// qweqwe
@@ -27572,6 +28439,8 @@ type GetSpaceDirectoriesShrinkRequest struct {
 	//
 	// asdasd
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
@@ -27580,6 +28449,8 @@ type GetSpaceDirectoriesShrinkRequest struct {
 	//
 	// 123123
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// qweqwe
@@ -28297,6 +29168,8 @@ func (s *GetSubscribedCalendarHeaders) SetAccountContext(v *GetSubscribedCalenda
 }
 
 type GetSubscribedCalendarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -28340,6 +29213,8 @@ func (s *GetSubscribedCalendarShrinkHeaders) SetAccountContextShrink(v string) *
 }
 
 type GetSubscribedCalendarRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// M5MjkxNDUxQHVzZXJzLmRpbmd0YWxrLmNv
@@ -28511,6 +29386,8 @@ func (s *GetTaskCopiesHeaders) SetAccountContext(v *GetTaskCopiesHeadersAccountC
 }
 
 type GetTaskCopiesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -28586,6 +29463,8 @@ type GetTaskCopiesRequest struct {
 	//
 	// ["xx","xxx"]
 	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -29073,6 +29952,8 @@ func (s *GetTemplateListByUserIdHeaders) SetAccountContext(v *GetTemplateListByU
 }
 
 type GetTemplateListByUserIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -29116,10 +29997,14 @@ func (s *GetTemplateListByUserIdShrinkHeaders) SetAccountContextShrink(v string)
 }
 
 type GetTemplateListByUserIdRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -29171,10 +30056,14 @@ func (s *GetTemplateListByUserIdRequestTenantContext) SetTenantId(v string) *Get
 }
 
 type GetTemplateListByUserIdShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -29944,6 +30833,8 @@ func (s *GetUserLatestPlanHeaders) SetAccountContext(v *GetUserLatestPlanHeaders
 }
 
 type GetUserLatestPlanHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -30239,6 +31130,8 @@ func (s *GetWorkspaceHeaders) SetAccountContext(v *GetWorkspaceHeadersAccountCon
 }
 
 type GetWorkspaceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -30287,6 +31180,8 @@ type GetWorkspaceRequest struct {
 	//
 	// false
 	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MJ0pDSKMV9dO20E4
@@ -30342,6 +31237,8 @@ type GetWorkspaceShrinkRequest struct {
 	//
 	// false
 	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MJ0pDSKMV9dO20E4
@@ -30624,6 +31521,8 @@ func (s *GetWorkspacesHeaders) SetAccountContext(v *GetWorkspacesHeadersAccountC
 }
 
 type GetWorkspacesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -30669,6 +31568,8 @@ func (s *GetWorkspacesShrinkHeaders) SetAccountContextShrink(v string) *GetWorks
 type GetWorkspacesRequest struct {
 	Option        *GetWorkspacesRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *GetWorkspacesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// workspace_id
@@ -30741,6 +31642,8 @@ func (s *GetWorkspacesRequestTenantContext) SetTenantId(v string) *GetWorkspaces
 type GetWorkspacesShrinkRequest struct {
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// workspace_id
@@ -31070,9 +31973,13 @@ type GrantHonorRequest struct {
 	// example:
 	//
 	// null
-	ExpirationTime *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	GrantReason    *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
-	GranterName    *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
+	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	// This parameter is required.
+	GrantReason *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
+	// This parameter is required.
+	GranterName *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21659398
@@ -31086,11 +31993,16 @@ type GrantHonorRequest struct {
 	// false
 	NoticeSingle        *bool     `json:"noticeSingle,omitempty" xml:"noticeSingle,omitempty"`
 	OpenConversationIds []*string `json:"openConversationIds,omitempty" xml:"openConversationIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 345391052
-	OrgId           *int64    `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
 	ReceiverUserIds []*string `json:"receiverUserIds,omitempty" xml:"receiverUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -31185,9 +32097,13 @@ type GrantHonorShrinkRequest struct {
 	// example:
 	//
 	// null
-	ExpirationTime *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	GrantReason    *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
-	GranterName    *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
+	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	// This parameter is required.
+	GrantReason *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
+	// This parameter is required.
+	GranterName *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21659398
@@ -31201,11 +32117,16 @@ type GrantHonorShrinkRequest struct {
 	// false
 	NoticeSingle              *bool   `json:"noticeSingle,omitempty" xml:"noticeSingle,omitempty"`
 	OpenConversationIdsShrink *string `json:"openConversationIds,omitempty" xml:"openConversationIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 345391052
-	OrgId                 *int64  `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
 	ReceiverUserIdsShrink *string `json:"receiverUserIds,omitempty" xml:"receiverUserIds,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -31405,19 +32326,27 @@ func (s *InsertColumnsBeforeShrinkHeaders) SetAccountContextShrink(v string) *In
 }
 
 type InsertColumnsBeforeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                                  `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *InsertColumnsBeforeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -31478,19 +32407,27 @@ func (s *InsertColumnsBeforeRequestTenantContext) SetTenantId(v string) *InsertC
 }
 
 type InsertColumnsBeforeShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -31657,19 +32594,27 @@ func (s *InsertRowsBeforeShrinkHeaders) SetAccountContextShrink(v string) *Inser
 }
 
 type InsertRowsBeforeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                               `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *InsertRowsBeforeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -31730,19 +32675,27 @@ func (s *InsertRowsBeforeRequestTenantContext) SetTenantId(v string) *InsertRows
 }
 
 type InsertRowsBeforeShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -31866,6 +32819,8 @@ func (s *InviteUsersHeaders) SetAccountContext(v *InviteUsersHeadersAccountConte
 }
 
 type InviteUsersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -31911,6 +32866,8 @@ func (s *InviteUsersShrinkHeaders) SetAccountContextShrink(v string) *InviteUser
 type InviteUsersRequest struct {
 	InviteeList   []*InviteUsersRequestInviteeList `json:"InviteeList,omitempty" xml:"InviteeList,omitempty" type:"Repeated"`
 	TenantContext *InviteUsersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -31947,6 +32904,8 @@ func (s *InviteUsersRequest) SetPhoneInviteeList(v []*InviteUsersRequestPhoneInv
 }
 
 type InviteUsersRequestInviteeList struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 测试用户
@@ -32021,6 +32980,8 @@ func (s *InviteUsersRequestPhoneInviteeList) SetPhoneNumber(v string) *InviteUse
 type InviteUsersShrinkRequest struct {
 	InviteeListShrink   *string `json:"InviteeList,omitempty" xml:"InviteeList,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -32140,6 +33101,8 @@ func (s *ListApplicationHeaders) SetAccountContext(v *ListApplicationHeadersAcco
 }
 
 type ListApplicationHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -32191,6 +33154,8 @@ type ListApplicationRequest struct {
 	//
 	// keyword
 	AppNameSearchKeyword *string `json:"AppNameSearchKeyword,omitempty" xml:"AppNameSearchKeyword,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// corpid
@@ -32203,6 +33168,8 @@ type ListApplicationRequest struct {
 	//
 	// keyword
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// keyword
@@ -32315,7 +33282,7 @@ func (s *ListApplicationResponseBody) SetVendorType(v string) *ListApplicationRe
 type ListApplicationResponseBodyData struct {
 	// example:
 	//
-	// {\"ODIN_TOPIC_ID\":\"256\"}
+	// {\\"ODIN_TOPIC_ID\\":\\"256\\"}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
 	// example:
 	//
@@ -32466,6 +33433,8 @@ func (s *ListCalendarsHeaders) SetAccountContext(v *ListCalendarsHeadersAccountC
 }
 
 type ListCalendarsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -32720,6 +33689,8 @@ func (s *ListDentriesHeaders) SetAccountContext(v *ListDentriesHeadersAccountCon
 }
 
 type ListDentriesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -32779,10 +33750,14 @@ type ListDentriesRequest struct {
 	//
 	// MODIFIED_TIME
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 854xxxxx
@@ -32879,10 +33854,14 @@ type ListDentriesShrinkRequest struct {
 	//
 	// MODIFIED_TIME
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 854xxxxx
@@ -33288,6 +34267,8 @@ func (s *ListEventsHeaders) SetAccountContext(v *ListEventsHeadersAccountContext
 }
 
 type ListEventsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 208579
@@ -33331,6 +34312,8 @@ func (s *ListEventsShrinkHeaders) SetAccountContextShrink(v string) *ListEventsS
 }
 
 type ListEventsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
@@ -34203,6 +35186,8 @@ func (s *ListEventsViewHeaders) SetAccountContext(v *ListEventsViewHeadersAccoun
 }
 
 type ListEventsViewHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -34246,6 +35231,8 @@ func (s *ListEventsViewShrinkHeaders) SetAccountContextShrink(v string) *ListEve
 }
 
 type ListEventsViewRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
@@ -35062,6 +36049,8 @@ func (s *ListFormRemarksHeaders) SetAccountContext(v *ListFormRemarksHeadersAcco
 }
 
 type ListFormRemarksHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -35105,18 +36094,26 @@ func (s *ListFormRemarksShrinkHeaders) SetAccountContextShrink(v string) *ListFo
 }
 
 type ListFormRemarksRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormInstanceIdList []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -35152,18 +36149,26 @@ func (s *ListFormRemarksRequest) SetSystemToken(v string) *ListFormRemarksReques
 }
 
 type ListFormRemarksShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
 	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -35298,6 +36303,8 @@ func (s *ListNavigationByFormTypeHeaders) SetAccountContext(v *ListNavigationByF
 }
 
 type ListNavigationByFormTypeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -35341,10 +36348,14 @@ func (s *ListNavigationByFormTypeShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type ListNavigationByFormTypeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKTxxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// receipt
@@ -35353,6 +36364,8 @@ type ListNavigationByFormTypeRequest struct {
 	//
 	// zh_CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -35557,6 +36570,8 @@ func (s *ListNodesHeaders) SetAccountContext(v *ListNodesHeadersAccountContext) 
 }
 
 type ListNodesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -35608,6 +36623,8 @@ type ListNodesRequest struct {
 	//
 	// next_token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MNDoBb60VLBPraakI1Ywxyyn8lemrZQ3
@@ -35681,6 +36698,8 @@ type ListNodesShrinkRequest struct {
 	//
 	// next_token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MNDoBb60VLBPraakI1Ywxyyn8lemrZQ3
@@ -36021,10 +37040,14 @@ func (s *ListReportShrinkHeaders) SetAccountContextShrink(v string) *ListReportS
 }
 
 type ListReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Cursor *int64 `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -36037,10 +37060,14 @@ type ListReportRequest struct {
 	//
 	// 1507564800000
 	ModifiedStartTime *int64 `json:"ModifiedStartTime,omitempty" xml:"ModifiedStartTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -36121,10 +37148,14 @@ func (s *ListReportRequestTenantContext) SetTenantId(v string) *ListReportReques
 }
 
 type ListReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Cursor *int64 `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -36137,10 +37168,14 @@ type ListReportShrinkRequest struct {
 	//
 	// 1507564800000
 	ModifiedStartTime *int64 `json:"ModifiedStartTime,omitempty" xml:"ModifiedStartTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -36459,6 +37494,8 @@ func (s *ListTableDataByFormInstanceIdTableIdHeaders) SetAccountContext(v *ListT
 }
 
 type ListTableDataByFormInstanceIdTableIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -36502,14 +37539,20 @@ func (s *ListTableDataByFormInstanceIdTableIdShrinkHeaders) SetAccountContextShr
 }
 
 type ListTableDataByFormInstanceIdTableIdRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM_PBKT0xxx
 	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -36522,10 +37565,14 @@ type ListTableDataByFormInstanceIdTableIdRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1111
@@ -36690,6 +37737,8 @@ func (s *ListTeamsHeaders) SetAccountContext(v *ListTeamsHeadersAccountContext) 
 }
 
 type ListTeamsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -37055,6 +38104,8 @@ func (s *ListWorkspacesHeaders) SetAccountContext(v *ListWorkspacesHeadersAccoun
 }
 
 type ListWorkspacesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -37503,6 +38554,8 @@ func (s *PatchEventHeaders) SetAccountContext(v *PatchEventHeadersAccountContext
 }
 
 type PatchEventHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -37547,12 +38600,16 @@ func (s *PatchEventShrinkHeaders) SetAccountContextShrink(v string) *PatchEventS
 
 type PatchEventRequest struct {
 	Attendees []*PatchEventRequestAttendees `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId  *string               `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	Description *string               `json:"Description,omitempty" xml:"Description,omitempty"`
 	End         *PatchEventRequestEnd `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iiiP35sJadba8aBSgjrwPRKgiEiF
@@ -37910,12 +38967,16 @@ func (s *PatchEventRequestStart) SetTimeZone(v string) *PatchEventRequestStart {
 
 type PatchEventShrinkRequest struct {
 	AttendeesShrink *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId  *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndShrink   *string `json:"End,omitempty" xml:"End,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iiiP35sJadba8aBSgjrwPRKgiEiF
@@ -38516,6 +39577,8 @@ func (s *QueryCloudRecordTextHeaders) SetAccountContext(v *QueryCloudRecordTextH
 }
 
 type QueryCloudRecordTextHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -38576,6 +39639,8 @@ type QueryCloudRecordTextRequest struct {
 	// 7940
 	StartTime     *int64                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *QueryCloudRecordTextRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -38658,6 +39723,8 @@ type QueryCloudRecordTextShrinkRequest struct {
 	// 7940
 	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -38981,6 +40048,8 @@ func (s *QueryCloudRecordVideoHeaders) SetAccountContext(v *QueryCloudRecordVide
 }
 
 type QueryCloudRecordVideoHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -39025,6 +40094,8 @@ func (s *QueryCloudRecordVideoShrinkHeaders) SetAccountContextShrink(v string) *
 
 type QueryCloudRecordVideoRequest struct {
 	TenantContext *QueryCloudRecordVideoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -39071,6 +40142,8 @@ func (s *QueryCloudRecordVideoRequestTenantContext) SetTenantId(v string) *Query
 
 type QueryCloudRecordVideoShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -39268,6 +40341,8 @@ func (s *QueryCloudRecordVideoPlayInfoHeaders) SetAccountContext(v *QueryCloudRe
 }
 
 type QueryCloudRecordVideoPlayInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -39311,14 +40386,20 @@ func (s *QueryCloudRecordVideoPlayInfoShrinkHeaders) SetAccountContextShrink(v s
 }
 
 type QueryCloudRecordVideoPlayInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 6139b4xxx
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 44444444
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -39375,14 +40456,20 @@ func (s *QueryCloudRecordVideoPlayInfoRequestTenantContext) SetTenantId(v string
 }
 
 type QueryCloudRecordVideoPlayInfoShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 6139b4xxx
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 44444444
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -39581,6 +40668,8 @@ func (s *QueryConferenceInfoShrinkHeaders) SetAccountContextShrink(v string) *Qu
 }
 
 type QueryConferenceInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 607452e01401526ee39609e1
@@ -39803,6 +40892,8 @@ func (s *QueryConferenceMembersHeaders) SetAccountContext(v *QueryConferenceMemb
 }
 
 type QueryConferenceMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -39855,6 +40946,8 @@ type QueryConferenceMembersRequest struct {
 	// 123000000
 	NextToken     *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TenantContext *QueryConferenceMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -39919,6 +41012,8 @@ type QueryConferenceMembersShrinkRequest struct {
 	// 123000000
 	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -40162,6 +41257,8 @@ func (s *QueryDentryHeaders) SetAccountContext(v *QueryDentryHeadersAccountConte
 }
 
 type QueryDentryHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -40205,6 +41302,8 @@ func (s *QueryDentryShrinkHeaders) SetAccountContextShrink(v string) *QueryDentr
 }
 
 type QueryDentryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
@@ -40213,6 +41312,8 @@ type QueryDentryRequest struct {
 	//
 	// true
 	IncludeSpace *bool `json:"IncludeSpace,omitempty" xml:"IncludeSpace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// space-fxhb96vuddz8htqt
@@ -40269,6 +41370,8 @@ func (s *QueryDentryRequestTenantContext) SetTenantId(v string) *QueryDentryRequ
 }
 
 type QueryDentryShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxx
@@ -40277,6 +41380,8 @@ type QueryDentryShrinkRequest struct {
 	//
 	// true
 	IncludeSpace *bool `json:"IncludeSpace,omitempty" xml:"IncludeSpace,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// space-fxhb96vuddz8htqt
@@ -41279,6 +42384,8 @@ func (s *QueryLiveInfoHeaders) SetAccountContext(v *QueryLiveInfoHeadersAccountC
 }
 
 type QueryLiveInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -41322,6 +42429,8 @@ func (s *QueryLiveInfoShrinkHeaders) SetAccountContextShrink(v string) *QueryLiv
 }
 
 type QueryLiveInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41368,6 +42477,8 @@ func (s *QueryLiveInfoRequestTenantContext) SetTenantId(v string) *QueryLiveInfo
 }
 
 type QueryLiveInfoShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41567,6 +42678,8 @@ func (s *QueryLiveWatchDetailHeaders) SetAccountContext(v *QueryLiveWatchDetailH
 }
 
 type QueryLiveWatchDetailHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -41610,6 +42723,8 @@ func (s *QueryLiveWatchDetailShrinkHeaders) SetAccountContextShrink(v string) *Q
 }
 
 type QueryLiveWatchDetailRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41656,6 +42771,8 @@ func (s *QueryLiveWatchDetailRequestTenantContext) SetTenantId(v string) *QueryL
 }
 
 type QueryLiveWatchDetailShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41828,6 +42945,8 @@ func (s *QueryLiveWatchUserListHeaders) SetAccountContext(v *QueryLiveWatchUserL
 }
 
 type QueryLiveWatchUserListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -41871,6 +42990,8 @@ func (s *QueryLiveWatchUserListShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type QueryLiveWatchUserListRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41879,6 +43000,8 @@ type QueryLiveWatchUserListRequest struct {
 	//
 	// 0
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
@@ -41935,6 +43058,8 @@ func (s *QueryLiveWatchUserListRequestTenantContext) SetTenantId(v string) *Quer
 }
 
 type QueryLiveWatchUserListShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
@@ -41943,6 +43068,8 @@ type QueryLiveWatchUserListShrinkRequest struct {
 	//
 	// 0
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
@@ -42168,6 +43295,8 @@ func (s *QueryMeetingRoomHeaders) SetAccountContext(v *QueryMeetingRoomHeadersAc
 }
 
 type QueryMeetingRoomHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -42211,6 +43340,8 @@ func (s *QueryMeetingRoomShrinkHeaders) SetAccountContextShrink(v string) *Query
 }
 
 type QueryMeetingRoomRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0ffb7xxxxx
@@ -42257,6 +43388,8 @@ func (s *QueryMeetingRoomRequestTenantContext) SetTenantId(v string) *QueryMeeti
 }
 
 type QueryMeetingRoomShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0ffb7xxxxx
@@ -42648,6 +43781,8 @@ func (s *QueryMeetingRoomGroupHeaders) SetAccountContext(v *QueryMeetingRoomGrou
 }
 
 type QueryMeetingRoomGroupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -42691,6 +43826,8 @@ func (s *QueryMeetingRoomGroupShrinkHeaders) SetAccountContextShrink(v string) *
 }
 
 type QueryMeetingRoomGroupRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -42737,6 +43874,8 @@ func (s *QueryMeetingRoomGroupRequestTenantContext) SetTenantId(v string) *Query
 }
 
 type QueryMeetingRoomGroupShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -42864,6 +44003,8 @@ func (s *QueryMeetingRoomGroupListHeaders) SetAccountContext(v *QueryMeetingRoom
 }
 
 type QueryMeetingRoomGroupListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -43091,6 +44232,8 @@ func (s *QueryMeetingRoomListHeaders) SetAccountContext(v *QueryMeetingRoomListH
 }
 
 type QueryMeetingRoomListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -43567,10 +44710,14 @@ type QueryOrgHonorsRequest struct {
 	//
 	// 48
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -43631,10 +44778,14 @@ type QueryOrgHonorsShrinkRequest struct {
 	//
 	// 48
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -44167,6 +45318,8 @@ func (s *QueryScheduleConferenceHeaders) SetAccountContext(v *QueryScheduleConfe
 }
 
 type QueryScheduleConferenceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -44211,6 +45364,8 @@ func (s *QueryScheduleConferenceShrinkHeaders) SetAccountContextShrink(v string)
 
 type QueryScheduleConferenceRequest struct {
 	TenantContext *QueryScheduleConferenceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489c68-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -44257,6 +45412,8 @@ func (s *QueryScheduleConferenceRequestTenantContext) SetTenantId(v string) *Que
 
 type QueryScheduleConferenceShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489c68-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -44465,14 +45622,20 @@ type QueryUserHonorsRequest struct {
 	//
 	// 200
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123123
@@ -44538,14 +45701,20 @@ type QueryUserHonorsShrinkRequest struct {
 	//
 	// 200
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123123
@@ -44795,14 +45964,20 @@ func (s *RecallHonorShrinkHeaders) SetAccountContextShrink(v string) *RecallHono
 
 type RecallHonorRequest struct {
 	TenantContext *RecallHonorRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21660610
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 345391052
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -44859,14 +46034,20 @@ func (s *RecallHonorRequestTenantContext) SetTenantId(v string) *RecallHonorRequ
 
 type RecallHonorShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21660610
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 345391052
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
@@ -45041,6 +46222,8 @@ func (s *ReceiverListReportHeaders) SetAccountContext(v *ReceiverListReportHeade
 }
 
 type ReceiverListReportHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -45084,14 +46267,20 @@ func (s *ReceiverListReportShrinkHeaders) SetAccountContextShrink(v string) *Rec
 }
 
 type ReceiverListReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -45148,14 +46337,20 @@ func (s *ReceiverListReportRequestTenantContext) SetTenantId(v string) *Receiver
 }
 
 type ReceiverListReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -45290,6 +46485,8 @@ func (s *RedirectTaskHeaders) SetAccountContext(v *RedirectTaskHeadersAccountCon
 }
 
 type RedirectTaskHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -45333,6 +46530,8 @@ func (s *RedirectTaskShrinkHeaders) SetAccountContextShrink(v string) *RedirectT
 }
 
 type RedirectTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKxxx
@@ -45345,10 +46544,14 @@ type RedirectTaskRequest struct {
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	NowActionExecutorId *string `json:"NowActionExecutorId,omitempty" xml:"NowActionExecutorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// instxxxx
@@ -45357,10 +46560,14 @@ type RedirectTaskRequest struct {
 	//
 	// remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -45506,6 +46713,8 @@ func (s *RemoveAttendeeHeaders) SetAccountContext(v *RemoveAttendeeHeadersAccoun
 }
 
 type RemoveAttendeeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
@@ -45550,10 +46759,14 @@ func (s *RemoveAttendeeShrinkHeaders) SetAccountContextShrink(v string) *RemoveA
 
 type RemoveAttendeeRequest struct {
 	AttendeesToRemove []*string `json:"AttendeesToRemove,omitempty" xml:"AttendeesToRemove,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iiiP35sJadba8aBSgjrwPRKgiEiF
@@ -45585,10 +46798,14 @@ func (s *RemoveAttendeeRequest) SetEventId(v string) *RemoveAttendeeRequest {
 
 type RemoveAttendeeShrinkRequest struct {
 	AttendeesToRemoveShrink *string `json:"AttendeesToRemove,omitempty" xml:"AttendeesToRemove,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// iiiP35sJadba8aBSgjrwPRKgiEiF
@@ -45758,6 +46975,8 @@ func (s *RemoveMeetingRoomsHeaders) SetAccountContext(v *RemoveMeetingRoomsHeade
 }
 
 type RemoveMeetingRoomsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -45801,10 +47020,14 @@ func (s *RemoveMeetingRoomsShrinkHeaders) SetAccountContextShrink(v string) *Rem
 }
 
 type RemoveMeetingRoomsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// U5Kxxxxx
@@ -45836,6 +47059,8 @@ func (s *RemoveMeetingRoomsRequest) SetMeetingRoomsToRemove(v []*RemoveMeetingRo
 }
 
 type RemoveMeetingRoomsRequestMeetingRoomsToRemove struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// U5Kxxxxx
@@ -45856,10 +47081,14 @@ func (s *RemoveMeetingRoomsRequestMeetingRoomsToRemove) SetRoomId(v string) *Rem
 }
 
 type RemoveMeetingRoomsShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// U5Kxxxxx
@@ -45974,6 +47203,8 @@ func (s *SaveContentHeaders) SetAccountContext(v *SaveContentHeadersAccountConte
 }
 
 type SaveContentHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -46017,14 +47248,20 @@ func (s *SaveContentShrinkHeaders) SetAccountContextShrink(v string) *SaveConten
 }
 
 type SaveContentRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	Contents []*SaveContentRequestContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// client
 	DdFrom *string `json:"DdFrom,omitempty" xml:"DdFrom,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sdfafdsfsafdfsaf
@@ -46061,22 +47298,32 @@ func (s *SaveContentRequest) SetTenantContext(v *SaveContentRequestTenantContext
 }
 
 type SaveContentRequestContents struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ### 序号1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// markdown
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 今日完成工作
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Sort *int64 `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -46137,14 +47384,20 @@ func (s *SaveContentRequestTenantContext) SetTenantId(v string) *SaveContentRequ
 }
 
 type SaveContentShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// []
 	ContentsShrink *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// client
 	DdFrom *string `json:"DdFrom,omitempty" xml:"DdFrom,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sdfafdsfsafdfsaf
@@ -46264,6 +47517,8 @@ func (s *SaveFormDataHeaders) SetAccountContext(v *SaveFormDataHeadersAccountCon
 }
 
 type SaveFormDataHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -46307,14 +47562,20 @@ func (s *SaveFormDataShrinkHeaders) SetAccountContextShrink(v string) *SaveFormD
 }
 
 type SaveFormDataRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKxxx
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {\"textField_jcpm6agt\": \"单行\",\"employeeField_jcos0sar\": [\"workno\"]}
 	FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-EF6Y4G8WO2FN0SUB43TDQ3CGC3FMFQ1G9400RCJ3
@@ -46323,6 +47584,8 @@ type SaveFormDataRequest struct {
 	//
 	// zh_CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -46462,6 +47725,8 @@ func (s *SaveFormRemarkHeaders) SetAccountContext(v *SaveFormRemarkHeadersAccoun
 }
 
 type SaveFormRemarkHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -46505,6 +47770,8 @@ func (s *SaveFormRemarkShrinkHeaders) SetAccountContextShrink(v string) *SaveFor
 }
 
 type SaveFormRemarkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKxxx
@@ -46513,10 +47780,14 @@ type SaveFormRemarkRequest struct {
 	//
 	// 123456
 	AtUserId *string `json:"AtUserId,omitempty" xml:"AtUserId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// instxxxx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// instxxxx
@@ -46529,6 +47800,8 @@ type SaveFormRemarkRequest struct {
 	//
 	// hexxxx
 	ReplyId *int64 `json:"ReplyId,omitempty" xml:"ReplyId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -46675,6 +47948,8 @@ func (s *SearchEmployeeFieldValuesHeaders) SetAccountContext(v *SearchEmployeeFi
 }
 
 type SearchEmployeeFieldValuesHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -46752,7 +48027,7 @@ type SearchEmployeeFieldValuesRequest struct {
 	OriginatorId *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
 	// example:
 	//
-	// {\"textField_annandfa\":\"1212\"}
+	// {\\"textField_annandfa\\":\\"1212\\"}
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
 	// example:
 	//
@@ -46760,7 +48035,7 @@ type SearchEmployeeFieldValuesRequest struct {
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 	// example:
 	//
-	// [\"textField_xahdfna\"]
+	// [\\"textField_xahdfna\\"]
 	TargetFieldJson *string `json:"TargetFieldJson,omitempty" xml:"TargetFieldJson,omitempty"`
 }
 
@@ -46927,6 +48202,8 @@ func (s *SearchFormDataIdListHeaders) SetAccountContext(v *SearchFormDataIdListH
 }
 
 type SearchFormDataIdListHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -46970,6 +48247,8 @@ func (s *SearchFormDataIdListShrinkHeaders) SetAccountContextShrink(v string) *S
 }
 
 type SearchFormDataIdListRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
@@ -46982,6 +48261,8 @@ type SearchFormDataIdListRequest struct {
 	//
 	// yyyy-MM-dd
 	CreateToTimeGMT *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -47014,6 +48295,8 @@ type SearchFormDataIdListRequest struct {
 	//
 	// {}
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -47203,6 +48486,8 @@ func (s *SearchFormDataSecondGenerationHeaders) SetAccountContext(v *SearchFormD
 }
 
 type SearchFormDataSecondGenerationHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -47246,6 +48531,8 @@ func (s *SearchFormDataSecondGenerationShrinkHeaders) SetAccountContextShrink(v 
 }
 
 type SearchFormDataSecondGenerationRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
@@ -47258,6 +48545,8 @@ type SearchFormDataSecondGenerationRequest struct {
 	//
 	// yyyy-MM-dd
 	CreateToTimeGMT *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -47290,6 +48579,8 @@ type SearchFormDataSecondGenerationRequest struct {
 	//
 	// {}
 	SearchCondition *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -47714,6 +49005,8 @@ func (s *SearchFormDataSecondGenerationNoTableFieldHeaders) SetAccountContext(v 
 }
 
 type SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -47757,6 +49050,8 @@ func (s *SearchFormDataSecondGenerationNoTableFieldShrinkHeaders) SetAccountCont
 }
 
 type SearchFormDataSecondGenerationNoTableFieldRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
@@ -47769,6 +49064,8 @@ type SearchFormDataSecondGenerationNoTableFieldRequest struct {
 	//
 	// yyyy-MM-dd
 	CreateToTimeGMT *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -47801,6 +49098,8 @@ type SearchFormDataSecondGenerationNoTableFieldRequest struct {
 	//
 	// {}
 	SearchCondition *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -48225,6 +49524,8 @@ func (s *SearchFormDatasHeaders) SetAccountContext(v *SearchFormDatasHeadersAcco
 }
 
 type SearchFormDatasHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -48268,6 +49569,8 @@ func (s *SearchFormDatasShrinkHeaders) SetAccountContextShrink(v string) *Search
 }
 
 type SearchFormDatasRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// APP_PBKT0xxx
@@ -48288,6 +49591,8 @@ type SearchFormDatasRequest struct {
 	//
 	// 20
 	DynamicOrder *string `json:"DynamicOrder,omitempty" xml:"DynamicOrder,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// FORM-xxxxx
@@ -48313,6 +49618,8 @@ type SearchFormDatasRequest struct {
 	// 20
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hexxxx
@@ -48772,6 +50079,8 @@ func (s *SearchInnerGroupsHeaders) SetAccountContext(v *SearchInnerGroupsHeaders
 }
 
 type SearchInnerGroupsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -48981,6 +50290,8 @@ func (s *SendBannerHeaders) SetAccountContext(v *SendBannerHeadersAccountContext
 }
 
 type SendBannerHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -49231,6 +50542,8 @@ func (s *SendPopupHeaders) SetAccountContext(v *SendPopupHeadersAccountContext) 
 }
 
 type SendPopupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -49481,6 +50794,8 @@ func (s *SendSearchShadeHeaders) SetAccountContext(v *SendSearchShadeHeadersAcco
 }
 
 type SendSearchShadeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -49774,23 +51089,33 @@ func (s *SetColumnsVisibilityShrinkHeaders) SetAccountContextShrink(v string) *S
 }
 
 type SetColumnsVisibilityRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                                   `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *SetColumnsVisibilityRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hidden
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -49856,23 +51181,33 @@ func (s *SetColumnsVisibilityRequestTenantContext) SetTenantId(v string) *SetCol
 }
 
 type SetColumnsVisibilityShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Column *int64 `json:"Column,omitempty" xml:"Column,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hidden
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -50044,23 +51379,33 @@ func (s *SetRowsVisibilityShrinkHeaders) SetAccountContextShrink(v string) *SetR
 }
 
 type SetRowsVisibilityRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId       *string                                `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContext *SetRowsVisibilityRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hidden
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -50126,23 +51471,33 @@ func (s *SetRowsVisibilityRequestTenantContext) SetTenantId(v string) *SetRowsVi
 }
 
 type SetRowsVisibilityShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	Row *int64 `json:"Row,omitempty" xml:"Row,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 20
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
 	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// hidden
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -50314,18 +51669,26 @@ func (s *SimpleListReportShrinkHeaders) SetAccountContextShrink(v string) *Simpl
 }
 
 type SimpleListReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Cursor *int64 `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -50396,18 +51759,26 @@ func (s *SimpleListReportRequestTenantContext) SetTenantId(v string) *SimpleList
 }
 
 type SimpleListReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	Cursor *int64 `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1507564800000
@@ -50636,6 +52007,8 @@ func (s *StartCloudRecordHeaders) SetAccountContext(v *StartCloudRecordHeadersAc
 }
 
 type StartCloudRecordHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -50688,6 +52061,8 @@ type StartCloudRecordRequest struct {
 	// relative_right
 	SmallWindowPosition *string                               `json:"SmallWindowPosition,omitempty" xml:"SmallWindowPosition,omitempty"`
 	TenantContext       *StartCloudRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -50752,6 +52127,8 @@ type StartCloudRecordShrinkRequest struct {
 	// relative_right
 	SmallWindowPosition *string `json:"SmallWindowPosition,omitempty" xml:"SmallWindowPosition,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -50870,6 +52247,8 @@ func (s *StartInstanceHeaders) SetAccountContext(v *StartInstanceHeadersAccountC
 }
 
 type StartInstanceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51092,6 +52471,8 @@ func (s *StatisticsListByTypeReportHeaders) SetAccountContext(v *StatisticsListB
 }
 
 type StatisticsListByTypeReportHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51135,19 +52516,27 @@ func (s *StatisticsListByTypeReportShrinkHeaders) SetAccountContextShrink(v stri
 }
 
 type StatisticsListByTypeReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size          *int64                                          `json:"Size,omitempty" xml:"Size,omitempty"`
 	TenantContext *StatisticsListByTypeReportRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
@@ -51208,19 +52597,27 @@ func (s *StatisticsListByTypeReportRequestTenantContext) SetTenantId(v string) *
 }
 
 type StatisticsListByTypeReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
 	Size                *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
@@ -51359,6 +52756,8 @@ func (s *StatisticsReportHeaders) SetAccountContext(v *StatisticsReportHeadersAc
 }
 
 type StatisticsReportHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51402,6 +52801,8 @@ func (s *StatisticsReportShrinkHeaders) SetAccountContextShrink(v string) *Stati
 }
 
 type StatisticsReportRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
@@ -51448,6 +52849,8 @@ func (s *StatisticsReportRequestTenantContext) SetTenantId(v string) *Statistics
 }
 
 type StatisticsReportShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173xxxx
@@ -51584,6 +52987,8 @@ func (s *StopCloudRecordHeaders) SetAccountContext(v *StopCloudRecordHeadersAcco
 }
 
 type StopCloudRecordHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51628,6 +53033,8 @@ func (s *StopCloudRecordShrinkHeaders) SetAccountContextShrink(v string) *StopCl
 
 type StopCloudRecordRequest struct {
 	TenantContext *StopCloudRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -51674,6 +53081,8 @@ func (s *StopCloudRecordRequestTenantContext) SetTenantId(v string) *StopCloudRe
 
 type StopCloudRecordShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 61289fxxx
@@ -51782,6 +53191,8 @@ func (s *SubscribeCalendarHeaders) SetAccountContext(v *SubscribeCalendarHeaders
 }
 
 type SubscribeCalendarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51825,6 +53236,8 @@ func (s *SubscribeCalendarShrinkHeaders) SetAccountContextShrink(v string) *Subs
 }
 
 type SubscribeCalendarRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MzM5Mxxx
@@ -51919,6 +53332,8 @@ func (s *SyncDingTypeHeaders) SetAccountContext(v *SyncDingTypeHeadersAccountCon
 }
 
 type SyncDingTypeHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -51962,6 +53377,8 @@ func (s *SyncDingTypeShrinkHeaders) SetAccountContextShrink(v string) *SyncDingT
 }
 
 type SyncDingTypeRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ANT_DING
@@ -51970,11 +53387,15 @@ type SyncDingTypeRequest struct {
 	//
 	// y
 	IsDimission *string `json:"IsDimission,omitempty" xml:"IsDimission,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// antding
 	Source        *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
 	TenantContext *SyncDingTypeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52035,6 +53456,8 @@ func (s *SyncDingTypeRequestTenantContext) SetTenantId(v string) *SyncDingTypeRe
 }
 
 type SyncDingTypeShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ANT_DING
@@ -52043,11 +53466,15 @@ type SyncDingTypeShrinkRequest struct {
 	//
 	// y
 	IsDimission *string `json:"IsDimission,omitempty" xml:"IsDimission,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// antding
 	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52187,6 +53614,8 @@ func (s *TerminateInstanceHeaders) SetAccountContext(v *TerminateInstanceHeaders
 }
 
 type TerminateInstanceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52367,6 +53796,8 @@ func (s *UnsubscribeCalendarHeaders) SetAccountContext(v *UnsubscribeCalendarHea
 }
 
 type UnsubscribeCalendarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52410,6 +53841,8 @@ func (s *UnsubscribeCalendarShrinkHeaders) SetAccountContextShrink(v string) *Un
 }
 
 type UnsubscribeCalendarRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MzM5Mxxx
@@ -52513,6 +53946,8 @@ func (s *UpdateFormDataHeaders) SetAccountContext(v *UpdateFormDataHeadersAccoun
 }
 
 type UpdateFormDataHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52711,6 +54146,8 @@ func (s *UpdateInstanceHeaders) SetAccountContext(v *UpdateInstanceHeadersAccoun
 }
 
 type UpdateInstanceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52900,6 +54337,8 @@ func (s *UpdateLiveHeaders) SetAccountContext(v *UpdateLiveHeadersAccountContext
 }
 
 type UpdateLiveHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -52951,19 +54390,27 @@ type UpdateLiveRequest struct {
 	//
 	// 这是一个直播
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1698596800000
 	PreEndTime *int64 `json:"PreEndTime,omitempty" xml:"PreEndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1691596800000
 	PreStartTime  *int64                          `json:"PreStartTime,omitempty" xml:"PreStartTime,omitempty"`
 	TenantContext *UpdateLiveRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 标题
@@ -53042,19 +54489,27 @@ type UpdateLiveShrinkRequest struct {
 	//
 	// 这是一个直播
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4d38xxxxx
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1698596800000
 	PreEndTime *int64 `json:"PreEndTime,omitempty" xml:"PreEndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1691596800000
 	PreStartTime        *int64  `json:"PreStartTime,omitempty" xml:"PreStartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 标题
@@ -53188,6 +54643,8 @@ func (s *UpdateMeetingRoomHeaders) SetAccountContext(v *UpdateMeetingRoomHeaders
 }
 
 type UpdateMeetingRoomHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -53623,6 +55080,8 @@ func (s *UpdateMeetingRoomGroupHeaders) SetAccountContext(v *UpdateMeetingRoomGr
 }
 
 type UpdateMeetingRoomGroupHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -53666,6 +55125,8 @@ func (s *UpdateMeetingRoomGroupShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type UpdateMeetingRoomGroupRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -53721,6 +55182,8 @@ func (s *UpdateMeetingRoomGroupRequestTenantContext) SetTenantId(v string) *Upda
 }
 
 type UpdateMeetingRoomGroupShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 172
@@ -53894,10 +55357,14 @@ type UpdateRangeRequest struct {
 	//
 	// General
 	NumberFormat *string `json:"NumberFormat,omitempty" xml:"NumberFormat,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
@@ -53907,6 +55374,8 @@ type UpdateRangeRequest struct {
 	//
 	// [["1","2","3"]]
 	Values [][]*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -54032,10 +55501,14 @@ type UpdateRangeShrinkRequest struct {
 	//
 	// General
 	NumberFormat *string `json:"NumberFormat,omitempty" xml:"NumberFormat,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// A3:C3
 	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Sheet1
@@ -54045,6 +55518,8 @@ type UpdateRangeShrinkRequest struct {
 	//
 	// [["1","2","3"]]
 	ValuesShrink *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// stxxxx
@@ -54183,6 +55658,8 @@ func (s *UpdateScheduleConfSettingsHeaders) SetAccountContext(v *UpdateScheduleC
 }
 
 type UpdateScheduleConfSettingsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -54539,6 +56016,8 @@ func (s *UpdateScheduleConferenceHeaders) SetAccountContext(v *UpdateScheduleCon
 }
 
 type UpdateScheduleConferenceHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -54582,19 +56061,27 @@ func (s *UpdateScheduleConferenceShrinkHeaders) SetAccountContextShrink(v string
 }
 
 type UpdateScheduleConferenceRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687928400000L
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687924800000L
 	StartTime     *int64                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *UpdateScheduleConferenceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 预约会议标题
@@ -54655,19 +56142,27 @@ func (s *UpdateScheduleConferenceRequestTenantContext) SetTenantId(v string) *Up
 }
 
 type UpdateScheduleConferenceShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687928400000L
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2a489xxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1687924800000L
 	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 预约会议标题
@@ -54791,6 +56286,8 @@ func (s *UpdateStatusHeaders) SetAccountContext(v *UpdateStatusHeadersAccountCon
 }
 
 type UpdateStatusHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -55048,6 +56545,8 @@ func (s *UpdateSubscribedCalendarsHeaders) SetAccountContext(v *UpdateSubscribed
 }
 
 type UpdateSubscribedCalendarsHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -55091,6 +56590,8 @@ func (s *UpdateSubscribedCalendarsShrinkHeaders) SetAccountContextShrink(v strin
 }
 
 type UpdateSubscribedCalendarsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// M5MjkxNDUxQHVzZXJzLmRpbmd0YWxrLmNv
@@ -55152,6 +56653,8 @@ func (s *UpdateSubscribedCalendarsRequestSubscribeScope) SetUserIds(v []*string)
 }
 
 type UpdateSubscribedCalendarsShrinkRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// M5MjkxNDUxQHVzZXJzLmRpbmd0YWxrLmNv
@@ -55347,6 +56850,8 @@ type UpdateTodoTaskRequest struct {
 	//
 	// 更新钉钉待办
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// taskId
@@ -55447,6 +56952,8 @@ type UpdateTodoTaskShrinkRequest struct {
 	//
 	// 更新钉钉待办
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// taskId
@@ -55634,6 +57141,8 @@ type UpdateTodoTaskExecutorStatusRequest struct {
 	//
 	// xxxx
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15002141
@@ -55724,6 +57233,8 @@ type UpdateTodoTaskExecutorStatusShrinkRequest struct {
 	//
 	// xxxx
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 15002141
@@ -55842,6 +57353,8 @@ func (s *UpdateUserAvatarHeaders) SetAccountContext(v *UpdateUserAvatarHeadersAc
 }
 
 type UpdateUserAvatarHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -56010,6 +57523,8 @@ func (s *UpdateWorkspaceDocMembersHeaders) SetAccountContext(v *UpdateWorkspaceD
 }
 
 type UpdateWorkspaceDocMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -56054,11 +57569,15 @@ func (s *UpdateWorkspaceDocMembersShrinkHeaders) SetAccountContextShrink(v strin
 
 type UpdateWorkspaceDocMembersRequest struct {
 	Members []*UpdateWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// node_feb8fea0
 	NodeId        *string                                        `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *UpdateWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xb8bkxxxxxrXJNaL
@@ -56153,11 +57672,15 @@ func (s *UpdateWorkspaceDocMembersRequestTenantContext) SetTenantId(v string) *U
 
 type UpdateWorkspaceDocMembersShrinkRequest struct {
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// node_feb8fea0
 	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xb8bkxxxxxrXJNaL
@@ -56267,6 +57790,8 @@ func (s *UpdateWorkspaceMembersHeaders) SetAccountContext(v *UpdateWorkspaceMemb
 }
 
 type UpdateWorkspaceMembersHeadersAccountContext struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
@@ -56310,8 +57835,11 @@ func (s *UpdateWorkspaceMembersShrinkHeaders) SetAccountContextShrink(v string) 
 }
 
 type UpdateWorkspaceMembersRequest struct {
+	// This parameter is required.
 	Members       []*UpdateWorkspaceMembersRequestMembers     `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	TenantContext *UpdateWorkspaceMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -56342,14 +57870,20 @@ func (s *UpdateWorkspaceMembersRequest) SetWorkspaceId(v string) *UpdateWorkspac
 }
 
 type UpdateWorkspaceMembersRequestMembers struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ONLY_VIEWER
@@ -56400,8 +57934,11 @@ func (s *UpdateWorkspaceMembersRequestTenantContext) SetTenantId(v string) *Upda
 }
 
 type UpdateWorkspaceMembersShrinkRequest struct {
+	// This parameter is required.
 	MembersShrink       *string `json:"Members,omitempty" xml:"Members,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -56551,14 +58088,20 @@ type UploadMediaRequest struct {
 	//
 	// test.jpg
 	MediaName *string `json:"mediaName,omitempty" xml:"mediaName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// image
 	MediaType *string `json:"mediaType,omitempty" xml:"mediaType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234567
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://alicdn.com/xxx.jpg
@@ -56624,14 +58167,20 @@ type UploadMediaShrinkRequest struct {
 	//
 	// test.jpg
 	MediaName *string `json:"mediaName,omitempty" xml:"mediaName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// image
 	MediaType *string `json:"mediaType,omitempty" xml:"mediaType,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234567
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://alicdn.com/xxx.jpg
@@ -56799,18 +58348,26 @@ func (s *WearOrgHonorShrinkHeaders) SetAccountContextShrink(v string) *WearOrgHo
 
 type WearOrgHonorRequest struct {
 	TenantContext *WearOrgHonorRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21659595
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -56872,18 +58429,26 @@ func (s *WearOrgHonorRequestTenantContext) SetTenantId(v string) *WearOrgHonorRe
 
 type WearOrgHonorShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 21659595
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 363784
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// false
@@ -57084,6 +58649,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加日程参与者
+//
+// @param tmpReq - AddAttendeeRequest
+//
+// @param tmpHeader - AddAttendeeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAttendeeResponse
 func (client *Client) AddAttendeeWithOptions(tmpReq *AddAttendeeRequest, tmpHeader *AddAttendeeHeaders, runtime *util.RuntimeOptions) (_result *AddAttendeeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57155,6 +58731,13 @@ func (client *Client) AddAttendeeWithOptions(tmpReq *AddAttendeeRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加日程参与者
+//
+// @param request - AddAttendeeRequest
+//
+// @return AddAttendeeResponse
 func (client *Client) AddAttendee(request *AddAttendeeRequest) (_result *AddAttendeeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddAttendeeHeaders{}
@@ -57167,6 +58750,17 @@ func (client *Client) AddAttendee(request *AddAttendeeRequest) (_result *AddAtte
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定会议室
+//
+// @param tmpReq - AddMeetingRoomsRequest
+//
+// @param tmpHeader - AddMeetingRoomsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMeetingRoomsResponse
 func (client *Client) AddMeetingRoomsWithOptions(tmpReq *AddMeetingRoomsRequest, tmpHeader *AddMeetingRoomsHeaders, runtime *util.RuntimeOptions) (_result *AddMeetingRoomsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57230,6 +58824,13 @@ func (client *Client) AddMeetingRoomsWithOptions(tmpReq *AddMeetingRoomsRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 预定会议室
+//
+// @param request - AddMeetingRoomsRequest
+//
+// @return AddMeetingRoomsResponse
 func (client *Client) AddMeetingRooms(request *AddMeetingRoomsRequest) (_result *AddMeetingRoomsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddMeetingRoomsHeaders{}
@@ -57242,6 +58843,17 @@ func (client *Client) AddMeetingRooms(request *AddMeetingRoomsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增群成员
+//
+// @param request - AddScenegroupMemberRequest
+//
+// @param tmpHeader - AddScenegroupMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddScenegroupMemberResponse
 func (client *Client) AddScenegroupMemberWithOptions(request *AddScenegroupMemberRequest, tmpHeader *AddScenegroupMemberHeaders, runtime *util.RuntimeOptions) (_result *AddScenegroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57295,6 +58907,13 @@ func (client *Client) AddScenegroupMemberWithOptions(request *AddScenegroupMembe
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增群成员
+//
+// @param request - AddScenegroupMemberRequest
+//
+// @return AddScenegroupMemberResponse
 func (client *Client) AddScenegroupMember(request *AddScenegroupMemberRequest) (_result *AddScenegroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddScenegroupMemberHeaders{}
@@ -57307,6 +58926,17 @@ func (client *Client) AddScenegroupMember(request *AddScenegroupMemberRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建知识库
+//
+// @param tmpReq - AddWorkspaceRequest
+//
+// @param tmpHeader - AddWorkspaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkspaceResponse
 func (client *Client) AddWorkspaceWithOptions(tmpReq *AddWorkspaceRequest, tmpHeader *AddWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *AddWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57374,6 +59004,13 @@ func (client *Client) AddWorkspaceWithOptions(tmpReq *AddWorkspaceRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建知识库
+//
+// @param request - AddWorkspaceRequest
+//
+// @return AddWorkspaceResponse
 func (client *Client) AddWorkspace(request *AddWorkspaceRequest) (_result *AddWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddWorkspaceHeaders{}
@@ -57386,6 +59023,17 @@ func (client *Client) AddWorkspace(request *AddWorkspaceRequest) (_result *AddWo
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加知识库文档成员
+//
+// @param tmpReq - AddWorkspaceDocMembersRequest
+//
+// @param tmpHeader - AddWorkspaceDocMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkspaceDocMembersResponse
 func (client *Client) AddWorkspaceDocMembersWithOptions(tmpReq *AddWorkspaceDocMembersRequest, tmpHeader *AddWorkspaceDocMembersHeaders, runtime *util.RuntimeOptions) (_result *AddWorkspaceDocMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57457,6 +59105,13 @@ func (client *Client) AddWorkspaceDocMembersWithOptions(tmpReq *AddWorkspaceDocM
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加知识库文档成员
+//
+// @param request - AddWorkspaceDocMembersRequest
+//
+// @return AddWorkspaceDocMembersResponse
 func (client *Client) AddWorkspaceDocMembers(request *AddWorkspaceDocMembersRequest) (_result *AddWorkspaceDocMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddWorkspaceDocMembersHeaders{}
@@ -57469,6 +59124,17 @@ func (client *Client) AddWorkspaceDocMembers(request *AddWorkspaceDocMembersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加知识库成员
+//
+// @param tmpReq - AddWorkspaceMembersRequest
+//
+// @param tmpHeader - AddWorkspaceMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkspaceMembersResponse
 func (client *Client) AddWorkspaceMembersWithOptions(tmpReq *AddWorkspaceMembersRequest, tmpHeader *AddWorkspaceMembersHeaders, runtime *util.RuntimeOptions) (_result *AddWorkspaceMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57536,6 +59202,13 @@ func (client *Client) AddWorkspaceMembersWithOptions(tmpReq *AddWorkspaceMembers
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加知识库成员
+//
+// @param request - AddWorkspaceMembersRequest
+//
+// @return AddWorkspaceMembersResponse
 func (client *Client) AddWorkspaceMembers(request *AddWorkspaceMembersRequest) (_result *AddWorkspaceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddWorkspaceMembersHeaders{}
@@ -57548,6 +59221,17 @@ func (client *Client) AddWorkspaceMembers(request *AddWorkspaceMembersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取表单实例数据
+//
+// @param tmpReq - BatchGetFormDataByIdListRequest
+//
+// @param tmpHeader - BatchGetFormDataByIdListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetFormDataByIdListResponse
 func (client *Client) BatchGetFormDataByIdListWithOptions(tmpReq *BatchGetFormDataByIdListRequest, tmpHeader *BatchGetFormDataByIdListHeaders, runtime *util.RuntimeOptions) (_result *BatchGetFormDataByIdListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57619,6 +59303,13 @@ func (client *Client) BatchGetFormDataByIdListWithOptions(tmpReq *BatchGetFormDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取表单实例数据
+//
+// @param request - BatchGetFormDataByIdListRequest
+//
+// @return BatchGetFormDataByIdListResponse
 func (client *Client) BatchGetFormDataByIdList(request *BatchGetFormDataByIdListRequest) (_result *BatchGetFormDataByIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchGetFormDataByIdListHeaders{}
@@ -57631,6 +59322,17 @@ func (client *Client) BatchGetFormDataByIdList(request *BatchGetFormDataByIdList
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除表单实例
+//
+// @param tmpReq - BatchRemovalByFormInstanceIdListRequest
+//
+// @param tmpHeader - BatchRemovalByFormInstanceIdListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRemovalByFormInstanceIdListResponse
 func (client *Client) BatchRemovalByFormInstanceIdListWithOptions(tmpReq *BatchRemovalByFormInstanceIdListRequest, tmpHeader *BatchRemovalByFormInstanceIdListHeaders, runtime *util.RuntimeOptions) (_result *BatchRemovalByFormInstanceIdListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57706,6 +59408,13 @@ func (client *Client) BatchRemovalByFormInstanceIdListWithOptions(tmpReq *BatchR
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量删除表单实例
+//
+// @param request - BatchRemovalByFormInstanceIdListRequest
+//
+// @return BatchRemovalByFormInstanceIdListResponse
 func (client *Client) BatchRemovalByFormInstanceIdList(request *BatchRemovalByFormInstanceIdListRequest) (_result *BatchRemovalByFormInstanceIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchRemovalByFormInstanceIdListHeaders{}
@@ -57718,6 +59427,17 @@ func (client *Client) BatchRemovalByFormInstanceIdList(request *BatchRemovalByFo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建表单实例
+//
+// @param tmpReq - BatchSaveFormDataRequest
+//
+// @param tmpHeader - BatchSaveFormDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchSaveFormDataResponse
 func (client *Client) BatchSaveFormDataWithOptions(tmpReq *BatchSaveFormDataRequest, tmpHeader *BatchSaveFormDataHeaders, runtime *util.RuntimeOptions) (_result *BatchSaveFormDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57797,6 +59517,13 @@ func (client *Client) BatchSaveFormDataWithOptions(tmpReq *BatchSaveFormDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建表单实例
+//
+// @param request - BatchSaveFormDataRequest
+//
+// @return BatchSaveFormDataResponse
 func (client *Client) BatchSaveFormData(request *BatchSaveFormDataRequest) (_result *BatchSaveFormDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchSaveFormDataHeaders{}
@@ -57809,6 +59536,17 @@ func (client *Client) BatchSaveFormData(request *BatchSaveFormDataRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新表单实例内的组件值
+//
+// @param tmpReq - BatchUpdateFormDataByInstanceIdRequest
+//
+// @param tmpHeader - BatchUpdateFormDataByInstanceIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateFormDataByInstanceIdResponse
 func (client *Client) BatchUpdateFormDataByInstanceIdWithOptions(tmpReq *BatchUpdateFormDataByInstanceIdRequest, tmpHeader *BatchUpdateFormDataByInstanceIdHeaders, runtime *util.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57896,6 +59634,13 @@ func (client *Client) BatchUpdateFormDataByInstanceIdWithOptions(tmpReq *BatchUp
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新表单实例内的组件值
+//
+// @param request - BatchUpdateFormDataByInstanceIdRequest
+//
+// @return BatchUpdateFormDataByInstanceIdResponse
 func (client *Client) BatchUpdateFormDataByInstanceId(request *BatchUpdateFormDataByInstanceIdRequest) (_result *BatchUpdateFormDataByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchUpdateFormDataByInstanceIdHeaders{}
@@ -57908,6 +59653,17 @@ func (client *Client) BatchUpdateFormDataByInstanceId(request *BatchUpdateFormDa
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过表单实例数据批量更新表单实例
+//
+// @param tmpReq - BatchUpdateFormDataByInstanceMapRequest
+//
+// @param tmpHeader - BatchUpdateFormDataByInstanceMapHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateFormDataByInstanceMapResponse
 func (client *Client) BatchUpdateFormDataByInstanceMapWithOptions(tmpReq *BatchUpdateFormDataByInstanceMapRequest, tmpHeader *BatchUpdateFormDataByInstanceMapHeaders, runtime *util.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceMapResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -57991,6 +59747,13 @@ func (client *Client) BatchUpdateFormDataByInstanceMapWithOptions(tmpReq *BatchU
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过表单实例数据批量更新表单实例
+//
+// @param request - BatchUpdateFormDataByInstanceMapRequest
+//
+// @return BatchUpdateFormDataByInstanceMapResponse
 func (client *Client) BatchUpdateFormDataByInstanceMap(request *BatchUpdateFormDataByInstanceMapRequest) (_result *BatchUpdateFormDataByInstanceMapResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &BatchUpdateFormDataByInstanceMapHeaders{}
@@ -58003,6 +59766,17 @@ func (client *Client) BatchUpdateFormDataByInstanceMap(request *BatchUpdateFormD
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消预约会议
+//
+// @param tmpReq - CancelScheduleConferenceRequest
+//
+// @param tmpHeader - CancelScheduleConferenceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelScheduleConferenceResponse
 func (client *Client) CancelScheduleConferenceWithOptions(tmpReq *CancelScheduleConferenceRequest, tmpHeader *CancelScheduleConferenceHeaders, runtime *util.RuntimeOptions) (_result *CancelScheduleConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58062,6 +59836,13 @@ func (client *Client) CancelScheduleConferenceWithOptions(tmpReq *CancelSchedule
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消预约会议
+//
+// @param request - CancelScheduleConferenceRequest
+//
+// @return CancelScheduleConferenceResponse
 func (client *Client) CancelScheduleConference(request *CancelScheduleConferenceRequest) (_result *CancelScheduleConferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CancelScheduleConferenceHeaders{}
@@ -58074,6 +59855,17 @@ func (client *Client) CancelScheduleConference(request *CancelScheduleConference
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户是否为企业内部群成员
+//
+// @param request - CheckUserIsGroupMemberRequest
+//
+// @param tmpHeader - CheckUserIsGroupMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckUserIsGroupMemberResponse
 func (client *Client) CheckUserIsGroupMemberWithOptions(request *CheckUserIsGroupMemberRequest, tmpHeader *CheckUserIsGroupMemberHeaders, runtime *util.RuntimeOptions) (_result *CheckUserIsGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58123,6 +59915,13 @@ func (client *Client) CheckUserIsGroupMemberWithOptions(request *CheckUserIsGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户是否为企业内部群成员
+//
+// @param request - CheckUserIsGroupMemberRequest
+//
+// @return CheckUserIsGroupMemberResponse
 func (client *Client) CheckUserIsGroupMember(request *CheckUserIsGroupMemberRequest) (_result *CheckUserIsGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CheckUserIsGroupMemberHeaders{}
@@ -58135,6 +59934,17 @@ func (client *Client) CheckUserIsGroupMember(request *CheckUserIsGroupMemberRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 清除单元格所有内容
+//
+// @param tmpReq - ClearRequest
+//
+// @param tmpHeader - ClearHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearResponse
 func (client *Client) ClearWithOptions(tmpReq *ClearRequest, tmpHeader *ClearHeaders, runtime *util.RuntimeOptions) (_result *ClearResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58202,6 +60012,13 @@ func (client *Client) ClearWithOptions(tmpReq *ClearRequest, tmpHeader *ClearHea
 	return _result, _err
 }
 
+// Summary:
+//
+// 清除单元格所有内容
+//
+// @param request - ClearRequest
+//
+// @return ClearResponse
 func (client *Client) Clear(request *ClearRequest) (_result *ClearResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ClearHeaders{}
@@ -58214,6 +60031,17 @@ func (client *Client) Clear(request *ClearRequest) (_result *ClearResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// 清除单元格数据
+//
+// @param tmpReq - ClearDataRequest
+//
+// @param tmpHeader - ClearDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearDataResponse
 func (client *Client) ClearDataWithOptions(tmpReq *ClearDataRequest, tmpHeader *ClearDataHeaders, runtime *util.RuntimeOptions) (_result *ClearDataResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58281,6 +60109,13 @@ func (client *Client) ClearDataWithOptions(tmpReq *ClearDataRequest, tmpHeader *
 	return _result, _err
 }
 
+// Summary:
+//
+// 清除单元格数据
+//
+// @param request - ClearDataRequest
+//
+// @return ClearDataResponse
 func (client *Client) ClearData(request *ClearDataRequest) (_result *ClearDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ClearDataHeaders{}
@@ -58293,6 +60128,17 @@ func (client *Client) ClearData(request *ClearDataRequest) (_result *ClearDataRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志评论列表
+//
+// @param tmpReq - CommentListReportRequest
+//
+// @param tmpHeader - CommentListReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommentListReportResponse
 func (client *Client) CommentListReportWithOptions(tmpReq *CommentListReportRequest, tmpHeader *CommentListReportHeaders, runtime *util.RuntimeOptions) (_result *CommentListReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58360,6 +60206,13 @@ func (client *Client) CommentListReportWithOptions(tmpReq *CommentListReportRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志评论列表
+//
+// @param request - CommentListReportRequest
+//
+// @return CommentListReportResponse
 func (client *Client) CommentListReport(request *CommentListReportRequest) (_result *CommentListReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CommentListReportHeaders{}
@@ -58372,6 +60225,17 @@ func (client *Client) CommentListReport(request *CommentListReportRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉投放活动
+//
+// @param tmpReq - CreateDeliveryPlanRequest
+//
+// @param tmpHeader - CreateDeliveryPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeliveryPlanResponse
 func (client *Client) CreateDeliveryPlanWithOptions(tmpReq *CreateDeliveryPlanRequest, tmpHeader *CreateDeliveryPlanHeaders, runtime *util.RuntimeOptions) (_result *CreateDeliveryPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58455,6 +60319,13 @@ func (client *Client) CreateDeliveryPlanWithOptions(tmpReq *CreateDeliveryPlanRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉投放活动
+//
+// @param request - CreateDeliveryPlanRequest
+//
+// @return CreateDeliveryPlanResponse
 func (client *Client) CreateDeliveryPlan(request *CreateDeliveryPlanRequest) (_result *CreateDeliveryPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateDeliveryPlanHeaders{}
@@ -58467,6 +60338,17 @@ func (client *Client) CreateDeliveryPlan(request *CreateDeliveryPlanRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建日程
+//
+// @param tmpReq - CreateEventRequest
+//
+// @param tmpHeader - CreateEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEventResponse
 func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHeader *CreateEventHeaders, runtime *util.RuntimeOptions) (_result *CreateEventResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58610,6 +60492,13 @@ func (client *Client) CreateEventWithOptions(tmpReq *CreateEventRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建日程
+//
+// @param request - CreateEventRequest
+//
+// @return CreateEventResponse
 func (client *Client) CreateEvent(request *CreateEventRequest) (_result *CreateEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateEventHeaders{}
@@ -58622,6 +60511,17 @@ func (client *Client) CreateEvent(request *CreateEventRequest) (_result *CreateE
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建直播
+//
+// @param tmpReq - CreateLiveRequest
+//
+// @param tmpHeader - CreateLiveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLiveResponse
 func (client *Client) CreateLiveWithOptions(tmpReq *CreateLiveRequest, tmpHeader *CreateLiveHeaders, runtime *util.RuntimeOptions) (_result *CreateLiveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58701,6 +60601,13 @@ func (client *Client) CreateLiveWithOptions(tmpReq *CreateLiveRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建直播
+//
+// @param request - CreateLiveRequest
+//
+// @return CreateLiveResponse
 func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateLiveHeaders{}
@@ -58713,6 +60620,17 @@ func (client *Client) CreateLive(request *CreateLiveRequest) (_result *CreateLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会议室
+//
+// @param tmpReq - CreateMeetingRoomRequest
+//
+// @param tmpHeader - CreateMeetingRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMeetingRoomResponse
 func (client *Client) CreateMeetingRoomWithOptions(tmpReq *CreateMeetingRoomRequest, tmpHeader *CreateMeetingRoomHeaders, runtime *util.RuntimeOptions) (_result *CreateMeetingRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58820,6 +60738,13 @@ func (client *Client) CreateMeetingRoomWithOptions(tmpReq *CreateMeetingRoomRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会议室
+//
+// @param request - CreateMeetingRoomRequest
+//
+// @return CreateMeetingRoomResponse
 func (client *Client) CreateMeetingRoom(request *CreateMeetingRoomRequest) (_result *CreateMeetingRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateMeetingRoomHeaders{}
@@ -58832,6 +60757,17 @@ func (client *Client) CreateMeetingRoom(request *CreateMeetingRoomRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会议室分组
+//
+// @param tmpReq - CreateMeetingRoomGroupRequest
+//
+// @param tmpHeader - CreateMeetingRoomGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMeetingRoomGroupResponse
 func (client *Client) CreateMeetingRoomGroupWithOptions(tmpReq *CreateMeetingRoomGroupRequest, tmpHeader *CreateMeetingRoomGroupHeaders, runtime *util.RuntimeOptions) (_result *CreateMeetingRoomGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -58895,6 +60831,13 @@ func (client *Client) CreateMeetingRoomGroupWithOptions(tmpReq *CreateMeetingRoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会议室分组
+//
+// @param request - CreateMeetingRoomGroupRequest
+//
+// @return CreateMeetingRoomGroupResponse
 func (client *Client) CreateMeetingRoomGroup(request *CreateMeetingRoomGroupRequest) (_result *CreateMeetingRoomGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateMeetingRoomGroupHeaders{}
@@ -58907,6 +60850,17 @@ func (client *Client) CreateMeetingRoomGroup(request *CreateMeetingRoomGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或更新表单实例
+//
+// @param request - CreateOrUpdateFormDataRequest
+//
+// @param tmpHeader - CreateOrUpdateFormDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateFormDataResponse
 func (client *Client) CreateOrUpdateFormDataWithOptions(request *CreateOrUpdateFormDataRequest, tmpHeader *CreateOrUpdateFormDataHeaders, runtime *util.RuntimeOptions) (_result *CreateOrUpdateFormDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58980,6 +60934,13 @@ func (client *Client) CreateOrUpdateFormDataWithOptions(request *CreateOrUpdateF
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增或更新表单实例
+//
+// @param request - CreateOrUpdateFormDataRequest
+//
+// @return CreateOrUpdateFormDataResponse
 func (client *Client) CreateOrUpdateFormData(request *CreateOrUpdateFormDataRequest) (_result *CreateOrUpdateFormDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateOrUpdateFormDataHeaders{}
@@ -58992,6 +60953,17 @@ func (client *Client) CreateOrUpdateFormData(request *CreateOrUpdateFormDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建荣誉勋章模板
+//
+// @param tmpReq - CreateOrgHonorTemplateRequest
+//
+// @param tmpHeader - CreateOrgHonorTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrgHonorTemplateResponse
 func (client *Client) CreateOrgHonorTemplateWithOptions(tmpReq *CreateOrgHonorTemplateRequest, tmpHeader *CreateOrgHonorTemplateHeaders, runtime *util.RuntimeOptions) (_result *CreateOrgHonorTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59075,6 +61047,13 @@ func (client *Client) CreateOrgHonorTemplateWithOptions(tmpReq *CreateOrgHonorTe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建荣誉勋章模板
+//
+// @param request - CreateOrgHonorTemplateRequest
+//
+// @return CreateOrgHonorTemplateResponse
 func (client *Client) CreateOrgHonorTemplate(request *CreateOrgHonorTemplateRequest) (_result *CreateOrgHonorTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateOrgHonorTemplateHeaders{}
@@ -59087,6 +61066,17 @@ func (client *Client) CreateOrgHonorTemplate(request *CreateOrgHonorTemplateRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建钉钉个人待办任务
+//
+// @param tmpReq - CreatePersonalTodoTaskRequest
+//
+// @param tmpHeader - CreatePersonalTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalTodoTaskResponse
 func (client *Client) CreatePersonalTodoTaskWithOptions(tmpReq *CreatePersonalTodoTaskRequest, tmpHeader *CreatePersonalTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *CreatePersonalTodoTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59178,6 +61168,13 @@ func (client *Client) CreatePersonalTodoTaskWithOptions(tmpReq *CreatePersonalTo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建钉钉个人待办任务
+//
+// @param request - CreatePersonalTodoTaskRequest
+//
+// @return CreatePersonalTodoTaskResponse
 func (client *Client) CreatePersonalTodoTask(request *CreatePersonalTodoTaskRequest) (_result *CreatePersonalTodoTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreatePersonalTodoTaskHeaders{}
@@ -59190,6 +61187,17 @@ func (client *Client) CreatePersonalTodoTask(request *CreatePersonalTodoTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建日志
+//
+// @param tmpReq - CreateReportRequest
+//
+// @param tmpHeader - CreateReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReportResponse
 func (client *Client) CreateReportWithOptions(tmpReq *CreateReportRequest, tmpHeader *CreateReportHeaders, runtime *util.RuntimeOptions) (_result *CreateReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59281,6 +61289,13 @@ func (client *Client) CreateReportWithOptions(tmpReq *CreateReportRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建日志
+//
+// @param request - CreateReportRequest
+//
+// @return CreateReportResponse
 func (client *Client) CreateReport(request *CreateReportRequest) (_result *CreateReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateReportHeaders{}
@@ -59293,6 +61308,17 @@ func (client *Client) CreateReport(request *CreateReportRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建场景群
+//
+// @param request - CreateScenegroupRequest
+//
+// @param tmpHeader - CreateScenegroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScenegroupResponse
 func (client *Client) CreateScenegroupWithOptions(request *CreateScenegroupRequest, tmpHeader *CreateScenegroupHeaders, runtime *util.RuntimeOptions) (_result *CreateScenegroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59418,6 +61444,13 @@ func (client *Client) CreateScenegroupWithOptions(request *CreateScenegroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建场景群
+//
+// @param request - CreateScenegroupRequest
+//
+// @return CreateScenegroupResponse
 func (client *Client) CreateScenegroup(request *CreateScenegroupRequest) (_result *CreateScenegroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateScenegroupHeaders{}
@@ -59430,6 +61463,17 @@ func (client *Client) CreateScenegroup(request *CreateScenegroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建预约会议
+//
+// @param tmpReq - CreateScheduleConferenceRequest
+//
+// @param tmpHeader - CreateScheduleConferenceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduleConferenceResponse
 func (client *Client) CreateScheduleConferenceWithOptions(tmpReq *CreateScheduleConferenceRequest, tmpHeader *CreateScheduleConferenceHeaders, runtime *util.RuntimeOptions) (_result *CreateScheduleConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59497,6 +61541,13 @@ func (client *Client) CreateScheduleConferenceWithOptions(tmpReq *CreateSchedule
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建预约会议
+//
+// @param request - CreateScheduleConferenceRequest
+//
+// @return CreateScheduleConferenceResponse
 func (client *Client) CreateScheduleConference(request *CreateScheduleConferenceRequest) (_result *CreateScheduleConferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateScheduleConferenceHeaders{}
@@ -59509,6 +61560,17 @@ func (client *Client) CreateScheduleConference(request *CreateScheduleConference
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉搜索穹顶
+//
+// @param tmpReq - CreateSearchDomeRequest
+//
+// @param tmpHeader - CreateSearchDomeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSearchDomeResponse
 func (client *Client) CreateSearchDomeWithOptions(tmpReq *CreateSearchDomeRequest, tmpHeader *CreateSearchDomeHeaders, runtime *util.RuntimeOptions) (_result *CreateSearchDomeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59588,6 +61650,13 @@ func (client *Client) CreateSearchDomeWithOptions(tmpReq *CreateSearchDomeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉搜索穹顶
+//
+// @param request - CreateSearchDomeRequest
+//
+// @return CreateSearchDomeResponse
 func (client *Client) CreateSearchDome(request *CreateSearchDomeRequest) (_result *CreateSearchDomeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSearchDomeHeaders{}
@@ -59600,6 +61669,17 @@ func (client *Client) CreateSearchDome(request *CreateSearchDomeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉搜索关键词
+//
+// @param tmpReq - CreateSearchKeywordRequest
+//
+// @param tmpHeader - CreateSearchKeywordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSearchKeywordResponse
 func (client *Client) CreateSearchKeywordWithOptions(tmpReq *CreateSearchKeywordRequest, tmpHeader *CreateSearchKeywordHeaders, runtime *util.RuntimeOptions) (_result *CreateSearchKeywordResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59679,6 +61759,13 @@ func (client *Client) CreateSearchKeywordWithOptions(tmpReq *CreateSearchKeyword
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布钉钉搜索关键词
+//
+// @param request - CreateSearchKeywordRequest
+//
+// @return CreateSearchKeywordResponse
 func (client *Client) CreateSearchKeyword(request *CreateSearchKeywordRequest) (_result *CreateSearchKeywordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSearchKeywordHeaders{}
@@ -59691,6 +61778,17 @@ func (client *Client) CreateSearchKeyword(request *CreateSearchKeywordRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作表
+//
+// @param tmpReq - CreateSheetRequest
+//
+// @param tmpHeader - CreateSheetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSheetResponse
 func (client *Client) CreateSheetWithOptions(tmpReq *CreateSheetRequest, tmpHeader *CreateSheetHeaders, runtime *util.RuntimeOptions) (_result *CreateSheetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59754,6 +61852,13 @@ func (client *Client) CreateSheetWithOptions(tmpReq *CreateSheetRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作表
+//
+// @param request - CreateSheetRequest
+//
+// @return CreateSheetResponse
 func (client *Client) CreateSheet(request *CreateSheetRequest) (_result *CreateSheetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSheetHeaders{}
@@ -59766,6 +61871,17 @@ func (client *Client) CreateSheet(request *CreateSheetRequest) (_result *CreateS
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建订阅日历
+//
+// @param tmpReq - CreateSubscribedCalendarRequest
+//
+// @param tmpHeader - CreateSubscribedCalendarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubscribedCalendarResponse
 func (client *Client) CreateSubscribedCalendarWithOptions(tmpReq *CreateSubscribedCalendarRequest, tmpHeader *CreateSubscribedCalendarHeaders, runtime *util.RuntimeOptions) (_result *CreateSubscribedCalendarResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59837,6 +61953,13 @@ func (client *Client) CreateSubscribedCalendarWithOptions(tmpReq *CreateSubscrib
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建订阅日历
+//
+// @param request - CreateSubscribedCalendarRequest
+//
+// @return CreateSubscribedCalendarResponse
 func (client *Client) CreateSubscribedCalendar(request *CreateSubscribedCalendarRequest) (_result *CreateSubscribedCalendarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateSubscribedCalendarHeaders{}
@@ -59849,6 +61972,17 @@ func (client *Client) CreateSubscribedCalendar(request *CreateSubscribedCalendar
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建代办
+//
+// @param tmpReq - CreateTodoTaskRequest
+//
+// @param tmpHeader - CreateTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTodoTaskResponse
 func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, tmpHeader *CreateTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *CreateTodoTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -59978,6 +62112,13 @@ func (client *Client) CreateTodoTaskWithOptions(tmpReq *CreateTodoTaskRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建代办
+//
+// @param request - CreateTodoTaskRequest
+//
+// @return CreateTodoTaskResponse
 func (client *Client) CreateTodoTask(request *CreateTodoTaskRequest) (_result *CreateTodoTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateTodoTaskHeaders{}
@@ -59990,6 +62131,17 @@ func (client *Client) CreateTodoTask(request *CreateTodoTaskRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建视频会议
+//
+// @param tmpReq - CreateVideoConferenceRequest
+//
+// @param tmpHeader - CreateVideoConferenceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoConferenceResponse
 func (client *Client) CreateVideoConferenceWithOptions(tmpReq *CreateVideoConferenceRequest, tmpHeader *CreateVideoConferenceHeaders, runtime *util.RuntimeOptions) (_result *CreateVideoConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60053,6 +62205,13 @@ func (client *Client) CreateVideoConferenceWithOptions(tmpReq *CreateVideoConfer
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建视频会议
+//
+// @param request - CreateVideoConferenceRequest
+//
+// @return CreateVideoConferenceResponse
 func (client *Client) CreateVideoConference(request *CreateVideoConferenceRequest) (_result *CreateVideoConferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateVideoConferenceHeaders{}
@@ -60065,6 +62224,17 @@ func (client *Client) CreateVideoConference(request *CreateVideoConferenceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库
+//
+// @param tmpReq - CreateWorkspaceRequest
+//
+// @param tmpHeader - CreateWorkspaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest, tmpHeader *CreateWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60128,6 +62298,13 @@ func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库
+//
+// @param request - CreateWorkspaceRequest
+//
+// @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateWorkspaceHeaders{}
@@ -60140,6 +62317,17 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库文档
+//
+// @param tmpReq - CreateWorkspaceDocRequest
+//
+// @param tmpHeader - CreateWorkspaceDocHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceDocResponse
 func (client *Client) CreateWorkspaceDocWithOptions(tmpReq *CreateWorkspaceDocRequest, tmpHeader *CreateWorkspaceDocHeaders, runtime *util.RuntimeOptions) (_result *CreateWorkspaceDocResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60219,6 +62407,13 @@ func (client *Client) CreateWorkspaceDocWithOptions(tmpReq *CreateWorkspaceDocRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建知识库文档
+//
+// @param request - CreateWorkspaceDocRequest
+//
+// @return CreateWorkspaceDocResponse
 func (client *Client) CreateWorkspaceDoc(request *CreateWorkspaceDocRequest) (_result *CreateWorkspaceDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateWorkspaceDocHeaders{}
@@ -60231,6 +62426,17 @@ func (client *Client) CreateWorkspaceDoc(request *CreateWorkspaceDocRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定列
+//
+// @param tmpReq - DeleteColumnsRequest
+//
+// @param tmpHeader - DeleteColumnsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteColumnsResponse
 func (client *Client) DeleteColumnsWithOptions(tmpReq *DeleteColumnsRequest, tmpHeader *DeleteColumnsHeaders, runtime *util.RuntimeOptions) (_result *DeleteColumnsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60302,6 +62508,13 @@ func (client *Client) DeleteColumnsWithOptions(tmpReq *DeleteColumnsRequest, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定列
+//
+// @param request - DeleteColumnsRequest
+//
+// @return DeleteColumnsResponse
 func (client *Client) DeleteColumns(request *DeleteColumnsRequest) (_result *DeleteColumnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteColumnsHeaders{}
@@ -60314,6 +62527,17 @@ func (client *Client) DeleteColumns(request *DeleteColumnsRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除日程
+//
+// @param request - DeleteEventRequest
+//
+// @param tmpHeader - DeleteEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventResponse
 func (client *Client) DeleteEventWithOptions(request *DeleteEventRequest, tmpHeader *DeleteEventHeaders, runtime *util.RuntimeOptions) (_result *DeleteEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60371,6 +62595,13 @@ func (client *Client) DeleteEventWithOptions(request *DeleteEventRequest, tmpHea
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除日程
+//
+// @param request - DeleteEventRequest
+//
+// @return DeleteEventResponse
 func (client *Client) DeleteEvent(request *DeleteEventRequest) (_result *DeleteEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteEventHeaders{}
@@ -60383,6 +62614,17 @@ func (client *Client) DeleteEvent(request *DeleteEventRequest) (_result *DeleteE
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除表单数据
+//
+// @param request - DeleteFormDataRequest
+//
+// @param tmpHeader - DeleteFormDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFormDataResponse
 func (client *Client) DeleteFormDataWithOptions(request *DeleteFormDataRequest, tmpHeader *DeleteFormDataHeaders, runtime *util.RuntimeOptions) (_result *DeleteFormDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60444,6 +62686,13 @@ func (client *Client) DeleteFormDataWithOptions(request *DeleteFormDataRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除表单数据
+//
+// @param request - DeleteFormDataRequest
+//
+// @return DeleteFormDataResponse
 func (client *Client) DeleteFormData(request *DeleteFormDataRequest) (_result *DeleteFormDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteFormDataHeaders{}
@@ -60456,6 +62705,13 @@ func (client *Client) DeleteFormData(request *DeleteFormDataRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @param tmpHeader - DeleteInstanceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, tmpHeader *DeleteInstanceHeaders, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60517,6 +62773,9 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteInstanceHeaders{}
@@ -60529,6 +62788,17 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除直播
+//
+// @param tmpReq - DeleteLiveRequest
+//
+// @param tmpHeader - DeleteLiveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLiveResponse
 func (client *Client) DeleteLiveWithOptions(tmpReq *DeleteLiveRequest, tmpHeader *DeleteLiveHeaders, runtime *util.RuntimeOptions) (_result *DeleteLiveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60588,6 +62858,13 @@ func (client *Client) DeleteLiveWithOptions(tmpReq *DeleteLiveRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除直播
+//
+// @param request - DeleteLiveRequest
+//
+// @return DeleteLiveResponse
 func (client *Client) DeleteLive(request *DeleteLiveRequest) (_result *DeleteLiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteLiveHeaders{}
@@ -60600,6 +62877,17 @@ func (client *Client) DeleteLive(request *DeleteLiveRequest) (_result *DeleteLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除会议室
+//
+// @param tmpReq - DeleteMeetingRoomRequest
+//
+// @param tmpHeader - DeleteMeetingRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMeetingRoomResponse
 func (client *Client) DeleteMeetingRoomWithOptions(tmpReq *DeleteMeetingRoomRequest, tmpHeader *DeleteMeetingRoomHeaders, runtime *util.RuntimeOptions) (_result *DeleteMeetingRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60659,6 +62947,13 @@ func (client *Client) DeleteMeetingRoomWithOptions(tmpReq *DeleteMeetingRoomRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除会议室
+//
+// @param request - DeleteMeetingRoomRequest
+//
+// @return DeleteMeetingRoomResponse
 func (client *Client) DeleteMeetingRoom(request *DeleteMeetingRoomRequest) (_result *DeleteMeetingRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteMeetingRoomHeaders{}
@@ -60671,6 +62966,17 @@ func (client *Client) DeleteMeetingRoom(request *DeleteMeetingRoomRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除会议室分组
+//
+// @param tmpReq - DeleteMeetingRoomGroupRequest
+//
+// @param tmpHeader - DeleteMeetingRoomGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMeetingRoomGroupResponse
 func (client *Client) DeleteMeetingRoomGroupWithOptions(tmpReq *DeleteMeetingRoomGroupRequest, tmpHeader *DeleteMeetingRoomGroupHeaders, runtime *util.RuntimeOptions) (_result *DeleteMeetingRoomGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60730,6 +63036,13 @@ func (client *Client) DeleteMeetingRoomGroupWithOptions(tmpReq *DeleteMeetingRoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除会议室分组
+//
+// @param request - DeleteMeetingRoomGroupRequest
+//
+// @return DeleteMeetingRoomGroupResponse
 func (client *Client) DeleteMeetingRoomGroup(request *DeleteMeetingRoomGroupRequest) (_result *DeleteMeetingRoomGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteMeetingRoomGroupHeaders{}
@@ -60742,6 +63055,17 @@ func (client *Client) DeleteMeetingRoomGroup(request *DeleteMeetingRoomGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定行
+//
+// @param tmpReq - DeleteRowsRequest
+//
+// @param tmpHeader - DeleteRowsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRowsResponse
 func (client *Client) DeleteRowsWithOptions(tmpReq *DeleteRowsRequest, tmpHeader *DeleteRowsHeaders, runtime *util.RuntimeOptions) (_result *DeleteRowsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60813,6 +63137,13 @@ func (client *Client) DeleteRowsWithOptions(tmpReq *DeleteRowsRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定行
+//
+// @param request - DeleteRowsRequest
+//
+// @return DeleteRowsResponse
 func (client *Client) DeleteRows(request *DeleteRowsRequest) (_result *DeleteRowsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteRowsHeaders{}
@@ -60825,6 +63156,17 @@ func (client *Client) DeleteRows(request *DeleteRowsRequest) (_result *DeleteRow
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除群成员
+//
+// @param request - DeleteScenegroupMemberRequest
+//
+// @param tmpHeader - DeleteScenegroupMemberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScenegroupMemberResponse
 func (client *Client) DeleteScenegroupMemberWithOptions(request *DeleteScenegroupMemberRequest, tmpHeader *DeleteScenegroupMemberHeaders, runtime *util.RuntimeOptions) (_result *DeleteScenegroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60878,6 +63220,13 @@ func (client *Client) DeleteScenegroupMemberWithOptions(request *DeleteScenegrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除群成员
+//
+// @param request - DeleteScenegroupMemberRequest
+//
+// @return DeleteScenegroupMemberResponse
 func (client *Client) DeleteScenegroupMember(request *DeleteScenegroupMemberRequest) (_result *DeleteScenegroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteScenegroupMemberHeaders{}
@@ -60890,6 +63239,17 @@ func (client *Client) DeleteScenegroupMember(request *DeleteScenegroupMemberRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个工作表
+//
+// @param tmpReq - DeleteSheetRequest
+//
+// @param tmpHeader - DeleteSheetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSheetResponse
 func (client *Client) DeleteSheetWithOptions(tmpReq *DeleteSheetRequest, tmpHeader *DeleteSheetHeaders, runtime *util.RuntimeOptions) (_result *DeleteSheetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -60953,6 +63313,13 @@ func (client *Client) DeleteSheetWithOptions(tmpReq *DeleteSheetRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个工作表
+//
+// @param request - DeleteSheetRequest
+//
+// @return DeleteSheetResponse
 func (client *Client) DeleteSheet(request *DeleteSheetRequest) (_result *DeleteSheetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteSheetHeaders{}
@@ -60965,6 +63332,17 @@ func (client *Client) DeleteSheet(request *DeleteSheetRequest) (_result *DeleteS
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除订阅日历
+//
+// @param request - DeleteSubscribedCalendarRequest
+//
+// @param tmpHeader - DeleteSubscribedCalendarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubscribedCalendarResponse
 func (client *Client) DeleteSubscribedCalendarWithOptions(request *DeleteSubscribedCalendarRequest, tmpHeader *DeleteSubscribedCalendarHeaders, runtime *util.RuntimeOptions) (_result *DeleteSubscribedCalendarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61014,6 +63392,13 @@ func (client *Client) DeleteSubscribedCalendarWithOptions(request *DeleteSubscri
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除订阅日历
+//
+// @param request - DeleteSubscribedCalendarRequest
+//
+// @return DeleteSubscribedCalendarResponse
 func (client *Client) DeleteSubscribedCalendar(request *DeleteSubscribedCalendarRequest) (_result *DeleteSubscribedCalendarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteSubscribedCalendarHeaders{}
@@ -61026,6 +63411,17 @@ func (client *Client) DeleteSubscribedCalendar(request *DeleteSubscribedCalendar
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除代办
+//
+// @param tmpReq - DeleteTodoTaskRequest
+//
+// @param tmpHeader - DeleteTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTodoTaskResponse
 func (client *Client) DeleteTodoTaskWithOptions(tmpReq *DeleteTodoTaskRequest, tmpHeader *DeleteTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *DeleteTodoTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61089,6 +63485,13 @@ func (client *Client) DeleteTodoTaskWithOptions(tmpReq *DeleteTodoTaskRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除代办
+//
+// @param request - DeleteTodoTaskRequest
+//
+// @return DeleteTodoTaskResponse
 func (client *Client) DeleteTodoTask(request *DeleteTodoTaskRequest) (_result *DeleteTodoTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteTodoTaskHeaders{}
@@ -61101,6 +63504,17 @@ func (client *Client) DeleteTodoTask(request *DeleteTodoTaskRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库文档成员
+//
+// @param tmpReq - DeleteWorkspaceDocMembersRequest
+//
+// @param tmpHeader - DeleteWorkspaceDocMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceDocMembersResponse
 func (client *Client) DeleteWorkspaceDocMembersWithOptions(tmpReq *DeleteWorkspaceDocMembersRequest, tmpHeader *DeleteWorkspaceDocMembersHeaders, runtime *util.RuntimeOptions) (_result *DeleteWorkspaceDocMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61172,6 +63586,13 @@ func (client *Client) DeleteWorkspaceDocMembersWithOptions(tmpReq *DeleteWorkspa
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库文档成员
+//
+// @param request - DeleteWorkspaceDocMembersRequest
+//
+// @return DeleteWorkspaceDocMembersResponse
 func (client *Client) DeleteWorkspaceDocMembers(request *DeleteWorkspaceDocMembersRequest) (_result *DeleteWorkspaceDocMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteWorkspaceDocMembersHeaders{}
@@ -61184,6 +63605,17 @@ func (client *Client) DeleteWorkspaceDocMembers(request *DeleteWorkspaceDocMembe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库成员
+//
+// @param tmpReq - DeleteWorkspaceMembersRequest
+//
+// @param tmpHeader - DeleteWorkspaceMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceMembersResponse
 func (client *Client) DeleteWorkspaceMembersWithOptions(tmpReq *DeleteWorkspaceMembersRequest, tmpHeader *DeleteWorkspaceMembersHeaders, runtime *util.RuntimeOptions) (_result *DeleteWorkspaceMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61251,6 +63683,13 @@ func (client *Client) DeleteWorkspaceMembersWithOptions(tmpReq *DeleteWorkspaceM
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除知识库成员
+//
+// @param request - DeleteWorkspaceMembersRequest
+//
+// @return DeleteWorkspaceMembersResponse
 func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequest) (_result *DeleteWorkspaceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteWorkspaceMembersHeaders{}
@@ -61263,6 +63702,17 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量执行宜搭审批任务
+//
+// @param request - ExecuteBatchTaskRequest
+//
+// @param tmpHeader - ExecuteBatchTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteBatchTaskResponse
 func (client *Client) ExecuteBatchTaskWithOptions(request *ExecuteBatchTaskRequest, tmpHeader *ExecuteBatchTaskHeaders, runtime *util.RuntimeOptions) (_result *ExecuteBatchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61328,6 +63778,13 @@ func (client *Client) ExecuteBatchTaskWithOptions(request *ExecuteBatchTaskReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量执行宜搭审批任务
+//
+// @param request - ExecuteBatchTaskRequest
+//
+// @return ExecuteBatchTaskResponse
 func (client *Client) ExecuteBatchTask(request *ExecuteBatchTaskRequest) (_result *ExecuteBatchTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ExecuteBatchTaskHeaders{}
@@ -61340,6 +63797,17 @@ func (client *Client) ExecuteBatchTask(request *ExecuteBatchTaskRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 执行宜搭的审批任务
+//
+// @param request - ExecutePlatformTaskRequest
+//
+// @param tmpHeader - ExecutePlatformTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecutePlatformTaskResponse
 func (client *Client) ExecutePlatformTaskWithOptions(request *ExecutePlatformTaskRequest, tmpHeader *ExecutePlatformTaskHeaders, runtime *util.RuntimeOptions) (_result *ExecutePlatformTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61417,6 +63885,13 @@ func (client *Client) ExecutePlatformTaskWithOptions(request *ExecutePlatformTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 执行宜搭的审批任务
+//
+// @param request - ExecutePlatformTaskRequest
+//
+// @return ExecutePlatformTaskResponse
 func (client *Client) ExecutePlatformTask(request *ExecutePlatformTaskRequest) (_result *ExecutePlatformTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ExecutePlatformTaskHeaders{}
@@ -61429,6 +63904,17 @@ func (client *Client) ExecutePlatformTask(request *ExecutePlatformTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 同意或拒绝宜搭审批任务(执行审批任务)
+//
+// @param request - ExecuteTaskRequest
+//
+// @param tmpHeader - ExecuteTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTaskResponse
 func (client *Client) ExecuteTaskWithOptions(request *ExecuteTaskRequest, tmpHeader *ExecuteTaskHeaders, runtime *util.RuntimeOptions) (_result *ExecuteTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61514,6 +64000,13 @@ func (client *Client) ExecuteTaskWithOptions(request *ExecuteTaskRequest, tmpHea
 	return _result, _err
 }
 
+// Summary:
+//
+// 同意或拒绝宜搭审批任务(执行审批任务)
+//
+// @param request - ExecuteTaskRequest
+//
+// @return ExecuteTaskResponse
 func (client *Client) ExecuteTask(request *ExecuteTaskRequest) (_result *ExecuteTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ExecuteTaskHeaders{}
@@ -61526,6 +64019,17 @@ func (client *Client) ExecuteTask(request *ExecuteTaskRequest) (_result *Execute
 	return _result, _err
 }
 
+// Summary:
+//
+// 群扩容
+//
+// @param tmpReq - ExpandGroupCapacityRequest
+//
+// @param tmpHeader - ExpandGroupCapacityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExpandGroupCapacityResponse
 func (client *Client) ExpandGroupCapacityWithOptions(tmpReq *ExpandGroupCapacityRequest, tmpHeader *ExpandGroupCapacityHeaders, runtime *util.RuntimeOptions) (_result *ExpandGroupCapacityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61585,6 +64089,13 @@ func (client *Client) ExpandGroupCapacityWithOptions(tmpReq *ExpandGroupCapacity
 	return _result, _err
 }
 
+// Summary:
+//
+// 群扩容
+//
+// @param request - ExpandGroupCapacityRequest
+//
+// @return ExpandGroupCapacityResponse
 func (client *Client) ExpandGroupCapacity(request *ExpandGroupCapacityRequest) (_result *ExpandGroupCapacityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ExpandGroupCapacityHeaders{}
@@ -61597,6 +64108,17 @@ func (client *Client) ExpandGroupCapacity(request *ExpandGroupCapacityRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程设计的节点信息
+//
+// @param request - GetActivityListRequest
+//
+// @param tmpHeader - GetActivityListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetActivityListResponse
 func (client *Client) GetActivityListWithOptions(request *GetActivityListRequest, tmpHeader *GetActivityListHeaders, runtime *util.RuntimeOptions) (_result *GetActivityListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61658,6 +64180,13 @@ func (client *Client) GetActivityListWithOptions(request *GetActivityListRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程设计的节点信息
+//
+// @param request - GetActivityListRequest
+//
+// @return GetActivityListResponse
 func (client *Client) GetActivityList(request *GetActivityListRequest) (_result *GetActivityListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetActivityListHeaders{}
@@ -61670,6 +64199,17 @@ func (client *Client) GetActivityList(request *GetActivityListRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取所有工作表
+//
+// @param tmpReq - GetAllSheetsRequest
+//
+// @param tmpHeader - GetAllSheetsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAllSheetsResponse
 func (client *Client) GetAllSheetsWithOptions(tmpReq *GetAllSheetsRequest, tmpHeader *GetAllSheetsHeaders, runtime *util.RuntimeOptions) (_result *GetAllSheetsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61729,6 +64269,13 @@ func (client *Client) GetAllSheetsWithOptions(tmpReq *GetAllSheetsRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取所有工作表
+//
+// @param request - GetAllSheetsRequest
+//
+// @return GetAllSheetsResponse
 func (client *Client) GetAllSheets(request *GetAllSheetsRequest) (_result *GetAllSheetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetAllSheetsHeaders{}
@@ -61741,6 +64288,17 @@ func (client *Client) GetAllSheets(request *GetAllSheetsRequest) (_result *GetAl
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取群存储空间信息
+//
+// @param tmpReq - GetConversaionSpaceRequest
+//
+// @param tmpHeader - GetConversaionSpaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConversaionSpaceResponse
 func (client *Client) GetConversaionSpaceWithOptions(tmpReq *GetConversaionSpaceRequest, tmpHeader *GetConversaionSpaceHeaders, runtime *util.RuntimeOptions) (_result *GetConversaionSpaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -61800,6 +64358,13 @@ func (client *Client) GetConversaionSpaceWithOptions(tmpReq *GetConversaionSpace
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取群存储空间信息
+//
+// @param request - GetConversaionSpaceRequest
+//
+// @return GetConversaionSpaceResponse
 func (client *Client) GetConversaionSpace(request *GetConversaionSpaceRequest) (_result *GetConversaionSpaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetConversaionSpaceHeaders{}
@@ -61812,6 +64377,17 @@ func (client *Client) GetConversaionSpace(request *GetConversaionSpaceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织内已完成的审批任务
+//
+// @param request - GetCorpAccomplishmentTasksRequest
+//
+// @param tmpHeader - GetCorpAccomplishmentTasksHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCorpAccomplishmentTasksResponse
 func (client *Client) GetCorpAccomplishmentTasksWithOptions(request *GetCorpAccomplishmentTasksRequest, tmpHeader *GetCorpAccomplishmentTasksHeaders, runtime *util.RuntimeOptions) (_result *GetCorpAccomplishmentTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61897,6 +64473,13 @@ func (client *Client) GetCorpAccomplishmentTasksWithOptions(request *GetCorpAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织内已完成的审批任务
+//
+// @param request - GetCorpAccomplishmentTasksRequest
+//
+// @return GetCorpAccomplishmentTasksResponse
 func (client *Client) GetCorpAccomplishmentTasks(request *GetCorpAccomplishmentTasksRequest) (_result *GetCorpAccomplishmentTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetCorpAccomplishmentTasksHeaders{}
@@ -61909,6 +64492,17 @@ func (client *Client) GetCorpAccomplishmentTasks(request *GetCorpAccomplishmentT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表（组织维度）
+//
+// @param request - GetCorpTasksRequest
+//
+// @param tmpHeader - GetCorpTasksHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCorpTasksResponse
 func (client *Client) GetCorpTasksWithOptions(request *GetCorpTasksRequest, tmpHeader *GetCorpTasksHeaders, runtime *util.RuntimeOptions) (_result *GetCorpTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61994,6 +64588,13 @@ func (client *Client) GetCorpTasksWithOptions(request *GetCorpTasksRequest, tmpH
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表（组织维度）
+//
+// @param request - GetCorpTasksRequest
+//
+// @return GetCorpTasksResponse
 func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCorpTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetCorpTasksHeaders{}
@@ -62006,6 +64607,17 @@ func (client *Client) GetCorpTasks(request *GetCorpTasksRequest) (_result *GetCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 委托权限获取文档内容
+//
+// @param tmpReq - GetDocContentRequest
+//
+// @param tmpHeader - GetDocContentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocContentResponse
 func (client *Client) GetDocContentWithOptions(tmpReq *GetDocContentRequest, tmpHeader *GetDocContentHeaders, runtime *util.RuntimeOptions) (_result *GetDocContentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -62073,6 +64685,13 @@ func (client *Client) GetDocContentWithOptions(tmpReq *GetDocContentRequest, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 委托权限获取文档内容
+//
+// @param request - GetDocContentRequest
+//
+// @return GetDocContentResponse
 func (client *Client) GetDocContent(request *GetDocContentRequest) (_result *GetDocContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetDocContentHeaders{}
@@ -62085,6 +64704,110 @@ func (client *Client) GetDocContent(request *GetDocContentRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 委托权限获取文档内容taskId
+//
+// @param tmpReq - GetDocContentTakIdRequest
+//
+// @param tmpHeader - GetDocContentTakIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocContentTakIdResponse
+func (client *Client) GetDocContentTakIdWithOptions(tmpReq *GetDocContentTakIdRequest, tmpHeader *GetDocContentTakIdHeaders, runtime *util.RuntimeOptions) (_result *GetDocContentTakIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetDocContentTakIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetDocContentTakIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DentryUuid)) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFormat)) {
+		body["TargetFormat"] = request.TargetFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocContentTakId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/getDocContentTakId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocContentTakIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 委托权限获取文档内容taskId
+//
+// @param request - GetDocContentTakIdRequest
+//
+// @return GetDocContentTakIdResponse
+func (client *Client) GetDocContentTakId(request *GetDocContentTakIdRequest) (_result *GetDocContentTakIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetDocContentTakIdHeaders{}
+	_result = &GetDocContentTakIdResponse{}
+	_body, _err := client.GetDocContentTakIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个日程详情
+//
+// @param request - GetEventRequest
+//
+// @param tmpHeader - GetEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventResponse
 func (client *Client) GetEventWithOptions(request *GetEventRequest, tmpHeader *GetEventHeaders, runtime *util.RuntimeOptions) (_result *GetEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62144,6 +64867,13 @@ func (client *Client) GetEventWithOptions(request *GetEventRequest, tmpHeader *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询单个日程详情
+//
+// @param request - GetEventRequest
+//
+// @return GetEventResponse
 func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetEventHeaders{}
@@ -62156,6 +64886,17 @@ func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表单内的组件信息
+//
+// @param request - GetFieldDefByUuidRequest
+//
+// @param tmpHeader - GetFieldDefByUuidHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFieldDefByUuidResponse
 func (client *Client) GetFieldDefByUuidWithOptions(request *GetFieldDefByUuidRequest, tmpHeader *GetFieldDefByUuidHeaders, runtime *util.RuntimeOptions) (_result *GetFieldDefByUuidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62213,6 +64954,13 @@ func (client *Client) GetFieldDefByUuidWithOptions(request *GetFieldDefByUuidReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表单内的组件信息
+//
+// @param request - GetFieldDefByUuidRequest
+//
+// @return GetFieldDefByUuidResponse
 func (client *Client) GetFieldDefByUuid(request *GetFieldDefByUuidRequest) (_result *GetFieldDefByUuidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFieldDefByUuidHeaders{}
@@ -62225,6 +64973,17 @@ func (client *Client) GetFieldDefByUuid(request *GetFieldDefByUuidRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件下载信息
+//
+// @param tmpReq - GetFileDownloadInfoRequest
+//
+// @param tmpHeader - GetFileDownloadInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileDownloadInfoResponse
 func (client *Client) GetFileDownloadInfoWithOptions(tmpReq *GetFileDownloadInfoRequest, tmpHeader *GetFileDownloadInfoHeaders, runtime *util.RuntimeOptions) (_result *GetFileDownloadInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -62296,6 +65055,13 @@ func (client *Client) GetFileDownloadInfoWithOptions(tmpReq *GetFileDownloadInfo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件下载信息
+//
+// @param request - GetFileDownloadInfoRequest
+//
+// @return GetFileDownloadInfoResponse
 func (client *Client) GetFileDownloadInfo(request *GetFileDownloadInfoRequest) (_result *GetFileDownloadInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFileDownloadInfoHeaders{}
@@ -62308,6 +65074,17 @@ func (client *Client) GetFileDownloadInfo(request *GetFileDownloadInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表单组件定义列表
+//
+// @param request - GetFormComponentDefinitionListRequest
+//
+// @param tmpHeader - GetFormComponentDefinitionListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFormComponentDefinitionListResponse
 func (client *Client) GetFormComponentDefinitionListWithOptions(request *GetFormComponentDefinitionListRequest, tmpHeader *GetFormComponentDefinitionListHeaders, runtime *util.RuntimeOptions) (_result *GetFormComponentDefinitionListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62369,6 +65146,13 @@ func (client *Client) GetFormComponentDefinitionListWithOptions(request *GetForm
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表单组件定义列表
+//
+// @param request - GetFormComponentDefinitionListRequest
+//
+// @return GetFormComponentDefinitionListResponse
 func (client *Client) GetFormComponentDefinitionList(request *GetFormComponentDefinitionListRequest) (_result *GetFormComponentDefinitionListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFormComponentDefinitionListHeaders{}
@@ -62381,6 +65165,17 @@ func (client *Client) GetFormComponentDefinitionList(request *GetFormComponentDe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询表单数据
+//
+// @param request - GetFormDataByIDRequest
+//
+// @param tmpHeader - GetFormDataByIDHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFormDataByIDResponse
 func (client *Client) GetFormDataByIDWithOptions(request *GetFormDataByIDRequest, tmpHeader *GetFormDataByIDHeaders, runtime *util.RuntimeOptions) (_result *GetFormDataByIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62442,6 +65237,13 @@ func (client *Client) GetFormDataByIDWithOptions(request *GetFormDataByIDRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询表单数据
+//
+// @param request - GetFormDataByIDRequest
+//
+// @return GetFormDataByIDResponse
 func (client *Client) GetFormDataByID(request *GetFormDataByIDRequest) (_result *GetFormDataByIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFormDataByIDHeaders{}
@@ -62454,6 +65256,17 @@ func (client *Client) GetFormDataByID(request *GetFormDataByIDRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定应用下的表单列表
+//
+// @param request - GetFormListInAppRequest
+//
+// @param tmpHeader - GetFormListInAppHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFormListInAppResponse
 func (client *Client) GetFormListInAppWithOptions(request *GetFormListInAppRequest, tmpHeader *GetFormListInAppHeaders, runtime *util.RuntimeOptions) (_result *GetFormListInAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62519,6 +65332,13 @@ func (client *Client) GetFormListInAppWithOptions(request *GetFormListInAppReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定应用下的表单列表
+//
+// @param request - GetFormListInAppRequest
+//
+// @return GetFormListInAppResponse
 func (client *Client) GetFormListInApp(request *GetFormListInAppRequest) (_result *GetFormListInAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFormListInAppHeaders{}
@@ -62531,6 +65351,17 @@ func (client *Client) GetFormListInApp(request *GetFormListInAppRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业内部群成员
+//
+// @param request - GetInnerGroupMembersRequest
+//
+// @param tmpHeader - GetInnerGroupMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInnerGroupMembersResponse
 func (client *Client) GetInnerGroupMembersWithOptions(request *GetInnerGroupMembersRequest, tmpHeader *GetInnerGroupMembersHeaders, runtime *util.RuntimeOptions) (_result *GetInnerGroupMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62588,6 +65419,13 @@ func (client *Client) GetInnerGroupMembersWithOptions(request *GetInnerGroupMemb
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业内部群成员
+//
+// @param request - GetInnerGroupMembersRequest
+//
+// @return GetInnerGroupMembersResponse
 func (client *Client) GetInnerGroupMembers(request *GetInnerGroupMembersRequest) (_result *GetInnerGroupMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetInnerGroupMembersHeaders{}
@@ -62600,6 +65438,17 @@ func (client *Client) GetInnerGroupMembers(request *GetInnerGroupMembersRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据流程实例ID获取流程实例
+//
+// @param request - GetInstanceByIdRequest
+//
+// @param tmpHeader - GetInstanceByIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceByIdResponse
 func (client *Client) GetInstanceByIdWithOptions(request *GetInstanceByIdRequest, tmpHeader *GetInstanceByIdHeaders, runtime *util.RuntimeOptions) (_result *GetInstanceByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62661,6 +65510,13 @@ func (client *Client) GetInstanceByIdWithOptions(request *GetInstanceByIdRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据流程实例ID获取流程实例
+//
+// @param request - GetInstanceByIdRequest
+//
+// @return GetInstanceByIdResponse
 func (client *Client) GetInstanceById(request *GetInstanceByIdRequest) (_result *GetInstanceByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetInstanceByIdHeaders{}
@@ -62673,6 +65529,17 @@ func (client *Client) GetInstanceById(request *GetInstanceByIdRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例ID列表
+//
+// @param request - GetInstanceIdListRequest
+//
+// @param tmpHeader - GetInstanceIdListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceIdListResponse
 func (client *Client) GetInstanceIdListWithOptions(request *GetInstanceIdListRequest, tmpHeader *GetInstanceIdListHeaders, runtime *util.RuntimeOptions) (_result *GetInstanceIdListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62778,6 +65645,13 @@ func (client *Client) GetInstanceIdListWithOptions(request *GetInstanceIdListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例ID列表
+//
+// @param request - GetInstanceIdListRequest
+//
+// @return GetInstanceIdListResponse
 func (client *Client) GetInstanceIdList(request *GetInstanceIdListRequest) (_result *GetInstanceIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetInstanceIdListHeaders{}
@@ -62790,6 +65664,17 @@ func (client *Client) GetInstanceIdList(request *GetInstanceIdListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程实例
+//
+// @param request - GetInstancesRequest
+//
+// @param tmpHeader - GetInstancesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstancesResponse
 func (client *Client) GetInstancesWithOptions(request *GetInstancesRequest, tmpHeader *GetInstancesHeaders, runtime *util.RuntimeOptions) (_result *GetInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62899,6 +65784,13 @@ func (client *Client) GetInstancesWithOptions(request *GetInstancesRequest, tmpH
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程实例
+//
+// @param request - GetInstancesRequest
+//
+// @return GetInstancesResponse
 func (client *Client) GetInstances(request *GetInstancesRequest) (_result *GetInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetInstancesHeaders{}
@@ -62911,6 +65803,17 @@ func (client *Client) GetInstances(request *GetInstancesRequest) (_result *GetIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+//
+// @param request - GetInstancesByIdListRequest
+//
+// @param tmpHeader - GetInstancesByIdListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstancesByIdListResponse
 func (client *Client) GetInstancesByIdListWithOptions(request *GetInstancesByIdListRequest, tmpHeader *GetInstancesByIdListHeaders, runtime *util.RuntimeOptions) (_result *GetInstancesByIdListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62972,6 +65875,13 @@ func (client *Client) GetInstancesByIdListWithOptions(request *GetInstancesByIdL
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+//
+// @param request - GetInstancesByIdListRequest
+//
+// @return GetInstancesByIdListResponse
 func (client *Client) GetInstancesByIdList(request *GetInstancesByIdListRequest) (_result *GetInstancesByIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetInstancesByIdListHeaders{}
@@ -62984,6 +65894,17 @@ func (client *Client) GetInstancesByIdList(request *GetInstancesByIdListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取直播的可下载回放地址
+//
+// @param tmpReq - GetLiveReplayUrlRequest
+//
+// @param tmpHeader - GetLiveReplayUrlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLiveReplayUrlResponse
 func (client *Client) GetLiveReplayUrlWithOptions(tmpReq *GetLiveReplayUrlRequest, tmpHeader *GetLiveReplayUrlHeaders, runtime *util.RuntimeOptions) (_result *GetLiveReplayUrlResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63043,6 +65964,13 @@ func (client *Client) GetLiveReplayUrlWithOptions(tmpReq *GetLiveReplayUrlReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取直播的可下载回放地址
+//
+// @param request - GetLiveReplayUrlRequest
+//
+// @return GetLiveReplayUrlResponse
 func (client *Client) GetLiveReplayUrl(request *GetLiveReplayUrlRequest) (_result *GetLiveReplayUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetLiveReplayUrlHeaders{}
@@ -63055,6 +65983,17 @@ func (client *Client) GetLiveReplayUrl(request *GetLiveReplayUrlRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织内某人提交的任务
+//
+// @param request - GetMeCorpSubmissionRequest
+//
+// @param tmpHeader - GetMeCorpSubmissionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMeCorpSubmissionResponse
 func (client *Client) GetMeCorpSubmissionWithOptions(request *GetMeCorpSubmissionRequest, tmpHeader *GetMeCorpSubmissionHeaders, runtime *util.RuntimeOptions) (_result *GetMeCorpSubmissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63140,6 +66079,13 @@ func (client *Client) GetMeCorpSubmissionWithOptions(request *GetMeCorpSubmissio
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取组织内某人提交的任务
+//
+// @param request - GetMeCorpSubmissionRequest
+//
+// @return GetMeCorpSubmissionResponse
 func (client *Client) GetMeCorpSubmission(request *GetMeCorpSubmissionRequest) (_result *GetMeCorpSubmissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetMeCorpSubmissionHeaders{}
@@ -63152,6 +66098,17 @@ func (client *Client) GetMeCorpSubmission(request *GetMeCorpSubmissionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取会议室忙闲信息
+//
+// @param tmpReq - GetMeetingRoomsScheduleRequest
+//
+// @param tmpHeader - GetMeetingRoomsScheduleHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMeetingRoomsScheduleResponse
 func (client *Client) GetMeetingRoomsScheduleWithOptions(tmpReq *GetMeetingRoomsScheduleRequest, tmpHeader *GetMeetingRoomsScheduleHeaders, runtime *util.RuntimeOptions) (_result *GetMeetingRoomsScheduleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63215,6 +66172,13 @@ func (client *Client) GetMeetingRoomsScheduleWithOptions(tmpReq *GetMeetingRooms
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取会议室忙闲信息
+//
+// @param request - GetMeetingRoomsScheduleRequest
+//
+// @return GetMeetingRoomsScheduleResponse
 func (client *Client) GetMeetingRoomsSchedule(request *GetMeetingRoomsScheduleRequest) (_result *GetMeetingRoomsScheduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetMeetingRoomsScheduleHeaders{}
@@ -63227,6 +66191,17 @@ func (client *Client) GetMeetingRoomsSchedule(request *GetMeetingRoomsScheduleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取我的文档知识库信息
+//
+// @param tmpReq - GetMineWorkspaceRequest
+//
+// @param tmpHeader - GetMineWorkspaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMineWorkspaceResponse
 func (client *Client) GetMineWorkspaceWithOptions(tmpReq *GetMineWorkspaceRequest, tmpHeader *GetMineWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *GetMineWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63290,6 +66265,13 @@ func (client *Client) GetMineWorkspaceWithOptions(tmpReq *GetMineWorkspaceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取我的文档知识库信息
+//
+// @param request - GetMineWorkspaceRequest
+//
+// @return GetMineWorkspaceResponse
 func (client *Client) GetMineWorkspace(request *GetMineWorkspaceRequest) (_result *GetMineWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetMineWorkspaceHeaders{}
@@ -63302,6 +66284,17 @@ func (client *Client) GetMineWorkspace(request *GetMineWorkspaceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询最近活跃的企业内部群列表
+//
+// @param tmpReq - GetNewestInnerGroupsRequest
+//
+// @param tmpHeader - GetNewestInnerGroupsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNewestInnerGroupsResponse
 func (client *Client) GetNewestInnerGroupsWithOptions(tmpReq *GetNewestInnerGroupsRequest, tmpHeader *GetNewestInnerGroupsHeaders, runtime *util.RuntimeOptions) (_result *GetNewestInnerGroupsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63357,6 +66350,13 @@ func (client *Client) GetNewestInnerGroupsWithOptions(tmpReq *GetNewestInnerGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询最近活跃的企业内部群列表
+//
+// @param request - GetNewestInnerGroupsRequest
+//
+// @return GetNewestInnerGroupsResponse
 func (client *Client) GetNewestInnerGroups(request *GetNewestInnerGroupsRequest) (_result *GetNewestInnerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetNewestInnerGroupsHeaders{}
@@ -63369,6 +66369,17 @@ func (client *Client) GetNewestInnerGroups(request *GetNewestInnerGroupsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取节点
+//
+// @param tmpReq - GetNodeRequest
+//
+// @param tmpHeader - GetNodeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeResponse
 func (client *Client) GetNodeWithOptions(tmpReq *GetNodeRequest, tmpHeader *GetNodeHeaders, runtime *util.RuntimeOptions) (_result *GetNodeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63436,6 +66447,13 @@ func (client *Client) GetNodeWithOptions(tmpReq *GetNodeRequest, tmpHeader *GetN
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取节点
+//
+// @param request - GetNodeRequest
+//
+// @return GetNodeResponse
 func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetNodeHeaders{}
@@ -63448,6 +66466,17 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过链接获取节点
+//
+// @param tmpReq - GetNodeByUrlRequest
+//
+// @param tmpHeader - GetNodeByUrlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeByUrlResponse
 func (client *Client) GetNodeByUrlWithOptions(tmpReq *GetNodeByUrlRequest, tmpHeader *GetNodeByUrlHeaders, runtime *util.RuntimeOptions) (_result *GetNodeByUrlResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63515,6 +66544,13 @@ func (client *Client) GetNodeByUrlWithOptions(tmpReq *GetNodeByUrlRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过链接获取节点
+//
+// @param request - GetNodeByUrlRequest
+//
+// @return GetNodeByUrlResponse
 func (client *Client) GetNodeByUrl(request *GetNodeByUrlRequest) (_result *GetNodeByUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetNodeByUrlHeaders{}
@@ -63527,6 +66563,17 @@ func (client *Client) GetNodeByUrl(request *GetNodeByUrlRequest) (_result *GetNo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取节点
+//
+// @param tmpReq - GetNodesRequest
+//
+// @param tmpHeader - GetNodesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodesResponse
 func (client *Client) GetNodesWithOptions(tmpReq *GetNodesRequest, tmpHeader *GetNodesHeaders, runtime *util.RuntimeOptions) (_result *GetNodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -63598,6 +66645,13 @@ func (client *Client) GetNodesWithOptions(tmpReq *GetNodesRequest, tmpHeader *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取节点
+//
+// @param request - GetNodesRequest
+//
+// @return GetNodesResponse
 func (client *Client) GetNodes(request *GetNodesRequest) (_result *GetNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetNodesHeaders{}
@@ -63610,6 +66664,17 @@ func (client *Client) GetNodes(request *GetNodesRequest) (_result *GetNodesRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取发送给用户的通知
+//
+// @param request - GetNotifyMeRequest
+//
+// @param tmpHeader - GetNotifyMeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNotifyMeResponse
 func (client *Client) GetNotifyMeWithOptions(request *GetNotifyMeRequest, tmpHeader *GetNotifyMeHeaders, runtime *util.RuntimeOptions) (_result *GetNotifyMeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63703,6 +66768,13 @@ func (client *Client) GetNotifyMeWithOptions(request *GetNotifyMeRequest, tmpHea
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取发送给用户的通知
+//
+// @param request - GetNotifyMeRequest
+//
+// @return GetNotifyMeResponse
 func (client *Client) GetNotifyMe(request *GetNotifyMeRequest) (_result *GetNotifyMeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetNotifyMeHeaders{}
@@ -63715,6 +66787,17 @@ func (client *Client) GetNotifyMe(request *GetNotifyMeRequest) (_result *GetNoti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取宜搭附件临时免登地址
+//
+// @param request - GetOpenUrlRequest
+//
+// @param tmpHeader - GetOpenUrlHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpenUrlResponse
 func (client *Client) GetOpenUrlWithOptions(request *GetOpenUrlRequest, tmpHeader *GetOpenUrlHeaders, runtime *util.RuntimeOptions) (_result *GetOpenUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63780,6 +66863,13 @@ func (client *Client) GetOpenUrlWithOptions(request *GetOpenUrlRequest, tmpHeade
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取宜搭附件临时免登地址
+//
+// @param request - GetOpenUrlRequest
+//
+// @return GetOpenUrlResponse
 func (client *Client) GetOpenUrl(request *GetOpenUrlRequest) (_result *GetOpenUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetOpenUrlHeaders{}
@@ -63792,6 +66882,17 @@ func (client *Client) GetOpenUrl(request *GetOpenUrlRequest) (_result *GetOpenUr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取审批记录
+//
+// @param request - GetOperationRecordsRequest
+//
+// @param tmpHeader - GetOperationRecordsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationRecordsResponse
 func (client *Client) GetOperationRecordsWithOptions(request *GetOperationRecordsRequest, tmpHeader *GetOperationRecordsHeaders, runtime *util.RuntimeOptions) (_result *GetOperationRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63853,6 +66954,13 @@ func (client *Client) GetOperationRecordsWithOptions(request *GetOperationRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取审批记录
+//
+// @param request - GetOperationRecordsRequest
+//
+// @return GetOperationRecordsResponse
 func (client *Client) GetOperationRecords(request *GetOperationRecordsRequest) (_result *GetOperationRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetOperationRecordsHeaders{}
@@ -63865,6 +66973,17 @@ func (client *Client) GetOperationRecords(request *GetOperationRecordsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程定义
+//
+// @param request - GetProcessDefinitionRequest
+//
+// @param tmpHeader - GetProcessDefinitionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProcessDefinitionResponse
 func (client *Client) GetProcessDefinitionWithOptions(request *GetProcessDefinitionRequest, tmpHeader *GetProcessDefinitionHeaders, runtime *util.RuntimeOptions) (_result *GetProcessDefinitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63946,6 +67065,13 @@ func (client *Client) GetProcessDefinitionWithOptions(request *GetProcessDefinit
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流程定义
+//
+// @param request - GetProcessDefinitionRequest
+//
+// @return GetProcessDefinitionResponse
 func (client *Client) GetProcessDefinition(request *GetProcessDefinitionRequest) (_result *GetProcessDefinitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetProcessDefinitionHeaders{}
@@ -63958,6 +67084,17 @@ func (client *Client) GetProcessDefinition(request *GetProcessDefinitionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单元格区域
+//
+// @param tmpReq - GetRangeRequest
+//
+// @param tmpHeader - GetRangeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRangeResponse
 func (client *Client) GetRangeWithOptions(tmpReq *GetRangeRequest, tmpHeader *GetRangeHeaders, runtime *util.RuntimeOptions) (_result *GetRangeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64029,6 +67166,13 @@ func (client *Client) GetRangeWithOptions(tmpReq *GetRangeRequest, tmpHeader *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取单元格区域
+//
+// @param request - GetRangeRequest
+//
+// @return GetRangeResponse
 func (client *Client) GetRange(request *GetRangeRequest) (_result *GetRangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetRangeHeaders{}
@@ -64041,6 +67185,17 @@ func (client *Client) GetRange(request *GetRangeRequest) (_result *GetRangeRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户有权限的知识库列表(旧)
+//
+// @param tmpReq - GetRelatedWorkspacesRequest
+//
+// @param tmpHeader - GetRelatedWorkspacesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRelatedWorkspacesResponse
 func (client *Client) GetRelatedWorkspacesWithOptions(tmpReq *GetRelatedWorkspacesRequest, tmpHeader *GetRelatedWorkspacesHeaders, runtime *util.RuntimeOptions) (_result *GetRelatedWorkspacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64100,6 +67255,13 @@ func (client *Client) GetRelatedWorkspacesWithOptions(tmpReq *GetRelatedWorkspac
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户有权限的知识库列表(旧)
+//
+// @param request - GetRelatedWorkspacesRequest
+//
+// @return GetRelatedWorkspacesResponse
 func (client *Client) GetRelatedWorkspaces(request *GetRelatedWorkspacesRequest) (_result *GetRelatedWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetRelatedWorkspacesHeaders{}
@@ -64112,6 +67274,17 @@ func (client *Client) GetRelatedWorkspaces(request *GetRelatedWorkspacesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模板详情
+//
+// @param tmpReq - GetReportTemplateByNameRequest
+//
+// @param tmpHeader - GetReportTemplateByNameHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportTemplateByNameResponse
 func (client *Client) GetReportTemplateByNameWithOptions(tmpReq *GetReportTemplateByNameRequest, tmpHeader *GetReportTemplateByNameHeaders, runtime *util.RuntimeOptions) (_result *GetReportTemplateByNameResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64171,6 +67344,13 @@ func (client *Client) GetReportTemplateByNameWithOptions(tmpReq *GetReportTempla
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模板详情
+//
+// @param request - GetReportTemplateByNameRequest
+//
+// @return GetReportTemplateByNameResponse
 func (client *Client) GetReportTemplateByName(request *GetReportTemplateByNameRequest) (_result *GetReportTemplateByNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetReportTemplateByNameHeaders{}
@@ -64183,6 +67363,17 @@ func (client *Client) GetReportTemplateByName(request *GetReportTemplateByNameRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取员工有多少数量的日志（一个月内）是未读状态
+//
+// @param tmpReq - GetReportUnReadCountRequest
+//
+// @param tmpHeader - GetReportUnReadCountHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReportUnReadCountResponse
 func (client *Client) GetReportUnReadCountWithOptions(tmpReq *GetReportUnReadCountRequest, tmpHeader *GetReportUnReadCountHeaders, runtime *util.RuntimeOptions) (_result *GetReportUnReadCountResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64246,6 +67437,13 @@ func (client *Client) GetReportUnReadCountWithOptions(tmpReq *GetReportUnReadCou
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取员工有多少数量的日志（一个月内）是未读状态
+//
+// @param request - GetReportUnReadCountRequest
+//
+// @return GetReportUnReadCountResponse
 func (client *Client) GetReportUnReadCount(request *GetReportUnReadCountRequest) (_result *GetReportUnReadCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetReportUnReadCountHeaders{}
@@ -64258,6 +67456,17 @@ func (client *Client) GetReportUnReadCount(request *GetReportUnReadCountRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流程运行任务（VPC）
+//
+// @param request - GetRunningTasksRequest
+//
+// @param tmpHeader - GetRunningTasksHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRunningTasksResponse
 func (client *Client) GetRunningTasksWithOptions(request *GetRunningTasksRequest, tmpHeader *GetRunningTasksHeaders, runtime *util.RuntimeOptions) (_result *GetRunningTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64323,6 +67532,13 @@ func (client *Client) GetRunningTasksWithOptions(request *GetRunningTasksRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流程运行任务（VPC）
+//
+// @param request - GetRunningTasksRequest
+//
+// @return GetRunningTasksResponse
 func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result *GetRunningTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetRunningTasksHeaders{}
@@ -64335,6 +67551,17 @@ func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工作表
+//
+// @param tmpReq - GetSheetRequest
+//
+// @param tmpHeader - GetSheetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSheetResponse
 func (client *Client) GetSheetWithOptions(tmpReq *GetSheetRequest, tmpHeader *GetSheetHeaders, runtime *util.RuntimeOptions) (_result *GetSheetResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64398,6 +67625,13 @@ func (client *Client) GetSheetWithOptions(tmpReq *GetSheetRequest, tmpHeader *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工作表
+//
+// @param request - GetSheetRequest
+//
+// @return GetSheetResponse
 func (client *Client) GetSheet(request *GetSheetRequest) (_result *GetSheetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetSheetHeaders{}
@@ -64410,6 +67644,17 @@ func (client *Client) GetSheet(request *GetSheetRequest) (_result *GetSheetRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询知识库下的目录结构
+//
+// @param tmpReq - GetSpaceDirectoriesRequest
+//
+// @param tmpHeader - GetSpaceDirectoriesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSpaceDirectoriesResponse
 func (client *Client) GetSpaceDirectoriesWithOptions(tmpReq *GetSpaceDirectoriesRequest, tmpHeader *GetSpaceDirectoriesHeaders, runtime *util.RuntimeOptions) (_result *GetSpaceDirectoriesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64481,6 +67726,13 @@ func (client *Client) GetSpaceDirectoriesWithOptions(tmpReq *GetSpaceDirectories
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询知识库下的目录结构
+//
+// @param request - GetSpaceDirectoriesRequest
+//
+// @return GetSpaceDirectoriesResponse
 func (client *Client) GetSpaceDirectories(request *GetSpaceDirectoriesRequest) (_result *GetSpaceDirectoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetSpaceDirectoriesHeaders{}
@@ -64493,6 +67745,17 @@ func (client *Client) GetSpaceDirectories(request *GetSpaceDirectoriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询单个订阅日历详情
+//
+// @param request - GetSubscribedCalendarRequest
+//
+// @param tmpHeader - GetSubscribedCalendarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscribedCalendarResponse
 func (client *Client) GetSubscribedCalendarWithOptions(request *GetSubscribedCalendarRequest, tmpHeader *GetSubscribedCalendarHeaders, runtime *util.RuntimeOptions) (_result *GetSubscribedCalendarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64542,6 +67805,13 @@ func (client *Client) GetSubscribedCalendarWithOptions(request *GetSubscribedCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询单个订阅日历详情
+//
+// @param request - GetSubscribedCalendarRequest
+//
+// @return GetSubscribedCalendarResponse
 func (client *Client) GetSubscribedCalendar(request *GetSubscribedCalendarRequest) (_result *GetSubscribedCalendarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetSubscribedCalendarHeaders{}
@@ -64554,6 +67824,17 @@ func (client *Client) GetSubscribedCalendar(request *GetSubscribedCalendarReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询抄送我的任务列表（应用维度）
+//
+// @param request - GetTaskCopiesRequest
+//
+// @param tmpHeader - GetTaskCopiesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskCopiesResponse
 func (client *Client) GetTaskCopiesWithOptions(request *GetTaskCopiesRequest, tmpHeader *GetTaskCopiesHeaders, runtime *util.RuntimeOptions) (_result *GetTaskCopiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64635,6 +67916,13 @@ func (client *Client) GetTaskCopiesWithOptions(request *GetTaskCopiesRequest, tm
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询抄送我的任务列表（应用维度）
+//
+// @param request - GetTaskCopiesRequest
+//
+// @return GetTaskCopiesResponse
 func (client *Client) GetTaskCopies(request *GetTaskCopiesRequest) (_result *GetTaskCopiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetTaskCopiesHeaders{}
@@ -64647,6 +67935,17 @@ func (client *Client) GetTaskCopies(request *GetTaskCopiesRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户可见的日志模板
+//
+// @param tmpReq - GetTemplateListByUserIdRequest
+//
+// @param tmpHeader - GetTemplateListByUserIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateListByUserIdResponse
 func (client *Client) GetTemplateListByUserIdWithOptions(tmpReq *GetTemplateListByUserIdRequest, tmpHeader *GetTemplateListByUserIdHeaders, runtime *util.RuntimeOptions) (_result *GetTemplateListByUserIdResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64710,6 +68009,13 @@ func (client *Client) GetTemplateListByUserIdWithOptions(tmpReq *GetTemplateList
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户可见的日志模板
+//
+// @param request - GetTemplateListByUserIdRequest
+//
+// @return GetTemplateListByUserIdResponse
 func (client *Client) GetTemplateListByUserId(request *GetTemplateListByUserIdRequest) (_result *GetTemplateListByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetTemplateListByUserIdHeaders{}
@@ -64722,6 +68028,17 @@ func (client *Client) GetTemplateListByUserId(request *GetTemplateListByUserIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取专属账号信息
+//
+// @param tmpReq - GetUserRequest
+//
+// @param tmpHeader - GetUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(tmpReq *GetUserRequest, tmpHeader *GetUserHeaders, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64781,6 +68098,13 @@ func (client *Client) GetUserWithOptions(tmpReq *GetUserRequest, tmpHeader *GetU
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取专属账号信息
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserHeaders{}
@@ -64793,6 +68117,17 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户最新的有效的专属账号迁移方案
+//
+// @param tmpReq - GetUserLatestPlanRequest
+//
+// @param tmpHeader - GetUserLatestPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserLatestPlanResponse
 func (client *Client) GetUserLatestPlanWithOptions(tmpReq *GetUserLatestPlanRequest, tmpHeader *GetUserLatestPlanHeaders, runtime *util.RuntimeOptions) (_result *GetUserLatestPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64848,6 +68183,13 @@ func (client *Client) GetUserLatestPlanWithOptions(tmpReq *GetUserLatestPlanRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户最新的有效的专属账号迁移方案
+//
+// @param request - GetUserLatestPlanRequest
+//
+// @return GetUserLatestPlanResponse
 func (client *Client) GetUserLatestPlan(request *GetUserLatestPlanRequest) (_result *GetUserLatestPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserLatestPlanHeaders{}
@@ -64860,6 +68202,17 @@ func (client *Client) GetUserLatestPlan(request *GetUserLatestPlanRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库
+//
+// @param tmpReq - GetWorkspaceRequest
+//
+// @param tmpHeader - GetWorkspaceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceResponse
 func (client *Client) GetWorkspaceWithOptions(tmpReq *GetWorkspaceRequest, tmpHeader *GetWorkspaceHeaders, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -64923,6 +68276,13 @@ func (client *Client) GetWorkspaceWithOptions(tmpReq *GetWorkspaceRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库
+//
+// @param request - GetWorkspaceRequest
+//
+// @return GetWorkspaceResponse
 func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetWorkspaceHeaders{}
@@ -64935,6 +68295,17 @@ func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取知识库
+//
+// @param tmpReq - GetWorkspacesRequest
+//
+// @param tmpHeader - GetWorkspacesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspacesResponse
 func (client *Client) GetWorkspacesWithOptions(tmpReq *GetWorkspacesRequest, tmpHeader *GetWorkspacesHeaders, runtime *util.RuntimeOptions) (_result *GetWorkspacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65006,6 +68377,13 @@ func (client *Client) GetWorkspacesWithOptions(tmpReq *GetWorkspacesRequest, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量获取知识库
+//
+// @param request - GetWorkspacesRequest
+//
+// @return GetWorkspacesResponse
 func (client *Client) GetWorkspaces(request *GetWorkspacesRequest) (_result *GetWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetWorkspacesHeaders{}
@@ -65018,6 +68396,17 @@ func (client *Client) GetWorkspaces(request *GetWorkspacesRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 授予勋章
+//
+// @param tmpReq - GrantHonorRequest
+//
+// @param tmpHeader - GrantHonorHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantHonorResponse
 func (client *Client) GrantHonorWithOptions(tmpReq *GrantHonorRequest, tmpHeader *GrantHonorHeaders, runtime *util.RuntimeOptions) (_result *GrantHonorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65121,6 +68510,13 @@ func (client *Client) GrantHonorWithOptions(tmpReq *GrantHonorRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 授予勋章
+//
+// @param request - GrantHonorRequest
+//
+// @return GrantHonorResponse
 func (client *Client) GrantHonor(request *GrantHonorRequest) (_result *GrantHonorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GrantHonorHeaders{}
@@ -65133,6 +68529,17 @@ func (client *Client) GrantHonor(request *GrantHonorRequest) (_result *GrantHono
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定列左侧插入若干列
+//
+// @param tmpReq - InsertColumnsBeforeRequest
+//
+// @param tmpHeader - InsertColumnsBeforeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertColumnsBeforeResponse
 func (client *Client) InsertColumnsBeforeWithOptions(tmpReq *InsertColumnsBeforeRequest, tmpHeader *InsertColumnsBeforeHeaders, runtime *util.RuntimeOptions) (_result *InsertColumnsBeforeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65204,6 +68611,13 @@ func (client *Client) InsertColumnsBeforeWithOptions(tmpReq *InsertColumnsBefore
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定列左侧插入若干列
+//
+// @param request - InsertColumnsBeforeRequest
+//
+// @return InsertColumnsBeforeResponse
 func (client *Client) InsertColumnsBefore(request *InsertColumnsBeforeRequest) (_result *InsertColumnsBeforeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsertColumnsBeforeHeaders{}
@@ -65216,6 +68630,17 @@ func (client *Client) InsertColumnsBefore(request *InsertColumnsBeforeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定行上方插入若干行
+//
+// @param tmpReq - InsertRowsBeforeRequest
+//
+// @param tmpHeader - InsertRowsBeforeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertRowsBeforeResponse
 func (client *Client) InsertRowsBeforeWithOptions(tmpReq *InsertRowsBeforeRequest, tmpHeader *InsertRowsBeforeHeaders, runtime *util.RuntimeOptions) (_result *InsertRowsBeforeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65287,6 +68712,13 @@ func (client *Client) InsertRowsBeforeWithOptions(tmpReq *InsertRowsBeforeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定行上方插入若干行
+//
+// @param request - InsertRowsBeforeRequest
+//
+// @return InsertRowsBeforeResponse
 func (client *Client) InsertRowsBefore(request *InsertRowsBeforeRequest) (_result *InsertRowsBeforeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InsertRowsBeforeHeaders{}
@@ -65299,6 +68731,17 @@ func (client *Client) InsertRowsBefore(request *InsertRowsBeforeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 邀请用户入会
+//
+// @param tmpReq - InviteUsersRequest
+//
+// @param tmpHeader - InviteUsersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InviteUsersResponse
 func (client *Client) InviteUsersWithOptions(tmpReq *InviteUsersRequest, tmpHeader *InviteUsersHeaders, runtime *util.RuntimeOptions) (_result *InviteUsersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65374,6 +68817,13 @@ func (client *Client) InviteUsersWithOptions(tmpReq *InviteUsersRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 邀请用户入会
+//
+// @param request - InviteUsersRequest
+//
+// @return InviteUsersResponse
 func (client *Client) InviteUsers(request *InviteUsersRequest) (_result *InviteUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InviteUsersHeaders{}
@@ -65386,6 +68836,17 @@ func (client *Client) InviteUsers(request *InviteUsersRequest) (_result *InviteU
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询宜搭应用列表
+//
+// @param request - ListApplicationRequest
+//
+// @param tmpHeader - ListApplicationHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationResponse
 func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest, tmpHeader *ListApplicationHeaders, runtime *util.RuntimeOptions) (_result *ListApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65455,6 +68916,13 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询宜搭应用列表
+//
+// @param request - ListApplicationRequest
+//
+// @return ListApplicationResponse
 func (client *Client) ListApplication(request *ListApplicationRequest) (_result *ListApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListApplicationHeaders{}
@@ -65467,6 +68935,17 @@ func (client *Client) ListApplication(request *ListApplicationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日历
+//
+// @param tmpReq - ListCalendarsRequest
+//
+// @param tmpHeader - ListCalendarsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCalendarsResponse
 func (client *Client) ListCalendarsWithOptions(tmpReq *ListCalendarsRequest, tmpHeader *ListCalendarsHeaders, runtime *util.RuntimeOptions) (_result *ListCalendarsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65522,6 +69001,13 @@ func (client *Client) ListCalendarsWithOptions(tmpReq *ListCalendarsRequest, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日历
+//
+// @param request - ListCalendarsRequest
+//
+// @return ListCalendarsResponse
 func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *ListCalendarsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListCalendarsHeaders{}
@@ -65534,6 +69020,17 @@ func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件或文件夹列表
+//
+// @param tmpReq - ListDentriesRequest
+//
+// @param tmpHeader - ListDentriesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDentriesResponse
 func (client *Client) ListDentriesWithOptions(tmpReq *ListDentriesRequest, tmpHeader *ListDentriesHeaders, runtime *util.RuntimeOptions) (_result *ListDentriesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65617,6 +69114,13 @@ func (client *Client) ListDentriesWithOptions(tmpReq *ListDentriesRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件或文件夹列表
+//
+// @param request - ListDentriesRequest
+//
+// @return ListDentriesResponse
 func (client *Client) ListDentries(request *ListDentriesRequest) (_result *ListDentriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListDentriesHeaders{}
@@ -65629,6 +69133,17 @@ func (client *Client) ListDentries(request *ListDentriesRequest) (_result *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日程列表
+//
+// @param request - ListEventsRequest
+//
+// @param tmpHeader - ListEventsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventsResponse
 func (client *Client) ListEventsWithOptions(request *ListEventsRequest, tmpHeader *ListEventsHeaders, runtime *util.RuntimeOptions) (_result *ListEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65710,6 +69225,13 @@ func (client *Client) ListEventsWithOptions(request *ListEventsRequest, tmpHeade
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日程列表
+//
+// @param request - ListEventsRequest
+//
+// @return ListEventsResponse
 func (client *Client) ListEvents(request *ListEventsRequest) (_result *ListEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListEventsHeaders{}
@@ -65722,6 +69244,17 @@ func (client *Client) ListEvents(request *ListEventsRequest) (_result *ListEvent
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日程视图
+//
+// @param request - ListEventsViewRequest
+//
+// @param tmpHeader - ListEventsViewHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventsViewResponse
 func (client *Client) ListEventsViewWithOptions(request *ListEventsViewRequest, tmpHeader *ListEventsViewHeaders, runtime *util.RuntimeOptions) (_result *ListEventsViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65791,6 +69324,13 @@ func (client *Client) ListEventsViewWithOptions(request *ListEventsViewRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日程视图
+//
+// @param request - ListEventsViewRequest
+//
+// @return ListEventsViewResponse
 func (client *Client) ListEventsView(request *ListEventsViewRequest) (_result *ListEventsViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListEventsViewHeaders{}
@@ -65803,6 +69343,17 @@ func (client *Client) ListEventsView(request *ListEventsViewRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询宜搭表单实例的评论
+//
+// @param tmpReq - ListFormRemarksRequest
+//
+// @param tmpHeader - ListFormRemarksHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFormRemarksResponse
 func (client *Client) ListFormRemarksWithOptions(tmpReq *ListFormRemarksRequest, tmpHeader *ListFormRemarksHeaders, runtime *util.RuntimeOptions) (_result *ListFormRemarksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -65870,6 +69421,13 @@ func (client *Client) ListFormRemarksWithOptions(tmpReq *ListFormRemarksRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量查询宜搭表单实例的评论
+//
+// @param request - ListFormRemarksRequest
+//
+// @return ListFormRemarksResponse
 func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result *ListFormRemarksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListFormRemarksHeaders{}
@@ -65882,6 +69440,17 @@ func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取应用下的页面列表
+//
+// @param request - ListNavigationByFormTypeRequest
+//
+// @param tmpHeader - ListNavigationByFormTypeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNavigationByFormTypeResponse
 func (client *Client) ListNavigationByFormTypeWithOptions(request *ListNavigationByFormTypeRequest, tmpHeader *ListNavigationByFormTypeHeaders, runtime *util.RuntimeOptions) (_result *ListNavigationByFormTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -65943,6 +69512,13 @@ func (client *Client) ListNavigationByFormTypeWithOptions(request *ListNavigatio
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取应用下的页面列表
+//
+// @param request - ListNavigationByFormTypeRequest
+//
+// @return ListNavigationByFormTypeResponse
 func (client *Client) ListNavigationByFormType(request *ListNavigationByFormTypeRequest) (_result *ListNavigationByFormTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListNavigationByFormTypeHeaders{}
@@ -65955,6 +69531,17 @@ func (client *Client) ListNavigationByFormType(request *ListNavigationByFormType
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取节点列表
+//
+// @param tmpReq - ListNodesRequest
+//
+// @param tmpHeader - ListNodesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodesResponse
 func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, tmpHeader *ListNodesHeaders, runtime *util.RuntimeOptions) (_result *ListNodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66026,6 +69613,13 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, tmpHeader *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取节点列表
+//
+// @param request - ListNodesRequest
+//
+// @return ListNodesResponse
 func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListNodesHeaders{}
@@ -66038,6 +69632,17 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户发出的日志列表
+//
+// @param tmpReq - ListReportRequest
+//
+// @param tmpHeader - ListReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReportResponse
 func (client *Client) ListReportWithOptions(tmpReq *ListReportRequest, tmpHeader *ListReportHeaders, runtime *util.RuntimeOptions) (_result *ListReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66121,6 +69726,13 @@ func (client *Client) ListReportWithOptions(tmpReq *ListReportRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户发出的日志列表
+//
+// @param request - ListReportRequest
+//
+// @return ListReportResponse
 func (client *Client) ListReport(request *ListReportRequest) (_result *ListReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListReportHeaders{}
@@ -66133,6 +69745,17 @@ func (client *Client) ListReport(request *ListReportRequest) (_result *ListRepor
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子表组件数据
+//
+// @param request - ListTableDataByFormInstanceIdTableIdRequest
+//
+// @param tmpHeader - ListTableDataByFormInstanceIdTableIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableDataByFormInstanceIdTableIdResponse
 func (client *Client) ListTableDataByFormInstanceIdTableIdWithOptions(request *ListTableDataByFormInstanceIdTableIdRequest, tmpHeader *ListTableDataByFormInstanceIdTableIdHeaders, runtime *util.RuntimeOptions) (_result *ListTableDataByFormInstanceIdTableIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66206,6 +69829,13 @@ func (client *Client) ListTableDataByFormInstanceIdTableIdWithOptions(request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取子表组件数据
+//
+// @param request - ListTableDataByFormInstanceIdTableIdRequest
+//
+// @return ListTableDataByFormInstanceIdTableIdResponse
 func (client *Client) ListTableDataByFormInstanceIdTableId(request *ListTableDataByFormInstanceIdTableIdRequest) (_result *ListTableDataByFormInstanceIdTableIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListTableDataByFormInstanceIdTableIdHeaders{}
@@ -66218,6 +69848,17 @@ func (client *Client) ListTableDataByFormInstanceIdTableId(request *ListTableDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识小组列表
+//
+// @param tmpReq - ListTeamsRequest
+//
+// @param tmpHeader - ListTeamsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTeamsResponse
 func (client *Client) ListTeamsWithOptions(tmpReq *ListTeamsRequest, tmpHeader *ListTeamsHeaders, runtime *util.RuntimeOptions) (_result *ListTeamsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66281,6 +69922,13 @@ func (client *Client) ListTeamsWithOptions(tmpReq *ListTeamsRequest, tmpHeader *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识小组列表
+//
+// @param request - ListTeamsRequest
+//
+// @return ListTeamsResponse
 func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListTeamsHeaders{}
@@ -66293,6 +69941,17 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库列表
+//
+// @param tmpReq - ListWorkspacesRequest
+//
+// @param tmpHeader - ListWorkspacesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, tmpHeader *ListWorkspacesHeaders, runtime *util.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66368,6 +70027,13 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取知识库列表
+//
+// @param request - ListWorkspacesRequest
+//
+// @return ListWorkspacesResponse
 func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListWorkspacesHeaders{}
@@ -66380,6 +70046,17 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改日程
+//
+// @param tmpReq - PatchEventRequest
+//
+// @param tmpHeader - PatchEventHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchEventResponse
 func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader *PatchEventHeaders, runtime *util.RuntimeOptions) (_result *PatchEventResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66503,6 +70180,13 @@ func (client *Client) PatchEventWithOptions(tmpReq *PatchEventRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改日程
+//
+// @param request - PatchEventRequest
+//
+// @return PatchEventResponse
 func (client *Client) PatchEvent(request *PatchEventRequest) (_result *PatchEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PatchEventHeaders{}
@@ -66515,6 +70199,17 @@ func (client *Client) PatchEvent(request *PatchEventRequest) (_result *PatchEven
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制中的文本信息
+//
+// @param tmpReq - QueryCloudRecordTextRequest
+//
+// @param tmpHeader - QueryCloudRecordTextHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCloudRecordTextResponse
 func (client *Client) QueryCloudRecordTextWithOptions(tmpReq *QueryCloudRecordTextRequest, tmpHeader *QueryCloudRecordTextHeaders, runtime *util.RuntimeOptions) (_result *QueryCloudRecordTextResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66590,6 +70285,13 @@ func (client *Client) QueryCloudRecordTextWithOptions(tmpReq *QueryCloudRecordTe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制中的文本信息
+//
+// @param request - QueryCloudRecordTextRequest
+//
+// @return QueryCloudRecordTextResponse
 func (client *Client) QueryCloudRecordText(request *QueryCloudRecordTextRequest) (_result *QueryCloudRecordTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryCloudRecordTextHeaders{}
@@ -66602,6 +70304,17 @@ func (client *Client) QueryCloudRecordText(request *QueryCloudRecordTextRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制的详情信息
+//
+// @param tmpReq - QueryCloudRecordVideoRequest
+//
+// @param tmpHeader - QueryCloudRecordVideoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCloudRecordVideoResponse
 func (client *Client) QueryCloudRecordVideoWithOptions(tmpReq *QueryCloudRecordVideoRequest, tmpHeader *QueryCloudRecordVideoHeaders, runtime *util.RuntimeOptions) (_result *QueryCloudRecordVideoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66661,6 +70374,13 @@ func (client *Client) QueryCloudRecordVideoWithOptions(tmpReq *QueryCloudRecordV
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制的详情信息
+//
+// @param request - QueryCloudRecordVideoRequest
+//
+// @return QueryCloudRecordVideoResponse
 func (client *Client) QueryCloudRecordVideo(request *QueryCloudRecordVideoRequest) (_result *QueryCloudRecordVideoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryCloudRecordVideoHeaders{}
@@ -66673,6 +70393,17 @@ func (client *Client) QueryCloudRecordVideo(request *QueryCloudRecordVideoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制中的视频信息
+//
+// @param tmpReq - QueryCloudRecordVideoPlayInfoRequest
+//
+// @param tmpHeader - QueryCloudRecordVideoPlayInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCloudRecordVideoPlayInfoResponse
 func (client *Client) QueryCloudRecordVideoPlayInfoWithOptions(tmpReq *QueryCloudRecordVideoPlayInfoRequest, tmpHeader *QueryCloudRecordVideoPlayInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryCloudRecordVideoPlayInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66740,6 +70471,13 @@ func (client *Client) QueryCloudRecordVideoPlayInfoWithOptions(tmpReq *QueryClou
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议录制中的视频信息
+//
+// @param request - QueryCloudRecordVideoPlayInfoRequest
+//
+// @return QueryCloudRecordVideoPlayInfoResponse
 func (client *Client) QueryCloudRecordVideoPlayInfo(request *QueryCloudRecordVideoPlayInfoRequest) (_result *QueryCloudRecordVideoPlayInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryCloudRecordVideoPlayInfoHeaders{}
@@ -66752,6 +70490,17 @@ func (client *Client) QueryCloudRecordVideoPlayInfo(request *QueryCloudRecordVid
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询视频会议信息
+//
+// @param request - QueryConferenceInfoRequest
+//
+// @param tmpHeader - QueryConferenceInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConferenceInfoResponse
 func (client *Client) QueryConferenceInfoWithOptions(request *QueryConferenceInfoRequest, tmpHeader *QueryConferenceInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryConferenceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66801,6 +70550,13 @@ func (client *Client) QueryConferenceInfoWithOptions(request *QueryConferenceInf
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询视频会议信息
+//
+// @param request - QueryConferenceInfoRequest
+//
+// @return QueryConferenceInfoResponse
 func (client *Client) QueryConferenceInfo(request *QueryConferenceInfoRequest) (_result *QueryConferenceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryConferenceInfoHeaders{}
@@ -66813,6 +70569,17 @@ func (client *Client) QueryConferenceInfo(request *QueryConferenceInfoRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询视频会议成员
+//
+// @param tmpReq - QueryConferenceMembersRequest
+//
+// @param tmpHeader - QueryConferenceMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConferenceMembersResponse
 func (client *Client) QueryConferenceMembersWithOptions(tmpReq *QueryConferenceMembersRequest, tmpHeader *QueryConferenceMembersHeaders, runtime *util.RuntimeOptions) (_result *QueryConferenceMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66880,6 +70647,13 @@ func (client *Client) QueryConferenceMembersWithOptions(tmpReq *QueryConferenceM
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询视频会议成员
+//
+// @param request - QueryConferenceMembersRequest
+//
+// @return QueryConferenceMembersResponse
 func (client *Client) QueryConferenceMembers(request *QueryConferenceMembersRequest) (_result *QueryConferenceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryConferenceMembersHeaders{}
@@ -66892,6 +70666,17 @@ func (client *Client) QueryConferenceMembers(request *QueryConferenceMembersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询知识库节点信息
+//
+// @param tmpReq - QueryDentryRequest
+//
+// @param tmpHeader - QueryDentryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDentryResponse
 func (client *Client) QueryDentryWithOptions(tmpReq *QueryDentryRequest, tmpHeader *QueryDentryHeaders, runtime *util.RuntimeOptions) (_result *QueryDentryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -66959,6 +70744,13 @@ func (client *Client) QueryDentryWithOptions(tmpReq *QueryDentryRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询知识库节点信息
+//
+// @param request - QueryDentryRequest
+//
+// @return QueryDentryResponse
 func (client *Client) QueryDentry(request *QueryDentryRequest) (_result *QueryDentryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryDentryHeaders{}
@@ -66971,6 +70763,17 @@ func (client *Client) QueryDentry(request *QueryDentryRequest) (_result *QueryDe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播信息
+//
+// @param tmpReq - QueryLiveInfoRequest
+//
+// @param tmpHeader - QueryLiveInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLiveInfoResponse
 func (client *Client) QueryLiveInfoWithOptions(tmpReq *QueryLiveInfoRequest, tmpHeader *QueryLiveInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryLiveInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67030,6 +70833,13 @@ func (client *Client) QueryLiveInfoWithOptions(tmpReq *QueryLiveInfoRequest, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播信息
+//
+// @param request - QueryLiveInfoRequest
+//
+// @return QueryLiveInfoResponse
 func (client *Client) QueryLiveInfo(request *QueryLiveInfoRequest) (_result *QueryLiveInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryLiveInfoHeaders{}
@@ -67042,6 +70852,17 @@ func (client *Client) QueryLiveInfo(request *QueryLiveInfoRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播的观看数据
+//
+// @param tmpReq - QueryLiveWatchDetailRequest
+//
+// @param tmpHeader - QueryLiveWatchDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLiveWatchDetailResponse
 func (client *Client) QueryLiveWatchDetailWithOptions(tmpReq *QueryLiveWatchDetailRequest, tmpHeader *QueryLiveWatchDetailHeaders, runtime *util.RuntimeOptions) (_result *QueryLiveWatchDetailResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67101,6 +70922,13 @@ func (client *Client) QueryLiveWatchDetailWithOptions(tmpReq *QueryLiveWatchDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播的观看数据
+//
+// @param request - QueryLiveWatchDetailRequest
+//
+// @return QueryLiveWatchDetailResponse
 func (client *Client) QueryLiveWatchDetail(request *QueryLiveWatchDetailRequest) (_result *QueryLiveWatchDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryLiveWatchDetailHeaders{}
@@ -67113,6 +70941,17 @@ func (client *Client) QueryLiveWatchDetail(request *QueryLiveWatchDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播观看人员信息
+//
+// @param tmpReq - QueryLiveWatchUserListRequest
+//
+// @param tmpHeader - QueryLiveWatchUserListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLiveWatchUserListResponse
 func (client *Client) QueryLiveWatchUserListWithOptions(tmpReq *QueryLiveWatchUserListRequest, tmpHeader *QueryLiveWatchUserListHeaders, runtime *util.RuntimeOptions) (_result *QueryLiveWatchUserListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67180,6 +71019,13 @@ func (client *Client) QueryLiveWatchUserListWithOptions(tmpReq *QueryLiveWatchUs
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询直播观看人员信息
+//
+// @param request - QueryLiveWatchUserListRequest
+//
+// @return QueryLiveWatchUserListResponse
 func (client *Client) QueryLiveWatchUserList(request *QueryLiveWatchUserListRequest) (_result *QueryLiveWatchUserListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryLiveWatchUserListHeaders{}
@@ -67192,6 +71038,17 @@ func (client *Client) QueryLiveWatchUserList(request *QueryLiveWatchUserListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室详情
+//
+// @param tmpReq - QueryMeetingRoomRequest
+//
+// @param tmpHeader - QueryMeetingRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMeetingRoomResponse
 func (client *Client) QueryMeetingRoomWithOptions(tmpReq *QueryMeetingRoomRequest, tmpHeader *QueryMeetingRoomHeaders, runtime *util.RuntimeOptions) (_result *QueryMeetingRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67251,6 +71108,13 @@ func (client *Client) QueryMeetingRoomWithOptions(tmpReq *QueryMeetingRoomReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室详情
+//
+// @param request - QueryMeetingRoomRequest
+//
+// @return QueryMeetingRoomResponse
 func (client *Client) QueryMeetingRoom(request *QueryMeetingRoomRequest) (_result *QueryMeetingRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryMeetingRoomHeaders{}
@@ -67263,6 +71127,17 @@ func (client *Client) QueryMeetingRoom(request *QueryMeetingRoomRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室分组信息
+//
+// @param tmpReq - QueryMeetingRoomGroupRequest
+//
+// @param tmpHeader - QueryMeetingRoomGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMeetingRoomGroupResponse
 func (client *Client) QueryMeetingRoomGroupWithOptions(tmpReq *QueryMeetingRoomGroupRequest, tmpHeader *QueryMeetingRoomGroupHeaders, runtime *util.RuntimeOptions) (_result *QueryMeetingRoomGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67322,6 +71197,13 @@ func (client *Client) QueryMeetingRoomGroupWithOptions(tmpReq *QueryMeetingRoomG
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室分组信息
+//
+// @param request - QueryMeetingRoomGroupRequest
+//
+// @return QueryMeetingRoomGroupResponse
 func (client *Client) QueryMeetingRoomGroup(request *QueryMeetingRoomGroupRequest) (_result *QueryMeetingRoomGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryMeetingRoomGroupHeaders{}
@@ -67334,6 +71216,17 @@ func (client *Client) QueryMeetingRoomGroup(request *QueryMeetingRoomGroupReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室分组列表
+//
+// @param tmpReq - QueryMeetingRoomGroupListRequest
+//
+// @param tmpHeader - QueryMeetingRoomGroupListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMeetingRoomGroupListResponse
 func (client *Client) QueryMeetingRoomGroupListWithOptions(tmpReq *QueryMeetingRoomGroupListRequest, tmpHeader *QueryMeetingRoomGroupListHeaders, runtime *util.RuntimeOptions) (_result *QueryMeetingRoomGroupListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67397,6 +71290,13 @@ func (client *Client) QueryMeetingRoomGroupListWithOptions(tmpReq *QueryMeetingR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室分组列表
+//
+// @param request - QueryMeetingRoomGroupListRequest
+//
+// @return QueryMeetingRoomGroupListResponse
 func (client *Client) QueryMeetingRoomGroupList(request *QueryMeetingRoomGroupListRequest) (_result *QueryMeetingRoomGroupListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryMeetingRoomGroupListHeaders{}
@@ -67409,6 +71309,17 @@ func (client *Client) QueryMeetingRoomGroupList(request *QueryMeetingRoomGroupLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室列表
+//
+// @param tmpReq - QueryMeetingRoomListRequest
+//
+// @param tmpHeader - QueryMeetingRoomListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMeetingRoomListResponse
 func (client *Client) QueryMeetingRoomListWithOptions(tmpReq *QueryMeetingRoomListRequest, tmpHeader *QueryMeetingRoomListHeaders, runtime *util.RuntimeOptions) (_result *QueryMeetingRoomListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67472,6 +71383,13 @@ func (client *Client) QueryMeetingRoomListWithOptions(tmpReq *QueryMeetingRoomLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询会议室列表
+//
+// @param request - QueryMeetingRoomListRequest
+//
+// @return QueryMeetingRoomListResponse
 func (client *Client) QueryMeetingRoomList(request *QueryMeetingRoomListRequest) (_result *QueryMeetingRoomListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryMeetingRoomListHeaders{}
@@ -67484,6 +71402,17 @@ func (client *Client) QueryMeetingRoomList(request *QueryMeetingRoomListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业荣誉
+//
+// @param tmpReq - QueryOrgHonorsRequest
+//
+// @param tmpHeader - QueryOrgHonorsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrgHonorsResponse
 func (client *Client) QueryOrgHonorsWithOptions(tmpReq *QueryOrgHonorsRequest, tmpHeader *QueryOrgHonorsHeaders, runtime *util.RuntimeOptions) (_result *QueryOrgHonorsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67551,6 +71480,13 @@ func (client *Client) QueryOrgHonorsWithOptions(tmpReq *QueryOrgHonorsRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业荣誉
+//
+// @param request - QueryOrgHonorsRequest
+//
+// @return QueryOrgHonorsResponse
 func (client *Client) QueryOrgHonors(request *QueryOrgHonorsRequest) (_result *QueryOrgHonorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryOrgHonorsHeaders{}
@@ -67563,6 +71499,17 @@ func (client *Client) QueryOrgHonors(request *QueryOrgHonorsRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业代办
+//
+// @param tmpReq - QueryOrgTodoTasksRequest
+//
+// @param tmpHeader - QueryOrgTodoTasksHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrgTodoTasksResponse
 func (client *Client) QueryOrgTodoTasksWithOptions(tmpReq *QueryOrgTodoTasksRequest, tmpHeader *QueryOrgTodoTasksHeaders, runtime *util.RuntimeOptions) (_result *QueryOrgTodoTasksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67626,6 +71573,13 @@ func (client *Client) QueryOrgTodoTasksWithOptions(tmpReq *QueryOrgTodoTasksRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业代办
+//
+// @param request - QueryOrgTodoTasksRequest
+//
+// @return QueryOrgTodoTasksResponse
 func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_result *QueryOrgTodoTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryOrgTodoTasksHeaders{}
@@ -67638,6 +71592,17 @@ func (client *Client) QueryOrgTodoTasks(request *QueryOrgTodoTasksRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询预约会议
+//
+// @param tmpReq - QueryScheduleConferenceRequest
+//
+// @param tmpHeader - QueryScheduleConferenceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryScheduleConferenceResponse
 func (client *Client) QueryScheduleConferenceWithOptions(tmpReq *QueryScheduleConferenceRequest, tmpHeader *QueryScheduleConferenceHeaders, runtime *util.RuntimeOptions) (_result *QueryScheduleConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67697,6 +71662,13 @@ func (client *Client) QueryScheduleConferenceWithOptions(tmpReq *QueryScheduleCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询预约会议
+//
+// @param request - QueryScheduleConferenceRequest
+//
+// @return QueryScheduleConferenceResponse
 func (client *Client) QueryScheduleConference(request *QueryScheduleConferenceRequest) (_result *QueryScheduleConferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryScheduleConferenceHeaders{}
@@ -67709,6 +71681,17 @@ func (client *Client) QueryScheduleConference(request *QueryScheduleConferenceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询员工勋章列表
+//
+// @param tmpReq - QueryUserHonorsRequest
+//
+// @param tmpHeader - QueryUserHonorsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserHonorsResponse
 func (client *Client) QueryUserHonorsWithOptions(tmpReq *QueryUserHonorsRequest, tmpHeader *QueryUserHonorsHeaders, runtime *util.RuntimeOptions) (_result *QueryUserHonorsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67780,6 +71763,13 @@ func (client *Client) QueryUserHonorsWithOptions(tmpReq *QueryUserHonorsRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询员工勋章列表
+//
+// @param request - QueryUserHonorsRequest
+//
+// @return QueryUserHonorsResponse
 func (client *Client) QueryUserHonors(request *QueryUserHonorsRequest) (_result *QueryUserHonorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &QueryUserHonorsHeaders{}
@@ -67792,6 +71782,17 @@ func (client *Client) QueryUserHonors(request *QueryUserHonorsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 收回勋章
+//
+// @param tmpReq - RecallHonorRequest
+//
+// @param tmpHeader - RecallHonorHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecallHonorResponse
 func (client *Client) RecallHonorWithOptions(tmpReq *RecallHonorRequest, tmpHeader *RecallHonorHeaders, runtime *util.RuntimeOptions) (_result *RecallHonorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67859,6 +71860,13 @@ func (client *Client) RecallHonorWithOptions(tmpReq *RecallHonorRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 收回勋章
+//
+// @param request - RecallHonorRequest
+//
+// @return RecallHonorResponse
 func (client *Client) RecallHonor(request *RecallHonorRequest) (_result *RecallHonorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RecallHonorHeaders{}
@@ -67871,6 +71879,17 @@ func (client *Client) RecallHonor(request *RecallHonorRequest) (_result *RecallH
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志接收人员列表
+//
+// @param tmpReq - ReceiverListReportRequest
+//
+// @param tmpHeader - ReceiverListReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReceiverListReportResponse
 func (client *Client) ReceiverListReportWithOptions(tmpReq *ReceiverListReportRequest, tmpHeader *ReceiverListReportHeaders, runtime *util.RuntimeOptions) (_result *ReceiverListReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -67938,6 +71957,13 @@ func (client *Client) ReceiverListReportWithOptions(tmpReq *ReceiverListReportRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志接收人员列表
+//
+// @param request - ReceiverListReportRequest
+//
+// @return ReceiverListReportResponse
 func (client *Client) ReceiverListReport(request *ReceiverListReportRequest) (_result *ReceiverListReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ReceiverListReportHeaders{}
@@ -67950,6 +71976,17 @@ func (client *Client) ReceiverListReport(request *ReceiverListReportRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 转交任务
+//
+// @param request - RedirectTaskRequest
+//
+// @param tmpHeader - RedirectTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RedirectTaskResponse
 func (client *Client) RedirectTaskWithOptions(request *RedirectTaskRequest, tmpHeader *RedirectTaskHeaders, runtime *util.RuntimeOptions) (_result *RedirectTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68027,6 +72064,13 @@ func (client *Client) RedirectTaskWithOptions(request *RedirectTaskRequest, tmpH
 	return _result, _err
 }
 
+// Summary:
+//
+// 转交任务
+//
+// @param request - RedirectTaskRequest
+//
+// @return RedirectTaskResponse
 func (client *Client) RedirectTask(request *RedirectTaskRequest) (_result *RedirectTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RedirectTaskHeaders{}
@@ -68039,6 +72083,17 @@ func (client *Client) RedirectTask(request *RedirectTaskRequest) (_result *Redir
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除日程参与者
+//
+// @param tmpReq - RemoveAttendeeRequest
+//
+// @param tmpHeader - RemoveAttendeeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAttendeeResponse
 func (client *Client) RemoveAttendeeWithOptions(tmpReq *RemoveAttendeeRequest, tmpHeader *RemoveAttendeeHeaders, runtime *util.RuntimeOptions) (_result *RemoveAttendeeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -68102,6 +72157,13 @@ func (client *Client) RemoveAttendeeWithOptions(tmpReq *RemoveAttendeeRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除日程参与者
+//
+// @param request - RemoveAttendeeRequest
+//
+// @return RemoveAttendeeResponse
 func (client *Client) RemoveAttendee(request *RemoveAttendeeRequest) (_result *RemoveAttendeeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RemoveAttendeeHeaders{}
@@ -68114,6 +72176,17 @@ func (client *Client) RemoveAttendee(request *RemoveAttendeeRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消预定会议室
+//
+// @param tmpReq - RemoveMeetingRoomsRequest
+//
+// @param tmpHeader - RemoveMeetingRoomsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveMeetingRoomsResponse
 func (client *Client) RemoveMeetingRoomsWithOptions(tmpReq *RemoveMeetingRoomsRequest, tmpHeader *RemoveMeetingRoomsHeaders, runtime *util.RuntimeOptions) (_result *RemoveMeetingRoomsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -68177,6 +72250,13 @@ func (client *Client) RemoveMeetingRoomsWithOptions(tmpReq *RemoveMeetingRoomsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消预定会议室
+//
+// @param request - RemoveMeetingRoomsRequest
+//
+// @return RemoveMeetingRoomsResponse
 func (client *Client) RemoveMeetingRooms(request *RemoveMeetingRoomsRequest) (_result *RemoveMeetingRoomsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RemoveMeetingRoomsHeaders{}
@@ -68189,6 +72269,17 @@ func (client *Client) RemoveMeetingRooms(request *RemoveMeetingRoomsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存日志内容
+//
+// @param tmpReq - SaveContentRequest
+//
+// @param tmpHeader - SaveContentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveContentResponse
 func (client *Client) SaveContentWithOptions(tmpReq *SaveContentRequest, tmpHeader *SaveContentHeaders, runtime *util.RuntimeOptions) (_result *SaveContentResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -68260,6 +72351,13 @@ func (client *Client) SaveContentWithOptions(tmpReq *SaveContentRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存日志内容
+//
+// @param request - SaveContentRequest
+//
+// @return SaveContentResponse
 func (client *Client) SaveContent(request *SaveContentRequest) (_result *SaveContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SaveContentHeaders{}
@@ -68272,6 +72370,17 @@ func (client *Client) SaveContent(request *SaveContentRequest) (_result *SaveCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存表单数据
+//
+// @param request - SaveFormDataRequest
+//
+// @param tmpHeader - SaveFormDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveFormDataResponse
 func (client *Client) SaveFormDataWithOptions(request *SaveFormDataRequest, tmpHeader *SaveFormDataHeaders, runtime *util.RuntimeOptions) (_result *SaveFormDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68337,6 +72446,13 @@ func (client *Client) SaveFormDataWithOptions(request *SaveFormDataRequest, tmpH
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存表单数据
+//
+// @param request - SaveFormDataRequest
+//
+// @return SaveFormDataResponse
 func (client *Client) SaveFormData(request *SaveFormDataRequest) (_result *SaveFormDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SaveFormDataHeaders{}
@@ -68349,6 +72465,17 @@ func (client *Client) SaveFormData(request *SaveFormDataRequest) (_result *SaveF
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交表单或流程实例下的评论
+//
+// @param request - SaveFormRemarkRequest
+//
+// @param tmpHeader - SaveFormRemarkHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveFormRemarkResponse
 func (client *Client) SaveFormRemarkWithOptions(request *SaveFormRemarkRequest, tmpHeader *SaveFormRemarkHeaders, runtime *util.RuntimeOptions) (_result *SaveFormRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68422,6 +72549,13 @@ func (client *Client) SaveFormRemarkWithOptions(request *SaveFormRemarkRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交表单或流程实例下的评论
+//
+// @param request - SaveFormRemarkRequest
+//
+// @return SaveFormRemarkResponse
 func (client *Client) SaveFormRemark(request *SaveFormRemarkRequest) (_result *SaveFormRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SaveFormRemarkHeaders{}
@@ -68434,6 +72568,17 @@ func (client *Client) SaveFormRemark(request *SaveFormRemarkRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取员工组件的值
+//
+// @param request - SearchEmployeeFieldValuesRequest
+//
+// @param tmpHeader - SearchEmployeeFieldValuesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchEmployeeFieldValuesResponse
 func (client *Client) SearchEmployeeFieldValuesWithOptions(request *SearchEmployeeFieldValuesRequest, tmpHeader *SearchEmployeeFieldValuesHeaders, runtime *util.RuntimeOptions) (_result *SearchEmployeeFieldValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68523,6 +72668,13 @@ func (client *Client) SearchEmployeeFieldValuesWithOptions(request *SearchEmploy
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取员工组件的值
+//
+// @param request - SearchEmployeeFieldValuesRequest
+//
+// @return SearchEmployeeFieldValuesResponse
 func (client *Client) SearchEmployeeFieldValues(request *SearchEmployeeFieldValuesRequest) (_result *SearchEmployeeFieldValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchEmployeeFieldValuesHeaders{}
@@ -68535,6 +72687,17 @@ func (client *Client) SearchEmployeeFieldValues(request *SearchEmployeeFieldValu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取多个表单实例ID
+//
+// @param request - SearchFormDataIdListRequest
+//
+// @param tmpHeader - SearchFormDataIdListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFormDataIdListResponse
 func (client *Client) SearchFormDataIdListWithOptions(request *SearchFormDataIdListRequest, tmpHeader *SearchFormDataIdListHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataIdListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68628,6 +72791,13 @@ func (client *Client) SearchFormDataIdListWithOptions(request *SearchFormDataIdL
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取多个表单实例ID
+//
+// @param request - SearchFormDataIdListRequest
+//
+// @return SearchFormDataIdListResponse
 func (client *Client) SearchFormDataIdList(request *SearchFormDataIdListRequest) (_result *SearchFormDataIdListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchFormDataIdListHeaders{}
@@ -68640,6 +72810,17 @@ func (client *Client) SearchFormDataIdList(request *SearchFormDataIdListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+//
+// @param request - SearchFormDataSecondGenerationRequest
+//
+// @param tmpHeader - SearchFormDataSecondGenerationHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFormDataSecondGenerationResponse
 func (client *Client) SearchFormDataSecondGenerationWithOptions(request *SearchFormDataSecondGenerationRequest, tmpHeader *SearchFormDataSecondGenerationHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataSecondGenerationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68733,6 +72914,13 @@ func (client *Client) SearchFormDataSecondGenerationWithOptions(request *SearchF
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+//
+// @param request - SearchFormDataSecondGenerationRequest
+//
+// @return SearchFormDataSecondGenerationResponse
 func (client *Client) SearchFormDataSecondGeneration(request *SearchFormDataSecondGenerationRequest) (_result *SearchFormDataSecondGenerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchFormDataSecondGenerationHeaders{}
@@ -68745,6 +72933,17 @@ func (client *Client) SearchFormDataSecondGeneration(request *SearchFormDataSeco
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+//
+// @param request - SearchFormDataSecondGenerationNoTableFieldRequest
+//
+// @param tmpHeader - SearchFormDataSecondGenerationNoTableFieldHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFormDataSecondGenerationNoTableFieldResponse
 func (client *Client) SearchFormDataSecondGenerationNoTableFieldWithOptions(request *SearchFormDataSecondGenerationNoTableFieldRequest, tmpHeader *SearchFormDataSecondGenerationNoTableFieldHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataSecondGenerationNoTableFieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68838,6 +73037,13 @@ func (client *Client) SearchFormDataSecondGenerationNoTableFieldWithOptions(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+//
+// @param request - SearchFormDataSecondGenerationNoTableFieldRequest
+//
+// @return SearchFormDataSecondGenerationNoTableFieldResponse
 func (client *Client) SearchFormDataSecondGenerationNoTableField(request *SearchFormDataSecondGenerationNoTableFieldRequest) (_result *SearchFormDataSecondGenerationNoTableFieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchFormDataSecondGenerationNoTableFieldHeaders{}
@@ -68850,6 +73056,17 @@ func (client *Client) SearchFormDataSecondGenerationNoTableField(request *Search
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询表单实例数据
+//
+// @param request - SearchFormDatasRequest
+//
+// @param tmpHeader - SearchFormDatasHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFormDatasResponse
 func (client *Client) SearchFormDatasWithOptions(request *SearchFormDatasRequest, tmpHeader *SearchFormDatasHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDatasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68947,6 +73164,13 @@ func (client *Client) SearchFormDatasWithOptions(request *SearchFormDatasRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询表单实例数据
+//
+// @param request - SearchFormDatasRequest
+//
+// @return SearchFormDatasResponse
 func (client *Client) SearchFormDatas(request *SearchFormDatasRequest) (_result *SearchFormDatasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchFormDatasHeaders{}
@@ -68959,6 +73183,17 @@ func (client *Client) SearchFormDatas(request *SearchFormDatasRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据关键词搜索企业内部群
+//
+// @param request - SearchInnerGroupsRequest
+//
+// @param tmpHeader - SearchInnerGroupsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchInnerGroupsResponse
 func (client *Client) SearchInnerGroupsWithOptions(request *SearchInnerGroupsRequest, tmpHeader *SearchInnerGroupsHeaders, runtime *util.RuntimeOptions) (_result *SearchInnerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69012,6 +73247,13 @@ func (client *Client) SearchInnerGroupsWithOptions(request *SearchInnerGroupsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据关键词搜索企业内部群
+//
+// @param request - SearchInnerGroupsRequest
+//
+// @return SearchInnerGroupsResponse
 func (client *Client) SearchInnerGroups(request *SearchInnerGroupsRequest) (_result *SearchInnerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SearchInnerGroupsHeaders{}
@@ -69024,6 +73266,17 @@ func (client *Client) SearchInnerGroups(request *SearchInnerGroupsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉Banner通知
+//
+// @param tmpReq - SendBannerRequest
+//
+// @param tmpHeader - SendBannerHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendBannerResponse
 func (client *Client) SendBannerWithOptions(tmpReq *SendBannerRequest, tmpHeader *SendBannerHeaders, runtime *util.RuntimeOptions) (_result *SendBannerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69095,6 +73348,13 @@ func (client *Client) SendBannerWithOptions(tmpReq *SendBannerRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉Banner通知
+//
+// @param request - SendBannerRequest
+//
+// @return SendBannerResponse
 func (client *Client) SendBanner(request *SendBannerRequest) (_result *SendBannerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SendBannerHeaders{}
@@ -69107,6 +73367,17 @@ func (client *Client) SendBanner(request *SendBannerRequest) (_result *SendBanne
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉封屏弹窗
+//
+// @param tmpReq - SendPopupRequest
+//
+// @param tmpHeader - SendPopupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendPopupResponse
 func (client *Client) SendPopupWithOptions(tmpReq *SendPopupRequest, tmpHeader *SendPopupHeaders, runtime *util.RuntimeOptions) (_result *SendPopupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69178,6 +73449,13 @@ func (client *Client) SendPopupWithOptions(tmpReq *SendPopupRequest, tmpHeader *
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉封屏弹窗
+//
+// @param request - SendPopupRequest
+//
+// @return SendPopupResponse
 func (client *Client) SendPopup(request *SendPopupRequest) (_result *SendPopupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SendPopupHeaders{}
@@ -69190,6 +73468,17 @@ func (client *Client) SendPopup(request *SendPopupRequest) (_result *SendPopupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉搜索底纹
+//
+// @param tmpReq - SendSearchShadeRequest
+//
+// @param tmpHeader - SendSearchShadeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendSearchShadeResponse
 func (client *Client) SendSearchShadeWithOptions(tmpReq *SendSearchShadeRequest, tmpHeader *SendSearchShadeHeaders, runtime *util.RuntimeOptions) (_result *SendSearchShadeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69261,6 +73550,13 @@ func (client *Client) SendSearchShadeWithOptions(tmpReq *SendSearchShadeRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 发送钉钉搜索底纹
+//
+// @param request - SendSearchShadeRequest
+//
+// @return SendSearchShadeResponse
 func (client *Client) SendSearchShade(request *SendSearchShadeRequest) (_result *SendSearchShadeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SendSearchShadeHeaders{}
@@ -69273,6 +73569,17 @@ func (client *Client) SendSearchShade(request *SendSearchShadeRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定列隐藏
+//
+// @param tmpReq - SetColumnsVisibilityRequest
+//
+// @param tmpHeader - SetColumnsVisibilityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetColumnsVisibilityResponse
 func (client *Client) SetColumnsVisibilityWithOptions(tmpReq *SetColumnsVisibilityRequest, tmpHeader *SetColumnsVisibilityHeaders, runtime *util.RuntimeOptions) (_result *SetColumnsVisibilityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69348,6 +73655,13 @@ func (client *Client) SetColumnsVisibilityWithOptions(tmpReq *SetColumnsVisibili
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定列隐藏
+//
+// @param request - SetColumnsVisibilityRequest
+//
+// @return SetColumnsVisibilityResponse
 func (client *Client) SetColumnsVisibility(request *SetColumnsVisibilityRequest) (_result *SetColumnsVisibilityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SetColumnsVisibilityHeaders{}
@@ -69360,6 +73674,17 @@ func (client *Client) SetColumnsVisibility(request *SetColumnsVisibilityRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定行隐藏
+//
+// @param tmpReq - SetRowsVisibilityRequest
+//
+// @param tmpHeader - SetRowsVisibilityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetRowsVisibilityResponse
 func (client *Client) SetRowsVisibilityWithOptions(tmpReq *SetRowsVisibilityRequest, tmpHeader *SetRowsVisibilityHeaders, runtime *util.RuntimeOptions) (_result *SetRowsVisibilityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69435,6 +73760,13 @@ func (client *Client) SetRowsVisibilityWithOptions(tmpReq *SetRowsVisibilityRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 指定行隐藏
+//
+// @param request - SetRowsVisibilityRequest
+//
+// @return SetRowsVisibilityResponse
 func (client *Client) SetRowsVisibility(request *SetRowsVisibilityRequest) (_result *SetRowsVisibilityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SetRowsVisibilityHeaders{}
@@ -69447,6 +73779,17 @@ func (client *Client) SetRowsVisibility(request *SetRowsVisibilityRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户发送日志的概要信息
+//
+// @param tmpReq - SimpleListReportRequest
+//
+// @param tmpHeader - SimpleListReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SimpleListReportResponse
 func (client *Client) SimpleListReportWithOptions(tmpReq *SimpleListReportRequest, tmpHeader *SimpleListReportHeaders, runtime *util.RuntimeOptions) (_result *SimpleListReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69522,6 +73865,13 @@ func (client *Client) SimpleListReportWithOptions(tmpReq *SimpleListReportReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户发送日志的概要信息
+//
+// @param request - SimpleListReportRequest
+//
+// @return SimpleListReportResponse
 func (client *Client) SimpleListReport(request *SimpleListReportRequest) (_result *SimpleListReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SimpleListReportHeaders{}
@@ -69534,6 +73884,17 @@ func (client *Client) SimpleListReport(request *SimpleListReportRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启视频会议云录制
+//
+// @param tmpReq - StartCloudRecordRequest
+//
+// @param tmpHeader - StartCloudRecordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCloudRecordResponse
 func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordRequest, tmpHeader *StartCloudRecordHeaders, runtime *util.RuntimeOptions) (_result *StartCloudRecordResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69601,6 +73962,13 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启视频会议云录制
+//
+// @param request - StartCloudRecordRequest
+//
+// @return StartCloudRecordResponse
 func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_result *StartCloudRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StartCloudRecordHeaders{}
@@ -69613,6 +73981,17 @@ func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起宜搭审批流程
+//
+// @param request - StartInstanceRequest
+//
+// @param tmpHeader - StartInstanceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartInstanceResponse
 func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, tmpHeader *StartInstanceHeaders, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69690,6 +74069,13 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, tm
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起宜搭审批流程
+//
+// @param request - StartInstanceRequest
+//
+// @return StartInstanceResponse
 func (client *Client) StartInstance(request *StartInstanceRequest) (_result *StartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StartInstanceHeaders{}
@@ -69702,6 +74088,17 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志相关人员列表
+//
+// @param tmpReq - StatisticsListByTypeReportRequest
+//
+// @param tmpHeader - StatisticsListByTypeReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StatisticsListByTypeReportResponse
 func (client *Client) StatisticsListByTypeReportWithOptions(tmpReq *StatisticsListByTypeReportRequest, tmpHeader *StatisticsListByTypeReportHeaders, runtime *util.RuntimeOptions) (_result *StatisticsListByTypeReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69773,6 +74170,13 @@ func (client *Client) StatisticsListByTypeReportWithOptions(tmpReq *StatisticsLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志相关人员列表
+//
+// @param request - StatisticsListByTypeReportRequest
+//
+// @return StatisticsListByTypeReportResponse
 func (client *Client) StatisticsListByTypeReport(request *StatisticsListByTypeReportRequest) (_result *StatisticsListByTypeReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StatisticsListByTypeReportHeaders{}
@@ -69785,6 +74189,17 @@ func (client *Client) StatisticsListByTypeReport(request *StatisticsListByTypeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志统计数据
+//
+// @param tmpReq - StatisticsReportRequest
+//
+// @param tmpHeader - StatisticsReportHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StatisticsReportResponse
 func (client *Client) StatisticsReportWithOptions(tmpReq *StatisticsReportRequest, tmpHeader *StatisticsReportHeaders, runtime *util.RuntimeOptions) (_result *StatisticsReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69844,6 +74259,13 @@ func (client *Client) StatisticsReportWithOptions(tmpReq *StatisticsReportReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取日志统计数据
+//
+// @param request - StatisticsReportRequest
+//
+// @return StatisticsReportResponse
 func (client *Client) StatisticsReport(request *StatisticsReportRequest) (_result *StatisticsReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StatisticsReportHeaders{}
@@ -69856,6 +74278,17 @@ func (client *Client) StatisticsReport(request *StatisticsReportRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止视频会议云录制
+//
+// @param tmpReq - StopCloudRecordRequest
+//
+// @param tmpHeader - StopCloudRecordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCloudRecordResponse
 func (client *Client) StopCloudRecordWithOptions(tmpReq *StopCloudRecordRequest, tmpHeader *StopCloudRecordHeaders, runtime *util.RuntimeOptions) (_result *StopCloudRecordResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -69915,6 +74348,13 @@ func (client *Client) StopCloudRecordWithOptions(tmpReq *StopCloudRecordRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止视频会议云录制
+//
+// @param request - StopCloudRecordRequest
+//
+// @return StopCloudRecordResponse
 func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result *StopCloudRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &StopCloudRecordHeaders{}
@@ -69927,6 +74367,17 @@ func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 订阅公共日历
+//
+// @param request - SubscribeCalendarRequest
+//
+// @param tmpHeader - SubscribeCalendarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubscribeCalendarResponse
 func (client *Client) SubscribeCalendarWithOptions(request *SubscribeCalendarRequest, tmpHeader *SubscribeCalendarHeaders, runtime *util.RuntimeOptions) (_result *SubscribeCalendarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69976,6 +74427,13 @@ func (client *Client) SubscribeCalendarWithOptions(request *SubscribeCalendarReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 订阅公共日历
+//
+// @param request - SubscribeCalendarRequest
+//
+// @return SubscribeCalendarResponse
 func (client *Client) SubscribeCalendar(request *SubscribeCalendarRequest) (_result *SubscribeCalendarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SubscribeCalendarHeaders{}
@@ -69988,6 +74446,17 @@ func (client *Client) SubscribeCalendar(request *SubscribeCalendarRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步钉钉账号类型
+//
+// @param tmpReq - SyncDingTypeRequest
+//
+// @param tmpHeader - SyncDingTypeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDingTypeResponse
 func (client *Client) SyncDingTypeWithOptions(tmpReq *SyncDingTypeRequest, tmpHeader *SyncDingTypeHeaders, runtime *util.RuntimeOptions) (_result *SyncDingTypeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70059,6 +74528,13 @@ func (client *Client) SyncDingTypeWithOptions(tmpReq *SyncDingTypeRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步钉钉账号类型
+//
+// @param request - SyncDingTypeRequest
+//
+// @return SyncDingTypeResponse
 func (client *Client) SyncDingType(request *SyncDingTypeRequest) (_result *SyncDingTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SyncDingTypeHeaders{}
@@ -70071,6 +74547,17 @@ func (client *Client) SyncDingType(request *SyncDingTypeRequest) (_result *SyncD
 	return _result, _err
 }
 
+// Summary:
+//
+// 终止流程实例
+//
+// @param request - TerminateInstanceRequest
+//
+// @param tmpHeader - TerminateInstanceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateInstanceResponse
 func (client *Client) TerminateInstanceWithOptions(request *TerminateInstanceRequest, tmpHeader *TerminateInstanceHeaders, runtime *util.RuntimeOptions) (_result *TerminateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70132,6 +74619,13 @@ func (client *Client) TerminateInstanceWithOptions(request *TerminateInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 终止流程实例
+//
+// @param request - TerminateInstanceRequest
+//
+// @return TerminateInstanceResponse
 func (client *Client) TerminateInstance(request *TerminateInstanceRequest) (_result *TerminateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &TerminateInstanceHeaders{}
@@ -70144,6 +74638,17 @@ func (client *Client) TerminateInstance(request *TerminateInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消订阅公共日历
+//
+// @param request - UnsubscribeCalendarRequest
+//
+// @param tmpHeader - UnsubscribeCalendarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnsubscribeCalendarResponse
 func (client *Client) UnsubscribeCalendarWithOptions(request *UnsubscribeCalendarRequest, tmpHeader *UnsubscribeCalendarHeaders, runtime *util.RuntimeOptions) (_result *UnsubscribeCalendarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70193,6 +74698,13 @@ func (client *Client) UnsubscribeCalendarWithOptions(request *UnsubscribeCalenda
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消订阅公共日历
+//
+// @param request - UnsubscribeCalendarRequest
+//
+// @return UnsubscribeCalendarResponse
 func (client *Client) UnsubscribeCalendar(request *UnsubscribeCalendarRequest) (_result *UnsubscribeCalendarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UnsubscribeCalendarHeaders{}
@@ -70205,6 +74717,17 @@ func (client *Client) UnsubscribeCalendar(request *UnsubscribeCalendarRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新表单数据
+//
+// @param request - UpdateFormDataRequest
+//
+// @param tmpHeader - UpdateFormDataHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFormDataResponse
 func (client *Client) UpdateFormDataWithOptions(request *UpdateFormDataRequest, tmpHeader *UpdateFormDataHeaders, runtime *util.RuntimeOptions) (_result *UpdateFormDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70274,6 +74797,13 @@ func (client *Client) UpdateFormDataWithOptions(request *UpdateFormDataRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新表单数据
+//
+// @param request - UpdateFormDataRequest
+//
+// @return UpdateFormDataResponse
 func (client *Client) UpdateFormData(request *UpdateFormDataRequest) (_result *UpdateFormDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateFormDataHeaders{}
@@ -70286,6 +74816,17 @@ func (client *Client) UpdateFormData(request *UpdateFormDataRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流程实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @param tmpHeader - UpdateInstanceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, tmpHeader *UpdateInstanceHeaders, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70351,6 +74892,13 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流程实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateInstanceHeaders{}
@@ -70363,6 +74911,17 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改直播属性信息
+//
+// @param tmpReq - UpdateLiveRequest
+//
+// @param tmpHeader - UpdateLiveHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLiveResponse
 func (client *Client) UpdateLiveWithOptions(tmpReq *UpdateLiveRequest, tmpHeader *UpdateLiveHeaders, runtime *util.RuntimeOptions) (_result *UpdateLiveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70442,6 +75001,13 @@ func (client *Client) UpdateLiveWithOptions(tmpReq *UpdateLiveRequest, tmpHeader
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改直播属性信息
+//
+// @param request - UpdateLiveRequest
+//
+// @return UpdateLiveResponse
 func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateLiveHeaders{}
@@ -70454,6 +75020,17 @@ func (client *Client) UpdateLive(request *UpdateLiveRequest) (_result *UpdateLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会议室信息
+//
+// @param tmpReq - UpdateMeetingRoomRequest
+//
+// @param tmpHeader - UpdateMeetingRoomHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMeetingRoomResponse
 func (client *Client) UpdateMeetingRoomWithOptions(tmpReq *UpdateMeetingRoomRequest, tmpHeader *UpdateMeetingRoomHeaders, runtime *util.RuntimeOptions) (_result *UpdateMeetingRoomResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70565,6 +75142,13 @@ func (client *Client) UpdateMeetingRoomWithOptions(tmpReq *UpdateMeetingRoomRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会议室信息
+//
+// @param request - UpdateMeetingRoomRequest
+//
+// @return UpdateMeetingRoomResponse
 func (client *Client) UpdateMeetingRoom(request *UpdateMeetingRoomRequest) (_result *UpdateMeetingRoomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateMeetingRoomHeaders{}
@@ -70577,6 +75161,17 @@ func (client *Client) UpdateMeetingRoom(request *UpdateMeetingRoomRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会议室分组信息
+//
+// @param tmpReq - UpdateMeetingRoomGroupRequest
+//
+// @param tmpHeader - UpdateMeetingRoomGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMeetingRoomGroupResponse
 func (client *Client) UpdateMeetingRoomGroupWithOptions(tmpReq *UpdateMeetingRoomGroupRequest, tmpHeader *UpdateMeetingRoomGroupHeaders, runtime *util.RuntimeOptions) (_result *UpdateMeetingRoomGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70640,6 +75235,13 @@ func (client *Client) UpdateMeetingRoomGroupWithOptions(tmpReq *UpdateMeetingRoo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会议室分组信息
+//
+// @param request - UpdateMeetingRoomGroupRequest
+//
+// @return UpdateMeetingRoomGroupResponse
 func (client *Client) UpdateMeetingRoomGroup(request *UpdateMeetingRoomGroupRequest) (_result *UpdateMeetingRoomGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateMeetingRoomGroupHeaders{}
@@ -70652,6 +75254,17 @@ func (client *Client) UpdateMeetingRoomGroup(request *UpdateMeetingRoomGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新单元格区域
+//
+// @param tmpReq - UpdateRangeRequest
+//
+// @param tmpHeader - UpdateRangeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRangeResponse
 func (client *Client) UpdateRangeWithOptions(tmpReq *UpdateRangeRequest, tmpHeader *UpdateRangeHeaders, runtime *util.RuntimeOptions) (_result *UpdateRangeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70747,6 +75360,13 @@ func (client *Client) UpdateRangeWithOptions(tmpReq *UpdateRangeRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新单元格区域
+//
+// @param request - UpdateRangeRequest
+//
+// @return UpdateRangeResponse
 func (client *Client) UpdateRange(request *UpdateRangeRequest) (_result *UpdateRangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateRangeHeaders{}
@@ -70759,6 +75379,17 @@ func (client *Client) UpdateRange(request *UpdateRangeRequest) (_result *UpdateR
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新预约会议设置
+//
+// @param tmpReq - UpdateScheduleConfSettingsRequest
+//
+// @param tmpHeader - UpdateScheduleConfSettingsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScheduleConfSettingsResponse
 func (client *Client) UpdateScheduleConfSettingsWithOptions(tmpReq *UpdateScheduleConfSettingsRequest, tmpHeader *UpdateScheduleConfSettingsHeaders, runtime *util.RuntimeOptions) (_result *UpdateScheduleConfSettingsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70826,6 +75457,13 @@ func (client *Client) UpdateScheduleConfSettingsWithOptions(tmpReq *UpdateSchedu
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新预约会议设置
+//
+// @param request - UpdateScheduleConfSettingsRequest
+//
+// @return UpdateScheduleConfSettingsResponse
 func (client *Client) UpdateScheduleConfSettings(request *UpdateScheduleConfSettingsRequest) (_result *UpdateScheduleConfSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateScheduleConfSettingsHeaders{}
@@ -70838,6 +75476,17 @@ func (client *Client) UpdateScheduleConfSettings(request *UpdateScheduleConfSett
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新预约会议
+//
+// @param tmpReq - UpdateScheduleConferenceRequest
+//
+// @param tmpHeader - UpdateScheduleConferenceHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScheduleConferenceResponse
 func (client *Client) UpdateScheduleConferenceWithOptions(tmpReq *UpdateScheduleConferenceRequest, tmpHeader *UpdateScheduleConferenceHeaders, runtime *util.RuntimeOptions) (_result *UpdateScheduleConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70909,6 +75558,13 @@ func (client *Client) UpdateScheduleConferenceWithOptions(tmpReq *UpdateSchedule
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新预约会议
+//
+// @param request - UpdateScheduleConferenceRequest
+//
+// @return UpdateScheduleConferenceResponse
 func (client *Client) UpdateScheduleConference(request *UpdateScheduleConferenceRequest) (_result *UpdateScheduleConferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateScheduleConferenceHeaders{}
@@ -70921,6 +75577,17 @@ func (client *Client) UpdateScheduleConference(request *UpdateScheduleConference
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新状态
+//
+// @param tmpReq - UpdateStatusRequest
+//
+// @param tmpHeader - UpdateStatusHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStatusResponse
 func (client *Client) UpdateStatusWithOptions(tmpReq *UpdateStatusRequest, tmpHeader *UpdateStatusHeaders, runtime *util.RuntimeOptions) (_result *UpdateStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -70996,6 +75663,13 @@ func (client *Client) UpdateStatusWithOptions(tmpReq *UpdateStatusRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新状态
+//
+// @param request - UpdateStatusRequest
+//
+// @return UpdateStatusResponse
 func (client *Client) UpdateStatus(request *UpdateStatusRequest) (_result *UpdateStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateStatusHeaders{}
@@ -71008,6 +75682,17 @@ func (client *Client) UpdateStatus(request *UpdateStatusRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新订阅日历
+//
+// @param tmpReq - UpdateSubscribedCalendarsRequest
+//
+// @param tmpHeader - UpdateSubscribedCalendarsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscribedCalendarsResponse
 func (client *Client) UpdateSubscribedCalendarsWithOptions(tmpReq *UpdateSubscribedCalendarsRequest, tmpHeader *UpdateSubscribedCalendarsHeaders, runtime *util.RuntimeOptions) (_result *UpdateSubscribedCalendarsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71083,6 +75768,13 @@ func (client *Client) UpdateSubscribedCalendarsWithOptions(tmpReq *UpdateSubscri
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新订阅日历
+//
+// @param request - UpdateSubscribedCalendarsRequest
+//
+// @return UpdateSubscribedCalendarsResponse
 func (client *Client) UpdateSubscribedCalendars(request *UpdateSubscribedCalendarsRequest) (_result *UpdateSubscribedCalendarsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateSubscribedCalendarsHeaders{}
@@ -71095,6 +75787,17 @@ func (client *Client) UpdateSubscribedCalendars(request *UpdateSubscribedCalenda
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新代办
+//
+// @param tmpReq - UpdateTodoTaskRequest
+//
+// @param tmpHeader - UpdateTodoTaskHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTodoTaskResponse
 func (client *Client) UpdateTodoTaskWithOptions(tmpReq *UpdateTodoTaskRequest, tmpHeader *UpdateTodoTaskHeaders, runtime *util.RuntimeOptions) (_result *UpdateTodoTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71186,6 +75889,13 @@ func (client *Client) UpdateTodoTaskWithOptions(tmpReq *UpdateTodoTaskRequest, t
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新代办
+//
+// @param request - UpdateTodoTaskRequest
+//
+// @return UpdateTodoTaskResponse
 func (client *Client) UpdateTodoTask(request *UpdateTodoTaskRequest) (_result *UpdateTodoTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateTodoTaskHeaders{}
@@ -71198,6 +75908,17 @@ func (client *Client) UpdateTodoTask(request *UpdateTodoTaskRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新代办执行者状态
+//
+// @param tmpReq - UpdateTodoTaskExecutorStatusRequest
+//
+// @param tmpHeader - UpdateTodoTaskExecutorStatusHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTodoTaskExecutorStatusResponse
 func (client *Client) UpdateTodoTaskExecutorStatusWithOptions(tmpReq *UpdateTodoTaskExecutorStatusRequest, tmpHeader *UpdateTodoTaskExecutorStatusHeaders, runtime *util.RuntimeOptions) (_result *UpdateTodoTaskExecutorStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71269,6 +75990,13 @@ func (client *Client) UpdateTodoTaskExecutorStatusWithOptions(tmpReq *UpdateTodo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新代办执行者状态
+//
+// @param request - UpdateTodoTaskExecutorStatusRequest
+//
+// @return UpdateTodoTaskExecutorStatusResponse
 func (client *Client) UpdateTodoTaskExecutorStatus(request *UpdateTodoTaskExecutorStatusRequest) (_result *UpdateTodoTaskExecutorStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateTodoTaskExecutorStatusHeaders{}
@@ -71281,6 +76009,17 @@ func (client *Client) UpdateTodoTaskExecutorStatus(request *UpdateTodoTaskExecut
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新企业账号用户头像
+//
+// @param request - UpdateUserAvatarRequest
+//
+// @param tmpHeader - UpdateUserAvatarHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserAvatarResponse
 func (client *Client) UpdateUserAvatarWithOptions(request *UpdateUserAvatarRequest, tmpHeader *UpdateUserAvatarHeaders, runtime *util.RuntimeOptions) (_result *UpdateUserAvatarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -71330,6 +76069,13 @@ func (client *Client) UpdateUserAvatarWithOptions(request *UpdateUserAvatarReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新企业账号用户头像
+//
+// @param request - UpdateUserAvatarRequest
+//
+// @return UpdateUserAvatarResponse
 func (client *Client) UpdateUserAvatar(request *UpdateUserAvatarRequest) (_result *UpdateUserAvatarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateUserAvatarHeaders{}
@@ -71342,6 +76088,17 @@ func (client *Client) UpdateUserAvatar(request *UpdateUserAvatarRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改知识库文档成员权限
+//
+// @param tmpReq - UpdateWorkspaceDocMembersRequest
+//
+// @param tmpHeader - UpdateWorkspaceDocMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceDocMembersResponse
 func (client *Client) UpdateWorkspaceDocMembersWithOptions(tmpReq *UpdateWorkspaceDocMembersRequest, tmpHeader *UpdateWorkspaceDocMembersHeaders, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceDocMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71413,6 +76170,13 @@ func (client *Client) UpdateWorkspaceDocMembersWithOptions(tmpReq *UpdateWorkspa
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改知识库文档成员权限
+//
+// @param request - UpdateWorkspaceDocMembersRequest
+//
+// @return UpdateWorkspaceDocMembersResponse
 func (client *Client) UpdateWorkspaceDocMembers(request *UpdateWorkspaceDocMembersRequest) (_result *UpdateWorkspaceDocMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateWorkspaceDocMembersHeaders{}
@@ -71425,6 +76189,17 @@ func (client *Client) UpdateWorkspaceDocMembers(request *UpdateWorkspaceDocMembe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新知识库成员权限
+//
+// @param tmpReq - UpdateWorkspaceMembersRequest
+//
+// @param tmpHeader - UpdateWorkspaceMembersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceMembersResponse
 func (client *Client) UpdateWorkspaceMembersWithOptions(tmpReq *UpdateWorkspaceMembersRequest, tmpHeader *UpdateWorkspaceMembersHeaders, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71492,6 +76267,13 @@ func (client *Client) UpdateWorkspaceMembersWithOptions(tmpReq *UpdateWorkspaceM
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新知识库成员权限
+//
+// @param request - UpdateWorkspaceMembersRequest
+//
+// @return UpdateWorkspaceMembersResponse
 func (client *Client) UpdateWorkspaceMembers(request *UpdateWorkspaceMembersRequest) (_result *UpdateWorkspaceMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateWorkspaceMembersHeaders{}
@@ -71504,6 +76286,17 @@ func (client *Client) UpdateWorkspaceMembers(request *UpdateWorkspaceMembersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传媒体<br/>
+//
+// @param tmpReq - UploadMediaRequest
+//
+// @param tmpHeader - UploadMediaHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadMediaResponse
 func (client *Client) UploadMediaWithOptions(tmpReq *UploadMediaRequest, tmpHeader *UploadMediaHeaders, runtime *util.RuntimeOptions) (_result *UploadMediaResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71575,6 +76368,13 @@ func (client *Client) UploadMediaWithOptions(tmpReq *UploadMediaRequest, tmpHead
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传媒体<br/>
+//
+// @param request - UploadMediaRequest
+//
+// @return UploadMediaResponse
 func (client *Client) UploadMedia(request *UploadMediaRequest) (_result *UploadMediaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UploadMediaHeaders{}
@@ -71587,6 +76387,17 @@ func (client *Client) UploadMedia(request *UploadMediaRequest) (_result *UploadM
 	return _result, _err
 }
 
+// Summary:
+//
+// 穿戴勋章
+//
+// @param tmpReq - WearOrgHonorRequest
+//
+// @param tmpHeader - WearOrgHonorHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WearOrgHonorResponse
 func (client *Client) WearOrgHonorWithOptions(tmpReq *WearOrgHonorRequest, tmpHeader *WearOrgHonorHeaders, runtime *util.RuntimeOptions) (_result *WearOrgHonorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -71658,6 +76469,13 @@ func (client *Client) WearOrgHonorWithOptions(tmpReq *WearOrgHonorRequest, tmpHe
 	return _result, _err
 }
 
+// Summary:
+//
+// 穿戴勋章
+//
+// @param request - WearOrgHonorRequest
+//
+// @return WearOrgHonorResponse
 func (client *Client) WearOrgHonor(request *WearOrgHonorRequest) (_result *WearOrgHonorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &WearOrgHonorHeaders{}
